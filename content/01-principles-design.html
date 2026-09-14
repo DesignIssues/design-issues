@@ -166,6 +166,55 @@ declarative from, anyone can write a program to analyze it in many ways.
 <cite>Principles of Design, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig1-1-t fig1-1-d">
+  <title id="fig1-1-t">The scale of the principle of least power</title>
+  <desc id="fig1-1-d">A scale running from plainly descriptive languages to
+  unashamedly procedural ones. Moving right increases what an author can
+  express. Moving left increases what anyone else can do with the result.</desc>
+
+  <!-- the axis -->
+  <line class="ln" x1="40" y1="112" x2="680" y2="112"/>
+  <path d="M 674 107 L 684 112 L 674 117 Z" fill="#2f4f4f"/>
+  <path d="M 46 107 L 36 112 L 46 117 Z" fill="#2f4f4f"/>
+
+  <!-- ticks -->
+  <line class="ln-mut" x1="110" y1="104" x2="110" y2="120"/>
+  <line class="ln-mut" x1="270" y1="104" x2="270" y2="120"/>
+  <line class="ln-mut" x1="420" y1="104" x2="420" y2="120"/>
+  <line class="ln-mut" x1="560" y1="104" x2="560" y2="120"/>
+
+  <!-- labels above -->
+  <text x="110" y="64" class="t-caps" text-anchor="middle">descriptive</text>
+  <text x="110" y="86" class="t-sm" text-anchor="middle">Dublin Core, HTML</text>
+  <text x="270" y="64" class="t-caps" text-anchor="middle">limited logic</text>
+  <text x="270" y="86" class="t-sm" text-anchor="middle">access control lists</text>
+  <text x="420" y="64" class="t-caps" text-anchor="middle">declarative</text>
+  <text x="420" y="86" class="t-sm" text-anchor="middle">XSLT, SQL</text>
+  <text x="560" y="64" class="t-caps" text-anchor="middle">procedural</text>
+  <text x="560" y="86" class="t-sm" text-anchor="middle">Java, C</text>
+
+  <!-- the two gains -->
+  <path class="ln-accent" d="M 640 160 L 60 160"/>
+  <path d="M 68 155 L 56 160 L 68 165 Z" fill="#1c5a7a"/>
+  <rect x="182" y="148" width="336" height="16" fill="#fefefe"/>
+  <text x="350" y="160" class="t-sm" text-anchor="middle" fill="#1c5a7a" dominant-baseline="middle">more that anyone else can do with the data</text>
+
+  <path class="ln" stroke="#b08d57" d="M 80 200 L 660 200"/>
+  <path d="M 652 195 L 664 200 L 652 205 Z" fill="#b08d57"/>
+  <rect x="240" y="188" width="260" height="16" fill="#fefefe"/>
+  <text x="370" y="200" class="t-sm" text-anchor="middle" fill="#a07d47" dominant-baseline="middle">more that the author can express</text>
+
+  <line class="ln-mut" x1="40" y1="224" x2="680" y2="224"/>
+  <text x="360" y="248" class="t-sm t-it" text-anchor="middle">Weather as a table can be averaged, plotted and combined. The same weather inside an applet can only be watched.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 1.1</span>
+The principle asks the designer to choose the leftmost point on this scale
+that still does the job, and it is the only one of the six principles that
+tells an author to give something up.</figcaption>
+</figure>
+
 <p>
 The comparison offered is weather data. Published as a table of values with
 a declarative description, it can be averaged, plotted, combined with other

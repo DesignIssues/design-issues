@@ -158,6 +158,50 @@ for is to refer to an object. When not dereferencing, one should not look
 inside the string to gain other information.</p>
 </div>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+     aria-labelledby="fig2-1-t fig2-1-d">
+  <title id="fig2-1-t">Who is permitted to read which part of a URI</title>
+  <desc id="fig2-1-d">The scheme is read by every agent. The authority is read
+  by the client to find a server. The path is opaque to the client and
+  meaningful only to that server. The query is built by the client and read by
+  the server but must stay opaque to intermediaries. The fragment is never
+  sent over the network at all.</desc>
+
+  <text x="30" y="40" class="t-mono" xml:space="preserve"><tspan fill="#1c5a7a">https</tspan><tspan fill="#8a9a9a">://</tspan><tspan fill="#b08d57">example.org</tspan><tspan fill="#2f4f4f">/reports/1997</tspan><tspan fill="#8a9a9a">?</tspan><tspan fill="#5a8f5a">q=axioms</tspan><tspan fill="#8a9a9a">#</tspan><tspan fill="#5a8f5a">top</tspan></text>
+  <text x="392" y="44" class="t-sm t-it">each bar marks that part of the URI above</text>
+  <line class="ln-mut" x1="30" y1="62" x2="690" y2="62"/>
+
+  <line x1="30" y1="96" x2="368" y2="96" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="30" y1="96" x2="67" y2="96" stroke="#1c5a7a" stroke-width="5"/>
+  <text x="392" y="100" class="t-caps" fill="#1c5a7a">scheme</text>
+  <text x="470" y="100">read by every agent, to know what the rest means</text>
+  <line x1="30" y1="138" x2="368" y2="138" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="90" y1="138" x2="172" y2="138" stroke="#b08d57" stroke-width="5"/>
+  <text x="392" y="142" class="t-caps" fill="#b08d57">authority</text>
+  <text x="470" y="142">read by the client, to find the server</text>
+  <line x1="30" y1="180" x2="368" y2="180" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="172" y1="180" x2="270" y2="180" stroke="#2f4f4f" stroke-width="5"/>
+  <text x="392" y="184" class="t-caps" fill="#2f4f4f">path</text>
+  <text x="470" y="184">opaque to the client; meaningful to that server</text>
+  <line x1="30" y1="222" x2="368" y2="222" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="278" y1="222" x2="338" y2="222" stroke="#5a8f5a" stroke-width="5"/>
+  <text x="392" y="226" class="t-caps" fill="#5a8f5a">query</text>
+  <text x="470" y="226">client and server read it; proxies must not</text>
+  <line x1="30" y1="264" x2="368" y2="264" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="345" y1="264" x2="368" y2="264" stroke="#5a8f5a" stroke-width="5"/>
+  <text x="392" y="268" class="t-caps" fill="#5a8f5a">fragment</text>
+  <text x="470" y="268">never sent; resolved by the client alone</text>
+
+  <line class="ln-mut" x1="30" y1="306" x2="690" y2="306"/>
+  <text x="30" y="328" class="t-sm t-it">Inferring a media type from a trailing &#8220;.html&#8221; reads the path. Only the server may.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 2.1</span>
+Opacity is not secrecy. It is a statement about which agent has standing to
+interpret which part, and every guarantee in this chapter depends on agents
+declining to read past their own segment.</figcaption>
+</figure>
+
 <p>
 The example given is the temptation to read <code>.html</code> at the end of
 a URI as a statement about format. A client that does so has begun to depend

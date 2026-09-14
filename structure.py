@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Volume and chapter structure for Elementary Design Issues.
+"""Volume and chapter structure for the Design Issues book.
 
 Every essay on https://www.w3.org/DesignIssues/ is assigned to exactly one
 chapter. VOLUMES is the single source of truth for reading order.

@@ -1,11 +1,10 @@
-# Elementary Design Issues
+# Design Issues (the book)
 
 > A book made from Tim Berners-Lee's Design Issues notes
 > (https://www.w3.org/DesignIssues/), edited by Melvin Carvalho.
 > 96 chapters in ten volumes, in a reading order, each with its source,
 > its context, and a note on what happened since.
 > Editorial matter CC BY-SA 4.0; quoted material (c) Tim Berners-Lee.
-> "Elementary" in the mathematician's sense: self-contained, not simple.
 
 ## What this is and is not
 

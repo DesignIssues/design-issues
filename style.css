@@ -1,4 +1,4 @@
-/* Elementary Design Issues — classic textbook style.
+/* Design Issues — classic textbook style.
    Descended from the Elementary Bitcoin stylesheet; block types adapted
    from theorem/proof to source/commentary. */
 
@@ -197,6 +197,81 @@ blockquote cite {
 }
 .toc-stub { opacity: 0.62; }
 .toc-stub a { border-bottom-style: none; }
+
+/* ---- Diagrams ----
+   SVG is written inline in the chapter fragments. The palette below is the
+   only one diagrams may use, so that every figure in the book reads as one
+   system. Labels are Palatino to match the body; nothing below 11px. */
+:root {
+    --dia-ink: #2f4f4f;        /* strokes and label text */
+    --dia-muted: #8a9a9a;      /* secondary strokes, dividers */
+    --dia-accent: #1c5a7a;     /* the thing being pointed at */
+    --dia-warm: #b08d57;       /* the second series */
+    --dia-green: #5a8f5a;      /* the third series */
+    --dia-fill: #f0f5f8;       /* box fill, cool */
+    --dia-fill-warm: #f8f5f0;  /* box fill, warm */
+    --dia-fill-green: #f5f8f0; /* box fill, green */
+    --dia-paper: #fdfdfc;
+}
+
+figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+figure svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+}
+figcaption {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.7rem;
+    text-align: center;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+figcaption .fig-label {
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    color: var(--accent-color);
+    margin-right: 0.4rem;
+}
+
+/* Diagram text: set once here rather than on every element. */
+.dia text {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    fill: var(--dia-ink);
+    font-size: 13px;
+}
+.dia .t-sm { font-size: 11.5px; fill: var(--muted); }
+.dia .t-lg { font-size: 15px; }
+.dia .t-caps {
+    font-variant: small-caps; letter-spacing: 0.08em; font-size: 12px;
+    fill: var(--dia-accent);
+}
+.dia .t-mono {
+    font-family: 'Courier New', Courier, monospace; font-size: 12.5px;
+}
+.dia .t-it { font-style: italic; }
+.dia .box { fill: var(--dia-fill); stroke: var(--dia-accent); stroke-width: 1.4; }
+.dia .box-warm { fill: var(--dia-fill-warm); stroke: var(--dia-warm); stroke-width: 1.4; }
+.dia .box-green { fill: var(--dia-fill-green); stroke: var(--dia-green); stroke-width: 1.4; }
+.dia .box-plain { fill: var(--dia-paper); stroke: var(--dia-muted); stroke-width: 1.2; }
+.dia .ln { stroke: var(--dia-ink); stroke-width: 1.3; fill: none; }
+.dia .ln-mut { stroke: var(--dia-muted); stroke-width: 1.1; fill: none; }
+.dia .ln-dash { stroke: var(--dia-muted); stroke-width: 1.1; fill: none; stroke-dasharray: 4 3; }
+.dia .ln-accent { stroke: var(--dia-accent); stroke-width: 1.6; fill: none; }
+
+@media (max-width: 600px) {
+    figure { margin: 1.5rem -0.5rem; }
+    figcaption { font-size: 0.82rem; padding: 0 0.5rem; }
+}
 
 code {
     font-family: 'Courier New', Courier, monospace; font-size: 0.9em;

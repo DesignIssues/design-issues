@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 6: Levels of Abstraction: Net, Web, Graph | Elementary Design Issues</title>
-<meta name="description" content="Chapter 6 of Elementary Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
+<title>Chapter 6: Levels of Abstraction: Net, Web, Graph | Design Issues</title>
+<meta name="description" content="Chapter 6 of Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Elementary Design Issues">
-<meta property="og:title" content="Chapter 6: Levels of Abstraction: Net, Web, Graph | Elementary Design Issues">
-<meta property="og:description" content="Chapter 6 of Elementary Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
+<meta property="og:site_name" content="Design Issues">
+<meta property="og:title" content="Chapter 6: Levels of Abstraction: Net, Web, Graph | Design Issues">
+<meta property="og:description" content="Chapter 6 of Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -83,6 +83,59 @@ interested in the protein. In business and science the customers, products,
 genes and proteins are the objects of interest, and a good browser would show
 information about the thing, merged from many sources.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
+     aria-labelledby="fig6-1-t fig6-1-d">
+  <title id="fig6-1-t">Four layers, and the identifier that records them</title>
+  <desc id="fig6-1-d">Cables carry computers, computers carry documents,
+  documents carry things. Each layer adds one segment to the identifier, so a
+  name for a thing contains the name of the document that describes it, which
+  contains the domain name of the party responsible for serving it.</desc>
+
+  <text x="150" y="24" class="t-caps" text-anchor="middle">The layer</text>
+  <text x="500" y="24" class="t-caps" text-anchor="middle">What the identifier says</text>
+  <line class="ln-mut" x1="20" y1="34" x2="700" y2="34"/>
+
+  <!-- Layer 4: things -->
+  <rect class="box-green" x="20" y="48" width="260" height="62" rx="4"/>
+  <text x="150" y="72" class="t-lg" text-anchor="middle">A web of things</text>
+  <text x="150" y="92" class="t-sm" text-anchor="middle">the gene, not the page about it</text>
+  <text x="500" y="72" class="t-mono" text-anchor="middle"><tspan fill="#8a9a9a">http://acme.example.com/truc</tspan><tspan fill="#5a8f5a">#part3</tspan></text>
+  <text x="500" y="92" class="t-sm" text-anchor="middle">the document&#8217;s name is inside the thing&#8217;s name</text>
+
+  <!-- Layer 3: documents -->
+  <rect class="box" x="20" y="126" width="260" height="62" rx="4"/>
+  <text x="150" y="150" class="t-lg" text-anchor="middle">A web of documents</text>
+  <text x="150" y="170" class="t-sm" text-anchor="middle">not the computer serving it</text>
+  <text x="500" y="150" class="t-mono" text-anchor="middle"><tspan fill="#8a9a9a">http://acme.example.com</tspan><tspan fill="#1c5a7a">/truc</tspan></text>
+  <text x="500" y="170" class="t-sm" text-anchor="middle">the owner&#8217;s name is inside the document&#8217;s name</text>
+
+  <!-- Layer 2: computers -->
+  <rect class="box-warm" x="20" y="204" width="260" height="62" rx="4"/>
+  <text x="150" y="228" class="t-lg" text-anchor="middle">A net of computers</text>
+  <text x="150" y="248" class="t-sm" text-anchor="middle">not the route between them</text>
+  <text x="500" y="228" class="t-mono" text-anchor="middle"><tspan fill="#b08d57">acme.example.com</tspan></text>
+  <text x="500" y="248" class="t-sm" text-anchor="middle">a registry binds this to a responsible party</text>
+
+  <!-- Layer 1: cables -->
+  <rect class="box-plain" x="20" y="282" width="260" height="62" rx="4"/>
+  <text x="150" y="306" class="t-lg" text-anchor="middle">Cables</text>
+  <text x="150" y="326" class="t-sm" text-anchor="middle">named by where they run</text>
+  <text x="500" y="312" class="t-sm t-it" text-anchor="middle">nothing of this layer survives into the name</text>
+
+  <!-- the stacking arrows -->
+  <path class="ln-accent" d="M 12 344 L 12 52"/>
+  <path d="M 8 60 L 12 48 L 16 60 Z" fill="#1c5a7a"/>
+  <text x="6" y="200" class="t-sm" text-anchor="middle" transform="rotate(-90 6 200)">each layer rests on the one below</text>
+
+  <line class="ln-mut" x1="20" y1="360" x2="700" y2="360"/>
+  <text x="360" y="382" class="t-sm t-it" text-anchor="middle">Each layer borrows the accountability of the layer beneath it.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 6.1</span>
+The seams between layers are legible in the identifier itself. Remove the
+accountability at any level and every level above it loses its footing.</figcaption>
+</figure>
 
 <h2>6.2 The two exceptions, repeated at every level</h2>
 
@@ -255,7 +308,7 @@ shown?</p>
 </nav>
 </main>
 <footer>
-<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Design Issues &middot; Volume I: Axioms</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>

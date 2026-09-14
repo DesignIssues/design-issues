@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 3: The Myth of Names and Addresses | Elementary Design Issues</title>
-<meta name="description" content="Chapter 3 of Elementary Design Issues: The Myth of Names and Addresses (1996). Volume I, Axioms.">
+<title>Chapter 3: The Myth of Names and Addresses | Design Issues</title>
+<meta name="description" content="Chapter 3 of Design Issues: The Myth of Names and Addresses (1996). Volume I, Axioms.">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Elementary Design Issues">
-<meta property="og:title" content="Chapter 3: The Myth of Names and Addresses | Elementary Design Issues">
-<meta property="og:description" content="Chapter 3 of Elementary Design Issues: The Myth of Names and Addresses (1996). Volume I, Axioms.">
+<meta property="og:site_name" content="Design Issues">
+<meta property="og:title" content="Chapter 3: The Myth of Names and Addresses | Design Issues">
+<meta property="og:description" content="Chapter 3 of Design Issues: The Myth of Names and Addresses (1996). Volume I, Axioms.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -144,6 +144,84 @@ is &ldquo;cool&rdquo; and what is &ldquo;latest&rdquo; both change by
 definition. The extension forecloses serving the same content in another
 format later.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
+     aria-labelledby="fig3-1-t fig3-1-d">
+  <title id="fig3-1-t">What breaks each segment of a URI</title>
+  <desc id="fig3-1-d">Each segment of a typical 1996 student URI is annotated
+  with the change in the world that would make it wrong. The segment carrying
+  no information is the only one with no failure condition.</desc>
+
+  <text x="20" y="34" class="t-mono" xml:space="preserve"><tspan fill="#8a9a9a">http://</tspan><tspan fill="#b08d57">pegasus</tspan><tspan fill="#8a9a9a">.</tspan><tspan fill="#b08d57">cs</tspan><tspan fill="#8a9a9a">.</tspan><tspan fill="#1c5a7a">foo.edu</tspan><tspan fill="#8a9a9a">/</tspan><tspan fill="#b08d57">disk1</tspan><tspan fill="#8a9a9a">/</tspan><tspan fill="#b08d57">students</tspan><tspan fill="#8a9a9a">/</tspan><tspan fill="#b08d57">romeo</tspan></text>
+  <text x="20" y="56" class="t-mono" xml:space="preserve"><tspan fill="#8a9a9a">        /</tspan><tspan fill="#b08d57">cool</tspan><tspan fill="#8a9a9a">/</tspan><tspan fill="#b08d57">latest</tspan><tspan fill="#8a9a9a">/</tspan><tspan fill="#5a8f5a">readthis</tspan><tspan fill="#8a9a9a">.</tspan><tspan fill="#b08d57">html</tspan></text>
+
+  <line class="ln-mut" x1="20" y1="74" x2="700" y2="74"/>
+  <text x="20" y="96" class="t-caps">segment</text>
+  <text x="150" y="96" class="t-caps">what it asserts</text>
+  <text x="400" y="96" class="t-caps">breaks when</text>
+  <text x="660" y="96" class="t-caps" text-anchor="end">how likely</text>
+  <line class="ln-mut" x1="20" y1="106" x2="700" y2="106"/>
+
+  <g>
+    <text x="20" y="130" class="t-mono" fill="#8a9a9a">http</text>
+    <text x="150" y="130" class="t-sm">a protocol</text>
+    <text x="400" y="130" class="t-sm">another protocol serves it</text>
+    <text x="660" y="130" class="t-sm" text-anchor="end" fill="#5a8f5a">rare</text>
+
+    <text x="20" y="156" class="t-mono" fill="#b08d57">pegasus</text>
+    <text x="150" y="156" class="t-sm">a machine with a purpose</text>
+    <text x="400" y="156" class="t-sm">the machine is repurposed or shared</text>
+    <text x="660" y="156" class="t-sm" text-anchor="end" fill="#b08d57">likely</text>
+
+    <text x="20" y="182" class="t-mono" fill="#b08d57">cs</text>
+    <text x="150" y="182" class="t-sm">a department</text>
+    <text x="400" y="182" class="t-sm">the author moves faculty</text>
+    <text x="660" y="182" class="t-sm" text-anchor="end" fill="#b08d57">likely</text>
+
+    <text x="20" y="208" class="t-mono" fill="#1c5a7a">foo.edu</text>
+    <text x="150" y="208" class="t-sm">an institution</text>
+    <text x="400" y="208" class="t-sm">it stops wanting the association</text>
+    <text x="660" y="208" class="t-sm" text-anchor="end" fill="#1c5a7a">slow</text>
+
+    <text x="20" y="234" class="t-mono" fill="#b08d57">disk1</text>
+    <text x="150" y="234" class="t-sm">a piece of hardware</text>
+    <text x="400" y="234" class="t-sm">storage is reorganised</text>
+    <text x="660" y="234" class="t-sm" text-anchor="end" fill="#b08d57">likely</text>
+
+    <text x="20" y="260" class="t-mono" fill="#b08d57">students</text>
+    <text x="150" y="260" class="t-sm">a person&#8217;s status</text>
+    <text x="400" y="260" class="t-sm">the person graduates</text>
+    <text x="660" y="260" class="t-sm" text-anchor="end" fill="#b08d57">certain</text>
+
+    <text x="20" y="286" class="t-mono" fill="#b08d57">romeo</text>
+    <text x="150" y="286" class="t-sm">who is responsible</text>
+    <text x="400" y="286" class="t-sm">maintenance is handed on</text>
+    <text x="660" y="286" class="t-sm" text-anchor="end" fill="#b08d57">likely</text>
+
+    <text x="20" y="312" class="t-mono" fill="#b08d57">cool, latest</text>
+    <text x="150" y="312" class="t-sm">a judgement, a position in time</text>
+    <text x="400" y="312" class="t-sm">time passes</text>
+    <text x="660" y="312" class="t-sm" text-anchor="end" fill="#b08d57">certain</text>
+
+    <rect x="14" y="324" width="672" height="28" fill="#f5f8f0"/>
+    <text x="20" y="343" class="t-mono" fill="#5a8f5a">readthis</text>
+    <text x="150" y="343" class="t-sm">nothing whatever</text>
+    <text x="400" y="343" class="t-sm">&#8212;</text>
+    <text x="660" y="343" class="t-sm" text-anchor="end" fill="#5a8f5a">never</text>
+
+    <text x="20" y="370" class="t-mono" fill="#b08d57">.html</text>
+    <text x="150" y="370" class="t-sm">a format</text>
+    <text x="400" y="370" class="t-sm">another format is offered too</text>
+    <text x="660" y="370" class="t-sm" text-anchor="end" fill="#b08d57">likely</text>
+  </g>
+  <line class="ln-mut" x1="20" y1="386" x2="700" y2="386"/>
+</svg>
+<figcaption><span class="fig-label">Figure 3.1</span>
+The only durable segment is the one that says nothing. That is the naming
+problem in one line: information in a name is what lets it be looked up, and
+it is also what will eventually make it wrong.</figcaption>
+</figure>
 
 <p>
 The surprise is the verdict on the one segment that says nothing at all:
@@ -297,7 +375,7 @@ itself?</p>
 </nav>
 </main>
 <footer>
-<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Design Issues &middot; Volume I: Axioms</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>

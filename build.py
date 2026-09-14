@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build Elementary Design Issues from data-catalogue.json + structure.py.
+"""Build the Design Issues book from data-catalogue.json + structure.py.
 
 Chapter prose lives in content/NN-slug.html as a bare HTML fragment.
 Any chapter with no fragment is emitted as a stub that still carries its
@@ -12,7 +12,7 @@ import json, os, re, html, datetime
 from structure import VOLUMES, FRONT_MATTER
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = "Elementary Design Issues"
+SITE = "Design Issues"
 BASE = "https://www.w3.org/DesignIssues/"
 REPO = "https://github.com/DesignIssues/design-issues"
 AUTHOR_SRC = "Tim Berners-Lee"
@@ -151,7 +151,7 @@ def index_html():
             f"{total} chapters in ten volumes, in reading order, with editorial context.")
     o = [head(f"{SITE} | The Web's Design Notes, in Reading Order", desc)]
     o.append(f"""<div class="title-page">
-<h1>Elementary Design Issues</h1>
+<h1>Design Issues</h1>
 <p class="subtitle">The Web's design notes, put in order</p>
 <p class="ornament">&sect;</p>
 <p class="description">
@@ -190,9 +190,10 @@ answering; and records what became of the answer. The originals remain where
 they are and should be read there. Nothing here replaces them.
 </p>
 <p>
-&ldquo;Elementary&rdquo; carries the same sense it does in
-<a href="https://elementarybitcoin.org/">Elementary Bitcoin</a>:
-self-contained, not simple.
+The book is arranged so that it can be read straight through. It is built in
+the same manner as <a href="https://elementarybitcoin.org/">Elementary
+Bitcoin</a>: static pages, a reading order fixed in advance, and every claim
+traceable to something a reader can check.
 </p>
 </section>
 

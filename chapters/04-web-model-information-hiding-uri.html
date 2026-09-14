@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 4: The Web Model: Information hiding and URI syntax | Elementary Design Issues</title>
-<meta name="description" content="Chapter 4 of Elementary Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
+<title>Chapter 4: The Web Model: Information hiding and URI syntax | Design Issues</title>
+<meta name="description" content="Chapter 4 of Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Elementary Design Issues">
-<meta property="og:title" content="Chapter 4: The Web Model: Information hiding and URI syntax | Elementary Design Issues">
-<meta property="og:description" content="Chapter 4 of Elementary Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
+<meta property="og:site_name" content="Design Issues">
+<meta property="og:title" content="Chapter 4: The Web Model: Information hiding and URI syntax | Design Issues">
+<meta property="og:description" content="Chapter 4 of Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -62,6 +62,66 @@ parts that know different things.
 <tr><td>Presentation object</td><td>The media type, and how to interpret a fragment</td><td>The URI it came from</td></tr>
 <tr><td>Application</td><td>The absolute URI, for resolving relative ones</td><td>What the fragment means</td></tr>
 </table>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig4-1-t fig4-1-d">
+  <title id="fig4-1-t">The three modules of the Web model</title>
+  <desc id="fig4-1-d">A URI is split at the hash. Everything before it goes to
+  the access module, which returns a data stream and a media type. The
+  fragment goes, untouched, to the presentation object built from them. The
+  access module never sees the fragment; the presentation object never sees
+  the URI.</desc>
+
+  <!-- the URI, split -->
+  <text x="360" y="30" class="t-mono" text-anchor="middle"><tspan fill="#1c5a7a">http://example.org/paper</tspan><tspan fill="#5a8f5a">#section3</tspan></text>
+  <path class="ln-accent" d="M 330 42 L 330 60 L 360 60 L 360 84"/>
+  <path d="M 356 78 L 360 88 L 364 78 Z" fill="#1c5a7a"/>
+  <path class="ln" stroke="#5a8f5a" d="M 452 42 L 452 60 L 610 60 L 610 128"/>
+  <path d="M 606 122 L 610 132 L 614 122 Z" fill="#5a8f5a"/>
+  <text x="322" y="56" class="t-sm" text-anchor="end" fill="#1c5a7a">identifier</text>
+  <text x="462" y="56" class="t-sm" fill="#3f6f3f">view</text>
+
+  <!-- boxes -->
+  <rect class="box-warm" x="18" y="132" width="184" height="70" rx="4"/>
+  <text x="110" y="160" class="t-caps" text-anchor="middle">Application</text>
+  <text x="110" y="181" class="t-sm" text-anchor="middle">holds the absolute URI</text>
+  <text x="110" y="196" class="t-sm" text-anchor="middle">resolves relative ones</text>
+
+  <rect class="box" x="262" y="88" width="196" height="70" rx="4"/>
+  <text x="360" y="116" class="t-caps" text-anchor="middle">Access</text>
+  <text x="360" y="137" class="t-sm" text-anchor="middle">knows the scheme</text>
+  <text x="360" y="152" class="t-sm" text-anchor="middle">speaks the protocol</text>
+
+  <rect class="box-green" x="518" y="132" width="184" height="70" rx="4"/>
+  <text x="610" y="160" class="t-caps" text-anchor="middle" fill="#3f6f3f">Presentation object</text>
+  <text x="610" y="181" class="t-sm" text-anchor="middle">knows the media type</text>
+  <text x="610" y="196" class="t-sm" text-anchor="middle">interprets the fragment</text>
+
+  <!-- application to access -->
+  <path class="ln" d="M 202 152 L 240 152 L 240 118 L 256 118"/>
+  <path class="ln" d="M 250 114 L 258 118 L 250 122 Z" fill="#2f4f4f"/>
+  <text x="228" y="108" class="t-sm" text-anchor="middle">URI, hash removed</text>
+
+  <!-- access to presentation -->
+  <path class="ln" d="M 458 118 L 480 118 L 480 152 L 512 152"/>
+  <path class="ln" d="M 506 148 L 514 152 L 506 156 Z" fill="#2f4f4f"/>
+  <text x="492" y="108" class="t-sm" text-anchor="middle">stream + media type</text>
+
+  <!-- application to presentation, the fragment carried past -->
+  <path class="ln-dash" d="M 110 202 L 110 262 L 610 262 L 610 212"/>
+  <path d="M 606 212 L 610 202 L 614 212 Z" fill="#8a9a9a"/>
+  <text x="360" y="280" class="t-sm" text-anchor="middle">the fragment, carried across and never inspected</text>
+
+  <!-- the two axioms -->
+  <line class="ln-mut" x1="18" y1="300" x2="702" y2="300"/>
+  <text x="360" y="322" class="t-sm t-it" text-anchor="middle">Access never sees the fragment. The presentation object never sees the URI.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 4.1</span>
+The split that lets HTTP and the media types evolve without consulting each
+other. Because the hash is universal across schemes, a document can link to
+its own parts without knowing what URI it will be served under.</figcaption>
+</figure>
 
 <p>
 Access is handed a URI with the fragment removed. It returns two things, a
@@ -290,7 +350,7 @@ it.</p>
 </nav>
 </main>
 <footer>
-<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Design Issues &middot; Volume I: Axioms</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>

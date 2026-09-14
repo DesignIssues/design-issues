@@ -1,4 +1,4 @@
-# Elementary Design Issues
+# Design Issues
 
 **Read it: https://designissues.github.io/design-issues/**
 
@@ -7,8 +7,9 @@ A book made from Tim Berners-Lee's
 volumes, put in a reading order, each with its source, its context, and a
 note on what happened next.
 
-"Elementary" in the mathematician's sense: self-contained, not simple. The
-name and the house style follow [Elementary Bitcoin](https://elementarybitcoin.org).
+Built in the same manner as [Elementary Bitcoin](https://elementarybitcoin.org):
+static pages, a reading order fixed in advance, and every claim traceable to
+something a reader can check.
 
 ## Why
 
