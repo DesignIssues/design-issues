@@ -53,7 +53,7 @@ problem it solves.
 
 ## Status
 
-Volumes I to V are written. The remaining 48 chapters exist as stubs that carry
+Volumes I to VI are written. The remaining 31 chapters exist as stubs that carry
 their place in the order and a link to their source, so the shape of the
 whole is visible from the start. Volumes are being written in order.
 
