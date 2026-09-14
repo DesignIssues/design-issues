@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 17: Extensible languages and web evolution | Design Issues</title>
-<meta name="description" content="Chapter 17 of Design Issues: Extensible languages and web evolution (1998). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Extensible languages and web evolution” of 1998: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/17-extensible-languages-web-evolution.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 17: Extensible languages and web evolution | Design Issues">
-<meta property="og:description" content="Chapter 17 of Design Issues: Extensible languages and web evolution (1998). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 17: Extensible languages and web evolution">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Extensible languages and web evolution” of 1998: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/17-extensible-languages-web-evolution.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 17: Extensible languages and web evolution">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Extensible languages and web evolution” of 1998: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,287 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/Extensible.html"><em>Extensible languages and web evolution</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1998, about 3,549 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 1998.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/Extensible.html">https://www.w3.org/DesignIssues/Extensible.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Chapter 16 ended with a demand: free extension, but with an extension
+mechanism that is itself well defined. This note, written with Dan Connolly
+in February 1998 and also issued as a W3C Note, is the specification of that
+demand. It is the most requirements-shaped document in the collection, and
+each requirement is set in its own paragraph in the original.
+</p>
+<p>
+The authors are careful about their standing:
+</p>
+<blockquote>
+Whilst technically the personal opinion of the authors, it their best attempt
+as technical coordinators at outlining common architectural principles for
+W3C development.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+</div>
+
+<h2>17.1 What partial understanding looks like in life</h2>
+
+<p>
+The note's method is to argue from an ordinary document rather than from
+theory. The example is an invoice for an aeroplane part.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig17-1-t fig17-1-d">
+  <title id="fig17-1-t">One document, several vocabularies, partial understanding</title>
+  <desc id="fig17-1-d">An invoice uses common business vocabulary for
+  quantities, costs and signatures, and a supplier's private vocabulary for
+  the part itself. The buyer and seller need understand only the first. The
+  warehouse and the mechanic need only the second. No party understands the
+  whole document, and none needs to.</desc>
+
+  <rect class="box-plain" x="24" y="20" width="330" height="250" rx="4"/>
+  <text x="189" y="44" class="t-caps" text-anchor="middle">an invoice</text>
+
+  <rect x="42" y="58" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="52" y="76" class="t-mono" fill="#1c5a7a">quantity: 4</text>
+  <rect x="42" y="90" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="52" y="108" class="t-mono" fill="#1c5a7a">cost: 128.00</text>
+
+  <rect x="42" y="124" width="294" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1"/>
+  <text x="52" y="144" class="t-mono" fill="#a07d47">item:</text>
+  <text x="62" y="164" class="t-sm" fill="#a07d47">engine lower inspection hatch</text>
+  <text x="62" y="182" class="t-sm" fill="#a07d47">door mount bracket lock nut</text>
+
+  <rect x="42" y="202" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="52" y="220" class="t-mono" fill="#1c5a7a">due: 2026-04-01</text>
+  <rect x="42" y="234" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="52" y="252" class="t-mono" fill="#1c5a7a">signed: J. Fairclough</text>
+
+  <!-- who reads what -->
+  <path class="ln-accent" d="M 336 76 L 400 76 L 400 96"/>
+  <rect class="box" x="400" y="96" width="290" height="60" rx="4"/>
+  <text x="545" y="118" class="t-caps" text-anchor="middle">buyer and seller</text>
+  <text x="545" y="140" class="t-sm" text-anchor="middle">read the business vocabulary; the part is opaque</text>
+
+  <path class="ln" stroke="#b08d57" d="M 336 160 L 372 160 L 372 200 L 400 200"/>
+  <rect class="box-warm" x="400" y="176" width="290" height="60" rx="4"/>
+  <text x="545" y="198" class="t-caps" text-anchor="middle" fill="#a07d47">warehouse and mechanic</text>
+  <text x="545" y="220" class="t-sm" text-anchor="middle">read the part vocabulary; the price is irrelevant</text>
+
+  <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
+  <text x="360" y="314" class="t-sm t-it" text-anchor="middle">Nobody understands the whole document. The invoice works anyway.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 17.1</span>
+The requirement in one picture. Berners-Lee and Connolly note that this is
+ordinary: documents mix vocabularies defined in different places, and readers
+are always deciding which of the things they do not understand matter.</figcaption>
+</figure>
+
+<blockquote>
+We are constantly handling information with partial understanding. Imagine if
+an old version of a word processor could read a file written by a new version
+with partial understanding, rather than panicing that it had met a being from
+the future.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+
+<h2>17.2 A message is an expression, not a procedure call</h2>
+
+<p>
+Before the requirements comes a correction of the prevailing analogy. It is
+tempting to treat a message as a remote procedure call: a target object, one
+of a finite set of methods, and typed parameters. The authors reject it:
+</p>
+
+<blockquote>
+don't think of an HTTP message or an HTML document as an RPC call, but rather
+as the transmission of a expression in some language.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+
+<p>
+An expression can name functions from many interfaces at once. A procedure
+call names one. That difference is the whole argument, and it produces the
+first requirement.
+</p>
+
+<h2>17.3 Four requirements</h2>
+
+<table>
+<tr><th>Requirement</th><th>What breaks without it</th></tr>
+<tr><td>More than one vocabulary may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td></tr>
+<tr><td>A vocabulary may be introduced with a purely local change</td><td>Generated fragments cannot declare their own terms</td></tr>
+<tr><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td>One module's change silently redefines another module's names</td></tr>
+<tr><td>A namespace may be defined by present or future schema languages</td><td>The definition mechanism is frozen at the level of the day</td></tr>
+</table>
+
+<p>
+The third is argued most sharply, and names a language to avoid. Some
+languages let identifiers be imported so that determining which namespace a
+name belongs to requires reading the module interfaces and applying priority
+rules. Berners-Lee and Connolly point to Java as a case and to Modula-3 as
+the counter-example, and give the objection:
+</p>
+
+<blockquote>
+when one module changes (without the knowledge of the designers of the other
+module), it can unwittingly redefine a local identifier used by the second
+module, completely changing the meaning of a previously written document.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+
+<p>
+This is why XML namespace prefixes bind directly and visibly, rather than
+being resolved by lookup.
+</p>
+
+<h2>17.4 Why local scope, in three arguments</h2>
+
+<p>
+The case for local rather than document-wide binding is made with unusual
+rigour, and the second argument is the one that has aged best.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig17-2-t fig17-2-d">
+  <title id="fig17-2-t">Why bindings must be local</title>
+  <desc id="fig17-2-d">With document-wide bindings, the working set grows with
+  document length and the product of memory and time rises as the square of
+  the document size. With local bindings, each is made and discarded, so the
+  working set stays finite however long the document.</desc>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">bindings at the top of the document</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">bindings in the block that uses them</text>
+
+  <!-- left axes -->
+  <line class="ln" x1="60" y1="200" x2="320" y2="200"/>
+  <line class="ln" x1="60" y1="200" x2="60" y2="56"/>
+  <path class="ln-accent" stroke="#b08d57" d="M 60 200 L 320 62"/>
+  <text x="190" y="222" class="t-sm" text-anchor="middle">document length</text>
+  <text x="46" y="128" class="t-sm" text-anchor="middle" transform="rotate(-90 46 128)">working set</text>
+  <text x="250" y="96" class="t-sm" fill="#a07d47">grows without bound</text>
+
+  <!-- right axes -->
+  <line class="ln" x1="420" y1="200" x2="680" y2="200"/>
+  <line class="ln" x1="420" y1="200" x2="420" y2="56"/>
+  <path class="ln-accent" stroke="#5a8f5a" d="M 420 172 L 680 172"/>
+  <text x="550" y="222" class="t-sm" text-anchor="middle">document length</text>
+  <text x="406" y="128" class="t-sm" text-anchor="middle" transform="rotate(-90 406 128)">working set</text>
+  <text x="560" y="160" class="t-sm" fill="#3f6f3f">stays finite</text>
+
+  <line class="ln-mut" x1="60" y1="244" x2="680" y2="244"/>
+  <text x="370" y="268" class="t-sm" text-anchor="middle">Each binding is made and discarded as processing passes it.</text>
+  <text x="370" y="288" class="t-sm t-it" text-anchor="middle">Global scope makes resource use rise as the square of the document size.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 17.2</span>
+The authors concede that any locally scoped document could in principle be
+rewritten with global scope. The objection is that doing so requires
+buffering the whole document, and pipelined systems are often a necessity on
+the Web for acceptable response times.</figcaption>
+</figure>
+
+<p>
+The first argument is that generated documents are assembled by programs that
+have no access to the rest of the document, so a fragment must be able to
+declare its own terms. The third is concatenation: joining two documents
+should be simple, and the authors suggest it would be a worthy design goal
+that the concatenation of any two XML documents be an XML document. Without
+local scope, concatenation means rewriting one document end to end to resolve
+clashing prefixes.
+</p>
+
+<h2>17.5 What may be extended, and what may not</h2>
+
+<p>
+The invoice returns at the end to make a distinction the requirements list
+would otherwise miss. The designer of an invoice may well want the item
+description to be extensible, so that any supplier's part vocabulary can be
+dropped in. The same designer certainly does not want the list of people
+authorised to sign to be extensible. Two constraints on schema languages
+follow: a way to say that a content model may be extended, and a way for a
+new schema to declare that it is such an extension.
+</p>
+
+<p>
+The final requirement is the one that makes partial understanding cheap:
+</p>
+
+<blockquote>
+It should be possible to create an original document schema such that one can
+determine, without access to the extension schema, which uses of extensions
+to that document can be ignored.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+
+<p>
+An invoice must be processable as an invoice without fetching anybody's part
+catalogue. That is the difference between a mechanism that works offline and
+one that requires the network to agree with you.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>Namespaces shipped with local scope.</strong> XML Namespaces
+became a W3C Recommendation in January 1999 with prefix bindings scoped to
+the element that declares them, which is requirement two, and with prefixes
+bound directly rather than resolved, which is requirement three.</li>
+<li><strong>The ignore-without-fetching requirement did not.</strong> No
+mechanism was standardised for declaring which extensions may be skipped
+without consulting their schema. Chapter 18 is the proposal that was never
+taken up.</li>
+<li><strong>The concatenation goal was not met.</strong> Joining two XML
+documents still yields a document with two roots, which is not well formed.
+The problem recurs in Chapter 24.</li>
+<li><strong>The analogy was borne out elsewhere.</strong> Modern
+schema-on-read data formats treat a record as an expression over several
+independently evolving vocabularies, with unknown members carried through
+rather than rejected, which is section 17.2's position arriving without the
+XML machinery.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+This chapter is the specification of the demand made at the end of
+Chapter 16. The mandatory flag it stops short of is Chapter 18. The
+processing question it leaves open, of what a mixed document means, is
+Chapter 24. The decentralised extensibility it enables is argued over in
+Chapter 23, and the metadata architecture it refers to is Chapter 27.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">17.1</span>
+Explain why nesting one document inside another does not satisfy the
+same-scope requirement. Give a markup example where nesting fails.</p>
+</div>
+<div class="question">
+<p><span class="question-number">17.2</span>
+Section 17.4 argues that global bindings make resource use rise as the square
+of document length. Reconstruct that argument, stating the assumption about
+how bindings are retained.</p>
+</div>
+<div class="question">
+<p><span class="question-number">17.3</span>
+An invoice schema wants an extensible item description and a fixed list of
+signatories. Write, in any schema language you know, the distinction between
+the two.</p>
+</div>
+<div class="question">
+<p><span class="question-number">17.4</span>
+The final requirement is that ignorable extensions be identifiable without
+fetching their schema. Name one thing this makes possible that a network
+lookup would not.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="16-evolvability.html">&larr; Chapter 16: Evolvability</a>

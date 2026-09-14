@@ -53,7 +53,7 @@ problem it solves.
 
 ## Status
 
-Volumes I and II are written. The remaining 81 chapters exist as stubs that carry
+Volumes I to III are written. The remaining 70 chapters exist as stubs that carry
 their place in the order and a link to their source, so the shape of the
 whole is visible from the start. Volumes are being written in order.
 
@@ -66,7 +66,8 @@ whole is visible from the start. Volumes are being written in order.
 - `data-catalogue.json` — every source note: title, date, length, URL
 - `build.py` — regenerates `index.html` and `chapters/`
 - `check_quotes.py` — verifies every quotation against w3.org
-- `style.css` — one stylesheet for the whole book
+- `style.css` — one stylesheet for the whole book, including the diagram palette
+- `og-image.svg` / `og-image.png` — the social card, referenced by every page
 
 To build:
 
@@ -100,6 +101,9 @@ build wraps it, adds the source note and the navigation, and drops the
   rather than em-dashes.
 - Every chapter links to its source note at the top. The originals are the
   authority; this book is commentary.
+- Figures are inline SVG using only the palette defined in `style.css`, carry
+  a `<title>` and `<desc>` for screen readers, and must stay legible at phone
+  width. A figure earns its place by showing a mechanism the prose cannot.
 
 ## Contributing
 

@@ -15,6 +15,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "Design Issues"
 BASE = "https://www.w3.org/DesignIssues/"
 REPO = "https://github.com/DesignIssues/design-issues"
+SITE_URL = "https://designissues.github.io/design-issues/"
 AUTHOR_SRC = "Tim Berners-Lee"
 EDITOR = "Melvin Carvalho"
 
@@ -56,7 +57,14 @@ def has_content(c):
     return os.path.exists(p) and os.path.getsize(p) > 200
 
 # ---------------------------------------------------------------- templates
-def head(title, desc, rel=""):
+def head(title, desc, rel="", path="", og_type="article", social_title=None):
+    """Full head, including Open Graph and Twitter card metadata.
+
+    `path` is the page's path below SITE_URL, so that og:url and the canonical
+    link are absolute. `social_title` is the shorter title used on cards, where
+    the site name is already shown separately."""
+    url = SITE_URL + path
+    card = social_title or title
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,10 +72,29 @@ def head(title, desc, rel=""):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-<meta property="og:type" content="article">
+<meta name="author" content="{EDITOR}">
+<link rel="canonical" href="{esc(url)}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{SITE}">
-<meta property="og:title" content="{esc(title)}">
+<meta property="og:title" content="{esc(card)}">
 <meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{esc(url)}">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="{SITE_URL}og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(card)}">
+<meta name="twitter:description" content="{esc(desc)}">
+<meta name="twitter:image" content="{SITE_URL}og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="{rel}style.css">
 </head>
 <body>
@@ -79,7 +106,7 @@ def source_note(c):
     return f"""<div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="{BASE}{c['href']}"><em>{esc(c['title'])}</em></a>,
-a Design Issues note by {AUTHOR_SRC}, dated {esc(when)}, about {c['words']:,} words.</p>
+a Design Issues note by {AUTHOR_SRC}, dated {esc(when)}.</p>
 <p>Read the original at <a href="{BASE}{c['href']}">{BASE}{esc(c['href'])}</a>.
 The Design Issues notes are {AUTHOR_SRC}'s personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
@@ -100,8 +127,12 @@ def chapter_html(c, prev, nxt):
     rel = "../"
     vol = c["vol"]
     title = f"Chapter {c['n']}: {c['title']} | {SITE}"
-    desc = f"Chapter {c['n']} of {SITE}: {c['title']} ({year(c['date'])}). Volume {vol['num']}, {vol['title']}."
-    out = [head(title, desc, rel)]
+    card = f"Chapter {c['n']}: {c['title']}"
+    desc = (f"Volume {vol['num']}, {vol['title']}. On {AUTHOR_SRC}'s note "
+            f"\u201c{c['title']}\u201d of {year(c['date'])}: the question it answered, "
+            f"the argument, and what happened since.")
+    out = [head(title, desc, rel, path=f"chapters/{c['file']}",
+                og_type="article", social_title=card)]
     out.append(f"""<nav class="chapter-nav">
 <a href="{rel}index.html">Contents</a>
 <span class="volume-indicator">Volume {vol['num']}: {esc(vol['title'])}</span>
@@ -149,7 +180,9 @@ def index_html():
     words = sum(c["words"] for c in chapters)
     desc = (f"A book made from Tim Berners-Lee's Design Issues notes: "
             f"{total} chapters in ten volumes, in reading order, with editorial context.")
-    o = [head(f"{SITE} | The Web's Design Notes, in Reading Order", desc)]
+    o = [head(f"{SITE} | The Web's Design Notes, in Reading Order", desc,
+              path="", og_type="book",
+              social_title=f"{SITE}: the Web's design notes, put in order")]
     o.append(f"""<div class="title-page">
 <h1>Design Issues</h1>
 <p class="subtitle">The Web's design notes, put in order</p>

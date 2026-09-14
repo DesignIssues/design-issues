@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 18: Mandatory extensions: A fundamental design need | Design Issues</title>
-<meta name="description" content="Chapter 18 of Design Issues: Mandatory extensions: A fundamental design need (2000). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Mandatory extensions: A fundamental design need” of 2000: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/18-mandatory-extensions-fundamental-design-need.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 18: Mandatory extensions: A fundamental design need | Design Issues">
-<meta property="og:description" content="Chapter 18 of Design Issues: Mandatory extensions: A fundamental design need (2000). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 18: Mandatory extensions: A fundamental design need">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Mandatory extensions: A fundamental design need” of 2000: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/18-mandatory-extensions-fundamental-design-need.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 18: Mandatory extensions: A fundamental design need">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Mandatory extensions: A fundamental design need” of 2000: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,222 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/Mandatory.html"><em>Mandatory extensions: A fundamental design need</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2000-01-01, about 448 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 2000-01-01.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/Mandatory.html">https://www.w3.org/DesignIssues/Mandatory.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+This is the shortest note in the collection, four hundred and forty-eight
+words, and it names the gap that Chapters 16 and 17 both circle without
+closing. Free extension lets anything be added. Nothing lets a publisher say
+that an addition must be understood.
+</p>
+<p>
+Berners-Lee states the cost in one sentence, and the sentence is worth
+reading twice:
+</p>
+<blockquote>
+Historically the lack of such a &ldquo;mandatory field&rdquo; has led to a
+complete inabaility to get any particular guaranteed behaviour be clients on
+the web.
+<cite>Mandatory extensions, 1998</cite>
+</blockquote>
+<p>
+Not reduced reliability. A complete inability. If every extension may be
+ignored, then no extension may be relied upon, and the set of things a
+publisher can count on is frozen at whatever was in the base specification.
+</p>
+</div>
+
+<h2>18.1 The requirement</h2>
+
+<p>
+The demand is small and is stated twice for emphasis. A language must provide
+not only for its own extension but for a way to say whether a given extension
+is optional. Berners-Lee calls this a fundamental key to smooth evolution
+from one version of a language to the next, and notes that it can be done
+term by term or in bulk for a whole language, stated in the document or in
+the schema.
+</p>
+
+<p>
+The note was written when XML namespaces were arriving, and the complaint is
+that they solve half the problem:
+</p>
+
+<blockquote>
+XML provides in Namespaces a standard way of extending languages. It should
+also, in my opinion, provide a standard way to specify mandatopry or optional
+extensions.
+<cite>Mandatory extensions, 1998</cite>
+</blockquote>
+
+<h2>18.2 Three things to do with something you do not understand</h2>
+
+<p>
+The heart of the note is a taxonomy so small it can be held in the head, and
+it is more useful than its length suggests. Meeting an element it does not
+recognise, a processor has exactly three sound options, and which one is
+correct depends entirely on what the element means.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+     aria-labelledby="fig18-1-t fig18-1-d">
+  <title id="fig18-1-t">Three things to do with an element you do not understand</title>
+  <desc id="fig18-1-d">Stop, and conclude the document is not understood, as
+  with a logical NOT whose omission would reverse the meaning. Ignore the
+  element and everything inside it, as with a comment. Or replace the element
+  with its contents, as with bold. The schema must say which, because a
+  processor cannot tell by looking.</desc>
+
+  <text x="360" y="24" class="t-sm" text-anchor="middle">A processor meets <tspan class="t-mono">&lt;thing&gt;</tspan> and does not know what it is.</text>
+  <path class="ln-mut" d="M 360 34 L 360 52 M 130 52 L 590 52 M 130 52 L 130 70 M 360 52 L 360 70 M 590 52 L 590 70"/>
+
+  <!-- STOP -->
+  <rect class="box-plain" x="24" y="70" width="212" height="170" rx="4" stroke="#b04a4a"/>
+  <text x="130" y="96" class="t-caps" text-anchor="middle" fill="#b04a4a">stop</text>
+  <text x="130" y="118" class="t-sm" text-anchor="middle">conclude you do not understand</text>
+  <text x="130" y="134" class="t-sm" text-anchor="middle">the document, or the clause</text>
+  <rect x="44" y="150" width="172" height="58" fill="#fdf5f5" stroke="#e0c4c4"/>
+  <text x="56" y="170" class="t-mono" fill="#b04a4a">&lt;not&gt;</text>
+  <text x="66" y="188" class="t-mono">payment due</text>
+  <text x="56" y="202" class="t-mono" fill="#b04a4a">&lt;/not&gt;</text>
+  <text x="130" y="228" class="t-sm t-it" text-anchor="middle">ignoring it reverses the meaning</text>
+
+  <!-- IGNORE -->
+  <rect class="box-plain" x="254" y="70" width="212" height="170" rx="4" stroke="#8a9a9a"/>
+  <text x="360" y="96" class="t-caps" text-anchor="middle">ignore</text>
+  <text x="360" y="118" class="t-sm" text-anchor="middle">drop the element and</text>
+  <text x="360" y="134" class="t-sm" text-anchor="middle">everything inside it</text>
+  <rect x="274" y="150" width="172" height="58" fill="#f6f6f6" stroke="#dcdcdc"/>
+  <text x="286" y="170" class="t-mono" fill="#8a9a9a">&lt;comment&gt;</text>
+  <text x="296" y="188" class="t-mono" fill="#b8b8b8">check this later</text>
+  <text x="286" y="202" class="t-mono" fill="#8a9a9a">&lt;/comment&gt;</text>
+  <text x="360" y="228" class="t-sm t-it" text-anchor="middle">the contents were never for you</text>
+
+  <!-- UNWRAP -->
+  <rect class="box-plain" x="484" y="70" width="212" height="170" rx="4" stroke="#5a8f5a"/>
+  <text x="590" y="96" class="t-caps" text-anchor="middle" fill="#3f6f3f">unwrap</text>
+  <text x="590" y="118" class="t-sm" text-anchor="middle">replace the element</text>
+  <text x="590" y="134" class="t-sm" text-anchor="middle">with its contents</text>
+  <rect x="504" y="150" width="172" height="58" fill="#f5f8f0" stroke="#cfe0cf"/>
+  <text x="516" y="170" class="t-mono" fill="#5a8f5a">&lt;bold&gt;</text>
+  <text x="526" y="188" class="t-mono">payment due</text>
+  <text x="516" y="202" class="t-mono" fill="#5a8f5a">&lt;/bold&gt;</text>
+  <text x="590" y="228" class="t-sm t-it" text-anchor="middle">the wrapper was decoration</text>
+
+  <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
+  <text x="360" y="286" class="t-sm" text-anchor="middle">All three are correct behaviour. Which one is correct here is not visible in the markup.</text>
+  <text x="360" y="308" class="t-sm t-it" text-anchor="middle">The old rule of Chapter 16 always picks the third, and is therefore wrong twice out of three.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 18.1</span>
+Berners-Lee asks that a schema be able to say which of the three applies, for
+one element or for a whole namespace at once, and adds that languages not
+using XML should attend to the same need in their own way.</figcaption>
+</figure>
+
+<p>
+The examples in the figure are his. A logical negation must stop a processor,
+because ignoring it inverts what the document says. A comment may be dropped
+whole. Emphasis should be unwrapped, since the text inside it still belongs
+to the document.
+</p>
+
+<p>
+The observation that matters is that the markup gives no clue which is which.
+The rule inherited from Internet mail always chooses the third. That is
+correct for presentational markup, harmless for comments, and dangerous for
+anything that changes meaning.
+</p>
+
+<h2>18.3 Sublanguages</h2>
+
+<p>
+The second proposal is smaller and has had a longer afterlife. Berners-Lee
+wants a language to be able to declare itself a sublanguage of another:
+</p>
+
+<blockquote>
+The simple assertion that language A is a sublanguage of language B means that
+the writer's intent is preserved if a dpcument in language A is converted
+into a document in language B just by relabelling every term as being from
+langauge B.
+<cite>Mandatory extensions, 1998</cite>
+</blockquote>
+
+<p>
+A receiver that knows only B can then process a document in A by treating the
+namespace as though it were B. The practical constraint he attaches is the
+important part: the assertion must be simple enough to put in the document,
+so that the receiver need not dereference a schema to act on it.
+</p>
+
+<p>
+This is the same instinct as the last requirement of Chapter 17. Whatever a
+processor needs in order to cope with the unfamiliar should travel with the
+document, not wait at the end of a network request.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The proposal was not adopted for XML.</strong> No standard way to
+mark an extension mandatory or ignorable was added to XML or to namespaces.
+The gap this note names is still open.</li>
+<li><strong>It was adopted almost everywhere else.</strong> HTTP had the
+<code>Mandatory</code> extension mechanism under discussion when this was
+written, and the pattern survives in modern protocols: critical extensions in
+X.509 certificates, which fail validation when unrecognised, and TLS
+extensions with defined must-understand behaviour, both implement exactly
+this distinction.</li>
+<li><strong>The three-way taxonomy became ordinary practice.</strong>
+Forward-compatible binary formats distinguish fields that may be skipped from
+those that must be understood, and carry the distinction in the encoding
+rather than in a schema, which is what section 18.2 asks for.</li>
+<li><strong>HTML chose the third option permanently.</strong> The HTML5
+parsing rules, specified from 2008 onward, define unwrapping behaviour for
+unknown elements exactly, which removes the ambiguity without supplying the
+mandatory flag.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The inability this note names is the disadvantage of free extension recorded
+in Chapter 16, and the requirement it makes is the one Chapter 17 stops short
+of. The tolerance principle that produced the old rule is Chapter 1, and its
+reconsideration is Chapter 23.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">18.1</span>
+Take a markup or data format you use and find an element or field for which
+each of the three behaviours would be correct. What in the format, if
+anything, distinguishes them?</p>
+</div>
+<div class="question">
+<p><span class="question-number">18.2</span>
+A publisher wants to add a feature that consumers must not ignore. Under free
+extension, what can the publisher do instead, and what does it cost?</p>
+</div>
+<div class="question">
+<p><span class="question-number">18.3</span>
+The sublanguage assertion must be simple enough to travel in the document.
+Write such an assertion, and say what a receiver can safely do with it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">18.4</span>
+X.509 marks some extensions critical, so an unrecognised one fails
+validation. Explain why a certificate can afford this and a Web page cannot.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="17-extensible-languages-web-evolution.html">&larr; Chapter 17: Extensible languages and web evolution</a>

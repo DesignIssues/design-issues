@@ -1,0 +1,377 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+This is the keystone of Volume III and the longest note in it. Berners-Lee
+wrote it in March 1998, following a keynote at the seventh World Wide Web
+conference, and the status line says it is an incomplete first draft. It is
+also the note where the Consortium's founding mandate gets examined:
+</p>
+<blockquote>
+The World Wide Web Consortium was founded in 1994 on the mandate to lead the
+Evolution of the Web while maintaining its Interoperability as a universal
+space.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+<p>
+Interoperability was well understood. Evolvability was a word without a
+technique, and this note is the attempt to give it one.
+</p>
+</div>
+
+<h2>16.1 The old rule, and what it bought</h2>
+
+<p>
+The Web inherited one rule from Internet mail, and Berners-Lee states it as
+he found it:
+</p>
+
+<blockquote>
+A rule explicit or implcit in all the email-like Internet protocols has always
+been that if you found a mail header (or something) which you did not
+understand, you should ignore it.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+The companion note of Chapter 17, written with Dan Connolly in the same year,
+states it more tersely still: if you find a language element you do not
+understand, ignore it.
+</p>
+
+<p>
+He calls this free extension, records that he adopted it for HTML and used it
+constantly himself, and is clear that it is why HTML grew as fast as it did.
+He is equally clear about the bill:
+</p>
+
+<blockquote>
+It has its advatage of rapid prototyping and incremental deployment, and the
+disadvantage of ambiguity, confusion, and an inability to add a mandatory
+feature to an existing protocol.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+That last clause is the one that matters. Under free extension there is no
+way to say that something must be understood, which means no feature can ever
+be relied upon.
+</p>
+
+<h2>16.2 The HTML cycle</h2>
+
+<p>
+The note's best passage is an anthropology of how a standard actually got
+made between 1994 and 1998. It is a cycle with a motor, and the motor is the
+tension between wanting to beat a competitor and needing to interoperate with
+one.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
+     aria-labelledby="fig16-1-t fig16-1-d">
+  <title id="fig16-1-t">The HTML cycle, 1994 to 1998</title>
+  <desc id="fig16-1-d">An open standard lets anyone invent an extension.
+  Extensions ship because unknown tags are ignored. Successful ones are copied
+  by competitors, leaving three or four ways to do one thing. The resulting
+  mess costs the implementers more than the differentiation earns them, so
+  they standardise, and the cycle begins again.</desc>
+
+  <circle cx="360" cy="210" r="128" fill="none" stroke="#e2e2e2" stroke-width="1.5"/>
+
+  <!-- arrowheads around the ring -->
+  <g fill="#8a9a9a">
+    <path d="M 486 196 L 492 214 L 476 206 Z"/>
+    <path d="M 392 340 L 374 346 L 384 330 Z"/>
+    <path d="M 234 224 L 228 206 L 244 214 Z"/>
+    <path d="M 328 80 L 346 74 L 336 90 Z"/>
+  </g>
+
+  <!-- 1 invent (top) -->
+  <rect class="box" x="262" y="14" width="196" height="56" rx="4"/>
+  <text x="360" y="36" class="t-caps" text-anchor="middle">1. anyone may invent</text>
+  <text x="360" y="54" class="t-sm" text-anchor="middle">the standard is open, so</text>
+  <text x="360" y="68" class="t-sm" text-anchor="middle">an engineer waiting for a bus can</text>
+
+  <!-- 2 ship (right) -->
+  <rect class="box-warm" x="500" y="152" width="204" height="56" rx="4"/>
+  <text x="602" y="174" class="t-caps" text-anchor="middle" fill="#a07d47">2. it ships</text>
+  <text x="602" y="192" class="t-sm" text-anchor="middle">unknown tags are ignored,</text>
+  <text x="602" y="206" class="t-sm" text-anchor="middle">so nothing breaks anywhere</text>
+
+  <!-- 3 copy (bottom) -->
+  <rect class="box-warm" x="258" y="350" width="204" height="56" rx="4"/>
+  <text x="360" y="372" class="t-caps" text-anchor="middle" fill="#a07d47">3. rivals copy it</text>
+  <text x="360" y="390" class="t-sm" text-anchor="middle">three or four incompatible ways</text>
+  <text x="360" y="404" class="t-sm" text-anchor="middle">to do the same one thing</text>
+
+  <!-- 4 mess (left) -->
+  <rect class="box-plain" x="16" y="152" width="204" height="56" rx="4"/>
+  <text x="118" y="174" class="t-caps" text-anchor="middle">4. the mess costs more</text>
+  <text x="118" y="192" class="t-sm" text-anchor="middle">than the differentiation earns;</text>
+  <text x="118" y="206" class="t-sm" text-anchor="middle">new features get hard to design</text>
+
+  <!-- centre: 5 -->
+  <rect class="box-green" x="252" y="176" width="216" height="68" rx="4"/>
+  <text x="360" y="200" class="t-caps" text-anchor="middle" fill="#3f6f3f">5. everyone sits down</text>
+  <text x="360" y="220" class="t-sm" text-anchor="middle">the best of each, plus a few weeks&#8217;</text>
+  <text x="360" y="236" class="t-sm" text-anchor="middle">experience. Published. Open. Repeat.</text>
+
+</svg>
+<figcaption><span class="fig-label">Figure 16.1</span>
+Berners-Lee does not condemn the cycle. It produced HTML. He argues only that
+by 1998 the specification had grown past the point where roping every
+extension back into one bigger document could continue.</figcaption>
+</figure>
+
+<p>
+The worked example is the table tag. A browser meeting one had no way to know
+which table extension it was, so the situation could become ambiguous, and if
+the table mattered for safe interpretation, the server would never learn
+whether it had been handled: an unaware client would ignore it blithely.
+</p>
+
+<h2>16.3 The other extreme, and why it also fails</h2>
+
+<p>
+The note then looks at how extension works in distributed object systems,
+where interfaces are declared in machine-processable form and checked at
+build time. The verdict is even-handed:
+</p>
+
+<blockquote>
+With well-defined interfaces, either everything works, or nothing.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+The advantage is certainty. There is no wondering whether a table is being
+displayed: if the module was called, it is there. The disadvantage is that
+changing an interface forces a change on the other side, which is why such
+systems never spread, in Berners-Lee's phrase, in a web-like or virus-like
+manner.
+</p>
+
+<p>
+The requirement is therefore stated as a demand for both:
+</p>
+
+<blockquote>
+One must be able to freely extend a language, but do so with an extension
+language which is itself well defined.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+That sentence is the design brief for XML namespaces, and Chapter 17 is the
+specification of it.
+</p>
+
+<h2>16.4 Partial understanding</h2>
+
+<p>
+The mechanism that replaces free extension is partial understanding, and the
+note is careful to define it better than the word &ldquo;optional&rdquo; can.
+Marking a section optional in a document fails because optionality is
+subjective: the same invoice that an accounts system may strip down to a
+valid invoice, a warehouse may strip down to a delivery note, and different
+parts are dispensable in each case.
+</p>
+
+<p>
+The precise version is a transformation. A processor needs to convert a
+document containing things it does not understand into one it does
+understand, preserving validity in some sense. Berners-Lee notes that the
+transformation language could range from the crudest to the Turing complete,
+and applies the rule from Chapter 1:
+</p>
+
+<blockquote>
+When expressing something, use the least powerful language you can.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+He gives the smallest possible case, a stream editor deletion rule, and
+observes that if the rule is allowed then the deleted element was optional.
+The section then breaks off mid-argument, marked to be continued. It never
+was.
+</p>
+
+<h2>16.5 The test of independent invention</h2>
+
+<p>
+The most memorable part of the note is a thought experiment that Chapter 1
+introduced in one line and that gets its full form here.
+</p>
+
+<p>
+Suppose another group, unknown to you, designs the same sort of thing. Being
+as smart as you, they make the same important architectural decisions, since
+those follow from logic. But they make every arbitrary decision differently.
+Berners-Lee's list of arbitrary decisions is the part people remember: they
+complement bit 7, they drive on the other side of the road, they use red
+buoys to starboard, and 575 lines per screen on their televisions.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+     aria-labelledby="fig16-2-t fig16-2-d">
+  <title id="fig16-2-t">The Web meets the Mesh</title>
+  <desc id="fig16-2-d">Two systems invented independently, agreeing on the
+  important decisions and differing on the arbitrary ones, eventually meet.
+  Three outcomes are possible: a war, a partition, or smooth integration by
+  making each system a subset of the other.</desc>
+
+  <rect class="box" x="24" y="20" width="230" height="86" rx="4"/>
+  <text x="139" y="44" class="t-caps" text-anchor="middle">the Web</text>
+  <text x="139" y="66" class="t-mono" text-anchor="middle" fill="#1c5a7a">URI</text>
+  <text x="139" y="84" class="t-mono" text-anchor="middle" fill="#1c5a7a">HTTP</text>
+  <text x="139" y="100" class="t-mono" text-anchor="middle" fill="#1c5a7a">HTML</text>
+
+  <rect class="box-warm" x="466" y="20" width="230" height="86" rx="4"/>
+  <text x="581" y="44" class="t-caps" text-anchor="middle" fill="#a07d47">the Multi Media Mesh</text>
+  <text x="581" y="66" class="t-mono" text-anchor="middle" fill="#a07d47">MRI</text>
+  <text x="581" y="84" class="t-mono" text-anchor="middle" fill="#a07d47">MMTP</text>
+  <text x="581" y="100" class="t-mono" text-anchor="middle" fill="#a07d47">MMML</text>
+
+  <path class="ln" d="M 254 63 L 320 63"/>
+  <path d="M 316 58 L 328 63 L 316 68 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 466 63 L 400 63"/>
+  <path d="M 404 58 L 392 63 L 404 68 Z" fill="#2f4f4f"/>
+  <text x="360" y="52" class="t-sm" text-anchor="middle">they meet</text>
+
+  <line class="ln-mut" x1="24" y1="130" x2="696" y2="130"/>
+  <text x="24" y="154" class="t-caps">three possible outcomes</text>
+
+  <rect class="box-plain" x="24" y="172" width="212" height="96" rx="4"/>
+  <text x="130" y="196" class="t-lg" text-anchor="middle" fill="#b04a4a">a war</text>
+  <text x="130" y="220" class="t-sm" text-anchor="middle">projects abandoned,</text>
+  <text x="130" y="236" class="t-sm" text-anchor="middle">data converted or lost</text>
+  <text x="130" y="258" class="t-sm t-it" text-anchor="middle">Europe&#8217;s ISO protocols, late 1980s</text>
+
+  <rect class="box-plain" x="254" y="172" width="212" height="96" rx="4"/>
+  <text x="360" y="196" class="t-lg" text-anchor="middle" fill="#a07d47">a border</text>
+  <text x="360" y="220" class="t-sm" text-anchor="middle">the world divided into</text>
+  <text x="360" y="236" class="t-sm" text-anchor="middle">two separate communities</text>
+  <text x="360" y="258" class="t-sm t-it" text-anchor="middle">document formats, repeatedly</text>
+
+  <rect class="box-green" x="484" y="172" width="212" height="96" rx="4"/>
+  <text x="590" y="196" class="t-lg" text-anchor="middle" fill="#3f6f3f">integration</text>
+  <text x="590" y="220" class="t-sm" text-anchor="middle">add <tspan class="t-mono">mmtp://</tspan> to URIs,</text>
+  <text x="590" y="236" class="t-sm" text-anchor="middle">add <tspan class="t-mono">http:\\</tspan> to MRIs</text>
+  <text x="590" y="258" class="t-sm t-it" text-anchor="middle">incremental effort only</text>
+
+  <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
+  <text x="360" y="314" class="t-sm" text-anchor="middle">The design passes only because nothing in it has to be unique.</text>
+  <text x="360" y="334" class="t-sm t-it" text-anchor="middle">One master lock server in Waldorf, and the Web would have failed the test.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 16.2</span>
+Berners-Lee says he tried to make the Web pass this test, and does not claim
+it passes cleanly: no system completely passes, and it is always some trouble
+to convert.</figcaption>
+</figure>
+
+<p>
+The reason the Web survives the meeting is the third axiom of Chapter 2:
+URI space is universal but need not be unique, so the rival space can be
+folded in. The counterfactual is the sharpest sentence in the note. Had the
+Web required all servers to synchronise through one master lock server, the
+Mesh would have required one too, and the encounter would have failed.
+</p>
+
+<p>
+The cost of failing is not hypothetical, and the examples are the reason the
+section persuades:
+</p>
+
+<blockquote>
+Sweden actually changed from driving on the left to driving on the right.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<blockquote>
+The test of independent invention is not just a thought experiment, it is
+happening all the time.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<h2>16.6 Two assumptions</h2>
+
+<p>
+The note closes by deriving its requirements from two premises stated as
+plainly as possible. The first is that we will be smarter in the future,
+which yields the requirement that version 4 software read a version 5 file.
+The second is more unusual, and he flags the difficulty:
+</p>
+
+<blockquote>
+The philosophical assumption that we may not be smarter than everyone else (a
+huge step for some!) leads us to realise that others will have gret ideas
+too, and will independently invent the same things.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+Humility, here, is a technical requirement.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The mechanism shipped and was then declined.</strong> XML
+Namespaces became a W3C Recommendation in January 1999. HTML5, whose first
+Recommendation came in October 2014, does not use them, which is the fork
+described in Chapter 23.</li>
+<li><strong>Partial understanding was solved by other means.</strong>
+Versioned wire formats such as Protocol Buffers, first released publicly in
+July 2008, make forward compatibility a property of the encoding: unknown
+fields are preserved rather than merely ignored, which is closer to what
+section 16.4 asked for than anything the Web adopted.</li>
+<li><strong>The cycle did not stop.</strong> Vendor-prefixed CSS properties
+through the late 2000s reproduced it exactly, ending the same way, in
+standardisation and the deprecation of the prefixes.</li>
+<li><strong>The test was passed again, more than once.</strong> Every
+successful bridging of two independently designed systems since, from
+character encodings converging on Unicode to the coexistence of competing
+package registries behind one client, is an instance of the third outcome in
+Figure 16.2.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The test of independent invention and the principle of least power are both
+stated in Chapter 1, and the axiom that makes the Web pass the test is
+Chapter 2. The namespace requirements this note calls for are Chapter 17, and
+the mandatory flag it says is missing is Chapter 18. The fork that ended the
+namespace approach for HTML is Chapter 23.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">16.1</span>
+Free extension makes it impossible to add a mandatory feature. Explain why,
+using the table tag example, and say what a publisher can never learn.</p>
+</div>
+<div class="question">
+<p><span class="question-number">16.2</span>
+Section 16.4 rejects &ldquo;optional&rdquo; as subjective and replaces it with
+a transformation. Give one document and two processors for which different
+parts are dispensable.</p>
+</div>
+<div class="question">
+<p><span class="question-number">16.3</span>
+Apply the test of independent invention to a system you work on. Name one
+arbitrary decision in it and say what happens when it meets a twin that chose
+the opposite.</p>
+</div>
+<div class="question">
+<p><span class="question-number">16.4</span>
+The Web passes the test because URI space need not be unique. Name a part of
+the modern Web that would fail it, and say whether the failure is structural
+or contingent.</p>
+</div>
+</div>

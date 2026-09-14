@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 24: The Interpretation of an XML document | Design Issues</title>
-<meta name="description" content="Chapter 24 of Design Issues: The Interpretation of an XML document (2002). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Interpretation of an XML document” of 2002: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/24-interpretation-xml-document.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 24: The Interpretation of an XML document | Design Issues">
-<meta property="og:description" content="Chapter 24 of Design Issues: The Interpretation of an XML document (2002). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 24: The Interpretation of an XML document">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Interpretation of an XML document” of 2002: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/24-interpretation-xml-document.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 24: The Interpretation of an XML document">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Interpretation of an XML document” of 2002: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,237 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/XML.html"><em>The Interpretation of an XML document</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2002-01-01, about 4,207 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 2002-01-01.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/XML.html">https://www.w3.org/DesignIssues/XML.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Chapter 17 established that one document may carry several vocabularies.
+This note, from January 2002, asks the question that leaves open, and it asks
+it in the bluntest possible form:
+</p>
+<blockquote>
+If one party sends another an XML document, how does one say what it means?
+<cite>The Interpretation of XML documents, 2002</cite>
+</blockquote>
+<p>
+The trouble is not that the answer is hard to find. It is that there are too
+many places to look, and no rule about which one wins.
+</p>
+</div>
+
+<h2>24.1 The problem: specifications that fight</h2>
+
+<p>
+Berners-Lee credits Paul Prescod with the list of places one might look for
+how to process a document: the document type declaration, the top-level
+namespace, a schema reference, other namespaces declared at the root, any
+attribute on the root element, or anything at all in the document.
+</p>
+
+<p>
+With six candidate authorities and no precedence rule, the failure mode is
+not ambiguity but combat:
+</p>
+
+<blockquote>
+In fact the general problem is that without any overall architecture, one can
+write specs which battle each other. &ldquo;The X attribute changes the
+meaning of the Y attribute&rdquo;, &ldquo;The Z attribute restores the meaning
+of the X attribute irrespective of any Y attribute&rdquo; and so on.
+<cite>The Interpretation of XML documents, 2002</cite>
+</blockquote>
+
+<p>
+Each specification is written by a group that is reasonable on its own terms.
+The conflict appears only when two of them meet in one file, which is exactly
+the case namespaces were created to permit.
+</p>
+
+<h2>24.2 Two models</h2>
+
+<p>
+The proposal sometimes made was a separate processing-model language, so that
+a document would have no meaning of its own until an external definition said
+how to process it. Berners-Lee rejects this and argues there is only one
+generic model that preserves the properties a multi-namespace system needs.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
+     aria-labelledby="fig24-1-t fig24-1-d">
+  <title id="fig24-1-t">Pipeline processing against top-down processing</title>
+  <desc id="fig24-1-d">In the pipeline model a document is passed through a
+  chain of processors, each transforming the whole of it, so a later stage may
+  act on material that an earlier stage merely quoted. In the top-down model
+  meaning is allocated from the root outward by the specification of each
+  element type, so an element decides what happens inside it.</desc>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle" fill="#a07d47">pipeline</text>
+  <text x="180" y="42" class="t-sm" text-anchor="middle">each stage rewrites the whole document</text>
+
+  <rect class="box-plain" x="60" y="60" width="240" height="34" rx="4"/>
+  <text x="180" y="82" class="t-sm" text-anchor="middle">the document</text>
+  <path class="ln-mut" d="M 180 94 L 180 110"/>
+  <rect class="box-warm" x="60" y="110" width="240" height="34" rx="4"/>
+  <text x="180" y="132" class="t-sm" text-anchor="middle">stage one: includes resolved</text>
+  <path class="ln-mut" d="M 180 144 L 180 160"/>
+  <rect class="box-warm" x="60" y="160" width="240" height="34" rx="4"/>
+  <text x="180" y="182" class="t-sm" text-anchor="middle">stage two: transforms applied</text>
+  <path class="ln-mut" d="M 180 194 L 180 210"/>
+  <rect class="box-plain" x="60" y="210" width="240" height="34" rx="4"/>
+  <text x="180" y="232" class="t-sm" text-anchor="middle">whatever comes out</text>
+
+  <rect x="60" y="258" width="240" height="66" rx="4" fill="#fdf5f5" stroke="#d9b0b0"/>
+  <text x="180" y="280" class="t-sm" text-anchor="middle" fill="#b04a4a">A stage cannot tell material meant</text>
+  <text x="180" y="298" class="t-sm" text-anchor="middle" fill="#b04a4a">for it from material merely quoted.</text>
+  <text x="180" y="316" class="t-sm" text-anchor="middle" fill="#b04a4a">Quoting becomes impossible.</text>
+
+  <line class="ln-mut" x1="370" y1="16" x2="370" y2="330"/>
+
+  <text x="540" y="24" class="t-caps" text-anchor="middle" fill="#3f6f3f">top-down</text>
+  <text x="540" y="42" class="t-sm" text-anchor="middle">each element governs what is inside it</text>
+
+  <rect class="box-green" x="420" y="60" width="240" height="34" rx="4"/>
+  <text x="540" y="82" class="t-sm" text-anchor="middle">the root element decides</text>
+  <path class="ln-mut" d="M 470 94 L 470 112 M 610 94 L 610 112"/>
+  <rect class="box" x="420" y="112" width="110" height="34" rx="4"/>
+  <text x="475" y="134" class="t-sm" text-anchor="middle">child</text>
+  <rect class="box" x="556" y="112" width="104" height="34" rx="4"/>
+  <text x="608" y="134" class="t-sm" text-anchor="middle">child</text>
+  <path class="ln-mut" d="M 452 146 L 452 164 M 500 146 L 500 164"/>
+  <rect class="box-plain" x="420" y="164" width="60" height="30" rx="4"/>
+  <text x="450" y="184" class="t-sm" text-anchor="middle">leaf</text>
+  <rect class="box-plain" x="490" y="164" width="60" height="30" rx="4"/>
+  <text x="520" y="184" class="t-sm" text-anchor="middle">leaf</text>
+
+  <rect x="420" y="212" width="240" height="90" rx="4" fill="#f5f8f0" stroke="#cfe0cf"/>
+  <text x="540" y="234" class="t-sm" text-anchor="middle" fill="#3f6f3f">An element may say: the contents</text>
+  <text x="540" y="252" class="t-sm" text-anchor="middle" fill="#3f6f3f">of this are quoted, not for you.</text>
+  <text x="540" y="276" class="t-sm" text-anchor="middle">Nothing below acts without</text>
+  <text x="540" y="294" class="t-sm" text-anchor="middle">permission from above.</text>
+
+  <line class="ln-mut" x1="60" y1="342" x2="660" y2="342"/>
+  <text x="360" y="364" class="t-sm t-it" text-anchor="middle">Berners-Lee: pipeline processing could be actually dangerous, producing errors and possibly security issues.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 24.1</span>
+The decisive case is quotation. A document that shows an example of a
+transform must be able to say that the example is not to be executed, and only
+an element that governs its own contents can say so.</figcaption>
+</figure>
+
+<h2>24.3 XML functions</h2>
+
+<p>
+The model needs one escape hatch, and the note names it. Some foreign
+elements are not data but instructions that yield more document when
+elaborated: an inclusion that pulls in another file, or a transform written
+as its own result. Berners-Lee calls these XML functions and argues that any
+supporting application must recognise them in default processing, because
+they change what the document is before anything else can decide what it
+means.
+</p>
+
+<p>
+The two cases he works through are the literal result element as stylesheet,
+where a transform is written as an example of its own output, and inclusion.
+Both are elements whose whole purpose is to be replaced by something else,
+which is why they cannot be left to a later stage.
+</p>
+
+<h2>24.4 The need to quote</h2>
+
+<p>
+The section that gives the argument its force is about writing about markup.
+A tutorial on a transform language must contain examples of that language
+which are shown and not run. Under the pipeline model there is no way to say
+so: whatever stage handles transforms will find the example and act on it.
+Under the top-down model the element containing the example can declare that
+its contents are quoted.
+</p>
+
+<p>
+This is why Berners-Lee calls the alternative dangerous rather than merely
+wrong. A processor that executes quoted material is executing content that
+its author never intended to be live, which is a description of a class of
+vulnerability rather than a stylistic complaint.
+</p>
+
+<h2>24.5 The conclusion</h2>
+
+<blockquote>
+The top-down processing model for XML as an architectual principle resolves
+many of the questions which remain unanswerable with pipelined processing. In
+fact, consideration of the example shows that pipeline processing could be
+actually dangerious, producing errors and possibly security issues, in the
+case of generally nested XML technologies of the types discussed.
+<cite>The Interpretation of XML documents, 2002</cite>
+</blockquote>
+
+<p>
+The note also leaves an issue explicitly unresolved, which is worth recording
+because so few of these notes do: references to siblings, where one part of a
+document refers to another part that has not yet been interpreted.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The question was overtaken.</strong> The mixed-namespace XML
+documents this note is about did not become the ordinary way to publish, and
+the branch that won, described in Chapter 23, has no namespaces to mix.</li>
+<li><strong>The pipeline model was standardised anyway.</strong> XProc, a
+language for XML processing pipelines, became a W3C Recommendation in May
+2010, which is the approach argued against here.</li>
+<li><strong>The security concern was correct in general.</strong> Processing
+document content that its author intended as data remains a standard
+vulnerability class, most visibly in XML external entity handling, and the
+defence is the one implied here: nothing nested acts without permission from
+what contains it.</li>
+<li><strong>The quoting problem recurs everywhere.</strong> Template
+languages, configuration formats and prompt construction all need a way to
+mark a region as data rather than instruction, and the ones that lack it fail
+in the way section 24.4 describes.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The mixed-vocabulary documents this chapter interprets are specified in
+Chapter 17, and the fork that made the question moot for HTML is Chapter 23.
+The layered reading of what selects a specification is Chapter 20. The
+principle that an element governs what is inside it is the modularity of
+Chapter 19.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">24.1</span>
+List the six places a processor might look for how to interpret a document,
+and say which one a top-down model uses.</p>
+</div>
+<div class="question">
+<p><span class="question-number">24.2</span>
+Write a small document that shows an example of a transform without executing
+it. What in the format lets you do so?</p>
+</div>
+<div class="question">
+<p><span class="question-number">24.3</span>
+Berners-Lee calls inclusions and transforms XML functions and says they must
+be handled before anything else. Explain why, using the definition of a
+function as something that returns more document.</p>
+</div>
+<div class="question">
+<p><span class="question-number">24.4</span>
+Take a format you use that mixes data and instructions. Does it let an author
+mark a region as quoted? If not, describe the failure.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="23-html-xml.html">&larr; Chapter 23: HTML and XML</a>

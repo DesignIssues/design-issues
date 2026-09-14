@@ -1,0 +1,261 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Volume III has been about how a system changes. This chapter closes it with
+the operation that changes a system into part of the Web, and Berners-Lee
+gives the whole procedure in one sentence:
+</p>
+<blockquote>
+The essential process in webizing is to take a system which is designed as a
+closed world, and then ask what happens when it is considered as part of an
+open world.
+<cite>Webizing existing systems, 1998</cite>
+</blockquote>
+<p>
+He is careful to say why this matters as much as inventing new things: not
+only does it bootstrap the Web from existing information, but the existing
+systems were researched and designed over years, and it is important not to
+lose the knowledge accrued in that process.
+</p>
+</div>
+
+<h2>26.1 The operation</h2>
+
+<p>
+Practically, webizing a language means replacing its names, tokens and
+identifiers with URIs. What was previously a reference reaching only within
+one document or module can then reach, with equal ease, into any other.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig26-1-t fig26-1-d">
+  <title id="fig26-1-t">Closed world, open world</title>
+  <desc id="fig26-1-d">Before webizing, a name refers only within the document
+  that contains it, and the same name in another document is unrelated.
+  Afterwards, prefixing the document's URI makes each name global, so
+  references reach across documents and the two can be told apart.</desc>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle" fill="#a07d47">a closed world</text>
+
+  <rect class="box-plain" x="36" y="46" width="132" height="104" rx="4"/>
+  <text x="102" y="68" class="t-sm" text-anchor="middle">document A</text>
+  <text x="102" y="96" class="t-mono" text-anchor="middle" fill="#a07d47">temp</text>
+  <text x="102" y="124" class="t-sm t-it" text-anchor="middle">means something</text>
+  <text x="102" y="140" class="t-sm t-it" text-anchor="middle">only in here</text>
+
+  <rect class="box-plain" x="192" y="46" width="132" height="104" rx="4"/>
+  <text x="258" y="68" class="t-sm" text-anchor="middle">document B</text>
+  <text x="258" y="96" class="t-mono" text-anchor="middle" fill="#a07d47">temp</text>
+  <text x="258" y="124" class="t-sm t-it" text-anchor="middle">a different thing,</text>
+  <text x="258" y="140" class="t-sm t-it" text-anchor="middle">and nobody can tell</text>
+
+  <path d="M 168 98 L 192 98" stroke="#b04a4a" stroke-width="1.4" fill="none"/>
+  <path d="M 174 92 L 186 104 M 186 92 L 174 104" stroke="#b04a4a" stroke-width="1.4"/>
+  <text x="180" y="176" class="t-sm" text-anchor="middle" fill="#b04a4a">no reference can cross</text>
+
+  <path class="ln-accent" d="M 344 98 L 396 98"/>
+  <path d="M 392 92 L 404 98 L 392 104 Z" fill="#1c5a7a"/>
+  <text x="374" y="86" class="t-sm" text-anchor="middle" fill="#1c5a7a">webize</text>
+
+  <text x="540" y="24" class="t-caps" text-anchor="middle" fill="#3f6f3f">an open world</text>
+
+  <rect class="box-green" x="416" y="46" width="132" height="104" rx="4"/>
+  <text x="482" y="68" class="t-sm" text-anchor="middle">document A</text>
+  <text x="482" y="94" class="t-mono" text-anchor="middle" fill="#3f6f3f">a.org/x</text>
+  <text x="482" y="112" class="t-mono" text-anchor="middle" fill="#3f6f3f">#temp</text>
+  <text x="482" y="138" class="t-sm t-it" text-anchor="middle">global now</text>
+
+  <rect class="box-green" x="564" y="46" width="132" height="104" rx="4"/>
+  <text x="630" y="68" class="t-sm" text-anchor="middle">document B</text>
+  <text x="630" y="94" class="t-mono" text-anchor="middle" fill="#3f6f3f">b.org/y</text>
+  <text x="630" y="112" class="t-mono" text-anchor="middle" fill="#3f6f3f">#temp</text>
+  <text x="630" y="138" class="t-sm t-it" text-anchor="middle">plainly different</text>
+
+  <path class="ln" stroke="#5a8f5a" d="M 548 98 L 564 98"/>
+  <path d="M 560 93 L 570 98 L 560 103 Z" fill="#5a8f5a"/>
+  <text x="556" y="176" class="t-sm" text-anchor="middle" fill="#3f6f3f">and references cross freely</text>
+
+  <line class="ln-mut" x1="36" y1="212" x2="696" y2="212"/>
+  <text x="360" y="238" class="t-mono" text-anchor="middle">&lt;global id of document&gt; # &lt;local id of whatever&gt;</text>
+  <text x="360" y="262" class="t-sm t-it" text-anchor="middle">Web architecture in one line, from Chapter 12.</text>
+  <text x="360" y="294" class="t-sm" text-anchor="middle">Hypertext webized is the Web. Data webized is Linked Data.</text>
+  <text x="360" y="316" class="t-sm" text-anchor="middle">Data hiding webized is data reuse. A file system webized is read-write linked data.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 26.1</span>
+Berners-Lee offers a table of the transformation, which he calls slightly
+flippant and says each row of which probably needs an essay of explanation.
+Two rows are jokes. The rest are the programme of Volume VI.</figcaption>
+</figure>
+
+<p>
+He notes what a good webizing looks like: the URI for an object should be
+naturally related to how the object was named in the original language, so
+that the element with a given identifier in a file is that file's URI plus a
+hash plus the identifier. It is great when the webized language closely
+resembles the original, and ideal when it actually compiles.
+</p>
+
+<p>
+The counter-example he gives is instructive about how small the obstacles can
+be. Dan Connolly's webizing of the Knowledge Interchange Format used URIs for
+identifiers, but since URIs are case sensitive and the format's tokens were
+not, lower case letters had to be escaped with backslashes, which made the
+result less readable. Berners-Lee's conclusion is that changing the underlying
+language in small ways can make the translation much less cumbersome.
+</p>
+
+<h2>26.2 Webizing a database</h2>
+
+<p>
+The worked example is the most concrete thing in the chapter. A query names
+columns and tables that mean something only inside the database, and the
+database itself is nowhere mentioned, because it is context rather than
+content.
+</p>
+
+<p>
+Webized, the pieces of the database get URIs, prefixes are introduced, and a
+query can join a local table to a remote one. Berners-Lee is candid that his
+invented syntax is probably wrong and that querying scattered databases this
+way may not optimise well. The point is what becomes available:
+</p>
+
+<blockquote>
+suddenly the things defined by the database are available to the outside
+world.
+<cite>Webizing existing systems, 1998</cite>
+</blockquote>
+
+<p>
+A column that was a private notion of temperature reading becomes, in
+Berners-Lee's words, a concept, an RDF property in fact, which is available
+for all the world to refer to. Because the schema declares it as such, systems
+that know nothing of the original query language can use it.
+</p>
+
+<p>
+Two notes follow that anyone exporting data should read. The first is that a
+table carries two distinct concepts: the kind of thing a row describes, and
+the set of things actually in the table. In the classic employees table there
+is a class of employee, and separately the fact that someone works for the
+company if and only if they are in the table.
+</p>
+
+<p>
+The second is about indirection. Just as a web page is not a file though
+closely related to one, a published database should usually be a derived
+view, so that different engineering decisions can be made about the external
+form, which must be persistent and suit the consumer, and the internal one,
+which must be efficient and suit you.
+</p>
+
+<h2>26.3 Where it gets hard</h2>
+
+<p>
+The difficult case is nesting, and Berners-Lee reaches for Dijkstra to
+explain why. The objection to the goto statement was that it is too primitive
+and too much an invitation to make a mess of one's program. He concedes the
+same of the hypertext link, and draws the parallel exactly: both open a
+webbed world that removes the rules giving a language sanity, analysability
+and optimisability.
+</p>
+
+<p>
+So it may make no sense to permit a link into something deeply nested,
+because the thing referred to has no meaning taken out of context. But he
+immediately warns against the easy conclusion. In a three-dimensional scene
+language an object may sit within a scene within an object and still have an
+identity worth referring to. And the governing principle does not bend:
+</p>
+
+<blockquote>
+The principle that on the Web, anything must be able to say anything about
+anything means that these innermost nested objects must have URIs.
+<cite>Webizing existing systems, 1998</cite>
+</blockquote>
+
+<h2>26.4 The diagnostic use</h2>
+
+<p>
+The most useful observation in the note is that webizing is a test as much as
+a transformation. If a name means quite different things in different
+contexts, the language is not suitable for webizing as it stands, and either
+two derived URIs should be minted or the language should be cleaned up so the
+concepts are distinct.
+</p>
+
+<p>
+Berners-Lee gives a human example: a documentation system where people use
+one phrase for a particular document and also for the whole set of documents
+it belongs to. The sentence trails off unfinished in the original, which
+rather proves the point.
+</p>
+
+<p>
+He leaves an exercise, to examine XML schemas and ask what the URI of an
+element type is, and closes with the best advice in Volume III:
+</p>
+
+<blockquote>
+When stuck, recourse to common sense. Ask what the construct actually
+represents in a global context, if anything.
+<cite>Webizing existing systems, 1998</cite>
+</blockquote>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>Databases were webized, by specification.</strong> R2RML, a
+language for mapping relational data to RDF, became a W3C Recommendation in
+September 2012, which is section 26.2's example turned into a standard.</li>
+<li><strong>The joke row came true.</strong> The table lists &ldquo;Goto
+Considered Harmful&rdquo; becoming &ldquo;Goto drives the economy&rdquo;. The
+hyperlink is the economy's basic unit of navigation, and the objection
+Dijkstra raised has never been answered for it.</li>
+<li><strong>The diagnostic use spread furthest.</strong> The discovery that a
+name means different things in different contexts, found by trying to give it
+a global identifier, is now the routine first finding of any data integration
+effort, whether or not URIs are used.</li>
+<li><strong>The derived-view advice became standard practice.</strong>
+Publishing an API over a stable external model rather than exposing internal
+storage is ordinary, and the reason is the one given here.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The one-line formula is quoted from Chapter 12, and the mechanism that makes
+it work is Chapters 4 and 11. The sense in which a language may be extended
+is Chapter 17. The transformation table is the programme of Volume VI,
+beginning at Chapter 49, and the read-write file system it promises is
+Chapters 50 and 54.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">26.1</span>
+Take a configuration format you use and webize it. What is the URI of a
+setting? What breaks?</p>
+</div>
+<div class="question">
+<p><span class="question-number">26.2</span>
+Section 26.2 distinguishes the kind of thing a row describes from the set of
+rows present. Give a table where conflating the two produces a false
+statement.</p>
+</div>
+<div class="question">
+<p><span class="question-number">26.3</span>
+Berners-Lee accepts Dijkstra's objection and applies it to the link. What
+does a language lose when arbitrary inward references are permitted?</p>
+</div>
+<div class="question">
+<p><span class="question-number">26.4</span>
+Webizing reveals names that mean different things in different contexts. Find
+one in a system you work on, and say whether the right fix is two identifiers
+or one clearer concept.</p>
+</div>
+</div>

@@ -1,0 +1,296 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+In October 2012 an argument broke out on the Technical Architecture Group's
+mailing list, not for the first time, over whether a symbol can ever have an
+unambiguous meaning. Berners-Lee's reply, lightly edited into this note, does
+not try to win it. He concedes the point in the first paragraph and then asks
+how work is supposed to continue.
+</p>
+<p>
+His own framing of what he is doing is worth keeping:
+</p>
+<blockquote>
+I have not studied much of the history of philosophy but I do find one needs
+to be prepared to jump in in order to keep the course of what I otherwise
+regard as engineering still on track
+<cite>Working despite Ambiguity, 2012</cite>
+</blockquote>
+<p>
+The original message was titled &ldquo;Working without being ambushed by
+Ambiguity&rdquo;, and ambush is the note's real subject: not whether the
+pedants are right, but what to do when they are right at an inconvenient
+moment.
+</p>
+</div>
+
+<h2>22.1 The billiard ball</h2>
+
+<p>
+The argument turns on an analogy that is unusually well chosen, because it
+concedes everything and gives up nothing.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig22-1-t fig22-1-d">
+  <title id="fig22-1-t">The billiard ball at two magnifications</title>
+  <desc id="fig22-1-d">At human scale a billiard ball has a diameter, a mass
+  and a position, and houses and cars are built on that. Looked at closely
+  enough it has no definite edge and its atoms have only probabilities of
+  position. Both descriptions are true. Discarding the first because of the
+  second would make it impossible to play billiards.</desc>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle">at human scale</text>
+  <circle cx="180" cy="130" r="66" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1.6"/>
+  <circle cx="158" cy="108" r="16" fill="#ffffff" opacity="0.75"/>
+  <line class="ln-mut" x1="114" y1="212" x2="246" y2="212"/>
+  <path class="ln-mut" d="M 114 206 L 114 218 M 246 206 L 246 218"/>
+  <text x="180" y="234" class="t-sm" text-anchor="middle">a diameter, a mass, a position</text>
+  <text x="180" y="254" class="t-sm t-it" text-anchor="middle">you can build a house with this</text>
+
+  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">looked at closely</text>
+  <g opacity="0.9">
+    <circle cx="540" cy="130" r="66" fill="none" stroke="#e0d2bc" stroke-width="1" stroke-dasharray="3 4"/>
+    <g fill="#b08d57">
+      <circle cx="512" cy="104" r="3"/><circle cx="546" cy="98" r="3"/><circle cx="574" cy="120" r="3"/>
+      <circle cx="520" cy="140" r="3"/><circle cx="556" cy="134" r="3"/><circle cx="586" cy="150" r="3"/>
+      <circle cx="504" cy="164" r="3"/><circle cx="538" cy="170" r="3"/><circle cx="570" cy="182" r="3"/>
+      <circle cx="596" cy="108" r="3"/><circle cx="492" cy="128" r="3"/><circle cx="560" cy="60" r="3"/>
+      <circle cx="600" cy="170" r="3"/><circle cx="486" cy="92" r="3"/><circle cx="614" cy="134" r="3"/>
+      <circle cx="466" cy="152" r="3"/><circle cx="524" cy="196" r="3"/><circle cx="588" cy="200" r="3"/>
+    </g>
+  </g>
+  <text x="540" y="234" class="t-sm" text-anchor="middle">no definite edge, only probabilities</text>
+  <text x="540" y="254" class="t-sm t-it" text-anchor="middle">also true, and useless for billiards</text>
+
+  <line class="ln-mut" x1="24" y1="272" x2="696" y2="272"/>
+  <text x="360" y="292" class="t-sm" text-anchor="middle">Keep the second in your back pocket. Do not use it to ambush the first.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 22.1</span>
+The naively pedantic response, Berners-Lee says, is to insist that everything
+learned in classical physics be thrown away, on the grounds that the atoms of
+a ball could in principle all move three inches east at once.</figcaption>
+</figure>
+
+<p>
+He states the parallel exactly:
+</p>
+
+<blockquote>
+So it is with denotation by names. We need to keep the models of ambiguity in
+our back pocket and bring them out when we need them, but not use them to
+ambush any discussion in the classical form.
+<cite>Working despite Ambiguity, 2012</cite>
+</blockquote>
+
+<p>
+And notes the one thing the analogy is missing. In physics there is
+mathematics showing that the quantum model gives rise, to a high degree of
+approximation, to the classical one. For meaning there is no such derivation,
+which is what the rest of the note tries to supply by other means.
+</p>
+
+<h2>22.2 Five ways of pinning a word down</h2>
+
+<p>
+The central move is to stop treating disambiguation as a philosophical
+problem and start treating it as a catalogue of working systems. Berners-Lee
+lists five, in rough order of how much machinery each requires.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+     aria-labelledby="fig22-2-t fig22-2-d">
+  <title id="fig22-2-t">Five models for making a word definite enough</title>
+  <desc id="fig22-2-d">An authoritative dictionary, meaning as use, trained
+  experts, experts by area, and a standards committee. Each supplies more
+  machinery than the last and none delivers complete unambiguity. All five are
+  engineered institutions rather than natural facts.</desc>
+
+  <line class="ln" x1="52" y1="252" x2="672" y2="252"/>
+  <path d="M 666 247 L 676 252 L 666 257 Z" fill="#2f4f4f"/>
+  <text x="360" y="298" class="t-sm t-it" text-anchor="middle">more machinery, more cost, tighter definition &#8212; never complete</text>
+
+  <g class="t-sm">
+    <line class="ln-mut" x1="112" y1="244" x2="112" y2="260"/>
+    <rect class="box-plain" x="40" y="44" width="144" height="76" rx="4"/>
+    <text x="112" y="66" class="t-caps" text-anchor="middle">1. dictionary</text>
+    <text x="112" y="88" class="t-sm" text-anchor="middle">one editor knows</text>
+    <text x="112" y="104" class="t-sm" text-anchor="middle">how words are used</text>
+    <line class="ln-mut" x1="112" y1="120" x2="112" y2="244"/>
+
+    <line class="ln-mut" x1="248" y1="244" x2="248" y2="260"/>
+    <rect class="box-plain" x="176" y="140" width="144" height="76" rx="4"/>
+    <text x="248" y="162" class="t-caps" text-anchor="middle">2. meaning as use</text>
+    <text x="248" y="184" class="t-sm" text-anchor="middle">you cannot be wrong,</text>
+    <text x="248" y="200" class="t-sm" text-anchor="middle">which is not much help</text>
+    <line class="ln-mut" x1="248" y1="216" x2="248" y2="244"/>
+
+    <line class="ln-mut" x1="384" y1="244" x2="384" y2="260"/>
+    <rect class="box-warm" x="312" y="44" width="144" height="76" rx="4"/>
+    <text x="384" y="66" class="t-caps" text-anchor="middle" fill="#a07d47">3. expertise</text>
+    <text x="384" y="88" class="t-sm" text-anchor="middle">lawyers, schooled</text>
+    <text x="384" y="104" class="t-sm" text-anchor="middle">for years; then court</text>
+    <line class="ln-mut" x1="384" y1="120" x2="384" y2="244"/>
+
+    <line class="ln-mut" x1="520" y1="244" x2="520" y2="260"/>
+    <rect class="box-warm" x="448" y="140" width="144" height="76" rx="4"/>
+    <text x="520" y="162" class="t-caps" text-anchor="middle" fill="#a07d47">4. by area</text>
+    <text x="520" y="184" class="t-sm" text-anchor="middle">specialists write it,</text>
+    <text x="520" y="200" class="t-sm" text-anchor="middle">and testify to it</text>
+    <line class="ln-mut" x1="520" y1="216" x2="520" y2="244"/>
+
+    <line class="ln-mut" x1="640" y1="244" x2="640" y2="260"/>
+    <rect class="box-green" x="568" y="44" width="144" height="76" rx="4"/>
+    <text x="640" y="66" class="t-caps" text-anchor="middle" fill="#3f6f3f">5. committee</text>
+    <text x="640" y="88" class="t-sm" text-anchor="middle">terms defined locally,</text>
+    <text x="640" y="104" class="t-sm" text-anchor="middle">until tight enough</text>
+    <line class="ln-mut" x1="640" y1="120" x2="640" y2="244"/>
+  </g>
+</svg>
+<figcaption><span class="fig-label">Figure 22.2</span>
+Berners-Lee's aside on the fifth model is the most recognisable sentence in
+the note: from time to time the group shares its work and is horrified to
+find that the larger community needs much longer discussion.</figcaption>
+</figure>
+
+<p>
+The standards-committee model gets the most careful description, and one
+parenthesis in it defines what a specification is actually for. A committee
+works until it has terms tight enough to make a standard people will use
+without undesirable consequence through misunderstanding, and then he adds:
+not a standard which everyone will understand unambiguously in exactly the
+same way.
+</p>
+
+<h2>22.3 The observation that changes the subject</h2>
+
+<p>
+What makes this note more than a survey is a claim about the status of the
+five models:
+</p>
+
+<blockquote>
+The initial philosophers seemed to treat language as a natural or god-made
+thing to be investigated not engineered invented things, but in fact
+dictionaries and court procedure and standards bodies are all engineered
+systems. So we can design the ones we need.
+<cite>Working despite Ambiguity, 2012</cite>
+</blockquote>
+
+<p>
+Disambiguation stops being something that happens to language and becomes
+something one builds. Berners-Lee adds a reason for bothering that is more
+serious than the context requires: given how much violence in the world one
+might imagine stems from misunderstanding of some sort, it may behove us to
+improve on these systems.
+</p>
+
+<p>
+The common property of all five is stated plainly:
+</p>
+
+<blockquote>
+A common facet of all these models is that they do not give complete
+unambiguity at all, just a good enough definition.
+<cite>Working despite Ambiguity, 2012</cite>
+</blockquote>
+
+<h2>22.4 What the Semantic Web adds</h2>
+
+<p>
+The design is then described as a meta-model rather than a sixth model. It
+does not say how meaning is fixed. It says where to look, and it lets each
+vocabulary fix its meaning however it likes.
+</p>
+
+<p>
+Three parts: the Domain Name System and the spaces beneath it let a social
+entity own a term; HTTP lets a machine look that term up; and what comes back
+gives elucidation in two forms, natural language and logic. Crucially, what
+comes back also indicates which of the five models is in force.
+</p>
+
+<p>
+A sender then chooses terms whose owners curate them under whichever models
+make the disambiguation, in Berners-Lee's phrase, good enough for the
+situation, for the sending and receiving agent. He notes wryly that people
+also still share understandings over beers in bars, as they always have, and
+claims two advantages for the machine version: it provides a way to look up
+meaning without needing to believe meaning is unambiguous, and it produces
+logic that programs can use.
+</p>
+
+<p>
+The note ends with Pat Hayes, quoted at length, on what happens to English
+prose when meanings really must be pinned down. Hayes observes that in legal
+contracts, diplomatic communications and patent applications hardly any word
+is simply used: almost all are given explicit definitions, often with guard
+language that denies the ordinary reading. His conclusion is the practical
+one this whole chapter rests on:
+</p>
+
+<blockquote>
+This is not normal language: to even use it requires specialized training, and
+it is dangerous for non-experts to attempt, exactly because it has hard
+unambiguous meanings which are independent of context.
+<cite>Pat Hayes, quoted in Working despite Ambiguity, 2012</cite>
+</blockquote>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The ambush kept happening.</strong> Arguments about denotation
+recurred in Web standards work after 2012, and this note is now the thing
+people link to in order to end them, which is precisely the use its author
+asks for.</li>
+<li><strong>Vocabularies did not declare their model.</strong> The design
+requires that what a term dereferences to indicate how its meaning is fixed.
+In practice most vocabularies supply a label and a comment, and the model is
+left to be inferred.</li>
+<li><strong>The engineering claim spread.</strong> Treating shared meaning as
+an institution to be designed rather than a fact to be discovered is now
+ordinary in data governance and in the operation of large shared schemas,
+whether or not anyone reached it through this argument.</li>
+<li><strong>The tooling described in section 22.4 largely did not
+arrive.</strong> The buttons Berners-Lee wants, for inviting comment on a new
+term or forming a group to curate one, exist in specialist ontology editors
+and nowhere a form designer would meet them.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The ownership of terms this note relies on is Chapter 2 and Chapter 15. The
+communities of different sizes it points at are Chapter 87. The dereferencing
+of a term to its definition is Chapters 7 to 9, and the vocabularies it
+assumes are Volume IV, beginning at Chapter 27.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">22.1</span>
+The physics analogy is missing the mathematics connecting the two scales.
+What would the equivalent derivation for meaning have to show?</p>
+</div>
+<div class="question">
+<p><span class="question-number">22.2</span>
+Take a term you use daily at work. Which of the five models fixes its
+meaning, and what happens when two of your colleagues disagree about it?</p>
+</div>
+<div class="question">
+<p><span class="question-number">22.3</span>
+The design requires a vocabulary to indicate which model it uses. Write such
+an indication for a vocabulary you know, and say what a consumer could do
+with it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">22.4</span>
+Hayes argues that precise legal language is dangerous for non-experts.
+Does the same danger apply to specification prose? Give an example.</p>
+</div>
+</div>

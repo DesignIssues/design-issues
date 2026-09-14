@@ -1,0 +1,290 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Written in August 2008 and, unusually, not made public until May 2019, this
+is the longest note in Volume III and the one in which Berners-Lee addresses
+a split in the Web he could not prevent. The occasion is stated without
+drama:
+</p>
+<blockquote>
+Occasionally it seems that some strategic thinking is necessary in order to
+ensure that the system as a whole will continue to work well and evolve
+smoothly. This is one of those times.
+<cite>HTML and XML, 2008</cite>
+</blockquote>
+<p>
+The eleven-year delay in publication is part of the document. By 2019 the
+question had been settled against the position argued here, and the note was
+released as a record rather than as an intervention.
+</p>
+</div>
+
+<h2>23.1 The fork</h2>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig23-1-t fig23-1-d">
+  <title id="fig23-1-t">Where HTML divided</title>
+  <desc id="fig23-1-d">From a shared origin in SGML, one branch moved HTML on
+  to XML as XHTML, gaining namespaces and strict parsing but not shipping in
+  the dominant browser. The other branch, HTML5, specified precisely what
+  existing browsers already did with real pages, and declined both XML and
+  namespaces.</desc>
+
+  <rect class="box-plain" x="24" y="120" width="150" height="56" rx="4"/>
+  <text x="99" y="144" class="t-caps" text-anchor="middle">HTML on SGML</text>
+  <text x="99" y="164" class="t-sm" text-anchor="middle">the shared origin</text>
+
+  <path class="ln-mut" d="M 174 148 L 210 148 L 210 68 L 250 68"/>
+  <path class="ln-mut" d="M 174 148 L 210 148 L 210 228 L 250 228"/>
+
+  <rect class="box" x="250" y="40" width="200" height="56" rx="4"/>
+  <text x="350" y="64" class="t-caps" text-anchor="middle">XHTML</text>
+  <text x="350" y="84" class="t-sm" text-anchor="middle">XML, namespaces, strict</text>
+
+  <rect class="box-warm" x="250" y="200" width="200" height="56" rx="4"/>
+  <text x="350" y="224" class="t-caps" text-anchor="middle" fill="#a07d47">HTML5</text>
+  <text x="350" y="244" class="t-sm" text-anchor="middle">what browsers really do</text>
+
+  <path class="ln-mut" d="M 450 68 L 490 68"/>
+  <path class="ln-mut" d="M 450 228 L 490 228"/>
+
+  <g class="t-sm">
+    <text x="498" y="54">+ decentralised extension</text>
+    <text x="498" y="74">+ one clean parse</text>
+    <text x="498" y="94" fill="#b04a4a">&#8722; not deployed in the dominant browser</text>
+
+    <text x="498" y="214">+ ships; handles every legacy page</text>
+    <text x="498" y="234">+ error handling defined exactly</text>
+    <text x="498" y="254" fill="#b04a4a">&#8722; no namespaces; extension is central</text>
+  </g>
+
+  <line class="ln-mut" x1="24" y1="276" x2="696" y2="276"/>
+  <text x="360" y="296" class="t-sm t-it" text-anchor="middle">A fork in standards is costly for everyone downstream, whichever branch is right.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.1</span>
+Berners-Lee's objection is not to either branch but to the existence of two.
+The boundary between them, he notes, will never be clean, because there is an
+overlap: people embed markup in feeds, and process the same graphics format
+with both kinds of engine.</figcaption>
+</figure>
+
+<h2>23.2 Two philosophies of extension</h2>
+
+<p>
+The note is fairest to the branch it disagrees with. The case for centralised
+extension is stated properly: the modules anyone actually proposes adding to
+HTML can be counted on the fingers of one hand, so the design authority can
+simply add them. The list can be published, and every system is expected to
+know the specification anyway.
+</p>
+
+<p>
+The case for the other branch is a requirement rather than a preference:
+</p>
+
+<blockquote>
+This is the requirement for a group to be able to define the terms involved in
+the new technology without having to get an audience with and agreement with
+central committee.
+<cite>HTML and XML, 2008</cite>
+</blockquote>
+
+<p>
+Berners-Lee's examples of centralised extensibility are chosen to make the
+alternative feel antique: the Dewey decimal system, the Library of Congress
+cataloguing system, and the international telephone number space.
+</p>
+
+<h2>23.3 The robustness principle, reconsidered</h2>
+
+<p>
+The most valuable section reopens the tolerance principle of Chapter 1 and
+explains why a rule that worked for protocols failed for pages. The diagnosis
+has two parts, and neither is about technology.
+</p>
+
+<blockquote>
+It has not worked so well on the Web, because the Web page designers in fact
+paid no heed to being conservative. They were not in general engineers who had
+read the spec at all, but random people copying each other's Web pages, and
+seeing what worked when they modified them.
+<cite>HTML and XML, 2008</cite>
+</blockquote>
+
+<p>
+The second part is about time:
+</p>
+
+<blockquote>
+Once a Web page is out there with badly nested tags, it is out there for good.
+<cite>HTML and XML, 2008</cite>
+</blockquote>
+
+<p>
+The robustness principle assumes short-lived messages and a feedback loop
+between engineers. The Web has long-lived documents and no loop at all.
+</p>
+
+<h2>23.4 The incentive curve</h2>
+
+<p>
+Berners-Lee then does something rare in this collection: he analyses the
+system as one containing people with motives, and draws the reward for
+effort.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig23-2-t fig23-2-d">
+  <title id="fig23-2-t">What an author gets for fixing errors</title>
+  <desc id="fig23-2-d">Under a strict parser the reward is a step: nothing
+  until the page is perfect, then everything, so an author with several errors
+  has no reason to fix one. Under a fully liberal parser the reward is flat:
+  the page renders either way, so there is no reason to fix anything. What is
+  wanted is a slope, in which each fix is worth something.</desc>
+
+  <!-- axes -->
+  <line class="ln" x1="70" y1="250" x2="660" y2="250"/>
+  <line class="ln" x1="70" y1="250" x2="70" y2="48"/>
+  <text x="365" y="278" class="t-sm" text-anchor="middle">effort the author spends removing errors</text>
+  <text x="52" y="150" class="t-sm" text-anchor="middle" transform="rotate(-90 52 150)">reward: how well the page renders</text>
+
+  <!-- step: strict -->
+  <path d="M 70 242 L 560 242 L 560 70 L 660 70" fill="none" stroke="#1c5a7a" stroke-width="2"/>
+  <text x="300" y="234" class="t-sm" fill="#1c5a7a">strict: nothing, nothing, nothing&#8230;</text>
+  <text x="574" y="60" class="t-sm" fill="#1c5a7a">&#8230;then everything</text>
+
+  <!-- flat: liberal -->
+  <path d="M 70 128 L 660 128" fill="none" stroke="#b08d57" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="300" y="120" class="t-sm" fill="#a07d47">liberal: it looked fine before you started</text>
+
+  <!-- slope: wanted -->
+  <path d="M 70 232 L 660 84" fill="none" stroke="#5a8f5a" stroke-width="2.4"/>
+  <text x="404" y="176" class="t-sm" fill="#3f6f3f">the slope we want</text>
+
+  <line class="ln-mut" x1="70" y1="292" x2="660" y2="292"/>
+  <text x="365" y="314" class="t-sm" text-anchor="middle">A step function motivates only the author who is already nearly finished.</text>
+  <text x="365" y="334" class="t-sm t-it" text-anchor="middle">A flat line motivates nobody. Both produce the Web we have.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.2</span>
+Berners-Lee's own summary: the writer with an almost perfect page is motivated
+to fix it, but the writer with several errors is not, as there will be no
+noticeable reward for incremental improvement.</figcaption>
+</figure>
+
+<p>
+The remedy follows from the shape:
+</p>
+
+<blockquote>
+What does this mean? It means distinguishing more than the two possible
+outcomes of success and failure. We need to make a slope, so we need different
+levels.
+<cite>HTML and XML, 2008</cite>
+</blockquote>
+
+<p>
+His proposal is a browser toolbar that slides down on a page with errors,
+rates it out of a hundred, and lets interested users drill in. He anticipates
+the objection, which is that no browser wanted to be the one giving a worse
+experience, and answers it with an analogy to environmental cleanup: a
+browser without such a feature would come to look irresponsible. The word he
+uses for badly formed markup is pollution.
+</p>
+
+<h2>23.5 Scale-free vocabularies</h2>
+
+<p>
+A short section offers the best available explanation of why one markup
+language dominates and dozens do not. The Web is composed of communities of
+different sizes, with scale-free properties: there is no typical number of
+inbound links to a page, only a power law. Berners-Lee suggests, and marks as
+an unproved hunch, that this represents a form of optimal arrangement,
+perhaps the best trade-off between the ungainliness of one universal language
+and the agility of many small ones.
+</p>
+
+<p>
+Applied to vocabularies, this gives a hierarchy rather than a competition.
+HTML sits at the largest scale, where tags are just tags and everyone is
+supposed to know them. Below it are languages serving very large communities,
+and below those the long tail. The argument for namespaces is that the tail
+needs them and the head does not.
+</p>
+
+<h2>23.6 The grouchy robustness principle</h2>
+
+<p>
+The note ends with a restatement of Postel's rule, and it is the most quotable
+thing Berners-Lee wrote about specification practice:
+</p>
+
+<blockquote>
+Be conservative what you produce. Be liberal about what you accept but
+complain about any deviations from the spec in a way to help and to motivate
+the producers to adhere to it better.
+<cite>HTML and XML, 2008, published 2019</cite>
+</blockquote>
+
+<p>
+Accept everything, render everything, and say so. The complaint is the slope.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The fork closed by one branch ending.</strong> W3C stopped work on
+XHTML 2 in 2009, and HTML5 became a Recommendation in October 2014. In 2019
+W3C and the WHATWG agreed that the WHATWG Living Standard would be the single
+version of HTML.</li>
+<li><strong>The note was published at that moment.</strong> Its release in May
+2019 coincides with the settlement, and the argument it makes was not
+adopted: HTML has no namespaces, and extension is centralised.</li>
+<li><strong>The slope was built, for developers only.</strong> Browser
+developer tools report markup errors in detail, and automated auditing tools
+score pages out of a hundred. Nothing slides down in front of an ordinary
+reader, which is the part of the proposal that would have changed authors'
+incentives.</li>
+<li><strong>Decentralised extension arrived by another route.</strong> Custom
+elements require a hyphen in the name rather than a namespace, and structured
+data in pages uses vocabulary URIs. The requirement of section 23.2 was met
+without the mechanism this note defends.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The tolerance principle reconsidered here is stated in Chapter 1, and the free
+extension rule it descends from is Chapter 16. The namespaces this note
+defends are specified in Chapter 17 and lack the flag of Chapter 18. The
+modularity argument about the same specification is Chapter 19, and the
+processing question the XML branch left open is Chapter 24. The scale-free
+communities of section 23.5 are Chapter 87.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">23.1</span>
+The robustness principle assumes short-lived messages and engineer feedback.
+Name another system where both assumptions hold, and one where neither does.</p>
+</div>
+<div class="question">
+<p><span class="question-number">23.2</span>
+Draw the reward curve for a system you work on. Is it a step, a flat line, or
+a slope? What would change it?</p>
+</div>
+<div class="question">
+<p><span class="question-number">23.3</span>
+Custom elements use a hyphen rather than a namespace to avoid collisions.
+Compare the two mechanisms against the requirements of Chapter 17.</p>
+</div>
+<div class="question">
+<p><span class="question-number">23.4</span>
+The grouchy robustness principle asks implementations to complain. To whom,
+and by what path, given that the author of a bad page is often long gone?</p>
+</div>
+</div>

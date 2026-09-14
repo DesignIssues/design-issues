@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 25: The Many Meanings of Open | Design Issues</title>
-<meta name="description" content="Chapter 25 of Design Issues: The Many Meanings of Open (2013). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Many Meanings of Open” of 2013: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/25-many-meanings-open.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 25: The Many Meanings of Open | Design Issues">
-<meta property="og:description" content="Chapter 25 of Design Issues: The Many Meanings of Open (2013). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 25: The Many Meanings of Open">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Many Meanings of Open” of 2013: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/25-many-meanings-open.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 25: The Many Meanings of Open">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Many Meanings of Open” of 2013: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,273 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/Open.html"><em>The Many Meanings of Open</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2013-01-15, about 1,984 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 2013-01-15.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/Open.html">https://www.w3.org/DesignIssues/Open.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Berners-Lee was asked in January 2013 to give a keynote at a conference on
+the theme of &ldquo;Open&rdquo;, and found the theme underspecified. The note
+is the result, written up later for a magazine and added to twice since, in
+2024.
+</p>
+<blockquote>
+I was recently asked to talk about the idea of &ldquo;open&rdquo;, and I
+realized the term is used in at least eight different ways.
+<cite>The Many Meanings of Open, 2013</cite>
+</blockquote>
+<p>
+It belongs at the end of Volume III because openness is the precondition for
+everything the volume describes. An evolvable system requires that anyone may
+extend it, which requires that the specification be readable, which requires
+that the process be joinable.
+</p>
+</div>
+
+<h2>25.1 Ten senses, and what each protects</h2>
+
+<p>
+The note is a taxonomy, and its usefulness lies in the fact that the senses
+are independent. A system can be open in several and closed in the rest, and
+arguments become unwinnable when two people have different ones in mind.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
+     aria-labelledby="fig25-1-t fig25-1-d">
+  <title id="fig25-1-t">Ten senses of open</title>
+  <desc id="fig25-1-d">Universality, open standards, the open web platform,
+  open data, open science, openness with personal data, open platform, open
+  source, open access, open internet and net neutrality, and open process.
+  Each answers a different question about who is permitted to do what.</desc>
+
+  <circle cx="360" cy="196" r="58" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1.6"/>
+  <text x="360" y="192" class="t-lg" text-anchor="middle">open</text>
+  <text x="360" y="212" class="t-sm" text-anchor="middle">of what, to whom?</text>
+
+  <g class="t-sm">
+    <rect class="box" x="24" y="20" width="196" height="48" rx="4"/>
+    <text x="122" y="40" class="t-caps" text-anchor="middle">universality</text>
+    <text x="122" y="58" text-anchor="middle">no assumption about the user</text>
+
+    <rect class="box" x="240" y="20" width="196" height="48" rx="4"/>
+    <text x="338" y="40" class="t-caps" text-anchor="middle">open standards</text>
+    <text x="338" y="58" text-anchor="middle">anyone may review and help write</text>
+
+    <rect class="box" x="456" y="20" width="240" height="48" rx="4"/>
+    <text x="576" y="40" class="t-caps" text-anchor="middle">open web platform</text>
+    <text x="576" y="58" text-anchor="middle">every page a programmable computer</text>
+
+    <rect class="box-warm" x="24" y="82" width="196" height="48" rx="4"/>
+    <text x="122" y="102" class="t-caps" text-anchor="middle" fill="#a07d47">open data</text>
+    <text x="122" y="120" text-anchor="middle">the numbers, not the report</text>
+
+    <rect class="box-warm" x="456" y="82" width="240" height="48" rx="4"/>
+    <text x="576" y="102" class="t-caps" text-anchor="middle" fill="#a07d47">open science</text>
+    <text x="576" y="120" text-anchor="middle">added 2024, after CERN at seventy</text>
+
+    <rect class="box-plain" x="24" y="290" width="196" height="48" rx="4"/>
+    <text x="122" y="310" class="t-caps" text-anchor="middle">open platform</text>
+    <text x="122" y="328" text-anchor="middle">your right to install software</text>
+
+    <rect class="box-green" x="240" y="290" width="196" height="48" rx="4"/>
+    <text x="338" y="310" class="t-caps" text-anchor="middle" fill="#3f6f3f">open source</text>
+    <text x="338" y="328" text-anchor="middle">read it, change it, pass it on</text>
+
+    <rect class="box-green" x="456" y="290" width="240" height="48" rx="4"/>
+    <text x="576" y="310" class="t-caps" text-anchor="middle" fill="#3f6f3f">open access</text>
+    <text x="576" y="328" text-anchor="middle">research the public already paid for</text>
+
+    <rect class="box-plain" x="24" y="352" width="196" height="48" rx="4"/>
+    <text x="122" y="372" class="t-caps" text-anchor="middle">personal data</text>
+    <text x="122" y="390" text-anchor="middle">how open you are about your life</text>
+
+    <rect class="box" x="240" y="352" width="196" height="48" rx="4"/>
+    <text x="338" y="372" class="t-caps" text-anchor="middle">open internet</text>
+    <text x="338" y="390" text-anchor="middle">net neutrality; no discrimination</text>
+
+    <rect class="box-warm" x="456" y="352" width="240" height="48" rx="4"/>
+    <text x="576" y="372" class="t-caps" text-anchor="middle" fill="#a07d47">open process</text>
+    <text x="576" y="390" text-anchor="middle">added 2024; who decides, and how</text>
+  </g>
+
+  <g class="ln-mut" fill="none">
+    <path d="M 302 178 L 220 60"/>
+    <path d="M 338 138 L 338 68"/>
+    <path d="M 418 178 L 456 60"/>
+    <path d="M 302 190 L 220 110"/>
+    <path d="M 418 190 L 456 110"/>
+    <path d="M 302 216 L 220 300"/>
+    <path d="M 338 254 L 338 290"/>
+    <path d="M 418 216 L 456 300"/>
+    <path d="M 306 234 L 220 360"/>
+    <path d="M 322 240 L 230 300 L 230 372 L 240 372"/>
+    <path d="M 414 234 L 456 360"/>
+  </g>
+</svg>
+<figcaption><span class="fig-label">Figure 25.1</span>
+The note was written about eight senses in 2013. Open science and open
+process were added in 2024, which is itself the best evidence for the note's
+premise that the word keeps acquiring meanings.</figcaption>
+</figure>
+
+<h2>25.2 Universality, and what it was designed against</h2>
+
+<p>
+The first sense is given first because it is the one the Web was built for,
+and Berners-Lee explains it by naming what he was avoiding:
+</p>
+
+<blockquote>
+When I designed the Web protocols, I had already seen many networked
+information systems fail because they made some assumptions about the users
+&#8211; that they were using a particular type of computer for instance &#8211;
+or constrained the way they worked, such as forcing them to organize their
+data in a particular way, or to use a particular data format.
+<cite>The Many Meanings of Open, 2013</cite>
+</blockquote>
+
+<p>
+Decentralisation is placed immediately next to it, in the sense that no
+permission is needed from a central authority to post anything, there is no
+controlling node, and therefore no single point of failure. Chapter 1 lists
+these as separate principles; here they are treated as two faces of the same
+requirement.
+</p>
+
+<h2>25.3 The sense he argues hardest for</h2>
+
+<p>
+The Open Web Platform section is the only one that makes a demand of the
+reader, and the sentence that carries it is short:
+</p>
+
+<blockquote>
+Native apps are not on the Web, they're not part of the Web.
+<cite>The Many Meanings of Open, 2013</cite>
+</blockquote>
+
+<p>
+The argument is the universality argument applied to applications. A
+programme that runs only on one platform, or one device, is more limited than
+one that runs wherever there is a browser, whatever its other merits. He
+encourages everyone to build web applications, and expects the browser to
+reach the hardware that native applications reach.
+</p>
+
+<h2>25.4 The one he declines to settle</h2>
+
+<p>
+Openness with personal data is the shortest section and the only one where
+Berners-Lee explicitly stops:
+</p>
+
+<blockquote>
+The word &ldquo;open&rdquo; is often used in the sense &ldquo;I wouldn't be
+that open with my personal life&rdquo;. We are as a society learning how to
+draw the right boundaries in this new age.
+<cite>The Many Meanings of Open, 2013</cite>
+</blockquote>
+
+<p>
+He names the connected issues, that a site which helps people share also
+benefits from the data in unforeseen ways, and that what different sorts of
+data about people should be used for is unsettled, and says these may lead to
+cultural norms as well as new technical architectures. Volume VII is where
+that thread is picked up.
+</p>
+
+<h2>25.5 Where law enters</h2>
+
+<p>
+The open platform section is the angriest passage in the note. The right at
+stake is the right to install and write software on your own device, and
+Berners-Lee identifies the motive for closing a platform as a manufacturer
+wanting you to experience content without being able to store or pass it on.
+</p>
+
+<p>
+On the American statutes he is direct, and the judgement is dated to 2013:
+the Digital Millennium Copyright Act and the Computer Fraud and Abuse Act
+allow a person who uses a computer improperly to be jailed as a felon for a
+long time, and he calls them unjust laws. His observation about their effect
+on the argument is the more interesting part: they colour the debate so much
+that some people react by insisting all platforms be completely open, so that
+nobody can be said to use them improperly. A bad law produces an absolutist
+opposition.
+</p>
+
+<h2>25.6 The two additions</h2>
+
+<p>
+Two sections were added long after the original. In May 2024, following
+CERN's seventieth anniversary, open science. In September 2024, open process,
+where Berners-Lee quotes Hamish Campbell on transparent and participatory
+decision-making, and then widens it past technology in a single line: Campbell
+mentions technology projects, but there is no reason it has to be one.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The platform argument was lost and partly regained.</strong>
+Native applications remained dominant on mobile. Regulation rather than
+technology moved the platform question: the European Union's Digital Markets
+Act, applicable from March 2024, requires large platforms to permit
+alternative application distribution, which is the right named in
+section 25.5 arriving as law.</li>
+<li><strong>Open access became policy.</strong> Funder mandates spread from
+the United States and the European Commission to most major research funders,
+and Plan S, launched in September 2018, required immediate open publication
+of funded work.</li>
+<li><strong>Net neutrality did not settle.</strong> United States rules were
+adopted in 2015, repealed in 2017, and readopted in 2024, while the European
+Union's regulation has held since 2015. Chapter 78 treats this at
+length.</li>
+<li><strong>Open data lost its novelty and kept its problem.</strong>
+Government portals are now ordinary, and the complaint that opened the
+section, that sites publish reports rather than the data behind them,
+describes most published analysis still.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+Universality and decentralisation are principles one and four of Chapter 1,
+and the axioms that implement them are Chapter 2. The open standards this note
+describes are written according to Chapter 21 and stacked as in Chapter 20.
+Open data is Chapter 53, personal data is Volume VII, net neutrality is
+Chapter 78, and digital rights management is Chapter 80.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">25.1</span>
+Take a system you use and score it against all ten senses. Which ones does it
+satisfy, and does the pattern look deliberate?</p>
+</div>
+<div class="question">
+<p><span class="question-number">25.2</span>
+Berners-Lee says an unjust law produces an absolutist opposition. Give another
+instance of that pattern, in or out of computing.</p>
+</div>
+<div class="question">
+<p><span class="question-number">25.3</span>
+The claim that native applications are not part of the Web rests on
+universality. State the strongest case for a native application on grounds
+this note would accept.</p>
+</div>
+<div class="question">
+<p><span class="question-number">25.4</span>
+Open process was added eleven years after the original eight. Name a sense of
+&ldquo;open&rdquo; that is still missing from the list.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="24-interpretation-xml-document.html">&larr; Chapter 24: The Interpretation of an XML document</a>

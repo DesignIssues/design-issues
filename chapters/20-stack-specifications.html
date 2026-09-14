@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 20: The Stack of Specifications | Design Issues</title>
-<meta name="description" content="Chapter 20 of Design Issues: The Stack of Specifications (2002). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Stack of Specifications” of 2002: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/20-stack-specifications.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 20: The Stack of Specifications | Design Issues">
-<meta property="og:description" content="Chapter 20 of Design Issues: The Stack of Specifications (2002). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 20: The Stack of Specifications">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Stack of Specifications” of 2002: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/20-stack-specifications.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 20: The Stack of Specifications">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “The Stack of Specifications” of 2002: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,266 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/Stack.html"><em>The Stack of Specifications</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2002-07-29, about 4,254 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 2002-07-29.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/Stack.html">https://www.w3.org/DesignIssues/Stack.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Written in May 2002 from a keynote given at the World Wide Web conference in
+Hawaii, this note answers a question nobody in engineering thinks to ask:
+when a computer receives a pattern of voltages, why does it mean anything?
+</p>
+<p>
+The chapter title in the original is <em>The Stack of Specifications</em> and
+its first section heading is three words: bits mean something. What follows
+is a walk up the stack from an Ethernet cable to a bank statement, and the
+argument at the top is not technical at all.
+</p>
+</div>
+
+<h2>20.1 One commitment, then no more choices</h2>
+
+<p>
+The device is a chain. At each step, a field in what you have just committed
+to names the specification that governs the next step. Committing to plug in
+the cable commits you, on your behalf, to everything above it.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 430" width="720" height="430" role="img"
+     aria-labelledby="fig20-1-t fig20-1-d">
+  <title id="fig20-1-t">The chain of commitments from a cable to a claim</title>
+  <desc id="fig20-1-d">Each specification, once committed to, names the next
+  one through the value of a field. Plugging in a cable leads by a chain of
+  field values to the meaning of the From line of an email message, which is a
+  statement about a person.</desc>
+
+  <g>
+    <rect class="box-plain" x="40" y="16" width="300" height="42" rx="4"/>
+    <text x="56" y="42" class="t-lg">You plug in a cable</text>
+    <text x="360" y="42" class="t-sm">Ethernet</text>
+
+    <rect class="box" x="64" y="70" width="300" height="42" rx="4"/>
+    <text x="80" y="96" class="t-sm">the type field says <tspan class="t-mono" fill="#1c5a7a">0x0800</tspan></text>
+    <text x="384" y="96" class="t-sm">so: Internet Protocol, RFC 791</text>
+
+    <rect class="box" x="88" y="124" width="300" height="42" rx="4"/>
+    <text x="104" y="150" class="t-sm">the protocol field says <tspan class="t-mono" fill="#1c5a7a">6</tspan></text>
+    <text x="408" y="150" class="t-sm">so: TCP</text>
+
+    <rect class="box" x="112" y="178" width="300" height="42" rx="4"/>
+    <text x="128" y="204" class="t-sm">the port number says <tspan class="t-mono" fill="#1c5a7a">25</tspan></text>
+    <text x="432" y="204" class="t-sm">so: SMTP, by the IANA registry</text>
+
+    <rect class="box-warm" x="136" y="232" width="300" height="42" rx="4"/>
+    <text x="152" y="258" class="t-sm">SMTP says the body is a message</text>
+    <text x="456" y="258" class="t-sm">so: RFC 822</text>
+
+    <rect class="box-green" x="160" y="286" width="300" height="42" rx="4"/>
+    <text x="176" y="312" class="t-sm">RFC 822 defines <tspan class="t-mono" fill="#3f6f3f">From:</tspan></text>
+    <text x="480" y="312" class="t-sm" fill="#3f6f3f">so: this names the sender</text>
+  </g>
+
+  <path class="ln-mut" d="M 52 58 L 52 70 M 76 112 L 76 124 M 100 166 L 100 178 M 124 220 L 124 232 M 148 274 L 148 286"/>
+
+  <line class="ln-mut" x1="40" y1="350" x2="680" y2="350"/>
+  <text x="40" y="374" class="t-sm">At the bottom this is engineering. At the top it is a claim about a person.</text>
+  <text x="40" y="398" class="t-sm t-it">Putting a false name in that field is a misrepresentation, and Berners-Lee argues</text>
+  <text x="40" y="418" class="t-sm t-it">it should carry the same penalty as a lie in any other medium.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 20.1</span>
+The note's point is not that the stack exists but that consent travels up it.
+Nobody signs anything, and yet by the time the message arrives its fields have
+agreed meanings that both parties are bound by.</figcaption>
+</figure>
+
+<h2>20.2 Why this is an argument about law</h2>
+
+<p>
+Having built the chain, Berners-Lee uses it for something unexpected. If the
+specifications define what the fields mean, and both parties have implicitly
+agreed to the specifications by using the Internet at all, then falsifying a
+field is not a technical trick:
+</p>
+
+<blockquote>
+The Internet specifications, to which any Internet user implicitly agrees in
+using the Internet at all, define what the fields in an email message mean. To
+put incorrect information in these fields is to make a misrepresentation, just
+as it would have been in any other medium. It should be subject to the same
+penalties as lying or fraud in any other medium.
+<cite>The Stack of Specifications, 2002</cite>
+</blockquote>
+
+<p>
+He then gives the change in stakes, which is the part that has aged into
+understatement:
+</p>
+
+<blockquote>
+When the Internet was young and used by research institutions, its misuse
+would inconvenience other users and lead to reprobation and the disdain of
+one's peers. Now that the Internet is such as large force in society, it is
+possible to make a lot of money and create a lot of damage by protocol abuse.
+<cite>The Stack of Specifications, 2002</cite>
+</blockquote>
+
+<p>
+The analogies he reaches for are physical and escalating: forging a cheque,
+connecting to the electricity supply on the far side of the meter, poisoning
+the water supply.
+</p>
+
+<h2>20.3 The same walk, for a Web page</h2>
+
+<p>
+The second half repeats the exercise for publishing, and the chain is the
+same shape with different links. A URI is chosen from space its owner has
+authority over. The scheme names the specification, through the registry of
+URI schemes. That specification says which port to contact. The response
+carries a content type, and the registry of content types names the
+specification that says what the body means.
+</p>
+
+<p>
+The conclusion is put in terms of what a publisher may not later claim:
+</p>
+
+<blockquote>
+So long as the writers of the specification do a good job (and goodness knows
+they work hard enough at it) then there can be no argument as to what the
+actual fields in your bank statement mean.
+<cite>The Stack of Specifications, 2002</cite>
+</blockquote>
+
+<p>
+Along the way one sentence does a great deal of work, and is the reason this
+chapter matters to Volume IV:
+</p>
+
+<blockquote>
+The server is the agent of the publisher.
+<cite>The Stack of Specifications, 2002</cite>
+</blockquote>
+
+<h2>20.4 The registry that is not a registry</h2>
+
+<p>
+The last step of the walk introduces XML, and with it a change in kind.
+Ethernet types, protocol numbers, ports and content types all live in central
+registries kept by one authority. A namespace does not.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig20-2-t fig20-2-d">
+  <title id="fig20-2-t">Two ways to say which specification applies</title>
+  <desc id="fig20-2-d">A central registry allocates a short number or name and
+  one authority keeps the list; adding an entry means asking. A URI needs no
+  allocation, anyone may mint one, and the URI itself can be dereferenced to
+  fetch the definition.</desc>
+
+  <rect class="box-warm" x="24" y="26" width="312" height="196" rx="4"/>
+  <text x="180" y="52" class="t-caps" text-anchor="middle" fill="#a07d47">a central registry</text>
+  <text x="180" y="76" class="t-sm" text-anchor="middle">port 25, port 80, <tspan class="t-mono">text/html</tspan></text>
+  <g class="t-sm">
+    <text x="48" y="106">+ short, cheap to put in a packet</text>
+    <text x="48" y="128">+ one authoritative list</text>
+    <text x="48" y="152" fill="#b04a4a">&#8722; you must ask to be added</text>
+    <text x="48" y="174" fill="#b04a4a">&#8722; the list is a point of control</text>
+    <text x="48" y="198" fill="#b04a4a">&#8722; the number tells you nothing by itself</text>
+  </g>
+
+  <rect class="box-green" x="384" y="26" width="312" height="196" rx="4"/>
+  <text x="540" y="52" class="t-caps" text-anchor="middle" fill="#3f6f3f">a URI</text>
+  <text x="540" y="76" class="t-mono" text-anchor="middle" fill="#3f6f3f">http://example.org/ns/invoice#</text>
+  <g class="t-sm">
+    <text x="408" y="106">+ anyone may mint one, today</text>
+    <text x="408" y="128">+ it can be looked up for the definition</text>
+    <text x="408" y="152">+ the Web becomes the registry</text>
+    <text x="408" y="174" fill="#b04a4a">&#8722; longer, and it can rot</text>
+    <text x="408" y="198" fill="#b04a4a">&#8722; only DNS is still central</text>
+  </g>
+
+  <line class="ln-mut" x1="24" y1="244" x2="696" y2="244"/>
+  <text x="360" y="268" class="t-sm" text-anchor="middle">Because the namespace is identified by a URI, the Web becomes the registry.</text>
+  <text x="360" y="288" class="t-sm t-it" text-anchor="middle">The information a registry would have held can be put in a document instead.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 20.2</span>
+This is the decentralisation principle of Chapter 1 applied to the one place
+the stack had always been centralised. Every layer below XML asks permission.
+The namespace layer does not.</figcaption>
+</figure>
+
+<p>
+Berners-Lee notes in passing that the Technical Architecture Group was at the
+time debating what format such a definition should take, and that HTML,
+RDDL and RDF had all been used in combination. He also records, in a
+parenthesis marked as a problem, that the mechanism was not being followed in
+practice.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The legal argument was partly taken up.</strong> Anti-spam
+legislation on both sides of the Atlantic from 2003 onward made header
+falsification specifically unlawful, which is narrower than the general
+principle here but is the same reasoning.</li>
+<li><strong>The technical answer arrived before the legal one.</strong> Sender
+authentication, through the Sender Policy Framework, DomainKeys Identified
+Mail and finally DMARC in 2015, made the From field checkable rather than
+merely defined. The protocol was repaired rather than enforced.</li>
+<li><strong>The namespace-as-registry idea half worked.</strong> Anyone may
+mint a namespace URI, and most do not serve anything at it, which is the
+problem recorded in Chapter 9. The registry exists; the documents largely do
+not.</li>
+<li><strong>The stack itself proved replaceable.</strong> Every layer in
+Figure 20.1 except the top has since been substituted in practice, by
+wireless links, by QUIC over UDP, and by submission on port 587 with TLS,
+without changing what a From line means.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The layering argued for in Chapter 19 is this chapter's subject, and the
+social reading of it is Chapter 6. The decentralisation of Figure 20.2 is
+Chapter 1, and the danger of spending the scheme registry is Chapter 4.
+The claim that protocol abuse should be legally actionable returns in
+Chapter 15, and the interpretation of a mixed XML document is Chapter 24.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">20.1</span>
+Walk the chain of Figure 20.1 for a request to a website you use, naming the
+field at each step that selects the next specification.</p>
+</div>
+<div class="question">
+<p><span class="question-number">20.2</span>
+Berners-Lee argues that using the Internet is implicit agreement to its
+specifications. State the strongest objection to that, and say whether it
+damages the argument about misrepresentation.</p>
+</div>
+<div class="question">
+<p><span class="question-number">20.3</span>
+Central registries buy shortness and cost permission. For one field in a
+protocol you know, say which trade the designers made and whether it still
+suits.</p>
+</div>
+<div class="question">
+<p><span class="question-number">20.4</span>
+&ldquo;The server is the agent of the publisher.&rdquo; Name a common
+arrangement in which this is no longer straightforwardly true, and say what
+the chain of Figure 20.1 loses.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="19-modularity.html">&larr; Chapter 19: Modularity</a>

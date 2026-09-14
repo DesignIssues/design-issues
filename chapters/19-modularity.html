@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 19: Modularity | Design Issues</title>
-<meta name="description" content="Chapter 19 of Design Issues: Modularity (2007). Volume III, Evolution.">
+<meta name="description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Modularity” of 2007: the question it answered, the argument, and what happened since.">
+<meta name="author" content="Melvin Carvalho">
+<link rel="canonical" href="https://designissues.github.io/design-issues/chapters/19-modularity.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Design Issues">
-<meta property="og:title" content="Chapter 19: Modularity | Design Issues">
-<meta property="og:description" content="Chapter 19 of Design Issues: Modularity (2007). Volume III, Evolution.">
+<meta property="og:title" content="Chapter 19: Modularity">
+<meta property="og:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Modularity” of 2007: the question it answered, the argument, and what happened since.">
+<meta property="og:url" content="https://designissues.github.io/design-issues/chapters/19-modularity.html">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order. 96 chapters in ten volumes, from the notes of Tim Berners-Lee.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 19: Modularity">
+<meta name="twitter:description" content="Volume III, Evolution. On Tim Berners-Lee&#x27;s note “Modularity” of 2007: the question it answered, the argument, and what happened since.">
+<meta name="twitter:image" content="https://designissues.github.io/design-issues/og-image.png">
+<meta name="twitter:image:alt" content="Design Issues: the Web&#x27;s design notes, put in order.">
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,17 +46,275 @@
 <div class="source-note">
 <span class="source-label">Source</span>
 <p>This chapter is about <a href="https://www.w3.org/DesignIssues/Modularity.html"><em>Modularity</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2007-10-01, about 943 words.</p>
+a Design Issues note by Tim Berners-Lee, dated 2007-10-01.</p>
 <p>Read the original at <a href="https://www.w3.org/DesignIssues/Modularity.html">https://www.w3.org/DesignIssues/Modularity.html</a>.
 The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
 This book is commentary; where it quotes, it attributes.</p>
 </div>
-<div class="status-stub">
-<p><span class="status-label">In preparation.</span>
-This chapter has not been written yet. Its place in the reading order is
-fixed and its source is linked above, so the argument it must carry is
-already determined. Contributions are welcome: see the
-<a href="https://github.com/DesignIssues/design-issues">repository</a>.</p>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Published on the W3C blog in January 2008 and copied here, then edited in
+2010 after a comment from Noah Mendelsohn, this note has a subtitle that
+carries the argument:
+</p>
+<blockquote>
+Simple things make firm foundations
+<cite>Modularity, 2008</cite>
+</blockquote>
+<p>
+It is the only note in the collection that quotes a live specification
+argument at length and takes a side in it. The occasion was the state of the
+HTML5 draft, and the question is whether a specification that describes what
+browsers actually do can also be a specification other people can build on.
+</p>
+</div>
+
+<h2>19.1 The tangle, in its author's own words</h2>
+
+<p>
+Berners-Lee quotes Ian Hickson, then co-editor of HTML5, describing why
+modularising the specification is harder than it looks. The passage is worth
+keeping whole, because it is a rare piece of honest engineering writing about
+coupling:
+</p>
+
+<blockquote>
+Note that it really isn't that easy. For example, the HTML parsing rules are
+deeply integrated with the handling of &lt;script&gt; elements, due to
+document.write(), and also are deeply integrated with the definition of
+innerHTML. Scripting, in turn, is deeply related to the concept of scripting
+contexts, which depends directly on the definition of the Window object and
+browsing contexts, which, in turn, are deeply linked with session history and
+the History object (which depends on the Location object) and with arbitrary
+browsing context navigation (which is related to hyperlinks and image maps)
+and its related algorithms (namely content sniffing and encoding detection,
+which, to complete the circle, is part of the HTML parsing algorithm).
+<cite>Ian Hickson, quoted in Modularity, 2008</cite>
+</blockquote>
+
+<p>
+The passage closes a circle deliberately: parsing depends on sniffing, which
+is part of parsing. Berners-Lee does not dispute the description. He disputes
+that it should be accepted.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+     aria-labelledby="fig19-1-t fig19-1-d">
+  <title id="fig19-1-t">Two shapes a system can have</title>
+  <desc id="fig19-1-d">On the left, the dependency circle Hickson describes,
+  in which parsing depends on scripting, which depends on browsing contexts,
+  which depend on history and navigation, which depend on content sniffing,
+  which is part of parsing. On the right, the layering Berners-Lee argues for,
+  in which each level offers a simple interface to the one above and knows
+  nothing of it.</desc>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle" fill="#b04a4a">a circle</text>
+  <text x="180" y="42" class="t-sm" text-anchor="middle">every part needs every other part</text>
+
+  <g>
+    <circle cx="180" cy="60" r="0"/>
+    <!-- ring of nodes -->
+    <g class="t-sm">
+      <rect x="132" y="62" width="96" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="180" y="79" text-anchor="middle">parsing</text>
+      <rect x="238" y="112" width="96" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="286" y="129" text-anchor="middle">scripting</text>
+      <rect x="222" y="188" width="112" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="278" y="205" text-anchor="middle">browsing ctx</text>
+      <rect x="124" y="238" width="96" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="172" y="255" text-anchor="middle">history</text>
+      <rect x="26" y="188" width="96" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="74" y="205" text-anchor="middle">navigation</text>
+      <rect x="30" y="112" width="96" height="26" rx="13" fill="#fdf5f5" stroke="#d9b0b0"/>
+      <text x="78" y="129" text-anchor="middle">sniffing</text>
+    </g>
+    <g stroke="#c98a8a" fill="none" stroke-width="1.3">
+      <path d="M 220 84 L 250 110"/>
+      <path d="M 290 140 L 285 184"/>
+      <path d="M 254 214 L 218 240"/>
+      <path d="M 130 250 L 106 216"/>
+      <path d="M 72 186 L 76 142"/>
+      <path d="M 100 112 L 140 88"/>
+    </g>
+    <g fill="#c98a8a">
+      <path d="M 244 100 L 254 114 L 240 112 Z"/>
+      <path d="M 292 174 L 290 188 L 282 176 Z"/>
+      <path d="M 228 232 L 214 244 L 216 230 Z"/>
+      <path d="M 110 226 L 102 212 L 116 216 Z"/>
+      <path d="M 70 152 L 76 138 L 84 150 Z"/>
+      <path d="M 128 96 L 144 86 L 138 100 Z"/>
+    </g>
+  </g>
+
+  <line class="ln-mut" x1="370" y1="20" x2="370" y2="300"/>
+
+  <text x="545" y="24" class="t-caps" text-anchor="middle" fill="#3f6f3f">a stack</text>
+  <text x="545" y="42" class="t-sm" text-anchor="middle">each level offers one simple interface upward</text>
+
+  <g>
+    <rect class="box-green" x="420" y="58" width="250" height="36" rx="4"/>
+    <text x="545" y="81" class="t-sm" text-anchor="middle">hypertext &#183; data &#183; scripting</text>
+    <rect class="box" x="420" y="104" width="250" height="46" rx="4"/>
+    <text x="545" y="123" class="t-mono" text-anchor="middle" fill="#1c5a7a">HTTP</text>
+    <text x="545" y="141" class="t-sm" text-anchor="middle">URIs to representations</text>
+    <rect class="box" x="420" y="160" width="250" height="46" rx="4"/>
+    <text x="545" y="179" class="t-mono" text-anchor="middle" fill="#1c5a7a">TCP</text>
+    <text x="545" y="197" class="t-sm" text-anchor="middle">a byte stream</text>
+    <rect class="box" x="420" y="216" width="250" height="46" rx="4"/>
+    <text x="545" y="235" class="t-mono" text-anchor="middle" fill="#1c5a7a">IP</text>
+    <text x="545" y="253" class="t-sm" text-anchor="middle">a packet, somewhere</text>
+  </g>
+  <path class="ln-accent" d="M 404 258 L 404 66"/>
+  <path d="M 400 74 L 404 60 L 408 74 Z" fill="#1c5a7a"/>
+  <text x="396" y="160" class="t-sm" text-anchor="middle" transform="rotate(-90 396 160)">each built on the last</text>
+
+  <line class="ln-mut" x1="24" y1="308" x2="696" y2="308"/>
+  <text x="360" y="332" class="t-sm t-it" text-anchor="middle">A circle can be specified exactly. It cannot be built upon by someone who has not read all of it.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 19.1</span>
+Berners-Lee's ladder: IP is simple, so TCP can be built on it; TCP offers a
+byte stream, so HTTP can be built on that; HTTP maps URIs to representations,
+and on that mapping hypertext, data and scripting are all built.</figcaption>
+</figure>
+
+<h2>19.2 The two reasons, and the second is the better one</h2>
+
+<p>
+The case is made briefly and in the right order:
+</p>
+
+<blockquote>
+There are lots of reasons for modularity. The basic one is that one module can
+evolve or be replaced without affecting the others. If the interfaces are
+clean, and there are no side effects, then a developer can redesign a module
+without having to deeply understand the neighboring modules.
+<cite>Modularity, 2008</cite>
+</blockquote>
+
+<p>
+Then the half that Chapter 1 calls the harder one:
+</p>
+
+<blockquote>
+The flip side is that a cleanly designed module designed as part of one system
+can be re-used in other systems.
+<cite>Modularity, 2008</cite>
+</blockquote>
+
+<p>
+Berners-Lee applies this to the drawing API introduced with the canvas
+element. His view is that the element belongs in the specification and the
+drawing API does not, and he notes that Hickson agreed in principle while
+observing that other parts needed splitting out more urgently and that nobody
+had volunteered to edit it.
+</p>
+
+<p>
+The wish that follows is the reuse argument made concrete: that canvas and
+embedded SVG should work the same way, so that both could later be extended
+to three dimensions, and so that both could be plugged into other languages
+just as they are plugged into HTML.
+</p>
+
+<h2>19.3 Technology, not documents</h2>
+
+<p>
+One distinction saves the argument from pedantry. What matters is the
+independence of the technology, which need not align with the boundaries of
+documents. Berners-Lee then notes that it usually makes sense for them to
+align anyway, so that different people can review, edit and implement
+different parts.
+</p>
+
+<h2>19.4 Designing for a system that does not exist</h2>
+
+<p>
+The closing passage is the strongest statement in the collection of a
+position that appears everywhere in it:
+</p>
+
+<blockquote>
+The web architecture should not be seen as a finished product, not as the
+final application. We must design for new applications to be built on top of
+it. There will be more modules to come, which we cannot imagine now.
+<cite>Modularity, 2008</cite>
+</blockquote>
+
+<p>
+And the reason it matters, stated as a claim about what a clean interface
+gives its user:
+</p>
+
+<blockquote>
+Clean interfaces give you invariants, which developers use as foundations of
+the next layer. Messy interfaces introduce complexity which we may later
+regret.
+<cite>Modularity, 2008</cite>
+</blockquote>
+
+<p>
+The note ends with a request rather than a rule, which is unusual and rather
+disarming: let us try, as we make new technology, or plan a path for old
+technology, always to keep things as clean as we can.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The split happened.</strong> The canvas drawing API was separated
+into its own specification, <em>HTML Canvas 2D Context</em>, and other parts
+of the monolith followed. HTML itself moved to the WHATWG Living Standard,
+where the material is maintained as one document with separately maintained
+companion specifications.</li>
+<li><strong>The circle was not broken.</strong> Parsing, scripting and
+navigation remain mutually dependent in the way Hickson described, and the
+dependency is now specified precisely rather than removed.</li>
+<li><strong>The reuse argument was vindicated.</strong> Custom elements and
+the shadow DOM, shipping from around 2016, gave the Web a way to plug
+components into HTML and into each other, which is the property section 19.2
+asks for, arrived at by a different route.</li>
+<li><strong>The ladder kept extending.</strong> HTTP/2 and HTTP/3 replaced the
+lower layers without changing the URI-to-representation mapping above them,
+which is the invariant this note says clean interfaces provide.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+Modularity and its inside-out form are the second pair of principles in
+Chapter 1. The independence of HTTP from the media types, which this note
+gives as the classic example, is Chapter 4. The stack of Figure 19.1 is set
+out in full in Chapter 20, and the fork that produced the specification being
+argued about is Chapter 23.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">19.1</span>
+Hickson's passage closes a circle. Identify the smallest change to the Web
+platform that would open it, and say what it would break.</p>
+</div>
+<div class="question">
+<p><span class="question-number">19.2</span>
+Berners-Lee separates independence of technology from separation of
+documents. Give a case where one specification should define two independent
+technologies, and one where the reverse holds.</p>
+</div>
+<div class="question">
+<p><span class="question-number">19.3</span>
+Take a module in a system you know. Could it be lifted into a different
+system unchanged? If not, name the dependency that prevents it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">19.4</span>
+The note claims clean interfaces give developers invariants. Name an invariant
+you rely on, and say what would have to change for it to fail.</p>
+</div>
 </div>
 <nav class="chapter-navigation">
 <a href="18-mandatory-extensions-fundamental-design-need.html">&larr; Chapter 18: Mandatory extensions: A fundamental design n</a>

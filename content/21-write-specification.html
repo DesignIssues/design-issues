@@ -1,0 +1,219 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Berners-Lee describes this note twice as folklore, and both times slightly
+apologetically: it is, he says, a little motherhood and apple pie about how a
+specification should be couched. He credits Peggie Rimmer at CERN and years
+of work with the IEEE, the IETF and W3C, and assumes others have written
+books on it.
+</p>
+<p>
+They have, and this is still worth two pages, because it makes one structural
+point that longer treatments bury.
+</p>
+</div>
+
+<h2>21.1 A specification has two halves</h2>
+
+<blockquote>
+A technical specification defines something. The document must specify the
+thing being defined as well as give its definition: a &ldquo;left hand
+side&rdquo; as well as a &ldquo;right hand side&rdquo;. Both must be done
+quite precisely.
+<cite>The essentials of a specification, 1999</cite>
+</blockquote>
+
+<p>
+Most specifications spend their length on the right-hand side and leave the
+left implicit. The note's contribution is to insist that the thing being
+defined is itself a thing to be defined, and that it should get a name.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig21-1-t fig21-1-d">
+  <title id="fig21-1-t">The two halves of a specification</title>
+  <desc id="fig21-1-d">The left-hand side names what conforms, ideally with a
+  formal identifier such as a media type or namespace URI. The right-hand side
+  gives the definition, distinguishing must from may and normative from
+  informative. The test is whether a program could decide, for any object,
+  whether the conformance term applies.</desc>
+
+  <rect class="box" x="24" y="20" width="312" height="212" rx="4"/>
+  <text x="180" y="46" class="t-caps" text-anchor="middle">the left hand side</text>
+  <text x="180" y="68" class="t-sm t-it" text-anchor="middle">what is being defined</text>
+  <g class="t-sm">
+    <text x="46" y="98">Introduce a term for what conforms:</text>
+    <text x="60" y="122" class="t-mono" fill="#1c5a7a">a well-formed XML 1.0 document</text>
+    <text x="60" y="142" class="t-mono" fill="#1c5a7a">a conforming HTTP 1.1 server</text>
+    <text x="60" y="162" class="t-mono" fill="#1c5a7a">the SVG 1.0 language</text>
+    <text x="46" y="190">Where a formal identifier exists,</text>
+    <text x="46" y="208">use it: a media type, a namespace URI.</text>
+  </g>
+
+  <rect class="box-warm" x="384" y="20" width="312" height="212" rx="4"/>
+  <text x="540" y="46" class="t-caps" text-anchor="middle" fill="#a07d47">the right hand side</text>
+  <text x="540" y="68" class="t-sm t-it" text-anchor="middle">what it means</text>
+  <g class="t-sm">
+    <text x="406" y="98">Keep MUST apart from MAY.</text>
+    <text x="406" y="122">Keep normative apart from informative.</text>
+    <text x="406" y="146">Say what a thing <tspan font-style="italic">means</tspan>, not what</text>
+    <text x="406" y="164">software should do about it.</text>
+    <text x="406" y="192" fill="#3f6f3f">&#8220;x&#8221; indicates the check is void</text>
+    <text x="406" y="212" fill="#b04a4a">not: should be rejected with an error</text>
+  </g>
+
+  <line class="ln-mut" x1="24" y1="254" x2="696" y2="254"/>
+  <text x="360" y="278" class="t-sm" text-anchor="middle">The test: for any arbitrary object, does the spec decide whether the term applies?</text>
+  <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If you could not write a program to check it, the left hand side is not finished.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 21.1</span>
+The warning attached to the left-hand side is about brand. A specification may
+define more than one term, such as a strictly conforming and a loosely
+conforming widget, but Berners-Lee notes one should beware of diluting the
+name.</figcaption>
+</figure>
+
+<h2>21.2 Meaning, not behaviour</h2>
+
+<p>
+The sharpest rule in the note is about the grammatical mood a specification
+should be written in. When defining a language, say what a construct means
+rather than what software should do when it meets one. His example is a
+cheque:
+</p>
+
+<blockquote>
+&ldquo;x&rdquo; indicated that the check is void
+<cite>The essentials of a specification, 1999</cite>
+</blockquote>
+
+<p>
+is better than the version that says the cheque should be rejected with a
+fatal error. The justification is a claim about what an author is entitled to
+do:
+</p>
+
+<blockquote>
+You can tell people what something means, you can't tell them what to do about
+it, unless you are defining a protocol.
+<cite>The essentials of a specification, 1999</cite>
+</blockquote>
+
+<p>
+Typical behaviours may still be described, and Berners-Lee says they can be
+very useful for explaining intent, provided they are marked non-normative.
+The distinction survives because meaning outlasts implementations: a
+specification that says what to do has to be rewritten each time the software
+changes shape.
+</p>
+
+<p>
+Protocols are the exception, and for them he asks for something stricter
+still: constraints given as a state transition diagram or table, so that they
+are totally clear.
+</p>
+
+<h2>21.3 Two paragraphs nobody expects</h2>
+
+<p>
+Two short passages lift this note above a style guide.
+</p>
+
+<p>
+The first is about contracts. When a message binds human parties, the
+specification must say so, and Berners-Lee gives the reason without
+softening it: you could end up in court explaining it. He then writes out a
+fragment of the kind of prose required, naming a debtor, a creditor and how
+each is identified. This is Chapter 20's argument arriving as drafting
+advice.
+</p>
+
+<p>
+The second is a checklist for borrowing. When part of a specification is
+deliberately made similar to another, the note asks the author to say that
+the similarity was noticed, to say whether it is exact and where it is not,
+to make clear which document is definitive and which is a copy for
+information, to say whether this use will track new versions of the
+referenced document, and to consider whether such changes could break the
+system. The last item is the one people skip: if necessary, negotiate
+constraints with the authority for changes to the referenced specification.
+</p>
+
+<h2>21.4 The four test questions</h2>
+
+<p>
+The note ends with questions to ask of a draft, and they are short enough to
+use.
+</p>
+
+<table>
+<tr><th>Question</th><th>What a failure means</th></tr>
+<tr><td>Does the spec decide, for any arbitrary object, whether the conformance term applies?</td><td>The left-hand side is undefined</td></tr>
+<tr><td>Could you write a program to test conformance?</td><td>The definition is not operational</td></tr>
+<tr><td>Is conformance alone enough to make systems work as intended?</td><td>Something necessary is unstated</td></tr>
+<tr><td>Can you prove important properties from the state transition tables?</td><td>The protocol is under-specified</td></tr>
+</table>
+
+<p>
+The third is the one most drafts fail. A specification can be perfectly
+decidable and still describe something that does not work, because the
+requirement that made it work was left in somebody's head.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The vocabulary became universal.</strong> The requirement keywords
+this note points at, from Bradner's BCP 14 of March 1997, are now cited by
+nearly every protocol specification, and were refined by RFC 8174 in May 2017
+to apply only when written in capitals.</li>
+<li><strong>Conformance terms became formal.</strong> Media types and
+namespace URIs are now the ordinary way to name what conforms, and the
+registration processes for both require the definition the left-hand side
+demands.</li>
+<li><strong>Testability became the standard.</strong> W3C process has required
+implementation evidence and test suites for advancement since the 2000s,
+which is the second test question turned into a gate.</li>
+<li><strong>The meaning-not-behaviour rule lost ground.</strong> HTML5 and its
+successors specify algorithms rather than meanings, deliberately, because
+interoperability on error handling mattered more than portability of the
+definition. Chapter 23 is where that choice is argued.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+The chain of specifications this one tells you how to write is Chapter 20, and
+the modularity it assumes is Chapter 19. The advice about borrowed definitions
+bears on the mixed-vocabulary documents of Chapter 17. The claim that a
+message can bind legal parties is developed in Chapter 15, and the tension
+between specifying meaning and specifying behaviour is Chapter 23.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">21.1</span>
+Take a specification you rely on and find its conformance term. If there is
+none, write one.</p>
+</div>
+<div class="question">
+<p><span class="question-number">21.2</span>
+Rewrite one requirement from that specification so that it states a meaning
+rather than a behaviour. What is lost?</p>
+</div>
+<div class="question">
+<p><span class="question-number">21.3</span>
+The third test question asks whether conformance alone makes a system work.
+Give a case where a conforming implementation is nonetheless unusable.</p>
+</div>
+<div class="question">
+<p><span class="question-number">21.4</span>
+A specification copies a definition from another. Apply the five-point
+checklist of section 21.3 to a case you know, and say which points were
+missed.</p>
+</div>
+</div>
