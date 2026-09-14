@@ -99,7 +99,7 @@ and assumes the first two are solved.
 <h2>45.2 Why a line-oriented diff will not do</h2>
 
 <p>
-A graph has no lines. Two files may serialise the same graph with statements
+A <a class="gl-ref" href="../glossary.html#graph">graph</a> has no lines. Two files may serialise the same graph with statements
 in a different order, with different abbreviations, and with different
 arbitrary names for the nodes that have no names. A textual difference between
 them reports enormous change where nothing has changed.
@@ -222,10 +222,10 @@ throwing it away.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The strong patch problem was solved by canonicalisation.</strong>
-RDF Dataset Canonicalization, a W3C Recommendation of May 2024, gives nameless
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> Dataset Canonicalization, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of May 2024, gives nameless
 nodes deterministic labels, which makes comparing and patching graphs
 tractable without relying on an identifying property.</li>
-<li><strong>Patch formats arrived.</strong> SPARQL Update became a
+<li><strong>Patch formats arrived.</strong> <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update became a
 Recommendation in March 2013, and later work produced patch formats used for
 synchronising stores, which is section 45.3&#8217;s proposal in standard form.</li>
 <li><strong>Explicit change won over computed change.</strong>

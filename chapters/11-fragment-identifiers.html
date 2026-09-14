@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 1997-04-08.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 4 established that the fragment identifier stays on the client and
+Chapter 4 established that the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> stays on the client and
 that access specifications and fragment specifications are independent. This
 note, written in April 1997, says what follows from that: who decides what a
 fragment means, and what the decision makes possible.
@@ -87,14 +87,14 @@ function of the MIME type of the object.</p>
 
 <p>
 Berners-Lee draws out the two consequences immediately. The fragment is
-opaque to the rest of the client: the HTTP engine can assume nothing about
+<a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the rest of the client: the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine can assume nothing about
 it. And the server is not even given it.
 </p>
 
 <p>
 That second clause is the one people forget. A fragment is not sent over the
 network. It is applied after the response arrives, by whatever software was
-selected to handle the media type that came back.
+selected to handle the <a class="gl-ref" href="../glossary.html#media-type">media type</a> that came back.
 </p>
 
 <figure>
@@ -179,14 +179,14 @@ registration process.
 <h2>11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-The section on the Semantic Web is the argument Chapter 7 would restate at
+The section on the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> is the argument Chapter 7 would restate at
 length five years later, and it is sharper here because it is shorter.
 </p>
 
 <p>
-A fragment on an RDF document identifies not a part of the document but
+A fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document identifies not a part of the document but
 whatever thing the document describes under that name. Why must it be a
-fragment? Because a hashless HTTP URI necessarily identifies a document: a
+fragment? Because a hashless HTTP <a class="gl-ref" href="../glossary.html#uri">URI</a> necessarily identifies a document: a
 client that understands HTTP can conclude that much from the protocol alone,
 and can conclude it even if the owner runs no server, since a 404 is still a
 statement about a document.
@@ -200,7 +200,7 @@ identifiers. This, in turn, means that RDF namespaces should end with
 </blockquote>
 
 <p>
-This inference is what the resolution of Chapter 8 overturned. The 2005
+This <a class="gl-ref" href="../glossary.html#inference">inference</a> is what the resolution of Chapter 8 overturned. The 2005
 compromise denies the premise: a client may not conclude from the protocol
 alone that a hashless URI names a document, only from a 200 response. Reading
 the two chapters together shows exactly which sentence had to give way.
@@ -210,14 +210,14 @@ the two chapters together shows exactly which sentence had to give way.
 
 <p>
 The note contains one of the collection&#8217;s rare admissions of an unresolved
-defect, flagged in its own heading as a known bug. If content negotiation
-selects between media types that do not share a fragment specification, a
+defect, flagged in its own heading as a known bug. If <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>
+selects between media types that do not share a fragment <a class="gl-ref" href="../glossary.html#specification">specification</a>, a
 fragment valid for one may be meaningless in the other.
 </p>
 
 <p>
 Berners-Lee dates the change in severity himself. In 1997 it did no harm,
-because HTML was effectively the only type that used fragments and others
+because <a class="gl-ref" href="../glossary.html#html">HTML</a> was effectively the only type that used fragments and others
 ignored them, and falling back from a view to the whole document was
 acceptable. In a passage added around 2001 he notes it has become more of a
 problem, and records the proposal that the requested fragment be sent to the
@@ -247,13 +247,13 @@ silently landing at the top of the page.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The axiom is normative.</strong> RFC 3986, of January 2005,
+<li><strong>The axiom is normative.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, of January 2005,
 specifies that fragment semantics are defined by the media type of the
 retrieved representation, and RFC 6838, of January 2013, requires media type
 registrations to state fragment identifier considerations. Section 11.2&#8217;s
 recommendation became process.</li>
 <li><strong>The predictions came true, one at a time.</strong> Media Fragments
-URI 1.0 became a W3C Recommendation in September 2012, giving time ranges and
+URI 1.0 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in September 2012, giving time ranges and
 spatial regions. Text fragments, addressing a passage by quoting its words,
 shipped in Chrome in 2020, which is the plain-text range proposal arriving
 twenty-three years late.</li>

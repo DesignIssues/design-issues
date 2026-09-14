@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2008-01-01.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 32 established that the model is a graph of statements. This note,
+Chapter 32 established that the model is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of statements. This note,
 from 1998, asks the question that immediately follows and is easy to get
 wrong: when a statement refers to something, what exactly is it referring to?
 The element in a document, the node in the graph, or the thing in the world?
@@ -110,10 +110,10 @@ interpretation problem from Chapter 24.
 </p>
 
 <p>
-Take a URI with a fragment, pointing into a file that describes a person. If
+Take a <a class="gl-ref" href="../glossary.html#uri">URI</a> with a fragment, pointing into a file that describes a person. If
 the file is treated as data, the fragment identifies the person. If it is
 treated as markup, the fragment identifies the element. Since the semantics
-of a fragment come from the media type, as Chapter 11 requires, the same
+of a fragment come from the <a class="gl-ref" href="../glossary.html#media-type">media type</a>, as Chapter 11 requires, the same
 string means two different things depending on how the document is labelled.
 </p>
 
@@ -131,7 +131,7 @@ to the markup definition and refer to the node described by the element. But
 the data layer needs to make statements about documents and elements
 themselves, and the two must stay distinguishable. His own example is the one
 that makes it vivid: he might want to state that he wrote a snippet, and it
-would be tempting to say he is the author of that fragment identifier, but he
+would be tempting to say he is the author of that <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a>, but he
 is not the author of Ora Lassila.
 </p>
 
@@ -213,7 +213,7 @@ and its limits.</figcaption>
 He is clear that shortcuts are sometimes needed, and equally clear about what
 they cost. Where a compound property collapses the two steps, there is no
 node for the author at all, and the fact that a person wrote the book and has
-that mailbox must be expressed somewhere else. The schema is a good place,
+that mailbox must be expressed somewhere else. The <a class="gl-ref" href="../glossary.html#schema">schema</a> is a good place,
 because it makes the expansion evident to any processing machinery.
 </p>
 
@@ -229,9 +229,9 @@ be specified without settling the philosophy.
 <ul>
 <li><strong>The mechanism was standardised.</strong> Inverse functional
 properties, which formalise &ldquo;no two things share this value&rdquo;,
-are part of OWL, a W3C Recommendation of February 2004, and identifying a
+are part of <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of February 2004, and identifying a
 person by a hashed mailbox became the standard practice in the Friend of a
-Friend vocabulary.</li>
+Friend <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>.</li>
 <li><strong>The fragment clash was resolved by media type.</strong>
 Registering data-carrying media types with their own fragment rules settled
 which interpretation applies, which is Chapter 11&#8217;s axiom doing the work it

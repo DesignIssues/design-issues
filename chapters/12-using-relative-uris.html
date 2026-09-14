@@ -54,7 +54,7 @@ a Design Issues note by Tim Berners-Lee, 2011.
 <p>
 This note is a complaint, and it says so. Berners-Lee wrote it in 2011 after
 a discussion on the Jena bug tracker about whether his request for relative
-URI support was a bug or a wish. The status line carries the exasperation:
+<a class="gl-ref" href="../glossary.html#uri">URI</a> support was a bug or a wish. The status line carries the exasperation:
 </p>
 <blockquote>
 It seems strange so long after the introduction of URIs to br writing
@@ -172,7 +172,7 @@ and is the reason it reads as a complaint rather than an essay.
 </p>
 
 <p>
-The first is XML namespaces, which forbid relative references in namespace
+The first is <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces, which forbid relative references in <a class="gl-ref" href="../glossary.html#namespace">namespace</a>
 declarations. Berners-Lee&#8217;s diagnosis is that the authors envisaged a narrow
 set of cases in which namespace terms were stable and global while the
 document was local, and did not see the general need to generate relative
@@ -203,9 +203,9 @@ files should use them; data sent across the network should use them.
 <ul>
 <li><strong>The XML namespace rule was never relaxed.</strong> Relative
 references in namespace declarations remain deprecated, and the working
-answer for RDF users is the one given here: use Turtle rather than RDF/XML,
+answer for <a class="gl-ref" href="../glossary.html#rdf">RDF</a> users is the one given here: use <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> rather than RDF/XML,
 which permits a relative base.</li>
-<li><strong>Turtle made the base explicit.</strong> Turtle became a W3C
+<li><strong>Turtle made the base explicit.</strong> Turtle became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 Recommendation in February 2014 with an <code>@base</code> directive and
 relative reference support, which is the capability this note asks
 serialisers to provide.</li>
@@ -225,8 +225,8 @@ that have nothing to do with RDF.</li>
 <p>
 The design decision this chapter defends is recorded in Chapter 4, which
 explains why one resolution algorithm was made common to all schemes. The
-relative-URI rules themselves are quoted from RFC 1630 in Chapter 2. The
-file and HTTP correspondence introduced in section 12.3 is the subject of
+relative-URI rules themselves are quoted from <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 1630 in Chapter 2. The
+file and <a class="gl-ref" href="../glossary.html#http">HTTP</a> correspondence introduced in section 12.3 is the subject of
 Chapter 14. Webizing is Chapter 26.
 </p>
 </div>

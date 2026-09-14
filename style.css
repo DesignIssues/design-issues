@@ -181,7 +181,7 @@ p.source-note a { color: var(--muted); text-decoration: none; border-bottom: 1px
 p.source-note a:hover { color: var(--accent-color); }
 p.source-note .source-link {
     margin-left: 0.4rem; font-variant: small-caps; letter-spacing: 0.06em;
-    color: var(--accent-color); border-bottom: none;
+    color: var(--accent-color); border-bottom: none; white-space: nowrap;
 }
 p.source-note .source-link:hover { text-decoration: underline; }
 
@@ -590,4 +590,15 @@ footer a { color: var(--accent-color); }
     ol.chapters li { padding-left: 2.4rem; }
     .chapter-nav { flex-wrap: wrap; gap: 0.4rem; }
     .chapter-navigation { flex-direction: column; }
+}
+
+/* ---- First use of a glossary term, linked to its definition ---- */
+a.gl-ref {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted #b9c6cc;
+}
+a.gl-ref:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
 }

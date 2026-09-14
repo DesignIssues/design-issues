@@ -62,11 +62,11 @@ designs to use URIs and HTTP properly.
 <cite>Generic Resources, note added 2000</cite>
 </blockquote>
 <p>
-The question it answers is what a URI identifies when the thing identified
+The question it answers is what a <a class="gl-ref" href="../glossary.html#uri">URI</a> identifies when the thing identified
 does not have one fixed sequence of bits. The answer supplies the notion of
 &ldquo;document&rdquo; that Chapter 7 depends on, and the reason content
 negotiation exists at all. Berners-Lee records that this was the thinking
-behind HTTP content negotiation in 1992.
+behind <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a> in 1992.
 </p>
 </div>
 
@@ -75,7 +75,7 @@ behind HTTP content negotiation in 1992.
 <p>
 The note opens with a distinction and immediately refuses to let it be
 binary. A resource may correspond to exactly one possible bit stream: the
-text of an Internet RFC is the example, and it will always have the same
+text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> is the example, and it will always have the same
 checksum. Or it may be generic, well specified as a concept but not
 specified closely enough to fix the bits.
 </p>
@@ -181,7 +181,7 @@ interface while treating them as one concept in the architecture.</figcaption>
 </figure>
 
 <p>
-The inference he draws from the smallness is a design instruction:
+The <a class="gl-ref" href="../glossary.html#inference">inference</a> he draws from the smallness is a design instruction:
 </p>
 
 <blockquote>
@@ -233,12 +233,12 @@ resource, and points back to the quality-of-service argument of Chapter 3.
 
 <p>
 The second was proposed as typed links, and later, in a section added in
-September 2000, as an RDF vocabulary. That vocabulary defines classes for
+September 2000, as an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>. That vocabulary defines classes for
 invariance, <code>TimeInvariant</code>, <code>LanguageInvariant</code>,
 <code>ContentTypeInvariant</code>, and <code>Fixed</code> as a subclass of all
 three, together with properties such as
 <code>isLanguageSpecificVersionOf</code>. Berners-Lee notes that the
-ontology does not cover the target-medium dimension, which is the one HTTP
+<a class="gl-ref" href="../glossary.html#ontology">ontology</a> does not cover the target-medium dimension, which is the one HTTP
 never negotiated either.
 </p>
 
@@ -246,9 +246,9 @@ never negotiated either.
 <h3>What happened since</h3>
 <ul>
 <li><strong>Three dimensions shipped; the fourth went elsewhere.</strong>
-Content negotiation for media type, language and encoding is specified in
+Content negotiation for <a class="gl-ref" href="../glossary.html#media-type">media type</a>, language and encoding is specified in
 what is now RFC 9110, of June 2022. Target medium was never negotiated in
-HTTP and was handled by CSS media queries instead, first a W3C
+HTTP and was handled by CSS media queries instead, first a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 Recommendation in June 2012.</li>
 <li><strong>The <code>vary=</code> proposal became something narrower.</strong>
 The <code>Vary</code> response header exists, but it describes which request

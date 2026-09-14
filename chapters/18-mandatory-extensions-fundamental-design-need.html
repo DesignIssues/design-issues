@@ -70,7 +70,7 @@ the web.
 <p>
 Not reduced reliability. A complete inability. If every extension may be
 ignored, then no extension may be relied upon, and the set of things a
-publisher can count on is frozen at whatever was in the base specification.
+publisher can count on is frozen at whatever was in the base <a class="gl-ref" href="../glossary.html#specification">specification</a>.
 </p>
 </div>
 
@@ -82,11 +82,11 @@ not only for its own extension but for a way to say whether a given extension
 is optional. Berners-Lee calls this a fundamental key to smooth evolution
 from one version of a language to the next, and notes that it can be done
 term by term or in bulk for a whole language, stated in the document or in
-the schema.
+the <a class="gl-ref" href="../glossary.html#schema">schema</a>.
 </p>
 
 <p>
-The note was written when XML namespaces were arriving, and the complaint is
+The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving, and the complaint is
 that they solve half the problem:
 </p>
 
@@ -193,9 +193,9 @@ langauge B.
 
 <p>
 A receiver that knows only B can then process a document in A by treating the
-namespace as though it were B. The practical constraint he attaches is the
+<a class="gl-ref" href="../glossary.html#namespace">namespace</a> as though it were B. The practical constraint he attaches is the
 important part: the assertion must be simple enough to put in the document,
-so that the receiver need not dereference a schema to act on it.
+so that the receiver need not <a class="gl-ref" href="../glossary.html#dereference">dereference</a> a schema to act on it.
 </p>
 
 <p>
@@ -210,17 +210,17 @@ document, not wait at the end of a network request.
 <li><strong>The proposal was not adopted for XML.</strong> No standard way to
 mark an extension mandatory or ignorable was added to XML or to namespaces.
 The gap this note names is still open.</li>
-<li><strong>It was adopted almost everywhere else.</strong> HTTP had the
+<li><strong>It was adopted almost everywhere else.</strong> <a class="gl-ref" href="../glossary.html#http">HTTP</a> had the
 <code>Mandatory</code> extension mechanism under discussion when this was
 written, and the pattern survives in modern protocols: critical extensions in
-X.509 certificates, which fail validation when unrecognised, and TLS
+X.509 certificates, which fail validation when unrecognised, and <a class="gl-ref" href="../glossary.html#tls">TLS</a>
 extensions with defined must-understand behaviour, both implement exactly
 this distinction.</li>
 <li><strong>The three-way taxonomy became ordinary practice.</strong>
 Forward-compatible binary formats distinguish fields that may be skipped from
 those that must be understood, and carry the distinction in the encoding
 rather than in a schema, which is what section 18.2 asks for.</li>
-<li><strong>HTML chose the third option permanently.</strong> The HTML5
+<li><strong><a class="gl-ref" href="../glossary.html#html">HTML</a> chose the third option permanently.</strong> The HTML5
 parsing rules, specified from 2008 onward, define unwrapping behaviour for
 unknown elements exactly, which removes the ambiguity without supplying the
 mandatory flag.</li>

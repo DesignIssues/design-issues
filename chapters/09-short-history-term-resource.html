@@ -54,7 +54,7 @@ a Design Issues note by Tim Berners-Lee, 2009-08-01.
 <p>
 Written in August 2009 and sent as an email to the Technical Architecture
 Group&#8217;s list, this note is the plainest thing Berners-Lee wrote about the
-Semantic Web&#8217;s central terminological mess. It is placed after Chapters 7 and
+<a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s central terminological mess. It is placed after Chapters 7 and
 8 because it explains how the argument they record came to be possible: a
 single word, &ldquo;resource&rdquo;, acquired four meanings over fifteen
 years, and each community inherited the one that suited it.
@@ -74,10 +74,10 @@ argument.
 
 <table>
 <tr><th>When</th><th>Who</th><th>What &ldquo;resource&rdquo; meant</th></tr>
-<tr><td>1990</td><td>The first Web specification</td><td>Nothing: the term was &ldquo;document&rdquo;, in Universal Document Identifier</td></tr>
+<tr><td>1990</td><td>The first Web <a class="gl-ref" href="../glossary.html#specification">specification</a></td><td>Nothing: the term was &ldquo;document&rdquo;, in Universal Document Identifier</td></tr>
 <tr><td>early 1990s</td><td>The IETF online-information community</td><td>A useful thing out there: a page, a file, a film</td></tr>
-<tr><td>late 1990s</td><td>REST</td><td>A time-varying mapping between a URI and a representation</td></tr>
-<tr><td>1999 on</td><td>RDF</td><td>Anything at all; <code>rdf:Resource</code> is the class of everything</td></tr>
+<tr><td>late 1990s</td><td>REST</td><td>A time-varying mapping between a <a class="gl-ref" href="../glossary.html#uri">URI</a> and a representation</td></tr>
+<tr><td>1999 on</td><td><a class="gl-ref" href="../glossary.html#rdf">RDF</a></td><td>Anything at all; <code>rdf:Resource</code> is the class of everything</td></tr>
 <tr><td>2004</td><td>The Architecture of the World Wide Web</td><td>&ldquo;Information resource&rdquo; for a page; &ldquo;resource&rdquo; for anything</td></tr>
 </table>
 
@@ -107,7 +107,7 @@ returned representation of the resource.
 <p>
 The assessment of Roy Fielding&#8217;s formalisation is generous and limited in the
 same sentence. A resource as a time-varying mapping from URI to
-representation was, Berners-Lee says, good enough for HTTP, and not enough
+representation was, Berners-Lee says, good enough for <a class="gl-ref" href="../glossary.html#http">HTTP</a>, and not enough
 for the architecture document to describe how the Web actually worked.
 </p>
 
@@ -124,7 +124,7 @@ various common patterns which allow the web to be a useful medium.
 </blockquote>
 
 <p>
-This is Chapter 3&#8217;s conclusion arriving in a different vocabulary. A formal
+This is Chapter 3&#8217;s conclusion arriving in a different <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>. A formal
 definition can say what a resource is. It cannot say what makes one worth
 relying on, and reliance is what the Web runs on.
 </p>
@@ -146,7 +146,7 @@ document. The semantics of the hash sign are defined web-wide to mean that
 </blockquote>
 
 <p>
-A graphics language may use local identifiers for lines and points. HTML uses
+A graphics language may use local identifiers for lines and points. <a class="gl-ref" href="../glossary.html#html">HTML</a> uses
 them for anchors. RDF uses them for people and concepts. None of these
 required a change to HTTP, because each language is entitled to say what its
 own local names denote, and the hash supplies the same globalising step to
@@ -229,18 +229,18 @@ capitalised term in Web architecture is an ordinary word under protest.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The word was not eliminated.</strong> &ldquo;Resource&rdquo;
-remains in RFC 3986, in the HTTP specifications, and in RDF, carrying
+remains in <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, in the HTTP specifications, and in RDF, carrying
 different senses in each. The proposal in section 9.5 has never been acted
 on.</li>
-<li><strong>The Web Ontology Language had already moved.</strong> As the note
-records, OWL uses <code>owl:Thing</code> for the universal class rather than
+<li><strong>The Web <a class="gl-ref" href="../glossary.html#ontology">Ontology</a> Language had already moved.</strong> As the note
+records, <a class="gl-ref" href="../glossary.html#owl">OWL</a> uses <code>owl:Thing</code> for the universal class rather than
 <code>rdf:Resource</code>, which is the substitution Berners-Lee recommends,
 made in one vocabulary a decade before he recommended it generally.</li>
 <li><strong>The truce held.</strong> No serious attempt to reopen
 httpRange-14 has succeeded, which is the outcome this note advocates when it
 says that continuing to debate it as an open issue is expensive.</li>
 <li><strong>The first snag never went away.</strong> Vocabulary URIs that do
-not dereference to a definition remain common, which is the failure mode
+not <a class="gl-ref" href="../glossary.html#dereference">dereference</a> to a definition remain common, which is the failure mode
 described here: publishers adopting the form of the practice without the
 obligation that makes it work.</li>
 </ul>

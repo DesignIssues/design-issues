@@ -80,7 +80,7 @@ abandon rather than precision as this not a mathematical treatise.
 <p>
 The disclaimer is fair, and it should not be allowed to obscure what the note
 achieves. Nine numbered claims are made here. Seven of them became, over the
-following decade, the content of RFC 3986 and of the HTTP specifications.
+following decade, the content of <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986 and of the <a class="gl-ref" href="../glossary.html#http">HTTP</a> specifications.
 Two of them are still argued about.
 </p>
 </div>
@@ -105,7 +105,7 @@ it, and the power of the Web is the less for that.
 Membership of the Web is thereby made a property of naming, not of storage,
 protocol, or format. Nothing is on the Web because it sits on a Web server.
 It is on the Web because it can be referred to. Every later argument in this
-book about what deserves a URI, from government datasets in Chapter 53 to
+book about what deserves a <a class="gl-ref" href="../glossary.html#uri">URI</a>, from government datasets in Chapter 53 to
 the parts of a person&#8217;s own data in Chapter 54, follows from this sentence.
 </p>
 
@@ -126,9 +126,9 @@ should be given a URI.</p>
 <p>
 The first is a claim about the design, and Berners-Lee offers an argument
 for it. There is no limit on the length of a URI, so any existing or future
-naming scheme can be folded into URI space by encoding its identifiers as a
+naming <a class="gl-ref" href="../glossary.html#scheme">scheme</a> can be folded into URI space by encoding its identifiers as a
 printable string and prefixing a scheme name. The second is not a claim but
-an instruction, and it is the one that turns into Linked Data ten years
+an instruction, and it is the one that turns into <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> ten years
 later.
 </p>
 
@@ -271,7 +271,7 @@ declining to read past their own segment.</figcaption>
 The example given is the temptation to read <code>.html</code> at the end of
 a URI as a statement about format. A client that does so has begun to depend
 on a convention that the architecture does not guarantee, and that a server
-mapping some legacy namespace into URI space may produce by pure coincidence.
+mapping some legacy <a class="gl-ref" href="../glossary.html#namespace">namespace</a> into URI space may produce by pure coincidence.
 Metadata that a client might wish to infer from the string must instead be
 carried in the protocol, which is what a substantial part of the HTTP header
 set exists to do.
@@ -279,7 +279,7 @@ set exists to do.
 
 <p>
 Berners-Lee makes an exception for query strings, and it is a careful one.
-The portion after a question mark is not opaque to the client, which
+The portion after a question mark is not <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the client, which
 constructs it, but it should remain opaque to intermediaries such as proxies.
 He then records that the axiom had already been broken in his own time, and
 by whom: caches that declined to store any document whose URI contained a
@@ -382,7 +382,7 @@ assumption that makes it work.</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.2</span>
-The opacity axiom forbids inferring a media type from a URI ending in
+The opacity axiom forbids inferring a <a class="gl-ref" href="../glossary.html#media-type">media type</a> from a URI ending in
 <code>.html</code>. Content sniffing infers a media type from the first bytes
 of the response body instead. Does that respect opacity? What does it
 violate?</p>

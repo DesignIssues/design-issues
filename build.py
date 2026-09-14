@@ -154,6 +154,71 @@ def collapse_questions(frag):
             + body.strip() + "\n</details>\n"
             + frag[j:])
 
+# Terms a reader may not know are linked to the glossary, once per chapter,
+# at their first appearance in the editorial prose. Quotations, headings,
+# figures, code and existing links are left alone: a quotation must not grow
+# markup the source did not have, and a heading that is half a link reads
+# badly.
+_GL_SKIP = re.compile(
+    r"<blockquote\b.*?</blockquote>"
+    r"|<svg\b.*?</svg>"
+    r"|<pre\b.*?</pre>"
+    r"|<code\b.*?</code>"
+    r"|<a\b.*?</a>"
+    r"|<h[1-4]\b.*?</h[1-4]>"
+    r"|<figcaption\b.*?</figcaption>"
+    r"|<[^>]+>",
+    re.S | re.I)
+
+
+def _gl_terms():
+    """Longest first, so 'fragment identifier' wins over 'fragment'."""
+    out = []
+    for term, _expand, _ch, _defn in GLOSSARY:
+        anchor = term.lower().replace(" ", "-")
+        # Match the term as written, or with its first letter capitalised.
+        body = re.escape(term)
+        if term[0].islower():
+            body = "[%s%s]%s" % (term[0].upper(), term[0], re.escape(term[1:]))
+        out.append((len(term), re.compile(r"(?<![\w-])(%s)(?![\w-])" % body), anchor))
+    out.sort(key=lambda t: -t[0])
+    return [(pat, anchor) for _n, pat, anchor in out]
+
+
+GL_TERMS = _gl_terms()
+
+
+def link_glossary(frag, rel):
+    """Link the first plain-prose occurrence of each glossary term."""
+    holes = [m.span() for m in _GL_SKIP.finditer(frag)]
+
+    def free(a, b):
+        return not any(hs <= a and b <= he for hs, he in holes)
+
+    edits = []
+    taken = []
+    for pat, anchor in GL_TERMS:
+        for m in pat.finditer(frag):
+            a, b = m.span(1)
+            if not free(a, b):
+                continue
+            if any(a < tb and ta < b for ta, tb in taken):
+                continue
+            edits.append((a, b, anchor, m.group(1)))
+            taken.append((a, b))
+            break
+
+    if not edits:
+        return frag
+    out, last = [], 0
+    for a, b, anchor, word in sorted(edits):
+        out.append(frag[last:a])
+        out.append(f'<a class="gl-ref" href="{rel}glossary.html#{anchor}">{word}</a>')
+        last = b
+    out.append(frag[last:])
+    return "".join(out)
+
+
 def chapter_html(c, prev, nxt):
     rel = "../"
     vol = c["vol"]
@@ -183,6 +248,7 @@ def chapter_html(c, prev, nxt):
         # the first editorial block is the chapter's opening, not a callout:
         # give it its own class so it can be set as prose rather than a box.
         frag = frag.replace('<div class="editors-note">', '<div class="editors-note intro">', 1)
+        frag = link_glossary(frag, rel)
         out.append(collapse_questions(frag) + "\n")
     else:
         out.append(stub_note(c))

@@ -90,8 +90,8 @@ parts that know different things.
 
 <table>
 <tr><th>Module</th><th>Knows</th><th>Does not know</th></tr>
-<tr><td>Access</td><td>The scheme, and the URI without its fragment</td><td>What a fragment identifier means</td></tr>
-<tr><td>Presentation object</td><td>The media type, and how to interpret a fragment</td><td>The URI it came from</td></tr>
+<tr><td>Access</td><td>The <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, and the <a class="gl-ref" href="../glossary.html#uri">URI</a> without its fragment</td><td>What a <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> means</td></tr>
+<tr><td>Presentation object</td><td>The <a class="gl-ref" href="../glossary.html#media-type">media type</a>, and how to interpret a fragment</td><td>The URI it came from</td></tr>
 <tr><td>Application</td><td>The absolute URI, for resolving relative ones</td><td>What the fragment means</td></tr>
 </table>
 
@@ -196,12 +196,12 @@ can move it without editing it. Berners-Lee credits Jim Gettys with the
 observation that makes this more than a convenience: as digitally signed
 documents become common, editing a document to fix its own internal links
 would break the signature on it. A document that can be self-consistent
-independently of its namespace is one that can be signed once.
+independently of its <a class="gl-ref" href="../glossary.html#namespace">namespace</a> is one that can be signed once.
 </p>
 
 <p>
 The second payoff is evolutionary, and he is emphatic about it. Because no
-access specification refers to fragment semantics, anyone defining a new
+access <a class="gl-ref" href="../glossary.html#specification">specification</a> refers to fragment semantics, anyone defining a new
 media type is free to invent whatever notion of a view or a part suits it,
 knowing that nothing else will break. Equally, anyone designing a new way to
 name and fetch documents need not care what kinds of document will travel
@@ -217,7 +217,7 @@ many new revolutions built on top of the basic Web idea.
 </blockquote>
 
 <p>
-He notes in passing that this is also how the Semantic Web will be built: not
+He notes in passing that this is also how the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> will be built: not
 as a new Web, but as a new kind of document, with a fragment convention of
 its own that names things rather than parts of pages. Webizing a language, he
 says, means taking what were document-global identifiers and making them
@@ -238,7 +238,7 @@ common to all schemes.
 <p>
 The justification is the same shape as the one for fragments, and equally
 practical. Sets of documents that link to each other, such as the chapters of
-a book, are moved between file systems, HTTP space and FTP space constantly.
+a book, are moved between file systems, <a class="gl-ref" href="../glossary.html#http">HTTP</a> space and FTP space constantly.
 Because the resolution rules are universal, the documents need not be
 modified when they move. Berners-Lee adds the honest caveat: moving half a
 set to one place and half to another still breaks the links.
@@ -282,7 +282,7 @@ introduced, the space of scheme names becomes a namespace with all the
 properties that make namespaces hard: clashes destroy interoperability,
 ownership becomes commercially valuable, and fair management becomes both
 essential and difficult. Worse, software would be needed to look up schemes
-and fetch handlers for them, which means something like DNS, which means that
+and fetch handlers for them, which means something like <a class="gl-ref" href="../glossary.html#dns">DNS</a>, which means that
 the top level of the Web&#8217;s namespace has silently become DNS again. At that
 point, he observes, there is no top-level extension switch left.
 </p>
@@ -302,7 +302,7 @@ The first Web specification said Universal Document Identifier. The IETF
 discussion changed &ldquo;document&rdquo; to &ldquo;resource&rdquo; on two
 grounds: documents did not obviously cover films and sounds, and URIs exist
 for endpoints such as mailboxes and login ports, which are not documents at
-all. RDF later adopted &ldquo;resource&rdquo; for anything whatever, the
+all. <a class="gl-ref" href="../glossary.html#rdf">RDF</a> later adopted &ldquo;resource&rdquo; for anything whatever, the
 class of which every class is a subclass. The Technical Architecture Group
 then introduced &ldquo;information resource&rdquo; for the narrower original
 sense. Three meanings, one word, and the reader of any given specification
@@ -313,7 +313,7 @@ must determine which is in force.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The independence axiom was written into the standard.</strong>
-RFC 3986, of January 2005, specifies that the semantics of a fragment are
+<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, of January 2005, specifies that the semantics of a fragment are
 defined by the media type of the retrieved representation, which is this
 chapter&#8217;s first axiom in normative form.</li>
 <li><strong>The client-side fragment was abused, then replaced.</strong>
@@ -322,7 +322,7 @@ Google&#8217;s AJAX crawling scheme of 2009 made a convention of it before
 deprecating it in October 2015. The History API&#8217;s pushState, in HTML5,
 restored a distinct URI per view, which is what the model asked for.</li>
 <li><strong>New fragment conventions kept arriving, as predicted.</strong>
-W3C Media Fragments URI 1.0 became a Recommendation in September 2012. Text
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Media Fragments URI 1.0 became a Recommendation in September 2012. Text
 fragments, addressing a passage by its words, shipped in Chrome in 2020.
 Neither required any change to HTTP, which is the flexibility this chapter
 claims.</li>
