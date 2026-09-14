@@ -51,7 +51,7 @@ properly, it is named.
 
 <dl class="glossary">
 <dt id="uri">URI<span class="gl-expand">Uniform Resource Identifier</span></dt>
-<dd>A name for something, written so that it works anywhere in the world. Web addresses are the familiar kind. The point of a URI is that whoever you say it to, it means the same thing. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
+<dd>A name for something, written so that it works anywhere in the world. Web addresses are the familiar kind. The point of a URI is that it means the same thing to everybody it is given to. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
 <dt id="url">URL<span class="gl-expand">Uniform Resource Locator</span></dt>
 <dd>An older word for the same thing as a URI, still in common use. This book follows its source in mostly saying URI, and treats the distinction between a name and an address as a mistake: see Chapter 3. <a class="gl-ch" href="chapters/03-myth-names-addresses.html">Chapter 3</a></dd>
 <dt id="http">HTTP<span class="gl-expand">Hypertext Transfer Protocol</span></dt>
@@ -63,7 +63,7 @@ properly, it is named.
 <dt id="media-type">media type<span class="gl-expand">also called a MIME type</span></dt>
 <dd>A short label saying what kind of thing a file is: a web page, a photograph, a sound recording. It travels with the file and tells the receiving program how to read it. <a class="gl-ch" href="chapters/11-fragment-identifiers.html">Chapter 11</a></dd>
 <dt id="fragment-identifier">fragment identifier<span class="gl-expand">the part after a #</span></dt>
-<dd>The piece of a web address after the hash. It names a part of, or a view of, whatever the rest of the address names. It is never sent to the server: your own browser works it out. <a class="gl-ch" href="chapters/11-fragment-identifiers.html">Chapter 11</a></dd>
+<dd>The piece of a web address after the hash. It names a part of, or a view of, whatever the rest of the address names. It is never sent to the server: the browser that already has the page works it out. <a class="gl-ch" href="chapters/11-fragment-identifiers.html">Chapter 11</a></dd>
 <dt id="scheme">scheme<span class="gl-expand">the part before the colon</span></dt>
 <dd>The first word of a web address, such as https. It says which set of rules applies to the rest of the address. <a class="gl-ch" href="chapters/04-web-model-information-hiding-uri.html">Chapter 4</a></dd>
 <dt id="dns">DNS<span class="gl-expand">the Domain Name System</span></dt>
@@ -71,7 +71,7 @@ properly, it is named.
 <dt id="dereference">dereference</dt>
 <dd>To look something up. Given a name, go and fetch what it names. <a class="gl-ch" href="chapters/49-linked-data.html">Chapter 49</a></dd>
 <dt id="opaque">opaque</dt>
-<dd>Something you are allowed to use but not to read inside. A path in a web address is opaque to your browser: it passes it on without trying to work out what it means. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
+<dd>Something that may be used but not looked inside. A path in a web address is opaque to a browser, which passes it on without trying to work out what it means. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
 <dt id="namespace">namespace</dt>
 <dd>A set of terms owned by one group, so that two groups can each use the word “title” for different things without colliding. <a class="gl-ch" href="chapters/17-extensible-languages-web-evolution.html">Chapter 17</a></dd>
 <dt id="vocabulary">vocabulary<span class="gl-expand">also called an ontology</span></dt>
@@ -83,15 +83,15 @@ properly, it is named.
 <dt id="triple">triple</dt>
 <dd>One statement in that form: a subject, a property and a value. “This page · was written by · Ora”. <a class="gl-ch" href="chapters/32-rdf-model-exactly-xml-model.html">Chapter 32</a></dd>
 <dt id="graph">graph</dt>
-<dd>What you get when you draw a pile of such statements: things as dots, relationships as arrows between them. <a class="gl-ch" href="chapters/32-rdf-model-exactly-xml-model.html">Chapter 32</a></dd>
+<dd>What a pile of such statements makes when drawn: things as dots, relationships as arrows between them. <a class="gl-ch" href="chapters/32-rdf-model-exactly-xml-model.html">Chapter 32</a></dd>
 <dt id="linked-data">Linked Data</dt>
-<dd>Data published so that the things it mentions have addresses you can look up, and so that it points at other people’s data. Four rules, set out in Chapter 49. <a class="gl-ch" href="chapters/49-linked-data.html">Chapter 49</a></dd>
+<dd>Data published so that the things it mentions have addresses that can be looked up, and so that it points at other people’s data. Four rules, set out in Chapter 49. <a class="gl-ch" href="chapters/49-linked-data.html">Chapter 49</a></dd>
 <dt id="semantic-web">Semantic Web</dt>
 <dd>The name for the whole project of putting data, rather than only documents, on the Web. Not artificial intelligence: see Chapter 31. <a class="gl-ch" href="chapters/30-roadmap-semantic-web.html">Chapter 30</a></dd>
 <dt id="ontology">ontology</dt>
 <dd>A vocabulary, usually one with some structure saying how its terms relate to each other. <a class="gl-ch" href="chapters/88-cultures-boundaries.html">Chapter 88</a></dd>
 <dt id="inference">inference</dt>
-<dd>Working out something that follows from what you already have. If every cat is an animal and this is a cat, then this is an animal. <a class="gl-ch" href="chapters/40-logic-semantic-web.html">Chapter 40</a></dd>
+<dd>Working out something that follows from what is already known. If every cat is an animal and this is a cat, then this is an animal. <a class="gl-ch" href="chapters/40-logic-semantic-web.html">Chapter 40</a></dd>
 <dt id="turtle">Turtle<span class="gl-expand">and N3, its larger relative</span></dt>
 <dd>A way of writing those statements down that a person can read. N3 adds rules and logic to it. <a class="gl-ch" href="chapters/42-notation3.html">Chapter 42</a></dd>
 <dt id="sparql">SPARQL</dt>
@@ -99,25 +99,25 @@ properly, it is named.
 <dt id="owl">OWL<span class="gl-expand">the Web Ontology Language</span></dt>
 <dd>A language for saying how the terms in a vocabulary relate: this kind of thing is a kind of that, no two things share this value, and so on. <a class="gl-ch" href="chapters/34-identity-identify-rdf.html">Chapter 34</a></dd>
 <dt id="reification">reification</dt>
-<dd>Describing a statement as a thing, so that you can say something about it. “Jane said that”, where “that” is itself a statement. <a class="gl-ch" href="chapters/44-reification-rdf-n3.html">Chapter 44</a></dd>
+<dd>Describing a statement as a thing, so that something can be said about it. “Jane said that”, where “that” is itself a statement. <a class="gl-ch" href="chapters/44-reification-rdf-n3.html">Chapter 44</a></dd>
 <dt id="monotonic">monotonic</dt>
 <dd>A system is monotonic when adding new information never withdraws an old conclusion. It matters because on the Web anyone may add information at any time, without asking. <a class="gl-ch" href="chapters/42-notation3.html">Chapter 42</a></dd>
 <dt id="same-origin-policy">same-origin policy</dt>
-<dd>The rule that code on a page from one site may not read data from another. It is what stops a malicious page raiding your bank, and what makes combining data from several places difficult. <a class="gl-ch" href="chapters/68-same-origin-policy---origin.html">Chapter 68</a></dd>
+<dd>The rule that code on a page from one site may not read data from another. It is what stops a malicious page raiding somebody’s bank, and what makes combining data from several places difficult. <a class="gl-ch" href="chapters/68-same-origin-policy---origin.html">Chapter 68</a></dd>
 <dt id="cors">CORS<span class="gl-expand">Cross-Origin Resource Sharing</span></dt>
 <dd>The permission a server gives so that pages from other sites may read its data, relaxing the rule above. <a class="gl-ch" href="chapters/70-cors-browser-distrust-web-apps.html">Chapter 70</a></dd>
 <dt id="tls">TLS<span class="gl-expand">and the https prefix</span></dt>
-<dd>The encryption that protects a connection, so that nobody between you and the site can read or alter what passes. <a class="gl-ch" href="chapters/67-https-everywhere-considered-harmful.html">Chapter 67</a></dd>
+<dd>The encryption that protects a connection, so that nobody in between can read or alter what passes. <a class="gl-ch" href="chapters/67-https-everywhere-considered-harmful.html">Chapter 67</a></dd>
 <dt id="pki">PKI<span class="gl-expand">public key infrastructure</span></dt>
-<dd>The arrangement by which a handful of companies vouch for who owns a web address, which is how your browser decides a site is what it claims. <a class="gl-ch" href="chapters/66-model-real-trust.html">Chapter 66</a></dd>
+<dd>The arrangement by which a handful of companies vouch for who owns a web address, which is how a browser decides a site is what it claims. <a class="gl-ch" href="chapters/66-model-real-trust.html">Chapter 66</a></dd>
 <dt id="pod">pod<span class="gl-expand">a personal online data store</span></dt>
-<dd>A place on the Web that holds your data and that you control, which any application may read or write if you let it. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
+<dd>A place on the Web that holds one person’s data under that person’s control, which any application may read or write with permission. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
 <dt id="solid">Solid</dt>
-<dd>The project to build that: your data in one place you own, applications separate from it. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
+<dd>The project to build that: a person’s data in one place they own, with applications kept separate from it. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
 <dt id="content-negotiation">content negotiation</dt>
-<dd>The exchange in which your browser says what forms it can handle and the server picks one. It is how one address can serve a page in your language or a picture in a format your device supports. <a class="gl-ch" href="chapters/10-generic-resources.html">Chapter 10</a></dd>
+<dd>The exchange in which a browser says what forms it can handle and the server picks one. It is how a single address can serve a page in the reader’s language, or a picture in a format the device supports. <a class="gl-ch" href="chapters/10-generic-resources.html">Chapter 10</a></dd>
 <dt id="idempotent">idempotent</dt>
-<dd>An operation you can repeat without further effect. Asking for a page is idempotent; buying a book is not. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
+<dd>An operation that can be repeated without further effect. Asking for a page is idempotent; buying a book is not. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
 <dt id="specification">specification<span class="gl-expand">often shortened to spec</span></dt>
 <dd>The document that defines a format or a protocol precisely enough that two people can build things that work together without meeting. <a class="gl-ch" href="chapters/21-write-specification.html">Chapter 21</a></dd>
 <dt id="w3c">W3C<span class="gl-expand">the World Wide Web Consortium</span></dt>
