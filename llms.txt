@@ -61,15 +61,16 @@ Ten volumes, graded by the kind of claim each makes:
 ## Chapter shape
 
 Every chapter carries: a source note naming the original title, date, length
-and URL; "The question", giving the argument it was written into; the
+and URL; inline SVG figures where a picture shows the mechanism better than
+prose; "The question", giving the argument it was written into; the
 argument restated in order with quotations attributed and cited; "What
 happened since", listing outcomes with specification numbers and dates;
 "Connections" to other chapters; and four questions.
 
 ## Status
 
-Volume I is written. Chapters 7-96 are stubs carrying their place in the
-order and a link to their source. Volumes are written in order. Anything
+Volumes I and II are written (chapters 1-15). Chapters 16-96 are stubs
+carrying their place in the order and a link to their source. Volumes are written in order. Anything
 marked "in preparation" has no prose yet and should not be cited.
 
 ## Files
