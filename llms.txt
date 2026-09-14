@@ -69,7 +69,7 @@ happened since", listing outcomes with specification numbers and dates;
 
 ## Status
 
-Volumes I to VII are written (chapters 1-74). Chapters 75-96 are stubs
+Volumes I to VIII are written (chapters 1-81). Chapters 82-96 are stubs
 carrying their place in the order and a link to their source. Volumes are written in order. Anything
 marked "in preparation" has no prose yet and should not be cited.
 
