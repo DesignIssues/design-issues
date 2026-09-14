@@ -69,9 +69,10 @@ happened since", listing outcomes with specification numbers and dates;
 
 ## Status
 
-Volumes I to IX are written (chapters 1-91). Chapters 92-96 are stubs
-carrying their place in the order and a link to their source. Volumes are written in order. Anything
-marked "in preparation" has no prose yet and should not be cited.
+Complete: all 96 chapters written, with 97 inline figures. Every quotation is
+checked verbatim against the source note by check_quotes.py in the repository.
+What remains is correction: errata, better readings, and updating the
+"what happened since" sections as things happen.
 
 ## Files
 

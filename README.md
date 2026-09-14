@@ -53,9 +53,11 @@ problem it solves.
 
 ## Status
 
-Volumes I to IX are written. The remaining 5 chapters exist as stubs that carry
-their place in the order and a link to their source, so the shape of the
-whole is visible from the start. Volumes are being written in order.
+Complete. All 96 chapters are written, with 97 inline figures. Every note on
+w3.org/DesignIssues has a chapter; the Preface is used as front matter.
+
+What remains is correction and improvement: errata, better readings, better
+figures, and updating the "what happened since" sections as things happen.
 
 ## Repository layout
 
@@ -82,10 +84,9 @@ and fails if the quoted words are not in it. Differences in whitespace are
 tolerated, because the source HTML wraps lines; anything else is reported.
 Nothing is attributed to Berners-Lee in this book that does not pass it.
 
-Writing a chapter means creating `content/NN-slug.html` with the same
-basename as the generated chapter file, containing a bare HTML fragment. The
-build wraps it, adds the source note and the navigation, and drops the
-"in preparation" banner.
+A chapter's prose lives in `content/NN-slug.html`, with the same basename as
+the generated chapter file, as a bare HTML fragment. The build wraps it and
+adds the source note, the navigation, and the collapsible Questions block.
 
 ## House standards
 

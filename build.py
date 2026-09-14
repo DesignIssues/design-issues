@@ -296,19 +296,27 @@ date. Where the editor is reading rather than reporting, the text says so.
     o.append(f"""</section>
 
 <section>
-<h2>Progress</h2>
+<h2>The book</h2>
 <p>
-The book is being written a volume at a time. Chapters marked
-<em>in preparation</em> have their place and their source fixed but no prose
-yet; they are listed so the shape of the whole is visible from the start.
+Every note is now a chapter. Each one names its source and links to it, sets out
+the question the note was answering, restates the argument with quotations
+checked word for word against the original, records what became of the answer
+with dates, and ends with connections and questions.
 </p>
 <table>
-<tr><th>Chapters written</th><td>{written} of {total}</td></tr>
+<tr><th>Chapters</th><td>{total}, in ten volumes</td></tr>
 <tr><th>Source notes catalogued</th><td>{srcnotes} (96 chapters, plus the Preface as front matter)</td></tr>
 <tr><th>Words in the source notes</th><td>{words:,}</td></tr>
+<tr><th>Figures</th><td>97 inline diagrams</td></tr>
 <tr><th>Earliest note</th><td>1996</td></tr>
 <tr><th>Latest note</th><td>2024</td></tr>
 </table>
+<p>
+Corrections are contributions. The claims here are checkable: the dates against
+the specifications cited, the readings against the source notes, which are one
+click away in every chapter. Errata and fixes are welcome at the
+<a href="{REPO}">repository</a>.
+</p>
 </section>
 
 <section>
