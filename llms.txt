@@ -28,7 +28,8 @@ before use.
 
 No prior knowledge is assumed. The title page carries a fifteen-chapter path
 through the book, each entry with a line on what it gives the reader; a
-glossary at /glossary.html defines every unavoidable term in plain words; and
+glossary at /glossary.html defines every unavoidable term in plain words,
+and the first use of each term in a chapter links to its entry; and
 the twenty-one landmark chapters open with a plain-language short version
 before any history. Landmark chapters are marked in the table of contents.
 

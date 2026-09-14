@@ -36,7 +36,9 @@ No prior knowledge is assumed. Three things carry that weight:
   fifteen that carry the whole argument, each with a line on what it gives.
 - **A glossary.** Every term the book could not avoid is defined at
   `glossary.html` in plain words, written for somebody meeting it for the
-  first time and not leaning on the other entries.
+  first time and not leaning on the other entries. The build links the first
+  plain-prose use of each term in a chapter to its entry, so the definition
+  is one click away at the moment it is first needed.
 - **A short version.** The twenty-one chapters a reader is most likely to
   arrive at first open with a plain-language summary before the history
   starts, so the chapter can be understood before it is studied.
@@ -137,6 +139,12 @@ adds the source note, the navigation, and the collapsible Questions block.
   conclusions.
 - Apostrophes and quotation marks in editorial prose are typographic. Inside
   a quotation they are left exactly as the source has them.
+- Glossary links are generated, never written by hand. `link_glossary()` in
+  `build.py` links each term once per chapter and skips quotations, headings,
+  figures, code and existing links. To add a term, add it to `glossary.py`.
+- The text column is 38rem, about seventy characters. Figures, tables and the
+  panels on the title page bleed out of it by a clamp that reaches zero before
+  the window narrows, so nothing overflows on a phone.
 
 ## Contributing
 
