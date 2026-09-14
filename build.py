@@ -190,10 +190,10 @@ answering; and records what became of the answer. The originals remain where
 they are and should be read there. Nothing here replaces them.
 </p>
 <p>
-The book is arranged so that it can be read straight through. It is built in
-the same manner as <a href="https://elementarybitcoin.org/">Elementary
-Bitcoin</a>: static pages, a reading order fixed in advance, and every claim
-traceable to something a reader can check.
+Every claim here is meant to be checkable. Each chapter names its source and
+links to it, quotations are verified against the original word for word, and
+statements about what happened afterwards carry the specification and the
+date. Where the editor is reading rather than reporting, the text says so.
 </p>
 </section>
 

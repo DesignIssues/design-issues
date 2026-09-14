@@ -7,9 +7,9 @@ A book made from Tim Berners-Lee's
 volumes, put in a reading order, each with its source, its context, and a
 note on what happened next.
 
-Built in the same manner as [Elementary Bitcoin](https://elementarybitcoin.org):
-static pages, a reading order fixed in advance, and every claim traceable to
-something a reader can check.
+Every claim is checkable: each chapter names its source and links to it,
+quotations are verified against the original by a script, and statements
+about what happened since carry the specification and the date.
 
 ## Why
 

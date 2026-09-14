@@ -1,6 +1,6 @@
 /* Design Issues — classic textbook style.
-   Descended from the Elementary Bitcoin stylesheet; block types adapted
-   from theorem/proof to source/commentary. */
+   Block types are source note, editor's note, what-happened-since,
+   connections and questions; diagrams share one palette, set below. */
 
 :root {
     --text-color: #1a1a1a;
