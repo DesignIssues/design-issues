@@ -69,8 +69,8 @@ happened since", listing outcomes with specification numbers and dates;
 
 ## Status
 
-Volumes I to IV are written (chapters 1-39). Chapters 40-96 are stubs
-carrying their place in the order and a link to their source. Volumes are written in order. Anything
+Volumes I to V are written (chapters 1-48, half the book). Chapters 49-96
+are stubs carrying their place in the order and a link to their source. Volumes are written in order. Anything
 marked "in preparation" has no prose yet and should not be cited.
 
 ## Files
