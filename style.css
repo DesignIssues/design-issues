@@ -169,7 +169,59 @@ ol.chapters a:hover { color: var(--accent-color); }
     margin-top: 0; font-size: 1.05rem; font-style: normal;
     font-variant: small-caps; letter-spacing: 0.08em;
 }
-.questions { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--light-border); }
+/* Questions: collapsed by default, opened by the reader, always printed. */
+details.questions {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light-border);
+}
+details.questions > summary {
+    cursor: pointer;
+    list-style: none;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+    color: var(--secondary-color);
+    padding: 0.35rem 0 0.35rem 1.6rem;
+    position: relative;
+    user-select: none;
+}
+details.questions > summary::-webkit-details-marker { display: none; }
+details.questions > summary::before {
+    content: "\203A";
+    position: absolute;
+    left: 0.35rem;
+    top: 0.42rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease;
+    display: inline-block;
+}
+details.questions[open] > summary::before { transform: rotate(90deg); }
+details.questions > summary:hover { color: var(--accent-color); }
+details.questions > summary:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+.q-count {
+    font-variant: normal;
+    letter-spacing: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-left: 0.4rem;
+}
+.q-count::before { content: "("; }
+.q-count::after { content: ")"; }
+
+@media print {
+    /* a collapsed section must still appear on paper */
+    details.questions > *:not(summary) { display: block !important; }
+    details.questions { border-top: 1px solid #ccc; }
+    details.questions > summary::before { content: ""; }
+}
 .question {
     background: var(--question-bg); border-left: 3px solid #d4a574;
     padding: 0.8rem 1rem; margin: 1rem 0;

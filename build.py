@@ -123,6 +123,38 @@ already determined. Contributions are welcome: see the
 </div>
 """ % REPO
 
+def collapse_questions(frag):
+    """Turn the trailing <div class="questions"> block into a <details>.
+
+    Done at build time so chapter fragments stay plain HTML and every
+    chapter, written or still to be written, gets the same behaviour."""
+    open_tag = '<div class="questions">'
+    i = frag.find(open_tag)
+    if i < 0:
+        return frag
+    # find the </div> that closes it, counting nested divs
+    j = i + len(open_tag)
+    depth = 1
+    while depth and j < len(frag):
+        nxt_open = frag.find("<div", j)
+        nxt_close = frag.find("</div>", j)
+        if nxt_close < 0:
+            return frag
+        if 0 <= nxt_open < nxt_close:
+            depth += 1
+            j = nxt_open + 4
+        else:
+            depth -= 1
+            j = nxt_close + 6
+    body = frag[i + len(open_tag):j - 6]
+    n = body.count('<p><span class="question-number">')
+    body = re.sub(r"<h3>Questions</h3>\s*", "", body, count=1)
+    label = f"Questions <span class=\"q-count\">{n}</span>" if n else "Questions"
+    return (frag[:i]
+            + f'<details class="questions">\n<summary>{label}</summary>\n'
+            + body.strip() + "\n</details>\n"
+            + frag[j:])
+
 def chapter_html(c, prev, nxt):
     rel = "../"
     vol = c["vol"]
@@ -148,7 +180,8 @@ def chapter_html(c, prev, nxt):
 """)
     out.append(source_note(c))
     if has_content(c):
-        out.append(open(content_path(c), encoding="utf-8").read().rstrip() + "\n")
+        out.append(collapse_questions(
+            open(content_path(c), encoding="utf-8").read().rstrip()) + "\n")
     else:
         out.append(stub_note(c))
     out.append('<nav class="chapter-navigation">\n')

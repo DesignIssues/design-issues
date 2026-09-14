@@ -53,7 +53,7 @@ problem it solves.
 
 ## Status
 
-Volumes I to III are written. The remaining 70 chapters exist as stubs that carry
+Volumes I to IV are written. The remaining 57 chapters exist as stubs that carry
 their place in the order and a link to their source, so the shape of the
 whole is visible from the start. Volumes are being written in order.
 
@@ -104,6 +104,9 @@ build wraps it, adds the source note and the navigation, and drops the
 - Figures are inline SVG using only the palette defined in `style.css`, carry
   a `<title>` and `<desc>` for screen readers, and must stay legible at phone
   width. A figure earns its place by showing a mechanism the prose cannot.
+- The Questions block is written as a plain `<div class="questions">`; the
+  build wraps it in a `<details>` so readers can collapse it. Do not write the
+  `<details>` by hand.
 
 ## Contributing
 
