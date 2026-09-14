@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/RDF-Future.html"><em>Changes needed to the RDF core in 2010</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2000-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/RDF-Future.html">https://www.w3.org/DesignIssues/RDF-Future.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/RDF-Future.html"><em>Changes needed to the RDF core in 2010</em></a>,
+a Design Issues note by Tim Berners-Lee, 2000-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/RDF-Future.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 On 26 June 2010 a workshop opened on the future of the model. Berners-Lee
@@ -169,7 +167,7 @@ than a date by which to have moved.
 
 <p>
 One proposal is about nothing more than typing effort, and it is the most
-human item in the collection's technical notes. Berners-Lee wants dates and
+human item in the collection&#8217;s technical notes. Berners-Lee wants dates and
 times to be writable without ceremony:
 </p>
 
@@ -211,7 +209,7 @@ unnecessary incompatibility.
 </blockquote>
 
 <p>
-A research language and a standard exist side by side, and Berners-Lee's
+A research language and a standard exist side by side, and Berners-Lee&#8217;s
 instruction is that when the standard grows it should grow towards the
 research language, so that the two do not diverge into rival vocabularies for
 the same thing. This is the test of independent invention applied
@@ -278,8 +276,11 @@ another such pair, and say whether they converged.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

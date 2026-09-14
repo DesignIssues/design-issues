@@ -26,9 +26,29 @@ This book supplies the order. Every note is assigned exactly one chapter, so
 that a term is defined before it is used and an argument is met after the
 problem it solves.
 
+## Reading it without a background
+
+No prior knowledge is assumed. Three things carry that weight:
+
+- **A fifteen-chapter path.** Ninety-six chapters is a lot to begin with, and
+  the reading order is the order in which the ideas depend on one another,
+  not the order in which they are best met. The path on the title page picks
+  fifteen that carry the whole argument, each with a line on what it gives.
+- **A glossary.** Every term the book could not avoid is defined at
+  `glossary.html` in plain words, written for somebody meeting it for the
+  first time and not leaning on the other entries.
+- **A short version.** The twenty-one chapters a reader is most likely to
+  arrive at first open with a plain-language summary before the history
+  starts, so the chapter can be understood before it is studied.
+
+Those twenty-one are marked in the table of contents; the fifteen on the path
+carry a flag as well.
+
 ## What a chapter contains
 
-- **Source.** The original title, its date, its length, and a link to it.
+- **Source.** The original title, its date, and a link to it.
+- **The short version.** On landmark chapters: the point, in plain words,
+  before any history.
 - **The question.** What was being argued about when it was written.
 - **The argument.** The note restated in order, quoting where the wording
   matters.
@@ -61,10 +81,13 @@ figures, and updating the "what happened since" sections as things happen.
 
 ## Repository layout
 
-- `index.html` — title page, volume overview, full table of contents
+- `index.html` — title page, the reading path, volume overview, full contents
+- `glossary.html` — generated; the terms the book could not avoid
 - `chapters/NN-*.html` — generated; do not edit by hand
 - `content/NN-*.html` — the prose of each written chapter, as a fragment
-- `structure.py` — volume and chapter assignment, the reading order
+- `structure.py` — volume and chapter assignment, the reading order, and the
+  fifteen-chapter path with its blurbs
+- `glossary.py` — the glossary entries, as plain data
 - `data-catalogue.json` — every source note: title, date, length, URL
 - `build.py` — regenerates `index.html` and `chapters/`
 - `check_quotes.py` — verifies every quotation against w3.org
@@ -74,7 +97,7 @@ figures, and updating the "what happened since" sections as things happen.
 To build:
 
 ```sh
-python3 build.py        # regenerate index.html and chapters/
+python3 build.py        # regenerate index.html, glossary.html and chapters/
 python3 check_quotes.py # verify every quotation against its source note
 ```
 
@@ -108,6 +131,12 @@ adds the source note, the navigation, and the collapsible Questions block.
 - The Questions block is written as a plain `<div class="questions">`; the
   build wraps it in a `<details>` so readers can collapse it. Do not write the
   `<details>` by hand.
+- A short version is written as a plain `<div class="plain">` at the very top
+  of the fragment, before the editor's note. It assumes nothing, defines what
+  it uses, and says what the chapter does rather than summarising its
+  conclusions.
+- Apostrophes and quotation marks in editorial prose are typographic. Inside
+  a quotation they are left exactly as the source has them.
 
 ## Contributing
 

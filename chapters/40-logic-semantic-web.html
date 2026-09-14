@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,29 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Logic.html"><em>Logic and the semantic web</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1999.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Logic.html">https://www.w3.org/DesignIssues/Logic.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/Logic.html"><em>Logic and the semantic web</em></a>,
+a Design Issues note by Tim Berners-Lee, 1999.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Logic.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+There is a trade in the design of any system that reasons: the more kinds of
+thing it can express, the less able it is to work out answers quickly, and a
+system expressive enough to say anything interesting may never finish.
+Decades of research went into trying to have both.
+</p>
+<p>
+This chapter takes the other road. It keeps the expressive power and gives up
+the fast reasoner, on the grounds that the Web does not need one. Checking a
+proof that somebody hands over is easy even when finding it was not, and that
+asymmetry is enough to build on.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume V opens with the note in which Berners-Lee reads the logic literature
@@ -129,7 +143,7 @@ system.
   <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Once found, anyone can check it, and nobody has to trust how it was found.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 40.1</span>
-Berners-Lee's own summary is blunter than the diagram: if there is a Semantic
+Berners-Lee&#8217;s own summary is blunter than the diagram: if there is a Semantic
 Web machine, it is a proof validator, not a theorem prover. It cannot find
 answers and cannot even check that an answer is right, but it can follow a
 simple explanation that an answer is right.</figcaption>
@@ -209,7 +223,7 @@ Where meaning actually bottoms out is stated practically in the next
 paragraph: the meaning of data is grounded in the non-Semantic-Web
 applications interfaced to it. A currency transfer application that accepts
 such input defines, for practical purposes, what the terms in the instrument
-mean. That is Chapter 37's closed loop, seen from the logic side.
+mean. That is Chapter 37&#8217;s closed loop, seen from the logic side.
 </p>
 
 <h2>40.5 Rules cannot be outside the language</h2>
@@ -253,7 +267,7 @@ for exchanging proofs was standardised, so the asymmetry of Figure 40.1,
 which the whole design rests on, was never cashed in practice.</li>
 <li><strong>Grounding happened in applications, as predicted.</strong> What
 terms mean in practice is still fixed by the programs that consume them,
-which is the note's own fallback rather than its ambition.</li>
+which is the note&#8217;s own fallback rather than its ambition.</li>
 <li><strong>Checkability returned from another direction.</strong> The
 distinction between generating an answer by any means and verifying it
 cheaply is now the central design question in systems that use language
@@ -303,8 +317,11 @@ explanation holds. Explain the difference with an example.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

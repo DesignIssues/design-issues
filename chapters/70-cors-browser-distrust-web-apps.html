@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/WebAppDistrustCORS.html"><em>CORS: Browser Distrust of Web Apps</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2018.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/WebAppDistrustCORS.html">https://www.w3.org/DesignIssues/WebAppDistrustCORS.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/WebAppDistrustCORS.html"><em>CORS: Browser Distrust of Web Apps</em></a>,
+a Design Issues note by Tim Berners-Lee, 2018.
+<a class="source-link" href="https://www.w3.org/DesignIssues/WebAppDistrustCORS.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in July 2018 and described as a very much simplified backgrounder,
@@ -72,7 +70,7 @@ omnipotent.
 <h2>70.1 The assumption</h2>
 
 <p>
-The browser's operating principle is stated in a form most people who write
+The browser&#8217;s operating principle is stated in a form most people who write
 applications have never seen written down:
 </p>
 
@@ -145,14 +143,14 @@ it.
   <text x="600" y="212" class="t-sm t-it" text-anchor="middle">in the first case</text>
 </svg>
 <figcaption><span class="fig-label">Figure 70.1</span>
-The attack works because the reader's machine has access the attacker does not,
+The attack works because the reader&#8217;s machine has access the attacker does not,
 whether from where it sits on a network or from what it is logged into. The
 script borrows that access.</figcaption>
 </figure>
 
 <p>
 The first instinct, Berners-Lee says, may have been to forbid a script any
-network access at all, and that clearly could not stand: a bank's own page must
+network access at all, and that clearly could not stand: a bank&#8217;s own page must
 fetch more data from the bank. So the rule became one of sameness. A script
 from a domain may talk freely to that domain, and to nothing else.
 </p>
@@ -187,8 +185,8 @@ that you would not get from one data source alone.
 
 <p>
 Combining data from several sources is the entire argument of Chapters 51 and
-53. The browser's default forbids it, and the mechanism named in the title is
-the permission a server must grant to allow it: the data's owner must say,
+53. The browser&#8217;s default forbids it, and the mechanism named in the title is
+the permission a server must grant to allow it: the data&#8217;s owner must say,
 explicitly, that other origins may read it.
 </p>
 
@@ -196,7 +194,7 @@ explicitly, that other origins may read it.
 
 <p>
 The three figures of the opening are what makes the note more than a
-description. Nelson's pair are each invincible in their own domain. Adding a
+description. Nelson&#8217;s pair are each invincible in their own domain. Adding a
 third party who wants to observe or divert makes all three fallible, and every
 mechanism described here is an attempt to constrain the third without
 disabling the first two.
@@ -204,8 +202,8 @@ disabling the first two.
 
 <p>
 The result is a default of distrust applied to the party the user chose to
-use. Chapter 54's response is to move the data out from behind the boundary
-entirely, so that an application reaching the user's own storage is doing the
+use. Chapter 54&#8217;s response is to move the data out from behind the boundary
+entirely, so that an application reaching the user&#8217;s own storage is doing the
 ordinary thing rather than the forbidden one.
 </p>
 
@@ -249,7 +247,7 @@ this makes difficult that you have personally worked around.</p>
 <div class="question">
 <p><span class="question-number">70.2</span>
 The attack borrows access the reader has. List what your own machine can
-reach that a stranger's cannot.</p>
+reach that a stranger&#8217;s cannot.</p>
 </div>
 <div class="question">
 <p><span class="question-number">70.3</span>
@@ -270,8 +268,11 @@ third without weakening the first two.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

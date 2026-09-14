@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume X: Futures</span>
 </nav>
 
@@ -43,18 +43,16 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Works.html"><em>Charlie Works</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2024-01-13.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Works.html">https://www.w3.org/DesignIssues/Works.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Works.html"><em>Charlie Works</em></a>,
+a Design Issues note by Tim Berners-Lee, 2024-01-13.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Works.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Seven years after the scene of Chapter 93, an attempt to build it. The note's
+Seven years after the scene of Chapter 93, an attempt to build it. The note&#8217;s
 own header states the occasion with unusual directness: the blog post was seven
 years ago, now we can build it, publish in time to discuss at a conference in
 January 2025.
@@ -134,7 +132,7 @@ only the access differs.</figcaption>
 </figure>
 
 <p>
-Berners-Lee's assessment sets it against what people had already found
+Berners-Lee&#8217;s assessment sets it against what people had already found
 remarkable:
 </p>
 
@@ -159,7 +157,7 @@ Extracting data from the world of APIs into a pod is a lot of work.
 
 <p>
 That sentence is the state of the whole programme. The store works, the model
-works, the combination works, and getting a real person's real data out of the
+works, the combination works, and getting a real person&#8217;s real data out of the
 places that hold it is the remaining labour. Chapter 93 said the obstacle was
 never technical, and this confirms it from the other side: the technical part
 succeeded first.
@@ -174,13 +172,13 @@ way: it is work an assistant can help with, since it can build the importers.
 
 <p>
 The conclusions are stated as system design observations, and the last two are
-the ones that matter for the future of this book's subject.
+the ones that matter for the future of this book&#8217;s subject.
 </p>
 
 <table>
 <tr><th>Finding</th><th>What it means</th></tr>
 <tr><td>The data infrastructure is as always critical</td><td>The model is not the scarce part</td></tr>
-<tr><td>A store of structured data is powerful in driving the model</td><td>Volume IV's work pays off here</td></tr>
+<tr><td>A store of structured data is powerful in driving the model</td><td>Volume IV&#8217;s work pays off here</td></tr>
 <tr><td>The model both fills the store and reads from it</td><td>It populates the graph and then uses it as context</td></tr>
 <tr><td>The graph becomes the medium of communication between models</td><td>Systems talk to each other through the data, not directly</td></tr>
 </table>
@@ -274,8 +272,11 @@ this could not.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume X: Futures</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

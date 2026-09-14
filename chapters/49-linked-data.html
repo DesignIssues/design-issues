@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VI: Linked Data and Solid</span>
 </nav>
 
@@ -43,15 +43,27 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/LinkedData.html"><em>Linked Data</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2006-07-27.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/LinkedData.html"><em>Linked Data</em></a>,
+a Design Issues note by Tim Berners-Lee, 2006-07-27.
+<a class="source-link" href="https://www.w3.org/DesignIssues/LinkedData.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Putting data online is not the same as making it usable. A spreadsheet on a
+website is online. It is also a dead end: nothing in it points anywhere, and
+nothing anywhere points into it.
+</p>
+<p>
+This note is four rules for publishing data so that a person or a program
+arriving at one piece can find the rest. It is the most quoted thing its author
+ever wrote, and short enough to hold in your head.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the most widely read note in the collection and the only one whose
@@ -154,7 +166,7 @@ separate control.
 
 <p>
 Every rival identifier scheme is, on this reading, an attempt to avoid
-someone else's authority. Chapter 3 explains why that attempt keeps recurring
+someone else&#8217;s authority. Chapter 3 explains why that attempt keeps recurring
 and Chapter 13 explains what it would take to satisfy it honestly.
 </p>
 
@@ -174,7 +186,7 @@ accessible on the web as linked data.
 <p>
 The fourth rule is argued by analogy with manners rather than mechanism. On
 the hypertext Web it is considered bad etiquette not to link to related
-material, and the value of one's own information is very much a function of
+material, and the value of one&#8217;s own information is very much a function of
 what it links to.
 </p>
 
@@ -183,7 +195,7 @@ what it links to.
 <p>
 The basic mechanism is the one from Chapter 11. Put local names in a
 document, and the architecture supplies global ones by prefixing the
-document's address. Anyone who meets such an identifier can truncate at the
+document&#8217;s address. Anyone who meets such an identifier can truncate at the
 hash, fetch the document, and learn about the thing.
 </p>
 
@@ -251,7 +263,7 @@ rather than through social vocabularies, which are described in Chapter 54.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Rule one is the axiom of Chapter 2, and rule two's rivals are Chapters 3 and
+Rule one is the axiom of Chapter 2, and rule two&#8217;s rivals are Chapters 3 and
 13. The hash and redirect patterns are Chapters 11 and 8. Identifying people
 by an unambiguous property is Chapter 34. The writable half of this
 architecture is Chapter 50, and the popular form of these rules is
@@ -268,7 +280,7 @@ and which failure is easiest to fix?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.2</span>
-Every rival identifier scheme is described as avoiding someone else's
+Every rival identifier scheme is described as avoiding someone else&#8217;s
 authority. Name one, and say what authority it avoids and what it substitutes.</p>
 </div>
 <div class="question">
@@ -279,7 +291,7 @@ information in a way that gives the person an identifier, and say what changes.<
 <div class="question">
 <p><span class="question-number">49.4</span>
 Rule four is argued from etiquette rather than mechanism. Is that sufficient?
-Give a case where linking out is against the publisher's interest.</p>
+Give a case where linking out is against the publisher&#8217;s interest.</p>
 </div>
 </details>
 
@@ -290,8 +302,11 @@ Give a case where linking out is against the publisher's interest.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VI: Linked Data and Solid</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

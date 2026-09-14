@@ -73,11 +73,15 @@ h3 { font-size: 1.3rem; font-style: italic; }
 }
 
 .epigraph {
-    max-width: 480px; margin: 3rem auto; font-style: italic;
-    text-align: right; color: #555; padding: 1rem 2rem;
-    border-left: 3px solid #ddd;
+    max-width: 30rem; margin: 3.5rem auto; font-style: italic;
+    text-align: left; color: #555; padding: 0 0 0 1.6rem;
+    border-left: 3px solid var(--light-border);
+    font-size: 1.05rem; line-height: 1.75;
 }
-.epigraph .attribution { margin-top: 0.5rem; font-size: 0.9rem; font-style: normal; }
+.epigraph .attribution {
+    display: block; margin-top: 0.7rem; text-align: right;
+    font-size: 0.85rem; font-style: normal; color: var(--muted);
+}
 
 /* ---- Volume overview ---- */
 .volume-overview {
@@ -140,17 +144,46 @@ ol.chapters a:hover { color: var(--accent-color); }
 .chapter-header h1 { font-size: 2rem; border: none; padding: 0; margin: 0; }
 .chapter-subtitle { font-size: 1.15rem; font-style: italic; color: var(--secondary-color); margin: 0.6rem 0 0; }
 
-/* ---- Source note: provenance for every chapter ---- */
-.source-note {
-    background: var(--source-bg); border-left: 4px solid var(--accent-color);
-    padding: 1rem 1.5rem; margin: 2rem 0; font-size: 0.95rem;
+/* ---- Source note: quiet provenance, one line ---- */
+p.source-note {
+    margin: 1.6rem 0 2rem;
+    padding: 0 0 0.9rem;
+    border-bottom: 1px solid var(--light-border);
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
 }
-.source-note .source-label {
-    font-variant: small-caps; letter-spacing: 0.08em; font-weight: bold;
-    color: var(--accent-color); display: block; margin-bottom: 0.4rem;
+p.source-note .source-label {
+    font-variant: small-caps; letter-spacing: 0.1em;
+    color: var(--accent-color); margin-right: 0.5rem;
 }
-.source-note p { margin: 0.3rem 0; }
-.source-note a { color: var(--accent-color); }
+p.source-note a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted #c3ced3; }
+p.source-note a:hover { color: var(--accent-color); }
+p.source-note .source-link {
+    margin-left: 0.4rem; font-variant: small-caps; letter-spacing: 0.06em;
+    color: var(--accent-color); border-bottom: none;
+}
+p.source-note .source-link:hover { text-decoration: underline; }
+
+/* ---- The chapter's opening: prose, not a box ---- */
+.editors-note.intro {
+    background: none;
+    border-left: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+.editors-note.intro h3 {
+    font-variant: small-caps; letter-spacing: 0.1em;
+    font-size: 1rem; font-style: normal;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+}
+.editors-note.intro > p:first-of-type { font-size: 1.05rem; }
+
+.footer-note {
+    font-size: 0.82rem; color: #999; max-width: 34rem;
+    margin: 0 auto 0.6rem;
+}
 
 /* ---- Editorial blocks ---- */
 .editors-note {
@@ -249,6 +282,169 @@ blockquote cite {
 }
 .toc-stub { opacity: 0.62; }
 .toc-stub a { border-bottom-style: none; }
+
+/* ---- Reading path on the index ---------------------------------------- */
+.start-here {
+    margin: 3rem 0 2.5rem;
+    padding: 2rem 2rem 1.5rem;
+    background: linear-gradient(180deg, #f7fafb 0%, #fdfdfc 100%);
+    border: 1px solid #dde7ec;
+    border-radius: 3px;
+}
+.start-here h2 {
+    margin-top: 0;
+    border: none;
+    padding-bottom: 0;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-size: 1.35rem;
+    color: var(--accent-color);
+}
+.start-here > p { max-width: 38rem; }
+.start-note { font-size: 0.92rem; color: var(--muted); }
+
+ol.path {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+    counter-reset: none;
+}
+ol.path li {
+    position: relative;
+    padding: 0.7rem 0 0.7rem 3rem;
+    margin: 0;
+    border-top: 1px solid #e6eef2;
+}
+ol.path li:first-child { border-top: none; }
+.path-n {
+    position: absolute;
+    left: 0;
+    top: 0.72rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    line-height: 1.9rem;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.82rem;
+    font-family: 'Palatino Linotype', Palatino, Georgia, serif;
+}
+ol.path a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid #bcd3de;
+    font-size: 1.08rem;
+}
+ol.path a:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+.path-ch {
+    font-size: 0.76rem;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-left: 0.6rem;
+    white-space: nowrap;
+}
+.path-why {
+    display: block;
+    font-size: 0.92rem;
+    color: #555;
+    margin-top: 0.25rem;
+    max-width: 40rem;
+}
+
+/* ---- Contents: landmarks and path flags -------------------------------- */
+ol.chapters li.toc-landmark > a { font-weight: 600; }
+.toc-flag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.05rem 0.4rem;
+    font-size: 0.66rem;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--accent-color);
+    border-radius: 2px;
+    vertical-align: 0.1em;
+}
+.toc-key {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: -0.4rem;
+}
+
+/* ---- Glossary ---------------------------------------------------------- */
+dl.glossary { margin: 2rem 0 0; }
+dl.glossary dt {
+    font-size: 1.12rem;
+    color: var(--secondary-color);
+    margin-top: 1.6rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--light-border);
+}
+dl.glossary dt:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.gl-expand {
+    display: block;
+    font-size: 0.86rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.1rem;
+}
+dl.glossary dd {
+    margin: 0.5rem 0 0;
+    padding-left: 0;
+    max-width: 38rem;
+}
+.gl-ch {
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size: 0.8rem;
+    font-variant: small-caps;
+    letter-spacing: 0.07em;
+    color: var(--accent-color);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.gl-ch:hover { text-decoration: underline; }
+
+/* ---- The short version: the plain-language opening --------------------- */
+.plain {
+    margin: 2rem 0 2.25rem;
+    padding: 1.4rem 1.6rem 1.2rem;
+    background: #fbfaf7;
+    border-left: 4px solid var(--dia-warm);
+    border-radius: 0 3px 3px 0;
+}
+.plain h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: var(--dia-warm);
+}
+.plain p {
+    margin: 0.55rem 0 0;
+    font-size: 1.04rem;
+    line-height: 1.66;
+}
+.plain p:first-of-type { margin-top: 0; }
+
+.lede {
+    font-size: 1.06rem;
+    color: #444;
+    max-width: 38rem;
+}
+
+.nav-sep { margin: 0 0.5rem; color: var(--light-border); }
+
+@media (max-width: 600px) {
+    .start-here { padding: 1.2rem 1rem 0.8rem; margin-left: -0.5rem; margin-right: -0.5rem; }
+    ol.path li { padding-left: 2.5rem; }
+    .path-n { width: 1.6rem; height: 1.6rem; line-height: 1.6rem; font-size: 0.75rem; }
+    .path-ch { display: block; margin-left: 0; }
+    .plain { padding: 1rem 1rem 0.8rem; }
+}
 
 /* ---- Diagrams ----
    SVG is written inline in the chapter fragments. The palette below is the

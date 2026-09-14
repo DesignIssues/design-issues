@@ -69,3 +69,33 @@ VOLUMES = [
 ]
 
 FRONT_MATTER = ["Preface.html"]
+
+
+# ---------------------------------------------------------------------------
+# The reading path: fifteen chapters that carry the whole argument, in order.
+# A reader who follows only these has met every idea the book depends on.
+PATH = [1, 2, 3, 16, 23, 25, 32, 49, 51, 54, 67, 71, 87, 90, 96]
+
+# Chapters marked in the contents as worth singling out. The path, plus a few
+# that are landmarks in their own right.
+LANDMARKS = set(PATH) | {4, 30, 31, 40, 93, 95}
+
+# One line per path chapter, saying what the reader gets from it. Written for
+# somebody who has never heard of any of this.
+PATH_BLURB = {
+ 1:  "Six rules for building something other people will build on. Everything else follows from these.",
+ 2:  "Why every single thing on the Web has an address, and what that one decision made possible.",
+ 3:  "Why web addresses rot, why the fix everyone proposes will not work, and what would.",
+ 16: "How a standard actually gets made: a cycle driven by companies competing, and its limits.",
+ 23: "Why the Web is full of broken pages, explained by what a page author is rewarded for.",
+ 25: "Ten different things people mean by \u201copen\u201d, and why arguments about it go nowhere.",
+ 32: "One fact written five ways. The clearest explanation in the book of why structure is not meaning.",
+ 49: "Four rules for publishing data anyone can use. The most quoted thing its author ever wrote.",
+ 51: "Five stars for open data, and a bag of crisps that explains how vocabularies mix.",
+ 54: "The proposal to separate your data from the apps that use it, and why that changes everything.",
+ 67: "An argument that the way the Web was secured broke something more important.",
+ 71: "What the list of pages you visited says about you, and why reading should be unobserved.",
+ 87: "Why a healthy society needs groups of every size, and what happens when it does not get them.",
+ 90: "How social networks came to work the way they do, mechanism by mechanism.",
+ 96: "The last chapter: its author admits he could not imagine what would be built on his own work.",
+}

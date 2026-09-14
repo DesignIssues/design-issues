@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Diff.html"><em>The RDF-diff problem</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2001-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Diff.html">https://www.w3.org/DesignIssues/Diff.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Diff.html"><em>The RDF-diff problem</em></a>,
+a Design Issues note by Tim Berners-Lee, 2001-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Diff.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the most paper-shaped note in the collection, written with an abstract
@@ -116,7 +114,7 @@ edit.
 <h2>45.3 Weak and strong</h2>
 
 <p>
-The note's contribution is a distinction that turns out to govern every
+The note&#8217;s contribution is a distinction that turns out to govern every
 distributed update system.
 </p>
 
@@ -158,7 +156,7 @@ distributed update system.
   <text x="360" y="358" class="t-sm" text-anchor="middle">In ordinary life, account numbers exist precisely to avoid this confusion.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 45.1</span>
-Berners-Lee's own framing: a weak delta gives enough information to apply it
+Berners-Lee&#8217;s own framing: a weak delta gives enough information to apply it
 to exactly the graph it was computed from; a strong delta specifies the change
 in a context-independent manner.</figcaption>
 </figure>
@@ -206,7 +204,7 @@ constant themes in distributed systems.
 
 <p>
 He discusses an architecture in which differences travel in loops, so that a
-party receives back both the other side's edits and, in his phrase, their
+party receives back both the other side&#8217;s edits and, in his phrase, their
 apologies for not being able to apply a patch. The observation he draws from
 it is an architectural preference:
 </p>
@@ -229,7 +227,7 @@ nodes deterministic labels, which makes comparing and patching graphs
 tractable without relying on an identifying property.</li>
 <li><strong>Patch formats arrived.</strong> SPARQL Update became a
 Recommendation in March 2013, and later work produced patch formats used for
-synchronising stores, which is section 45.3's proposal in standard form.</li>
+synchronising stores, which is section 45.3&#8217;s proposal in standard form.</li>
 <li><strong>Explicit change won over computed change.</strong>
 Conflict-free replicated data types and operation-based synchronisation became
 the standard approach in collaborative editing, and they work by sending
@@ -282,8 +280,11 @@ that discards it, and say what sending the change explicitly would require.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,27 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Semantic.html"><em>A roadmap to the Semantic Web</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1998-09-09.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Semantic.html">https://www.w3.org/DesignIssues/Semantic.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/Semantic.html"><em>A roadmap to the Semantic Web</em></a>,
+a Design Issues note by Tim Berners-Lee, 1998-09-09.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Semantic.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A page on the Web is written for a person to read. A machine can fetch it and
+display it, but it cannot answer a question about what the page says, because
+nothing in the page tells it which words are prices and which are dates.
+</p>
+<p>
+This chapter is the first full plan for fixing that: a stack of layers, each
+one useful on its own before the layer above it exists. It is worth reading
+for the plan, and worth reading again for how much of it happened.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 The companion to Chapter 5, written the same month of September 1998 and spun
@@ -164,7 +176,7 @@ problem intractable.
 <h2>30.3 Why bother at the bottom</h2>
 
 <p>
-The note anticipates the obvious objection. If an application's data is
+The note anticipates the obvious objection. If an application&#8217;s data is
 simple, why express it in this model at all? The answer is the argument for
 the whole enterprise:
 </p>
@@ -242,7 +254,7 @@ upward, in order, over a decade.</li>
 format was standardised. The asymmetry of section 30.4, which the roadmap
 treats as its central bet, was never cashed.</li>
 <li><strong>The search-plus-logic engine arrived in another shape.</strong>
-Large knowledge graphs behind search, beginning with Google's in May 2012,
+Large knowledge graphs behind search, beginning with Google&#8217;s in May 2012,
 combine indexing with structured data at exactly the scale described here,
 without the proof machinery.</li>
 <li><strong>Conversion between vocabularies remains the hard part.</strong>
@@ -292,8 +304,11 @@ makes the third step qualitatively harder?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

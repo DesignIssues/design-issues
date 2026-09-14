@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,27 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Security-NotTheS.html"><em>&quot;HTTPS Everywhere&quot; considered harmful</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2015-03-28.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Security-NotTheS.html">https://www.w3.org/DesignIssues/Security-NotTheS.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/Security-NotTheS.html"><em>&quot;HTTPS Everywhere&quot; considered harmful</em></a>,
+a Design Issues note by Tim Berners-Lee, 2015-03-28.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Security-NotTheS.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+The letter s in https. It means your connection to the site is encrypted, and
+you have been trained to look for it.
+</p>
+<p>
+This chapter argues that putting that letter in the address was a mistake, and
+that correcting it by moving the whole Web into a second address space did more
+damage to the Web than anything else in its history. The author is not arguing
+against encryption. He is arguing about where the fact belongs.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 5 recorded a complaint, in 1998, that security should have been
@@ -135,7 +147,7 @@ Three things, and the third is the one that settles it.
 
 <p>
 People became individually aware and individually under attack, so protecting
-the follower became the browser's job rather than the publisher's. People
+the follower became the browser&#8217;s job rather than the publisher&#8217;s. People
 learned to look not at the letter in the address but at the padlock, and then
 at the name of the certificate holder. And then the address itself began to
 disappear:
@@ -182,7 +194,7 @@ the web of links in so doing.
 <p>
 Every other change to the infrastructure was invisible to the links. This one
 was not, because the security level was put where the identity lives, which is
-what Chapter 2's opacity axiom forbids.
+what Chapter 2&#8217;s opacity axiom forbids.
 </p>
 
 <h2>67.4 The single-valued trust mistake</h2>
@@ -220,7 +232,7 @@ kinds of thing. That test applies far beyond this argument.
 <h2>67.5 The proposal</h2>
 
 <p>
-The alternative is in the note's own title. Encrypt everything, at the
+The alternative is in the note&#8217;s own title. Encrypt everything, at the
 protocol level, and stop marking it in the identifier. Upgrade in real time,
 or try the encrypted version first. Show the assurance in the interface, where
 people already look, and let the prefix be phased out.
@@ -244,11 +256,11 @@ most of the Web migrated.</li>
 upgrade headers repaired most links, at the cost of a permanent layer of
 rewriting, which is the tax this note predicted.</li>
 <li><strong>The upgrade mechanism the note prefers exists and lost.</strong>
-RFC 2817's in-band upgrade was available and was not adopted; the industry
+RFC 2817&#8217;s in-band upgrade was available and was not adopted; the industry
 chose the separate space.</li>
 <li><strong>The single-valued trust point was vindicated elsewhere.</strong>
 Fine-grained permissions replaced binary trust in nearly every other part of
-the platform, from device access to storage, which is section 67.4's argument
+the platform, from device access to storage, which is section 67.4&#8217;s argument
 accepted everywhere except here.</li>
 </ul>
 </div>
@@ -294,8 +306,11 @@ this one different, using the axioms of Chapter 2.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume I: Axioms</span>
 </nav>
 
@@ -43,15 +43,28 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Model.html"><em>The Web Model: Information hiding and URI syntax</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1998-01-29.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Model.html">https://www.w3.org/DesignIssues/Model.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/Model.html"><em>The Web Model: Information hiding and URI syntax</em></a>,
+a Design Issues note by Tim Berners-Lee, 1998-01-29.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Model.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A web address often has a hash in it, with something after the hash naming a
+part of the page. Nobody has to think about this, which is the point: the
+piece of software that fetches the page and the piece that finds the right
+part of it are kept deliberately ignorant of each other.
+</p>
+<p>
+This chapter is about where those dividing lines were drawn, in 1998, and why
+drawing them there is the reason the Web&#8217;s separate parts could go on being
+revised for decades without any one revision breaking the others.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Berners-Lee numbered this note zero in his axioms sequence, though he wrote
@@ -62,7 +75,7 @@ them. It is the most software-engineering-minded piece in Volume I, and its
 subject is information hiding.
 </p>
 <p>
-The question it answers is why the Web's specifications can be revised
+The question it answers is why the Web&#8217;s specifications can be revised
 independently of one another. The answer is that in 1998 somebody drew the
 module boundaries in the right places, and this note says where they are.
 </p>
@@ -208,7 +221,7 @@ He notes in passing that this is also how the Semantic Web will be built: not
 as a new Web, but as a new kind of document, with a fragment convention of
 its own that names things rather than parts of pages. Webizing a language, he
 says, means taking what were document-global identifiers and making them
-globally unique by prefixing the document's URI and a hash. The mechanism of
+globally unique by prefixing the document&#8217;s URI and a hash. The mechanism of
 Chapter 6 and of the whole of Volume IV is introduced here in two sentences.
 </p>
 
@@ -270,7 +283,7 @@ properties that make namespaces hard: clashes destroy interoperability,
 ownership becomes commercially valuable, and fair management becomes both
 essential and difficult. Worse, software would be needed to look up schemes
 and fetch handlers for them, which means something like DNS, which means that
-the top level of the Web's namespace has silently become DNS again. At that
+the top level of the Web&#8217;s namespace has silently become DNS again. At that
 point, he observes, there is no top-level extension switch left.
 </p>
 
@@ -302,11 +315,11 @@ must determine which is in force.
 <li><strong>The independence axiom was written into the standard.</strong>
 RFC 3986, of January 2005, specifies that the semantics of a fragment are
 defined by the media type of the retrieved representation, which is this
-chapter's first axiom in normative form.</li>
+chapter&#8217;s first axiom in normative form.</li>
 <li><strong>The client-side fragment was abused, then replaced.</strong>
 Single-page applications used fragments to encode application state, and
-Google's AJAX crawling scheme of 2009 made a convention of it before
-deprecating it in October 2015. The History API's pushState, in HTML5,
+Google&#8217;s AJAX crawling scheme of 2009 made a convention of it before
+deprecating it in October 2015. The History API&#8217;s pushState, in HTML5,
 restored a distinct URI per view, which is what the model asked for.</li>
 <li><strong>New fragment conventions kept arriving, as predicted.</strong>
 W3C Media Fragments URI 1.0 became a Recommendation in September 2012. Text
@@ -326,8 +339,8 @@ problem, and came back to DNS.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is Chapter 1's modularity applied to the Web's own stack, and
-supplies the mechanism that Chapter 2's axioms assume. Fragment identifiers
+This chapter is Chapter 1&#8217;s modularity applied to the Web&#8217;s own stack, and
+supplies the mechanism that Chapter 2&#8217;s axioms assume. Fragment identifiers
 in their own right are Chapter 11; relative resolution is Chapter 12. The
 webizing move sketched in section 4.2 is treated fully in Chapter 26, and its
 consequence for naming things rather than documents is Chapter 6. The
@@ -371,8 +384,11 @@ it.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume I: Axioms</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

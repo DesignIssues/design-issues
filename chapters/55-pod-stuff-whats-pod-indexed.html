@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VI: Linked Data and Solid</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/PodStuff.html"><em>Pod Stuff: What&#x27;s in a Pod, and how is it indexed?</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2022-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/PodStuff.html">https://www.w3.org/DesignIssues/PodStuff.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/PodStuff.html"><em>Pod Stuff: What&#x27;s in a Pod, and how is it indexed?</em></a>,
+a Design Issues note by Tim Berners-Lee, 2022-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/PodStuff.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Thirteen years after Chapter 54 proposed that storage become a commodity, this
@@ -114,13 +112,13 @@ communities in between.
 </svg>
 <figcaption><span class="fig-label">Figure 55.1</span>
 The range is the argument. A scheme that handles only the middle of each axis
-is not a scheme for a person's life.</figcaption>
+is not a scheme for a person&#8217;s life.</figcaption>
 </figure>
 
 <h2>55.2 The organising decision</h2>
 
 <p>
-The note's substantive claim is about what determines where something goes,
+The note&#8217;s substantive claim is about what determines where something goes,
 and it is stated as a preference between two obvious candidates:
 </p>
 
@@ -133,7 +131,7 @@ particular app which wrote it.
 <p>
 Filing by application is what every operating system does, and it recreates
 the silo inside the space that was meant to abolish it. Filing by kind means
-that two applications dealing in events find each other's events, which is the
+that two applications dealing in events find each other&#8217;s events, which is the
 cross-linking Chapter 54 promised.
 </p>
 
@@ -141,7 +139,7 @@ cross-linking Chapter 54 promised.
 The expectation that makes this workable is stated immediately: the classes of
 data used by different applications are expected to overlap a lot. Most
 applications deal in people, events, places, messages and documents, which is
-Chapter 48's argument arriving as a filing system.
+Chapter 48&#8217;s argument arriving as a filing system.
 </p>
 
 <h2>55.3 Why activities are kept together anyway</h2>
@@ -188,7 +186,7 @@ requirements, and also works well for that particular app.
 <p>
 Applications decide the arrangement, common patterns emerge because the
 classes overlap, and the mechanism for describing where new data should go is
-the subject of Chapter 57. That chapter's third technology exists precisely
+the subject of Chapter 57. That chapter&#8217;s third technology exists precisely
 because this one leaves the question open.
 </p>
 
@@ -207,7 +205,7 @@ rich, varied, and valuable system.
 
 <p>
 Two things are worth noticing. Trust is described as something to be modelled
-as it really is rather than as a permission flag, which is Chapter 66's
+as it really is rather than as a permission flag, which is Chapter 66&#8217;s
 argument. And bots are listed alongside people and data as things one trusts,
 in a note written in 2022, before that became the ordinary way to talk.
 </p>
@@ -215,9 +213,9 @@ in a note written in 2022, before that became the ordinary way to talk.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Type indexes became the mechanism.</strong> Solid's type index,
+<li><strong>Type indexes became the mechanism.</strong> Solid&#8217;s type index,
 which maps a class to the places instances of it are kept, is section 55.2
-implemented, and it is how applications find each other's data in a pod.</li>
+implemented, and it is how applications find each other&#8217;s data in a pod.</li>
 <li><strong>The tension was not resolved.</strong> Arranging by kind and
 arranging by activity remain in conflict, and applications in practice do
 both, which is why finding things in a pod is still harder than it should
@@ -274,8 +272,11 @@ applications arranging it incompatibly?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VI: Linked Data and Solid</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

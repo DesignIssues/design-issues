@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Interpretation.html"><em>Semantics and Interpretation (and digital signature)</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1999-12-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Interpretation.html">https://www.w3.org/DesignIssues/Interpretation.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Interpretation.html"><em>Semantics and Interpretation (and digital signature)</em></a>,
+a Design Issues note by Tim Berners-Lee, 1999-12-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Interpretation.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in December 1999 with an apology in the status line that its terms
@@ -68,7 +66,7 @@ and the semantic web.
 </blockquote>
 <p>
 What follows is the most useful piece of engineering advice in Volume IV: keep
-the machine's loop closed, and touch the social world only at the edges.
+the machine&#8217;s loop closed, and touch the social world only at the edges.
 </p>
 </div>
 
@@ -173,7 +171,7 @@ the book of a distinction people routinely collapse.
   <text x="24" y="374" class="t-sm t-it">Leave them apart and the left column can be written in mathematics and proved.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 37.1</span>
-Berners-Lee's judgement of the social column: as written it is always a rough
+Berners-Lee&#8217;s judgement of the social column: as written it is always a rough
 approximation to a very complex web of trust, which is often less dependable
 than the simpler model on the left.</figcaption>
 </figure>
@@ -238,7 +236,7 @@ Documents have meaning. Signatures by themselves do not.
 Asking for the semantics of a signature is therefore not useful. Signatures
 convey trust, and even that only because of a set of statements about keys and
 documents. Society has many rules about what trust a signature conveys in
-what circumstances, and Berners-Lee's instruction is to leave them alone when
+what circumstances, and Berners-Lee&#8217;s instruction is to leave them alone when
 building the infrastructure.
 </p>
 
@@ -274,7 +272,7 @@ is section 37.3 realised without anyone deciding to.</li>
 <li><strong>Signing graphs remained hard.</strong> The separation of what is
 said from where it is stored is a requirement that verifiable credentials, a
 W3C Recommendation of March 2022, meets by signing a self-contained document,
-which is Chapter 28's constraint respected.</li>
+which is Chapter 28&#8217;s constraint respected.</li>
 </ul>
 </div>
 
@@ -284,7 +282,7 @@ which is Chapter 28's constraint respected.</li>
 The claim that signatures do not alter meaning is made in Chapter 28. The
 combination of independent data this example needs is the argument of
 Chapter 30, and the refusal to settle identity questions is Chapter 34. The
-access control loop is Volume VII's subject, especially Chapter 66, and the
+access control loop is Volume VII&#8217;s subject, especially Chapter 66, and the
 question of who a key belongs to returns in Chapter 69.
 </p>
 </div>
@@ -320,8 +318,11 @@ design you know that confuses them, and say what it costs.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

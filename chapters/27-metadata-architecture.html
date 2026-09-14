@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Metadata.html"><em>Metadata Architecture</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1997-01-06.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Metadata.html">https://www.w3.org/DesignIssues/Metadata.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Metadata.html"><em>Metadata Architecture</em></a>,
+a Design Issues note by Tim Berners-Lee, 1997-01-06.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Metadata.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This note, begun in January 1997, opens Volume IV because it is where the
@@ -62,7 +60,7 @@ at the Consortium, where the first driving application of machine-readable
 data was endorsement labels.
 </p>
 <p>
-The definition it gives is narrower than the word's ordinary use, and the
+The definition it gives is narrower than the word&#8217;s ordinary use, and the
 narrowing is the point.
 </p>
 </div>
@@ -169,7 +167,7 @@ The second consequence is recursion without hierarchy. Metadata may itself
 have an owner and an expiry date, so there is meta-metadata, but the
 architecture does not distinguish many levels. It says metadata is data and
 lets the rest follow. Berners-Lee calls this a certain consistency, and it is
-the same move as Chapter 2's refusal to distinguish names from addresses:
+the same move as Chapter 2&#8217;s refusal to distinguish names from addresses:
 one kind of thing, not a tower of kinds.
 </p>
 
@@ -254,7 +252,7 @@ descriptions.</li>
 <li><strong>The authorship question was never fully answered.</strong> Who is
 making a statement, which section 27.2 flags as needing rationalisation,
 remains the weak point: most published metadata carries no indication of who
-asserted it, which is why Chapter 37's treatment of trust matters.</li>
+asserted it, which is why Chapter 37&#8217;s treatment of trust matters.</li>
 <li><strong>The prohibition on ordering was widely ignored.</strong>
 Configuration formats and header conventions that depend on order remain
 normal, and the diagnosis in Chapter 32 still applies to them.</li>
@@ -307,8 +305,11 @@ this definition, and say why.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

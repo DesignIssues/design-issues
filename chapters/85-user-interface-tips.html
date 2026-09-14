@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IX: Interface and Society</span>
 </nav>
 
@@ -43,18 +43,16 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/UserInterface.html"><em>User Interface Tips</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2016-12-15.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/UserInterface.html">https://www.w3.org/DesignIssues/UserInterface.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/UserInterface.html"><em>User Interface Tips</em></a>,
+a Design Issues note by Tim Berners-Lee, 2016-12-15.
+<a class="source-link" href="https://www.w3.org/DesignIssues/UserInterface.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in December 2016 and, by the author's own description, a list of his
+Written in December 2016 and, by the author&#8217;s own description, a list of his
 own biases in a bit of a random order. It is the least architectural note in
 the collection and it is included because of an observation in its opening:
 </p>
@@ -109,7 +107,7 @@ interesting fact, and most of the items have a common cause.
 </svg>
 <figcaption><span class="fig-label">Figure 85.1</span>
 The rules are unrelated on their face and share one cause: replacing the
-platform's own text handling with something custom, which Berners-Lee calls
+platform&#8217;s own text handling with something custom, which Berners-Lee calls
 being over-cute.</figcaption>
 </figure>
 
@@ -147,7 +145,7 @@ up and switch to using a short and unsafe password out of frustration.
 <p>
 A field that blocks pasting was built to be more secure and makes users less
 secure, because the security of a password is decided by whether it can be
-remembered, and blocking the paste requires it to be. This is Chapter 23's
+remembered, and blocking the paste requires it to be. This is Chapter 23&#8217;s
 incentive analysis in miniature: the design shapes behaviour, and the behaviour
 is what matters.
 </p>
@@ -192,7 +190,7 @@ response is to go back to the basic widget.
 <h2>85.4 Why the list still needed writing</h2>
 
 <p>
-The chapter's value is not its advice, which is elementary, but the question in
+The chapter&#8217;s value is not its advice, which is elementary, but the question in
 its opening. Why does something so well documented still need saying?
 </p>
 
@@ -201,7 +199,7 @@ Because each violation is invisible to its author. A developer who replaces a
 field tests that it accepts the input they had in mind. Nobody tests that an
 error message can be selected, because the test is performed by someone who
 already knows what the error means. The failures are all in the gap between the
-author's situation and the user's.
+author&#8217;s situation and the user&#8217;s.
 </p>
 
 <p>
@@ -251,7 +249,7 @@ name the assumption that fails.</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.3</span>
-List what the platform's own text field gives you for free. How many does a
+List what the platform&#8217;s own text field gives you for free. How many does a
 custom one reimplement?</p>
 </div>
 <div class="question">
@@ -268,8 +266,11 @@ these without the author having to think of it.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IX: Interface and Society</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

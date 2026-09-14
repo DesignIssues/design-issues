@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume II: Naming</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Fragment.html"><em>Fragment identifiers</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1997-04-08.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Fragment.html">https://www.w3.org/DesignIssues/Fragment.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Fragment.html"><em>Fragment identifiers</em></a>,
+a Design Issues note by Tim Berners-Lee, 1997-04-08.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Fragment.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 4 established that the fragment identifier stays on the client and
@@ -168,7 +166,7 @@ number
 </blockquote>
 
 <p>
-The procedural consequence follows, and it is the note's concrete
+The procedural consequence follows, and it is the note&#8217;s concrete
 recommendation:
 </p>
 
@@ -211,7 +209,7 @@ the two chapters together shows exactly which sentence had to give way.
 <h2>11.4 The bug he recorded and did not fix</h2>
 
 <p>
-The note contains one of the collection's rare admissions of an unresolved
+The note contains one of the collection&#8217;s rare admissions of an unresolved
 defect, flagged in its own heading as a known bug. If content negotiation
 selects between media types that do not share a fragment specification, a
 fragment valid for one may be meaningless in the other.
@@ -252,7 +250,7 @@ silently landing at the top of the page.
 <li><strong>The axiom is normative.</strong> RFC 3986, of January 2005,
 specifies that fragment semantics are defined by the media type of the
 retrieved representation, and RFC 6838, of January 2013, requires media type
-registrations to state fragment identifier considerations. Section 11.2's
+registrations to state fragment identifier considerations. Section 11.2&#8217;s
 recommendation became process.</li>
 <li><strong>The predictions came true, one at a time.</strong> Media Fragments
 URI 1.0 became a W3C Recommendation in September 2012, giving time ranges and
@@ -312,8 +310,11 @@ little.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume II: Naming</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

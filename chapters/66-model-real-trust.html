@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Security-ModelTrust.html"><em>Model Real Trust</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2015-03-28.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Security-ModelTrust.html">https://www.w3.org/DesignIssues/Security-ModelTrust.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Security-ModelTrust.html"><em>Model Real Trust</em></a>,
+a Design Issues note by Tim Berners-Lee, 2015-03-28.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Security-ModelTrust.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume VII opens with one of four related notes written in March 2015, all
@@ -126,7 +124,7 @@ machine let them say so?
   <text x="360" y="300" class="t-sm t-it" text-anchor="middle">Trusting a family server through a commercial hierarchy is expensive, and a misrepresentation of why you trust it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 66.1</span>
-Berners-Lee's own example is his employer, whose staff certificates are
+Berners-Lee&#8217;s own example is his employer, whose staff certificates are
 self-signed and distributed internally. He has a relationship with them, can
 walk into their offices, and already holds their cards.</figcaption>
 </figure>
@@ -149,7 +147,7 @@ being used to convey these trust paths.
 
 <p>
 Three reasons are given for calling this inappropriate. Routing a family
-server's trust through a commercial hierarchy is expensive. It misrepresents
+server&#8217;s trust through a commercial hierarchy is expensive. It misrepresents
 why the server is trusted. And it is a security liability:
 </p>
 
@@ -164,8 +162,8 @@ system.
 That last point is the technical heart of the argument. A hierarchy is only as
 strong as its weakest authority, and Berners-Lee notes that root stores
 contain authorities in many countries which have from time to time been
-hacked. Trusting your own family's server through that chain does not add
-security; it imports everybody else's risk.
+hacked. Trusting your own family&#8217;s server through that chain does not add
+security; it imports everybody else&#8217;s risk.
 </p>
 
 <h2>66.3 What he asks for instead</h2>
@@ -204,7 +202,7 @@ to say so.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Free certificates removed the cost argument.</strong> Let's
+<li><strong>Free certificates removed the cost argument.</strong> Let&#8217;s
 Encrypt, which the companion note mentions as a project, issued its first
 certificate in September 2015 and made hierarchy-backed certificates free,
 which answered the expense objection and none of the others.</li>
@@ -262,8 +260,11 @@ not answer.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

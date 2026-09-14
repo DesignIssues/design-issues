@@ -9,7 +9,8 @@ full provenance (original title, date, and a link to the source essay).
     python3 build.py        # regenerate index.html and chapters/
 """
 import json, os, re, html, datetime
-from structure import VOLUMES, FRONT_MATTER
+from structure import VOLUMES, FRONT_MATTER, PATH, LANDMARKS, PATH_BLURB
+from glossary import GLOSSARY
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "Design Issues"
@@ -103,14 +104,12 @@ def head(title, desc, rel="", path="", og_type="article", social_title=None):
 def source_note(c):
     d = c["date"]
     when = d if len(d) > 4 else (d or "undated")
-    return f"""<div class="source-note">
+    return f"""<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="{BASE}{c['href']}"><em>{esc(c['title'])}</em></a>,
-a Design Issues note by {AUTHOR_SRC}, dated {esc(when)}.</p>
-<p>Read the original at <a href="{BASE}{c['href']}">{BASE}{esc(c['href'])}</a>.
-The Design Issues notes are {AUTHOR_SRC}'s personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
+<a href="{BASE}{c['href']}"><em>{esc(c['title'])}</em></a>,
+a Design Issues note by {AUTHOR_SRC}, {esc(when)}.
+<a class="source-link" href="{BASE}{c['href']}">read the original</a>
+</p>
 """
 
 def stub_note(c):
@@ -166,7 +165,7 @@ def chapter_html(c, prev, nxt):
     out = [head(title, desc, rel, path=f"chapters/{c['file']}",
                 og_type="article", social_title=card)]
     out.append(f"""<nav class="chapter-nav">
-<a href="{rel}index.html">Contents</a>
+<span><a href="{rel}index.html">Contents</a><span class="nav-sep">&middot;</span><a href="{rel}glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume {vol['num']}: {esc(vol['title'])}</span>
 </nav>
 
@@ -180,8 +179,11 @@ def chapter_html(c, prev, nxt):
 """)
     out.append(source_note(c))
     if has_content(c):
-        out.append(collapse_questions(
-            open(content_path(c), encoding="utf-8").read().rstrip()) + "\n")
+        frag = open(content_path(c), encoding="utf-8").read().rstrip()
+        # the first editorial block is the chapter's opening, not a callout:
+        # give it its own class so it can be set as prose rather than a box.
+        frag = frag.replace('<div class="editors-note">', '<div class="editors-note intro">', 1)
+        out.append(collapse_questions(frag) + "\n")
     else:
         out.append(stub_note(c))
     out.append('<nav class="chapter-navigation">\n')
@@ -196,8 +198,11 @@ def chapter_html(c, prev, nxt):
     out.append("</nav>\n</main>\n")
     out.append(f"""<footer>
 <p>{SITE} &middot; Volume {vol['num']}: {esc(vol['title'])}</p>
+<p class="footer-note">The Design Issues notes are {AUTHOR_SRC}&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; {AUTHOR_SRC}
+&middot; <a href="{rel}glossary.html">glossary</a>
 &middot; <a href="{REPO}">contribute</a></p>
 </footer>
 </body>
@@ -206,6 +211,54 @@ def chapter_html(c, prev, nxt):
     return "".join(out)
 
 # ---------------------------------------------------------------- index
+def glossary_html():
+    desc = ("Plain definitions of the terms used in Design Issues, written for "
+            "a reader meeting them for the first time.")
+    o = [head(f"Glossary | {SITE}", desc, path="glossary.html",
+              og_type="article", social_title=f"Glossary | {SITE}")]
+    o.append("""<nav class="chapter-nav">
+<span><a href="index.html">Contents</a></span>
+<span class="volume-indicator">Glossary</span>
+</nav>
+
+<header class="chapter-header">
+<p class="chapter-number">Reference</p>
+<h1>Glossary</h1>
+<p class="chapter-subtitle">the words this book could not avoid</p>
+</header>
+
+<main class="chapter-content">
+<p class="lede">
+Every definition here is written for somebody meeting the term for the first
+time, and avoids leaning on the others. Where a chapter treats the idea
+properly, it is named.
+</p>
+
+<dl class="glossary">
+""")
+    for term, expand, ch, defn in GLOSSARY:
+        anchor = term.lower().replace(" ", "-")
+        o.append(f'<dt id="{anchor}">{esc(term)}')
+        if expand:
+            o.append(f'<span class="gl-expand">{esc(expand)}</span>')
+        o.append("</dt>\n<dd>")
+        o.append(esc(defn))
+        if ch:
+            c = chapters[ch - 1]
+            o.append(f' <a class="gl-ch" href="chapters/{c["file"]}">Chapter {ch}</a>')
+        o.append("</dd>\n")
+    o.append(f"""</dl>
+</main>
+
+<footer>
+<p>{SITE} &middot; <a href="index.html">Contents</a></p>
+</footer>
+</body>
+</html>
+""")
+    return "".join(o)
+
+
 def index_html():
     written = sum(1 for c in chapters if has_content(c))
     total = len(chapters)
@@ -218,7 +271,7 @@ def index_html():
               social_title=f"{SITE}: the Web's design notes, put in order")]
     o.append(f"""<div class="title-page">
 <h1>Design Issues</h1>
-<p class="subtitle">The Web's design notes, put in order</p>
+<p class="subtitle">The Web&#8217;s design notes, put in order</p>
 <p class="ornament">&sect;</p>
 <p class="description">
 Between 1996 and 2024, {AUTHOR_SRC} wrote {srcnotes} notes on why the Web is
@@ -263,8 +316,31 @@ date. Where the editor is reading rather than reporting, the text says so.
 </p>
 </section>
 
+<section class="start-here">
+<h2>Start here</h2>
+<p>
+Ninety-six chapters is a lot to begin with, and the order they are in is the
+order the ideas depend on one another, not the order they are best met. These
+fifteen carry the whole argument.
+</p>
+<p class="start-note">
+No background is assumed. Where a term cannot be avoided the
+<a href="glossary.html">glossary</a> defines it in plain words, and each of
+these chapters opens with a short version before the history.
+</p>
+<ol class="path">
+""")
+    for i, n in enumerate(PATH, 1):
+        pc = chapters[n - 1]
+        o.append(f'<li><span class="path-n">{i}</span>'
+                 f'<a href="chapters/{pc["file"]}">{esc(pc["title"])}</a>'
+                 f'<span class="path-ch">Chapter {n}</span>'
+                 f'<span class="path-why">{esc(PATH_BLURB[n])}</span></li>\n')
+    o.append("""</ol>
+</section>
+
 <div class="volume-overview">
-<h3>The ten volumes</h3>
+<h3>All ten volumes</h3>
 <ul class="volume-list">
 """)
     for v in VOLUMES:
@@ -279,18 +355,22 @@ date. Where the editor is reading rather than reporting, the text says so.
 
 <section class="table-of-contents">
 <h2>Contents</h2>
+<p class="toc-key">
+Chapters on the reading path are flagged; a few further landmarks are shown in
+bold. See also the <a href="glossary.html">glossary</a>.
+</p>
 """)
     for v in VOLUMES:
         o.append(f'<div class="part">\n<h3>Volume {v["num"]} &mdash; {esc(v["title"])}</h3>\n')
         o.append(f'<p class="part-kind">{esc(v["epistemic"])}</p>\n<ol class="chapters">\n')
         for href in v["chapters"]:
             c = by_href[href]
-            cls = "" if has_content(c) else ' class="toc-stub"'
+            cls = ' class="toc-landmark"' if c["n"] in LANDMARKS else ""
             o.append(f'<li{cls}><span class="ch-num">{c["n"]}.</span>'
                      f'<a href="chapters/{c["file"]}">{esc(c["title"])}</a> '
                      f'<span class="ch-date">({esc(year(c["date"]))})</span>')
-            if not has_content(c):
-                o.append('<span class="chapter-desc">in preparation</span>')
+            if c["n"] in PATH:
+                o.append('<span class="toc-flag">path</span>')
             o.append("</li>\n")
         o.append("</ol>\n</div>\n")
     o.append(f"""</section>
@@ -351,6 +431,7 @@ def main():
         open(os.path.join(ROOT, "chapters", c["file"]), "w", encoding="utf-8").write(
             chapter_html(c, prev, nxt))
     open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(index_html())
+    open(os.path.join(ROOT, "glossary.html"), "w", encoding="utf-8").write(glossary_html())
     w = sum(1 for c in chapters if has_content(c))
     print(f"built {len(chapters)} chapters ({w} written, {len(chapters)-w} stubs) + index.html")
 

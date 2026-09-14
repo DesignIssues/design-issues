@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Meaning.html"><em>The meaning of a document - grounding in a global namespace</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1999-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Meaning.html">https://www.w3.org/DesignIssues/Meaning.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Meaning.html"><em>The meaning of a document - grounding in a global namespace</em></a>,
+a Design Issues note by Tim Berners-Lee, 1999-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Meaning.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in 1999 when, as Berners-Lee puts it, the namespace argument came
@@ -117,7 +115,7 @@ decisive work.
   <text x="40" y="292" class="t-sm t-it">In a natural language the second factor is the sum of associations in a reader&#8217;s mind. Here it is a document.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.1</span>
-Berners-Lee's point is comparative. Hypertext let a document point exactly at
+Berners-Lee&#8217;s point is comparative. Hypertext let a document point exactly at
 another instead of referring to it vaguely. This does the same for the
 language a document is written in.</figcaption>
 </figure>
@@ -188,7 +186,7 @@ enough, It is not the place of a digital signature to define semantics.
 
 <p>
 A signature may give a party reason to use information they would otherwise
-ignore, and a key's issuer may constrain what guarantees signing with it
+ignore, and a key&#8217;s issuer may constrain what guarantees signing with it
 carries. But the signature must not change what the document means, because
 that would open a gap between what the writer intended and what the signed
 document says.
@@ -217,8 +215,8 @@ processing side.
 <ul>
 <li><strong>The formula became the standard account.</strong> RDF Semantics,
 a W3C Recommendation first published in February 2004, fixes meaning exactly
-this way: an interpretation maps the vocabulary, and the document's meaning
-follows from the vocabulary's.</li>
+this way: an interpretation maps the vocabulary, and the document&#8217;s meaning
+follows from the vocabulary&#8217;s.</li>
 <li><strong>Canonicalisation proved as hard as the note implies.</strong>
 Signing part of a graph requires a rule for making it a document, and RDF
 Dataset Canonicalization only became a W3C Recommendation in May 2024,
@@ -250,7 +248,7 @@ fragments meets Chapter 24 from the other side.
 <div class="question">
 <p><span class="question-number">28.1</span>
 Meaning is a product of two factors. Describe what happens to a document when
-the language's publisher changes the definition of a term.</p>
+the language&#8217;s publisher changes the definition of a term.</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.2</span>
@@ -276,8 +274,11 @@ Who is harmed, and how would they detect it?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VI: Linked Data and Solid</span>
 </nav>
 
@@ -43,15 +43,27 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/CloudStorage.html"><em>Solid: Socially Aware Cloud Storage</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2009-08-17.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/CloudStorage.html">https://www.w3.org/DesignIssues/CloudStorage.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/CloudStorage.html"><em>Solid: Socially Aware Cloud Storage</em></a>,
+a Design Issues note by Tim Berners-Lee, 2009-08-17.
+<a class="source-link" href="https://www.w3.org/DesignIssues/CloudStorage.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Your photographs live with the photograph company. Your messages live with the
+messaging company. Each of them holds a piece of your life, none of them can see
+the others, and leaving any of them means losing what you kept there.
+</p>
+<p>
+This note asks what happens if you turn that inside out: your data in one place
+that you control, and applications as things that come and go. It is the
+founding document of the project its author has worked on ever since.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the founding document of the project that occupied Berners-Lee for
@@ -206,15 +218,15 @@ launching an app is far lower, as the app can run in he open data cloud.
 </blockquote>
 
 <p>
-An application that need not run servers or hold anybody's data can be written
-by one person and given away. Chapter 50's stated goal, that application growth
+An application that need not run servers or hold anybody&#8217;s data can be written
+by one person and given away. Chapter 50&#8217;s stated goal, that application growth
 becomes dramatic once storage is decoupled from deployment, rests on this.
 </p>
 
 <h2>54.4 The risk, stated plainly</h2>
 
 <p>
-The note does not oversell. Applications run with the user's credentials, and
+The note does not oversell. Applications run with the user&#8217;s credentials, and
 Berners-Lee says what follows:
 </p>
 
@@ -267,7 +279,7 @@ rights, in European data protection law applicable from May 2018, address the
 silo problem by compelling export rather than by decoupling storage.</li>
 <li><strong>The market in applications has not appeared.</strong> The
 prediction of section 54.3 is the part still outstanding: storage did not
-become a commodity, and most people's data still lives with the application
+become a commodity, and most people&#8217;s data still lives with the application
 that created it.</li>
 </ul>
 </div>
@@ -313,8 +325,11 @@ mismatch from your own use.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VI: Linked Data and Solid</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

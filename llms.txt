@@ -24,6 +24,17 @@ much hope as you would with words in the dictionary." This book supplies the
 order: every note gets exactly one chapter, placed so that terms are defined
 before use.
 
+## Reading it without a background
+
+No prior knowledge is assumed. The title page carries a fifteen-chapter path
+through the book, each entry with a line on what it gives the reader; a
+glossary at /glossary.html defines every unavoidable term in plain words; and
+the twenty-one landmark chapters open with a plain-language short version
+before any history. Landmark chapters are marked in the table of contents.
+
+The fifteen on the path are chapters 1, 2, 3, 16, 23, 25, 32, 49, 51, 54, 67,
+71, 87, 90 and 96.
+
 ## Structure
 
 Ten volumes, graded by the kind of claim each makes:
@@ -60,8 +71,8 @@ Ten volumes, graded by the kind of claim each makes:
 
 ## Chapter shape
 
-Every chapter carries: a source note naming the original title, date, length
-and URL; inline SVG figures where a picture shows the mechanism better than
+Every chapter carries: a source note naming the original title, its date and
+its URL; on landmark chapters, a short version in plain language; inline SVG figures where a picture shows the mechanism better than
 prose; "The question", giving the argument it was written into; the
 argument restated in order with quotations attributed and cited; "What
 happened since", listing outcomes with specification numbers and dates;
@@ -76,7 +87,8 @@ What remains is correction: errata, better readings, and updating the
 
 ## Files
 
-- /index.html - title page, volume overview, full table of contents
+- /index.html - title page, the reading path, volume overview, full contents
+- /glossary.html - the terms the book could not avoid, in plain words
 - /chapters/NN-slug.html - one chapter each, numbered in reading order
 - /README.md - contribution front door and house standards
 - Source: https://github.com/DesignIssues/design-issues

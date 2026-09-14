@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VI: Linked Data and Solid</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Footprints.html"><em>Linked Data Shapes, Forms and Footprints</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2019-04-26.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Footprints.html">https://www.w3.org/DesignIssues/Footprints.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Footprints.html"><em>Linked Data Shapes, Forms and Footprints</em></a>,
+a Design Issues note by Tim Berners-Lee, 2019-04-26.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Footprints.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in April 2019, this note poses the problem that all of Volume VI has
@@ -201,14 +199,14 @@ how, so that the next application can find it.
 This is the difference between a protocol for writing, which Chapter 50
 supplies, and a convention about where writing goes, which nothing supplied.
 Two applications can both speak the protocol perfectly and still be unable to
-see each other's data.
+see each other&#8217;s data.
 </p>
 
 <h2>57.5 The shape of the problem, generally</h2>
 
 <p>
 The three technologies correspond to three separations the book has made
-before. Shapes are about machines agreeing, which is Chapter 21's conformance
+before. Shapes are about machines agreeing, which is Chapter 21&#8217;s conformance
 term. Forms are about people, which is Chapter 56. Footprints are about
 placement, which is the question Chapter 37 warned about when it said not to
 confuse what is said with where it is stored.
@@ -228,9 +226,9 @@ cooperate for reasons neither author anticipated.
 Recommendation in July 2017 and ShEx was published as a community
 specification, and both are used to validate data before processing.</li>
 <li><strong>Forms remained bespoke.</strong> Driving a user interface from a
-vocabulary is done in Solid's own libraries and almost nowhere else; most
+vocabulary is done in Solid&#8217;s own libraries and almost nowhere else; most
 applications still hard-code their forms.</li>
-<li><strong>Footprints did not become a standard.</strong> Solid's type index
+<li><strong>Footprints did not become a standard.</strong> Solid&#8217;s type index
 answers part of the question, and where a given application should put a new
 thing is still largely convention.</li>
 <li><strong>The general problem is now widespread.</strong> Shared stores
@@ -265,7 +263,7 @@ system you maintain.</p>
 <div class="question">
 <p><span class="question-number">57.3</span>
 Two applications share a store and speak the same protocol but cannot see each
-other's data. Describe how, and what would fix it.</p>
+other&#8217;s data. Describe how, and what would fix it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.4</span>
@@ -281,8 +279,11 @@ does it assume?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VI: Linked Data and Solid</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

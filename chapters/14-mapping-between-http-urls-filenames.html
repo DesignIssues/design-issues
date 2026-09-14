@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume II: Naming</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/HTTPFilenameMapping.html"><em>Mapping between HTTP URLs and filenames on a server</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2015-04-10.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/HTTPFilenameMapping.html">https://www.w3.org/DesignIssues/HTTPFilenameMapping.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/HTTPFilenameMapping.html"><em>Mapping between HTTP URLs and filenames on a server</em></a>,
+a Design Issues note by Tim Berners-Lee, 2015-04-10.
+<a class="source-link" href="https://www.w3.org/DesignIssues/HTTPFilenameMapping.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the most practical note in Volume II and the only one that reaches a
@@ -61,8 +59,8 @@ asks a question every read-write server must answer: given an HTTP URI, which
 file on disk does it name?
 </p>
 <p>
-It belongs here because it is Chapter 12's file-and-HTTP correspondence
-meeting Chapter 2's opacity axiom, and discovering that the two cannot both
+It belongs here because it is Chapter 12&#8217;s file-and-HTTP correspondence
+meeting Chapter 2&#8217;s opacity axiom, and discovering that the two cannot both
 be had in full.
 </p>
 </div>
@@ -89,7 +87,7 @@ as local files and as resources on the web.
 <h2>14.2 Three requirements, two of which may be had</h2>
 
 <p>
-The note's contribution is to state the conflict exactly. Three things are
+The note&#8217;s contribution is to state the conflict exactly. Three things are
 wanted, and they cannot all hold.
 </p>
 
@@ -137,7 +135,7 @@ wanted, and they cannot all hold.
   <text x="360" y="390" class="t-sm" text-anchor="middle"><tspan font-style="italic">The resolution: weaken the top corner from </tspan><tspan fill="#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan fill="#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
 </svg>
 <figcaption><span class="fig-label">Figure 14.1</span>
-Berners-Lee's method here is worth as much as his answer: state the
+Berners-Lee&#8217;s method here is worth as much as his answer: state the
 requirements precisely enough that their incompatibility becomes a
 theorem, then look for the weakest one to weaken.</figcaption>
 </figure>
@@ -146,7 +144,7 @@ theorem, then look for the weakest one to weaken.</figcaption>
 He works each corner in turn and rejects all three. Dropping direct
 correspondence defeats the premise of the exercise. Dropping arbitrary PUT
 turns a general-purpose storage space into one that only applications adapted
-to that server's constraints can use. Dropping correct extensions is the one
+to that server&#8217;s constraints can use. Dropping correct extensions is the one
 he refuses outright, and the refusal is worth quoting because it is the only
 place in the collection where he calls something non-negotiable:
 </p>
@@ -242,7 +240,7 @@ servers map resource URIs to storage and how auxiliary metadata is kept
 alongside, which is the interoperability goal section 14.4 names.</li>
 <li><strong>The attack it defends against stayed real.</strong> Content type
 confusion remains a standard class of vulnerability, and the general defence
-is the one implied here: do not let a remote party's chosen name determine
+is the one implied here: do not let a remote party&#8217;s chosen name determine
 how a local system treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>
 Off-the-shelf servers still map URLs to filenames directly, which is Try 3,
@@ -298,8 +296,11 @@ the trust boundary this protects and name the party on each side of it.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume II: Naming</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

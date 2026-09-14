@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Security-Origin.html"><em>The Same Origin Policy - Origin Granularity</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2015-03-28.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Security-Origin.html">https://www.w3.org/DesignIssues/Security-Origin.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Security-Origin.html"><em>The Same Origin Policy - Origin Granularity</em></a>,
+a Design Issues note by Tim Berners-Lee, 2015-03-28.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Security-Origin.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 The third of the 2015 notes opens with a question that sounds abstract and
@@ -63,7 +61,7 @@ a party.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 <p>
-The browser's answer is the domain name. Berners-Lee's objection is that the
+The browser&#8217;s answer is the domain name. Berners-Lee&#8217;s objection is that the
 identifier already contains a second hierarchy, which the browser ignores, and
 that ignoring it forces the wrong shape on everything built above.
 </p>
@@ -122,9 +120,9 @@ activist Jane Smith. The reader's privacy is being whittled away a little more.
 <h2>68.2 Why the path hierarchy was already there</h2>
 
 <p>
-The note's strongest point is historical. Making the path hierarchy visible was
+The note&#8217;s strongest point is historical. Making the path hierarchy visible was
 a deliberate early decision, and it already carries delegation everywhere
-except in the browser's security model.
+except in the browser&#8217;s security model.
 </p>
 
 <p>
@@ -146,7 +144,7 @@ external services.
 <p>
 The worked example is a board using an outside discussion tool, mounted inside
 its own site. What one wants is for the outside tool to be unable to read the
-board's papers, which sit elsewhere in the same tree.
+board&#8217;s papers, which sit elsewhere in the same tree.
 </p>
 
 <p>
@@ -162,8 +160,8 @@ data.
 </blockquote>
 
 <p>
-The arrangement that actually obtains, the tool's supplier hosting the board's
-pages under the supplier's own domain, inverts the relationship: the party
+The arrangement that actually obtains, the tool&#8217;s supplier hosting the board&#8217;s
+pages under the supplier&#8217;s own domain, inverts the relationship: the party
 being engaged for one small purpose becomes the party the data belongs to.
 </p>
 
@@ -184,7 +182,7 @@ is necessary -- the best of many bad choices.
 He then names the two places where opacity was accepted, and the second is
 striking. The letter discussed in Chapter 67 is one. The other is the domain
 name itself, which he calls the massive opaqueness, because it is the path by
-which the user's trust in the session travels at all.
+which the user&#8217;s trust in the session travels at all.
 </p>
 
 <p>
@@ -206,7 +204,7 @@ required.</li>
 <li><strong>The privacy leak was partly closed.</strong> Encrypted name
 lookup, standardised from 2018, hides requests from the network, though the
 server name is still visible in most connections.</li>
-<li><strong>Embedding a supplier's tool under your own tree stayed
+<li><strong>Embedding a supplier&#8217;s tool under your own tree stayed
 impossible.</strong> Third-party components are hosted by their suppliers or
 served from a subdomain, which is the arrangement section 68.3
 describes.</li>
@@ -254,8 +252,11 @@ using the argument of Chapter 6.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

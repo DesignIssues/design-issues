@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume II: Naming</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/PersistentDomains.html"><em>Persistent Domains</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2000-10-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/PersistentDomains.html">https://www.w3.org/DesignIssues/PersistentDomains.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/PersistentDomains.html"><em>Persistent Domains</em></a>,
+a Design Issues note by Tim Berners-Lee, 2000-10-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/PersistentDomains.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 3 concluded that persistence is a contract rather than a technology.
@@ -81,10 +79,10 @@ persistence of the domain name itself.
 </p>
 
 <p>
-The first is the publisher's to solve, and Berners-Lee notes that the failure
+The first is the publisher&#8217;s to solve, and Berners-Lee notes that the failure
 is usually thoughtlessness rather than malice, aggravated by a dearth of
 tools that help run a server with persistent URIs. He had already written
-<em>Cool URIs Don't Change</em> about it and had led the Consortium to a
+<em>Cool URIs Don&#8217;t Change</em> about it and had led the Consortium to a
 persistence policy. He is clear that this addresses only half the problem.
 </p>
 
@@ -102,9 +100,9 @@ public expectation that domain names should be persistent.
 
 <p>
 He then makes the case against his own alarm, which is the mark of the better
-notes in this collection. The planet's investment in domain names as
+notes in this collection. The planet&#8217;s investment in domain names as
 references is huge, the dereferencing technology has become sophisticated,
-and the legal weight behind a significant organisation's ownership is
+and the legal weight behind a significant organisation&#8217;s ownership is
 considerable. Nobody imagines a legal battle over a well-known domain being
 lost to a sneaky entrepreneur. The section ends with three words: but is this
 enough?
@@ -178,7 +176,7 @@ obligations. Transfer of the domain name would carry within it both.
 
 <p>
 The worked case is one bank acquiring another and being unable simply to drop
-support for the acquired bank's documents without all of them falling into
+support for the acquired bank&#8217;s documents without all of them falling into
 archive state. That is the whole idea in one example: the acquirer inherits
 the duty along with the asset.
 </p>
@@ -224,7 +222,7 @@ ending with a request for one dollar from anyone who uses the scheme.
 <ul>
 <li><strong>Nothing was built.</strong> No date-stamped top-level domain
 exists. The expansion of the top-level namespace that did occur, beginning
-with ICANN's new generic top-level domain programme in 2012, sold names as
+with ICANN&#8217;s new generic top-level domain programme in 2012, sold names as
 rentals on the existing model and added no persistence obligations.</li>
 <li><strong>The contract was written elsewhere, privately.</strong> The
 Handle System and the Digital Object Identifier supply the undertaking this
@@ -235,7 +233,7 @@ transfer automatically on acquisition.</li>
 preserve material after publishers disappear, at scale, but as a voluntary
 third-party act rather than a condition of holding a name. There is no
 contractual succession of the kind section 13.3 describes.</li>
-<li><strong>Dyson's line held.</strong> Domain names are still rented. Lapsed
+<li><strong>Dyson&#8217;s line held.</strong> Domain names are still rented. Lapsed
 domains are still re-registered and repointed, which is the second and worse
 failure the note names in its opening: not an error message, but a URI
 resolving to something entirely different from what the person linking to it
@@ -248,7 +246,7 @@ meant.</li>
 <p>
 This chapter is the constructive answer to the naming problem stated in
 Chapter 3, and it depends on the sense of genericity defined in Chapter 10.
-The centralisation of the DNS root that makes the proposal need ICANN's
+The centralisation of the DNS root that makes the proposal need ICANN&#8217;s
 cooperation is named in Chapter 5. The stream of rival naming schemes that
 this note treats as a symptom is discussed in Chapter 4. The question of who
 may copy material after its publisher stops serving it returns in Chapter 80.
@@ -289,8 +287,11 @@ does not.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume II: Naming</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

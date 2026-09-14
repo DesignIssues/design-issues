@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/CG.html"><em>Conceptual Graphs and the semantic Web</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2001-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/CG.html">https://www.w3.org/DesignIssues/CG.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/CG.html"><em>Conceptual Graphs and the semantic Web</em></a>,
+a Design Issues note by Tim Berners-Lee, 2001-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/CG.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume IV closes with a comparison, and with an admission of why it was
@@ -101,7 +99,7 @@ That is a considerable concession. The rival is not wrong; it is unwebized.
 The procedure is exactly the one set out in Chapter 26, and takes two
 paragraphs. Modify the syntax so that a concept or a relation may carry a
 URI, which means allowing the characters of a URI in identifiers. Then map
-local identifiers to global ones in the usual way: the document's URI, a hash,
+local identifiers to global ones in the usual way: the document&#8217;s URI, a hash,
 and the local name.
 </p>
 
@@ -177,7 +175,7 @@ language to be universal itself.
 
 <p>
 Universality is a property required of the substrate, not of everything built
-on it. Chapter 2's third axiom says the same thing about identifier spaces.
+on it. Chapter 2&#8217;s third axiom says the same thing about identifier spaces.
 </p>
 
 <h2>39.4 Where the shapes do not match</h2>
@@ -192,9 +190,9 @@ which is possible and is not free.
 <p>
 A second difference is more interesting because it is about authority. In the
 rival system a concept is associated with a single type, usually its
-creator's. Berners-Lee notes that on the Web a third party may equally well
+creator&#8217;s. Berners-Lee notes that on the Web a third party may equally well
 assert a type for something, and that such statements are ordinary rather than
-exceptional. Anyone may say anything about anything, so a thing's type is not
+exceptional. Anyone may say anything about anything, so a thing&#8217;s type is not
 the property of whoever first named it.
 </p>
 
@@ -277,8 +275,11 @@ that is valuable, and one where it is a problem.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

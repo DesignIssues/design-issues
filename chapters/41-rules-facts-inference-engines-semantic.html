@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Rules.html"><em>Rules and facts: Inference engines and the Semantic Web</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2000-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Rules.html">https://www.w3.org/DesignIssues/Rules.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Rules.html"><em>Rules and facts: Inference engines and the Semantic Web</em></a>,
+a Design Issues note by Tim Berners-Lee, 2000-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Rules.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 40 concluded that inference rules cannot live outside the language.
@@ -179,7 +177,7 @@ that someone is answerable for.
 <h2>41.3 Why classical logic, and not as a matter of taste</h2>
 
 <p>
-The note's central claim is put as a denial that this was a preference:
+The note&#8217;s central claim is put as a denial that this was a preference:
 </p>
 
 <blockquote>
@@ -191,7 +189,7 @@ the web.
 
 <p>
 Two alternatives are ruled out for specific reasons. Fuzzy systems may lack a
-consistent set of axioms, and Berners-Lee's objection is that such a system
+consistent set of axioms, and Berners-Lee&#8217;s objection is that such a system
 tends to believe something more strongly as a function of how often evidence
 has been presented, which on an open network is a description of how to be
 manipulated. Closed-world systems do not scale because the scope of a default
@@ -214,7 +212,7 @@ proof.
 The concession that follows matters as much as the claim. Non-classical
 heuristic systems may have been used to discover the proof. Once found, it can
 be checked as valid by any system. How an answer was reached stops being
-anyone's business, which is the asymmetry of Chapter 40 doing its work.
+anyone&#8217;s business, which is the asymmetry of Chapter 40 doing its work.
 </p>
 
 <h2>41.4 What publishing a rule strips out</h2>
@@ -244,7 +242,7 @@ inference tips. A rule stored in a table of rules to be fired at a particular
 moment has had its meaning entangled with its scheduling, and the
 classification between data and kinds of rule becomes a meta level the
 language cannot express. Two systems must be able to exchange what a rule
-means even when neither recognises the other's notion of when to apply it.
+means even when neither recognises the other&#8217;s notion of when to apply it.
 </p>
 
 <div class="since">
@@ -252,7 +250,7 @@ means even when neither recognises the other's notion of when to apply it.
 <ul>
 <li><strong>The separation was standardised.</strong> The Rule Interchange
 Format, a W3C Recommendation of June 2010, exists precisely to exchange rules
-between engines with different execution strategies, which is this chapter's
+between engines with different execution strategies, which is this chapter&#8217;s
 requirement.</li>
 <li><strong>Non-monotonic reasoning was kept out and let back in
 narrowly.</strong> Chapter 42 describes the scoped form of negation that
@@ -311,8 +309,11 @@ Explain why that is dangerous on an open network specifically.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

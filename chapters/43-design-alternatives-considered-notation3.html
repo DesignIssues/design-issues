@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/N3Alternatives.html"><em>Design alternatives considered in Notation3</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2002-03-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/N3Alternatives.html">https://www.w3.org/DesignIssues/N3Alternatives.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/N3Alternatives.html"><em>Design alternatives considered in Notation3</em></a>,
+a Design Issues note by Tim Berners-Lee, 2002-03-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/N3Alternatives.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This note is unusual in the collection and unusual anywhere: it is a designer
@@ -70,7 +68,7 @@ while the decision is still open.
 
 <p>
 The need is small and constant. Given an expression for a person, one wants an
-expression for that person's email address: some value related to the first by
+expression for that person&#8217;s email address: some value related to the first by
 a named property.
 </p>
 
@@ -156,13 +154,13 @@ systems of linked objects, is the more common need.
 </svg>
 <figcaption><span class="fig-label">Figure 43.1</span>
 The finding is in the blank column. Backward traversal is hard to write in
-every candidate, and Berners-Lee's diagnosis is not about notation at all: it
+every candidate, and Berners-Lee&#8217;s diagnosis is not about notation at all: it
 is about the language he is borrowing metaphors from.</figcaption>
 </figure>
 
 <p>
 That observation is the most transferable thing in the note. A notation that
-borrows familiarity from a natural language inherits that language's
+borrows familiarity from a natural language inherits that language&#8217;s
 asymmetries, including the ones its designers did not choose. English makes it
 easy to go from a person to their email and hard to go from an email to its
 owner, and any syntax that feels natural in English will do the same.
@@ -287,8 +285,11 @@ would you tell from the specification alone?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

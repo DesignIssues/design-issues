@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,28 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/RDF-XML.html"><em>Why RDF model is not exactly the XML model</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1999-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/RDF-XML.html">https://www.w3.org/DesignIssues/RDF-XML.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
+<a href="https://www.w3.org/DesignIssues/RDF-XML.html"><em>Why RDF model is not exactly the XML model</em></a>,
+a Design Issues note by Tim Berners-Lee, 1999-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/RDF-XML.html">read the original</a>
+</p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Take one plain fact: this page was written by Ora. Now write it down in a
+structured file so a program can use it. There are at least five perfectly
+reasonable ways to do it.
+</p>
+<p>
+To a person all five say the same thing. To a program they are five unrelated
+shapes, and a program that can find the fact in one will fail on the other four.
+This chapter is the clearest explanation in the book of why knowing a
+document&#8217;s structure is not the same as knowing what it says.
+</p>
 </div>
-<div class="editors-note">
+
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Berners-Lee says why he wrote this, and the word he uses is unusual for the
@@ -145,7 +158,7 @@ producing different trees to a machine.
   <text x="360" y="380" class="t-sm t-it" text-anchor="middle">The same RDF graph results from many XML trees. That is the whole of the difference.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 32.1</span>
-Berners-Lee's summary: much of an XML query is an attempt to convert the set
+Berners-Lee&#8217;s summary: much of an XML query is an attempt to convert the set
 of all possible representations of a fact into one statement, and that is just
 what RDF does.</figcaption>
 </figure>
@@ -161,7 +174,7 @@ names were a big hint, and they were a hint to the human only.
 <h2>32.2 Why the mapping is hairy</h2>
 
 <p>
-There is a mapping from XML documents to semantic graphs. Berners-Lee's word
+There is a mapping from XML documents to semantic graphs. Berners-Lee&#8217;s word
 for it is hairy, and he gives four reasons.
 </p>
 
@@ -205,7 +218,7 @@ distinguishes them.
 <strong>The qualifier at a distance.</strong> One element describes the
 author; another, elsewhere in the record, flags that &ldquo;author&rdquo;
 here means the author of the work that was translated. An inference that was
-safe, that a Finnish document's author speaks Finnish, is invalidated by
+safe, that a Finnish document&#8217;s author speaks Finnish, is invalidated by
 something in a different part of the record.
 </p>
 
@@ -233,7 +246,7 @@ properly.
 <p>
 The note ends fairly. For a graph of knowledge, order does not matter. For a
 document meant to be read by a person, order is how associations are built up
-in a reader's mind, and it matters a great deal. Berners-Lee suggests that
+in a reader&#8217;s mind, and it matters a great deal. Berners-Lee suggests that
 reluctance to give up order comes from processing human-readable documents,
 and that such documents are typically not ripe for conversion anyway.
 </p>
@@ -251,7 +264,7 @@ important to recognise the difference.
 <ul>
 <li><strong>The argument outlived its example.</strong> The five XML
 renderings are now five JSON shapes, and the problem is identical: a
-consumer must know the producer's chosen structure. JSON-LD, a W3C
+consumer must know the producer&#8217;s chosen structure. JSON-LD, a W3C
 Recommendation of January 2014, exists to attach a graph model to JSON for
 exactly this reason.</li>
 <li><strong>The qualifier problem was named.</strong> What this note describes
@@ -261,7 +274,7 @@ explicit rather than implicit.</li>
 <li><strong>Order-dependent formats did not go away.</strong> Rule files
 evaluated in order remain the normal way to configure firewalls, routing and
 access control, with the nested conditional still in the prose.</li>
-<li><strong>The note's own prediction came true the other way.</strong>
+<li><strong>The note&#8217;s own prediction came true the other way.</strong>
 Berners-Lee asks whether it would be nice to label XML so a parser could find
 the assertions. Schema.org markup embedded in pages does precisely that, at
 enormous scale, and is consumed by search engines rather than by the general
@@ -311,8 +324,11 @@ is the boundary between a document and a dataset, and what decides it?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume II: Naming</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/HTTP-URI.html"><em>What do HTTP URIs identify?</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2002-09-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/HTTP-URI.html">https://www.w3.org/DesignIssues/HTTP-URI.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/HTTP-URI.html"><em>What do HTTP URIs identify?</em></a>,
+a Design Issues note by Tim Berners-Lee, 2002-09-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/HTTP-URI.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the longest argument in the collection and the only one written from
@@ -80,7 +78,7 @@ the same identifier for different things and never discover it.
 <h2>7.1 The position being defended</h2>
 
 <p>
-Berners-Lee's answer is that an HTTP URI without a fragment identifies a
+Berners-Lee&#8217;s answer is that an HTTP URI without a fragment identifies a
 document, in a sense of &ldquo;document&rdquo; deliberately stretched to
 breaking point. His own list of what counts includes a poem, an order for
 ball bearings, a painting, a film, a review of a film, a sound clip, a record
@@ -141,7 +139,7 @@ dismiss the document is to lose the ability to say which.
 <p>
 The bulk of the note works through the positions Berners-Lee does not hold.
 The method is worth more than the verdicts: each alternative is stated in its
-proponents' terms, granted whatever it has going for it, and then failed on a
+proponents&#8217; terms, granted whatever it has going for it, and then failed on a
 specific consequence.
 </p>
 
@@ -211,7 +209,7 @@ abstraction and specification!
 <p>
 The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
-names a document. That is the whole of Berners-Lee's position in one line,
+names a document. That is the whole of Berners-Lee&#8217;s position in one line,
 and it is why he preferred hash URIs to the alternative that eventually won
 alongside them.
 </p>
@@ -224,7 +222,7 @@ Technical Architecture Group resolved the issue it had recorded as
 httpRange-14, adopting a runtime test rather than a rule fixed in the
 specification, which is the position section 7.3 rejects. It did so using a
 redirect closely resembling the one proposed here. Chapter 8 is
-Berners-Lee's account of the resolution.</li>
+Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
 2006 the page carried a header saying the question had been decided by the
 Group &ldquo;in a compromise which I think works quite well&rdquo;. The
@@ -287,8 +285,11 @@ and say whether it damages the argument.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume II: Naming</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

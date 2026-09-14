@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume II: Naming</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Relative.html"><em>Using Relative URIs</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2011.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Relative.html">https://www.w3.org/DesignIssues/Relative.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Relative.html"><em>Using Relative URIs</em></a>,
+a Design Issues note by Tim Berners-Lee, 2011.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Relative.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This note is a complaint, and it says so. Berners-Lee wrote it in 2011 after
@@ -99,7 +97,7 @@ contain its own address in order to refer to itself.
 <h2>12.2 The argument by absurdity</h2>
 
 <p>
-The note's best passage makes the case by writing out what the alternative
+The note&#8217;s best passage makes the case by writing out what the alternative
 would look like in a programming language. A two-line program that sets a
 constant and prints twice its value becomes:
 </p>
@@ -108,7 +106,7 @@ constant and prints twice its value becomes:
 print (2 * &lt;file:///users/andys/programs/play/circles.py#pi&gt;);</code></pre>
 
 <p>
-Berners-Lee's verdict on it is four words: not practical, not the sort of
+Berners-Lee&#8217;s verdict on it is four words: not practical, not the sort of
 thing you can copy and move around. The example carries an accidental
 demonstration of the very problem, since the two paths differ in the user
 name, which is exactly the class of breakage absolute references produce.
@@ -175,7 +173,7 @@ and is the reason it reads as a complaint rather than an essay.
 
 <p>
 The first is XML namespaces, which forbid relative references in namespace
-declarations. Berners-Lee's diagnosis is that the authors envisaged a narrow
+declarations. Berners-Lee&#8217;s diagnosis is that the authors envisaged a narrow
 set of cases in which namespace terms were stable and global while the
 document was local, and did not see the general need to generate relative
 URIs in arbitrary situations.
@@ -267,8 +265,11 @@ than a feature.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume II: Naming</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

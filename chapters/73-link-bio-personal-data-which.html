@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/PersonalPublic.html"><em>Link in Bio: Personal data which is Public</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2024.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/PersonalPublic.html">https://www.w3.org/DesignIssues/PersonalPublic.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/PersonalPublic.html"><em>Link in Bio: Personal data which is Public</em></a>,
+a Design Issues note by Tim Berners-Lee, 2024.
+<a class="source-link" href="https://www.w3.org/DesignIssues/PersonalPublic.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in February 2024, this note identifies a category that falls between
@@ -186,7 +184,7 @@ web sites have this.
 
 <p>
 Machine-readable data about people and things is now published at enormous
-scale, because a search engine rewards it. Chapter 49's four rules are followed
+scale, because a search engine rewards it. Chapter 49&#8217;s four rules are followed
 by millions of sites that have never heard of them, for a reason the rules
 never mentioned.
 </p>
@@ -213,7 +211,7 @@ adding things, not by adding infrastructure.
 
 <p>
 Berners-Lee assumes throughout that the same data will be served as a page for
-people and as data for machines from the same place, which is Chapter 10's
+people and as data for machines from the same place, which is Chapter 10&#8217;s
 genericity doing quiet work.
 </p>
 
@@ -240,7 +238,7 @@ Services offering a single page of links became widely used, which is evidence
 of the need and not of the architecture.</li>
 <li><strong>Verification arrived through the platforms.</strong> Proving that
 an account and a site belong to the same person is now done by markup that the
-platform checks, which answers part of section 73.2's problem inside one
+platform checks, which answers part of section 73.2&#8217;s problem inside one
 company at a time.</li>
 <li><strong>Emergency information stayed with device makers.</strong>
 Allergies, blood type and next of kin are held by phone operating systems and
@@ -294,8 +292,11 @@ would remove the need for it?</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

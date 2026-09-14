@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume V: Logic and Notation</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Reify.html"><em>Reification of RDF and N3</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2004-12-31.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Reify.html">https://www.w3.org/DesignIssues/Reify.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Reify.html"><em>Reification of RDF and N3</em></a>,
+a Design Issues note by Tim Berners-Lee, 2004-12-31.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Reify.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in December 2004, this note defines what it means to describe a graph
@@ -121,11 +119,11 @@ the identifier itself, is marked in the note with a comment reading
 </svg>
 <figcaption><span class="fig-label">Figure 44.1</span>
 This is the use-mention distinction of Chapter 35 arriving as a specification
-requirement rather than as an author's slip.</figcaption>
+requirement rather than as an author&#8217;s slip.</figcaption>
 </figure>
 
 <p>
-Berners-Lee's verdict on the mechanism already in the standard is given
+Berners-Lee&#8217;s verdict on the mechanism already in the standard is given
 without softening:
 </p>
 
@@ -189,8 +187,8 @@ consequence.
 
 <p>
 The reason the whole apparatus is needed is stated with an example about what
-one person knows about another. Jane knows that Joe's name is James Doe. The
-quotation matters because Jane's knowledge is in those terms: even if two
+one person knows about another. Jane knows that Joe&#8217;s name is James Doe. The
+quotation matters because Jane&#8217;s knowledge is in those terms: even if two
 identifiers refer to the same person, Jane may not know that, and so may not
 know the corresponding fact about the other name.
 </p>
@@ -285,8 +283,11 @@ your model forbids an inference engine from doing.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume V: Logic and Notation</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

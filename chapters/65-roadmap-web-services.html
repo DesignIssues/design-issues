@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VI: Linked Data and Solid</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/WebServices.html"><em>Roadmap for Web Services</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2009-08-27.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/WebServices.html">https://www.w3.org/DesignIssues/WebServices.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/WebServices.html"><em>Roadmap for Web Services</em></a>,
+a Design Issues note by Tim Berners-Lee, 2009-08-27.
+<a class="source-link" href="https://www.w3.org/DesignIssues/WebServices.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume VI closes with the note Berners-Lee wrote in October 2002 about the
@@ -87,7 +85,7 @@ agreed:
 <p>
 The first point is the one that earns the objection to the name. A system
 where interactions rather than documents are primary is not the Web, whatever
-it is built from. The second is why the Web's protocols were used anyway. And
+it is built from. The second is why the Web&#8217;s protocols were used anyway. And
 the third produces the requirement that separates this from ordinary remote
 procedure calls:
 </p>
@@ -167,7 +165,7 @@ described, secured, routed and transacted, now with a common envelope.
   <text x="360" y="282" class="t-sm" text-anchor="middle">which provide data about web services as well as many other things.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 65.1</span>
-Berners-Lee's insistence that discovery is optional is the moment he declines
+Berners-Lee&#8217;s insistence that discovery is optional is the moment he declines
 to let the architecture become a closed triangle of requester, provider and
 registry.</figcaption>
 </figure>
@@ -183,7 +181,7 @@ registry, and the registry would be the centre.
 
 <p>
 The philosophy section does not argue. It lists earlier notes, and the list
-is a summary of the whole volume's position on interaction.
+is a summary of the whole volume&#8217;s position on interaction.
 </p>
 
 <p>
@@ -195,7 +193,7 @@ information spaces across many fields at once.
 </p>
 
 <p>
-The answer to the journal question is the paper trail's answer. The journal
+The answer to the journal question is the paper trail&#8217;s answer. The journal
 came first, and the database is a convenience computed from it. A system that
 keeps only the database has thrown away the thing that makes accountability
 possible, which is precisely what section 65.1 says these systems require.
@@ -278,8 +276,11 @@ claim against a standards effort you have watched.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VI: Linked Data and Solid</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

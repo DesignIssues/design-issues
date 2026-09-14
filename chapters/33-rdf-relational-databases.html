@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/RDB-RDF.html"><em>RDF and Relational databases</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 1998-09-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/RDB-RDF.html">https://www.w3.org/DesignIssues/RDB-RDF.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/RDB-RDF.html"><em>RDF and Relational databases</em></a>,
+a Design Issues note by Tim Berners-Lee, 1998-09-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/RDB-RDF.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in September 1998 as a parenthesis to Chapters 5 and 30, this note
@@ -177,7 +175,7 @@ which are very large.
 </p>
 
 <p>
-Two further observations survive well. The first is about typing. Codd's
+Two further observations survive well. The first is about typing. Codd&#8217;s
 original model included datatyping with inheritance, intended to be
 implemented more fully than it was, so a shoe size and a house number may
 both be integers and nothing prevents joining on them. Practical systems
@@ -195,7 +193,7 @@ a set of inference rules.
 <p>
 The second is about primary keys, and it is the naming problem of Chapter 3
 arriving in a new place. A primary key identifies a row, and can change
-without changing the row's identity: a person may change their name.
+without changing the row&#8217;s identity: a person may change their name.
 Cascading updates preserve referential integrity locally and cannot work
 across the Web. He lists the three options honestly: use a row identifier,
 constrain the key not to change, or put up with links breaking.
@@ -290,7 +288,7 @@ schema author never foresaw. Name a case where that is dangerous.</p>
 </div>
 <div class="question">
 <p><span class="question-number">33.3</span>
-A primary key may change without changing the row's identity. Which of the
+A primary key may change without changing the row&#8217;s identity. Which of the
 three options does your system take, and what breaks?</p>
 </div>
 <div class="question">
@@ -307,8 +305,11 @@ operation. Restate that using the axioms of Chapter 2.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

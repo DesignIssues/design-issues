@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume VII: Trust</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Security-ClientCerts.html"><em>Client-Side Certificates</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2015-03-28.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Security-ClientCerts.html">https://www.w3.org/DesignIssues/Security-ClientCerts.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Security-ClientCerts.html"><em>Client-Side Certificates</em></a>,
+a Design Issues note by Tim Berners-Lee, 2015-03-28.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Security-ClientCerts.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 The last of the four notes of March 2015 asks why the Web authenticates one
@@ -73,7 +71,7 @@ The question is why, in those cases, we still use passwords.
 <h2>69.1 The comparison</h2>
 
 <p>
-The note's central passage is a single long sentence that lays out everything
+The note&#8217;s central passage is a single long sentence that lays out everything
 wrong with a password by simply describing what one is:
 </p>
 
@@ -113,7 +111,7 @@ wrong with a password by simply describing what one is:
   <text x="360" y="310" class="t-sm" text-anchor="middle">but that is actually an advantage.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 69.1</span>
-Berners-Lee's observation about the reception of the idea: ask people about
+Berners-Lee&#8217;s observation about the reception of the idea: ask people about
 client certificates and they say they are going out of fashion and hard to use;
 ask the same people about passwords and they scream that they hate
 them.</figcaption>
@@ -140,7 +138,7 @@ list is short and the absence of any of it explains why the mechanism failed.
 <tr><th>Function</th><th>What it means for a person</th></tr>
 <tr><td>Create a key pair and keep it locally</td><td>On the laptop, phone or a hardware device</td></tr>
 <tr><td>Choose which identity to use for a site, and remember it</td><td>With enough shown to tell one from another</td></tr>
-<tr><td>Show who you are logged in as, near the address</td><td>Beside where the site's own identity is shown</td></tr>
+<tr><td>Show who you are logged in as, near the address</td><td>Beside where the site&#8217;s own identity is shown</td></tr>
 <tr><td>Log out</td><td>Drop the credentials, optionally choose another identity</td></tr>
 <tr><td>Manage those preferences</td><td>Editable when you get muddled</td></tr>
 <tr><td>Back up and synchronise keys, selectively</td><td>Marked for extra credit; some keys should never leave one machine</td></tr>
@@ -205,7 +203,7 @@ it authenticates the wrong side.
 </p>
 
 <p>
-Each is a case of the same thing: the machine's model of a social arrangement
+Each is a case of the same thing: the machine&#8217;s model of a social arrangement
 is narrower than the arrangement, and the narrowing is invisible because it
 has been there since the beginning.
 </p>
@@ -222,7 +220,7 @@ supply the creation, selection, synchronisation and per-site memory that
 section 69.2 lists, with the operating system rather than the browser doing
 most of it.</li>
 <li><strong>The key element the note asks for is still missing.</strong> No
-browser shows, beside the site's identity, which identity you are currently
+browser shows, beside the site&#8217;s identity, which identity you are currently
 presenting. The conversation is still displayed from one side.</li>
 <li><strong>The old mechanism was removed.</strong> The element for generating
 a key pair in a page, which the note mentions, was removed from browsers
@@ -270,8 +268,11 @@ impossible for that reason, and test the belief.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume VII: Trust</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>

@@ -32,7 +32,7 @@
 </head>
 <body>
 <nav class="chapter-nav">
-<a href="../index.html">Contents</a>
+<span><a href="../index.html">Contents</a><span class="nav-sep">&middot;</span><a href="../glossary.html">Glossary</a></span>
 <span class="volume-indicator">Volume IV: Meaning</span>
 </nav>
 
@@ -43,15 +43,13 @@
 </header>
 
 <main class="chapter-content">
-<div class="source-note">
+<p class="source-note">
 <span class="source-label">Source</span>
-<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Identity.html"><em>Identity: how to identify what in RDF</em></a>,
-a Design Issues note by Tim Berners-Lee, dated 2008-01-01.</p>
-<p>Read the original at <a href="https://www.w3.org/DesignIssues/Identity.html">https://www.w3.org/DesignIssues/Identity.html</a>.
-The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
-This book is commentary; where it quotes, it attributes.</p>
-</div>
-<div class="editors-note">
+<a href="https://www.w3.org/DesignIssues/Identity.html"><em>Identity: how to identify what in RDF</em></a>,
+a Design Issues note by Tim Berners-Lee, 2008-01-01.
+<a class="source-link" href="https://www.w3.org/DesignIssues/Identity.html">read the original</a>
+</p>
+<div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 32 established that the model is a graph of statements. This note,
@@ -205,7 +203,7 @@ have.
   <text x="360" y="312" class="t-sm" text-anchor="middle" fill="#3f6f3f">therefore: the name of the author of the book is Ora Lassila</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.1</span>
-Berners-Lee's gloss: the shortcut &ldquo;the author is this address&rdquo;
+Berners-Lee&#8217;s gloss: the shortcut &ldquo;the author is this address&rdquo;
 really means &ldquo;the author is somebody with that mailbox&rdquo;, and
 making the two steps explicit exposes both the nature of the identity claim
 and its limits.</figcaption>
@@ -236,7 +234,7 @@ person by a hashed mailbox became the standard practice in the Friend of a
 Friend vocabulary.</li>
 <li><strong>The fragment clash was resolved by media type.</strong>
 Registering data-carrying media types with their own fragment rules settled
-which interpretation applies, which is Chapter 11's axiom doing the work it
+which interpretation applies, which is Chapter 11&#8217;s axiom doing the work it
 was designed for.</li>
 <li><strong>The rat hole stayed open.</strong> Which properties may be treated
 as identifying is still decided per vocabulary and per application, and
@@ -290,8 +288,11 @@ unsayable, using a fact you would want to add later.</p>
 </main>
 <footer>
 <p>Design Issues &middot; Volume IV: Meaning</p>
+<p class="footer-note">The Design Issues notes are Tim Berners-Lee&#8217;s personal notes and are
+not endorsed by W3C. This book is commentary; where it quotes, it attributes.</p>
 <p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
 &middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="../glossary.html">glossary</a>
 &middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
 </footer>
 </body>
