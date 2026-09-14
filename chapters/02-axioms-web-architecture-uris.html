@@ -174,7 +174,8 @@ draws the consequence that matters for cryptography:
 There is, therefore, no definitive canonicalization algorithm for URIs.
 Generic URI handling code should handle URIs as case-sensitive character
 strings. It is not recommended that, for example, encryption and signature
-algorithms attempt to canonicalize URIs before signature.
+algorithms attempt to canonicalize URIs before signature, because of the
+arbitrariness of any attempt to define a canonicalization algorithm.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 

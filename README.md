@@ -64,13 +64,21 @@ whole is visible from the start. Volumes are being written in order.
 - `structure.py` — volume and chapter assignment, the reading order
 - `data-catalogue.json` — every source note: title, date, length, URL
 - `build.py` — regenerates `index.html` and `chapters/`
+- `check_quotes.py` — verifies every quotation against w3.org
 - `style.css` — one stylesheet for the whole book
 
 To build:
 
 ```sh
-python3 build.py
+python3 build.py        # regenerate index.html and chapters/
+python3 check_quotes.py # verify every quotation against its source note
 ```
+
+`check_quotes.py` pulls every `<blockquote>` out of `content/`, fetches the
+source note it belongs to from w3.org (cached in `.sources/`, not committed),
+and fails if the quoted words are not in it. Differences in whitespace are
+tolerated, because the source HTML wraps lines; anything else is reported.
+Nothing is attributed to Berners-Lee in this book that does not pass it.
 
 Writing a chapter means creating `content/NN-slug.html` with the same
 basename as the generated chapter file, containing a bare HTML fragment. The
@@ -80,7 +88,10 @@ build wraps it, adds the source note and the navigation, and drops the
 ## House standards
 
 - A claim is quoted, cited, or marked as the editor's reading. Nothing is
-  asserted in Berners-Lee's voice that he did not write.
+  asserted in Berners-Lee's voice that he did not write, and every quotation
+  is checked against the source by `check_quotes.py`.
+- Quotations are verbatim, including the source's own typographical errors.
+  Where a sentence is cut short, it is cut at a sentence boundary or marked.
 - Perishable facts carry dates. "What happened since" entries name the
   specification, the body, and the month.
 - Contested questions are reported as contested, with positions attributed.

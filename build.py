@@ -145,6 +145,7 @@ def chapter_html(c, prev, nxt):
 def index_html():
     written = sum(1 for c in chapters if has_content(c))
     total = len(chapters)
+    srcnotes = len(cat)
     words = sum(c["words"] for c in chapters)
     desc = (f"A book made from Tim Berners-Lee's Design Issues notes: "
             f"{total} chapters in ten volumes, in reading order, with editorial context.")
@@ -154,7 +155,7 @@ def index_html():
 <p class="subtitle">The Web's design notes, put in order</p>
 <p class="ornament">&sect;</p>
 <p class="description">
-Between 1996 and today, {AUTHOR_SRC} wrote {total} notes on why the Web is
+Between 1996 and 2024, {AUTHOR_SRC} wrote {srcnotes} notes on why the Web is
 built the way it is. They were written as they were needed, not as a book,
 and they are scattered across three decades and ten subjects. This is an
 attempt to read them as one argument: in order, with the context each one
@@ -164,9 +165,10 @@ assumes, and with a note on what happened next.
 </div>
 
 <blockquote class="epigraph">
-The Web is not a physical thing that exists in a certain place. It is a
-space in which information can exist.
-<span class="attribution">&mdash; {AUTHOR_SRC}, <em>Web Architecture from 50,000 feet</em>, 1998</span>
+each page may be an attempt to put across a given concept serially, but if
+you are looking for an order of concepts and subconcepts, you have as much
+hope as you would with words in the dictionary.
+<span class="attribution">&mdash; {AUTHOR_SRC}, <em>Preface</em>, 1998</span>
 </blockquote>
 
 <section>
@@ -235,7 +237,7 @@ yet; they are listed so the shape of the whole is visible from the start.
 </p>
 <table>
 <tr><th>Chapters written</th><td>{written} of {total}</td></tr>
-<tr><th>Source notes catalogued</th><td>{total}</td></tr>
+<tr><th>Source notes catalogued</th><td>{srcnotes} (96 chapters, plus the Preface as front matter)</td></tr>
 <tr><th>Words in the source notes</th><td>{words:,}</td></tr>
 <tr><th>Earliest note</th><td>1996</td></tr>
 <tr><th>Latest note</th><td>2024</td></tr>
