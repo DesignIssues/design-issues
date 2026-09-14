@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elementary Design Issues | The Web&#x27;s Design Notes, in Reading Order</title>
+<meta name="description" content="A book made from Tim Berners-Lee&#x27;s Design Issues notes: 96 chapters in ten volumes, in reading order, with editorial context.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Elementary Design Issues">
+<meta property="og:title" content="Elementary Design Issues | The Web&#x27;s Design Notes, in Reading Order">
+<meta property="og:description" content="A book made from Tim Berners-Lee&#x27;s Design Issues notes: 96 chapters in ten volumes, in reading order, with editorial context.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="title-page">
+<h1>Elementary Design Issues</h1>
+<p class="subtitle">The Web's design notes, put in order</p>
+<p class="ornament">&sect;</p>
+<p class="description">
+Between 1996 and today, Tim Berners-Lee wrote 96 notes on why the Web is
+built the way it is. They were written as they were needed, not as a book,
+and they are scattered across three decades and ten subjects. This is an
+attempt to read them as one argument: in order, with the context each one
+assumes, and with a note on what happened next.
+</p>
+<p class="author">Edited by Melvin Carvalho</p>
+</div>
+
+<blockquote class="epigraph">
+The Web is not a physical thing that exists in a certain place. It is a
+space in which information can exist.
+<span class="attribution">&mdash; Tim Berners-Lee, <em>Web Architecture from 50,000 feet</em>, 1998</span>
+</blockquote>
+
+<section>
+<h2>What this is</h2>
+<p>
+The Design Issues notes are the closest thing the Web has to a statement of
+its own architecture by the person who designed it. They are also, as their
+author says, personal notes: written to settle a question that was live at
+the time, published when they were useful, and revised occasionally over
+twenty-eight years. They are not endorsed by W3C, and they were never
+arranged for a reader coming to them fresh.
+</p>
+<p>
+That is the gap this book fills. Every note is assigned a chapter and a
+place in a reading order, so that a term is defined before it is used and an
+argument is met after the problem it solves. Each chapter gives the source
+note, its date, and a link to the original; sets out what question it was
+answering; and records what became of the answer. The originals remain where
+they are and should be read there. Nothing here replaces them.
+</p>
+<p>
+&ldquo;Elementary&rdquo; carries the same sense it does in
+<a href="https://elementarybitcoin.org/">Elementary Bitcoin</a>:
+self-contained, not simple.
+</p>
+</section>
+
+<div class="volume-overview">
+<h3>The ten volumes</h3>
+<ul class="volume-list">
+<li><span class="vol-label">Volume I &mdash; Axioms</span>
+(Ch 1&ndash;6). The irreducible choices. What the Web had to be for it to work at all.
+<span class="vol-kind">Design commitments, stated as principles and argued from first needs.</span></li>
+<li><span class="vol-label">Volume II &mdash; Naming</span>
+(Ch 7&ndash;15). What a URI is, what it identifies, and why that question took fifteen years.
+<span class="vol-kind">Architectural fact, checkable against the URI and HTTP specifications.</span></li>
+<li><span class="vol-label">Volume III &mdash; Evolution</span>
+(Ch 16&ndash;26). How a deployed system changes without breaking. Extensibility, modularity, ambiguity.
+<span class="vol-kind">Architectural fact and specification practice.</span></li>
+<li><span class="vol-label">Volume IV &mdash; Meaning</span>
+(Ch 27&ndash;39). From metadata to semantics. What it takes for a document to mean something.
+<span class="vol-kind">Proposal and specification; the parts that shipped are marked.</span></li>
+<li><span class="vol-label">Volume V &mdash; Logic and Notation</span>
+(Ch 40&ndash;48). Rules, inference, and a notation designed to be read by people.
+<span class="vol-kind">Proposal and specification. Notation3 and its alternatives.</span></li>
+<li><span class="vol-label">Volume VI &mdash; Linked Data and Solid</span>
+(Ch 49&ndash;65). Four rules, a decade of data, and an attempt to give the Web back its write half.
+<span class="vol-kind">Proposal, deployment record, and the contested present.</span></li>
+<li><span class="vol-label">Volume VII &mdash; Trust</span>
+(Ch 66&ndash;74). Origins, certificates, CORS and snooping. Who the browser protects, and from whom.
+<span class="vol-kind">The contested present. Positions attributed and dated.</span></li>
+<li><span class="vol-label">Volume VIII &mdash; Law</span>
+(Ch 75&ndash;81). Links, filtering, neutrality and names. Where Web architecture meets the courts.
+<span class="vol-kind">Normative argument, dated. Legal facts have moved since writing.</span></li>
+<li><span class="vol-label">Volume IX &mdash; Interface and Society</span>
+(Ch 82&ndash;91). What the Web does to the people using it, and what the editor should have been.
+<span class="vol-kind">Design argument and social observation.</span></li>
+<li><span class="vol-label">Volume X &mdash; Futures</span>
+(Ch 92&ndash;96). Agents that work for you, and a world where they do.
+<span class="vol-kind">Disciplined speculation, labeled as such by its author.</span></li>
+</ul>
+</div>
+
+<section class="table-of-contents">
+<h2>Contents</h2>
+<div class="part">
+<h3>Volume I &mdash; Axioms</h3>
+<p class="part-kind">Design commitments, stated as principles and argued from first needs.</p>
+<ol class="chapters">
+<li><span class="ch-num">1.</span><a href="chapters/01-principles-design.html">Principles of Design</a> <span class="ch-date">(1998)</span></li>
+<li><span class="ch-num">2.</span><a href="chapters/02-axioms-web-architecture-uris.html">Axioms of Web architecture: URIs</a> <span class="ch-date">(1996)</span></li>
+<li><span class="ch-num">3.</span><a href="chapters/03-myth-names-addresses.html">The Myth of Names and Addresses</a> <span class="ch-date">(1996)</span></li>
+<li><span class="ch-num">4.</span><a href="chapters/04-web-model-information-hiding-uri.html">The Web Model: Information hiding and URI syntax</a> <span class="ch-date">(1998)</span></li>
+<li><span class="ch-num">5.</span><a href="chapters/05-web-architecture-50000-feet.html">Web Architecture from 50,000 feet</a> <span class="ch-date">(1998)</span></li>
+<li><span class="ch-num">6.</span><a href="chapters/06-levels-abstraction-net-web-graph.html">Levels of Abstraction: Net, Web, Graph</a> <span class="ch-date">(2007)</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume II &mdash; Naming</h3>
+<p class="part-kind">Architectural fact, checkable against the URI and HTTP specifications.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">7.</span><a href="chapters/07-http-uris-identify.html">What do HTTP URIs identify?</a> <span class="ch-date">(2002)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">8.</span><a href="chapters/08-http-uris-identify-ii.html">What HTTP URIs identify? II</a> <span class="ch-date">(2005)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">9.</span><a href="chapters/09-short-history-term-resource.html">A Short History of the term &quot;Resource&quot;</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">10.</span><a href="chapters/10-generic-resources.html">Generic resources</a> <span class="ch-date">(1996)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">11.</span><a href="chapters/11-fragment-identifiers.html">Fragment identifiers</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">12.</span><a href="chapters/12-using-relative-uris.html">Using Relative URIs</a> <span class="ch-date">(2011)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">13.</span><a href="chapters/13-persistent-domains.html">Persistent Domains</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">14.</span><a href="chapters/14-mapping-between-http-urls-filenames.html">Mapping between HTTP URLs and filenames on a server</a> <span class="ch-date">(2015)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">15.</span><a href="chapters/15-philosophical-engineering-ownership-uris.html">Philosophical Engineering and Ownership of URIs</a> <span class="ch-date">(2002)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume III &mdash; Evolution</h3>
+<p class="part-kind">Architectural fact and specification practice.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">16.</span><a href="chapters/16-evolvability.html">Evolvability</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">17.</span><a href="chapters/17-extensible-languages-web-evolution.html">Extensible languages and web evolution</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">18.</span><a href="chapters/18-mandatory-extensions-fundamental-design-need.html">Mandatory extensions: A fundamental design need</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">19.</span><a href="chapters/19-modularity.html">Modularity</a> <span class="ch-date">(2007)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">20.</span><a href="chapters/20-stack-specifications.html">The Stack of Specifications</a> <span class="ch-date">(2002)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">21.</span><a href="chapters/21-write-specification.html">How to write a Specification</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">22.</span><a href="chapters/22-working-despite-ambiguity.html">Working despite Ambiguity</a> <span class="ch-date">(2012)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">23.</span><a href="chapters/23-html-xml.html">HTML and XML</a> <span class="ch-date">(2008)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">24.</span><a href="chapters/24-interpretation-xml-document.html">The Interpretation of an XML document</a> <span class="ch-date">(2002)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">25.</span><a href="chapters/25-many-meanings-open.html">The Many Meanings of Open</a> <span class="ch-date">(2013)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">26.</span><a href="chapters/26-webizing-existing-application.html">Webizing an existing application</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume IV &mdash; Meaning</h3>
+<p class="part-kind">Proposal and specification; the parts that shipped are marked.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">27.</span><a href="chapters/27-metadata-architecture.html">Metadata Architecture</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">28.</span><a href="chapters/28-meaning-document---grounding-global.html">The meaning of a document - grounding in a global namespace</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">29.</span><a href="chapters/29-dictionaries-library.html">Dictionaries in the Library?</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">30.</span><a href="chapters/30-roadmap-semantic-web.html">A roadmap to the Semantic Web</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">31.</span><a href="chapters/31-semantic-web-isnt-represent.html">What the semantic Web isn&#x27;t but can represent</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">32.</span><a href="chapters/32-rdf-model-exactly-xml-model.html">Why RDF model is not exactly the XML model</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">33.</span><a href="chapters/33-rdf-relational-databases.html">RDF and Relational databases</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">34.</span><a href="chapters/34-identity-identify-rdf.html">Identity: how to identify what in RDF</a> <span class="ch-date">(2008)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">35.</span><a href="chapters/35-when-use-literal-uri-linked.html">When use a literal for a URI in Linked Data</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">36.</span><a href="chapters/36-using-labels-give-semantics-tags.html">Using labels to give semantics to tags</a> <span class="ch-date">(2006)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">37.</span><a href="chapters/37-semantics-interpretation-digital-signature.html">Semantics and Interpretation (and digital signature)</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">38.</span><a href="chapters/38-interpretaion-properties-units-languages.html">Interpretaion properties for units and languages</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">39.</span><a href="chapters/39-conceptual-graphs-semantic-web.html">Conceptual Graphs and the semantic Web</a> <span class="ch-date">(2001)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume V &mdash; Logic and Notation</h3>
+<p class="part-kind">Proposal and specification. Notation3 and its alternatives.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">40.</span><a href="chapters/40-logic-semantic-web.html">Logic and the semantic web</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">41.</span><a href="chapters/41-rules-facts-inference-engines-semantic.html">Rules and facts: Inference engines and the Semantic Web</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">42.</span><a href="chapters/42-notation3.html">Notation3</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">43.</span><a href="chapters/43-design-alternatives-considered-notation3.html">Design alternatives considered in Notation3</a> <span class="ch-date">(2002)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">44.</span><a href="chapters/44-reification-rdf-n3.html">Reification of RDF and N3</a> <span class="ch-date">(2004)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">45.</span><a href="chapters/45-rdf-diff-problem.html">The RDF-diff problem</a> <span class="ch-date">(2001)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">46.</span><a href="chapters/46-limiting-damage-inconsistency.html">Limiting the damage of an inconsistency</a> <span class="ch-date">(2010)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">47.</span><a href="chapters/47-changes-needed-rdf-core-2010.html">Changes needed to the RDF core in 2010</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">48.</span><a href="chapters/48-my-top-ten-terms.html">My Top Ten terms</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume VI &mdash; Linked Data and Solid</h3>
+<p class="part-kind">Proposal, deployment record, and the contested present.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">49.</span><a href="chapters/49-linked-data.html">Linked Data</a> <span class="ch-date">(2006)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">50.</span><a href="chapters/50-read-write-linked-data.html">Read-Write Linked Data</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">51.</span><a href="chapters/51-linked-data-like-bag-chips.html">Linked data is like a Bag of Chips</a> <span class="ch-date">(2010)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">52.</span><a href="chapters/52-connecting-sciences.html">Connecting the Sciences</a> <span class="ch-date">(2004)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">53.</span><a href="chapters/53-putting-government-data-web.html">Putting Government Data on the Web</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">54.</span><a href="chapters/54-solid-socially-aware-cloud-storage.html">Solid: Socially Aware Cloud Storage</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">55.</span><a href="chapters/55-pod-stuff-whats-pod-indexed.html">Pod Stuff: What&#x27;s in a Pod, and how is it indexed?</a> <span class="ch-date">(2022)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">56.</span><a href="chapters/56-goals-human-data-interface.html">Goals for A Human-Data Interface</a> <span class="ch-date">(2019)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">57.</span><a href="chapters/57-linked-data-shapes-forms-footprints.html">Linked Data Shapes, Forms and Footprints</a> <span class="ch-date">(2019)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">58.</span><a href="chapters/58-live-data.html">Live data</a> <span class="ch-date">(2021)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">59.</span><a href="chapters/59-icing-cake-pattern-uris-services.html">Icing on the cake pattern: URIS of services and metadata close to the URI of the target</a> <span class="ch-date">(2016)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">60.</span><a href="chapters/60-semantic-clipboard.html">The Semantic Clipboard</a> <span class="ch-date">(2004)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">61.</span><a href="chapters/61-conversations-state.html">Conversations and State</a> <span class="ch-date">(2000)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">62.</span><a href="chapters/62-paper-trail----build-social.html">&quot;Paper Trail&quot; -- build social and commercial systems out of linked immutable documents</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">63.</span><a href="chapters/63-quick-look-icalendar.html">A quick look at iCalendar</a> <span class="ch-date">(2001)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">64.</span><a href="chapters/64-feeds-blogs-podcasts-like.html">Feeds: Blogs, Podcasts and the Like</a> <span class="ch-date">(2021)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">65.</span><a href="chapters/65-roadmap-web-services.html">Roadmap for Web Services</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume VII &mdash; Trust</h3>
+<p class="part-kind">The contested present. Positions attributed and dated.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">66.</span><a href="chapters/66-model-real-trust.html">Model Real Trust</a> <span class="ch-date">(2015)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">67.</span><a href="chapters/67-https-everywhere-considered-harmful.html">&quot;HTTPS Everywhere&quot; considered harmful</a> <span class="ch-date">(2015)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">68.</span><a href="chapters/68-same-origin-policy---origin.html">The Same Origin Policy - Origin Granularity</a> <span class="ch-date">(2015)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">69.</span><a href="chapters/69-client-side-certificates.html">Client-Side Certificates</a> <span class="ch-date">(2015)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">70.</span><a href="chapters/70-cors-browser-distrust-web-apps.html">CORS: Browser Distrust of Web Apps</a> <span class="ch-date">(2018)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">71.</span><a href="chapters/71-no-snooping.html">No Snooping</a> <span class="ch-date">(2009)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">72.</span><a href="chapters/72-inference-over-private-data.html">Inference over Private Data</a> <span class="ch-date">(2023)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">73.</span><a href="chapters/73-link-bio-personal-data-which.html">Link in Bio: Personal data which is Public</a> <span class="ch-date">(2024)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">74.</span><a href="chapters/74-intimacy-gradient.html">The Intimacy Gradient</a> <span class="ch-date">(2023)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume VIII &mdash; Law</h3>
+<p class="part-kind">Normative argument, dated. Legal facts have moved since writing.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">75.</span><a href="chapters/75-links-laws---hypertext-link.html">Links and Laws - what does a hypertext link imply?</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">76.</span><a href="chapters/76-myths-about-links.html">Myths about Links</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">77.</span><a href="chapters/77-filtering-censorship.html">Filtering and censorship</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">78.</span><a href="chapters/78-net-neutrality-act-now.html">Net Neutrality: Act Now</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">79.</span><a href="chapters/79-new-top-level-domains-mobi.html">New Top Level Domains .mobi and .xxx Considered Harmful</a> <span class="ch-date">(2004)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">80.</span><a href="chapters/80-general-computation-digital-rights-management.html">General Computation, Digital Rights Management, and FOSS</a> <span class="ch-date">(2023)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">81.</span><a href="chapters/81-blockchain.html">Blockchain</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume IX &mdash; Interface and Society</h3>
+<p class="part-kind">Design argument and social observation.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">82.</span><a href="chapters/82-user-interface-consistent-world.html">User Interface in a consistent world</a> <span class="ch-date">(1997)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">83.</span><a href="chapters/83-intuitive-hypertext-editing.html">Intuitive hypertext editing</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">84.</span><a href="chapters/84-user-agent-watch-points.html">User agent watch points</a> <span class="ch-date">(1999)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">85.</span><a href="chapters/85-user-interface-tips.html">User Interface Tips</a> <span class="ch-date">(2016)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">86.</span><a href="chapters/86-pretty-print.html">Pretty Print</a> <span class="ch-date">(2023)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">87.</span><a href="chapters/87-fractal-web-fractal-society.html">Fractal web, fractal society</a> <span class="ch-date">(1998)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">88.</span><a href="chapters/88-cultures-boundaries.html">Cultures and boundaries</a> <span class="ch-date">(2007)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">89.</span><a href="chapters/89-stretch-friend.html">A &quot;Stretch Friend&quot;</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">90.</span><a href="chapters/90-dysfunction-social-networks.html">The Dysfunction of Social Networks</a> <span class="ch-date">(2024)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">91.</span><a href="chapters/91-good-things-internet.html">The Good Things on the Internet</a> <span class="ch-date">(2024)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+<div class="part">
+<h3>Volume X &mdash; Futures</h3>
+<p class="part-kind">Disciplined speculation, labeled as such by its author.</p>
+<ol class="chapters">
+<li class="toc-stub"><span class="ch-num">92.</span><a href="chapters/92-beneficent-apps.html">Beneficent Apps</a> <span class="ch-date">(2023)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">93.</span><a href="chapters/93-charlie-ai-that-works-you.html">Charlie: An AI that works for you</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">94.</span><a href="chapters/94-charlie-works.html">Charlie Works</a> <span class="ch-date">(2024)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">95.</span><a href="chapters/95-singularity-13-story-corporate-performance.html">Singularity 13: A Story of Corporate Performance Optimization</a> <span class="ch-date">(2017)</span><span class="chapter-desc">in preparation</span></li>
+<li class="toc-stub"><span class="ch-num">96.</span><a href="chapters/96-vision-new-world.html">A Vision of a New World</a> <span class="ch-date">(2024)</span><span class="chapter-desc">in preparation</span></li>
+</ol>
+</div>
+</section>
+
+<section>
+<h2>Progress</h2>
+<p>
+The book is being written a volume at a time. Chapters marked
+<em>in preparation</em> have their place and their source fixed but no prose
+yet; they are listed so the shape of the whole is visible from the start.
+</p>
+<table>
+<tr><th>Chapters written</th><td>6 of 96</td></tr>
+<tr><th>Source notes catalogued</th><td>96</td></tr>
+<tr><th>Words in the source notes</th><td>218,455</td></tr>
+<tr><th>Earliest note</th><td>1996</td></tr>
+<tr><th>Latest note</th><td>2024</td></tr>
+</table>
+</section>
+
+<section>
+<h2>On sources and permission</h2>
+<p>
+This is a work of commentary. Each chapter names its source note, links to
+it, and quotes from it for the purpose of discussing it. Copyright in the
+Design Issues notes remains with Tim Berners-Lee; the editorial matter here is
+offered under
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+If the author would like anything changed or removed, that will be done.
+</p>
+</section>
+
+<footer>
+<p>Elementary Design Issues &middot; edited by Melvin Carvalho &middot;
+<a href="https://github.com/DesignIssues/design-issues">source and corrections</a></p>
+<p>Built 2026-09-14</p>
+</footer>
+</body>
+</html>

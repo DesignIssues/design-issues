@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4: The Web Model: Information hiding and URI syntax | Elementary Design Issues</title>
+<meta name="description" content="Chapter 4 of Elementary Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Elementary Design Issues">
+<meta property="og:title" content="Chapter 4: The Web Model: Information hiding and URI syntax | Elementary Design Issues">
+<meta property="og:description" content="Chapter 4 of Elementary Design Issues: The Web Model: Information hiding and URI syntax (1998). Volume I, Axioms.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="chapter-nav">
+<a href="../index.html">Contents</a>
+<span class="volume-indicator">Volume I: Axioms</span>
+</nav>
+
+<header class="chapter-header">
+<p class="chapter-number">Chapter 4</p>
+<h1>The Web Model: Information hiding and URI syntax</h1>
+<p class="chapter-subtitle">1998</p>
+</header>
+
+<main class="chapter-content">
+<div class="source-note">
+<span class="source-label">Source</span>
+<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Model.html"><em>The Web Model: Information hiding and URI syntax</em></a>,
+a Design Issues note by Tim Berners-Lee, dated 1998-01-29, about 2,510 words.</p>
+<p>Read the original at <a href="https://www.w3.org/DesignIssues/Model.html">https://www.w3.org/DesignIssues/Model.html</a>.
+The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
+This book is commentary; where it quotes, it attributes.</p>
+</div>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Berners-Lee numbered this note zero in his axioms sequence, though he wrote
+it in January 1998, more than a year after the two it precedes. The
+renumbering is a judgement about order of exposition: the axioms of Chapter 2
+describe what URIs are, and this note describes the machine that consumes
+them. It is the most software-engineering-minded piece in Volume I, and its
+subject is information hiding.
+</p>
+<p>
+The question it answers is why the Web's specifications can be revised
+independently of one another. The answer is that in 1998 somebody drew the
+module boundaries in the right places, and this note says where they are.
+</p>
+</div>
+
+<h2>4.1 Three modules</h2>
+
+<p>
+The model divides a browser, or anything else that follows a link, into three
+parts that know different things.
+</p>
+
+<table>
+<tr><th>Module</th><th>Knows</th><th>Does not know</th></tr>
+<tr><td>Access</td><td>The scheme, and the URI without its fragment</td><td>What a fragment identifier means</td></tr>
+<tr><td>Presentation object</td><td>The media type, and how to interpret a fragment</td><td>The URI it came from</td></tr>
+<tr><td>Application</td><td>The absolute URI, for resolving relative ones</td><td>What the fragment means</td></tr>
+</table>
+
+<p>
+Access is handed a URI with the fragment removed. It returns two things, a
+data stream and a media type, which are passed to a factory that constructs
+an object representing the resource. That object is then given the fragment
+identifier. Berners-Lee states the arrangement as two axioms:
+</p>
+
+<div class="editors-note">
+<p><strong>The access machinery does not need to look at the fragment
+identifier.</strong></p>
+<p><strong>The presentation object does not need to know the URI of the
+resource.</strong></p>
+</div>
+
+<p>
+And derives from them the claim that matters for everyone who writes
+specifications:
+</p>
+
+<blockquote>
+The specifications for access protocols are independent of the specifications
+for fragment identifiers.
+<cite>The Web Model, 1998</cite>
+</blockquote>
+
+<h2>4.2 Why the fragment stays on the client</h2>
+
+<p>
+The immediate payoff is the link that goes nowhere. A link within a document
+specifies only a fragment, and the object can follow it without consulting
+the access code at all, because the hash syntax is universal across every
+scheme.
+</p>
+
+<p>
+The consequence is that an author can write a document full of internal links
+without knowing what URI the document will eventually be served under, and
+can move it without editing it. Berners-Lee credits Jim Gettys with the
+observation that makes this more than a convenience: as digitally signed
+documents become common, editing a document to fix its own internal links
+would break the signature on it. A document that can be self-consistent
+independently of its namespace is one that can be signed once.
+</p>
+
+<p>
+The second payoff is evolutionary, and he is emphatic about it. Because no
+access specification refers to fragment semantics, anyone defining a new
+media type is free to invent whatever notion of a view or a part suits it,
+knowing that nothing else will break. Equally, anyone designing a new way to
+name and fetch documents need not care what kinds of document will travel
+over it.
+</p>
+
+<blockquote>
+This has already (1998) proved incredibly enabling to the community, as HTTP
+has advanced in parallel with many other ways of accessing data, and the
+number of exciting media types has grown very rapidly.
+<cite>The Web Model, 1998</cite>
+</blockquote>
+
+<p>
+He notes in passing that this is also how the Semantic Web will be built: not
+as a new Web, but as a new kind of document, with a fragment convention of
+its own that names things rather than parts of pages. Webizing a language, he
+says, means taking what were document-global identifiers and making them
+globally unique by prefixing the document's URI and a hash. The mechanism of
+Chapter 6 and of the whole of Volume IV is introduced here in two sentences.
+</p>
+
+<h2>4.3 Why relative resolution is universal</h2>
+
+<p>
+A design decision is recorded here that could have gone the other way. When a
+relative reference is found in a document, the application could have passed
+both the relative reference and the base to the access module, letting each
+scheme define its own resolution algorithm. Instead, one algorithm was made
+common to all schemes.
+</p>
+
+<p>
+The justification is the same shape as the one for fragments, and equally
+practical. Sets of documents that link to each other, such as the chapters of
+a book, are moved between file systems, HTTP space and FTP space constantly.
+Because the resolution rules are universal, the documents need not be
+modified when they move. Berners-Lee adds the honest caveat: moving half a
+set to one place and half to another still breaks the links.
+</p>
+
+<p>
+The application knows the absolute URI in order to do this resolution. The
+resource still does not, and the fragment still circulates between the object
+that understands it and the application that carries it without looking
+inside.
+</p>
+
+<h2>4.4 The scheme, and why it must not be spent</h2>
+
+<p>
+The last section of the note is a warning, and it is the part that has aged
+into prophecy.
+</p>
+
+<blockquote>
+The access scheme is by definition the highest point of flexibility.
+<cite>The Web Model, 1998</cite>
+</blockquote>
+
+<p>
+Its value is that it is the escape hatch. If the entire Web developed a
+problem that could not be solved within existing protocols, a new space could
+be created, and Berners-Lee argues that there is empirical reason to believe
+this would work because it already worked for Gopher and FTP:
+</p>
+
+<blockquote>
+If you have ported a concept between environments in the past, then there is
+a better hope that you can in the future.
+<cite>The Web Model, 1998</cite>
+</blockquote>
+
+<p>
+The danger is that spending the hatch destroys it. If many schemes are
+introduced, the space of scheme names becomes a namespace with all the
+properties that make namespaces hard: clashes destroy interoperability,
+ownership becomes commercially valuable, and fair management becomes both
+essential and difficult. Worse, software would be needed to look up schemes
+and fetch handlers for them, which means something like DNS, which means that
+the top level of the Web's namespace has silently become DNS again. At that
+point, he observes, there is no top-level extension switch left.
+</p>
+
+<p>
+The conclusion is procedural: access schemes should not be open to trivial
+extension, and should be extended only by new standards with full open
+review. He suggests that many proposed schemes would be better expressed as
+extensions within HTTP.
+</p>
+
+<h2>4.5 A note on the word &ldquo;resource&rdquo;</h2>
+
+<p>
+The note closes with the etymology, which explains a persistent confusion.
+The first Web specification said Universal Document Identifier. The IETF
+discussion changed &ldquo;document&rdquo; to &ldquo;resource&rdquo; on two
+grounds: documents did not obviously cover films and sounds, and URIs exist
+for endpoints such as mailboxes and login ports, which are not documents at
+all. RDF later adopted &ldquo;resource&rdquo; for anything whatever, the
+class of which every class is a subclass. The Technical Architecture Group
+then introduced &ldquo;information resource&rdquo; for the narrower original
+sense. Three meanings, one word, and the reader of any given specification
+must determine which is in force.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The independence axiom was written into the standard.</strong>
+RFC 3986, of January 2005, specifies that the semantics of a fragment are
+defined by the media type of the retrieved representation, which is this
+chapter's first axiom in normative form.</li>
+<li><strong>The client-side fragment was abused, then replaced.</strong>
+Single-page applications used fragments to encode application state, and
+Google's AJAX crawling scheme of 2009 made a convention of it before
+deprecating it in October 2015. The History API's pushState, in HTML5,
+restored a distinct URI per view, which is what the model asked for.</li>
+<li><strong>New fragment conventions kept arriving, as predicted.</strong>
+W3C Media Fragments URI 1.0 became a Recommendation in September 2012. Text
+fragments, addressing a passage by its words, shipped in Chrome in 2020.
+Neither required any change to HTTP, which is the flexibility this chapter
+claims.</li>
+<li><strong>The scheme warning was vindicated by mobile.</strong> Applications
+claimed custom schemes in large numbers through the 2010s, and collided
+exactly as described: any application could register any scheme, and
+resolution was undefined. Both major platforms retreated to verified https
+links, Universal Links on iOS and App Links on Android, both introduced in
+2015. The industry spent the flexibility point, discovered the namespace
+problem, and came back to DNS.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+This chapter is Chapter 1's modularity applied to the Web's own stack, and
+supplies the mechanism that Chapter 2's axioms assume. Fragment identifiers
+in their own right are Chapter 11; relative resolution is Chapter 12. The
+webizing move sketched in section 4.2 is treated fully in Chapter 26, and its
+consequence for naming things rather than documents is Chapter 6. The
+warning about scheme proliferation returns in Chapter 5.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">4.1</span>
+State what would have to change in HTTP if fragment identifiers were resolved
+on the server. Name one capability that would be gained and two that would be
+lost.</p>
+</div>
+<div class="question">
+<p><span class="question-number">4.2</span>
+The note argues that universal relative-resolution rules let document sets
+move without editing. Content-addressed systems have no relative references
+at all. What do they trade away, and what do they gain?</p>
+</div>
+<div class="question">
+<p><span class="question-number">4.3</span>
+Berners-Lee predicts that a proliferation of schemes would require a lookup
+system resembling DNS, leaving no further extension point. Describe how
+custom application schemes on mobile platforms reproduced this, and say
+whether verified https links solved the problem or deferred it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">4.4</span>
+The word &ldquo;resource&rdquo; carries three senses. Take one specification
+you know and determine which sense it uses, giving the sentence that decides
+it.</p>
+</div>
+</div>
+<nav class="chapter-navigation">
+<a href="03-myth-names-addresses.html">&larr; Chapter 3: The Myth of Names and Addresses</a>
+<a href="05-web-architecture-50000-feet.html">Chapter 5: Web Architecture from 50,000 feet &rarr;</a>
+</nav>
+</main>
+<footer>
+<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+&middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
+</footer>
+</body>
+</html>

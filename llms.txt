@@ -1,0 +1,81 @@
+# Elementary Design Issues
+
+> A book made from Tim Berners-Lee's Design Issues notes
+> (https://www.w3.org/DesignIssues/), edited by Melvin Carvalho.
+> 96 chapters in ten volumes, in a reading order, each with its source,
+> its context, and a note on what happened since.
+> Editorial matter CC BY-SA 4.0; quoted material (c) Tim Berners-Lee.
+> "Elementary" in the mathematician's sense: self-contained, not simple.
+
+## What this is and is not
+
+This is commentary, not a reprint. The 97 source notes remain at
+w3.org/DesignIssues and every chapter links to the one it discusses.
+The notes are Berners-Lee's personal notes and are not endorsed by W3C.
+Nothing in this book should be attributed to him except material shown as a
+quotation with a citation.
+
+## Why it exists
+
+The Design Issues notes are the closest thing the Web has to a statement of
+its architecture by its designer. They were written between 1996 and 2024 as
+each question arose, never arranged for a new reader, and their author says
+in his own preface that looking for an order of concepts in them offers "as
+much hope as you would with words in the dictionary." This book supplies the
+order: every note gets exactly one chapter, placed so that terms are defined
+before use.
+
+## Structure
+
+Ten volumes, graded by the kind of claim each makes:
+
+- Volume I, Axioms (Ch 1-6): design commitments argued from first needs.
+  Principles of design, the URI axioms, the name/address myth, the Web model
+  and its independence axioms, the 50,000-foot survey, net/web/graph layering.
+- Volume II, Naming (Ch 7-15): architectural fact, checkable against the URI
+  and HTTP specifications. What HTTP URIs identify, generic resources,
+  fragments, relative URIs, persistence, URI ownership.
+- Volume III, Evolution (Ch 16-26): how a deployed system changes without
+  breaking. Evolvability, extensible languages, mandatory extensions,
+  modularity, the specification stack, ambiguity, HTML and XML, openness,
+  webizing.
+- Volume IV, Meaning (Ch 27-39): proposal and specification. Metadata
+  architecture, document meaning, the Semantic Web roadmap, RDF against XML
+  and against relational models, identity, labels, interpretation.
+- Volume V, Logic and Notation (Ch 40-48): rules, inference, Notation3 and
+  the alternatives considered, reification, RDF diff, inconsistency.
+- Volume VI, Linked Data and Solid (Ch 49-65): the four rules, read-write
+  Linked Data, government and science data, Solid, pods, human-data
+  interfaces, shapes and footprints, live data, feeds, web services.
+- Volume VII, Trust (Ch 66-74): the contested present, attributed and dated.
+  Real trust, the HTTPS Everywhere objection, same-origin granularity,
+  client certificates, CORS, snooping, private data, the intimacy gradient.
+- Volume VIII, Law (Ch 75-81): normative argument, dated. Links and laws,
+  filtering, net neutrality, top-level domains, DRM, blockchain.
+- Volume IX, Interface and Society (Ch 82-91): the editor that should have
+  existed, user agents, fractal society, cultures, social network
+  dysfunction.
+- Volume X, Futures (Ch 92-96): disciplined speculation, labeled as such by
+  its author. Beneficent apps, Charlie, Singularity 13, a vision of a new
+  world.
+
+## Chapter shape
+
+Every chapter carries: a source note naming the original title, date, length
+and URL; "The question", giving the argument it was written into; the
+argument restated in order with quotations attributed and cited; "What
+happened since", listing outcomes with specification numbers and dates;
+"Connections" to other chapters; and four questions.
+
+## Status
+
+Volume I is written. Chapters 7-96 are stubs carrying their place in the
+order and a link to their source. Volumes are written in order. Anything
+marked "in preparation" has no prose yet and should not be cited.
+
+## Files
+
+- /index.html - title page, volume overview, full table of contents
+- /chapters/NN-slug.html - one chapter each, numbered in reading order
+- /README.md - contribution front door and house standards
+- Source: https://github.com/DesignIssues/design-issues

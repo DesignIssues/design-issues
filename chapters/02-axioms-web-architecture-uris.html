@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 2: Axioms of Web architecture: URIs | Elementary Design Issues</title>
+<meta name="description" content="Chapter 2 of Elementary Design Issues: Axioms of Web architecture: URIs (1996). Volume I, Axioms.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Elementary Design Issues">
+<meta property="og:title" content="Chapter 2: Axioms of Web architecture: URIs | Elementary Design Issues">
+<meta property="og:description" content="Chapter 2 of Elementary Design Issues: Axioms of Web architecture: URIs (1996). Volume I, Axioms.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="chapter-nav">
+<a href="../index.html">Contents</a>
+<span class="volume-indicator">Volume I: Axioms</span>
+</nav>
+
+<header class="chapter-header">
+<p class="chapter-number">Chapter 2</p>
+<h1>Axioms of Web architecture: URIs</h1>
+<p class="chapter-subtitle">1996</p>
+</header>
+
+<main class="chapter-content">
+<div class="source-note">
+<span class="source-label">Source</span>
+<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Axioms.html"><em>Axioms of Web architecture: URIs</em></a>,
+a Design Issues note by Tim Berners-Lee, dated 1996-12-19, about 5,753 words.</p>
+<p>Read the original at <a href="https://www.w3.org/DesignIssues/Axioms.html">https://www.w3.org/DesignIssues/Axioms.html</a>.
+The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
+This book is commentary; where it quotes, it attributes.</p>
+</div>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+This is the longest and most consequential note in the collection, and the
+one that most repays being read as a chapter rather than a page. Written in
+December 1996, revised until at least 2009, it attempts to state in one place
+the rules that the Web's specifications assume but do not contain. The author
+is explicit that the rigour is borrowed:
+</p>
+<blockquote>
+Terms such as &ldquo;axiom&rdquo;, and &ldquo;theorem&rdquo; are used with gay
+abandon rather than precision as this not a mathematical treatise.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+<p>
+The disclaimer is fair, and it should not be allowed to obscure what the note
+achieves. Nine numbered claims are made here. Seven of them became, over the
+following decade, the content of RFC 3986 and of the HTTP specifications.
+Two of them are still argued about.
+</p>
+</div>
+
+<h2>2.1 What is on the Web</h2>
+
+<p>
+The chapter opens with a definition that is doing more work than it appears
+to:
+</p>
+
+<blockquote>
+An information object is &ldquo;on the web&rdquo; if it has a URI. Objects
+which have URIs are sometimes known as &ldquo;First Class Objects&rdquo;
+(FCOs). The Web works best when any information object of value and identity
+is a first class object. If something does not have a URI, you can't refer to
+it, and the power of the Web is the less for that.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<p>
+Membership of the Web is thereby made a property of naming, not of storage,
+protocol, or format. Nothing is on the Web because it sits on a Web server.
+It is on the Web because it can be referred to. Every later argument in this
+book about what deserves a URI, from government datasets in Chapter 53 to
+the parts of a person's own data in Chapter 54, follows from this sentence.
+</p>
+
+<h2>2.2 The axioms of universality</h2>
+
+<p>
+Two claims are numbered zero, which is itself informative: they are prior to
+the rest.
+</p>
+
+<div class="editors-note">
+<p><strong>Axiom 0, universality 1.</strong> Any resource anywhere can be
+given a URI.</p>
+<p><strong>Axiom 0a, universality 2.</strong> Any resource of significance
+should be given a URI.</p>
+</div>
+
+<p>
+The first is a claim about the design, and Berners-Lee offers an argument
+for it. There is no limit on the length of a URI, so any existing or future
+naming scheme can be folded into URI space by encoding its identifiers as a
+printable string and prefixing a scheme name. The second is not a claim but
+an instruction, and it is the one that turns into Linked Data ten years
+later.
+</p>
+
+<p>
+<strong>Axiom 1, global scope</strong> follows: it does not matter to whom or
+where a URI is given, it has the same meaning. There is no enclosing context
+that a URI needs in order to hold. This is what makes the sentence
+&ldquo;it is on the Web&rdquo; sufficient by itself.
+</p>
+
+<h2>2.3 Sameness, identity, and who decides</h2>
+
+<p>
+Axiom 2 comes in two parts because the first part is vague and the author
+knows it. <strong>Axiom 2a, sameness</strong>: a URI will repeatably refer to
+&ldquo;the same&rdquo; thing. The quotation marks are his. <strong>Axiom 2b,
+identity</strong> then resolves the vagueness in a way that is easy to read
+past and hard to overstate:
+</p>
+
+<blockquote>
+the significance of identity for a given URI is determined by the person who
+owns the URI, who first determined what it points to.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<p>
+The Web does not define what a URI means. The owner does. What the
+architecture supplies is the guarantee that there is exactly one owner and
+that the question of meaning has a determinate address. Berners-Lee attaches
+this to a design principle he credits to Bob Scheifler and others: the
+technology should define mechanisms wherever possible without defining
+policy.
+</p>
+
+<p>
+He then places a limit on the owner's freedom, and it is a moral one rather
+than a technical one:
+</p>
+
+<blockquote>
+Unless it is clearly indicated on the page (or using a future protocol), to
+return differing information for the same URI must be considered a form of
+deception.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<p>
+The mechanism he names for indicating it is the HTTP <code>Vary</code>
+header. The practice he is objecting to, of varying content by who is asking
+without saying so, became in the following two decades the ordinary
+behaviour of large parts of the Web.
+</p>
+
+<h2>2.4 When two URIs are one URI</h2>
+
+<p>
+The rule is stated without qualification: two URIs are the same if and only
+if they are the same character for character. Everything else is
+equivalence, not identity, and equivalence is knowledge that a particular
+agent may or may not have.
+</p>
+
+<p>
+An agent that knows the Domain Name System is case-insensitive may conclude
+that two URIs differing only in the case of the host are equivalent. An
+agent with out-of-band knowledge of a site may know that a path ending in a
+slash and the same path with <code>index.html</code> appended are
+equivalent. Neither conclusion is available generically, and Berners-Lee
+draws the consequence that matters for cryptography:
+</p>
+
+<blockquote>
+There is, therefore, no definitive canonicalization algorithm for URIs.
+Generic URI handling code should handle URIs as case-sensitive character
+strings. It is not recommended that, for example, encryption and signature
+algorithms attempt to canonicalize URIs before signature.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<h2>2.5 Opacity</h2>
+
+<p>
+The opacity axiom is the one most often broken and the one whose breach is
+hardest to reverse.
+</p>
+
+<div class="editors-note">
+<p><strong>Axiom, opacity of URIs.</strong> The only thing a URI may be used
+for is to refer to an object. When not dereferencing, one should not look
+inside the string to gain other information.</p>
+</div>
+
+<p>
+The example given is the temptation to read <code>.html</code> at the end of
+a URI as a statement about format. A client that does so has begun to depend
+on a convention that the architecture does not guarantee, and that a server
+mapping some legacy namespace into URI space may produce by pure coincidence.
+Metadata that a client might wish to infer from the string must instead be
+carried in the protocol, which is what a substantial part of the HTTP header
+set exists to do.
+</p>
+
+<p>
+Berners-Lee makes an exception for query strings, and it is a careful one.
+The portion after a question mark is not opaque to the client, which
+constructs it, but it should remain opaque to intermediaries such as proxies.
+He then records that the axiom had already been broken in his own time, and
+by whom: caches that declined to store any document whose URI contained a
+question mark led authors to insert question marks deliberately in order to
+defeat caching. A rule broken by implementations became a technique relied
+on by authors.
+</p>
+
+<h2>2.6 GET, and the price of getting it wrong</h2>
+
+<p>
+Two axioms govern HTTP's principal method. In HTTP, GET must not have side
+effects. In HTTP, anything which does not have side effects should use GET.
+</p>
+
+<p>
+The first is a safety property. The second is a universality property, and
+the reasoning is the more interesting of the two. If an operation without
+side effects were given its own method, its results would form a separate
+address space that hypertext links could not reach, because a link carries a
+URI and not a method. The symptom Berners-Lee predicts is that people would
+begin wanting to put the method into the link.
+</p>
+
+<p>
+He states the user's protection in plain terms: a user can never be held
+accountable for anything as a result of doing a GET. A server may log the
+request, but logging is not communication between the parties.
+</p>
+
+<h2>2.7 Not the only space</h2>
+
+<p>
+<strong>Axiom 3, non-unique</strong> is the most philosophically deliberate of
+the nine. URI space does not have to be the only universal space. The
+objection it answers is the objection that no single space should be
+privileged, and the answer is that none is: any rival universal space would,
+by being universal, be able to contain URI space as a subset, and so the two
+could interoperate.
+</p>
+
+<p>
+This is the test of independent invention from Chapter 1, applied to the
+Web's own foundation. Berners-Lee gives the worked example of mapping
+telephone numbers into URI space and URI space into telephone numbers, and
+draws the conclusion he cares about:
+</p>
+
+<blockquote>
+So, on this last axiom rests not specifically the operation of the web, but
+its acceptance as a non-domineering technology, and therefore our trust in
+its future evolvability.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The syntax was standardised.</strong> RFC 3986, published in
+January 2005 as STD 66, replaced the earlier RFC 2396 and the informational
+RFC 1630 that Berners-Lee wrote in 1994 and quotes here. Character-for-character
+identity and the limits on canonicalization survive in it.</li>
+<li><strong>The GET rule was given a name and a test case.</strong> Safe
+methods are specified in what is now RFC 9110, of June 2022. The practical
+demonstration came earlier: the Google Web Accelerator, released in May 2005,
+prefetched links, and deleted data in applications that had used GET for
+destructive actions. The axiom had been ignored for nine years and was
+enforced in a week.</li>
+<li><strong>Opacity eroded.</strong> Browsers adopted content sniffing, and
+file extensions in URIs became load-bearing in practice. The countermeasure,
+the <code>X-Content-Type-Options: nosniff</code> header, is an admission that
+clients read what they were told not to read.</li>
+<li><strong>Varying content silently became normal.</strong> Personalisation
+by viewer is now the default behaviour of large platforms, and the
+<code>Vary</code> header describes caching behaviour rather than disclosing
+the variance to the reader. Berners-Lee's characterisation of this as
+deception has not been retracted and has not been adopted.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+Axiom 3 is Chapter 1's test of independent invention. The identity axiom is
+elaborated in Chapter 3, which argues that the name and address distinction
+it sidesteps was never real. Fragment identifiers, mentioned here and
+deferred, are the subject of Chapters 4 and 11. The instruction in Axiom 0a
+becomes the first of the four Linked Data rules in Chapter 49. The question
+of what an HTTP URI identifies, left open here, occupies Chapters 7 and 8.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">2.1</span>
+Berners-Lee argues that any naming scheme can be encoded into URI space, and
+calls this a theorem. State the argument in three steps and identify the
+assumption that makes it work.</p>
+</div>
+<div class="question">
+<p><span class="question-number">2.2</span>
+The opacity axiom forbids inferring a media type from a URI ending in
+<code>.html</code>. Content sniffing infers a media type from the first bytes
+of the response body instead. Does that respect opacity? What does it
+violate?</p>
+</div>
+<div class="question">
+<p><span class="question-number">2.3</span>
+Axiom 2b makes meaning the property of the URI owner. Construct a case in
+which two parties disagree about what a URI denotes and the architecture
+supplies no way to settle it. What would have to be added?</p>
+</div>
+<div class="question">
+<p><span class="question-number">2.4</span>
+Caches that refused to store URIs containing question marks caused authors to
+add question marks in order to avoid caching. Name one other place in Web
+history where a violated rule became a technique, and say whether the rule
+could have been restored.</p>
+</div>
+</div>
+<nav class="chapter-navigation">
+<a href="01-principles-design.html">&larr; Chapter 1: Principles of Design</a>
+<a href="03-myth-names-addresses.html">Chapter 3: The Myth of Names and Addresses &rarr;</a>
+</nav>
+</main>
+<footer>
+<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+&middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/* Elementary Design Issues — classic textbook style.
+   Descended from the Elementary Bitcoin stylesheet; block types adapted
+   from theorem/proof to source/commentary. */
+
+:root {
+    --text-color: #1a1a1a;
+    --bg-color: #fefefe;
+    --accent-color: #1c5a7a;      /* web blue, standing in for EB's brown */
+    --secondary-color: #2f4f4f;
+    --light-border: #ddd;
+    --source-bg: #f0f5f8;
+    --note-bg: #f8f5f0;
+    --since-bg: #f5f8f0;
+    --question-bg: #fff8f0;
+    --muted: #666;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+    color: var(--secondary-color);
+    margin-top: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+    border-bottom: 1px solid var(--light-border);
+    padding-bottom: 0.5rem;
+}
+
+h3 { font-size: 1.3rem; font-style: italic; }
+
+/* ---- Title page ---- */
+.title-page {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 3rem;
+}
+.title-page h1 {
+    font-size: 2.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    margin-bottom: 0.5rem;
+}
+.title-page .subtitle { font-size: 1.35rem; font-style: italic; margin: 1rem 0; }
+.title-page .author { font-size: 1rem; color: var(--muted); margin-top: 1.5rem; }
+.title-page .ornament { font-size: 1.5rem; color: #999; margin: 2rem 0; }
+.title-page .description {
+    font-size: 1rem; max-width: 540px; margin: 2rem auto;
+    line-height: 1.8; color: #555;
+}
+
+.epigraph {
+    max-width: 480px; margin: 3rem auto; font-style: italic;
+    text-align: right; color: #555; padding: 1rem 2rem;
+    border-left: 3px solid #ddd;
+}
+.epigraph .attribution { margin-top: 0.5rem; font-size: 0.9rem; font-style: normal; }
+
+/* ---- Volume overview ---- */
+.volume-overview {
+    background: #f9f9f7; padding: 2rem; margin: 2rem 0;
+    border: 1px solid #e0e0e0;
+}
+.volume-overview h3 {
+    margin-top: 0; font-variant: small-caps; letter-spacing: 0.1em; font-style: normal;
+}
+.volume-list { list-style: none; padding: 0; }
+.volume-list li { padding: 0.8rem 0; border-bottom: 1px dotted #ddd; }
+.volume-list li:last-child { border-bottom: none; }
+.volume-list .vol-label {
+    font-variant: small-caps; letter-spacing: 0.08em; color: var(--accent-color);
+}
+.volume-list .vol-kind { display: block; font-size: 0.85rem; font-style: italic; color: var(--muted); }
+
+/* ---- Table of contents ---- */
+.part h3 {
+    font-size: 1.15rem; color: var(--accent-color); font-style: normal;
+    font-variant: small-caps; letter-spacing: 0.08em;
+    margin-top: 2.5rem; margin-bottom: 0.3rem;
+}
+.part .part-kind {
+    font-size: 0.85rem; font-style: italic; color: var(--muted); margin: 0 0 0.8rem 0;
+}
+ol.chapters { list-style: none; padding-left: 0; counter-reset: none; }
+ol.chapters li {
+    margin: 0.55rem 0; padding-left: 3rem; position: relative;
+}
+ol.chapters li .ch-num {
+    position: absolute; left: 0; color: var(--muted); font-size: 0.9rem;
+}
+ol.chapters a {
+    color: var(--text-color); text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+}
+ol.chapters a:hover { color: var(--accent-color); }
+.chapter-desc { display: block; font-size: 0.82rem; color: var(--muted); font-style: italic; }
+.ch-date { color: #999; font-size: 0.82rem; font-style: normal; }
+
+/* ---- Chapter furniture ---- */
+.chapter-nav {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.9rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--light-border);
+}
+.chapter-nav a { color: var(--accent-color); text-decoration: none; }
+.chapter-nav a:hover { text-decoration: underline; }
+.volume-indicator { font-variant: small-caps; color: var(--muted); letter-spacing: 0.06em; }
+
+.chapter-header {
+    text-align: center; margin: 2.5rem 0 2rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--light-border);
+}
+.chapter-number {
+    font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--accent-color); margin-bottom: 0.5rem;
+}
+.chapter-header h1 { font-size: 2rem; border: none; padding: 0; margin: 0; }
+.chapter-subtitle { font-size: 1.15rem; font-style: italic; color: var(--secondary-color); margin: 0.6rem 0 0; }
+
+/* ---- Source note: provenance for every chapter ---- */
+.source-note {
+    background: var(--source-bg); border-left: 4px solid var(--accent-color);
+    padding: 1rem 1.5rem; margin: 2rem 0; font-size: 0.95rem;
+}
+.source-note .source-label {
+    font-variant: small-caps; letter-spacing: 0.08em; font-weight: bold;
+    color: var(--accent-color); display: block; margin-bottom: 0.4rem;
+}
+.source-note p { margin: 0.3rem 0; }
+.source-note a { color: var(--accent-color); }
+
+/* ---- Editorial blocks ---- */
+.editors-note {
+    background: var(--note-bg); border-left: 4px solid #b08d57;
+    padding: 1rem 1.5rem; margin: 1.5rem 0;
+}
+.since {
+    background: var(--since-bg); border-left: 4px solid #5a8f5a;
+    padding: 1rem 1.5rem; margin: 1.5rem 0;
+}
+.connections {
+    border: 1px dashed #ccc; background: #fafafa;
+    padding: 0.9rem 1.2rem; margin: 1.5rem 0; font-size: 0.95rem;
+}
+.editors-note h3, .since h3, .connections h3, .questions h3 {
+    margin-top: 0; font-size: 1.05rem; font-style: normal;
+    font-variant: small-caps; letter-spacing: 0.08em;
+}
+.questions { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--light-border); }
+.question {
+    background: var(--question-bg); border-left: 3px solid #d4a574;
+    padding: 0.8rem 1rem; margin: 1rem 0;
+}
+.question-number { font-weight: bold; color: var(--accent-color); }
+
+/* ---- Quotation: the author's own words, always attributed ---- */
+blockquote {
+    margin: 1.5rem 1rem; padding-left: 1.2rem;
+    border-left: 3px solid var(--light-border);
+    color: #333; font-style: italic;
+}
+blockquote cite {
+    display: block; margin-top: 0.5rem; font-style: normal;
+    font-size: 0.85rem; color: var(--muted);
+}
+
+/* ---- Status banner for chapters not yet written ---- */
+.status-stub {
+    border: 1px dashed #c9a227; background: #fffdf5;
+    padding: 1rem 1.5rem; margin: 2rem 0; font-size: 0.95rem;
+}
+.status-stub .status-label {
+    font-variant: small-caps; letter-spacing: 0.08em; font-weight: bold; color: #8a6d1f;
+}
+.toc-stub { opacity: 0.62; }
+.toc-stub a { border-bottom-style: none; }
+
+code {
+    font-family: 'Courier New', Courier, monospace; font-size: 0.9em;
+    background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 2px;
+}
+pre {
+    background: #f8f8f5; color: #2f4f4f; border: 1px solid #ddd;
+    padding: 1rem; border-radius: 4px; overflow-x: auto;
+    font-size: 0.9rem; line-height: 1.45;
+}
+pre code { background: none; color: inherit; padding: 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+th, td { border: 1px solid var(--light-border); padding: 0.5rem; text-align: left; }
+th { background: #f5f5f5; font-weight: normal; font-variant: small-caps; }
+
+ul, ol { margin: 1rem 0; padding-left: 2rem; }
+li { margin: 0.3rem 0; }
+
+.chapter-navigation {
+    display: flex; justify-content: space-between; gap: 1rem;
+    margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--light-border);
+    font-size: 0.95rem;
+}
+.chapter-navigation a { color: var(--accent-color); text-decoration: none; }
+.chapter-navigation a:hover { text-decoration: underline; }
+
+footer {
+    margin-top: 3rem; padding-top: 1rem;
+    border-top: 1px solid var(--light-border);
+    text-align: center; font-size: 0.9rem; color: var(--muted);
+}
+footer a { color: var(--accent-color); }
+
+@media (max-width: 600px) {
+    body { padding: 1rem; font-size: 16px; }
+    h1 { font-size: 1.8rem; }
+    .title-page { padding: 2rem 0.5rem; }
+    .title-page h1 { font-size: 1.9rem; }
+    .source-note, .editors-note, .since, .question { padding: 0.8rem 1rem; }
+    ol.chapters li { padding-left: 2.4rem; }
+    .chapter-nav { flex-wrap: wrap; gap: 0.4rem; }
+    .chapter-navigation { flex-direction: column; }
+}

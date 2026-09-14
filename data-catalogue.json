@@ -1,0 +1,681 @@
+[
+ {
+  "href": "Preface.html",
+  "title": "Preface",
+  "date": "1998-10-01",
+  "section": "Front matter",
+  "words": 555
+ },
+ {
+  "href": "Stack.html",
+  "title": "The Stack of Specifications",
+  "date": "2002-07-29",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 4254
+ },
+ {
+  "href": "Specification.html",
+  "title": "How to write a Specification",
+  "date": "1999-05-24",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 895
+ },
+ {
+  "href": "Ambiguity.html",
+  "title": "Working despite Ambiguity",
+  "date": "2012-10-15",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 2616
+ },
+ {
+  "href": "PhilosophicalEngineering.html",
+  "title": "Philosophical Engineering and Ownership of URIs",
+  "date": "2002-07-29",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1899
+ },
+ {
+  "href": "Open.html",
+  "title": "The Many Meanings of Open",
+  "date": "2013-01-15",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1984
+ },
+ {
+  "href": "Abstractions.html",
+  "title": "Levels of Abstraction: Net, Web, Graph",
+  "date": "2007-10-23",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1123
+ },
+ {
+  "href": "Architecture.html",
+  "title": "Web Architecture from 50,000 feet",
+  "date": "1998-09-04",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 7442
+ },
+ {
+  "href": "Principles.html",
+  "title": "Principles of Design",
+  "date": "1998-09-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1346
+ },
+ {
+  "href": "Model.html",
+  "title": "The Web Model: Information hiding and URI syntax",
+  "date": "1998-01-29",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 2510
+ },
+ {
+  "href": "Axioms.html",
+  "title": "Axioms of Web architecture: URIs",
+  "date": "1996-12-19",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 5753
+ },
+ {
+  "href": "Fragment.html",
+  "title": "Fragment identifiers",
+  "date": "1997-04-08",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1150
+ },
+ {
+  "href": "Relative.html",
+  "title": "Using Relative URIs",
+  "date": "2011",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1456
+ },
+ {
+  "href": "Webize.html",
+  "title": "Webizing an existing application",
+  "date": "2017-03-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1642
+ },
+ {
+  "href": "HTTP-URI.html",
+  "title": "What do HTTP URIs identify?",
+  "date": "2002-09-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 6404
+ },
+ {
+  "href": "HTTP-URI2.html",
+  "title": "What HTTP URIs identify? II",
+  "date": "2005-06-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 559
+ },
+ {
+  "href": "TermResource.html",
+  "title": "A Short History of the term \"Resource\"",
+  "date": "2009-08-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1527
+ },
+ {
+  "href": "NameMyth.html",
+  "title": "The Myth of Names and Addresses",
+  "date": "1996-12-19",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 2800
+ },
+ {
+  "href": "Generic.html",
+  "title": "Generic resources",
+  "date": "1996-03-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 1149
+ },
+ {
+  "href": "Metadata.html",
+  "title": "Metadata Architecture",
+  "date": "1997-01-06",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 4496
+ },
+ {
+  "href": "NamespacesAreResources.html",
+  "title": "Dictionaries in the Library?",
+  "date": "2000-01-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 756
+ },
+ {
+  "href": "Meaning.html",
+  "title": "The meaning of a document - grounding in a global namespace",
+  "date": "1999-01-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 3496
+ },
+ {
+  "href": "XML.html",
+  "title": "The Interpretation of an XML document",
+  "date": "2002-01-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 4207
+ },
+ {
+  "href": "Mandatory.html",
+  "title": "Mandatory extensions: A fundamental design need",
+  "date": "2000-01-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 448
+ },
+ {
+  "href": "Extensible.html",
+  "title": "Extensible languages and web evolution",
+  "date": "1998",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 3549
+ },
+ {
+  "href": "Evolution.html",
+  "title": "Evolvability",
+  "date": "1998-05-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 7558
+ },
+ {
+  "href": "Modularity.html",
+  "title": "Modularity",
+  "date": "2007-10-01",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 943
+ },
+ {
+  "href": "HTML-XML.html",
+  "title": "HTML and XML",
+  "date": "2008-05-19",
+  "section": "Web 1.0 - A global web of documents and data",
+  "words": 7673
+ },
+ {
+  "href": "WebServices.html",
+  "title": "Roadmap for Web Services",
+  "date": "2009-08-27",
+  "section": "Web 2.0, Security and CORS",
+  "words": 3590
+ },
+ {
+  "href": "Security-NotTheS.html",
+  "title": "\"HTTPS Everywhere\" considered harmful",
+  "date": "2015-03-28",
+  "section": "Web Security: (2015)",
+  "words": 1559
+ },
+ {
+  "href": "Security-ModelTrust.html",
+  "title": "Model Real Trust",
+  "date": "2015-03-28",
+  "section": "Web Security: (2015)",
+  "words": 656
+ },
+ {
+  "href": "Security-Origin.html",
+  "title": "The Same Origin Policy - Origin Granularity",
+  "date": "2015-03-28",
+  "section": "Web Security: (2015)",
+  "words": 799
+ },
+ {
+  "href": "Security-ClientCerts.html",
+  "title": "Client-Side Certificates",
+  "date": "2015-03-28",
+  "section": "Web Security: (2015)",
+  "words": 969
+ },
+ {
+  "href": "WebAppDistrustCORS.html",
+  "title": "CORS: Browser Distrust of Web Apps",
+  "date": "2018",
+  "section": "Web Security: (2015)",
+  "words": 2080
+ },
+ {
+  "href": "Semantic.html",
+  "title": "A roadmap to the Semantic Web",
+  "date": "1998-09-09",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3676
+ },
+ {
+  "href": "RDFnot.html",
+  "title": "What the semantic Web isn't but can represent",
+  "date": "1998-09-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2783
+ },
+ {
+  "href": "ConnectingScience.html",
+  "title": "Connecting the Sciences",
+  "date": "2004-01-04",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1245
+ },
+ {
+  "href": "LinkedData.html",
+  "title": "Linked Data",
+  "date": "2006-07-27",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3021
+ },
+ {
+  "href": "ReadWriteLinkedData.html",
+  "title": "Read-Write Linked Data",
+  "date": "2009-10-11",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1534
+ },
+ {
+  "href": "TabulatorGoals.html",
+  "title": "Goals for A Human-Data Interface",
+  "date": "2019-07-07",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3308
+ },
+ {
+  "href": "CloudStorage.html",
+  "title": "Solid: Socially Aware Cloud Storage",
+  "date": "2009-08-17",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3487
+ },
+ {
+  "href": "Live.html",
+  "title": "Live data",
+  "date": "2021-10-20",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 890
+ },
+ {
+  "href": "Footprints.html",
+  "title": "Linked Data Shapes, Forms and Footprints",
+  "date": "2019-04-26",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3124
+ },
+ {
+  "href": "PodStuff.html",
+  "title": "Pod Stuff: What's in a Pod, and how is it indexed?",
+  "date": "2022-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2234
+ },
+ {
+  "href": "HTTPFilenameMapping.html",
+  "title": "Mapping between HTTP URLs and filenames on a server",
+  "date": "2015-04-10",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1326
+ },
+ {
+  "href": "IcingOnTheCake.html",
+  "title": "Icing on the cake pattern: URIS of services and metadata close to the URI of the target",
+  "date": "2016-12-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1256
+ },
+ {
+  "href": "PaperTrail.html",
+  "title": "\"Paper Trail\" -- build social and commercial systems out of linked immutable documents",
+  "date": "1999-02-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1727
+ },
+ {
+  "href": "Conversations.html",
+  "title": "Conversations and State",
+  "date": "2000-11-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1110
+ },
+ {
+  "href": "GovData.html",
+  "title": "Putting Government Data on the Web",
+  "date": "2009-06-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2875
+ },
+ {
+  "href": "RDB-RDF.html",
+  "title": "RDF and Relational databases",
+  "date": "1998-09-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2130
+ },
+ {
+  "href": "CG.html",
+  "title": "Conceptual Graphs and the semantic Web",
+  "date": "2001-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2302
+ },
+ {
+  "href": "RDF-XML.html",
+  "title": "Why RDF model is not exactly the XML model",
+  "date": "1999-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2143
+ },
+ {
+  "href": "Identity.html",
+  "title": "Identity: how to identify what in RDF",
+  "date": "2008-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2289
+ },
+ {
+  "href": "TagLabel.html",
+  "title": "Using labels to give semantics to tags",
+  "date": "2006-11-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2075
+ },
+ {
+  "href": "Interpretation.html",
+  "title": "Semantics and Interpretation (and digital signature)",
+  "date": "1999-12-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1419
+ },
+ {
+  "href": "Logic.html",
+  "title": "Logic and the semantic web",
+  "date": "1999",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 3841
+ },
+ {
+  "href": "InterpretationProperties.html",
+  "title": "Interpretaion properties for units and languages",
+  "date": "2000-02-28",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2300
+ },
+ {
+  "href": "QuotingURIs.html",
+  "title": "When use a literal for a URI in Linked Data",
+  "date": "2017-11-05",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 525
+ },
+ {
+  "href": "Diff.html",
+  "title": "The RDF-diff problem",
+  "date": "2001-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 5010
+ },
+ {
+  "href": "LookAtiCalendar.html",
+  "title": "A quick look at iCalendar",
+  "date": "2001-10-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 2839
+ },
+ {
+  "href": "TopTen.html",
+  "title": "My Top Ten terms",
+  "date": "2009-08-27",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 370
+ },
+ {
+  "href": "Rules.html",
+  "title": "Rules and facts: Inference engines and the Semantic Web",
+  "date": "2000-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1870
+ },
+ {
+  "href": "Inconsistent.html",
+  "title": "Limiting the damage of an inconsistency",
+  "date": "2010-06-26",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1174
+ },
+ {
+  "href": "RDF-Future.html",
+  "title": "Changes needed to the RDF core in 2010",
+  "date": "2000-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 604
+ },
+ {
+  "href": "Notation3.html",
+  "title": "Notation3",
+  "date": "2000-10-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 5810
+ },
+ {
+  "href": "N3Alternatives.html",
+  "title": "Design alternatives considered in Notation3",
+  "date": "2002-03-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 4948
+ },
+ {
+  "href": "Reify.html",
+  "title": "Reification of RDF and N3",
+  "date": "2004-12-31",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1373
+ },
+ {
+  "href": "SemanticClipboard.html",
+  "title": "The Semantic Clipboard",
+  "date": "2004-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 830
+ },
+ {
+  "href": "Feeds.html",
+  "title": "Feeds: Blogs, Podcasts and the Like",
+  "date": "2021-01-01",
+  "section": "Web 3.0, The Semantic Web and Solid",
+  "words": 1603
+ },
+ {
+  "href": "Blockchain.html",
+  "title": "Blockchain",
+  "date": "2017-10-31",
+  "section": "Non-Web arcitectures",
+  "words": 3422
+ },
+ {
+  "href": "Filtering.html",
+  "title": "Filtering and censorship",
+  "date": "1997-12-19",
+  "section": "Legal",
+  "words": 1647
+ },
+ {
+  "href": "NoSnooping.html",
+  "title": "No Snooping",
+  "date": "2009-03-09",
+  "section": "Legal",
+  "words": 683
+ },
+ {
+  "href": "NetNeutrality.html",
+  "title": "Net Neutrality: Act Now",
+  "date": "2017",
+  "section": "Legal",
+  "words": 768
+ },
+ {
+  "href": "LinkLaw.html",
+  "title": "Links and Laws - what does a hypertext link imply?",
+  "date": "1997-04-01",
+  "section": "Legal",
+  "words": 1289
+ },
+ {
+  "href": "LinkMyths.html",
+  "title": "Myths about Links",
+  "date": "1997",
+  "section": "Legal",
+  "words": 931
+ },
+ {
+  "href": "PersistentDomains.html",
+  "title": "Persistent Domains",
+  "date": "2000-10-01",
+  "section": "Legal",
+  "words": 2047
+ },
+ {
+  "href": "TLD.html",
+  "title": "New Top Level Domains .mobi and .xxx Considered Harmful",
+  "date": "2004-04-01",
+  "section": "Legal",
+  "words": 2861
+ },
+ {
+  "href": "DRM.html",
+  "title": "General Computation, Digital Rights Management, and FOSS",
+  "date": "2023-05-29",
+  "section": "Legal",
+  "words": 1204
+ },
+ {
+  "href": "Fractal.html",
+  "title": "Fractal web, fractal society",
+  "date": "1998-12-31",
+  "section": "Web and Society",
+  "words": 3011
+ },
+ {
+  "href": "Culture.html",
+  "title": "Cultures and boundaries",
+  "date": "2007",
+  "section": "Web and Society",
+  "words": 1061
+ },
+ {
+  "href": "BagOfChips.html",
+  "title": "Linked data is like a Bag of Chips",
+  "date": "2010-05-26",
+  "section": "Web and Society",
+  "words": 2503
+ },
+ {
+  "href": "StretchFriend.html",
+  "title": "A \"Stretch Friend\"",
+  "date": "2017-01-01",
+  "section": "Web and Society",
+  "words": 767
+ },
+ {
+  "href": "UI.html",
+  "title": "User Interface in a consistent world",
+  "date": "1997-02-06",
+  "section": "Web and Society",
+  "words": 3860
+ },
+ {
+  "href": "UserAgent.html",
+  "title": "User agent watch points",
+  "date": "1999-12-01",
+  "section": "Web and Society",
+  "words": 855
+ },
+ {
+  "href": "Editor.html",
+  "title": "Intuitive hypertext editing",
+  "date": "1998-04-01",
+  "section": "Web and Society",
+  "words": 977
+ },
+ {
+  "href": "UserInterface.html",
+  "title": "User Interface Tips",
+  "date": "2016-12-15",
+  "section": "Web and Society",
+  "words": 2188
+ },
+ {
+  "href": "Pretty.html",
+  "title": "Pretty Print",
+  "date": "2023-10-05",
+  "section": "Web and Society",
+  "words": 1195
+ },
+ {
+  "href": "Gradient.html",
+  "title": "The Intimacy Gradient",
+  "date": "2023-04-14",
+  "section": "Web and Society",
+  "words": 1171
+ },
+ {
+  "href": "Beneficent.html",
+  "title": "Beneficent Apps",
+  "date": "2023-03-23",
+  "section": "Web and Society",
+  "words": 1236
+ },
+ {
+  "href": "Charlie.html",
+  "title": "Charlie: An AI that works for you",
+  "date": "2017",
+  "section": "Web and Society",
+  "words": 976
+ },
+ {
+  "href": "Singularity13.html",
+  "title": "Singularity 13: A Story of Corporate Performance Optimization",
+  "date": "2017",
+  "section": "Web and Society",
+  "words": 1767
+ },
+ {
+  "href": "PrivateData.html",
+  "title": "Inference over Private Data",
+  "date": "2023",
+  "section": "Web and Society",
+  "words": 1192
+ },
+ {
+  "href": "PersonalPublic.html",
+  "title": "Link in Bio: Personal data which is Public",
+  "date": "2024",
+  "section": "Web and Society",
+  "words": 1064
+ },
+ {
+  "href": "Dysfunction.html",
+  "title": "The Dysfunction of Social Networks",
+  "date": "2024",
+  "section": "Web and Society",
+  "words": 3866
+ },
+ {
+  "href": "Good.html",
+  "title": "The Good Things on the Internet",
+  "date": "2024",
+  "section": "Web and Society",
+  "words": 3155
+ },
+ {
+  "href": "Vision.html",
+  "title": "A Vision of a New World",
+  "date": "2024-02-16",
+  "section": "Web and Society",
+  "words": 3270
+ },
+ {
+  "href": "Works.html",
+  "title": "Charlie Works",
+  "date": "2024-01-13",
+  "section": "Web and Society",
+  "words": 1150
+ }
+]

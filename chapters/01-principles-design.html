@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1: Principles of Design | Elementary Design Issues</title>
+<meta name="description" content="Chapter 1 of Elementary Design Issues: Principles of Design (1998). Volume I, Axioms.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Elementary Design Issues">
+<meta property="og:title" content="Chapter 1: Principles of Design | Elementary Design Issues">
+<meta property="og:description" content="Chapter 1 of Elementary Design Issues: Principles of Design (1998). Volume I, Axioms.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="chapter-nav">
+<a href="../index.html">Contents</a>
+<span class="volume-indicator">Volume I: Axioms</span>
+</nav>
+
+<header class="chapter-header">
+<p class="chapter-number">Chapter 1</p>
+<h1>Principles of Design</h1>
+<p class="chapter-subtitle">1998</p>
+</header>
+
+<main class="chapter-content">
+<div class="source-note">
+<span class="source-label">Source</span>
+<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Principles.html"><em>Principles of Design</em></a>,
+a Design Issues note by Tim Berners-Lee, dated 1998-09-01, about 1,346 words.</p>
+<p>Read the original at <a href="https://www.w3.org/DesignIssues/Principles.html">https://www.w3.org/DesignIssues/Principles.html</a>.
+The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
+This book is commentary; where it quotes, it attributes.</p>
+</div>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+By 1998 Berners-Lee had been arguing about Web design for seven years, and
+had noticed that the same appeals to good practice kept recurring in
+arguments without ever being written down. This note exists to give those
+appeals an address. Its opening sentence is unusually candid about the
+motive:
+</p>
+<blockquote>
+Again and again we fall back on the folklore of the principles of good
+design. Sometimes I need a URI for them so this is started as collection of
+them.
+<cite>Principles of Design, 1998</cite>
+</blockquote>
+<p>
+That is a working note, not a manifesto, and the author says so: he calls
+the content &ldquo;largely motherhood and apple pie&rdquo; while insisting
+it still needs a home. The chapter is placed first because everything after
+it is an application of one of these six principles to a particular problem.
+</p>
+</div>
+
+<h2>1.1 Three pairs, three traditions</h2>
+
+<p>
+The six principles are not a flat list. Berners-Lee groups them by where
+they come from, and the grouping is the most useful thing in the note.
+Simplicity and modularity, he says, are &ldquo;the stuff of software
+engineering&rdquo;. Decentralization and tolerance are &ldquo;the life and
+breath of Internet&rdquo;, and he credits Brian Carpenter's RFC 1958,
+<em>Architectural Principles of the Internet</em>, of June 1996. The
+remaining pair, the test of independent invention and the principle of least
+power, he claims as the ones he found he needed for the Web specifically.
+</p>
+
+<p>
+Reading the six as three inherited layers explains why they sometimes
+conflict. The software-engineering pair is about the system one is building.
+The Internet pair is about the network one is building on. The Web pair is
+about the systems other people will build later, which do not exist yet and
+cannot be consulted.
+</p>
+
+<table>
+<tr><th>Principle</th><th>Tradition</th><th>The failure it prevents</th></tr>
+<tr><td>Simplicity</td><td>Software engineering</td><td>Cost of every downstream specification</td></tr>
+<tr><td>Modularity</td><td>Software engineering</td><td>Change in one part forcing change in all</td></tr>
+<tr><td>Tolerance</td><td>Internet</td><td>Brittleness at the edges of conformance</td></tr>
+<tr><td>Decentralization</td><td>Internet</td><td>A single point of scaling limit and of failure</td></tr>
+<tr><td>Test of independent invention</td><td>Web</td><td>A system that cannot coexist with its own twin</td></tr>
+<tr><td>Least power</td><td>Web</td><td>Data that only its own program can read</td></tr>
+</table>
+
+<h2>1.2 Simplicity, and what it is not</h2>
+
+<p>
+The definition offered is narrow and worth keeping: &ldquo;A language which
+uses fewer basic elements to achieve the same power is simpler.&rdquo;
+Berners-Lee then separates this from familiarity. A two-line recursive
+solution is simpler than a ten-line iterative one even where readers find
+the longer version easier to follow.
+</p>
+
+<p>
+The worked example is XML processing instructions, the constructs beginning
+with a question mark. His objection is not that they are large but that they
+are contagious: they add a third kind of thing to a design that had only
+elements and attributes, and so every specification that refers to XML
+processing must afterwards say what it does about them. Simplicity here is
+measured in other people's specifications, not in one's own.
+</p>
+
+<h2>1.3 Modularity, and being a module</h2>
+
+<p>
+The first half is conventional: group features so that bindings within a
+group are tight and bindings between groups are loose, and the groups become
+the units of independent change. Berners-Lee adds the standard warning that
+a design in which each module must know the insides of the others is not
+modular but merely partitioned.
+</p>
+
+<p>
+The second half is the part that is rarely met, and he flags it as such:
+</p>
+
+<blockquote>
+It is also necessary to realize that your own system, no matter how big and
+wonderful it seems now, should always be designed to be a part of another
+larger system. This is often much more difficult than modularity.
+<cite>Principles of Design, 1998</cite>
+</blockquote>
+
+<p>
+This is modularity turned inside out, and it is the bridge to the fifth
+principle. A system designed to be a component of something unspecified must
+do one thing, must leave the rest alone, and must not claim to be the centre.
+</p>
+
+<h2>1.4 Tolerance, and its cost</h2>
+
+<p>
+The rule quoted is Postel's, restated: be liberal in what is required, and
+conservative in what is done. Write strict, accept loose.
+</p>
+
+<p>
+Berners-Lee records the objection as well as the rule, which is why the
+section survives re-reading. Lax browsers make the system work better in the
+short term and encourage lax authors, which makes the system worse in the
+long term. He draws the line carefully: tolerance in an implementation is
+never a licence for vagueness in a specification, and never an excuse for a
+product that contravenes one. A specification must still draw a precise
+boundary between conformance and non-conformance, whatever implementations
+then choose to accept across it.
+</p>
+
+<h2>1.5 Decentralization, including of concepts</h2>
+
+<p>
+The network argument is familiar: a common point involved in every operation
+limits scaling and concentrates failure. The extension is the part worth
+carrying forward. Berners-Lee applies decentralization to vocabulary as well
+as to infrastructure. A knowledge representation system that requires every
+user of the concept of an automobile to use one particular identifier for it
+has created a conceptual bottleneck, and restricts the system to those for
+whom that one formulation works.
+</p>
+
+<p>
+This sentence is the seed of the argument that runs through Volumes IV and
+VI: that the Semantic Web must let anyone mint a term, and must solve
+agreement by mapping between vocabularies rather than by mandating one.
+</p>
+
+<h2>1.6 The test of independent invention</h2>
+
+<p>
+The test is a single question: if someone else had already invented this
+system, would theirs work with ours? It is a thought experiment about
+arbitrary decisions. Where two independent designers would have chosen
+differently, the design must not assume its own choice is the only one.
+</p>
+
+<p>
+Chapter 2 shows the test applied to the Web's own foundation, where
+Berners-Lee argues that URI space passes it because nothing prevents a rival
+universal space from existing and enveloping URI space as a subset.
+</p>
+
+<h2>1.7 The principle of least power</h2>
+
+<p>
+This is the longest section of the note and the one with the clearest
+argument. Berners-Lee sets out a scale, from the plainly descriptive through
+limited logics and declarative languages to the unashamedly procedural, and
+observes that the profession spent the 1960s to the 1980s trying to move up
+it. His claim is that for data on the Web the incentive runs the other way:
+</p>
+
+<blockquote>
+The reason for this is that the less powerful the language, the more you can
+do with the data stored in that language. If you write it in a simple
+declarative from, anyone can write a program to analyze it in many ways.
+<cite>Principles of Design, 1998</cite>
+</blockquote>
+
+<p>
+The comparison offered is weather data. Published as a table of values with
+a declarative description, it can be averaged, plotted, combined with other
+sources, and queried in ways its publisher never considered. Published
+through a Java applet, it may look better and can be analysed by nobody: the
+only way to discover what an applet means is to run it in front of a person.
+</p>
+
+<p>
+He then gives the design decision this principle was extracted from:
+</p>
+
+<blockquote>
+I chose HTML not to be a programming language because I wanted different
+programs to do different things with it: present it differently, extract
+tables of contents, index it, and so on.
+<cite>Principles of Design, 1998</cite>
+</blockquote>
+
+<p>
+A follow-up added later in the life of the page credits Meredith Patterson's
+talk <em>The Science of Insecurity</em> with the observation that least power
+also governs security: an interface exposed to attack is safer when the
+language it accepts is weak enough to be decided.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>Least power was promoted.</strong> It left this personal note and
+became a W3C Technical Architecture Group finding, <em>The Rule of Least
+Power</em>, edited by Berners-Lee and Noah Mendelsohn, published in
+February 2006.</li>
+<li><strong>The security reading became a field.</strong> The language-theoretic
+security work that Patterson's talk introduced, dating from around 2011,
+made the argument that parser expressiveness is itself the attack surface.</li>
+<li><strong>Tolerance was reconsidered.</strong> The Internet Architecture Board
+published RFC 9413, <em>Maintaining Robust Protocols</em>, in June 2023,
+arguing that liberal acceptance degrades interoperability over time because
+divergent implementations are never corrected. The 1998 objection recorded
+in this note is the same objection, sustained.</li>
+<li><strong>The tolerance argument was settled differently on the Web.</strong>
+HTML5, whose first W3C Recommendation came in October 2014, specified error
+handling exactly, so that lax input produces one defined result rather than
+many. That is neither strictness nor tolerance but a third answer the 1998
+note does not anticipate.</li>
+<li><strong>Least power lost the data argument in practice.</strong> The
+weather-applet comparison recurred with JavaScript-rendered pages, which by
+the 2010s made a large share of published data readable only by running it.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Where these principles are used</h3>
+<p>
+Decentralization and independent invention are applied to URI space in
+Chapter 2. Modularity in the inside-out sense becomes the independence
+axioms of Chapter 4. Simplicity and the cost of extra constructs return in
+Volume III, in particular in Chapter 16 on evolvability and Chapter 19 on
+modularity. Least power is the argument beneath the whole of Volumes IV and
+V, and is stated again at the opening of Chapter 5.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">1.1</span>
+Berners-Lee objects to XML processing instructions on grounds of simplicity,
+not size. Restate his objection as a claim about the number of documents
+that must change when a construct is added to a widely referenced
+specification.</p>
+</div>
+<div class="question">
+<p><span class="question-number">1.2</span>
+Tolerance and simplicity can conflict: accepting malformed input requires
+rules for handling it, and those rules are additional basic elements. Give an
+example from HTML where this conflict was resolved in favour of tolerance,
+and say what it cost.</p>
+</div>
+<div class="question">
+<p><span class="question-number">1.3</span>
+Apply the test of independent invention to the Domain Name System. If a
+second, independently designed global naming system had existed in 1985,
+could the two have interoperated? What in the design decides the answer?</p>
+</div>
+<div class="question">
+<p><span class="question-number">1.4</span>
+The principle of least power claims that weaker languages make data more
+reusable. State the strongest counter-argument, and identify which of the
+other five principles it appeals to.</p>
+</div>
+</div>
+<nav class="chapter-navigation">
+<a href="../index.html">&larr; Contents</a>
+<a href="02-axioms-web-architecture-uris.html">Chapter 2: Axioms of Web architecture: URIs &rarr;</a>
+</nav>
+</main>
+<footer>
+<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+&middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
+</footer>
+</body>
+</html>

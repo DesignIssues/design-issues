@@ -1,0 +1,251 @@
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+This is the survey, and Berners-Lee explains at the start why he resisted
+writing it for so long:
+</p>
+<blockquote>
+I have resisted the urge, and requests, to try to write an architecture for a
+long time: This was from a feeling that a dead and therefore less valuable
+document must any attempt to select which, of all the living ideas, seem most
+stable, logically connected and essential.
+<cite>Web Architecture from 50,000 feet, 1998</cite>
+</blockquote>
+<p>
+The sentence is mangled and the meaning is clear: fixing a living thing in
+one document kills part of it. He wrote it anyway, presented it to the
+Consortium's Advisory Committee and chairs, and kept revising it into 1999 and
+beyond. It is the closest the collection comes to a single statement of the
+whole design, and it is the right chapter to read before the nine volumes
+that follow, because almost every one of them expands a paragraph of it.
+</p>
+</div>
+
+<h2>5.1 The plan of the argument</h2>
+
+<p>
+Berners-Lee states his definition of the subject plainly: the Web is a
+universe of network-accessible information. He then divides its potential in
+two, and the division organises the rest of the note and much of this book.
+The Web is first a means of human-to-human communication, and second a space
+in which software agents can reach enough of what society and science
+contain to become tools that work alongside us.
+</p>
+
+<p>
+He treats the properties of the space itself first, then its use as a human
+medium, then its use as a medium for machine reasoning. Two commitments are
+declared to be assumed throughout rather than argued: interoperability, and
+universality of access irrespective of hardware, software, network, language,
+culture, location, or physical or mental impairment. He notes that these
+permeate the work so thoroughly that they cannot be located in any one
+section.
+</p>
+
+<h2>5.2 Why URIs are the foundation</h2>
+
+<p>
+The most fundamental specification, he says, is also one of the simpler ones.
+The argument for its primacy is not about naming but about composition:
+</p>
+
+<blockquote>
+Great multiplicative power of reuse derives from the facts that all languages
+use URIs as identifiers: This allows things written in one language to refer
+to things defined in another language.
+<cite>Web Architecture from 50,000 feet, 1998</cite>
+</blockquote>
+
+<p>
+A language that adopts URIs inherits, without specifying any of it, whatever
+the URI specification says about persistence, identity and equivalence. The
+reference to the URI specification is itself a flexibility point: naming and
+addressing properties can be defined once and revised separately from every
+language that uses them.
+</p>
+
+<p>
+The guidance that follows is terse and has held up. Respect the generic
+syntax. Do not introduce new schemes without due cause. Do not introduce a
+rival scheme presenting itself as a superset of URIs, since that would make
+a reference require something more than a URI. Give every significant object
+with persistent identity a URI. Where a reference is needed, use a URI and do
+not constrain which scheme.
+</p>
+
+<h2>5.3 The centralised part</h2>
+
+<p>
+Having praised decentralisation, Berners-Lee names the exception, and does so
+without softening it:
+</p>
+
+<blockquote>
+The Achilles' heel of the HTTP space is the only centralized part, the
+ownership and government of the root of the DNS tree. As a feature common and
+mandatory to the entire HTTP Web, the DNS root is a critical resource whose
+governance by and for the world as a whole in a fair way is essential.
+<cite>Web Architecture from 50,000 feet, 1998</cite>
+</blockquote>
+
+<p>
+He adds that the Consortium did not address this concern, except indirectly
+through involvement with ICANN. The admission is characteristic of the
+collection: a structural weakness is identified, its owner named, and no
+solution offered.
+</p>
+
+<p>
+On persistence he is equally direct. Improving the persistence of HTTP URIs is
+a matter of tool maturity, user education and the maturity of Web society, and
+the moving of resources is strongly discouraged. The existence of research
+into naming schemes should not be taken to mean that HTTP URIs cannot be made
+persistent, nor that identifiers should be partitioned into names and
+addresses, which is the argument of Chapter 3 restated in one sentence.
+</p>
+
+<h2>5.4 GET, universality, and a worked example</h2>
+
+<p>
+The axioms of Chapter 2 reappear here with a sharper illustration of why the
+second GET rule is about universality rather than tidiness. The example is
+invented and exact:
+</p>
+
+<blockquote>
+Instead of defining a new method CVSSTAT to retrieve the code management
+status of a document, that status should be given a URI in the server's space,
+and headers used to point the aware client to it. Otherwise, we end up with a
+class of document which contains interesting information but cannot be linked
+to.
+<cite>Web Architecture from 50,000 feet, 1998</cite>
+</blockquote>
+
+<p>
+A method that returns information creates a second address space reachable
+only by clients that know the method. Links carry URIs, not methods, so
+nothing in that space can be linked to. The test is simple and still useful:
+if an answer is worth retrieving, it is worth an address.
+</p>
+
+<h2>5.5 The https wart</h2>
+
+<p>
+One design decision is singled out for criticism, and the criticism is
+architectural rather than aesthetic. The existence of an <code>https</code>
+space separate from <code>http</code> means that a document served securely
+and the same document served insecurely are different resources with
+different identifiers. Berners-Lee argues that security should have been a
+dimension negotiated while dereferencing one identifier, not a fork in the
+namespace, and warns against the precedent: language, privacy level and other
+dimensions of negotiation must not each acquire a scheme.
+</p>
+
+<p>
+The complaint is worth holding onto, because Volume VII shows the author
+still making it seventeen years later, by which time the Web had moved
+decisively the other way.
+</p>
+
+<h2>5.6 Messages and documents are the same thing</h2>
+
+<p>
+The most speculative section proposes collapsing a distinction:
+</p>
+
+<blockquote>
+There has been to date an artificial distinction between the transmission
+standards for &ldquo;protocols&rdquo; and &ldquo;content&rdquo;. In the ever
+continuing quest for generalization and simplification, this is a distinction
+which cannot last.
+<cite>Web Architecture from 50,000 feet, 1998</cite>
+</blockquote>
+
+<p>
+The gain claimed is compositional. If messages and documents are the same
+kind of thing, then whatever can be done to one can be done to the other:
+messages become signable because documents are, documents become
+binary-encodable because messages are. Berners-Lee notes that the recursion
+is already present in practice, since email messages contain email messages
+and business processes are conducted with documents carried by SMTP and HTTP.
+He records that this nearly happened once, with HTTP messages almost defined
+in SGML.
+</p>
+
+<p>
+He sets out what an evolved HTTP should provide: many concurrent message
+exchanges, a general data typing and marshalling standard, a schema system
+able to define any remote-procedure-call interface, extensions for asynchrony
+and streaming, and a socially aware state propagation protocol built on top
+in a modular way, allowing a basic design simpler than HTTP 1.1.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The DNS root question was answered, slowly.</strong> The United
+States relinquished its stewardship of the IANA functions to the global
+multi-stakeholder community on 1 October 2016. Whether that constitutes
+governance &ldquo;by and for the world as a whole in a fair way&rdquo; is
+contested; that it was addressed at all took eighteen years.</li>
+<li><strong>The wish list was granted, in a different currency.</strong>
+Concurrent message exchange arrived with HTTP/2, RFC 7540 of May 2015, and
+HTTP/3, RFC 9114 of June 2022. Both use binary framing. Neither uses XML or
+RDF messages. The functional requirements were met and the representational
+argument was lost.</li>
+<li><strong>HTTP-NG did not survive.</strong> The activity Berners-Lee cites
+as the vehicle for these changes was closed without producing a successor
+protocol, and the work was done a decade later by other groups.</li>
+<li><strong>Web Services went the other way.</strong> The XML-based
+remote-operation stack he anticipated was built, and was then largely
+displaced through the 2010s by resource-oriented interfaces exchanging JSON,
+which is closer to his own architectural preference than the stack he
+expected.</li>
+<li><strong>The https objection lost.</strong> Rather than negotiating
+security within one namespace, the Web deprecated the insecure one. HTTP
+Strict Transport Security was published as RFC 6797 in November 2012, and
+Chrome began marking all plain HTTP pages as not secure in July 2018. The
+dimension became a scheme permanently. Chapter 67 records the author's
+response.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+This chapter is the map for the rest of the book. Its treatment of URIs
+compresses Chapters 2 to 4; its warning on schemes extends Chapter 4; its
+naming remarks restate Chapter 3. The human and machine division introduced
+here separates Volume IX from Volumes IV to VI. The https complaint is
+resumed in Chapter 67, and the remote-operations section is the ancestor of
+Chapter 65.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">5.1</span>
+Berners-Lee calls the DNS root the only centralized part of the HTTP space.
+Identify two further points of centralisation present in the Web of the
+2020s that this note does not anticipate, and say whether either is
+structural or contingent.</p>
+</div>
+<div class="question">
+<p><span class="question-number">5.2</span>
+Restate the CVSSTAT argument as a general rule, then apply it to an interface
+you know that returns information through a method or verb other than GET.</p>
+</div>
+<div class="question">
+<p><span class="question-number">5.3</span>
+The note argues that security should have been negotiated within one
+namespace. Set out the strongest argument for the separate <code>https</code>
+scheme, using what is known about mixed content and downgrade attacks.</p>
+</div>
+<div class="question">
+<p><span class="question-number">5.4</span>
+HTTP/2 delivered concurrent message exchange with binary framing rather than
+structured documents. Which of the five goals listed in section 5.6 remain
+unmet, and does any of them still matter?</p>
+</div>
+</div>

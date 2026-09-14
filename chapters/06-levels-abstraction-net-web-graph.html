@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Levels of Abstraction: Net, Web, Graph | Elementary Design Issues</title>
+<meta name="description" content="Chapter 6 of Elementary Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Elementary Design Issues">
+<meta property="og:title" content="Chapter 6: Levels of Abstraction: Net, Web, Graph | Elementary Design Issues">
+<meta property="og:description" content="Chapter 6 of Elementary Design Issues: Levels of Abstraction: Net, Web, Graph (2007). Volume I, Axioms.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="chapter-nav">
+<a href="../index.html">Contents</a>
+<span class="volume-indicator">Volume I: Axioms</span>
+</nav>
+
+<header class="chapter-header">
+<p class="chapter-number">Chapter 6</p>
+<h1>Levels of Abstraction: Net, Web, Graph</h1>
+<p class="chapter-subtitle">2007</p>
+</header>
+
+<main class="chapter-content">
+<div class="source-note">
+<span class="source-label">Source</span>
+<p>This chapter is about <a href="https://www.w3.org/DesignIssues/Abstractions.html"><em>Levels of Abstraction: Net, Web, Graph</em></a>,
+a Design Issues note by Tim Berners-Lee, dated 2007-10-23, about 1,123 words.</p>
+<p>Read the original at <a href="https://www.w3.org/DesignIssues/Abstractions.html">https://www.w3.org/DesignIssues/Abstractions.html</a>.
+The Design Issues notes are Tim Berners-Lee's personal notes and are not endorsed by W3C.
+This book is commentary; where it quotes, it attributes.</p>
+</div>
+<div class="editors-note">
+<h3>The question</h3>
+<p>
+Nine years after the survey of Chapter 5, Berners-Lee wrote this note with an
+unusually frank status line: it was written, he says, in response to another
+round of circular discussions of Web architecture. It is short, it contains
+no new mechanism, and it closes Volume I because it supplies the thing the
+earlier notes lack, which is a reason why the layering is the way it is.
+</p>
+<p>
+The claim is that the Web's layers are not layers of technology. They are
+layers of social responsibility, and each one borrows the accountability of
+the one beneath.
+</p>
+</div>
+
+<h2>6.1 Three refusals</h2>
+
+<p>
+The note advances by rejecting three answers in turn, and the rhetorical
+shape is the content.
+</p>
+
+<p>
+<strong>It is not the wires.</strong> When computers were connected by
+telephone lines, one ran a program to connect to a particular machine, and to
+reach a third machine one had to know how to drive the second. Mail travelled
+by machines calling each other at night, and addresses named the route:
+Berners-Lee gives the example
+<code>timbl@mcvax!cernvax!cernvms</code>. The Internet removed the wires from
+the picture. Messages enter and emerge, and the Domain Name System with TCP
+and IP let a program on one machine address a program on another without
+anybody tracing the path.
+</p>
+
+<p>
+<strong>It is not the computers.</strong> That power was not usable by
+ordinary people until the Web, whose realisation he states as a slogan: it is
+not the computers which are interesting, it is the documents. The user is
+then in a web of interconnected documents and need not think about the
+protocols underneath.
+</p>
+
+<p>
+<strong>It is not the documents.</strong> The Semantic Web's realisation is
+the same move again: it is not the documents which are interesting, it is the
+things they are about. A reader of a page about a protein is usually
+interested in the protein. In business and science the customers, products,
+genes and proteins are the objects of interest, and a good browser would show
+information about the thing, merged from many sources.
+</p>
+
+<h2>6.2 The two exceptions, repeated at every level</h2>
+
+<p>
+Each abstraction is said to hold except in two cases, and the pair recurs
+identically at every level, which is what makes the pattern an architecture
+rather than a story.
+</p>
+
+<p>
+The first exception is <strong>debugging</strong>. When something fails, the
+user must be able to lift the hood and determine at which layer it failed:
+whether the connection broke locally or in the middle of the network, whether
+the URI was wrong or the server erred, whether the document was fetched
+correctly but lacked the data.
+</p>
+
+<p>
+The second exception is <strong>trust</strong>, and Berners-Lee gives it more
+weight:
+</p>
+
+<blockquote>
+The information you are browsing comes from a particular server, whose name
+has registered against a particular person or organization. The trust you put
+in that information is related to who that organization is. It is the serving
+organization which is responsible for keeping the URIs you bookmark today
+alive tomorrow, and some are better at it than others. Phishing attacks
+succeed when people are fooled into thinking it is an organiztion you trust
+when it isn't.
+<cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
+</blockquote>
+
+<p>
+Provenance is therefore not an optional feature layered on top. It is the
+reason the abstraction is allowed to be an abstraction at all.
+</p>
+
+<h2>6.3 The seams are visible in the identifier</h2>
+
+<p>
+The note's neatest observation is that each join between layers is legible in
+the URI itself. In
+</p>
+
+<pre><code>http://acme.example.com/products/machin/truc</code></pre>
+
+<p>
+the owner's domain name is part of the name of the document, so the company
+is identifiably responsible for supporting that document. In
+</p>
+
+<pre><code>http://acme.example.com/products/machin/truc#part3</code></pre>
+
+<p>
+the name of the document is part of the name of the thing. The thing is
+identified as the thing described by that document: a gene as defined in the
+Gene Ontology, a protein as defined in a particular taxonomy, a citizen as
+defined in a particular glossary. A thing may have many URIs, but a URI of
+this form says whose account of the thing is being used.
+</p>
+
+<p>
+Berners-Lee adds a parenthesis that has become a chapter of its own. Since
+2005 there have been URIs for things not explicitly bound to a document,
+which require the server to name a suitable document at request time. He
+calls this more complicated and moves on. Chapters 7 and 8 are what lies
+behind the parenthesis.
+</p>
+
+<h2>6.4 The conclusion, which is about people</h2>
+
+<blockquote>
+The web of things is built on the web of documents, which is built on the web
+of computers controlled by Domain Name owners, which itself is build on a set
+of interconnected cables. This is an architecture which provides a social
+backing to the names for things.
+<cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
+</blockquote>
+
+<p>
+And then the sentence the note exists to deliver:
+</p>
+
+<blockquote>
+The value of this architecture is that each layer leverages the social
+components of the lower layer's architecture.
+<cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
+</blockquote>
+
+<p>
+A name for a gene is trustworthy because a document is trustworthy, which is
+trustworthy because a domain owner is accountable, which is meaningful
+because a registry binds the domain to a party. Take away the accountability
+at any level and the levels above lose their footing. This is why Chapter 3
+concluded that naming is a contractual matter, and why the failures catalogued
+in Volumes VII and VIII are failures of the same structure rather than a
+separate set of problems.
+</p>
+
+<div class="since">
+<h3>What happened since</h3>
+<ul>
+<li><strong>The trust exception failed in the field.</strong> Extended
+Validation certificates were the mechanism for showing a user which
+organisation stood behind a page. Research through the 2010s found that users
+did not act on the indicator, and both Chrome and Firefox removed the
+prominent EV display in 2019. The layer Berners-Lee identified as load-bearing
+was one that browsers concluded users could not see.</li>
+<li><strong>The parenthesis became a decade of argument.</strong> The
+Technical Architecture Group's resolution of the issue known as httpRange-14,
+in June 2005, established the 303 redirect convention for URIs denoting things
+that are not documents. Practice afterwards split between that pattern and
+hash URIs, and the split has not closed.</li>
+<li><strong>The third layer arrived partially.</strong> Schema.org, launched
+in June 2011, put structured descriptions of things on a large fraction of
+pages, and search engines consume them. The browser showing a user a merged
+view of a thing, which this note describes, remains uncommon outside
+specialist tools.</li>
+<li><strong>Layer separation weakened elsewhere.</strong> Consolidation of
+hosting and content delivery means that the domain owner named in a URI is
+frequently not the party in control of what is served, which complicates the
+inference from name to responsibility that the whole argument rests on.</li>
+</ul>
+</div>
+
+<div class="connections">
+<h3>Connections</h3>
+<p>
+This chapter completes Volume I by explaining what the earlier axioms are for.
+The parenthetical question about URIs for things opens Volume II at
+Chapters 7 and 8. The trust exception is the starting point of Volume VII,
+especially Chapter 66 on modelling real trust. The social reading of naming
+returns from Chapter 3 and reaches its full statement in Chapter 49 on Linked
+Data.
+</p>
+</div>
+
+<div class="questions">
+<h3>Questions</h3>
+<div class="question">
+<p><span class="question-number">6.1</span>
+The two exceptions, debugging and trust, recur at every layer. Construct the
+pair for a fourth layer above the web of things, and say what would have to be
+visible for the pattern to hold.</p>
+</div>
+<div class="question">
+<p><span class="question-number">6.2</span>
+The argument requires that a domain name identify a responsible party. Give
+two circumstances in which it does not, and say whether either can be
+repaired without changing the layering.</p>
+</div>
+<div class="question">
+<p><span class="question-number">6.3</span>
+Hash URIs make a thing's identifier contain a document's identifier. URIs
+served through a 303 redirect do not. Which better supports the social
+backing described here, and what is lost by choosing it?</p>
+</div>
+<div class="question">
+<p><span class="question-number">6.4</span>
+Browsers removed the Extended Validation indicator after concluding users did
+not use it. Does that refute the claim that trust is an unavoidable exception
+to the abstraction, or only the claim that the browser is where it should be
+shown?</p>
+</div>
+</div>
+<nav class="chapter-navigation">
+<a href="05-web-architecture-50000-feet.html">&larr; Chapter 5: Web Architecture from 50,000 feet</a>
+<a href="07-http-uris-identify.html">Chapter 7: What do HTTP URIs identify? &rarr;</a>
+</nav>
+</main>
+<footer>
+<p>Elementary Design Issues &middot; Volume I: Axioms</p>
+<p>Commentary <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+&middot; quoted material &copy; Tim Berners-Lee
+&middot; <a href="https://github.com/DesignIssues/design-issues">contribute</a></p>
+</footer>
+</body>
+</html>
