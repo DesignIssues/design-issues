@@ -57,20 +57,19 @@ messaging company. Each holds a piece of one person&#8217;s life, none of them c
 see the others, and leaving any of them means losing what was kept there.
 </p>
 <p>
-This note asks what happens when that is turned inside out: the data in one
-place under its owner&#8217;s control, and applications as things that come and go.
-It is the founding document of the project its author has worked on ever
-since.
+This note turns that inside out: the data in one place under its owner&#8217;s
+control, and applications as things that come and go. It is the founding
+document of the project its author has worked on ever since.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is the founding document of the project that occupied Berners-Lee for
-the following fifteen years, written in August 2009 and still being edited in
-2023. Chapter 50 established that data can be written back. This asks who may
-write it, and answers by separating two things the Web had bolted together.
+Written in August 2009 and still being edited in 2023, this note asks who may
+write the data that Chapter 50 made writable. It answers by separating two
+things the Web had bolted together. Principals are those to whom permissions
+are given.
 </p>
 <blockquote>
 Crucial design issues are that principals (users) and groups are identifies by
@@ -83,15 +82,10 @@ controlled using those global identifiers.
 <h2>54.1 The diagnosis</h2>
 
 <p>
-The note begins with an unusually careful description of the architecture it
-means to replace, and it is fair to it. A site stores state and serves
-scripts. Users have an identity on the site. The site manages access with some
-flexibility. Applications are usable because much of the work happens in the
-browser.
-</p>
-
-<p>
-The problem is stated as a consequence rather than a complaint:
+The note first describes fairly what it means to replace. A site stores
+state (everything it remembers between visits) and serves scripts; users have
+an identity on the site; much of the work happens in the browser. The problem
+is a consequence, not a complaint:
 </p>
 
 <blockquote>
@@ -102,14 +96,10 @@ from other sites are deliberately prevented from accessing it.
 </blockquote>
 
 <p>
-The isolation is not an oversight. It is the <a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a> of Chapter 68
-working exactly as designed, and it has the effect that your data is reachable
-only by the application that stored it.
-</p>
-
-<p>
-The consequence for cross-site access is precise, and Berners-Lee names the
-class of flaw:
+This is the <a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a>, the browser rule that a script may read data
+only from the site it came from (Chapter 68), working as designed. Each site
+becomes a silo, reachable only by its own software. Joining two silos needs a
+go-between, and that invites a known flaw:
 </p>
 
 <blockquote>
@@ -122,82 +112,169 @@ to "confused deputy" attacks.
 </blockquote>
 
 <p>
-Delegated access schemes tackle this, and his objection to them is not that
-they fail but what they require: the site receiving the data must be
-completely trusted.
+A confused deputy is a trusted program tricked into using its authority for
+someone else: a photo site allowed to fetch a user&#8217;s pictures elsewhere can be
+steered by a third party into fetching something else.
+</p>
+
+<p>
+Delegated access schemes such as OAuth let a user grant one site specific
+data held by another, such as a list of friends. The note calls this clumsy in
+some ways, and it requires that the receiving site be completely trusted.
+</p>
+
+<p>
+Nor are silos an accident. The site sells ads &#8220;because it forces the
+user to use its web site to access her data&#8221;, so it has little reason to
+let the data go.
 </p>
 
 <h2>54.2 The separation</h2>
+
+<p>
+The proposal holds the two apart. Storage belongs to the user, like the disk
+space a university gives its students. Applications are programs the user
+runs, which visit that storage with the user&#8217;s permission. Storage
+becomes a commodity: interchangeable, like electricity.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
      aria-labelledby="fig54-1-t fig54-1-d">
   <title id="fig54-1-t">Application and storage, together and apart</title>
   <desc id="fig54-1-d">In the site model each application owns the data its
-  users create, so moving between applications means copying or delegating
-  access. When storage is separate and access is controlled by global
+  users create, so joining them up means delegating access from one site to
+  another. When storage is separate and access is controlled by global
   identifiers, applications come and go while the data stays where its owner
   put it.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">application owns the storage</text>
+  <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">application owns the storage</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="286"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">storage is a commodity</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">storage is a commodity</text>
 
-  <g>
-    <rect class="box-warm" x="30" y="46" width="94" height="112" rx="4"/>
-    <text x="77" y="70" class="t-sm" text-anchor="middle">photos app</text>
-    <rect x="42" y="86" width="70" height="58" fill="#ffffff" stroke="#d8c3a2"/>
-    <text x="77" y="120" class="t-sm" text-anchor="middle">your</text>
-    <text x="77" y="136" class="t-sm" text-anchor="middle">photos</text>
+  <rect class="box-warm" x="30" y="46" width="94" height="112" rx="4"/>
+  <text x="77" y="70" class="t-sm" text-anchor="middle">photos app</text>
+  <rect x="42" y="86" width="70" height="58" fill="#fdfdfc" stroke="#b08d57"/>
+  <text x="77" y="120" class="t-sm" text-anchor="middle">Alice&#8217;s</text>
+  <text x="77" y="136" class="t-sm" text-anchor="middle">photos</text>
 
-    <rect class="box-warm" x="136" y="46" width="94" height="112" rx="4"/>
-    <text x="183" y="70" class="t-sm" text-anchor="middle">calendar</text>
-    <rect x="148" y="86" width="70" height="58" fill="#ffffff" stroke="#d8c3a2"/>
-    <text x="183" y="120" class="t-sm" text-anchor="middle">your</text>
-    <text x="183" y="136" class="t-sm" text-anchor="middle">events</text>
+  <rect class="box-warm" x="136" y="46" width="94" height="112" rx="4"/>
+  <text x="183" y="70" class="t-sm" text-anchor="middle">calendar</text>
+  <rect x="148" y="86" width="70" height="58" fill="#fdfdfc" stroke="#b08d57"/>
+  <text x="183" y="120" class="t-sm" text-anchor="middle">Alice&#8217;s</text>
+  <text x="183" y="136" class="t-sm" text-anchor="middle">events</text>
 
-    <rect class="box-warm" x="242" y="46" width="94" height="112" rx="4"/>
-    <text x="289" y="70" class="t-sm" text-anchor="middle">contacts</text>
-    <rect x="254" y="86" width="70" height="58" fill="#ffffff" stroke="#d8c3a2"/>
-    <text x="289" y="120" class="t-sm" text-anchor="middle">your</text>
-    <text x="289" y="136" class="t-sm" text-anchor="middle">people</text>
-  </g>
-  <path class="ln-dash" d="M 124 178 L 236 178"/>
-  <text x="180" y="198" class="t-sm" text-anchor="middle" fill="#b04a4a">to join them up, one site must</text>
-  <text x="180" y="216" class="t-sm" text-anchor="middle" fill="#b04a4a">be trusted with the other&#8217;s data</text>
-  <text x="180" y="248" class="t-sm t-it" text-anchor="middle">leave the app and the data stays behind</text>
+  <rect class="box-warm" x="242" y="46" width="94" height="112" rx="4"/>
+  <text x="289" y="70" class="t-sm" text-anchor="middle">contacts</text>
+  <rect x="254" y="86" width="70" height="58" fill="#fdfdfc" stroke="#b08d57"/>
+  <text x="289" y="120" class="t-sm" text-anchor="middle">Alice&#8217;s</text>
+  <text x="289" y="136" class="t-sm" text-anchor="middle">people</text>
 
-  <g>
-    <rect class="box" x="396" y="46" width="90" height="46" rx="4"/>
-    <text x="441" y="74" class="t-sm" text-anchor="middle">photos app</text>
-    <rect class="box" x="496" y="46" width="90" height="46" rx="4"/>
-    <text x="541" y="74" class="t-sm" text-anchor="middle">calendar</text>
-    <rect class="box" x="596" y="46" width="90" height="46" rx="4"/>
-    <text x="641" y="74" class="t-sm" text-anchor="middle">contacts</text>
+  <path class="ln-dash" d="M 77 158 L 77 174 L 289 174 L 289 166"/>
+  <path d="M 289 159 l -4 8 l 8 0 z" fill="#8a9a9a"/>
+  <text x="183" y="194" class="t-sm" text-anchor="middle">delegated access</text>
+  <text x="180" y="218" class="t-sm" text-anchor="middle" style="fill:#b08d57">to join them up, one site must</text>
+  <text x="180" y="236" class="t-sm" text-anchor="middle" style="fill:#b08d57">be trusted with the other&#8217;s data</text>
+  <text x="180" y="266" class="t-sm t-it" text-anchor="middle">leave the app and the data stays behind</text>
 
-    <path class="ln" stroke="#5a8f5a" d="M 441 92 L 441 128 M 541 92 L 541 128 M 641 92 L 641 128"/>
-    <rect class="box-green" x="396" y="128" width="290" height="88" rx="4"/>
-    <text x="541" y="154" class="t-caps" text-anchor="middle" fill="#3f6f3f">your storage</text>
-    <text x="541" y="178" class="t-sm" text-anchor="middle">photos &#183; events &#183; people, in one place</text>
-    <text x="541" y="200" class="t-sm" text-anchor="middle">access controlled by global identifiers</text>
-  </g>
-  <text x="541" y="248" class="t-sm t-it" text-anchor="middle">change the app and the data stays put</text>
+  <rect class="box" x="396" y="46" width="90" height="46" rx="4"/>
+  <text x="441" y="74" class="t-sm" text-anchor="middle">photos app</text>
+  <rect class="box" x="496" y="46" width="90" height="46" rx="4"/>
+  <text x="541" y="74" class="t-sm" text-anchor="middle">calendar</text>
+  <rect class="box" x="596" y="46" width="90" height="46" rx="4"/>
+  <text x="641" y="74" class="t-sm" text-anchor="middle">contacts</text>
+
+  <path class="ln" style="stroke:#5a8f5a" d="M 441 92 L 441 128 M 541 92 L 541 128 M 641 92 L 641 128"/>
+  <rect class="box-green" x="396" y="128" width="290" height="88" rx="4"/>
+  <text x="541" y="154" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">Alice&#8217;s storage</text>
+  <text x="541" y="178" class="t-sm" text-anchor="middle">photos &#183; events &#183; people, in one place</text>
+  <text x="541" y="200" class="t-sm" text-anchor="middle">access controlled by global identifiers</text>
+  <text x="541" y="266" class="t-sm t-it" text-anchor="middle">change the app and the data stays put</text>
 
   <line class="ln-mut" x1="24" y1="300" x2="696" y2="300"/>
   <text x="360" y="324" class="t-sm" text-anchor="middle">&#8220;The result is that storage becomes a commodity, independent of the application running on it.&#8221;</text>
   <text x="360" y="346" class="t-sm t-it" text-anchor="middle">Users and groups are named by URIs, so a permission means something outside any one site.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 54.1</span>
-The word that carries the design is <em>global</em>. A user name on a site
-means nothing elsewhere; a URI for a person means the same thing to every
-server that reads it.</figcaption>
+Left: every link between applications is one company trusting another.
+Right: applications share only the storage, which decides who may use it.</figcaption>
+</figure>
+
+<p>
+The note&#8217;s analogy is the Unix file system, which controls access by
+short user and group names that mean something only on one machine. Webizing
+replaces such local identifiers with URIs. <a class="gl-ref" href="../glossary.html#http">HTTP</a> had done this for files; this
+note does it for the people and groups in the access lists.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig54-2-t fig54-2-d">
+  <title id="fig54-2-t">Webizing the file system&#8217;s access control</title>
+  <desc id="fig54-2-d">Four rows compare a Unix machine with web storage. A
+  user name, a group name, a file path and a permission each become a URI or
+  refer to one, so they mean the same thing everywhere instead of on one
+  machine only.</desc>
+
+  <text x="165" y="28" class="t-caps" text-anchor="middle" style="fill:#b08d57">unix machine</text>
+  <text x="550" y="28" class="t-caps" text-anchor="middle">web storage</text>
+
+  <rect class="box-warm" x="40" y="44" width="250" height="50" rx="4"/>
+  <text x="56" y="63" class="t-sm">person</text>
+  <text x="56" y="83" class="t-mono">alice (uid 501)</text>
+  <rect class="box" x="400" y="44" width="300" height="50" rx="4"/>
+  <text x="416" y="63" class="t-sm">person</text>
+  <text x="416" y="83" class="t-mono">https://alice.example/profile#me</text>
+
+  <rect class="box-warm" x="40" y="106" width="250" height="50" rx="4"/>
+  <text x="56" y="125" class="t-sm">group</text>
+  <text x="56" y="145" class="t-mono">staff</text>
+  <rect class="box" x="400" y="106" width="300" height="50" rx="4"/>
+  <text x="416" y="125" class="t-sm">group</text>
+  <text x="416" y="145" class="t-mono">https://club.example/members#group</text>
+
+  <rect class="box-warm" x="40" y="168" width="250" height="50" rx="4"/>
+  <text x="56" y="187" class="t-sm">file</text>
+  <text x="56" y="207" class="t-mono">/home/alice/x</text>
+  <rect class="box" x="400" y="168" width="300" height="50" rx="4"/>
+  <text x="416" y="187" class="t-sm">file</text>
+  <text x="416" y="207" class="t-mono">https://store.example/alice/x</text>
+
+  <rect class="box-warm" x="40" y="230" width="250" height="50" rx="4"/>
+  <text x="56" y="249" class="t-sm">permission</text>
+  <text x="56" y="269" class="t-mono">staff may read</text>
+  <rect class="box" x="400" y="230" width="300" height="50" rx="4"/>
+  <text x="416" y="249" class="t-sm">permission</text>
+  <text x="416" y="269" class="t-mono">&#8230;/members#group may read</text>
+
+  <g>
+    <path class="ln-accent" d="M 298 69 L 390 69 M 298 131 L 390 131 M 298 193 L 390 193 M 298 255 L 390 255"/>
+    <path d="M 392 69 l -8 -4 l 0 8 z M 392 131 l -8 -4 l 0 8 z M 392 193 l -8 -4 l 0 8 z M 392 255 l -8 -4 l 0 8 z" fill="#1c5a7a"/>
+  </g>
+  <text x="345" y="61" class="t-sm" text-anchor="middle">webize</text>
+
+  <text x="165" y="310" class="t-sm t-it" text-anchor="middle">meaningful on this machine only</text>
+  <text x="550" y="310" class="t-sm t-it" text-anchor="middle">meaningful everywhere</text>
+</svg>
+<figcaption><span class="fig-label">Figure 54.2</span>
+Only the identifiers change, yet a permission on one server can now name a
+person or group defined on any other. The addresses are invented.</figcaption>
 </figure>
 
 <h2>54.3 The three benefits, and the one that is really an argument</h2>
 
+
+<table>
+<tr><th>Benefit</th><th>In plain terms</th></tr>
+<tr><td>Control</td><td>The user decides who may read what, whatever
+applications they use.</td></tr>
+<tr><td>Cross-linking</td><td>Data from different applications can point at
+each other.</td></tr>
+<tr><td>A low bar for new apps</td><td>An app needs no servers of its own.</td></tr>
+</table>
+
 <p>
-Berners-Lee lists what the separation buys, and the second is the one the
-whole of Volume VI has been building towards:
+The second is what Volume VI has been building towards:
 </p>
 
 <blockquote>
@@ -207,9 +284,7 @@ derived extra value, breaking down the silos described above.
 </blockquote>
 
 <p>
-The first is control: the user decides who may read what, whatever
-applications they use. The third is about markets, and it is an argument about
-barriers to entry:
+The third is about barriers to entry:
 </p>
 
 <blockquote>
@@ -219,16 +294,16 @@ launching an app is far lower, as the app can run in he open data cloud.
 </blockquote>
 
 <p>
-An application that need not run servers or hold anybody&#8217;s data can be written
-by one person and given away. Chapter 50&#8217;s stated goal, that application growth
-becomes dramatic once storage is decoupled from deployment, rests on this.
+An application that holds nobody&#8217;s data can be written by one
+person and given away. The note&#8217;s goal rests on this: &#8220;application growth becomes dramatic as the provision of
+storage is decoupled from the design and deployment of applications&#8221;.
 </p>
 
 <h2>54.4 The risk, stated plainly</h2>
 
 <p>
-The note does not oversell. Applications run with the user&#8217;s credentials, and
-Berners-Lee says what follows:
+Applications run with the user&#8217;s credentials, her proof of identity,
+and the note does not oversell:
 </p>
 
 <blockquote>
@@ -239,19 +314,13 @@ those that run unscrupulous web sites is reduced.
 </blockquote>
 
 <p>
-The hazard is not removed but moved. In the site model the risk is that a
-company you cannot inspect holds your data forever. Here the risk is that a
-program you ran once did something you did not intend, to data you still hold.
-The second is the failure mode of an operating system, and it is at least the
-kind of problem people know how to reason about.
+The hazard is moved, not removed. In the site model, a company the user cannot
+inspect holds the data. Here, a program the user ran may misuse data the user still
+holds: an operating system&#8217;s failure mode, which people know how to reason
+about.
 </p>
 
 <h2>54.5 Different lifetimes</h2>
-
-<p>
-A short observation closes the argument and explains why coupling the two was
-always awkward:
-</p>
 
 <blockquote>
 The persistence of applications and data may be very different.
@@ -259,29 +328,115 @@ The persistence of applications and data may be very different.
 </blockquote>
 
 <p>
-A long-established application may be used for an ephemeral conversation. A
-throwaway application may be written to solve a short-term problem with data
-that must be kept for decades. Binding the two together forces the shorter
-lifetime on both, which is why leaving a service means losing what you made
-with it.
+A familiar application may host an ephemeral conversation; a throwaway one may
+handle data that must outlive it. Binding the two forces the shorter lifetime
+on both.
+</p>
+
+<h2>54.6 How a request is checked</h2>
+
+<p>
+Each user gets a single <a class="gl-ref" href="../glossary.html#uri">URI</a> instead of a user name at each site, ideally a
+WebID, which links a profile on the Web to a certificate in the user&#8217;s
+browser. A group&#8217;s URI returns its members&#8217; WebIDs. Permissions sit in
+access control files:
+</p>
+
+<blockquote>
+Access control files are linked data.
+<cite>Socially Aware Cloud Storage, 2009</cite>
+</blockquote>
+
+<p>
+A client finds a resource&#8217;s file through the HTTP Link header, and may
+edit it only with &#8220;Control&#8221; access to the resource. Figure 54.3
+follows one request.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 450" width="720" height="450" role="img"
+     aria-labelledby="fig54-3-t fig54-3-d">
+  <title id="fig54-3-t">One access check, step by step</title>
+  <desc id="fig54-3-d">Alice's app asks Bob's server for a photo. The server
+  reads the access control file, which grants Read to a group; asks the
+  client to prove it is Alice's WebID; looks up the group's URI and finds
+  Alice listed; then returns the photo.</desc>
+
+  <rect class="box-warm" x="30" y="16" width="140" height="50" rx="4"/>
+  <text x="100" y="37" text-anchor="middle">app</text>
+  <text x="100" y="56" class="t-sm" text-anchor="middle">run by Alice</text>
+  <rect class="box" x="230" y="16" width="140" height="50" rx="4"/>
+  <text x="300" y="37" text-anchor="middle">Bob&#8217;s server</text>
+  <text x="300" y="56" class="t-sm" text-anchor="middle">holds photo.jpg</text>
+  <rect class="box-plain" x="420" y="16" width="120" height="50" rx="4"/>
+  <text x="480" y="37" text-anchor="middle">ACL file</text>
+  <text x="480" y="56" class="t-sm" text-anchor="middle">via Link header</text>
+  <rect class="box-green" x="570" y="16" width="120" height="50" rx="4"/>
+  <text x="630" y="37" text-anchor="middle">group list</text>
+  <text x="630" y="56" class="t-sm" text-anchor="middle">at the group URI</text>
+
+  <path class="ln-mut" d="M 100 66 L 100 402 M 300 66 L 300 402 M 480 66 L 480 402 M 630 66 L 630 402"/>
+
+  <path class="ln-accent" d="M 100 104 L 292 104"/>
+  <path d="M 300 104 l -8 -4 l 0 8 z" fill="#1c5a7a"/>
+  <text x="200" y="96" text-anchor="middle">1. GET photo.jpg</text>
+
+  <path class="ln-accent" d="M 300 144 L 472 144"/>
+  <path d="M 480 144 l -8 -4 l 0 8 z" fill="#1c5a7a"/>
+  <text x="390" y="136" text-anchor="middle">2. read the ACL</text>
+  <path class="ln-dash" d="M 480 184 L 308 184"/>
+  <path d="M 300 184 l 8 -4 l 0 8 z" fill="#8a9a9a"/>
+  <text x="390" y="176" class="t-sm" text-anchor="middle">Read: friends group</text>
+
+  <path class="ln-accent" d="M 300 224 L 108 224"/>
+  <path d="M 100 224 l 8 -4 l 0 8 z" fill="#1c5a7a"/>
+  <text x="200" y="216" text-anchor="middle">3. prove it is &#8230;/alice#me</text>
+  <path class="ln-dash" d="M 100 264 L 292 264"/>
+  <path d="M 300 264 l -8 -4 l 0 8 z" fill="#8a9a9a"/>
+  <text x="200" y="256" class="t-sm" text-anchor="middle">client certificate</text>
+
+  <path class="ln-accent" d="M 300 304 L 622 304"/>
+  <path d="M 630 304 l -8 -4 l 0 8 z" fill="#1c5a7a"/>
+  <text x="555" y="296" text-anchor="middle">4. look up group</text>
+  <path class="ln-dash" d="M 630 344 L 308 344"/>
+  <path d="M 300 344 l 8 -4 l 0 8 z" fill="#8a9a9a"/>
+  <text x="555" y="336" class="t-sm" text-anchor="middle">&#8230;/alice#me is listed</text>
+
+  <path class="ln-accent" d="M 300 384 L 108 384"/>
+  <path d="M 100 384 l 8 -4 l 0 8 z" fill="#1c5a7a"/>
+  <text x="200" y="376" text-anchor="middle">5. photo.jpg</text>
+
+  <text x="360" y="434" class="t-sm t-it" text-anchor="middle">Links are followed only outward from the ACL; what Alice&#8217;s own profile says grants nothing.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 54.3</span>
+Bob&#8217;s server has never seen Alice, yet it can decide, because the
+permission and the group name people by URIs that mean the same on every
+server.</figcaption>
+</figure>
+
+<p>
+The same machinery carries notification. To ask to be someone&#8217;s friend,
+a person adds a line to a &#8220;friend requests&#8221; file the owner lets others append to,
+without read access. The general form is a drop-box, linked from a
+profile, for requests of any kind; guarding it against spam may matter a
+great deal.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The project was built.</strong> <a class="gl-ref" href="../glossary.html#solid">Solid</a> produced a <a class="gl-ref" href="../glossary.html#specification">specification</a>, a
-protocol version 0.9 in December 2021, servers and applications, and a company
-founded in 2018 to commercialise it.</li>
-<li><strong>The identifier problem was solved twice.</strong> WebID and later
-decentralised identifiers both give people URIs, which is the requirement this
-note opens with.</li>
-<li><strong>Regulation arrived at the same goal.</strong> Data portability
-rights, in European data protection law applicable from May 2018, address the
-silo problem by compelling export rather than by decoupling storage.</li>
-<li><strong>The market in applications has not appeared.</strong> The
-prediction of section 54.3 is the part still outstanding: storage did not
-become a commodity, and most people&#8217;s data still lives with the application
-that created it.</li>
+<li><strong>The project was built.</strong> <a class="gl-ref" href="../glossary.html#solid">Solid</a> produced a protocol
+(version 0.9, December 2021), servers, applications and a company, Inrupt,
+announced in 2018.</li>
+<li><strong>People got URIs.</strong> WebID (proposed in the note itself) and
+decentralised identifiers (a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in July 2022) both give
+people URIs.</li>
+<li><strong>Regulation arrived at the same goal.</strong> European data
+portability rights, applicable from May 2018, compel export rather than
+decoupling storage.</li>
+<li><strong>The market in applications has not appeared at scale.</strong>
+As of 2026, storage has not become a commodity, and most people&#8217;s data
+still lives with the application that created it.</li>
 </ul>
 </div>
 
@@ -296,26 +451,31 @@ interface for the data is Chapter 56.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">54.1</span>
 A user name on a site means nothing elsewhere. Name three things that become
-possible once a person has a <a class="gl-ref" href="../glossary.html#uri">URI</a>.</p>
+possible once a person has a URI.</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.2</span>
-The confused deputy problem arises when one site acts on your behalf against
-another. Describe the attack concretely.</p>
+A photo site fetches your pictures from another site on your behalf. What
+could go wrong if a third party asks it to fetch something else?</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.3</span>
 The risk moves rather than disappearing. Compare the worst case under each
-model, and say which you would rather face.</p>
+model, and give one concrete example of each.</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.4</span>
 Applications and data have different lifetimes. Give an example of each
 mismatch from your own use.</p>
+</div>
+<div class="question">
+<p><span class="question-number">54.5</span>
+A friend-request drop-box grants append access only. Why is that safer than
+write access, and what problem remains?</p>
 </div>
 </details>
 

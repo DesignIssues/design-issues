@@ -49,6 +49,16 @@
 a Design Issues note by Tim Berners-Lee, 2004-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/SemanticClipboard.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+The clipboard already negotiates a format that both ends of a copy and paste
+understand. A <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> clipboard would also convert data between the
+vocabularies of different applications, using rules. The hard parts are
+deciding which rules to trust and limiting what each conversion loses.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -70,9 +80,11 @@ ask what would actually have to exist.
 
 <p>
 The note sets its own difficulty deliberately. The two applications were
-written independently, without this case in mind, by people who never spoke.
-Both store their data as a <a class="gl-ref" href="../glossary.html#graph">graph</a> and both have vocabularies for what they deal
-in. Nothing else is assumed.
+written independently, without this case in mind. The only assumption is that
+both are &ldquo;semantic-web aware&rdquo;: each has its own <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> (an
+agreed set of terms, such as &ldquo;start time&rdquo;) for what it deals in, and
+each keeps a copy of its data in <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, as a <a class="gl-ref" href="../glossary.html#graph">graph</a> (a web of simple statements
+linking things to their properties).
 </p>
 
 <p>
@@ -91,28 +103,81 @@ transferred.
 
 <p>
 Copying from a page into a plain message works because the two ends negotiate
-down to a format they share. The clipboard is already a <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>
-mechanism, and has been since before anyone called it that.
+down to a format they share. <a class="gl-ref" href="../glossary.html#content-negotiation">Content negotiation</a> means exactly this: the
+sender offers several forms, the receiver says which it accepts, and they
+settle on one. The clipboard has done it since before anyone called it that.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 216" width="720" height="216" role="img"
+     aria-labelledby="fig60-1-t fig60-1-d">
+  <title id="fig60-1-t">Copy and paste as negotiation</title>
+  <desc id="fig60-1-d">A web page offers rich hypertext and plain text. A plain
+  mail message accepts only plain text. Rich hypertext is not accepted; plain
+  text is agreed and transferred.</desc>
+
+  <rect class="box-warm" x="24" y="30" width="220" height="134" rx="4"/>
+  <text x="134" y="52" class="t-caps" text-anchor="middle" style="fill:#b08d57">source</text>
+  <text x="134" y="70" class="t-sm" text-anchor="middle">a web page</text>
+  <rect class="box-plain" x="44" y="86" width="180" height="26" rx="3"/>
+  <text x="134" y="104" text-anchor="middle">rich hypertext</text>
+  <rect class="box-plain" x="44" y="122" width="180" height="26" rx="3"/>
+  <text x="134" y="140" text-anchor="middle">plain text</text>
+
+  <rect class="box-green" x="476" y="30" width="220" height="134" rx="4"/>
+  <text x="586" y="52" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">destination</text>
+  <text x="586" y="70" class="t-sm" text-anchor="middle">a plain mail message</text>
+  <rect class="box-plain" x="496" y="122" width="180" height="26" rx="3"/>
+  <text x="586" y="140" text-anchor="middle">plain text</text>
+
+  <path class="ln-dash" d="M 224 99 L 440 99"/>
+  <path class="ln-mut" d="M 434 93 L 446 105 M 446 93 L 434 105"/>
+  <text x="332" y="89" class="t-sm" text-anchor="middle">not accepted</text>
+
+  <path class="ln-accent" d="M 224 135 L 488 135"/>
+  <path d="M 484 129 L 496 135 L 484 141 Z" fill="#1c5a7a"/>
+  <text x="360" y="125" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">agreed</text>
+
+  <text x="360" y="198" class="t-sm t-it" text-anchor="middle">The clipboard may hold only a pointer to the source until the paste happens.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 60.1</span>
+Copy and paste is already a negotiation. The two ends settle on the richest
+format both understand.</figcaption>
+</figure>
 
 <h2>60.2 What has to be added</h2>
 
+<p>
+The proposal is a new clipboard type for the Semantic Web, in which the data
+travels as an RDF graph. But a graph alone is not enough, because each
+application speaks its own vocabulary. The calendar can use anything with at
+least a start time and a description. The photograph has a creation date,
+perhaps a description, and technical details of the exposure.
+</p>
+
+<p>
+So the clipboard must also convert. The user authorises conversion rules for
+it to use. Applications register what kind of information they need; the
+clipboard indexes the rules, looks at what it is holding, and matches what is
+on offer to what is wanted. The rules are usually personal. One user might
+want the event for a photograph to list the people in the shot; another might
+want just &ldquo;Pic!&rdquo;.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig60-1-t fig60-1-d">
-  <title id="fig60-1-t">A clipboard that converts</title>
-  <desc id="fig60-1-d">A photograph carries a capture time and a description
+     aria-labelledby="fig60-2-t fig60-2-d">
+  <title id="fig60-2-t">A clipboard that converts</title>
+  <desc id="fig60-2-d">A photograph carries a capture time and a description
   in a photographic vocabulary. A calendar wants a start time and a
   description in a calendar vocabulary. A rule held by the clipboard converts
   one to the other, and the user had to authorise that rule from somewhere.</desc>
 
   <rect class="box-warm" x="24" y="40" width="200" height="120" rx="4"/>
-  <text x="124" y="66" class="t-caps" text-anchor="middle" fill="#a07d47">a photograph</text>
-  <g class="t-sm">
-    <text x="44" y="94">capture time</text>
-    <text x="44" y="116">exposure, aperture</text>
-    <text x="44" y="138">a caption, maybe</text>
-  </g>
+  <text x="124" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">a photograph</text>
+  <text x="44" y="94" class="t-sm">capture time</text>
+  <text x="44" y="116" class="t-sm">exposure, aperture</text>
+  <text x="44" y="138" class="t-sm">a caption, maybe</text>
 
   <path class="ln-accent" d="M 234 100 L 274 100"/>
   <path d="M 270 94 L 282 100 L 270 106 Z" fill="#1c5a7a"/>
@@ -127,25 +192,21 @@ mechanism, and has been since before anyone called it that.
   <path d="M 480 94 L 492 100 L 480 106 Z" fill="#1c5a7a"/>
 
   <rect class="box-green" x="496" y="40" width="200" height="120" rx="4"/>
-  <text x="596" y="66" class="t-caps" text-anchor="middle" fill="#3f6f3f">a calendar entry</text>
-  <g class="t-sm">
-    <text x="516" y="94">start time</text>
-    <text x="516" y="116">a description</text>
-    <text x="516" y="138" class="t-it" fill="#666">exposure data: dropped</text>
-  </g>
+  <text x="596" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a calendar entry</text>
+  <text x="516" y="94" class="t-sm">start time</text>
+  <text x="516" y="116" class="t-sm">a description</text>
+  <text x="516" y="138" class="t-sm t-it" style="fill:#8a9a9a">exposure data: dropped</text>
 
   <line class="ln-mut" x1="24" y1="186" x2="696" y2="186"/>
   <text x="24" y="210" class="t-sm">Rules come from somewhere, and the user has to decide which to trust:</text>
-  <g class="t-sm">
-    <text x="60" y="236">an advanced user, as people write mail filters today</text>
-    <text x="60" y="258">a system administrator</text>
-    <text x="60" y="280">the author of either application &#8212; and if both offer one, a choice must be made</text>
-  </g>
-  <text x="24" y="308" class="t-sm t-it">&#8220;just as one sometimes has to chose whether to trust the provider of the printer or the operating system&#8221;</text>
+  <text x="60" y="236" class="t-sm">an advanced user, as people write mail filters today</text>
+  <text x="60" y="258" class="t-sm">a system administrator</text>
+  <text x="60" y="280" class="t-sm">the author of either application &#8212; and if both offer one, a choice must be made</text>
+  <text x="24" y="308" class="t-sm t-it">as when choosing whether to trust the printer maker&#8217;s driver or the operating system&#8217;s</text>
 </svg>
-<figcaption><span class="fig-label">Figure 60.1</span>
-The mechanism is small. The unsolved part is governance: who supplies the
-conversion rules, and how a person decides which to accept.</figcaption>
+<figcaption><span class="fig-label">Figure 60.2</span>
+The mechanism is small. The unsolved part is who supplies the conversion
+rules, and who decides to trust them.</figcaption>
 </figure>
 
 <h2>60.3 Entropy</h2>
@@ -164,14 +225,9 @@ picture as you have lost some data.
 </blockquote>
 
 <p>
-Converting a photograph to a calendar entry discards the exposure settings.
-Converting back is impossible. An event is a more generic thing than a
-picture, so the conversion runs downhill.
-</p>
-
-<p>
-The design consequence follows, and it is the same instinct as Chapter 10&#8217;s
-ladder of specificity:
+An event is a more generic thing than a picture, so conversion runs downhill.
+The design consequence is the same instinct as Chapter 10&#8217;s ladder of
+specificity:
 </p>
 
 <blockquote>
@@ -181,18 +237,64 @@ fewest rules.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+     aria-labelledby="fig60-3-t fig60-3-d">
+  <title id="fig60-3-t">The downhill ladder of conversion</title>
+  <desc id="fig60-3-d">Three rungs: a photograph, a picture-taking event, and
+  a plain event. Converting downwards loses data at each step and cannot be
+  reversed. A second, smaller ladder shows rich text above plain text, the same
+  ordering existing clipboards already use.</desc>
+
+  <rect class="box-plain" x="150" y="30" width="300" height="44" rx="4"/>
+  <text x="300" y="48" text-anchor="middle">photograph</text>
+  <text x="300" y="66" class="t-sm" text-anchor="middle">time, exposure, caption (EXIF-like)</text>
+  <rect class="box-plain" x="150" y="100" width="300" height="44" rx="4"/>
+  <text x="300" y="118" text-anchor="middle">picture-taking event</text>
+  <text x="300" y="136" class="t-sm" text-anchor="middle">time, description</text>
+  <rect class="box-plain" x="150" y="170" width="300" height="44" rx="4"/>
+  <text x="300" y="188" text-anchor="middle">event</text>
+  <text x="300" y="206" class="t-sm" text-anchor="middle">start time, description (iCalendar-like)</text>
+
+  <path class="ln-accent" d="M 130 40 L 130 198"/>
+  <path d="M 124 194 L 130 206 L 136 194 Z" fill="#1c5a7a"/>
+  <text x="118" y="110" class="t-sm" text-anchor="end" style="fill:#1c5a7a">convert:</text>
+  <text x="118" y="126" class="t-sm" text-anchor="end" style="fill:#1c5a7a">data lost</text>
+  <text x="118" y="142" class="t-sm" text-anchor="end" style="fill:#1c5a7a">at each step</text>
+
+  <path class="ln-dash" d="M 470 204 L 470 46"/>
+  <path d="M 464 50 L 470 38 L 476 50 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 462 114 L 478 130 M 478 114 L 462 130"/>
+  <text x="488" y="118" class="t-sm">cannot</text>
+  <text x="488" y="134" class="t-sm">go back</text>
+
+  <line class="ln-mut" x1="552" y1="30" x2="552" y2="214"/>
+
+  <rect class="box-plain" x="574" y="50" width="122" height="36" rx="4"/>
+  <text x="635" y="73" text-anchor="middle">rich text</text>
+  <path class="ln-accent" d="M 635 86 L 635 120"/>
+  <path d="M 629 116 L 635 128 L 641 116 Z" fill="#1c5a7a"/>
+  <rect class="box-plain" x="574" y="128" width="122" height="36" rx="4"/>
+  <text x="635" y="151" text-anchor="middle">plain text</text>
+  <text x="635" y="190" class="t-sm" text-anchor="middle">same pecking order,</text>
+  <text x="635" y="206" class="t-sm" text-anchor="middle">already in clipboards</text>
+</svg>
+<figcaption><span class="fig-label">Figure 60.3</span>
+Each conversion moves to a more generic form and loses something. The system
+should pick the highest rung both sides understand, using the fewest rules.</figcaption>
+</figure>
+
 <p>
-Berners-Lee then points out that this is not new. The existing clipboard
-already has a pecking order between a rich format and a plain one, and prefers
-the richer when both ends can manage it. What he is proposing is the same rule
-applied to vocabularies rather than to text formats.
+The existing clipboard already prefers rich text to plain when both ends can
+manage it. Berners-Lee proposes the same rule applied to vocabularies rather
+than to text formats.
 </p>
 
 <h2>60.4 What is actually being described</h2>
 
 <p>
-The closing assessment is modest about the artefact and immodest about what it
-implies:
+The closing assessment is modest about the clipboard itself and immodest about
+what it implies:
 </p>
 
 <blockquote>
@@ -214,19 +316,8 @@ tractable because the rule set is small and the user can be asked.
 <h3>What happened since</h3>
 <ul>
 <li><strong>A prototype was built.</strong> The note carries an update
-pointing at a Semantic Clipboard project from 2009, which implemented the idea
-in a browser.</li>
-<li><strong>The general problem was solved by convention.</strong> Sharing
-between applications on modern systems works through a small fixed set of
-declared types rather than through conversion rules, which is a narrower
-answer that requires no trust decisions.</li>
-<li><strong>Personal automation arrived with the rule question
-unanswered.</strong> Tools that let people wire one application to another
-became popular from the 2010s, and the question of who wrote the connector,
-and what it discards, is still answered by the user clicking accept.</li>
-<li><strong>Entropy was not managed.</strong> Nothing in common use chooses a
-conversion path to minimise information loss; conversions are chosen by
-whatever connector is available.</li>
+pointing to the 2009 Semantic Clipboard project by Oshani Seneviratne, in
+MIT&#8217;s Decentralized Information Group (DIG).</li>
 </ul>
 </div>
 
@@ -245,7 +336,8 @@ Chapter 51, and the trust decision about rule sources is Chapter 66.
 <div class="question">
 <p><span class="question-number">60.1</span>
 The clipboard already negotiates formats. Describe a negotiation you have
-observed without noticing it.</p>
+observed without noticing it (try copying a styled web page into a plain-text
+editor).</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.2</span>
@@ -259,8 +351,8 @@ basis should a user choose?</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.4</span>
-Trading at the highest level loses least. Design the rule a system would use
-to pick a conversion path.</p>
+A photo can become a picture-taking event or a plain event. Which should the
+clipboard choose for a calendar, and why?</p>
 </div>
 </details>
 

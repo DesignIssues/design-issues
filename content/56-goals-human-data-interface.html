@@ -1,19 +1,24 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Web pages spread because anyone could copy one, change it and see the result
+at once. Linked data had no such tool. Tabulator tried to be one: familiar
+outlines and tables, web addresses hidden, and queries and forms without code.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written as a note in 2010 and extended into a history in 2019, this is the
-only chapter in the collection about building software rather than
-specifying it. Its subject is a gap Berners-Lee names precisely:
+Written as a note in 2010 and extended into a history in 2019, this chapter is
+about building software rather than specifying it. Its subject is a gap
+Berners-Lee names precisely:
 </p>
 <blockquote>
 There was, in 2010, an unfulfilled need for a powerful, friendly program to
 interact with data on the web.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
-<p>
-The diagnosis of why the document Web spread and the data Web did not is the
-most useful paragraph in Volume VI for anyone building anything.
-</p>
 </div>
 
 <h2>56.1 What the document Web had that the data Web lacked</h2>
@@ -26,10 +31,7 @@ family.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<p>
-Copy, change, look, show someone. Four steps, each immediate. Against that
-Berners-Lee sets what the early data projects offered:
-</p>
+<p>Against that he sets the early data projects:</p>
 
 <blockquote>
 However, most of the initial Semantic Web projects (around 2000) used back-end
@@ -40,17 +42,63 @@ data to a normal user.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<p>
-That judgement is worth pausing on in a book that has used circle-and-arrow
-diagrams throughout. They are good for explaining a mechanism to someone who
-wants to understand it, and hopeless for showing someone their address book.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
+     aria-labelledby="fig56-1-t fig56-1-d">
+  <title id="fig56-1-t">The loop that data lacked</title>
+  <desc id="fig56-1-d">On the left, the document Web as a cycle: copy a page,
+  change it, see it at once, send the URL, and back to copying. On the right,
+  the early data Web around 2000 as a one-way chain: data on back-end
+  machines, explained with circles-and-arrows diagrams, seen by researchers
+  only, and then a dead end.</desc>
+
+  <text x="180" y="28" class="t-caps" text-anchor="middle">the document web</text>
+  <text x="540" y="28" class="t-caps" text-anchor="middle">the early data web (c. 2000)</text>
+
+  <rect class="box-green" x="40" y="58" width="120" height="40" rx="4"/>
+  <text x="100" y="83" text-anchor="middle">copy a page</text>
+  <rect class="box-green" x="200" y="58" width="120" height="40" rx="4"/>
+  <text x="260" y="83" text-anchor="middle">change it</text>
+  <rect class="box-green" x="200" y="150" width="120" height="40" rx="4"/>
+  <text x="260" y="175" text-anchor="middle">see it at once</text>
+  <rect class="box-green" x="40" y="150" width="120" height="40" rx="4"/>
+  <text x="100" y="175" text-anchor="middle">send the URL</text>
+
+  <path class="ln-accent" d="M 160 78 L 192 78"/>
+  <path d="M 188 72 L 199 78 L 188 84 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 260 98 L 260 142"/>
+  <path d="M 254 138 L 260 149 L 266 138 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 200 170 L 168 170"/>
+  <path d="M 172 164 L 161 170 L 172 176 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 100 150 L 100 106"/>
+  <path d="M 94 110 L 100 99 L 106 110 Z" fill="#1c5a7a"/>
+
+  <text x="180" y="236" class="t-sm" text-anchor="middle">a loop anyone can join, at any step</text>
+
+  <rect class="box-plain" x="410" y="46" width="260" height="36" rx="4"/>
+  <text x="540" y="69" text-anchor="middle">data on back-end machines</text>
+  <path class="ln-mut" d="M 540 82 L 540 98"/>
+  <path d="M 535 95 L 540 104 L 545 95 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="410" y="104" width="260" height="36" rx="4"/>
+  <text x="540" y="127" text-anchor="middle">circles-and-arrows diagrams</text>
+  <path class="ln-mut" d="M 540 140 L 540 156"/>
+  <path d="M 535 153 L 540 162 L 545 153 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="410" y="162" width="260" height="36" rx="4"/>
+  <text x="540" y="185" text-anchor="middle">researchers only</text>
+  <path class="ln-dash" d="M 540 198 L 540 214"/>
+  <path class="ln-mut" d="M 524 214 L 556 214"/>
+
+  <text x="540" y="236" class="t-sm" text-anchor="middle">a chain that stops before ordinary users</text>
+</svg>
+<figcaption><span class="fig-label">Figure 56.1</span>
+The document Web had a feedback loop anyone could join. The early data Web
+had none: its data never reached an ordinary person&#8217;s screen.</figcaption>
+</figure>
 
 <p>
-What ordinary users expect instead is named concretely: an address book
-application, a spreadsheet, a music library. Lists of properties, tables,
-forms, faceted views. And the note concedes what those have that the data Web
-did not:
+Ordinary users expect an address book, a spreadsheet, a music library: lists,
+tables, forms, and faceted views, where a list is narrowed by picking values,
+as with a shop&#8217;s filters. The note concedes:
 </p>
 
 <blockquote>
@@ -59,64 +107,129 @@ user experience which users seem to use.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<h2>56.2 Two modes</h2>
+<p>The task was to keep that experience and add the links.</p>
+
+<h2>56.2 Two modes: outline and table</h2>
+
+<p>
+Late in 2007 Berners-Lee wrote a data browser that showed a thing&#8217;s
+properties as an outline. Where a property led to another thing, a triangle,
+as in a Mac file window, opened it. The graph looked like a tree, and users
+are used to trees.
+</p>
+
+<p>
+His colleague Philippe le H&eacute;garet complained that he wanted a table.
+So Berners-Lee added query by example: select lines in one interesting case,
+press a button, and get a table of every other place in the data with the same
+shape, the same pattern of links. Because it made tables from the graph, he
+called the program Tabulator.
+</p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig56-1-t fig56-1-d">
-  <title id="fig56-1-t">Outline mode and table mode</title>
-  <desc id="fig56-1-d">In outline mode the user explores a graph as an
-  expandable tree, which people already understand from file browsers. Having
-  found an interesting shape, the user selects nodes in it and asks for every
-  other place in the data with the same shape, which produces a table.</desc>
+<svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
+     aria-labelledby="fig56-2-t fig56-2-d">
+  <title id="fig56-2-t">Outline mode and table mode</title>
+  <desc id="fig56-2-d">In outline mode the user explores a graph as an
+  expandable tree. Two lines are highlighted as selected: the person's name
+  and, nested under works at, the employer's name. Pressing find all produces
+  a table with a person column and an employer column, one row for every
+  place in the data with the same shape.</desc>
 
   <text x="180" y="26" class="t-caps" text-anchor="middle">outline: explore</text>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">table: everything of that shape</text>
+  <text x="548" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">table: everything of that shape</text>
 
   <rect class="box" x="24" y="42" width="310" height="186" rx="4"/>
-  <g class="t-sm">
-    <text x="44" y="70">&#9662; Joe Meadows</text>
-    <text x="70" y="94">name &#160;&#160;&#160;Joe Meadows</text>
-    <text x="70" y="118">&#9662; works at</text>
-    <text x="96" y="142">name &#160;&#160;&#160;Acme Ltd</text>
-    <text x="96" y="166">&#9656; located in</text>
-    <text x="70" y="192">&#9656; knows</text>
-    <text x="44" y="216" class="t-it" fill="#666">a graph shown as a tree; users know trees</text>
-  </g>
+  <rect class="box-warm" x="62" y="80" width="128" height="21" rx="3"/>
+  <rect class="box-warm" x="88" y="128" width="110" height="21" rx="3"/>
+  <text x="44" y="70" class="t-sm">&#9662; Joe Meadows</text>
+  <text x="70" y="94" class="t-sm">name &#160;&#160;&#160;Joe Meadows</text>
+  <text x="70" y="118" class="t-sm">&#9662; works at</text>
+  <text x="96" y="142" class="t-sm">name &#160;&#160;&#160;Acme Ltd</text>
+  <text x="96" y="166" class="t-sm">&#9656; located in</text>
+  <text x="70" y="192" class="t-sm">&#9656; knows</text>
+  <text x="44" y="216" class="t-sm t-it">a graph shown as a tree; users know trees</text>
 
   <path class="ln-accent" d="M 344 130 L 386 130"/>
   <path d="M 382 124 L 394 130 L 382 136 Z" fill="#1c5a7a"/>
-  <text x="369" y="118" class="t-sm" text-anchor="middle" fill="#1c5a7a">select</text>
-  <text x="369" y="152" class="t-sm" text-anchor="middle" fill="#1c5a7a">and ask</text>
+  <text x="369" y="118" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">select,</text>
+  <text x="369" y="152" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">find all</text>
 
   <rect class="box-green" x="400" y="42" width="296" height="186" rx="4"/>
-  <g class="t-sm">
-    <rect x="416" y="58" width="264" height="24" fill="#eef3ea" stroke="#cfe0cf"/>
-    <text x="428" y="75">person</text><text x="556" y="75">employer</text>
-    <text x="428" y="104">Joe Meadows</text><text x="556" y="104">Acme Ltd</text>
-    <text x="428" y="132">Ann Shah</text><text x="556" y="132">Acme Ltd</text>
-    <text x="428" y="160">Peter Dahl</text><text x="556" y="160">Borden plc</text>
-    <text x="428" y="188">&#8230;</text><text x="556" y="188">&#8230;</text>
-    <text x="548" y="216" class="t-it" text-anchor="middle" fill="#666">a table; users know tables</text>
-  </g>
-
-  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Query by example: find an interesting shape once, then find every other place that has it.</text>
-  <text x="360" y="304" class="t-sm t-it" text-anchor="middle">The feature exists because a colleague complained that he wanted a table.</text>
-  <text x="360" y="328" class="t-sm" text-anchor="middle">The program was called Tabulator, because it made tables out of the graph.</text>
+  <rect x="416" y="58" width="264" height="24" fill="#f5f8f0" stroke="#8a9a9a"/>
+  <text x="428" y="75" class="t-sm">person</text><text x="556" y="75" class="t-sm">employer</text>
+  <text x="428" y="104" class="t-sm">Joe Meadows</text><text x="556" y="104" class="t-sm">Acme Ltd</text>
+  <text x="428" y="132" class="t-sm">Ann Shah</text><text x="556" y="132" class="t-sm">Acme Ltd</text>
+  <text x="428" y="160" class="t-sm">Peter Dahl</text><text x="556" y="160" class="t-sm">Borden plc</text>
+  <text x="428" y="188" class="t-sm">&#8230;</text><text x="556" y="188" class="t-sm">&#8230;</text>
+  <text x="548" y="216" class="t-sm t-it" text-anchor="middle">a table; users know tables</text>
 </svg>
-<figcaption><span class="fig-label">Figure 56.1</span>
-Both metaphors are borrowed rather than invented, which is the principle of
-Chapter 43 applied to interfaces: a form people already use costs nothing to
-learn.</figcaption>
+<figcaption><span class="fig-label">Figure 56.2</span>
+The two highlighted lines become the two columns. Every other match becomes a
+row.</figcaption>
 </figure>
 
-<h2>56.3 Two design principles</h2>
+<figure>
+<svg class="dia" viewBox="0 0 720 232" width="720" height="232" role="img"
+     aria-labelledby="fig56-3-t fig56-3-d">
+  <title id="fig56-3-t">A looped graph browsed as a tree</title>
+  <desc id="fig56-3-d">On the left, a graph in which Joe knows Ann and Ann
+  knows Joe, forming a loop. On the right, the same data as an outline: Joe,
+  knows, Ann, knows, and then Joe again, shown closed at the bottom.</desc>
+
+  <text x="170" y="26" class="t-caps" text-anchor="middle">the graph</text>
+  <text x="538" y="26" class="t-caps" text-anchor="middle">browsed as a tree</text>
+
+  <rect class="box" x="40" y="90" width="110" height="36" rx="4"/>
+  <text x="95" y="113" text-anchor="middle">Joe Meadows</text>
+  <rect class="box" x="200" y="90" width="100" height="36" rx="4"/>
+  <text x="250" y="113" text-anchor="middle">Ann Shah</text>
+
+  <path class="ln" d="M 95 90 Q 172 40 250 90"/>
+  <path d="M 250 90 L 238.9 88.8 L 244.3 80.4 Z" fill="#2f4f4f"/>
+  <text x="172" y="54" class="t-sm" text-anchor="middle">knows</text>
+  <path class="ln" d="M 250 126 Q 172 176 95 126"/>
+  <path d="M 95 126 L 106.1 127.2 L 100.7 135.6 Z" fill="#2f4f4f"/>
+  <text x="172" y="174" class="t-sm" text-anchor="middle">knows</text>
+
+  <rect class="box" x="380" y="42" width="316" height="150" rx="4"/>
+  <rect class="box-warm" x="496" y="160" width="104" height="22" rx="3"/>
+  <text x="400" y="68">&#9662; Joe Meadows</text>
+  <text x="426" y="94">&#9662; knows</text>
+  <text x="452" y="120">&#9662; Ann Shah</text>
+  <text x="478" y="146">&#9662; knows</text>
+  <text x="504" y="176">&#9656; Joe Meadows</text>
+
+  <text x="538" y="216" class="t-sm t-it" text-anchor="middle">Joe again, left closed: the loop is there, but nobody needs to follow it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 56.3</span>
+A graph can loop; a tree cannot. The note&#8217;s answer is that users could
+follow the loop but don&#8217;t bother, so Joe simply reappears, unexpanded.</figcaption>
+</figure>
+
+<h2>56.3 The design principles</h2>
 
 <p>
-The first is stated as a prohibition, and it is the rule most data tools
-break:
+The note lists six design principles. Its <em>ontology</em> means the
+vocabulary: the published terms, with labels, that the data uses.
 </p>
+
+<table>
+<tr><th>Principle</th><th>In plain terms</th></tr>
+<tr><td>Never show URIs</td><td>Show names, never web addresses.</td></tr>
+<tr><td>Use the ontologies</td><td>Take on-screen words from the
+vocabulary&#8217;s labels, in the user&#8217;s language.</td></tr>
+<tr><td>Use existing user interface language</td><td>Behave like the file
+browsers and tables people know.</td></tr>
+<tr><td>Represent the graph as a tree</td><td>An expandable outline
+(Figure 56.3).</td></tr>
+<tr><td>Read-write</td><td>Allow editing only where the user has the
+right.</td></tr>
+<tr><td>A little semantics</td><td>Light inference: anything with a
+transaction date is a transaction.</td></tr>
+</table>
+
+<p>The first two carry the rest. The first is a prohibition:</p>
 
 <blockquote>
 While RDF buffs may revel in the URIs of nodes, users do not. User experience
@@ -125,25 +238,51 @@ should not include naked URIs.
 </blockquote>
 
 <p>
-Everything in Volume II argued that identifiers are the foundation. This says
-the foundation must not be visible. The two are consistent: a person sees a
-name and a picture, and the identifier is what makes the software able to find
-them.
+Volume II argued that identifiers are the foundation; this says the
+foundation must not be visible. Both hold: the person sees a name, and the
+identifier lets the software find the thing. The second principle makes this
+possible, because Tabulator built its controls from the vocabulary&#8217;s
+labels.
 </p>
 
-<p>
-The second principle is what makes the first possible. The vocabulary is used
-as the bridge between a mathematical graph and something displayable: it says
-what a thing is, what to call the relation, what may be edited. Without it the
-interface has nothing but circles and arrows, which is where the note started.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
+     aria-labelledby="fig56-4-t fig56-4-d">
+  <title id="fig56-4-t">One record, two presentations</title>
+  <desc id="fig56-4-d">At the top, the stored statement: Joe's identifier,
+  the FOAF name property written as a full web address, and the value Joe
+  Meadows. In the middle, the vocabulary, which gives foaf:name the label
+  name. At the bottom, what the person sees: a card reading Name: Joe
+  Meadows, with no web address in sight.</desc>
+
+  <text x="360" y="24" class="t-caps" text-anchor="middle">what is stored</text>
+  <rect class="box-plain" x="40" y="36" width="640" height="40" rx="4"/>
+  <text x="360" y="61" class="t-mono" text-anchor="middle">&lt;&#8230;/card#me&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Joe Meadows" .</text>
+
+  <path class="ln-mut" d="M 360 76 L 360 104"/>
+  <path d="M 355 101 L 360 110 L 365 101 Z" fill="#8a9a9a"/>
+  <text x="372" y="96" class="t-sm">look up the property</text>
+
+  <text x="190" y="135" class="t-caps" text-anchor="end">the vocabulary</text>
+  <rect class="box" x="210" y="110" width="300" height="40" rx="4"/>
+  <text x="360" y="135" text-anchor="middle">foaf:name has the label <tspan style="font-style:italic">name</tspan></text>
+
+  <path class="ln-mut" d="M 360 150 L 360 178"/>
+  <path d="M 355 175 L 360 184 L 365 175 Z" fill="#8a9a9a"/>
+  <text x="372" y="170" class="t-sm">show its label, hide the URIs</text>
+
+  <text x="190" y="211" class="t-caps" text-anchor="end">what the person sees</text>
+  <rect class="box-green" x="260" y="184" width="200" height="44" rx="4"/>
+  <text x="360" y="211" class="t-lg" text-anchor="middle">Name: Joe Meadows</text>
+</svg>
+<figcaption><span class="fig-label">Figure 56.4</span>
+The identifiers do the work; the vocabulary&#8217;s label is what the person
+sees. Both principles at once.</figcaption>
+</figure>
 
 <h2>56.4 The audience, and the ambition</h2>
 
-<p>
-The target user is described with unusual care, and the choice explains the
-whole design:
-</p>
+<p>The target user explains the whole design:</p>
 
 <blockquote>
 A spreadsheet user is an interesting example: they spend a lot of effort in
@@ -155,15 +294,9 @@ not understand the semantics.
 </blockquote>
 
 <p>
-Spreadsheet users are already modelling the world. They already build
-relations, at a high level, with enormous effort. What they lack is any way
-for the machine to know what those relations mean, and therefore any way to
-share them except by sending the file.
-</p>
-
-<p>
-The goal that follows is one sentence and is the most demanding requirement in
-the book:
+Spreadsheet users already model the world. What they lack is any way for the
+machine to know what their relations mean, and so any way to share them except
+by sending the file. The goal that follows is one sentence:
 </p>
 
 <blockquote>
@@ -172,23 +305,38 @@ possible without having to write their own code.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
+<h2>56.5 Forms and panes: power without code</h2>
+
+<p>
+The outline showed everything the same way. For common things, such as
+contacts, developers wrote special views called panes, offered as icons
+suited to the type of thing on screen.
+</p>
+
+<p>
+Between panes and outline sat forms, which users made without code. A form
+was stored as data, the form editor was itself a form, and a shared registry
+offered each form to anyone viewing that type of thing. Forms are relatives of
+the shapes of Chapter 57. The note&#8217;s conclusion:
+</p>
+
+<blockquote>
+The spectrum, from hand-coded interfaces, through user-created forms to generic
+adaptive default interfaces was an important optimization.
+<cite>Goals for a Human-Data Interface, 2010</cite>
+</blockquote>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The program became infrastructure.</strong> The library it grew
-into underlies Solid applications, and its panes and widgets are how most
-Solid interfaces are built, which is a longer life than most research
-tools.</li>
-<li><strong>The no-code ambition arrived elsewhere.</strong> Tools that let
-people build relational applications without writing code became a large
-industry through the 2010s, reaching the audience section 56.4 names,
-without linked data underneath.</li>
-<li><strong>The naked URI rule is still broken everywhere.</strong> Data tools
-routinely show identifiers to users, and the interfaces that do not are
-usually the ones people actually use.</li>
-<li><strong>Query by example did not spread.</strong> Finding a shape and
-asking for everything like it remains rare outside specialist tools, though it
-is what most people want when they say they want to search.</li>
+<li><strong>The program became infrastructure.</strong> By 2019, the note
+records, Tabulator had been repurposed as the data browser for Solid. Its
+store, rdflib.js, and its panes live on in solid-panes and mashlib.</li>
+<li><strong>The no-code ambition arrived elsewhere.</strong> No-code tools such as
+Airtable (founded 2012) reached the audience of section 56.4, without linked
+data underneath.</li>
+<li><strong>The naked URI rule is still widely broken.</strong> In this
+book&#8217;s judgement, many data tools still show identifiers.</li>
 </ul>
 </div>
 
@@ -197,8 +345,8 @@ is what most people want when they say they want to search.</li>
 <p>
 The data this interface browses is Chapter 49, and the storage it writes to is
 Chapter 54. The forms and shapes that drive such interfaces are Chapter 57.
-Borrowing familiar metaphors is Chapter 43, and user interface principles are
-Chapters 82 and 85.
+User interface principles, including familiar metaphors, are Chapters 82 and
+85.
 </p>
 </div>
 
@@ -211,8 +359,8 @@ you use, and what would supply it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.2</span>
-Identifiers are foundational and must not be shown. Describe how a tool can
-honour both.</p>
+An address book stores a web address for each contact. Where, if anywhere,
+should it appear on screen?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.3</span>
@@ -221,7 +369,7 @@ an example from a spreadsheet you know, and say what is lost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.4</span>
-Design the query-by-example interaction for a dataset you use. What must the
-user select, and what must the tool infer?</p>
+In Figure 56.2, which lines would you select to get people, employers and the
+employer&#8217;s city?</p>
 </div>
 </div>

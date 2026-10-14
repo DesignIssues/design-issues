@@ -49,16 +49,22 @@
 a Design Issues note by Tim Berners-Lee, 2009-06-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/GovData.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A department that wants to publish its data should get it out now, in
+whatever form it has, and convert it into one common model from which every
+other format can be produced. It should not wait for a committee to agree on
+terms, and it should leave the attractive websites to others.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in June 2009 after conversations with people in the British and
-American governments who wanted to publish data and did not know what to do
-next. Its status line is characteristic: good enough for folk.
-</p>
-<p>
-It is the most operational note in the collection, and it opens by ranking
-the steps in the order a busy official should take them.
+Written in June 2009 for British and American officials who wanted to
+publish data and did not know what to do next, this is the most operational
+note in the collection. It opens by ranking the steps in order.
 </p>
 <blockquote>
 Start with the "low-hanging fruit". Whatever else, the raw data should be made
@@ -69,29 +75,36 @@ available as soon as possible.
 
 <h2>53.1 The ranking, and what it demotes</h2>
 
+<p>
+<em>Raw data</em> means the records themselves, before anyone has turned them
+into charts or reports; a spreadsheet that is a plain table is already close.
+<em>Linked data</em> goes further: each thing described, a school or a road
+or a payment, gets its own web address, so other data can point to it.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig53-1-t fig53-1-d">
   <title id="fig53-1-t">The order of priorities</title>
-  <desc id="fig53-1-d">Publish the raw data first, as linked data if
-  possible, then link it to other sources. Building a nice interface comes
-  last, and only if no interested community outside government has already
-  done it.</desc>
+  <desc id="fig53-1-d">Publish the raw data first, preferably as linked data,
+  then link it to other sources. Building a nice interface comes last, and
+  only if no interested community outside government has already done
+  it.</desc>
 
   <rect class="box-green" x="24" y="30" width="672" height="46" rx="4"/>
-  <text x="44" y="58" class="t-caps" fill="#3f6f3f">first</text>
+  <text x="44" y="58" class="t-caps" style="fill:#5a8f5a">1st</text>
   <text x="120" y="58">Get the raw data out, as soon as possible</text>
 
   <rect class="box" x="24" y="84" width="672" height="46" rx="4"/>
-  <text x="44" y="112" class="t-caps">then</text>
+  <text x="44" y="112" class="t-caps">2nd</text>
   <text x="120" y="112">Preferably, publish it as linked data</text>
 
   <rect class="box" x="24" y="138" width="672" height="46" rx="4"/>
-  <text x="44" y="166" class="t-caps">third</text>
+  <text x="44" y="166" class="t-caps">3rd</text>
   <text x="120" y="166">Link it to other sources</text>
 
   <rect class="box-warm" x="24" y="192" width="672" height="46" rx="4"/>
-  <text x="44" y="220" class="t-caps" fill="#a07d47">last</text>
+  <text x="44" y="220" class="t-caps" style="fill:#b08d57">last</text>
   <text x="120" y="220">Build a nice interface &#8212; if nobody outside has already</text>
 
   <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
@@ -99,18 +112,64 @@ available as soon as possible.
   <text x="360" y="292" class="t-sm t-it" text-anchor="middle">The data is the part only the department has.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 53.1</span>
-Demoting the user interface is the counter-intuitive advice, and it follows
-from asking which steps only the publisher can take.</figcaption>
+Demoting the interface follows from asking which steps only the publisher
+can take.</figcaption>
+</figure>
+
+<p>
+A department&#8217;s own site cannot compete with outside sites, for two
+reasons: ordinary users cannot yet build queries of their own, and an outside
+site adds value by joining the data to other data for its own purpose, as in
+Figure 53.2.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 234" width="720" height="234" role="img"
+     aria-labelledby="fig53-2-t fig53-2-d">
+  <title id="fig53-2-t">The cycling mash-up</title>
+  <desc id="fig53-2-d">Road accident data from the Department of Transport,
+  cycle routes and hills, and cycle shops all feed a cycling site that maps
+  cycle accidents. The department's own site receives only its own dataset
+  and cannot plan for this audience.</desc>
+
+  <rect class="box-warm" x="16" y="20" width="250" height="46" rx="4"/>
+  <text x="32" y="39">Road accident data</text>
+  <text x="32" y="57" class="t-sm">Department of Transport</text>
+
+  <rect class="box" x="16" y="96" width="250" height="46" rx="4"/>
+  <text x="32" y="124">Cycle routes and hills</text>
+
+  <rect class="box" x="16" y="172" width="250" height="46" rx="4"/>
+  <text x="32" y="200">Cycle shops</text>
+
+  <line class="ln-dash" x1="266" y1="43" x2="380" y2="43"/>
+  <rect class="ln-dash" x="380" y="20" width="324" height="46" rx="4"/>
+  <text x="396" y="39">The department&#8217;s own site</text>
+  <text x="396" y="57" class="t-sm">sees one dataset; cannot plan for every audience</text>
+
+  <path class="ln" d="M 266 58 L 336 58 L 378 140 L 390 140"/>
+  <path d="M 390 135 L 400 140 L 390 145 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 266 119 L 336 119 L 372 153 L 390 153"/>
+  <path d="M 390 148 L 400 153 L 390 158 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 266 195 L 336 195 L 372 166 L 390 166"/>
+  <path d="M 390 161 L 400 166 L 390 171 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="400" y="120" width="304" height="66" rx="4"/>
+  <text x="552" y="148" text-anchor="middle">Cycling site</text>
+  <text x="552" y="168" class="t-sm" text-anchor="middle">map of cycle accidents, routes, hills, shops</text>
+</svg>
+<figcaption><span class="fig-label">Figure 53.2</span>
+Only the accident data comes from the department; the useful map needs all
+three.</figcaption>
 </figure>
 
 <h2>53.2 Three reasons, one technique</h2>
 
 <p>
-Government data goes online, Berners-Lee says, for three reasons: to increase
-citizen awareness and therefore accountability, to contribute valuable
-information about the world, and to let the government, the country and the
-world function more efficiently. His claim is that one technique serves all
-three, and he characterises it in three words.
+Government data goes online for three reasons: accountability to citizens,
+valuable information about the world, and a government and country that work
+more efficiently. One technique serves all three, characterised in three
+words.
 </p>
 
 <table>
@@ -121,15 +180,9 @@ three, and he characterises it in three words.
 </table>
 
 <p>
-The worked example of modularity is the one an official will recognise:
-health expenditure for an area combined with population characteristics for
-the same area, in order to assess whether a programme worked. Neither dataset
-was prepared with the other in mind.
-</p>
-
-<p>
-The instruction that follows is deliberately agnostic about everything except
-the middle:
+The example of modularity is health expenditure for an area combined with
+its population characteristics to assess whether a programme worked. The
+instruction is agnostic about everything except the middle:
 </p>
 
 <blockquote>
@@ -140,16 +193,86 @@ interconnection bus.
 </blockquote>
 
 <p>
-Take anything, give anything, and let the common model sit in the middle. That
-is the least disruptive possible advice, and it is why the note works as
-guidance rather than as advocacy.
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> is the Web&#8217;s common model for data: every statement links two
+things, each named by a web address. A <em>bus</em> is a shared connector that
+everything plugs into, so nothing needs a direct link to anything else.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig53-3-t fig53-3-d">
+  <title id="fig53-3-t">RDF as the interconnection bus</title>
+  <desc id="fig53-3-d">Five kinds of input (relational database,
+  spreadsheet, XML files, proprietary application, existing website) each
+  feed a central RDF model. Four kinds of output (SPARQL query service, XML
+  view, JSON or CSV, HTML pages for people) are each generated from the
+  same model.</desc>
+
+  <text x="16" y="18" class="t-caps">what exists</text>
+  <text x="370" y="18" class="t-caps" text-anchor="middle">the middle</text>
+  <text x="530" y="18" class="t-caps">what people want</text>
+
+  <rect class="box" x="16" y="30" width="190" height="36" rx="4"/>
+  <text x="30" y="53">Relational database</text>
+  <rect class="box" x="16" y="82" width="190" height="36" rx="4"/>
+  <text x="30" y="105">Spreadsheet (CSV)</text>
+  <rect class="box" x="16" y="134" width="190" height="36" rx="4"/>
+  <text x="30" y="157">XML files</text>
+  <rect class="box" x="16" y="186" width="190" height="36" rx="4"/>
+  <text x="30" y="209">Proprietary application</text>
+  <rect class="box" x="16" y="238" width="190" height="36" rx="4"/>
+  <text x="30" y="261">Existing website</text>
+
+  <path class="ln" d="M 206 48 L 230 48 L 266 136 L 280 136"/>
+  <path d="M 280 131 L 290 136 L 280 141 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 206 100 L 230 100 L 266 148 L 280 148"/>
+  <path d="M 280 143 L 290 148 L 280 153 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 206 152 L 230 152 L 266 160 L 280 160"/>
+  <path d="M 280 155 L 290 160 L 280 165 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 206 204 L 230 204 L 266 172 L 280 172"/>
+  <path d="M 280 167 L 290 172 L 280 177 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 206 256 L 230 256 L 266 184 L 280 184"/>
+  <path d="M 280 179 L 290 184 L 280 189 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="290" y="120" width="160" height="80" rx="4"/>
+  <text x="370" y="156" class="t-lg" text-anchor="middle">RDF model</text>
+  <text x="370" y="176" class="t-sm" text-anchor="middle">(linked data)</text>
+
+  <path class="ln" d="M 450 136 L 468 136 L 494 74 L 520 74"/>
+  <path d="M 520 69 L 530 74 L 520 79 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 450 152 L 468 152 L 494 126 L 520 126"/>
+  <path d="M 520 121 L 530 126 L 520 131 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 450 168 L 468 168 L 494 178 L 520 178"/>
+  <path d="M 520 173 L 530 178 L 520 183 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 450 184 L 468 184 L 494 230 L 520 230"/>
+  <path d="M 520 225 L 530 230 L 520 235 Z" fill="#2f4f4f"/>
+
+  <rect class="box-plain" x="530" y="56" width="174" height="36" rx="4"/>
+  <text x="544" y="79">SPARQL query service</text>
+  <rect class="box-plain" x="530" y="108" width="174" height="36" rx="4"/>
+  <text x="544" y="131">XML view</text>
+  <rect class="box-plain" x="530" y="160" width="174" height="36" rx="4"/>
+  <text x="544" y="183">JSON / CSV</text>
+  <rect class="box-plain" x="530" y="212" width="174" height="36" rx="4"/>
+  <text x="544" y="235">HTML pages for people</text>
+</svg>
+<figcaption><span class="fig-label">Figure 53.3</span>
+Convert once into the middle and generate every output from it. No input
+format needs to know about any output format.</figcaption>
+</figure>
+
+<p>
+<a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> is the query language of this toolkit: a program anywhere can send a
+question to a SPARQL service and get the answer back as RDF, <a class="gl-ref" href="../glossary.html#xml">XML</a>, sometimes
+JSON or CSV. Some users prefer each, so the outputs should be generated
+automatically.
 </p>
 
 <h2>53.3 Two philosophies, and the one that finishes</h2>
 
 <p>
-The central passage is about organisational method rather than technology,
-and it is the most quoted part of the note inside government:
+The central passage is about method rather than technology. An
+<em><a class="gl-ref" href="../glossary.html#ontology">ontology</a></em> is an agreed list of terms and what each one means.
 </p>
 
 <blockquote>
@@ -162,31 +285,31 @@ consensus in the end.
 </blockquote>
 
 <p>
-The alternative is stated in a single balanced sentence that concedes what the
-top-down approach is genuinely for:
+The alternative concedes what the top-down approach is for:
 </p>
 
 <blockquote>
 A top-level mandate is extremely valuable, but grass-roots action is
-essential.
+essential. Put the data up where it is: join it together later.
 <cite>Putting Government Data online, 2009</cite>
 </blockquote>
 
 <p>
-The mandate supplies permission, which is the first star of Chapter 51 and the
-hardest thing to obtain. It does not supply the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, and waiting for it
-to do so is how programmes die.
+A <em>mandate</em> from the top supplies permission, the first star of
+Chapter 51 and the hardest thing to obtain. It does not supply the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>,
+and waiting for it to do so is how programmes die.
 </p>
 
 <h2>53.4 Why this is not merely practical advice</h2>
 
 <p>
-The note is the clearest case in the collection of an architectural property
-paying off in a place its designers did not have in mind. Chapter 17 argued
-that one document must be able to carry several vocabularies so that an
-invoice could name a part nobody else understands. Here the same property lets
-a department publish using international terms where they exist, national
-terms where they do not, and local terms for the rest.
+A <em>vocabulary</em> is a set of shared terms for describing data. The note
+recommends terms others already use: <code>foaf:name</code> for a
+person&#8217;s name, <code>dc:title</code> for a title, <code>geo:lat</code>
+and <code>geo:long</code> for position. Chapter 17 argued that one document
+must be able to carry several vocabularies; here that lets a department use
+international terms where they exist and national or local terms for the
+rest.
 </p>
 
 <blockquote>
@@ -199,25 +322,112 @@ smaller community.
 <cite>Putting Government Data online, 2009</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 244" width="720" height="244" role="img"
+     aria-labelledby="fig53-4-t fig53-4-d">
+  <title id="fig53-4-t">One record, three communities of terms</title>
+  <desc id="fig53-4-d">A single published record about a school uses
+  international terms (foaf:name, geo:lat, geo:long), a national term for a
+  school number, and a local council term for a catchment area. The
+  national and local terms are illustrative and not from the note.</desc>
+
+  <rect class="box-plain" x="16" y="12" width="688" height="36" rx="4"/>
+  <text x="32" y="35">One published record about a school</text>
+
+  <rect class="box" x="16" y="58" width="688" height="52" rx="4"/>
+  <text x="32" y="80" class="t-caps">international</text>
+  <text x="32" y="98" class="t-sm">agreed worldwide</text>
+  <text x="250" y="89" class="t-mono">foaf:name</text>
+  <text x="370" y="89" class="t-mono">geo:lat</text>
+  <text x="470" y="89" class="t-mono">geo:long</text>
+
+  <rect class="box-warm" x="16" y="118" width="688" height="52" rx="4"/>
+  <text x="32" y="140" class="t-caps">national</text>
+  <text x="32" y="158" class="t-sm">agreed across one country</text>
+  <text x="250" y="149" class="t-mono">nat:schoolNumber</text>
+  <text x="410" y="149" class="t-sm t-it">illustrative term, not from the note</text>
+
+  <rect class="box-green" x="16" y="178" width="688" height="52" rx="4"/>
+  <text x="32" y="200" class="t-caps">local</text>
+  <text x="32" y="218" class="t-sm">agreed by one council</text>
+  <text x="250" y="209" class="t-mono">council:catchmentArea</text>
+  <text x="440" y="209" class="t-sm t-it">illustrative term, not from the note</text>
+</svg>
+<figcaption><span class="fig-label">Figure 53.4</span>
+Agreement is needed only as wide as each term is used.</figcaption>
+</figure>
+
+<h2>53.5 Just do it: from whatever exists to linked data</h2>
+
 <p>
-Effort towards interoperability can then be spent where it is most needed.
-Nobody has to agree about everything before anybody can publish anything.
+The second half of the note is a method. It advises against a preliminary
+survey: an inventory of every dataset may take longer than publishing one.
 </p>
+
+<h3>Leave the existing system alone</h3>
+
+<p>
+The most important rule is not to disturb the systems, or the people,
+responsible for the data, who may have spent years assembling it. Extract the
+data with the export facilities it already has and add &ldquo;a thin
+shim&rdquo; to adapt it to the standard. Likewise, do not run a public server
+on the live database unless it is built for heavy use: take a copy, or
+generate the RDF once and serve that.
+</p>
+
+<h3>Whatever form it is in</h3>
+
+<table>
+<tr><th>The data is in</th><th>What the note suggests</th></tr>
+<tr><td>A relational database</td><td>Use an open-source tool such as D2RServer or Triplify, with a mapping file that says how the tables represent things and their relationships</td></tr>
+<tr><td>A spreadsheet</td><td>If it is a plain table, export it as CSV and convert that to RDF; spreadsheets full of headings and notes are harder</td></tr>
+<tr><td>XML</td><td>Put the XML up as it is while thinking, then write a script that converts each file to RDF</td></tr>
+<tr><td>A proprietary format</td><td>Someone writes a program to get the data out and convert it</td></tr>
+<tr><td>An existing website</td><td>Change the page-generating scripts to embed the data in each page (RDFa), or give each page a parallel page of RDF</td></tr>
+</table>
+
+<h3>A worked example</h3>
+
+<p>
+For the proprietary case the note sketches the whole job with books and
+shelves. Give each thing a web address: a book becomes
+<code>http://id.example.com/id/isbn/123457890</code>, named by its ISBN, and a
+shelf <code>http://id.example.com/id/shelf/746</code>. Then write a small
+script which, given one of these addresses, looks up that book (and its shelf)
+or that shelf (and its books) and returns RDF. That script is the
+department&#8217;s linked data server.
+</p>
+
+<h3>What the note does not ask for</h3>
+
+<p>
+The note does not argue that all data should be public. Personal data will
+probably not be an early choice, though where privacy is settled and the data
+already public, converting it is an excellent idea. Each dataset&#8217;s
+licence should be machine-readable, using the Creative Commons
+<code>cc:license</code> term or the CC0 waiver, which gives up all rights
+where the law allows.
+</p>
+
+<h3>Do&#8217;s and don&#8217;ts</h3>
+
+<p>The note ends with a footnote of eight rules.</p>
+
+<table>
+<tr><th>Do</th><th>Do not</th></tr>
+<tr><td>pick URIs which are likely to be persistent</td><td>hide data files inside zip files unless they are also available directly</td></tr>
+<tr><td>put RDF metadata giving the license</td><td>put data up in proprietary formats</td></tr>
+<tr><td>use the RDF and SPARQL standards</td><td>wait until there is a complete <a class="gl-ref" href="../glossary.html#schema">schema</a> or ontology to publish data</td></tr>
+<tr><td>make sure the human readable pages are accessible</td><td>seek to replace existing data systems</td></tr>
+</table>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The programmes launched, in the year the note names.</strong>
-Britain&#8217;s data portal opened in January 2010 and the American one in May
-2009, and open data mandates spread internationally over the following
-decade.</li>
-<li><strong>The priority order was followed and then reversed.</strong> Raw
-data came first, as advised. Portals then invested heavily in interfaces,
-which the note ranks last, while the third priority of linking to other
-sources was rarely reached.</li>
-<li><strong>Bottom-up won by default.</strong> National data vocabularies were
-attempted and mostly did not complete, which is the outcome section 53.3
-predicts.</li>
+<li><strong>The programmes launched within a year of the note.</strong>
+The American data portal, data.gov, opened in May 2009 and Britain&#8217;s,
+data.gov.uk, in January 2010, and open data mandates spread internationally
+over the following decade.</li>
 <li><strong>Sustaining publication proved harder than starting it.</strong>
 Datasets published under a mandate frequently stopped being updated when
 attention moved, which is rule three of Chapter 49 failing slowly.</li>
@@ -227,10 +437,9 @@ attention moved, which is rule three of Chapter 49 failing slowly.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The rules being applied are Chapter 49 and the five stars are Chapter 51. The
-mixing of vocabularies is specified in Chapter 17 and argued for science in
-Chapter 52. Open data as one sense of openness is Chapter 25, and the
-identifiers that make the mixture work are Chapter 48.
+The rules applied are Chapter 49; the five stars, Chapter 51. Mixing
+vocabularies is Chapter 17, argued for science in Chapter 52. Open data as one
+sense of openness is Chapter 25; the identifiers are Chapter 48.
 </p>
 </div>
 
@@ -238,23 +447,22 @@ identifiers that make the mixture work are Chapter 48.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">53.1</span>
-The interface is ranked last. Name the condition under which a publisher
-should build one anyway.</p>
+When should a publisher build an interface anyway?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.2</span>
-A mandate supplies permission but not vocabulary. Describe a programme you
-know where the two were confused.</p>
+A council has its bus timetables in a spreadsheet. Following the note&#8217;s
+order, what does it do first, and what does it leave to others?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.3</span>
-Take a dataset your organisation holds. Which terms are international, which
-national, and which purely local?</p>
+Why does the note advise against putting a public server on the live
+database, and what does it suggest instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.4</span>
-Publication is easier to start than to sustain. Design the smallest
-commitment that would keep a dataset alive for ten years.</p>
+Design the smallest commitment that would keep a dataset alive for ten
+years.</p>
 </div>
 </details>
 

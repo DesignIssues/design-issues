@@ -52,10 +52,11 @@ a Design Issues note by Tim Berners-Lee, 2004-01-04.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in January 2004, this is the shortest argument in Volume VI and the
-one with the clearest motive. Scientific problems increasingly require several
-fields at once, scientific information is naturally data rather than prose,
-and the two facts together make science the obvious first customer.
+Written in January 2004, this note has a plain motive. Scientific problems
+increasingly need several fields at once, and scientific information is
+naturally data (tables, rules, measurements) rather than prose. That makes
+science the obvious first customer for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>, the web of data that
+machines can read and combine.
 </p>
 </div>
 
@@ -71,19 +72,132 @@ perceptions of existing ones.
 
 <p>
 The chain Berners-Lee offers runs from physics through physical chemistry,
-organic chemistry, cell biology, proteomics, genetics, epidemiology, medicine
-and pharmacology. One may be expert in one without being expert in all, and
-must know something of the neighbours.
+organic chemistry, cell biology, proteomics (the study of all the proteins in
+a cell or organism), genetics, epidemiology (the study of how diseases spread
+through populations), medicine and pharmacology. One may be expert in one
+without being expert in all, and must know something of the neighbours.
+</p>
+
+<h3>The cost of crossing a boundary</h3>
+
+<p>
+The search for cures for AIDS or cancer, or for a new virus such as SARS,
+traces pathways through many of these fields at once. But each field models
+its data its own way, deciding what to record and how the pieces relate. So
+every idea that crosses fields means negotiating the conversion and transfer
+of data afresh, while getting groups to agree common formats and vocabularies
+first takes great time and effort.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 294" width="720" height="294" role="img"
+     aria-labelledby="fig52-1-t fig52-1-d">
+  <title id="fig52-1-t">Three ways for four fields to share data</title>
+  <desc id="fig52-1-d">Three panels, each with the same four fields: chemistry,
+  cell biology, genetics and epidemiology. In (a) every pair of fields is
+  joined by a conversion, six in all, negotiated each time a new idea needs
+  them. In (b) all four fields feed into one common format, which takes years
+  of meetings to agree. In (c) the fields are left unchanged and only
+  neighbouring fields are joined, by three mappings.</desc>
+  <defs>
+    <marker id="fig52-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <line class="ln-mut" x1="240" y1="36" x2="240" y2="284"/>
+  <line class="ln-mut" x1="480" y1="36" x2="480" y2="284"/>
+
+  <!-- (a) negotiate each time -->
+  <text x="120" y="24" class="t-caps" text-anchor="middle">(a) negotiate each time</text>
+  <path class="ln-mut" d="M 92 64 L 148 64 M 92 214 L 148 214 M 50 78 L 50 200 M 190 78 L 190 200 M 92 78 L 148 200 M 148 78 L 92 200"/>
+  <rect class="box-plain" x="8" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="148" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="8" y="200" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="148" y="200" width="84" height="28" rx="4"/>
+  <text x="50" y="68" class="t-sm" text-anchor="middle">chemistry</text>
+  <text x="190" y="68" class="t-sm" text-anchor="middle">cell biology</text>
+  <text x="50" y="218" class="t-sm" text-anchor="middle">epidemiology</text>
+  <text x="190" y="218" class="t-sm" text-anchor="middle">genetics</text>
+  <g fill="#fdfdfc">
+    <rect x="28" y="132" width="44" height="14"/>
+    <rect x="168" y="132" width="44" height="14"/>
+    <rect x="81" y="95" width="44" height="14"/>
+    <rect x="81" y="169" width="44" height="14"/>
+  </g>
+  <text x="120" y="44" class="t-sm" text-anchor="middle">convert</text>
+  <text x="120" y="244" class="t-sm" text-anchor="middle">convert</text>
+  <text x="50" y="143" class="t-sm" text-anchor="middle">convert</text>
+  <text x="190" y="143" class="t-sm" text-anchor="middle">convert</text>
+  <text x="103" y="106" class="t-sm" text-anchor="middle">convert</text>
+  <text x="103" y="180" class="t-sm" text-anchor="middle">convert</text>
+  <text x="120" y="266" class="t-sm" text-anchor="middle">six conversions to negotiate:</text>
+  <text x="120" y="282" class="t-sm" text-anchor="middle">every new idea, a new deal</text>
+
+  <!-- (b) agree first -->
+  <text x="360" y="24" class="t-caps" text-anchor="middle">(b) agree first</text>
+  <line class="ln" x1="290" y1="78" x2="330" y2="122" marker-end="url(#fig52-1-arr)"/>
+  <line class="ln" x1="430" y1="78" x2="390" y2="122" marker-end="url(#fig52-1-arr)"/>
+  <line class="ln" x1="290" y1="200" x2="330" y2="156" marker-end="url(#fig52-1-arr)"/>
+  <line class="ln" x1="430" y1="200" x2="390" y2="156" marker-end="url(#fig52-1-arr)"/>
+  <rect class="box-plain" x="248" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="388" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="248" y="200" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="388" y="200" width="84" height="28" rx="4"/>
+  <text x="290" y="68" class="t-sm" text-anchor="middle">chemistry</text>
+  <text x="430" y="68" class="t-sm" text-anchor="middle">cell biology</text>
+  <text x="290" y="218" class="t-sm" text-anchor="middle">epidemiology</text>
+  <text x="430" y="218" class="t-sm" text-anchor="middle">genetics</text>
+  <rect class="box-warm" x="305" y="125" width="110" height="28" rx="4"/>
+  <text x="360" y="143" text-anchor="middle">common format</text>
+  <text x="360" y="266" class="t-sm" text-anchor="middle">years of meetings before</text>
+  <text x="360" y="282" class="t-sm" text-anchor="middle">the first exchange</text>
+
+  <!-- (c) link the overlaps -->
+  <text x="600" y="24" class="t-caps" text-anchor="middle">(c) link the overlaps</text>
+  <path class="ln-accent" d="M 572 64 L 628 64 M 670 78 L 670 200 M 628 214 L 572 214"/>
+  <rect class="box-plain" x="488" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="628" y="50" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="488" y="200" width="84" height="28" rx="4"/>
+  <rect class="box-plain" x="628" y="200" width="84" height="28" rx="4"/>
+  <text x="530" y="68" class="t-sm" text-anchor="middle">chemistry</text>
+  <text x="670" y="68" class="t-sm" text-anchor="middle">cell biology</text>
+  <text x="530" y="218" class="t-sm" text-anchor="middle">epidemiology</text>
+  <text x="670" y="218" class="t-sm" text-anchor="middle">genetics</text>
+  <g fill="#fdfdfc">
+    <rect x="647" y="132" width="46" height="14"/>
+  </g>
+  <text x="600" y="44" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">mapping</text>
+  <text x="600" y="244" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">mapping</text>
+  <text x="670" y="143" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">mapping</text>
+  <text x="600" y="266" class="t-sm" text-anchor="middle">fields unchanged; three links,</text>
+  <text x="600" y="282" class="t-sm" text-anchor="middle">added one at a time</text>
+</svg>
+<figcaption><span class="fig-label">Figure 52.1</span>
+The Semantic Web takes route (c), avoiding both the wait in (b) and the
+repeated work in (a).</figcaption>
+</figure>
+
+<p>
+The note&#8217;s answer is route (c), which Berners-Lee calls retrospective and
+incremental (Figure 52.2). The links are metadata, data about data. A
+hypothetical example: two databases record the same protein under different
+names. Neither changes; someone publishes one machine-readable statement that
+the names are equivalent, and a program can now follow a question from one
+into the other. That statement is a mapping.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig52-1-t fig52-1-d">
-  <title id="fig52-1-t">Bridges built afterwards, at the overlaps</title>
-  <desc id="fig52-1-d">Neighbouring fields already have their own models and
-  their own data. Rather than agreeing one model in advance, the overlaps are
-  described after the fact and incrementally, so that a question can be traced
-  through several fields without any of them changing how they work.</desc>
+     aria-labelledby="fig52-2-t fig52-2-d">
+  <title id="fig52-2-t">Bridges built afterwards, at the overlaps</title>
+  <desc id="fig52-2-d">Four overlapping ellipses for chemistry, cell biology,
+  genetics and epidemiology. A dot in each overlap marks a mapping, and a
+  dashed line above shows one question traced across all four fields. Beneath,
+  two notes: retrospectively, the modelling is already done and the data
+  already exists; incrementally, nobody redesigns anything and the work
+  happens at the interfaces.</desc>
 
   <g opacity="0.85">
     <ellipse cx="150" cy="120" rx="110" ry="56" fill="#f0f5f8" stroke="#1c5a7a"/>
@@ -91,10 +205,10 @@ must know something of the neighbours.
     <ellipse cx="430" cy="120" rx="110" ry="56" fill="#f5f8f0" stroke="#5a8f5a"/>
     <ellipse cx="570" cy="120" rx="110" ry="56" fill="#f0f5f8" stroke="#1c5a7a"/>
   </g>
-  <text x="112" y="124" class="t-sm" text-anchor="middle">chemistry</text>
-  <text x="258" y="124" class="t-sm" text-anchor="middle">cell biology</text>
-  <text x="400" y="124" class="t-sm" text-anchor="middle">genetics</text>
-  <text x="596" y="124" class="t-sm" text-anchor="middle">epidemiology</text>
+  <text x="95" y="124" class="t-sm" text-anchor="middle">chemistry</text>
+  <text x="290" y="124" class="t-sm" text-anchor="middle">cell biology</text>
+  <text x="430" y="124" class="t-sm" text-anchor="middle">genetics</text>
+  <text x="615" y="124" class="t-sm" text-anchor="middle">epidemiology</text>
 
   <g>
     <circle cx="220" cy="120" r="5" fill="#2f4f4f"/>
@@ -106,25 +220,26 @@ must know something of the neighbours.
     <path class="ln-mut" d="M 220 126 L 220 184 M 360 126 L 360 184 M 500 126 L 500 184"/>
   </g>
 
-  <path class="ln-accent" d="M 90 78 L 640 78" stroke-dasharray="5 4"/>
-  <text x="365" y="66" class="t-sm" text-anchor="middle" fill="#1c5a7a">one question, traced across four fields</text>
+  <path class="ln-accent" d="M 90 52 L 640 52" stroke-dasharray="5 4"/>
+  <text x="365" y="40" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">one question, traced across four fields</text>
 
   <line class="ln-mut" x1="24" y1="222" x2="696" y2="222"/>
   <text x="24" y="246" class="t-sm"><tspan class="t-caps">retrospectively</tspan>: the modelling is already done and the data already exists.</text>
   <text x="24" y="270" class="t-sm"><tspan class="t-caps">incrementally</tspan>: nobody redesigns anything; the work happens at the interfaces.</text>
-  <text x="24" y="298" class="t-sm t-it">The overlap of concepts is only partial. Adding metadata where it does exist is valuable.</text>
+  <text x="24" y="298" class="t-sm">Fields share only some concepts; linking those is still worth it.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 52.1</span>
-The claim is about cost rather than capability. Bringing groups together to
-agree common vocabularies takes great time and effort, and this is a way of
-not doing it.</figcaption>
+<figcaption><span class="fig-label">Figure 52.2</span>
+Each field keeps its own data; the dots are small published mappings a
+question can follow.</figcaption>
 </figure>
 
 <h2>52.2 The argument from serendipity</h2>
 
+<h3>The catalogue precedent</h3>
+
 <p>
 The second half makes a case for openness that does not depend on altruism,
-and it starts with a precedent the reader has lived through:
+and it starts with a precedent from the web&#8217;s own early years:
 </p>
 
 <blockquote>
@@ -137,11 +252,12 @@ available on the web were likely to be involved in any commerce at all.
 </blockquote>
 
 <p>
-The reluctance ended because withholding stopped being viable, not because
-anyone was persuaded. Berners-Lee is implicitly predicting the same for
-scientific data, and notes in passing that funders had begun complaining about
-the disappearance of the original data behind published papers.
+The reluctance ended because withholding stopped being viable. Berners-Lee
+implies the same for scientific data, noting that funders already complained
+of the original data behind papers disappearing.
 </p>
+
+<h3>Accidents on purpose</h3>
 
 <p>
 The argument proper is about what open information turned out to be for:
@@ -158,9 +274,9 @@ problems.
 </blockquote>
 
 <p>
-He then makes the move that gives the note its force, listing discoveries made
-by accident, from Archimedes through penicillin, and drawing the conclusion
-about machines:
+He then lists discoveries made by accident, from the bath of Archimedes
+through penicillin to the effect of Viagra, and draws the conclusion about
+machines:
 </p>
 
 <blockquote>
@@ -181,35 +297,101 @@ deliberately.
 <h2>52.3 The closing widening</h2>
 
 <p>
-The note ends by refusing to let science be a special case. It observes that
-science itself is not an island either, since an epidemiological survey often
-yields results when joined with geographical and economic data, and the search
-for a disease outbreak leads outwards from the laboratory.
+The note refuses to let science be a special case: science itself is not an
+island either (Figure 52.3).
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
+     aria-labelledby="fig52-3-t fig52-3-d">
+  <title id="fig52-3-t">An outbreak search reaching outwards</title>
+  <desc id="fig52-3-d">Inside a dashed boundary labelled science sit a disease
+  outbreak and an epidemiological survey. Arrows lead out of that boundary to
+  five kinds of data outside science but inside a larger boundary labelled
+  the larger Semantic Web: corporate financial statements, weather patterns
+  and flight timetables from the outbreak, and geographical and economic data
+  from the survey.</desc>
+  <defs>
+    <marker id="fig52-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="ln-dash" x="20" y="28" width="680" height="222" rx="8"/>
+  <text x="36" y="50" class="t-caps">the larger Semantic Web</text>
+  <rect class="ln-dash" x="265" y="100" width="190" height="110" rx="6"/>
+  <text x="360" y="228" class="t-caps" text-anchor="middle">science</text>
+
+  <line class="ln" x1="360" y1="112" x2="360" y2="80" marker-end="url(#fig52-3-arr)"/>
+  <line class="ln" x1="285" y1="175" x2="212" y2="97" marker-end="url(#fig52-3-arr)"/>
+  <line class="ln" x1="285" y1="175" x2="212" y2="203" marker-end="url(#fig52-3-arr)"/>
+  <line class="ln" x1="435" y1="127" x2="508" y2="97" marker-end="url(#fig52-3-arr)"/>
+  <line class="ln" x1="435" y1="127" x2="508" y2="203" marker-end="url(#fig52-3-arr)"/>
+
+  <rect class="box-warm" x="285" y="112" width="150" height="30" rx="4"/>
+  <text x="360" y="132" text-anchor="middle">disease outbreak</text>
+  <rect class="box" x="285" y="160" width="150" height="30" rx="4"/>
+  <text x="360" y="180" class="t-sm" text-anchor="middle">epidemiological survey</text>
+
+  <rect class="box-plain" x="255" y="48" width="210" height="30" rx="4"/>
+  <text x="360" y="67" class="t-sm" text-anchor="middle">corporate financial statements</text>
+  <rect class="box-plain" x="40" y="80" width="170" height="30" rx="4"/>
+  <text x="125" y="99" class="t-sm" text-anchor="middle">geographical data</text>
+  <rect class="box-plain" x="40" y="190" width="170" height="30" rx="4"/>
+  <text x="125" y="209" class="t-sm" text-anchor="middle">economic data</text>
+  <rect class="box-plain" x="510" y="80" width="170" height="30" rx="4"/>
+  <text x="595" y="99" class="t-sm" text-anchor="middle">weather patterns</text>
+  <rect class="box-plain" x="510" y="190" width="170" height="30" rx="4"/>
+  <text x="595" y="209" class="t-sm" text-anchor="middle">flight timetables</text>
+</svg>
+<figcaption><span class="fig-label">Figure 52.3</span>
+An epidemiological survey gains from geographical and economic data, and an
+outbreak search can lead well beyond science. So science&#8217;s web of data
+must be one part of the general Semantic Web.</figcaption>
+</figure>
+
 <p>
-That is Chapter 51&#8217;s argument, arriving from the other end. A message carries
-terms at several scales because the questions people ask do not respect the
-boundaries of the datasets they are asked of.
+That is Chapter 51&#8217;s argument from the other end: one piece of data
+mixes vocabularies from communities large and small, because questions do not
+respect the boundaries of datasets.
+</p>
+
+<h2>52.4 First steps</h2>
+
+<p>
+The basic standards existed: <a class="gl-ref" href="../glossary.html#owl">OWL</a>, the Web <a class="gl-ref" href="../glossary.html#ontology">Ontology</a> Language, for writing
+vocabularies a machine can process, and <a class="gl-ref" href="../glossary.html#rdf">RDF</a> for publishing data that uses
+them. The note suggests how to start:
+</p>
+
+<ul>
+<li><strong>Basic ontologies</strong> for weights and measures, the periodic
+table, physical constants and simple molecules, useful to schools and to
+hazard, food and drug information.</li>
+<li><strong>Demonstrator datasets</strong> of general value, such as
+geophysical, meteorological or genome data.</li>
+<li><strong>Anyone can begin:</strong> researchers, funders, journals or
+academies. Publication could reasonably be a condition of funding.</li>
+</ul>
+
+<p>
+He also flags what openness raises: the lab notebook, whose incidental details
+sometimes matter later, and privacy, clinical trial data and the copyright of
+compilations.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Science became the field where this worked.</strong> Life
-sciences adopted shared identifiers and cross-referenced datasets more
-thoroughly than any other domain, and the identifier-plus-mapping pattern of
-Figure 52.1 is how biomedical data is now integrated.</li>
-<li><strong>The data-behind-the-paper complaint became policy.</strong> Data
-availability statements and repository deposit requirements became standard
-conditions of publication and funding through the 2010s.</li>
-<li><strong>The serendipity claim was tested at scale.</strong> Large-scale
-cross-dataset <a class="gl-ref" href="../glossary.html#inference">inference</a> in biology, from drug repurposing to variant
-interpretation, is the thing this note describes, and it works where the
-identifiers line up and not otherwise.</li>
-<li><strong>Agreement in advance is still attempted.</strong> Top-down
-standardisation efforts continue to be commissioned and to run long, which is
-the cost Figure 52.1 is designed to avoid.</li>
+<li><strong>The life sciences went furthest.</strong> Projects such as
+Bio2RDF republished many public biological databases as linked data, joined by
+mappings like those in Figure 52.2.</li>
+<li><strong>The missing-data complaint became policy.</strong> PLOS required
+authors to share underlying data from 2014; the FAIR principles (Findable,
+Accessible, Interoperable, Reusable) appeared in 2016; the US National
+Institutes of Health&#8217;s data-sharing policy took effect in January
+2023.</li>
 </ul>
 </div>
 
@@ -227,8 +409,9 @@ and open access to research is Chapter 25.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">52.1</span>
-Take two fields that touch in your own work. Where do their vocabularies
-overlap, and what would a mapping between them have to say?</p>
+Take two fields that touch in your own work, or take medicine and weather.
+Where do their vocabularies overlap, and what would a mapping between them
+have to say?</p>
 </div>
 <div class="question">
 <p><span class="question-number">52.2</span>
@@ -237,8 +420,8 @@ withholding is still viable, and say what would change that.</p>
 </div>
 <div class="question">
 <p><span class="question-number">52.3</span>
-Serendipity is treated as something infrastructure can produce. State the
-conditions under which that is true.</p>
+What must be true for a &ldquo;crazy hypothesis&rdquo; to be testable in a few
+moments?</p>
 </div>
 <div class="question">
 <p><span class="question-number">52.4</span>

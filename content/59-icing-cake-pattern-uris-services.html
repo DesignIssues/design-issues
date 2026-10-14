@@ -1,3 +1,12 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Put the published page&#8217;s address first. Reach every tool for that page by
+adding a few characters to its address, so that people and programs can
+always find their way between the page and its tools.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -10,61 +19,88 @@ first?
 
 <h2>59.1 Two patterns</h2>
 
+<p>
+A version control system keeps every past version of a project&#8217;s files;
+GitHub is the best-known web interface to one. When the project is a website,
+one file gets several addresses. In Berners-Lee&#8217;s example, a page
+<code>index.html</code> in the project <code>myproject</code> of the account
+<code>acmedata</code> has an editable view, a raw copy on a second domain, a
+hosted copy on github.io, and finally the live copy on the owner&#8217;s own
+domain.
+</p>
+
+<p>
+On w3.org the arrangement is reversed. The page keeps its plain address, and
+its tools are reached by adding a comma and a short word to the end.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 448" width="720" height="448" role="img"
      aria-labelledby="fig59-1-t fig59-1-d">
   <title id="fig59-1-t">Which address is the real one</title>
-  <desc id="fig59-1-d">Under one pattern the version control system owns the
-  address space and the published site is a separate service somewhere else,
-  so neither can be derived from the other. Under the other the published
-  address is the base and every tool hangs off it by adding a character.</desc>
+  <desc id="fig59-1-d">Top: one page in the GitHub pattern has four addresses,
+  an editable view, a raw file, a hosted copy on github.io and the live site,
+  linked only by convention or by hand. Bottom: on w3.org the live page has one
+  address, and the tool index, HTML validator, link checker and change log are
+  reached by adding a comma and a word to it.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">the tool is the centre</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="268"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">the work is the centre</text>
+  <text x="24" y="26" class="t-caps" style="fill:#b08d57">the tool is the centre</text>
 
-  <g class="t-mono" font-size="10.5">
-    <rect class="box-warm" x="24" y="44" width="312" height="30" rx="3"/>
-    <text x="34" y="64">forge.example/acme/proj/blob/main/x.html</text>
-    <rect class="box-warm" x="24" y="82" width="312" height="30" rx="3"/>
-    <text x="34" y="102">raw.example/acme/proj/main/x.html</text>
-    <rect class="box-warm" x="24" y="120" width="312" height="30" rx="3"/>
-    <text x="34" y="140">acme.forge.io/proj/x.html</text>
-    <rect class="box-plain" x="24" y="158" width="312" height="30" rx="3"/>
-    <text x="34" y="178">acme.com/proj/x.html</text>
-  </g>
-  <text x="180" y="210" class="t-sm" text-anchor="middle" fill="#b04a4a">Four addresses, none derivable from another.</text>
-  <text x="180" y="230" class="t-sm" text-anchor="middle" fill="#b04a4a">Standing on the live site, there is no way</text>
-  <text x="180" y="250" class="t-sm" text-anchor="middle" fill="#b04a4a">to discover that the other three exist.</text>
+  <text x="24" y="59" class="t-sm">editable view</text>
+  <rect class="box-warm" x="130" y="40" width="566" height="28" rx="3"/>
+  <text x="142" y="59" class="t-mono">github.com/acmedata/myproject/blob/master/index.html</text>
 
-  <g class="t-mono" font-size="11">
-    <rect class="box-green" x="384" y="44" width="312" height="34" rx="3"/>
-    <text x="394" y="66">example.org/Payments/WG/</text>
-    <rect class="box" x="384" y="88" width="312" height="30" rx="3"/>
-    <text x="394" y="108">example.org/Payments/WG/,</text>
-    <rect class="box" x="384" y="126" width="312" height="30" rx="3"/>
-    <text x="394" y="146">example.org/Payments/WG/,tools</text>
-    <rect class="box" x="384" y="164" width="312" height="30" rx="3"/>
-    <text x="394" y="184">example.org/Payments/WG/,history</text>
-  </g>
-  <text x="540" y="216" class="t-sm" text-anchor="middle" fill="#3f6f3f">One address, plus a comma.</text>
-  <text x="540" y="236" class="t-sm" text-anchor="middle" fill="#3f6f3f">Every tool is reachable from the page,</text>
-  <text x="540" y="256" class="t-sm" text-anchor="middle" fill="#3f6f3f">and new tools need no new shape.</text>
+  <text x="24" y="93" class="t-sm">raw file</text>
+  <rect class="box-warm" x="130" y="74" width="566" height="28" rx="3"/>
+  <text x="142" y="93" class="t-mono">raw.githubusercontent.com/acmedata/myproject/master/index.html</text>
 
-  <line class="ln-mut" x1="24" y1="284" x2="696" y2="284"/>
-  <text x="360" y="308" class="t-sm" text-anchor="middle">The published work is the cake. Version control, access control, validation and the rest are icing.</text>
-  <text x="360" y="330" class="t-sm t-it" text-anchor="middle">The pattern scales because no single tool forces the whole address into its own strange shape.</text>
+  <text x="24" y="127" class="t-sm">hosted copy</text>
+  <rect class="box-warm" x="130" y="108" width="566" height="28" rx="3"/>
+  <text x="142" y="127" class="t-mono">acmedata.github.io/myproject/index.html</text>
+
+  <text x="24" y="161" class="t-sm">live site</text>
+  <rect class="box-plain" x="130" y="142" width="566" height="28" rx="3"/>
+  <text x="142" y="161" class="t-mono">acmedata.com/myproject/index.html</text>
+
+  <text x="130" y="192" class="t-sm t-it">Four addresses, linked only by convention or by hand.</text>
+
+  <line class="ln-mut" x1="24" y1="208" x2="696" y2="208"/>
+
+  <text x="24" y="234" class="t-caps" style="fill:#5a8f5a">the work is the centre</text>
+
+  <text x="24" y="267" class="t-sm">live page</text>
+  <rect class="box-green" x="130" y="248" width="566" height="28" rx="3"/>
+  <text x="142" y="267" class="t-mono">www.w3.org/Payments/WG/</text>
+
+  <text x="24" y="301" class="t-sm">tool index</text>
+  <rect class="box" x="130" y="282" width="566" height="28" rx="3"/>
+  <text x="142" y="301" class="t-mono">www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,</tspan></text>
+
+  <text x="24" y="335" class="t-sm">HTML validator</text>
+  <rect class="box" x="130" y="316" width="566" height="28" rx="3"/>
+  <text x="142" y="335" class="t-mono">www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,validate</tspan></text>
+
+  <text x="24" y="369" class="t-sm">link checker</text>
+  <rect class="box" x="130" y="350" width="566" height="28" rx="3"/>
+  <text x="142" y="369" class="t-mono">www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,checklink</tspan></text>
+
+  <text x="24" y="403" class="t-sm">change log</text>
+  <rect class="box" x="130" y="384" width="566" height="28" rx="3"/>
+  <text x="142" y="403" class="t-mono">www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,cvslog</tspan></text>
+
+  <text x="130" y="434" class="t-sm t-it">One address; each tool adds a few characters to it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 59.1</span>
-The scaling argument is the substantive one: because the tools hang off the
-work rather than containing it, there is room for as many as anyone
-wants.</figcaption>
+The published work is the cake; the tools are icing. Because no tool forces
+the page&#8217;s address into its own shape, there is room for as many as
+anyone wants.</figcaption>
 </figure>
 
 <h2>59.2 The complaint, stated twice</h2>
 
 <p>
-Berners-Lee names two failures of discoverability, and they are symmetrical:
+Berners-Lee names two failures of discoverability, meaning being able to find
+one address from the other, and they are symmetrical:
 </p>
 
 <blockquote>
@@ -86,21 +122,85 @@ knowing that the github site exists or of finding its URI.
 <cite>Icing on the cake, 2016</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig59-2-t fig59-2-d">
+  <title id="fig59-2-t">Getting there and getting back</title>
+  <desc id="fig59-2-d">Top: between the repository page and the live page there
+  are only dashed, hand-made links, one typed into the documentation and one
+  that a package.json file sometimes records. Bottom: from the live page,
+  adding a suffix reaches the validator, link checker and change log, and
+  stripping the suffix returns to the page.</desc>
+
+  <defs>
+    <marker id="fig59-2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+    <marker id="fig59-2-aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="22" class="t-caps" style="fill:#b08d57">repository first: links made by hand</text>
+
+  <rect class="box-warm" x="40" y="48" width="170" height="36" rx="3"/>
+  <text x="125" y="71" text-anchor="middle">repository page</text>
+  <rect class="box-plain" x="510" y="48" width="170" height="36" rx="3"/>
+  <text x="595" y="71" text-anchor="middle">live page</text>
+
+  <text x="360" y="54" class="t-sm" text-anchor="middle">link someone typed into the docs</text>
+  <line class="ln-dash" x1="212" y1="66" x2="506" y2="66" marker-end="url(#fig59-2-ah)"/>
+
+  <path class="ln-dash" d="M595,86 V122 H454" marker-end="url(#fig59-2-ah)"/>
+  <rect class="box-plain" x="270" y="108" width="180" height="28" rx="3"/>
+  <text x="360" y="127" class="t-sm" text-anchor="middle">package.json (sometimes)</text>
+  <path class="ln-dash" d="M270,122 H125 V90" marker-end="url(#fig59-2-ah)"/>
+
+  <line class="ln-mut" x1="24" y1="160" x2="696" y2="160"/>
+
+  <text x="24" y="186" class="t-caps" style="fill:#5a8f5a">page first: links computed</text>
+
+  <rect class="box-green" x="24" y="246" width="200" height="46" rx="3"/>
+  <text x="124" y="265" text-anchor="middle">live page</text>
+  <text x="124" y="283" class="t-mono" text-anchor="middle">www.w3.org/Payments/WG/</text>
+
+  <text x="336" y="246" class="t-sm" text-anchor="middle">add a suffix</text>
+  <line class="ln-accent" x1="226" y1="256" x2="444" y2="256" marker-end="url(#fig59-2-aa)"/>
+  <line class="ln-accent" x1="448" y1="282" x2="230" y2="282" marker-end="url(#fig59-2-aa)"/>
+  <text x="336" y="302" class="t-sm" text-anchor="middle">strip the suffix</text>
+
+  <path class="ln" d="M456,219 V309"/>
+  <line class="ln" x1="456" y1="219" x2="470" y2="219"/>
+  <line class="ln" x1="456" y1="264" x2="470" y2="264"/>
+  <line class="ln" x1="456" y1="309" x2="470" y2="309"/>
+
+  <rect class="box" x="470" y="204" width="226" height="30" rx="3"/>
+  <text x="482" y="224" class="t-mono" style="fill:#1c5a7a">,validate</text>
+  <text x="584" y="224" class="t-sm">HTML validator</text>
+  <rect class="box" x="470" y="249" width="226" height="30" rx="3"/>
+  <text x="482" y="269" class="t-mono" style="fill:#1c5a7a">,checklink</text>
+  <text x="584" y="269" class="t-sm">link checker</text>
+  <rect class="box" x="470" y="294" width="226" height="30" rx="3"/>
+  <text x="482" y="314" class="t-mono" style="fill:#1c5a7a">,cvslog</text>
+  <text x="584" y="314" class="t-sm">change log</text>
+</svg>
+<figcaption><span class="fig-label">Figure 59.2</span>
+Discovery works both ways only when one address can be computed from the
+other.</figcaption>
+</figure>
+
 <p>
-He records the partial workaround honestly: a package manifest will sometimes
-carry the information, and in general a client fetching the page has no way to
-discover the link. The relationship between a published thing and the system
-that produced it exists in the world and not in the addresses.
+A node module may record its repository in <code>package.json</code>, but a
+client fetching the HTML page cannot discover the link. The relationship
+exists in the world, not in the addresses.
 </p>
 
 <h2>59.3 Why the choice is architectural</h2>
 
 <p>
 The pattern names what a system treats as primary. In the first, the
-repository is the real thing and publication is an export, which is why the
-published address is arbitrary and the shape of the repository address is
-fixed. In the second, the published thing is the real thing and everything
-else is an accessory:
+repository is the real thing and publication is an export. In the second, the
+published thing is the real thing and everything else is an accessory:
 </p>
 
 <blockquote>
@@ -111,52 +211,119 @@ the cake.
 </blockquote>
 
 <p>
-The convention chosen matters less than the property it provides. Any
-character the addressing scheme reserves would do; the requirement is that
-adding it is a function of the address, so that a client, or a person, can
-derive the tool address from the work address without being told.
+The comma is incidental; the note asks only that suffixes be short, simple and
+memorable. What matters is a fixed rule, so that anyone holding the
+page&#8217;s address can work out the tool&#8217;s without being told.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 160" width="720" height="160" role="img"
+     aria-labelledby="fig59-3-t fig59-3-d">
+  <title id="fig59-3-t">Anatomy of a comma address</title>
+  <desc id="fig59-3-d">The address https://www.w3.org/Payments/WG/,validate
+  splits into the page's own address, the work or cake, and the suffix
+  ,validate, the tool or icing. The server sees the comma, runs the HTML
+  validator on the page before it, and returns a list of markup
+  errors.</desc>
+
+  <defs>
+    <marker id="fig59-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="52" class="t-mono">https://www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,validate</tspan></text>
+
+  <path class="ln-mut" d="M24,62 V68 H254 V62"/>
+  <path class="ln-accent" d="M258,62 V68 H324 V62"/>
+  <text x="139" y="88" class="t-sm" text-anchor="middle">the work (cake)</text>
+  <text x="291" y="88" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the tool (icing)</text>
+
+  <line class="ln" x1="336" y1="48" x2="418" y2="48" marker-end="url(#fig59-3-ah)"/>
+  <rect class="box" x="422" y="16" width="274" height="64" rx="3"/>
+  <text x="559" y="38" text-anchor="middle">server sees the comma</text>
+  <text x="559" y="56" class="t-sm" text-anchor="middle">and runs the HTML validator</text>
+  <text x="559" y="71" class="t-sm" text-anchor="middle">on the address before it</text>
+
+  <line class="ln" x1="559" y1="80" x2="559" y2="110" marker-end="url(#fig59-3-ah)"/>
+  <rect class="box-plain" x="459" y="114" width="200" height="32" rx="3"/>
+  <text x="559" y="135" text-anchor="middle">list of markup errors</text>
+</svg>
+<figcaption><span class="fig-label">Figure 59.3</span>
+The base address never changes; only the ending picks the tool.</figcaption>
+</figure>
+
 <p>
-Berners-Lee lists what hangs off the base in his own case, and the breadth is
-the point: version control, access control, validation, link checking, format
-conversion, spell checking. Six tools, one address, no negotiation between
-them.
+The note&#8217;s appendix, a snapshot of 10 December 2017, lists about sixteen
+such tools. Five of them:
 </p>
+
+<table>
+<tr><th>Suffix</th><th>What it returns</th></tr>
+<tr><td><code>,text</code></td><td>A plain text version of the page</td></tr>
+<tr><td><code>,checklink</code></td><td>The bad links in the page</td></tr>
+<tr><td><code>,validate</code></td><td>The HTML markup errors</td></tr>
+<tr><td><code>,spell</code></td><td>The spelling errors</td></tr>
+<tr><td><code>,cvslog</code></td><td>The log of changes to the document</td></tr>
+</table>
 
 <h2>59.4 The same problem, generally</h2>
 
 <p>
-The chapter belongs in this volume because it is the placement question of
-Chapter 57 asked about tools rather than data. There too, a protocol for doing
-the thing is not enough: what is missing is a convention that lets one party
-find what another produced without prior arrangement.
+This is Chapter 57&#8217;s placement question, where applications sharing a
+store must agree where data goes, asked about tools instead. A protocol is not
+enough: what is missing is a convention that lets one party find what another
+produced without prior arrangement.
 </p>
 
 <p>
-And it is Chapter 3&#8217;s argument about information in names arriving from the
-other side. Putting the tool&#8217;s name in the address makes the address say which
-tool made it, which is information that will eventually be wrong. Putting the
-work&#8217;s name in the address and deriving the tool&#8217;s leaves the tool free to
-change.
+It is also Chapter 3&#8217;s argument about information in names. An address
+that names the tool which made it will eventually be wrong. Naming the work
+and deriving the tool&#8217;s address leaves the tool free to change.
+</p>
+
+<h2>59.5 Icing for machines</h2>
+
+<p>
+A comma typed by hand serves a person. Berners-Lee also wants icing visible to
+programs. The Memento protocol adds HTTP headers that let a browser find older
+versions of a page. Solid, his personal data system, links each resource to
+the page controlling who may access it.
+</p>
+
+<p>
+w3.org itself falls short: follow a link into its CVS version control system
+and the addresses look much like GitHub&#8217;s, with no way straight back.
+What he would like instead:
+</p>
+
+<blockquote>
+It would
+certainly be interesting for someone to make a web interface
+for a version control system which is all icing on the original
+cake, where at any point you can strip off the ,stuff and get
+back to the original file live on the web site
+<cite>Icing on the cake, 2016</cite>
+</blockquote>
+
+<p>
+His conclusion asks for both: the comma for people, and a link for
+software.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The tool-centric pattern won overwhelmingly.</strong> Publishing
-from a repository to a separate hosted address is how most of the Web is now
-deployed, with the two addresses unrelated.</li>
-<li><strong>Discovery was patched, not fixed.</strong> Conventions such as a
-repository field in a package manifest, or a link in a page footer, supply
-what this note asks for, by hand and inconsistently.</li>
-<li><strong>The general pattern persists where it was already
-established.</strong> Sites that adopted a suffix convention kept it, and it
-still allows new tools to be added without renegotiating addresses.</li>
-<li><strong>Well-known locations became the standard alternative.</strong>
-RFC 8615, of May 2019, reserves a path prefix for metadata about a site, which
-solves the same discovery problem at the site level rather than per
-document.</li>
+<li><strong>The hosted-copy pattern predates the note.</strong> GitHub
+Pages launched in 2008.</li>
+<li><strong>Discovery was patched, not fixed.</strong> npm&#8217;s
+<code>package.json</code> has a <code>repository</code> field, and many sites
+link to their source in a footer: by hand, and inconsistently.</li>
+<li><strong>Memento was already a standard</strong>, RFC 7089 of December
+2013.</li>
+<li><strong>Well-known locations were revised.</strong> RFC 8615 (May 2019)
+replaced RFC 5785 (2010). Both reserve <code>/.well-known/</code> for metadata
+about a site, solving discovery per site rather than per document.</li>
 </ul>
 </div>
 
@@ -178,8 +345,9 @@ the reverse? What supplies the link?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.2</span>
-The suffix convention scales to many tools. Name the constraint it places on
-the addressing scheme.</p>
+Pick three tools you would want for a web page and write the comma addresses
+for them. What would break if the page&#8217;s own address ended in a
+comma?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.3</span>
@@ -188,7 +356,7 @@ thing? What does the answer change?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.4</span>
-A reserved path prefix solves discovery per site. What does a per-document
-convention give that it does not?</p>
+A person can type <code>,cvslog</code>. How would a browser learn that the
+change log exists, without being told the convention?</p>
 </div>
 </div>

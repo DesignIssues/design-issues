@@ -49,12 +49,21 @@
 a Design Issues note by Tim Berners-Lee, 2022-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/PodStuff.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Anything in a life can go in a <a class="gl-ref" href="../glossary.html#pod">pod</a>. File it by kind, not by application, so
+applications can share it. Keep each activity together, so its owner can decide
+once who may see it.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Thirteen years after Chapter 54 proposed that storage become a commodity, this
-note from December 2022 asks the question that turns out to be harder than the
-protocol: given a space of your own, how should what is in it be arranged?
+Thirteen years after Chapter 54, this note from December 2022 asks a question
+harder than the protocol: given a space of one&#8217;s own, how should its contents
+be arranged?
 </p>
 <p>
 The answer begins by refusing to narrow the question:
@@ -67,59 +76,88 @@ communities in between.
 </blockquote>
 </div>
 
-<h2>55.1 Three dimensions of variety</h2>
+<h2>55.1 Five ways stuff varies</h2>
+
+<p>
+If anything can go in a pod, one <a class="gl-ref" href="../glossary.html#scheme">scheme</a> must cope with all of it. The note
+lists five ways the stuff of a life differs (Figure 55.1).
+</p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
      aria-labelledby="fig55-1-t fig55-1-d">
   <title id="fig55-1-t">How far personal data varies</title>
-  <desc id="fig55-1-d">Data varies in size from a single byte to a genome, in
-  shape from a flat table to a tangle of connected objects, and in mutability
-  from a document edited daily to a certificate that will never change. Any
-  scheme for organising it must span all three ranges.</desc>
+  <desc id="fig55-1-d">Five axes. Size runs from a single byte to a genome.
+  Shape runs from a simple table to a tangle of connected objects. Mutability
+  runs from something edited often to something issued once and never changed.
+  Speed runs from a calendar synchronised every few hours to a chat that should
+  be instant. Security runs from a film to watch tonight to documents kept in a
+  box at the bank.</desc>
 
   <text x="24" y="28" class="t-caps">size</text>
   <line class="ln" x1="150" y1="44" x2="680" y2="44"/>
   <path d="M 674 39 L 684 44 L 674 49 Z" fill="#2f4f4f"/>
+  <line class="ln-mut" x1="160" y1="38" x2="160" y2="50"/>
+  <line class="ln-mut" x1="360" y1="38" x2="360" y2="50"/>
+  <line class="ln-mut" x1="540" y1="38" x2="540" y2="50"/>
   <text x="160" y="66" class="t-sm">one byte</text>
-  <text x="170" y="84" class="t-sm t-it" fill="#666">&#8220;The Doctor is [In]&#8221;</text>
-  <text x="380" y="66" class="t-sm">an event, a photograph</text>
-  <text x="590" y="66" class="t-sm">a genome</text>
-  <line class="ln-mut" x1="180" y1="38" x2="180" y2="50"/>
-  <line class="ln-mut" x1="430" y1="38" x2="430" y2="50"/>
-  <line class="ln-mut" x1="620" y1="38" x2="620" y2="50"/>
+  <text x="160" y="84" class="t-sm t-it">&#8220;The Doctor is [In]&#8221;</text>
+  <text x="360" y="66" class="t-sm">events, photos</text>
+  <text x="540" y="66" class="t-sm">a genome, climate data</text>
 
-  <text x="24" y="130" class="t-caps">shape</text>
-  <line class="ln" x1="150" y1="146" x2="680" y2="146"/>
-  <path d="M 674 141 L 684 146 L 674 151 Z" fill="#2f4f4f"/>
-  <text x="160" y="168" class="t-sm">a simple table</text>
-  <text x="380" y="168" class="t-sm">connected objects of many classes</text>
-  <text x="380" y="186" class="t-sm t-it" fill="#666">everything a journalist has on one incident</text>
-  <line class="ln-mut" x1="180" y1="140" x2="180" y2="152"/>
-  <line class="ln-mut" x1="470" y1="140" x2="470" y2="152"/>
+  <text x="24" y="108" class="t-caps">shape</text>
+  <line class="ln" x1="150" y1="124" x2="680" y2="124"/>
+  <path d="M 674 119 L 684 124 L 674 129 Z" fill="#2f4f4f"/>
+  <line class="ln-mut" x1="160" y1="118" x2="160" y2="130"/>
+  <line class="ln-mut" x1="400" y1="118" x2="400" y2="130"/>
+  <text x="160" y="146" class="t-sm">a simple table</text>
+  <text x="400" y="146" class="t-sm">connected objects of many classes</text>
+  <text x="400" y="164" class="t-sm t-it">all a journalist has on one incident</text>
 
-  <text x="24" y="232" class="t-caps">mutability</text>
-  <line class="ln" x1="150" y1="248" x2="680" y2="248"/>
-  <path d="M 674 243 L 684 248 L 674 253 Z" fill="#2f4f4f"/>
-  <text x="160" y="270" class="t-sm">edited daily</text>
-  <text x="400" y="270" class="t-sm" fill="#3f6f3f">issued once, never changed</text>
-  <text x="400" y="288" class="t-sm t-it" fill="#666">a passport, a certificate, yesterday&#8217;s messages</text>
-  <line class="ln-mut" x1="180" y1="242" x2="180" y2="254"/>
-  <line class="ln-mut" x1="500" y1="242" x2="500" y2="254"/>
+  <text x="24" y="188" class="t-caps">mutability</text>
+  <line class="ln" x1="150" y1="204" x2="680" y2="204"/>
+  <path d="M 674 199 L 684 204 L 674 209 Z" fill="#2f4f4f"/>
+  <line class="ln-mut" x1="160" y1="198" x2="160" y2="210"/>
+  <line class="ln-mut" x1="400" y1="198" x2="400" y2="210"/>
+  <text x="160" y="226" class="t-sm">edited often</text>
+  <text x="400" y="226" class="t-sm" style="fill:#5a8f5a">issued once, never changed</text>
+  <text x="400" y="244" class="t-sm t-it">a passport, a certificate, old chats</text>
 
-  <line class="ln-mut" x1="24" y1="308" x2="696" y2="308"/>
-  <text x="360" y="328" class="t-sm t-it" text-anchor="middle">Immutability is a useful property: it can be cached forever, and written to media that write once.</text>
+  <text x="24" y="268" class="t-caps">speed</text>
+  <line class="ln" x1="150" y1="284" x2="680" y2="284"/>
+  <path d="M 674 279 L 684 284 L 674 289 Z" fill="#2f4f4f"/>
+  <line class="ln-mut" x1="160" y1="278" x2="160" y2="290"/>
+  <line class="ln-mut" x1="440" y1="278" x2="440" y2="290"/>
+  <text x="160" y="306" class="t-sm">synced every few hours</text>
+  <text x="160" y="324" class="t-sm t-it">a calendar</text>
+  <text x="440" y="306" class="t-sm">as instant as possible</text>
+  <text x="440" y="324" class="t-sm t-it">a chat, a shared edit</text>
+
+  <text x="24" y="348" class="t-caps">security</text>
+  <line class="ln" x1="150" y1="364" x2="680" y2="364"/>
+  <path d="M 674 359 L 684 364 L 674 369 Z" fill="#2f4f4f"/>
+  <line class="ln-mut" x1="160" y1="358" x2="160" y2="370"/>
+  <line class="ln-mut" x1="440" y1="358" x2="440" y2="370"/>
+  <text x="160" y="386" class="t-sm">little harm if lost</text>
+  <text x="160" y="404" class="t-sm t-it">a film to watch tonight</text>
+  <text x="440" y="386" class="t-sm">kept in a box at the bank</text>
+  <text x="440" y="404" class="t-sm t-it">birth certificate, house deeds</text>
 </svg>
 <figcaption><span class="fig-label">Figure 55.1</span>
 The range is the argument. A scheme that handles only the middle of each axis
 is not a scheme for a person&#8217;s life.</figcaption>
 </figure>
 
+<p>
+What never changes can be cached forever and named by its cryptographic hash.
+Security splits three ways: the risk of being lost, faked, or read by the
+wrong person.
+</p>
+
 <h2>55.2 The organising decision</h2>
 
 <p>
-The note&#8217;s substantive claim is about what determines where something goes,
-and it is stated as a preference between two obvious candidates:
+The note&#8217;s substantive claim is about what determines where something goes:
 </p>
 
 <blockquote>
@@ -129,24 +167,18 @@ particular app which wrote it.
 </blockquote>
 
 <p>
-Filing by application is what every operating system does, and it recreates
-the silo inside the space that was meant to abolish it. Filing by kind means
-that two applications dealing in events find each other&#8217;s events, which is the
-cross-linking Chapter 54 promised.
-</p>
-
-<p>
-The expectation that makes this workable is stated immediately: the classes of
-data used by different applications are expected to overlap a lot. Most
-applications deal in people, events, places, messages and documents, which is
-Chapter 48&#8217;s argument arriving as a filing system.
+An RDFS class is the kind of thing the data describes, such as Event or
+Person. Filing by application recreates the silo, one company&#8217;s walled-off
+store, inside the space meant to abolish it. Filing by kind lets two
+applications dealing in events find each other&#8217;s events. It works because
+the classes applications use overlap a lot: people, events, places, messages,
+documents. That is Chapter 48&#8217;s argument arriving as a filing system.
 </p>
 
 <h2>55.3 Why activities are kept together anyway</h2>
 
 <p>
-Having filed by kind, the note immediately allows an exception, and the reason
-is about permissions rather than about data:
+The note then allows an exception, for reasons of permission rather than data:
 </p>
 
 <blockquote>
@@ -157,18 +189,163 @@ conditions apply and it is much simpler to get those right.
 </blockquote>
 
 <p>
-This is the most practical sentence in Volume VI. Access control is applied to
-places, and people reason about places. If everything touching one matter
-lives together, a person can decide once who may see it. If it is scattered by
-type, they must make the same decision many times and will eventually get one
-wrong.
+Access control, the rules saying who may read or change what, attaches to
+places. If one matter lives together, a person decides once who may see it.
+Scattered by type, the decision is made many times, and one will be wrong.
+</p>
+
+<h3>A worked example: running a meeting</h3>
+
+<p>
+The note&#8217;s longest example is an application for running a meeting: a
+poll on when to meet, an agenda, the groups invited, a video call, minutes and
+action items, often one of a series. A pod has folders (strictly, LDP
+containers), so the application makes one per series, one per meeting, and
+subfolders for the parts (Figure 55.2).
 </p>
 
 <p>
-The two principles pull against each other, and the note does not pretend
-otherwise. Filing by kind makes data findable across applications. Filing by
-activity makes permissions comprehensible to the person granting them.
+The application defines roles, or lets the owner configure them, and maps them
+onto <a class="gl-ref" href="../glossary.html#solid">Solid</a> groups and folder access rules. Things created inside things, such
+as a chat about one action item, usually inherit their parent&#8217;s roles,
+though they may be narrowed. The interface must make plain who has access.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
+     aria-labelledby="fig55-2-t fig55-2-d">
+  <title id="fig55-2-t">A meeting laid out in a pod</title>
+  <desc id="fig55-2-d">On the left, a folder tree: meetings, then a weekly
+  series, then one meeting, holding poll, groups, call link, agenda, minutes and
+  actions. A bracket around the meeting folder notes that one decision about
+  access covers everything inside it. On the right, the application's roles
+  (Owner, Administrator, Invitee, Participant, Observer) are mapped by the app
+  onto Solid groups and access rules, which attach to the folder.</desc>
+
+  <rect class="box" x="30" y="20" width="130" height="28" rx="3"/>
+  <text x="40" y="39" class="t-mono">meetings/</text>
+  <rect class="box" x="60" y="64" width="150" height="28" rx="3"/>
+  <text x="70" y="83" class="t-mono">weekly-series/</text>
+  <rect class="box" x="90" y="108" width="120" height="28" rx="3"/>
+  <text x="100" y="127" class="t-mono">meeting-3/</text>
+
+  <path class="ln-mut" d="M 45 48 V 78 H 60"/>
+  <path class="ln-mut" d="M 75 92 V 122 H 90"/>
+  <path class="ln-mut" d="M 105 136 V 345 M 105 165 H 140 M 105 201 H 140 M 105 237 H 140 M 105 273 H 140 M 105 309 H 140 M 105 345 H 140"/>
+
+  <rect class="box" x="140" y="152" width="110" height="26" rx="3"/>
+  <text x="150" y="170" class="t-mono">poll/</text>
+  <rect class="box" x="140" y="188" width="110" height="26" rx="3"/>
+  <text x="150" y="206" class="t-mono">groups/</text>
+  <rect class="box" x="140" y="224" width="110" height="26" rx="3"/>
+  <text x="150" y="242" class="t-mono">call-link</text>
+  <rect class="box" x="140" y="260" width="110" height="26" rx="3"/>
+  <text x="150" y="278" class="t-mono">agenda</text>
+  <rect class="box" x="140" y="296" width="110" height="26" rx="3"/>
+  <text x="150" y="314" class="t-mono">minutes</text>
+  <rect class="box" x="140" y="332" width="110" height="26" rx="3"/>
+  <text x="150" y="350" class="t-mono">actions/</text>
+
+  <path class="ln-accent" d="M 262 108 H 272 V 358 H 262"/>
+  <text x="284" y="212" class="t-sm" style="fill:#1c5a7a">one place, one decision</text>
+  <text x="284" y="228" class="t-sm" style="fill:#1c5a7a">about who has access</text>
+
+  <text x="470" y="36" class="t-caps">roles in the app</text>
+  <rect class="box-warm" x="470" y="50" width="120" height="24" rx="3"/>
+  <text x="480" y="67">Owner</text>
+  <rect class="box-warm" x="470" y="80" width="120" height="24" rx="3"/>
+  <text x="480" y="97">Administrator</text>
+  <rect class="box-warm" x="470" y="110" width="120" height="24" rx="3"/>
+  <text x="480" y="127">Invitee</text>
+  <rect class="box-warm" x="470" y="140" width="120" height="24" rx="3"/>
+  <text x="480" y="157">Participant</text>
+  <rect class="box-warm" x="470" y="170" width="120" height="24" rx="3"/>
+  <text x="480" y="187">Observer</text>
+
+  <line class="ln" x1="530" y1="194" x2="530" y2="226"/>
+  <path d="M 525 220 L 530 230 L 535 220 Z" fill="#2f4f4f"/>
+  <text x="542" y="215" class="t-sm">mapped by the app</text>
+
+  <rect class="box" x="470" y="232" width="230" height="44" rx="3"/>
+  <text x="482" y="252">Solid groups and the</text>
+  <text x="482" y="268">access rules of each folder</text>
+  <path class="ln-dash" d="M 470 254 H 278"/>
+
+  <text x="470" y="302" class="t-sm">for example, the owner can edit</text>
+  <text x="470" y="318" class="t-sm">the configuration and participants</text>
+  <text x="470" y="334" class="t-sm">can read it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 55.2</span>
+Everything about one meeting sits in one folder, so the application turns
+its roles into access rules once.</figcaption>
+</figure>
+
+<p>
+The two principles pull against each other (Figure 55.3).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig55-3-t fig55-3-d">
+  <title id="fig55-3-t">Filing by app, by kind, by activity</title>
+  <desc id="fig55-3-d">Three panels. Filing by application keeps the same kind
+  of data twice, once per application, and each finds only its own. Filing by
+  kind puts all events in one place that a calendar app and a meeting app both
+  use. Filing by activity puts an event, people and messages for one meeting in
+  one folder under one set of access rules.</desc>
+
+  <rect class="ln-mut" x="15" y="12" width="220" height="218" rx="4"/>
+  <rect class="ln-mut" x="250" y="12" width="220" height="218" rx="4"/>
+  <rect class="ln-mut" x="485" y="12" width="220" height="218" rx="4"/>
+
+  <text x="27" y="34" class="t-caps">by application</text>
+  <rect class="box-plain" x="30" y="50" width="120" height="26" rx="3"/>
+  <text x="38" y="68" class="t-mono">CalendarApp/</text>
+  <rect class="box-plain" x="60" y="86" width="90" height="26" rx="3"/>
+  <text x="70" y="104" class="t-mono">events</text>
+  <rect class="box-plain" x="30" y="130" width="120" height="26" rx="3"/>
+  <text x="38" y="148" class="t-mono">MeetingApp/</text>
+  <rect class="box-plain" x="60" y="166" width="90" height="26" rx="3"/>
+  <text x="70" y="184" class="t-mono">events</text>
+  <path class="ln-mut" d="M 42 76 V 99 H 60 M 42 156 V 179 H 60"/>
+  <path class="ln-dash" d="M 152 99 H 164 V 179 H 152"/>
+  <text x="172" y="136" class="t-sm">kept</text>
+  <text x="172" y="150" class="t-sm">twice</text>
+  <text x="125" y="214" class="t-sm t-it" text-anchor="middle">each app finds only its own</text>
+
+  <text x="262" y="34" class="t-caps">by kind (rdfs class)</text>
+  <rect class="box" x="265" y="50" width="90" height="26" rx="3"/>
+  <text x="275" y="68" class="t-mono">Event/</text>
+  <rect class="box" x="265" y="90" width="90" height="26" rx="3"/>
+  <text x="275" y="108" class="t-mono">Person/</text>
+  <rect class="box" x="265" y="130" width="90" height="26" rx="3"/>
+  <text x="275" y="148" class="t-mono">Message/</text>
+  <rect class="box-plain" x="372" y="56" width="88" height="26" rx="3"/>
+  <text x="380" y="73" class="t-sm">calendar app</text>
+  <rect class="box-plain" x="372" y="116" width="88" height="26" rx="3"/>
+  <text x="380" y="133" class="t-sm">meeting app</text>
+  <path class="ln-mut" d="M 372 69 L 355 63 M 372 129 L 355 63 M 372 129 L 355 103"/>
+  <text x="360" y="214" class="t-sm t-it" text-anchor="middle">findable across apps</text>
+
+  <text x="497" y="34" class="t-caps">by activity</text>
+  <rect class="box-green" x="500" y="50" width="120" height="26" rx="3"/>
+  <text x="510" y="68" class="t-mono">meeting-3/</text>
+  <rect class="box-green" x="530" y="86" width="96" height="26" rx="3"/>
+  <text x="540" y="104" class="t-mono">event</text>
+  <rect class="box-green" x="530" y="122" width="96" height="26" rx="3"/>
+  <text x="540" y="140" class="t-mono">people</text>
+  <rect class="box-green" x="530" y="158" width="96" height="26" rx="3"/>
+  <text x="540" y="176" class="t-mono">messages</text>
+  <path class="ln-mut" d="M 515 76 V 171 M 515 99 H 530 M 515 135 H 530 M 515 171 H 530"/>
+  <path class="ln-accent" d="M 634 86 H 644 V 184 H 634"/>
+  <rect x="656" y="132" width="20" height="16" rx="2" fill="#5a8f5a"/>
+  <path class="ln" d="M 660 132 V 126 A 6 6 0 0 1 672 126 V 132"/>
+  <text x="595" y="214" class="t-sm t-it" text-anchor="middle">permissions easy to get right</text>
+</svg>
+<figcaption><span class="fig-label">Figure 55.3</span>
+The note rejects the first. It wants the second for finding things and the
+third for trusting them; the type index (section 55.6) helps reconcile them.</figcaption>
+</figure>
 
 <h2>55.4 Who configures the layout</h2>
 
@@ -184,16 +361,15 @@ requirements, and also works well for that particular app.
 </blockquote>
 
 <p>
-Applications decide the arrangement, common patterns emerge because the
-classes overlap, and the mechanism for describing where new data should go is
-the subject of Chapter 57. That chapter&#8217;s third technology exists precisely
-because this one leaves the question open.
+The note expects applications to share common patterns for similar data:
+summary indexes, inboxes, time series in dated folders. Describing where new
+data should go is left to Chapter 57.
 </p>
 
 <h2>55.5 Provenance as a first-class concern</h2>
 
 <p>
-One sentence names an obligation that the rest of Volume VI mostly assumes:
+One sentence names an obligation the rest of Volume VI assumes:
 </p>
 
 <blockquote>
@@ -204,45 +380,55 @@ rich, varied, and valuable system.
 </blockquote>
 
 <p>
-Two things are worth noticing. Trust is described as something to be modelled
-as it really is rather than as a permission flag, which is Chapter 66&#8217;s
-argument. And bots are listed alongside people and data as things one trusts,
-in a note written in 2022, before that became the ordinary way to talk.
+Provenance is a record of who wrote a piece of data and how. It can be tracked
+by digital signatures from trusted agents, or more lightly by knowing that only
+one party can write to a resource. Trust is modelled as it really is, not as a
+permission flag (Chapter 66), and bots stand beside people as things trusted.
 </p>
+
+<h2>55.6 Index libraries, not items</h2>
+
+<p>
+A pod&#8217;s type index lists, for each class, where things of that class are
+kept. As on a desktop, where a photo library hides its insides, it works best
+listing a few large libraries rather than every photo. A small index scales
+better, and each library indexes its items more richly:
+</p>
+
+<table>
+<tr><th>Library</th><th>Indexed by, for example</th><th>Item</th></tr>
+<tr><td>Address Book</td><td>name, email</td><td>Contact Card</td></tr>
+<tr><td>Calendar</td><td>time</td><td>Event</td></tr>
+<tr><td>Photo Library</td><td>time, author, subject, location</td><td>Photo</td></tr>
+<tr><td>Media Library</td><td>artist, composer, album, genre</td><td>Song</td></tr>
+<tr><td>Medical Records Library</td><td>date, source, type</td><td>Observation, Test, Scan</td></tr>
+<tr><td>Fitness Library</td><td>date, sport</td><td>Run, Ride</td></tr>
+</table>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Type indexes became the mechanism.</strong> <a class="gl-ref" href="../glossary.html#solid">Solid</a>&#8217;s type index,
-which maps a class to the places instances of it are kept, is section 55.2
-implemented, and it is how applications find each other&#8217;s data in a <a class="gl-ref" href="../glossary.html#pod">pod</a>.</li>
-<li><strong>The tension was not resolved.</strong> Arranging by kind and
-arranging by activity remain in conflict, and applications in practice do
-both, which is why finding things in a pod is still harder than it should
-be.</li>
+<li><strong>Type indexes remain the mechanism.</strong> Already in use when the
+note was written, they remain how Solid applications find each other&#8217;s
+data.</li>
 <li><strong>Immutability was put to work elsewhere.</strong> Content
-addressing and verifiable credentials both exploit the property this note
-names, storing what never changes by what it contains rather than where it
-sits.</li>
-<li><strong>The bots arrived.</strong> Reasoning about what an automated agent
-may read from a personal store became an urgent question within two years of
-this note, and is the subject of Chapters 92 to 96.</li>
+addressing and verifiable credentials both name what never changes by what it
+contains.</li>
+<li><strong>The bots arrived.</strong> What an automated agent may read from a
+personal store became urgent within two years; see Chapter 93.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The storage this describes is Chapter 54, and the mechanism for saying where
-new data goes is Chapter 57. The small shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> that makes classes
-overlap is Chapter 48, and the interface for browsing it is Chapter 56.
-Provenance and trust are Chapter 66, and agents reading personal data are
-Chapter 93.
+Storage: Chapter 54. Where new data goes: Chapter 57. Shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>:
+Chapter 48. Browsing: Chapter 56. Trust: Chapter 66. Agents: Chapter 93.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">55.1</span>
 Filing by kind and filing by activity pull against each other. Describe a
@@ -260,8 +446,13 @@ What could a system do with them that it cannot do with mutable data?</p>
 </div>
 <div class="question">
 <p><span class="question-number">55.4</span>
-Applications configure the layout of a shared space. What stops two
-applications arranging it incompatibly?</p>
+Applications configure the layout of a shared space. What does the note expect
+to keep their arrangements compatible?</p>
+</div>
+<div class="question">
+<p><span class="question-number">55.5</span>
+In the meeting application, who should be able to edit the minutes, and where
+would you put that rule?</p>
 </div>
 </details>
 

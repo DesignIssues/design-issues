@@ -52,10 +52,10 @@ a Design Issues note by Tim Berners-Lee, 2001-10-01.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-In October 2001 Berners-Lee spent a few hours reading fifty pages of a
-calendar <a class="gl-ref" href="../glossary.html#specification">specification</a> with a view to evaluating proposals for putting it into
-markup. The note is what he found, and it is included because it is the only
-worked example in the collection of the analysis Volume IV keeps
+In October 2001 Berners-Lee spent a few hours reading fifty pages of
+iCalendar, the <a class="gl-ref" href="../glossary.html#specification">specification</a> (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445) for exchanging calendar entries,
+with a view to evaluating proposals for putting it into <a class="gl-ref" href="../glossary.html#xml">XML</a>. The note is
+what he found: the one worked example of the analysis Volume IV keeps
 recommending.
 </p>
 <blockquote>
@@ -65,15 +65,94 @@ structure.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 <p>
-Early on, from a specification that never mentions the subject. The structure
-was already there.
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> is a way of writing data as subject&ndash;property&ndash;value
+statements. He reached that view early, even though RFC 2445 never mentions
+RDF: the structure was already there.
 </p>
 </div>
 
 <h2>63.1 Look for the structure that is already present</h2>
 
+<h3>What an iCalendar line looks like</h3>
+
 <p>
-The method is stated before the findings and is the transferable part:
+iCalendar is plain text, one property per line. Two examples quoted in the
+note attach a file to an event:
+</p>
+
+<pre><code>ATTACH;FMTTYPE=image/basic;ENCODING=BASE64;VALUE=BINARY:MIICajCC&hellip;
+ATTACH:http://xyz.com/public/quarterly-report.doc</code></pre>
+
+<p>
+The name before the first semicolon is the <em>property</em>. The
+<code>NAME=value</code> pairs after it are its <em>parameters</em>. What
+follows the colon is the <em>value</em>: the file encoded as text, or its
+address.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
+     aria-labelledby="fig63-1-t fig63-1-d">
+  <title id="fig63-1-t">One line, taken apart, then read as a graph</title>
+  <desc id="fig63-1-d">The iCalendar line ATTENDEE;DELEGATED-TO="mailto:a@y.com";DELEGATED-FROM="mailto:b@y.com":c@y.com
+  is bracketed into its property, parameters and value. Below, the same data
+  is drawn as a graph: an event has an attendee, and that attendee node has
+  three arrows, value to c@y.com, delegatedTo to a@y.com and delegatedFrom to
+  b@y.com. The line does not say which address goes to the meeting.</desc>
+
+  <text x="67" y="40" class="t-mono">ATTENDEE</text>
+  <text x="127" y="40" class="t-mono">;DELEGATED-TO="mailto:a@y.com";DELEGATED-FROM="mailto:b@y.com"</text>
+  <text x="592" y="40" class="t-mono">:c@y.com</text>
+
+  <path class="ln-mut" d="M 67 50 L 67 56 L 124 56 L 124 50"/>
+  <path class="ln-mut" d="M 131 50 L 131 56 L 589 56 L 589 50"/>
+  <path class="ln-mut" d="M 600 50 L 600 56 L 652 56 L 652 50"/>
+  <text x="96" y="76" class="t-caps" text-anchor="middle">property</text>
+  <text x="360" y="76" class="t-caps" text-anchor="middle">parameters</text>
+  <text x="626" y="76" class="t-caps" text-anchor="middle">value</text>
+
+  <line class="ln-dash" x1="24" y1="96" x2="696" y2="96"/>
+  <text x="24" y="118" class="t-sm t-it">the same data as a graph</text>
+
+  <rect class="box" x="40" y="172" width="110" height="36" rx="4"/>
+  <text x="95" y="195" text-anchor="middle">an event</text>
+
+  <path class="ln-accent" d="M 150 190 L 252 190"/>
+  <path d="M 260 190 L 251 186 L 251 194 Z" fill="#1c5a7a"/>
+  <text x="204" y="181" class="t-sm" text-anchor="middle">attendee</text>
+
+  <rect class="box-plain" x="262" y="172" width="128" height="36" rx="18"/>
+  <text x="326" y="195" class="t-it" text-anchor="middle">an attendee</text>
+
+  <path class="ln-accent" d="M 390 190 L 420 190 L 420 140 L 530 140"/>
+  <path class="ln-accent" d="M 420 190 L 530 190"/>
+  <path class="ln-accent" d="M 420 190 L 420 240 L 530 240"/>
+  <path d="M 538 140 L 529 136 L 529 144 Z" fill="#1c5a7a"/>
+  <path d="M 538 190 L 529 186 L 529 194 Z" fill="#1c5a7a"/>
+  <path d="M 538 240 L 529 236 L 529 244 Z" fill="#1c5a7a"/>
+  <text x="482" y="132" class="t-sm" text-anchor="middle">value</text>
+  <text x="482" y="182" class="t-sm" text-anchor="middle">delegatedTo</text>
+  <text x="482" y="232" class="t-sm" text-anchor="middle">delegatedFrom</text>
+
+  <rect class="box-green" x="540" y="125" width="130" height="30" rx="4"/>
+  <text x="605" y="145" class="t-mono" text-anchor="middle">c@y.com</text>
+  <rect class="box-green" x="540" y="175" width="130" height="30" rx="4"/>
+  <text x="605" y="195" class="t-mono" text-anchor="middle">a@y.com</text>
+  <rect class="box-green" x="540" y="225" width="130" height="30" rx="4"/>
+  <text x="605" y="245" class="t-mono" text-anchor="middle">b@y.com</text>
+
+  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">Which of the three addresses goes to the meeting? The line does not say.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 63.1</span>
+Each parameter becomes an arrow of its own, beside one for the value. The
+example is the note&#8217;s own; Berners-Lee could only assume a@y.com
+attends, so the meaning was never pinned down.</figcaption>
+</figure>
+
+<h3>The method</h3>
+
+<p>
+The method is the transferable part:
 </p>
 
 <blockquote>
@@ -83,73 +162,85 @@ one looks at first for the natural structureo fthe language.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig63-1-t fig63-1-d">
-  <title id="fig63-1-t">A calendar format read as a graph</title>
-  <desc id="fig63-1-d">A calendar contains components, which are natural
-  types. The components have properties, each of which has an implicit value
-  and a set of named parameters. Parameters map directly to properties of the
-  property, which is the structure the format already had.</desc>
+<svg class="dia" viewBox="0 24 720 176" width="720" height="176" role="img"
+     aria-labelledby="fig63-2-t fig63-2-d">
+  <title id="fig63-2-t">A calendar format read as a graph</title>
+  <desc id="fig63-2-d">A calendar contains components such as events, tasks
+  and journal entries, which are natural types. A component has properties,
+  which iCalendar also calls properties. Each property has an implicitly
+  named value and a set of named parameters, and the parameters map directly
+  to further properties.</desc>
 
-  <rect class="box" x="24" y="40" width="150" height="50" rx="4"/>
-  <text x="99" y="62" class="t-caps" text-anchor="middle">a calendar</text>
-  <text x="99" y="80" class="t-sm" text-anchor="middle">a set of components</text>
+  <rect class="box" x="24" y="40" width="140" height="50" rx="4"/>
+  <text x="94" y="62" class="t-caps" text-anchor="middle">a calendar</text>
+  <text x="94" y="80" class="t-sm" text-anchor="middle">a set of components</text>
 
-  <path class="ln-mut" d="M 174 65 L 204 65"/>
-  <rect class="box" x="206" y="40" width="150" height="50" rx="4"/>
-  <text x="281" y="62" class="t-caps" text-anchor="middle">a component</text>
-  <text x="281" y="80" class="t-sm" text-anchor="middle">event, task, journal</text>
-  <text x="281" y="108" class="t-sm t-it" text-anchor="middle">these are natural types</text>
+  <path class="ln-accent" d="M 164 65 L 214 65"/>
+  <path d="M 222 65 L 213 61 L 213 69 Z" fill="#1c5a7a"/>
+  <text x="193" y="56" class="t-sm" text-anchor="middle">contains</text>
 
-  <path class="ln-mut" d="M 356 65 L 386 65"/>
-  <rect class="box-warm" x="388" y="40" width="150" height="50" rx="4"/>
-  <text x="463" y="62" class="t-caps" text-anchor="middle" fill="#a07d47">a property</text>
-  <text x="463" y="80" class="t-sm" text-anchor="middle">already called that</text>
+  <rect class="box" x="224" y="40" width="140" height="50" rx="4"/>
+  <text x="294" y="62" class="t-caps" text-anchor="middle">a component</text>
+  <text x="294" y="80" class="t-sm" text-anchor="middle">event, task, journal</text>
+  <text x="294" y="110" class="t-sm t-it" text-anchor="middle">natural types</text>
 
-  <path class="ln-mut" d="M 463 90 L 463 116 M 396 116 L 620 116 M 396 116 L 396 138 M 620 116 L 620 138"/>
-  <rect class="box-green" x="330" y="138" width="132" height="44" rx="4"/>
-  <text x="396" y="166" class="t-sm" text-anchor="middle">a value</text>
-  <rect class="box-green" x="554" y="138" width="132" height="44" rx="4"/>
-  <text x="620" y="160" class="t-sm" text-anchor="middle">named parameters</text>
-  <text x="620" y="176" class="t-sm" text-anchor="middle">&#8594; more properties</text>
+  <path class="ln-accent" d="M 364 65 L 414 65"/>
+  <path d="M 422 65 L 413 61 L 413 69 Z" fill="#1c5a7a"/>
+  <text x="393" y="56" class="t-sm" text-anchor="middle">has</text>
 
-  <line class="ln-mut" x1="24" y1="212" x2="696" y2="212"/>
-  <text x="24" y="236" class="t-sm">Two exceptions where a value is not atomic:</text>
-  <text x="60" y="262" class="t-sm">a value typed as an identifier, which implicitly means fetch what it names</text>
-  <text x="60" y="284" class="t-sm">a recurrence rule, which is a string that turns out to hold attribute-value pairs</text>
-  <text x="24" y="310" class="t-sm t-it">The second is the whole model reappearing inside a field, escaped into a string.</text>
+  <rect class="box-warm" x="424" y="40" width="140" height="50" rx="4"/>
+  <text x="494" y="62" class="t-caps" text-anchor="middle" style="fill:#b08d57">a property</text>
+  <text x="494" y="80" class="t-sm" text-anchor="middle">iCalendar&#8217;s own word too</text>
+
+  <path class="ln-accent" d="M 494 90 L 494 118 M 404 118 L 620 118 M 404 118 L 404 136 M 620 118 L 620 136"/>
+  <path d="M 404 144 L 400 135 L 408 135 Z" fill="#1c5a7a"/>
+  <path d="M 620 144 L 616 135 L 624 135 Z" fill="#1c5a7a"/>
+  <text x="502" y="108" class="t-sm">has</text>
+
+  <rect class="box-green" x="338" y="146" width="132" height="44" rx="4"/>
+  <text x="404" y="166" class="t-sm" text-anchor="middle">a value</text>
+  <text x="404" y="182" class="t-sm" text-anchor="middle">implicitly named</text>
+  <rect class="box-green" x="554" y="146" width="132" height="44" rx="4"/>
+  <text x="620" y="166" class="t-sm" text-anchor="middle">named parameters</text>
+  <text x="620" y="182" class="t-sm" text-anchor="middle">&#8594; more properties</text>
 </svg>
-<figcaption><span class="fig-label">Figure 63.1</span>
-Berners-Lee&#8217;s verdict on the mapping: apart from the noted exceptions, the
-translation leads to a set of fairly logically defined properties which could
-form the format&#8217;s contribution to the data Web.</figcaption>
+<figcaption><span class="fig-label">Figure 63.2</span>
+The nesting iCalendar already has. Berners-Lee&#8217;s verdict: apart from the
+noted exceptions, the translation leads to a set of fairly logically defined
+properties which could form the format&#8217;s contribution to the data Web.</figcaption>
 </figure>
+
+<p>
+Two values are not simple. One typed as an address (the second example
+above) implicitly means fetch what it names. A recurrence rule is a string
+holding its own attribute&ndash;value pairs: the whole model escaped into a
+field.
+</p>
 
 <h2>63.2 Five findings, each generalisable</h2>
 
 <p>
-The summary lists what he noticed, and every item is a failure mode that
-recurs in other specifications.
+Each item in his summary is a failure mode that recurs elsewhere.
 </p>
 
 <table>
-<tr><th>Finding</th><th>The general problem</th></tr>
-<tr><td>Full of extension prefixes and registries</td><td>A private extension mechanism, rebuilt because none was inherited</td></tr>
-<tr><td>No summary of properties with their domains and ranges</td><td>The model exists and is never written down in one place</td></tr>
-<tr><td>A value typed as an identifier implicitly means fetch it</td><td>Behaviour visible only in the examples, not in the text</td></tr>
-<tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td>Describing a relationship as a thing when it is a relationship</td></tr>
-<tr><td>Encoding treated as a property of an object</td><td>It is a relation between two objects, which is Chapter 38</td></tr>
+<tr><th>Finding</th><th>Example</th><th>The general problem</th></tr>
+<tr><td>Full of extension prefixes and registries</td><td>Private <code>X-</code> names; IANA tokens</td><td>An extension mechanism rebuilt because none was inherited</td></tr>
+<tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
+<tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
+<tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
+<tr><td>Encoding treated as a property of an object</td><td><code>ENCODING=BASE64</code></td><td>It relates two objects (Chapter 38)</td></tr>
 </table>
 
 <p>
-The second is the one that costs most. Berners-Lee says plainly that a
-summary of properties with their domains and ranges would make the
-specification much clearer, and it is missing because prose specifications
-describe fields where they are used rather than collecting them.
+A property&#8217;s <em>domain</em> is the kind of thing it can describe; its
+<em>range</em> is the kind of value it takes. A summary of them, he says,
+would make the specification much clearer. Prose specifications rarely have
+one, because they describe fields where they are used.
 </p>
 
 <p>
-The third is a specific and serious kind of defect:
+The third finding is a serious kind of defect:
 </p>
 
 <blockquote>
@@ -159,16 +250,113 @@ clear from the spec but is assumed by the examples.
 </blockquote>
 
 <p>
-A network request is triggered by a value&#8217;s type, and the only place that is
-visible is in an example. Chapter 21&#8217;s rule about specifying meaning rather
-than behaviour is being broken in the opposite direction: behaviour is
-happening and nothing specifies it.
+To <a class="gl-ref" href="../glossary.html#dereference">dereference</a> an address is to fetch what it names. A network request is
+triggered by a value&#8217;s type, visible only in an example: behaviour
+happens and nothing specifies it, the reverse of Chapter 21&#8217;s rule.
 </p>
+
+<p>
+The last two findings are one mistake. <em>Reification</em> means turning a
+statement into a thing that can itself be described. The note calls
+<code>RELTYPE=SIBLING</code> a classic wanton reification: just say
+<code>SIBLING</code>. Similarly, an encoding relates the attached file to the
+string that carries it.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+     aria-labelledby="fig63-3-t fig63-3-d">
+  <title id="fig63-3-t">Wanton reification and encoding, before and after</title>
+  <desc id="fig63-3-d">Two before-and-after pairs. (a) RELATED-TO with
+  RELTYPE=SIBLING turns the relationship into a node with a value arrow to
+  event B and a reltype arrow to SIBLING; written as SIBLING, it is a single
+  arrow from event A to event B. (b) ATTACH with ENCODING=BASE64 hangs the
+  encoding off the attachment beside its value; written with base64 as a
+  relation, a single base64 arrow runs from the attachment to the
+  string.</desc>
+
+  <text x="24" y="22" class="t-caps">before</text>
+  <text x="400" y="22" class="t-caps">after</text>
+  <line class="ln-dash" x1="382" y1="10" x2="382" y2="300"/>
+
+  <!-- row a -->
+  <text x="24" y="48" class="t-mono">(a) RELATED-TO;RELTYPE=SIBLING:&#8230;</text>
+  <text x="400" y="48" class="t-mono">SIBLING:&#8230;</text>
+
+  <rect class="box" x="24" y="70" width="72" height="28" rx="4"/>
+  <text x="60" y="89" text-anchor="middle">event A</text>
+  <path class="ln-accent" d="M 96 84 L 154 84"/>
+  <path d="M 162 84 L 153 80 L 153 88 Z" fill="#1c5a7a"/>
+  <text x="128" y="76" class="t-sm" text-anchor="middle">related-to</text>
+  <rect class="box-warm" x="162" y="70" width="90" height="28" rx="14"/>
+  <text x="207" y="89" class="t-it" text-anchor="middle">a relation</text>
+  <path class="ln-accent" d="M 252 84 L 294 84"/>
+  <path d="M 302 84 L 293 80 L 293 88 Z" fill="#1c5a7a"/>
+  <text x="275" y="76" class="t-sm" text-anchor="middle">value</text>
+  <rect class="box" x="302" y="70" width="64" height="28" rx="4"/>
+  <text x="334" y="89" text-anchor="middle">event B</text>
+  <path class="ln-accent" d="M 207 98 L 207 118"/>
+  <path d="M 207 126 L 203 117 L 211 117 Z" fill="#1c5a7a"/>
+  <text x="215" y="116" class="t-sm">reltype</text>
+  <rect class="box-plain" x="167" y="126" width="80" height="24" rx="4"/>
+  <text x="207" y="142" class="t-mono" text-anchor="middle">SIBLING</text>
+
+  <rect class="box" x="400" y="70" width="72" height="28" rx="4"/>
+  <text x="436" y="89" text-anchor="middle">event A</text>
+  <path class="ln-accent" d="M 472 84 L 594 84"/>
+  <path d="M 602 84 L 593 80 L 593 88 Z" fill="#1c5a7a"/>
+  <text x="536" y="76" class="t-sm" text-anchor="middle">sibling</text>
+  <rect class="box" x="602" y="70" width="72" height="28" rx="4"/>
+  <text x="638" y="89" text-anchor="middle">event B</text>
+
+  <line class="ln-mut" x1="24" y1="168" x2="696" y2="168"/>
+
+  <!-- row b -->
+  <text x="24" y="196" class="t-mono">(b) ATTACH;ENCODING=BASE64:MIICaj&#8230;</text>
+  <text x="400" y="196" class="t-mono">&lt;base64&gt;MIICaj&#8230;&lt;/base64&gt;</text>
+
+  <rect class="box" x="24" y="214" width="64" height="28" rx="4"/>
+  <text x="56" y="233" text-anchor="middle">event</text>
+  <path class="ln-accent" d="M 88 228 L 144 228"/>
+  <path d="M 152 228 L 143 224 L 143 232 Z" fill="#1c5a7a"/>
+  <text x="119" y="220" class="t-sm" text-anchor="middle">attach</text>
+  <rect class="box-warm" x="152" y="214" width="100" height="28" rx="14"/>
+  <text x="202" y="233" class="t-it" text-anchor="middle">attachment</text>
+  <path class="ln-accent" d="M 252 228 L 294 228"/>
+  <path d="M 302 228 L 293 224 L 293 232 Z" fill="#1c5a7a"/>
+  <text x="275" y="220" class="t-sm" text-anchor="middle">value</text>
+  <rect class="box-green" x="302" y="214" width="68" height="28" rx="4"/>
+  <text x="336" y="233" class="t-mono" text-anchor="middle">MIICaj&#8230;</text>
+  <path class="ln-accent" d="M 202 242 L 202 262"/>
+  <path d="M 202 270 L 198 261 L 206 261 Z" fill="#1c5a7a"/>
+  <text x="210" y="260" class="t-sm">encoding</text>
+  <rect class="box-plain" x="162" y="270" width="80" height="24" rx="4"/>
+  <text x="202" y="286" class="t-mono" text-anchor="middle">BASE64</text>
+
+  <rect class="box" x="400" y="214" width="64" height="28" rx="4"/>
+  <text x="432" y="233" text-anchor="middle">event</text>
+  <path class="ln-accent" d="M 464 228 L 520 228"/>
+  <path d="M 528 228 L 519 224 L 519 232 Z" fill="#1c5a7a"/>
+  <text x="495" y="220" class="t-sm" text-anchor="middle">attach</text>
+  <rect class="box-plain" x="528" y="214" width="100" height="28" rx="14"/>
+  <text x="578" y="233" class="t-it" text-anchor="middle">attachment</text>
+  <path class="ln-accent" d="M 578 242 L 578 262"/>
+  <path d="M 578 270 L 574 261 L 582 261 Z" fill="#1c5a7a"/>
+  <text x="586" y="260" class="t-sm">base64</text>
+  <rect class="box-green" x="538" y="270" width="80" height="24" rx="4"/>
+  <text x="578" y="286" class="t-mono" text-anchor="middle">MIICaj&#8230;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 63.3</span>
+Both examples are from the note. On the left, a relationship becomes a box
+with a type label, and the encoding hangs off the attachment as if it were a
+fact about it. On the right, each is drawn as what it is: one arrow.</figcaption>
+</figure>
 
 <h2>63.3 The line that stops general parsing</h2>
 
 <p>
-One quoted sentence from the specification draws the sharpest reaction:
+One sentence of the specification draws the sharpest reaction. ABNF is the
+grammar notation internet standards (RFCs) use:
 </p>
 
 <blockquote>
@@ -179,66 +367,64 @@ difficult.
 </blockquote>
 
 <p>
-If every field defines its own grammar for its own parameters, no program can
-parse the format without knowing every field. There is no generic reader, only
-readers that implement the whole specification, and each new field is a change
-to every one of them.
+If every field defines its own grammar, a program cannot even tell where
+one parameter ends without knowing the property it is reading. There is no
+generic reader, only readers that implement the whole specification, and
+each new field is a change to every one of them.
 </p>
 
 <p>
-Berners-Lee&#8217;s response is half exasperation and half hope, and he names the
-ancestor:
+He names the ancestor:
 </p>
 
 <blockquote>
 The only hope is that in fact that it not true and there is more consistency
 than this line leads you to believe! This sounds like a remake of the RFC822
-problem
+problem which HTTP has in spades: One parser per page of the spec.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 
 <p>
-The mail header problem, where each header has its own syntax and general
-processing is impossible, appears in Chapter 32 as a symptom of a missing
-model. Here it is the same defect, reproduced in a format designed thirty
-years later.
+RFC 822, the 1982 email-header standard, gives each header its own syntax;
+Chapter 32 treats that as a symptom of a missing model. Here the defect
+reappears in a format designed sixteen years later.
 </p>
 
 <h2>63.4 The absence that worries him most</h2>
 
 <p>
-The closing observation in the summary is not about syntax at all:
+The summary closes on something other than syntax:
 </p>
 
 <blockquote>
 I am concerned that I have not found very much protocol defining what how
 agents interact, or what a message containing a calendar entry means.
+But maybe that is elsewhere in the spec.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 
 <p>
-A format for describing a meeting, and nothing saying what it means to send
-one to somebody. That is the gap Chapter 61 names and Chapter 62 proposes
-filling, found in the wild, in the one application where everyone has
-experienced the consequences.
+He was unsure, and the rules were in fact in a companion document. But the
+point stands: a format describing a meeting says nothing, by itself, about
+what sending one means. That is the gap Chapters 61 and 62 address, found in
+an application where everyone has felt the consequences.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The mapping was built.</strong> An <a class="gl-ref" href="../glossary.html#rdf">RDF</a> calendar workspace, which
+<li><strong>The mapping was built.</strong> An RDF calendar workspace, which
 the note&#8217;s own preface mentions, began in late 2002 with running code,
 example data and schemas.</li>
-<li><strong>The scheduling protocol existed and did not help.</strong>
-Companion specifications for scheduling were standardised, and calendar
-interoperability failures remain among the most familiar in computing, which
-is the concern of section 63.4.</li>
-<li><strong>Per-property grammars persisted.</strong> The format is still
-parsed by readers that know every property, and extensions still require
-changes to each.</li>
-<li><strong>Recurrence remained the hard part.</strong> The nested rule
-Berners-Lee flags as a structure escaped into a string is still where
-calendar implementations disagree most.</li>
+<li><strong>The protocol was next door.</strong> It was in a companion
+RFC (iTIP, RFC 2446, 1998), revised as RFC 5546 in 2009; CalDAV (RFC 4791,
+2007) added server access.</li>
+<li><strong>The format was revised, not restructured.</strong> RFC 5545
+(2009) replaced RFC 2445 and kept per-property parameters.</li>
+<li><strong>XML and JSON forms arrived.</strong> xCal (RFC 6321, 2011) and
+jCal (RFC 7265, 2014), the kind of translation he was evaluating.</li>
+<li><strong>The note joined the series in 2014,</strong> its preface says,
+because of later work on RDF, iCalendar and vCard.</li>
 </ul>
 </div>
 
@@ -266,13 +452,13 @@ What would it take to move it into the text?</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.3</span>
-Per-property grammars make general parsing impossible. Name one benefit they
-provide, and say whether it is worth the cost.</p>
+Rewrite <code>RELATED-TO;RELTYPE=PARENT</code> without reification, as in
+Figure 63.3.</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.4</span>
-A format says what a meeting is and not what sending one means. Write the
-missing sentence.</p>
+Alice emails Bob an event. In one sentence each, say what Bob&#8217;s calendar
+should do if he accepts, and what Alice&#8217;s should do.</p>
 </div>
 </details>
 

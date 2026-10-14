@@ -49,12 +49,22 @@
 a Design Issues note by Tim Berners-Lee, 2009-08-27.
 <a class="source-link" href="https://www.w3.org/DesignIssues/WebServices.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+In 2002 a web service meant one firm&#8217;s program sending <a class="gl-ref" href="../glossary.html#xml">XML</a> messages over
+<a class="gl-ref" href="../glossary.html#http">HTTP</a> to another&#8217;s. Berners-Lee calls the word Web a misnomer, since these
+exchanges drop the shared information space. What business messages need is
+accountability, a record either side can produce years later. A central
+directory of services is optional, not the centre.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume VI closes with the note Berners-Lee wrote in October 2002 about the
-technology everyone was excited by, and his first move is to object to its
-name.
+Volume VI closes with Berners-Lee&#8217;s October 2002 note on the
+technology of the moment, and his first move is to object to its name.
 </p>
 <blockquote>
 The Web in Web Services is, from the first point, a misuse: the term Internet
@@ -62,32 +72,30 @@ Services would be more appropriate.
 <cite>Web Services, 2002</cite>
 </blockquote>
 <p>
-The complaint is not pedantry. The whole note is about what the word Web is
-supposed to mean, and what is lost when a system built on Web protocols
-abandons the thing that made them work.
+The complaint is not pedantry: the note asks what is lost when a system
+built on Web protocols abandons the thing that made them work.
 </p>
 </div>
 
 <h2>65.1 Three common themes</h2>
 
 <p>
-He begins by summarising what everyone agreed on, since little else was
-agreed:
+He begins with what everyone agreed on. A quasi-static information space is
+the Web of Chapter 2: pages at addresses that change only now and then.
+Enterprises are businesses.
 </p>
 
 <table>
 <tr><th>Theme</th><th>What it implies</th></tr>
-<tr><td>A departure from a quasi-static information space to one where interactions are primary</td><td>The model of Chapter 61, changing under everyone</td></tr>
-<tr><td>Use of existing Web standards as building blocks</td><td>Well understood and well debugged, so worth reusing</td></tr>
-<tr><td>A focus on operations within and between enterprises</td><td>What makes the requirements different</td></tr>
+<tr><td>A departure from a quasi-static information space to one where interactions are primary</td><td>Messages, not pages, become what matters (the trend of Chapter 61)</td></tr>
+<tr><td>Use of existing Web standards as building blocks</td><td>HTTP and XML are well understood and well debugged, so worth reusing</td></tr>
+<tr><td>A focus on operations within and between enterprises</td><td>Firms that do not trust each other must prove what was sent</td></tr>
 </table>
 
 <p>
-The first point is the one that earns the objection to the name. A system
-where interactions rather than documents are primary is not the Web, whatever
-it is built from. The second is why the Web&#8217;s protocols were used anyway. And
-the third produces the requirement that separates this from ordinary remote
-procedure calls:
+The first theme earns the objection to the name. The third separates this
+from ordinary remote procedure calls, in which one program asks another
+machine to run a function and return the result:
 </p>
 
 <blockquote>
@@ -98,11 +106,60 @@ reliable transmission.
 </blockquote>
 
 <p>
-Reliability is a property of the network. Accountability is a property of a
-record that survives the exchange and can be produced afterwards by either
-party. That is the paper trail of Chapter 62, and it is the requirement that
-distinguishes a business message from a function call.
+TCP, the protocol under HTTP, already makes delivery reliable, but keeps
+nothing afterwards.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig65-1-t fig65-1-d">
+  <title id="fig65-1-t">Reliable versus accountable</title>
+  <desc id="fig65-1-d">Two lanes. In the reliability lane, provided by TCP, a
+  message is sent, arrives once and in order, and the connection closes with
+  nothing kept. In the accountability lane, a message is sent, a signed
+  receipt is stored by both parties, and seven years later the receipt is
+  shown to the tax inspector.</desc>
+  <defs>
+    <marker id="fig65-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig65-1-arrm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="t-caps">reliability (tcp)</text>
+  <rect class="box" x="24" y="42" width="150" height="44" rx="4"/>
+  <text x="99" y="69" text-anchor="middle">message sent</text>
+  <path class="ln" d="M 174 64 L 232 64" marker-end="url(#fig65-1-arr)"/>
+  <rect class="box" x="234" y="42" width="210" height="44" rx="4"/>
+  <text x="339" y="69" text-anchor="middle">arrives once, in order</text>
+  <path class="ln" d="M 444 64 L 502 64" marker-end="url(#fig65-1-arr)"/>
+  <rect class="box-plain" x="504" y="42" width="192" height="44" rx="4"/>
+  <text x="600" y="60" text-anchor="middle">connection closes</text>
+  <text x="600" y="77" class="t-sm" text-anchor="middle">nothing is kept</text>
+
+  <text x="24" y="124" class="t-caps">accountability</text>
+  <rect class="box" x="24" y="138" width="150" height="50" rx="4"/>
+  <text x="99" y="168" text-anchor="middle">message sent</text>
+  <path class="ln" d="M 174 163 L 212 163" marker-end="url(#fig65-1-arr)"/>
+  <rect class="box-warm" x="214" y="138" width="200" height="50" rx="4"/>
+  <text x="314" y="158" text-anchor="middle">signed receipt</text>
+  <text x="314" y="176" class="t-sm" text-anchor="middle">stored by both parties</text>
+  <path class="ln-dash" d="M 414 163 L 522 163" marker-end="url(#fig65-1-arrm)"/>
+  <text x="468" y="153" class="t-sm t-it" text-anchor="middle">7 years later</text>
+  <rect class="box-warm" x="524" y="138" width="172" height="50" rx="4"/>
+  <text x="610" y="158" text-anchor="middle">receipt shown to</text>
+  <text x="610" y="176" text-anchor="middle">the tax inspector</text>
+
+  <text x="360" y="226" class="t-sm t-it" text-anchor="middle">&#8220;show the tax man the acknowledgement of receipt 7 years later&#8221;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 65.1</span>
+Reliability ends when the message arrives. Accountability needs a record that
+outlives the exchange.</figcaption>
+</figure>
 
 <h2>65.2 What the vendors wanted</h2>
 
@@ -118,23 +175,98 @@ capability in a way which makes it interoperable with other systems.
 </blockquote>
 
 <p>
-Not to build something new: to wrap what already existed. That motive
-predicts the shape of the result, which is a stack of specifications for
-describing, securing, routing and transacting things that were already being
-described, secured, routed and transacted, now with a common envelope.
+Not to build something new: to wrap what already existed, in a common
+envelope called SOAP, an XML format for sending a message over HTTP. Around
+it grew a stack of specifications for securing, routing and transacting what
+was already secured, routed and transacted.
 </p>
+
+<h3>Two ways to send a message</h3>
+
+<p>
+SOAP, he notes, works in two modes: the XML either carries the parameters of
+a remote procedure call, packed and unpacked by stubs (local stand-ins for the
+remote function), or carries a whole document for the receiver to process.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig65-2-t fig65-2-d">
+  <title id="fig65-2-t">One envelope, two modes</title>
+  <desc id="fig65-2-d">A SOAP envelope at the top leads to two modes. In RPC
+  mode, a call reserve(flight, date) is marshalled into XML, and a stub at the
+  far end unpacks it into typed parameters: the remoteness is hidden but the
+  interface is rigid. In document mode, an order document carries a flight, a
+  date and an extra seat element from another namespace, and the receiver
+  works on the document as a whole: the communication is visible and the
+  format can be extended.</desc>
+  <defs>
+    <marker id="fig65-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box-plain" x="230" y="12" width="260" height="36" rx="4"/>
+  <text x="360" y="35" text-anchor="middle">SOAP envelope, XML over HTTP</text>
+  <path class="ln-mut" d="M 290 48 L 200 66 M 430 48 L 520 66"/>
+  <line class="ln-mut" x1="360" y1="64" x2="360" y2="292"/>
+
+  <text x="184" y="84" class="t-caps" text-anchor="middle">rpc mode</text>
+  <rect class="box" x="74" y="96" width="220" height="34" rx="4"/>
+  <text x="184" y="118" class="t-mono" text-anchor="middle">reserve(flight, date)</text>
+  <path class="ln" d="M 184 130 L 184 158" marker-end="url(#fig65-2-arr)"/>
+  <text x="196" y="149" class="t-sm">marshalled into XML</text>
+  <rect class="box" x="74" y="160" width="220" height="34" rx="4"/>
+  <text x="184" y="182" class="t-mono" text-anchor="middle">&lt;flight&gt; &lt;date&gt;</text>
+  <path class="ln" d="M 184 194 L 184 222" marker-end="url(#fig65-2-arr)"/>
+  <text x="196" y="213" class="t-sm">stub unpacks</text>
+  <rect class="box" x="74" y="224" width="220" height="34" rx="4"/>
+  <text x="184" y="246" text-anchor="middle">typed parameters</text>
+  <text x="184" y="284" class="t-sm t-it" text-anchor="middle">remoteness hidden; rigid</text>
+
+  <text x="536" y="84" class="t-caps" text-anchor="middle">document mode</text>
+  <rect class="box-plain" x="416" y="96" width="240" height="102" rx="4"/>
+  <text x="430" y="116" class="t-mono">&lt;order&gt;</text>
+  <text x="446" y="134" class="t-mono">&lt;flight&gt;&#8230;</text>
+  <text x="446" y="152" class="t-mono">&lt;date&gt;&#8230;</text>
+  <text x="446" y="170" class="t-mono" style="fill:#b08d57">&lt;x:seat&gt;&#8230;</text>
+  <text x="544" y="170" class="t-sm" style="fill:#b08d57">new namespace</text>
+  <text x="430" y="188" class="t-mono">&lt;/order&gt;</text>
+  <path class="ln" d="M 536 198 L 536 222" marker-end="url(#fig65-2-arr)"/>
+  <text x="548" y="214" class="t-sm">read as a whole</text>
+  <rect class="box" x="416" y="224" width="240" height="34" rx="4"/>
+  <text x="536" y="246" text-anchor="middle">receiver works on the document</text>
+  <text x="536" y="284" class="t-sm t-it" text-anchor="middle">communication visible; extensible</text>
+</svg>
+<figcaption><span class="fig-label">Figure 65.2</span>
+Document mode won because a document can grow, here by a new element,
+without breaking old readers.</figcaption>
+</figure>
+
+<blockquote>
+The document mode of SOAP seems to be getting the most traction in the
+ecommerce stack. This is not an accident. The XML mode is more flexible than
+the RPC mode.
+<cite>Web Services, 2002</cite>
+</blockquote>
 
 <h2>65.3 The discovery cloud</h2>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig65-1-t fig65-1-d">
-  <title id="fig65-1-t">What is essential, and what is not</title>
-  <desc id="fig65-1-d">The defining element is the interaction between a
+     aria-labelledby="fig65-3-t fig65-3-d">
+  <title id="fig65-3-t">What is essential, and what is not</title>
+  <desc id="fig65-3-d">The defining element is the interaction between a
   requester and a provider. Discovery is drawn as a cloud rather than a
   component, because it may or may not be used and is better understood as an
   interface to a wider world of data than as a module of the
-  architecture.</desc>
+  architecture. The W3C architecture diagram drew the three as a triangle;
+  Berners-Lee treats only the lower edge as essential.</desc>
+
+  <text x="24" y="34" class="t-sm t-it">W3C diagram: a triangle;</text>
+  <text x="24" y="52" class="t-sm t-it">Berners-Lee: only the lower edge</text>
+  <text x="24" y="70" class="t-sm t-it">is essential</text>
 
   <rect class="box" x="60" y="110" width="180" height="62" rx="4"/>
   <text x="150" y="136" class="t-caps" text-anchor="middle">requester</text>
@@ -148,23 +280,23 @@ described, secured, routed and transacted, now with a common envelope.
   <path d="M 468 126 L 480 132 L 468 138 Z" fill="#1c5a7a"/>
   <path class="ln-accent" d="M 480 152 L 248 152"/>
   <path d="M 252 146 L 240 152 L 252 158 Z" fill="#1c5a7a"/>
-  <text x="360" y="120" class="t-caps" text-anchor="middle" fill="#1c5a7a">interact</text>
-  <text x="360" y="182" class="t-sm" text-anchor="middle">this, and only this, is the essential element</text>
+  <text x="360" y="122" class="t-caps" text-anchor="middle">interact</text>
+  <text x="360" y="184" class="t-sm" text-anchor="middle">this, and only this, is the essential element</text>
 
   <path d="M 300 46 C 288 26 320 14 340 24 C 350 6 390 8 396 26
            C 420 22 434 44 418 56 C 420 70 396 78 380 70
            C 364 82 330 76 326 62 C 304 66 292 58 300 46 Z"
-        fill="#faf8f4" stroke="#c9b18c" stroke-width="1.3"/>
-  <text x="360" y="48" class="t-sm" text-anchor="middle" fill="#a07d47">discovery</text>
-  <path class="ln-dash" d="M 340 78 L 240 112 M 396 70 L 484 112"/>
-  <text x="360" y="92" class="t-sm t-it" text-anchor="middle" fill="#666">used sometimes, not always</text>
+        fill="#f8f5f0" stroke="#b08d57" stroke-width="1.3"/>
+  <text x="360" y="48" class="t-sm" text-anchor="middle" style="fill:#b08d57">discovery</text>
+  <path class="ln-dash" d="M 330 78 L 240 108 M 400 74 L 480 108"/>
+  <text x="448" y="40" class="t-sm t-it">used sometimes, not always</text>
 
   <line class="ln-mut" x1="24" y1="212" x2="696" y2="212"/>
   <text x="360" y="236" class="t-sm" text-anchor="middle">Drawn as a cloud rather than a box: it is not a module, and its boundary is not the architecture&#8217;s.</text>
   <text x="360" y="262" class="t-sm" text-anchor="middle">&#8220;They will become interface to a huge world of data and query services</text>
   <text x="360" y="282" class="t-sm" text-anchor="middle">which provide data about web services as well as many other things.&#8221;</text>
 </svg>
-<figcaption><span class="fig-label">Figure 65.1</span>
+<figcaption><span class="fig-label">Figure 65.3</span>
 Berners-Lee&#8217;s insistence that discovery is optional is the moment he declines
 to let the architecture become a closed triangle of requester, provider and
 registry.</figcaption>
@@ -173,75 +305,173 @@ registry.</figcaption>
 <p>
 Reducing the architecture to the interaction is the same move as Chapter 19:
 find the small interface everything else is built on, and refuse to let
-accessories into it. If discovery were essential, every party would need a
-registry, and the registry would be the centre.
+accessories into it.
+</p>
+
+<h3>Why a registry is the wrong centre</h3>
+
+<p>
+A registry is a directory where providers list services for others to look
+up; the one proposed was UDDI. Most services, he expects, will link partners
+who already know each other, and where discovery is needed UDDI has the wrong
+shape:
+</p>
+
+<blockquote>
+Problems with it are that it is centralized by design, both in the
+single-tree ontology, and in the design based fundamentally on a central
+registry, with inter-registry operation as a secondary thing.
+<cite>Web Services, 2002</cite>
+</blockquote>
+
+<p>
+If discovery were essential, that registry would become the centre. He would
+rather services were one more thing described on the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>, found by
+the same queries as catalogues, parts and contracts.
 </p>
 
 <h2>65.4 Where he sends the reader instead</h2>
 
 <p>
-The philosophy section does not argue. It lists earlier notes, and the list
-is a summary of the whole volume&#8217;s position on interaction.
+The philosophy section does not argue. It lists three earlier notes:
 </p>
 
-<p>
-It points at the axioms, for the information space concept. At Chapter 62, for
-the relationship between read-write state and read-only documents, with a
-question that is the best one-line statement of the issue: which came first,
-the journal or the database? And at Chapter 61, for the trend away from shared
-information spaces across many fields at once.
-</p>
+<table>
+<tr><th>Note</th><th>Year</th><th>What it contributes</th></tr>
+<tr><td>Axioms of Web Architecture (Chapter 2)</td><td>1990s</td><td>The information space concept</td></tr>
+<tr><td>Paper Trail (Chapter 62)</td><td>1999</td><td>Read-write state derived from read-only documents, and the question: which came first, the journal or the database?</td></tr>
+<tr><td>Conversations and State (Chapter 61)</td><td>1998</td><td>The trend, across many fields, away from shared information spaces</td></tr>
+</table>
 
 <p>
-The answer to the journal question is the paper trail&#8217;s answer. The journal
-came first, and the database is a convenience computed from it. A system that
-keeps only the database has thrown away the thing that makes accountability
-possible, which is precisely what section 65.1 says these systems require.
+Here he only asks the question. Chapter 62&#8217;s answer is that the journal
+came first and the database is computed from it; keeping only the database
+throws away what makes accountability possible.
+</p>
+
+<h3>The bank statement, told twice</h3>
+
+<p>
+Later he describes a bank two ways: as a monthly process, and as rules about
+which documents make which others valid.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
+     aria-labelledby="fig65-4-t fig65-4-d">
+  <title id="fig65-4-t">Process versus document</title>
+  <desc id="fig65-4-d">Left, the bank as a top-down procedure: cheques are
+  written and cheques are paid in, in parallel all month; then month end;
+  then charges and interest are assessed; then the statement is sent. Right,
+  the bank as rules over documents, read upwards: a matching transfer from
+  the payee bank makes a cheque cleared, a cleared cheque is a valid
+  transaction, and the statement lists the month&#8217;s valid
+  transactions.</desc>
+  <defs>
+    <marker id="fig65-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig65-4-arrg" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
+    </marker>
+  </defs>
+
+  <text x="184" y="24" class="t-caps" text-anchor="middle">process: a procedure, top down</text>
+  <text x="184" y="50" class="t-sm" text-anchor="middle">in parallel, all month</text>
+  <rect class="box" x="34" y="64" width="140" height="44" rx="4"/>
+  <text x="104" y="91" text-anchor="middle">cheques written</text>
+  <rect class="box" x="194" y="64" width="140" height="44" rx="4"/>
+  <text x="264" y="91" text-anchor="middle">cheques paid in</text>
+  <path class="ln" d="M 104 108 L 170 142" marker-end="url(#fig65-4-arr)"/>
+  <path class="ln" d="M 264 108 L 198 142" marker-end="url(#fig65-4-arr)"/>
+  <rect class="box" x="94" y="144" width="180" height="34" rx="4"/>
+  <text x="184" y="166" text-anchor="middle">month end</text>
+  <path class="ln" d="M 184 178 L 184 206" marker-end="url(#fig65-4-arr)"/>
+  <rect class="box" x="74" y="208" width="220" height="34" rx="4"/>
+  <text x="184" y="230" text-anchor="middle">charges, interest assessed</text>
+  <path class="ln" d="M 184 242 L 184 270" marker-end="url(#fig65-4-arr)"/>
+  <rect class="box" x="94" y="272" width="180" height="34" rx="4"/>
+  <text x="184" y="294" text-anchor="middle">statement sent</text>
+
+  <line class="ln-mut" x1="360" y1="12" x2="360" y2="312"/>
+
+  <text x="536" y="24" class="t-caps" text-anchor="middle">documents: rules, bottom up</text>
+  <text x="536" y="50" class="t-sm" text-anchor="middle">each rule fires when a new document arrives</text>
+  <rect class="box-green" x="411" y="64" width="250" height="44" rx="4"/>
+  <text x="536" y="82" text-anchor="middle">statement</text>
+  <text x="536" y="99" class="t-sm" text-anchor="middle">lists the month&#8217;s valid transactions</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 536 144 L 536 110" marker-end="url(#fig65-4-arrg)"/>
+  <rect class="box-green" x="411" y="144" width="250" height="34" rx="4"/>
+  <text x="536" y="166" text-anchor="middle">valid transaction</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 536 208 L 536 180" marker-end="url(#fig65-4-arrg)"/>
+  <rect class="box-green" x="411" y="208" width="250" height="34" rx="4"/>
+  <text x="536" y="230" text-anchor="middle">cheque cleared</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 536 272 L 536 244" marker-end="url(#fig65-4-arrg)"/>
+  <rect class="box-green" x="411" y="272" width="250" height="34" rx="4"/>
+  <text x="536" y="294" text-anchor="middle">matching transfer from payee bank</text>
+</svg>
+<figcaption><span class="fig-label">Figure 65.4</span>
+The same bank written as a procedure, or as rules over a paper trail, the
+idea Chapter 62 develops.</figcaption>
+</figure>
+
+<blockquote>
+The document-oriented attitude
+suggests the use of business rules systems triggered by the receipt of new
+information -- new documents, in this case new web services messages.
+<cite>Web Services, 2002</cite>
+</blockquote>
+
+<p>
+A flight shows the same split: the real constraint is that a
+confirmation needs a reserved flight, while a choreography, &#8220;a particular
+dance, if you like&#8221;, is just one sequence of calls that achieves it.
 </p>
 
 <h2>65.5 Why this closes the volume</h2>
 
 <p>
-Volume VI has described an architecture in which data is named, published,
-linked, written back, arranged, watched and reacted to, all in an open space
-that anyone may extend. This chapter is the contemporary alternative: the same
-protocols, used to build closed interactions between named parties, with the
-information space removed.
+Volume VI has described data that is named, published, linked, written back,
+watched and reacted to in an open space, like a feed anyone may subscribe to.
+This chapter is the alternative of its day: the same protocols carrying
+closed exchanges, like an order message only two firms can read.
 </p>
 
 <p>
-Berners-Lee treats it fairly, notes what it genuinely needs that the Web does
-not supply, and records his objection in the first paragraph. The two
-approaches were competing for the same attention in 2002 and the outcome is
-recorded below.
+He names the cost of keeping the two apart. Scripts that depend on exact XML
+message formats suffer &#8220;DTD fragility&#8221;, breaking when the format
+changes; descriptions with no <a class="gl-ref" href="../glossary.html#rdf">RDF</a> mapping make web services &#8220;instant
+legacy technoplogy for the semantic web&#8221; (his spelling). His objection
+came at the outset; the outcome is below.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The stack was built and then abandoned.</strong> The full suite of
-specifications was completed through the 2000s and largely displaced in the
-2010s by simpler resource-oriented interfaces exchanging JSON, which is closer
-to the architecture of Chapter 49 than to this one.</li>
-<li><strong>The objection to the name was vindicated.</strong> The term fell
-out of use, and what replaced it is called an interface or an endpoint, with
-no claim about the Web.</li>
-<li><strong>Discovery stayed optional, as predicted.</strong> The universal
-registry envisaged at the time was shut down in 2006, and service discovery is
-now done by configuration and by documentation.</li>
+<li><strong>The stack was built and then abandoned.</strong> SOAP 1.2 became a
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in June 2003 and WSDL 2.0 in 2007. In the 2010s the WS-*
+stack was largely displaced by simpler resource-oriented (REST) interfaces
+exchanging JSON, a lightweight data format.</li>
+<li><strong>The SOAP sense of the name faded.</strong> Amazon Web Services
+(2006) kept the phrase, but what this note meant by it is now usually called
+an API, reached at an endpoint (a <a class="gl-ref" href="../glossary.html#url">URL</a> programs send requests to).</li>
+<li><strong>Discovery stayed optional, as predicted.</strong> The public UDDI
+Business Registry, run by IBM, Microsoft and SAP, was shut in January 2006.
+Services are found through configuration and documentation.</li>
 <li><strong>Accountability came back separately.</strong> Signed messages,
-audit logs and event sourcing supply what section 65.1 says these exchanges
-require, arrived at independently of this architecture.</li>
+audit logs (append-only records of who did what) and event sourcing (state
+computed from a stored log of changes) supply what section 65.1 asks for.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The trend away from shared state is Chapter 61, and the trail that supplies
-accountability is Chapter 62. The information space concept is Chapter 2, and
-the remote-operations argument is Chapter 5. The alternative this volume has
-been describing is Chapters 49 to 58.
+Shared state is Chapter 61; the accountable trail, Chapter 62; the
+information space, Chapter 2; remote operations, Chapter 5. The alternative
+this volume describes is Chapters 49 to 58.
 </p>
 </div>
 
@@ -254,18 +484,16 @@ to provide the first.</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.2</span>
-Which came first, the journal or the database? Answer for a system you
-maintain, and say what you would lose by keeping only one.</p>
+In the bank example, which is the journal and which the database? What could
+the customer not prove from the balance alone?</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.3</span>
-Drawing discovery as a cloud keeps it optional. Name a system where an
-optional component became mandatory, and what that cost.</p>
+If discovery were mandatory, what would become the centre?</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.4</span>
-Repackaging existing capability predicts the shape of the result. Test that
-claim against a standards effort you have watched.</p>
+Name two things the WS-* stack re-specified that HTTP already did.</p>
 </div>
 </details>
 

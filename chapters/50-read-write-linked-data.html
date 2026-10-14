@@ -49,6 +49,16 @@
 a Design Issues note by Tim Berners-Lee, 2009-10-11.
 <a class="source-link" href="https://www.w3.org/DesignIssues/ReadWriteLinkedData.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Data on the Web can be written back as well as read. Send changes rather than
+whole files, and the server must refuse loudly when a change no longer
+applies. A &ldquo;data wiki&rdquo; treats every unused address as an empty
+document ready to fill.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -70,8 +80,8 @@ written a separate page on that topic! )
 <cite>Read-Write Linked Data, 2009</cite>
 </blockquote>
 <p>
-Twenty years of design notes, and no note arguing that the Web should be
-writable, because it had never occurred to him that anyone disagreed.
+The topic is why the Web should be writable. He takes that case as made
+elsewhere, in <cite>Weaving the Web</cite> and on the Read-Write Web blog.
 </p>
 </div>
 
@@ -91,55 +101,128 @@ to do at that place.
 <p>
 Not in an administrative interface, not by filing a request: at the place
 where the information is, by the person entitled to change it. The original
-Web was built as a collaborative space, and Berners-Lee&#8217;s word for the
-ambition is one he coined and trademarked in jest: intercreative.
+Web was built as a collaborative space. Berners-Lee&#8217;s word for the
+ambition is intercreative, which he marks, in jest, with a trademark sign.
 </p>
 
 <h2>50.2 Two ways to write</h2>
 
+<p>
+Linked data lives in documents, each with an address (a <a class="gl-ref" href="../glossary.html#uri">URI</a>). A document
+holds triples: single statements of the form subject, property, value, such
+as: Joe&#8217;s age is 65. The note&#8217;s example is a shared calendar,
+which several people edit at once.
+</p>
+
+<p>
+There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> PUT uploads a fresh copy of
+the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a> saying the
+age is 65, add one saying 66. Figure 50.1 shows what goes wrong with PUT.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 376" width="720" height="376" role="img"
+     aria-labelledby="fig50-1-t fig50-1-d">
+  <title id="fig50-1-t">How a whole-document write loses an edit</title>
+  <desc id="fig50-1-d">Alice and Bob both fetch a calendar document saying the
+  meeting is at 10:00. Bob writes back 11:00 and gets 200 OK. Alice then writes
+  back 10:00 plus a room number and also gets 200 OK. The server now holds
+  Alice's version, and Bob's change is gone without either being told.</desc>
+
+  <rect class="box-plain" x="40" y="16" width="100" height="36" rx="4"/>
+  <text x="90" y="39" text-anchor="middle">Alice</text>
+  <rect class="box" x="260" y="16" width="200" height="44" rx="4"/>
+  <text x="360" y="34" text-anchor="middle">Server</text>
+  <text x="360" y="52" class="t-sm" text-anchor="middle">document: meeting at 10:00</text>
+  <rect class="box-plain" x="580" y="16" width="100" height="36" rx="4"/>
+  <text x="630" y="39" text-anchor="middle">Bob</text>
+
+  <line class="ln-mut" x1="90" y1="52" x2="90" y2="300"/>
+  <line class="ln-mut" x1="360" y1="60" x2="360" y2="312"/>
+  <line class="ln-mut" x1="630" y1="52" x2="630" y2="300"/>
+
+  <text x="225" y="92" class="t-sm" text-anchor="middle">1  GET: copy says 10:00</text>
+  <line class="ln" x1="90" y1="100" x2="350" y2="100"/>
+  <path d="M 348 95 L 358 100 L 348 105 Z" fill="#2f4f4f"/>
+
+  <text x="495" y="132" class="t-sm" text-anchor="middle">2  GET: copy says 10:00</text>
+  <line class="ln" x1="630" y1="140" x2="370" y2="140"/>
+  <path d="M 372 135 L 362 140 L 372 145 Z" fill="#2f4f4f"/>
+
+  <text x="495" y="172" class="t-sm" text-anchor="middle">3  PUT meeting at 11:00</text>
+  <line class="ln" x1="630" y1="180" x2="370" y2="180"/>
+  <path d="M 372 175 L 362 180 L 372 185 Z" fill="#2f4f4f"/>
+  <text x="495" y="204" class="t-sm" text-anchor="middle">200 OK</text>
+  <line class="ln-dash" x1="360" y1="212" x2="620" y2="212"/>
+  <path d="M 618 207 L 628 212 L 618 217 Z" fill="#8a9a9a"/>
+
+  <text x="225" y="244" class="t-sm" text-anchor="middle">4  PUT meeting at 10:00 + room 4</text>
+  <line class="ln" x1="90" y1="252" x2="350" y2="252"/>
+  <path d="M 348 247 L 358 252 L 348 257 Z" fill="#2f4f4f"/>
+  <text x="225" y="276" class="t-sm" text-anchor="middle">200 OK</text>
+  <line class="ln-dash" x1="360" y1="284" x2="100" y2="284"/>
+  <path d="M 102 279 L 92 284 L 102 289 Z" fill="#8a9a9a"/>
+
+  <text x="495" y="262" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s edit vanished;</text>
+  <text x="495" y="280" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">neither was told.</text>
+
+  <rect class="box-warm" x="210" y="312" width="300" height="50" rx="4"/>
+  <text x="360" y="332" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">server now holds: meeting at 10:00 + room 4</text>
+  <text x="360" y="351" class="t-sm" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s change to 11:00 is gone</text>
+</svg>
+<figcaption><span class="fig-label">Figure 50.1</span>
+Whole-document writes succeed for both parties, and the later one silently
+erases the earlier. Each server reply is a plain success.</figcaption>
+</figure>
+
+<p>
+The note&#8217;s patch is written in <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update, the editing half of the
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> query language, and sent by HTTP POST to the document&#8217;s own URI. A
+typical patch is a DELETE followed by an INSERT.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig50-1-t fig50-1-d">
-  <title id="fig50-1-t">Replacing a document, and patching one</title>
-  <desc id="fig50-1-d">A whole-document write sends the new state and
-  silently overwrites anything another person changed. A patch describes the
-  change, so the server can detect that what was to be deleted is already
-  gone, and must then refuse rather than fail quietly.</desc>
+     aria-labelledby="fig50-2-t fig50-2-d">
+  <title id="fig50-2-t">Replacing a document, and patching one</title>
+  <desc id="fig50-2-d">A whole-document write sends the new state with PUT and
+  silently overwrites anything another person changed. A patch, sent with POST
+  as SPARQL Update, describes the change, so the server can detect that what
+  was to be deleted is already gone, and must then reply 409 Conflict rather
+  than fail quietly.</desc>
 
   <rect class="box-warm" x="24" y="30" width="310" height="164" rx="4"/>
-  <text x="179" y="56" class="t-caps" text-anchor="middle" fill="#a07d47">replace the document</text>
+  <text x="179" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">replace the document</text>
   <text x="179" y="82" class="t-sm" text-anchor="middle">send the whole new state</text>
-  <text x="179" y="110" class="t-mono" text-anchor="middle" font-size="12" fill="#a07d47">PUT</text>
+  <text x="179" y="110" class="t-mono" text-anchor="middle" style="fill:#b08d57">PUT</text>
   <text x="179" y="142" class="t-sm" text-anchor="middle">simple, and it overwrites</text>
   <text x="179" y="160" class="t-sm" text-anchor="middle">whatever anyone else did</text>
   <text x="179" y="182" class="t-sm t-it" text-anchor="middle">nobody is told</text>
 
   <rect class="box-green" x="386" y="30" width="310" height="164" rx="4"/>
-  <text x="541" y="56" class="t-caps" text-anchor="middle" fill="#3f6f3f">send the change</text>
+  <text x="541" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">send the change</text>
   <text x="541" y="82" class="t-sm" text-anchor="middle">delete this, then insert that</text>
-  <text x="541" y="110" class="t-mono" text-anchor="middle" font-size="12" fill="#3f6f3f">PATCH</text>
+  <text x="541" y="110" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">POST (SPARQL Update)</text>
   <text x="541" y="142" class="t-sm" text-anchor="middle">the delete can fail, because</text>
   <text x="541" y="160" class="t-sm" text-anchor="middle">someone got there first</text>
-  <text x="541" y="182" class="t-sm t-it" text-anchor="middle">and then you must be told</text>
+  <text x="541" y="182" class="t-sm t-it" text-anchor="middle">and then the writer is told</text>
 
-  <path class="ln" stroke="#5a8f5a" d="M 541 194 L 541 216"/>
-  <path d="M 536 210 L 541 222 L 546 210 Z" fill="#5a8f5a"/>
+  <path class="ln" style="stroke:#5a8f5a" d="M 541 194 L 541 212"/>
+  <path d="M 536 210 L 541 220 L 546 210 Z" fill="#5a8f5a"/>
   <rect class="box" x="386" y="222" width="310" height="48" rx="4"/>
-  <text x="541" y="244" class="t-mono" text-anchor="middle" font-size="12" fill="#1c5a7a">409 Conflict</text>
+  <text x="541" y="244" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">409 Conflict</text>
   <text x="541" y="262" class="t-sm" text-anchor="middle">the client backs the change out, or retries</text>
 
   <line class="ln-mut" x1="24" y1="288" x2="696" y2="288"/>
-  <text x="360" y="312" class="t-sm" text-anchor="middle">&#8220;it is very important that the delete does not fail silently.&#8221;</text>
+  <text x="360" y="312" class="t-sm" text-anchor="middle">The note: the delete must not fail silently; the server MUST return 409.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 50.1</span>
-The requirement is written in capitals in the original: the server MUST return
-the conflict status. A patch that quietly does nothing is worse than a refused
-write, because both parties believe they succeeded.</figcaption>
+<figcaption><span class="fig-label">Figure 50.2</span>
+The capitals are the note&#8217;s. A patch that quietly did nothing would
+leave both parties believing they had succeeded.</figcaption>
 </figure>
 
 <p>
-Berners-Lee then notices a second use for the same mechanism, and it is the
-kind of observation that comes only from implementing:
+Berners-Lee then notices a second use for the same mechanism:
 </p>
 
 <blockquote>
@@ -150,10 +233,67 @@ sequential numbers, and so on.
 </blockquote>
 
 <p>
-A conditional delete is a lock. Once a write can fail because the world moved,
-the same primitive gives you reservations, counters and every other thing that
-needs exactly one winner.
+Atomic means the delete and the insert happen together or not at all. Mutual
+exclusion means only one party can win. Figure 50.3 shows both uses.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 396" width="720" height="396" role="img"
+     aria-labelledby="fig50-3-t fig50-3-d">
+  <title id="fig50-3-t">The patch that fails, and the reservation it makes possible</title>
+  <desc id="fig50-3-d">Two clients patch a document saying age 65. Client A
+  deletes age 65 and inserts 66 and gets 200 OK. Client B tries to delete
+  age 65 and insert 67, but age 65 is already gone, so the server replies
+  409 Conflict and leaves the document unchanged. Below, two clients each try
+  to delete "room 4 is free" and insert a booking; A succeeds and B gets 409.</desc>
+
+  <rect class="box-plain" x="40" y="16" width="100" height="36" rx="4"/>
+  <text x="90" y="39" text-anchor="middle">Client A</text>
+  <rect class="box" x="270" y="16" width="180" height="44" rx="4"/>
+  <text x="360" y="34" text-anchor="middle">Server</text>
+  <text x="360" y="52" class="t-sm" text-anchor="middle">document: age 65</text>
+  <rect class="box-plain" x="580" y="16" width="100" height="36" rx="4"/>
+  <text x="630" y="39" text-anchor="middle">Client B</text>
+
+  <line class="ln-mut" x1="90" y1="52" x2="90" y2="236"/>
+  <line class="ln-mut" x1="360" y1="60" x2="360" y2="236"/>
+  <line class="ln-mut" x1="630" y1="52" x2="630" y2="236"/>
+
+  <text x="225" y="96" class="t-mono" text-anchor="middle" style="font-size:11.5px">1  DELETE {age 65} INSERT {age 66}</text>
+  <line class="ln" x1="90" y1="104" x2="350" y2="104"/>
+  <path d="M 348 99 L 358 104 L 348 109 Z" fill="#2f4f4f"/>
+  <text x="225" y="126" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">200 OK: age is now 66</text>
+  <line class="ln-dash" x1="360" y1="134" x2="100" y2="134"/>
+  <path d="M 102 129 L 92 134 L 102 139 Z" fill="#8a9a9a"/>
+
+  <text x="495" y="164" class="t-mono" text-anchor="middle" style="font-size:11.5px">2  DELETE {age 65} INSERT {age 67}</text>
+  <line class="ln" x1="630" y1="172" x2="370" y2="172"/>
+  <path d="M 372 167 L 362 172 L 372 177 Z" fill="#2f4f4f"/>
+  <text x="495" y="194" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">409 Conflict: age 65 is already gone</text>
+  <line class="ln-dash" x1="360" y1="202" x2="620" y2="202"/>
+  <path d="M 618 197 L 628 202 L 618 207 Z" fill="#8a9a9a"/>
+  <text x="495" y="226" class="t-sm t-it" text-anchor="middle">document unchanged; B backs out or retries</text>
+
+  <line class="ln-mut" x1="24" y1="252" x2="696" y2="252"/>
+  <text x="360" y="276" class="t-caps" text-anchor="middle">the same step as a reservation</text>
+
+  <rect class="box-green" x="24" y="290" width="320" height="92" rx="4"/>
+  <text x="184" y="310" class="t-sm" text-anchor="middle">client A sends</text>
+  <text x="184" y="330" class="t-mono" text-anchor="middle" style="font-size:11.5px">DELETE {room 4 is free}</text>
+  <text x="184" y="348" class="t-mono" text-anchor="middle" style="font-size:11.5px">INSERT {room 4 booked by A}</text>
+  <text x="184" y="370" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">arrives first: 200 OK, A has the room</text>
+
+  <rect class="box-warm" x="376" y="290" width="320" height="92" rx="4"/>
+  <text x="536" y="310" class="t-sm" text-anchor="middle">client B sends</text>
+  <text x="536" y="330" class="t-mono" text-anchor="middle" style="font-size:11.5px">DELETE {room 4 is free}</text>
+  <text x="536" y="348" class="t-mono" text-anchor="middle" style="font-size:11.5px">INSERT {room 4 booked by B}</text>
+  <text x="536" y="370" class="t-sm" text-anchor="middle" style="fill:#b08d57">arrives second: 409, room not free</text>
+</svg>
+<figcaption><span class="fig-label">Figure 50.3</span>
+A conditional delete is a lock. The second patch fails because the first
+changed the world, and the same failure guarantees that exactly one client
+books the room.</figcaption>
+</figure>
 
 <h2>50.3 The data wiki, and the empty document</h2>
 
@@ -170,28 +310,45 @@ document (in RDF/XML or N3) which contains zero triples.
 </blockquote>
 
 <p>
-Everywhere in the space is then a document that says nothing, rather than a
-place where no document is. A client can read, add a statement, and write
-back, without ever distinguishing creation from modification. The empty
-document is the data equivalent of the blank page a wiki offers.
+The real HTTP code for not found is 404; 400 means Bad
+Request. 200 OK is the ordinary success reply. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and N3 are two
+ways of writing triples down, one in XML and one in a terser text notation.
+The note adds that an empty RDF/XML document is not a zero-length file, though
+an empty N3 one can be.
+</p>
+
+<p>
+Every address is then a document that says nothing. A client can read, add
+a statement and write back, never distinguishing creation from modification:
+a wiki&#8217;s blank page, for data. The cost is that a
+mistyped address silently becomes a new document, and a crawler cannot tell a
+real page from an empty one.
 </p>
 
 <h2>50.4 The header with a history</h2>
 
 <p>
-A footnote in the note is a small monument to how standards actually
-propagate. The header used to advertise that a server accepts writes was
-introduced by one company to let its clients switch off a proprietary
-protocol in favour of a standard one. Most servers of the period therefore
-emitted it, so it was the natural place to advertise the new capability too.
+A server must also advertise that it accepts writes, and a footnote explains
+the header used. Microsoft first built a proprietary write-back protocol, the
+&ldquo;Microsoft Frontpage Extensions&rdquo;, then introduced the <code>MS-Author-Via</code> header
+so that its clients could switch those off and use WebDAV instead, a standard
+extension of HTTP for editing files on a server. Most WebDAV servers of the
+2000s sent the header, so it was natural to advertise SPARQL there too.
 </p>
 
+<table>
+<tr><th>Header line</th><th>Meaning</th><th>Era, per the note</th></tr>
+<tr><td><code>MS-Author-Via: DAV</code></td><td>Accepts whole-file PUT, via WebDAV</td><td>Inherited from Microsoft</td></tr>
+<tr><td><code>MS-Author-Via: DAV, SPARQL</code></td><td>Also accepts SPARQL patches</td><td>Used &ldquo;for a while&rdquo;</td></tr>
+<tr><td><code>Accept-Patch: application/sparql-update</code></td><td>Accepts SPARQL Update patches</td><td>The later, preferred form</td></tr>
+</table>
+
 <p>
-Berners-Lee adds a guess as to what the letters stand for, and the guess is a
-joke about the fact that nobody remembers. A second footnote records that the
-content type changed in 2013, because the code in the field changed first.
-This is a design note documenting the fact that the <a class="gl-ref" href="../glossary.html#specification">specification</a> followed
-the implementations, which is Chapter 16&#8217;s cycle in miniature.
+On the letters, Berners-Lee writes only: &ldquo;Perhaps the MS stands for
+&lsquo;modification service&rsquo;.&rdquo; A second footnote records that the
+content type was <code>application/sparql-query</code> until 2013, and changed
+because the code in the field changed first. The <a class="gl-ref" href="../glossary.html#specification">specification</a> followed the
+implementations, which is Chapter 16&#8217;s cycle in miniature.
 </p>
 
 <h2>50.5 What is deliberately left out</h2>
@@ -220,21 +377,17 @@ system where it is the default and permission is the constraint.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The protocol was standardised.</strong> <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> Platform 1.0
-became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in February 2015, specifying reading and writing
-over <a class="gl-ref" href="../glossary.html#http">HTTP</a>, and the <a class="gl-ref" href="../glossary.html#solid">Solid</a> Protocol built on it.</li>
-<li><strong>The patch language was replaced.</strong> A dedicated patch format
-was defined for Solid rather than reusing the query language, which the note
-anticipates in a footnote when it says a patch language and <a class="gl-ref" href="../glossary.html#media-type">media type</a> may be
-developed.</li>
-<li><strong>The conflict requirement proved essential.</strong> Silent write
-loss is the central hazard of every collaborative system, and the resolution
-of Chapter 58, sending changes rather than states, is the direction this note
-points at.</li>
-<li><strong>Storage did not become a commodity.</strong> The goal stated in
-the first paragraph remains unmet: applications and storage are still sold
-together, and the market in independently written applications over shared
-storage has not appeared at scale.</li>
+<li><strong>SPARQL 1.1.</strong> SPARQL 1.1 Update and the SPARQL 1.1 <a class="gl-ref" href="../glossary.html#graph">Graph</a>
+Store HTTP Protocol became <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendations on 21 March 2013. The
+note&#8217;s Followup cites a 2010 draft of the latter.</li>
+<li><strong><a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> Platform.</strong> LDP 1.0 became a W3C
+Recommendation on 26 February 2015, specifying reading and writing linked
+data over HTTP.</li>
+<li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a>.</strong> The Solid Protocol, built on LDP, is a
+specification of the W3C Solid Community Group (version 0.9, 2021), not a W3C
+Recommendation. It standardised HTTP PATCH with an N3 Patch format; Solid
+servers commonly accept SPARQL Update as well. The note&#8217;s footnote
+anticipated such a patch language.</li>
 </ul>
 </div>
 
@@ -243,7 +396,7 @@ storage has not appeared at scale.</li>
 <p>
 The readable half is Chapter 49, and the access control this note defers is
 Chapter 54. The patch format and its weak and strong forms are Chapter 45, and
-the live notification of changes is Chapter 58. The axiom that a <a class="gl-ref" href="../glossary.html#uri">URI</a> must not
+the live notification of changes is Chapter 58. The axiom that a URI must not
 name the result of a changing operation is Chapter 2.
 </p>
 </div>
@@ -262,8 +415,8 @@ only delete and insert, and say what happens when two clients race.</p>
 </div>
 <div class="question">
 <p><span class="question-number">50.3</span>
-The data wiki returns an empty document rather than a not-found error. Name
-two things this breaks, and say whether they matter.</p>
+The data wiki returns an empty document rather than a not-found error. What
+does a client gain by never seeing not-found, and what might it lose?</p>
 </div>
 <div class="question">
 <p><span class="question-number">50.4</span>

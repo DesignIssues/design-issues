@@ -1,3 +1,14 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Many processes move through stages: drafted, approved, published. Usually a
+database holds &ldquo;the current stage&rdquo;. Berners-Lee proposes holding no
+such record. Each new document points back to the documents that justify it,
+and the stage is whatever they show. A rules document, the schema, says what a
+new document needs and what may come next.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -18,8 +29,10 @@ state variable stored in one place, but as a trail of documents.
 <h2>62.1 No state variable anywhere</h2>
 
 <p>
-The consequence is drawn immediately, and it is the thing that makes the
-design decentralised without anyone having to make it so:
+A state machine is always in one of a fixed set of stages and moves between
+them when certain events happen; a traffic light is one. A state variable is
+the single stored value saying which stage it is in. Social processes have the
+first without the second, and the consequence follows:
 </p>
 
 <blockquote>
@@ -29,110 +42,230 @@ documents.
 </blockquote>
 
 <p>
-Berners-Lee adds a parenthesis worth noticing: this is not the problem being
-addressed, this is real life being modelled. The absence of a single place
-holding the truth is not a limitation of the design. It is an accurate
-description of how organisations work, and any system that assumes otherwise
-is modelling something else.
+This, Berners-Lee adds, is not the problem being addressed but real life
+being modelled. His proposal lets people follow a strict process by creating
+documents in a constrained way. Each carries a pointer to a schema (the
+document defining its type and rules), pointers to the documents justifying
+it, and a notarisation: a time stamp recording when software checked it
+against the schema.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 212" width="720" height="212" role="img"
      aria-labelledby="fig62-1-t fig62-1-d">
   <title id="fig62-1-t">The state is the trail</title>
-  <desc id="fig62-1-d">Each document points to the schema defining its type,
-  to the documents justifying it, and carries a record of having been checked.
-  The state of the process is not stored anywhere: it is whatever the latest
-  documents imply.</desc>
+  <desc id="fig62-1-d">Three notarised documents: an old working draft, a new
+  working draft and a proposed recommendation. Each newer one points back to the
+  one it was made from, marked justified by. The new draft also points to the
+  editor's authorisation, and the old draft to the working-group page, which
+  names the editor. A dashed line runs from every document to the schema, which
+  holds prerequisites and hints. No box holds the current state.</desc>
 
-  <g>
-    <rect class="box-plain" x="30" y="60" width="140" height="92" rx="4"/>
-    <text x="100" y="84" class="t-sm" text-anchor="middle">working draft</text>
-    <line class="ln-mut" x1="46" y1="96" x2="154" y2="96"/>
-    <line class="ln-mut" x1="46" y1="110" x2="154" y2="110"/>
-    <line class="ln-mut" x1="46" y1="124" x2="130" y2="124"/>
-    <text x="100" y="144" class="t-sm t-it" text-anchor="middle" fill="#666">notarized</text>
+  <text x="375" y="22" class="t-sm" text-anchor="middle" style="fill:#b08d57">every document points to its type</text>
+  <path class="ln-dash" d="M 90 50 V 34 H 660 V 50"/>
+  <path class="ln-dash" d="M 310 50 V 34"/>
+  <path class="ln-dash" d="M 528 50 V 34"/>
 
-    <path class="ln" d="M 170 106 L 214 106"/>
-    <path d="M 210 100 L 222 106 L 210 112 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="30" y="50" width="120" height="76" rx="4"/>
+  <text x="90" y="72" class="t-sm" text-anchor="middle">old working</text>
+  <text x="90" y="88" class="t-sm" text-anchor="middle">draft</text>
+  <text x="90" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-    <rect class="box" x="226" y="60" width="140" height="92" rx="4"/>
-    <text x="296" y="84" class="t-sm" text-anchor="middle">new draft</text>
-    <line class="ln-mut" x1="242" y1="96" x2="350" y2="96"/>
-    <line class="ln-mut" x1="242" y1="110" x2="350" y2="110"/>
-    <line class="ln-mut" x1="242" y1="124" x2="326" y2="124"/>
-    <text x="296" y="144" class="t-sm t-it" text-anchor="middle" fill="#666">notarized</text>
+  <rect class="box" x="250" y="50" width="120" height="76" rx="4"/>
+  <text x="310" y="72" class="t-sm" text-anchor="middle">new working</text>
+  <text x="310" y="88" class="t-sm" text-anchor="middle">draft</text>
+  <text x="310" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-    <path class="ln" d="M 366 106 L 410 106"/>
-    <path d="M 406 100 L 418 106 L 406 112 Z" fill="#2f4f4f"/>
+  <rect class="box-green" x="470" y="50" width="116" height="76" rx="4"/>
+  <text x="528" y="72" class="t-sm" text-anchor="middle">proposed</text>
+  <text x="528" y="88" class="t-sm" text-anchor="middle">recommendation</text>
+  <text x="528" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-    <rect class="box-green" x="422" y="60" width="140" height="92" rx="4"/>
-    <text x="492" y="84" class="t-sm" text-anchor="middle">proposed rec.</text>
-    <line class="ln-mut" x1="438" y1="96" x2="546" y2="96"/>
-    <line class="ln-mut" x1="438" y1="110" x2="546" y2="110"/>
-    <line class="ln-mut" x1="438" y1="124" x2="522" y2="124"/>
-    <text x="492" y="144" class="t-sm t-it" text-anchor="middle" fill="#666">notarized</text>
-  </g>
+  <rect class="box-warm" x="606" y="50" width="108" height="76" rx="4"/>
+  <text x="660" y="72" class="t-sm" text-anchor="middle" style="fill:#b08d57">the schema</text>
+  <text x="660" y="92" class="t-sm" text-anchor="middle">prerequisites</text>
+  <text x="660" y="110" class="t-sm" text-anchor="middle">hints</text>
 
-  <rect class="box-warm" x="586" y="60" width="110" height="92" rx="4"/>
-  <text x="641" y="88" class="t-sm" text-anchor="middle" fill="#a07d47">the schema</text>
-  <text x="641" y="110" class="t-sm" text-anchor="middle">what is required</text>
-  <text x="641" y="128" class="t-sm" text-anchor="middle">what may follow</text>
-  <path class="ln-dash" d="M 100 60 L 100 40 L 641 40 L 641 58"/>
-  <text x="370" y="34" class="t-sm" text-anchor="middle" fill="#a07d47">every document points to its type</text>
+  <text x="200" y="80" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
+  <path class="ln-accent" d="M 250 92 L 160 92"/>
+  <path d="M 161 86 L 151 92 L 161 98 Z" fill="#1c5a7a"/>
+  <text x="420" y="80" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
+  <path class="ln-accent" d="M 470 92 L 380 92"/>
+  <path d="M 381 86 L 371 92 L 381 98 Z" fill="#1c5a7a"/>
 
-  <line class="ln-mut" x1="24" y1="182" x2="696" y2="182"/>
-  <text x="24" y="206" class="t-sm">Each document carries: a pointer to its schema, pointers to the documents justifying it,</text>
-  <text x="24" y="226" class="t-sm">and a record of when it was checked against that schema.</text>
-  <text x="24" y="256" class="t-sm">The schema says what must exist for a document to be valid, and what kinds may be made from it.</text>
-  <text x="24" y="286" class="t-sm t-it">Nothing stores &#8220;the current state&#8221;. The state is whatever the documents entail.</text>
-  <text x="24" y="310" class="t-sm">A button on a draft takes you to a form for making the next kind of document.</text>
+  <path class="ln" d="M 90 126 L 90 146"/>
+  <path d="M 84 144 L 90 154 L 96 144 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="30" y="154" width="120" height="52" rx="4"/>
+  <text x="90" y="174" class="t-sm" text-anchor="middle">working-group page</text>
+  <text x="90" y="194" class="t-sm t-it" text-anchor="middle">names the editor</text>
+
+  <path class="ln" d="M 310 126 L 310 146"/>
+  <path d="M 304 144 L 310 154 L 316 144 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="250" y="154" width="120" height="52" rx="4"/>
+  <text x="310" y="174" class="t-sm" text-anchor="middle">editor&#8217;s</text>
+  <text x="310" y="192" class="t-sm" text-anchor="middle">authorisation</text>
 </svg>
 <figcaption><span class="fig-label">Figure 62.1</span>
-The example Berners-Lee works through is his own organisation&#8217;s publication
-process, where a new draft requires the old draft plus the editor&#8217;s
-authorisation, and the editor must be named as editor on a page the old draft
-points to.</figcaption>
+Berners-Lee&#8217;s example is W3C&#8217;s own publication process. Notice that
+no box is marked &ldquo;current state&rdquo;. The state is the latest
+notarised document and what it points to.</figcaption>
 </figure>
 
 <h2>62.2 Prerequisites and hints</h2>
 
 <p>
-The schema carries two different kinds of thing, and the distinction is the
+The schema carries two kinds of thing, and the distinction is the
 design&#8217;s neatest feature. Prerequisites say what must exist for a document to
 be valid, expressed in terms of other documents. Hints say what kinds of
-document you may make from this one, which are the state transitions.
+document may be made from this one, which are the state transitions.
 </p>
 
 <p>
-Validity is checked; transitions are offered. The first is enforcement and the
-second is a user interface, and putting both in one place means the interface
-cannot drift from the rules.
+In the W3C example of Figure 62.1, if the prerequisites exist the software
+creates and notarises the new draft. The draft then carries a button leading
+to a form for the next type of document the hints allow. Promoting it to a
+&ldquo;proposed recommendation&rdquo; needs everything above plus an
+endorsement, which the source spells out: the director, or any two members of
+the management group.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig62-2-t fig62-2-d">
+  <title id="fig62-2-t">Prerequisites look back, hints look forward</title>
+  <desc id="fig62-2-d">The schema for a proposed recommendation sits in the
+  centre. Three prerequisites point into it from the left: the working draft,
+  everything a draft needed, and an endorsement by the director or any two
+  members of the management group. These are checked. One dashed arrow leads
+  out to the right to the next document type, offered to the user as a
+  button.</desc>
+  <defs>
+    <marker id="fig62-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig62-2-arrg" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
+    </marker>
+  </defs>
+
+  <text x="121" y="18" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">prerequisites: checked</text>
+  <rect class="box-plain" x="16" y="30" width="210" height="32" rx="4"/>
+  <text x="121" y="51" class="t-sm" text-anchor="middle">the working draft</text>
+  <rect class="box-plain" x="16" y="88" width="210" height="32" rx="4"/>
+  <text x="121" y="109" class="t-sm" text-anchor="middle">everything a draft needed</text>
+  <rect class="box-plain" x="16" y="146" width="210" height="62" rx="4"/>
+  <text x="121" y="166" class="t-sm" text-anchor="middle">endorsement: the director,</text>
+  <text x="121" y="182" class="t-sm" text-anchor="middle">or any two members of</text>
+  <text x="121" y="198" class="t-sm" text-anchor="middle">the management group</text>
+
+  <path class="ln" d="M 226 46 L 288 96" marker-end="url(#fig62-2-arr)"/>
+  <path class="ln" d="M 226 104 L 288 112" marker-end="url(#fig62-2-arr)"/>
+  <path class="ln" d="M 226 177 L 288 128" marker-end="url(#fig62-2-arr)"/>
+
+  <rect class="box-warm" x="290" y="78" width="140" height="68" rx="4"/>
+  <text x="360" y="98" class="t-sm" text-anchor="middle" style="fill:#b08d57">schema:</text>
+  <text x="360" y="116" class="t-sm" text-anchor="middle">proposed</text>
+  <text x="360" y="134" class="t-sm" text-anchor="middle">recommendation</text>
+
+  <text x="605" y="76" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">hints: offered as a button</text>
+  <path class="ln-dash" d="M 430 112 L 518 112" marker-end="url(#fig62-2-arrg)"/>
+  <rect class="box-green" x="520" y="92" width="170" height="40" rx="4"/>
+  <text x="605" y="117" class="t-sm" text-anchor="middle">next document type</text>
+</svg>
+<figcaption><span class="fig-label">Figure 62.2</span>
+The rules and the menu of next steps live in the same document, so in
+principle they cannot disagree.</figcaption>
+</figure>
+
 <p>
-The promotion example shows how requirements compose: moving a draft onward
-needs everything the previous step needed, plus endorsement by particular
-parties. Nothing is restated; the new schema refers to the old.
+Validity is enforced; transitions are merely offered.
 </p>
 
 <h2>62.3 The general form</h2>
 
 <p>
-Halfway through, the note stops being about documents and gives the
-mathematics, which is the same in either reading:
+Halfway through, the note turns to computer protocols, agreed sets of rules
+for an exchange of messages. A protocol P defines each new state
+from the latest message, the previous state and the time:
+s<sub>n</sub>&nbsp;=&nbsp;P(m<sub>n</sub>,&nbsp;s<sub>n&#8722;1</sub>,&nbsp;t).
+Equivalently, it defines the state from all the messages to date:
+s<sub>n</sub>&nbsp;=&nbsp;P&#8242;(m<sub>1</sub>&nbsp;&#8230;&nbsp;m<sub>n</sub>).
+The second is the paper trail: only messages and a function.
 </p>
 
-<p>
-A protocol defines a state as a function of a message, the previous state and
-the time. Equivalently, it defines the state as a function of all the messages
-to date. The second formulation is the paper trail: there is no state variable,
-only the messages and a function.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
+     aria-labelledby="fig62-3-t fig62-3-d">
+  <title id="fig62-3-t">Two ways to compute a state</title>
+  <desc id="fig62-3-d">Top row: a stored state s0 is updated to s1, s2 and s3,
+  each step taking one message, m1, m2 or m3. Bottom row: the same three
+  messages all feed a single function P-prime, which outputs s3 directly, with
+  no stored state.</desc>
+  <defs>
+    <marker id="fig62-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="24" class="t-sm" style="fill:#1c5a7a">stored state, updated by each message: P</text>
+
+  <rect class="box-plain" x="260" y="40" width="60" height="28" rx="4"/>
+  <text x="290" y="58" class="t-sm" text-anchor="middle">m1</text>
+  <rect class="box-plain" x="420" y="40" width="60" height="28" rx="4"/>
+  <text x="450" y="58" class="t-sm" text-anchor="middle">m2</text>
+  <rect class="box-plain" x="580" y="40" width="60" height="28" rx="4"/>
+  <text x="610" y="58" class="t-sm" text-anchor="middle">m3</text>
+
+  <rect class="box" x="100" y="100" width="60" height="30" rx="4"/>
+  <text x="130" y="119" class="t-sm" text-anchor="middle">s0</text>
+  <rect class="box" x="260" y="100" width="60" height="30" rx="4"/>
+  <text x="290" y="119" class="t-sm" text-anchor="middle">s1</text>
+  <rect class="box" x="420" y="100" width="60" height="30" rx="4"/>
+  <text x="450" y="119" class="t-sm" text-anchor="middle">s2</text>
+  <rect class="box-green" x="580" y="100" width="60" height="30" rx="4"/>
+  <text x="610" y="119" class="t-sm" text-anchor="middle">s3</text>
+
+  <path class="ln" d="M 160 115 L 258 115" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 320 115 L 418 115" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 480 115 L 578 115" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 290 68 L 290 98" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 450 68 L 450 98" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 610 68 L 610 98" marker-end="url(#fig62-3-arr)"/>
+
+  <line class="ln-mut" x1="20" y1="150" x2="700" y2="150"/>
+
+  <text x="20" y="176" class="t-sm" style="fill:#1c5a7a">no stored state: recompute from the trail: P&#8242;</text>
+
+  <rect class="box-plain" x="100" y="190" width="60" height="28" rx="4"/>
+  <text x="130" y="208" class="t-sm" text-anchor="middle">m1</text>
+  <rect class="box-plain" x="180" y="190" width="60" height="28" rx="4"/>
+  <text x="210" y="208" class="t-sm" text-anchor="middle">m2</text>
+  <rect class="box-plain" x="260" y="190" width="60" height="28" rx="4"/>
+  <text x="290" y="208" class="t-sm" text-anchor="middle">m3</text>
+
+  <path class="ln" d="M 130 218 V 236 H 418" marker-end="url(#fig62-3-arr)"/>
+  <path class="ln" d="M 210 218 V 236"/>
+  <path class="ln" d="M 290 218 V 236"/>
+
+  <rect class="box-warm" x="420" y="220" width="80" height="32" rx="4"/>
+  <text x="460" y="241" class="t-it" text-anchor="middle">P&#8242;</text>
+
+  <path class="ln" d="M 500 236 L 578 236" marker-end="url(#fig62-3-arr)"/>
+  <rect class="box-green" x="580" y="221" width="60" height="30" rx="4"/>
+  <text x="610" y="240" class="t-sm" text-anchor="middle">s3</text>
+</svg>
+<figcaption><span class="fig-label">Figure 62.3</span>
+The two rows give the same answer. The paper trail is the bottom row: keep the
+messages, and work the state out when it is needed.</figcaption>
+</figure>
 
 <p>
-Berners-Lee then ranks what the state might be, and the ranking is a piece of
-editorial opinion smuggled into a technical note:
+The note&#8217;s simple example is a loan between two people: the state is the
+balance, and the process ends when it reaches zero. Berners-Lee ranks what the
+state might be, a piece of editorial opinion in a technical note:
 </p>
 
 <blockquote>
@@ -142,49 +275,63 @@ a number, in decreasing order of interest.
 </blockquote>
 
 <p>
-A number tells you where you are. A formula tells you what follows.
+A number says where things stand; a formula says what follows. The state
+must hold whatever is needed to compute future states. For TCP, the protocol
+under most Internet connections, that is the packets not yet acknowledged.
+Once the connection closes, the state could hold just a marker, or every byte
+transferred: a design choice, not a fact.
 </p>
 
-<p>
-The worked example is a network connection, where the state must hold what is
-needed to compute future states, and may on completion hold either just a
-terminal marker or the whole transfer. Which is to say: a protocol&#8217;s state may
-be a receipt or an archive, and that is a design choice rather than a fact.
-</p>
+<h3>Starting, ending and forgetting</h3>
+
+<table>
+<tr><th>Start</th><td>Some messages are valid beginnings: in TCP one sends a
+SYN message; on the telephone one picks up the receiver.</td></tr>
+<tr><th>End</th><td>No further message changes a final state. The loan reaches
+one at zero; a lifetime warranty never does.</td></tr>
+<tr><th>Forget</th><td>The protocol is &ldquo;an information destroying
+function&rdquo;: saying what must be remembered defines what can be thrown
+away. In the US, records of a transaction may be discarded after seven
+years.</td></tr>
+</table>
 
 <h2>62.4 Why it is a social machine</h2>
 
 <p>
-The reason this belongs in Volume VI rather than in a chapter on workflow is
-that it describes a process nobody administers. There is no server holding the
-status of the publication, no privileged party to ask. Each document is
-checkable by anyone who can fetch the documents it points at, and the
-transitions available are readable from the schema.
+This belongs in Volume VI, not a chapter on workflow, because social
+processes can run on a newsgroup or by email: &ldquo;it works in a
+write-only medium&rdquo;. Nobody edits a shared record. As in commerce, one&#8217;s view of the state depends on which
+messages one has seen, and there is no privileged party to ask. Anyone who can
+fetch the documents can check them.
 </p>
 
 <p>
 Chapter 37 argued that the machine loop should be kept closed and joined to
-the social world only at the edges. This is what that looks like when the
-process being modelled is itself social: the loop is the documents, and the
-edges are the moments a person presses the button.
+the social world only at the edges. Here the
+loop is the documents, and the edges are the moments a person presses the
+button.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
+<li><strong>2001.</strong> The note&#8217;s epilogue records that a Web
+Services workshop on transactions over the Net surfaced the need for
+process-flow descriptions.</li>
+<li><strong>2004.</strong> An update says the Semantic Web Application Platform
+(SWAP) could now implement these ideas.</li>
 <li><strong>The pattern won without the vocabulary.</strong> Version control
-systems are paper trails: state is a function of the commits, no variable holds
-it, and validity is checkable by anyone with the history.</li>
+systems are paper trails: state is a function of the commits. Anyone with the
+history can check its integrity, though not whether commits followed the
+rules.</li>
 <li><strong>Append-only became an architecture.</strong> Event sourcing, where
 current state is derived from a log of events rather than stored, is section
-62.3&#8217;s second formulation, and became a standard pattern in the 2010s.</li>
+62.3&#8217;s second formulation. It was named and popularised in the
+mid-2000s.</li>
 <li><strong>Notarisation became cheap.</strong> Signed commits, transparency
-logs and timestamping services supply the check-and-record step this note
-assumes, at a scale it does not anticipate.</li>
+logs and timestamping services supply the check-and-record step.</li>
 <li><strong>Rules-in-the-schema remained rare.</strong> Most workflow systems
-still hold their rules in code rather than in a document the participants can
-read, which is the part that would make the machine social rather than
-administered.</li>
+hold their rules in code, not in a document the participants can read.</li>
 </ul>
 </div>
 
@@ -207,16 +354,21 @@ change if it were only the trail?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.2</span>
-Prerequisites are enforced and hints are offered. Name a system where the two
-have drifted apart, and what went wrong.</p>
+A web form lets you submit something the server then rejects. Which half of
+the schema is missing from the form?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.3</span>
-A protocol&#8217;s state may be a receipt or an archive. Choose for a protocol you
-know, and justify the choice.</p>
+The loan has a final state and the warranty does not. Choose a process you
+know: does it have one, and what may be thrown away once it is reached?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.4</span>
+In the W3C example, which documents would you need to fetch to confirm that a
+new draft is valid?</p>
+</div>
+<div class="question">
+<p><span class="question-number">62.5</span>
 Version control is a paper trail. Name one respect in which it is not, and say
 whether that matters.</p>
 </div>

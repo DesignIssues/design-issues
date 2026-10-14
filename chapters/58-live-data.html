@@ -49,6 +49,17 @@
 a Design Issues note by Tim Berners-Lee, 2021-10-20.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Live.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+<a class="gl-ref" href="../glossary.html#solid">Solid</a> can tell an application when the data it is showing has changed. In
+2021 the message says only that something changed, and the application must
+reload everything. Berners-Lee wants the message to carry the change itself,
+which would also open the way to working offline and to devices updating one
+another directly.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -66,42 +77,118 @@ live-read-write web
 
 <h2>58.1 Why not just ask again</h2>
 
+<p>
+When one person changes a list stored in a Solid <a class="gl-ref" href="../glossary.html#pod">Pod</a>, how does another
+person&#8217;s screen find out? The simplest answer is <em>polling</em>: the
+application asks the server &ldquo;has it changed?&rdquo; every few
+seconds.
+</p>
+
+<p>
+The alternative is <em>subscribing</em> (publish/subscribe, or pub/sub): the
+application keeps a connection open and the server speaks first when
+something happens.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig58-1-t fig58-1-d">
   <title id="fig58-1-t">Polling against subscribing</title>
-  <desc id="fig58-1-d">Polling asks repeatedly and is wrong most of the time,
-  either wasting requests or reporting a change late. Subscribing means the
-  server says when something happened, so the client is neither early nor
-  late.</desc>
+  <desc id="fig58-1-d">On a timeline, polling makes eight requests; only the
+  fifth, which comes a little after the change, catches it. Subscribing sends
+  one message at the moment of the change.</desc>
 
-  <text x="24" y="28" class="t-caps" fill="#a07d47">polling</text>
+  <text x="24" y="28" class="t-caps" style="fill:#b08d57">polling</text>
   <line class="ln" x1="140" y1="70" x2="680" y2="70"/>
   <g fill="#b08d57">
     <circle cx="180" cy="70" r="4"/><circle cx="240" cy="70" r="4"/><circle cx="300" cy="70" r="4"/>
-    <circle cx="360" cy="70" r="4"/><circle cx="420" cy="70" r="4"/><circle cx="480" cy="70" r="4"/>
+    <circle cx="360" cy="70" r="4"/><circle cx="480" cy="70" r="4"/>
     <circle cx="540" cy="70" r="4"/><circle cx="600" cy="70" r="4"/>
   </g>
+  <circle cx="420" cy="70" r="5" fill="#5a8f5a"/>
   <path class="ln-accent" d="M 392 50 L 392 90"/>
-  <text x="392" y="44" class="t-sm" text-anchor="middle" fill="#1c5a7a">the change</text>
-  <text x="140" y="104" class="t-sm">eight requests, seven of them for nothing,</text>
-  <text x="140" y="122" class="t-sm">and the news arrives late anyway.</text>
+  <text x="392" y="44" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the change</text>
+  <path class="ln-mut" d="M 392 96 L 392 102 L 420 102 L 420 96"/>
+  <text x="406" y="118" class="t-sm" text-anchor="middle">delay</text>
+  <text x="140" y="146" class="t-sm">eight requests, seven of them for nothing,</text>
+  <text x="140" y="164" class="t-sm">and the news arrives late anyway.</text>
 
-  <line class="ln-mut" x1="24" y1="150" x2="696" y2="150"/>
+  <line class="ln-mut" x1="24" y1="186" x2="696" y2="186"/>
 
-  <text x="24" y="182" class="t-caps" fill="#3f6f3f">subscribing</text>
-  <line class="ln" x1="140" y1="216" x2="680" y2="216"/>
-  <path class="ln-accent" d="M 392 196 L 392 236"/>
-  <circle cx="392" cy="216" r="5" fill="#5a8f5a"/>
-  <text x="392" y="190" class="t-sm" text-anchor="middle" fill="#1c5a7a">the change</text>
-  <text x="404" y="238" class="t-sm" fill="#3f6f3f">one message, at the moment it matters</text>
-  <text x="140" y="268" class="t-sm">The current protocol sends only a notice that the resource changed;</text>
-  <text x="140" y="288" class="t-sm">the client then reloads it. Sending the change itself would be better.</text>
+  <text x="24" y="214" class="t-caps" style="fill:#5a8f5a">subscribing</text>
+  <line class="ln" x1="140" y1="250" x2="680" y2="250"/>
+  <path class="ln-accent" d="M 392 230 L 392 270"/>
+  <circle cx="392" cy="250" r="5" fill="#5a8f5a"/>
+  <text x="392" y="224" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the change</text>
+  <text x="404" y="272" class="t-sm" style="fill:#5a8f5a">one message, at the moment it matters</text>
 </svg>
 <figcaption><span class="fig-label">Figure 58.1</span>
-Berners-Lee is candid that the mechanism is minimal, calling it basic but
-effective, and saying what it should become: a message carrying the change,
-to reduce both bandwidth and the number of round trips.</figcaption>
+Polling wastes requests and still learns late; the green dot is the only poll
+that catches the change. A subscription hears about it at once.</figcaption>
+</figure>
+
+<p>
+Solid already subscribes, using a <em>WebSocket</em>: a network connection
+that stays open so that either side can send at any time. Berners-Lee calls it
+basic but effective. In 2021 the server sends only a bare &lsquo;PING&rsquo;
+notification that the resource has changed, and the application then fetches
+the whole resource again. He wants the server instead to send a PATCH, a
+message carrying only the change, to reduce both the bandwidth and the number
+of round trips between client and server.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig58-2-t fig58-2-d">
+  <title id="fig58-2-t">Ping-then-reload against sending the patch</title>
+  <desc id="fig58-2-d">Two message sequences between a Pod and an app. In
+  Solid in 2021 the Pod sends a ping, the app asks for the whole resource, and
+  the Pod sends it: three messages and a full copy. In the proposal the Pod
+  sends one PATCH containing only the line that changed.</desc>
+  <defs>
+    <marker id="fig58-2-arr" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-plain" x="8" y="8" width="344" height="274" rx="4"/>
+  <text x="24" y="32" class="t-caps">solid in 2021</text>
+  <rect class="box" x="30" y="46" width="110" height="30" rx="3"/>
+  <text x="85" y="66" text-anchor="middle">Pod (server)</text>
+  <rect class="box" x="220" y="46" width="110" height="30" rx="3"/>
+  <text x="275" y="66" text-anchor="middle">App</text>
+  <line class="ln-dash" x1="85" y1="76" x2="85" y2="232"/>
+  <line class="ln-dash" x1="275" y1="76" x2="275" y2="232"/>
+
+  <text x="180" y="104" class="t-sm" text-anchor="middle">PING: it changed</text>
+  <line class="ln-accent" x1="87" y1="114" x2="273" y2="114" marker-end="url(#fig58-2-arr)"/>
+  <text x="180" y="149" class="t-sm" text-anchor="middle">GET the whole resource</text>
+  <line class="ln-accent" x1="273" y1="159" x2="87" y2="159" marker-end="url(#fig58-2-arr)"/>
+  <text x="180" y="194" class="t-sm" text-anchor="middle">whole resource (large)</text>
+  <line class="ln-accent" x1="87" y1="206" x2="271" y2="206" style="stroke-width:4" marker-end="url(#fig58-2-arr)"/>
+
+  <text x="180" y="262" text-anchor="middle">3 messages, full copy</text>
+
+  <rect class="box-plain" x="368" y="8" width="344" height="274" rx="4"/>
+  <text x="384" y="32" class="t-caps" style="fill:#5a8f5a">what he proposes</text>
+  <rect class="box-green" x="390" y="46" width="110" height="30" rx="3"/>
+  <text x="445" y="66" text-anchor="middle">Pod (server)</text>
+  <rect class="box-green" x="580" y="46" width="110" height="30" rx="3"/>
+  <text x="635" y="66" text-anchor="middle">App</text>
+  <line class="ln-dash" x1="445" y1="76" x2="445" y2="232"/>
+  <line class="ln-dash" x1="635" y1="76" x2="635" y2="232"/>
+
+  <text x="540" y="120" class="t-sm" text-anchor="middle">PATCH: the one line</text>
+  <text x="540" y="135" class="t-sm" text-anchor="middle">that changed</text>
+  <line class="ln-accent" x1="447" y1="146" x2="633" y2="146" marker-end="url(#fig58-2-arr)"/>
+
+  <text x="540" y="262" text-anchor="middle">1 message, only the difference</text>
+</svg>
+<figcaption><span class="fig-label">Figure 58.2</span>
+The reload costs an extra round trip and resends everything that did not
+change. A patch can also be stored and applied later, which makes offline work
+possible (section 58.5).</figcaption>
 </figure>
 
 <h2>58.2 The use case he thinks people underestimate</h2>
@@ -120,39 +207,36 @@ could inspire many moore things than editing documents.
 </blockquote>
 
 <p>
-A shopping list is the example worth keeping. It is not a document being
-co-authored. It is a small piece of shared state that two people in different
-places both act on, and which is wrong the moment it is stale. Most shared
-data is like this.
+He adds people wrestling over where an event should go in a calendar, each
+using a different calendar program. The shopping list is the example worth
+keeping: not a co-authored document but a small piece of shared state, wrong
+the moment it is stale. Most shared data is like this.
 </p>
 
 <h2>58.3 Notification is a spectrum</h2>
 
 <p>
-A short passage puts the mechanism in a family, and the range is wider than
-people usually consider when they say notification:
+A short passage places the mechanism in a wider family:
 </p>
 
 <table>
-<tr><th>Mechanism</th><th>Latency</th></tr>
-<tr><td>An event inside a running program</td><td>Effectively instant</td></tr>
-<tr><td>A socket message across the network</td><td>Of the order of a tenth of a second</td></tr>
-<tr><td>A text or mail message</td><td>Seconds to hours</td></tr>
-<tr><td>A subscription to a feed of articles</td><td>Whenever you look</td></tr>
+<tr><th>Mechanism</th><th>Speed, in his words</th></tr>
+<tr><td>An event inside a running program (DOM events in a web page)</td><td>more or less instant</td></tr>
+<tr><td>A message across the network (web sockets)</td><td>fairly rapid</td></tr>
+<tr><td>SMS and email messages</td><td>slower</td></tr>
+<tr><td>Subscribing to a feed of news articles (NNTP, the old Usenet news protocol)</td><td>the slow end</td></tr>
 </table>
 
 <p>
-Berners-Lee sets the target explicitly at the fast end, ideally of the order
-of a hundred milliseconds, and notes that one could imagine mail carrying
-aggregated heaps of update messages. Chapter 64 is what the slow end of this
-spectrum became.
+He sets the target at the fast end, ideally of the order of 100 milliseconds,
+and notes that one could imagine email carrying aggregated heaps of update
+messages. Chapter 64 is what the slow end became.
 </p>
 
 <h2>58.4 The developer should not have to think about it</h2>
 
 <p>
-The section on frameworks makes a claim about where this capability belongs,
-and it is the same argument as Chapter 19:
+The section on frameworks says where this capability belongs:
 </p>
 
 <blockquote>
@@ -163,63 +247,107 @@ turn it on, that is ideal.
 </blockquote>
 
 <p>
-Two solutions are described. One builds the ability to refresh into each
-widget. The other, which Berners-Lee attributes to the popular framework of
-the day, has the developer write a function from data to interface and then
-re-runs that function whenever the data changes.
+He describes two ways of doing it. Solid&#8217;s own interface library,
+solid-ui, builds the ability to refresh into each widget. React has the
+developer write a function from data to interface, and re-runs that function
+whenever the data changes.
 </p>
 
 <p>
-The second is the more interesting because it removes the problem rather than
-solving it. If the interface is a function of the data, there is no update
-logic to get wrong; there is only the function, and a system that reapplies
-it.
+Take the shopping list. The data is milk and eggs; the function draws a list
+of two lines. Bob adds bread; the data becomes milk, eggs and bread; the same
+function runs again and draws three lines. No code anywhere says &ldquo;insert
+a row&rdquo;. There is no update logic to get wrong, only the function and a
+system that reapplies it.
 </p>
 
 <h2>58.5 What it points towards</h2>
 
 <p>
-The conclusion names the two limitations that the next design would have to
-remove, and both are structural rather than incremental:
+The conclusion names two limitations the next design would have to remove,
+both structural rather than incremental.
 </p>
 
 <p>
-The first is topology. The current arrangement is a hub and spoke, with a
-server in the middle and clients around it. Other topologies would allow
-peers to update each other directly.
+The first is topology, the shape of who talks to whom. Today it is hub and
+spoke: a server in the middle, clients around it. He asks for other
+topologies, such as devices updating one another directly.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
+     aria-labelledby="fig58-3-t fig58-3-d">
+  <title id="fig58-3-t">Hub and spoke against peers</title>
+  <desc id="fig58-3-d">Left: three devices each connected only to a Pod in
+  the centre; if the Pod is unreachable no device hears of any change. Right:
+  the same three devices connected to each other with no centre, each copy
+  merging the others' changes.</desc>
+
+  <text x="24" y="28" class="t-caps">hub and spoke (today)</text>
+  <line class="ln" x1="105" y1="80" x2="152" y2="123"/>
+  <line class="ln" x1="255" y1="80" x2="208" y2="123"/>
+  <line class="ln" x1="180" y1="157" x2="180" y2="210"/>
+  <rect class="box-plain" x="20" y="50" width="110" height="30" rx="3"/>
+  <text x="75" y="70" text-anchor="middle">Alice&#8217;s phone</text>
+  <rect class="box-plain" x="230" y="50" width="110" height="30" rx="3"/>
+  <text x="285" y="70" text-anchor="middle">Bob&#8217;s laptop</text>
+  <rect class="box" x="140" y="123" width="80" height="34" rx="3"/>
+  <text x="180" y="145" text-anchor="middle">Pod</text>
+  <rect class="box-plain" x="125" y="210" width="110" height="30" rx="3"/>
+  <text x="180" y="230" text-anchor="middle">Carol&#8217;s map</text>
+  <text x="180" y="272" class="t-sm" text-anchor="middle">If the Pod is unreachable,</text>
+  <text x="180" y="288" class="t-sm" text-anchor="middle">no device hears of any change.</text>
+
+  <line class="ln-mut" x1="360" y1="20" x2="360" y2="290"/>
+
+  <text x="384" y="28" class="t-caps" style="fill:#5a8f5a">peers (one alternative)</text>
+  <line class="ln-accent" x1="490" y1="65" x2="590" y2="65"/>
+  <line class="ln-accent" x1="450" y1="80" x2="520" y2="210"/>
+  <line class="ln-accent" x1="630" y1="80" x2="560" y2="210"/>
+  <rect class="box-plain" x="380" y="50" width="110" height="30" rx="3"/>
+  <text x="435" y="70" text-anchor="middle">Alice&#8217;s phone</text>
+  <rect class="box-plain" x="590" y="50" width="110" height="30" rx="3"/>
+  <text x="645" y="70" text-anchor="middle">Bob&#8217;s laptop</text>
+  <rect class="box-plain" x="485" y="210" width="110" height="30" rx="3"/>
+  <text x="540" y="230" text-anchor="middle">Carol&#8217;s map</text>
+  <text x="540" y="118" class="t-sm" text-anchor="middle">each copy merges</text>
+  <text x="540" y="133" class="t-sm" text-anchor="middle">others&#8217; changes</text>
+  <text x="540" y="272" class="t-sm" text-anchor="middle">Devices update one another, and</text>
+  <text x="540" y="288" class="t-sm" text-anchor="middle">merge (CRDTs) after being offline.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 58.3</span>
+Today every update passes through one server. The right-hand picture is one
+possible alternative; the note does not specify a design.</figcaption>
+</figure>
 
 <p>
 The second is offline operation. Sending the change rather than a notice, as
-Chapter 45 argued, is what allows a client to work while disconnected and
-reconcile afterwards, which is what the conflict-free replicated data
-structures Berners-Lee names are for.
+Chapter 45 argued, lets a client work while disconnected and reconcile
+afterwards. He names Conflict-free Replicated Data Types (CRDTs) for this: a
+way of recording changes so that copies edited separately can always be
+merged without a conflict.
 </p>
 
 <p>
-He closes by declining to let the limitations obscure the achievement: the
-current functionality already gives a lot of value. A hub-and-spoke system
-that only says something changed is enough to make a chat application, a
-shared notepad, and two maps that move together.
+He closes by saying the current functionality already gives a lot of value:
+enough for a chat application, a shared notepad, and two maps that move
+together.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The protocol was replaced with a general one.</strong> The <a class="gl-ref" href="../glossary.html#solid">Solid</a>
-Notifications Protocol, published in 2022, supports several delivery channels
-rather than one socket, which is the spectrum of section 58.3 turned into a
-<a class="gl-ref" href="../glossary.html#specification">specification</a>.</li>
-<li><strong>Sending the change won generally.</strong> Conflict-free
-replicated data types became the standard basis for collaborative editing and
-local-first software through the 2020s, which is the direction this note points
-at and the architecture it does not yet have.</li>
-<li><strong>Local-first became a movement.</strong> The principle that an
-application should work offline and reconcile later, named here as a future
-goal, acquired a literature and a community of practice.</li>
-<li><strong>The framework argument was settled.</strong> Rendering an
-interface as a function of state is now the dominant model, which makes live
-data an ordinary property of an application rather than a feature.</li>
+<li><strong>The protocol was replaced with a general one.</strong> The Solid
+Notifications Protocol, first drafted in 2022, supports several delivery
+channels rather than one socket, which is the spectrum of section 58.3 turned
+into a <a class="gl-ref" href="../glossary.html#specification">specification</a>.</li>
+<li><strong>Sending the change spread.</strong> CRDTs became a widely used
+basis for collaborative editing and local-first software through the 2020s,
+alongside the older technique of operational transformation.</li>
+<li><strong>Local-first grew.</strong> The term was already in use when he
+wrote, after Ink &amp; Switch&#8217;s 2019 essay &ldquo;Local-first
+software&rdquo;. The idea that an application should work offline and reconcile
+later has since gathered a wider community of practice.</li>
 </ul>
 </div>
 
@@ -237,8 +365,8 @@ data is Chapter 56.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">58.1</span>
-A notice that something changed costs a reload; the change itself does not.
-Estimate the difference for an application you know.</p>
+A shared shopping list has 200 items and Bob ticks one. Under
+ping-then-reload, what travels over the network? Under a patch?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.2</span>
@@ -252,8 +380,8 @@ it cost, and when is it the wrong choice?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.4</span>
-Hub and spoke requires the server to be reachable. Describe what peer-to-peer
-update would require instead.</p>
+If the server in the middle disappears, what must each device be able to do on
+its own for the shopping list to keep working?</p>
 </div>
 </details>
 

@@ -49,15 +49,24 @@
 a Design Issues note by Tim Berners-Lee, 2000-11-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Conversations.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A screen shows the current state of things, so a person can look around. A
+conversation only has the messages exchanged so far. The Web was built on the
+first model. Phones, voice and online transactions pull towards the second.
+We know how to check that a single message is well formed, but we have no way
+to check that a sequence of messages makes sense.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written to accompany a talk to the Advisory Committee in November 2000, this
-note observes that two quite separate developments were pointing away from the
-Web&#8217;s founding model at once, and asks what that model actually was.
-</p>
-<p>
-Berners-Lee describes the occasion and the method:
+Written for a talk to <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Advisory Committee (its member body) in
+November 2000, this note says user interfaces and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> were both
+pointing away from the Web&#8217;s founding model. Its sentence on the
+Semantic Web breaks off unfinished, so only the interface half survives.
 </p>
 <blockquote>
 Often, we notice that Web technology is now entering a field new to the Web
@@ -67,15 +76,17 @@ the field.
 <cite>Conversations and state, 2000</cite>
 </blockquote>
 <p>
-The field this time is the formal <a class="gl-ref" href="../glossary.html#specification">specification</a> of protocols.
+Webizing (Chapter 26) means rebuilding a field on Web foundations. The field
+here is the formal <a class="gl-ref" href="../glossary.html#specification">specification</a> of protocols.
 </p>
 </div>
 
 <h2>61.1 What a screen is for</h2>
 
 <p>
-The argument begins with an unexpected question: what is special about a
-screen? The answer is not resolution but simultaneity.
+In theory, the note says, the Web is a mapping from URIs to representations;
+in experience, a space a person can navigate. What is special about a screen
+is not resolution but simultaneity.
 </p>
 
 <blockquote>
@@ -86,10 +97,9 @@ concentrting on at one time can be presented in its current state.
 </blockquote>
 
 <p>
-Berners-Lee identifies a threshold, roughly the resolution that became
-standard in the late 1980s, past which direct manipulation became possible:
-folders one could open, dragging and dropping. And he names the property that
-made those metaphors work:
+A window system is the familiar desktop of overlapping windows. Past roughly
+VGA resolution (the note says &#8220;640x320&#8221;), direct manipulation
+arrived: folders one could open, and drag and drop. Why it worked:
 </p>
 
 <blockquote>
@@ -101,13 +111,19 @@ of a shared state.
 </blockquote>
 
 <p>
-The Web, he says, was intended to extend that form of communication to remote
-interaction between people. Much of its effectiveness derived from that model,
-because a shared space of information is something one can navigate, using all
-the faculties human memory already has for navigation.
+The Web was meant to extend that to remote interaction between people, in a
+shared space that human memory can navigate.
 </p>
 
 <h2>61.2 The other model, and its return</h2>
+
+<p>
+On terminals of 24 rows by 80 characters, work went through a command line.
+The user typed <code>ls</code> and got back a list of files, then typed the next
+command. The note calls this conversational: small exchanges of messages, with
+the state never displayed. The person imagined the folders; the computer held
+them unseen.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
@@ -120,22 +136,28 @@ the faculties human memory already has for navigation.
 
   <text x="180" y="26" class="t-caps" text-anchor="middle">shared state</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="262"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">conversation</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">conversation</text>
 
-  <circle cx="72" cy="130" r="22" fill="#f0f5f8" stroke="#1c5a7a"/>
-  <text x="72" y="134" class="t-sm" text-anchor="middle">you</text>
-  <circle cx="288" cy="130" r="22" fill="#f0f5f8" stroke="#1c5a7a"/>
-  <text x="288" y="134" class="t-sm" text-anchor="middle">it</text>
+  <circle cx="58" cy="130" r="22" fill="#f0f5f8" stroke="#1c5a7a"/>
+  <text x="58" y="134" class="t-sm" text-anchor="middle">person</text>
+  <circle cx="302" cy="130" r="22" fill="#f0f5f8" stroke="#1c5a7a"/>
+  <text x="302" y="134" class="t-sm" text-anchor="middle">it</text>
   <rect class="box" x="118" y="92" width="124" height="76" rx="4"/>
   <text x="180" y="124" class="t-sm" text-anchor="middle">the current</text>
   <text x="180" y="142" class="t-sm" text-anchor="middle">state, visible</text>
-  <path class="ln" d="M 96 130 L 112 130 M 248 130 L 264 130"/>
+  <path class="ln" d="M 86 130 L 110 130 M 250 130 L 274 130"/>
+  <g fill="#2f4f4f">
+    <path d="M 88 125 L 81 130 L 88 135 Z"/>
+    <path d="M 108 125 L 115 130 L 108 135 Z"/>
+    <path d="M 252 125 L 245 130 L 252 135 Z"/>
+    <path d="M 272 125 L 279 130 L 272 135 Z"/>
+  </g>
   <text x="180" y="200" class="t-sm" text-anchor="middle">both see it at every instant</text>
   <text x="180" y="222" class="t-sm" text-anchor="middle">navigation is possible</text>
   <text x="180" y="244" class="t-sm t-it" text-anchor="middle">what the Web was built for</text>
 
   <circle cx="432" cy="130" r="22" fill="#f8f5f0" stroke="#b08d57"/>
-  <text x="432" y="134" class="t-sm" text-anchor="middle">you</text>
+  <text x="432" y="134" class="t-sm" text-anchor="middle">person</text>
   <circle cx="648" cy="130" r="22" fill="#f8f5f0" stroke="#b08d57"/>
   <text x="648" y="134" class="t-sm" text-anchor="middle">it</text>
   <g stroke="#b08d57" fill="none" stroke-width="1.2">
@@ -157,34 +179,96 @@ the faculties human memory already has for navigation.
   <text x="360" y="320" class="t-sm" text-anchor="middle">and the interface is completely conversational again.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 61.1</span>
-Berners-Lee is careful to say the older model has its own advantage: the
-imagination of a person can, on a good day, exceed a screen&#8217;s capacity to hold
-complex interrelated structures.</figcaption>
+Left, the state sits where both parties can see it. Right, there are only
+messages, and each side must remember what they add up to. The second has its
+own strength: on a good day, imagination holds more complex structures than a
+screen.</figcaption>
 </figure>
 
 <p>
-His warning about small devices is the sharpest practical point in the note:
-one can scale a page down and adapt it to a small screen, and doing so might
-be choosing simply the wrong interface metaphor.
+His sharpest practical point: scaling a page down to a phone screen might be
+choosing simply the wrong interface metaphor.
 </p>
-
-<h2>61.3 Why this needs formalising</h2>
 
 <p>
-Three reasons are given, and they run from interfaces to commerce to
-plumbing.
+The models convert both ways. A bank balance is an agreed state computed from
+the transactions so far; the Paper Trail idea (Chapter 62) defines agreed
+state formally as a function of messages to date. Conversely, a phone-browsing
+service delivers a shared space as a conversation.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig61-2-t fig61-2-d">
+  <title id="fig61-2-t">From messages to state, and from state to messages</title>
+  <desc id="fig61-2-d">Top: four bank transactions are folded into one agreed
+  state, the balance. Bottom: a web page is turned into a spoken exchange by a
+  phone-browsing service, which reads parts aloud while the listener asks for
+  the next part.</desc>
+
+  <text x="24" y="24" class="t-caps">conversation to state</text>
+  <text x="696" y="24" class="t-sm" text-anchor="end" style="fill:#1c5a7a">the Paper Trail idea, Chapter 62</text>
+
+  <rect class="box-warm" x="24" y="40" width="110" height="36" rx="4"/>
+  <text x="79" y="62" class="t-sm" text-anchor="middle">deposit 100</text>
+  <rect class="box-warm" x="146" y="40" width="110" height="36" rx="4"/>
+  <text x="201" y="62" class="t-sm" text-anchor="middle">withdraw 30</text>
+  <rect class="box-warm" x="268" y="40" width="110" height="36" rx="4"/>
+  <text x="323" y="62" class="t-sm" text-anchor="middle">deposit 50</text>
+  <rect class="box-warm" x="390" y="40" width="110" height="36" rx="4"/>
+  <text x="445" y="62" class="t-sm" text-anchor="middle">withdraw 20</text>
+  <path class="ln" d="M 512 58 L 544 58"/>
+  <path d="M 542 53 L 550 58 L 542 63 Z" fill="#2f4f4f"/>
+  <rect class="box" x="556" y="34" width="140" height="48" rx="4"/>
+  <text x="626" y="54" class="t-sm" text-anchor="middle">agreed state</text>
+  <text x="626" y="72" class="t-sm" text-anchor="middle">balance 100</text>
+  <text x="262" y="102" class="t-sm" text-anchor="middle">messages to date, in order</text>
+
+  <line class="ln-mut" x1="24" y1="126" x2="696" y2="126"/>
+
+  <text x="24" y="154" class="t-caps">state to conversation</text>
+  <text x="696" y="154" class="t-sm" text-anchor="end" style="fill:#1c5a7a">a phone-browsing service</text>
+
+  <rect class="box" x="24" y="204" width="136" height="56" rx="4"/>
+  <text x="92" y="228" class="t-sm" text-anchor="middle">web page</text>
+  <text x="92" y="246" class="t-sm" text-anchor="middle">(shared space)</text>
+  <path class="ln" d="M 160 232 L 194 232"/>
+  <path d="M 192 227 L 200 232 L 192 237 Z" fill="#2f4f4f"/>
+  <circle cx="226" cy="232" r="24" fill="#f0f5f8" stroke="#1c5a7a"/>
+  <text x="226" y="236" class="t-sm" text-anchor="middle">phone</text>
+  <circle cx="560" cy="232" r="24" fill="#f8f5f0" stroke="#b08d57"/>
+  <text x="560" y="236" class="t-sm" text-anchor="middle">listener</text>
+
+  <g stroke="#b08d57" fill="none" stroke-width="1.2">
+    <path d="M 256 196 L 530 196"/>
+    <path d="M 530 232 L 256 232"/>
+    <path d="M 256 268 L 530 268"/>
+  </g>
+  <g fill="#b08d57">
+    <path d="M 524 191 L 534 196 L 524 201 Z"/>
+    <path d="M 262 227 L 252 232 L 262 237 Z"/>
+    <path d="M 524 263 L 534 268 L 524 273 Z"/>
+  </g>
+  <text x="393" y="186" class="t-sm" text-anchor="middle">reads one part aloud</text>
+  <text x="393" y="222" class="t-sm" text-anchor="middle">asks for the next part</text>
+  <text x="393" y="258" class="t-sm" text-anchor="middle">reads the next part</text>
+</svg>
+<figcaption><span class="fig-label">Figure 61.2</span>
+A state can be computed from a conversation, or delivered as one. Because
+each converts into the other, the two models can be linked formally.</figcaption>
+</figure>
+
+<h2>61.3 Why this needs formalising</h2>
 
 <table>
 <tr><th>Reason</th><th>What it would let us do</th></tr>
 <tr><td>Interfaces</td><td>Formalise the human-machine interfaces that are conversational, on every device without a large screen</td></tr>
 <tr><td>Transactions</td><td>Formalise commercial dealings, for which a trail of messages is the most accurate model anyway</td></tr>
-<tr><td>Protocols</td><td>Analyse the infrastructure protocols by which the information world is actually implemented</td></tr>
+<tr><td>Protocols</td><td>Analyse the infrastructure protocols, such as <a class="gl-ref" href="../glossary.html#http">HTTP</a>, by which the information world is actually implemented</td></tr>
 </table>
 
 <p>
-The gap he names is precise, and it is the same shape as the gaps named
-throughout Volume IV:
+The gap he names is the same shape as the gaps named throughout Volume IV:
 </p>
 
 <blockquote>
@@ -197,15 +281,73 @@ documents, but has no basis yet for defining with equivalent power the validity
 </blockquote>
 
 <p>
-We can say what a valid message looks like. We cannot say what a valid
-conversation looks like.
+Marshalling means packing data into a message for sending. <a class="gl-ref" href="../glossary.html#xml">XML</a> <a class="gl-ref" href="../glossary.html#schema">Schema</a>, XForms
+and <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Schema are languages that say what a valid single document looks
+like. Put plainly: we can say what a valid message looks like. We cannot say
+what a valid conversation looks like.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+     aria-labelledby="fig61-3-t fig61-3-d">
+  <title id="fig61-3-t">A valid message and a valid conversation</title>
+  <desc id="fig61-3-d">Left: one document is checked against a schema and
+  passes. Right: a checkout runs basket, address, payment, confirmed, which is
+  valid; a run that goes from basket straight to payment is invalid, but there
+  is no standard language for saying so.</desc>
+
+  <text x="156" y="24" class="t-caps" text-anchor="middle">a valid message</text>
+  <rect class="box" x="32" y="48" width="100" height="56" rx="4"/>
+  <text x="82" y="72" class="t-sm" text-anchor="middle">one</text>
+  <text x="82" y="90" class="t-sm" text-anchor="middle">document</text>
+  <path class="ln" d="M 132 76 L 172 76"/>
+  <path d="M 170 71 L 178 76 L 170 81 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="180" y="48" width="100" height="56" rx="4"/>
+  <text x="230" y="81" class="t-sm" text-anchor="middle">schema</text>
+  <path d="M 144 136 L 152 144 L 168 126" fill="none" stroke="#5a8f5a" stroke-width="2.5"/>
+  <text x="156" y="166" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">valid document</text>
+  <text x="156" y="192" class="t-sm" text-anchor="middle">languages existed by 2000:</text>
+  <text x="156" y="210" class="t-sm" text-anchor="middle">XML Schema, XForms, RDFS</text>
+
+  <line class="ln-mut" x1="316" y1="16" x2="316" y2="218"/>
+
+  <text x="516" y="24" class="t-caps" text-anchor="middle">a valid conversation</text>
+  <rect class="box" x="336" y="48" width="72" height="34" rx="4"/>
+  <text x="372" y="69" class="t-sm" text-anchor="middle">basket</text>
+  <rect class="box" x="432" y="48" width="72" height="34" rx="4"/>
+  <text x="468" y="69" class="t-sm" text-anchor="middle">address</text>
+  <rect class="box" x="528" y="48" width="72" height="34" rx="4"/>
+  <text x="564" y="69" class="t-sm" text-anchor="middle">payment</text>
+  <rect class="box" x="624" y="48" width="72" height="34" rx="4"/>
+  <text x="660" y="69" class="t-sm" text-anchor="middle">confirmed</text>
+  <path class="ln" d="M 408 65 L 424 65 M 504 65 L 520 65 M 600 65 L 616 65"/>
+  <g fill="#2f4f4f">
+    <path d="M 424 61 L 431 65 L 424 69 Z"/>
+    <path d="M 520 61 L 527 65 L 520 69 Z"/>
+    <path d="M 616 61 L 623 65 L 616 69 Z"/>
+  </g>
+  <text x="516" y="104" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">valid sequence</text>
+
+  <rect class="box" x="336" y="124" width="72" height="34" rx="4"/>
+  <text x="372" y="145" class="t-sm" text-anchor="middle">basket</text>
+  <rect class="box" x="528" y="124" width="72" height="34" rx="4"/>
+  <text x="564" y="145" class="t-sm" text-anchor="middle">payment</text>
+  <path class="ln-dash" d="M 408 141 L 520 141"/>
+  <path d="M 520 137 L 527 141 L 520 145 Z" fill="#2f4f4f"/>
+  <path d="M 460 133 L 476 149 M 476 133 L 460 149" fill="none" stroke="#b08d57" stroke-width="2.5"/>
+  <text x="516" y="186" class="t-sm" text-anchor="middle" style="fill:#b08d57">invalid sequence: payment before an address</text>
+  <text x="516" y="206" class="t-sm" text-anchor="middle">no standard language to say so</text>
+</svg>
+<figcaption><span class="fig-label">Figure 61.3</span>
+In 2000 there were languages for the left panel. Nothing of equal power
+existed for the right: which orders of messages are allowed.</figcaption>
+</figure>
 
 <h2>61.4 The admission</h2>
 
 <p>
-The note ends by conceding that the distinction it has drawn was never clean
-in practice:
+The Web never matched its model cleanly. HTTP is stateless: each request is
+answered with no memory of earlier ones.
 </p>
 
 <blockquote>
@@ -216,7 +358,7 @@ create a conversational interface -- and many still do
 </blockquote>
 
 <p>
-And it connects that to something people usually treat as a separate subject:
+It then links state to privacy:
 </p>
 
 <blockquote>
@@ -226,34 +368,82 @@ of documents is in fact done by a series of protocols which leave a trace.
 </blockquote>
 
 <p>
-That sentence is the bridge to Volume VII. Reading a page feels like looking
-at something. It is actually a series of exchanges, and the exchanges are
-recorded. Privacy anxiety is the gap between the model the interface presents
-and the protocol underneath it.
+That sentence is the bridge to Volume VII. Reading feels like looking, but it
+is a recorded series of exchanges.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 484 344" width="484" height="344" role="img"
+     aria-labelledby="fig61-4-t fig61-4-d">
+  <title id="fig61-4-t">Reading a page, seen twice</title>
+  <desc id="fig61-4-d">Above the line, the reader simply reads an article.
+  Below it, the browser sends a request to the news site, gets the page and a
+  cookie back, and the site writes an entry in its log. The browser also sends
+  a request to an analytics server, which keeps its own record.</desc>
+
+  <text x="24" y="26" class="t-caps">what the reader sees</text>
+  <rect class="box" x="24" y="42" width="220" height="48" rx="4"/>
+  <text x="134" y="70" class="t-sm" text-anchor="middle">reading an article</text>
+  <text x="264" y="70" class="t-sm t-it">feels like looking</text>
+
+  <line class="ln-dash" x1="24" y1="112" x2="460" y2="112"/>
+
+  <text x="24" y="140" class="t-caps">what the protocol does</text>
+  <rect class="box" x="24" y="172" width="120" height="48" rx="4"/>
+  <text x="84" y="200" class="t-sm" text-anchor="middle">the browser</text>
+  <rect class="box" x="320" y="172" width="140" height="48" rx="4"/>
+  <text x="390" y="200" class="t-sm" text-anchor="middle">news site</text>
+
+  <path class="ln" d="M 144 184 L 312 184"/>
+  <path d="M 312 179 L 320 184 L 312 189 Z" fill="#2f4f4f"/>
+  <text x="232" y="166" class="t-sm" text-anchor="middle">request for page</text>
+  <path class="ln" d="M 320 208 L 152 208"/>
+  <path d="M 152 203 L 144 208 L 152 213 Z" fill="#2f4f4f"/>
+  <text x="232" y="236" class="t-sm" text-anchor="middle">page + cookie</text>
+
+  <path class="ln" d="M 390 220 L 390 258"/>
+  <path d="M 385 258 L 390 266 L 395 258 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="320" y="266" width="140" height="58" rx="4"/>
+  <text x="390" y="290" class="t-sm" text-anchor="middle">server log</text>
+  <text x="390" y="310" class="t-sm" text-anchor="middle">time, address, page</text>
+
+  <path class="ln" d="M 84 220 L 84 258"/>
+  <path d="M 79 258 L 84 266 L 89 258 Z" fill="#2f4f4f"/>
+  <text x="94" y="246" class="t-sm">also asks</text>
+  <rect class="box-warm" x="24" y="266" width="140" height="58" rx="4"/>
+  <text x="94" y="290" class="t-sm" text-anchor="middle">analytics server</text>
+  <text x="94" y="310" class="t-sm" text-anchor="middle">keeps its own record</text>
+</svg>
+<figcaption><span class="fig-label">Figure 61.4</span>
+The interface presents a document; the protocol is a conversation that leaves
+records, sometimes with parties the reader never sees. Privacy worries live in
+that gap.</figcaption>
+</figure>
+
 <p>
-The last observation is the one a working developer will recognise. A form,
-on many sites, has stopped being a document and become the definition of a
-protocol: a set of valid sequences of actions.
+The note names P3P, W3C&#8217;s Platform for Privacy Preferences (a
+Recommendation in 2002), as the attempt to measure that traffic. Its last
+point: on many sites a form has become the definition of a protocol, a set of
+valid sequences of actions. In a tax-return wizard, step three is only valid
+after step two.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The conversational interface arrived in force.</strong> Voice
-assistants from 2011 onward, and conversational interfaces to almost
-everything after 2022, made the model this note describes the ordinary way
-many people use computers.</li>
-<li><strong>Protocol formalisation did not arrive with it.</strong> There is
-still no widely used way to specify which sequences of messages are valid,
-which is the gap section 61.3 names.</li>
-<li><strong>The privacy diagnosis was vindicated.</strong> That reading leaves
-a trace became the central fact of Web privacy, and the subject of Volume
-VII.</li>
+assistants from 2011 onward, and chat-based AI assistants from late 2022, made
+the model this note describes the ordinary way many people use
+computers.</li>
+<li><strong>Protocol formalisation did not arrive with it.</strong> W3C
+attempted it with WS-CDL (2005), which saw little use. Most protocols still
+describe valid sequences in prose or ad-hoc state diagrams.</li>
+<li><strong>The privacy diagnosis was vindicated.</strong> The trace left by
+reading became the central fact of Web privacy.</li>
 <li><strong>Scaling the page down happened anyway.</strong> Responsive design
-adapted the shared-state metaphor to small screens rather than replacing it,
-which is the choice this note warns may be the wrong one.</li>
+(named in 2010), where one page rearranges itself for any screen width, kept
+the shared-state metaphor on small screens: the choice this note warns may
+be wrong.</li>
 </ul>
 </div>
 
@@ -272,7 +462,8 @@ Chapter 82.
 <div class="question">
 <p><span class="question-number">61.1</span>
 Name an interface you use where the shared state is visible, and one where it
-is only in your head. Which errors does each produce?</p>
+is only in your head. Which errors does each produce (for example, forgetting
+which folder you are in)?</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.2</span>
@@ -281,13 +472,14 @@ right one would look like for a task you do on a phone.</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.3</span>
-Write the valid sequences of messages for a checkout flow. What language would
-you need to express it?</p>
+List the steps of an online checkout in order. Name two sequences that should
+be refused (for example, paying before choosing an address). How would you
+write down the rule so a computer could check it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.4</span>
-Privacy anxiety is described as a gap between the model and the protocol.
-Give another anxiety with the same structure.</p>
+Reading a page feels private but leaves a trace. Name another everyday action
+that feels like looking but is actually an exchange.</p>
 </div>
 </details>
 
