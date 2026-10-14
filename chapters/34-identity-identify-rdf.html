@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2008-01-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> data is written in <a class="gl-ref" href="../glossary.html#xml">XML</a> <a class="gl-ref" href="../glossary.html#markup">markup</a>, so a tag such as <code>#foo</code> can
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> data is written in <a class="gl-ref" href="../glossary.html#xml">XML</a> <a class="gl-ref" href="../glossary.html#markup">markup</a>, so a reference such as <code>#foo</code> can
 mean a piece of the document, a node in the data, or the real person. Berners-Lee
 gives each kind of pointer its own attribute, shows that one <a class="gl-ref" href="../glossary.html#uri">URI</a> can change
 meaning with the file&#8217;s label, and says to identify a person by something
@@ -94,56 +94,79 @@ The XML encodes the graph; the graph describes the world.
 
 <p>
 Berners-Lee&#8217;s example describes a person, Albert, in an element with
-<code>id="foo"</code>, and counts the levels (Figure 34.1). When something
-points at <code>#foo</code>, which does it mean?
+<code>id="foo"</code>. Inside it, a description of Albert&#8217;s father, Joe,
+says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
+(Figure 34.1). Which does each mean?
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig34-1-t fig34-1-d">
-  <title id="fig34-1-t">One #foo, three targets</title>
+  <title id="fig34-1-t">One #foo, several targets</title>
   <desc id="fig34-1-d">An excerpt of the markup: a z:person element with
-  id foo, containing Albert&#8217;s name, a z:wrote element with href pointing
-  to #foo and a z:friend element with resource pointing to #foo. Three
-  candidate targets are stacked on the right: the XML element, with one
-  attribute and four children; the RDF node, with three properties; and Albert
-  the person, with two children. The href arrow goes to the element; the
-  resource arrow goes to Albert.</desc>
+  id foo, containing Albert&#8217;s name and a play:father element. Inside the
+  father element, which describes Joe, are z:name with value Joe, z:wrote with
+  href pointing to #foo and z:friend with resource pointing to #foo. Four
+  candidate targets are stacked on the right. The value arrow goes to the
+  string Joe; the href arrow goes to the XML element, with one attribute and
+  four children; the resource arrow goes to Albert the person, with two
+  children. The RDF node, with three properties, is reached by no existing
+  attribute; a dashed arrow marks the proposed object= attribute.</desc>
 
-  <text x="160" y="24" class="t-caps" text-anchor="middle">the markup</text>
-  <text x="570" y="24" class="t-caps" text-anchor="middle">what #foo might pick out</text>
+  <text x="155" y="24" class="t-caps" text-anchor="middle">the markup</text>
+  <text x="560" y="24" class="t-caps" text-anchor="middle">what is pointed at</text>
 
-  <rect class="box-plain" x="20" y="36" width="280" height="140" rx="4"/>
-  <text x="34" y="60" class="t-mono">&lt;z:person id="foo"&gt;</text>
-  <text x="50" y="80" class="t-mono">  &lt;play:name&gt;Albert&lt;/play:name&gt;</text>
-  <text x="50" y="100" class="t-mono">  &#8230;</text>
-  <text x="50" y="120" class="t-mono">  &lt;z:wrote href="#foo"/&gt;</text>
-  <text x="50" y="140" class="t-mono">  &lt;z:friend resource="#foo"/&gt;</text>
-  <text x="34" y="160" class="t-mono">&lt;/z:person&gt;</text>
+  <rect class="box-plain" x="20" y="40" width="270" height="212" rx="4"/>
+  <text x="34" y="62" class="t-mono">&lt;z:person id="foo"&gt;</text>
+  <text x="50" y="84" class="t-mono">&lt;play:name&gt;Albert&lt;/play:name&gt;</text>
+  <text x="50" y="106" class="t-mono">&#8230;</text>
+  <text x="50" y="128" class="t-mono">&lt;play:father&gt;</text>
+  <text x="66" y="150" class="t-mono">&lt;z:name value="Joe"/&gt;</text>
+  <text x="66" y="172" class="t-mono">&lt;z:wrote href="#foo"/&gt;</text>
+  <text x="66" y="194" class="t-mono">&lt;z:friend resource="#foo"/&gt;</text>
+  <text x="50" y="216" class="t-mono">&lt;/play:father&gt;</text>
+  <text x="34" y="238" class="t-mono">&lt;/z:person&gt;</text>
 
-  <path class="ln" d="M306 116 L360 116 L360 59 L432 59"/>
-  <path d="M432 55 L440 59 L432 63 Z" fill="#2f4f4f"/>
-  <text x="372" y="50" class="t-mono">href=</text>
+  <path class="ln-mut" d="M290 146 L340 146 L340 62 L462 62"/>
+  <path d="M462 58 L470 62 L462 66 Z" fill="#8a9a9a"/>
+  <text x="352" y="54" class="t-mono">value=</text>
 
-  <path class="ln-accent" d="M306 136 L340 136 L340 179 L432 179"/>
-  <path d="M432 175 L440 179 L432 183 Z" fill="#1c5a7a"/>
-  <text x="352" y="170" class="t-mono" style="fill:#1c5a7a">resource=</text>
+  <path class="ln" d="M290 168 L380 168 L380 120 L462 120"/>
+  <path d="M462 116 L470 120 L462 124 Z" fill="#2f4f4f"/>
+  <text x="392" y="112" class="t-mono">href=</text>
 
-  <rect class="box-plain" x="440" y="36" width="260" height="46" rx="4"/>
-  <text x="570" y="55" text-anchor="middle">the XML element</text>
-  <text x="570" y="72" class="t-sm" text-anchor="middle">1 attribute, 4 child elements</text>
+  <path class="ln-accent" d="M290 190 L420 190 L420 236 L462 236"/>
+  <path d="M462 232 L470 236 L462 240 Z" fill="#1c5a7a"/>
+  <text x="300" y="212" class="t-mono" style="fill:#1c5a7a">resource=</text>
 
-  <rect class="box" x="440" y="96" width="260" height="46" rx="4"/>
-  <text x="570" y="115" text-anchor="middle">the RDF node</text>
-  <text x="570" y="132" class="t-sm" text-anchor="middle">3 properties stated</text>
+  <rect class="box-plain" x="470" y="40" width="180" height="44" rx="4"/>
+  <text x="560" y="58" text-anchor="middle">the string Joe</text>
+  <text x="560" y="75" class="t-sm" text-anchor="middle">a literal, not a reference</text>
 
-  <rect class="box-warm" x="440" y="156" width="260" height="46" rx="4"/>
-  <text x="570" y="175" text-anchor="middle">Albert, the person</text>
-  <text x="570" y="192" class="t-sm" text-anchor="middle">2 children: Bill and Claire</text>
+  <rect class="box-plain" x="470" y="98" width="180" height="44" rx="4"/>
+  <text x="560" y="116" text-anchor="middle">the XML element</text>
+  <text x="560" y="133" class="t-sm" text-anchor="middle">1 attribute, 4 child elements</text>
+
+  <rect class="box" x="470" y="156" width="180" height="44" rx="4"/>
+  <text x="560" y="174" text-anchor="middle">the RDF node</text>
+  <text x="560" y="191" class="t-sm" text-anchor="middle">3 properties stated</text>
+
+  <path class="ln-dash" d="M712 178 L666 178"/>
+  <path d="M666 174 L658 178 L666 182 Z" fill="#8a9a9a"/>
+  <text x="660" y="168" class="t-mono">object=</text>
+  <text x="662" y="196" class="t-sm">proposed</text>
+  <text x="662" y="210" class="t-sm">in 34.2</text>
+
+  <rect class="box-warm" x="470" y="214" width="180" height="44" rx="4"/>
+  <text x="560" y="232" text-anchor="middle">Albert, the person</text>
+  <text x="560" y="249" class="t-sm" text-anchor="middle">2 children: Bill and Claire</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.1</span>
-The same identifier, three possible targets. The attribute doing the pointing,
-not the identifier, decides which level is meant.</figcaption>
+The references sit inside the description of Albert&#8217;s father, Joe: Joe
+wrote <code>#foo</code> and is a friend of <code>#foo</code>. The attribute
+doing the pointing, not the identifier, decides which level is meant. No
+existing attribute reaches the RDF node itself, which is why 34.2 proposes
+<code>object=</code>.</figcaption>
 </figure>
 
 <p>
@@ -155,8 +178,8 @@ attribute, not its value:
 <table>
 <tr><th>Attribute</th><th>What it refers to</th><th>In the example</th></tr>
 <tr><td><code>value=</code></td><td>a <em>literal</em>: the string itself, not a reference</td><td>the name &ldquo;Joe&rdquo;</td></tr>
-<tr><td><code>href=</code></td><td>the piece of document (text, or XML fragment) that the URI points at</td><td><code>z:wrote</code> points at the element</td></tr>
-<tr><td><code>resource=</code></td><td>the abstract thing that the RDF node for that fragment describes</td><td><code>z:friend</code> points at Albert</td></tr>
+<tr><td><code>href=</code></td><td>the piece of document (text, or XML fragment) that the URI points at</td><td>Joe wrote the element</td></tr>
+<tr><td><code>resource=</code></td><td>the abstract thing that the RDF node for that fragment describes</td><td>Joe&#8217;s friend is Albert</td></tr>
 </table>
 
 <p>
@@ -214,8 +237,8 @@ into a file describing Ora Lassila. A fragment&#8217;s meaning comes from the
   <text x="540" y="166" class="t-sm" text-anchor="middle">or undefined, or another element</text>
 
   <text x="360" y="212" text-anchor="middle">Claim: I am the author of foo.rdf#bar</text>
-  <text x="180" y="236" class="t-sm" text-anchor="middle">false: he did not author Ora Lassila</text>
-  <text x="540" y="236" class="t-sm" text-anchor="middle">true: he wrote the snippet</text>
+  <text x="180" y="236" class="t-sm" text-anchor="middle">false: Berners-Lee did not author Ora Lassila</text>
+  <text x="540" y="236" class="t-sm" text-anchor="middle">true: Berners-Lee wrote the snippet</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.2</span>
 A fragment&#8217;s meaning comes from the media type, so relabelling the file
@@ -223,8 +246,7 @@ changes what the URI names, and with it whether a statement is true.</figcaption
 </figure>
 
 <p>
-Even the XML reading is unclear: it might name the element and its contents,
-nothing, or another element with the same id. His verdict:
+Even the XML reading is unclear. His verdict:
 </p>
 
 <blockquote>
@@ -241,15 +263,20 @@ describes, but RDF must also make statements about elements themselves.
 </p>
 
 <p>
-He wrote the snippet, and might say he is the author of
+Berners-Lee wrote the snippet himself, and might say he is the author of
 <code>foo.rdf#bar</code>; but he is not the author of Ora Lassila (Figure
-34.2). He lists three remedies. For data written
-inline, RDF already has <code>parseType="Resource"</code> (the reference is to
-the RDF thing) and <code>parseType="Literal"</code> (it is to the XML). An
-interpretation property could link an XML subtree to the RDF object it
-describes. And he proposes a new attribute, <code>object=</code>, to refer to
-the RDF node, leaving <code>resource=</code> to point at a fragment.
+34.2). He lists three remedies:
 </p>
+<ul>
+<li><strong>Already in RDF:</strong> <code>parseType="Resource"</code> or
+<code>parseType="Literal"</code> on inline data. Fixes: says whether the
+reference is to the RDF thing or to the XML.</li>
+<li><strong>A new property:</strong> one linking an XML subtree to the RDF
+object it describes. Fixes: lets both be named and related.</li>
+<li><strong>A new attribute:</strong> <code>object=</code> for the RDF node,
+leaving <code>resource=</code> for the fragment. Fixes: gives the node the
+pointer it lacks in Figure 34.1.</li>
+</ul>
 
 <h2>34.3 Identifying things that have no address</h2>
 

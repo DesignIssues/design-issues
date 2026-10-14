@@ -103,34 +103,40 @@ The note&#8217;s example is an invoice for an aeroplane part.
   warehouse and the mechanic need only the second. No party understands the
   whole document, and none needs to.</desc>
 
-  <rect class="box-plain" x="24" y="20" width="330" height="250" rx="4"/>
-  <text x="189" y="44" class="t-caps" text-anchor="middle">an invoice</text>
+  <rect class="box-plain" x="236" y="20" width="300" height="250" rx="4"/>
+  <text x="386" y="44" class="t-caps" text-anchor="middle">an invoice</text>
 
-  <rect x="42" y="58" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="76" class="t-mono" style="fill:#1c5a7a">quantity: 4</text>
-  <rect x="42" y="90" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="108" class="t-mono" style="fill:#1c5a7a">cost: 128.00</text>
+  <rect x="262" y="58" width="256" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="272" y="76" class="t-mono" style="fill:#1c5a7a">quantity: 4</text>
+  <rect x="262" y="90" width="256" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="272" y="108" class="t-mono" style="fill:#1c5a7a">cost: 128.00</text>
 
-  <rect x="42" y="124" width="294" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1"/>
-  <text x="52" y="144" class="t-mono" style="fill:#b08d57">item:</text>
-  <text x="62" y="164" class="t-sm" style="fill:#b08d57">engine lower inspection hatch</text>
-  <text x="62" y="182" class="t-sm" style="fill:#b08d57">door mount bracket lock nut</text>
+  <rect x="262" y="124" width="256" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1"/>
+  <text x="272" y="144" class="t-mono" style="fill:#b08d57">item:</text>
+  <text x="282" y="164" class="t-sm" style="fill:#b08d57">engine lower inspection hatch</text>
+  <text x="282" y="182" class="t-sm" style="fill:#b08d57">door mount bracket lock nut</text>
 
-  <rect x="42" y="202" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="220" class="t-mono" style="fill:#1c5a7a">total cost: 512.00</text>
-  <rect x="42" y="234" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="252" class="t-mono" style="fill:#1c5a7a">signed: Tom</text>
+  <rect x="262" y="202" width="256" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="272" y="220" class="t-mono" style="fill:#1c5a7a">total cost: 512.00</text>
+  <rect x="262" y="234" width="256" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="272" y="252" class="t-mono" style="fill:#1c5a7a">signed: Tom</text>
 
-  <!-- who reads what -->
-  <path class="ln-accent" d="M 336 76 L 400 76 L 400 96"/>
-  <rect class="box" x="400" y="96" width="300" height="60" rx="4"/>
-  <text x="550" y="118" class="t-caps" text-anchor="middle">buyer and seller</text>
-  <text x="550" y="140" class="t-sm" text-anchor="middle">read the business terms; the part is opaque</text>
+  <!-- who reads what: a bracket gathers the four blue rows -->
+  <path class="ln-accent" d="M 262 71 L 250 71 L 250 247 L 262 247"/>
+  <path class="ln-accent" d="M 250 103 L 262 103"/>
+  <path class="ln-accent" d="M 250 215 L 262 215"/>
+  <path class="ln-accent" d="M 250 159 L 214 159"/>
+  <rect class="box" x="14" y="121" width="200" height="76" rx="4"/>
+  <text x="114" y="145" class="t-caps" text-anchor="middle">buyer and seller</text>
+  <text x="114" y="165" class="t-sm" text-anchor="middle">read the business terms;</text>
+  <text x="114" y="183" class="t-sm" text-anchor="middle">the part is opaque</text>
 
-  <path class="ln" style="stroke:#b08d57" d="M 336 160 L 372 160 L 372 206 L 400 206"/>
-  <rect class="box-warm" x="400" y="176" width="300" height="60" rx="4"/>
-  <text x="550" y="198" class="t-caps" text-anchor="middle" style="fill:#b08d57">warehouse and mechanic</text>
-  <text x="550" y="220" class="t-sm" text-anchor="middle">read the part terms; the price is irrelevant</text>
+  <path class="ln" style="stroke:#b08d57" d="M 518 160 L 552 160"/>
+  <rect class="box-warm" x="552" y="114" width="156" height="92" rx="4"/>
+  <text x="630" y="136" class="t-caps" text-anchor="middle" style="fill:#b08d57">warehouse</text>
+  <text x="630" y="154" class="t-caps" text-anchor="middle" style="fill:#b08d57">and mechanic</text>
+  <text x="630" y="174" class="t-sm" text-anchor="middle">read the part terms;</text>
+  <text x="630" y="192" class="t-sm" text-anchor="middle">the price is irrelevant</text>
 
   <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
   <text x="360" y="314" class="t-sm t-it" text-anchor="middle">Nobody understands the whole document. The invoice works anyway.</text>
@@ -166,9 +172,9 @@ URI is a <em>binding</em>.
 <h2>17.2 A message is an expression, not a procedure call</h2>
 
 <p>
-It is tempting to treat a message as a remote procedure call: a target
-object, one of a finite set of methods, and typed parameters. The authors
-reject the analogy:
+A procedure call is one program asking another to run a single named
+operation with fixed inputs, like a form with fixed fields. It is tempting
+to treat a message as such a call. The authors reject the analogy:
 </p>
 
 <blockquote>
@@ -235,21 +241,24 @@ together in one expression. That is the first requirement.
 
 <p>
 The note sets out seven requirements; the three on schemas come in
-section 17.5.
+section 17.5. A vocabulary is <em>in scope</em> where its names may be used;
+an <em>identifier</em> is a name.
 </p>
 
 <table>
-<tr><th>Requirement</th><th>What breaks without it</th></tr>
-<tr><td>More than one vocabulary may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td></tr>
-<tr><td>A vocabulary may be introduced with a purely local change</td><td>Generated fragments cannot declare their own terms</td></tr>
-<tr><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td>One module&#8217;s change silently redefines another module&#8217;s names</td></tr>
-<tr><td>A namespace may be defined by present or future schema languages</td><td>The definition mechanism is frozen at the level of the day</td></tr>
+<tr><th>Requirement</th><th>What breaks without it</th><th>In the invoice</th></tr>
+<tr><td>More than one vocabulary may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td><td>A Swiss-franc amount sits inside a price written in business terms</td></tr>
+<tr><td>A vocabulary may be introduced with a purely local change</td><td>Generated fragments cannot declare their own terms</td><td>The supplier&#8217;s program declares its part terms inside the item block</td></tr>
+<tr><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td>One vocabulary&#8217;s change silently redefines another&#8217;s names</td><td><code>f:chf</code> is read as currency from the <code>f</code> binding alone</td></tr>
+<tr><td>A namespace may be defined by present or future languages for writing schemas</td><td>The definition mechanism is frozen at the level of the day</td><td>The currency terms could be defined in a schema language invented later</td></tr>
 </table>
 
 <p>
-The third is argued most sharply. In some languages, finding which module a
-name comes from means reading the modules and applying priority rules. The
-authors cite Java, with Modula-3 as the counter-example:
+The third is argued most sharply. In some programming languages, finding
+which module (separately written unit) a name comes from means reading the
+modules and applying priority rules. The note grants this may suit a
+language such as Java, and contrasts Modula-3, which settles names
+unambiguously. For documents it is a serious flaw:
 </p>
 
 <blockquote>
@@ -267,8 +276,11 @@ being resolved by lookup.
 <h2>17.4 Why local scope</h2>
 
 <p>
-The note&#8217;s example, in an invented syntax, binds the prefix
-<code>f</code> to a currency schema for one block:
+Markup wraps each piece of content in named tags,
+<code>&lt;name&gt;</code>&#8230;<code>&lt;/name&gt;</code>. A prefix such as
+<code>f:</code> says which vocabulary the name comes from. The note&#8217;s
+example binds <code>f</code> to a currency schema for one block, using
+<code>NS:using</code> as a made-up stand-in for a real syntax:
 </p>
 
 <pre><code>&lt;a:details&gt;
@@ -296,7 +308,7 @@ Why not declare every binding once, at the top? The note gives four reasons.
 
 <p>
 Many pages are assembled by programs that write one part without seeing the
-rest, so a fragment must declare its own terms. Moving bindings to the top
+rest. Moving bindings to the top
 afterwards means buffering the whole document, which rules out pipelined
 processing, where each part is passed on as soon as it is produced.
 </p>
@@ -345,8 +357,7 @@ Double the document and the strip doubles, but the triangle quadruples.</figcapt
 <p>
 Imagine a list of suppliers, each with its own catalogue schema. With local
 bindings the <em>working set</em>, the memory held while processing, stays
-finite. With global bindings it grows with every page, and total effort,
-memory times time, rises as the square of the document size.
+finite; with global bindings it grows with every page.
 </p>
 
 <h3>Joining documents</h3>
@@ -367,14 +378,49 @@ far fewer mistakes.
 <h2>17.5 What may be extended, and what may not</h2>
 
 <p>
-The invoice returns to supply the remaining three requirements. Its designer
-wants the item description to be extensible, so that any supplier&#8217;s part
-vocabulary can be dropped in. The same designer does not want the list of
-people allowed to sign to be extensible: only Tom or Joe may sign. So a
-schema language needs a way to say that a content model (the rule for what
-may appear inside an element) may be extended, and a way for a new schema to
-declare that it is such an extension. The seventh requirement makes partial
-understanding cheap:
+The invoice supplies the remaining three requirements. Its designer wants
+the item description open to any supplier&#8217;s part vocabulary, but the
+list of people allowed to sign closed: only Tom or Joe may sign.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
+     aria-labelledby="fig17-5-t fig17-5-d">
+  <title id="fig17-5-t">An open slot and a closed slot in one schema</title>
+  <desc id="fig17-5-d">An outline of the invoice schema. The item slot is
+  drawn as an open dashed box: any supplier's part vocabulary may go there,
+  and a reader may skip it without the supplier's schema. The signed-by slot
+  is a closed solid box: Tom or Joe only, with no extension allowed.</desc>
+
+  <rect class="box-plain" x="20" y="16" width="320" height="176" rx="4"/>
+  <text x="180" y="40" class="t-caps" text-anchor="middle">the invoice schema</text>
+  <rect x="38" y="54" width="284" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
+  <text x="48" y="72" class="t-mono" style="fill:#1c5a7a">quantity, cost, total</text>
+  <rect x="38" y="90" width="284" height="46" fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="48" y="109" class="t-mono" style="fill:#5a8f5a">item:</text>
+  <text x="48" y="127" class="t-sm" style="fill:#5a8f5a">open slot</text>
+  <rect x="38" y="146" width="284" height="30" fill="#fdfdfc" stroke="#2f4f4f" stroke-width="2"/>
+  <text x="48" y="166" class="t-mono">signed by: Tom | Joe</text>
+
+  <path class="ln" style="stroke:#5a8f5a" d="M 322 113 L 376 113"/>
+  <text x="388" y="104" class="t-caps" style="fill:#5a8f5a">extensible</text>
+  <text x="388" y="122" class="t-sm">any supplier&#8217;s part vocabulary may go here,</text>
+  <text x="388" y="138" class="t-sm">and may be skipped without its schema</text>
+
+  <path class="ln" d="M 322 161 L 376 161"/>
+  <text x="388" y="164" class="t-caps">closed</text>
+  <text x="388" y="182" class="t-sm">Tom or Joe only; no extension</text>
+</svg>
+<figcaption><span class="fig-label">Figure 17.5</span>
+The schema, not the reader, says which slots may be extended and which may
+be skipped.</figcaption>
+</figure>
+
+<p>
+So a schema language needs a way to say that a content model (the rule for
+what may appear inside an element) may be extended, and a way for a new
+schema to declare that it is such an extension. The seventh requirement
+makes partial understanding cheap:
 </p>
 
 <blockquote>
@@ -393,9 +439,8 @@ part catalogue.
 <h3>What happened since</h3>
 <ul>
 <li><strong>Namespaces shipped with local scope.</strong> XML Namespaces
-became a W3C Recommendation in January 1999 with prefix bindings scoped to
-the element that declares them, which is requirement two, and with prefixes
-bound directly rather than resolved, which is requirement three.</li>
+became a W3C Recommendation in January 1999 with prefixes bound directly and
+scoped to the element that declares them: requirements two and three.</li>
 <li><strong>Schemas gained ways to mark content as skippable.</strong> XML
 Schema 1.0 (W3C Recommendation, May 2001) lets a schema mark where foreign
 content may appear and, with <code>processContents="skip"</code> or
@@ -404,19 +449,17 @@ the converse, a <code>mustUnderstand</code> flag, which is Chapter 18&#8217;s
 concern.</li>
 <li><strong>The concatenation goal was not met.</strong> Joining two XML
 documents still yields a document with two roots, which is not well formed
-(XML&#8217;s basic syntax rules require a single root element). The problem
-recurs in Chapter 24.</li>
+(XML&#8217;s basic syntax rules require a single root element).</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is the specification of the demand made at the end of
-Chapter 16. The mandatory flag it stops short of is Chapter 18. The
-processing question it leaves open, of what a mixed document means, is
-Chapter 24. The decentralised extensibility it enables is argued over in
-Chapter 23, and the metadata architecture it refers to is Chapter 27.
+This chapter specifies the demand made at the end of Chapter 16. The
+mandatory flag it stops short of is Chapter 18; what a mixed document means
+is Chapter 24; decentralised extensibility is argued over in Chapter 23; the
+metadata architecture is Chapter 27.
 </p>
 </div>
 

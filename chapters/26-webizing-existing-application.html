@@ -72,10 +72,9 @@ open world.
 <cite>Webizing existing systems, 1998</cite>
 </blockquote>
 <p>
-He is careful to say why this matters as much as inventing new things: not
-only does it bootstrap the Web from existing information, but the existing
-systems were researched and designed over years, and it is important not to
-lose the knowledge accrued in that process.
+It matters as much as invention: it bootstraps the Web from existing
+information, and keeps the knowledge built into systems designed over
+years.
 </p>
 </div>
 
@@ -162,9 +161,9 @@ knowledge for computers) used URIs for identifiers. KIF ignores the difference
 between capitals and lower case, but URIs do not: <code>Temp</code> and
 <code>temp</code> are different URIs. So lower-case letters had to be escaped
 with backslashes, turning a token such as <code>temp</code> into something
-like <code>\t\e\m\p</code> (an illustration, not Connolly&#8217;s exact form),
-which made the result less readable. Changing the underlying language in small
-ways, Berners-Lee concludes, can make the translation much less cumbersome.
+like <code>\t\e\m\p</code> (an illustration, not Connolly&#8217;s exact form).
+Small changes to the underlying language, Berners-Lee concludes, can make the
+translation much less cumbersome.
 </p>
 
 <p>
@@ -176,12 +175,12 @@ slightly flippant, and says each row probably needs an essay of explanation.
 <tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>In brief</th></tr>
 <tr><td>Hypertext</td><td>WWW</td><td>Links reach any document, not just those in one system</td></tr>
 <tr><td>Data</td><td>Linked data</td><td>Records get URIs and can point at one another</td></tr>
-<tr><td>Top-down structured design</td><td>Bottom-up <a class="gl-ref" href="../glossary.html#ontology">ontology</a> design</td><td>Vocabularies grow from the parts rather than being planned from the top</td></tr>
+<tr><td>Top-down structured design</td><td>Bottom-up <a class="gl-ref" href="../glossary.html#ontology">ontology</a> design</td><td>Vocabularies (an <em>ontology</em> is a shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> of kinds of thing) grow from the parts rather than being planned from the top</td></tr>
 <tr><td>Data Hiding</td><td>Data Re-use</td><td>What a module kept private, once named globally, others can use</td></tr>
-<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump of section 26.3 is, as the link, what the Web runs on</td></tr>
+<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump (explained in 26.3) is, as the link, what the Web runs on</td></tr>
 <tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, guarded by access-control lists (&ldquo;ACL&#8217;d&rdquo;)</td></tr>
-<tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a web with no centre</td></tr>
-<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>The old way out of fashion, the new way in</td></tr>
+<tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a <em>scale-free</em> web: a few hubs, many small nodes, no single centre</td></tr>
+<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>After <em>Wired</em> magazine&#8217;s out/in column: the old way out, the new way in</td></tr>
 </table>
 
 <h2>26.2 Webizing a database</h2>
@@ -249,7 +248,8 @@ world.
 
 <p>
 The temperature column becomes, in Berners-Lee&#8217;s words, a concept, an <a class="gl-ref" href="../glossary.html#rdf">RDF</a>
-property in fact, available for all the world to refer to. Because the <a class="gl-ref" href="../glossary.html#schema">schema</a>
+property in fact (a named relationship, such as <em>has temperature</em>, that
+any data on the Web can use), available for all the world to refer to. Because the <a class="gl-ref" href="../glossary.html#schema">schema</a>
 declares it as such, systems that know nothing of SQL can use it.
 </p>
 
@@ -267,13 +267,19 @@ employees table:
 
 <p>
 The second is about indirection. For flexibility and security there is usually
-a layer between what is exposed and what is stored. A web page is not a file,
-though it has the same form, a string of bytes and a MIME type; a remote
-operation is not a local procedure, though it has the same form, a service URI,
-a method name and parameters. Likewise a published database should usually be
-a derived view that still has the form of a database. Then the external form
-can be persistent and suit the consumer, and the internal one efficient and
-convenient for the publisher.
+a layer between what is exposed and what is stored, though both share a form:
+</p>
+
+<table>
+<tr><th>What is exposed</th><th>What is behind it</th><th>The shared form</th></tr>
+<tr><td>Web page</td><td>File</td><td>Bytes plus a MIME type</td></tr>
+<tr><td>Remote operation</td><td>Local procedure</td><td>Service URI, method name and parameters</td></tr>
+<tr><td>Published database view</td><td>Internal tables</td><td>Still the form of a database</td></tr>
+</table>
+
+<p>
+Outside, the form is persistent and suits the consumer; inside, it is
+efficient for the publisher.
 </p>
 
 <h2>26.3 Where it gets hard</h2>
@@ -284,23 +290,24 @@ context at one end of a link can be completely different from the context at
 the other. Berners-Lee reaches for Dijkstra: the objection to the goto
 statement (an instruction that jumps to any other line of a program) was that
 it is too primitive and too much an invitation to make a mess of one&#8217;s
-program. That is true of the hypertext link too, in a way, he concedes. Used
-without restraint, both remove the rules that give a language sanity,
-analysability and optimisability.
+program. That is true of the hypertext link too, in a way, he concedes.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
+<svg class="dia" viewBox="0 0 610 312" width="610" height="312" role="img"
      aria-labelledby="fig26-3-t fig26-3-d">
   <title id="fig26-3-t">A link into a nested structure</title>
   <desc id="fig26-3-d">Four nested boxes: a scene containing an object
-  containing a scene containing an object, the chair. A link from another
-  document goes straight into the chair, skipping the context of every level
-  around it.</desc>
+  containing a scene containing an object, the chair. A bracket on the left
+  notes that context such as position and style changes at every level. A link
+  from another document goes straight into the chair, skipping the context of
+  every level around it.</desc>
 
   <text x="20" y="150" class="t-sm">context (position,</text>
   <text x="20" y="166" class="t-sm">style) changes at</text>
   <text x="20" y="182" class="t-sm">every level</text>
+  <path class="ln-mut" d="M 172 20 L 160 20 L 160 296 L 172 296"/>
+  <path class="ln-mut" d="M 150 162 L 160 162"/>
 
   <rect class="box-plain" x="180" y="20" width="280" height="276" rx="4"/>
   <text x="192" y="40" class="t-sm">scene</text>
@@ -312,14 +319,14 @@ analysability and optimisability.
   <text x="320" y="160" class="t-lg" text-anchor="middle">chair</text>
   <text x="320" y="204" class="t-sm" text-anchor="middle">object</text>
 
-  <rect class="box-plain" x="600" y="152" width="104" height="56" rx="4"/>
-  <text x="652" y="176" text-anchor="middle">another</text>
-  <text x="652" y="194" text-anchor="middle">document</text>
+  <rect class="box-plain" x="490" y="152" width="104" height="56" rx="4"/>
+  <text x="542" y="176" text-anchor="middle">another</text>
+  <text x="542" y="194" text-anchor="middle">document</text>
 
-  <path class="ln-accent" d="M 600 180 L 398 180"/>
+  <path class="ln-accent" d="M 490 180 L 398 180"/>
   <path d="M 400 174 L 388 180 L 400 186 Z" fill="#1c5a7a"/>
-  <text x="530" y="146" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">link: like goto</text>
-  <text x="530" y="162" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">into an inner loop</text>
+  <text x="542" y="120" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">link jumps past</text>
+  <text x="542" y="136" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">all the context</text>
 </svg>
 <figcaption><span class="fig-label">Figure 26.3</span>
 A link into a nested structure skips all the context around it. Sometimes that
@@ -359,6 +366,45 @@ use one name, &ldquo;the pipe size draft&rdquo;, both for a particular document
 and for the set of documents it belongs to. Those are two things, needing two
 URIs.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+     aria-labelledby="fig26-4-t fig26-4-d">
+  <title id="fig26-4-t">One name, two things, two URIs</title>
+  <desc id="fig26-4-d">On the left, the single name the pipe size draft has two
+  warm arrows, one to draft 3, a single document, and one to all the drafts, a
+  set. After a webize arrow, on the right, two green boxes carry distinct URIs:
+  one ending pipesize/draft3 for the document and one ending pipesize/ for the
+  set.</desc>
+
+  <rect class="box-warm" x="20" y="90" width="170" height="40" rx="4"/>
+  <text x="105" y="115" text-anchor="middle">the pipe size draft</text>
+  <text x="105" y="152" class="t-sm" text-anchor="middle" style="fill:#b08d57">one name, two things</text>
+
+  <path class="ln" d="M 190 100 L 240 58" style="stroke:#b08d57"/>
+  <path d="M 236 53 L 246 53 L 243 63 Z" fill="#b08d57"/>
+  <path class="ln" d="M 190 120 L 240 162" style="stroke:#b08d57"/>
+  <path d="M 236 167 L 246 167 L 243 157 Z" fill="#b08d57"/>
+
+  <rect class="box-plain" x="250" y="34" width="160" height="40" rx="4"/>
+  <text x="330" y="59" class="t-sm" text-anchor="middle">draft 3 (one document)</text>
+  <rect class="box-plain" x="250" y="146" width="160" height="40" rx="4"/>
+  <text x="330" y="171" class="t-sm" text-anchor="middle">all the drafts (a set)</text>
+
+  <path class="ln-accent" d="M 426 110 L 466 110"/>
+  <path d="M 462 104 L 474 110 L 462 116 Z" fill="#1c5a7a"/>
+  <text x="450" y="96" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">webize</text>
+
+  <rect class="box-green" x="490" y="34" width="210" height="40" rx="4"/>
+  <text x="595" y="59" class="t-mono" text-anchor="middle">&#8230;/pipesize/draft3</text>
+  <rect class="box-green" x="490" y="146" width="210" height="40" rx="4"/>
+  <text x="595" y="171" class="t-mono" text-anchor="middle">&#8230;/pipesize/</text>
+  <text x="595" y="212" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">two names, no muddle</text>
+</svg>
+<figcaption><span class="fig-label">Figure 26.4</span>
+Webizing forces the muddle into the open: a URI must name one thing. The fix
+is two names.</figcaption>
+</figure>
 
 <p>
 He leaves an exercise, to examine <a class="gl-ref" href="../glossary.html#xml">XML</a> schemas and ask what the URI of an
@@ -404,8 +450,8 @@ setting, for example one line in a settings file? What breaks?</p>
 <div class="question">
 <p><span class="question-number">26.2</span>
 Section 26.2 distinguishes the kind of thing a row describes from the set of
-rows present. Give a table where conflating the two produces a false
-statement.</p>
+rows present. An <em>employees</em> table lists only salaried staff. What
+false conclusion would someone draw about a contractor who is not in it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.3</span>

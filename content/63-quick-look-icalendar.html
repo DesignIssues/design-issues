@@ -19,8 +19,9 @@ The same checks apply to any data format.
 <h3>The question</h3>
 <p>
 In October 2001 Berners-Lee spent a few hours reading fifty pages of
-iCalendar, the specification (RFC 2445) for exchanging calendar entries,
-with a view to evaluating proposals for putting it into XML. The note is
+iCalendar, the specification for exchanging calendar entries, published as
+RFC 2445 (an RFC is one of the numbered documents that define internet
+standards), with a view to evaluating proposals for putting it into XML. The note is
 what he found: the one worked example of the analysis Volume IV keeps
 recommending.
 </p>
@@ -56,8 +57,14 @@ follows the colon is the <em>value</em>: the file encoded as text, or its
 address.
 </p>
 
+<p>
+A harder example from the note: the attendee line below names c@y.com, but
+adds that the invitation came (was delegated) from b@y.com and has been
+passed on to a@y.com.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
+<svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
      aria-labelledby="fig63-1-t fig63-1-d">
   <title id="fig63-1-t">One line, taken apart, then read as a graph</title>
   <desc id="fig63-1-d">The iCalendar line ATTENDEE;DELEGATED-TO="mailto:a@y.com";DELEGATED-FROM="mailto:b@y.com":c@y.com
@@ -107,7 +114,6 @@ address.
   <rect class="box-green" x="540" y="225" width="130" height="30" rx="4"/>
   <text x="605" y="245" class="t-mono" text-anchor="middle">b@y.com</text>
 
-  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">Which of the three addresses goes to the meeting? The line does not say.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 63.1</span>
 Each parameter becomes an arrow of its own, beside one for the value. The
@@ -132,10 +138,9 @@ one looks at first for the natural structureo fthe language.
      aria-labelledby="fig63-2-t fig63-2-d">
   <title id="fig63-2-t">A calendar format read as a graph</title>
   <desc id="fig63-2-d">A calendar contains components such as events, tasks
-  and journal entries, which are natural types. A component has properties,
-  which iCalendar also calls properties. Each property has an implicitly
-  named value and a set of named parameters, and the parameters map directly
-  to further properties.</desc>
+  and journal entries. A component has properties, such as ATTENDEE. Each
+  property has one value, written after the colon, and parameters written
+  NAME=value, each of which becomes another arrow.</desc>
 
   <rect class="box" x="24" y="40" width="140" height="50" rx="4"/>
   <text x="94" y="62" class="t-caps" text-anchor="middle">a calendar</text>
@@ -148,7 +153,6 @@ one looks at first for the natural structureo fthe language.
   <rect class="box" x="224" y="40" width="140" height="50" rx="4"/>
   <text x="294" y="62" class="t-caps" text-anchor="middle">a component</text>
   <text x="294" y="80" class="t-sm" text-anchor="middle">event, task, journal</text>
-  <text x="294" y="110" class="t-sm t-it" text-anchor="middle">natural types</text>
 
   <path class="ln-accent" d="M 364 65 L 414 65"/>
   <path d="M 422 65 L 413 61 L 413 69 Z" fill="#1c5a7a"/>
@@ -156,7 +160,7 @@ one looks at first for the natural structureo fthe language.
 
   <rect class="box-warm" x="424" y="40" width="140" height="50" rx="4"/>
   <text x="494" y="62" class="t-caps" text-anchor="middle" style="fill:#b08d57">a property</text>
-  <text x="494" y="80" class="t-sm" text-anchor="middle">iCalendar&#8217;s own word too</text>
+  <text x="494" y="80" class="t-sm" text-anchor="middle">(e.g. ATTENDEE)</text>
 
   <path class="ln-accent" d="M 494 90 L 494 118 M 404 118 L 620 118 M 404 118 L 404 136 M 620 118 L 620 136"/>
   <path d="M 404 144 L 400 135 L 408 135 Z" fill="#1c5a7a"/>
@@ -164,11 +168,11 @@ one looks at first for the natural structureo fthe language.
   <text x="502" y="108" class="t-sm">has</text>
 
   <rect class="box-green" x="338" y="146" width="132" height="44" rx="4"/>
-  <text x="404" y="166" class="t-sm" text-anchor="middle">a value</text>
-  <text x="404" y="182" class="t-sm" text-anchor="middle">implicitly named</text>
-  <rect class="box-green" x="554" y="146" width="132" height="44" rx="4"/>
-  <text x="620" y="166" class="t-sm" text-anchor="middle">named parameters</text>
-  <text x="620" y="182" class="t-sm" text-anchor="middle">&#8594; more properties</text>
+  <text x="404" y="166" class="t-sm" text-anchor="middle">one value</text>
+  <text x="404" y="182" class="t-sm" text-anchor="middle">(after the colon)</text>
+  <rect class="box-green" x="526" y="146" width="188" height="44" rx="4"/>
+  <text x="620" y="166" class="t-sm" text-anchor="middle">parameters (NAME=value),</text>
+  <text x="620" y="182" class="t-sm" text-anchor="middle">each another arrow</text>
 </svg>
 <figcaption><span class="fig-label">Figure 63.2</span>
 The nesting iCalendar already has. Berners-Lee&#8217;s verdict: apart from the
@@ -191,7 +195,7 @@ Each item in his summary is a failure mode that recurs elsewhere.
 
 <table>
 <tr><th>Finding</th><th>Example</th><th>The general problem</th></tr>
-<tr><td>Full of extension prefixes and registries</td><td>Private <code>X-</code> names; IANA tokens</td><td>An extension mechanism rebuilt because none was inherited</td></tr>
+<tr><td>Full of extension prefixes and registries</td><td>Names starting <code>X-</code> for private use; official names kept on a central list (IANA)</td><td>Each format reinvents how to add new fields</td></tr>
 <tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
 <tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
 <tr><td>Wanton reification</td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
@@ -408,13 +412,13 @@ Chapters 61 and 62, and the calendar terms it produced are Chapter 48.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">63.1</span>
-Take a specification you use. Write the summary of its fields with their
-domains and ranges. Was it already written anywhere?</p>
+List the properties that appear in this chapter&#8217;s examples. For each,
+say what kind of thing it describes and what kind of value it takes.</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.2</span>
-Find a place where a specification&#8217;s behaviour appears only in its examples.
-What would it take to move it into the text?</p>
+<code>ATTACH:http://&hellip;</code> makes a calendar program fetch a file.
+Where would a programmer learn that, and why is that a problem?</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.3</span>

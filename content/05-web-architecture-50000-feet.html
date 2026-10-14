@@ -30,6 +30,9 @@ one document kills part of it. He wrote it anyway, presented it to the
 Consortium&#8217;s Advisory Committee and chairs, and kept revising it into
 1999 and beyond. It is the closest the collection comes to a single statement
 of the whole design, and almost every later volume expands a paragraph of it.
+This chapter follows the first part, where the note is most settled; the
+second half, on data formats and the semantic web, is expanded in Volumes
+III and IV.
 </p>
 </div>
 
@@ -44,18 +47,9 @@ science contain to work alongside us.
 </p>
 
 <p>
-He treats the space itself first, then its use as a human medium, then as a
-medium for machine reasoning. Two goals are taken for granted throughout:
-interoperability, and a technology that can evolve. A third is named as a core
-value: universality of access, irrespective of hardware, software, network,
-language, culture, location, or physical or mental impairment. These values,
-he notes, permeate the work too thoroughly to sit in any one section.
-</p>
-
-<p>
-This chapter follows the first part, where the note is most settled. The
-second half, on data formats, XML, namespaces, the separation of form from
-content and the semantic web, is expanded in Volumes III and IV.
+Three goals run through all of it: interoperability, a technology that can
+evolve, and universality of access, irrespective of hardware, software,
+network, language, culture, location, or physical or mental impairment.
 </p>
 
 <h2>5.2 Why URIs are the foundation</h2>
@@ -73,7 +67,9 @@ to things defined in another language.
 </blockquote>
 
 <p>
-A language that adopts URIs inherits whatever the URI specification says
+An HTML page can link to an image, a stylesheet or an RDF description with
+the same <code>href</code>, because all three are named by URIs; none of
+those languages had to agree on anything else. A language that adopts URIs inherits whatever the URI specification says
 about persistence, identity and equivalence. That reference is itself a
 flexibility point, a place where one part can change without the others:
 naming can be defined once and revised separately from every language that
@@ -163,9 +159,9 @@ weakness is named and no solution offered.
 <p>
 On persistence he is equally direct. Persistent HTTP URIs are a matter of
 tool maturity, user education and the maturity of Web society, and moving
-resources is strongly discouraged. Research into naming schemes does not mean
-HTTP URIs cannot be persistent, nor that identifiers should be split into
-names and addresses: Chapter 3 in one sentence.
+resources is strongly discouraged. Some researchers proposed separate
+permanent names alongside changeable addresses; he rejects the split
+(Chapter 3 gives the argument).
 </p>
 
 <h2>5.4 GET, universality, and a worked example</h2>
@@ -314,20 +310,53 @@ which cannot last.
 
 <p>
 New protocols, he concludes, should be defined as exchanges of messages that
-are themselves XML, and indeed RDF, documents.
+are themselves XML, and indeed RDF, documents. XML is a general format for
+tagged text documents; RDF is a way of writing statements about things in
+such documents.
 </p>
 
 <h3>What the merger would gain</h3>
 
 <p>
-The gain is compositional: whatever can be done to one can be done to the
-other. Messages become signable because documents are, and documents become
-binary-encodable (packed as compact bytes) because messages are. The recursion
-already exists, he notes: email messages contain email messages, and business
-is conducted with documents carried by SMTP (the protocol that moves email)
-and HTTP. It nearly happened once, with HTTP messages almost defined in SGML,
-the older markup language from which HTML was derived.
+The gain is compositional, as Figure 5.4 shows. The recursion already
+exists, he notes: business is conducted with documents carried by SMTP (the
+protocol that moves email) and HTTP. It nearly happened once, with HTTP
+messages almost defined in SGML, the older markup language from which HTML
+was derived.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 640 270" width="640" height="270" role="img" aria-labelledby="fig5-4-t fig5-4-d">
+<title id="fig5-4-t">One kind of thing, two jobs</title>
+<desc id="fig5-4-d">Left, an HTTP message made of header fields and a body. Right, a document made of metadata and content. A double arrow between them is labelled same structure. Beneath, two gains: messages can be signed, as documents are; documents can be binary-packed, as messages are. A small envelope inside an envelope is labelled email inside email.</desc>
+<rect class="box" x="40" y="20" width="200" height="118" rx="4"/>
+<text x="140" y="44" text-anchor="middle">HTTP message</text>
+<rect class="box-plain" x="60" y="58" width="160" height="28" rx="3"/>
+<text class="t-sm" x="140" y="77" text-anchor="middle">header fields</text>
+<rect class="box-plain" x="60" y="96" width="160" height="28" rx="3"/>
+<text class="t-sm" x="140" y="115" text-anchor="middle">body</text>
+<rect class="box-green" x="400" y="20" width="200" height="118" rx="4"/>
+<text x="500" y="44" text-anchor="middle">document</text>
+<rect class="box-plain" x="420" y="58" width="160" height="28" rx="3"/>
+<text class="t-sm" x="500" y="77" text-anchor="middle">metadata</text>
+<rect class="box-plain" x="420" y="96" width="160" height="28" rx="3"/>
+<text class="t-sm" x="500" y="115" text-anchor="middle">content</text>
+<path class="ln-accent" d="M256 92 L384 92"/>
+<path d="M256 87 L247 92 L256 97 Z" fill="#1c5a7a"/>
+<path d="M384 87 L393 92 L384 97 Z" fill="#1c5a7a"/>
+<text class="t-sm" x="320" y="80" text-anchor="middle" style="fill:#1c5a7a">same structure</text>
+<rect class="box-warm" x="20" y="166" width="290" height="32" rx="3"/>
+<text class="t-sm" x="165" y="186" text-anchor="middle">messages can be signed, as documents are</text>
+<rect class="box-warm" x="330" y="166" width="290" height="32" rx="3"/>
+<text class="t-sm" x="475" y="186" text-anchor="middle">documents can be binary-packed, as messages are</text>
+<rect class="box-plain" x="236" y="216" width="48" height="34" rx="2"/>
+<path class="ln-mut" d="M236 216 L260 232 L284 216"/>
+<rect class="box-plain" x="250" y="230" width="20" height="14" rx="1"/>
+<path class="ln-mut" d="M250 230 L260 237 L270 230"/>
+<text class="t-sm" x="296" y="238">email inside email</text>
+</svg>
+<figcaption><span class="fig-label">Figure 5.4</span> If a message is just a document, every tool for one works on the other. Signing comes from the document side, compact binary packing from the message side, and an email can already carry another email whole.</figcaption>
+</figure>
 
 <h3>The wish list for HTTP</h3>
 
@@ -370,11 +399,12 @@ HTTP/3, RFC 9114 of June 2022. Both use binary framing. Neither uses XML or
 RDF messages. The functional requirements were met and the representational
 argument was lost.</li>
 <li><strong>HTTP-NG did not survive.</strong> It closed without a successor
-protocol; the work was done a decade later by other groups.</li>
+protocol. Google&#8217;s SPDY experiment (2009) later became the basis of
+HTTP/2 (2015).</li>
 <li><strong>Web Services went the other way.</strong> The XML-based
 remote-operation stack was built, then largely displaced through the 2010s
-by resource-oriented interfaces exchanging JSON, closer to his own
-architectural preference than the stack he expected.</li>
+by resource-oriented interfaces exchanging JSON, closer to the
+resource-and-URI style of section 5.4.</li>
 <li><strong>The https objection lost.</strong> Rather than negotiating
 security within one namespace, the Web deprecated the insecure one. HTTP
 Strict Transport Security (HSTS, a way for a site to tell browsers to use

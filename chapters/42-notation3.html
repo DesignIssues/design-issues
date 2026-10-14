@@ -87,8 +87,8 @@ the provenance of information, and responsible for its disposition.
 </blockquote>
 
 <p>
-From which the first requirement follows immediately. To say what a document
-said, one must be able to quote a set of statements and match it against a
+Provenance means where a piece of information came from. The first
+requirement follows immediately. To say what a document said, one must be able to quote a set of statements and match it against a
 pattern. Quotation is therefore not an advanced feature but a starting
 condition, which is why Chapter 30 puts it in the base layer.
 </p>
@@ -129,9 +129,9 @@ of a long <a class="gl-ref" href="../glossary.html#uri">URI</a>, and a semicolon
   <text x="24" y="360" class="t-sm t-it">Line 4 is a statement about a statement, and is what the braces buy.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 42.1</span>
-The braces are the addition. Jane knows what the quoted statement says
-about Joe, which says nothing about his other names; Chapter 44 turns this
-into a rule about reification.</figcaption>
+The braces are the addition. Line 4 says what Jane knows without the system
+itself asserting it. If Joe has another name, Jane&#8217;s knowledge is not
+automatically about that name too (Chapter 44).</figcaption>
 </figure>
 
 <h3>A rule, worked through</h3>
@@ -207,8 +207,9 @@ negation.
 <p>
 A language built to express anything is deliberately made unable to say a
 general <em>not</em>, because the alternative is a system that can tie itself
-in knots. Negated forms of particular built-in operations are provided
-instead.
+in knots. Negated forms of many built-in operations are provided instead, such as
+<code>log:notIncludes</code>, a formula does not contain a given statement
+(section 42.4).
 </p>
 
 <h2>42.3 Monotonicity as a publishing requirement</h2>
@@ -292,8 +293,10 @@ elsewhere cannot retract a conclusion drawn here.</figcaption>
 Two built-in properties do something no logic textbook contains: they make
 retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>. <code>log:semantics</code> relates a document to
 what it means, and <code>log:says</code> to what it says. Berners-Lee defines
-the semantics of a document as the result of retrieving a representation,
-parsing it, and assimilating it into the local framework.
+the semantics of a document as the result of three plain steps: fetch the
+document, read its statements, and add them to what the program already
+holds. For the URI of an N3 file on the Web, <code>log:semantics</code> gives
+the formula made of every statement in that file.
 </p>
 
 <p>
@@ -302,15 +305,15 @@ The note&#8217;s second example looks inside what people wrote, using
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig42-4-t fig42-4-d">
   <title id="fig42-4-t">Whom to believe about the weather</title>
   <desc id="fig42-4-d">Bob lives in Boston and wrote a quoted formula saying
   Boston weather is sunny. Alice lives in Adelaide and wrote a quoted formula
-  saying Boston weather is cold. Both feed a rule that believes a weather
-  statement only from someone who lives in the place, looking inside each
-  formula with log:includes. Bob's claim passes and becomes the believed
-  statement Boston weather sunny; Alice's is not used.</desc>
+  saying Boston weather is cold. Both feed a rule whose three conditions are: x wrote y; y includes
+  a statement z weather w; x lives in z. Bob's claim passes and becomes the
+  believed statement Boston weather sunny; Alice's fails because she does not
+  live in Boston.</desc>
 
   <text x="24" y="34" class="t-caps">bob</text>
   <rect class="box-plain" x="24" y="44" width="310" height="70" rx="4"/>
@@ -321,24 +324,25 @@ The note&#8217;s second example looks inside what people wrote, using
   <rect class="box-plain" x="24" y="164" width="310" height="70" rx="4"/>
   <text x="38" y="192" class="t-mono">Alice livesIn Adelaide .</text>
   <text x="38" y="214" class="t-mono">Alice wrote { Boston weather cold } .</text>
-  <text x="38" y="260" class="t-sm" style="fill:#b08d57">not used: Alice lives in Adelaide</text>
+  <text x="38" y="256" class="t-sm" style="fill:#b08d57">fails: Alice does not live in Boston</text>
 
-  <rect class="box" x="410" y="44" width="286" height="106" rx="4"/>
-  <text x="553" y="66" class="t-caps" text-anchor="middle">rule</text>
-  <text x="553" y="90" class="t-sm" text-anchor="middle">Believe a statement about the weather</text>
-  <text x="553" y="108" class="t-sm" text-anchor="middle">at a place only from a resident.</text>
-  <text x="553" y="134" class="t-mono" text-anchor="middle">y log:includes { z weather w }</text>
+  <rect class="box" x="410" y="44" width="286" height="150" rx="4"/>
+  <text x="553" y="66" class="t-caps" text-anchor="middle">rule: believe only residents</text>
+  <text x="553" y="88" class="t-sm" text-anchor="middle">if all three hold:</text>
+  <text x="428" y="116" class="t-mono">x wrote y .</text>
+  <text x="428" y="140" class="t-mono">y log:includes { z weather w } .</text>
+  <text x="428" y="164" class="t-mono">x livesIn z</text>
 
   <line class="ln-accent" x1="336" y1="79" x2="400" y2="79"/>
   <path d="M398,74 L408,79 L398,84 Z" fill="#1c5a7a"/>
-  <path class="ln-dash" d="M 336 199 L 404 140"/>
+  <path class="ln-dash" d="M 336 222 L 404 176"/>
 
-  <line class="ln-accent" x1="553" y1="152" x2="553" y2="184"/>
-  <path d="M548,182 L553,192 L558,182 Z" fill="#1c5a7a"/>
-  <text x="565" y="176" class="t-sm">believed</text>
+  <line class="ln-accent" x1="553" y1="196" x2="553" y2="236"/>
+  <path d="M548,234 L553,244 L558,234 Z" fill="#1c5a7a"/>
+  <text x="565" y="226" class="t-sm">believed</text>
 
-  <rect class="box-green" x="440" y="194" width="226" height="40" rx="4"/>
-  <text x="553" y="219" class="t-mono" text-anchor="middle">Boston weather sunny .</text>
+  <rect class="box-green" x="440" y="246" width="226" height="40" rx="4"/>
+  <text x="553" y="271" class="t-mono" text-anchor="middle">Boston weather sunny .</text>
 </svg>
 <figcaption><span class="fig-label">Figure 42.4</span>
 Quoting lets the system hold both claims without believing either, then
@@ -389,11 +393,11 @@ data half of this notation with the logic removed, became a <a class="gl-ref" hr
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014 and is now the ordinary way people read and
 write <a class="gl-ref" href="../glossary.html#graph">graph</a> data. The rules, formulae and built-ins remained a research
 language.</li>
-<li><strong>Scoped negation stayed largely within N3 reasoners.</strong>
-Most rule systems in everyday use test absence against whatever store they
-run on, the unscoped form of Figure 42.3.</li>
+<li><strong>Absence tests went mainstream, unscoped by default.</strong>
+<a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1 (March 2013) added <code>FILTER NOT EXISTS</code>, which tests
+absence against whatever dataset is being queried.</li>
 <li><strong>Quoting graphs was standardised twice over.</strong> Named graphs
-arrived with <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> in 2008 and became datasets in RDF 1.1 (February 2014);
+arrived with SPARQL in 2008 and became datasets in RDF 1.1 (February 2014);
 RDF-star work from 2021 onward added statements about statements.</li>
 <li><strong>Retrieval as inference stayed in research reasoners.</strong>
 Reasoners such as cwm and EYE implement fetching a document during a rule,

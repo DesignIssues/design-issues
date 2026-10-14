@@ -61,9 +61,8 @@ outlines and tables, web addresses hidden, and queries and forms without code.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written as a note in 2010 and extended into a history in 2019, this chapter is
-about building software rather than specifying it. Its subject is a gap
-Berners-Lee names precisely:
+Written in 2010 and extended into a history in 2019, this note is about
+building software rather than specifying it:
 </p>
 <blockquote>
 There was, in 2010, an unfulfilled need for a powerful, friendly program to
@@ -276,11 +275,11 @@ browsers and tables people know.</td></tr>
 (Figure 56.3).</td></tr>
 <tr><td>Read-write</td><td>Allow editing only where the user has the
 right.</td></tr>
-<tr><td>A little semantics</td><td>Light <a class="gl-ref" href="../glossary.html#inference">inference</a>: anything with a
-transaction date is a transaction.</td></tr>
+<tr><td>A little semantics</td><td>Work out obvious facts, so a record with a
+transaction date is treated as a transaction without being labelled one.</td></tr>
 </table>
 
-<p>The first two carry the rest. The first is a prohibition:</p>
+<p>The first is a prohibition:</p>
 
 <blockquote>
 While RDF buffs may revel in the URIs of nodes, users do not. User experience
@@ -289,11 +288,9 @@ should not include naked URIs.
 </blockquote>
 
 <p>
-Volume II argued that identifiers are the foundation; this says the
-foundation must not be visible. Both hold: the person sees a name, and the
-identifier lets the software find the thing. The second principle makes this
-possible, because Tabulator built its controls from the vocabulary&#8217;s
-labels.
+Identifiers stay the foundation, but out of sight: the person sees a name
+taken from the vocabulary&#8217;s labels, and the software uses the
+identifier.
 </p>
 
 <figure>
@@ -331,6 +328,18 @@ The identifiers do the work; the vocabulary&#8217;s label is what the person
 sees. Both principles at once.</figcaption>
 </figure>
 
+<h3>A little semantics: smushing</h3>
+
+<p>
+<a class="gl-ref" href="../glossary.html#inference">Inference</a> here means the program working out facts that nobody wrote down.
+The note&#8217;s best case is &ldquo;smushing&rdquo;: deciding that two
+nodes are the same thing, as when many address books list the same people. In
+the Friend of a Friend (<a class="gl-ref" href="../glossary.html#foaf">FOAF</a>) project a profile could list a friend by
+email address alone. Anyone viewing it who had that address in their own
+contacts saw the friend&#8217;s right name, because the two nodes were merged
+into one. The note calls this low level of inference a sweet spot.
+</p>
+
 <h2>56.4 The audience, and the ambition</h2>
 
 <p>The target user explains the whole design:</p>
@@ -345,9 +354,9 @@ not understand the semantics.
 </blockquote>
 
 <p>
-Spreadsheet users already model the world. What they lack is any way for the
-machine to know what their relations mean, and so any way to share them except
-by sending the file. The goal that follows is one sentence:
+Spreadsheet users already model the world, but the machine cannot know what
+their relations mean, so they can share them only by sending the file. The
+goal follows:
 </p>
 
 <blockquote>
@@ -359,9 +368,8 @@ possible without having to write their own code.
 <h2>56.5 Forms and panes: power without code</h2>
 
 <p>
-The outline showed everything the same way. For common things, such as
-contacts, developers wrote special views called panes, offered as icons
-suited to the type of thing on screen.
+For common things, such as contacts, developers wrote special views called
+panes, offered as icons suited to the type of thing on screen.
 </p>
 
 <p>
@@ -377,17 +385,54 @@ adaptive default interfaces was an important optimization.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 196" width="720" height="196" role="img"
+     aria-labelledby="fig56-5-t fig56-5-d">
+  <title id="fig56-5-t">The spectrum of interfaces</title>
+  <desc id="fig56-5-d">A horizontal axis running from more tailored on the
+  left to works for anything on the right. On it sit three boxes: hand-coded
+  panes, such as a contacts pane written by a developer; user-made forms,
+  stored as data, with a form editor that is itself a form and a shared
+  registry by type; and the generic outline, which shows any data with no
+  setup.</desc>
+
+  <text x="40" y="30" class="t-caps">more tailored</text>
+  <text x="680" y="30" class="t-caps" text-anchor="end">works for anything</text>
+  <path class="ln-mut" d="M 40 46 L 672 46"/>
+  <path d="M 668 40 L 680 46 L 668 52 Z" fill="#8a9a9a"/>
+  <path d="M 52 40 L 40 46 L 52 52 Z" fill="#8a9a9a"/>
+
+  <rect class="box-warm" x="30" y="70" width="200" height="104" rx="4"/>
+  <text x="130" y="96" class="t-lg" text-anchor="middle">hand-coded panes</text>
+  <text x="130" y="126" class="t-sm" text-anchor="middle">e.g. a contacts pane,</text>
+  <text x="130" y="144" class="t-sm" text-anchor="middle">written by a developer</text>
+
+  <rect class="box" x="260" y="70" width="200" height="104" rx="4"/>
+  <text x="360" y="96" class="t-lg" text-anchor="middle">user-made forms</text>
+  <text x="360" y="126" class="t-sm" text-anchor="middle">form stored as data</text>
+  <text x="360" y="144" class="t-sm" text-anchor="middle">form editor is itself a form</text>
+  <text x="360" y="162" class="t-sm" text-anchor="middle">shared registry by type</text>
+
+  <rect class="box-green" x="490" y="70" width="200" height="104" rx="4"/>
+  <text x="590" y="96" class="t-lg" text-anchor="middle">generic outline</text>
+  <text x="590" y="126" class="t-sm" text-anchor="middle">any data,</text>
+  <text x="590" y="144" class="t-sm" text-anchor="middle">no setup</text>
+</svg>
+<figcaption><span class="fig-label">Figure 56.5</span>
+Each step to the right trades tailoring for reach. Tabulator offered all
+three, so the user always had some view of any data.</figcaption>
+</figure>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The program became infrastructure.</strong> By 2019, the note
-records, Tabulator had been repurposed as the data browser for <a class="gl-ref" href="../glossary.html#solid">Solid</a>. Its
-store, rdflib.js, and its panes live on in solid-panes and mashlib.</li>
+records, Tabulator had been repurposed as the data browser for <a class="gl-ref" href="../glossary.html#solid">Solid</a>, built on
+its store, rdflib.js. Its panes were later published as the solid-panes
+and mashlib packages.</li>
 <li><strong>The no-code ambition arrived elsewhere.</strong> No-code tools such as
 Airtable (founded 2012) reached the audience of section 56.4, without linked
 data underneath.</li>
-<li><strong>The naked <a class="gl-ref" href="../glossary.html#uri">URI</a> rule is still widely broken.</strong> In this
-book&#8217;s judgement, many data tools still show identifiers.</li>
 </ul>
 </div>
 
@@ -405,8 +450,8 @@ User interface principles, including familiar metaphors, are Chapters 82 and
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">56.1</span>
-Copy, change, look, show someone. Which step is missing for data in the tools
-you use, and what would supply it?</p>
+A friend sends you a spreadsheet of club members. Which of copy, change, see,
+send does it allow, and what can&#8217;t it do that a web page can?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.2</span>

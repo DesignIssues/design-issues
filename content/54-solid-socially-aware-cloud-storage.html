@@ -1,9 +1,9 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The photographs live with the photograph company. The messages live with the
-messaging company. Each holds a piece of one person&#8217;s life, none of them can
-see the others, and leaving any of them means losing what was kept there.
+The photographs live with the photograph company, the messages with the
+messaging company. None can see the others, and leaving any of them means
+losing what was kept there.
 </p>
 <p>
 This note turns that inside out: the data in one place under its owner&#8217;s
@@ -30,11 +30,12 @@ controlled using those global identifiers.
 
 <h2>54.1 The diagnosis</h2>
 
+<h3>Each site a silo</h3>
+
 <p>
 The note first describes fairly what it means to replace. A site stores
 state (everything it remembers between visits) and serves scripts; users have
-an identity on the site; much of the work happens in the browser. The problem
-is a consequence, not a complaint:
+an identity on the site. The problem is a consequence, not a complaint:
 </p>
 
 <blockquote>
@@ -47,8 +48,13 @@ from other sites are deliberately prevented from accessing it.
 <p>
 This is the same-origin policy, the browser rule that a script may read data
 only from the site it came from (Chapter 68), working as designed. Each site
-becomes a silo, reachable only by its own software. Joining two silos needs a
-go-between, and that invites a known flaw:
+becomes a silo, reachable only by its own software.
+</p>
+
+<h3>Joining silos, and its costs</h3>
+
+<p>
+Joining two silos needs a go-between, and that invites a known flaw:
 </p>
 
 <blockquote>
@@ -62,20 +68,20 @@ to "confused deputy" attacks.
 
 <p>
 A confused deputy is a trusted program tricked into using its authority for
-someone else: a photo site allowed to fetch a user&#8217;s pictures elsewhere can be
-steered by a third party into fetching something else.
+someone else. A photo site allowed to fetch Alice&#8217;s pictures from another
+site receives a request from a stranger&#8217;s page to fetch photos; it uses
+Alice&#8217;s permission, and hands her pictures to the stranger.
 </p>
 
 <p>
 Delegated access schemes such as OAuth let a user grant one site specific
-data held by another, such as a list of friends. The note calls this clumsy in
-some ways, and it requires that the receiving site be completely trusted.
+data held by another, such as a list of friends. The note calls this clumsy,
+and the receiving site must be completely trusted.
 </p>
 
 <p>
-Nor are silos an accident. The site sells ads &#8220;because it forces the
-user to use its web site to access her data&#8221;, so it has little reason to
-let the data go.
+Nor are silos an accident: the site sells ads &#8220;because it forces the
+user to use its web site to access her data&#8221;.
 </p>
 
 <h2>54.2 The separation</h2>
@@ -84,7 +90,8 @@ let the data go.
 The proposal holds the two apart. Storage belongs to the user, like the disk
 space a university gives its students. Applications are programs the user
 runs, which visit that storage with the user&#8217;s permission. Storage
-becomes a commodity: interchangeable, like electricity.
+becomes a commodity, just as the internet provides &#8220;connectivity as a
+commodity independent of applications&#8221;.
 </p>
 
 <figure>
@@ -150,10 +157,9 @@ Right: applications share only the storage, which decides who may use it.</figca
 </figure>
 
 <p>
-The note&#8217;s analogy is the Unix file system, which controls access by
-short user and group names that mean something only on one machine. Webizing
-replaces such local identifiers with URIs. HTTP had done this for files; this
-note does it for the people and groups in the access lists.
+The note&#8217;s analogy is the Unix file system, whose user and group names
+mean something only on one machine. Webizing replaces them with URIs, as HTTP
+had done for files.
 </p>
 
 <figure>
@@ -210,8 +216,7 @@ Only the identifiers change, yet a permission on one server can now name a
 person or group defined on any other. The addresses are invented.</figcaption>
 </figure>
 
-<h2>54.3 The three benefits, and the one that is really an argument</h2>
-
+<h2>54.3 Three benefits</h2>
 
 <table>
 <tr><th>Benefit</th><th>In plain terms</th></tr>
@@ -244,15 +249,14 @@ launching an app is far lower, as the app can run in he open data cloud.
 
 <p>
 An application that holds nobody&#8217;s data can be written by one
-person and given away. The note&#8217;s goal rests on this: &#8220;application growth becomes dramatic as the provision of
+person. The goal rests on this: &#8220;application growth becomes dramatic as the provision of
 storage is decoupled from the design and deployment of applications&#8221;.
 </p>
 
 <h2>54.4 The risk, stated plainly</h2>
 
 <p>
-Applications run with the user&#8217;s credentials, her proof of identity,
-and the note does not oversell:
+Applications run with the user&#8217;s credentials, her proof of identity:
 </p>
 
 <blockquote>
@@ -264,9 +268,8 @@ those that run unscrupulous web sites is reduced.
 
 <p>
 The hazard is moved, not removed. In the site model, a company the user cannot
-inspect holds the data. Here, a program the user ran may misuse data the user still
-holds: an operating system&#8217;s failure mode, which people know how to reason
-about.
+inspect holds the data. Here, a program the user ran may misuse data the user
+still holds: an operating system&#8217;s failure mode.
 </p>
 
 <h2>54.5 Different lifetimes</h2>
@@ -277,17 +280,18 @@ The persistence of applications and data may be very different.
 </blockquote>
 
 <p>
-A familiar application may host an ephemeral conversation; a throwaway one may
-handle data that must outlive it. Binding the two forces the shorter lifetime
-on both.
+A familiar application may host an ephemeral discussion. An application built
+for a short-term enterprise problem may handle data whose life
+&#8220;exceeds that of any of the applications the enterprise uses&#8221;.
+Decoupled, each lifetime can be managed separately.
 </p>
 
 <h2>54.6 How a request is checked</h2>
 
 <p>
 Each user gets a single URI instead of a user name at each site, ideally a
-WebID, which links a profile on the Web to a certificate in the user&#8217;s
-browser. A group&#8217;s URI returns its members&#8217; WebIDs. Permissions sit in
+WebID, which links a profile on the Web to a certificate, a key kept in the
+browser that proves which URI the user is. A group&#8217;s URI returns its members&#8217; WebIDs. Permissions sit in
 access control files:
 </p>
 
@@ -297,9 +301,10 @@ Access control files are linked data.
 </blockquote>
 
 <p>
-A client finds a resource&#8217;s file through the HTTP Link header, and may
-edit it only with &#8220;Control&#8221; access to the resource. Figure 54.3
-follows one request.
+An access control file (ACL) lists who may read, write or control a resource.
+A header is a labelled line the server sends ahead of the content; the Link
+header points to the resource&#8217;s ACL, which a client may edit only with
+&#8220;Control&#8221; access. Figure 54.3 follows one request.
 </p>
 
 <figure>
@@ -317,9 +322,9 @@ follows one request.
   <rect class="box" x="230" y="16" width="140" height="50" rx="4"/>
   <text x="300" y="37" text-anchor="middle">Bob&#8217;s server</text>
   <text x="300" y="56" class="t-sm" text-anchor="middle">holds photo.jpg</text>
-  <rect class="box-plain" x="420" y="16" width="120" height="50" rx="4"/>
-  <text x="480" y="37" text-anchor="middle">ACL file</text>
-  <text x="480" y="56" class="t-sm" text-anchor="middle">via Link header</text>
+  <rect class="box-plain" x="402" y="16" width="156" height="50" rx="4"/>
+  <text x="480" y="37" text-anchor="middle">access control file</text>
+  <text x="480" y="56" class="t-sm" text-anchor="middle">(ACL), via Link header</text>
   <rect class="box-green" x="570" y="16" width="120" height="50" rx="4"/>
   <text x="630" y="37" text-anchor="middle">group list</text>
   <text x="630" y="56" class="t-sm" text-anchor="middle">at the group URI</text>
@@ -365,10 +370,24 @@ server.</figcaption>
 
 <p>
 The same machinery carries notification. To ask to be someone&#8217;s friend,
-a person adds a line to a &#8220;friend requests&#8221; file the owner lets others append to,
-without read access. The general form is a drop-box, linked from a
-profile, for requests of any kind; guarding it against spam may matter a
-great deal.
+a person appends a line to a &#8220;friend requests&#8221; file they cannot
+read. The general form is a drop-box, linked from a profile, for requests of
+any kind; guarding it against spam may matter.
+</p>
+
+<h2>54.7 Conventions and reverse links</h2>
+
+<p>
+Applications sharing one store need conventions: a user should be able, for
+instance, to delete all data written by a given application.
+</p>
+
+<p>
+In a central site every link runs both ways. Here the destination must be
+told. The note lists three ways: a crawler builds an index of back-links; the
+destination collects them from the &#8220;Referer&#8221; field HTTP sends when
+a link is followed; or, as it proposes, the destination is notified in real
+time, through a drop-box.
 </p>
 
 <div class="since">

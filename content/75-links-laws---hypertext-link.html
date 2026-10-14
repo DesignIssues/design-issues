@@ -123,7 +123,7 @@ In particular, a normal link does not by itself imply that:
 <h2>75.2 Where the meaning actually is</h2>
 
 <p>
-Where, then, does the meaning live?
+The meaning lives in the words around the link:
 </p>
 
 <blockquote>
@@ -183,16 +183,11 @@ The three sentences of the quotation above. The meaning, and any
 responsibility, lives in the words around the link, never in the link.</figcaption>
 </figure>
 
-<p>
-The responsibility is real, and it attaches to what the author wrote, which is where
-responsibility attaches everywhere else.
-</p>
-
 <h2>75.3 Why including by reference matters</h2>
 
 <p>
-Why embed a remote image rather than copy it? Because of what the reference
-preserves:
+Embedding a remote image, rather than copying it, keeps the reference, and the
+reference preserves something:
 </p>
 
 <blockquote>
@@ -212,8 +207,8 @@ Including by reference gives three things:
 terms.</li>
 </ul>
 <p>
-Copying severs all three. This is the universality axioms of section 2.2
-applied to part of a page: once a thing has its own address, anyone can refer
+Copying severs all three. This applies the axioms of universality (section 2.2)
+to part of a page: once a thing has its own address, anyone can refer
 to it and ask about it.
 </p>
 
@@ -272,11 +267,11 @@ His proposed markup is a single extra word on the image:
   <line class="ln-mut" x1="376" y1="80" x2="644" y2="80"/>
   <line class="ln-mut" x1="376" y1="92" x2="644" y2="92"/>
   <line class="ln-mut" x1="376" y1="104" x2="600" y2="104"/>
-  <rect class="ln-dash" x="370" y="116" width="280" height="52" style="stroke:#b08d57;stroke-width:1.6"/>
-  <rect x="582" y="108" width="60" height="16" fill="#fdfdfc"/>
-  <text x="612" y="120" class="t-sm" text-anchor="middle" style="fill:#b08d57">foreign</text>
-  <rect class="box-plain" x="376" y="128" width="268" height="34"/>
-  <text x="510" y="150" class="t-sm t-mono" text-anchor="middle">banner-ad.gif</text>
+  <rect class="ln-dash" x="370" y="116" width="276" height="52" style="stroke:#b08d57;stroke-width:1.6"/>
+  <rect x="578" y="108" width="60" height="16" fill="#fdfdfc"/>
+  <text x="608" y="120" class="t-sm" text-anchor="middle" style="fill:#b08d57">foreign</text>
+  <rect class="box-plain" x="380" y="126" width="256" height="34"/>
+  <text x="508" y="148" class="t-sm t-mono" text-anchor="middle">banner-ad.gif</text>
   <line class="ln-mut" x1="376" y1="184" x2="644" y2="184"/>
   <line class="ln-mut" x1="376" y1="198" x2="644" y2="198"/>
   <line class="ln-mut" x1="376" y1="212" x2="570" y2="212"/>
@@ -313,9 +308,44 @@ document.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 640 290" width="640" height="290" role="img"
+     aria-labelledby="fig75-4-t fig75-4-d">
+  <title id="fig75-4-t">Another site&#8217;s page inside a frame</title>
+  <desc id="fig75-4-d">A browser window whose address bar reads site-a.example.
+  Site A's logo and menu form a header bar and a left menu. The central pane
+  holds Site B's page, loaded there by a click; a dashed arrow runs from a tag
+  reading site-b.example into the pane.</desc>
+
+  <rect class="box-plain" x="20" y="20" width="460" height="250" rx="4"/>
+  <line class="ln-mut" x1="20" y1="46" x2="480" y2="46"/>
+  <circle cx="36" cy="33" r="3.5" fill="#8a9a9a"/>
+  <circle cx="48" cy="33" r="3.5" fill="#8a9a9a"/>
+  <circle cx="60" cy="33" r="3.5" fill="#8a9a9a"/>
+  <text x="78" y="38" class="t-sm t-mono">site-a.example</text>
+
+  <rect class="box" x="32" y="58" width="436" height="40" rx="3"/>
+  <text x="250" y="83" class="t-sm" text-anchor="middle">Site A logo / menu</text>
+  <rect class="box" x="32" y="108" width="100" height="150" rx="3"/>
+  <text x="82" y="150" class="t-sm" text-anchor="middle">Site A</text>
+  <text x="82" y="168" class="t-sm" text-anchor="middle">menu</text>
+
+  <rect class="box-warm" x="144" y="108" width="324" height="150" rx="3"/>
+  <text x="306" y="170" class="t-sm" text-anchor="middle">Site B&#8217;s page,</text>
+  <text x="306" y="188" class="t-sm" text-anchor="middle">loaded by a click</text>
+
+  <text x="560" y="150" class="t-sm t-mono" text-anchor="middle" style="fill:#8a9a9a">site-b.example</text>
+  <path class="ln-dash" d="M 560 160 L 560 182 L 476 182"/>
+  <path d="M 480 177 L 469 182 L 480 187 Z" fill="#8a9a9a"/>
+</svg>
+<figcaption><span class="fig-label">Figure 75.4</span>
+The address bar and the border say Site A; the content is Site B&#8217;s. That
+is the illusion the note warns about.</figcaption>
+</figure>
+
 <p>
 Someone else&#8217;s page displayed inside a site&#8217;s border looks like that site&#8217;s page.
-Several disputes of the period concerned exactly this. The note&#8217;s answer is
+The note&#8217;s answer is
 that, until markup can express the difference, content providers should make
 sure readers are not left with the illusion.
 </p>
@@ -331,7 +361,7 @@ which is close to the position argued here.</li>
 embedded content that is part of a document from content that is not, and
 advertising is still indistinguishable from the page structurally.</li>
 <li><strong>Embedding became the dominant form.</strong> Third-party scripts,
-fonts, analytics and advertisements are embedded on most pages, all of them
+fonts, analytics and advertisements are embedded on many pages today, all of them
 part of the document by this chapter&#8217;s definition.</li>
 <li><strong>Frames were replaced and the problem persisted.</strong> Inline
 frames and embedded players reproduce the confusion Section 75.5 names, with

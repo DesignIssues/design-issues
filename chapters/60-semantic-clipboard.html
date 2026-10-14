@@ -70,17 +70,13 @@ An example I have often quoted is that I would like to be able to drag a photo
 album onto a calenar application and see the photos on my calendar.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
-<p>
-The interest is in what he does next, which is to take the wish seriously and
-ask what would actually have to exist.
-</p>
 </div>
 
 <h2>60.1 The hard version of the problem</h2>
 
 <p>
-The note sets its own difficulty deliberately. The two applications were
-written independently, without this case in mind. The only assumption is that
+The note sets a hard case: two applications written independently, without
+this case in mind. The only assumption is that
 both are &ldquo;semantic-web aware&rdquo;: each has its own <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> (an
 agreed set of terms, such as &ldquo;start time&rdquo;) for what it deals in, and
 each keeps a copy of its data in <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, as a <a class="gl-ref" href="../glossary.html#graph">graph</a> (a web of simple statements
@@ -88,8 +84,8 @@ linking things to their properties).
 </p>
 
 <p>
-Berners-Lee then observes something about the clipboard that most people have
-never thought about, and it is the key to the whole design:
+The key to the design is something about the clipboard most people never
+notice:
 </p>
 
 <blockquote>
@@ -105,7 +101,7 @@ transferred.
 Copying from a page into a plain message works because the two ends negotiate
 down to a format they share. <a class="gl-ref" href="../glossary.html#content-negotiation">Content negotiation</a> means exactly this: the
 sender offers several forms, the receiver says which it accepts, and they
-settle on one. The clipboard has done it since before anyone called it that.
+settle on one.
 </p>
 
 <figure>
@@ -148,9 +144,8 @@ format both understand.</figcaption>
 <h2>60.2 What has to be added</h2>
 
 <p>
-The proposal is a new clipboard type for the Semantic Web, in which the data
-travels as an RDF graph. But a graph alone is not enough, because each
-application speaks its own vocabulary. The calendar can use anything with at
+He proposes a new clipboard type in which the data travels as an RDF graph.
+But each application speaks its own vocabulary. The calendar can use anything with at
 least a start time and a description. The photograph has a creation date,
 perhaps a description, and technical details of the exposure.
 </p>
@@ -165,13 +160,14 @@ want just &ldquo;Pic!&rdquo;.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 184" width="720" height="184" role="img"
      aria-labelledby="fig60-2-t fig60-2-d">
   <title id="fig60-2-t">A clipboard that converts</title>
   <desc id="fig60-2-d">A photograph carries a capture time and a description
   in a photographic vocabulary. A calendar wants a start time and a
   description in a calendar vocabulary. A rule held by the clipboard converts
-  one to the other, and the user had to authorise that rule from somewhere.</desc>
+  one to the other, dropping the exposure data; who wrote the rule is an open
+  question.</desc>
 
   <rect class="box-warm" x="24" y="40" width="200" height="120" rx="4"/>
   <text x="124" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">a photograph</text>
@@ -197,23 +193,34 @@ want just &ldquo;Pic!&rdquo;.
   <text x="516" y="116" class="t-sm">a description</text>
   <text x="516" y="138" class="t-sm t-it" style="fill:#8a9a9a">exposure data: dropped</text>
 
-  <line class="ln-mut" x1="24" y1="186" x2="696" y2="186"/>
-  <text x="24" y="210" class="t-sm">Rules come from somewhere, and the user has to decide which to trust:</text>
-  <text x="60" y="236" class="t-sm">an advanced user, as people write mail filters today</text>
-  <text x="60" y="258" class="t-sm">a system administrator</text>
-  <text x="60" y="280" class="t-sm">the author of either application &#8212; and if both offer one, a choice must be made</text>
-  <text x="24" y="308" class="t-sm t-it">as when choosing whether to trust the printer maker&#8217;s driver or the operating system&#8217;s</text>
 </svg>
 <figcaption><span class="fig-label">Figure 60.2</span>
 The mechanism is small. The unsolved part is who supplies the conversion
 rules, and who decides to trust them.</figcaption>
 </figure>
 
-<h2>60.3 Entropy</h2>
+<p>The note lists where rules might come from:</p>
+
+<ul>
+<li>an advanced user, much as people write email filters;</li>
+<li>a third party such as a system administrator;</li>
+<li>the author of either application.</li>
+</ul>
 
 <p>
-The most interesting observation in the note is about what conversion costs,
-and it generalises well beyond clipboards:
+The program released second would normally ship the rules linking it to the
+older one, so rules tend to run in one direction. If both later offer a rule
+for the same conversion, the user must choose, as when deciding whether to
+trust the printer maker&#8217;s driver or the operating system&#8217;s.
+</p>
+
+<h2>60.3 Entropy: conversion only loses</h2>
+
+<p>
+The note&#8217;s most general observation is about what conversion costs.
+Entropy is a physicist&#8217;s word
+for disorder that only increases. Here it means information lost on the way,
+which cannot be got back.
 </p>
 
 <blockquote>
@@ -238,46 +245,49 @@ fewest rules.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+<svg class="dia" viewBox="0 0 720 268" width="720" height="268" role="img"
      aria-labelledby="fig60-3-t fig60-3-d">
   <title id="fig60-3-t">The downhill ladder of conversion</title>
   <desc id="fig60-3-d">Three rungs: a photograph, a picture-taking event, and
-  a plain event. Converting downwards loses data at each step and cannot be
+  a plain event. The first step down loses the exposure and aperture; the
+  second loses that it was a photo and who was in it. The conversion cannot be
   reversed. A second, smaller ladder shows rich text above plain text, the same
   ordering existing clipboards already use.</desc>
 
-  <rect class="box-plain" x="150" y="30" width="300" height="44" rx="4"/>
-  <text x="300" y="48" text-anchor="middle">photograph</text>
-  <text x="300" y="66" class="t-sm" text-anchor="middle">time, exposure, caption (EXIF-like)</text>
-  <rect class="box-plain" x="150" y="100" width="300" height="44" rx="4"/>
-  <text x="300" y="118" text-anchor="middle">picture-taking event</text>
-  <text x="300" y="136" class="t-sm" text-anchor="middle">time, description</text>
-  <rect class="box-plain" x="150" y="170" width="300" height="44" rx="4"/>
-  <text x="300" y="188" text-anchor="middle">event</text>
-  <text x="300" y="206" class="t-sm" text-anchor="middle">start time, description (iCalendar-like)</text>
+  <rect class="box-plain" x="150" y="24" width="300" height="44" rx="4"/>
+  <text x="300" y="42" text-anchor="middle">photograph</text>
+  <text x="300" y="60" class="t-sm" text-anchor="middle">time, exposure, aperture, who was in it</text>
+  <text x="300" y="95" class="t-sm" text-anchor="middle" style="fill:#8a9a9a"><tspan style="text-decoration:line-through">exposure, aperture</tspan>: lost</text>
+  <rect class="box-plain" x="150" y="112" width="300" height="44" rx="4"/>
+  <text x="300" y="130" text-anchor="middle">picture-taking event</text>
+  <text x="300" y="148" class="t-sm" text-anchor="middle">time, description, who was in it</text>
+  <text x="300" y="183" class="t-sm" text-anchor="middle" style="fill:#8a9a9a"><tspan style="text-decoration:line-through">that it was a photo, who was in it</tspan>: lost</text>
+  <rect class="box-plain" x="150" y="200" width="300" height="44" rx="4"/>
+  <text x="300" y="218" text-anchor="middle">event</text>
+  <text x="300" y="236" class="t-sm" text-anchor="middle">start time, description</text>
 
-  <path class="ln-accent" d="M 130 40 L 130 198"/>
-  <path d="M 124 194 L 130 206 L 136 194 Z" fill="#1c5a7a"/>
-  <text x="118" y="110" class="t-sm" text-anchor="end" style="fill:#1c5a7a">convert:</text>
-  <text x="118" y="126" class="t-sm" text-anchor="end" style="fill:#1c5a7a">data lost</text>
-  <text x="118" y="142" class="t-sm" text-anchor="end" style="fill:#1c5a7a">at each step</text>
+  <path class="ln-accent" d="M 130 34 L 130 228"/>
+  <path d="M 124 224 L 130 236 L 136 224 Z" fill="#1c5a7a"/>
+  <text x="118" y="122" class="t-sm" text-anchor="end" style="fill:#1c5a7a">convert:</text>
+  <text x="118" y="138" class="t-sm" text-anchor="end" style="fill:#1c5a7a">data lost</text>
+  <text x="118" y="154" class="t-sm" text-anchor="end" style="fill:#1c5a7a">at each step</text>
 
-  <path class="ln-dash" d="M 470 204 L 470 46"/>
-  <path d="M 464 50 L 470 38 L 476 50 Z" fill="#8a9a9a"/>
-  <path class="ln-mut" d="M 462 114 L 478 130 M 478 114 L 462 130"/>
-  <text x="488" y="118" class="t-sm">cannot</text>
-  <text x="488" y="134" class="t-sm">go back</text>
+  <path class="ln-dash" d="M 470 234 L 470 40"/>
+  <path d="M 464 44 L 470 32 L 476 44 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 462 126 L 478 142 M 478 126 L 462 142"/>
+  <text x="488" y="130" class="t-sm">cannot</text>
+  <text x="488" y="146" class="t-sm">go back</text>
 
-  <line class="ln-mut" x1="552" y1="30" x2="552" y2="214"/>
+  <line class="ln-mut" x1="552" y1="24" x2="552" y2="244"/>
 
-  <rect class="box-plain" x="574" y="50" width="122" height="36" rx="4"/>
-  <text x="635" y="73" text-anchor="middle">rich text</text>
-  <path class="ln-accent" d="M 635 86 L 635 120"/>
-  <path d="M 629 116 L 635 128 L 641 116 Z" fill="#1c5a7a"/>
-  <rect class="box-plain" x="574" y="128" width="122" height="36" rx="4"/>
-  <text x="635" y="151" text-anchor="middle">plain text</text>
-  <text x="635" y="190" class="t-sm" text-anchor="middle">same pecking order,</text>
-  <text x="635" y="206" class="t-sm" text-anchor="middle">already in clipboards</text>
+  <rect class="box-plain" x="574" y="60" width="122" height="36" rx="4"/>
+  <text x="635" y="83" text-anchor="middle">rich text</text>
+  <path class="ln-accent" d="M 635 96 L 635 130"/>
+  <path d="M 629 126 L 635 138 L 641 126 Z" fill="#1c5a7a"/>
+  <rect class="box-plain" x="574" y="138" width="122" height="36" rx="4"/>
+  <text x="635" y="161" text-anchor="middle">plain text</text>
+  <text x="635" y="200" class="t-sm" text-anchor="middle">same pecking order,</text>
+  <text x="635" y="216" class="t-sm" text-anchor="middle">already in clipboards</text>
 </svg>
 <figcaption><span class="fig-label">Figure 60.3</span>
 Each conversion moves to a more generic form and loses something. The system
@@ -285,17 +295,13 @@ should pick the highest rung both sides understand, using the fewest rules.</fig
 </figure>
 
 <p>
-The existing clipboard already prefers rich text to plain when both ends can
-manage it. Berners-Lee proposes the same rule applied to vocabularies rather
-than to text formats.
+Clipboards already prefer rich text to plain when both ends manage it; he
+applies the same rule to vocabularies.
 </p>
 
 <h2>60.4 What is actually being described</h2>
 
-<p>
-The closing assessment is modest about the clipboard itself and immodest about
-what it implies:
-</p>
+<p>The close looks beyond the clipboard:</p>
 
 <blockquote>
 The Semantic Web clipboard might be a nifty hack in the short term, might be a
@@ -306,10 +312,11 @@ rule indexing search engine.
 </blockquote>
 
 <p>
-A clipboard that must hold rules, index them by what they convert, choose the
-path that loses least, and track who supplied each one, is the whole
-conversion layer of Chapter 30 shrunk to fit one machine. The small version is
-tractable because the rule set is small and the user can be asked.
+Such a clipboard must hold rules, index them, choose the path that loses
+least, and track who supplied each one: the conversion layer of Chapter 30 in
+miniature. On one computer the rules are few and there is one user to ask. On
+the whole Web they are countless and there is nobody to ask. The clipboard is a
+small, safe place to try the problem.
 </p>
 
 <div class="since">
@@ -341,8 +348,8 @@ editor).</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.2</span>
-Conversion is usually irreversible. Give two conversions from your own work,
-one lossless and one not, and say what the second discards.</p>
+Saving a photo as a smaller JPEG, and renaming a file: which can be undone,
+and what does the other lose?</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.3</span>

@@ -65,8 +65,8 @@ to check that a sequence of messages makes sense.
 <p>
 Written for a talk to <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Advisory Committee (its member body) in
 November 2000, this note says user interfaces and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> were both
-pointing away from the Web&#8217;s founding model. Its sentence on the
-Semantic Web breaks off unfinished, so only the interface half survives.
+pointing away from the Web&#8217;s founding model. Only the interface half was
+finished.
 </p>
 <blockquote>
 Often, we notice that Web technology is now entering a field new to the Web
@@ -84,8 +84,8 @@ here is the formal <a class="gl-ref" href="../glossary.html#specification">speci
 <h2>61.1 What a screen is for</h2>
 
 <p>
-In theory, the note says, the Web is a mapping from URIs to representations;
-in experience, a space a person can navigate. What is special about a screen
+In theory, the note says, the Web is a lookup from each address to the page it
+returns; in experience, a space a person can move around in. What is special about a screen
 is not resolution but simultaneity.
 </p>
 
@@ -111,8 +111,7 @@ of a shared state.
 </blockquote>
 
 <p>
-The Web was meant to extend that to remote interaction between people, in a
-shared space that human memory can navigate.
+The Web was meant to extend that to remote interaction between people.
 </p>
 
 <h2>61.2 The other model, and its return</h2>
@@ -186,12 +185,8 @@ screen.</figcaption>
 </figure>
 
 <p>
-His sharpest practical point: scaling a page down to a phone screen might be
-choosing simply the wrong interface metaphor.
-</p>
-
-<p>
-The models convert both ways. A bank balance is an agreed state computed from
+Scaling a page down to a phone screen, he warns, might be simply the wrong
+interface metaphor. Yet the models convert both ways. A bank balance is an agreed state computed from
 the transactions so far; the Paper Trail idea (Chapter 62) defines agreed
 state formally as a function of messages to date. Conversely, a phone-browsing
 service delivers a shared space as a conversation.
@@ -268,7 +263,7 @@ each converts into the other, the two models can be linked formally.</figcaption
 </table>
 
 <p>
-The gap he names is the same shape as the gaps named throughout Volume IV:
+The gap he names is shaped like those of Volume IV:
 </p>
 
 <blockquote>
@@ -358,7 +353,14 @@ create a conversational interface -- and many still do
 </blockquote>
 
 <p>
-It then links state to privacy:
+The usual workaround is the cookie: a small token the site hands the browser,
+which sends it back with every later request so the site can recognise the
+visitor. It gives a stateless Web a conversation, and leaves the trace the
+next quotation worries about.
+</p>
+
+<p>
+The note then links state to privacy:
 </p>
 
 <blockquote>
@@ -367,10 +369,6 @@ of documents is in fact done by a series of protocols which leave a trace.
 <cite>Conversations and state, 2000</cite>
 </blockquote>
 
-<p>
-That sentence is the bridge to Volume VII. Reading feels like looking, but it
-is a recorded series of exchanges.
-</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 484 344" width="484" height="344" role="img"
@@ -422,10 +420,15 @@ that gap.</figcaption>
 
 <p>
 The note names P3P, W3C&#8217;s Platform for Privacy Preferences (a
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in 2002), as the attempt to measure that traffic. Its last
-point: on many sites a form has become the definition of a protocol, a set of
-valid sequences of actions. In a tax-return wizard, step three is only valid
-after step two.
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in 2002), as the attempt to measure that traffic. P3P let a site
+state, in machine-readable form, what it collects.
+</p>
+
+<p>
+The last point is that on many sites a form has become the definition of a
+protocol: a set of valid sequences of actions. A tax-return wizard asks for
+income, then deductions, then shows a summary; the summary is meaningless if
+reached first. This is the checkout of Figure 61.3 again.
 </p>
 
 <div class="since">
@@ -436,10 +439,13 @@ assistants from 2011 onward, and chat-based AI assistants from late 2022, made
 the model this note describes the ordinary way many people use
 computers.</li>
 <li><strong>Protocol formalisation did not arrive with it.</strong> W3C
-attempted it with WS-CDL (2005), which saw little use. Most protocols still
+attempted it with WS-CDL, which reached Candidate Recommendation in November
+2005 and never became a Recommendation. Most protocols still
 describe valid sequences in prose or ad-hoc state diagrams.</li>
-<li><strong>The privacy diagnosis was vindicated.</strong> The trace left by
-reading became the central fact of Web privacy.</li>
+<li><strong>The trace became law.</strong> The EU&#8217;s 2009 amendment to
+its ePrivacy rules, in force from 2011, required consent before most cookies
+were stored, and the GDPR (applied May 2018) extended consent rules to
+personal data generally.</li>
 <li><strong>Scaling the page down happened anyway.</strong> Responsive design
 (named in 2010), where one page rearranges itself for any screen width, kept
 the shared-state metaphor on small screens: the choice this note warns may
@@ -467,8 +473,8 @@ which folder you are in)?</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.2</span>
-Adapting a page to a small screen may be the wrong metaphor. Describe what the
-right one would look like for a task you do on a phone.</p>
+Checking a train time by voice versus on a web page: list what you must
+remember in each case, and which is easier while walking.</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.3</span>

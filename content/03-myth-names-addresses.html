@@ -62,9 +62,9 @@ Berners-Lee&#8217;s counter is that the distinction is an illusion produced by
 not looking far enough down. The only true location is a point in physical
 space, and between it and anything one would call a name or an address there
 is a long chain of look-ups. The domain name is one step in that chain; the IP
-address is simply the next. Even an IP address is not bound to a machine, and
-memory addresses and filenames are translated in the same way, through
-further steps, before anything physical is reached.
+address is simply the next. Even an IP address is not bound to a machine. A filename, likewise, is
+looked up through directory tables to find the places on a disk that hold
+the file.
 </p>
 
 <figure>
@@ -212,7 +212,7 @@ content in another format later, such as audio for blind readers.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
+<svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
      aria-labelledby="fig3-3-t fig3-3-d">
   <title id="fig3-3-t">What breaks each segment of a URI</title>
   <desc id="fig3-3-d">Each segment of a typical 1996 student URI is annotated
@@ -257,8 +257,8 @@ content in another format later, such as audio for blind readers.
 
     <text x="20" y="260" class="t-mono" style="fill:#b08d57">students</text>
     <text x="150" y="260" class="t-sm">a person&#8217;s status</text>
-    <text x="400" y="260" class="t-sm">the person graduates</text>
-    <text x="660" y="260" class="t-sm" text-anchor="end" style="fill:#b08d57">certain</text>
+    <text x="400" y="260" class="t-sm">the person&#8217;s status changes</text>
+    <text x="660" y="260" class="t-sm" text-anchor="end" style="fill:#b08d57">likely</text>
 
     <text x="20" y="286" class="t-mono" style="fill:#b08d57">romeo</text>
     <text x="150" y="286" class="t-sm">who is responsible</text>
@@ -274,7 +274,7 @@ content in another format later, such as audio for blind readers.
     <text x="20" y="343" class="t-mono" style="fill:#5a8f5a">readthis</text>
     <text x="150" y="343" class="t-sm">nothing whatever</text>
     <text x="400" y="343" class="t-sm">&#8212;</text>
-    <text x="660" y="343" class="t-sm" text-anchor="end" style="fill:#5a8f5a">never</text>
+    <text x="660" y="343" class="t-sm" text-anchor="end" style="fill:#5a8f5a">least likely</text>
 
     <text x="20" y="370" class="t-mono" style="fill:#b08d57">.html</text>
     <text x="150" y="370" class="t-sm">a format</text>
@@ -282,9 +282,10 @@ content in another format later, such as audio for blind readers.
     <text x="660" y="370" class="t-sm" text-anchor="end" style="fill:#b08d57">likely</text>
   </g>
   <line class="ln-mut" x1="20" y1="386" x2="700" y2="386"/>
+  <text x="20" y="408" class="t-sm"><tspan style="fill:#b08d57">warm: likely to break</tspan>  &#183;  <tspan style="fill:#1c5a7a">blue: slow</tspan>  &#183;  <tspan style="fill:#5a8f5a">green: rare or least likely</tspan>  &#183;  grey: punctuation</text>
 </svg>
 <figcaption><span class="fig-label">Figure 3.3</span>
-The only durable segment is the one that says nothing. That is the naming
+The most durable segment is the one that says nothing. That is the naming
 problem in one line: information in a name is what lets it be looked up, and
 it is also what will eventually make it wrong.</figcaption>
 </figure>
@@ -336,12 +337,60 @@ The alternative is available and Berners-Lee describes it honestly. Every
 e-mail message carries a Message-ID, a string such as
 <code>&lt;20261014.5f3a@mail.example.org&gt;</code> that need only be unique.
 It cannot be typed into a browser to fetch the message; there is nobody to
-ask. What it does support is equality: two copies of a message with the same
+ask.
+</p>
+
+<p>
+What it does support is equality: two copies of a message with the same
 Message-ID are the same message. Within a finite collection, such as one
 mailbox, one can also look a message up by it. On a global scale one cannot.
+</p>
+
+<p>
 He suggests that such strings deserve the word &ldquo;identifier&rdquo; rather
 than &ldquo;name&rdquo;.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig3-4-t fig3-4-d">
+  <title id="fig3-4-t">The naming problem as a spectrum</title>
+  <desc id="fig3-4-d">A horizontal spectrum. At the left, a Message-ID carries
+  no information: it lasts, but cannot be looked up globally and supports only
+  equality. At the right, a domain-name path carries information: it can be
+  looked up, but breaks when the authority changes. An arrow between them is
+  labelled more information in the name.</desc>
+  <defs>
+    <marker id="fig3-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+  <rect class="box-green" x="20" y="20" width="250" height="160" rx="6"/>
+  <text x="145" y="46" class="t-caps" text-anchor="middle">message-id</text>
+  <text x="145" y="70" class="t-mono t-sm" text-anchor="middle">&lt;&#8230;@mail.example.org&gt;</text>
+  <text x="40" y="100" class="t-sm">no information</text>
+  <text x="40" y="120" class="t-sm" style="fill:#5a8f5a">lasts</text>
+  <text x="40" y="140" class="t-sm">cannot be looked up globally</text>
+  <text x="40" y="160" class="t-sm">supports equality only</text>
+
+  <rect class="box-warm" x="450" y="20" width="250" height="160" rx="6"/>
+  <text x="575" y="46" class="t-caps" text-anchor="middle">hierarchical name</text>
+  <text x="575" y="70" class="t-mono t-sm" text-anchor="middle">pegasus.cs.foo.edu/&#8230;</text>
+  <text x="470" y="100" class="t-sm">information</text>
+  <text x="470" y="120" class="t-sm" style="fill:#5a8f5a">can be looked up</text>
+  <text x="470" y="140" class="t-sm" style="fill:#b08d57">breaks when the authority</text>
+  <text x="470" y="160" class="t-sm" style="fill:#b08d57">changes</text>
+
+  <line class="ln-accent" x1="280" y1="100" x2="440" y2="100" marker-start="url(#fig3-4-arr)" marker-end="url(#fig3-4-arr)"/>
+  <text x="360" y="86" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">more information</text>
+  <text x="360" y="124" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">in the name</text>
+</svg>
+<figcaption><span class="fig-label">Figure 3.4</span>
+No point on the line escapes both costs. Persistence therefore has to come
+from somewhere other than the form of the name: from a contract, as section
+3.5 argues.</figcaption>
+</figure>
 
 <h2>3.5 Persistence is a contract</h2>
 
@@ -356,7 +405,7 @@ organisations rather than a property of a protocol.
 <h3>Two ends of the scale</h3>
 
 <p>
-Berners-Lee tests the information-free alternative and rejects it. One could
+Berners-Lee tests the information-free end of the scale in Figure 3.4 and rejects it. One could
 keep a worldwide <em>hash table</em>, in effect one giant shared list of
 randomly generated names, each pointing to its resource. That would work
 technically, but it would impose one funding model and one quality of service
@@ -364,7 +413,7 @@ on everybody, with no way to pay more for a name that lasts longer.
 </p>
 
 <p>
-At the other end of the scale sit hierarchical systems such as the domain
+At the other end of the scale in Figure 3.4 sit hierarchical systems such as the domain
 name system. Here a name leads to an authority, and the only way to keep the
 name working is a contract with every organisation involved in looking it up.
 He sketches what such a contract might look like: the Foo University alumni
@@ -463,8 +512,11 @@ its longevity, and what mitigates the threat?</p>
 <p><span class="question-number">3.4</span>
 Berners-Lee rejects a global hash table of random names on the grounds that
 it imposes one funding model. Who would pay to keep such a table running, and
-what would happen to a name whose owner stopped paying? Does the same
-objection apply to content-addressed systems (where a file&#8217;s name is
-computed from its contents)?</p>
+what would happen to a name whose owner stopped paying?</p>
+</div>
+<div class="question">
+<p><span class="question-number">3.5</span>
+Does the same objection apply to content-addressed systems (where a
+file&#8217;s name is computed from its contents)?</p>
 </div>
 </div>

@@ -64,9 +64,8 @@ that some of this will come true.
   <text x="360" y="276" class="t-sm" text-anchor="middle">You can double click on things you find in either.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 82.1</span>
-Berners-Lee&#8217;s own summary of the arrangement: it is crazy, on reflection,
-that the whole screen represents what happens to be on the local file
-system while one window represents the rest of the world.</figcaption>
+The whole screen shows the local file system while one window shows the rest
+of the world; on reflection, Berners-Lee calls this crazy.</figcaption>
 </figure>
 
 <p>
@@ -99,7 +98,8 @@ is "is".
 
 <p>
 That relationship is an artefact of storage. Unix lets a file sit in several
-directories only on the same disk; DOS allows just one. Users should not have
+directories through <em>hard links</em>, extra directory entries for one
+stored file, but only on the same disk; DOS allows just one directory. Users should not have
 to care which disk a file is on. So file everything under its creator and
 creation date, and make everything else a pointer:
 </p>
@@ -186,19 +186,18 @@ This is of course totally meaningless to a user.
 </table>
 
 <p>
-Described by what they do, all three make links. So suppose someone wants one
-item linked from a few inboxes, a few newsgroups and a few pages: which
-application should they use? The user, he says, should not have to choose.
+Described by what they do, all three make links. Someone wanting one item
+linked from a few inboxes, newsgroups and pages should not, he says, have to
+choose an application.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig82-3-t fig82-3-d">
   <title id="fig82-3-t">One object, many links</title>
   <desc id="fig82-3-d">A new document at the top has six links: to two inboxes,
-  two newsgroups and two web pages. Below a dashed line, the system picks the
-  protocol for each group: SMTP for inboxes, NNTP for newsgroups, HTTP for web
-  pages.</desc>
+  two newsgroups and two web pages. Below a dashed line, one note says the
+  system picks the protocol for each link.</desc>
   <defs>
     <marker id="fig82-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="8" markerHeight="8" orient="auto">
@@ -231,32 +230,31 @@ application should they use? The user, he says, should not have to choose.
   <text x="650" y="162" text-anchor="middle">web page</text>
 
   <line class="ln-dash" x1="16" y1="196" x2="704" y2="196"/>
-  <text x="24" y="218" class="t-caps">what the system does: pick protocols</text>
-  <text x="120" y="246" class="t-sm t-mono" text-anchor="middle">SMTP</text>
-  <text x="360" y="246" class="t-sm t-mono" text-anchor="middle">NNTP</text>
-  <text x="600" y="246" class="t-sm t-mono" text-anchor="middle">HTTP</text>
-  <text x="120" y="266" class="t-sm" text-anchor="middle">Simple Mail Transfer Protocol</text>
-  <text x="360" y="266" class="t-sm" text-anchor="middle">Network News Transfer Protocol</text>
-  <text x="600" y="266" class="t-sm" text-anchor="middle">Hypertext Transfer Protocol</text>
+  <text x="360" y="222" class="t-sm" text-anchor="middle">under the hood, the system picks SMTP / NNTP / HTTP for each link</text>
 </svg>
 <figcaption><span class="fig-label">Figure 82.3</span>
 The user makes links; choosing a protocol for each one is the system&#8217;s
 job.</figcaption>
 </figure>
 
+<h3>Menus, history and mailto</h3>
+
+<p>
+The same reasoning reaches every container. Favorites, most of the Start Menu
+and mailboxes all classify things, so they should share one interface, and the
+history list should span all applications. Even mailto: falls short: Berners-Lee
+calls it &ldquo;a misnomer (my fault I feel as I didn&#8217;t think when we
+created it)&rdquo;, since it should name a mailbox, not start a message.
+</p>
+
 <h2>82.4 Why this belongs in a book about architecture</h2>
 
 <p>
 This is the interface counterpart of Chapter 26. Webizing means giving things
 global names, such as Web addresses, so they can be pointed at from anywhere.
-In an interface, if a folder holds links and a mailbox is a folder, moving
-something between them is the same operation everywhere, and the boundaries
-between applications stop being boundaries.
-</p>
-
-<p>
-One reading is that the obstacle is history: mail, news and hypertext grew up
-separately, and the user was handed their divisions.
+If a folder holds links and a mailbox is a folder, moving something between
+them is one operation everywhere. The note&#8217;s example is saving a web
+page in a mailbox, which would freeze a copy and keep a pointer to it.
 </p>
 
 <h2>82.5 The last thing I want to be asked is the filename</h2>
@@ -268,10 +266,9 @@ civilization.
 </blockquote>
 
 <p>
-It asks the wrong question at the wrong time: about disks, once the writing is
-finished. He would rather choose at creation who may see the document and what
-storage it needs (archived for posterity, or rapidly available), usually by
-picking a template, and get a URI back.
+It asks about disks, once the writing is finished. He would rather choose at
+creation, usually by picking a template, who may see the document and what
+storage it needs (archived, or rapidly available), and get a URI back.
 </p>
 
 <figure>
@@ -319,8 +316,8 @@ picking a template, and get a URI back.
   <line class="ln-mut" x1="536" y1="144" x2="574" y2="144" marker-end="url(#fig82-4-arr)"/>
 </svg>
 <figcaption><span class="fig-label">Figure 82.4</span>
-The question moves from the moment the writer stops thinking about the document
-to the moment the writer starts.</figcaption>
+The question moves from when the writer stops thinking about the document to
+when the writer starts.</figcaption>
 </figure>
 
 <h2>82.6 Documents and deeds</h2>
@@ -328,7 +325,8 @@ to the moment the writer starts.</figcaption>
 <p>
 Documents that can always change suit an encyclopaedia, not a cheque book.
 Signing turns a document into a deed, which freezes: it can be cancelled by
-another deed, but not edited.
+another deed, but not edited (Figure 82.5). A sent email cannot be unsent,
+only followed by another message.
 </p>
 
 <blockquote>
@@ -336,10 +334,51 @@ Every time you press "send" in your email you are making a deed.
 <cite>Cleaning up the User Interface, 1997</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
+     aria-labelledby="fig82-5-t fig82-5-d">
+  <title id="fig82-5-t">From living document to deed</title>
+  <desc id="fig82-5-d">A living document, editable like an encyclopaedia,
+  is signed or sent and becomes a deed, frozen like a cheque. An edit arrow
+  back into the deed is crossed out. A dashed arrow leads from the deed to a
+  later deed that cancels it.</desc>
+  <defs>
+    <marker id="fig82-5-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="16" y="30" width="190" height="52" rx="4"/>
+  <text x="111" y="52" text-anchor="middle">living document</text>
+  <text x="111" y="70" class="t-sm" text-anchor="middle">editable, like an encyclopaedia</text>
+
+  <line class="ln" x1="206" y1="56" x2="306" y2="56" marker-end="url(#fig82-5-arr)"/>
+  <text x="256" y="46" class="t-sm" text-anchor="middle">sign / send</text>
+
+  <rect class="box-warm" x="308" y="30" width="190" height="52" rx="4"/>
+  <text x="403" y="52" text-anchor="middle">deed</text>
+  <text x="403" y="70" class="t-sm" text-anchor="middle">frozen, like a cheque</text>
+
+  <path class="ln-mut" d="M 403 150 L 403 84" marker-end="url(#fig82-5-arr)"/>
+  <text x="380" y="132" class="t-sm" text-anchor="end">edit</text>
+  <line class="ln-accent" x1="390" y1="108" x2="416" y2="126" style="stroke:#b08d57"/>
+  <line class="ln-accent" x1="416" y1="108" x2="390" y2="126" style="stroke:#b08d57"/>
+  <text x="403" y="172" class="t-sm" text-anchor="middle">not allowed</text>
+
+  <line class="ln-dash" x1="498" y1="56" x2="526" y2="56" marker-end="url(#fig82-5-arr)"/>
+  <rect class="box-warm" x="528" y="30" width="176" height="52" rx="4"/>
+  <text x="616" y="52" text-anchor="middle">a later deed</text>
+  <text x="616" y="70" class="t-sm" text-anchor="middle">cancels or revokes it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 82.5</span>
+Deeds are never changed, only answered by other deeds.</figcaption>
+</figure>
+
 <p>
 The interface should make it plain when the user is committing rather than
-just searching. How the Web tells a user whether to trust something, the
-&#8220;Oh, yeah?&#8221; button, is discussed in Chapter 41.
+just searching. The note also proposes an &ldquo;Oh, yeah?&rdquo; button for
+asking why a document should be trusted; Chapter 41 develops it.
 </p>
 
 <div class="since">
@@ -353,7 +392,7 @@ so a message can sit in several without copies.</li>
 gave each file a single folder, with shortcuts elsewhere, close to section
 82.2.</li>
 <li><strong>Protocols partly hidden.</strong> Webmail hides SMTP and IMAP,
-but mail, chat and the Web remain separate applications for most people.</li>
+but mail, chat and the Web remain separate applications.</li>
 </ul>
 </div>
 
@@ -363,7 +402,7 @@ but mail, chat and the Web remain separate applications for most people.</li>
 The editing half of this argument is Chapter 83, and the browser behaviour it
 requires is Chapter 84. Later interface advice is Chapter 85. Webizing a system
 is Chapter 26, and the correspondence between file space and Web space is
-Chapter 14. The &#8220;Oh, yeah?&#8221; button is in Chapter 41.
+Chapter 14.
 </p>
 </div>
 

@@ -103,8 +103,7 @@ power, he claims as the ones he found he needed for the Web specifically.
 </p>
 
 <p>
-Reading the six as three inherited layers explains why they sometimes
-conflict. The software-engineering pair is about the system one is building.
+The three layers explain why the principles sometimes conflict. The software-engineering pair is about the system one is building.
 The Internet pair is about the network one is building on. The Web pair is
 about the systems other people will build later, which do not exist yet and
 cannot be consulted.
@@ -148,6 +147,67 @@ afterwards say what it does about them as well. Simplicity here is measured
 in other people&#8217;s specifications, not in one&#8217;s own.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig1-1-t fig1-1-d">
+  <title id="fig1-1-t">One extra construct, extra work everywhere</title>
+  <desc id="fig1-1-d">Two panels. Left: an XML core holding elements and
+  attributes, with a line from it to each of three specifications that
+  process XML. Right: the same core with a third construct, processing
+  instructions, added; each of the three specifications now carries an
+  extra row, what to do about processing instructions.</desc>
+
+  <text x="175" y="22" class="t-caps" text-anchor="middle">two constructs</text>
+  <rect class="box" x="20" y="40" width="120" height="110" rx="6"/>
+  <text x="80" y="60" class="t-sm" text-anchor="middle">XML core</text>
+  <rect class="box-plain" x="35" y="72" width="90" height="26" rx="3"/>
+  <text x="80" y="90" class="t-sm" text-anchor="middle">elements</text>
+  <rect class="box-plain" x="35" y="108" width="90" height="26" rx="3"/>
+  <text x="80" y="126" class="t-sm" text-anchor="middle">attributes</text>
+  <rect class="box-plain" x="200" y="40" width="140" height="50" rx="4"/>
+  <rect class="box-plain" x="200" y="100" width="140" height="50" rx="4"/>
+  <rect class="box-plain" x="200" y="160" width="140" height="50" rx="4"/>
+  <text x="270" y="69" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <text x="270" y="129" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <text x="270" y="189" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <line class="ln" x1="140" y1="80" x2="200" y2="65"/>
+  <line class="ln" x1="140" y1="95" x2="200" y2="125"/>
+  <line class="ln" x1="140" y1="110" x2="200" y2="185"/>
+
+  <line class="ln-mut" x1="360" y1="30" x2="360" y2="230"/>
+
+  <text x="545" y="22" class="t-caps" text-anchor="middle">three constructs</text>
+  <rect class="box" x="375" y="40" width="130" height="146" rx="6"/>
+  <text x="440" y="60" class="t-sm" text-anchor="middle">XML core</text>
+  <rect class="box-plain" x="385" y="72" width="110" height="26" rx="3"/>
+  <text x="440" y="90" class="t-sm" text-anchor="middle">elements</text>
+  <rect class="box-plain" x="385" y="108" width="110" height="26" rx="3"/>
+  <text x="440" y="126" class="t-sm" text-anchor="middle">attributes</text>
+  <rect class="box-warm" x="385" y="144" width="110" height="34" rx="3"/>
+  <text x="440" y="158" class="t-sm" text-anchor="middle">processing</text>
+  <text x="440" y="172" class="t-sm t-mono" text-anchor="middle">&lt;?&#8230;?&gt;</text>
+  <rect class="box-plain" x="555" y="40" width="155" height="56" rx="4"/>
+  <rect class="box-plain" x="555" y="104" width="155" height="56" rx="4"/>
+  <rect class="box-plain" x="555" y="168" width="155" height="56" rx="4"/>
+  <text x="632" y="60" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <text x="632" y="124" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <text x="632" y="188" class="t-sm" text-anchor="middle">spec that processes XML</text>
+  <rect class="box-warm" x="563" y="68" width="139" height="20" rx="2"/>
+  <rect class="box-warm" x="563" y="132" width="139" height="20" rx="2"/>
+  <rect class="box-warm" x="563" y="196" width="139" height="20" rx="2"/>
+  <text x="632" y="82" class="t-sm" text-anchor="middle">+ what to do about PIs</text>
+  <text x="632" y="146" class="t-sm" text-anchor="middle">+ what to do about PIs</text>
+  <text x="632" y="210" class="t-sm" text-anchor="middle">+ what to do about PIs</text>
+  <line class="ln" x1="505" y1="90" x2="555" y2="68"/>
+  <line class="ln" x1="505" y1="120" x2="555" y2="132"/>
+  <line class="ln" x1="505" y1="150" x2="555" y2="196"/>
+</svg>
+<figcaption><span class="fig-label">Figure 1.1</span>
+One extra construct in the core means an extra clause in every
+specification that refers to it. Simplicity is counted in other
+people&#8217;s specifications.</figcaption>
+</figure>
+
 <h2>1.3 Modularity, and being a module</h2>
 
 <p>
@@ -177,9 +237,9 @@ larger system. This is often much more difficult than modularity.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
-     aria-labelledby="fig1-1-t fig1-1-d">
-  <title id="fig1-1-t">Partitioned, modular, part of something larger</title>
-  <desc id="fig1-1-d">Three panels. In the first, three parts A, B and C sit
+     aria-labelledby="fig1-2-t fig1-2-d">
+  <title id="fig1-2-t">Partitioned, modular, part of something larger</title>
+  <desc id="fig1-2-d">Three panels. In the first, three parts A, B and C sit
   in one box with lines running into each other's interiors. In the second,
   the same three parts each connect by one short line to a shared interface.
   In the third, a box labelled one system sits inside a dashed boundary
@@ -235,7 +295,7 @@ larger system. This is often much more difficult than modularity.
   <text x="680" y="136" text-anchor="middle">?</text>
   <text x="600" y="222" class="t-sm" text-anchor="middle">fits a whole not yet designed</text>
 </svg>
-<figcaption><span class="fig-label">Figure 1.1</span>
+<figcaption><span class="fig-label">Figure 1.2</span>
 The first two panels are the textbook lesson: parts should meet only at an
 interface. The third is the step Berners-Lee calls &ldquo;much more
 difficult&rdquo;, designing a system to be one part of something nobody
@@ -258,8 +318,8 @@ The rule is stated in quotation marks in the note: &ldquo;Be liberal in what
 you require but conservative in what you do&rdquo;. It is usually credited to
 Jon Postel, who edited many of the early Internet protocol specifications and
 put a version of it into the specification of <a class="gl-ref" href="../glossary.html#tcp">TCP</a> in 1981. The note does not
-name him; it calls the rule &ldquo;a typical UU tenet&rdquo;, a principle that
-applies &ldquo;pretty well in life&rdquo; as well as across the Internet.
+name him; it says only that the rule applies &ldquo;pretty well in life&rdquo;
+as well as across the Internet.
 </p>
 
 <p>
@@ -272,15 +332,15 @@ program sends the narrower kind and accepts the wider.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
-     aria-labelledby="fig1-2-t fig1-2-d">
-  <title id="fig1-2-t">Write strict, accept loose</title>
-  <desc id="fig1-2-d">Nested boxes. The inner box is HTML 4.0 Strict, inside
+     aria-labelledby="fig1-3-t fig1-3-d">
+  <title id="fig1-3-t">Write strict, accept loose</title>
+  <desc id="fig1-3-d">Nested boxes. The inner box is HTML 4.0 Strict, inside
   a larger box for HTML 4.0 Transitional, inside a dashed boundary marking
   what the specification counts as conforming. An arrow leaves the inner box
   labelled what is sent. An arrow enters the middle box labelled what is
   accepted. Outside the dashed line is not conforming.</desc>
   <defs>
-    <marker id="fig1-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig1-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="8" markerHeight="8" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
     </marker>
@@ -296,15 +356,15 @@ program sends the narrower kind and accepts the wider.
   <rect class="box-green" x="290" y="116" width="180" height="84" rx="8"/>
   <text x="380" y="163" text-anchor="middle">HTML 4.0 Strict</text>
 
-  <line class="ln" x1="290" y1="150" x2="32" y2="150" marker-end="url(#fig1-2-arr)"/>
+  <line class="ln" x1="290" y1="150" x2="32" y2="150" marker-end="url(#fig1-3-arr)"/>
   <text x="40" y="140">what is sent</text>
 
-  <line class="ln" x1="712" y1="210" x2="563" y2="210" marker-end="url(#fig1-2-arr)"/>
+  <line class="ln" x1="712" y1="210" x2="563" y2="210" marker-end="url(#fig1-3-arr)"/>
   <text x="602" y="200">what is accepted</text>
 
   <text x="380" y="270" class="t-sm" text-anchor="middle">outside the dashed line: not conforming</text>
 </svg>
-<figcaption><span class="fig-label">Figure 1.2</span>
+<figcaption><span class="fig-label">Figure 1.3</span>
 Tolerance widens what a program accepts, from the green box to the warm one.
 It does not move the dashed line. The specification still says exactly what
 conforms and what does not.</figcaption>
@@ -345,15 +405,15 @@ Internet avoids network bottlenecks.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
-     aria-labelledby="fig1-3-t fig1-3-d">
-  <title id="fig1-3-t">One term for everyone, or many terms and mappings</title>
-  <desc id="fig1-3-d">Left: a car maker, an insurer, a museum and a tax
+     aria-labelledby="fig1-4-t fig1-4-d">
+  <title id="fig1-4-t">One term for everyone, or many terms and mappings</title>
+  <desc id="fig1-4-d">Left: a car maker, an insurer, a museum and a tax
   office all point to a single term, kr.org/stds/industry/automobile, which
   is a bottleneck. Right: each of the four has its own term, auto, vehicle,
   motor car and car, and dashed links marked maps to join neighbouring
   terms.</desc>
   <defs>
-    <marker id="fig1-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig1-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
     </marker>
@@ -369,10 +429,10 @@ Internet avoids network bottlenecks.
   <text x="131" y="60" text-anchor="middle">insurer</text>
   <text x="213" y="60" text-anchor="middle">museum</text>
   <text x="295" y="60" text-anchor="middle">tax office</text>
-  <line class="ln" x1="49" y1="70" x2="120" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="131" y1="70" x2="155" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="213" y1="70" x2="190" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="295" y1="70" x2="225" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="49" y1="70" x2="120" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="131" y1="70" x2="155" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="213" y1="70" x2="190" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="295" y1="70" x2="225" y2="148" marker-end="url(#fig1-4-arr)"/>
   <rect class="box-warm" x="20" y="150" width="310" height="40" rx="4"/>
   <text x="175" y="175" class="t-mono" text-anchor="middle">kr.org/stds/industry/automobile</text>
   <text x="175" y="214" class="t-sm" text-anchor="middle">a bottleneck: one formulation for all</text>
@@ -390,10 +450,10 @@ Internet avoids network bottlenecks.
   <text x="511" y="60" text-anchor="middle">insurer</text>
   <text x="593" y="60" text-anchor="middle">museum</text>
   <text x="675" y="60" text-anchor="middle">tax office</text>
-  <line class="ln" x1="429" y1="70" x2="429" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="511" y1="70" x2="511" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="593" y1="70" x2="593" y2="148" marker-end="url(#fig1-3-arr)"/>
-  <line class="ln" x1="675" y1="70" x2="675" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="429" y1="70" x2="429" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="511" y1="70" x2="511" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="593" y1="70" x2="593" y2="148" marker-end="url(#fig1-4-arr)"/>
+  <line class="ln" x1="675" y1="70" x2="675" y2="148" marker-end="url(#fig1-4-arr)"/>
   <rect class="box" x="390" y="150" width="78" height="40" rx="4"/>
   <rect class="box" x="472" y="150" width="78" height="40" rx="4"/>
   <rect class="box" x="554" y="150" width="78" height="40" rx="4"/>
@@ -407,7 +467,7 @@ Internet avoids network bottlenecks.
   <path class="ln-dash" d="M 593 190 Q 634 234 675 190"/>
   <text x="552" y="236" class="t-sm" text-anchor="middle">maps to</text>
 </svg>
-<figcaption><span class="fig-label">Figure 1.3</span>
+<figcaption><span class="fig-label">Figure 1.4</span>
 On the left, every user must adopt one identifier, and the system works only
 for those it suits. On the right, each community keeps its own term and the
 terms are linked by mappings. The decentralization that keeps the Internet
@@ -433,7 +493,7 @@ three points of its own.
 <p>
 First, the test is &ldquo;modularity inside-out&rdquo;: designing a system
 not to be modular in itself, but to be one part of a larger system that has
-not yet been specified (the third panel of Figure 1.1). Second, such a system
+not yet been specified (the third panel of Figure 1.2). Second, such a system
 should try to do one thing well, and leave other things to other modules.
 Third, it must avoid conceptual and other centralization, because &ldquo;no
 two modules can claim the need to be the unique center of a larger
@@ -449,28 +509,29 @@ universal space from existing and enveloping URI space as a subset.
 <h2>1.7 The principle of least power</h2>
 
 <p>
-This is the longest section of the note and the one with the clearest
-argument. It turns on the difference between two kinds of language. A
+This is the longest section of the note. It turns on the difference between two kinds of language. A
 declarative language states what is the case and leaves the reader to decide
 what to do with it; HTML says &ldquo;this is a heading&rdquo;. A procedural
 language is a list of steps for a computer to carry out, as in Java or C.
 </p>
 
 <p>
-Berners-Lee sets out a scale, from the plainly descriptive, through limited
-logics and two kinds of declarative language, to the unashamedly procedural.
-The two middle kinds are separated by whether a language is Turing complete,
-that is, able in principle to express any computation at all. PostScript, he
-notes, is; PDF is not. XSLT and <a class="gl-ref" href="../glossary.html#sql">SQL</a> are, though &ldquo;one is led not to use
-them that way&rdquo;.
+Berners-Lee sets out a scale of five rungs, shown in Figure 1.5. A language
+is Turing complete if it can in principle express any computation at all.
+Two of the examples need a gloss: <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a standard set of
+library-catalogue fields, and <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a> (&ldquo;conneg&rdquo;) is
+where a <a class="gl-ref" href="../glossary.html#server">server</a> picks a format for the client. The note places PostScript and
+PDF on the rung that verges on complete, with the aside that PostScript in
+fact is and PDF is not. XSLT and <a class="gl-ref" href="../glossary.html#sql">SQL</a> are complete, though &ldquo;one is led
+not to use them that way&rdquo;.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
-     aria-labelledby="fig1-4-t fig1-4-d">
-  <title id="fig1-4-t">The scale of the principle of least power</title>
-  <desc id="fig1-4-d">A scale with five points: descriptive (Dublin Core,
-  HTML); limited logic (access lists, conneg); near-complete (PostScript,
+     aria-labelledby="fig1-5-t fig1-5-d">
+  <title id="fig1-5-t">The scale of the principle of least power</title>
+  <desc id="fig1-5-d">A scale with five points: descriptive (Dublin Core,
+  HTML); limited logic (access lists, conneg); verging on complete (PostScript,
   PDF); complete but used declaratively (XSLT, SQL); and procedural (Java,
   C). Moving right increases what an author can express. Moving left
   increases what anyone else can do with the result.</desc>
@@ -480,7 +541,8 @@ them that way&rdquo;.
   <text x="80" y="76" class="t-sm" text-anchor="middle">Dublin Core, HTML</text>
   <text x="220" y="54" class="t-caps" text-anchor="middle">limited logic</text>
   <text x="220" y="76" class="t-sm" text-anchor="middle">access lists, conneg</text>
-  <text x="360" y="54" class="t-caps" text-anchor="middle">near-complete</text>
+  <text x="360" y="38" class="t-caps" text-anchor="middle">verging on</text>
+  <text x="360" y="54" class="t-caps" text-anchor="middle">complete</text>
   <text x="360" y="76" class="t-sm" text-anchor="middle">PostScript, PDF</text>
   <text x="500" y="38" class="t-caps" text-anchor="middle">complete, used</text>
   <text x="500" y="54" class="t-caps" text-anchor="middle">declaratively</text>
@@ -514,7 +576,7 @@ them that way&rdquo;.
   <line class="ln-mut" x1="30" y1="190" x2="690" y2="190"/>
   <text x="360" y="214" class="t-sm t-it" text-anchor="middle">Weather as a table can be averaged, plotted and combined. The same weather inside an applet can only be watched.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 1.4</span>
+<figcaption><span class="fig-label">Figure 1.5</span>
 The principle asks the designer to choose the leftmost point on this scale
 that still does the job, and it is the only one of the six principles that
 tells an author to give something up.</figcaption>
@@ -568,9 +630,9 @@ exposed to attack.
 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Technical Architecture Group finding, <em>The Rule of Least
 Power</em>, edited by Berners-Lee and Noah Mendelsohn, published in
 February 2006.</li>
-<li><strong>The security reading became a field.</strong> The language-theoretic
-security work that Patterson&#8217;s talk set out, dating from around 2011,
-made the argument that <a class="gl-ref" href="../glossary.html#parser">parser</a> expressiveness is itself the attack surface. It
+<li><strong>The security reading became a field.</strong> Patterson and Len
+Sassaman&#8217;s language-theoretic security (LangSec) work, presented from
+2011, argued that <a class="gl-ref" href="../glossary.html#parser">parser</a> expressiveness is itself the attack surface. It
 holds that inputs an interface accepts should be in a language simple enough
 to be decidable: simple enough that a program can always tell whether a given
 input is valid.</li>
@@ -622,8 +684,8 @@ links work with it?</p>
 <div class="question">
 <p><span class="question-number">1.4</span>
 The principle of least power claims that weaker languages make data more
-reusable. State the strongest counter-argument, and identify which of the
-other five principles it appeals to.</p>
+reusable. State the strongest counter-argument. Which of the other five
+principles would someone who wants a powerful language point to?</p>
 </div>
 </details>
 

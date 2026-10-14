@@ -3,8 +3,7 @@
 <p>
 This note lists eight terms Berners-Lee would most like people to use when
 publishing data: two each for who, when and where, and two for documents. They
-are chosen because they are already in use, not because they are the best
-available. Data from unrelated sources can be joined wherever it shares one of
+are chosen for practical reasons, from vocabularies already in use. Data from unrelated sources can be joined wherever it shares one of
 them. The note is an unfinished first draft.
 </p>
 </div>
@@ -54,33 +53,33 @@ possible.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+<svg class="dia" viewBox="0 24 720 256" width="720" height="256" role="img"
      aria-labelledby="fig48-1-t fig48-1-d">
   <title id="fig48-1-t">Joining on a shared term</title>
   <desc id="fig48-1-d">An invented example. A conference site says Alice's
-  mailbox made a talk on 23 May. A photo archive says the same mailbox made a
+  mailbox made a talk on 2010-05-23. A photo archive says the same mailbox made a
   photo at latitude 51.5, longitude minus 0.1. Because both use foaf:maker with
   the same mailbox, the two can be merged into one picture of Alice.</desc>
 
   <rect class="box" x="20" y="40" width="330" height="120" rx="4"/>
   <text x="36" y="64">Dataset A: conference site</text>
-  <text x="36" y="92" class="t-mono" font-size="12">talk  foaf:maker</text>
-  <text x="334" y="112" class="t-mono" font-size="12" text-anchor="end" style="fill:#1c5a7a">mailto:alice@example.org</text>
-  <text x="36" y="142" class="t-mono" font-size="12">talk  cal:dtstart  23 May</text>
+  <text x="36" y="92" class="t-mono" font-size="12">talk  cal:dtstart  2010-05-23</text>
+  <text x="36" y="116" class="t-mono" font-size="12">talk  foaf:maker</text>
+  <text x="36" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">mailto:alice@example.org</text>
 
   <rect class="box" x="370" y="40" width="330" height="120" rx="4"/>
   <text x="386" y="64">Dataset B: photo archive</text>
-  <text x="386" y="92" class="t-mono" font-size="12">photo  foaf:maker</text>
-  <text x="386" y="112" class="t-mono" font-size="12" style="fill:#1c5a7a">mailto:alice@example.org</text>
-  <text x="386" y="142" class="t-mono" font-size="12">photo  geo:lat 51.5  geo:long &#8722;0.1</text>
+  <text x="386" y="92" class="t-mono" font-size="12">photo  geo:lat 51.5  geo:long &#8722;0.1</text>
+  <text x="386" y="116" class="t-mono" font-size="12">photo  foaf:maker</text>
+  <text x="386" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">mailto:alice@example.org</text>
 
-  <line class="ln-accent" x1="342" y1="108" x2="378" y2="108"/>
-  <line class="ln-accent" x1="360" y1="108" x2="360" y2="200"/>
-  <text x="370" y="186" class="t-sm" style="fill:#1c5a7a">same term, same value</text>
+  <line class="ln-accent" x1="122" y1="150" x2="122" y2="204"/>
+  <line class="ln-accent" x1="472" y1="150" x2="472" y2="204"/>
+  <text x="297" y="186" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">same term, same value</text>
 
-  <rect class="box-green" x="180" y="200" width="360" height="60" rx="4"/>
-  <text x="360" y="225" text-anchor="middle">Alice: talk on 23 May; photo at 51.5, &#8722;0.1</text>
-  <text x="360" y="247" class="t-sm t-it" text-anchor="middle">invented example</text>
+  <rect class="box-green" x="60" y="204" width="600" height="60" rx="4"/>
+  <text x="360" y="229" text-anchor="middle">Alice: talk on 2010-05-23; photo at 51.5, &#8722;0.1</text>
+  <text x="360" y="251" class="t-sm t-it" text-anchor="middle">invented example</text>
 </svg>
 <figcaption><span class="fig-label">Figure 48.1</span>
 Neither publisher coordinated with the other. One shared term, used with the
@@ -140,6 +139,13 @@ this book's; the note itself explains only the mailbox and the
 title.</figcaption>
 </figure>
 
+<p>
+The draft has other gaps. <code>foaf:name</code>, the time and place terms and
+<code>foaf:maker</code> are listed with no explanation at all. The section on
+time breaks off after noting that there are many complete ontologies of time;
+the section on place says only that it is a huge one.
+</p>
+
 <h2>48.2 Why an email address, of all things</h2>
 
 <p>
@@ -163,18 +169,12 @@ identifies a person by an unambiguous property rather than by an identifier
 they do not have.
 </p>
 
-<p>
-The draft has other gaps. <code>foaf:name</code>, the time and place terms and
-<code>foaf:maker</code> are listed with no explanation at all. The section on
-time breaks off after noting that there are many complete ontologies of time;
-the section on place says only that it is a huge one.
-</p>
+<h3>Where the vocabularies come from</h3>
 
 <p>
-The vocabulary for people is chosen on the same grounds. Friend of a Friend
-was designed and used bottom-up, to connect people through networks of
-acquaintance. It was not the most rigorous available; it was the one people
-had adopted. For documents Berners-Lee takes the choice of others: the Dublin
+The vocabulary for people is chosen for practical reasons too. Friend of a
+Friend was designed and used bottom-up, to connect people through networks of
+acquaintance, and was already in use. For documents Berners-Lee takes the choice of others: the Dublin
 Core group picked their top ten properties for documents, and of those,
 <code>dc:title</code> is the one he has found most called for. He equates it
 with the HTML <code>&lt;title&gt;</code> tag, which makes the point that most
@@ -199,20 +199,24 @@ the fact that ontologies already exist in various commiunities
 <svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
      aria-labelledby="fig48-3-t fig48-3-d">
   <title id="fig48-3-t">Who pays for terms</title>
-  <desc id="fig48-3-d">Three nested regions. The outermost is the whole Web,
-  where these eight terms already exist and cost almost nothing to reuse.
-  Inside it is a community's vocabulary, whose cost is shared. Innermost are a
-  project's own terms, which the project pays for.</desc>
+  <desc id="fig48-3-d">Three nested regions, each with an invented example. The outermost is the whole Web,
+  where these eight terms, such as foaf:mbox and dc:title, already exist and cost almost nothing to reuse.
+  Inside it is a community's vocabulary, such as a conference ontology, whose
+  cost is shared. Innermost are a project's own terms, such as talk-room
+  booking, which the project pays for.</desc>
 
   <rect class="box-plain" x="40" y="16" width="640" height="228" rx="10"/>
-  <text x="360" y="42" text-anchor="middle">Whole Web: these eight terms, already everywhere, nearly free</text>
+  <text x="360" y="36" text-anchor="middle">Whole Web: these eight terms, already everywhere, nearly free</text>
+  <text x="360" y="52" class="t-sm t-it" text-anchor="middle">for example foaf:mbox, dc:title</text>
 
   <rect class="box-warm" x="120" y="60" width="480" height="164" rx="8"/>
-  <text x="360" y="86" text-anchor="middle">A community&#8217;s vocabulary: cost shared</text>
+  <text x="360" y="80" text-anchor="middle">A community&#8217;s vocabulary: cost shared</text>
+  <text x="360" y="96" class="t-sm t-it" text-anchor="middle">for example a conference ontology</text>
 
   <rect class="box-green" x="220" y="106" width="280" height="98" rx="6"/>
-  <text x="360" y="146" text-anchor="middle">A project&#8217;s own terms</text>
-  <text x="360" y="168" class="t-sm" text-anchor="middle">the project pays for these</text>
+  <text x="360" y="136" text-anchor="middle">A project&#8217;s own terms</text>
+  <text x="360" y="156" class="t-sm" text-anchor="middle">the project pays for these</text>
+  <text x="360" y="176" class="t-sm t-it" text-anchor="middle">for example talk-room booking</text>
 </svg>
 <figcaption><span class="fig-label">Figure 48.3</span>
 A project pays only for its innermost ring. Everything outside it has already
@@ -254,13 +258,15 @@ agreement between their publishers.
 Schema.org, launched in June 2011, is this idea: a small shared vocabulary
 covering who, where, when and what, adopted because search engines consume it,
 and now widely deployed.</li>
-<li><strong>The specific terms fared differently.</strong> Coordinates and
-titles are universal. Mailboxes published openly were harvested by spammers,
+<li><strong>The specific terms fared differently.</strong> Titles spread
+widely: the Open Graph protocol, launched in April 2010, made
+<code>og:title</code> one of its four required properties. Mailboxes published openly were harvested by spammers,
 and FOAF came to offer <code>foaf:mbox_sha1sum</code>, a scrambled form of the
 address that can still be matched but not read.</li>
-<li><strong>Time stayed harder than it looks.</strong> Start and end times are
-widely used, while recurrence, uncertainty and historical dates remain hard,
-which is why the note picks the two simple terms.</li>
+<li><strong>Time got its complete ontology.</strong> Time Ontology in OWL, a
+W3C Recommendation of October 2017, models intervals, durations and calendars
+in detail: the kind of ontology the note passes over in favour of two simple
+terms.</li>
 </ul>
 </div>
 
@@ -284,8 +290,9 @@ share, and what could be joined along it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">48.2</span>
-The terms are chosen for adoption, not rigour. Why might a less rigorous
-vocabulary spread faster than a more rigorous one?</p>
+The terms are chosen for practical reasons, from vocabularies already in use.
+Why might a vocabulary built bottom-up spread faster than one designed
+top-down?</p>
 </div>
 <div class="question">
 <p><span class="question-number">48.3</span>

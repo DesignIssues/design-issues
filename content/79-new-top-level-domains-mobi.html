@@ -17,7 +17,9 @@ links, because the same page would need a different address on a phone.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in April 2004 and, unusually for this collection, formally supported:
+Should a fact about the reader&#8217;s device, such as being a phone, be
+written into a site&#8217;s name? The note was written in April 2004 and,
+unusually for this collection, formally supported:
 at its meeting of 14 May 2004 the W3C Technical Architecture Group resolved to
 support the note, with one member abstaining and one recusing himself.
 Its objection to the mobile domain is architectural rather than commercial.
@@ -28,10 +30,10 @@ Its objection to the mobile domain is architectural rather than commercial.
 
 <p>
 The note begins with a history that explains the whole problem. The tree
-structure was an improvement over a flat list of machine names because it let
-new names be allocated in subdomains without a central registry, and because
-allocation grew rarer as one climbed towards the root, the cost stayed
-manageable.
+structure improved on a flat list of machine names. It let a university, say,
+create <code>physics.uni.example</code> itself, without asking a central
+registry. Names nearer the root were rarely handed out, so the central
+workload stayed small.
 </p>
 
 <p>
@@ -74,8 +76,8 @@ space into a limited commodity.
   <text x="360" y="310" class="t-sm" text-anchor="middle">example.com and example.net merely a source of confusion.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 79.1</span>
-Berners-Lee&#8217;s conclusion from this: in the world of memorable domain names, the
-hierarchicalisation of the domain system had failed to happen.</figcaption>
+Berners-Lee&#8217;s conclusion from this: in the world of memorable domain
+names, the tree structure had stopped mattering.</figcaption>
 </figure>
 
 <p>
@@ -187,10 +189,18 @@ Chapter 67 makes the same complaint about the <code>s</code> in
 <h3>Better ways to tell the server about the device</h3>
 
 <p>
-The tools already existed. HTTP content negotiation lets a device say what it
-can handle with each request; CC/PP lets it describe its capabilities in
-detail; CSS can apply rules only on hand-held screens. And
-&#8220;mobile&#8221; is a moving target: small devices will have high
+The tools already existed:
+</p>
+
+<table>
+<tr><th>Tool</th><th>Who does the adapting</th><th>Plain example</th></tr>
+<tr><td>HTTP content negotiation</td><td>The server</td><td>The phone says &ldquo;small screen&rdquo; with each request</td></tr>
+<tr><td>CC/PP</td><td>The server</td><td>The device sends a fuller description of itself</td></tr>
+<tr><td>CSS hand-held rules</td><td>The browser</td><td>One page, with a different layout on small screens</td></tr>
+</table>
+
+<p>
+And &#8220;mobile&#8221; is a moving target: small devices will have high
 bandwidth, and some phones will be mounted permanently on kitchen walls. A
 domain name is the worst place to record any of this.
 </p>
@@ -207,7 +217,8 @@ Figure 79.3 draws the note&#8217;s account of who owns what.
   <title id="fig79-3-t">Who controls each part of the name tree</title>
   <desc id="fig79-3-d">ICANN at the root; fee-charging registries for .com,
   .net and .org; under .com a rented name and an unclaimed one, with an arrow
-  marked temptation from the registry to the unclaimed name.</desc>
+  from the registry into the unclaimed name, marked temptation: the registry
+  treats it as its own, to redirect or pre-rent.</desc>
 
   <rect class="box" x="210" y="16" width="300" height="48" rx="3"/>
   <text x="360" y="36" text-anchor="middle">root of the tree: ICANN</text>
@@ -225,18 +236,19 @@ Figure 79.3 draws the note&#8217;s account of who owns what.
   <text x="560" y="128" class="t-mono" text-anchor="middle">.org</text>
   <text x="560" y="146" class="t-sm" text-anchor="middle">registry, charges fees</text>
 
-  <path class="ln-mut" d="M 160 154 L 90 210 M 160 154 L 290 210"/>
+  <path class="ln-mut" d="M 160 154 L 135 210 M 160 154 L 335 210"/>
 
-  <rect class="box-green" x="15" y="210" width="150" height="44" rx="3"/>
-  <text x="90" y="228" class="t-mono" text-anchor="middle">example.com</text>
-  <text x="90" y="246" class="t-sm" text-anchor="middle">rented by its holder</text>
-  <rect class="ln-dash" x="205" y="210" width="170" height="44" rx="3"/>
-  <text x="290" y="228" text-anchor="middle">unclaimed name</text>
-  <text x="290" y="246" class="t-sm" text-anchor="middle">who owns it?</text>
+  <rect class="box-green" x="60" y="210" width="150" height="44" rx="3"/>
+  <text x="135" y="228" class="t-mono" text-anchor="middle">example.com</text>
+  <text x="135" y="246" class="t-sm" text-anchor="middle">rented by its holder</text>
+  <rect class="ln-dash" x="250" y="210" width="170" height="44" rx="3"/>
+  <text x="335" y="228" text-anchor="middle">unclaimed name</text>
+  <text x="335" y="246" class="t-sm" text-anchor="middle">who owns it?</text>
 
-  <path class="ln-accent" d="M 212 154 C 300 168, 355 186, 356 206"/>
-  <path d="M 351 199 L 356 207 L 361 199" fill="none" stroke="#1c5a7a" stroke-width="1.6"/>
-  <text x="372" y="186" class="t-sm" style="fill:#1c5a7a">temptation</text>
+  <path class="ln-accent" d="M 225 154 C 320 164, 392 182, 397 224"/>
+  <path d="M 392 217 L 397 225 L 402 217" fill="none" stroke="#1c5a7a" stroke-width="1.6"/>
+  <text x="436" y="200" class="t-sm" style="fill:#1c5a7a">temptation: the registry treats it</text>
+  <text x="436" y="216" class="t-sm" style="fill:#1c5a7a">as its own, to redirect or pre-rent</text>
 
 </svg>
 <figcaption><span class="fig-label">Figure 79.3</span>
@@ -326,8 +338,8 @@ case where an address is still specific to how it is being read.</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.3</span>
-The note relies on ICANN being non-profit to keep the root fair. Is a
-non-profit operator enough? What else could help?</p>
+Using Figure 79.3, explain why a registry that sells names has a reason to
+treat unregistered names as its own property. What did VeriSign do in 2003?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.4</span>

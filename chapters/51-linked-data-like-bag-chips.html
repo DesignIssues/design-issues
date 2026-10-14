@@ -57,8 +57,8 @@ much effort is it worth putting in? Every extra step costs the publisher
 something, and the benefit goes to strangers.
 </p>
 <p>
-This is the answer that persuaded governments: five stars, the first of them
-awarded simply for putting anything up at all. The second half of the chapter
+The answer, later widely adopted (see What happened since), is five stars, the
+first of them awarded simply for putting anything up at all. The second half of the chapter
 explains, by way of a packet of crisps (American &ldquo;chips&rdquo;), why
 nobody should try to pick the one right <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for a body of data.
 </p>
@@ -68,9 +68,9 @@ nobody should try to pick the one right <a class="gl-ref" href="../glossary.html
 <h3>The question</h3>
 <p>
 This began as a talk at a government open-data conference in May 2010 and
-became a Design Issues note much later. It contains the most successful piece
-of advocacy Berners-Lee ever produced, the five-star <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, and one of his
-better metaphors, and the two do different jobs.
+was later promoted to a Design Issues note; an abstract was added in 2023. It
+contains the five-star <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, widely adopted since, and one of his better
+metaphors, and the two do different jobs.
 </p>
 </div>
 
@@ -95,23 +95,28 @@ go?&rdquo; Its design concedes that the first step is the hardest.
   <rect class="box-green" x="24" y="30" width="672" height="52" rx="4"/>
   <text x="48" y="58" class="t-lg" style="fill:#5a8f5a">&#9733;</text>
   <text x="80" y="54">Put it up at all, in any form</text>
+  <text x="684" y="61" class="t-sm t-it" text-anchor="end" style="fill:#5a8f5a">getting it out</text>
   <text x="80" y="72" class="t-sm">&#8220;one huge star&#8221;: the obstacles here are people, not formats</text>
 
   <rect class="box" x="24" y="90" width="672" height="44" rx="4"/>
   <text x="48" y="118" class="t-lg" style="fill:#1c5a7a">&#9733;&#9733;</text>
   <text x="104" y="116">Machine readable: a table, not a scan of a fax</text>
+  <text x="684" y="116" class="t-sm t-it" text-anchor="end" style="fill:#1c5a7a">usable</text>
 
   <rect class="box" x="24" y="142" width="672" height="44" rx="4"/>
   <text x="48" y="170" class="t-lg" style="fill:#1c5a7a">&#9733;&#9733;&#9733;</text>
   <text x="128" y="168">A non-proprietary format. Comma separated values counts.</text>
+  <text x="684" y="168" class="t-sm t-it" text-anchor="end" style="fill:#1c5a7a">usable</text>
 
   <rect class="box-warm" x="24" y="194" width="672" height="44" rx="4"/>
   <text x="48" y="222" class="t-lg" style="fill:#b08d57">&#9733;&#9733;&#9733;&#9733;</text>
   <text x="152" y="220">Give every thing, and every property, a URI</text>
+  <text x="684" y="220" class="t-sm t-it" text-anchor="end" style="fill:#b08d57">linked</text>
 
   <rect class="box-warm" x="24" y="246" width="672" height="44" rx="4"/>
   <text x="48" y="274" class="t-lg" style="fill:#b08d57">&#9733;&#9733;&#9733;&#9733;&#9733;</text>
   <text x="176" y="272">Link out to other people&#8217;s data</text>
+  <text x="684" y="272" class="t-sm t-it" text-anchor="end" style="fill:#b08d57">linked</text>
 
   <line class="ln-mut" x1="24" y1="300" x2="696" y2="300"/>
   <text x="360" y="324" class="t-sm" text-anchor="middle">Nobody is refused a star. The scheme rewards the step taken, not the distance still to go.</text>
@@ -138,10 +143,8 @@ That means people can point to it and say that city, actually when they say
 </blockquote>
 
 <p>
-So two datasets that use the same address for the city can be joined by a
-program, with nobody matching names by hand. The fifth star is for linking
-outwards: noting that one dataset&#8217;s population means the same as somebody
-else&#8217;s.
+So two datasets using the same address for the city can be joined by a
+program. The fifth star is for linking outwards to somebody else&#8217;s data.
 </p>
 
 <h2>51.2 The bag of chips</h2>
@@ -158,18 +161,27 @@ message.
 </blockquote>
 
 <p>
-A typical message carries terms at three scales: something universal, like a
-title; something shared with a domain, like a blood pressure; and something
-obscure, like the calibration data of the monitor that took it, understood
-only by device engineers. Each term is understood by everyone who works at its
-scale, so the mixture gets the most total interoperability. The packet on his
-lunch table showed the same: its name was American English (in British
+An <a class="gl-ref" href="../glossary.html#ontology">ontology</a>, or vocabulary, is a published list of terms with agreed meanings,
+each with its own URI: title, blood pressure, calories per serving. A typical
+message mixes terms at three scales:
+</p>
+
+<table>
+<tr><th>Scale</th><th>Example</th><th>Who understands it</th></tr>
+<tr><td>Universal</td><td>The title of a document</td><td>Almost everyone</td></tr>
+<tr><td>Domain</td><td>A blood pressure</td><td>Everyone in medicine</td></tr>
+<tr><td>Obscure</td><td>The calibration data of the monitor</td><td>Device engineers only</td></tr>
+</table>
+
+<p>
+Using each at its own scale gets the most total interoperability. The packet
+on his lunch table showed the same: its name was American English (in British
 English, he noted, it would say potato crisps), and the rest was in other
 languages again.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 364" width="720" height="364" role="img"
+<svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
      aria-labelledby="fig51-2-t fig51-2-d">
   <title id="fig51-2-t">A bag of chips, and its readers</title>
   <desc id="fig51-2-d">One package carries a product name, a nutrition facts
@@ -227,7 +239,6 @@ languages again.
 
   <line class="ln-mut" x1="40" y1="304" x2="696" y2="304"/>
   <text x="368" y="328" class="t-sm" text-anchor="middle">Each reader takes the part they need and ignores the rest.</text>
-  <text x="368" y="348" class="t-sm t-it" text-anchor="middle">No committee ever agreed a single vocabulary for a packet of crisps.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 51.2</span>
 Berners-Lee&#8217;s summary: with its mixture of vocabularies and its rule of
@@ -301,17 +312,19 @@ large bureaucracy get useful work done.
 <h2>51.3 Why the metaphor is doing real work</h2>
 
 <p>
-What should a reader do with the printer&#8217;s number 110#71400? Software
-built on other ideas would stop at it:
+What should a reader do with the printer&#8217;s number 110#71400? Many
+programs check incoming data against a fixed form, a <a class="gl-ref" href="../glossary.html#schema">schema</a>, and reject
+anything with a field the form does not list. Such software would stop at it:
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
      aria-labelledby="fig51-4-t fig51-4-d">
   <title id="fig51-4-t">Three readers meet 110#71400</title>
-  <desc id="fig51-4-d">The unknown number 110#71400 reaches three readers. An
-  XML processor checking a schema may decide it is a violation and stop.
-  Object-oriented code may refuse it as an invalid object. The shopper ignores
+  <desc id="fig51-4-d">The unknown number 110#71400 reaches three readers. A
+  program checking a fixed form (an XML schema) may decide it is a violation
+  and stop. A program expecting fixed object types may refuse it as an invalid
+  object. The shopper ignores
   it, glances at the name and the calories, and eats the chips.</desc>
   <defs>
     <marker id="fig51-4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -328,9 +341,11 @@ built on other ideas would stop at it:
   <line class="ln-mut" x1="170" y1="128" x2="228" y2="190" marker-end="url(#fig51-4-a)"/>
 
   <rect class="box" x="230" y="30" width="150" height="46" rx="3"/>
-  <text x="305" y="58" text-anchor="middle">XML processor</text>
+  <text x="305" y="50" class="t-sm" text-anchor="middle">program checking a fixed</text>
+  <text x="305" y="66" class="t-sm" text-anchor="middle">form (XML schema)</text>
   <rect class="box" x="230" y="100" width="150" height="46" rx="3"/>
-  <text x="305" y="128" text-anchor="middle">object-oriented code</text>
+  <text x="305" y="120" class="t-sm" text-anchor="middle">program expecting</text>
+  <text x="305" y="136" class="t-sm" text-anchor="middle">fixed object types</text>
   <rect class="box" x="230" y="170" width="150" height="46" rx="3"/>
   <text x="305" y="198" text-anchor="middle">the shopper</text>
 
@@ -382,8 +397,8 @@ FDA to publish theirs.
   <title id="fig51-5-t">Publish now, connect later</title>
   <desc id="fig51-5-d">First, in my web space, I define my own term Calories
   Per Serving and publish data using it. Later, fda.gov publishes its own
-  Calories Per Serving. Then I add one statement in my space saying my term
-  means the same as theirs. From then on, queries that use the FDA's term also
+  Calories Per Serving. Then I add one statement in my space saying my term,
+  the one from step 1, means the same as theirs. From then on, queries that use the FDA's term also
   find my old data.</desc>
   <defs>
     <marker id="fig51-5-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -408,6 +423,8 @@ FDA to publish theirs.
   <text x="44" y="230" class="t-sm">my Calories Per Serving means the same as theirs</text>
 
   <path class="ln-dash" d="M 330 208 L 388 158" marker-end="url(#fig51-5-a)"/>
+  <path class="ln-mut" d="M 180 92 L 180 186" marker-end="url(#fig51-5-a)"/>
+  <text x="192" y="144" class="t-sm t-it">the same term</text>
 
   <rect class="box-green" x="30" y="268" width="660" height="56" rx="3"/>
   <text x="44" y="290">4. Queries using the FDA&#8217;s term now find my old data</text>
@@ -419,8 +436,8 @@ connected the old data to it.</figcaption>
 </figure>
 
 <p>
-Because terms are URIs, anyone can look one up, see who owns it and pick a
-source they respect. His conclusion:
+Because terms are URIs, anyone can look one up and pick a source they
+respect. His conclusion:
 </p>
 
 <blockquote>
@@ -441,7 +458,7 @@ Open Data White Paper, <em>Unleashing the Potential</em> (June 2012), used the
 five-star scale to describe the quality of data it wanted departments to
 publish.</li>
 <li><strong>Shared vocabularies arrived.</strong> Bing, Google and Yahoo
-launched <a class="gl-ref" href="../glossary.html#schema">schema</a>.org, a common vocabulary for web pages, in June 2011.
+launched schema.org, a common vocabulary for web pages, in June 2011.
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Data Catalog Vocabulary (DCAT), a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> since January
 2014, borrows <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> terms rather than inventing its own.</li>
 <li><strong>The note was updated.</strong> An abstract was added in 2023,

@@ -85,9 +85,11 @@ fixed sequence of bits. The answer supplies the notion of
 <h2>10.1 A ladder, not a pair</h2>
 
 <p>
-A resource may correspond to exactly one bit stream, as the text of an
-Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> always has the same checksum. Or it may be generic: well
-specified as a concept but not closely enough to fix the bits. The note
+A resource may correspond to exactly one bit stream (one exact sequence of
+bytes). The text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> is like this: it always has the same
+checksum, a fingerprint computed from the bytes that changes if a single byte
+changes. Or a resource may be generic: well specified as a concept but not
+closely enough to fix the bits. The note
 refuses to make this binary; Figure 10.1 shows its ladder.
 </p>
 
@@ -98,8 +100,8 @@ refuses to make this binary; Figure 10.1 shows its ladder.
   <desc id="fig10-1-d">Four stacked boxes, from most generic to most specific:
   The Bible; The Bible, King James Version; the KJV in English; a particular
   ASCII rendering of the KJV in English. An arrow on the left points down,
-  labelled more specific. The bottom box is one bit stream with the same
-  checksum every time, like an RFC. A bracket on the right notes that each
+  labelled more specific. The bottom box is one exact bit stream whose
+  checksum never changes. A bracket on the right notes that each
   rung may have its own URI, and its owner decides which rung it names.</desc>
 
   <line class="ln-mut" x1="100" y1="22" x2="100" y2="244"/>
@@ -121,7 +123,7 @@ refuses to make this binary; Figure 10.1 shows its ladder.
 
   <rect class="box-green" x="140" y="200" width="360" height="56" rx="4"/>
   <text x="320" y="223" text-anchor="middle">A particular ASCII rendering of the KJV in English</text>
-  <text x="320" y="243" class="t-sm" text-anchor="middle">one bit stream: same checksum every time, like an RFC</text>
+  <text x="320" y="243" class="t-sm" text-anchor="middle">one exact bit stream: the checksum never changes</text>
 
   <path class="ln-mut" d="M 515 20 L 525 20 L 525 256 L 515 256 M 525 138 L 533 138"/>
   <text x="541" y="118" class="t-sm">each rung may have</text>
@@ -164,7 +166,7 @@ general for its own purposes.
 <h3>How a generic URI is served</h3>
 
 <p>
-A generic URI still has to deliver particular bits. A browser&#8217;s request
+A browser&#8217;s request
 carries headers, labelled lines of information; <code>Accept-Language</code>
 names the reader&#8217;s languages and <code>Accept</code> the formats it can
 display. The server picks the best-fitting form and says which it chose
@@ -221,8 +223,8 @@ already decided that all three are acceptable for this URI. (The address
 <h2>10.2 Four dimensions</h2>
 
 <p>
-The note&#8217;s empirical claim is that genericity in electronic resources
-runs along a small number of axes, and that the smallness matters.
+The note claims that genericity runs along a small number of axes, and that
+the smallness matters.
 </p>
 
 <figure>
@@ -352,8 +354,9 @@ the English it was made from.</figcaption>
 
 <p>
 Genericity answers &ldquo;may this be served for that URI?&rdquo; Derivation
-answers &ldquo;where did this come from?&rdquo; A system that conflates them
-will serve a translation as though it were authoritative.
+answers &ldquo;where did this come from?&rdquo; Mixing them up has a cost. A
+system that records the French as a version <em>of the English</em> may send
+the French when the English is asked for.
 </p>
 
 <h2>10.4 Saying it in metadata</h2>
@@ -366,20 +369,30 @@ and must know when a stored copy is still good.
 </p>
 
 <p>
-The first was a <code>vary=</code> field in an HTTP <code>URI:</code> header,
-<code>URI: http//foo.com/bar/baz vary=time,language</code>, a statement about
-the URI&#8217;s relation to the resource, recalling Chapter 3&#8217;s
-quality-of-service argument (an owner should state how stable a URI is). The
-second was a typed link, one that names its relation. In September 2000
-Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for machine-readable
-statements), using classes (categories a resource belongs to) and properties
-(named relations between resources):
+The first proposal was a header. The server would send a line such as
+<code>URI: http//foo.com/bar/baz vary=time,language</code>, saying in which
+dimensions this URI may vary.
+</p>
+
+<p>
+The second was a labelled link: a link that names its relation, such as
+<code>rel="language-specific"</code>.
+</p>
+
+<p>
+In September 2000 Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format
+for machine-readable statements), using classes (categories a resource
+belongs to) and properties (named relations between resources). A
+<code>TimeInvariant</code> URI promises that what it returns will not change
+over time; <code>Fixed</code> promises it will not change under any
+circumstances. Fixed is a subclass of the other three: every Fixed resource is
+also time-, language- and type-invariant.
 </p>
 
 <table>
 <tr><th>Statement wanted</th><th>1996 proposal</th><th>2000 RDF form</th></tr>
-<tr><td>Which dimensions a URI varies in</td><td><code>URI: &#8230; vary=time,language</code></td><td>Classes for what does <em>not</em> vary: <code>TimeInvariant</code>, <code>LanguageInvariant</code>, <code>ContentTypeInvariant</code>, and <code>Fixed</code>, a subclass of all three</td></tr>
-<tr><td>How resource A relates to resource B</td><td><code>&lt;link rel="language-specific" href="baz.fr"&gt;</code></td><td>Properties such as <code>isLanguageSpecificVersionOf</code></td></tr>
+<tr><td>Which dimensions a URI varies in</td><td><code>URI: &#8230; vary=time,language</code></td><td>Classes for what does <em>not</em> vary: <code>TimeInvariant</code>, <code>LanguageInvariant</code>, <code>ContentTypeInvariant</code>, and <code>Fixed</code></td></tr>
+<tr><td>How resource A relates to resource B</td><td><code>&lt;link rel="language-specific" href="baz.fr"&gt;</code></td><td>Properties such as <code>isLanguageSpecificVersionOf</code> (A is one language version of generic B)</td></tr>
 </table>
 
 <p>
@@ -405,13 +418,12 @@ headers affect the response for cache purposes. It does not state the
 publisher&#8217;s commitment about how much a resource may vary, which is what this
 note asked for.</li>
 <li><strong>Negotiation lost ground to distinct URIs.</strong> Publishers
-largely chose to give each language and each format its own address, with
+largely gave each language and format its own address, with
 <code>rel="alternate"</code> links between them, because separate URIs can be
 linked to, indexed and cached. That is the ladder of section 10.1 made
 explicit rather than negotiated.</li>
-<li><strong>The genericity ontology was not widely adopted.</strong> The
-vocabulary at <code>w3.org/2006/gen/ont</code> is little used. The
-distinctions it draws are now usually made informally, or not at all.</li>
+<li><strong>The genericity ontology was not widely adopted.</strong> Its
+distinctions are now usually made informally, or not at all.</li>
 </ul>
 </div>
 
@@ -419,8 +431,9 @@ distinctions it draws are now usually made informally, or not at all.</li>
 <h3>Connections</h3>
 <p>
 This chapter supplies the sense of &ldquo;document&rdquo; used throughout
-Chapter 7 and referred to in Chapter 13. The quality-of-service <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
-proposed here is Chapter 3&#8217;s closing recommendation. The interaction between
+Chapter 7 and referred to in Chapter 13. The <code>vary=</code> header is a statement about how stable a URI is, which
+recalls the quality-of-service <a class="gl-ref" href="../glossary.html#metadata">metadata</a> of Chapter 3&#8217;s closing
+recommendation. The interaction between
 genericity and fragment identifiers is the known bug recorded in Chapter 11.
 The metadata architecture these proposals assume is Chapter 27.
 </p>
@@ -447,8 +460,8 @@ commit the publisher to? Could a cache keep its copy forever? Why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">10.4</span>
-Explain why conflating derivation with genericity would let a system serve a
-translation as authoritative, using an example.</p>
+A system records a French translation as a version of the English it was
+made from. Using an example, explain what it might wrongly serve, and why.</p>
 </div>
 </details>
 

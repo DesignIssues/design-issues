@@ -20,9 +20,9 @@ it.
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
 <p>
-The diagnosis that follows is sharper than the complaint. People&#8217;s bookmarks
-became important to them, he says, because they had learned to put up with the
-simplest form of hypertext editing there is, as a compromise.
+People&#8217;s bookmarks became important to them, he says, because they had
+learned to put up with the simplest form of hypertext editing there is, as a
+compromise.
 </p>
 </div>
 
@@ -32,20 +32,23 @@ simplest form of hypertext editing there is, as a compromise.
 Berners-Lee compares his own 1990 editor, WorldWideWeb, with AOLPress, which
 he was writing in. Set beside these, and beside KMS (an early hypertext system)
 and Doug Engelbart&#8217;s interface, the Web of 1998 had lost some immediacy.
+Speed matters most at the &ldquo;draft&rdquo; end of the scale: a group&#8217;s
+shared notebook, where people browse each other&#8217;s notes and add ideas
+quickly.
 </p>
 
 <p>
 Dan Connolly suggested the yardstick: count the actions, adding ten whenever
 the user must invent a filename or an anchor ID (the name of a spot inside a
 page that a link can point to). The penalty prices thinking rather than
-doing:
+doing. Our tally, using Connolly&#8217;s rule:
 </p>
 
 <table>
 <tr><th>Operation</th><th>Steps</th><th>Penalty</th><th>Score</th></tr>
 <tr><td>Make a link, WorldWideWeb</td><td>5</td><td>0</td><td>5</td></tr>
 <tr><td>Make a link, AOLPress</td><td>7</td><td>0</td><td>7</td></tr>
-<tr><td>Make a new linked page, WorldWideWeb</td><td>2</td><td>10 (a filename)</td><td>12</td></tr>
+<tr><td>Make a new linked page, WorldWideWeb</td><td>3, one of them a filename</td><td>10</td><td>2 + 10 = 12</td></tr>
 </table>
 
 <figure>
@@ -84,9 +87,14 @@ doing:
 </svg>
 <figcaption><span class="fig-label">Figure 83.1</span>
 The same link in two editors. The later editor turned one Mark keystroke into
-three button presses; Berners-Lee&#8217;s fix is a draggable document icon in
-every window.</figcaption>
+three button presses.</figcaption>
 </figure>
+
+<p>
+His remedy: every window should carry an icon for its document that can be
+dragged to make a link, as later versions of NeXTStep allowed with alt-click on
+the title bar.
+</p>
 
 <h2>83.2 No mode, no location</h2>
 
@@ -171,8 +179,8 @@ live in exactly one folder), restated as a demand on the editor.
 <h2>83.3 The operations he wants</h2>
 
 <p>
-Three are described. One already existed in 1990; the other two still have to
-be done by hand.
+Beyond making links, the note asks for three more: one WorldWideWeb already
+had, one needs label servers, and one Dan Connolly does by hand.
 </p>
 
 <p>
@@ -184,13 +192,53 @@ the dialogue asking for a filename.
 </p>
 
 <p>
-<strong>Annotate a page without write access.</strong> Create a note where the
-annotator does have permission, make a PICS label pointing at it, and store the label on a
-label server that hands out labels about other people&#8217;s pages: the
-labelling system of Chapter 77, used for commentary rather than filtering. He
-hoped XML linking would also allow a link into the middle of an
-existing unwritable document &ldquo;with some hope of reliability&rdquo;.
+<strong>Annotate a page without write access.</strong> A PICS label is a small
+machine-readable statement about a page, kept apart from it (Chapter 77). Create
+a note where the annotator can write, make a label pointing to it, and store the
+label on a <em>label server</em>, which hands out labels about other
+people&#8217;s pages (Figure 83.3). He hoped XML linking, then being designed,
+would also allow a link into the middle of an unwritable document &ldquo;with
+some hope of reliability&rdquo;.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig83-3-t fig83-3-d">
+  <title id="fig83-3-t">Annotating a page without touching it</title>
+  <desc id="fig83-3-d">A label server holds a label. One arrow, marked about,
+  goes from the label to someone else&#8217;s page, where the annotator has no
+  write access. Another, marked points to, goes to the annotator&#8217;s note
+  on a site where they can write.</desc>
+  <defs>
+    <marker id="fig83-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box-plain" x="16" y="120" width="210" height="56" rx="4"/>
+  <text x="121" y="143" text-anchor="middle">someone else&#8217;s page</text>
+  <text x="121" y="162" class="t-sm" text-anchor="middle">no write access</text>
+
+  <rect class="box-warm" x="255" y="16" width="210" height="80" rx="4"/>
+  <text x="360" y="36" text-anchor="middle">label server</text>
+  <path class="box" d="M 310 50 L 400 50 L 414 64 L 400 78 L 310 78 Z"/>
+  <circle cx="402" cy="64" r="3" fill="#fdfdfc" stroke="#1c5a7a"/>
+  <text x="352" y="69" class="t-sm" text-anchor="middle">label</text>
+
+  <rect class="box-green" x="494" y="120" width="210" height="56" rx="4"/>
+  <text x="599" y="143" text-anchor="middle">the annotator&#8217;s note</text>
+  <text x="599" y="162" class="t-sm" text-anchor="middle">on a site they can write</text>
+
+  <line class="ln" x1="310" y1="78" x2="180" y2="118" marker-end="url(#fig83-3-arr)"/>
+  <text x="214" y="90" class="t-sm" text-anchor="middle">about</text>
+  <line class="ln" x1="410" y1="78" x2="540" y2="118" marker-end="url(#fig83-3-arr)"/>
+  <text x="514" y="90" class="t-sm" text-anchor="middle">points to</text>
+</svg>
+<figcaption><span class="fig-label">Figure 83.3</span>
+The comment never touches the page it is about: the label, held elsewhere,
+joins the two.</figcaption>
+</figure>
 
 <p>
 <strong>Excerpt.</strong> Connolly did this by hand; Berners-Lee had never
@@ -208,9 +256,9 @@ made, or else the document as a whole failing that.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 470" width="720" height="470" role="img"
-     aria-labelledby="fig83-3-t fig83-3-d">
-  <title id="fig83-3-t">The excerpt fallback chain</title>
-  <desc id="fig83-3-d">Starting from selected text, the excerpt operation asks
+     aria-labelledby="fig83-4-t fig83-4-d">
+  <title id="fig83-4-t">The excerpt fallback chain</title>
+  <desc id="fig83-4-d">Starting from selected text, the excerpt operation asks
   whether an anchor already exists there; if so it links to that anchor. If
   not, it asks whether a new anchor can be made; if so it makes one and links
   to it. Otherwise it links to the whole document. In every case the result is
@@ -263,16 +311,11 @@ made, or else the document as a whole failing that.
   <text x="360" y="422" text-anchor="middle">Copied to the clipboard: a BLOCKQUOTE holding the selected text,</text>
   <text x="360" y="441" text-anchor="middle">with a link back to the most precise point the source allows</text>
 </svg>
-<figcaption><span class="fig-label">Figure 83.3</span>
+<figcaption><span class="fig-label">Figure 83.4</span>
 Whichever rung it reaches, the quotation carries its own provenance (a record
 of where it came from), as precise as the source allows. Text fragments (2020)
 now supply the missing middle rung.</figcaption>
 </figure>
-
-<p>
-Every chapter of this book performs that operation by hand, with a script to
-check the result.
-</p>
 
 <h2>83.4 Why the note ends with a screenshot</h2>
 
@@ -299,8 +342,6 @@ pauses to think of a name.
 <li><strong>Modeless editing arrived, inside applications.</strong> Wikis
 (WikiWikiWeb, 1995) and online office tools (Google Docs, 2006) made editing in
 place normal, but it did not become a property of the Web itself.</li>
-<li><strong>Naming largely went away.</strong> Automatic titles and generated
-identifiers removed most of the ten-click penalty in modern tools.</li>
 <li><strong>Excerpt is still mostly manual</strong>, though text fragments,
 which shipped in 2020, supply the addressing it needs.</li>
 <li><strong>Annotation layers were built repeatedly.</strong> W3C published the

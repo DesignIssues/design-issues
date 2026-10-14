@@ -67,18 +67,16 @@ revised for decades without any one revision breaking the others.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Berners-Lee numbered this note zero in his axioms sequence, though he wrote
-it in January 1998, more than a year after the Axioms note of Chapter 2
-(December 1996), which it now precedes. The renumbering is a judgement about
-order of exposition: the axioms of Chapter 2 describe what URIs are, and this
-note describes the machine that consumes them. It is the most
-software-engineering-minded piece in Volume I, and its subject is information
-hiding.
+Why can <a class="gl-ref" href="../glossary.html#http">HTTP</a>, <a class="gl-ref" href="../glossary.html#html">HTML</a> and new document formats each be revised without
+breaking the others? The answer is that in 1998 somebody drew the module
+boundaries in the right places, and this note says where they are. Its
+subject is information hiding.
 </p>
 <p>
-The question it answers is why the Web&#8217;s specifications can be revised
-independently of one another. The answer is that in 1998 somebody drew the
-module boundaries in the right places, and this note says where they are.
+Berners-Lee numbered the note zero in his axioms sequence, though he wrote
+it in January 1998, more than a year after the Axioms note of Chapter 2
+(December 1996). Chapter 2 describes what URIs are; this note describes the
+machine that consumes them.
 </p>
 </div>
 
@@ -174,7 +172,7 @@ fragment identifier. Figure 4.2 follows one link through these steps.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
+<svg class="dia" viewBox="0 0 620 344" width="620" height="344" role="img"
      aria-labelledby="fig4-2-t fig4-2-d">
   <title id="fig4-2-t">Following one link</title>
   <desc id="fig4-2-d">Five steps. One: the reader clicks a link written as
@@ -305,12 +303,14 @@ many new revolutions built on top of the basic Web idea.
 </blockquote>
 
 <p>
-He notes in passing that this is also how the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> will be built: not
-as a new Web, but as a new kind of document, with a fragment convention of
-its own that names things rather than parts of pages. Webizing a language, he
-says, means taking what were document-global identifiers and making them
-globally unique by prefixing the document&#8217;s URI and a hash. The mechanism of
-Chapter 6 and of the whole of Volume IV is introduced here in two sentences.
+He notes in passing that new applications such as the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> can be
+built the same way: not as a new Web, but by introducing new types of
+document. Webizing a language, he says, means taking names that were global
+only within one document and making them truly global by adding the
+document&#8217;s URI and a hash. A name <code>#alice</code>, used inside
+<code>http://example.org/people</code>, becomes
+<code>http://example.org/people#alice</code>, which means the same thing
+anywhere. This is the mechanism of Chapter 6 and of Volume IV.
 </p>
 
 <h2>4.3 Why relative resolution is universal</h2>
@@ -389,17 +389,16 @@ and under <code>http:</code>, but only while both chapters move together.</figca
 <p>
 The justification is the same shape as the one for fragments, and equally
 practical. Sets of documents that link to each other, such as the chapters of
-a book, are moved between file systems, <a class="gl-ref" href="../glossary.html#http">HTTP</a> space and FTP space constantly.
+a book, are moved between file systems, HTTP space and FTP space constantly.
 Because the resolution rules are universal, the documents need not be
 modified when they move. Berners-Lee adds the honest caveat: moving half a
 set to one place and half to another still breaks the links.
 </p>
 
 <p>
-The application knows the absolute URI in order to do this resolution. The
-resource still does not, and the fragment still circulates between the object
-that understands it and the application that carries it without looking
-inside.
+Only the application needs the absolute URI. The presentation object still
+never sees it, and the fragment still passes from the application, which
+carries it without looking inside, to the object that understands it.
 </p>
 
 <h2>4.4 The scheme, and why it must not be spent</h2>
@@ -602,9 +601,9 @@ warning about scheme proliferation returns in Chapter 5.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">4.1</span>
-State what would have to change in HTTP if fragment identifiers were resolved
-on the <a class="gl-ref" href="../glossary.html#server">server</a> (see 4.2). Name one capability that would be gained and two
-that would be lost.</p>
+Using Figure 4.2, explain why moving a page to a new address does not break
+its own <code>#notes</code> links, and what would break if the <a class="gl-ref" href="../glossary.html#server">server</a> had to
+understand <code>#notes</code>.</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.2</span>

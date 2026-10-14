@@ -84,7 +84,7 @@ which, to complete the circle, is part of the HTML parsing algorithm).
   </defs>
 
   <text x="360" y="24" class="t-caps" text-anchor="middle">a circle</text>
-  <text x="360" y="42" class="t-sm" text-anchor="middle">each part is tied to the next, and the last to the first</text>
+  <text x="360" y="42" class="t-sm" text-anchor="middle">Hickson&#8217;s chain; session history is a side branch</text>
 
   <rect class="box-warm" x="285" y="60" width="150" height="32" rx="14"/>
   <text x="360" y="81" text-anchor="middle">HTML parsing</text>
@@ -225,12 +225,16 @@ touching them, and for the same reason taken elsewhere.</figcaption>
 
 <p>
 Berners-Lee applies this to the <em>canvas</em> element: a blank rectangle in
-a page that a script can draw on. Its drawing API (the commands a program
-uses) differs in nature from the rest of HTML, which mostly sets and reads
-values in the markup; the client-side database storage section is another
-such interface. The element belongs in HTML, he argues, but the drawing API
-belongs in a separate document. Hickson agreed in principle, but other parts
-needed splitting out more urgently, and nobody had volunteered to edit it.
+a page that a script can draw on. Its drawing commands differ in nature from
+the rest of HTML, which mostly sets and reads values in the markup. So does
+the section on client-side database storage, a way for a page to keep data
+on the reader&#8217;s own computer.
+</p>
+
+<p>
+The element belongs in HTML, he argues, but the drawing commands belong in a
+separate document. Hickson agreed they should be split out in the long term,
+but said other parts had higher priority for anyone willing to edit.
 </p>
 
 <figure>
@@ -280,11 +284,11 @@ and plugged into other languages as they are into HTML.</figcaption>
 <h2>19.3 Technology, not documents</h2>
 
 <p>
-One distinction saves the argument from pedantry. What matters is the
+What matters is the
 independence of the technology, which need not align with the boundaries of
-documents. HTML5 put two technologies, a markup language and a drawing API,
-into one document; HTTP, one technology, is now spread across several
-documents. Berners-Lee adds that it usually makes sense for the boundaries to
+documents. HTML5 put two technologies, a markup language and a drawing interface,
+into one document; HTTP/1.1, one technology, was split across six RFCs in
+2014. Berners-Lee adds that it usually makes sense for the boundaries to
 align anyway, so that different people can review, edit and implement
 different parts.
 </p>
@@ -326,7 +330,7 @@ it. There will be more modules to come, which we cannot imagine now.
 
   <rect class="box" x="200" y="100" width="320" height="46" rx="4"/>
   <text x="360" y="119" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">HTTP</text>
-  <text x="360" y="137" class="t-sm" text-anchor="middle">URIs to representations</text>
+  <text x="360" y="137" class="t-sm" text-anchor="middle">a URI in, labelled data out</text>
 
   <rect class="box" x="200" y="156" width="320" height="46" rx="4"/>
   <text x="360" y="175" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">TCP</text>
@@ -339,8 +343,6 @@ it. There will be more modules to come, which we cannot imagine now.
   <line class="ln-accent" x1="180" y1="256" x2="180" y2="60" marker-end="url(#fig19-4-arr)"/>
   <text x="166" y="158" class="t-sm" text-anchor="middle" transform="rotate(-90 166 158)">each built on the last</text>
 
-  <text x="538" y="119" class="t-sm">a URI in; data, and the</text>
-  <text x="538" y="135" class="t-sm">metadata to read it, out</text>
 </svg>
 <figcaption><span class="fig-label">Figure 19.4</span>
 Berners-Lee&#8217;s ladder. Because each layer offers something simple,
@@ -348,7 +350,10 @@ the next can be built powerfully on top of it.</figcaption>
 </figure>
 
 <p>
-The note then says why this matters. An <em>invariant</em> here is a promise that holds whatever happens
+IP moves small numbered parcels of data (packets) between machines; TCP turns
+them into one reliable stream of bytes; HTTP uses that stream to fetch
+whatever a URI names, with a label saying what kind of
+data it is. The note then says why this matters. An <em>invariant</em> here is a promise that holds whatever happens
 above it: a URI, given to HTTP, always gets back data with a label saying
 how to read it.
 </p>
@@ -361,8 +366,7 @@ regret.
 </blockquote>
 
 <p>
-The note ends with a request rather than a rule, which is unusual and rather
-disarming: let us try, as we make new technology, or plan a path for old
+The note ends with a request rather than a rule: let us try, as we make new technology, or plan a path for old
 technology, always to keep things as clean as we can.
 </p>
 
@@ -370,14 +374,15 @@ technology, always to keep things as clean as we can.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The split happened, then was undone.</strong> The W3C published
-<em>HTML Canvas 2D Context</em> separately, later retiring it. In 2019 the
+<em>HTML Canvas 2D Context</em> separately, as a Recommendation in 2015, and
+later made it obsolete. In 2019 the
 W3C and WHATWG agreed that the WHATWG HTML Living Standard is authoritative,
-and it defines the canvas API inside HTML.</li>
+and it defines the canvas drawing commands inside HTML.</li>
 <li><strong>The circle was not broken.</strong> Parsing, scripting and
 navigation remain mutually dependent in the way Hickson described; the
 dependency is now specified precisely rather than removed.</li>
 <li><strong>A related kind of reuse arrived.</strong> Custom elements and the
-shadow DOM, shipping from around 2016, gave the Web a way to plug components
+shadow DOM, shipping in Chrome in 2016, gave the Web a way to plug components
 into HTML and into each other.</li>
 <li><strong>The ladder kept extending.</strong> HTTP/3, standardised in 2022,
 moved HTTP from TCP onto QUIC; HTTP/2 had kept TCP and changed only

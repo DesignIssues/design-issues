@@ -13,7 +13,7 @@ calls it the web&#8217;s worst design.
 <p>
 A simplified backgrounder from July 2018 on the mechanism that makes Chapter
 54&#8217;s architecture hard to build. It opens with a borrowed image, and adds a
-third figure.
+third character.
 </p>
 <blockquote>
 Ted Nelson talks about the two gods of Literature, the reader and the writer.
@@ -122,7 +122,7 @@ This allows banks to work pretty well.
 
 <p>
 Two wanted uses are forbidden. A service that assesses another
-page cannot reach it. The second dates the note:
+page cannot reach it. The second is the one the note dwells on:
 </p>
 
 <blockquote>
@@ -135,18 +135,19 @@ that you would not get from one data source alone.
 </blockquote>
 
 <p>
-Combining sources is the argument of Chapters 51 and 53; the browser forbids
-it unless the data&#8217;s owner opts in (section 70.5).
+Such a site, the note says, typically no longer works. Combining sources is
+the argument of Chapters 51 and 53; the browser forbids it unless the
+data&#8217;s owner opts in (section 70.5).
 </p>
 
 <h2>70.4 The shape of the problem</h2>
 
 <p>
-The note&#8217;s three figures map onto the attack:
+The note&#8217;s three gods map onto the attack:
 </p>
 
 <table>
-<tr><th>Figure</th><th>In the attack</th><th>What they want</th></tr>
+<tr><th>Character</th><th>In the attack</th><th>What they want</th></tr>
 <tr><td>The reader</td><td>Alice</td><td>To use any app on any data she can reach</td></tr>
 <tr><td>The writer</td><td>The site or app she chose to use</td><td>To fetch and combine data for her</td></tr>
 <tr><td>The spy</td><td>Mallory</td><td>To borrow Alice&#8217;s access and carry data away</td></tr>
@@ -174,9 +175,11 @@ Sharing (CORS) by adding a <em>header</em>, a labelled line sent with a reply:
 </table>
 
 <p>
-Another header must list which
-reply headers the app may see, and the browser first sends a hidden
-<em>preflight</em> request (HTTP OPTIONS), an extra round trip.
+Reply headers are blocked too, even ordinary ones such as <code>Link</code>,
+unless the server lists them in another header (the note uses
+<code>Access-Control-Allow-Headers</code>; the specification&#8217;s name for
+this job is <code>Access-Control-Expose-Headers</code>). The browser also first
+sends a hidden <em>preflight</em> request (HTTP OPTIONS), an extra round trip.
 </p>
 
 <h2>70.6 The twist</h2>
@@ -188,8 +191,10 @@ credentials, such as a login; the server must name the origin exactly.
 </p>
 
 <p>
-That splits the web in two, and library code may not know which half it is
-in. So public data servers were told to copy back whatever origin asked
+That splits the web in two: requests sent with a login, and requests sent
+without. A code library that asks the browser to fetch something cannot know
+whether a login will be attached, so it cannot rely on <code>*</code>. Public
+data servers were therefore told to copy back whatever origin asked
 (<em>origin reflection</em>): active code, not a configuration line.
 </p>
 
@@ -281,7 +286,8 @@ more header, <code>Vary: Origin</code>, makes the cache keep a copy per origin.
   <text x="75" y="75" text-anchor="middle">app on A</text>
   <path class="ln" d="M 130 70 L 242 70"/>
   <path d="M 238 65 L 250 70 L 238 75 Z" fill="#2f4f4f"/>
-  <text x="190" y="60" class="t-sm" text-anchor="middle">fetched, stored</text>
+  <text x="190" y="60" class="t-sm" text-anchor="middle">A fetches;</text>
+  <text x="190" y="88" class="t-sm" text-anchor="middle">reply stored</text>
 
   <rect class="box" x="250" y="40" width="200" height="60" rx="4"/>
   <text x="350" y="63" text-anchor="middle">browser cache</text>
@@ -344,16 +350,13 @@ this ground.
 <li><strong>The cache bug was reported again.</strong> On 12 July 2019
 Michiel de Jong published &#8220;CORS bug in several browsers&#8221;, cited in
 the note&#8217;s follow-up, and opened bugs with Chrome and Firefox.</li>
-<li><strong>The permission became universal and awkward.</strong> Misconfigured
-CORS remains a common cause of both broken apps and accidental exposure.</li>
-<li><strong>The boundary kept being redrawn.</strong> From 2020 browsers added
-the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which
-a site must set to unlock some powerful features.</li>
-<li><strong>The mashup era ended.</strong> Combining data from many sources in
-the browser largely gave way to combining it on a server.</li>
-<li><strong>The attack class survived every mitigation.</strong> Script
-injection remains among the most common vulnerabilities, fought now by headers
-listing permitted scripts and by escaping user text.</li>
+<li><strong>The boundary kept being redrawn.</strong> Firefox 79 (July 2020)
+and Chrome 92 (July 2021) made a page set the Cross-Origin-Opener-Policy and
+Cross-Origin-Embedder-Policy headers before using shared memory between
+scripts.</li>
+<li><strong>The attack class survived.</strong> The OWASP Top 10 of 2021, a
+widely used ranking of web security risks, placed Injection, which includes
+cross-site scripting, third.</li>
 </ul>
 </div>
 
@@ -377,7 +380,8 @@ List three things your computer can reach that a stranger&#8217;s cannot.</p>
 </div>
 <div class="question">
 <p><span class="question-number">70.3</span>
-Why is public data not open to other origins by default?</p>
+Why did browser makers make publishers opt in, rather than make webcams opt
+out?</p>
 </div>
 <div class="question">
 <p><span class="question-number">70.4</span>

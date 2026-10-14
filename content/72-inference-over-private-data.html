@@ -2,8 +2,8 @@
 <h3>The short version</h3>
 <p>
 A language model learns by being <em>trained</em> on huge amounts of text;
-<em>inference</em> means drawing conclusions from data. No one&#8217;s private data was
-in that training, so an assistant can read a person&#8217;s mail without understanding
+<em>inference</em> means drawing conclusions from data. Private mail was not part of
+that training, so an assistant can read a person&#8217;s mail without understanding
 mail. Only a giant platform or a state could train on everyone&#8217;s private
 data. A better route is for groups with a shared reason to pool their data,
 under rules they trust.
@@ -37,8 +37,8 @@ powerful AI would be packaged and exposed in the same way.
 
 <p>
 The assumed shapes were an image generator, a text generator and a chatbot. In
-each a person types and the system answers, and who benefits is fixed by the
-packaging rather than by the technology. People were warned not to discuss
+each a person types and the system answers; who benefits is fixed by the
+packaging, not the technology. People were warned not to discuss
 confidential things with such systems, since what they shared might be used by
 the company running them.
 </p>
@@ -56,6 +56,12 @@ being available to the user themselves.
 <cite>Inference from Private Data, 2023</cite>
 </blockquote>
 
+<p>
+His example of the improved wiring is Pi, which he tried and found seemed to take on a
+better understanding of him over a long conversation. Chapter 92 gives the
+general form of this argument.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig72-1-t fig72-1-d">
@@ -63,7 +69,7 @@ being available to the user themselves.
   <desc id="fig72-1-d">Top row, as packaged in 2022 and 2023: the user sends a
   prompt to the company's LLM and get an answer, and a dashed line runs from
   the LLM to a box saying the company keeps and may reuse what was said.
-  Bottom row, improved wiring: the user&#8217;s data store feeds an LLM working for
+  Bottom row, improved wiring: the user&#8217;s conversation feeds an LLM working for
   the user, whose insights go to the user only, with nothing flowing out.</desc>
   <defs>
     <marker id="fig72-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
@@ -93,8 +99,9 @@ being available to the user themselves.
   <line class="ln-mut" x1="24" y1="140" x2="696" y2="140"/>
 
   <text x="24" y="168" class="t-caps">improved wiring</text>
-  <rect class="box-green" x="24" y="184" width="150" height="56" rx="4"/>
-  <text x="99" y="217" text-anchor="middle">user&#8217;s data store</text>
+  <rect class="box-plain" x="24" y="184" width="150" height="56" rx="4"/>
+  <text x="99" y="208" text-anchor="middle">the user&#8217;s</text>
+  <text x="99" y="227" text-anchor="middle">conversation</text>
   <line class="ln" x1="174" y1="212" x2="248" y2="212" marker-end="url(#fig72-1-arr)"/>
   <rect class="box" x="250" y="184" width="180" height="56" rx="4"/>
   <text x="340" y="217" text-anchor="middle">LLM for the user</text>
@@ -107,12 +114,6 @@ being available to the user themselves.
 <figcaption><span class="fig-label">Figure 72.1</span>
 The same model, wired two ways. What changes is who the insight flows to.</figcaption>
 </figure>
-
-<p>
-His example of the improved wiring is Pi, which he tried and found seemed to take on a
-better understanding of him over a long conversation. Chapter 92 gives the
-general form of this argument.
-</p>
 
 <h2>72.3 Shown is not trained</h2>
 
@@ -185,8 +186,7 @@ users, or a state-run system in an autocratic state.
 </blockquote>
 
 <p>
-Both are the parties one would least want doing it. The capability and the
-concentration arrive together.
+Both are the parties one would least want doing it.
 </p>
 
 <h2>72.4 The proposal: groups rather than everybody</h2>
@@ -247,6 +247,8 @@ and motivated enough to trust.</figcaption>
 
 <h2>72.5 The warning about siloing</h2>
 
+<p>Of the Bard announcement, the note adds a warning:</p>
+
 <blockquote>
 Obviously this is going to work most easily when you have a lot of personal data
 with the same provider and the same provider as your AI, and so the risk of
@@ -288,7 +290,8 @@ best assistant, which draws in more data.</figcaption>
 </figure>
 
 <p>
-The silo of Chapter 54 acquires a new and much stronger reason to exist.
+The silo of Chapter 54, a provider whose stored data works only with its own
+apps, acquires a new and much stronger reason to exist.
 </p>
 
 <h2>72.6 Computing on data nobody sees</h2>
@@ -313,9 +316,21 @@ have a role to play in achieving group insight from personal data.
 Common to most of these arrangements is tracking each person&#8217;s consent to
 their data being used for the group&#8217;s good. The note concludes that we
 will need assistants that both access and understand private data, built from
-combinations of respecting, using and training on it. Policy and law must
-supply protection the data architecture cannot give itself, and Solid, coupled
-with standard consent management, makes each combination easier.
+combinations of three things:
+</p>
+
+<table>
+<tr><th>Ingredient</th><th>Example in this chapter</th></tr>
+<tr><td>Respecting personal data</td><td>Pi: the insight goes to the user alone</td></tr>
+<tr><td>Using personal data</td><td>Bard reading a user&#8217;s Gmail</td></tr>
+<tr><td>Training on a lot or a little of it</td><td>Patients pooling data through a data trust</td></tr>
+</table>
+
+<p>
+Policy and law must supply protection the data architecture cannot give
+itself. Solid makes each combination easier, the note says, coupled with
+standard consent management: a record of who agreed to which use of their
+data.
 </p>
 
 <div class="since">
@@ -329,7 +344,7 @@ and Drive: the concentration section 72.5 predicts.</li>
 be shown around a million tokens (word-pieces) at once, so a whole mailbox fits
 in front of the model. That is still showing, not the training Figure 72.2
 describes.</li>
-<li><strong>Older techniques gained attention.</strong> Federated learning
+<li><strong>Older techniques offer another route.</strong> Federated learning
 (proposed in 2016), which trains on devices so raw data stays put, and MPC
 (dating from the early 1980s) are attempts to obtain the wisdom of section 72.3
 without collecting the corpus.</li>
@@ -360,8 +375,8 @@ private data, and what is its limit?</p>
 </div>
 <div class="question">
 <p><span class="question-number">72.3</span>
-Patients pool data through a data trust. What must the trust guarantee before
-an individual will join?</p>
+Why does the note say a group with a shared reason is easier to trust than a
+platform? Use Figure 72.3.</p>
 </div>
 <div class="question">
 <p><span class="question-number">72.4</span>

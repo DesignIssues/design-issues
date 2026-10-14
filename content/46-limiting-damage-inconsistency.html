@@ -50,8 +50,9 @@ actually work.
 <p>
 An RDF parser is the program that reads a document and extracts the
 statements in it. The correction is a chain: a fact is asserted in an
-expression, which is part of a formula, which is found by parsing a document.
-And then the sentence that does the work:
+expression (a single statement), which is part of a formula (a group of
+statements), which is found by parsing a document. Then the sentence that does
+the work:
 </p>
 
 <blockquote>
@@ -61,6 +62,7 @@ There is no a priori reason to believe any document on the web.
 
 <p>
 The note leaves a placeholder for a picture here; Figure 46.1 supplies it.
+In it, <em>metadata</em> means a statement about a document.
 </p>
 
 <figure>
@@ -103,8 +105,8 @@ The note leaves a placeholder for a picture here; Figure 46.1 supplies it.
   <path class="ln-accent" d="M 280 208 L 418 208" marker-end="url(#fig46-1-ah)"/>
   <text x="349" y="197" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">reason to believe</text>
 
-  <text x="150" y="300" class="t-sm t-it" text-anchor="middle">Each link is itself a statement</text>
-  <text x="150" y="318" class="t-sm t-it" text-anchor="middle">that must be found and believed.</text>
+  <text x="150" y="252" class="t-sm t-it" text-anchor="middle">Each link is itself a statement</text>
+  <text x="150" y="270" class="t-sm t-it" text-anchor="middle">that must be found and believed.</text>
 
   <text x="550" y="104" class="t-sm t-it" text-anchor="middle">Nothing on this side is believed</text>
   <text x="550" y="122" class="t-sm t-it" text-anchor="middle">just because it was found.</text>
@@ -140,8 +142,8 @@ that lists every document mentioning a given term.
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig46-2-t fig46-2-d">
   <title id="fig46-2-t">Working forwards and working backwards</title>
-  <desc id="fig46-2-d">Working forwards starts from a configuration page that
-  points at other pages and uses those as valid data. Working backwards looks
+  <desc id="fig46-2-d">Working forwards starts from a configuration page,
+  chosen by the owner and so trusted, that points at other pages and uses those as valid data. Working backwards looks
   in a global index for any document mentioning a term, searches what turns up,
   and only then checks the answer against trusted sources.</desc>
 
@@ -155,13 +157,14 @@ that lists every document mentioning a given term.
   <text x="540" y="26" class="t-caps" text-anchor="middle">working backwards</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="220"/>
 
-  <rect class="box-green" x="40" y="44" width="280" height="36" rx="4"/>
-  <text x="180" y="67" class="t-sm" text-anchor="middle">start from a configuration page</text>
+  <rect class="box-green" x="40" y="36" width="280" height="44" rx="4"/>
+  <text x="180" y="54" class="t-sm" text-anchor="middle">start from a configuration page</text>
+  <text x="180" y="71" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">chosen by the owner: trusted</text>
   <path class="ln-mut" d="M 180 80 L 180 95" marker-end="url(#fig46-2-am)"/>
-  <rect class="box-green" x="40" y="96" width="280" height="36" rx="4"/>
+  <rect class="box-plain" x="40" y="96" width="280" height="36" rx="4"/>
   <text x="180" y="119" class="t-sm" text-anchor="middle">follow it to the pages it points at</text>
   <path class="ln-mut" d="M 180 132 L 180 147" marker-end="url(#fig46-2-am)"/>
-  <rect class="box-green" x="40" y="148" width="280" height="36" rx="4"/>
+  <rect class="box-plain" x="40" y="148" width="280" height="36" rx="4"/>
   <text x="180" y="171" class="t-sm" text-anchor="middle">use those as valid data</text>
   <text x="180" y="208" class="t-sm" text-anchor="middle">reads only what the configuration points to</text>
 
@@ -171,8 +174,8 @@ that lists every document mentioning a given term.
   <rect class="box-plain" x="400" y="96" width="280" height="36" rx="4"/>
   <text x="540" y="119" class="t-sm" text-anchor="middle">search what turns up for an answer</text>
   <path class="ln-mut" d="M 540 132 L 540 147" marker-end="url(#fig46-2-am)"/>
-  <rect class="box" x="400" y="148" width="280" height="36" rx="4"/>
-  <text x="540" y="171" class="t-sm" text-anchor="middle">only then check it against trusted sources</text>
+  <rect class="box-green" x="400" y="148" width="280" height="36" rx="4"/>
+  <text x="540" y="171" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">only then check it against trusted sources</text>
   <text x="540" y="208" class="t-sm" text-anchor="middle">wide reach; trust applied last</text>
 
   <line class="ln-mut" x1="24" y1="228" x2="696" y2="228"/>
@@ -180,8 +183,8 @@ that lists every document mentioning a given term.
   <text x="360" y="274" class="t-sm t-it" text-anchor="middle">Neither ever treats what it found as true because it found it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 46.2</span>
-Working forwards trusts first and reads second; working backwards reads
-widely and trusts last. Either way, finding a statement is not a reason to
+Green marks where trust enters. Working forwards trusts first and reads
+second; working backwards reads widely and trusts last. Either way, finding a statement is not a reason to
 believe it.</figcaption>
 </figure>
 
@@ -207,20 +210,16 @@ The second step is a rule. Its bluntest form trusts a key for everything:
 
 <p>
 In practice, Berners-Lee says, authorities are trusted only for specific
-purposes, and the rule must be narrowed to match:
+purposes, and the rule must be narrowed to match. His three example rules
+differ only in how much they trust the key:
 </p>
 
-<blockquote>
-&ldquo;whatever any document says of the form xxxx is a meber of W3C so long
-as it is signed wiht key 32457934759432&rdquo;.
-<cite>Inconsistent data, 1998</cite>
-</blockquote>
-
-<blockquote>
-&ldquo;whatever any document says of the form &ldquo;a is an employee of
-IBM&rdquo; so long as it is signed by with key 3213123098129&rdquo;.
-<cite>Inconsistent data, 1998</cite>
-</blockquote>
+<table>
+<tr><th>Rule</th><th>Trusts the key for</th></tr>
+<tr><td>The blunt rule above</td><td>Any statement at all</td></tr>
+<tr><td>Narrowed to one form</td><td>Statements that someone is a member of W3C, and nothing else</td></tr>
+<tr><td>Narrowed to another form</td><td>Statements that someone is an employee of IBM, and nothing else</td></tr>
+</table>
 
 <p>
 Trust is granted not to a party but to a party for a purpose, and that
@@ -384,6 +383,61 @@ time-unaware reasoners fed data with expiry dates, their results used only
 while all the inputs are still valid.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig46-4-t fig46-4-d">
+  <title id="fig46-4-t">Results expire with the earliest input</title>
+  <desc id="fig46-4-d">A time axis from 9:00 to 16:00. Three input documents
+  are valid from 9:00: A until 12:00, B until 15:00, C until 11:00. All three
+  feed a time-unaware reasoner. The span from 9:00 to 11:00, where all three
+  overlap, is shaded and labelled results usable.</desc>
+  <defs>
+    <marker id="fig46-4-ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig46-4-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <rect x="140" y="30" width="120" height="150" fill="#f5f8f0"/>
+  <text x="200" y="22" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">results usable</text>
+
+  <text x="24" y="59">document A</text>
+  <rect class="box" x="140" y="44" width="180" height="22" rx="3"/>
+  <text x="312" y="60" class="t-sm" text-anchor="end">until 12:00</text>
+  <text x="24" y="99">document B</text>
+  <rect class="box" x="140" y="84" width="360" height="22" rx="3"/>
+  <text x="492" y="100" class="t-sm" text-anchor="end">until 15:00</text>
+  <text x="24" y="139">document C</text>
+  <rect class="box-warm" x="140" y="124" width="120" height="22" rx="3"/>
+  <text x="252" y="140" class="t-sm" text-anchor="end" style="fill:#b08d57">until 11:00</text>
+
+  <path class="ln-mut" d="M 320 55 L 554 88" marker-end="url(#fig46-4-am)"/>
+  <path class="ln-mut" d="M 500 95 L 554 95" marker-end="url(#fig46-4-am)"/>
+  <path class="ln-mut" d="M 260 135 L 554 102" marker-end="url(#fig46-4-am)"/>
+  <rect class="box-plain" x="556" y="70" width="150" height="50" rx="4"/>
+  <text x="631" y="92" class="t-sm" text-anchor="middle">time-unaware</text>
+  <text x="631" y="108" class="t-sm" text-anchor="middle">reasoner</text>
+
+  <line class="ln" x1="140" y1="180" x2="530" y2="180" marker-end="url(#fig46-4-ai)"/>
+  <line class="ln-mut" x1="140" y1="176" x2="140" y2="184"/>
+  <text x="140" y="198" class="t-sm" text-anchor="middle">9:00</text>
+  <line class="ln-mut" x1="260" y1="176" x2="260" y2="184"/>
+  <text x="260" y="198" class="t-sm" text-anchor="middle">11:00</text>
+  <line class="ln-mut" x1="320" y1="176" x2="320" y2="184"/>
+  <text x="320" y="198" class="t-sm" text-anchor="middle">12:00</text>
+  <line class="ln-mut" x1="500" y1="176" x2="500" y2="184"/>
+  <text x="500" y="198" class="t-sm" text-anchor="middle">15:00</text>
+
+  <text x="360" y="234" class="t-sm t-it" text-anchor="middle">The reasoner is fed all three; its conclusions carry the earliest expiry, 11:00.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 46.4</span>
+A reasoner that knows nothing of time is safe if its conclusions expire with
+the earliest input: the note&#8217;s &ldquo;intersection period of the validity
+periods&rdquo;.</figcaption>
+</figure>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
@@ -394,9 +448,6 @@ scopes.</li>
 <li><strong>Endorsing by checksum became ordinary.</strong> W3C Subresource
 Integrity (2016) lets a page load a script only if its hash matches; SLSA
 (2021) attestations identify software by hash.</li>
-<li><strong>Most deployed systems behave like the first option in section
-46.4.</strong> They check statements of a given form, and accept that
-equivalent statements phrased differently will not match.</li>
 <li><strong>Explicit validity periods are built into revocation.</strong>
 Certificate revocation lists and OCSP responses (RFC 6960, 2013) state when
 the next update is due.</li>
@@ -429,8 +480,7 @@ instantly. What has the building&#8217;s system stopped having to do?</p>
 </div>
 <div class="question">
 <p><span class="question-number">46.3</span>
-Why does a contradiction signed by key K not make the whole system
-unreliable? What must the trust system do, and what can go wrong before it
-does?</p>
+Two keys that a system trusts disagree about whether an organisation is a
+member. What should the system do?</p>
 </div>
 </div>

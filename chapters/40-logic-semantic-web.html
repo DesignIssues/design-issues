@@ -138,7 +138,8 @@ simultaneously.
   <text x="528" y="226" text-anchor="end">full first-order logic</text>
   <text x="552" y="205" class="t-sm">may never finish</text>
 
-  <line class="ln-accent" x1="660" y1="44" x2="660" y2="285"/>
+  <line class="ln-accent" x1="660" y1="44" x2="660" y2="230"/>
+  <line class="ln-accent" x1="660" y1="270" x2="660" y2="285"/>
   <text x="690" y="36" text-anchor="end" style="fill:#1c5a7a">Semantic Web chooses here</text>
 
   <rect class="box-green" x="420" y="285" width="276" height="54" rx="4"/>
@@ -159,6 +160,16 @@ reasoning system.
 </p>
 
 <h2>40.2 A validator, not a prover</h2>
+
+<p>
+Finding a proof means searching, and a search may never end. Checking a proof
+means following steps someone else wrote down, which always ends. Berners-Lee
+asks every Web program only to check: a program shown the three invoice lines
+can confirm that the third follows, though it need not have thought of it.
+Checking an <em>answer</em> would mean re-deriving it; checking an
+<em>explanation</em> means only confirming that each given step follows from
+the last.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
@@ -235,10 +246,9 @@ intractable whole:
 </table>
 
 <p>
-His own example is Access Limited Logic, which, as he understands it, uses
-only relations r(a,b) that are available when r is accessed, and whose rules
-only chain forward along such links. The work therefore depends on local
-connections, not on the size of everything known.
+His own example is Access Limited Logic, which only follows links already
+attached to the thing it is looking at, so its work grows with the
+neighbourhood, not with the whole Web.
 </p>
 
 <p>
@@ -367,7 +377,9 @@ trusting the source, or the <a class="gl-ref" href="../glossary.html#public-key"
 
 <p>
 Nor must anyone decide everything an agent could deduce, which in first-order
-logic is impossible. What it actually deduces depends on its engine, storage
+logic (the standard logic that can say &ldquo;for every&hellip;&rdquo; and
+&ldquo;there is some&hellip;&rdquo;; the quotation below calls it first order
+predicate calculus) is impossible. What it actually deduces depends on its engine, storage
 and indexes.
 </p>
 
@@ -392,15 +404,6 @@ stays tractable. That is section 40.3 turned into a standard.</li>
 <li><strong>The proof layer was never built.</strong> By 2026 there was no
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> for exchanging proofs, so the asymmetry of Figure 40.2,
 which the whole design rests on, was never cashed in practice.</li>
-<li><strong>Grounding happened in applications, as predicted.</strong> What
-terms mean in practice is still fixed by the programs that consume them,
-which is the note&#8217;s fallback, not its ambition.</li>
-<li><strong>Checkability returned from another direction.</strong> The
-distinction between generating an answer by any means and verifying it
-cheaply is now central to systems built on language models, which reach
-conclusions unverifiably and are increasingly paired with
-checkers (test suites, proof assistants) whose verdicts can be relied
-on.</li>
 </ul>
 </div>
 
@@ -410,7 +413,9 @@ on.</li>
 This layer is planned in Chapter 30 and defended against objections in
 Chapter 31. Rule and fact are separated in Chapter 41 and written down in
 Chapter 42. The closed loop that grounds meaning is Chapter 37; contradiction
-is handled in Chapter 46.
+is handled in Chapter 46. The split between finding an answer by any means
+and checking it cheaply has since reappeared in systems built on language
+models, which are often paired with test suites or proof assistants.
 </p>
 </div>
 

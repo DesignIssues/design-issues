@@ -59,7 +59,7 @@ splitting into a strict XML version (<a class="gl-ref" href="../glossary.html#xh
 <p>
 Most web pages are, strictly speaking, broken, and browsers display them
 anyway. This note asks what a page author is actually rewarded for. The answer
-is a <a class="gl-ref" href="../glossary.html#graph">graph</a>, and it turns the state of the Web from a mystery into an outcome.
+is a <a class="gl-ref" href="../glossary.html#graph">graph</a>.
 </p>
 </div>
 
@@ -67,9 +67,8 @@ is a <a class="gl-ref" href="../glossary.html#graph">graph</a>, and it turns the
 <h3>The question</h3>
 <p>
 Written in 2008 as a talk to the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Advisory Committee (the meeting of
-W3C&#8217;s member organisations), and not made public until May 2019, this is
-the note in which Berners-Lee addresses a split in the Web he could not
-prevent. The occasion is stated without drama:
+W3C&#8217;s member organisations), and not made public until May 2019, this note
+addresses a split in the Web that Berners-Lee could not prevent:
 </p>
 <blockquote>
 Occasionally it seems that some strategic thinking is necessary in order to
@@ -78,7 +77,7 @@ smoothly. This is one of those times.
 <cite>HTML and XML, 2008</cite>
 </blockquote>
 <p>
-The eleven-year delay in publication is part of the document. By 2019 the
+By 2019 the
 question had been settled against the position argued here, and the note was
 released as a record rather than as an intervention.
 </p>
@@ -105,7 +104,7 @@ browser reading it as HTML shows bold italic text and moves on.
      aria-labelledby="fig23-1-t fig23-1-d">
   <title id="fig23-1-t">Where HTML divided</title>
   <desc id="fig23-1-d">From a shared origin in SGML, one branch moved HTML on
-  to XML as XHTML, gaining decentralised extension and one clean parse, but
+  to XML as XHTML, gaining decentralised extension and a single reading shared by every program, but
   was not deployed in Internet Explorer. The other branch, HTML5, specified
   precisely what existing browsers already did with real pages: it ships and
   handles every legacy page, with error handling defined exactly, but has no
@@ -130,7 +129,7 @@ browser reading it as HTML shows bold italic text and moves on.
   <path class="ln-mut" d="M 450 228 L 490 228"/>
 
   <text x="498" y="54" class="t-sm">+ decentralised extension</text>
-  <text x="498" y="74" class="t-sm">+ one clean parse</text>
+  <text x="498" y="74" class="t-sm">+ every program reads it the same way</text>
   <text x="498" y="94" class="t-sm" style="fill:#b08d57">&#8722; not in Internet Explorer</text>
 
   <text x="498" y="214" class="t-sm">+ ships; handles every legacy page</text>
@@ -249,7 +248,7 @@ them differently:
 
 <p>
 Since at least <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 793 (1981), Internet protocols have followed Jon Postel&#8217;s
-rule: be conservative in what you send and liberal in what you accept. Send
+rule: be conservative in what is sent and liberal in what is accepted. Send
 lines of limited length but accept any length; send one letter case but
 accept either. The note explains why this rule, which worked for protocols,
 failed for pages. Neither part of the diagnosis is about technology.
@@ -277,19 +276,76 @@ The robustness principle assumes short-lived messages and a feedback loop
 between engineers. The Web has long-lived documents and no loop at all.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig23-3-t fig23-3-d">
+  <title id="fig23-3-t">A loop for protocols, none for pages</title>
+  <desc id="fig23-3-d">Left panel, protocols: a sender program sends a
+  short-lived message to a receiver program, and a curved arrow runs back:
+  engineers notice the failure and fix it. Right panel, the Web: one page
+  with bad nesting has arrows out to copied by author B, copied by author C,
+  and still online years later. Beneath it a dashed outline is marked no
+  feedback, and no arrow returns.</desc>
+  <defs>
+    <marker id="fig23-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig23-3-arra" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="170" y="24" class="t-caps" text-anchor="middle">protocols</text>
+  <rect class="box" x="20" y="60" width="110" height="44" rx="4"/>
+  <text x="75" y="80" text-anchor="middle">sender</text>
+  <text x="75" y="96" text-anchor="middle">program</text>
+  <rect class="box" x="210" y="60" width="110" height="44" rx="4"/>
+  <text x="265" y="80" text-anchor="middle">receiver</text>
+  <text x="265" y="96" text-anchor="middle">program</text>
+  <line class="ln" x1="130" y1="82" x2="207" y2="82" marker-end="url(#fig23-3-arr)"/>
+  <text x="170" y="72" class="t-sm" text-anchor="middle">message</text>
+  <path class="ln-accent" d="M 265 106 Q 170 200 77 108" fill="none" marker-end="url(#fig23-3-arra)"/>
+  <text x="170" y="176" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">engineers notice the failure</text>
+  <text x="170" y="192" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">and fix it</text>
+
+  <line class="ln-mut" x1="350" y1="20" x2="350" y2="235"/>
+
+  <text x="545" y="24" class="t-caps" text-anchor="middle">the web</text>
+  <rect class="box-warm" x="372" y="90" width="130" height="50" rx="4"/>
+  <text x="437" y="111" text-anchor="middle">page with</text>
+  <text x="437" y="128" text-anchor="middle">bad nesting</text>
+  <rect class="box-plain" x="550" y="42" width="160" height="34" rx="4"/>
+  <text x="630" y="64" class="t-sm" text-anchor="middle">copied by author B</text>
+  <rect class="box-plain" x="550" y="98" width="160" height="34" rx="4"/>
+  <text x="630" y="120" class="t-sm" text-anchor="middle">copied by author C</text>
+  <rect class="box-plain" x="550" y="154" width="160" height="34" rx="4"/>
+  <text x="630" y="176" class="t-sm" text-anchor="middle">still online years later</text>
+  <line class="ln" x1="502" y1="104" x2="547" y2="62" marker-end="url(#fig23-3-arr)"/>
+  <line class="ln" x1="502" y1="115" x2="547" y2="115" marker-end="url(#fig23-3-arr)"/>
+  <line class="ln" x1="502" y1="126" x2="547" y2="168" marker-end="url(#fig23-3-arr)"/>
+  <rect class="ln-dash" x="372" y="170" width="130" height="34" rx="4" fill="none"/>
+  <text x="437" y="192" class="t-sm" text-anchor="middle">no feedback</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.3</span>
+The robustness principle assumes the loop on the left. The Web has the shape
+on the right: errors spread by copying and persist, and nothing carries them
+back.</figcaption>
+</figure>
+
 <h2>23.4 The incentive curve</h2>
 
 <p>
-Berners-Lee then does something rare in this collection: he analyses the
-system as one containing people with motives, and draws the reward for
-effort.
+Berners-Lee then analyses the system as one containing people with motives,
+and draws the reward for effort.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig23-3-t fig23-3-d">
-  <title id="fig23-3-t">What an author gets for fixing errors</title>
-  <desc id="fig23-3-d">Under a strict parser the reward is a step at the far
+     aria-labelledby="fig23-4-t fig23-4-d">
+  <title id="fig23-4-t">What an author gets for fixing errors</title>
+  <desc id="fig23-4-d">Under a strict parser the reward is a step at the far
   right: nothing until the page is perfect, then everything, so an author with
   several errors has no reason to fix one. Under a liberal parser the reward is
   a step at the far left: only a hopeless page gets nothing, and one small fix
@@ -320,7 +376,7 @@ effort.
   <text x="365" y="314" class="t-sm" text-anchor="middle">A late step motivates only the author who is already nearly finished.</text>
   <text x="365" y="334" class="t-sm t-it" text-anchor="middle">An early step motivates only the hopeless page. Neither is a slope.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 23.3</span>
+<figcaption><span class="fig-label">Figure 23.4</span>
 Two steps at opposite ends. As the note puts it, the liberal and conservative
 forks share one thing: neither motivates the writer to improve a page
 progressively.</figcaption>
@@ -338,19 +394,26 @@ levels.
 </blockquote>
 
 <p>
-First, a browser toolbar that slides down on a page with errors and rates it
-out of a hundred. To the objection that no browser wants to give the worse
-experience, he answers that, as with environmental cleanup, a browser
-without it would look irresponsible. Second, &#8220;View Source&#8221;, the
-way markup has always spread, would show and copy a tidied version. Third,
-the validator would become a page checker that grades:
+He proposes three:
 </p>
+
+<ol>
+<li>A browser toolbar that slides down on a page with errors and rates it out
+of a hundred. To the objection that no browser wants to give the worse
+experience, he answers that, as with environmental cleanup, a browser without
+it would look irresponsible.</li>
+<li>&#8220;View Source&#8221;, the way markup has always spread, would show and
+copy a tidied version.</li>
+<li>The validator (the W3C&#8217;s service that checks a page against the
+<a class="gl-ref" href="../glossary.html#specification">specification</a>) would become a page checker that grades, as in Figure
+23.5.</li>
+</ol>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
-     aria-labelledby="fig23-4-t fig23-4-d">
-  <title id="fig23-4-t">Grades of complaint in a page checker</title>
-  <desc id="fig23-4-d">Three stacked bands. Error: wrong Content-Type, bad
+     aria-labelledby="fig23-5-t fig23-5-d">
+  <title id="fig23-5-t">Grades of complaint in a page checker</title>
+  <desc id="fig23-5-d">Three stacked bands. Error: wrong Content-Type, bad
   character encoding, bad nesting or a missing end tag, misplaced elements.
   Warning: an extension tag with no namespace, or a namespace with no
   namespace document. Informative: a namespaced extension with its document,
@@ -374,9 +437,10 @@ the validator would become a page checker that grades:
   <path d="M 46 204 L 42 196 L 50 196 Z" fill="#8a9a9a"/>
   <text x="46" y="222" class="t-sm" text-anchor="middle">fix last</text>
 </svg>
-<figcaption><span class="fig-label">Figure 23.4</span>
+<figcaption><span class="fig-label">Figure 23.5</span>
 More than two outcomes: graded complaints are what turn a step into a slope.
-The items are the note&#8217;s own lists.</figcaption>
+The items are the note&#8217;s own lists. Content-Type: the server&#8217;s label
+for the kind of file, such as <code>text/html</code>.</figcaption>
 </figure>
 
 <h2>23.5 Scale-free vocabularies</h2>
@@ -386,14 +450,17 @@ The Web is made of communities of very different sizes. It is scale-free:
 there is no typical number of inbound links to a page, only a power law, in
 which a few pages have enormous numbers and most have few. Berners-Lee
 suggests, as an unproved hunch, that this may be the best trade-off between
-one ungainly universal language and many agile small ones.
+one ungainly universal language and many agile small ones. He asks that
+the shape be engineered for, not merely admired: HTML at the top can be
+centrally managed, but the shaded tail of Figure 23.6 needs a way for groups
+to coin names without a committee.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 278" width="720" height="278" role="img"
-     aria-labelledby="fig23-5-t fig23-5-d">
-  <title id="fig23-5-t">The vocabulary long tail</title>
-  <desc id="fig23-5-d">A power-law curve. The horizontal axis lists
+     aria-labelledby="fig23-6-t fig23-6-d">
+  <title id="fig23-6-t">The vocabulary long tail</title>
+  <desc id="fig23-6-d">A power-law curve. The horizontal axis lists
   vocabularies, most used first; the vertical axis is the size of the
   community using each. HTML stands alone at the top left. The curve falls
   through SVG, MathML and ARIA, then FBML and Atom feeds, and flattens into a
@@ -420,7 +487,7 @@ one ungainly universal language and many agile small ones.
 
   <text x="300" y="230" class="t-sm t-it" text-anchor="middle" style="fill:#5a8f5a">needs namespaces</text>
 </svg>
-<figcaption><span class="fig-label">Figure 23.5</span>
+<figcaption><span class="fig-label">Figure 23.6</span>
 One leader, then a long tail. Everyone is supposed to know HTML&#8217;s tags;
 the tail is where decentralised naming earns its keep.</figcaption>
 </figure>
@@ -429,8 +496,7 @@ the tail is where decentralised naming earns its keep.</figcaption>
 <h2>23.6 The grouchy robustness principle</h2>
 
 <p>
-The note ends with a restatement of Postel&#8217;s rule, and it is the most quotable
-thing Berners-Lee wrote about <a class="gl-ref" href="../glossary.html#specification">specification</a> practice:
+The note ends with a restatement of Postel&#8217;s rule:
 </p>
 
 <blockquote>
@@ -447,8 +513,7 @@ Accept everything, render everything, and say so. The complaint is the slope.
 <h2>23.7 Meeting in the middle</h2>
 
 <p>
-The note also asks what each side would give. Its list of complaints about
-XML:
+The note also lists its complaints about XML:
 </p>
 
 <table>
@@ -457,14 +522,14 @@ XML:
 <tr><td>The whole tag name must be spelled in the end tag</td><td>Ease of use</td></tr>
 <tr><td>Parsers must stop on error</td><td>Unfriendly, impractical</td></tr>
 <tr><td>Namespace URIs take too much space</td><td>Impractical</td></tr>
-<tr><td>Non-nested begin and end tags must be accommodated</td><td>Legacy &#8220;tag soup&#8221;</td></tr>
+<tr><td>Non-nested begin and end tags must be accommodated</td><td>Legacy &#8220;tag soup&#8221; (bad nesting, section 23.1)</td></tr>
 </table>
 
 <p>
 The first could be cured by redesigning XML; the last he would not change.
 His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
 takes the namespace from the content type, drops DTDs (old grammar
-declarations) and processing instructions, and perhaps allows
+declarations) and processing instructions (see section 1.2), and perhaps allows
 <code>&lt;/&gt;</code> as a close tag. A page that starts
 </p>
 
@@ -489,7 +554,9 @@ could, served as <code>text/html</code>, simply be
 &lt;/head&gt;</code></pre>
 
 <p>
-and still be valid XML2. The only non-HTML habit left is the
+and still be valid XML2. Gone are the XML declaration and DOCTYPE, the
+<code>xmlns</code> attribute (the namespace now comes from the content type),
+and the quotes around simple values. The only non-HTML habit left is the
 <code>/&gt;</code> closing the link tag.
 </p>
 
@@ -548,7 +615,8 @@ each mechanism of Figure 23.2?</p>
 <div class="question">
 <p><span class="question-number">23.4</span>
 The grouchy robustness principle asks implementations to complain. To whom,
-and by what path, given that the author of a bad page is often long gone?</p>
+and by what path, given that the author of a bad page is often long gone?
+Consider the toolbar and View Source remedies of section 23.4.</p>
 </div>
 </details>
 

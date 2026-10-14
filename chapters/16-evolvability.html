@@ -101,9 +101,8 @@ understand, you should ignore it.
 </blockquote>
 
 <p>
-He calls this free extension, records that he adopted it for <a class="gl-ref" href="../glossary.html#html">HTML</a> and used it
-constantly himself, and is clear that it is why HTML grew as fast as it did.
-He is equally clear about the bill:
+He calls this free extension, adopted it for <a class="gl-ref" href="../glossary.html#html">HTML</a>, and credits it with
+HTML&#8217;s fast growth. He is equally clear about the bill:
 </p>
 
 <blockquote>
@@ -114,16 +113,17 @@ feature to an existing protocol.
 </blockquote>
 
 <p>
-That last clause is the one that matters. Under free extension there is no
-way to say that something must be understood, which means no feature can ever
-be relied upon.
+The last clause matters most. Nothing can be marked as having to be
+understood, so no feature can ever be relied upon.
 </p>
 
 <h2>16.2 The HTML cycle</h2>
 
 <p>
-The note&#8217;s best passage is an account of how a standard actually got
-made between 1994 and 1998. It is a cycle with a motor, and the motor is the
+The note&#8217;s best passage is an account of how HTML actually grew between
+1994 and 1998, as browser makers added new tags (a tag is the bracketed
+label, such as <code>&lt;table&gt;</code>, that marks out part of a page). It
+is a cycle with a motor, and the motor is the
 tension between wanting to beat a competitor and needing to interoperate with
 one.
 </p>
@@ -191,12 +191,11 @@ one bigger document could continue.</figcaption>
 </figure>
 
 <p>
-The worked example is the table tag. (A tag is the bracketed label, such as
-<code>&lt;table&gt;</code>, that marks out part of a page.) A browser meeting one
-had no way to know which table extension it was, so the situation could become
-ambiguous, and if the table mattered for safe interpretation, the <a class="gl-ref" href="../glossary.html#server">server</a> would
-never learn whether it had been handled: an unaware client would ignore it
-blithely.
+The worked example is the table tag (step 3 of Figure 16.1). Rival browsers
+had each added tables their own way, so a browser meeting
+<code>&lt;table&gt;</code> could not tell which the author meant. And if the
+table mattered, the <a class="gl-ref" href="../glossary.html#server">server</a> never learned whether it had been handled, since a
+browser that did not know the tag silently ignored it.
 </p>
 
 <h2>16.3 The other extreme, and why it also fails</h2>
@@ -355,11 +354,15 @@ illustrative.)</figcaption>
 </figure>
 
 <p>
-The precise version, then, is a transformation: a processor converts a
-document containing things it does not understand into one it fully
-understands, keeping it valid. The rules for such a conversion could be
-written in anything from the crudest language to one that is Turing complete,
-able to express any computation. Berners-Lee applies the rule from Chapter 1:
+The precise version, then, is a transformation. The invoice system in
+Figure 16.3 does exactly this: it deletes the part description and is left
+with a valid invoice. That deletion is the transformation.
+</p>
+
+<p>
+The rules for such a conversion could be written in anything from the
+crudest language to one that is Turing complete, able to express any
+computation. Berners-Lee applies the rule from Chapter 1:
 </p>
 
 <blockquote>
@@ -370,15 +373,15 @@ When expressing something, use the least powerful language you can.
 <p>
 His smallest case is a one-line rule that says, in effect, <em>delete this
 part</em>. If the rule is allowed, the deleted part was optional. The section
-then breaks off, marked &ldquo;to be continued&rdquo;. The idea is taken up
-later in the note; see section 16.7.
+then breaks off, marked &ldquo;to be continued&rdquo;; section 16.7 takes the
+idea up.
 </p>
 
 <h2>16.5 The test of independent invention</h2>
 
 <p>
-The most memorable part of the note is a thought experiment that Chapter 1
-introduced in one line and that gets its full form here.
+Chapter 1 introduced this thought experiment in one line; here it gets its
+full form.
 </p>
 
 <p>
@@ -432,10 +435,9 @@ use a different number of lines on their television screens. Then the two system
   <text x="130" y="258" class="t-sm t-it" text-anchor="middle">Europe&#8217;s ISO protocols, late 1980s</text>
 
   <rect class="box-plain" x="254" y="172" width="212" height="96" rx="4"/>
-  <text x="360" y="196" class="t-lg" text-anchor="middle" style="fill:#8a9a9a">a border</text>
+  <text x="360" y="196" class="t-lg" text-anchor="middle" style="fill:#2f4f4f">a border</text>
   <text x="360" y="220" class="t-sm" text-anchor="middle">the world divided into</text>
   <text x="360" y="236" class="t-sm" text-anchor="middle">two separate communities</text>
-  <text x="360" y="258" class="t-sm t-it" text-anchor="middle">MARC library records: no single format</text>
 
   <rect class="box-green" x="484" y="172" width="212" height="96" rx="4"/>
   <text x="590" y="196" class="t-lg" text-anchor="middle" style="fill:#5a8f5a">integration</text>
@@ -454,15 +456,21 @@ to convert.</figcaption>
 </figure>
 
 <p>
-The reason the Web survives the meeting is the third axiom of Chapter 2:
+The Web survives the meeting because of the third axiom of Chapter 2:
 URI space is universal but need not be unique, so the rival space can be
-folded in. Had the Web required all servers to synchronise through one master
-lock server, the Mesh would have required one too, and the encounter would
-have failed.
+folded in, as the foot of Figure 16.4 shows.
 </p>
 
 <p>
-The cost of failing is not hypothetical:
+Without the test, worldwide interoperability comes only when one design
+beats the others, or when a worldwide committee designs the whole thing top
+down before anyone starts. That works for a new idea, the note says, but not
+for practices centuries old: the library community has had endless trouble
+agreeing on a single library card format, the MARC record. The other route is
+for one system to be dropped. When Europe abandoned its ISO networking
+protocols in the late 1980s, because they could not interwork with the
+Internet, much work was lost. Arbitrary choices can be reversed,
+but at national cost:
 </p>
 
 <blockquote>
@@ -479,8 +487,7 @@ happening all the time.
 <h2>16.6 Two assumptions</h2>
 
 <p>
-Midway, the note derives its requirements from two premises stated as plainly
-as possible. The first is that we will be smarter in the future. Today that
+Midway, the note derives its requirements from two premises. The first is that we will be smarter in the future. Today that
 produces a flag day: a version 4 word processor refuses a file saved by version
 5, and everyone must upgrade at once. The requirement is that version 4 read
 the version 5 file, at least in part. The second premise is more unusual, and
@@ -562,7 +569,9 @@ schema of a new version, which elements may be ignored.</figcaption>
 
 <p>
 Even the bottom step lets software check whether it knows the language, which
-is all most RPC systems do. The fourth is the one section 16.4 was waiting for:
+is all most RPC systems do. The second matters more than it looks: in the
+end, the note argues, what a document commits to must be defined in
+human-readable legal language. The fourth is the one section 16.4 was waiting for:
 </p>
 
 <blockquote>
@@ -576,7 +585,9 @@ Old software can then filter a new document down to one it understands, which
 solves what Berners-Lee calls the elusive version 2 to version 1 conversion. A
 Turing-complete converter can do more, but nobody can see its rules, so it must
 be trusted. What excites him is the top step: stating, in machine-processable
-form, which terms in one language are equivalent to terms in another. That is
+form, which terms in one language are equivalent to terms in another (for
+illustration, a rule that one vocabulary&#8217;s <em>price</em> means
+another&#8217;s <em>cost</em>). That is
 the programme of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.
 </p>
 

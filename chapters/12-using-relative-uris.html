@@ -93,22 +93,6 @@ The note restates the whole mechanism compactly enough to memorise:
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 
-<p>
-A local identifier is a name that only means something inside one file: a
-heading named <code>#intro</code> inside a page, say, or a variable inside a
-program. Berners-Lee calls the operation webizing: take a system with local
-identifiers, put the URI of the document those identifiers live in in front
-of them, and they become global, usable from anywhere. Hypertext becomes the
-Web. Data files become the Web of Data, his name for data published and
-linked in the same way as pages.
-</p>
-
-<p>
-The point of relative references is that the first half can be left out.
-Within a document, a local identifier suffices, and the document need not
-contain its own address in order to refer to itself.
-</p>
-
 <figure>
 <svg class="dia" viewBox="0 0 560 235" width="560" height="235" role="img" aria-labelledby="fig12-1-t fig12-1-d">
 <title id="fig12-1-t">Anatomy of a webized identifier</title>
@@ -137,6 +121,21 @@ contain its own address in order to refer to itself.
 </figure>
 
 <p>
+A local identifier is a name that only means something inside one file: a
+heading named <code>#intro</code> inside a page, say, or a variable inside a
+program. Berners-Lee calls the operation webizing: take a system with local
+identifiers, put the URI of the document those identifiers live in in front
+of them, and they become global, usable from anywhere. Hypertext becomes the
+Web; data files become linked data.
+</p>
+
+<p>
+The point of relative references is that the first half can be left out.
+Within a document, a local identifier suffices, and the document need not
+contain its own address in order to refer to itself.
+</p>
+
+<p>
 The same idea works between files. The note&#8217;s own example is a link from
 one page to another, wrapped round a picture:
 </p>
@@ -147,7 +146,8 @@ one page to another, wrapped round a picture:
 <code>intro.html</code> means &ldquo;the file next to this one&rdquo;;
 <code>../images/foo.png</code> means &ldquo;go up one folder, then into
 <code>images</code>&rdquo;. The browser fills in the rest from wherever the
-page was loaded.
+page was loaded. The address it fills in from is called the <em>base URI</em>:
+normally the address the page itself was loaded from.
 </p>
 
 <h2>12.2 The argument by absurdity</h2>
@@ -240,8 +240,7 @@ that arise where the two views meet.
 <h2>12.4 What the pattern buys</h2>
 
 <p>
-The note lists the cases, and they are worth keeping as a checklist because
-each one is a situation where an absolute URI would force an edit:
+The note lists the cases. In each, an absolute URI would force an edit:
 </p>
 
 <ul>
@@ -256,9 +255,11 @@ many sites.</li>
 <p>
 Berners-Lee generalises the property. Many systems, including most of those
 he builds and uses, are better built without knowledge of their own base URI,
-so that the URIs they store are always relative. The software may turn them
-into absolute URIs while processing them, but no fixed absolute URI exists
-for the local identifiers. He is careful to add that not all systems are like
+so that the URIs they store are always relative. His own example is a
+project of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> files that he processes as <code>file://</code> files, browses
+over <code>http://</code> through a web server, and edits through a proxy to
+a server on a different port. Every same-site link has to be relative, or one
+of the three views breaks. He is careful to add that not all systems are like
 this, and that absolute URIs must remain an option. He also notes smaller
 gains: relative references are easier to read, take less storage space and
 are shorter to transmit.
@@ -267,8 +268,7 @@ are shorter to transmit.
 <h2>12.5 Two named failures</h2>
 
 <p>
-The note ends by naming implementations, which is unusual for the collection
-and is the reason it reads as a complaint rather than an essay.
+The note ends by naming implementations, unusually for the collection.
 </p>
 
 <h3>XML namespaces</h3>
@@ -287,7 +287,7 @@ override the rule and write relative URIs anyway.
 <h3>Jena</h3>
 
 <p>
-The second is Jena, a widely used open-source library for handling <a class="gl-ref" href="../glossary.html#rdf">RDF</a> data.
+The second is Jena, a widely used open-source library for handling RDF data.
 Its serialisers (a serialiser is the part of a program that writes data out
 as a file) emitted only absolute URIs, which he says prevents its use for a
 wide range of systems. And the consequence, stated as the failure mode
@@ -336,7 +336,8 @@ The recommendation is correspondingly blunt:
 </p>
 
 <ul>
-<li>Any library that serialises a Web format, such as <a class="gl-ref" href="../glossary.html#html">HTML</a> or <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, must
+<li>Any library that serialises a Web format, such as <a class="gl-ref" href="../glossary.html#html">HTML</a> or <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> (a
+plain text format for RDF data), must
 offer relative URIs as an option or as the default.</li>
 <li>Data stored in files, for example on a web server, should use relative
 URIs.</li>
@@ -349,12 +350,12 @@ URIs.</li>
 <ul>
 <li><strong>The XML namespace rule was never relaxed.</strong> Relative
 references in namespace declarations remain deprecated, and the working
-answer for RDF users is the one given here: use Turtle rather than RDF/XML,
-which permits a relative base.</li>
+answer for RDF users is to write Turtle rather than RDF/XML (RDF written as
+XML), since Turtle&#8217;s <code>@base</code> line lets a file declare or omit
+its own base.</li>
 <li><strong>Turtle made the base explicit.</strong> Turtle became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014 with an <code>@base</code> directive and
-relative reference support, which is the capability this note asks
-serialisers to provide.</li>
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014, with an <code>@base</code> directive and
+relative references.</li>
 <li><strong>The complaint went unanswered for years.</strong> The note
 records in a line dated 2015 that Jena still did not generate relative URIs,
 four years after it was written.</li>
@@ -376,9 +377,8 @@ Chapter 14. Webizing is Chapter 26.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">12.1</span>
-The note argues a system is often better built without knowing its own base
-URI. Name a case where a system must know it, and say what it is doing that
-requires it.</p>
+Using Figure 12.2, explain what would break if <code>intro.html</code>
+linked to <code>https://test.acme.com/images/foo.png</code> instead.</p>
 </div>
 <div class="question">
 <p><span class="question-number">12.2</span>

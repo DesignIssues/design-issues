@@ -53,7 +53,7 @@ a Design Issues note by Tim Berners-Lee, 2005-06-01.
 <h3>The short version</h3>
 <p>
 When a browser asks a web <a class="gl-ref" href="../glossary.html#server">server</a> for an address, the server replies with a
-number before it sends anything else. A reply of 200 means &ldquo;here it is&rdquo;. The rule
+number before it sends anything else. A reply of 200 means <em>here is the page</em>. The rule
 agreed in 2005 says that a 200 shows the address names a document, and
 that any other reply does not show that.
 </p>
@@ -80,9 +80,9 @@ says how the request went. Three of them matter for this chapter:
 
 <table>
 <tr><th>Code</th><th>Plain meaning</th></tr>
-<tr><td>200 OK</td><td>&ldquo;Here is the page.&rdquo;</td></tr>
-<tr><td>303 See Other</td><td>&ldquo;Look over there instead&rdquo;, with a second address to try.</td></tr>
-<tr><td>404 Not Found</td><td>&ldquo;Nothing here.&rdquo;</td></tr>
+<tr><td>200 OK</td><td><em>here is the page</em></td></tr>
+<tr><td>303 See Other</td><td><em>look at this other address instead</em>, with the second address given</td></tr>
+<tr><td>404 Not Found</td><td><em>nothing at this address</em></td></tr>
 </table>
 
 <p>
@@ -196,7 +196,7 @@ to a separate address that serves a document about the thing (Figure 8.2).
   <title id="fig8-2-t">The 303 exchange for a URI that names a person</title>
   <desc id="fig8-2-d">A client asks the server for /id/alice and receives
   303 See Other with Location /doc/alice. It then asks for /doc/alice and
-  receives 200 OK with Alice's home page. The first address names Alice the
+  receives 200 OK with a page about Alice. The first address names Alice the
   person; the second names a page about her.</desc>
 
   <!-- lifeline heads -->
@@ -227,7 +227,7 @@ to a separate address that serves a document about the thing (Figure 8.2).
   <path class="ln" d="M 390 250 L 98 250" style="stroke:#5a8f5a"/>
   <path d="M 90 250 L 99 245 L 99 255 Z" fill="#5a8f5a"/>
   <text x="240" y="240" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">200 OK</text>
-  <text x="240" y="270" class="t-sm" text-anchor="middle">Alice&#8217;s home page</text>
+  <text x="240" y="270" class="t-sm" text-anchor="middle">a page about Alice</text>
 
   <!-- brackets -->
   <path class="ln-mut" d="M 424 76 L 432 76 L 432 166 L 424 166"/>
@@ -238,7 +238,7 @@ to a separate address that serves a document about the thing (Figure 8.2).
   <path class="ln-mut" d="M 424 186 L 432 186 L 432 276 L 424 276"/>
   <path class="ln-mut" d="M 432 231 L 448 231"/>
   <rect class="box-green" x="448" y="211" width="252" height="40" rx="4"/>
-  <text x="574" y="236" text-anchor="middle">/doc/alice = a page about her</text>
+  <text x="574" y="236" text-anchor="middle">/doc/alice = a page about Alice</text>
 </svg>
 <figcaption><span class="fig-label">Figure 8.2</span>
 Naming a person costs one extra round trip; the person&#8217;s URI never
@@ -246,17 +246,21 @@ answers 200.</figcaption>
 </figure>
 
 <p>
-Chapter 7 argued that this question should be fixed in the <a class="gl-ref" href="../glossary.html#specification">specification</a>;
-the Group fixed it in the protocol exchange. Berners-Lee accepts the result
-without pretending it is what he asked for, and his 2002 page acquired a
-<a class="gl-ref" href="../glossary.html#header">header</a> saying the compromise works quite well.
+In Chapter 7 he wanted the rule written into the definition of <a class="gl-ref" href="../glossary.html#http">HTTP</a> itself.
+The TAG instead let the server&#8217;s reply code carry the answer.
+Berners-Lee accepts the result without pretending it is what he asked for: a
+note added in 2006 to his 2002 page calls it a compromise &ldquo;which I
+think works quite well&rdquo;.
 </p>
 
 <h2>8.3 How the problem arose in practice</h2>
 
 <p>
-The note also records how the problem arose in practice. Berners-Lee names
-the vocabularies:
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> is the Semantic
+Web&#8217;s format for machine-readable statements. <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a set of
+names for describing documents (title, creator, date); Friend of a Friend is
+a set for describing people. In each, a property is a word like
+<em>title</em> given a web address. Berners-Lee names the vocabularies:
 </p>
 
 <blockquote>
@@ -269,42 +273,49 @@ browser.
 </blockquote>
 
 <p>
-<a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a set of names for describing documents (title, creator,
-date); Friend of a Friend is a set for describing people. In each, a
-&ldquo;property&rdquo; is a word like <em>title</em> given a web address.
 Figure 8.3 shows the danger the note spells out.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig8-3-t fig8-3-d">
-  <title id="fig8-3-t">One URI, two meanings</title>
+  <title id="fig8-3-t">One URI, two readings</title>
   <desc id="fig8-3-d">A single URI, http://purl.org/dc/elements/1.1/title,
-  is used by Party A to mean the web page fetched from it, and by Party B to
-  mean the property "title". Statements from the two parties, read together,
-  contradict each other.</desc>
+  is the subject of an example statement: it has creator Dublin Core team.
+  Party A reads the statement as being about the web page fetched from the
+  URI. Party B reads it as being about the property title. Nothing in the
+  URI says which reading is meant.</desc>
 
-  <rect class="box-plain" x="190" y="20" width="340" height="44" rx="4"/>
-  <text x="360" y="47" class="t-mono" text-anchor="middle">http://purl.org/dc/elements/1.1/title</text>
+  <rect class="box-plain" x="190" y="16" width="340" height="38" rx="4"/>
+  <text x="360" y="40" class="t-mono" text-anchor="middle">http://purl.org/dc/elements/1.1/title</text>
+  <path class="ln-mut" d="M 210 54 L 210 92"/>
 
-  <path class="ln-mut" d="M 140 130 L 260 64"/>
-  <path class="ln-mut" d="M 580 130 L 460 64"/>
+  <text x="40" y="82" class="t-caps">an example statement</text>
+  <rect class="box" x="110" y="92" width="200" height="34" rx="4"/>
+  <text x="210" y="114" class="t-mono" text-anchor="middle">&#8230;/1.1/title</text>
+  <path class="ln" d="M 310 109 L 420 109"/>
+  <path d="M 428 109 L 419 104 L 419 114 Z" fill="#2f4f4f"/>
+  <text x="369" y="100" class="t-sm" text-anchor="middle">has creator</text>
+  <rect class="box" x="430" y="92" width="180" height="34" rx="4"/>
+  <text x="520" y="114" text-anchor="middle">Dublin Core team</text>
 
-  <rect class="box" x="40" y="130" width="200" height="50" rx="4"/>
-  <text x="140" y="151" text-anchor="middle">Party A</text>
-  <text x="140" y="170" class="t-sm" text-anchor="middle">means: the fetched web page</text>
+  <path class="ln-dash" d="M 340 132 L 190 176"/>
+  <path class="ln-dash" d="M 400 132 L 530 176"/>
 
-  <rect class="box-warm" x="480" y="130" width="200" height="50" rx="4"/>
-  <text x="580" y="151" text-anchor="middle">Party B</text>
-  <text x="580" y="170" class="t-sm" text-anchor="middle">means: the property &#8216;title&#8217;</text>
+  <rect class="box-green" x="40" y="176" width="300" height="56" rx="4"/>
+  <text x="190" y="199" text-anchor="middle">Party A reads it as about</text>
+  <text x="190" y="219" class="t-sm" text-anchor="middle">the web page fetched from the URI</text>
 
-  <path class="ln-dash" d="M 140 180 L 350 218"/>
-  <path class="ln-dash" d="M 580 180 L 370 218"/>
-  <text x="360" y="242" class="t-it" text-anchor="middle">Same statement, two readings &#8594; contradiction</text>
+  <rect class="box-warm" x="380" y="176" width="300" height="56" rx="4"/>
+  <text x="530" y="199" text-anchor="middle">Party B reads it as about</text>
+  <text x="530" y="219" class="t-sm" text-anchor="middle">the property <tspan class="t-it">title</tspan>, a term in a vocabulary</text>
+
+  <text x="360" y="270" class="t-it" text-anchor="middle">nothing in the URI says which reading is meant</text>
 </svg>
 <figcaption><span class="fig-label">Figure 8.3</span>
-The confusion the note describes: nothing in the URI says which reading is
-intended.</figcaption>
+The confusion the note describes. The same statement can be read as about a
+page or about a property, and once vocabularies named properties with HTTP
+URIs, one could no longer be sure which was intended.</figcaption>
 </figure>
 
 <p>
@@ -317,7 +328,7 @@ conceded what.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The <a class="gl-ref" href="../glossary.html#redirect">redirect</a> pattern was codified.</strong> The TAG&#8217;s 2007
-draft finding <em>Dereferencing <a class="gl-ref" href="../glossary.html#http">HTTP</a> URIs</em> and the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Interest Group note
+draft finding <em>Dereferencing HTTP URIs</em> and the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Interest Group note
 <em>Cool URIs for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></em>, of December 2008, turned the
 resolution into publishing guidance, setting out both the 303 pattern and the
 <a class="gl-ref" href="../glossary.html#hash">hash</a> pattern (Chapter 11) as acceptable.</li>

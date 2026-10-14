@@ -11,13 +11,12 @@ writer say so, in particular that a reader must understand a part or stop.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the shortest note in the collection, and it names the gap that
+This is one of the shortest notes in the collection, and it names the gap that
 Chapters 16 and 17 both circle without closing. Free extension lets anything
 be added. Nothing lets a publisher say that an addition must be understood.
 </p>
 <p>
-Berners-Lee states the cost in one sentence, and the sentence is worth
-reading twice:
+Berners-Lee states the cost in one sentence:
 </p>
 <blockquote>
 Historically the lack of such a &ldquo;mandatory field&rdquo; has led to a
@@ -77,7 +76,7 @@ publisher can count on is frozen at whatever was in the base specification
 <figcaption><span class="fig-label">Figure 18.1</span>
 Without the flag the old reader produces a wrong answer and has no way to know
 it. With the flag it fails openly, so the publisher can rely on any reader
-that does not fail.</figcaption>
+that does not fail. (The attribute name is invented for illustration.)</figcaption>
 </figure>
 
 <h2>18.1 The requirement</h2>
@@ -86,19 +85,27 @@ that does not fail.</figcaption>
 The demand is small and is stated twice for emphasis. A language must provide
 not only for its own extension but for a way to say whether a given extension
 is optional. Berners-Lee calls this a fundamental key to smooth evolution
-from one version of a language to the next. He allows several ways to do it:
+from one version of a language to the next.
+</p>
+
+<p>
+An <em>element</em> is one labelled piece of a document, such as
+<code>&lt;bold&gt;</code>&#8230;<code>&lt;/bold&gt;</code>; a
+<em>namespace</em> is a whole vocabulary of such labels. A <em>schema</em> is
+the published description of a format&#8217;s labels and how they fit
+together. He allows the flag in either place, shown here for an imagined
+recipe-plus format:
 </p>
 
 <table>
 <tr><th></th><th>Flag written in the document</th><th>Flag written in the schema</th></tr>
-<tr><th>One element</th><td>this <code>&lt;not&gt;</code> must be understood</td><td>the format&#8217;s description marks <code>&lt;comment&gt;</code> ignorable</td></tr>
-<tr><th>A whole namespace</th><td>this document says every term from the new vocabulary is mandatory</td><td>the new vocabulary&#8217;s description says all its terms may be skipped</td></tr>
+<tr><th>One element</th><td>this <code>&lt;allergen&gt;</code> must be understood</td><td>recipe-plus&#8217;s schema marks <code>&lt;serving-tip&gt;</code> ignorable</td></tr>
+<tr><th>A whole namespace</th><td>this recipe says every recipe-plus term is mandatory</td><td>a separate serving-tips vocabulary&#8217;s schema says all its terms may be skipped</td></tr>
 </table>
 
 <p>
-A schema here is the published description of a format&#8217;s labels and how
-they fit together. The note was written when XML namespaces were arriving,
-and the complaint is that they solve half the problem:
+The note was written when XML namespaces were arriving, and the complaint is
+that they solve half the problem:
 </p>
 
 <blockquote>
@@ -111,7 +118,6 @@ extensions.
 <h2>18.2 Three things to do with something not understood</h2>
 
 <p>
-The heart of the note is a taxonomy small enough to hold in the head.
 Meeting an element it does not recognise, a processor has exactly three sound
 options, and which one is correct depends entirely on what the element means.
 </p>
@@ -190,8 +196,7 @@ and dangerous for a negation, whose meaning is reversed.
 <h2>18.3 Sublanguages</h2>
 
 <p>
-His other proposal, listed first in the note, is smaller and has had a longer
-afterlife. Berners-Lee wants a language to be able to declare itself a
+His other proposal, listed first in the note, is smaller. Berners-Lee wants a language to be able to declare itself a
 sublanguage of another:
 </p>
 
@@ -266,8 +271,8 @@ travel with the document, not wait at the end of a network request.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The proposal was not adopted for XML.</strong> No standard way to
-mark an extension mandatory or ignorable was added to XML or to namespaces;
-XML itself never gained one. SOAP 1.1 (W3C Note, 2000), a messaging format
+mark an extension mandatory or ignorable was added to XML or to namespaces.
+SOAP 1.1 (W3C Note, 2000), a messaging format
 built on XML, added exactly this: a <code>mustUnderstand</code> attribute on
 header entries, which a receiver must either honour or fail on.</li>
 <li><strong>It was adopted elsewhere.</strong> The HTTP Extension Framework
@@ -280,8 +285,8 @@ with an unrecognised critical extension must be rejected.</li>
 the first letter of its name, so a decoder knows whether it may skip an
 unknown chunk without consulting any schema, the instinct of section 18.3.</li>
 <li><strong>HTML chose the third option permanently.</strong> The HTML5
-parsing rules, first published by the W3C in January 2008, define unwrapping behaviour for
-unknown elements exactly, which removes the ambiguity without supplying the
+parsing rules, first published by the W3C in January 2008, define exactly how unknown elements
+are parsed and displayed (unwrapped), which removes the ambiguity without supplying the
 mandatory flag.</li>
 </ul>
 </div>

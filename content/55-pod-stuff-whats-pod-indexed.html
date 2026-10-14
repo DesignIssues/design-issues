@@ -1,7 +1,10 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Anything in a life can go in a pod. File it by kind, not by application, so
+A pod (a Solid Pod) is a person&#8217;s own web storage, of the kind
+Chapter 54 proposed: folders on a server, each with its own access rules, that
+any application the person chooses may read and write. Anything in a life can
+go in one. File it by kind, not by application, so
 applications can share it. Keep each activity together, so its owner can decide
 once who may see it.
 </p>
@@ -77,7 +80,7 @@ lists five ways the stuff of a life differs (Figure 55.1).
   <path d="M 674 279 L 684 284 L 674 289 Z" fill="#2f4f4f"/>
   <line class="ln-mut" x1="160" y1="278" x2="160" y2="290"/>
   <line class="ln-mut" x1="440" y1="278" x2="440" y2="290"/>
-  <text x="160" y="306" class="t-sm">synced every few hours</text>
+  <text x="160" y="306" class="t-sm">synced every few minutes or hours</text>
   <text x="160" y="324" class="t-sm t-it">a calendar</text>
   <text x="440" y="306" class="t-sm">as instant as possible</text>
   <text x="440" y="324" class="t-sm t-it">a chat, a shared edit</text>
@@ -119,9 +122,12 @@ particular app which wrote it.
 An RDFS class is the kind of thing the data describes, such as Event or
 Person. Filing by application recreates the silo, one company&#8217;s walled-off
 store, inside the space meant to abolish it. Filing by kind lets two
-applications dealing in events find each other&#8217;s events. It works because
-the classes applications use overlap a lot: people, events, places, messages,
-documents. That is Chapter 48&#8217;s argument arriving as a filing system.
+applications dealing in events find each other&#8217;s events: a pod&#8217;s
+type index lists, for each class, where things of that class are kept. It
+works because the classes applications use overlap a lot: people, events,
+places, messages. Classes and apps &#8220;are related but not 1:1&#8221;, so
+every application that handles people should use the same shape for contact
+information.
 </p>
 
 <h2>55.3 Why activities are kept together anyway</h2>
@@ -293,7 +299,7 @@ The two principles pull against each other (Figure 55.3).
 </svg>
 <figcaption><span class="fig-label">Figure 55.3</span>
 The note rejects the first. It wants the second for finding things and the
-third for trusting them; the type index (section 55.6) helps reconcile them.</figcaption>
+third for trusting them; the type index helps reconcile them.</figcaption>
 </figure>
 
 <h2>55.4 Who configures the layout</h2>
@@ -311,8 +317,9 @@ requirements, and also works well for that particular app.
 
 <p>
 The note expects applications to share common patterns for similar data:
-summary indexes, inboxes, time series in dated folders. Describing where new
-data should go is left to Chapter 57.
+summary indexes, inboxes, time series in dated folders. An inbox, for
+example, is a folder others may add to but not read, like Chapter 54&#8217;s
+friend requests. Describing where new data should go is left to Chapter 57.
 </p>
 
 <h2>55.5 Provenance as a first-class concern</h2>
@@ -332,15 +339,15 @@ rich, varied, and valuable system.
 Provenance is a record of who wrote a piece of data and how. It can be tracked
 by digital signatures from trusted agents, or more lightly by knowing that only
 one party can write to a resource. Trust is modelled as it really is, not as a
-permission flag (Chapter 66), and bots stand beside people as things trusted.
+permission flag (Chapter 66): automated agents, like people, are trusted
+according to who wrote what and who may write where.
 </p>
 
 <h2>55.6 Index libraries, not items</h2>
 
 <p>
-A pod&#8217;s type index lists, for each class, where things of that class are
-kept. As on a desktop, where a photo library hides its insides, it works best
-listing a few large libraries rather than every photo. A small index scales
+As on a desktop, where a photo library hides its insides, the type index works
+best listing a few large libraries rather than every photo. A small index scales
 better, and each library indexes its items more richly:
 </p>
 
@@ -357,14 +364,10 @@ better, and each library indexes its items more richly:
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Type indexes remain the mechanism.</strong> Already in use when the
-note was written, they remain how Solid applications find each other&#8217;s
+<li><strong>The bots arrived.</strong> A 2023 update to Berners-Lee&#8217;s
+note on personal assistants (Chapter 93) records Inflection AI&#8217;s Pi
+(May 2023): private conversation, but no access to the user&#8217;s personal
 data.</li>
-<li><strong>Immutability was put to work elsewhere.</strong> Content
-addressing and verifiable credentials both name what never changes by what it
-contains.</li>
-<li><strong>The bots arrived.</strong> What an automated agent may read from a
-personal store became urgent within two years; see Chapter 93.</li>
 </ul>
 </div>
 

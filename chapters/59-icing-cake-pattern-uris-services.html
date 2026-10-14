@@ -174,14 +174,15 @@ knowing that the github site exists or of finding its URI.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig59-2-t fig59-2-d">
   <title id="fig59-2-t">Getting there and getting back</title>
-  <desc id="fig59-2-d">Top: between the repository page and the live page there
-  are only dashed, hand-made links, one typed into the documentation and one
-  that a package.json file sometimes records. Bottom: from the live page,
-  adding a suffix reaches the validator, link checker and change log, and
-  stripping the suffix returns to the page.</desc>
+  <desc id="fig59-2-d">Top: the repository page, with its package.json file
+  attached, has a dashed link to the live page that someone typed into the
+  documentation. From the live page back to the repository there is no link a
+  browser can find, shown as a crossed-out arrow. Bottom: from the live page,
+  adding the suffix ,validate reaches the HTML validator, and stripping the
+  suffix returns to the page.</desc>
 
   <defs>
     <marker id="fig59-2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -196,44 +197,34 @@ knowing that the github site exists or of finding its URI.
 
   <rect class="box-warm" x="40" y="48" width="170" height="36" rx="3"/>
   <text x="125" y="71" text-anchor="middle">repository page</text>
+  <line class="ln" x1="125" y1="84" x2="125" y2="108"/>
+  <rect class="box-warm" x="40" y="108" width="170" height="28" rx="3"/>
+  <text x="125" y="127" class="t-mono" text-anchor="middle">package.json</text>
   <rect class="box-plain" x="510" y="48" width="170" height="36" rx="3"/>
   <text x="595" y="71" text-anchor="middle">live page</text>
 
-  <text x="360" y="54" class="t-sm" text-anchor="middle">link someone typed into the docs</text>
-  <line class="ln-dash" x1="212" y1="66" x2="506" y2="66" marker-end="url(#fig59-2-ah)"/>
-
-  <path class="ln-dash" d="M595,86 V122 H454" marker-end="url(#fig59-2-ah)"/>
-  <rect class="box-plain" x="270" y="108" width="180" height="28" rx="3"/>
-  <text x="360" y="127" class="t-sm" text-anchor="middle">package.json (sometimes)</text>
-  <path class="ln-dash" d="M270,122 H125 V90" marker-end="url(#fig59-2-ah)"/>
+  <text x="360" y="50" class="t-sm" text-anchor="middle">link someone typed into the docs</text>
+  <line class="ln-dash" x1="212" y1="59" x2="506" y2="59" marker-end="url(#fig59-2-ah)"/>
+  <line class="ln-dash" x1="508" y1="76" x2="214" y2="76" marker-end="url(#fig59-2-ah)"/>
+  <path d="M352,68 L368,84 M368,68 L352,84" style="stroke:#b08d57;stroke-width:2.5;fill:none"/>
+  <text x="360" y="104" class="t-sm" text-anchor="middle">no link a browser can find</text>
 
   <line class="ln-mut" x1="24" y1="160" x2="696" y2="160"/>
 
   <text x="24" y="186" class="t-caps" style="fill:#5a8f5a">page first: links computed</text>
 
-  <rect class="box-green" x="24" y="246" width="200" height="46" rx="3"/>
-  <text x="124" y="265" text-anchor="middle">live page</text>
-  <text x="124" y="283" class="t-mono" text-anchor="middle">www.w3.org/Payments/WG/</text>
+  <rect class="box-green" x="24" y="222" width="200" height="46" rx="3"/>
+  <text x="124" y="241" text-anchor="middle">live page</text>
+  <text x="124" y="259" class="t-mono" text-anchor="middle">www.w3.org/Payments/WG/</text>
 
-  <text x="336" y="246" class="t-sm" text-anchor="middle">add a suffix</text>
-  <line class="ln-accent" x1="226" y1="256" x2="444" y2="256" marker-end="url(#fig59-2-aa)"/>
-  <line class="ln-accent" x1="448" y1="282" x2="230" y2="282" marker-end="url(#fig59-2-aa)"/>
-  <text x="336" y="302" class="t-sm" text-anchor="middle">strip the suffix</text>
+  <text x="346" y="226" class="t-sm" text-anchor="middle">add a suffix</text>
+  <line class="ln-accent" x1="226" y1="236" x2="466" y2="236" marker-end="url(#fig59-2-aa)"/>
+  <line class="ln-accent" x1="468" y1="256" x2="228" y2="256" marker-end="url(#fig59-2-aa)"/>
+  <text x="346" y="276" class="t-sm" text-anchor="middle">strip the suffix</text>
 
-  <path class="ln" d="M456,219 V309"/>
-  <line class="ln" x1="456" y1="219" x2="470" y2="219"/>
-  <line class="ln" x1="456" y1="264" x2="470" y2="264"/>
-  <line class="ln" x1="456" y1="309" x2="470" y2="309"/>
-
-  <rect class="box" x="470" y="204" width="226" height="30" rx="3"/>
-  <text x="482" y="224" class="t-mono" style="fill:#1c5a7a">,validate</text>
-  <text x="584" y="224" class="t-sm">HTML validator</text>
-  <rect class="box" x="470" y="249" width="226" height="30" rx="3"/>
-  <text x="482" y="269" class="t-mono" style="fill:#1c5a7a">,checklink</text>
-  <text x="584" y="269" class="t-sm">link checker</text>
-  <rect class="box" x="470" y="294" width="226" height="30" rx="3"/>
-  <text x="482" y="314" class="t-mono" style="fill:#1c5a7a">,cvslog</text>
-  <text x="584" y="314" class="t-sm">change log</text>
+  <rect class="box" x="470" y="231" width="226" height="30" rx="3"/>
+  <text x="482" y="251" class="t-mono" style="fill:#1c5a7a">,validate</text>
+  <text x="584" y="251" class="t-sm">HTML validator</text>
 </svg>
 <figcaption><span class="fig-label">Figure 59.2</span>
 Discovery works both ways only when one address can be computed from the
@@ -241,8 +232,9 @@ other.</figcaption>
 </figure>
 
 <p>
-A node module may record its repository in <code>package.json</code>, but a
-client fetching the <a class="gl-ref" href="../glossary.html#html">HTML</a> page cannot discover the link. The relationship
+A software package may record its repository in <code>package.json</code>, a
+project&#8217;s description file, but a client fetching the <a class="gl-ref" href="../glossary.html#html">HTML</a> page cannot
+discover the link. The relationship
 exists in the world, not in the addresses.
 </p>
 
@@ -262,9 +254,9 @@ the cake.
 </blockquote>
 
 <p>
-The comma is incidental; the note asks only that suffixes be short, simple and
-memorable. What matters is a fixed rule, so that anyone holding the
-page&#8217;s address can work out the tool&#8217;s without being told.
+The comma is incidental; suffixes need only be short, simple and memorable.
+What matters is a fixed rule, so that anyone holding the page&#8217;s address
+can work out the tool&#8217;s.
 </p>
 
 <figure>
@@ -275,7 +267,7 @@ page&#8217;s address can work out the tool&#8217;s without being told.
   splits into the page's own address, the work or cake, and the suffix
   ,validate, the tool or icing. The server sees the comma, runs the HTML
   validator on the page before it, and returns a list of markup
-  errors.</desc>
+  errors, mistakes in the page's HTML tags.</desc>
 
   <defs>
     <marker id="fig59-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -313,7 +305,7 @@ such tools. Five of them:
 <tr><th>Suffix</th><th>What it returns</th></tr>
 <tr><td><code>,text</code></td><td>A plain text version of the page</td></tr>
 <tr><td><code>,checklink</code></td><td>The bad links in the page</td></tr>
-<tr><td><code>,validate</code></td><td>The HTML <a class="gl-ref" href="../glossary.html#markup">markup</a> errors</td></tr>
+<tr><td><code>,validate</code></td><td>The <a class="gl-ref" href="../glossary.html#markup">markup</a> errors: mistakes in the page&#8217;s HTML tags</td></tr>
 <tr><td><code>,spell</code></td><td>The spelling errors</td></tr>
 <tr><td><code>,cvslog</code></td><td>The log of changes to the document</td></tr>
 </table>
@@ -322,7 +314,8 @@ such tools. Five of them:
 
 <p>
 This is Chapter 57&#8217;s placement question, where applications sharing a
-store must agree where data goes, asked about tools instead. A protocol is not
+store must agree where data goes, asked about tools instead: two apps both
+able to save a contact, neither knowing where the other put it. A protocol is not
 enough: what is missing is a convention that lets one party find what another
 produced without prior arrangement.
 </p>
@@ -330,20 +323,23 @@ produced without prior arrangement.
 <p>
 It is also Chapter 3&#8217;s argument about information in names. An address
 that names the tool which made it will eventually be wrong. Naming the work
-and deriving the tool&#8217;s address leaves the tool free to change.
+and deriving the tool&#8217;s address leaves the tool free to change. A page
+at <code>acmedata.github.io/&#8230;</code> breaks if the project moves off
+GitHub; <code>acmedata.com/&#8230;</code> does not.
 </p>
 
 <h2>59.5 Icing for machines</h2>
 
 <p>
 A comma typed by hand serves a person. Berners-Lee also wants icing visible to
-programs. The Memento protocol adds <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers that let a browser find older
+programs. The Memento protocol adds <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers, labels sent with every page that the
+reader does not see, that let a browser find older
 versions of a page. <a class="gl-ref" href="../glossary.html#solid">Solid</a>, his personal data system, links each resource to
 the page controlling who may access it.
 </p>
 
 <p>
-w3.org itself falls short: follow a link into its CVS version control system
+w3.org itself falls short: follow a link into its CVS, an older version control system,
 and the addresses look much like GitHub&#8217;s, with no way straight back.
 What he would like instead:
 </p>
@@ -370,8 +366,8 @@ Pages launched in 2008.</li>
 <li><strong>Discovery was patched, not fixed.</strong> npm&#8217;s
 <code>package.json</code> has a <code>repository</code> field, and many sites
 link to their source in a footer: by hand, and inconsistently.</li>
-<li><strong>Memento was already a standard</strong>, <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 7089 of December
-2013.</li>
+<li><strong>Memento was already published</strong>, as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 7089 (December
+2013, an Informational RFC).</li>
 <li><strong>Well-known locations were revised.</strong> RFC 8615 (May 2019)
 replaced RFC 5785 (2010). Both reserve <code>/.well-known/</code> for <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
 about a site, solving discovery per site rather than per document.</li>
@@ -391,8 +387,9 @@ correspondence between file space and Web space is Chapter 14.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">59.1</span>
-Take a page you publish. Can you derive the address of its source from it, or
-the reverse? What supplies the link?</p>
+Your favourite recipe site keeps each recipe at one address. Invent comma
+addresses for a printable version and a shopping list. What must the site
+promise for them to work?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.2</span>
@@ -402,8 +399,7 @@ comma?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.3</span>
-Which is primary in a project you work on, the repository or the published
-thing? What does the answer change?</p>
+In Figure 59.1, which address would you give a friend, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.4</span>

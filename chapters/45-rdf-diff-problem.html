@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2001-01-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A delta lists what to remove and what to add; sigma means applying it.
+A delta lists what to remove and what to add; sigma (sum) means applying it.
 Sending deltas between copies is cheaper than sending whole copies, but only
 safe if the delta names things that cannot be confused.
 </p>
@@ -137,7 +137,7 @@ applies a difference to a version to get the next one.
 </svg>
 <figcaption><span class="fig-label">Figure 45.1</span>
 Send the change, not the state. Peer B applies &Delta; to its copy of v0 and
-arrives at v1: &Sigma; undoes &Delta;.</figcaption>
+gets v1. &Delta; takes the difference and &Sigma; adds it back.</figcaption>
 </figure>
 
 <h2>45.1 The three problems hiding in one</h2>
@@ -250,7 +250,8 @@ edit.
 
 <p>
 The note&#8217;s patch format, in Notation3, is a pattern that finds the
-node, then what to remove and what to add. This is the form cwm implemented:
+node, then what to remove and what to add. This is the form implemented by
+cwm, Berners-Lee&#8217;s command-line <a class="gl-ref" href="../glossary.html#rdf">RDF</a> tool:
 </p>
 
 <pre><code>{ ?x bank:accountNo "1234578"}
@@ -258,7 +259,9 @@ node, then what to remove and what to add. This is the form cwm implemented:
   diff:insertion { ?x bank:balance 3575}.</code></pre>
 
 <p>
-That is: find the thing whose account number is 1234578; remove
+<code>?x</code> is a variable, standing for whatever matches, and each pair of
+braces holds a quoted group of statements. So: find the thing whose account
+number is 1234578; remove
 &ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. A single
 alternative property, <code>diff:replacement</code>, can express any change.
 Applied to a copy that has itself changed, a patch can fail in three ways.
@@ -271,70 +274,15 @@ Applied to a copy that has itself changed, a patch can fail in three ways.
 <tr><td>Misapplied</td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be: &ldquo;This is unacceptable.&rdquo;</td></tr>
 </table>
 
-<figure>
-<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
-     aria-labelledby="fig45-3-t fig45-3-d">
-  <title id="fig45-3-t">Applying a patch to a copy that has also changed</title>
-  <desc id="fig45-3-d">Version v0 has a meeting on Tuesday. One person moves
-  it to Friday, giving v1a; another deletes it, giving v1b. The delta from v0
-  to v1b is then applied to v1a rather than to v0. Three outcomes are
-  possible: a conflict a person must settle, a patch that cannot find its
-  place and is rejected, or a patch applied at the wrong place, giving
-  corrupted data, which is unacceptable.</desc>
-
-  <rect class="box" x="270" y="20" width="180" height="44" rx="4"/>
-  <text x="360" y="38" class="t-caps" text-anchor="middle">v0</text>
-  <text x="360" y="56" class="t-sm" text-anchor="middle">meeting on Tuesday</text>
-
-  <path class="ln-mut" d="M 320 64 L 180 104 M 400 64 L 540 104"/>
-
-  <rect class="box" x="60" y="104" width="220" height="44" rx="4"/>
-  <text x="170" y="122" class="t-caps" text-anchor="middle">v1a</text>
-  <text x="170" y="140" class="t-sm" text-anchor="middle">meeting moved to Friday</text>
-
-  <rect class="box" x="440" y="104" width="220" height="44" rx="4"/>
-  <text x="550" y="122" class="t-caps" text-anchor="middle">v1b</text>
-  <text x="550" y="140" class="t-sm" text-anchor="middle">meeting deleted</text>
-
-  <path class="ln-accent" style="stroke-dasharray:5 4" d="M 440 126 L 292 126"/>
-  <path d="M 294 121 L 284 126 L 294 131 Z" fill="#1c5a7a"/>
-  <text x="362" y="117" class="t-sm" text-anchor="middle">&#916;(v0, v1b)</text>
-  <text x="362" y="143" class="t-sm" text-anchor="middle">applied to v1a</text>
-
-  <path class="ln-mut" d="M 170 148 L 170 176 M 120 176 L 600 176 M 120 176 L 120 192 M 360 176 L 360 192 M 600 176 L 600 192"/>
-  <path d="M 116 190 L 120 199 L 124 190 Z" fill="#8a9a9a"/>
-  <path d="M 356 190 L 360 199 L 364 190 Z" fill="#8a9a9a"/>
-  <path d="M 596 190 L 600 199 L 604 190 Z" fill="#8a9a9a"/>
-
-  <rect class="box-plain" x="20" y="200" width="200" height="90" rx="4"/>
-  <text x="120" y="224" class="t-caps" text-anchor="middle">conflict</text>
-  <text x="120" y="250" class="t-sm" text-anchor="middle">the edits disagree;</text>
-  <text x="120" y="268" class="t-sm" text-anchor="middle">a person must decide</text>
-
-  <rect class="box" x="260" y="200" width="200" height="90" rx="4"/>
-  <text x="360" y="224" class="t-caps" text-anchor="middle">no match</text>
-  <text x="360" y="250" class="t-sm" text-anchor="middle">cannot find the place:</text>
-  <text x="360" y="268" class="t-sm" text-anchor="middle">rejected</text>
-
-  <rect class="box-warm" x="500" y="200" width="200" height="90" rx="4"/>
-  <text x="600" y="224" class="t-caps" text-anchor="middle" style="fill:#b08d57">wrong place</text>
-  <text x="600" y="246" class="t-sm" text-anchor="middle" style="fill:#b08d57">corrupted data</text>
-  <text x="600" y="272" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">&#8220;This is unacceptable.&#8221;</text>
-</svg>
-<figcaption><span class="fig-label">Figure 45.3</span>
-A delta applied to a version it was not computed from. A robust patch never
-takes the third path.</figcaption>
-</figure>
-
 <p>
-Whether a patch can take the third path depends on what its pattern names.
+Whether a patch can be misapplied depends on what its pattern names.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig45-4-t fig45-4-d">
-  <title id="fig45-4-t">A weak patch and a strong patch</title>
-  <desc id="fig45-4-d">A patch identifies what to change by a pattern. If the
+     aria-labelledby="fig45-3-t fig45-3-d">
+  <title id="fig45-3-t">A weak patch and a strong patch</title>
+  <desc id="fig45-3-d">A patch identifies what to change by a pattern. If the
   pattern fixes on a value that is unique across all graphs, such as an account
   number that no two accounts share, the patch may be applied anywhere and
   still hit the right node. If the value is not unique, the same patch applied
@@ -365,7 +313,7 @@ Whether a patch can take the third path depends on what its pattern names.
   <line class="ln-mut" x1="24" y1="272" x2="696" y2="272"/>
   <text x="360" y="292" class="t-sm" text-anchor="middle">The format is the same; what differs is whether the pattern names something unique.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 45.4</span>
+<figcaption><span class="fig-label">Figure 45.3</span>
 The authors&#8217; framing: a weak delta can be applied only to the graph it
 was computed from; a strong one is context-independent.</figcaption>
 </figure>
@@ -387,7 +335,7 @@ listening to the changes builds a working knowledge.
 </p>
 
 <p>
-<strong>Patches as news.</strong> When the state is held in <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, a
+<strong>Patches as news.</strong> When the state is held in RDF, a
 difference between graphs is news. The <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#rss">RSS</a> feed was in effect partly a
 list of changes to the W3C&#8217;s technical reports list, and publishing RDF
 differences could make that formal.
@@ -416,10 +364,11 @@ then computes a difference to discover what changed.
 <p>
 The alternative is for the editing tool to send the difference itself. In the
 <a class="gl-ref" href="../glossary.html#solid">Solid</a> work of Volume VI, the patch is sent just before the interface shows the
-change, so it can be reverted if the patch fails. The W3C&#8217;s <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>
-Platform work was standardising patch formats. Computing a difference is a way of recovering
-information that was thrown away; sending one is a way of not throwing it
-away.
+change, so it can be reverted if the patch fails. </p>
+
+<p>
+Computing a difference recovers information that was thrown away; sending one
+avoids throwing it away.
 </p>
 
 <div class="since">
@@ -433,12 +382,9 @@ make patches strong: one added <a class="gl-ref" href="../glossary.html#triple">
 Recommendation in March 2013, and LD Patch was published as a W3C Working
 Group Note in 2015: section 45.3&#8217;s proposal in standard form.</li>
 <li><strong>Explicit change won over computed change.</strong> Collaborative
-editors came to rely on operational transformation and conflict-free replicated data types, both of which
-send operations rather than diffing states, as the 2015 follow-up
-preferred.</li>
-<li><strong>An open question.</strong> Contact and calendar synchronisation
-still goes wrong. Is the cause mostly the semantic problem, as the note
-suspected?</li>
+editors came to rely on operational transformation and on operation-based
+designs of conflict-free replicated data types, which send operations rather
+than diffing states, as the 2015 follow-up preferred.</li>
 </ul>
 </div>
 
@@ -453,7 +399,7 @@ and 54, and live data is Chapter 58.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">45.1</span>
 Separate a synchronisation failure you have experienced into the three
@@ -474,6 +420,11 @@ first can answer and the second cannot.</p>
 Your phone&#8217;s contacts app syncs by comparing whole address books. What
 would it need to record at the moment you edit a number, so it could send the
 change instead?</p>
+</div>
+<div class="question">
+<p><span class="question-number">45.5</span>
+Contact and calendar synchronisation still goes wrong. Is the cause mostly the
+semantic problem, as the note suspected?</p>
 </div>
 </details>
 

@@ -40,7 +40,9 @@ actually wonderful.
 
 <p>
 The occasion is domestic rather than political: parents worrying about harm to
-their children, and schools wondering whether to ban phones. In the map,
+their children, and schools wondering whether to ban phones. A protocol, as in
+the green boxes of Figure 91.1, is a public set of rules that lets any app talk to
+any server, as email does. In the map,
 rounded boxes are sites and apps, diamonds are problems with the platforms, and
 circles are the processes they lead to in the world.
 </p>
@@ -145,7 +147,7 @@ by targeted advertising to do something against your own best interests
 <p>
 To <em>optimise for engagement</em> is to choose what the feed shows by what
 keeps people scrolling. He names Facebook, Instagram and TikTok as platforms whose
-feeds are tuned for engagement, and ranks that above tracking:
+feeds do this, and ranks that harm above tracking:
 </p>
 
 <blockquote>
@@ -156,7 +158,9 @@ just stem from tracking, spying, profile building and targeted advertising.
 
 <p>
 The picture is not static. Instagram once showed posts from people he
-followed; years later it showed clickable videos and products.
+followed; years later it showed clickable videos and products. He asks whether
+the reward for grabbing attention will pull every platform toward the same
+model; some, he notes, fear it is inevitable.
 </p>
 
 <figure>
@@ -181,9 +185,10 @@ followed; years later it showed clickable videos and products.
   <text x="604" y="104" text-anchor="middle">for engagement</text>
   <line class="ln" x1="216" y1="90" x2="502" y2="90" marker-end="url(#ar91-2)"/>
   <circle cx="250" cy="90" r="5" fill="#1c5a7a"/>
-  <text x="244" y="72" class="t-sm">Instagram, at first</text>
+  <text x="250" y="52" class="t-sm" text-anchor="middle">Instagram, at first</text>
+  <line class="ln-mut" x1="250" y1="58" x2="250" y2="84"/>
   <circle cx="470" cy="90" r="5" fill="#1c5a7a"/>
-  <text x="480" y="52" class="t-sm" text-anchor="end">Instagram, now</text>
+  <text x="470" y="52" class="t-sm" text-anchor="middle">Instagram, now</text>
   <line class="ln-mut" x1="470" y1="58" x2="470" y2="84"/>
   <circle cx="330" cy="90" r="5" fill="#1c5a7a"/>
   <text x="330" y="114" class="t-sm" text-anchor="middle">Skype:</text>
@@ -193,16 +198,14 @@ followed; years later it showed clickable videos and products.
   <text x="410" y="128" class="t-sm" text-anchor="middle">channels</text>
 </svg>
 <figcaption><span class="fig-label">Figure 91.2</span>
-The reward for attention pulls platforms toward one model. Berners-Lee asks
-whether that drift is inevitable; the stages of the harm itself are Figure
+The reward for attention pulls platforms toward one model; the stages of the harm itself are Figure
 90.2.</figcaption>
 </figure>
 
 <h2>91.3 What the map is for</h2>
 
 <p>
-The purpose is a double obligation, and the second half is what distinguishes
-this from reassurance:
+The purpose is a double obligation:
 </p>
 
 <blockquote>
@@ -217,19 +220,14 @@ things that help people be creative, work together, have a good time, and
 understand the world and the many people in it better.
 </p>
 
-<h2>91.4 Why the volume ends here</h2>
-
-<p>
-Placed after Chapter 90, this chapter says what is at stake if the response to
-failure is abandonment.
-</p>
+<h2>91.4 Digital sovereignty</h2>
 
 <p>
 The note defines <em>digital sovereignty</em> broadly: people are in charge of
-their internet experience and can use it how they like. It says they already have
-this power to a large extent, though how much depends on their expertise, and
-that systems built on Solid, the architecture of Volume VI, naturally provide
-it.
+their internet experience and can use it how they like, emailing whoever they
+want, bookmarking anything, and sharing only what they choose. They already
+have this power to a large extent, though how much depends on their expertise.
+Systems built on Solid, the architecture of Volume VI, naturally provide it.
 </p>
 
 <h2>91.5 The good parts run on protocols</h2>
@@ -257,9 +255,8 @@ leaves the user less power.
 
 <p>
 Once pages could carry JavaScript, the site owner chose the program the reader
-ran, and the data stayed on the owner&#8217;s server: Facebook keeps its users&#8217; posts
-at facebook.com. With no common protocol there is no interoperability, so
-Flickr, Facebook and LinkedIn became closed silos.
+ran and kept the data on its own server. With no common protocol, Flickr,
+Facebook and LinkedIn became closed silos.
 </p>
 
 <figure>
@@ -312,20 +309,35 @@ with a platform the publisher controls both the program and the data. Chapter
 <h2>91.6 Federation and hosted chat</h2>
 
 <p>
-Federated systems are client&#8211;server systems where anyone can start a
-server; together they are called the Fediverse. ActivityPub, a W3C
-Recommendation, carries Mastodon, and in 2023 Meta said Threads would use it.
-Much of the open source community, including Solid, chats on Matrix. ADP,
-behind Bluesky, came from Jack Dorsey&#8217;s conclusion that Twitter should
-have been a protocol, though the note doubts it is truly decentralised. Among
-hosted chat services, Signal is run by a non-profit on an open protocol
-that WhatsApp also uses.
+In a client&#8211;server system, an app talks to a server that someone runs.
+A federated system is one where anyone can start such a server, and the servers
+talk to each other; together they are called the Fediverse.
+</p>
+
+<table>
+<tr><th>Protocol</th><th>Used by</th><th>What the note says</th></tr>
+<tr><td>ActivityPub</td><td>Mastodon; Threads</td><td>A W3C Recommendation
+(a finished W3C standard). In 2023 Meta said Threads would use it.</td></tr>
+<tr><td>Matrix</td><td>Element</td><td>Much of the open
+source community, including Solid, chats on it.</td></tr>
+<tr><td>ADP</td><td>Bluesky</td><td>Usually called the AT Protocol. Made by
+Jack Dorsey after concluding Twitter should have been a protocol; relies on a
+central directory server.</td></tr>
+<tr><td>Signal Protocol</td><td>Signal; WhatsApp</td><td>Hosted chat run by a
+non-profit.</td></tr>
+</table>
+
+<h2>91.7 Why the volume ends here</h2>
+
+<p>
+Placed after Chapter 90, this chapter says what is at stake if the response to
+failure is abandonment.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Warning labels.</strong> As the note was being written, the US
+<li><strong>Warning labels.</strong> The US
 Surgeon General called in a New York Times opinion piece (June 2024) for warning
 labels on social media platforms; the note cites it.</li>
 <li><strong>Restrictions spread.</strong> Australia passed a law in November
@@ -364,8 +376,8 @@ name what a school banning phones gives up.</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.4</span>
-Define digital sovereignty precisely enough to tell whether a given system has
-it.</p>
+Using the powers the note lists in 91.4, define digital sovereignty precisely
+enough to tell whether a given system has it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.5</span>

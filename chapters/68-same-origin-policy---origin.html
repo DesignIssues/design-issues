@@ -87,7 +87,9 @@ The browser&#8217;s answer is the <a class="gl-ref" href="../glossary.html#domai
 <h2>68.1 Two hierarchies, one used</h2>
 
 <p>
-A web address contains two trees. The host name, also called the authority, is
+In <code>https://camps.org/board/</code>, <code>https</code> is the scheme
+and <code>camps.org</code> the host name; the port is a rarely seen number,
+usually omitted. A web address contains two trees. The host name, also called the authority, is
 a tree read right to left: <code>org</code>, then <code>camps.org</code>, then
 the subdomain <code>campsunshine.camps.org</code>. The path, everything after
 the first single slash, is a tree read left to right.
@@ -102,14 +104,13 @@ address.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 368" width="720" height="368" role="img"
+<svg class="dia" viewBox="0 0 720 254" width="720" height="254" role="img"
      aria-labelledby="fig68-1-t fig68-1-d">
   <title id="fig68-1-t">The hierarchy that counts, and the one that does not</title>
   <desc id="fig68-1-d">Top: the address the site wants, with Jane's space
   nested in the path as camp, family and person, growing more specific to the
   right. Bottom: the address the browser requires, with the same names moved
-  into the host name, growing more specific to the left. Below it, four things
-  that break as a result.</desc>
+  into the host name, growing more specific to the left.</desc>
 
   <text x="24" y="24" class="t-caps" style="fill:#5a8f5a">what the site wants to say</text>
   <rect class="box-green" x="24" y="34" width="672" height="34" rx="3"/>
@@ -133,23 +134,29 @@ address.
   <path d="M 110 231 L 100 236 L 110 241 Z" fill="#1c5a7a"/>
   <text x="422" y="240" class="t-sm" style="fill:#1c5a7a">host name: more specific to the left</text>
 
-  <text x="24" y="274" class="t-caps" style="fill:#b08d57">what breaks</text>
-  <text x="36" y="294" class="t-sm" style="fill:#b08d57">1&#160;&#160;Every existing link to these pages breaks.</text>
-  <text x="36" y="314" class="t-sm" style="fill:#b08d57">2&#160;&#160;Relative links between the family pages and Jane&#8217;s stop working.</text>
-  <text x="36" y="334" class="t-sm" style="fill:#b08d57">3&#160;&#160;It invites the same rearrangement to happen again, and again.</text>
-  <text x="36" y="354" class="t-sm" style="fill:#b08d57">4&#160;&#160;A name lookup now tells observers the reader visited Jane&#8217;s pages (Figure 68.2).</text>
 </svg>
 <figcaption><span class="fig-label">Figure 68.1</span>
 The same nesting, written two ways. Only the bottom form gives Jane a boundary
 the browser recognises.</figcaption>
 </figure>
 
+<h3>What the rewrite costs</h3>
+
+<ol>
+<li>Every existing link to these pages breaks.</li>
+<li>Relative links (short links such as <code>jane/stuff</code>, read against
+the current page) between the family pages and Jane&#8217;s stop working.
+Every link must be written in full, so the family cannot move its pages to a
+home <a class="gl-ref" href="../glossary.html#server">server</a> or work on them offline.</li>
+<li>It invites the same rearrangement to happen again, and again.</li>
+<li>A name lookup now tells observers the reader visited Jane&#8217;s pages
+(Figure 68.2). Before fetching a page, the browser makes a <a class="gl-ref" href="../glossary.html#dns">DNS</a> lookup, asking
+which machine serves the host name, usually unencrypted; the path travels
+inside the encrypted connection.</li>
+</ol>
+
 <p>
-Relative links matter because they let a family move its pages to a home
-<a class="gl-ref" href="../glossary.html#server">server</a>, or work offline. The fourth cost is the one nobody intends. Before
-fetching a page, the browser makes a <a class="gl-ref" href="../glossary.html#dns">DNS</a> lookup, asking which machine serves the
-host name, usually unencrypted; the path travels inside the encrypted
-connection.
+The fourth cost is the one nobody intends:
 </p>
 
 <blockquote>
@@ -203,10 +210,12 @@ out control.
 </p>
 
 <p>
-In a classic Apache server, addresses map onto Unix folders, and permissions
-are inherited down the tree. An <code>.htaccess</code> file in a folder controls
-everything below it, nothing above. A reverse proxy, the site quietly passing
-one branch of its addresses to another service, builds on this. Berners-Lee
+In a classic Apache server (Apache being the most common web server
+program), addresses map onto files kept in folders on the server&#8217;s disk,
+and permissions are inherited down the tree. An <code>.htaccess</code> file, a
+small settings file placed in a folder, controls everything below it, nothing
+above. A reverse proxy, the site quietly passing one branch of its addresses
+to another service, builds on this. Berners-Lee
 calls it very useful:
 </p>
 
@@ -218,44 +227,47 @@ external services.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
+<svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
      aria-labelledby="fig68-3-t fig68-3-d">
   <title id="fig68-3-t">Delegation down the path</title>
   <desc id="fig68-3-d">A tree of addresses under camps.org. Under /board/ sit
-  /board/papers and /board/AcmeDiscss/; an .htaccess file at /board/ governs
-  everything below it. /board/AcmeDiscss/ is passed by reverse proxy to an
-  outside AcmeDiscss service.</desc>
+  /board/papers and /board/AcmeDiscss/; an .htaccess file attached to /board/
+  governs everything below it. A dashed bracket round the two board branches
+  marks them as one origin to the browser. /board/AcmeDiscss/ is passed by
+  reverse proxy to an outside AcmeDiscss service.</desc>
 
   <rect class="box" x="280" y="20" width="160" height="34" rx="3"/>
   <text x="360" y="42" class="t-mono" text-anchor="middle">camps.org/</text>
-  <path class="ln" d="M 360 54 L 360 77 L 170 77 L 170 100 M 360 77 L 550 77 L 550 100"/>
+  <path class="ln" d="M 360 54 L 360 77 L 170 77 L 170 100 M 360 77 L 470 77 L 470 100"/>
 
   <rect class="box" x="80" y="100" width="180" height="34" rx="3"/>
   <text x="170" y="122" class="t-mono" text-anchor="middle">/campsunshine/</text>
-  <path class="ln" d="M 170 134 L 170 190"/>
-  <rect class="box-plain" x="70" y="190" width="200" height="34" rx="3"/>
-  <text x="170" y="212" class="t-mono" text-anchor="middle">/campsunshine/families/</text>
+  <path class="ln" d="M 170 134 L 170 210"/>
+  <rect class="box-plain" x="70" y="210" width="200" height="34" rx="3"/>
+  <text x="170" y="232" class="t-mono" text-anchor="middle">/campsunshine/families/</text>
 
-  <rect class="box" x="460" y="100" width="180" height="34" rx="3"/>
-  <text x="550" y="122" class="t-mono" text-anchor="middle">/board/</text>
-  <rect class="box-plain" x="306" y="104" width="112" height="26" rx="3"/>
-  <text x="362" y="121" class="t-mono" style="font-size:11.5px" text-anchor="middle">.htaccess</text>
-  <path class="ln-mut" d="M 418 117 L 460 117"/>
-  <text x="350" y="152" class="t-sm" text-anchor="middle">rules here govern everything</text>
-  <text x="350" y="167" class="t-sm" text-anchor="middle">below them, nothing above</text>
+  <rect class="box" x="400" y="100" width="140" height="34" rx="3"/>
+  <text x="470" y="122" class="t-mono" text-anchor="middle">/board/</text>
+  <path class="ln-dash" d="M 540 117 L 572 117"/>
+  <rect class="box-plain" x="572" y="104" width="112" height="26" rx="3"/>
+  <text x="628" y="121" class="t-mono" style="font-size:11.5px" text-anchor="middle">.htaccess</text>
+  <text x="628" y="150" class="t-sm" text-anchor="middle">rules here govern everything</text>
+  <text x="628" y="165" class="t-sm" text-anchor="middle">below /board/, nothing above</text>
 
-  <path class="ln" d="M 550 134 L 550 162 L 455 162 L 455 190 M 550 162 L 630 162 L 630 190"/>
-  <rect class="box-green" x="380" y="190" width="150" height="34" rx="3"/>
-  <text x="455" y="212" class="t-mono" text-anchor="middle">/board/papers</text>
-  <rect class="box-warm" x="550" y="190" width="160" height="34" rx="3"/>
-  <text x="630" y="212" class="t-mono" text-anchor="middle">/board/AcmeDiscss/</text>
+  <path class="ln" d="M 470 134 L 470 182 L 405 182 L 405 210 M 470 182 L 580 182 L 580 210"/>
+  <rect class="ln-dash" x="320" y="200" width="350" height="54" rx="4" style="stroke:#b08d57"/>
+  <rect class="box-green" x="330" y="210" width="150" height="34" rx="3"/>
+  <text x="405" y="232" class="t-mono" text-anchor="middle">/board/papers</text>
+  <rect class="box-warm" x="500" y="210" width="160" height="34" rx="3"/>
+  <text x="580" y="232" class="t-mono" text-anchor="middle">/board/AcmeDiscss/</text>
+  <text x="405" y="274" class="t-sm" text-anchor="middle" style="fill:#b08d57">one origin to the browser</text>
 
-  <path class="ln-dash" d="M 630 224 L 630 260"/>
-  <path d="M 625 256 L 630 266 L 635 256 Z" fill="#8a9a9a"/>
-  <text x="620" y="248" class="t-sm" text-anchor="end">reverse proxy</text>
-  <rect class="box-plain" x="550" y="266" width="160" height="34" rx="3"/>
-  <text x="630" y="288" text-anchor="middle">AcmeDiscss service</text>
-  <text x="630" y="316" class="t-sm" text-anchor="middle">outside camps.org</text>
+  <path class="ln-dash" d="M 580 244 L 580 278"/>
+  <path d="M 575 274 L 580 284 L 585 274 Z" fill="#8a9a9a"/>
+  <text x="592" y="272" class="t-sm">reverse proxy</text>
+  <rect class="box-plain" x="500" y="284" width="160" height="34" rx="3"/>
+  <text x="580" y="306" text-anchor="middle">AcmeDiscss service</text>
+  <text x="580" y="336" class="t-sm" text-anchor="middle">outside camps.org</text>
 </svg>
 <figcaption><span class="fig-label">Figure 68.3</span>
 The server already delegates by path. The browser draws no boundary anywhere
@@ -329,7 +341,9 @@ is necessary -- the best of many bad choices.
 <p>
 He names two accepted opacities. The <em>s</em> in https, discussed in Chapter 67, is one. The other is
 the domain name itself, which he calls the massive opaqueness, because it is the
-path by which the user&#8217;s trust in the session travels at all.
+route by which the user&#8217;s trust in the session travels at all. A reader
+trusts that camps.org is the camp because the name says so, and cannot see
+past the name.
 </p>
 
 <p>
@@ -341,10 +355,9 @@ move away from reliance on domain names generally.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The boundary moved, repeatedly.</strong> Chrome turned on Site
-Isolation by default on desktop in 2018, keyed on the registrable domain (such
-as camps.org) rather than the full origin: the symptom Chapter 67 names, a
-boundary that can never be placed correctly.</li>
+<li><strong>A second, coarser boundary appeared.</strong> In 2018 Chrome
+began running each site (registrable domain, such as camps.org) in its own
+process; the Same Origin Policy itself was unchanged.</li>
 <li><strong>Path-based boundaries were never added.</strong> Trust still
 derives from the authority alone, so the contortion of Figure 68.1 is still
 required.</li>

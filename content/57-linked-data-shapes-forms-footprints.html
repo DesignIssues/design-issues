@@ -29,8 +29,10 @@ hard to write, because an application needs to know what it will get.
 
 <p>
 The schema languages of Volume IV, RDF Schema and OWL, let a program draw
-conclusions from data, and say what makes no logical sense. So they limit what
-may be written only indirectly.
+conclusions from data, and say what makes no logical sense. OWL can say that
+nobody is their own parent, so data claiming it is nonsense; it cannot say a
+contact form should ask for a phone number. So they limit what may be written
+only indirectly.
 </p>
 
 <blockquote>
@@ -40,9 +42,8 @@ won't do what we need.
 </blockquote>
 
 <p>
-Knowing what is nonsense does not tell a form what to ask for. Schema.org,
-which suggests properties for each kind of thing, is closer, and still not
-enough.
+Schema.org, a shared list of suggested properties used by search engines, is
+closer, and still not enough.
 </p>
 
 <h2>57.2 Three technologies, three questions</h2>
@@ -90,7 +91,7 @@ enough.
   <text x="360" y="274" class="t-sm" text-anchor="middle">A shape can validate what arrived. A form can collect it. Neither says where to put it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 57.1</span>
-Shapes have standard languages (SHACL, ShEx). Forms have a draft vocabulary.
+Shapes have standard languages (SHACL and ShEx, two ways of writing shapes). Forms have a draft vocabulary.
 Footprints were, in 2019, only an idea. Without them every application invents
 its own layout, and the silo returns inside the person&#8217;s own store.</figcaption>
 </figure>
@@ -111,8 +112,9 @@ and will get data in this shape.
 </blockquote>
 
 <p>
-A shape is how two parties agree what they will exchange, without limiting
-what anyone else may say.
+An Application Program Interface is an agreed way for programs to exchange
+data. A shape is how two parties make that agreement, without limiting what
+anyone else may say.
 </p>
 
 <p>
@@ -142,7 +144,8 @@ Shapes and forms look alike but, the note insists, differ:
 <p>
 A shape describes data that exists. A form collects data from a person. Both
 assume somebody has decided where the result belongs. In a pod, a person&#8217;s
-own online store of data (Chapter 54), that decision is not obvious.
+own online store of data (Chapter 54), that decision is not obvious. Chapter
+50 gave a protocol for how to write to a server; nothing said where.
 </p>
 
 <p>
@@ -150,6 +153,50 @@ If each application writes where its own files go, the store collapses into
 one folder per application. If it writes to a shared place, it must know which
 place, and how to name the new item, so that the next application can find it.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig57-2-t fig57-2-d">
+  <title id="fig57-2-t">Two apps, one pod, no shared layout</title>
+  <desc id="fig57-2-d">App A saves a contact into the folder appA/contacts in
+  the pod. App B lists contacts from its own folder, appB/people, which is
+  empty. B's view shows no contacts and a question mark.</desc>
+  <defs>
+    <marker id="fig57-2-acc" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="24" y="44" width="150" height="50" rx="4"/>
+  <text x="99" y="66" text-anchor="middle">App A</text>
+  <text x="99" y="84" class="t-sm" text-anchor="middle">saves a contact</text>
+  <rect class="box" x="24" y="134" width="150" height="50" rx="4"/>
+  <text x="99" y="156" text-anchor="middle">App B</text>
+  <text x="99" y="174" class="t-sm" text-anchor="middle">lists contacts</text>
+
+  <rect class="box-plain" x="250" y="24" width="250" height="176" rx="4"/>
+  <text x="375" y="46" class="t-caps" text-anchor="middle">one pod</text>
+  <text x="276" y="80" class="t-mono">/appA/contacts/</text>
+  <text x="296" y="102" class="t-mono" style="fill:#5a8f5a">ann.ttl</text>
+  <text x="276" y="154" class="t-mono">/appB/people/</text>
+  <text x="296" y="176" class="t-sm t-it" style="fill:#8a9a9a">(empty)</text>
+
+  <path class="ln-accent" d="M 174 69 L 266 76" marker-end="url(#fig57-2-acc)"/>
+  <path class="ln-accent" d="M 266 150 L 174 159" marker-end="url(#fig57-2-acc)"/>
+
+  <path class="ln-dash" d="M 500 159 L 556 159"/>
+  <rect class="box-warm" x="560" y="114" width="136" height="86" rx="4"/>
+  <text x="628" y="136" class="t-caps" text-anchor="middle" style="fill:#b08d57">B&#8217;s view</text>
+  <text x="628" y="166" class="t-lg" text-anchor="middle">?</text>
+  <text x="628" y="188" class="t-sm" text-anchor="middle">no contacts</text>
+
+  <text x="360" y="228" class="t-sm t-it" text-anchor="middle">Both apps speak the same protocol and the same format.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 57.2</span>
+Same protocol, same format, no shared layout, so no sharing. App B never
+looks where App A wrote.</figcaption>
+</figure>
 
 <h3>A worked footprint</h3>
 
@@ -159,21 +206,21 @@ The note sketches a rule for the address book. When a user adds a group named
 address is <code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>. Here
 <code>dir()</code> trims the last part off an address, leaving its folder, and
 <code>munge()</code> cleans a name of characters that do not belong in an
-address.
+address. A <code>.ttl</code> file holds linked data in the Turtle format.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
-     aria-labelledby="fig57-2-t fig57-2-d">
-  <title id="fig57-2-t">Computing a new address</title>
-  <desc id="fig57-2-d">An address book at contacts/index.ttl#this. The user
+     aria-labelledby="fig57-3-t fig57-3-d">
+  <title id="fig57-3-t">Computing a new address</title>
+  <desc id="fig57-3-d">An address book at contacts/index.ttl#this. The user
   adds a group called Book Club. The footprint rule takes the address book's
   folder, contacts/, cleans the name to Book_Club, and joins them into
   contacts/Group/Book_Club/index.ttl#this. The folder tree on the right shows
   the new file. A second application using the same rule computes the same
   address and finds the group there.</desc>
   <defs>
-    <marker id="fig57-2-acc" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig57-3-acc" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
     </marker>
@@ -188,7 +235,7 @@ address.
   <text x="30" y="160" class="t-sm t-it">the user adds a group</text>
   <text x="30" y="182" class="t-mono">n = Book Club</text>
 
-  <path class="ln-accent" d="M 212 120 L 248 120" marker-end="url(#fig57-2-acc)"/>
+  <path class="ln-accent" d="M 212 120 L 248 120" marker-end="url(#fig57-3-acc)"/>
 
   <rect class="box-plain" x="252" y="40" width="236" height="160" rx="4"/>
   <text x="370" y="64" class="t-caps" text-anchor="middle">footprint rule</text>
@@ -199,7 +246,7 @@ address.
   <text x="266" y="164" class="t-mono">…/contacts/Group/</text>
   <text x="266" y="184" class="t-mono">Book_Club/index.ttl#this</text>
 
-  <path class="ln-accent" d="M 488 120 L 524 120" marker-end="url(#fig57-2-acc)"/>
+  <path class="ln-accent" d="M 488 120 L 524 120" marker-end="url(#fig57-3-acc)"/>
 
   <rect class="box-green" x="528" y="40" width="176" height="160" rx="4"/>
   <text x="616" y="64" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">folders</text>
@@ -212,7 +259,7 @@ address.
   <line class="ln-dash" x1="16" y1="222" x2="704" y2="222"/>
   <text x="360" y="246" class="t-sm t-it" text-anchor="middle">A second app that uses the same rule computes the same address, and finds the group there.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 57.2</span>
+<figcaption><span class="fig-label">Figure 57.3</span>
 The address is computed from a shared rule, not invented by each application.
 The note offers its rules as tentative.</figcaption>
 </figure>
@@ -230,7 +277,6 @@ used to create a new link where old data does not exist.
 <p>
 An application must never use the rule to guess that something already exists
 at an address. That is what separates a footprint from a hard-coded folder.
-Chapter 50 gave a protocol for how to write to a server; nothing said where.
 Two applications can both speak the protocol perfectly and still be unable to
 see each other&#8217;s data.
 </p>
@@ -246,18 +292,23 @@ with where it is stored.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig57-3-t fig57-3-d">
-  <title id="fig57-3-t">One shape, many forms, many footprints</title>
-  <desc id="fig57-3-d">In the centre, the shape for an individual lists its
+     aria-labelledby="fig57-4-t fig57-4-d">
+  <title id="fig57-4-t">One shape, many forms, many footprints</title>
+  <desc id="fig57-4-d">In the centre, the shape for an individual lists its
   arcs: organisation, address, email, telephone, name and photo. On the left,
-  the Contact Details form points at organisation, address, email, telephone
-  and name; a simple person form points at name and photo. On the right, two
-  different footprints both link to the same shape. Reading needs only the
+  the Contact Details form fans out arrows to organisation, address, email,
+  telephone and name; a simple person form points at name and photo. On the
+  right, two different footprints each have an arrow pointing at the shape's
+  title. Reading needs only the
   shape; writing needs a footprint.</desc>
   <defs>
-    <marker id="fig57-3-warm" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig57-4-warm" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b08d57"/>
+    </marker>
+    <marker id="fig57-4-grn" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
     </marker>
   </defs>
 
@@ -272,20 +323,20 @@ with where it is stored.
   <text x="300" y="230">name</text>
   <text x="300" y="260">photo</text>
 
-  <rect class="box-warm" x="24" y="30" width="180" height="190" rx="4"/>
-  <text x="114" y="52" class="t-caps" text-anchor="middle" style="fill:#b08d57">form</text>
-  <text x="114" y="72" class="t-sm" text-anchor="middle">Contact Details</text>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 106 L 290 106" marker-end="url(#fig57-3-warm)"/>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 136 L 290 136" marker-end="url(#fig57-3-warm)"/>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 166 L 290 166" marker-end="url(#fig57-3-warm)"/>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 196 L 290 196" marker-end="url(#fig57-3-warm)"/>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 210 L 290 222" marker-end="url(#fig57-3-warm)"/>
+  <rect class="box-warm" x="24" y="122" width="160" height="56" rx="4"/>
+  <text x="104" y="144" class="t-caps" text-anchor="middle" style="fill:#b08d57">form</text>
+  <text x="104" y="164" class="t-sm" text-anchor="middle">Contact Details</text>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 140 L 290 105" marker-end="url(#fig57-4-warm)"/>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 145 L 290 135" marker-end="url(#fig57-4-warm)"/>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 150 L 290 165" marker-end="url(#fig57-4-warm)"/>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 155 L 290 195" marker-end="url(#fig57-4-warm)"/>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 160 L 290 222" marker-end="url(#fig57-4-warm)"/>
 
-  <rect class="box-warm" x="24" y="236" width="180" height="64" rx="4"/>
-  <text x="114" y="258" class="t-caps" text-anchor="middle" style="fill:#b08d57">form</text>
-  <text x="114" y="280" class="t-sm" text-anchor="middle">Simple person</text>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 248 L 290 230" marker-end="url(#fig57-3-warm)"/>
-  <path class="ln-mut" style="stroke:#b08d57" d="M 204 262 L 290 256" marker-end="url(#fig57-3-warm)"/>
+  <rect class="box-warm" x="24" y="236" width="160" height="56" rx="4"/>
+  <text x="104" y="258" class="t-caps" text-anchor="middle" style="fill:#b08d57">form</text>
+  <text x="104" y="278" class="t-sm" text-anchor="middle">Simple person</text>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 258 L 290 230" marker-end="url(#fig57-4-warm)"/>
+  <path class="ln-mut" style="stroke:#b08d57" d="M 184 266 L 290 256" marker-end="url(#fig57-4-warm)"/>
 
   <rect class="box-green" x="528" y="40" width="168" height="64" rx="4"/>
   <text x="612" y="64" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">footprint A</text>
@@ -293,20 +344,18 @@ with where it is stored.
   <rect class="box-green" x="528" y="140" width="168" height="64" rx="4"/>
   <text x="612" y="164" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">footprint B</text>
   <text x="612" y="186" class="t-sm" text-anchor="middle">another layout</text>
-  <line class="ln-dash" x1="528" y1="72" x2="444" y2="130"/>
-  <line class="ln-dash" x1="528" y1="172" x2="444" y2="160"/>
+  <path class="ln-dash" style="stroke:#5a8f5a" d="M 528 72 L 450 58" marker-end="url(#fig57-4-grn)"/>
+  <path class="ln-dash" style="stroke:#5a8f5a" d="M 528 172 L 450 68" marker-end="url(#fig57-4-grn)"/>
   <text x="612" y="250" class="t-sm t-it" text-anchor="middle">reading needs only the shape;</text>
   <text x="612" y="268" class="t-sm t-it" text-anchor="middle">writing needs a footprint</text>
 </svg>
-<figcaption><span class="fig-label">Figure 57.3</span>
+<figcaption><span class="fig-label">Figure 57.4</span>
 Forms and footprints both point at the shape, so its rules are written once
 and never copied.</figcaption>
 </figure>
 
 <p>
-This holds for any store shared by several programs. Agreeing a format is not
-agreeing a layout, and settling only the first produces programs that cannot
-cooperate.
+For any shared store, agreeing a format is not agreeing a layout.
 </p>
 
 <h2>57.6 Finding where a person keeps things</h2>
@@ -319,13 +368,13 @@ user&#8217;s WebID, the address that identifies them.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
-     aria-labelledby="fig57-4-t fig57-4-d">
-  <title id="fig57-4-t">Where an app looks for a user&#8217;s stuff</title>
-  <desc id="fig57-4-d">From the user's WebID, three paths: directly to a
+     aria-labelledby="fig57-5-t fig57-5-d">
+  <title id="fig57-5-t">Where an app looks for a user&#8217;s stuff</title>
+  <desc id="fig57-5-d">From the user's WebID, three paths: directly to a
   public index; through the preferences file to a private index; and through
   the list of groups the user is active in to each group or project index.</desc>
   <defs>
-    <marker id="fig57-4-acc" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig57-5-acc" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
     </marker>
@@ -334,18 +383,18 @@ user&#8217;s WebID, the address that identifies them.
   <rect class="box" x="40" y="95" width="120" height="44" rx="4"/>
   <text x="100" y="122" text-anchor="middle">user&#8217;s WebID</text>
 
-  <path class="ln-accent" d="M 160 108 L 206 50 L 496 50" marker-end="url(#fig57-4-acc)"/>
+  <path class="ln-accent" d="M 160 108 L 206 50 L 496 50" marker-end="url(#fig57-5-acc)"/>
   <text x="350" y="40" class="t-sm" text-anchor="middle">linked directly</text>
 
-  <path class="ln-accent" d="M 160 117 L 242 117" marker-end="url(#fig57-4-acc)"/>
+  <path class="ln-accent" d="M 160 117 L 242 117" marker-end="url(#fig57-5-acc)"/>
   <rect class="box-plain" x="246" y="97" width="164" height="40" rx="4"/>
   <text x="328" y="122" text-anchor="middle">preferences file</text>
-  <path class="ln-accent" d="M 410 117 L 496 117" marker-end="url(#fig57-4-acc)"/>
+  <path class="ln-accent" d="M 410 117 L 496 117" marker-end="url(#fig57-5-acc)"/>
 
-  <path class="ln-accent" d="M 160 126 L 206 184 L 242 184" marker-end="url(#fig57-4-acc)"/>
+  <path class="ln-accent" d="M 160 126 L 206 184 L 242 184" marker-end="url(#fig57-5-acc)"/>
   <rect class="box-plain" x="246" y="164" width="164" height="40" rx="4"/>
   <text x="328" y="189" text-anchor="middle">the user&#8217;s groups</text>
-  <path class="ln-accent" d="M 410 184 L 496 184" marker-end="url(#fig57-4-acc)"/>
+  <path class="ln-accent" d="M 410 184 L 496 184" marker-end="url(#fig57-5-acc)"/>
 
   <rect class="box-green" x="500" y="30" width="180" height="40" rx="4"/>
   <text x="590" y="55" text-anchor="middle">public index</text>
@@ -354,7 +403,7 @@ user&#8217;s WebID, the address that identifies them.
   <rect class="box-green" x="500" y="164" width="180" height="40" rx="4"/>
   <text x="590" y="189" text-anchor="middle">group or project index</text>
 </svg>
-<figcaption><span class="fig-label">Figure 57.4</span>
+<figcaption><span class="fig-label">Figure 57.5</span>
 Three routes from one identity. The third runs through groups.</figcaption>
 </figure>
 
@@ -412,8 +461,7 @@ other&#8217;s data. Describe how, and what would fix it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.4</span>
-Where does your editor put a new file by default? Is that a footprint? What
-does it assume?</p>
+Where does your phone put a new photo? Is that a footprint?</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.5</span>

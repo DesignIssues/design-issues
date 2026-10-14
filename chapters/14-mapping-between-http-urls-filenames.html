@@ -113,8 +113,7 @@ that accepts uploads, the two can disagree.
 <h2>14.2 Three requirements, two of which may be had</h2>
 
 <p>
-The note states the conflict exactly. Two HTTP verbs
-matter: <a class="gl-ref" href="../glossary.html#put">PUT</a> (upload to a chosen address) and <a class="gl-ref" href="../glossary.html#get">GET</a> (fetch). Three things are
+Two HTTP verbs matter: <a class="gl-ref" href="../glossary.html#put">PUT</a> (upload to a chosen address) and <a class="gl-ref" href="../glossary.html#get">GET</a> (fetch). Three things are
 wanted, and they cannot all hold.
 </p>
 
@@ -131,39 +130,38 @@ wanted, and they cannot all hold.
   <!-- triangle -->
   <path class="ln-mut" d="M 360 74 L 152 302 L 568 302 Z"/>
 
-  <rect class="box" x="242" y="26" width="236" height="48" rx="4"/>
-  <text x="360" y="46" class="t-caps" text-anchor="middle">direct correspondence</text>
-  <text x="360" y="64" class="t-sm" text-anchor="middle">links work in both spaces</text>
+  <rect class="box-green" x="242" y="26" width="236" height="48" rx="4"/>
+  <text x="360" y="46" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">correct extensions</text>
+  <text x="360" y="64" class="t-sm" text-anchor="middle">the type on disk is the real type</text>
 
   <rect class="box-warm" x="34" y="302" width="236" height="48" rx="4"/>
   <text x="152" y="322" class="t-caps" text-anchor="middle" style="fill:#b08d57">arbitrary PUT</text>
   <text x="152" y="340" class="t-sm" text-anchor="middle">any URI a client chooses</text>
 
-  <rect class="box-green" x="450" y="302" width="236" height="48" rx="4"/>
-  <text x="568" y="322" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">correct extensions</text>
-  <text x="568" y="340" class="t-sm" text-anchor="middle">the type on disk is the real type</text>
+  <rect class="box" x="450" y="302" width="236" height="48" rx="4"/>
+  <text x="568" y="322" class="t-caps" text-anchor="middle">direct correspondence</text>
+  <text x="568" y="340" class="t-sm" text-anchor="middle">links work in both spaces</text>
 
   <!-- edge labels: each design keeps the two it joins -->
   <rect x="162" y="158" width="136" height="42" fill="#fdfdfc"/>
-  <text x="230" y="175" class="t-caps" text-anchor="middle">Try 3</text>
-  <text x="230" y="193" class="t-sm" text-anchor="middle">drops extensions</text>
+  <text x="230" y="175" class="t-caps" text-anchor="middle">Try 1</text>
+  <text x="230" y="193" class="t-sm" text-anchor="middle">drops correspondence</text>
 
   <rect x="426" y="158" width="136" height="42" fill="#fdfdfc"/>
   <text x="494" y="175" class="t-caps" text-anchor="middle">Try 2</text>
   <text x="494" y="193" class="t-sm" text-anchor="middle">drops arbitrary PUT</text>
 
-  <text x="360" y="324" class="t-caps" text-anchor="middle">Try 1</text>
-  <text x="360" y="342" class="t-sm" text-anchor="middle">drops correspondence</text>
+  <text x="360" y="324" class="t-caps" text-anchor="middle">Try 3</text>
+  <text x="360" y="342" class="t-sm" text-anchor="middle">drops extensions</text>
 
   <text x="360" y="228" class="t-sm t-it" text-anchor="middle">each edge keeps the two corners it joins</text>
 
   <line class="ln-mut" x1="34" y1="366" x2="686" y2="366"/>
-  <text x="360" y="390" class="t-sm" text-anchor="middle" xml:space="preserve"><tspan font-style="italic">The resolution: weaken the top corner from </tspan><tspan style="fill:#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan style="fill:#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
+  <text x="360" y="390" class="t-sm" text-anchor="middle" xml:space="preserve"><tspan font-style="italic">The resolution: weaken the correspondence corner from </tspan><tspan style="fill:#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan style="fill:#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
 </svg>
 <figcaption><span class="fig-label">Figure 14.1</span>
-Berners-Lee&#8217;s method here is worth as much as his answer: state the
-requirements precisely enough that their incompatibility becomes a
-theorem, then look for the weakest one to weaken.</figcaption>
+Each Try sits on an edge and keeps the two corners it joins. The sweet spot
+keeps all three by asking only <em>some</em> names to correspond.</figcaption>
 </figure>
 
 <p>
@@ -268,24 +266,35 @@ both spaces for people who pick those names
 </blockquote>
 
 <p>
-The rule is then mechanical. A URI maps directly to a filename if and only if
-that produces a correct extension. Otherwise it maps to a different filename
-that has the right extension and from which the URI can be recovered exactly,
-flagged by a character people do not normally use in names, such as a dollar
-sign. The last column of the table in section 14.2 shows the result.
+The rule is then a two-step recipe:
+</p>
+
+<ol>
+<li>If the URI already ends in the right extension for its type, use it as
+the filename.</li>
+<li>If not, add <code>$</code> and the right extension. To get the URI back,
+cut everything from the <code>$</code>.</li>
+</ol>
+
+<p>
+The note calls <code>$</code> an &ldquo;otherwise forbidden character&rdquo;:
+one the server does not allow in ordinary URIs, so no real name can collide
+with a tweaked one. The last column of the table in section 14.2 shows the
+result.
 </p>
 
 <p>
-A publisher willing to use URIs with
-file-like extensions gets the two-space mapping. One who is not does not, and
-everything else still works.
+So a file uploaded as <code>report.html</code> appears on disk as
+<code>report.html</code>. One uploaded as <code>report</code> appears as
+<code>report$.html</code>: it still works over HTTP, but a local link to
+<code>report</code> will not find it.
 </p>
 
 <h2>14.4 The asymmetry nobody expects</h2>
 
 <p>
-A short passage at the end, the most useful for implementers, notices that
-the mapping is not one function but three.
+A short passage at the end notices that the mapping is not one function but
+three.
 </p>
 
 <figure>
@@ -365,7 +374,7 @@ wherever it is unpacked.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a> servers adopted the convention.</strong> Ruben Verborgh
+<li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a> servers adopted the convention.</strong> Solid servers are the personal data stores of Chapter 54. Ruben Verborgh
 added a URL-to-file mapper to Node Solid Server in March 2018, and version
 5.0.0 (March 2019) stores a resource whose name lacks the right extension
 under a <code>$</code>-suffixed filename, so <code>foo.bar</code> sent as
@@ -378,11 +387,12 @@ Common Weakness Enumeration, and the general defence is the one implied
 here: do not let a remote party&#8217;s chosen name decide how a local system
 treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>
-Servers such as Apache and nginx, when configured to accept WebDAV PUT,
+Servers such as Apache and nginx, when configured to accept WebDAV PUT (WebDAV is an HTTP extension that lets
+clients write files to a server),
 still map URLs to filenames directly, which is Try 3, and generally rely on
 not granting untrusted write access rather than on making writes safe.</li>
 <li><strong>The two-space workflow persisted.</strong> Static site generators
-and file-backed publishing pipelines are the mainstream version of what this
+(tools that build a website from local files and upload the result) are the mainstream version of what this
 note describes, and they avoid the problem entirely by having no arbitrary
 PUT.</li>
 </ul>
@@ -415,7 +425,7 @@ Explain why, and say what this costs a server handling many requests.</p>
 </div>
 <div class="question">
 <p><span class="question-number">14.3</span>
-Why must the marker be a character people do not normally use in names?
+Why must the marker be a character the server forbids in ordinary URIs?
 What breaks if it were <code>_</code>?</p>
 </div>
 <div class="question">

@@ -42,6 +42,13 @@ as <em>child</em> or <em>title</em>. A <em>dataset</em> is a large body of
 statements, such as a library catalogue.
 </p>
 
+<p>
+Walked through with one person: name Albert with a URI; make it an
+<code>http:</code> address, so that it can be looked up; when someone looks
+it up, return statements such as (Albert, child, Brian); and make Brian a URI
+too, so the reader can go on.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig49-1-t fig49-1-d">
@@ -100,14 +107,13 @@ explains why so much data in 2006 was still unlinked.</figcaption>
 <h2>49.2 Where each rule fails</h2>
 
 <p>
-The failures differ in kind. The first rule is understood; Berners-Lee
-makes it definitional: if it does not use the universal set of symbols, we do
-not call it Semantic Web.
+The failures differ in kind. The first rule is definitional: if it does not
+use the universal set of symbols, Berners-Lee does not call it Semantic Web.
 </p>
 
 <p>
-The second rule is also widely understood. The one deviation, since the Web
-began, has been a constant tendency to invent new identifier schemes: LSIDs,
+The second rule&#8217;s one deviation has been a constant tendency to invent
+new identifier schemes: LSIDs,
 handles, XRIs, DOIs and others. He gives two reasons. The first is control:
 </p>
 
@@ -214,9 +220,8 @@ the name says where to look. Jones copies nothing.</figcaption>
 </figure>
 
 <p>
-The local name <code>#carol</code> in Smith&#8217;s document becomes the
-global name <code>http://example.org/smith#carol</code>, which anyone, Jones
-included, can use. The note calls the two steps, cut and fetch,
+The local name <code>#carol</code> becomes the global name
+<code>http://example.org/smith#carol</code>, which anyone can use. The note calls the two steps, cut and fetch,
 <em>dereferencing</em> the URI; it is the fragment mechanism of Chapter 11.
 </p>
 
@@ -224,7 +229,8 @@ included, can use. The note calls the two steps, cut and fetch,
 Some vocabularies, including early Dublin Core and FOAF, used names without a
 hash. For these the server answers with a <em>redirect</em>: a reply, with
 the status code 303, telling the client to fetch a different address instead
-(Chapter 8). Names can then take any form, at a price.
+(Chapter 8). Names can then take any form, at a price. In Figure 49.3 a GET
+is a browser&#8217;s ordinary request for a page.
 </p>
 
 <figure>
@@ -304,6 +310,11 @@ example records that its author knows Joe:
        rdfs:seeAlso &lt;http://example.com/foaf/joe&gt; ].</code></pre>
 
 <p>
+Read: I know someone whose mailbox is joe@example.com, and more about them is
+at example.com/foaf/joe. Joe himself has no name of his own.
+</p>
+
+<p>
 For privacy, publishers often gave a one-way hash of the address instead: a
 fingerprint of it that cannot be reversed.
 </p>
@@ -326,15 +337,14 @@ basic links to them cannot be made.
 
 <p>
 This is rule one failing inside a system that obeys the other three. His
-remedy: anyone making a FOAF file should give themselves a URI as well as
-using the convention, and anyone referring to a person who has one should
-use it.
+remedy: people making FOAF files should give themselves a URI, and others
+should use it.
 </p>
 
 <h2>49.5 Which links to make</h2>
 
 <p>
-Next, when to link. Data is <em>browsable</em> if
+Data is <em>browsable</em> if
 looking up any thing returns every statement in which it appears, as first
 part or last. Then a group leads to its members and a member to the group.
 </p>
@@ -342,8 +352,9 @@ part or last. Then a group leads to its members and a member to the group.
 <p>
 The price is that a statement relating two documents must be repeated in
 both (Figure 49.4, left). That breaks the first rule of data storage, not to
-store the same thing twice. Generated data escapes the cost: the dbview
-server presents any relational database as browsable documents. Otherwise
+store the same thing twice. Generated data escapes the cost: dbview, a
+program written at MIT in 2004 and extended in 2006, presents any relational
+database as linked pages. Otherwise
 the choice is common sense:
 </p>
 
@@ -376,16 +387,16 @@ objects is it useful to know about?
   <text x="177" y="34" class="t-caps" text-anchor="middle">repeated in both</text>
   <rect class="box" x="24" y="52" width="306" height="70" rx="4"/>
   <text x="38" y="70" class="t-sm">Berners-Lee&#8217;s FOAF page</text>
-  <text x="50" y="104">TimBL</text>
-  <line class="ln" x1="92" y1="100" x2="220" y2="100" marker-end="url(#fig49-4-arr)"/>
-  <text x="156" y="90" class="t-sm" text-anchor="middle">member of</text>
+  <text x="40" y="104">Berners-Lee</text>
+  <line class="ln" x1="124" y1="100" x2="220" y2="100" marker-end="url(#fig49-4-arr)"/>
+  <text x="172" y="90" class="t-sm" text-anchor="middle">member of</text>
   <text x="230" y="104">DIG group</text>
 
   <rect class="box" x="24" y="142" width="306" height="70" rx="4"/>
   <text x="38" y="160" class="t-sm">DIG group data</text>
-  <text x="50" y="194">TimBL</text>
-  <line class="ln" x1="92" y1="190" x2="220" y2="190" marker-end="url(#fig49-4-arr)"/>
-  <text x="156" y="180" class="t-sm" text-anchor="middle">member of</text>
+  <text x="40" y="194">Berners-Lee</text>
+  <line class="ln" x1="124" y1="190" x2="220" y2="190" marker-end="url(#fig49-4-arr)"/>
+  <text x="172" y="180" class="t-sm" text-anchor="middle">member of</text>
   <text x="230" y="194">DIG group</text>
 
   <text x="177" y="238" class="t-sm" text-anchor="middle">found from either end, but stored twice</text>
@@ -410,10 +421,10 @@ objects is it useful to know about?
   <circle cx="476" cy="190" r="3.5" fill="#b08d57"/>
   <circle cx="492" cy="212" r="3.5" fill="#b08d57"/>
   <circle cx="508" cy="232" r="3.5" fill="#b08d57"/>
-  <rect class="box-green" x="556" y="112" width="140" height="40" rx="4"/>
-  <text x="626" y="137" text-anchor="middle">TimBL&#8217;s FOAF file</text>
-  <text x="626" y="176" class="t-sm" text-anchor="middle">no link back</text>
-  <text x="626" y="192" class="t-sm" text-anchor="middle">to any point</text>
+  <rect class="box-green" x="556" y="112" width="152" height="40" rx="4"/>
+  <text x="632" y="137" text-anchor="middle">Berners-Lee (his URI)</text>
+  <text x="632" y="176" class="t-sm" text-anchor="middle">his FOAF file:</text>
+  <text x="632" y="192" class="t-sm" text-anchor="middle">no link back to any point</text>
   <text x="396" y="260" class="t-sm">GPS track: thousands of points</text>
 </svg>
 <figcaption><span class="fig-label">Figure 49.4</span>
@@ -466,8 +477,8 @@ fail, and which is cheapest to fix?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.2</span>
-Take one of LSIDs, handles, XRIs or DOIs. What authority does it avoid,
-and what does it substitute?</p>
+DOIs now usually appear as <code>https://doi.org/&hellip;</code> links.
+Which rule does that satisfy, and what did the DOI scheme gain by doing it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.3</span>
@@ -476,7 +487,6 @@ can a client that knows nothing of the FOAF convention now do?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.4</span>
-Rule four is argued from etiquette rather than mechanism. Is that sufficient?
-Give a case where linking out is against the publisher&#8217;s interest.</p>
+Rule four is argued from etiquette rather than mechanism. Give a case where linking out is against the publisher&#8217;s interest.</p>
 </div>
 </div>

@@ -68,8 +68,8 @@ only checks a proof that someone hands it.
 <h3>The question</h3>
 <p>
 The companion to Chapter 5, written the same month of September 1998 and spun
-off from it because the subject needed more room than a survey could give. Its
-own description of its standing is candid:
+off from it because the subject needed more room than a survey could give. It is
+candid about its standing:
 </p>
 <blockquote>
 A road map for the future, an architectural plan untested by anything except
@@ -188,7 +188,7 @@ Two applications seldom use the same <em><a class="gl-ref" href="../glossary.htm
 their data is written in. The conversion layer states rules for translating
 one into another. It is allowed implication but still no negation. The
 note&#8217;s example is three databases built independently and put on the
-Web (Figure 30.2).
+Web, joined through a zip, a US postcode (Figure 30.2).
 </p>
 
 <figure>
@@ -256,8 +256,10 @@ statements of equivalence carry the query across.</figcaption>
 The logical layer adds &ldquo;not&rdquo; and &ldquo;and&rdquo;, then
 &ldquo;for all x&rdquo;. With these a document can carry general rules. Where
 a Library of Congress schema says &ldquo;author&rdquo; and a British Library
-one says &ldquo;creator&rdquo;, a small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> can state that for any
-person x and resource y, if x is the author of y then x is the creator of y.
+one says &ldquo;creator&rdquo;, a rule can carry one over: if Dickens is the
+author of <i>Bleak House</i> in one catalogue, he is its creator in the other.
+A small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> states it once for every case: for any person x and
+resource y, if x is the author of y then x is the creator of y.
 </p>
 
 <h3>Signature</h3>
@@ -265,14 +267,14 @@ person x and resource y, if x is the author of y then x is the creator of y.
 For reasoning to take trust into account, public keys become first-class
 objects, things the logic can talk about, and the model records which key
 signed which assertion. Proof checking then verifies signatures as well as
-logic. It matters once proofs exist, but can be developed in parallel.
+logic. It can be developed in parallel.
 </p>
 
 <h2>30.3 Why bother at the bottom</h2>
 
 <p>
 If an application&#8217;s data is simple, why express it in this model at
-all? The answer is the argument for the whole enterprise:
+all? The answer argues for the whole enterprise:
 </p>
 
 <blockquote>
@@ -291,9 +293,9 @@ sharing a format with the others. Chapter 37 works it through in detail.
 <h2>30.4 Proof, and the asymmetry that makes it work</h2>
 
 <p>
-The most important design decision in the roadmap is a restriction, and it
-separates this plan from the artificial intelligence projects it is compared
-to. The system is required to validate proofs, not to find them.
+The roadmap&#8217;s most important design decision is a restriction. The system is required to validate proofs, not to find them. A proof
+here is a list of signed statements plus the rules that join them, which
+anyone can re-check step by step.
 </p>
 
 <figure>
@@ -353,7 +355,8 @@ out why Alice should be let in; it only follows the chain it was handed.</figcap
 <p>
 Someone granted access to a site is given a document explaining to the <a class="gl-ref" href="../glossary.html#server">server</a>
 why they should have it. The proof is &ldquo;a chain [well, DAG] of assertions
-and reasoning rules&rdquo;, with pointers to the supporting material. The
+and reasoning rules&rdquo; (a DAG is a chain that may branch and rejoin),
+with pointers to the supporting material. The
 note expects the same of privacy and most electronic commerce:
 </p>
 
@@ -366,13 +369,13 @@ asked for.
 
 <p>
 Finding a proof for an arbitrary question is intractable; checking one that
-arrives with the request is not. Chapter 31 makes the point at length.
+arrives with the request is not.
 </p>
 
 <h2>30.5 Engines of the future</h2>
 
 <p>
-The closing sections are the most speculative. Indexes of terms, Berners-Lee expects, will let the Web be
+Indexes of terms, Berners-Lee expects, will let the Web be
 searched &ldquo;as though it were one giant database, rather than one giant
 book&rdquo;. He then proposes joining two kinds of engine that had each
 failed alone (Figure 30.4).
@@ -441,18 +444,21 @@ algorithms.
 </blockquote>
 
 <p>
-He states the limit plainly: no machine will guarantee to answer arbitrary
-questions.
+The depth matters because each step out on the Web may follow every link from
+every result of the step before: two steps over a hundred links each is ten
+thousand fetches. He states the limit plainly: no machine will guarantee to
+answer arbitrary questions.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The lower layers shipped.</strong> RDF, for assertions, became a
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 1999; RDF Schema, for schema, in February 2004;
-<a class="gl-ref" href="../glossary.html#owl">OWL</a> in the same month, whose <code>equivalentProperty</code> states exactly
-the conversion of Figure 30.2; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, for queries, in January 2008. The
-plan was executed upward, in order, over a decade.</li>
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> (finished-standard status) in February 1999; RDF Schema, a
+vocabulary-definition language, in February 2004; <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a richer <a class="gl-ref" href="../glossary.html#ontology">ontology</a>
+language, in the same month, whose <code>equivalentProperty</code> states
+exactly the conversion of Figure 30.2; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, a query language for RDF,
+in January 2008.</li>
 <li><strong>The proof layer did not.</strong> No interoperable proof exchange
 format was standardised. The asymmetry of section 30.4, which the roadmap
 treats as its central bet, was never cashed.</li>

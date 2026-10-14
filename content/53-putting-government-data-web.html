@@ -32,7 +32,7 @@ or a payment, gets its own web address, so other data can point to it.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 286" width="720" height="286" role="img"
      aria-labelledby="fig53-1-t fig53-1-d">
   <title id="fig53-1-t">The order of priorities</title>
   <desc id="fig53-1-d">Publish the raw data first, preferably as linked data,
@@ -58,7 +58,6 @@ or a payment, gets its own web address, so other data can point to it.
 
   <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
   <text x="360" y="272" class="t-sm" text-anchor="middle">The interface is ranked last deliberately: it is the part an outside community can supply.</text>
-  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">The data is the part only the department has.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 53.1</span>
 Demoting the interface follows from asking which steps only the publisher
@@ -69,7 +68,8 @@ can take.</figcaption>
 A department&#8217;s own site cannot compete with outside sites, for two
 reasons: ordinary users cannot yet build queries of their own, and an outside
 site adds value by joining the data to other data for its own purpose, as in
-Figure 53.2.
+Figure 53.2. The note grants one exception: there are times when the
+government site must give ordinary users an easy way in.
 </p>
 
 <figure>
@@ -245,20 +245,21 @@ essential. Put the data up where it is: join it together later.
 
 <p>
 A <em>mandate</em> from the top supplies permission, the first star of
-Chapter 51 and the hardest thing to obtain. It does not supply the vocabulary,
-and waiting for it to do so is how programmes die.
+Chapter 51 and the hardest thing to obtain. It does not supply the
+vocabulary.
 </p>
 
-<h2>53.4 Why this is not merely practical advice</h2>
+<h2>53.4 Mixing vocabularies</h2>
 
 <p>
 A <em>vocabulary</em> is a set of shared terms for describing data. The note
 recommends terms others already use: <code>foaf:name</code> for a
 person&#8217;s name, <code>dc:title</code> for a title, <code>geo:lat</code>
-and <code>geo:long</code> for position. Chapter 17 argued that one document
-must be able to carry several vocabularies; here that lets a department use
-international terms where they exist and national or local terms for the
-rest.
+and <code>geo:long</code> for position. The part before the colon is a short
+nickname for the vocabulary: FOAF (&ldquo;friend of a friend&rdquo;) for
+people, DC (Dublin Core) for documents, geo for positions. Chapter 17 argued
+that one document must carry several vocabularies; here a department uses
+international terms where they exist and local ones for the rest.
 </p>
 
 <blockquote>
@@ -373,13 +374,11 @@ where the law allows.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The programmes launched within a year of the note.</strong>
-The American data portal, data.gov, opened in May 2009 and Britain&#8217;s,
-data.gov.uk, in January 2010, and open data mandates spread internationally
-over the following decade.</li>
-<li><strong>Sustaining publication proved harder than starting it.</strong>
-Datasets published under a mandate frequently stopped being updated when
-attention moved, which is rule three of Chapter 49 failing slowly.</li>
+<li><strong>The portals arrived around the note.</strong> The American data
+portal, data.gov, opened in May 2009, a month before it; Britain&#8217;s,
+data.gov.uk, followed in January 2010, seven months after. The note itself
+records that both governments made public commitments toward open data that
+year.</li>
 </ul>
 </div>
 
@@ -396,7 +395,9 @@ sense of openness is Chapter 25; the identifiers are Chapter 48.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">53.1</span>
-When should a publisher build an interface anyway?</p>
+The note ranks the interface last, yet grants that a government site must
+sometimes provide one. What kind of user is that exception for, and why can
+outside sites not serve them?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.2</span>
@@ -410,7 +411,7 @@ database, and what does it suggest instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.4</span>
-Design the smallest commitment that would keep a dataset alive for ten
-years.</p>
+Which of the eight do&#8217;s and don&#8217;ts would most help someone who
+later wants to join your data to theirs, and why?</p>
 </div>
 </div>

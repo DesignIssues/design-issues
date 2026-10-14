@@ -53,8 +53,8 @@ a Design Issues note by Tim Berners-Lee, 1996-12-19.
 <h3>The short version</h3>
 <p>
 A web address looks like a location, as though it named a place on somebody&#8217;s
-disk. It is not. It is a name, and the single most consequential decision in
-the Web&#8217;s design was that everything worth mentioning gets one.
+disk. It is not. It is a name, and the Web&#8217;s design rests on giving
+everything worth mentioning one.
 </p>
 <p>
 This note sets out ten rules about those names. Together they are the reason
@@ -131,18 +131,18 @@ Two claims are numbered zero: they are prior to the rest.
 
 <div class="editors-note">
 <p><strong>Axiom 0, universality 1.</strong> Any resource anywhere can be
-given a URI.</p>
+given a URI. (A resource here is anything that can be named.)</p>
 <p><strong>Axiom 0a, universality 2.</strong> Any resource of significance
 should be given a URI.</p>
 </div>
 
 <p>
-The first is a claim about the design, and Berners-Lee argues for it. Every
-URI begins with a <a class="gl-ref" href="../glossary.html#scheme">scheme</a>: the word before the colon, such as
-<code>http</code> or <code>mailto</code>, which says which rules apply to
-the rest. A URI has no length limit. So any naming scheme can be folded into
-URI space by writing its identifiers as a printable string behind a new
-scheme name, such as <code>ISBN:</code> for book numbers.
+The first is a claim about the design, and Berners-Lee argues for it in
+three steps. (1) Every URI starts with a <a class="gl-ref" href="../glossary.html#scheme">scheme</a>: the word before the colon,
+such as <code>http</code> or <code>mailto</code>, which says which rules
+apply to the rest. (2) A URI has no length limit. (3) So any identifier,
+written as printable characters behind a new scheme name, is a URI, as
+<code>ISBN:</code> could be for book numbers.
 </p>
 
 <p>
@@ -293,8 +293,18 @@ inside the string to gain other information.</p>
 <p>
 Even when fetching, the client reads only the scheme and the authority (the
 part after <code>//</code>, usually a host name) to decide which server to
-contact. The rest is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to it. Figure 2.2 shows who may read what.
+contact. The rest is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to it.
 </p>
+
+<p>
+The query string, the part after a question mark that a search form fills
+in, is an exception: the client constructs it. But it should stay opaque to
+proxies, the servers between reader and site that pass requests on and
+often <a class="gl-ref" href="../glossary.html#cache">cache</a> them, keeping copies so pages need not be fetched again. The
+fragment, after <code>#</code>, picks out a part of the page and stays in
+the browser (Chapters 4 and 11). Figure 2.2 shows who may read what.
+</p>
+
 
 <figure>
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
@@ -345,13 +355,6 @@ kind of file something is. The architecture guarantees no such convention: a
 server mapping names from an older database may produce <code>.html</code>
 by coincidence. Such information belongs in the protocol, which is what much
 of the HTTP header set exists to carry.
-</p>
-
-<p>
-The query string, the part after a question mark that a search form fills
-in, is an exception: the client constructs it. But it should stay opaque to
-proxies, the servers between reader and site that pass requests on and
-often <a class="gl-ref" href="../glossary.html#cache">cache</a> them, keeping copies so pages need not be fetched again.
 </p>
 
 <p>
@@ -435,17 +438,12 @@ program that fetches every link on a page in advance cannot tell a
 </figure>
 
 <p>
-The first axiom is about safety; the second is about universality. If some
-other method were used for requests without side effects, its results would
-form a separate space that links could not reach, because a link carries a
-URI and not a method. People would soon want to put the method into the
-link.
-</p>
-
-<p>
-A user, he says, can never be held accountable for anything as a result of
-doing a GET. A server may log the request, but logging is not communication
-between the parties.
+The first axiom is about safety; the second is about universality. A link
+carries a URI and not a method, so it can only say GET. If searches used
+some third method, a search result could not be bookmarked or linked to.
+And because GET is safe, a user, he says, can never be held accountable for
+anything as a result of doing one. A server may log the request, but logging
+is not communication between the parties.
 </p>
 
 <h2>2.7 Not the only space</h2>
@@ -594,9 +592,8 @@ did the site break, and how should the page have been built?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.3</span>
-Axiom 2b makes meaning the property of the URI owner. Construct a case in
-which two parties disagree about what a URI denotes and the architecture
-supplies no way to settle it. What would have to be added?</p>
+Two sites link to the same URI, one believing it names a company and the
+other its home page. According to Axiom 2b, who decides which is right?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.4</span>

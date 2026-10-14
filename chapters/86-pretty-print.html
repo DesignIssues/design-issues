@@ -52,8 +52,9 @@ a Design Issues note by Tim Berners-Lee, 2023-10-05.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Write data so people can read it. Same data, same text. Small change, small
-diff.
+Write data so people can read it, because the Web spread by people copying
+what they could read. Always write the same data the same way. Then a one-field
+edit shows up as a one-line change in version control.
 </p>
 </div>
 
@@ -63,8 +64,8 @@ diff.
 Written in October 2023. &ldquo;Pretty printing&rdquo; is formatting code
 &ldquo;so that it is easy to read by humans, and aesthetically pleasing&rdquo;.
 The note asks how a program should lay out data in a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (the personal
-data store of Chapter 54), and argues that legibility is a system property
-rather than a courtesy.
+data store of Chapter 54), and argues that legibility pays off throughout the
+system, not just for readers.
 </p>
 </div>
 
@@ -81,13 +82,13 @@ and adapting each others web pages is important linked data in Solid pods too.
 </blockquote>
 
 <p>
-Chapter 56 traced how the Web spread: copy, change, look, show someone. Copying
-needs a source that a stranger can read; a format legible only through a tool
-loses that step, and the others with it.
+Chapter 56 traced how the Web spread: copy, change, look, show someone.
+Copying needs a source a stranger can read; a format legible only through a
+tool loses that step.
 </p>
 
 <p>
-He then reports the experience of the field, and answers the obvious objection:
+He adds the field&#8217;s experience, and answers an objection:
 </p>
 
 <blockquote>
@@ -108,12 +109,11 @@ across the net.
 
 <p>
 The part of a program that writes data out as text is its <em>serialiser</em>.
-The note asks two things of it. First, it is useful &ldquo;for the same data to
-consistently give the same text&rdquo;. Second, &ldquo;small changes in the data
-produce small changes in the text&rdquo;. The second matters because of
-version control: tools such as Mercurial, git, SVN and CVS keep every past
-version of a file and show, as a <em>diff</em>, the lines that changed between
-two of them.
+The note asks it, first, &ldquo;for the same data to consistently give the same
+text&rdquo;; second, that &ldquo;small changes in the data produce small changes
+in the text&rdquo;. The second matters for version control: tools such as git
+keep every past version of a file and show, as a <em>diff</em>, the lines that
+changed between two.
 </p>
 
 <figure>
@@ -163,9 +163,16 @@ difference lies in the serialiser, not the data.</figcaption>
 </figure>
 
 <p>
-Tests benefit too. A test compares actual output with expected output; the note
-advises comparing pretty-printed versions rather than raw triples, so a person
-can see why they differ.
+The figure is in <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a text form common in pods (section 86.5 explains the
+punctuation); read each line as &#8216;Joe &#8230; has &#8230;&#8217;. Pod
+data is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of <em>triples</em>, each <a class="gl-ref" href="../glossary.html#triple">triple</a> one statement: subject,
+property, value.
+</p>
+
+<p>
+Tests compare actual with expected output; the note advises comparing
+pretty-printed versions rather than raw triples, so a person can see why they
+differ.
 </p>
 
 <figure>
@@ -218,14 +225,13 @@ can see why they differ.
   <text x="601" y="210" class="t-sm" text-anchor="middle">pasted into a chat</text>
 </svg>
 <figcaption><span class="fig-label">Figure 86.2</span>
-One property of the writer serves three different readers, each named in the
-note.</figcaption>
+One property of the writer serves three readers, each named in the note.</figcaption>
 </figure>
 
 <h2>86.3 Writing, not only reading</h2>
 
 <p>
-Most discussions of formatting consider only the reader. The note does not:
+Formatting is usually discussed for the reader alone. The note goes further:
 </p>
 
 <blockquote>
@@ -237,8 +243,8 @@ English like way also is more pleasant, and easier to check for mistakes.
 </blockquote>
 
 <p>
-This is the case for the notation of Chapter 42, made on grounds of comfort
-rather than logic: a syntax close to a sentence is easier to get right by hand.
+This is the case for Chapter 42&#8217;s notation, made on grounds of comfort:
+a syntax close to a sentence is easier to get right by hand.
 </p>
 
 <blockquote>
@@ -248,40 +254,39 @@ whiteboard or in a chat, then legibility and writability are both important.
 </blockquote>
 
 <p>
-Data gets pasted into conversations, and a format that can be read in a chat
-window without tooling is one a team can discuss.
+A format readable in a chat window without tooling is one a team can
+discuss.
 </p>
 
 <h2>86.4 The argument in general</h2>
 
 <p>
-The note lists six benefits of different kinds; the case does not rest on the
-first.
+The note lists six benefits; the case does not rest on the first.
 </p>
 
 <table>
-<tr><th>Benefit</th><th>What the note says</th><th>Section</th></tr>
-<tr><td>Storage and bandwidth</td><td>Smaller files; may not matter once compressed</td><td>86.4</td></tr>
-<tr><td>Consistency and continuity</td><td>Same data, same text; small change, small change</td><td>86.2</td></tr>
-<tr><td>Tests</td><td>Compare pretty-printed output, so a mismatch can be understood</td><td>86.2</td></tr>
-<tr><td>Source control</td><td>A smaller record of changes; before and after can be compared</td><td>86.2</td></tr>
-<tr><td>Writing</td><td>Configuration files and rules are easier to write clearly</td><td>86.3</td></tr>
-<tr><td>Collaboration</td><td>Data shared on a whiteboard or in a chat</td><td>86.3</td></tr>
+<tr><th>Benefit</th><th>What the note says</th></tr>
+<tr><td>Storage and bandwidth</td><td>Smaller files, which may or may not matter: the text may be compressed anyway</td></tr>
+<tr><td>Consistency and continuity</td><td>Same data, same text; small change in data, small change in text</td></tr>
+<tr><td>Tests</td><td>Compare pretty-printed output, so a mismatch can be understood</td></tr>
+<tr><td>Source control</td><td>A smaller record of changes; before and after can be compared</td></tr>
+<tr><td>Writing</td><td>Configuration files and rules are easier to write clearly</td></tr>
+<tr><td>Collaboration</td><td>Data shared on a whiteboard or in a chat</td></tr>
 </table>
 
 
 <p>
-The note ends with a caution. Indentation, line length and the &ldquo;spaces or
-tabs&rdquo; question are matters of taste, and a developer whose output users
-will see must guess their preferences rather than impose his own.
+The note ends with a caution. Indentation, line length and &ldquo;spaces or
+tabs&rdquo; are matters of taste; a developer whose output users see must guess
+their preferences, not impose his own.
 </p>
 
 <h2>86.5 What makes Turtle legible</h2>
 
 <p>
-Pod data is usually <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, JSON-LD, or <a class="gl-ref" href="../glossary.html#n3">N3</a> (a superset of Turtle). Turtle lets
-spaces and line breaks be used freely, and has shorthands a serialiser should
-use:
+Pod data is usually Turtle, JSON-LD, or <a class="gl-ref" href="../glossary.html#n3">N3</a> (a superset of Turtle). Turtle
+allows free use of spaces and line breaks, and has shorthands a serialiser
+should use:
 </p>
 
 <table>
@@ -289,7 +294,7 @@ use:
 <tr><td>Prefix</td><td><code>&lt;http://xmlns.com/foaf/0.1/name&gt;</code></td><td><code>foaf:name</code></td></tr>
 <tr><td>Semicolon</td><td>Subject repeated</td><td><code>p:joe foaf:name "Joe"; foaf:age 42.</code></td></tr>
 <tr><td>Comma</td><td>Subject and property repeated</td><td><code>p:joe foaf:knows p:ann, p:bob.</code></td></tr>
-<tr><td>Square brackets</td><td>Blank node labelled <code>_:b1</code></td><td><code>[ foaf:name "Ann" ]</code></td></tr>
+<tr><td>Square brackets</td><td>Blank node (a thing with no name of its own) labelled <code>_:b1</code></td><td><code>[ foaf:name "Ann" ]</code></td></tr>
 <tr><td>Parentheses</td><td>A list built node by node</td><td><code>( 1 2 3 )</code></td></tr>
 <tr><td>Raw number</td><td><code>"42"^^xsd:integer</code></td><td><code>42</code></td></tr>
 </table>
@@ -339,10 +344,20 @@ The same graph in both panels; only the layout differs.</figcaption>
 </figure>
 
 <p>
-N3 adds raw dates, an <code>is &#8230; of</code> form for links pointing in,
-<code>@keywords</code> to drop leading colons, and curly brackets for nested
-graphs. Of shared sketching in a chat, the note remarks: &ldquo;(This is what
-N3 was originally made for.)&rdquo;
+N3 adds raw dates and three further forms:
+</p>
+
+<table>
+<tr><th>Feature</th><th>Long form</th><th>Short form</th></tr>
+<tr><td>Reverse arc</td><td><code>p:joe foaf:knows p:ann.</code> apart</td><td><code>p:ann foaf:name "Ann"; is foaf:knows of p:joe.</code></td></tr>
+<tr><td><code>@keywords</code></td><td><code>:joe a :Person.</code></td><td><code>@keywords a. joe a Person.</code></td></tr>
+<tr><td>Curly brackets</td><td>Not expressible in Turtle</td><td><code>p:ann p:said { p:joe foaf:age 42 }.</code></td></tr>
+</table>
+
+<p>
+Reverse arcs list every link touching a thing with it, so a serialiser can
+nest blank nodes in brackets instead of inventing <code>_:b1</code> labels. Of shared sketching in a chat, the note remarks:
+&ldquo;(This is what N3 was originally made for.)&rdquo;
 </p>
 
 <div class="since">
@@ -350,9 +365,9 @@ N3 was originally made for.)&rdquo;
 <ul>
 <li><strong>A canonical form, but not a pretty one.</strong> <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Dataset
 Canonicalization (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, May 2024) writes any dataset as a
-deterministic list of N-Quads lines for comparison and signing. That meets the
-first requirement of section 86.2, but the output is not meant for reading and
-does not promise small diffs.</li>
+deterministic list of lines for comparison and signing. That meets the first
+requirement of section 86.2, but is not meant for reading and does not promise
+small diffs.</li>
 </ul>
 </div>
 
@@ -374,8 +389,8 @@ date added. What happens when you compare their files?</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.2</span>
-A small change should produce a small difference. Name a format you use where
-it does not, and say what that costs.</p>
+Name a format you use where a small change does not produce a small
+difference, and say what that costs.</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.3</span>
@@ -384,8 +399,8 @@ you have written by hand.</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.4</span>
-Name one situation where shipping a binary format is worth losing view-source,
-and say which benefit in section 86.4 you are giving up.</p>
+When is shipping a binary format worth losing view-source? Which benefit in
+section 86.4 is given up?</p>
 </div>
 </details>
 

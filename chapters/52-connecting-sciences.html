@@ -198,23 +198,25 @@ repeated work in (a).</figcaption>
 
 <p>
 The note&#8217;s answer is route (c), which Berners-Lee calls retrospective and
-incremental (Figure 52.2). The links are <a class="gl-ref" href="../glossary.html#metadata">metadata</a>, data about data. A
-hypothetical example: two databases record the same protein under different
+incremental (Figure 52.2). Retrospective: each field&#8217;s models and data
+already exist and stay as they are. Incremental: links are built one interface
+at a time, and no data model is redesigned at once. The overlap is only
+partial, but linking it where it exists is still worth doing. The links are
+<a class="gl-ref" href="../glossary.html#metadata">metadata</a>, data about data. A hypothetical example: two databases record the same protein under different
 names. Neither changes; someone publishes one machine-readable statement that
 the names are equivalent, and a program can now follow a question from one
 into the other. That statement is a mapping.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 50 720 270" width="720" height="270" role="img"
      aria-labelledby="fig52-2-t fig52-2-d">
   <title id="fig52-2-t">Bridges built afterwards, at the overlaps</title>
   <desc id="fig52-2-d">Four overlapping ellipses for chemistry, cell biology,
-  genetics and epidemiology. A dot in each overlap marks a mapping, and a
-  dashed line above shows one question traced across all four fields. Beneath,
+  genetics and epidemiology. A dot in each overlap marks a mapping. Beneath,
   two notes: retrospectively, the modelling is already done and the data
-  already exists; incrementally, nobody redesigns anything and the work
-  happens at the interfaces.</desc>
+  already exists; incrementally, no data model is redesigned at once and the
+  work happens at the interfaces.</desc>
 
   <g opacity="0.85">
     <ellipse cx="150" cy="120" rx="110" ry="56" fill="#f0f5f8" stroke="#1c5a7a"/>
@@ -223,7 +225,7 @@ into the other. That statement is a mapping.
     <ellipse cx="570" cy="120" rx="110" ry="56" fill="#f0f5f8" stroke="#1c5a7a"/>
   </g>
   <text x="95" y="124" class="t-sm" text-anchor="middle">chemistry</text>
-  <text x="290" y="124" class="t-sm" text-anchor="middle">cell biology</text>
+  <text x="272" y="124" class="t-sm" text-anchor="middle">cell biology</text>
   <text x="430" y="124" class="t-sm" text-anchor="middle">genetics</text>
   <text x="615" y="124" class="t-sm" text-anchor="middle">epidemiology</text>
 
@@ -237,12 +239,10 @@ into the other. That statement is a mapping.
     <path class="ln-mut" d="M 220 126 L 220 184 M 360 126 L 360 184 M 500 126 L 500 184"/>
   </g>
 
-  <path class="ln-accent" d="M 90 52 L 640 52" stroke-dasharray="5 4"/>
-  <text x="365" y="40" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">one question, traced across four fields</text>
 
   <line class="ln-mut" x1="24" y1="222" x2="696" y2="222"/>
   <text x="24" y="246" class="t-sm"><tspan class="t-caps">retrospectively</tspan>: the modelling is already done and the data already exists.</text>
-  <text x="24" y="270" class="t-sm"><tspan class="t-caps">incrementally</tspan>: nobody redesigns anything; the work happens at the interfaces.</text>
+  <text x="24" y="270" class="t-sm"><tspan class="t-caps">incrementally</tspan>: no data model is redesigned at once; the work happens at the interfaces.</text>
   <text x="24" y="298" class="t-sm">Fields share only some concepts; linking those is still worth it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 52.2</span>
@@ -306,9 +306,8 @@ tested in a few moments harnessing data from many diverse fields.
 
 <p>
 Serendipity is treated as a thing infrastructure can supply. If testing a
-strange idea is cheap enough, strange ideas get tested, and the accidents that
-used to require a bath or a contaminated culture dish can be arranged
-deliberately.
+strange idea is cheap enough, strange ideas get tested, and lucky accidents
+become more likely.
 </p>
 
 <h2>52.3 The closing widening</h2>
@@ -402,8 +401,8 @@ compilations.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The life sciences went furthest.</strong> Projects such as
-Bio2RDF republished many public biological databases as linked data, joined by
-mappings like those in Figure 52.2.</li>
+Bio2RDF, first published in 2008, republished many public biological databases
+as linked data, linked across databases.</li>
 <li><strong>The missing-data complaint became policy.</strong> PLOS required
 authors to share underlying data from 2014; the FAIR principles (Findable,
 Accessible, Interoperable, Reusable) appeared in 2016; the US National
@@ -426,7 +425,7 @@ and open access to research is Chapter 25.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">52.1</span>
-Take two fields that touch in your own work, or take medicine and weather.
+Take medicine and weather.
 Where do their vocabularies overlap, and what would a mapping between them
 have to say?</p>
 </div>
@@ -442,8 +441,8 @@ moments?</p>
 </div>
 <div class="question">
 <p><span class="question-number">52.4</span>
-Retrospective and incremental mapping avoids agreeing a model in advance.
-What does it cost, and who pays it?</p>
+The overlap between neighbouring fields is only partial. Why does the note
+say it is still worth linking?</p>
 </div>
 </details>
 

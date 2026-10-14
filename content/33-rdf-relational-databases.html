@@ -16,8 +16,7 @@ can change, which is harmless inside one database and breaks links on the Web.
 <h3>The question</h3>
 <p>
 Written in September 1998 as a parenthesis to Chapters 5 and 30, this note
-answers the practical question that decides whether any of the plan matters:
-what happens to the data that already exists? Almost all of it is in
+asks what happens to the data that already exists. Almost all of it is in
 relational databases, and Berners-Lee is explicit that reaching it was the
 point:
 </p>
@@ -35,7 +34,10 @@ information in a way that can be processsed by machines.
 A relational database stores data in tables. Each row is one record, say
 one employee, and each column holds one kind of fact, such as a shoe size. The
 primary key is the column whose value picks out exactly one row, such as an
-employee number. The correspondence takes three lines (Figure 33.1).
+employee number. RDF, the Web&#8217;s data model (Chapter 32), stores facts
+as triples: a thing, a property, a value. Drawn out, they form a graph of
+nodes joined by labelled arrows. The correspondence takes three lines
+(Figure 33.1).
 </p>
 
 <figure>
@@ -106,10 +108,9 @@ which is the closed world assumption of Chapter 31.</figcaption>
 </figure>
 
 <p>
-Berners-Lee&#8217;s example is a table of cars. A row says there is a red
-car whose Massachusetts plate is 123XYZ, but the table may also mean that any
-car with a Massachusetts plate is in it. Neither model has a simple way to say
-so.
+Berners-Lee&#8217;s example: a row says a red car has Massachusetts plate
+123XYZ, but the table may also mean every car with a Massachusetts plate is
+in it. Neither model can easily say so.
 </p>
 
 <h2>33.2 One difference, and it is the whole difference</h2>
@@ -193,8 +194,7 @@ cannot stop anybody else saying that a given car is red.
 <h2>33.3 What a database does that a graph does not</h2>
 
 <p>
-Relational systems are good at something specific. A table holds many
-records with the same properties. Queries join tables, matching rows on a
+A table holds many records with the same properties. Queries join tables, matching rows on a
 shared value, and yield another table. The software is optimised for work on
 a few tables, some very large.
 </p>
@@ -203,7 +203,7 @@ a few tables, some very large.
 
 <p>
 E. F. Codd, who invented the relational model, included datatypes with
-inheritance, and meant them to be implemented more fully than they were. In
+inheritance (types that can be refined into sub-types), and meant them to be implemented more fully than they were. In
 practice a house number and a shoe size are both just integers, so nothing
 stops anyone asking to &ldquo;list people whose shoe size equals their house
 number&rdquo;. Practical systems trust the application to ask only sensible
@@ -216,6 +216,11 @@ of strange combinations, so a stronger typing becomes very useful: it becomes
 a set of inference rules.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
+
+<p>
+If shoe size and house number are declared different kinds of number, a
+program can conclude that a query joining them is nonsense, and refuse it.
+</p>
 
 <h3>Keys that change</h3>
 
@@ -235,8 +240,9 @@ elsewhere on the Web.
   <desc id="fig33-3-d">Inside a dashed boundary labelled one database, the key
   of an employee row is renamed from Smith to Jones, and cascade arrows update
   a payroll row and a projects row. Outside the boundary, a page elsewhere
-  links to employees/Smith; its link is shown broken. Below are the three
-  options: use a row ID, never change the key, or accept broken links.</desc>
+  links to employees/Smith; its link stops at a cross before reaching the
+  key. Below are the note's three answers to a changing key: use a row ID,
+  never change the key, or accept broken links.</desc>
 
   <rect x="24" y="36" width="420" height="130" rx="6" class="ln-dash"/>
   <text x="36" y="56" class="t-caps">one database</text>
@@ -252,16 +258,14 @@ elsewhere on the Web.
   <path d="M 274 115 L 284 125 L 270 126 Z" fill="#1c5a7a"/>
   <text x="239" y="70" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">cascade</text>
 
-  <rect x="500" y="60" width="196" height="34" rx="4" class="box-plain"/>
+  <rect x="500" y="60" width="196" height="56" rx="4" class="box-plain"/>
   <text x="598" y="82" text-anchor="middle">a page elsewhere</text>
-  <text x="598" y="118" class="t-mono" text-anchor="middle">&#8230;/employees/Smith</text>
-  <path class="ln-dash" style="stroke:#b08d57" d="M 598 126 L 598 192 L 330 192"/>
-  <path class="ln-dash" style="stroke:#b08d57" d="M 300 192 L 119 192 L 119 112"/>
-  <path d="M 113 114 L 119 102 L 125 114 Z" fill="#b08d57"/>
-  <text x="315" y="196" text-anchor="middle" style="fill:#b08d57">&#215;</text>
+  <text x="598" y="104" class="t-mono" text-anchor="middle">&#8230;/employees/Smith</text>
+  <path class="ln-dash" style="stroke:#b08d57" d="M 598 116 L 598 192 L 330 192"/>
+  <text x="318" y="198" class="t-lg" text-anchor="middle" style="fill:#b08d57">&#215;</text>
   <text x="470" y="184" class="t-sm" text-anchor="middle" style="fill:#b08d57">link breaks</text>
 
-  <text x="24" y="220" class="t-caps">the three options</text>
+  <text x="24" y="220" class="t-caps">the note&#8217;s three answers to a changing key</text>
   <rect x="24" y="230" width="216" height="30" rx="4" class="box-green"/>
   <text x="132" y="250" text-anchor="middle">1. use a row ID</text>
   <rect x="252" y="230" width="216" height="30" rx="4" class="box-green"/>
@@ -271,7 +275,7 @@ elsewhere on the Web.
 </svg>
 <figcaption><span class="fig-label">Figure 33.3</span>
 SQL fixes every reference to a renamed key that it knows about. On the Web it
-knows about none of them, which leaves the three options at the bottom.</figcaption>
+knows about none of them, which leaves the note&#8217;s three answers at the bottom.</figcaption>
 </figure>
 
 <p>
@@ -283,9 +287,8 @@ expose it in a standard way.
 
 <p>
 A schema is the declared shape of some data: its tables and columns, or the
-elements a document may contain. The two worlds differ in how many there are.
-There will be relatively few document schemas, and many sites will export
-documents defined by the same one, which is what provides interoperability.
+elements a document may contain. There will be relatively few document
+schemas, and many sites will export documents defined by the same one.
 Database schemas are created independently per database:
 </p>
 
@@ -294,6 +297,70 @@ Even if a million companies clone the same form of employee database, there
 will be a million schemas, one for each database.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 232" width="720" height="232" role="img"
+     aria-labelledby="fig33-4-t fig33-4-d">
+  <title id="fig33-4-t">Few document schemas, many database schemas</title>
+  <desc id="fig33-4-d">Left: one document schema with arrows to four sites
+  that all export documents of that shape. Right: four databases, each with
+  its own schema, joined pairwise by dashed lines marking equivalences that
+  must be written by hand.</desc>
+  <defs>
+    <marker id="fig33-4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="176" y="24" class="t-caps" text-anchor="middle">documents</text>
+  <text x="546" y="24" class="t-caps" text-anchor="middle">databases</text>
+  <line class="ln-mut" x1="360" y1="12" x2="360" y2="220"/>
+
+  <rect class="box" x="106" y="40" width="140" height="36" rx="4"/>
+  <text x="176" y="63" text-anchor="middle">one schema</text>
+  <g class="ln-accent" marker-end="url(#fig33-4-a)">
+    <line x1="160" y1="76" x2="58" y2="146"/>
+    <line x1="170" y1="76" x2="136" y2="146"/>
+    <line x1="182" y1="76" x2="216" y2="146"/>
+    <line x1="192" y1="76" x2="294" y2="146"/>
+  </g>
+  <rect class="box-plain" x="26" y="148" width="64" height="30" rx="3"/>
+  <rect class="box-plain" x="104" y="148" width="64" height="30" rx="3"/>
+  <rect class="box-plain" x="184" y="148" width="64" height="30" rx="3"/>
+  <rect class="box-plain" x="262" y="148" width="64" height="30" rx="3"/>
+  <text x="58" y="168" class="t-sm" text-anchor="middle">site</text>
+  <text x="136" y="168" class="t-sm" text-anchor="middle">site</text>
+  <text x="216" y="168" class="t-sm" text-anchor="middle">site</text>
+  <text x="294" y="168" class="t-sm" text-anchor="middle">site</text>
+  <text x="176" y="210" class="t-sm t-it" text-anchor="middle">interoperability comes free</text>
+
+  <g class="ln-dash">
+    <line x1="506" y1="62" x2="586" y2="62"/>
+    <line x1="506" y1="162" x2="586" y2="162"/>
+    <line x1="451" y1="82" x2="451" y2="142"/>
+    <line x1="641" y1="82" x2="641" y2="142"/>
+    <line x1="506" y1="82" x2="586" y2="142"/>
+    <line x1="586" y1="82" x2="506" y2="142"/>
+  </g>
+  <rect class="box-warm" x="396" y="42" width="110" height="40" rx="4"/>
+  <rect class="box-warm" x="586" y="42" width="110" height="40" rx="4"/>
+  <rect class="box-warm" x="396" y="142" width="110" height="40" rx="4"/>
+  <rect class="box-warm" x="586" y="142" width="110" height="40" rx="4"/>
+  <text x="451" y="59" text-anchor="middle">database</text>
+  <text x="451" y="75" class="t-sm" text-anchor="middle">own schema</text>
+  <text x="641" y="59" text-anchor="middle">database</text>
+  <text x="641" y="75" class="t-sm" text-anchor="middle">own schema</text>
+  <text x="451" y="159" text-anchor="middle">database</text>
+  <text x="451" y="175" class="t-sm" text-anchor="middle">own schema</text>
+  <text x="641" y="159" text-anchor="middle">database</text>
+  <text x="641" y="175" class="t-sm" text-anchor="middle">own schema</text>
+  <text x="546" y="54" class="t-sm" text-anchor="middle">equivalent</text>
+  <text x="546" y="210" class="t-sm t-it" text-anchor="middle">each dashed equivalence written by hand</text>
+</svg>
+<figcaption><span class="fig-label">Figure 33.4</span>
+Documents share a few schemas; each database has its own, so equivalences
+must be stated pair by pair.</figcaption>
+</figure>
 
 <p>
 From which he draws a modest role for the new technology: it may simply
@@ -307,14 +374,14 @@ conversion layer of Chapter 30, and it is still where the work is.
 The rest of the note is a strawman, a first draft put up to be criticised: a
 layout giving a URI to each part of a database, down to a single cell and an
 arbitrary query. A 2002 version, based on code Dan Connolly implemented,
-looks like Figure 33.4.
+looks like Figure 33.5.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 222" width="720" height="222" role="img"
-     aria-labelledby="fig33-4-t fig33-4-d">
-  <title id="fig33-4-t">A database laid out as URIs</title>
-  <desc id="fig33-4-d">An indented tree of URIs relative to a base address.
+     aria-labelledby="fig33-5-t fig33-5-d">
+  <title id="fig33-5-t">A database laid out as URIs</title>
+  <desc id="fig33-5-d">An indented tree of URIs relative to a base address.
   personnel describes the database; personnel/employees describes the table,
   and employees#email names a column; employees/1234 is the data in the row
   whose primary key is 1234; 1234#item is the employee that row is about;
@@ -340,7 +407,7 @@ looks like Figure 33.4.
   <text x="290" y="172" class="t-sm">the data in one cell</text>
   <text x="290" y="200" class="t-sm" style="fill:#b08d57">a query: ? convention, never UPDATE or DELETE</text>
 </svg>
-<figcaption><span class="fig-label">Figure 33.4</span>
+<figcaption><span class="fig-label">Figure 33.5</span>
 Every level of the database gets an address. Because the layout nests, any
 name inside the database can be written as a short relative URI.</figcaption>
 </figure>
@@ -351,14 +418,16 @@ is really an identifier. His ruling is the axiom of Chapter 2 applied to
 databases. A URI must never refer to the result of a table-changing operation
 such as UPDATE or DELETE. A general query should be marked with a question
 mark in the URI, or be posted (sent with HTTP POST, which asks the server to
-act) rather than fetched with GET, which only reads.
+act) rather than fetched with GET, which only reads. Search engines and
+browsers follow GET links freely, on the understanding that following one
+changes nothing; a link that deleted a row would be triggered by the first
+robot that found it.
 </p>
 
 <p>
-One practical note closes it, and it is the same advice as Chapter 26: export
-a derived view rather than the internal storage, so that the external form
-can be persistent and suit the consumer while the internal one stays
-efficient and suits the publisher.
+The note closes with Chapter 26&#8217;s advice: export a derived view, not
+the internal storage, so the external form can stay persistent while the
+internal one stays efficient.
 </p>
 
 <div class="since">

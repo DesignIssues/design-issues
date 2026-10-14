@@ -94,80 +94,14 @@ closed, and to touch the social world only at the edges.
 The system, Berners-Lee argues, should form a loop that closes on itself.
 Definitions are given in terms of other things in the system, and the system
 reaches outside only at a few places: the physical delivery of goods, or the
-presentation of a document to a person for signature.
+presentation of a document to a person for signature. Section 37.2 draws one
+such loop.
 </p>
-
-<figure>
-<svg class="dia" viewBox="0 44 600 320" width="600" height="320" role="img"
-     aria-labelledby="fig37-1-t fig37-1-d">
-  <title id="fig37-1-t">The closed loop and its two edges</title>
-  <desc id="fig37-1-d">Four green boxes form a loop joined by arrows. The
-  server is set up to trust key k3; k3 signs the member list, which names k2;
-  k2 signs the employee list, which names k1; a request signed with k1 is
-  granted access, which is checked back to k3. Inside the loop everything can
-  be checked and proved. Below a boundary line, in the social world, two warm
-  boxes attach by dashed lines: under the granting step, the server gives
-  access to a document; under the employee list, a person signs a request or
-  a list.</desc>
-  <defs>
-    <marker id="fig37-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
-            markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
-    </marker>
-  </defs>
-
-  <rect class="box-green" x="150" y="70" width="190" height="48" rx="4"/>
-  <text x="164" y="90">d. server is set up</text>
-  <text x="164" y="108">to trust key k3</text>
-
-  <rect class="box-green" x="380" y="70" width="190" height="48" rx="4"/>
-  <text x="394" y="90">c. k3 signs the member</text>
-  <text x="394" y="108">list, which names k2</text>
-
-  <rect class="box-green" x="380" y="190" width="190" height="48" rx="4"/>
-  <text x="394" y="210">b. k2 signs the employee</text>
-  <text x="394" y="228">list, which names k1</text>
-
-  <rect class="box-green" x="150" y="190" width="190" height="48" rx="4"/>
-  <text x="164" y="210">a. a request signed with</text>
-  <text x="164" y="228">k1 is granted access</text>
-
-  <line class="ln-accent" x1="342" y1="94" x2="377" y2="94" marker-end="url(#fig37-1-arr)"/>
-  <line class="ln-accent" x1="475" y1="120" x2="475" y2="187" marker-end="url(#fig37-1-arr)"/>
-  <line class="ln-accent" x1="378" y1="214" x2="343" y2="214" marker-end="url(#fig37-1-arr)"/>
-  <line class="ln-accent" x1="245" y1="188" x2="245" y2="121" marker-end="url(#fig37-1-arr)"/>
-  <text x="237" y="158" class="t-sm" text-anchor="end">checked</text>
-  <text x="237" y="172" class="t-sm" text-anchor="end">back to k3</text>
-
-  <text x="360" y="148" class="t-caps" text-anchor="middle">the machine</text>
-  <text x="360" y="166" class="t-sm" text-anchor="middle">can be checked and proved</text>
-
-  <line class="ln-mut" x1="16" y1="268" x2="584" y2="268"/>
-  <text x="16" y="258" class="t-caps">machine</text>
-  <text x="16" y="290" class="t-caps" style="fill:#b08d57">social world</text>
-
-  <g stroke="#b08d57" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
-    <path d="M 245 240 L 245 300"/>
-    <path d="M 475 240 L 475 300"/>
-  </g>
-
-  <rect class="box-warm" x="150" y="300" width="190" height="48" rx="4"/>
-  <text x="164" y="320">the server gives access</text>
-  <text x="164" y="338">to a document</text>
-
-  <rect class="box-warm" x="380" y="300" width="190" height="48" rx="4"/>
-  <text x="394" y="320">a person signs a</text>
-  <text x="394" y="338">request or a list</text>
-</svg>
-<figcaption><span class="fig-label">Figure 37.1</span>
-The access loop from section 37.2. Inside it, each step is a signature checked
-against a key. The machine needs to know nothing about people except at the
-two dashed edges.</figcaption>
-</figure>
 
 <p>
 His first example is a cheque, defined only as something which, fed into the
-bank&#8217;s black box, makes it do a certain thing. Dollars and transfers can
+bank&#8217;s black box, makes it do a certain thing: a bank does not ask what a
+cheque is; it pays out when a valid one is presented. Dollars and transfers can
 then be defined in terms of the cheque, and trade can run on electronic
 currency, invoices and delivery notes, falling back on a paper cheque only
 when necessary. The analogy he then reaches for is monetary too:
@@ -184,8 +118,10 @@ self-sufficient.
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 
+<h3>Why touch reality at all</h3>
+
 <p>
-He gives three reasons for touching reality at all:
+He gives three reasons for touching it at all:
 </p>
 
 <ol>
@@ -197,25 +133,24 @@ exploiting;</li>
 </ol>
 
 <p>
-None of them is that the existing definitions are correct. He says so
-directly: they are not fundamental or beautiful, and many existing systems are
-really crufty, meaning messy and overgrown.
+None claims the existing definitions are right: they are not fundamental or
+beautiful, and many existing systems are really crufty (messy and overgrown).
 </p>
 
 <h2>37.2 Two loops, and the mistake of joining them</h2>
 
 <p>
 The worked example is <a class="gl-ref" href="../glossary.html#access-control">access control</a> on the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own member web site,
-where Hugo is the person deemed responsible for deciding who has member access.
-It is the clearest illustration in the book of a distinction people routinely
-collapse.
+where Hugo, in his role as webmaster, is deemed responsible for deciding who
+has member access. The machine side is a chain of keys; the social side tells
+the same chain as people, companies and Hugo.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 296" width="720" height="296" role="img"
-     aria-labelledby="fig37-2-t fig37-2-d">
-  <title id="fig37-2-t">The machine loop and the social loop</title>
-  <desc id="fig37-2-d">Four mechanical steps grant access by chaining
+     aria-labelledby="fig37-1-t fig37-1-d">
+  <title id="fig37-1-t">The machine loop and the social loop</title>
+  <desc id="fig37-1-d">Four mechanical steps grant access by chaining
   signatures back to a key the server trusts. Four social steps say the same
   thing about people and organisations. Dashed joins connect each mechanical
   step to its social counterpart, and every join is labelled a rat hole.</desc>
@@ -264,7 +199,7 @@ collapse.
   </g>
   <text x="360" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">every dashed join is a rat hole</text>
 </svg>
-<figcaption><span class="fig-label">Figure 37.2</span>
+<figcaption><span class="fig-label">Figure 37.1</span>
 The left column can be written in mathematics and proved. The right column, in
 Berners-Lee&#8217;s judgement, is always a rough approximation to a very
 complex web of trust, often less dependable than the simpler model on the
@@ -272,7 +207,81 @@ left.</figcaption>
 </figure>
 
 <p>
-His diagnosis of why security work goes wrong is direct:
+On the machine side, a request signed with k1 gets in because k1 is on a list
+signed by k2, which is on a list signed by k3, which the <a class="gl-ref" href="../glossary.html#server">server</a> trusts. Drawn as
+a loop, nothing in it needs a person:
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 44 600 320" width="600" height="320" role="img"
+     aria-labelledby="fig37-2-t fig37-2-d">
+  <title id="fig37-2-t">The closed loop and its two edges</title>
+  <desc id="fig37-2-d">Four green boxes form a loop joined by arrows. The
+  server is set up to trust key k3; k3 signs the member list, which names k2;
+  k2 signs the employee list, which names k1; a request signed with k1 is
+  granted access, which is checked back to k3. Inside the loop everything can
+  be checked and proved. Below a boundary line, in the social world, two warm
+  boxes attach by dashed lines: under the granting step, the server gives
+  access to a document; under the employee list, a person signs a request or
+  a list.</desc>
+  <defs>
+    <marker id="fig37-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-green" x="150" y="70" width="190" height="48" rx="4"/>
+  <text x="164" y="90">d. server is set up</text>
+  <text x="164" y="108">to trust key k3</text>
+
+  <rect class="box-green" x="380" y="70" width="190" height="48" rx="4"/>
+  <text x="394" y="90">c. k3 signs the member</text>
+  <text x="394" y="108">list, which names k2</text>
+
+  <rect class="box-green" x="380" y="190" width="190" height="48" rx="4"/>
+  <text x="394" y="210">b. k2 signs the employee</text>
+  <text x="394" y="228">list, which names k1</text>
+
+  <rect class="box-green" x="150" y="190" width="190" height="48" rx="4"/>
+  <text x="164" y="210">a. a request signed with</text>
+  <text x="164" y="228">k1 is granted access</text>
+
+  <line class="ln-accent" x1="342" y1="94" x2="377" y2="94" marker-end="url(#fig37-2-arr)"/>
+  <line class="ln-accent" x1="475" y1="120" x2="475" y2="187" marker-end="url(#fig37-2-arr)"/>
+  <line class="ln-accent" x1="378" y1="214" x2="343" y2="214" marker-end="url(#fig37-2-arr)"/>
+  <line class="ln-accent" x1="245" y1="188" x2="245" y2="121" marker-end="url(#fig37-2-arr)"/>
+  <text x="237" y="158" class="t-sm" text-anchor="end">checked</text>
+  <text x="237" y="172" class="t-sm" text-anchor="end">back to k3</text>
+
+  <text x="360" y="148" class="t-caps" text-anchor="middle">the machine</text>
+  <text x="360" y="166" class="t-sm" text-anchor="middle">can be checked and proved</text>
+
+  <line class="ln-mut" x1="16" y1="268" x2="584" y2="268"/>
+  <text x="16" y="258" class="t-caps">machine</text>
+  <text x="16" y="290" class="t-caps" style="fill:#b08d57">social world</text>
+
+  <g stroke="#b08d57" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
+    <path d="M 245 240 L 245 300"/>
+    <path d="M 475 240 L 475 300"/>
+  </g>
+
+  <rect class="box-warm" x="150" y="300" width="190" height="48" rx="4"/>
+  <text x="164" y="320">the server gives access</text>
+  <text x="164" y="338">to a document</text>
+
+  <rect class="box-warm" x="380" y="300" width="190" height="48" rx="4"/>
+  <text x="394" y="320">a person signs a</text>
+  <text x="394" y="338">request or a list</text>
+</svg>
+<figcaption><span class="fig-label">Figure 37.2</span>
+The machine column of Figure 37.1 drawn as a closed loop. The machine needs to know nothing about people except at the
+two dashed edges.</figcaption>
+</figure>
+
+<p>
+His diagnosis of why security work goes wrong is direct (SW is the Semantic
+Web):
 </p>
 
 <blockquote>
@@ -283,7 +292,7 @@ Security has always been plagued by people trying to connect the SW steps
 
 <p>
 Joining them at rung b means identifying a person with a key. That brings in a
-directory system (he names X.500) which is not part of the trust loop, becomes
+directory system (he names X.500, a planned worldwide directory standard) which is not part of the trust loop, becomes
 a security hole, and adds unnecessary third parties. It also raises endless
 questions about what identity is.
 </p>
@@ -373,11 +382,11 @@ Documents have meaning. Signatures by themselves do not.
 </blockquote>
 
 <p>
-Asking for the semantics of a signature is therefore not useful. Signatures
-convey trust, and even that only because of a set of statements about keys and
-documents. Society has many rules about what trust a signature conveys in
-what circumstances, and Berners-Lee&#8217;s instruction is to leave them alone when
-building the infrastructure.
+His own answer is that the semantics lie in the whole loop a&ndash;d, which
+must eventually be tied down to a key; the signature itself carries none.
+Asking for the semantics of a signature alone is therefore not useful. Signatures
+convey trust, and only through statements about keys and documents. Society&#8217;s many rules about what trust a signature conveys are to be left
+alone when building the infrastructure.
 </p>
 
 <p>
@@ -437,7 +446,7 @@ is.</figcaption>
 <h3>What happened since</h3>
 <ul>
 <li><strong>Token-based authorisation became normal.</strong> <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> 2.0,
-published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a <a class="gl-ref" href="../glossary.html#server">server</a> check an access token,
+published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a server check an access token,
 not who is holding it.</li>
 <li><strong>The global directory never arrived; its certificates did.</strong>
 The X.500 global directory never materialised, but X.509 certificates, which

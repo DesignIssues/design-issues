@@ -51,11 +51,11 @@ example.
   <title id="fig13-1-t">Two halves of a URI, two owners of the problem</title>
   <desc id="fig13-1-d">The address http://www.example.com/downloads, with the
   domain name and the path bracketed separately. The domain name is rented and
-  can lapse, be sold or be lost; its fix is the subject of this note, and its
+  can lapse, be sold or be lost; this note fixes it with date-stamped domains, and its
   typical failure is the same address showing someone else's content, which
   the note calls worse. The path is chosen and kept by the publisher; its fix
-  is publisher discipline, as in Cool URIs Don't Change and a persistence
-  policy; its typical failure is 404 Not Found.</desc>
+  is publisher discipline plus this note's obligations of mirroring and
+  archive state; its typical failure is 404 Not Found.</desc>
 
   <text x="168" y="38" class="t-mono" style="font-size:20px">http://www.example.com/downloads</text>
   <path class="ln-accent" d="M254 50 V58 H430 V50"/>
@@ -77,12 +77,12 @@ example.
   <path d="M521 168 L525 176 L529 168 Z" fill="#2f4f4f"/>
 
   <rect class="box-plain" x="40" y="176" width="310" height="60" rx="4"/>
-  <text x="195" y="198" text-anchor="middle">Fix: the subject of this note</text>
+  <text x="195" y="198" text-anchor="middle">Fix: date-stamped domains (13.2)</text>
   <text x="195" y="222" class="t-sm" text-anchor="middle">no publisher can promise to keep a name it only rents</text>
 
   <rect class="box-plain" x="370" y="176" width="310" height="60" rx="4"/>
-  <text x="525" y="198" text-anchor="middle">Fix: the publisher&#8217;s discipline</text>
-  <text x="525" y="222" class="t-sm" text-anchor="middle">Cool URIs Don&#8217;t Change; a persistence policy</text>
+  <text x="525" y="198" text-anchor="middle">Fix: discipline, plus this note&#8217;s obligations (13.3)</text>
+  <text x="525" y="222" class="t-sm" text-anchor="middle">Cool URIs Don&#8217;t Change; mirrors and archive state</text>
 
   <line class="ln-dash" x1="195" y1="236" x2="195" y2="262"/>
   <line class="ln-dash" x1="525" y1="236" x2="525" y2="262"/>
@@ -95,16 +95,16 @@ example.
   <text x="525" y="302" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">404 Not Found</text>
 </svg>
 <figcaption><span class="fig-label">Figure 13.1</span>
-Persistence fails at two separate points. Discipline can fix the path; only a
-change in how names are held can fix the domain.</figcaption>
+Persistence fails at two separate points. The note proposes a fix for
+each: obligations backing the publisher&#8217;s discipline for the path, and a
+change in how names are held for the domain.</figcaption>
 </figure>
 
 <p>
 The first is the publisher&#8217;s to solve. Berners-Lee notes that the failure
 is usually thoughtlessness rather than malice, aggravated by a dearth of
 tools for running a server with persistent URIs. He had already written
-<em>Cool URIs Don&#8217;t Change</em> about it, and that covers only half the
-problem.
+<em>Cool URIs Don&#8217;t Change</em> about it; section 13.3 adds teeth.
 </p>
 
 <p>
@@ -129,8 +129,7 @@ purchase, lawsuit or an owner&#8217;s accidental failure to renew, could make
 <h3>Why it might already be fine</h3>
 
 <p>
-He then argues against his own alarm. The investment in domain names as references is
-huge, the lookup technology sophisticated, and the legal weight behind a
+He then argues against his own alarm. Investment in domain names is huge, the lookup technology sophisticated, and the legal weight behind a
 significant organisation&#8217;s ownership considerable. Nobody imagines a legal battle over <code>microsoft.com</code>
 or <code>ietf.org</code> being lost to a sneaky entrepreneur. The section ends
 with four words: but is this enough?
@@ -138,9 +137,8 @@ with four words: but is this enough?
 
 <p>
 He also names a symptom: a constant stream of proposals for new URI schemes
-(URNs and Handles are examples), each with its own lookup system, usually made
-with less attention to the social issues than HTTP and DNS receive, and
-otherwise similar except in persistence.
+(URNs and Handles are examples), each with its own lookup system, usually
+with less attention to the social issues than HTTP and DNS receive.
 </p>
 
 <h2>13.2 The proposal: date-stamped top-level domains</h2>
@@ -174,8 +172,7 @@ start.
   <desc id="fig13-2-d">A timeline from 2000 to 2003 and later. Each domain,
   .y2000 to .y2003, is open for registration only during its own year, then
   closed for good, with its names held forever. A name such as
-  bankboston.y2000, registered in 2000, can never be applied for again. The
-  same trick is used by W3C's dated URIs and British number plates.</desc>
+  bankboston.y2000, registered in 2000, can never be applied for again.</desc>
 
   <text x="175" y="26" text-anchor="middle">2000</text>
   <text x="305" y="26" text-anchor="middle">2001</text>
@@ -192,6 +189,7 @@ start.
 
   <text x="20" y="67" class="t-mono">.y2000</text>
   <rect class="box-green" x="110" y="52" width="130" height="22"/>
+  <text x="145" y="67" class="t-sm" text-anchor="middle">open</text>
   <rect class="box-plain" x="240" y="52" width="460" height="22"/>
   <text x="470" y="67" class="t-sm" text-anchor="middle">closed: no one can apply for bankboston.y2000 again</text>
 
@@ -213,10 +211,9 @@ start.
   <rect class="box-plain" x="630" y="154" width="70" height="22"/>
   <text x="665" y="169" class="t-sm" text-anchor="middle">closed</text>
 
-  <circle cx="175" cy="63" r="4" style="fill:#5a8f5a"/>
-  <line class="ln-mut" x1="175" y1="67" x2="175" y2="190"/>
-  <text x="175" y="208" text-anchor="middle">bankboston.y2000 registered in 2000</text>
-  <text x="700" y="208" class="t-sm" text-anchor="end">the same trick as W3C&#8217;s dated URIs and British number plates</text>
+  <circle cx="210" cy="63" r="4" style="fill:#5a8f5a"/>
+  <line class="ln-mut" x1="210" y1="67" x2="210" y2="190"/>
+  <text x="210" y="208" text-anchor="middle">bankboston.y2000 registered in 2000</text>
 </svg>
 <figcaption><span class="fig-label">Figure 13.2</span>
 Each year&#8217;s domain opens once (green), then closes for good, so there is
@@ -241,26 +238,22 @@ transfer, which discourages speculation.</li>
 <h2>13.3 The obligations</h2>
 
 <p>
-The second half makes the proposal a contract rather than a naming scheme,
-and it is the hard part.
+This half answers the first problem, the publisher who stops caring for its
+paths. It makes the proposal a contract rather than a naming scheme, and it
+is the hard part. An organisation entering the scheme takes on duties:
 </p>
 
-<p>
-An organisation entering the scheme must join a mirroring arrangement, in
-which others keep live copies of its site under a contract that, if the
-publisher comes to a voluntary or involuntary end, the mirrors continue to
-serve. The documents
-then enter what Berners-Lee calls an <em>archive state</em>, in which the
-original publisher loses the authority to change the domain and the public
-gain rights of access.
-</p>
-
-<p>
-For material so uninteresting that no one will pay to keep it, serious
-archival institutions, such as the major national libraries, should have the
-right to take over an archive for the public good. He also suggests mirroring confidential,
-access-controlled documents, with a 30-year timeout on the confidentiality.
-</p>
+<ul>
+<li>join a mirroring arrangement, in which others keep live copies of its
+site and continue to serve them if the publisher comes to an end;</li>
+<li>accept that its documents then enter <em>archive state</em>: the
+original publisher loses the authority to change the domain, and the public
+gain rights of access;</li>
+<li>let serious archives, such as the major national libraries, take over
+material no one will pay to keep, for the public good;</li>
+<li>possibly, mirror confidential documents too, with a 30-year timeout on
+the confidentiality.</li>
+</ul>
 
 <p>
 The obligations run with the property:
@@ -273,9 +266,9 @@ obligations. Transfer of the domain name would carry within it both.
 </blockquote>
 
 <p>
-The worked case is one bank acquiring another and being unable simply to drop
-support for the acquired bank&#8217;s documents without all of them falling into
-archive state. Archive state is also the penalty for
+The note&#8217;s worked case: Fleet Bank, buying BankBoston, could not simply
+drop support for documents under <code>bankboston.y2000</code> without all its
+public documents falling into archive state. Archive state is also the penalty for
 cheating. A domain whose publisher &ldquo;consistently flaunts the
 rules&rdquo; would be declared dead and pass into archive state as though the
 organisation had ceased to exist; it could then ask for a new domain and
@@ -348,8 +341,10 @@ resource whose representation varies with time, technology and language, as
 one address for &ldquo;today&#8217;s weather&rdquo; shows different content each
 day. That is permitted inside a persistent domain. What is forbidden is
 reallocating a URI to something else. Ideally the generic resource and each specific
-version of it (one format, one exact sequence of bytes) would have separate
-URIs, and providing them could be one of the owner&#8217;s obligations.
+version of it would have separate URIs. A site might pair
+<code>/weather</code>, which may change daily, with
+<code>/weather/2000-10-04.html</code>, that day&#8217;s page, which must stay
+frozen. Providing such pairs could be one of the owner&#8217;s obligations.
 </p>
 
 <p>

@@ -88,20 +88,21 @@ Two terms recur. A <em>serialisation</em> is a way of writing the same data
 down as text; RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> are two. To <em>deprecate</em> a feature is to
 mark it as not to be used, while leaving it in place for old data. The note
 also proposes extensions to <a class="gl-ref" href="../glossary.html#n3">N3</a> itself (dates, quoted variables, rule
-languages); this chapter treats only the dates, in section 47.4.
+languages); this chapter treats only the dates, in section 47.4. Figure 47.1
+glosses each proposal in one line.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 436" width="720" height="436" role="img"
+<svg class="dia" viewBox="0 0 720 617" width="720" height="617" role="img"
      aria-labelledby="fig47-1-t fig47-1-d">
   <title id="fig47-1-t">The 2010 proposals, and what became of them</title>
-  <desc id="fig47-1-d">Nine proposals in three groups. Removals: the
+  <desc id="fig47-1-d">Nine proposals in three groups, each with a one-line gloss. Removals: the
   reification vocabulary and bags and sequences were left in and merely
   avoided, and no new RDF/XML document without them was produced.
   Documentation and syntax: the model was defined apart from any syntax and a
   JSON form was defined, both in 2014, but RDF/XML was not extended to allow a
   collection anywhere. Changes to a statement: literals as subjects and
-  variables in any position were not adopted, and graphs in statements arrived
+  variables in any position, with their scope stated explicitly, were not adopted, and graphs in statements arrived
   only partly, much later.</desc>
 
   <text x="24" y="26" class="t-caps">proposal</text>
@@ -111,33 +112,41 @@ languages); this chapter treats only the dates, in section 47.4.
   <text x="24" y="60" class="t-caps">remove features</text>
   <text x="40" y="82">deprecate the old reification vocabulary</text>
   <text x="500" y="82" class="t-sm" style="fill:#b08d57">left in, advised against</text>
-  <text x="40" y="104">deprecate bags and sequences</text>
-  <text x="500" y="104" class="t-sm" style="fill:#b08d57">left in, advised against</text>
-  <text x="40" y="126">a new RDF/XML document without them</text>
-  <text x="500" y="126" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+  <text x="40" y="99" class="t-sm">a built-in way to describe a statement (Chapter 44)</text>
+  <text x="40" y="122">deprecate bags and sequences</text>
+  <text x="500" y="122" class="t-sm" style="fill:#b08d57">left in, advised against</text>
+  <text x="40" y="139" class="t-sm">old containers for unordered and numbered groups</text>
+  <text x="40" y="162">a new RDF/XML document without them</text>
+  <text x="500" y="162" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+  <text x="40" y="179" class="t-sm">a cleaned-up specification of the XML syntax</text>
+  <text x="24" y="210" class="t-caps">document and add syntax</text>
+  <text x="40" y="232">define the model apart from any syntax</text>
+  <text x="500" y="232" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
+  <text x="40" y="249" class="t-sm">describe the graph without tying it to one way of writing it</text>
+  <text x="40" y="272">define a common JSON serialisation</text>
+  <text x="500" y="272" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
+  <text x="40" y="289" class="t-sm">a form that web programmers already read</text>
+  <text x="40" y="312">in RDF/XML, let a collection appear anywhere</text>
+  <text x="500" y="312" class="t-sm t-it" style="fill:#8a9a9a">not done in RDF/XML</text>
+  <text x="40" y="329" class="t-sm">a collection is an ordered list, written ( a b c ) in Turtle</text>
+  <text x="24" y="360" class="t-caps">change what a statement may contain</text>
+  <text x="40" y="382">let the subject take any form the object can</text>
+  <text x="500" y="382" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+  <text x="40" y="399" class="t-sm">for example, a date as subject (section 47.2)</text>
+  <text x="40" y="422">let a graph appear as subject or object</text>
+  <text x="500" y="422" class="t-sm" style="fill:#b08d57">partly, much later</text>
+  <text x="40" y="439" class="t-sm">a group of statements used as one thing, as N3 does with { }</text>
+  <text x="40" y="462">allow variables in any position</text>
+  <text x="500" y="462" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+  <text x="40" y="479" class="t-sm">a variable is a placeholder like ?x for whatever matches;</text>
+  <text x="40" y="496" class="t-sm">the scope of each variable to be stated explicitly</text>
 
-  <text x="24" y="156" class="t-caps">document and add syntax</text>
-  <text x="40" y="178">define the model apart from any syntax</text>
-  <text x="500" y="178" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
-  <text x="40" y="200">define a common JSON serialisation</text>
-  <text x="500" y="200" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
-  <text x="40" y="222">in RDF/XML, let a collection appear anywhere</text>
-  <text x="500" y="222" class="t-sm t-it" style="fill:#8a9a9a">not done in RDF/XML</text>
+  <line class="ln-mut" x1="24" y1="517" x2="696" y2="517"/>
 
-  <text x="24" y="252" class="t-caps">change what a statement may contain</text>
-  <text x="40" y="274">let the subject take any form the object can</text>
-  <text x="500" y="274" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
-  <text x="40" y="296">let a graph appear as subject or object</text>
-  <text x="500" y="296" class="t-sm" style="fill:#b08d57">partly, much later</text>
-  <text x="40" y="318">allow variables in any position</text>
-  <text x="500" y="318" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
-
-  <line class="ln-mut" x1="24" y1="336" x2="696" y2="336"/>
-
-  <rect class="box" x="24" y="348" width="672" height="74" rx="4"/>
-  <text x="360" y="370" class="t-sm" text-anchor="middle">New documentation and a JSON form were produced; RDF/XML itself was left as it was.</text>
-  <text x="360" y="390" class="t-sm" text-anchor="middle">Proposals to remove features were softened to advice.</text>
-  <text x="360" y="410" class="t-sm" text-anchor="middle">Proposals that changed what a statement may contain were not adopted.</text>
+  <rect class="box" x="24" y="529" width="672" height="74" rx="4"/>
+  <text x="360" y="551" class="t-sm" text-anchor="middle">New documentation and a JSON form were produced; RDF/XML itself was left as it was.</text>
+  <text x="360" y="571" class="t-sm" text-anchor="middle">Proposals to remove features were softened to advice.</text>
+  <text x="360" y="591" class="t-sm" text-anchor="middle">Proposals that changed what a statement may contain were not adopted.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 47.1</span>
 The pattern is the lesson. A deployed model tolerates new documents beside it
@@ -231,9 +240,10 @@ proposal would remove.</figcaption>
 <h2>47.3 How hard to push</h2>
 
 <p>
-Bags and sequences are an early way of writing an unordered or ordered group;
-RDF&#8217;s lists now do the ordered job. One paragraph concerns how to change a standard rather than what
-to change:
+Two of the removals concern bags and sequences, an early way of writing an
+unordered or numbered group. RDF&#8217;s lists (collections, written
+<code>( a b c )</code> in Turtle) now do the ordered job. One paragraph asks
+how hard to push them out:
 </p>
 
 <blockquote>
@@ -244,17 +254,19 @@ documentation.
 </blockquote>
 
 <p>
-The benefit claimed for removing an unused feature is not a cleaner model but
-shorter documentation. That is an honest accounting: a feature nobody uses
-costs almost nothing at runtime and costs every new reader a page.
+The benefit claimed is not a cleaner model but shorter documentation: a
+feature nobody uses costs almost nothing at runtime and costs every new reader
+a page.
 </p>
 
 <p>
 He also proposes a migration path rather than a cliff: a <a class="gl-ref" href="../glossary.html#parser">parser</a> (the program
-that reads the text in) could convert sequences to lists as an option, for
-systems that handle one and not the other. That is the evolvability argument
-of Chapter 16 applied by the same author to his own design: give
-implementations a way to move rather than a date by which to have moved.
+that reads the text in) could convert sequences to lists as an option. A
+sequence written <code>rdf:_1 :a; rdf:_2 :b</code> would be read as the list
+<code>( :a :b )</code>, so programs that understand only lists could still
+use old data. That is the evolvability argument of Chapter 16 applied to his
+own design: give implementations a way to move rather than a date by which to
+have moved.
 </p>
 
 <h2>47.4 Making dates easy to write</h2>
@@ -336,12 +348,12 @@ unnecessary incompatibility.
 </blockquote>
 
 <p>
-A research language and a standard exist side by side, and Berners-Lee&#8217;s
-instruction is that when the standard grows it should grow towards the
-research language, so that the two do not diverge into rival vocabularies for
-the same thing. It is the test of independent invention (section 16.5: would a
-design fit one built separately by someone else?) applied in advance, to two
-systems by the same author.
+Two languages exist side by side: N3 (Chapter 42), the research language, and
+RDF, the standard. When the standard grows, it should grow towards N3. Without
+the rule, RDF might add a way of putting a <a class="gl-ref" href="../glossary.html#graph">graph</a> inside a statement that is
+incompatible with N3&#8217;s braces, leaving two notations for the same thing.
+It is the test of independent invention (section 16.5) applied in advance:
+a design should fit cleanly with one built separately by someone else.
 </p>
 
 <div class="since">
@@ -358,7 +370,7 @@ which is the weakest of the options section 47.3 considers.</li>
 work that W3C began in 2022 kept the restriction, and admits literal subjects
 only in its non-standard &#8220;generalised&#8221; form.</li>
 <li><strong>Graphs in statements arrived partially.</strong> RDF-star work
-from 2021 onward lets a single statement, not a whole <a class="gl-ref" href="../glossary.html#graph">graph</a>, be described by
+from 2021 onward lets a single statement, not a whole graph, be described by
 another (in RDF 1.2, only as its object), which is the narrower half of the proposal here.</li>
 </ul>
 </div>
@@ -383,8 +395,8 @@ of what existing implementations must do in each case.</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.2</span>
-Name a feature of a program you have never used. Who pays for its
-existence?</p>
+Bags were rarely used. Who paid for their being in the specification,
+according to section 47.3?</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.3</span>

@@ -96,7 +96,9 @@ it.
 <p>
 Take one assertion, that the author of a page is Ora. Berners-Lee writes it
 five ways, all perfectly good XML, all meaning the same thing to a person, all
-producing different trees to a machine.
+producing different trees to a machine. RDF, the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s data
+model, instead stores each fact as a <em><a class="gl-ref" href="../glossary.html#triple">triple</a></em>: a subject (page), a
+relation (author) and an object (Ora).
 </p>
 
 <figure>
@@ -167,24 +169,8 @@ what RDF does.</figcaption>
 </figure>
 
 <p>
-The source contrasts two kinds of question:
-</p>
-
-<table>
-<tr><th>Questions about the document</th><th>Question about the world</th></tr>
-<tr><td>Is there a w element within a details element?</td><td rowspan="2">What is the author of page?</td></tr>
-<tr><td>What is the content of the w element within the first x element?</td></tr>
-</table>
-
-<p>
-The right-hand question can be answered only if the reader knows the document&#8217;s
-<a class="gl-ref" href="../glossary.html#schema">schema</a>, its rules for which elements go where, and only if that schema allows
-few ways of saying the same thing. Berners-Lee calls each condition a big if.
-</p>
-
-<p>
-He then removes the crutch by renaming the elements v, x, y, z and w. The
-names were a big hint, and only to the human.
+He then renames the elements v, x, y, z and w. The names were a big hint,
+and only to the human.
 </p>
 
 <figure>
@@ -247,10 +233,28 @@ not. Nothing in the tree says which value describes which, or what questions
 are worth asking.</figcaption>
 </figure>
 
+<p>
+Of that tree a program can still ask questions such as these:
+</p>
+
+<table>
+<tr><th>Questions about the document</th><th>Question about the world</th></tr>
+<tr><td>Is there a w element within a details element?</td><td rowspan="2">What is the author of page?</td></tr>
+<tr><td>What is the content of the w element within the first x element?</td></tr>
+</table>
+
+<p>
+The right-hand question can be answered only if the reader knows the
+document&#8217;s <a class="gl-ref" href="../glossary.html#schema">schema</a>, its rules for which elements go where, and only if
+that schema allows few ways of saying the same thing. Berners-Lee calls each
+condition a big if.
+</p>
+
 <h2>32.2 Why the mapping is hairy</h2>
 
 <p>
-There is a mapping from XML documents to semantic graphs. Berners-Lee&#8217;s word
+There is a mapping from XML documents to semantic graphs, webs of such
+triples. Berners-Lee&#8217;s word
 for it is hairy, and he gives four reasons.
 </p>
 
@@ -258,7 +262,7 @@ for it is hairy, and he gives four reasons.
 <tr><th>Problem</th><th>Consequence</th></tr>
 <tr><td>The mapping is many to one</td><td>A query must cover every rendering</td></tr>
 <tr><td>The schema is needed to know the mapping</td><td>Nothing can be learned from the document alone</td></tr>
-<tr><td>Schemas of the day did not carry it</td><td>An <a class="gl-ref" href="../glossary.html#inference">inference</a> language would have to be added</td></tr>
+<tr><td>Schemas of the day did not carry it</td><td>A program would need extra rules, written somewhere else, saying which layout means which fact</td></tr>
 <tr><td>Queries over structure are longer than queries over statements</td><td>Combining two properties, such as books by the same author as this one, becomes unmanageable</td></tr>
 </table>
 
@@ -368,10 +372,10 @@ semantic model may not have a well defined one, and gives four symptoms.
 <h3>Statements about statements</h3>
 <p>
 The jam jar confuses a statement about a thing with a statement about a
-statement. The qualifier at a distance is subtler: once a separate flag can
-say that &ldquo;author&rdquo; means the author of a translated work, the safe
-inference that a Finnish document&#8217;s author speaks Finnish can be
-overturned from elsewhere in the record.
+statement. The qualifier at a distance is subtler. Normally, if a document is
+in Finnish, a reader may infer that its author speaks Finnish. Now a flag
+elsewhere in the record says that <code>author</code> means the author of the
+original, untranslated work. The <a class="gl-ref" href="../glossary.html#inference">inference</a> silently fails.
 </p>
 
 <h3>Order</h3>
@@ -460,7 +464,7 @@ renderings are now five <a class="gl-ref" href="../glossary.html#json">JSON</a> 
 consumer must know the producer&#8217;s chosen structure. JSON-LD, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of January 2014, exists to attach a graph model to JSON for
 exactly this reason.</li>
-<li><strong>The jam jar got a notation.</strong> RDF-star lets one <a class="gl-ref" href="../glossary.html#triple">triple</a> be
+<li><strong>The jam jar got a notation.</strong> RDF-star lets one triple be
 the subject of another, making statements about statements explicit. It was
 set out in a W3C Community Group report in 2021 and carried into the
 W3C&#8217;s RDF 1.2 work.</li>
@@ -495,14 +499,15 @@ layouts. What must a program be told to find the author in each?</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.2</span>
-The jam jar label is ambiguous between a statement and a statement about a
-statement. Find a real example in a format you work with.</p>
+A parcel label reads &ldquo;Fragile&rdquo;. Is that about the label or the
+parcel? Find one more everyday label with the same ambiguity.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.3</span>
 Take the access rule from section 32.3 and suppose an earlier rule in the same
 file says that nobody may read the page on Sundays. Rewrite the member rule so
-that it is true on its own, whatever order the rules are read in.</p>
+that it is true on its own, whatever order the rules are read in. Hint: say
+both conditions in one sentence.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.4</span>

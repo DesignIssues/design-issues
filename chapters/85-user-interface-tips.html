@@ -54,8 +54,8 @@ a Design Issues note by Tim Berners-Lee, 2016-12-15.
 <p>
 A dozen everyday interface rules: let people copy and paste, do not interrupt
 them, name pages so they can be found again, and never lose what they typed.
-Most are broken by replacing or interrupting what the browser already does well,
-and the failures are invisible to whoever built them.
+Most are broken by replacing or interrupting what the browser already does
+well.
 </p>
 </div>
 
@@ -80,7 +80,7 @@ Sections 85.1 to 85.3 take the rules about text; section 85.5 lists the rest.
 <h2>85.1 Text must be copyable</h2>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig85-1-t fig85-1-d">
   <title id="fig85-1-t">Four rules about getting text in and out</title>
   <desc id="fig85-1-d">All displayed text should be copyable, error messages
@@ -110,8 +110,6 @@ Sections 85.1 to 85.3 take the rules about text; section 85.5 lists the rest.
   <text x="531" y="204" class="t-sm" text-anchor="middle">but only as a result of my own action,</text>
   <text x="531" y="222" class="t-sm" text-anchor="middle">so that I am expecting it</text>
 
-  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Three of the four break when a developer overrides what the browser already does with text.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 85.1</span>
 The text rules share a cause: replacing the browser&#8217;s own text handling
@@ -200,8 +198,8 @@ up and switch to using a short and unsafe password out of frustration.
   <text x="360" y="186" class="t-sm t-it" text-anchor="middle">the result is the opposite of the intent</text>
 </svg>
 <figcaption><span class="fig-label">Figure 85.2</span>
-A rule added for security produces the insecure outcome. The failure is three
-steps away from the rule, which is why its author does not see it.</figcaption>
+A rule added for security produces the insecure outcome, three steps away
+from the rule.</figcaption>
 </figure>
 
 <p>
@@ -233,9 +231,9 @@ cuteness.
 The three text rules share one act. The <em>platform</em>, the browser or
 phone&#8217;s built-in text box, works in every language and with every
 <em>assistive technology</em> (screen readers and similar aids). A developer
-replaces it to make one field stricter, such as his numeric field that accepts
-only digits and so refuses a pasted 1,200. The replacement handles its own case
-and loses everything else.
+replaces it to make one field stricter: a numeric field that accepts only
+digits refuses a pasted &#8216;1,200&#8217;. The replacement handles its own
+case and loses everything else.
 </p>
 
 <p>
@@ -246,48 +244,28 @@ back to the basic <em>widget</em>, the standard input box.
 
 <h2>85.4 Why the list still needed writing</h2>
 
-<h3>Why authors don&#8217;t notice</h3>
-
 <p>
-Each violation is invisible to its author, whose own situation hides it. The
-developer already knows what the error means, tests the input they had in mind,
-attends to the app without interruption and finishes in one sitting. The user
-may have none of these advantages, and every rule in section 85.5 falls into
-that gap.
-</p>
-
-<p>
-Chapter 88 describes the same gap for language, and its remedy: the hard work
-of imagining somebody on the other side of a boundary.
+The note offers no diagnosis; it calls the tips its author&#8217;s own biases.
+Our reading: a developer knows what the error means and tests the input they
+had in mind, so the failures rarely show from where they sit. Chapter 88
+describes the same gap for language.
 </p>
 
 <h2>85.5 The rest of the list</h2>
 
 <p>
-The note gives eight more tips.
+The note gives eight more tips, in two groups.
 </p>
+
+<h3>Don&#8217;t interrupt</h3>
 
 <table>
 <tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
 <tr><td>Never use modals</td><td>It blocks the rest of the page until answered, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, between related things, and close it when done.</td></tr>
-<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. <code>alert()</code> and <code>confirm()</code> cannot hold links.</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
-<tr><td>Set and update the title</td><td>Bookmarks and tabs show the title out of context; &#8220;Orders&#8221; or &#8220;Acme Inc&#8221; is useless months later.</td><td>&#8220;Acme Order 8948375 Complete&#8221;, specific part first; change it per view, each view with its own <a class="gl-ref" href="../glossary.html#uri">URI</a>.</td></tr>
-<tr><td>Useful download filenames</td><td>A PDF has no title the user sees, and file browsers sort alphabetically.</td><td>Put the date first, year then month then day.</td></tr>
-<tr><td>Never use a carousel</td><td>Anything that moves by itself distracts.</td><td>Move only when the user starts it, as with a video.</td></tr>
-<tr><td>Never throw away my data</td><td>Unsaved input is lost; one bad field can wipe a whole form.</td><td>Save automatically; show saving and errors by colour; keep the valid fields.</td></tr>
-<tr><td>Stick with the default font size</td><td>Text at 80% overrides the size the reader chose.</td><td>Keep body text at 100%.</td></tr>
+<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. <code>alert()</code> and <code>confirm()</code> cannot hold links. Users learn to type an administrator password into any box, and &ldquo;Popups are too easy to fake.&rdquo;</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
+<tr><td>Never use a carousel</td><td>Anything that moves by itself distracts. The extreme case, in a postscript: a multi-page electronic road sign takes drivers&#8217; eyes off the road for 10&ndash;12 seconds.</td><td>Move only when the user starts it, as with a video.</td></tr>
 <tr><td>Don&#8217;t time out my session</td><td>Getting the passport whose number is asked for may take weeks.</td><td>Keep what was entered; time out only powerful sessions such as banking.</td></tr>
 </table>
-
-<p>
-Popups also train users to type an administrator password into whatever
-box appears, and
-</p>
-
-<blockquote>
-Popups are too easy to fake.
-<cite>User Interface: Random tips, 2016</cite>
-</blockquote>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
@@ -349,6 +327,16 @@ A modal blocks the very information the user needs to finish the task it
 demands; opened in place, it does not.</figcaption>
 </figure>
 
+<h3>Don&#8217;t lose or hide things</h3>
+
+<table>
+<tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
+<tr><td>Set and update the title</td><td>Bookmarks and tabs show the title out of context; &#8220;Orders&#8221; or &#8220;Acme Inc&#8221; is useless months later.</td><td>&#8220;Acme Order 8948375 Complete&#8221;, specific part first; change it per view, each view with its own <a class="gl-ref" href="../glossary.html#uri">URI</a>.</td></tr>
+<tr><td>Useful download filenames</td><td>A PDF has no title the user sees, and file browsers sort alphabetically.</td><td>Put the date first, year then month then day.</td></tr>
+<tr><td>Never throw away my data</td><td>Unsaved input is lost; one bad field can wipe a whole form.</td><td>Save automatically; show saving and errors by colour; keep the valid fields.</td></tr>
+<tr><td>Stick with the default font size</td><td>Text at 80% overrides the size the reader chose.</td><td>Keep body text at 100%.</td></tr>
+</table>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig85-4-t fig85-4-d">
@@ -400,6 +388,10 @@ from the start.</figcaption>
 National Cyber Security Centre told sites to let users paste passwords,
 and the US NIST guideline SP 800-63B said sites should permit pasting
 and offer to display the password.</li>
+<li><strong>Accessibility rules followed.</strong> WCAG 2.2, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of October 2023, added criteria against making users re-enter
+information already given and against log-ins that depend on memorising or
+transcribing, which in practice means allowing paste.</li>
 </ul>
 </div>
 
@@ -408,11 +400,13 @@ and offer to display the password.</li>
 <p>
 Earlier interface arguments: Chapters 82 to 84. Incentives: Chapter 23. The
 other side of a boundary: Chapter 88. Passwords and their alternative: Chapter 69.
+The note&#8217;s own further reading: Jakob Nielsen&#8217;s ten usability
+heuristics, and W3C&#8217;s accessibility guidelines (WCAG).
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">5</span></summary>
+<summary>Questions <span class="q-count">6</span></summary>
 <div class="question">
 <p><span class="question-number">85.1</span>
 Find an error message in software you use that cannot be copied. Who is
@@ -429,13 +423,17 @@ custom field might stop you doing.</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.4</span>
-Design a test that would catch one of these failures without the author
-having to think of it.</p>
+Try pasting into the password field of three sites you use. Which refuse, and
+what does each make you do instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.5</span>
-Why does the note put the page&#8217;s own title before the site name? Give an
-example of a modal that kept you from finding information you needed.</p>
+Why does the note put the page&#8217;s own title before the site name?</p>
+</div>
+<div class="question">
+<p><span class="question-number">85.6</span>
+Give an example of a modal that kept you from finding information you
+needed.</p>
 </div>
 </details>
 

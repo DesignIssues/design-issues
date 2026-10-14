@@ -97,6 +97,11 @@ statement: whenever the two daughter links hold, so does the granddaughter
 link.</td></tr>
 </table>
 
+<p>
+Read <code>|=</code> as <em>is to be concluded when</em> and <code>&lt;=</code>
+as <em>is true whenever</em>.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig41-1-t fig41-1-d">
@@ -225,8 +230,9 @@ Two ways of exporting such knowledge to the Web are offered:
 
 <table>
 <tr><th>Option</th><th>What gets published</th><th>Who can use it</th><th>Problem</th></tr>
-<tr><td>Export the rule system</td><td>Nothing in a certain corpus
-contradicts birds flying, for birds or any superclass of penguins</td><td>Possibly
+<tr><td>Export the rule system</td><td>A report on the engine: no fact
+in its collection says that birds, or any wider group penguins belong to,
+cannot fly</td><td>Possibly
 only engines of the same kind</td><td>It describes the engine&#8217;s state, not
 penguins</td></tr>
 <tr><td>Export the output</td><td>A particular system has concluded that Pingu
@@ -300,15 +306,16 @@ proof.
 search by rules of thumb rather than strict logic, may have been used to
 discover the proof. Once found, it can be checked as valid by any <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>
 system. The note places heuristic systems above a shared Semantic Web
-bus and classical systems below it.
+bus (a channel every system plugs into, like a computer&#8217;s bus) and
+classical systems below it.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig41-3-t fig41-3-d">
   <title id="fig41-3-t">Many ways to find, one way to check</title>
-  <desc id="fig41-3-d">Three different engines, a heuristic engine, a default
-  reasoner and a fuzzy system, each find a proof their own way. All deliver it
+  <desc id="fig41-3-d">Three different engines, a heuristic engine, a
+  hand-written search and a specialist prover, each find a proof their own way. All deliver it
   written in classical logic. Below a dashed line, the Semantic Web bus, any
   validator checks that proof and gives the same verdict.</desc>
 
@@ -316,11 +323,11 @@ bus and classical systems below it.
   <text x="124" y="40" text-anchor="middle">heuristic engine</text>
   <text x="124" y="58" class="t-sm" text-anchor="middle">rules of thumb</text>
   <rect class="box-warm" x="260" y="20" width="200" height="48" rx="4"/>
-  <text x="360" y="40" text-anchor="middle">default reasoner</text>
-  <text x="360" y="58" class="t-sm" text-anchor="middle">its own assumptions</text>
+  <text x="360" y="40" text-anchor="middle">hand-written search</text>
+  <text x="360" y="58" class="t-sm" text-anchor="middle">tuned for one task</text>
   <rect class="box-warm" x="496" y="20" width="200" height="48" rx="4"/>
-  <text x="596" y="40" text-anchor="middle">fuzzy system</text>
-  <text x="596" y="58" class="t-sm" text-anchor="middle">its own weighting</text>
+  <text x="596" y="40" text-anchor="middle">specialist prover</text>
+  <text x="596" y="58" class="t-sm" text-anchor="middle">its own strategy</text>
 
   <path class="ln" d="M 124 68 L 124 104 M 360 68 L 360 104 M 596 68 L 596 104"/>
   <path d="M 119 98 L 124 110 L 129 98 Z" fill="#2f4f4f"/>
@@ -386,13 +393,6 @@ both a statement and its contradiction. Chapter 46 treats that question.
 Format, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of June 2010, exists precisely to exchange rules
 between engines with different execution strategies, which is this chapter&#8217;s
 requirement.</li>
-<li><strong>Non-monotonic reasoning was kept out and let back in
-narrowly.</strong> Chapter 42 describes the scoped form of negation that
-permits default reasoning without the global closed-world assumption this note
-rejects.</li>
-<li><strong>The catalogue argument still applies.</strong> Treating absence
-from a dataset as evidence of non-existence remains a familiar error, and the
-remedy is still the one given here.</li>
 </ul>
 </div>
 
@@ -402,7 +402,8 @@ remedy is still the one given here.</li>
 The asymmetry between finding and checking is Chapter 40, and the plan both
 serve is Chapter 30. The objection about inconsistency raised here is treated
 fully in Chapter 46. The independence of assertions is the axiom of
-Chapter 27, and the scoped negation that answers the penguin is Chapter 42.
+Chapter 27. Chapter 42&#8217;s scoped negation lets default reasoning back in
+narrowly, without the global closed-world assumption this note rejects.
 </p>
 </div>
 
@@ -415,8 +416,8 @@ depends on from the timing.</p>
 </div>
 <div class="question">
 <p><span class="question-number">41.2</span>
-Explain in your own words why &ldquo;The xxxx system has output that Pingu can
-fly&rdquo; is safer to publish than the bare statement that Pingu can fly.</p>
+Explain in your own words why publishing that a particular system has
+concluded Pingu flies is safer than the bare statement that Pingu can fly.</p>
 </div>
 <div class="question">
 <p><span class="question-number">41.3</span>

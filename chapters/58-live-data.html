@@ -55,8 +55,8 @@ a Design Issues note by Tim Berners-Lee, 2021-10-20.
 <a class="gl-ref" href="../glossary.html#solid">Solid</a> can tell an application when the data it is showing has changed. In
 2021 the message says only that something changed, and the application must
 reload everything. Berners-Lee wants the message to carry the change itself,
-which would also open the way to working offline and to devices updating one
-another directly.
+which would also open the way to working offline and to arrangements other
+than one central <a class="gl-ref" href="../glossary.html#server">server</a>.
 </p>
 </div>
 
@@ -80,7 +80,7 @@ live-read-write web
 <p>
 When one person changes a list stored in a Solid <a class="gl-ref" href="../glossary.html#pod">Pod</a>, how does another
 person&#8217;s screen find out? The simplest answer is <em>polling</em>: the
-application asks the <a class="gl-ref" href="../glossary.html#server">server</a> &ldquo;has it changed?&rdquo; every few
+application asks the server &ldquo;has it changed?&rdquo; every few
 seconds.
 </p>
 
@@ -130,11 +130,16 @@ that catches the change. A subscription hears about it at once.</figcaption>
 <p>
 Solid already subscribes, using a <em>WebSocket</em>: a network connection
 that stays open so that either side can send at any time. Berners-Lee calls it
-basic but effective. In 2021 the server sends only a bare &lsquo;PING&rsquo;
+basic but effective.
+</p>
+
+<p>
+In 2021 the server sends only a bare &lsquo;PING&rsquo;
 notification that the resource has changed, and the application then fetches
 the whole resource again. He wants the server instead to send a PATCH, a
-message carrying only the change, to reduce both the bandwidth and the number
-of round trips between client and server.
+message carrying only the change, to reduce both the data sent (the
+bandwidth) and the number of round trips, a round trip being a request and its
+reply.
 </p>
 
 <figure>
@@ -221,13 +226,14 @@ A short passage places the mechanism in a wider family:
 
 <table>
 <tr><th>Mechanism</th><th>Speed, in his words</th></tr>
-<tr><td>An event inside a running program (DOM events in a web page)</td><td>more or less instant</td></tr>
+<tr><td>An event inside a running program (for example a click inside a web page; &lsquo;DOM events&rsquo;)</td><td>more or less instant</td></tr>
 <tr><td>A message across the network (web sockets)</td><td>fairly rapid</td></tr>
 <tr><td>SMS and email messages</td><td>slower</td></tr>
 <tr><td>Subscribing to a feed of news articles (NNTP, the old Usenet news protocol)</td><td>the slow end</td></tr>
 </table>
 
 <p>
+Each step down is slower but can reach someone who is not online right now.
 He sets the target at the fast end, ideally of the order of 100 milliseconds,
 and notes that one could imagine email carrying aggregated heaps of update
 messages. Chapter 64 is what the slow end became.
@@ -257,28 +263,79 @@ whenever the data changes.
 Take the shopping list. The data is milk and eggs; the function draws a list
 of two lines. Bob adds bread; the data becomes milk, eggs and bread; the same
 function runs again and draws three lines. No code anywhere says &ldquo;insert
-a row&rdquo;. There is no update logic to get wrong, only the function and a
-system that reapplies it.
+a row&rdquo;.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+     aria-labelledby="fig58-3-t fig58-3-d">
+  <title id="fig58-3-t">One function, run again</title>
+  <desc id="fig58-3-d">Top row: data milk and eggs goes through the function
+  draw one line per item and gives a screen of two lines. Bob adds bread, a
+  green arrow down to the second row: data milk, eggs and bread goes through
+  the same function and gives a screen of three lines. No code anywhere
+  inserts a row.</desc>
+  <defs>
+    <marker id="fig58-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig58-3-grn" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="24" y="24" width="190" height="48" rx="4"/>
+  <text x="119" y="53" text-anchor="middle">data: milk, eggs</text>
+  <path class="ln-accent" d="M 214 48 L 258 48" marker-end="url(#fig58-3-arr)"/>
+  <rect class="box-warm" x="262" y="24" width="220" height="48" rx="4"/>
+  <text x="372" y="45" class="t-sm" text-anchor="middle">function:</text>
+  <text x="372" y="62" class="t-sm" text-anchor="middle">draw one line per item</text>
+  <path class="ln-accent" d="M 482 48 L 526 48" marker-end="url(#fig58-3-arr)"/>
+  <rect class="box-plain" x="530" y="24" width="166" height="48" rx="4"/>
+  <text x="613" y="53" text-anchor="middle">screen: 2 lines</text>
+
+  <path class="ln-accent" style="stroke:#5a8f5a" d="M 119 72 L 119 126" marker-end="url(#fig58-3-grn)"/>
+  <text x="131" y="104" class="t-sm" style="fill:#5a8f5a">Bob adds bread</text>
+
+  <rect class="box-green" x="24" y="130" width="190" height="48" rx="4"/>
+  <text x="119" y="152" text-anchor="middle">data: milk, eggs,</text>
+  <text x="119" y="169" text-anchor="middle">bread</text>
+  <path class="ln-accent" d="M 214 154 L 258 154" marker-end="url(#fig58-3-arr)"/>
+  <rect class="box-warm" x="262" y="130" width="220" height="48" rx="4"/>
+  <text x="372" y="151" class="t-sm" text-anchor="middle">the same function,</text>
+  <text x="372" y="168" class="t-sm" text-anchor="middle">run again</text>
+  <path class="ln-accent" d="M 482 154 L 526 154" marker-end="url(#fig58-3-arr)"/>
+  <rect class="box-plain" x="530" y="130" width="166" height="48" rx="4"/>
+  <text x="613" y="159" text-anchor="middle">screen: 3 lines</text>
+
+  <text x="360" y="214" class="t-sm t-it" text-anchor="middle">No code anywhere inserts a row.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 58.3</span>
+The framework re-runs one function on the new data, so there is no update
+logic to get wrong.</figcaption>
+</figure>
 
 <h2>58.5 What it points towards</h2>
 
 <p>
-The conclusion names two limitations the next design would have to remove,
-both structural rather than incremental.
+The conclusion names three improvements: efficiency, topology and offline
+work. Two of them are structural rather than incremental.
 </p>
 
 <p>
 The first is topology, the shape of who talks to whom. Today it is hub and
-spoke: a server in the middle, clients around it. He asks for other
-topologies, such as devices updating one another directly.
+spoke: a server in the middle, clients around it. He asks for
+topologies other than hub and spoke; one possibility, not named in the note,
+is devices updating one another directly.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
-     aria-labelledby="fig58-3-t fig58-3-d">
-  <title id="fig58-3-t">Hub and spoke against peers</title>
-  <desc id="fig58-3-d">Left: three devices each connected only to a Pod in
+     aria-labelledby="fig58-4-t fig58-4-d">
+  <title id="fig58-4-t">Hub and spoke against peers</title>
+  <desc id="fig58-4-d">Left: three devices each connected only to a Pod in
   the centre; if the Pod is unreachable no device hears of any change. Right:
   the same three devices connected to each other with no centre, each copy
   merging the others' changes.</desc>
@@ -315,7 +372,7 @@ topologies, such as devices updating one another directly.
   <text x="540" y="272" class="t-sm" text-anchor="middle">Devices update one another, and</text>
   <text x="540" y="288" class="t-sm" text-anchor="middle">merge (CRDTs) after being offline.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 58.3</span>
+<figcaption><span class="fig-label">Figure 58.4</span>
 Today every update passes through one server. The right-hand picture is one
 possible alternative; the note does not specify a design.</figcaption>
 </figure>
@@ -375,8 +432,8 @@ examples from your own life.</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.3</span>
-Rendering the interface as a function of state removes update logic. What does
-it cost, and when is it the wrong choice?</p>
+With the shopping list at 2,000 items, Bob adds one. What does a
+redraw-everything approach do, and why might it be slow?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.4</span>

@@ -73,8 +73,7 @@ the URI itself as a string.
 <cite>When use a literal for a URI in Linked Data, 2017</cite>
 </blockquote>
 <p>
-A whole note, as he says, just to make that point. It earns a chapter because
-the distinction between using a name and mentioning it is one every system
+It earns a chapter because the distinction between using a name and mentioning it is one every system
 with identifiers eventually gets wrong.
 </p>
 </div>
@@ -82,8 +81,9 @@ with identifiers eventually gets wrong.
 <h2>35.1 The rule</h2>
 
 <p>
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>: subject, property,
-value. <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> is a common way of writing those triples down. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
+Linked Data is <a class="gl-ref" href="../glossary.html#rdf">RDF</a> published on the Web so that datasets can point into one
+another (Chapter 49). RDF describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>:
+subject, property, value. <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> is a common way of writing those triples down. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
 in angle brackets is a symbol: it names a thing. A value in quotation marks is
 a literal: a piece of text, taken as it stands. Berners-Lee offers a mnemonic
 for the brackets:
@@ -101,10 +101,6 @@ identified by.
 <tr><td><code>"&#8230;"</code></td><td>the characters themselves</td><td><code>"https://uni.edu/students#JRMeadows"</code> is a 34-character string</td></tr>
 </table>
 
-<p>
-Almost always the thing is what is wanted, so the rare case catches people.
-</p>
-
 <h2>35.2 What goes wrong, exactly</h2>
 
 <p>
@@ -113,7 +109,7 @@ The note&#8217;s example builds up in four steps.
 
 <ol>
 <li>Example.com calls Joe <code>&lt;https://example.com/people#Joe&gt;</code>
-and says he is a person.</li>
+and says he is a person named Joe Meadows.</li>
 <li>A university calls him <code>&lt;https://uni.edu/students#JRMeadows&gt;</code>
 and says he is a student.</li>
 <li>Someone states that the two are the same, using the property
@@ -121,6 +117,13 @@ and says he is a student.</li>
 <li>A system may now normalise: pick one name and use it everywhere, so the
 data is &ldquo;smushed together&rdquo;.</li>
 </ol>
+
+<p>
+The figures use Turtle shorthand. A prefix stands for the start of a URI, so
+<code>ex:Joe</code> is short for <code>&lt;https://example.com/people#Joe&gt;</code>;
+<code>foaf:</code> is a common <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for people; and <code>a</code> means
+&ldquo;is a&rdquo;.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 680 262" width="680" height="262" role="img"
@@ -276,13 +279,11 @@ used ones unless the format tells them apart. Many everyday tools do:
 </table>
 
 <p>
-Where the format cannot record the difference, a rewriting pass treats every
-occurrence alike and the rare mention is lost. Rare occasions are exactly the
-ones a habit destroys.
+Where the format cannot record the difference, the rare mention is lost.
 </p>
 
 <div class="since">
-<h3>What happened since</h3>
+<h3>What was already in place</h3>
 <ul>
 <li><strong>The notation was already standard.</strong> RDF 1.1 Turtle became
 a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014, so the bracket-versus-quote syntax the
@@ -323,8 +324,8 @@ a name rather than use it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.4</span>
-Joe&#8217;s preference survived because it was quoted. Write the one line that
-would have destroyed it, and say what the merged data then claims.</p>
+Joe later changes his preference to a third URI. In the quoted version, what
+must he edit, and what would a merge do to it if he forgot the quotes?</p>
 </div>
 </details>
 

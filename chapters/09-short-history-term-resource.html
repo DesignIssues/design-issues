@@ -57,8 +57,9 @@ address named a page. Over the years it was stretched to mean anything at
 all. People using <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the Web&#8217;s language for data, then wanted plain web
 addresses, with no <a class="gl-ref" href="../glossary.html#hash">hash</a> in them, to name people and ideas rather than pages
 about them. The compromise was a rule about the <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s reply: a
-200 answer means the address names a page, and a 303 answer means it names
-something else and points to a page describing it. Berners-Lee&#8217;s own
+200 answer means the address names a page, and a 303 answer says only
+<em>see this other page</em>, which leaves the address free to name
+something else, such as a person. Berners-Lee&#8217;s own
 preference, stated at the end, is to stop saying &ldquo;resource&rdquo; and
 say Document or Thing instead.
 </p>
@@ -121,7 +122,9 @@ position he held and his decision to give way.
 </svg>
 <figcaption><span class="fig-label">Figure 9.1</span>
 Each community widened the circle; the word &ldquo;resource&rdquo; was
-stretched to cover all three rings at once.</figcaption>
+stretched to cover all three rings at once. REST and the 2004 Architecture
+document (stages 3 and 5) redefined the word without moving these
+boundaries.</figcaption>
 </figure>
 
 <p>
@@ -269,29 +272,23 @@ his but eventually gave in.
 </blockquote>
 
 <p>
-The specification was not changed, and its IETF editors were not brought
-round to the new model; it was interpreted. Berners-Lee calls the resolution a
-truce, negotiated by the TAG between the HTTP specification, the RDF systems
-already built, and the people who wanted hashless URIs for people. It is known
-as <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>, after its number in the TAG&#8217;s list of issues.
-</p>
-
-<p>
-The rule, shown in Figure 9.3: a <strong>200</strong> answer (&ldquo;here it
-is&rdquo;) means the hashless URI names a document. For a person or an RDF
-property the server must not answer 200, but may answer <strong>303</strong>
-(&ldquo;see other&rdquo;), pointing to a document that describes it.
+The resulting rule, known as <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a> after its number in the
+TAG&#8217;s list of issues, is shown in Figure 9.3. A <strong>200</strong>
+answer, which returns the page, means the hashless URI names a document. For
+a person or an RDF property the server must not answer 200, but may answer
+<strong>303</strong> (See Other), pointing to a document that explains more.
+A 303 by itself says nothing about what the URI names.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
      aria-labelledby="fig9-3-t fig9-3-d">
   <title id="fig9-3-t">The 200/303 rule</title>
   <desc id="fig9-3-d">A client sends GET http://example.net/people/Pat. The
   server's answer branches two ways. A 200 OK means the URI names a document
-  and the reply is a copy of it. A 303 See Other means the URI names Pat
-  the person, and points to a description at a separate address, which leads to a
-  document about Pat.</desc>
+  and the reply is a copy of it. A 303 See Other allows no conclusion about
+  what the URI names, and points to a description at a separate address,
+  which leads to a document about Pat.</desc>
 
   <rect class="box-plain" x="16" y="96" width="240" height="56" rx="4"/>
   <text x="136" y="118" class="t-mono" text-anchor="middle">GET</text>
@@ -305,34 +302,40 @@ property the server must not answer 200, but may answer <strong>303</strong>
 
   <path class="ln" d="M 414 124 L 430 124 L 430 52 L 442 52"/>
   <path d="M 450 52 L 442 48 L 442 56 Z" fill="#2f4f4f"/>
-  <path class="ln" d="M 430 124 L 430 186 L 442 186"/>
-  <path d="M 450 186 L 442 182 L 442 190 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 430 124 L 430 187 L 442 187"/>
+  <path d="M 450 187 L 442 183 L 442 191 Z" fill="#2f4f4f"/>
 
   <rect class="box-green" x="450" y="16" width="250" height="72" rx="4"/>
   <text x="466" y="38" class="t-mono">200 OK</text>
   <text x="466" y="58" class="t-sm">this URI names a document;</text>
   <text x="466" y="76" class="t-sm">here is a copy of it</text>
 
-  <rect class="box-warm" x="450" y="150" width="250" height="72" rx="4"/>
-  <text x="466" y="172" class="t-mono">303 See Other</text>
-  <text x="466" y="192" class="t-sm">this URI names Pat; a description</text>
-  <text x="466" y="210" class="t-sm">is at &#8230;/people/Pat.html</text>
+  <rect class="box-warm" x="450" y="142" width="250" height="90" rx="4"/>
+  <text x="466" y="164" class="t-mono">303 See Other</text>
+  <text x="466" y="184" class="t-sm">no conclusion about what this</text>
+  <text x="466" y="202" class="t-sm">URI names; a description is at</text>
+  <text x="466" y="220" class="t-sm t-mono">&#8230;/people/Pat.html</text>
 
-  <line class="ln-dash" x1="575" y1="222" x2="575" y2="242"/>
-  <path d="M 575 250 L 571 242 L 579 242 Z" fill="#8a9a9a"/>
-  <rect class="box-plain" x="470" y="250" width="210" height="36" rx="4"/>
-  <text x="575" y="273" text-anchor="middle">Document about Pat</text>
+  <line class="ln-dash" x1="575" y1="232" x2="575" y2="254"/>
+  <path d="M 575 262 L 571 254 L 579 254 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="470" y="262" width="210" height="36" rx="4"/>
+  <text x="575" y="285" text-anchor="middle">Document about Pat</text>
 </svg>
 <figcaption><span class="fig-label">Figure 9.3</span>
-Under httpRange-14 the status code tells the client whether the URI named a
-page or the thing the page is about.</figcaption>
+Under httpRange-14 only a 200 tells the client something definite: the URI
+names a document. A 303 leaves the URI free to name something else, such as
+Pat, and points to a description.</figcaption>
 </figure>
 
 <p>
-Berners-Lee writes both that the HTTP protocol &ldquo;was, in fact,
-changed&rdquo; and that &ldquo;The spec wasn&#8217;t changed&rdquo;: the text was
-untouched, but a web server can now be asked about anything, not only
-documents. His verdict:
+Berners-Lee calls the resolution a truce, negotiated by the TAG between the
+HTTP specification, the RDF systems already built, and the people who wanted
+hashless URIs for people. The HTTP specification&#8217;s editors at the IETF
+were not brought round to the new model. The text of HTTP was untouched; its
+meaning was widened, so that a server can now be asked about anything, not
+only documents. Hence his two remarks, that the protocol &ldquo;was, in fact,
+changed&rdquo; and that &ldquo;The spec wasn&#8217;t changed&rdquo;. His
+verdict:
 </p>
 
 <blockquote>
@@ -345,8 +348,7 @@ some community.
 <h2>9.5 The proposal at the end</h2>
 
 <p>
-The note closes with advice never adopted and still the best available:
-edit the documents to use Document and Thing and eliminate Resource. He
+The note closes with advice that was never adopted: edit the documents to use Document and Thing and eliminate Resource. He
 acknowledges why no English word will fit.
 </p>
 
@@ -360,8 +362,8 @@ we have done
 </blockquote>
 
 <p>
-That is a rule for reading this whole book: every capitalised term in Web
-architecture is an ordinary word under protest.
+Berners-Lee&#8217;s capitals, Document and Thing, are meant as a warning
+that the ordinary word has been bent.
 </p>
 
 <div class="since">
@@ -397,9 +399,8 @@ Chapter 15.
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">9.1</span>
-Take one specification you use and find every occurrence of the word
-&ldquo;resource&rdquo; in it. Decide which of the five stages in section 9.1
-each occurrence belongs to.</p>
+Which of the five stages in 9.1 would call a person a resource, and which
+would not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">9.2</span>
@@ -413,13 +414,13 @@ it have required, and who would have had to agree?</p>
 </div>
 <div class="question">
 <p><span class="question-number">9.4</span>
-A server returns 303 for a URI. What does that tell you the URI names?</p>
+A server returns 303 for a URI. What may you conclude, and what may you
+not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">9.5</span>
-The closing rule is that new concepts take a nearby English word and
-capitalise it. Name a term in Web architecture where the nearby word has
-caused more trouble than it saved.</p>
+Berners-Lee proposes Document and Thing in place of Resource. Which ring of
+Figure 9.1 does each word name?</p>
 </div>
 </details>
 

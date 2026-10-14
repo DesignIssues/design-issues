@@ -31,8 +31,8 @@ or is a measurement in particular units, or is an encoding of something else?
 <p>
 The starting point is a muddle. RDF had adopted XML&#8217;s <code>xml:lang</code>
 attribute for marking a string&#8217;s language, but, as Berners-Lee puts it,
-the attribute went into the syntax and not into the model, so no statement in
-the graph ever recorded it. He then works the problem by getting it wrong
+the attribute went into the syntax and not into the model: the tag sat in the
+file&#8217;s markup but produced no statement in the data once the file was read. He then works the problem by getting it wrong
 twice, using a person called Ora whose name is Finnish.
 </p>
 
@@ -193,7 +193,7 @@ specific way.
   <text x="530" y="157" class="t-lg" text-anchor="middle">"Ora"</text>
 </svg>
 <figcaption><span class="fig-label">Figure 38.2</span>
-The language is not inside the four letters. Each arrow is one way of reading
+The language is not inside the three letters. Each arrow is one way of reading
 them, and that arrow is the interpretation property.</figcaption>
 </figure>
 
@@ -215,19 +215,10 @@ Once named, the pattern turns up everywhere:
 
 <p>
 Interpretation properties compose, and composition records order.
-Berners-Lee&#8217;s example nests
-canonicalisation inside hashing inside encoding, which states that a given
-string is the base-64 encoding of the hash of the canonicalised W3C home page.
-Then the comparison that makes the case:
+Berners-Lee&#8217;s example is a sequence: first tidy the W3C home page into
+standard form, then take its fingerprint, then write the fingerprint as
+printable text. The nesting itself states that order.
 </p>
-
-<blockquote>
-Compare this withe the HTTP situation in which the headers cannot be nested,
-and the encodings and compression and other things applied to the body are
-mentioned as unordered annotations, and the spec has to provide a way of
-making the right conclusion about which happened in what order.
-<cite>Interpretation properties, 1998</cite>
-</blockquote>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
@@ -278,6 +269,18 @@ order lives in a document.</figcaption>
 </figure>
 
 <p>
+Then the comparison that makes the case:
+</p>
+
+<blockquote>
+Compare this withe the HTTP situation in which the headers cannot be nested,
+and the encodings and compression and other things applied to the body are
+mentioned as unordered annotations, and the spec has to provide a way of
+making the right conclusion about which happened in what order.
+<cite>Interpretation properties, 1998</cite>
+</blockquote>
+
+<p>
 This cures the symptom Chapter 32 calls unordered annotations of an ordered
 process.
 </p>
@@ -312,12 +315,12 @@ This doesn't tell us what it is 10 of.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 160" width="720" height="160" role="img"
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig38-4-t fig38-4-d">
   <title id="fig38-4-t">Where the reading of a shoe size would go</title>
   <desc id="fig38-4-d">Left: my shoe, shoe:size, the string 10, with nowhere
   to say how to read it. Right: my shoe, shoe:size, an extra node, rdf:value,
-  the string 10; the extra node can carry a datatype or unit.</desc>
+  the string 10, and a unit arc from the extra node to inches.</desc>
   <defs>
     <marker id="fig38-4-aw" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
@@ -338,7 +341,7 @@ This doesn't tell us what it is 10 of.
   <text x="16" y="120" class="t-sm">Ten of what? There is nowhere</text>
   <text x="16" y="136" class="t-sm">to say how to read the string.</text>
 
-  <line class="ln-mut" x1="340" y1="36" x2="340" y2="146"/>
+  <line class="ln-mut" x1="340" y1="36" x2="340" y2="186"/>
 
   <text x="376" y="24" class="t-caps" style="fill:#5a8f5a">with the reading recorded</text>
   <rect x="376" y="60" width="80" height="28" class="box-green"/>
@@ -350,11 +353,16 @@ This doesn't tell us what it is 10 of.
   <text x="604" y="64" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">rdf:value</text>
   <rect x="650" y="60" width="50" height="28" class="box-plain"/>
   <text x="675" y="78" text-anchor="middle">"10"</text>
-  <text x="376" y="120" class="t-sm">The middle node can carry the reading:</text>
-  <text x="376" y="136" class="t-sm">a datatype, or a unit such as inches.</text>
+  <line class="ln" style="stroke:#5a8f5a" x1="548" y1="86" x2="548" y2="112" marker-end="url(#fig38-4-ag)"/>
+  <text x="556" y="104" class="t-sm" style="fill:#5a8f5a">unit</text>
+  <rect x="513" y="114" width="70" height="26" class="box-plain"/>
+  <text x="548" y="132" text-anchor="middle">inches</text>
+  <text x="376" y="166" class="t-sm">The middle node carries the reading:</text>
+  <text x="376" y="182" class="t-sm">here a unit, though it could be a datatype.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 38.4</span>
-Recording the reading needs a node in the middle. Ordinary RDF has none, and
+Recording the reading needs a node in the middle, from which the unit
+hangs. Ordinary RDF has none, and
 adding one to every literal was what he called frightful.</figcaption>
 </figure>
 
@@ -363,7 +371,8 @@ Real data has no such node. Berners-Lee considers two ways to supply one.
 </p>
 
 <p>
-The first is to change how every literal is parsed, so that each
+The first is to change how every literal (a plain string value written straight
+into the data, such as &ldquo;10&rdquo;) is parsed, so that each
 &ldquo;10&rdquo; gains an abstract node. He calls it frightful.
 </p>
 
@@ -382,13 +391,14 @@ A note to himself, dated January 2001, records no clear way forward.
 <h2>38.5 The list of questions worth keeping</h2>
 
 <p>
-Berners-Lee sets out what any datatype designer is choosing between. The
-last column gives the answers he understood XML Schema Datatypes to give.
+A datatype designer has to answer five yes-or-no questions; the answers fix
+how values are compared. The last column gives the answers Berners-Lee
+understood XML Schema Datatypes to give.
 </p>
 
 <table>
 <tr><th>Question</th><th>Why it matters</th><th>XML Schema&#8217;s answer</th></tr>
-<tr><td>Can the type be told from the representation in every case? (1.4e4 against 1.4d4, which differ in precision)</td><td>Decides whether a parser needs a schema</td><td>No</td></tr>
+<tr><td>Can the type always be told from how the value is written? (Two numbers written almost identically, 1.4e4 and 1.4d4, can differ in precision.)</td><td>Decides whether a parser needs a schema</td><td>No</td></tr>
 <tr><td>Are values of different datatypes distinct? Is 1 the same as 1.0?</td><td>Decides what equality means</td><td>Yes</td></tr>
 <tr><td>Is the set of datatypes extensible? Could complex or prime numbers be added?</td><td>Decides whether anyone else may add one</td><td>Yes</td></tr>
 <tr><td>Does representation equality imply value equality?</td><td>Decides whether comparison may be textual</td><td>Yes</td></tr>

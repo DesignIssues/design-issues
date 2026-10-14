@@ -18,8 +18,7 @@ He is not arguing against encryption. He is arguing that the fact
 Chapter 5 recorded a complaint, in 1998, that security should have been
 negotiated within one set of names rather than splitting it in two.
 Seventeen years later Berners-Lee returns to the same decision, knowing how
-it turned out, and makes the strongest claim in the collection about what was
-at stake.
+it turned out, and says plainly what was at stake.
 </p>
 <p>
 The title of the note is a provocation; the argument beneath it is careful.
@@ -31,11 +30,14 @@ The title of the note is a provocation; the argument beneath it is careful.
 <p>
 A protocol is the set of rules a browser and a server follow to talk to each
 other; HTTP is the Web&#8217;s. Every address begins with a prefix (also called
-a scheme), such as <code>http:</code>, naming the protocol used to fetch it.
-In the mid-1990s two secure versions of HTTP were proposed, S-HTTP and HTTP-S,
-and HTTP-S prevailed. That left a further choice: extend the existing protocol
-behind the existing <code>http:</code> prefix, or give the secure version a
-prefix of its own, <code>https:</code>.
+a scheme) naming the protocol used to fetch it, as in
+<code>http://bank.example/</code>.
+</p>
+
+<p>
+In the mid-1990s, when a secure version of HTTP was designed, there was a
+choice: extend the existing protocol behind the existing <code>http:</code>
+prefix, or give the secure version a prefix of its own, <code>https:</code>.
 </p>
 
 <p>
@@ -102,7 +104,8 @@ Three things, and the third settles it.
 <li>Users came under attack individually, so protecting the person who
 follows a link became the browser&#8217;s job rather than the publisher&#8217;s.</li>
 <li>People learned to look not at the s in the address but at the padlock,
-and then at the name of the certificate holder shown by the browser.</li>
+and then at the name of the certificate holder, the organisation the browser
+has checked the site belongs to.</li>
 <li>Browsers stopped showing the prefix at all.</li>
 </ol>
 
@@ -115,7 +118,7 @@ the idea that the 's' in the URI is important part of the architecture.
 </blockquote>
 
 <p>
-If the letter is not shown, it cannot be doing the job it was added for.
+An unshown letter cannot do the job it was added for.
 </p>
 
 <h2>67.3 The charge</h2>
@@ -195,7 +198,7 @@ different names. A link written years ago keeps pointing at the old one.
   <line class="ln" x1="496" y1="198" x2="536" y2="144" marker-end="url(#fig67-2-arr)"/>
 
   <rect class="box-plain" x="380" y="242" width="328" height="32" rx="3"/>
-  <text x="544" y="263" class="t-sm" text-anchor="middle">connection upgraded to encrypted</text>
+  <text x="544" y="263" class="t-sm" text-anchor="middle">beneath both links: connection upgraded to encrypted</text>
 </svg>
 <figcaption><span class="fig-label">Figure 67.2</span>
 On the left the <em>name</em> changed, so every old link depends on someone
@@ -204,7 +207,7 @@ links need nothing.</figcaption>
 </figure>
 
 <p>
-Then comes the comparison that makes it the strongest sentence in Volume VII:
+He then compares it with every earlier change to the Web:
 </p>
 
 <blockquote>
@@ -223,7 +226,7 @@ the web of links in so doing.
   arrows. Beneath it, three bands of change: connection speed from 300 bps to
   300 Gbps, addressing from IPv4 to IPv6, and TLS added inside the protocol as
   the note proposes. Each leaves the links untouched. One arrow, the change
-  from http: to https:, rises through all the bands into the link layer,
+  from http: to https:, rises beside the bands, outside them, into the link layer,
   because it changes the names themselves.</desc>
   <defs>
     <marker id="fig67-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
@@ -247,20 +250,20 @@ the web of links in so doing.
   <circle class="box-plain" cx="650" cy="56" r="10"/>
   <text x="124" y="74" class="t-sm" style="fill:#b08d57">names change: old links break</text>
 
-  <rect class="box-plain" x="24" y="124" width="672" height="32" rx="3"/>
+  <rect class="box-plain" x="64" y="124" width="632" height="32" rx="3"/>
   <text x="170" y="145">speed: 300 bps &#8594; 300 Gbps</text>
   <text x="680" y="145" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
 
-  <rect class="box-plain" x="24" y="164" width="672" height="32" rx="3"/>
+  <rect class="box-plain" x="64" y="164" width="632" height="32" rx="3"/>
   <text x="170" y="185">addressing: IPv4 &#8594; IPv6</text>
   <text x="680" y="185" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
 
-  <rect class="box-plain" x="24" y="204" width="672" height="32" rx="3"/>
+  <rect class="box-plain" x="64" y="204" width="632" height="32" rx="3"/>
   <text x="170" y="225">TLS added inside the protocol (the proposal)</text>
   <text x="680" y="225" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
 
-  <line class="ln-accent" x1="110" y1="262" x2="110" y2="58" marker-end="url(#fig67-3-arra)"/>
-  <text x="110" y="284" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">http: &#8594; https:</text>
+  <line class="ln-accent" x1="40" y1="262" x2="40" y2="58" marker-end="url(#fig67-3-arra)"/>
+  <text x="24" y="284" class="t-mono" style="fill:#1c5a7a">http: &#8594; https: changes the names</text>
 </svg>
 <figcaption><span class="fig-label">Figure 67.3</span>
 Faster lines, new network addresses and encryption inside the protocol all
@@ -278,7 +281,7 @@ should be read from its letters. The s breaks that rule.
 
 <p>
 Once https: was treated as a safe space, browsers ring-fenced it. Under the
-Same Origin Policy, everything loaded into an https: page must itself arrive
+Same Origin Policy, a browser rule about which pages may share data, everything loaded into an https: page must itself arrive
 securely, which, the note says, &ldquo;has led to a class of web apps being
 broken&rdquo;. A parenthesis that follows draws the general lesson:
 </p>
@@ -356,7 +359,7 @@ A symptom if that you can never find the perfect place to put that boundary.
 
 <p>
 If a boundary keeps needing to be moved, the thing it separates was not two
-kinds of thing. That test applies far beyond this argument.
+kinds of thing.
 </p>
 
 <h2>67.5 The proposal</h2>
@@ -400,7 +403,8 @@ default, Chrome 68 began marking plain http: pages &ldquo;Not secure&rdquo; in
 July 2018, and most of the Web migrated.</li>
 <li><strong>The breakage was real and was absorbed.</strong> Redirects, HSTS
 (RFC 6797, 2012, which tells browsers to rewrite a site&#8217;s http: links to
-https:) and the <code>upgrade-insecure-requests</code> directive repaired most
+https:) and the <code>upgrade-insecure-requests</code> directive (a page&#8217;s
+instruction to fetch its own http: links over https:) repaired most
 links. They are a permanent layer of rewriting, the breakage the note warned
 of.</li>
 <li><strong>The upgrade mechanism the note prefers existed and lost.</strong>
@@ -423,8 +427,8 @@ Chapter 46.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">67.1</span>
-The decision served the link maker rather than the link follower. Name another
-design where the two interests diverge.</p>
+A QR code printed on a poster sends people to a web address. Who benefits if
+the address can never change, the printer or the person scanning it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.2</span>

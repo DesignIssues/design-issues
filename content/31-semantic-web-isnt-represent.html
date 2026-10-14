@@ -7,9 +7,10 @@ us; systems that reason about everything; the grand encyclopaedia of facts.
 Those projects were real, and they did fail.
 </p>
 <p>
-This chapter answers six such objections. Each fear is granted, and each
-claim turns out smaller than the fear. The note then maps ordinary database
-tables onto the new model.
+This chapter answers six objections, then refuses to give ground on a
+seventh: that the Web&#8217;s contradictions demand fuzzy logic. Each of the
+six fears is granted, and each claim turns out smaller. The note then maps
+database tables onto the new model.
 </p>
 </div>
 
@@ -26,8 +27,7 @@ that the goal of a Semantic Web is inappropriate.
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
 <p>
-The objections are not technical mistakes. They are memories of earlier
-failures.
+The objections are memories of earlier failures.
 </p>
 </div>
 
@@ -92,7 +92,8 @@ failures.
 </svg>
 <figcaption><span class="fig-label">Figure 31.1</span>
 The six denials, in this chapter&#8217;s order. The first four ask for less;
-the last two remove a centralising assumption.</figcaption>
+the last two remove a centralising assumption. A seventh objection, in
+section 31.5, is not granted.</figcaption>
 </figure>
 
 <h2>31.2 Not artificial intelligence</h2>
@@ -113,8 +114,7 @@ make the extra effort
 </blockquote>
 
 <p>
-The last sentence is usually left out, and the programme&#8217;s difficulty
-is in it.
+The last sentence, usually left out, holds the difficulty.
 </p>
 
 <h2>31.3 Complete language, limited applications</h2>
@@ -238,12 +238,12 @@ computational properties.
 </p>
 
 <p>
-Earlier information systems kept data in a fixed hierarchy or matrix, which
-made them consistent; he bets DARPA, the American defence research agency,
-still has many. They could only be joined up through global hypertext, where
-people feared getting lost: &ldquo;You could follow links forever.&rdquo;
-Yet many web sites are orderly inside, and the gain is that ordered and
-unordered can now be linked.
+Older systems forced data into a fixed tree or grid, which kept it
+consistent; he bets DARPA, the American defence research agency, still has
+many. Joining them needed something looser, global hypertext, and critics
+said users would get lost: &ldquo;You could follow links forever.&rdquo;
+Yet many web sites stay orderly inside, and now ordered and unordered data
+can be linked.
 </p>
 
 <h2>31.4 The globalisation argument</h2>
@@ -347,7 +347,7 @@ it).</figcaption>
 <h3>Check the source</h3>
 
 <p>
-In classical logic, once a system believes a statement and its opposite,
+This is the one objection the note does not concede. In classical logic, once a system believes a statement and its opposite,
 it can derive any conclusion at all. The Web is full of contradictions, so
 the objection runs that only a fuzzy system will do.
 </p>
@@ -364,12 +364,21 @@ hundred, we need to figure out the problem. Same with launching missiles.
 <h3>Rules are statements too</h3>
 
 <p>
-Earlier systems mixed information with tips on how to use it. A rule such as &ldquo;a daughter of one&#8217;s
-daughter is one&#8217;s grandaughter&rdquo; is typically stored not as that
-statement but in a table of rules to apply at a particular time, for example
-whenever a parent of a daughter is found. That timing is information about the rule,
-which the language cannot express. Two systems must exchange what the rule
-means even when their engines apply it differently.
+Earlier systems mixed information with tips on how to use it. A rule is
+typically stored not as a statement but in a table of rules to apply at a
+particular time. That timing is information about the rule, which the
+language cannot express. The note&#8217;s example, with the second row ours:
+</p>
+
+<table>
+<tr><th>Stored as</th><th>Content</th></tr>
+<tr><td>a statement</td><td>&ldquo;a daughter of one&#8217;s daughter is one&#8217;s grandaughter&rdquo;</td></tr>
+<tr><td>an engine tip</td><td>whenever a parent of a daughter is found, apply the grandaughter rule</td></tr>
+</table>
+
+<p>
+Only the first row can be exchanged between systems whose engines apply
+rules differently.
 </p>
 
 <h2>31.6 The closed world</h2>
@@ -388,8 +397,9 @@ while an open system may only treat it as unknown.
   <title id="fig31-4-t">Closed world and open world</title>
   <desc id="fig31-4-d">The question "Is Bob an employee?" asked of the same
   three names. A database table lists Ann, Carlos and Dee and answers no.
-  Three linked documents say the same three people work here, and the
-  answer is unknown, because someone else may say Bob does.</desc>
+  Three documents found so far say the same three people work here, beside
+  a dashed box for a document not yet seen, and the answer is unknown,
+  because someone else may say Bob does.</desc>
   <defs>
     <marker id="fig31-4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
@@ -418,26 +428,23 @@ while an open system may only treat it as unknown.
 
   <rect class="box-plain" x="396" y="92" width="128" height="30" rx="3"/>
   <rect class="box-plain" x="556" y="92" width="128" height="30" rx="3"/>
-  <rect class="box-plain" x="476" y="148" width="128" height="30" rx="3"/>
+  <rect class="box-plain" x="396" y="138" width="128" height="30" rx="3"/>
+  <rect class="ln-dash" x="556" y="138" width="128" height="30" rx="3"/>
   <g>
     <text class="t-sm" x="460" y="111" text-anchor="middle">Ann works here</text>
     <text class="t-sm" x="620" y="111" text-anchor="middle">Carlos works here</text>
-    <text class="t-sm" x="540" y="167" text-anchor="middle">Dee works here</text>
+    <text class="t-sm" x="460" y="157" text-anchor="middle">Dee works here</text>
+    <text class="t-sm t-it" x="620" y="157" text-anchor="middle">a document not yet seen</text>
   </g>
-  <g class="ln-mut">
-    <line x1="524" y1="107" x2="556" y2="107"/>
-    <line x1="470" y1="122" x2="510" y2="148"/>
-    <line x1="610" y1="122" x2="570" y2="148"/>
-  </g>
-  <line class="ln-accent" x1="540" y1="178" x2="540" y2="212" marker-end="url(#fig31-4-a)"/>
+  <line class="ln-accent" x1="540" y1="176" x2="540" y2="212" marker-end="url(#fig31-4-a)"/>
   <rect class="box-plain" x="420" y="214" width="240" height="30" rx="4"/>
   <text x="540" y="234" text-anchor="middle">Unknown: someone may say so</text>
 
   <text x="360" y="270" class="t-sm t-it" text-anchor="middle">Ann, Carlos, Dee and Bob are invented for illustration.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 31.4</span>
-Same data, different conclusion: on the Web another document may add the
-missing fact.</figcaption>
+Same data, different conclusion: on the Web a document not yet seen may add
+the missing fact.</figcaption>
 </figure>
 
 <p>
@@ -459,7 +466,8 @@ given car is red, using a colour vocabulary from elsewhere.
 
 <p>
 For relational databases the mapping is three lines (the example column is
-ours).
+ours). In RDF a node is the thing a statement is about; a property is the
+kind of fact; the value is what the fact says.
 </p>
 
 <table>
@@ -516,8 +524,8 @@ full language underneath?</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.3</span>
-Three things are given up: absolute truth, total knowledge, total
-provability. For each, name something that becomes impossible.</p>
+Name one thing a system cannot promise once it gives up total
+knowledge.</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.4</span>

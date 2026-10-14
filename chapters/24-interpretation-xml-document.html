@@ -56,8 +56,8 @@ One <a class="gl-ref" href="../glossary.html#xml">XML</a> file can mix tags from
 which <a class="gl-ref" href="../glossary.html#specification">specification</a> governs which part. Berners-Lee&#8217;s answer is that
 the outermost element decides, and each element governs only what is inside
 it. Some elements, such as include, transform and decrypt, are replaced by
-their result, and an element must be able to say &ldquo;this is quoted, do
-not run it&rdquo;.
+their result, and an element must be able to mark its contents as quoted,
+not to be run.
 </p>
 </div>
 
@@ -72,9 +72,6 @@ that leaves open, in the bluntest possible form:
 If one party sends another an XML document, how does one say what it means?
 <cite>The Interpretation of XML documents, 2002</cite>
 </blockquote>
-<p>
-There are too many places to look, and no rule about which one wins.
-</p>
 </div>
 
 <h2>24.1 The problem: specifications that fight</h2>
@@ -83,9 +80,11 @@ There are too many places to look, and no rule about which one wins.
 Berners-Lee credits Paul Prescod with the list of places one might look:
 </p>
 <ul>
-<li>the document type declaration (DOCTYPE);</li>
+<li>the document type declaration (DOCTYPE), a line at the top naming the
+document&#8217;s grammar;</li>
 <li>the top-level <a class="gl-ref" href="../glossary.html#namespace">namespace</a>;</li>
-<li>a <a class="gl-ref" href="../glossary.html#schema">schema</a> reference;</li>
+<li>a <a class="gl-ref" href="../glossary.html#schema">schema</a> reference (a schema is a machine-readable list of which tags may
+appear where);</li>
 <li>other namespaces declared at the root;</li>
 <li>any attribute on the root element;</li>
 <li>anything at all in the document.</li>
@@ -115,10 +114,9 @@ able to dispatch on. Everything else is decided further down.
 
 <p>
 The usual assumption was a pipeline: one stage per technology, such as
-inclusion, then style sheets, then decryption. Berners-Lee grants that this
-works in simple cases, but says that in the general case it is
-&ldquo;basically broken&rdquo;: once elements nest arbitrarily, no single
-order of stages handles them all.
+inclusion, then style sheets, then decryption. Berners-Lee calls this, in the
+general case, &ldquo;basically broken&rdquo;: once elements nest arbitrarily,
+no single order of stages handles them all.
 </p>
 
 <figure>
@@ -185,8 +183,8 @@ order of stages handles them all.
 </svg>
 <figcaption><span class="fig-label">Figure 24.1</span>
 The pipeline fixes one order for the whole document; the top-down model lets
-each element decide for its own contents. Only the second lets an element say
-that an example inside it is not to be run.</figcaption>
+each element decide for its own contents, including that an example inside it
+is not to be run.</figcaption>
 </figure>
 
 <h3>Many ways, one meaning</h3>
@@ -199,7 +197,7 @@ Top-down is not one procedure. The note sketches three:
 <tr><th>Strategy</th><th>How it works</th></tr>
 <tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left.</td></tr>
 <tr><td>Recursive <a class="gl-ref" href="../glossary.html#parser">parser</a></td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
-<tr><td>Lazy viewer</td><td>Elaborate a function only when the reader scrolls to it.</td></tr>
+<tr><td>Lazy viewer</td><td>Elaborate a function (run it and put its result in its place) only when the reader scrolls to it.</td></tr>
 </table>
 
 <p>
@@ -212,8 +210,7 @@ processing model.
 
 <p>
 Some foreign elements are instructions that yield more document when
-elaborated. Berners-Lee calls them <em>XML functions</em>, and any supporting
-application must recognise them.
+elaborated. Berners-Lee calls them <em>XML functions</em>.
 </p>
 
 <figure>
@@ -293,12 +290,12 @@ step changes only what lies inside the dashed outline; <code>html</code> and
 </figure>
 
 <table>
-<tr><th>Namespace</th><th>The element is replaced by</th></tr>
-<tr><td>XSLT, in &ldquo;Literal Result Element as Stylesheet&rdquo; mode</td><td>the output its template computes</td></tr>
-<tr><td>XInclude</td><td>the referenced document or part</td></tr>
-<tr><td>XML <a class="gl-ref" href="../glossary.html#encryption">Encryption</a></td><td>the decrypted content</td></tr>
-<tr><td>XQuery (listed with a question mark)</td><td>the result of the query</td></tr>
-<tr><td>&ldquo;Do not translate&rdquo; tags</td><td>their contents, marked not to be translated</td></tr>
+<tr><th>Namespace</th><th>In plain words</th><th>The element is replaced by</th></tr>
+<tr><td>XSLT, in &ldquo;Literal Result Element as Stylesheet&rdquo; mode</td><td>a template that computes text</td><td>the output its template computes</td></tr>
+<tr><td>XInclude</td><td>paste in another file here</td><td>the referenced document or part</td></tr>
+<tr><td>XML <a class="gl-ref" href="../glossary.html#encryption">Encryption</a></td><td>a locked box that opens into content</td><td>the decrypted content</td></tr>
+<tr><td>XQuery (listed with a question mark)</td><td>a database question whose answer goes here</td><td>the result of the query</td></tr>
+<tr><td>Internationalisation tags</td><td>a marker for translators</td><td>their contents, marked &ldquo;do not translate this phrase when translating this document&rdquo;</td></tr>
 </table>
 
 <p>
@@ -312,8 +309,8 @@ What they share:
 </ul>
 
 <p>
-The last property makes order unimportant. No function reaches outside its
-branch, so it does not matter which branch is done first; of nested
+The last property makes order unimportant: no function reaches outside its
+branch. Of nested
 inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
 whether the inner ones are expanded first.
 </p>
@@ -322,8 +319,7 @@ whether the inner ones are expanded first.
 
 <p>
 Sometimes a function must be mentioned without being run. In an XML
-<em>package</em> the packaged items are quoted, and only the cover note says
-what they mean. An XSLT template that outputs an XInclude element contains a
+<em>package</em> the packaged items are quoted. An XSLT template that outputs an XInclude element contains a
 real XInclude element, which must not be expanded inside the XSLT.
 </p>
 
@@ -368,10 +364,9 @@ top-down interpretation, in which the parent decides, can express that.</figcapt
 </figure>
 
 <p>
-A pipeline cannot say this: the inclusion stage will find the element and act
-on it. Such ambiguities, Berners-Lee says, &ldquo;stem from the lack of
-quoting syntax in XML&rdquo;. Running quoted material runs content its
-author never meant to be live: hence dangerous, not merely wrong.
+A pipeline cannot say this. Such ambiguities, Berners-Lee says, &ldquo;stem from the lack of
+quoting syntax in XML&rdquo;. Running quoted material is dangerous, not
+merely wrong.
 </p>
 
 <h2>24.5 The conclusion</h2>
@@ -399,35 +394,99 @@ on SVG.</li>
 choice is sometimes useful.</li>
 </ul>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig24-4-t fig24-4-d">
+  <title id="fig24-4-t">One pointer, two documents</title>
+  <desc id="fig24-4-d">Two trees. On the left, the raw source: html contains
+  body, which contains an xi:include element naming pic.svg. A pointer arrow
+  lands on the include element, labelled XML Signature signs this version. On
+  the right, the elaborated document: html contains body, which contains svg,
+  which contains circle. A pointer arrow lands on the circle, labelled
+  Berners-Lee inclines to this version for pointers.</desc>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle">raw source</text>
+  <text x="540" y="24" class="t-caps" text-anchor="middle">elaborated</text>
+
+  <rect class="box" x="145" y="44" width="70" height="28" rx="4"/>
+  <text x="180" y="63" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 180 72 L 180 92"/>
+  <rect class="box" x="145" y="92" width="70" height="28" rx="4"/>
+  <text x="180" y="111" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 180 120 L 180 140"/>
+  <rect class="box-warm" x="100" y="140" width="160" height="28" rx="4"/>
+  <text x="180" y="159" class="t-mono" text-anchor="middle">xi:include pic.svg</text>
+
+  <path class="ln" d="M 40 154 L 90 154" style="stroke:#b08d57"/>
+  <path d="M90,149 L98,154 L90,159 Z" fill="#b08d57"/>
+  <text x="40" y="142" class="t-sm">pointer</text>
+  <rect class="box-warm" x="60" y="206" width="240" height="44" rx="4"/>
+  <text x="180" y="225" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">XML Signature signs this version</text>
+  <text x="180" y="241" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">(before XInclude runs)</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="256"/>
+
+  <rect class="box" x="505" y="44" width="70" height="28" rx="4"/>
+  <text x="540" y="63" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 540 72 L 540 92"/>
+  <rect class="box" x="505" y="92" width="70" height="28" rx="4"/>
+  <text x="540" y="111" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 540 120 L 540 140"/>
+  <rect class="ln-dash" x="470" y="132" width="140" height="70" rx="6"/>
+  <rect class="box-green" x="505" y="140" width="70" height="24" rx="4"/>
+  <text x="540" y="157" class="t-mono" text-anchor="middle">svg</text>
+  <path class="ln-mut" d="M 540 164 L 540 172"/>
+  <rect class="box-green" x="500" y="172" width="80" height="24" rx="4"/>
+  <text x="540" y="189" class="t-mono" text-anchor="middle">circle</text>
+  <text x="680" y="140" class="t-sm" text-anchor="middle">included</text>
+  <text x="680" y="154" class="t-sm" text-anchor="middle">subtree</text>
+
+  <path class="ln-accent" d="M 410 184 L 490 184"/>
+  <path d="M490,179 L498,184 L490,189 Z" fill="#1c5a7a"/>
+  <text x="410" y="172" class="t-sm">pointer</text>
+  <rect class="box-green" x="400" y="216" width="280" height="34" rx="4"/>
+  <text x="540" y="238" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">Berners-Lee inclines to this for pointers</text>
+</svg>
+<figcaption><span class="fig-label">Figure 24.4</span>
+The same pointer finds different things depending on whether functions have
+run: the include element, or a piece of the SVG.</figcaption>
+</figure>
+
 <h2>24.6 Labelling the document</h2>
 
 <p>
 Because the root element decides, its namespace says what the whole document
-is: an <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> root yields a hypertext page, an SVG root a diagram. The note
-recommends a specific MIME type, so that the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers alone show this,
-and the <code>+xml</code> suffix only where the top-down model applies.
+is: an <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> root yields a hypertext page, an SVG root a diagram. A
+<em>MIME type</em> is the label a <a class="gl-ref" href="../glossary.html#server">server</a> sends in the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers, ahead of
+the file itself, such as <code>image/svg+xml</code>. The note recommends a
+specific MIME type for each well-known root, so that the label alone shows
+what the document is, and the <code>+xml</code> suffix only where the
+top-down model applies.
 </p>
 
 <p>
-One great schema for each combination of vocabularies would make
-integration an n&sup2; problem; he would rather each facility had its own.
+The alternative, one great schema for each combination of vocabularies,
+scales badly. A working group combining four specifications (XHTML, SVG,
+XForms, MathML) must settle how every pair fits together; the note asks
+whether it would take &ldquo;n<sup>2</sup> years&rdquo;. He would rather each
+facility had its own schema.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The question was overtaken.</strong> Mixed-namespace XML did not
-become the ordinary way to publish, and the branch that won, described in
-Chapter 23, has no author-declared namespaces.</li>
+become the ordinary way to publish; the <a class="gl-ref" href="../glossary.html#html">HTML</a> that won (Chapter 23) has no
+author-declared namespaces.</li>
 <li><strong>A pipeline language was standardised.</strong> XProc became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010: a separate pipeline language, though one that
-sits at the top of the tree, as the note allowed.</li>
-<li><strong>The security concern was correct in general.</strong> Processors
-that resolve external references without the containing context&#8217;s
-permission remain a standard vulnerability class.</li>
-<li><strong>The quoting problem recurs everywhere.</strong> Templates,
-configuration formats and prompts all need to mark a region as data rather
-than instruction, and those that cannot fail as section 24.4 describes.</li>
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010, sitting at the top of the tree as the note
+allowed.</li>
+<li><strong>The security concern was correct in general.</strong> XML
+processors that fetch external references unasked are attacked through XML
+External Entity (XXE) flaws, listed in the OWASP Top 10 of 2017.</li>
+<li><strong>The quoting problem recurs.</strong> &ldquo;Prompt
+injection&rdquo;, a term in use since 2022, names the same failure in AI
+systems: text meant as data is obeyed as instruction.</li>
 </ul>
 </div>
 
@@ -435,7 +494,7 @@ than instruction, and those that cannot fail as section 24.4 describes.</li>
 <h3>Connections</h3>
 <p>
 Mixed-vocabulary documents are specified in Chapter 17; the fork that made
-the question moot for <a class="gl-ref" href="../glossary.html#html">HTML</a> is Chapter 23. What selects a specification is read
+the question moot for HTML is Chapter 23. What selects a specification is read
 in layers in Chapter 20, and an element governing its own contents is the
 modularity of Chapter 19.
 </p>

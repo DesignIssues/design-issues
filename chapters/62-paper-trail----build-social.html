@@ -102,59 +102,61 @@ against the schema.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 212" width="720" height="212" role="img"
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig62-1-t fig62-1-d">
   <title id="fig62-1-t">The state is the trail</title>
   <desc id="fig62-1-d">Three notarised documents: an old working draft, a new
   working draft and a proposed recommendation. Each newer one points back to the
   one it was made from, marked justified by. The new draft also points to the
   editor's authorisation, and the old draft to the working-group page, which
-  names the editor. A dashed line runs from every document to the schema, which
-  holds prerequisites and hints. No box holds the current state.</desc>
+  names the editor. Above, dashed lines run from each document to the schema for
+  its own type: the two drafts to the working-draft schema, the proposed
+  recommendation to the proposed-recommendation schema. No box holds the
+  current state.</desc>
 
-  <text x="375" y="22" class="t-sm" text-anchor="middle" style="fill:#b08d57">every document points to its type</text>
-  <path class="ln-dash" d="M 90 50 V 34 H 660 V 50"/>
-  <path class="ln-dash" d="M 310 50 V 34"/>
-  <path class="ln-dash" d="M 528 50 V 34"/>
+  <rect class="box-warm" x="150" y="10" width="170" height="40" rx="4"/>
+  <text x="235" y="35" class="t-sm" text-anchor="middle" style="fill:#b08d57">working-draft schema</text>
+  <rect class="box-warm" x="480" y="10" width="170" height="40" rx="4"/>
+  <text x="565" y="35" class="t-sm" text-anchor="middle" style="fill:#b08d57">proposed-rec. schema</text>
 
-  <rect class="box-plain" x="30" y="50" width="120" height="76" rx="4"/>
-  <text x="90" y="72" class="t-sm" text-anchor="middle">old working</text>
-  <text x="90" y="88" class="t-sm" text-anchor="middle">draft</text>
-  <text x="90" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
+  <path class="ln-dash" d="M 125 90 V 70 H 210 V 50"/>
+  <path class="ln-dash" d="M 345 90 V 70 H 260 V 50"/>
+  <path class="ln-dash" d="M 565 90 V 50"/>
+  <text x="577" y="74" class="t-sm" style="fill:#b08d57">points to its type</text>
 
-  <rect class="box" x="250" y="50" width="120" height="76" rx="4"/>
-  <text x="310" y="72" class="t-sm" text-anchor="middle">new working</text>
-  <text x="310" y="88" class="t-sm" text-anchor="middle">draft</text>
-  <text x="310" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
+  <rect class="box-plain" x="60" y="90" width="130" height="76" rx="4"/>
+  <text x="125" y="112" class="t-sm" text-anchor="middle">old working</text>
+  <text x="125" y="128" class="t-sm" text-anchor="middle">draft</text>
+  <text x="125" y="152" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-  <rect class="box-green" x="470" y="50" width="116" height="76" rx="4"/>
-  <text x="528" y="72" class="t-sm" text-anchor="middle">proposed</text>
-  <text x="528" y="88" class="t-sm" text-anchor="middle">recommendation</text>
-  <text x="528" y="112" class="t-sm t-it" text-anchor="middle">notarised</text>
+  <rect class="box" x="280" y="90" width="130" height="76" rx="4"/>
+  <text x="345" y="112" class="t-sm" text-anchor="middle">new working</text>
+  <text x="345" y="128" class="t-sm" text-anchor="middle">draft</text>
+  <text x="345" y="152" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-  <rect class="box-warm" x="606" y="50" width="108" height="76" rx="4"/>
-  <text x="660" y="72" class="t-sm" text-anchor="middle" style="fill:#b08d57">the schema</text>
-  <text x="660" y="92" class="t-sm" text-anchor="middle">prerequisites</text>
-  <text x="660" y="110" class="t-sm" text-anchor="middle">hints</text>
+  <rect class="box-green" x="500" y="90" width="130" height="76" rx="4"/>
+  <text x="565" y="112" class="t-sm" text-anchor="middle">proposed</text>
+  <text x="565" y="128" class="t-sm" text-anchor="middle">recommendation</text>
+  <text x="565" y="152" class="t-sm t-it" text-anchor="middle">notarised</text>
 
-  <text x="200" y="80" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
-  <path class="ln-accent" d="M 250 92 L 160 92"/>
-  <path d="M 161 86 L 151 92 L 161 98 Z" fill="#1c5a7a"/>
-  <text x="420" y="80" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
-  <path class="ln-accent" d="M 470 92 L 380 92"/>
-  <path d="M 381 86 L 371 92 L 381 98 Z" fill="#1c5a7a"/>
+  <text x="235" y="120" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
+  <path class="ln-accent" d="M 280 132 L 200 132"/>
+  <path d="M 201 126 L 191 132 L 201 138 Z" fill="#1c5a7a"/>
+  <text x="455" y="120" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">justified by</text>
+  <path class="ln-accent" d="M 500 132 L 420 132"/>
+  <path d="M 421 126 L 411 132 L 421 138 Z" fill="#1c5a7a"/>
 
-  <path class="ln" d="M 90 126 L 90 146"/>
-  <path d="M 84 144 L 90 154 L 96 144 Z" fill="#2f4f4f"/>
-  <rect class="box-plain" x="30" y="154" width="120" height="52" rx="4"/>
-  <text x="90" y="174" class="t-sm" text-anchor="middle">working-group page</text>
-  <text x="90" y="194" class="t-sm t-it" text-anchor="middle">names the editor</text>
+  <path class="ln" d="M 125 166 L 125 186"/>
+  <path d="M 119 184 L 125 194 L 131 184 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="60" y="194" width="130" height="52" rx="4"/>
+  <text x="125" y="214" class="t-sm" text-anchor="middle">working-group page</text>
+  <text x="125" y="234" class="t-sm t-it" text-anchor="middle">names the editor</text>
 
-  <path class="ln" d="M 310 126 L 310 146"/>
-  <path d="M 304 144 L 310 154 L 316 144 Z" fill="#2f4f4f"/>
-  <rect class="box-plain" x="250" y="154" width="120" height="52" rx="4"/>
-  <text x="310" y="174" class="t-sm" text-anchor="middle">editor&#8217;s</text>
-  <text x="310" y="192" class="t-sm" text-anchor="middle">authorisation</text>
+  <path class="ln" d="M 345 166 L 345 186"/>
+  <path d="M 339 184 L 345 194 L 351 184 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="280" y="194" width="130" height="52" rx="4"/>
+  <text x="345" y="214" class="t-sm" text-anchor="middle">editor&#8217;s</text>
+  <text x="345" y="232" class="t-sm" text-anchor="middle">authorisation</text>
 </svg>
 <figcaption><span class="fig-label">Figure 62.1</span>
 Berners-Lee&#8217;s example is W3C&#8217;s own publication process. Notice that
@@ -185,23 +187,19 @@ the management group.
      aria-labelledby="fig62-2-t fig62-2-d">
   <title id="fig62-2-t">Prerequisites look back, hints look forward</title>
   <desc id="fig62-2-d">The schema for a proposed recommendation sits in the
-  centre. Three prerequisites point into it from the left: the working draft,
-  everything a draft needed, and an endorsement by the director or any two
-  members of the management group. These are checked. One dashed arrow leads
+  centre. Plain lines join it to the three things it requires, listed on the
+  left: the working draft, everything a draft needed, and an endorsement by the
+  director or any two members of the management group. These are checked. One dashed arrow leads
   out to the right to the next document type, offered to the user as a
   button.</desc>
   <defs>
-    <marker id="fig62-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
-            markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
-    </marker>
     <marker id="fig62-2-arrg" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
     </marker>
   </defs>
 
-  <text x="121" y="18" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">prerequisites: checked</text>
+  <text x="121" y="18" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the schema requires (checked):</text>
   <rect class="box-plain" x="16" y="30" width="210" height="32" rx="4"/>
   <text x="121" y="51" class="t-sm" text-anchor="middle">the working draft</text>
   <rect class="box-plain" x="16" y="88" width="210" height="32" rx="4"/>
@@ -211,9 +209,9 @@ the management group.
   <text x="121" y="182" class="t-sm" text-anchor="middle">or any two members of</text>
   <text x="121" y="198" class="t-sm" text-anchor="middle">the management group</text>
 
-  <path class="ln" d="M 226 46 L 288 96" marker-end="url(#fig62-2-arr)"/>
-  <path class="ln" d="M 226 104 L 288 112" marker-end="url(#fig62-2-arr)"/>
-  <path class="ln" d="M 226 177 L 288 128" marker-end="url(#fig62-2-arr)"/>
+  <path class="ln" d="M 226 46 L 290 96"/>
+  <path class="ln" d="M 226 104 L 290 112"/>
+  <path class="ln" d="M 226 177 L 290 128"/>
 
   <rect class="box-warm" x="290" y="78" width="140" height="68" rx="4"/>
   <text x="360" y="98" class="t-sm" text-anchor="middle" style="fill:#b08d57">schema:</text>
@@ -327,32 +325,40 @@ a number, in decreasing order of interest.
 
 <p>
 A number says where things stand; a formula says what follows. The state
-must hold whatever is needed to compute future states. For <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the protocol
-under most Internet connections, that is the packets not yet acknowledged.
-Once the connection closes, the state could hold just a marker, or every byte
-transferred: a design choice, not a fact.
+must hold whatever is needed to compute future states: for the loan, the
+balance. Once the loan is repaid, the state could hold just the fact that it
+was paid, or every repayment: a design choice, not a fact.
 </p>
 
 <h3>Starting, ending and forgetting</h3>
 
 <table>
-<tr><th>Start</th><td>Some messages are valid beginnings: in TCP one sends a
-SYN message; on the telephone one picks up the receiver.</td></tr>
+<tr><th>Start</th><td>Some messages are valid beginnings: in <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the protocol
+under most Internet connections, one sends a SYN message; on the telephone one picks up the receiver.</td></tr>
 <tr><th>End</th><td>No further message changes a final state. The loan reaches
 one at zero; a lifetime warranty never does.</td></tr>
 <tr><th>Forget</th><td>The protocol is &ldquo;an information destroying
 function&rdquo;: saying what must be remembered defines what can be thrown
 away. In the US, records of a transaction may be discarded after seven
 years.</td></tr>
+<tr><th>Nest</th><td>A real protocol runs inside a larger one: a W3C working
+group&#8217;s last state, its work accepted as a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, is a message to
+the Consortium as a whole.</td></tr>
 </table>
+
+<p>
+That outgoing message is a step in the larger protocol. A minority report
+shows the nesting breaking: it passes on a view inside a group that never
+reached its final state.
+</p>
 
 <h2>62.4 Why it is a social machine</h2>
 
 <p>
-This belongs in Volume VI, not a chapter on workflow, because social
-processes can run on a newsgroup or by email: &ldquo;it works in a
-write-only medium&rdquo;. Nobody edits a shared record. As in commerce, one&#8217;s view of the state depends on which
-messages one has seen, and there is no privileged party to ask. Anyone who can
+Social processes can run on a newsgroup or by email: &ldquo;it works in a
+write-only medium&rdquo;. In this model, nobody edits a shared record. As in
+commerce, one&#8217;s view of the state depends on which messages one has seen,
+and in this model there is no privileged party to ask. Anyone who can
 fetch the documents can check them.
 </p>
 

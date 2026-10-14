@@ -54,10 +54,8 @@ a Design Issues note by Tim Berners-Lee, 1997-01-06.
 <p>
 <a class="gl-ref" href="../glossary.html#metadata">Metadata</a> is data about things, written so that a program can use it.
 Berners-Lee lays down two rules. First, metadata is ordinary data, so it can
-live inside a page, travel with it, or sit in a separate document, and it can
-itself be described. Second, it is a set of separate statements, none of which
-overrides another. The names for kinds of statement are URIs, so anyone can
-invent one.
+live inside a page, travel with it, or sit in a separate document. Second, it
+is a set of separate statements, none of which overrides another.
 </p>
 </div>
 
@@ -69,8 +67,9 @@ This note, begun in January 1997, opens Volume IV because it is where the
 himself in a preface added later: it was written before the roadmap of
 Chapter 30 and introduces the same ideas, in the historical order they arose
 at the Consortium. There the first driving application of machine-readable
-data was endorsement labels: ratings such as &ldquo;suitable for
-children&rdquo; attached to pages.
+data was endorsement labels: ratings, such as whether a page suits children,
+attached to pages. <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for them was PICS, the Platform for
+Internet Content Selection.
 </p>
 <p>
 The definition it gives is narrower than the word&#8217;s ordinary use, and the
@@ -105,7 +104,7 @@ we are doing, and make everything work more smoothly and rapidly.
 <p>
 The clause &ldquo;or other things&rdquo; is the seed of Volumes IV to VI.
 Metadata began as data about web resources, but it should in future describe
-anything: people, things, concepts and ideas. The design keeps that in mind.
+anything: people, things, concepts and ideas.
 </p>
 
 <h2>27.2 The first axiom, and its consequence</h2>
@@ -172,15 +171,15 @@ server sends ahead of the page.)
 </svg>
 <figcaption><span class="fig-label">Figure 27.1</span>
 The same kind of data in three places. Notice the open question at the
-bottom, which Berners-Lee raises in the same breath. For headers he answers
-it: the server acts for the publisher.</figcaption>
+bottom; for headers Berners-Lee answers it: the server acts for the
+publisher.</figcaption>
 </figure>
 
 <p>
 The second consequence is recursion without hierarchy. Metadata may itself
 have an owner and an expiry date, so there is meta-metadata (data about the
-metadata), but the architecture does not distinguish many levels. It says
-metadata is data and lets the rest follow. It is the same move as Chapter 3&#8217;s refusal to
+metadata, such as the date a review of the page was written), but the
+architecture does not distinguish many levels. It is the same move as Chapter 3&#8217;s refusal to
 distinguish names from addresses: one kind of thing, not a tower of kinds.
 </p>
 
@@ -192,8 +191,7 @@ set of independent assertions.</p>
 </div>
 
 <p>
-Two assertions about the same resource stand alone. Taken together they
-simply mean &ldquo;this AND that&rdquo;, and AND does not care about order, so
+Two assertions about the same resource stand alone. Together they mean &ldquo;this AND that&rdquo;, and AND does not care about order, so
 a collection of assertions is an unordered set. The consequence is a
 prohibition, and it rules out a great deal of existing practice:
 </p>
@@ -253,9 +251,8 @@ only mean something together has to be written as one assertion.</figcaption>
 </figure>
 
 <p>
-Configuration files where later rules override earlier ones are excluded.
-Chapter 32 shows that such constructs, written out as independent statements,
-are usually a large nested conditional the <a class="gl-ref" href="../glossary.html#specification">specification</a> never admitted to.
+Configuration files where later rules override earlier ones are excluded;
+Chapter 32 returns to them.
 </p>
 
 <h2>27.4 Assertions have a shape</h2>
@@ -267,6 +264,13 @@ note writes <code>(A u1 p q&hellip;)</code>: <code>A</code> names the type,
 <code>u1</code> is the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the subject, and <code>p</code>, <code>q</code>
 are the rest. An assertion that a resource has a named property, such as its
 author, is an attribute. Who said it, and when, are usually left implicit.
+</p>
+
+<p>
+Often the subject is left implicit too. The note calls a set of assertions
+with the subject taken out a <em>label</em>. Like the label on a jam jar, it
+carries information, but something else, its placement on the jar, says what
+it applies to.
 </p>
 
 <figure>
@@ -324,15 +328,16 @@ coin one.</figcaption>
 A link is an assertion relating two resources: the <a class="gl-ref" href="../glossary.html#triple">triple</a>
 <code>(A u1 u2)</code> of a relationship type and two URIs, as in the
 versioning example of Figure 27.3. Names for types must come from a global
-space, because anyone may coin one, and that means URIs. The triple of
-Chapter 32 is already here.
+space, because anyone may coin one, and that means URIs. This is already the
+<em>triple</em> of Chapter 32: three parts, a relationship and the two things
+it relates, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> later made the basic unit of all Semantic Web data.
 </p>
 
 <h2>27.5 Self-describing information</h2>
 
 <p>
-The note&#8217;s central goal explains why this was worth doing. Berners-Lee wants data that &ldquo;carries a reference to the
-specification of the semantics&rdquo; of its assertions: each type of
+The note&#8217;s central goal is data that &ldquo;carries a reference to the
+<a class="gl-ref" href="../glossary.html#specification">specification</a> of the semantics&rdquo; of its assertions: each type of
 statement points, by URI, to its own definition. A program meeting an
 unfamiliar type can follow that link and extend what it understands, rather
 than guessing.
@@ -377,36 +382,37 @@ than guessing.
 </svg>
 <figcaption><span class="fig-label">Figure 27.4</span>
 Self-description means the data points to its own dictionary. Each rung lets
-software do more without waiting for large companies or a standards committee
-to agree.</figcaption>
+software do more without waiting for a standards committee. (An SGML DTD is a
+machine-readable grammar saying which tags may appear where.)</figcaption>
 </figure>
 
 <p>
-PICS (the Platform for Internet Content Selection, <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s endorsement
-label format) is the note&#8217;s running example. The rest of the note,
-rough by its own account, covers label syntax, authorship, manipulating
-labels without knowing their <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, and ordering. The generalisation
-survived. PICS did not.
+PICS is the note&#8217;s running example. The rest of the note, rough by its
+own account, covers label syntax, authorship, manipulating labels without
+knowing their <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, and ordering. On ordering it lists mail <a class="gl-ref" href="../glossary.html#header">header</a> lines
+and SGML attributes as unordered, HTTP header lines and SGML elements as
+ordered, and asks whether a form is needed for assertions with many fixed,
+ordered parameters. The generalisation survived. PICS did not.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The general form replaced the specific one.</strong> <a class="gl-ref" href="../glossary.html#rdf">RDF</a> became a
+<li><strong>The general form replaced the specific one.</strong> RDF became a
 W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 1999, generalising the label idea into
 assertions about anything. PICS was superseded, with POWDER (a W3C
 Recommendation of 2009) taking over its job of describing groups of pages; the
 architecture described here outlived its first application by decades.</li>
 <li><strong>All three placements survive.</strong> Metadata in the document,
-in the transfer and in a separate description are still the three options, now
-as embedded structured data, HTTP headers, and separately published
-descriptions.</li>
+in the transfer and in a separate description are still the three options:
+embedded data (<a class="gl-ref" href="../glossary.html#schema">schema</a>.org, launched in June 2011, usually embedded as JSON-LD),
+HTTP headers, and separately published descriptions.</li>
 <li><strong>The authorship question was never fully answered.</strong> Who is
 making a statement, which section 27.2 flags as needing rationalisation,
-remains the weak point: much published metadata carries no indication of who
-asserted it, which is why Chapter 37&#8217;s treatment of trust matters.</li>
+remains the weak point: most embedded metadata records no author for its
+statements, which is why Chapter 37&#8217;s treatment of trust matters.</li>
 <li><strong>Ordering never went away.</strong> Even in 1997 the note listed
-HTTP <a class="gl-ref" href="../glossary.html#header">header</a> lines as ordered; order-dependent formats remain common, and the
+HTTP header lines as ordered; order-dependent formats remain common, and the
 diagnosis in Chapter 32 still applies to them.</li>
 </ul>
 </div>

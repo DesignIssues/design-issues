@@ -22,11 +22,18 @@ almost been overlooked.
 </blockquote>
 <p>
 Data about a person, published deliberately by that person, for anyone to
-read. Everyone has some. Almost no infrastructure treats it as a category.
+read: almost no infrastructure treats it as a category.
 </p>
 </div>
 
-<h2>73.1 The third column</h2>
+<h2>73.1 The middle column</h2>
+
+<p>
+Personal private data is shared only with people its owner chooses: health
+records, messages. Open public data is published by institutions for anyone:
+government statistics, maps. The note&#8217;s subject sits, in its own words,
+&ldquo;in the middle column of the table&rdquo;.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
@@ -62,7 +69,7 @@ read. Everyone has some. Almost no infrastructure treats it as a category.
   <text x="518" y="140" class="t-sm">scientific data</text>
   <text x="518" y="162" class="t-sm">catalogues</text>
   <text x="598" y="192" class="t-sm t-it" text-anchor="middle">programmes, portals,</text>
-  <text x="598" y="208" class="t-sm t-it" text-anchor="middle">five stars</text>
+  <text x="598" y="208" class="t-sm t-it" text-anchor="middle">rated, catalogued</text>
 
   <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
   <text x="360" y="272" class="t-sm" text-anchor="middle">For many people, and professional people especially, what the world knows about them matters.</text>
@@ -118,7 +125,8 @@ network is the set of documents and no company holds it.
 <h2>73.3 Where the energy went</h2>
 
 <p>
-The note records what happened to that effort:
+The note records what happened to that effort. Schema.org is a shared
+vocabulary that the major search engines read:
 </p>
 
 <blockquote>
@@ -127,7 +135,8 @@ The enregy of the FOAF project has recently gone into the schema.org ontolgies.
 </blockquote>
 
 <p>
-And why that vocabulary won, purely on incentives:
+And why it won, purely on incentives (Search Engine Optimization is tuning a
+site so that it ranks higher in search results):
 </p>
 
 <blockquote>
@@ -172,11 +181,11 @@ From there the list grows by adding things, not infrastructure:
 </table>
 
 <p>
-Berners-Lee assumes the pod serves the same data as a page for people and as
-data for machines, which is Chapter 10&#8217;s genericity doing quiet work.
+Berners-Lee assumes the pod serves one address in two forms: a page for people
+and data for programs (Chapter 10).
 </p>
 
-<h2>73.5 Why it belongs in a volume about trust</h2>
+<h2>73.5 One link in a bio</h2>
 
 <p>
 Many social platforms allow exactly one clickable link in a profile,
@@ -275,12 +284,12 @@ Then you have proved that all accounts belong to the same person.
   <rect class="box-plain" x="430" y="200" width="180" height="50" rx="4"/>
   <text x="520" y="230" text-anchor="middle">ORCID record</text>
 
-  <line class="ln-accent" x1="212" y1="116" x2="428" y2="46" marker-end="url(#fig73-3-acc)"/>
-  <line class="ln-dash" x1="430" y1="64" x2="214" y2="132" marker-end="url(#fig73-3-mut)"/>
-  <line class="ln-accent" x1="212" y1="134" x2="428" y2="133" marker-end="url(#fig73-3-acc)"/>
-  <line class="ln-dash" x1="430" y1="148" x2="214" y2="149" marker-end="url(#fig73-3-mut)"/>
-  <line class="ln-accent" x1="212" y1="150" x2="428" y2="216" marker-end="url(#fig73-3-acc)"/>
-  <line class="ln-dash" x1="430" y1="234" x2="214" y2="166" marker-end="url(#fig73-3-mut)"/>
+  <line class="ln-accent" x1="212" y1="110" x2="428" y2="44" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="68" x2="232" y2="126" marker-end="url(#fig73-3-mut)"/>
+  <line class="ln-accent" x1="212" y1="130" x2="428" y2="130" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="152" x2="232" y2="152" marker-end="url(#fig73-3-mut)"/>
+  <line class="ln-accent" x1="212" y1="156" x2="428" y2="214" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="238" x2="232" y2="176" marker-end="url(#fig73-3-mut)"/>
 
   <line class="ln-accent" x1="40" y1="282" x2="82" y2="282" marker-end="url(#fig73-3-acc)"/>
   <text x="92" y="286" class="t-sm">pod lists account</text>
@@ -304,8 +313,8 @@ and still needs the arrangement to be theirs.
 <li><strong>The category acquired a market and not a standard.</strong>
 Link-list services such as Linktree (launched 2016, and cited in the
 note&#8217;s references) became widely used, evidence of the need, not of the architecture.</li>
-<li><strong>Verification arrived through the platforms.</strong> Since 2018
-Mastodon checks <code>rel="me"</code> links: if a person&#8217;s site links to their
+<li><strong>Verification arrived through the platforms.</strong> Since version
+2.6 (October 2018) Mastodon checks <code>rel="me"</code> links: if a person&#8217;s site links to their
 profile with that marker and the profile links back, the link is shown as
 verified. That is section 73.5&#8217;s two-way proof, run inside one platform
 at a time.</li>
@@ -313,9 +322,6 @@ at a time.</li>
 Apple&#8217;s Medical ID (iOS 8, 2014) and Android&#8217;s emergency information
 (Android 7, 2016) show allergies, blood type and emergency contacts on a locked
 phone: the use case of Figure 73.1 solved in a place the Web cannot reach.</li>
-<li><strong>Structured data about people is ubiquitous and not
-portable.</strong> It is published for search engines, in the shape search
-engines want, and cannot easily be moved or reused by its subject.</li>
 </ul>
 </div>
 
@@ -344,9 +350,8 @@ public? Give one argument each way.</p>
 </div>
 <div class="question">
 <p><span class="question-number">73.3</span>
-One vocabulary won because a search engine rewarded it. Name another standard
-adopted for an incentive its designers did not intend. (Think of a format
-adopted mainly to rank higher in search or to pass a platform&#8217;s checks.)</p>
+FOAF and schema.org both let a page carry machine-readable statements. Why did
+one spread to millions of sites and the other not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">73.4</span>

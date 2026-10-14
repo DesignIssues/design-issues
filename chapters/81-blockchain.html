@@ -62,8 +62,8 @@ place for Web data.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume VIII closes with a note from October 2017, written at the height of an
-enthusiasm, and opens by refusing the question:
+Volume VIII closes with a note from October 2017 that opens by refusing the
+question:
 </p>
 <blockquote>
 What technical problem is there in the world in 2017 where someone has not asked
@@ -78,12 +78,14 @@ in Chapter 25.
 </p>
 </div>
 
-<h2>81.1 Five things in one system</h2>
+<h2>81.1 Four things in one system</h2>
 
 <p>
-The original Bitcoin system announced five things at once. Notarising uses a
-<em><a class="gl-ref" href="../glossary.html#hash">hash</a></em>, a short fingerprint of data that changes if the data changes at
-all; putting it in the ledger proves the data existed by that date.
+The ledger is a list of records in blocks, each linked to the one before;
+<em>mining</em> is the computing work that adds a block. The original Bitcoin
+system announced four things, and a cloud of further ideas. Notarising puts a
+<em><a class="gl-ref" href="../glossary.html#hash">hash</a></em> in the ledger: a short fingerprint of data that changes if the
+data changes at all, proving the data existed by that date.
 </p>
 
 <figure>
@@ -110,16 +112,17 @@ all; putting it in the ledger proves the data existed by that date.
   <text x="24" y="174" class="t-sm">a way to declare a public key</text>
   <text x="392" y="174" class="t-sm" style="fill:#1c5a7a">log in with a key pair the ledger vouches for</text>
 
-  <text x="24" y="210" class="t-sm">many further proposals</text>
+  <text x="24" y="210" class="t-sm t-it" style="fill:#8a9a9a">and a cloud of further proposals</text>
   <text x="392" y="210" class="t-sm t-it" style="fill:#8a9a9a">it all depends which one is meant</text>
 </svg>
 <figcaption><span class="fig-label">Figure 81.1</span>
-Five parts, each meeting the Web in a different place.</figcaption>
+Four parts and a cloud of further ideas, each meeting the Web in a different
+place.</figcaption>
 </figure>
 
 <p>
-The parts depend on each other, so one cannot take the ledger and leave the
-currency, as many proposals of the period assumed (Figure 81.2).
+The parts depend on each other: the ledger cannot be taken without the
+currency (Figure 81.2).
 </p>
 
 <figure>
@@ -180,7 +183,7 @@ exit.</figcaption>
 <h2>81.2 Two ironies</h2>
 
 <p>
-The first irony is about openness:
+The first concerns openness:
 </p>
 
 <blockquote>
@@ -212,8 +215,8 @@ timescale which is important to the parties.
 </blockquote>
 
 <p>
-Breaking <a class="gl-ref" href="../glossary.html#encryption">encryption</a> gets cheaper with time, while the published copy stays
-available for ever. And even unreadable data gives something away:
+Breaking <a class="gl-ref" href="../glossary.html#encryption">encryption</a> gets cheaper with time, while the published copy stays.
+Even unreadable data gives something away:
 &ldquo;even if
 people can&#8217;t decrypt they see that you have put something there, which
 may already be revealing.&rdquo;
@@ -248,16 +251,17 @@ blockchain operating and ensure its integrity.
 
 <p>
 This is the loop of Figure 81.2, and nothing guarantees anyone will pay what
-each new coin costs in energy.
+each new coin costs in energy. The remitter, by contrast, risks only a sharp
+move in the price during the minute the coins are held.
 </p>
 
-<h2>81.5 A mechanism in place of an institution</h2>
+<h2>81.5 Re-centralisation through portals</h2>
 
 <p>
-Volume VIII has been about where the Web meets institutions: courts,
-regulators, registries, copyright. A distributed ledger proposes to replace the
-institution with a mechanism. The note declines that framing, since the
-integrity everyone admires is bought with a currency.
+If an application reaches the chain through an online service, so that the
+blockchain code runs on one of a few portals rather than the user&#8217;s
+computer, the system is not decentralised in effect: &ldquo;The monopoly
+portals are back in control.&rdquo;
 </p>
 
 <h2>81.6 What stored data depends on</h2>
@@ -298,16 +302,16 @@ for with a community and an economy that nobody using it controls.</figcaption>
 </figure>
 
 <p>
-A web <a class="gl-ref" href="../glossary.html#server">server</a> lasts as long as someone pays for it: people who built AOL
-Hometown sites lost them when AOL switched it off. On a blockchain, without
-miners there are no new blocks and nobody checks the old ones.
+A web <a class="gl-ref" href="../glossary.html#server">server</a> lasts while someone pays for it, as AOL Hometown&#8217;s users
+learned when it closed. Without miners, a chain has no new blocks and nobody
+checks the old ones.
 </p>
 
 <h2>81.7 Too slow, too expensive, too public</h2>
 
 <p>
-One chain for everyone is like one club with one fee, speed and
-reliability. Gamers, retailers and banks would each soon want their own.
+One chain for everyone is one club with one fee and speed; gamers, retailers
+and banks would soon each want their own.
 </p>
 
 <figure>
@@ -351,9 +355,20 @@ blockchain is centralised and the Web is not.</figcaption>
 </figure>
 
 <p>
-For applications, a chain is public, since every node holds a copy; slow,
-since all must agree on each block; and expensive, through fees. It also
-re-centralises when users reach it through a few portals. The conclusion:
+For an application storing data, the note lists four problems. A
+<em>node</em> is one computer taking part.
+</p>
+
+<table>
+<tr><th>Problem</th><th>Why</th></tr>
+<tr><td>Public</td><td>Every node holds a copy of the whole chain.</td></tr>
+<tr><td>Slow</td><td>All users must agree on each new block.</td></tr>
+<tr><td>Expensive</td><td>Each transaction costs a fee in tokens.</td></tr>
+<tr><td>Re-centralised</td><td>Users reach it through a few portals (81.5).</td></tr>
+</table>
+
+<p>
+The conclusion:
 </p>
 
 <blockquote>
@@ -365,44 +380,96 @@ too slow, too expensive, and too public.
 <h2>81.8 Doing it with the Web instead</h2>
 
 <p>
-Given a trusted known party, a page on its site can be the head of a
-ledger. Signed linked data can be chained, each document citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash
-those it depends on, as in Chapter 62. And git repositories already fill the Web with hash trees.
+A page on a trusted party&#8217;s site can be the <em>head</em> of a
+ledger, recording the latest entry. Signed documents can be chained, each
+citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash the ones it depends on, as in Chapter 62 (Figure
+81.5). Version-control systems such as git already fill the Web with hash
+trees, naming each version of a set of files by a hash of its contents.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig81-5-t fig81-5-d">
+  <title id="fig81-5-t">A chain of signed documents on the Web</title>
+  <desc id="fig81-5-d">Three signed documents left to right. Document 2 points
+  back to document 1, and document 3 to document 2, each by URI and hash. A
+  trusted site holds the address of the latest, document 3.</desc>
+  <defs>
+    <marker id="fig81-5-ah" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="24" y="40" width="160" height="70" rx="4"/>
+  <text x="104" y="68" text-anchor="middle">document 1</text>
+  <text x="104" y="92" class="t-sm" text-anchor="middle">signed</text>
+
+  <rect class="box" x="280" y="40" width="160" height="70" rx="4"/>
+  <text x="360" y="68" text-anchor="middle">document 2</text>
+  <text x="360" y="92" class="t-sm" text-anchor="middle">signed</text>
+
+  <rect class="box" x="536" y="40" width="160" height="70" rx="4"/>
+  <text x="616" y="68" text-anchor="middle">document 3</text>
+  <text x="616" y="92" class="t-sm" text-anchor="middle">signed</text>
+
+  <line class="ln" x1="280" y1="75" x2="186" y2="75" marker-end="url(#fig81-5-ah)"/>
+  <text x="232" y="64" class="t-sm t-mono" text-anchor="middle">URI + hash</text>
+  <line class="ln" x1="536" y1="75" x2="442" y2="75" marker-end="url(#fig81-5-ah)"/>
+  <text x="488" y="64" class="t-sm t-mono" text-anchor="middle">URI + hash</text>
+
+  <rect class="box-warm" x="476" y="150" width="220" height="36" rx="4"/>
+  <text x="586" y="173" class="t-sm" text-anchor="middle">trusted site holds the latest</text>
+  <line class="ln-accent" x1="616" y1="150" x2="616" y2="112" marker-end="url(#fig81-5-ah)"/>
+
+  <text x="24" y="150" class="t-sm">alter document 1 and its hash</text>
+  <text x="24" y="168" class="t-sm">no longer matches the one</text>
+  <text x="24" y="186" class="t-sm">document 2 recorded</text>
+</svg>
+<figcaption><span class="fig-label">Figure 81.5</span>
+Tamper evidence without mining: changing an earlier document breaks the
+hash the next one holds.</figcaption>
+</figure>
+
+<p>
+Nor do other decentralised stores: a <em>distributed hash table</em>
+spreads hashed chunks of data across servers, and IPFS shares unchanging files
+by their hashes.
 </p>
 
 <p>
-The weak point is the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>. Without a domain of their own, people&#8217;s data sits
-under their provider&#8217;s name and they are tied to it, so anything that helps people
-get one, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (Chapter 54), helps.
+The weak point is the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>. Without one, people&#8217;s data sits
+under their provider&#8217;s name, tying them to it; anything that helps people
+get a domain, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (Chapter 54), helps.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The energy objection was answered by one network and not the
-other.</strong> Ethereum replaced mining with staking in September 2022,
-cutting its consumption by around 99 per cent; the original network did
-not.</li>
+<li><strong>The energy objection was answered by one network.</strong>
+Ethereum replaced mining with staking in September 2022, cutting its
+consumption by around 99 per cent; Bitcoin did not.</li>
 <li><strong>The note&#8217;s own update tested the loop.</strong> It links a
-CryptoSlate report of 12 December 2022 that a bitcoin had become cheaper than
-the all-in cost of mining one: the dashed exit of Figure 81.2.</li>
+CryptoSlate report of 12 December 2022 that a bitcoin cost less than mining
+one: the dashed exit of Figure 81.2.</li>
 <li><strong>Identity was standardised without a blockchain.</strong>
 Decentralised identifiers, the identity part of Figure 81.1, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in July 2022.</li>
-<li><strong>Payments arrived in the browser, generically.</strong> The Payment
-Request <a class="gl-ref" href="../glossary.html#specification">specification</a> became a Recommendation in September 2022: the modular
-slot the note describes, favouring no currency.</li>
-<li><strong>The speculation chart resolved.</strong> The price rose far beyond
-2017 levels and fell sharply more than once.</li>
+<li><strong>Payments arrived in the browser, generically.</strong> Payment
+Request became a Recommendation in September 2022: the note&#8217;s modular
+slot, favouring no currency.</li>
+<li><strong>The speculation chart kept swinging.</strong> The price rose far
+beyond 2017 levels, then lost more than three-quarters of its value in both
+2018 and 2022.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Naming and the authority behind it are Chapters 3 and 79, and identity by key
-is Chapter 69. Notarising a state is the mechanism of Chapter 62, and endorsing
-by checksum is Chapter 46. Personal data stores are Chapter 54.
+Naming and its authority: Chapters 3 and 79. Identity by key: Chapter 69.
+Notarising a state: Chapter 62. Endorsing by checksum: Chapter 46. Personal
+data stores: Chapter 54.
 </p>
 </div>
 

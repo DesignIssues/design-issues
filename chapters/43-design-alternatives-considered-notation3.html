@@ -148,14 +148,14 @@ the more common need.
 </svg>
 <figcaption><span class="fig-label">Figure 43.1</span>
 Forward traversal follows the arrows from <code>x</code>; backward traversal
-starts at the number and asks who points here. The links are the same; only
-the direction of the question changes.</figcaption>
+starts at the number and asks who points here. The note&#8217;s own example is
+this longer chain rather than a single <code>email</code> step.</figcaption>
 </figure>
 
 <h2>43.2 The candidates</h2>
 
 <p>
-The note weighs seven families of notation, several with variants, each
+The note weighs nine candidate notations, several with variants, each
 borrowing a metaphor:
 </p>
 
@@ -213,30 +213,27 @@ after the term, and which way does it travel?
 </svg>
 <figcaption><span class="fig-label">Figure 43.2</span>
 The note&#8217;s own summary table, redrawn. No cell is empty, but the
-backward forms read badly, and the diagnosis is about English, not
-punctuation.</figcaption>
+backward forms read badly.</figcaption>
 </figure>
 
 <p>
 This is the most transferable point in the note. A notation that borrows
-familiarity from a natural language inherits its asymmetries: any syntax that
-feels natural in English will find an email&#8217;s owner harder to name than a
-person&#8217;s email.
+from a natural language inherits its asymmetries: in English-like syntax, an
+email&#8217;s owner is harder to name than a person&#8217;s email.
 </p>
 
 <p>
 The note also offers a way round. A backward step along <code>email</code>
-is a forward step along its inverse. So a compact way to write an inverse
-would serve, if it is clear when that is merely syntax and when the inverse is
-really being named.
+is a forward step along its inverse. A compact way to write an inverse would
+serve, if it is clear whether the inverse is merely syntax or really named.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 214" width="720" height="214" role="img"
+<svg class="dia" viewBox="0 30 720 184" width="720" height="184" role="img"
      aria-labelledby="fig43-3-t fig43-3-d">
   <title id="fig43-3-t">Dot and caret are inverses</title>
-  <desc id="fig43-3-d">Two nodes, x and y, joined by an arrow labelled email.
-  An arc above, labelled x.email, runs from x to y. An arc below, labelled
+  <desc id="fig43-3-d">Two nodes, x and y, joined by one arrow, the email
+  link, labelled x.email when read forward from x. An arc below, labelled
   y^email, runs from y back to x. A side box gives the alternative: treat
   the caret as naming the inverse property, written y.^email, which costs one
   extra triple.</desc>
@@ -255,16 +252,15 @@ really being named.
     </marker>
   </defs>
 
-  <text x="210" y="34" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">x.email</text>
-  <path class="ln-accent" d="M 110 86 Q 210 10 310 86" marker-end="url(#fig43-3-acc)"/>
 
   <ellipse class="box" cx="90" cy="108" rx="44" ry="24"/>
   <text x="90" y="113" text-anchor="middle" class="t-mono">x</text>
   <ellipse class="box-warm" cx="330" cy="108" rx="44" ry="24"/>
   <text x="330" y="113" text-anchor="middle" class="t-mono">y</text>
 
-  <line class="ln" x1="134" y1="108" x2="285" y2="108" marker-end="url(#fig43-3-ink)"/>
-  <text x="210" y="100" text-anchor="middle" class="t-mono">email</text>
+  <text x="210" y="74" text-anchor="middle" class="t-sm">the email link</text>
+  <line class="ln-accent" x1="134" y1="108" x2="285" y2="108" marker-end="url(#fig43-3-acc)"/>
+  <text x="210" y="98" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">x.email</text>
 
   <path class="ln-dash" d="M 310 130 Q 210 206 110 130" style="stroke:#b08d57;stroke-width:1.4" marker-end="url(#fig43-3-warm)"/>
   <text x="210" y="194" text-anchor="middle" class="t-mono" style="fill:#b08d57">y^email</text>
@@ -277,9 +273,8 @@ really being named.
   <text x="436" y="158" class="t-sm">triple to represent it</text>
 </svg>
 <figcaption><span class="fig-label">Figure 43.3</span>
-One link, read two ways. The dot follows <code>email</code> forward; the
-caret follows it back. The side box makes the caret name the inverse, so every
-step is forward.</figcaption>
+One link, read two ways. The dot follows <code>email</code> forward from
+<code>x</code>; the caret follows the same link back from <code>y</code>. The side box names the inverse instead.</figcaption>
 </figure>
 
 <h2>43.3 Sets, and why containers were the wrong shape</h2>
@@ -303,56 +298,93 @@ not at all.
 <table>
 <tr><th>Cost</th><th>What it means in practice</th></tr>
 <tr><td>Two lists with the same members in different orders are not evidently the same</td><td>Comparison and deduplication become application logic</td></tr>
-<tr><td>The fact that it is really a set is communicated out of band</td><td>Only people who know the application know it</td></tr>
-<tr><td>Implementations cannot use libraries optimised for sets</td><td>The wrong data structure is used throughout</td></tr>
+<tr><td>The fact that it is really a set lives only in documentation or people&#8217;s heads</td><td>Only people who know the application know it</td></tr>
+<tr><td>Implementations cannot use ready-made code built for sets</td><td>The wrong data structure is used throughout</td></tr>
 </table>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
+     aria-labelledby="fig43-4-t fig43-4-d">
+  <title id="fig43-4-t">Two lists, one set</title>
+  <desc id="fig43-4-d">On the left, two lists: (alice bob carol) and
+  (carol alice bob), with a question mark and a not-equal sign between them,
+  labelled list: order counts, duplicates allowed. Arrows from both lists
+  point to one set on the right, {$ alice, bob, carol $}, labelled set: same
+  members, same set.</desc>
+  <defs>
+    <marker id="fig43-4-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <rect class="box" x="24" y="30" width="250" height="40" rx="4"/>
+  <text x="149" y="55" text-anchor="middle" class="t-mono">(alice bob carol)</text>
+  <rect class="box" x="24" y="120" width="250" height="40" rx="4"/>
+  <text x="149" y="145" text-anchor="middle" class="t-mono">(carol alice bob)</text>
+  <text x="149" y="101" text-anchor="middle" class="t-lg" style="fill:#b08d57">&#8800; ?</text>
+  <text x="149" y="192" text-anchor="middle" class="t-sm">list: order counts, duplicates allowed</text>
+
+  <path class="ln" d="M 274 50 C 340 50 360 95 434 95" marker-end="url(#fig43-4-ink)"/>
+  <path class="ln" d="M 274 140 C 340 140 360 95 434 95" marker-end="url(#fig43-4-ink)"/>
+
+  <rect class="box-green" x="440" y="72" width="256" height="46" rx="4"/>
+  <text x="568" y="100" text-anchor="middle" class="t-mono">{$ alice, bob, carol $}</text>
+  <text x="568" y="146" text-anchor="middle" class="t-sm">set: same members, same set</text>
+</svg>
+<figcaption><span class="fig-label">Figure 43.4</span>
+A mailing list stored as a list makes two identical memberships look
+different.</figcaption>
+</figure>
+
 <p>
-So sets need what lists have: a form in ordinary statements, which
-general-purpose software can pass along, and a shorthand for people.
+So sets need what lists have: a form in ordinary statements, and a
+shorthand for people.
 </p>
 
 <h3>What was proposed</h3>
 
 <p>
-For statements, the note borrows from <a class="gl-ref" href="../glossary.html#owl">OWL</a>: <code>[ owl:oneOf (1 2 3) ]</code>
-is the class whose members are exactly 1, 2 and 3, in any order. The
-shorthand was harder; the note tables seven syntaxes, including:
+For statements, the note borrows from <a class="gl-ref" href="../glossary.html#owl">OWL</a>, the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for
+describing classes: <code>[ owl:oneOf (1 2 3) ]</code> is the class whose
+members are exactly 1, 2 and 3, in any order. The shorthand was harder; the
+note tables seven syntaxes, including:
 </p>
 
 <table>
 <tr><th>Syntax</th><th>For</th><th>Against</th></tr>
-<tr><td><code>(1, 2, 3)</code></td><td>Almost no new punctuation</td><td><a class="gl-ref" href="../glossary.html#parser">Parser</a> must read ahead a whole expression</td></tr>
+<tr><td><code>(1, 2, 3)</code></td><td>Almost no new punctuation</td><td><a class="gl-ref" href="../glossary.html#parser">Parser</a> must look ahead a whole expression</td></tr>
 <tr><td><code>($ 1 2 3 $)</code></td><td>Otherwise just like a list</td><td>None recorded</td></tr>
-<tr><td><code>{$ 1, 2, 3 $}</code></td><td>Curly braces are conventional for sets</td><td>Braces already mean formulae</td></tr>
+<tr><td><code>{$ 1, 2, 3 $}</code></td><td>Curly braces are conventional for sets</td><td>Braces already mean formulae (a quoted group of statements)</td></tr>
 <tr><td><code>@Set{1, 2, 3}</code></td><td>Just a new keyword</td><td>None recorded</td></tr>
 </table>
 
 <p>
-It records that &ldquo;The current choice is {$ 1, 2, 3 $}&rdquo;, with
+To &ldquo;look ahead&rdquo; is to read on past the opening bracket before
+knowing what is being parsed. The note records that &ldquo;The current choice is {$ 1, 2, 3 $}&rdquo;, with
 dollar signs to tell a set from a formula. A harder question stays open: does
-<code>{$ :a, :b, :c $}</code> say that the three are different things? If so,
-members can be counted, but union and intersection need to know which are the
-same. If not, union is safe but counting is not.
+<code>{$ :a, :b, :c $}</code> say that the three are different things?
+Suppose <code>:a</code> and <code>:b</code> later turn out to be the same
+person. Does the set have two members or three? If the names are taken as
+distinct, the set has three and can be counted, but merging two sets (union)
+or finding their common members (intersection) needs to know which names are
+the same. If not, union is safe but counting is not.
 </p>
 
 <h2>43.4 Why an unfinished note is worth a chapter</h2>
 
 <p>
 Little here is final: the set syntax is a current choice, and a section of
-loose material is headed simply as fodder. Chapter 21 asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to state which decisions are arbitrary and
-which follow from logic. In finished documents the arbitrary choices have hardened
-into the only way things are written. Here they are still soft, and one can
-see which parts of a notation
-were forced, as when a parser cannot tell a list from a set in time, and which
-were a matter of taste and personal history.
+loose material is headed simply as fodder. Chapter 21 asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to
+state which decisions are arbitrary. In finished documents those choices have
+hardened; here they are still soft, and one can see which were forced, as when
+a parser cannot tell a list from a set in time, and which were taste.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Caret and slash arrived in the query language.</strong> Property
-paths became part of <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of March 2013. They use
+paths became part of <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1, a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of March 2013. They use
 <code>^</code> for an inverse step and <code>/</code> for a sequence: two of
 the candidates weighed here.</li>
 <li><strong>No set literal was standardised.</strong> RDF 1.1 and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, both
@@ -375,7 +407,8 @@ and the test that sorts arbitrary from architectural is Chapter 16. The
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">43.1</span>
-Familiarity is treated as a design property. Name a syntax you find natural,
+Familiarity is treated as a design property, as with the dot in
+<code>x.email</code>, borrowed from Python and C++. Name a syntax you find natural,
 identify what it borrows from, and say what that borrowing cost.</p>
 </div>
 <div class="question">

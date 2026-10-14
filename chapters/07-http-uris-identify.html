@@ -228,11 +228,57 @@ car. Only if it names the document does the test explain why one of them
 counts as failure.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig7-2-t fig7-2-d">
+  <title id="fig7-2-t">The test of a shared link</title>
+  <desc id="fig7-2-d">Two browser windows side by side, both showing the
+  address example.com/car. The sender sees a photograph of a car; the friend
+  sees a table of weight, length, colour and registration. Below, three green
+  boxes, a JPEG instead of a GIF, a lower resolution and a text description,
+  are labelled still the same information. One warm box, a table of
+  measurements, is labelled different information: the link failed.</desc>
+
+  <text x="180" y="20" class="t-caps" text-anchor="middle">sender sees</text>
+  <rect class="box-plain" x="30" y="30" width="300" height="140" rx="6"/>
+  <rect class="box" x="40" y="40" width="280" height="24" rx="3"/>
+  <text x="52" y="57" class="t-mono t-sm">example.com/car</text>
+  <rect class="box-green" x="80" y="80" width="200" height="76" rx="4"/>
+  <text x="180" y="123" text-anchor="middle">photo of a car</text>
+
+  <text x="540" y="20" class="t-caps" text-anchor="middle">friend sees</text>
+  <rect class="box-plain" x="390" y="30" width="300" height="140" rx="6"/>
+  <rect class="box" x="400" y="40" width="280" height="24" rx="3"/>
+  <text x="412" y="57" class="t-mono t-sm">example.com/car</text>
+  <rect class="box-warm" x="440" y="80" width="200" height="76" rx="4"/>
+  <text x="540" y="104" text-anchor="middle">table:</text>
+  <text x="540" y="124" class="t-sm" text-anchor="middle">weight, length, colour,</text>
+  <text x="540" y="142" class="t-sm" text-anchor="middle">registration</text>
+
+  <line class="ln-mut" x1="30" y1="190" x2="690" y2="190"/>
+  <rect class="box-green" x="30" y="206" width="140" height="34" rx="4"/>
+  <text x="100" y="228" class="t-sm" text-anchor="middle">JPEG instead of GIF</text>
+  <rect class="box-green" x="180" y="206" width="140" height="34" rx="4"/>
+  <text x="250" y="228" class="t-sm" text-anchor="middle">lower resolution</text>
+  <rect class="box-green" x="330" y="206" width="140" height="34" rx="4"/>
+  <text x="400" y="228" class="t-sm" text-anchor="middle">text description</text>
+  <text x="250" y="264" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">still the same information</text>
+
+  <rect class="box-warm" x="530" y="206" width="160" height="34" rx="4"/>
+  <text x="610" y="228" class="t-sm" text-anchor="middle">table of measurements</text>
+  <text x="610" y="264" class="t-sm" text-anchor="middle" style="fill:#b08d57">different information:</text>
+  <text x="610" y="282" class="t-sm" text-anchor="middle" style="fill:#b08d57">the link failed</text>
+</svg>
+<figcaption><span class="fig-label">Figure 7.2</span> The same address,
+two different pages about the same car. The test fixes what the address
+names: the information content, not the subject.</figcaption>
+</figure>
+
 <h2>7.3 Eight alternatives, tried and rejected</h2>
 
 <p>
 The bulk of the note works through the positions Berners-Lee does not hold.
-The method is worth more than the verdicts: each alternative is stated in its
+Each alternative is stated in its
 proponents&#8217; terms, granted whatever it has going for it, and then failed on a
 specific consequence. One term needs explaining first. Closed-world reasoning
 means assuming that anything not stated is false. The Web is open,
@@ -241,17 +287,17 @@ overturned at any moment.
 </p>
 
 <table>
-<tr><th>Alternative</th><th>Why it is rejected</th></tr>
-<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
-<tr><td>The owner may define it to mean whatever they like</td><td>Consistent, but nothing can be used before consulting the owner</td></tr>
-<tr><td>&emsp;&hellip; with a page as the default until told otherwise</td><td>Requires closed-world reasoning, which an open Web forbids</td></tr>
-<tr><td>&emsp;&hellip; settled by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a></td><td>Would work logically, but cannot be retrofitted to the millions of servers already deployed</td></tr>
-<tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
-<tr><td>Let different properties imply different levels</td><td>Fails when a page describes a page; the &ldquo;two-level&rdquo; trap</td></tr>
-<tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, breaking universality</td></tr>
-<tr><td>Disambiguate by context</td><td>Works only while the two communities never talk to each other; breaks the rule that a URI names one thing</td></tr>
-<tr><td>Change the meaning for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></td><td>A change that large would need a new URI <a class="gl-ref" href="../glossary.html#scheme">scheme</a></td></tr>
-<tr><td>Abandon abstract identification entirely</td><td>Consistent, but bars RDF from talking about documents</td></tr>
+<tr><th>Alternative</th><th>What it gets right</th><th>Why it is rejected</th></tr>
+<tr><td>The URI identifies the abstract thing, not a document</td><td>Easy to build on</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
+<tr><td>The owner may define it to mean whatever they like</td><td>Logically consistent</td><td>Nothing can be used before consulting the owner</td></tr>
+<tr><td>&emsp;&hellip; with a page as the default until told otherwise</td><td>Usable at once</td><td>Requires closed-world reasoning, which an open Web forbids</td></tr>
+<tr><td>&emsp;&hellip; settled by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a></td><td>Works logically</td><td>Cannot be retrofitted to the millions of servers already deployed</td></tr>
+<tr><td>Let logic disambiguate</td><td>Possible in theory</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
+<tr><td>Let different properties imply different levels</td><td>Can still be pursued</td><td>Fails when a page describes another page: there is no telling which level a property is about</td></tr>
+<tr><td>Carry extra information alongside the URI</td><td>Would work for <a class="gl-ref" href="../glossary.html#html">HTML</a> links alone</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
+<tr><td>Disambiguate by context</td><td>Works in the short term</td><td>Fails once the two communities talk to each other; breaks the rule that a URI names one thing</td></tr>
+<tr><td>Change the meaning for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></td><td>Tempting</td><td>A change that large would need a new URI <a class="gl-ref" href="../glossary.html#scheme">scheme</a></td></tr>
+<tr><td>Abandon abstract identification entirely</td><td>Consistent</td><td>Bars RDF from talking about documents</td></tr>
 </table>
 
 <p>
@@ -277,9 +323,9 @@ recommending the Vietnam War.
 
 <figure>
 <svg class="dia" viewBox="0 0 640 180" width="640" height="180" role="img"
-     aria-labelledby="fig7-2-t fig7-2-d">
-  <title id="fig7-2-t">One statement, two readings</title>
-  <desc id="fig7-2-d">A single statement gives the address of a page about
+     aria-labelledby="fig7-3-t fig7-3-d">
+  <title id="fig7-3-t">One statement, two readings</title>
+  <desc id="fig7-3-d">A single statement gives the address of a page about
   the Vietnam War a rating of excellent. It branches into two readings. On
   the left, the page is excellent, which is what the reviewer meant. On the
   right, the war is excellent, which is what the statement says if the owner
@@ -300,7 +346,7 @@ recommending the Vietnam War.
   <text x="480" y="132" text-anchor="middle">Reading 2: the war is excellent</text>
   <text x="480" y="151" class="t-sm" text-anchor="middle">if the owner says it names the war</text>
 </svg>
-<figcaption><span class="fig-label">Figure 7.2</span> One address, two
+<figcaption><span class="fig-label">Figure 7.3</span> One address, two
 meanings. If the owner decides what an address names, nobody can safely make
 the statement at the top without asking the owner first.</figcaption>
 </figure>
@@ -357,18 +403,18 @@ The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
 names a document. That is the whole of Berners-Lee&#8217;s position in one line,
 and it is why he preferred hash URIs to the redirect approach, which was
-adopted in 2005 and now coexists with them. Figure 7.3 sets the two side by
+adopted in 2005 and now coexists with them. Figure 7.4 sets the two side by
 side.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 700 310" width="700" height="310" role="img"
-     aria-labelledby="fig7-3-t fig7-3-d">
-  <title id="fig7-3-t">Two ways to name a car with a web address</title>
-  <desc id="fig7-3-d">Two lanes. Left, the hash: the address
+     aria-labelledby="fig7-4-t fig7-4-d">
+  <title id="fig7-4-t">Two ways to name a car with a web address</title>
+  <desc id="fig7-4-d">Two lanes. Left, the hash: the address
   example.org/cars#mine; the client drops #mine and sends GET example.org/cars;
   the server replies 200 OK with a document; #mine names the car described
-  inside it. Right, the redirect: the client sends GET example.org/id/car; the
+  inside it. Right, the redirect: the address example.org/id/car; the client sends GET; the
   server replies 303 See Other, the code adopted in 2005 in place of the
   proposed 343 Abstract Object, please see; the client asks again with GET
   example.org/doc/car and receives 200 OK, a document about the car.</desc>
@@ -403,10 +449,10 @@ side.
   <text x="525" y="41" class="t-sm" text-anchor="middle">proposed as 343 in 2002; adopted as 303 in 2005</text>
 
   <rect class="box-plain" x="415" y="56" width="220" height="32" rx="3"/>
-  <text x="525" y="77" class="t-mono" text-anchor="middle">GET example.org/id/car</text>
+  <text x="525" y="77" class="t-mono" text-anchor="middle">example.org/id/car</text>
   <path class="ln" d="M 525 88 L 525 120"/>
   <path d="M 525 128 L 520 118 L 530 118 Z" fill="#2f4f4f"/>
-  <text x="537" y="112" class="t-sm">server replies</text>
+  <text x="537" y="112" class="t-sm">client sends GET</text>
 
   <rect class="box-green" x="405" y="128" width="240" height="44" rx="4"/>
   <text x="525" y="147" text-anchor="middle">303 See Other</text>
@@ -424,8 +470,8 @@ side.
   <text x="525" y="275" text-anchor="middle">200 OK: a document</text>
   <text x="525" y="292" class="t-sm" text-anchor="middle">about the car</text>
 </svg>
-<figcaption><span class="fig-label">Figure 7.3</span> Both keep &ldquo;a plain
-HTTP URI names a document&rdquo;. The hash does it with one character; the
+<figcaption><span class="fig-label">Figure 7.4</span> Both keep the rule that a plain
+HTTP URI names a document. The hash does it with one character; the
 redirect costs an extra round trip to the server.</figcaption>
 </figure>
 
@@ -465,13 +511,12 @@ history of the word that caused the trouble.
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">7.1</span>
-Berners-Lee rejects defaulting to a page on the grounds that it requires
-closed-world reasoning. State what closed-world reasoning is and why an open
-Web forbids it.</p>
+Your address book does not list a phone number for Ann. Is it safe to
+conclude she has none? How is the Web like this?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.2</span>
-Using Figure 7.3, explain what a browser does differently with a hash URI and
+Using Figure 7.4, explain what a browser does differently with a hash URI and
 with a 303 URI.</p>
 </div>
 <div class="question">
@@ -482,8 +527,9 @@ a property or a page about it? How could you tell?</p>
 <div class="question">
 <p><span class="question-number">7.4</span>
 The note argues that representations of a document have more in common with
-each other than with the thing described. Give a case where that is false,
-and say whether it damages the argument.</p>
+each other than with the thing described. Give a case where that is false
+(for example, a photograph and a text description of the same painting), and
+say whether it damages the argument.</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.5</span>

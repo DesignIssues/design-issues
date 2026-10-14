@@ -130,15 +130,16 @@ could!
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
+<svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
      aria-labelledby="fig74-2-t fig74-2-d">
   <title id="fig74-2-t">Colour as a warning</title>
   <desc id="fig74-2-d">On the left, three W3C page backgrounds: white for public
   pages anyone may see, pale blue for member-only pages shared with W3C members,
   and straw for team-only pages shared with W3C staff. On the right, a mail
-  composing window addressed to a public list still has a plain white body; a
-  dashed arrow leads to a second window whose background is tinted according
-  to the size of the audience, as the note suggests.</desc>
+  composing window addressed to a public list has a plain white body like any
+  other; a dashed arrow leads to a second window, as the note suggests, marked
+  by its audience: white, with a heavy border and a band saying the message is
+  public, readable by everyone.</desc>
 
   <text x="24" y="30" class="t-caps">w3c pages and list archives</text>
   <rect x="24" y="44" width="112" height="84" fill="#fdfdfc" style="stroke:#8a9a9a"/>
@@ -167,16 +168,19 @@ could!
   <path class="ln-dash" d="M 576 120 L 576 156"/>
   <path d="M 571 152 L 576 162 L 581 152 Z" fill="#8a9a9a"/>
   <text x="566" y="136" class="t-sm" text-anchor="end">what the note suggests:</text>
-  <text x="566" y="151" class="t-sm" text-anchor="end">tint by audience</text>
+  <text x="566" y="151" class="t-sm" text-anchor="end">mark by audience</text>
 
-  <rect x="456" y="166" width="240" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1.4"/>
-  <text x="468" y="186" class="t-mono">To: public-&#8230;@w3.org</text>
-  <line x1="456" y1="196" x2="696" y2="196" stroke="#b08d57" stroke-width="1.1"/>
-  <text x="468" y="222" class="t-sm">background varies with audience size</text>
+  <rect x="456" y="166" width="240" height="84" fill="#fdfdfc" stroke="#b08d57" stroke-width="3"/>
+  <rect x="456" y="166" width="240" height="22" fill="#b08d57"/>
+  <text x="576" y="182" class="t-sm" text-anchor="middle" style="fill:#fdfdfc">public: everyone can read this</text>
+  <text x="468" y="208" class="t-mono">To: public-&#8230;@w3.org</text>
+  <line x1="456" y1="218" x2="696" y2="218" stroke="#b08d57" stroke-width="1.1"/>
+  <text x="468" y="238" class="t-sm">white, as for public pages</text>
 </svg>
 <figcaption><span class="fig-label">Figure 74.2</span>
 The pages carry the cue; the composing window, where the mistake happens,
-does not. The lower tint is illustrative: the note names no colours for mail.</figcaption>
+does not. The lower window is illustrative: the note names no colours for
+mail, so this one borrows the W3C code.</figcaption>
 </figure>
 
 <h2>74.3 Both ends of the gradient deserve design</h2>
@@ -191,44 +195,62 @@ preferences, and things shared with groups and combinations of groups.
 <figure>
 <svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
      aria-labelledby="fig74-3-t fig74-3-d">
-  <title id="fig74-3-t">One pod, three zones</title>
-  <desc id="fig74-3-d">A pod drawn as three nested zones. The outer, public zone
-  holds the profile in colours the owner chose. The middle, shared zone holds
-  overlapping groups of different sizes: family, a project and a company. The
-  inner, private zone holds settings and preferences. An arrow on the left
-  shows that styling today reaches only the public edge; an arrow on the right
-  shows the note asking for the private centre to be styled too.</desc>
+  <title id="fig74-3-t">A pod, and the pods it collaborates through</title>
+  <desc id="fig74-3-d">The person&#8217;s own pod is drawn as three nested zones.
+  The outer, public zone holds the profile in colours the owner chose. The
+  middle zone holds things shared with others. The inner, private zone holds
+  settings and preferences. Three separate pods, of a family, a project and a
+  company, overlap the person&#8217;s shared zone, and each has its own public
+  and private places. An arrow on the left shows that styling today reaches only
+  the public edge; a second shows the note asking for the private centre to be
+  styled too.</desc>
 
-  <rect class="box-green" x="150" y="20" width="420" height="280" rx="18"/>
-  <text x="168" y="44" class="t-caps">public</text>
-  <text x="552" y="44" class="t-sm" text-anchor="end">profile (chosen colours)</text>
+  <rect class="box-green" x="150" y="20" width="320" height="280" rx="18"/>
+  <text x="166" y="44" class="t-caps">public</text>
+  <text x="454" y="44" class="t-sm" text-anchor="end">profile (chosen colours)</text>
 
-  <rect class="box" x="190" y="60" width="340" height="224" rx="14"/>
-  <text x="206" y="82" class="t-caps">shared</text>
-  <ellipse class="ln-accent" cx="262" cy="125" rx="48" ry="30"/>
-  <ellipse class="ln-accent" cx="340" cy="118" rx="48" ry="28"/>
-  <ellipse class="ln-accent" cx="440" cy="130" rx="72" ry="40"/>
-  <text x="250" y="134" class="t-sm" text-anchor="middle">family</text>
-  <text x="336" y="112" class="t-sm" text-anchor="middle">project</text>
-  <text x="456" y="140" class="t-sm" text-anchor="middle">company</text>
+  <rect class="box" x="182" y="60" width="268" height="224" rx="14"/>
+  <text x="198" y="82" class="t-caps">shared</text>
 
-  <rect class="box-warm" x="250" y="186" width="220" height="80" rx="10"/>
-  <text x="266" y="208" class="t-caps">private</text>
-  <text x="360" y="244" class="t-sm" text-anchor="middle">settings, preferences</text>
+  <rect class="box-warm" x="220" y="190" width="180" height="76" rx="10"/>
+  <text x="236" y="212" class="t-caps">private</text>
+  <text x="310" y="248" class="t-sm" text-anchor="middle">settings, preferences</text>
 
-  <text x="24" y="160" class="t-sm">styled today</text>
-  <path class="ln-mut" d="M 24 172 L 160 172"/>
-  <path d="M 156 167 L 166 172 L 156 177 Z" fill="#8a9a9a"/>
+  <rect x="410" y="72" width="200" height="58" rx="8" fill="#fdfdfc" fill-opacity="0.75" stroke="#1c5a7a" stroke-dasharray="5 3"/>
+  <text x="533" y="90" class="t-sm" text-anchor="middle">a family&#8217;s pod</text>
+  <rect class="box-green" x="470" y="100" width="58" height="22" rx="3"/>
+  <text x="499" y="115" class="t-sm" text-anchor="middle">public</text>
+  <rect class="box-warm" x="536" y="100" width="64" height="22" rx="3"/>
+  <text x="568" y="115" class="t-sm" text-anchor="middle">private</text>
 
-  <text x="696" y="204" class="t-sm" text-anchor="end" style="fill:#1c5a7a">the note:</text>
-  <text x="696" y="220" class="t-sm" text-anchor="end" style="fill:#1c5a7a">style this too</text>
-  <path class="ln-accent" d="M 696 234 L 470 234"/>
-  <path d="M 474 229 L 464 234 L 474 239 Z" fill="#1c5a7a"/>
+  <rect x="410" y="142" width="200" height="58" rx="8" fill="#fdfdfc" fill-opacity="0.75" stroke="#1c5a7a" stroke-dasharray="5 3"/>
+  <text x="533" y="160" class="t-sm" text-anchor="middle">a project&#8217;s pod</text>
+  <rect class="box-green" x="470" y="170" width="58" height="22" rx="3"/>
+  <text x="499" y="185" class="t-sm" text-anchor="middle">public</text>
+  <rect class="box-warm" x="536" y="170" width="64" height="22" rx="3"/>
+  <text x="568" y="185" class="t-sm" text-anchor="middle">private</text>
+
+  <rect x="410" y="212" width="200" height="58" rx="8" fill="#fdfdfc" fill-opacity="0.75" stroke="#1c5a7a" stroke-dasharray="5 3"/>
+  <text x="533" y="230" class="t-sm" text-anchor="middle">a company&#8217;s pod</text>
+  <rect class="box-green" x="470" y="240" width="58" height="22" rx="3"/>
+  <text x="499" y="255" class="t-sm" text-anchor="middle">public</text>
+  <rect class="box-warm" x="536" y="240" width="64" height="22" rx="3"/>
+  <text x="568" y="255" class="t-sm" text-anchor="middle">private</text>
+
+  <text x="24" y="134" class="t-sm">styled today</text>
+  <path class="ln-mut" d="M 24 146 L 144 146"/>
+  <path d="M 140 141 L 150 146 L 140 151 Z" fill="#8a9a9a"/>
+
+  <text x="24" y="206" class="t-sm" style="fill:#1c5a7a">the note:</text>
+  <text x="24" y="222" class="t-sm" style="fill:#1c5a7a">style this too</text>
+  <path class="ln-accent" d="M 24 236 L 214 236"/>
+  <path d="M 210 231 L 220 236 L 210 241 Z" fill="#1c5a7a"/>
 </svg>
 <figcaption><span class="fig-label">Figure 74.3</span>
-Shared groups overlap and differ in size. Design attention has gone to the
-public edge, where Solid lets people pick their profile&#8217;s colours; the note
-asks for the same care at the centre.</figcaption>
+A person&#8217;s pod holds public, shared and private things, and overlaps the
+pods of the groups they work through, each with public and private places of its
+own. Design attention has gone to the public edge; the note asks for the same
+care at the centre.</figcaption>
 </figure>
 
 <p>
@@ -251,20 +273,22 @@ one that respects that intimacy, and also let people control it.
 <h3>A home, not a showroom</h3>
 
 <p>
-The private parts of a pod, he says, should feel like a home. The owner feels secure
-there and is in charge, arranging things their own way, in their own styles,
-filed alphabetically or by date. And because Solid lets people choose their apps,
-they can adopt a developer&#8217;s ideas about home they would not have had.
+The private parts of a pod, he says, should feel like a home: the owner feels
+secure there and is in charge. One person files everything alphabetically,
+another by date, in styles of their own. Because Solid lets people choose their
+apps, they can also adopt a developer&#8217;s ideas about home they would not
+have had.
 </p>
 
 <h2>74.4 Why this closes the volume</h2>
 
 <p>
 Most chapters in Volume VII are about a system that models a social
-arrangement too narrowly. Trust is treated as a single yes-or-no value, so a
-padlock either shows or it does not (Chapter 67). Every application on one
-domain is treated as one party (Chapter 68). Sharing is a switch between
-nobody and the whole Web (Chapter 72).
+arrangement too narrowly. Trust flows only from a certificate authority
+(Chapter 66). Security is marked in the name, by the s in https (Chapter 67). A
+party is a whole domain (Chapter 68). Only the site proves who it is (Chapter
+69). Earlier, Chapter 64 found the same in sharing: one follower list allows
+only three choices, nobody, followers or everyone.
 </p>
 
 <p>
@@ -298,16 +322,14 @@ and from their communities&#8217;.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Audience selection stayed coarse.</strong> Most platforms still
-offer a small fixed set of audiences, which is the three-option model of
-Chapter 64, and overlapping groups of different sizes remain hard to
-express.</li>
-<li><strong>The composing window is still uncoloured.</strong> Some mail
-systems warn before sending to a large or external audience, but the warning
-is a dialog box, not a change in how the composing window looks.</li>
-<li><strong>The pattern language kept being borrowed.</strong> Alexander&#8217;s
-patterns continued to be applied to software, and this is among the more
-literal applications: a gradient of rooms, for data.</li>
+<li><strong>Audience selection stayed coarse.</strong> Instagram&#8217;s Close
+Friends list (2018) added one extra audience beside followers; Mastodon offers
+four fixed visibilities (Chapter 64). Overlapping groups of different sizes
+remain hard to express.</li>
+<li><strong>The composing window is still uncoloured.</strong> Microsoft&#8217;s
+MailTips, since Outlook and Exchange 2010, warn in a line of text when a
+message goes to outside recipients or a large list; the window itself looks the
+same.</li>
 </ul>
 </div>
 
@@ -330,8 +352,8 @@ distinguish?</p>
 </div>
 <div class="question">
 <p><span class="question-number">74.2</span>
-Colour the composing window by audience size. What are the levels, and where
-are the boundaries?</p>
+Using the W3C colours of Figure 74.2, what colour should the composing window
+be when writing to your family, to a work team, and to a public list?</p>
 </div>
 <div class="question">
 <p><span class="question-number">74.3</span>

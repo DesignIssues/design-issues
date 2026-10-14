@@ -146,16 +146,15 @@ folder.
   <path d="M 466 123 L 478 128 L 466 133 Z" fill="#5a8f5a"/>
 
   <rect class="box-green" x="478" y="44" width="218" height="160" rx="4"/>
-  <text x="587" y="70" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">shared vocabulary</text>
+  <text x="587" y="70" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
   <text x="494" y="100">location: the playing field</text>
   <text x="494" y="118">(lat 47, long 78)</text>
   <text x="494" y="144">shows: our team</text>
-  <text x="494" y="174" class="t-sm">terms from shared vocabularies</text>
-  <text x="494" y="190" class="t-sm">(place, depiction)</text>
-  <text x="587" y="226" class="t-sm" text-anchor="middle">reusable by anyone</text>
+  <text x="587" y="224" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
+  <text x="587" y="240" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
 
-  <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
-  <text x="360" y="272" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements. The user never chose a global term.</text>
+  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
+  <text x="360" y="280" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements. The user never chose a global term.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 36.1</span>
 The user keeps the folder&#8217;s private name and attaches, once, a label
@@ -181,7 +180,7 @@ and lacks the hierarchical interface he wants.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig36-2-t fig36-2-d">
   <title id="fig36-2-t">The soccer folders as classes</title>
   <desc id="fig36-2-d">On the left, the folders as he wanted them on screen: a
@@ -222,13 +221,12 @@ and lacks the hierarchical interface he wants.
 
   <!-- correspondences -->
   <path class="ln-dash" d="M 170 67 L 500 67"/>
-  <text x="335" y="60" class="t-sm" text-anchor="middle">folder = class</text>
   <path class="ln-dash" d="M 270 140 L 450 140"/>
-  <text x="360" y="133" class="t-sm" text-anchor="middle">subfolder = subclass</text>
   <path class="ln-dash" d="M 270 206 L 450 206"/>
-  <text x="360" y="199" class="t-sm" text-anchor="middle">folder name = local tag</text>
 
-  <text x="360" y="262" class="t-sm t-it" text-anchor="middle">Every structure he wanted on screen is already present on the right.</text>
+  <path class="ln-dash" d="M 60 258 L 100 258"/>
+  <text x="110" y="262" class="t-sm">pairs them: folder = class; subfolder = subclass; folder name = local tag</text>
+  <text x="360" y="288" class="t-sm t-it" text-anchor="middle">Every structure he wanted on screen is already present on the right.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 36.2</span>
 What he wanted on screen, and what it already is in the data model: the
@@ -245,29 +243,65 @@ folder means.
 <p>
 The software&#8217;s workaround is to apply keywords to every photograph in
 a folder as a batch. The data is then stored in each photograph, but the fact
-that it was applied to the whole folder is lost. A label keeps that fact, so
-each photograph can show which label, and hence which folder, its properties
-came from.
+that it was applied to the whole folder is lost. A label keeps that fact.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig36-3-t fig36-3-d">
+  <title id="fig36-3-t">Batch keywords against a label</title>
+  <desc id="fig36-3-d">Left: batch keywords. Six photos in the folder Soccer
+  vs Wayland each carry their own copy of the keywords field and our team,
+  with no link back to the folder. Right: a label. The same six photos each
+  have a dashed link to one label saying field and our team.</desc>
+
+  <text x="185" y="30" class="t-caps" text-anchor="middle" style="fill:#b08d57">batch keywords</text>
+  <rect class="box-warm" x="20" y="44" width="330" height="160" rx="4"/>
+  <text x="185" y="66" class="t-mono" text-anchor="middle">Soccer vs Wayland</text>
+  <g fill="#fdfdfc" stroke="#b08d57">
+    <rect x="37" y="80" width="92" height="52"/><rect x="139" y="80" width="92" height="52"/>
+    <rect x="241" y="80" width="92" height="52"/><rect x="37" y="142" width="92" height="52"/>
+    <rect x="139" y="142" width="92" height="52"/><rect x="241" y="142" width="92" height="52"/>
+  </g>
+  <text x="83" y="102" class="t-sm" text-anchor="middle">field,</text><text x="83" y="120" class="t-sm" text-anchor="middle">our team</text>
+  <text x="185" y="102" class="t-sm" text-anchor="middle">field,</text><text x="185" y="120" class="t-sm" text-anchor="middle">our team</text>
+  <text x="287" y="102" class="t-sm" text-anchor="middle">field,</text><text x="287" y="120" class="t-sm" text-anchor="middle">our team</text>
+  <text x="83" y="164" class="t-sm" text-anchor="middle">field,</text><text x="83" y="182" class="t-sm" text-anchor="middle">our team</text>
+  <text x="185" y="164" class="t-sm" text-anchor="middle">field,</text><text x="185" y="182" class="t-sm" text-anchor="middle">our team</text>
+  <text x="287" y="164" class="t-sm" text-anchor="middle">field,</text><text x="287" y="182" class="t-sm" text-anchor="middle">our team</text>
+  <text x="185" y="228" class="t-sm" text-anchor="middle">six copies; where they came from is lost</text>
+
+  <text x="535" y="30" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">label</text>
+  <rect class="box-warm" x="370" y="44" width="330" height="160" rx="4"/>
+  <text x="535" y="66" class="t-mono" text-anchor="middle">Soccer vs Wayland</text>
+  <g fill="#fdfdfc" stroke="#b08d57">
+    <rect x="390" y="80" width="40" height="32"/><rect x="440" y="80" width="40" height="32"/>
+    <rect x="490" y="80" width="40" height="32"/><rect x="540" y="80" width="40" height="32"/>
+    <rect x="590" y="80" width="40" height="32"/><rect x="640" y="80" width="40" height="32"/>
+  </g>
+  <path class="ln-dash" d="M 410 112 L 480 150 M 460 112 L 500 150 M 510 112 L 520 150 M 560 112 L 550 150 M 610 112 L 570 150 M 660 112 L 590 150"/>
+  <path d="M 460 150 L 600 150 L 620 170 L 600 190 L 460 190 Z" fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
+  <text x="535" y="175" class="t-sm" text-anchor="middle">field, our team</text>
+  <text x="535" y="228" class="t-sm" text-anchor="middle">one label, linked from every photo</text>
+</svg>
+<figcaption><span class="fig-label">Figure 36.3</span>
+Batch keywords copy the data into each photograph and forget it was given to
+the whole folder. A label keeps that fact, so each photograph can show where
+its properties came from.</figcaption>
+</figure>
 
 <h2>36.4 Writing a label down</h2>
 
 <p>
-Under the covers, a label describes a set of things, so in RDF it is a class.
 The note gives three ways to write the same label, and says they are
 &ldquo;more or less inter-convertible&rdquo;:
 </p>
 
 <table>
 <tr><th>Form</th><th>What it says</th><th>Who it suits</th></tr>
-<tr><td>A rule (<a class="gl-ref" href="../glossary.html#n3">N3</a>)</td><td>Anything in SoccerWaylandPhoto was taken at the
-field and shows our team.</td><td>Those who write rules</td></tr>
-<tr><td><a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions</td><td>SoccerWaylandPhoto is a subclass of the
-things at the field that depict our team.</td><td>Users of OWL, an <a class="gl-ref" href="../glossary.html#ontology">ontology</a>
-language (one for defining terms)</td></tr>
-<tr><td>A label vocabulary</td><td>Label-only terms on the class, plus a
-general rule copying them to each member.</td><td>A system built for
-labels</td></tr>
+<tr><td>A rule in <a class="gl-ref" href="../glossary.html#n3">N3</a> (Notation3, a notation for RDF and rules; Chapter 42)</td><td>Each member is at the field and shows our team.</td><td>Rule writers</td></tr>
+<tr><td><a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions</td><td>The class is a subclass of things at the field showing our team.</td><td>Users of OWL, a language for defining terms</td></tr>
+<tr><td>A label vocabulary</td><td>Label terms on the class; one rule copies them to members.</td><td>Systems built for labels</td></tr>
 </table>
 
 <h3>A label is not a photo</h3>
@@ -279,9 +313,9 @@ the label, and when, has nothing to do with who took the photographs, or when.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
-     aria-labelledby="fig36-3-t fig36-3-d">
-  <title id="fig36-3-t">Two ways to write the label</title>
-  <desc id="fig36-3-d">Right: every photo in SoccerWaylandPhoto has location
+     aria-labelledby="fig36-4-t fig36-4-d">
+  <title id="fig36-4-t">Two ways to write the label</title>
+  <desc id="fig36-4-d">Right: every photo in SoccerWaylandPhoto has location
   the field and shows our team. Wrong: the class SoccerWaylandPhoto itself has
   location the field and shows our team, which says the category itself is at
   the field.</desc>
@@ -301,7 +335,7 @@ the label, and when, has nothing to do with who took the photographs, or when.
   <text x="406" y="132">&#8594; shows: our team</text>
   <text x="390" y="166" class="t-sm">this says the category itself is at the field</text>
 </svg>
-<figcaption><span class="fig-label">Figure 36.3</span>
+<figcaption><span class="fig-label">Figure 36.4</span>
 The label describes the members of the class, not the class.</figcaption>
 </figure>
 
@@ -325,19 +359,12 @@ users write rules.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The labelling language arrived.</strong> The <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Content Labelling
-Incubator Group mentioned in the note led to POWDER (Protocol for Web
-Description Resources), which became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September
+<li><strong>The labelling language arrived.</strong> The Web Content Labeling
+(WCL) Incubator Group mentioned in the note led to POWDER (Protocol for Web
+Description Resources), which became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September
 2009.</li>
-<li><strong>Tagging went the way the note feared.</strong> Folksonomies
-(the unplanned tag sets of sites such as del.icio.us and Flickr) did not
-become interoperable through the 2010s.</li>
-<li><strong>The label idea won in a narrower form.</strong> Photograph
-libraries record places, people and events as structured data, with the
-vocabulary supplied by the software.</li>
-<li><strong>Machine labelling replaced manual labelling.</strong> Recognition
-systems now attach structured terms without the user typing anything, an
-outcome the note does not anticipate.</li>
+<li><strong>The software in the example was retired.</strong> Apple replaced
+iPhoto with its Photos application in April 2015.</li>
 <li><strong>The interface complaint stands.</strong> Nested collections,
 where membership of a child implies membership of the parent, remain unusual
 in consumer software.</li>
@@ -375,8 +402,8 @@ you need to agree for one search to find both sets correctly?</p>
 </div>
 <div class="question">
 <p><span class="question-number">36.4</span>
-Automatic labelling closed the gap without the user choosing terms. What does
-that arrangement lose compared with the one proposed here?</p>
+Photo software now often attaches terms automatically, by recognising faces or
+places. What does that arrangement lose compared with the one proposed here?</p>
 </div>
 </details>
 

@@ -39,8 +39,8 @@ says somebody has to deliver it at the top.
 <h2>84.1 Two redirections that mean opposite things</h2>
 
 <p>
-A server asked for one address can reply, in effect, that the browser should look somewhere else.
-HTTP has two ways of saying this, for opposite reasons. In the note&#8217;s
+A server can reply that the browser should look somewhere else. HTTP has two
+ways of saying this, for opposite reasons. In the note&#8217;s
 example, a university gives its theses durable addresses on one reliable
 machine but serves them from fast department machines.
 </p>
@@ -103,6 +103,14 @@ The browser fetches the thesis from the second address but should remember the
 first. The same holds when a server redirects to a mirror.</figcaption>
 </figure>
 
+<p>
+The other reply, 301 Moved Permanently, means the page has really moved and
+the old address is dead. Berners-Lee says such a server &ldquo;has committed
+the unthinkable&rdquo;, since a good address should never change (Chapter 3).
+The browser should then change every reference to the new address, including
+bookmarks and links in documents.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
      aria-labelledby="fig84-2-t fig84-2-d">
@@ -134,9 +142,9 @@ and the other says the old address is the one to keep.</figcaption>
 <p>
 The two addresses carry different promises. This is Chapter 3&#8217;s point that
 a name is only as durable as the commitment of whoever runs it, turned into a
-question about which address a person copies down. Berners-Lee&#8217;s verdict
-on the browsers of 1999 is a parenthesis with two names and a question mark:
-very few implemented this properly.
+question about which address a person copies down. In 1999, he says, very few
+browsers implemented this properly; he names Mozilla and Amaya (W3C&#8217;s own
+experimental browser), with a question mark, as perhaps the only ones.
 </p>
 
 <h2>84.2 The commitment the interface hides</h2>
@@ -155,7 +163,7 @@ is hovering over a POST button to when the user is hovering over a GET link.
 </blockquote>
 
 <p>
-Then comes the analogy that gives the requirement its force:
+Then the analogy:
 </p>
 
 <blockquote>
@@ -196,7 +204,6 @@ The web client should keep a record of POSTs which have been submitted.
   <text x="541" y="82" text-anchor="middle">POST: submit a form to order a book</text>
   <text x="541" y="112" class="t-sm" text-anchor="middle">commits the user</text>
   <text x="541" y="134" class="t-sm" text-anchor="middle">like sending an email</text>
-  <text x="541" y="156" class="t-sm" text-anchor="middle">a signature: the same, with weight added</text>
 
   <line class="ln" x1="179" y1="184" x2="179" y2="220"/>
   <path d="M174,219 L179,228 L184,219 Z" fill="#2f4f4f"/>
@@ -219,8 +226,9 @@ which is the reverse of what matters.</figcaption>
 <p>
 More than a quarter of a century later, that record still exists only in the
 inboxes of the parties a person committed to. Sites that muddle the two methods
-would waste the space, he concedes, but they are broken anyway. He adds that a digital signature will one day be an action
-just like POST, but with weight added. Then the principle:
+would waste the space, he concedes, but they are broken anyway. A digital
+signature, he adds, will one day be an action just like POST, with weight
+added. Then the principle:
 </p>
 
 <blockquote>
@@ -242,7 +250,7 @@ or browsing.
 </blockquote>
 
 <p>
-The techniques the note lists are practical:
+The note lists practical techniques:
 </p>
 <ul>
 <li>keep addresses in an under-the-hood window or the status bar (the strip at
@@ -288,9 +296,8 @@ was.</li>
 <li><strong>More redirect codes arrived.</strong> HTTP added 307 Temporary
 Redirect, which the note mentions, and in 2015 308 Permanent Redirect (RFC 7538).</li>
 <li><strong>The sent-items folder was never built.</strong> The nearest
-equivalents are password managers and per-site account pages.</li>
-<li><strong>Hiding addresses was tried and contested.</strong> Safari shows only
-the domain by default, while Chrome tested a domain-only address bar in 2020 and
+equivalents are order-confirmation emails and per-site account pages.</li>
+<li><strong>Hiding addresses was tried and contested.</strong> Chrome tested a domain-only address bar in 2020 and
 dropped the experiment in 2021.</li>
 <li><strong>The commitment cue never arrived.</strong> Its one common trace is
 the warning browsers give on reloading a page reached by POST, asking whether to
@@ -318,12 +325,13 @@ it was?</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.2</span>
-Design the sent-items folder for a browser. What goes in it, and what must not?</p>
+List three things you agreed to online this month. Where is the record of
+each kept, and by whom?</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.3</span>
-Chapter 68 wants the address visible and this wants it hidden. Resolve the
-conflict in a concrete design.</p>
+Using the last paragraph of section 84.3, decide which part of
+<code>https://shop.example/basket?id=88</code> a user should see, and why.</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.4</span>

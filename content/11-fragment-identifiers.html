@@ -45,14 +45,16 @@ function of the MIME type of the object.</p>
 <p>
 A MIME type is the label a server attaches to say what kind of data it is
 sending, such as <code>text/html</code> for a web page or
-<code>application/pdf</code> for a PDF.
+<code>application/pdf</code> for a PDF. It is also called a media type;
+the two terms mean the same thing.
 </p>
 
 <p>
 Two consequences follow. The fragment is opaque to the part of the browser
 that fetches documents, which he calls the HTTP engine. And the server is not
 even given it: the fragment is applied after the response arrives, by
-whatever software handles the returned type (Figure 11.1).
+whatever software handles the returned type (Figure 11.1). So the server
+cannot log which part of a page a reader was pointed to.
 </p>
 
 <figure>
@@ -105,6 +107,39 @@ The server never sees the fragment. Only the software chosen for the returned
 type interprets it, which is why its meaning belongs to the media type.</figcaption>
 </figure>
 
+<h2>11.2 The invitation to invent</h2>
+
+<p>
+Most of the note is about what the axiom permits:
+</p>
+
+<blockquote>
+for a 3D object the fragment ID could give a viewport. For a music object,
+the Fragment ID could give a section in time, or a set of parts, or it could
+include a suggested tempo. For future versions of HTML, the fragment ID could
+be made more powerful to include a range or &ldquo;ladder&rdquo; reference to
+a part or parts of the SGML element tree by position. A very useful fragment
+ID for plain text would allow ranges to be quoted by line and character
+number
+<cite>URI References: Fragment Identifiers on URIs, 1997</cite>
+</blockquote>
+
+<p>
+Most of the list has since been built, though not always as he imagined:
+</p>
+
+<table>
+<tr><th>1997 prediction</th><th>What exists now</th></tr>
+<tr><td>A viewport into a 3D object</td><td>Nothing standard</td></tr>
+<tr><td>A section in time of a music object</td><td>Media Fragments (2012): <code>#t=10,20</code> for seconds 10 to 20 of audio or video</td></tr>
+<tr><td>A range of an HTML document</td><td>Text fragments (2020): <code>#:~:text=</code> picks out a passage by quoting its words, rather than by position in the element tree</td></tr>
+<tr><td>Line and character ranges in plain text</td><td>RFC 5147 (2008): <code>#line=10,20</code> and <code>#char=</code> for <code>text/plain</code>; text fragments also serve</td></tr>
+</table>
+
+<p>
+Figure 11.2 shows how the same <code>#name</code> reads under four types today.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 244" width="720" height="244" role="img"
      aria-labelledby="fig11-2-t fig11-2-d">
@@ -147,38 +182,10 @@ type interprets it, which is why its meaning belongs to the media type.</figcapt
 </svg>
 <figcaption><span class="fig-label">Figure 11.2</span>
 Nothing in HTTP says what <code>#</code> means, so each type of document
-defines it for itself. A new media type may invent whatever notion of a part
-or a view suits it. The cost is recorded in section 11.4.</figcaption>
+defines it for itself (<code>text/turtle</code> is an RDF format). A new media
+type may invent whatever notion of a part or a view suits it. The cost is
+recorded in section 11.4.</figcaption>
 </figure>
-
-<h2>11.2 The invitation to invent</h2>
-
-<p>
-Most of the note is about what the axiom permits, and reads as predictions:
-</p>
-
-<blockquote>
-for a 3D object the fragment ID could give a viewport. For a music object,
-the Fragment ID could give a section in time, or a set of parts, or it could
-include a suggested tempo. For future versions of HTML, the fragment ID could
-be made more powerful to include a range or &ldquo;ladder&rdquo; reference to
-a part or parts of the SGML element tree by position. A very useful fragment
-ID for plain text would allow ranges to be quoted by line and character
-number
-<cite>URI References: Fragment Identifiers on URIs, 1997</cite>
-</blockquote>
-
-<p>
-Most of the list has since been built, though not always as he imagined:
-</p>
-
-<table>
-<tr><th>1997 prediction</th><th>What exists now</th></tr>
-<tr><td>A viewport into a 3D object</td><td>Nothing standard</td></tr>
-<tr><td>A section in time of a music object</td><td>Media Fragments (2012): <code>#t=10,20</code> for seconds 10 to 20 of audio or video</td></tr>
-<tr><td>A range of an HTML document</td><td>Text fragments (2020): <code>#:~:text=</code> picks out a passage by quoting its words, rather than by position in the element tree</td></tr>
-<tr><td>Line and character ranges in plain text</td><td>RFC 5147 (2008): <code>#line=10,20</code> and <code>#char=</code> for <code>text/plain</code>; text fragments also serve</td></tr>
-</table>
 
 <p>
 The note&#8217;s concrete recommendation follows:
@@ -194,7 +201,8 @@ registration process.
 
 <p>
 This is the argument Chapter 7 would restate at length five years later. A
-fragment on an RDF document identifies not a part of the document but
+fragment on an RDF document (RDF: a format for machine-readable statements
+about things) identifies not a part of the document but
 whatever thing the document describes under that name. Why must it be a
 fragment? The reasoning runs in three steps:
 </p>
@@ -228,7 +236,9 @@ identifiers. This, in turn, means that RDF namespaces should end with
 <p>
 This inference is what the resolution of Chapter 8 overturned. The 2005
 compromise denies step 2: a client may conclude that a hashless URI names a
-document only from a successful response, not from the protocol alone.
+document only from a successful response, not from the protocol alone. A
+server may answer a request for <code>&#8230;/alice</code> with 303 See Other,
+pointing to a document about her.
 </p>
 
 <h2>11.4 The bug he recorded and did not fix</h2>
@@ -275,7 +285,7 @@ chose.</figcaption>
 </figure>
 
 <p>
-In 1997 it did no harm, because HTML was effectively the only type that used
+In 1997 it did no harm: HTML was effectively the only type that used
 fragments, and falling back to the whole document was acceptable. In a
 passage added around 2001 Berners-Lee notes it has become more of a problem. He records
 proposals to add the fragment to the HTTP request, and suggests that warnings
@@ -294,15 +304,15 @@ A closing section raises a user-interface consequence. Many addresses are
 generic: their content can change by language, version or format, so a
 fragment may denote nothing in some specific version. The client, he argues,
 should offer a choice: a bookmark to the whole living
-document, a bookmark to a specific part of a frozen version, or something
-between.
+document, a bookmark to a specific part of a &ldquo;dead&rdquo; version, or
+something between.
 </p>
 
 <p>
 No browser offers it; the link usually just lands at the top of the page.
 Some sites offer half the choice themselves: Wikipedia&#8217;s &ldquo;Permanent link&rdquo; points to one
 fixed revision of an article, and GitHub can link to a file as it stood
-at a specific commit. Both are the &ldquo;frozen version&rdquo; bookmark,
+at a specific commit. Both are the second kind of bookmark,
 supplied by the site rather than the browser.
 </p>
 
@@ -343,8 +353,8 @@ applied in Chapter 26.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">11.1</span>
-The fragment is never sent to the server. Name two things this makes
-impossible and one privacy property it provides.</p>
+The fragment is never sent to the server. Name two things the server
+cannot do because it never sees the fragment.</p>
 </div>
 <div class="question">
 <p><span class="question-number">11.2</span>

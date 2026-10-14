@@ -92,7 +92,8 @@ conventional serializations
 
 <p>
 The operative phrase is closed worlds: everything the system knows lives in
-one knowledge base, so whatever is not there is treated as absent. The next
+one knowledge base, so whatever is not there is treated as absent. On the
+Web, the open world, a missing fact means only &ldquo;not known here&rdquo;. The next
 sentence says CGs are basically as expressive as KIF (the Knowledge
 Interchange Format, a standard text format for logic), and so only have to be
 webized to serve as a basis for the Semantic Web.
@@ -132,8 +133,7 @@ chapter.
     <text class="t-sm" x="60" y="112" style="fill:#8a9a9a">so a relation cannot describe a relation</text>
     <text class="t-sm" x="44" y="144">concept types map to classes</text>
     <text class="t-sm" x="44" y="164">relations map to properties</text>
-    <text class="t-sm" x="44" y="184">relation types map to subclasses</text>
-    <text class="t-sm" x="60" y="202" style="fill:#8a9a9a">of rdf:Property</text>
+    <text class="t-sm" x="44" y="184">relation types map to kinds of property</text>
     <text x="44" y="228" class="t-sm t-it" style="fill:#8a9a9a">The designers meant this. The mapping</text>
     <text x="44" y="246" class="t-sm t-it" style="fill:#8a9a9a">is direct and nothing is lost.</text>
   </g>
@@ -164,10 +164,13 @@ thing; CGs make one of them the dominant, defining name.</figcaption>
 
 <p>
 In CGs, concepts and relations are disjoint: two worlds that never overlap,
-so a relation can never be the subject of another relation. This is a
-deliberate choice, not a defect. A true two-way mapping would require CGs to
-reify an arbitrary <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#graph">graph</a>, describing it as data about statements, and
-Berners-Lee does not think that would be useful.
+so a relation can never be the subject of another relation. <a class="gl-ref" href="../glossary.html#rdf">RDF</a> can say, for
+instance, that <em>livesIn</em> is the opposite of <em>hasResident</em>: a
+statement about a relation. CGs forbid that; relations are only ever used,
+never described. This is deliberate, not a defect. A true two-way mapping
+would require CGs to reify an arbitrary RDF <a class="gl-ref" href="../glossary.html#graph">graph</a> (turn each statement into a
+thing so it can be talked about), and Berners-Lee does not think that would be
+useful.
 </p>
 
 <p>
@@ -193,7 +196,7 @@ must be universal, but nothing obliges it to be the only universal space.
 
 <p>
 Properties in the Semantic Web take exactly two arguments, a subject and an
-object. Relations in CGs may be n-ary, taking any number. A three-way
+object. Relations in CGs may take any number. A three-way
 relation such as <em>Leeds lies between York and Manchester</em> must be
 broken up, which is possible and is not free.
 </p>
@@ -265,18 +268,13 @@ something, and that is ordinary. A thing&#8217;s type is not the
 property of whoever first named it.
 </p>
 
-<h2>39.5 Why this chapter closes the volume</h2>
+<h2>39.5 What the comparison shows</h2>
 
 <p>
 Volume IV has been about giving meaning to data, and here the question is
 asked of a system that did so before the Web existed. The answer, that the
 logic was sound and the assumptions local, is Chapter 31&#8217;s answer about
 knowledge representation, reached here by examination rather than argument.
-</p>
-
-<p>
-It also sets up Volume V: if the Semantic Web needs a logic, what should it
-look like and how should it be written down?
 </p>
 
 <h2>39.6 Striking similarities</h2>
@@ -305,7 +303,9 @@ Berners-Lee&#8217;s <a class="gl-ref" href="../glossary.html#n3">N3</a>, the com
 </blockquote>
 
 <p>
-The likeness is &ldquo;remarkable down to the final period&rdquo;. Drawn out,
+In the N3, <code>[a :Go]</code> means &ldquo;something that is a Go&rdquo;; each
+<code>&gt;- p -&gt;</code> line attaches a relation <em>p</em> from it to
+another thing. The likeness is &ldquo;remarkable down to the final period&rdquo;. Drawn out,
 the two show the one structural difference.
 </p>
 
@@ -369,7 +369,7 @@ the two show the one structural difference.
 </svg>
 <figcaption><span class="fig-label">Figure 39.3</span>
 In a CG the relation is a node of its own kind, so the graph has two
-disjoint sorts of node (a bipartite graph). In RDF the relation is the label
+disjoint sorts of node. In RDF the relation is the label
 on an arc, and everything else is a Thing.</figcaption>
 </figure>
 
@@ -380,6 +380,11 @@ believes that Mary wants to marry a sailor&rdquo;: CGs nest a proposition
 inside a box, and N3 wraps it in braces. Berners-Lee says the concept occurs
 &ldquo;very equivalently&rdquo; in the two. One small mismatch survives at the
 level of names: CGIF identifiers are not case sensitive, while URIs are.
+</p>
+
+<p>
+The comparison also sets up Volume V: if the Semantic Web needs a logic, what
+should it look like and how should it be written down?
 </p>
 
 <div class="since">
@@ -394,12 +399,9 @@ more than two arguments are represented by introducing an intermediate node, a
 pattern the Semantic Web Best Practices group documented in April 2006. It is
 the same extra node that Chapter 38 found frightful in another
 context.</li>
-<li><strong>The single-type assumption did not survive contact.</strong>
-Multiple types asserted by different parties are now routine, which is the
-open-world behaviour section 39.4 predicts.</li>
-<li><strong>The two-dimensional tradition outlived its notation.</strong>
-Drawing logic as circles and arrows, which the rival emphasised, is how
-graph data is commonly presented, including in this book.</li>
+<li><strong>Several types, from anyone.</strong> The RDF Recommendations of
+February 2004 let a resource carry any number of <code>rdf:type</code>
+statements, from any source, as section 39.4 expects.</li>
 </ul>
 </div>
 

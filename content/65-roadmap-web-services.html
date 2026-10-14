@@ -126,8 +126,8 @@ capability in a way which makes it interoperable with other systems.
 <p>
 Not to build something new: to wrap what already existed, in a common
 envelope called SOAP, an XML format for sending a message over HTTP. Around
-it grew a stack of specifications for securing, routing and transacting what
-was already secured, routed and transacted.
+it grew a stack of further specifications (the WS-* family) for security,
+routing and transactions.
 </p>
 
 <h3>Two ways to send a message</h3>
@@ -135,7 +135,8 @@ was already secured, routed and transacted.
 <p>
 SOAP, he notes, works in two modes: the XML either carries the parameters of
 a remote procedure call, packed and unpacked by stubs (local stand-ins for the
-remote function), or carries a whole document for the receiver to process.
+remote function), or carries a whole document for the receiver to process. A
+document can also take in fields from another vocabulary (an XML namespace).
 </p>
 
 <figure>
@@ -143,10 +144,10 @@ remote function), or carries a whole document for the receiver to process.
      aria-labelledby="fig65-2-t fig65-2-d">
   <title id="fig65-2-t">One envelope, two modes</title>
   <desc id="fig65-2-d">A SOAP envelope at the top leads to two modes. In RPC
-  mode, a call reserve(flight, date) is marshalled into XML, and a stub at the
+  mode, a call reserve(flight, date) is packed into XML, and a stub at the
   far end unpacks it into typed parameters: the remoteness is hidden but the
   interface is rigid. In document mode, an order document carries a flight, a
-  date and an extra seat element from another namespace, and the receiver
+  date and an extra seat field from another vocabulary, and the receiver
   works on the document as a whole: the communication is visible and the
   format can be extended.</desc>
   <defs>
@@ -165,7 +166,7 @@ remote function), or carries a whole document for the receiver to process.
   <rect class="box" x="74" y="96" width="220" height="34" rx="4"/>
   <text x="184" y="118" class="t-mono" text-anchor="middle">reserve(flight, date)</text>
   <path class="ln" d="M 184 130 L 184 158" marker-end="url(#fig65-2-arr)"/>
-  <text x="196" y="149" class="t-sm">marshalled into XML</text>
+  <text x="196" y="149" class="t-sm">packed into XML</text>
   <rect class="box" x="74" y="160" width="220" height="34" rx="4"/>
   <text x="184" y="182" class="t-mono" text-anchor="middle">&lt;flight&gt; &lt;date&gt;</text>
   <path class="ln" d="M 184 194 L 184 222" marker-end="url(#fig65-2-arr)"/>
@@ -180,7 +181,8 @@ remote function), or carries a whole document for the receiver to process.
   <text x="446" y="134" class="t-mono">&lt;flight&gt;&#8230;</text>
   <text x="446" y="152" class="t-mono">&lt;date&gt;&#8230;</text>
   <text x="446" y="170" class="t-mono" style="fill:#b08d57">&lt;x:seat&gt;&#8230;</text>
-  <text x="544" y="170" class="t-sm" style="fill:#b08d57">new namespace</text>
+  <text x="530" y="164" class="t-sm" style="fill:#b08d57">new field, from</text>
+  <text x="530" y="178" class="t-sm" style="fill:#b08d57">another vocabulary</text>
   <text x="430" y="188" class="t-mono">&lt;/order&gt;</text>
   <path class="ln" d="M 536 198 L 536 222" marker-end="url(#fig65-2-arr)"/>
   <text x="548" y="214" class="t-sm">read as a whole</text>
@@ -202,8 +204,23 @@ the RPC mode.
 
 <h2>65.3 The discovery cloud</h2>
 
+<p>
+W3C drew web services as a triangle: requester, provider, and a discovery
+agency that introduces them. The agency is usually a registry, a directory
+where providers list services for others to look up; the one proposed was
+UDDI. Berners-Lee keeps only one edge of the triangle as essential:
+</p>
+
+<blockquote>
+The discovery agencies are well represented as a cloud, rather than being a
+well-defined module in the web services architecture. They will become
+interface to a huge world of data and query services which provide data about
+web services as well as many other things.
+<cite>Web Services, 2002</cite>
+</blockquote>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 196" width="720" height="196" role="img"
      aria-labelledby="fig65-3-t fig65-3-d">
   <title id="fig65-3-t">What is essential, and what is not</title>
   <desc id="fig65-3-d">The defining element is the interaction between a
@@ -240,10 +257,6 @@ the RPC mode.
   <path class="ln-dash" d="M 330 78 L 240 108 M 400 74 L 480 108"/>
   <text x="448" y="40" class="t-sm t-it">used sometimes, not always</text>
 
-  <line class="ln-mut" x1="24" y1="212" x2="696" y2="212"/>
-  <text x="360" y="236" class="t-sm" text-anchor="middle">Drawn as a cloud rather than a box: it is not a module, and its boundary is not the architecture&#8217;s.</text>
-  <text x="360" y="262" class="t-sm" text-anchor="middle">&#8220;They will become interface to a huge world of data and query services</text>
-  <text x="360" y="282" class="t-sm" text-anchor="middle">which provide data about web services as well as many other things.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 65.3</span>
 Berners-Lee&#8217;s insistence that discovery is optional is the moment he declines
@@ -260,8 +273,7 @@ accessories into it.
 <h3>Why a registry is the wrong centre</h3>
 
 <p>
-A registry is a directory where providers list services for others to look
-up; the one proposed was UDDI. Most services, he expects, will link partners
+Most services, he expects, will link partners
 who already know each other, and where discovery is needed UDDI has the wrong
 shape:
 </p>
@@ -287,7 +299,7 @@ The philosophy section does not argue. It lists three earlier notes:
 
 <table>
 <tr><th>Note</th><th>Year</th><th>What it contributes</th></tr>
-<tr><td>Axioms of Web Architecture (Chapter 2)</td><td>1990s</td><td>The information space concept</td></tr>
+<tr><td>Axioms of Web Architecture (Chapter 2)</td><td>1996 (cited as 1990s)</td><td>The information space concept</td></tr>
 <tr><td>Paper Trail (Chapter 62)</td><td>1999</td><td>Read-write state derived from read-only documents, and the question: which came first, the journal or the database?</td></tr>
 <tr><td>Conversations and State (Chapter 61)</td><td>2000 (cited as 1998)</td><td>The trend, across many fields, away from shared information spaces</td></tr>
 </table>
@@ -374,10 +386,16 @@ information -- new documents, in this case new web services messages.
 </blockquote>
 
 <p>
-A flight shows the same split: the real constraint is that a
-confirmation needs a reserved flight, while a choreography, &#8220;a particular
-dance, if you like&#8221;, is just one sequence of calls that achieves it.
+A flight shows the same split between a rule and a choreography, which he
+glosses as &#8220;a particular dance, if you like&#8221;:
 </p>
+
+<table>
+<tr><th>Constraint</th><td>A confirmation is valid only if a reserved flight
+exists.</td></tr>
+<tr><th>Choreography</th><td>Query flights, then reserve one, then confirm
+it. This is one route among several to a reserved flight.</td></tr>
+</table>
 
 <h2>65.5 Why this closes the volume</h2>
 
@@ -389,11 +407,11 @@ closed exchanges, like an order message only two firms can read.
 </p>
 
 <p>
-He names the cost of keeping the two apart. Scripts that depend on exact XML
-message formats suffer &#8220;DTD fragility&#8221;, breaking when the format
-changes; descriptions with no RDF mapping make web services &#8220;instant
-legacy technoplogy for the semantic web&#8221; (his spelling). His objection
-came at the outset; the outcome is below.
+He names the cost of keeping the two apart. A DTD is the rulebook listing
+which XML elements a message may contain; change it and every script written
+against the old one may break, which he calls &#8220;DTD fragility&#8221;.
+Descriptions that cannot be read as Semantic Web data make web services
+&#8220;instant legacy technoplogy for the semantic web&#8221; (his spelling).
 </p>
 
 <div class="since">
@@ -442,6 +460,7 @@ If discovery were mandatory, what would become the centre?</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.4</span>
-Name two things the WS-* stack re-specified that HTTP already did.</p>
+Which of the vendors&#8217; aims in 65.2 explains why document mode, not RPC
+mode, caught on?</p>
 </div>
 </div>

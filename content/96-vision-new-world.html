@@ -1,15 +1,13 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The book&#8217;s final chapter, and the one where its author concedes the most.
-Trying to describe what a new arrangement of the Web would be like, he
+The book&#8217;s final chapter. Trying to describe what a new arrangement of the Web would be like, he
 remembers trying to describe the first one, when there were only a handful of
 websites and he was persuading somebody to make the sixth.
 </p>
 <p>
 He could not imagine then what would be built. He says so, and then argues that
-this is a reason to build openly rather than a reason to wait, which is the
-thread running through all ninety-six chapters.
+this is a reason to build openly rather than a reason to wait.
 </p>
 </div>
 
@@ -51,11 +49,10 @@ of us could really imagine how exciting and powerful it would become.
 </blockquote>
 
 <p>
-This is the last word on a theme the collection has carried since Chapter 1.
-Modularity, evolvability, the test of independent invention and the principle
-of least power are all ways of building for people whose plans cannot be known.
-Here the author says plainly that he never knew them, including at the moment
-he was arguing for the thing.
+Modularity, evolvability, independent invention and least power, themes
+since Chapter 1, are all ways of building for people whose plans cannot be
+known. Here he admits he never knew them either, even while arguing for the
+thing.
 </p>
 
 <h2>96.2 What cannot be imagined this time</h2>
@@ -118,7 +115,7 @@ there to be used.</figcaption>
 </figure>
 
 <p>
-The note is honest about the state of deployment: the software is stable and
+On deployment the note is frank: the software is stable and
 exists in several compatible versions, some open and some commercial, and
 almost nobody is offering it to the public. The Flanders government provides
 pods to its citizens, but for a limited number of purposes.
@@ -143,13 +140,12 @@ seeing the point of getting Solid for just one app.
 </blockquote>
 
 <p>
-One app alone has nothing to connect to. People advise picking a killer app
-and rolling it out; the note answers that everyone&#8217;s killer app is
-different, and the square law adds that one app alone shows little.
+People advise picking a killer app and rolling it out; the note answers that
+everyone&#8217;s killer app is different.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig96-2-t fig96-2-d">
   <title id="fig96-2-t">Why one app is not enough</title>
   <desc id="fig96-2-d">Three panels over a shared pod. Two apps give one
@@ -172,6 +168,7 @@ different, and the square law adds that one app alone shows little.
   <circle class="box" cx="360" cy="60" r="14"/>
   <circle class="box" cx="324" cy="122" r="14"/>
   <circle class="box" cx="396" cy="122" r="14"/>
+  <line class="ln-dash" x1="360" y1="74" x2="360" y2="160"/>
   <line class="ln-dash" x1="324" y1="136" x2="324" y2="160"/>
   <line class="ln-dash" x1="396" y1="136" x2="396" y2="160"/>
   <rect class="box-green" x="270" y="160" width="180" height="24" rx="4"/>
@@ -186,6 +183,9 @@ different, and the square law adds that one app alone shows little.
   <circle class="box" cx="625" cy="124" r="12"/>
   <circle class="box" cx="575" cy="124" r="12"/>
   <circle class="box" cx="560" cy="77" r="12"/>
+  <line class="ln-dash" x1="600" y1="60" x2="600" y2="160"/>
+  <line class="ln-dash" x1="560" y1="89" x2="560" y2="160"/>
+  <line class="ln-dash" x1="640" y1="89" x2="640" y2="160"/>
   <line class="ln-dash" x1="575" y1="136" x2="575" y2="160"/>
   <line class="ln-dash" x1="625" y1="136" x2="625" y2="160"/>
   <rect class="box-green" x="510" y="160" width="180" height="24" rx="4"/>
@@ -195,16 +195,15 @@ different, and the square law adds that one app alone shows little.
 
   <!-- one app alone -->
   <line class="ln-mut" x1="24" y1="252" x2="696" y2="252"/>
-  <circle class="box-plain" cx="200" cy="278" r="12"/>
-  <line class="ln-dash" x1="200" y1="290" x2="200" y2="296"/>
-  <rect class="box-plain" x="150" y="296" width="100" height="18" rx="4"/>
-  <text x="200" y="309" class="t-sm" text-anchor="middle">pod</text>
-  <text x="280" y="291" class="t-lg">one app: nothing to connect to</text>
+  <circle class="box-plain" cx="200" cy="280" r="12"/>
+  <line class="ln-dash" x1="200" y1="292" x2="200" y2="304"/>
+  <rect class="box-plain" x="150" y="304" width="100" height="22" rx="4"/>
+  <text x="200" y="319" class="t-sm" text-anchor="middle">pod</text>
+  <text x="280" y="300" class="t-lg">one app: nothing to connect to</text>
 </svg>
 <figcaption><span class="fig-label">Figure 96.2</span>
-Connections grow far faster than apps: five apps make ten. With one app there
-are none, so the value is invisible until many apps share the same
-store.</figcaption>
+Connections grow far faster than apps. With one app there are none, so the
+value is invisible until many apps share the same store.</figcaption>
 </figure>
 
 <p>
@@ -292,12 +291,31 @@ app which flight they want, so it knows where they will be and when, yet it neve
 tells Google Maps where they need to be at the airport.
 </p>
 
+<h3>What changes for users</h3>
+
 <p>
-Who pays for the pods is answered with familiar models: free at first with
-heavier users paying, as with consumer cloud storage; bundled with an email
-account, a domain name or a club membership; or run by a co-operative whose
-users share the costs. The framing of the economics is careful about ends and
-means:
+First, pains disappear. A photo album on Flickr could be shared with friends on
+Facebook and colleagues on LinkedIn at once, because the platforms have become
+Solid-compatible, whether under pressure or by law, or because users have moved
+to open ones. Medical records could move into a person&#8217;s own store, to be analysed by
+apps and AI and shared with chosen doctors and family; at least four groups were
+writing code to bring medical data into pods.
+</p>
+
+<p>
+Second, new things appear. Developers at meetups and hackathons want apps that
+help communities govern themselves by rules they set. &ldquo;No code&rdquo;
+apps, driven by a data file and assembled by dragging components, are easy for
+users to copy and tweak.
+</p>
+
+<h3>Who pays</h3>
+
+<p>
+The note answers with familiar models: free at first with heavier users
+paying, as with consumer cloud storage; bundled with an email account, a domain
+name or a club membership; or run by a co-operative whose users share the
+costs. It frames the economics carefully:
 </p>
 
 <blockquote>
@@ -322,12 +340,14 @@ use technology to shape the world.
 </blockquote>
 
 <p>
-Communities of all sizes is Chapter 87&#8217;s requirement, stated as an outcome
-rather than as a design constraint. The whole architecture of Volume VI exists
-to make groups of every scale expressible, from a household sharing a list to a
-profession sharing a vocabulary. A system with only two settings, public or
-private and nothing in between, which is Chapter 74&#8217;s complaint, cannot do
-that.
+The body of the note explains why. The Web was always meant for collaboration:
+one person may have a problem in mind and another, across the planet, the
+solution. What carries the solution across is overlapping communities, and he
+lists his own, from family and teams to W3C groups and companies. Today, passing
+something from one to another means copying a message between WhatsApp, Slack
+and email. ActivityPub applications are starting to make this smooth for chat;
+Solid, he says, could do it for every type of data. This is Chapter 87&#8217;s
+requirement, stated as an outcome rather than a design constraint.
 </p>
 
 <h2>96.5 How the book ends</h2>
@@ -335,7 +355,7 @@ that.
 <p>
 Ninety-six chapters, written from 1996 to 2025, end with an admission that the
 author could not imagine what his own work would produce, and an argument that
-this is a reason to proceed rather than to wait. That is the through line. Three
+this is a reason to proceed rather than to wait. Three
 early pieces of advice are all about acting without knowing what comes next:
 </p>
 
@@ -352,8 +372,8 @@ imagined</td><td>What will be connected later</td></tr>
 
 <p>
 The notes were never a plan. They record decisions made by someone who knew he
-could not see far, choosing repeatedly to keep things open rather than to make
-them good, on the grounds that openness lets other people make them good later.
+could not see far, choosing repeatedly to keep things open, so that other people could improve
+them later.
 The Web is the evidence that this works. Whether the rest of it works is not
 yet known, which is the condition every chapter here was written in.
 </p>
@@ -363,7 +383,7 @@ yet known, which is the condition every chapter here was written in.
 <ul>
 <li><strong>Personal stores remain uncommon.</strong> Beyond the Flemish
 government&#8217;s pods for its citizens and the few commercial pod services the
-note itself mentions, few people yet keep their data in a store of this kind.</li>
+note itself mentions, as of 2025 few people keep their data in a store of this kind.</li>
 <li><strong>Portability rights strengthened.</strong> The EU&#8217;s Digital
 Markets Act obligations on the largest platforms, including data portability,
 applied from March 2024, and the Data Act, which gives users access to data

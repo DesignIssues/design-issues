@@ -86,7 +86,9 @@ note&#8217;s terms, a language is a set of symbols, rules for combining them,
 and what they mean; a protocol is a language for messages plus constraints on
 the order in which messages may be sent. Something <em>conforms</em> when it
 meets the definition. Text that is <em>normative</em> is binding on what
-conforms; <em>non-normative</em> text is explanation only.
+conforms; <em>non-normative</em> text is explanation only. Standards writers
+use a capitalised MUST for a requirement and MAY for something allowed but
+optional, following a 1997 Internet convention (BCP 14).
 </p>
 
 <p>
@@ -113,8 +115,8 @@ conformance term.
     <text x="60" y="122" class="t-mono" style="fill:#1c5a7a">a well-formed XML 1.0 document</text>
     <text x="60" y="142" class="t-mono" style="fill:#1c5a7a">a conforming HTTP 1.1 server</text>
     <text x="60" y="162" class="t-mono" style="fill:#1c5a7a">the SVG 1.0 language</text>
-    <text x="46" y="190">Where a formal identifier exists,</text>
-    <text x="46" y="208">use it: a media type, a namespace URI.</text>
+    <text x="46" y="190">Where a formal identifier exists, use it:</text>
+    <text x="46" y="210">the MIME type <tspan class="t-mono" style="fill:#1c5a7a">image/svg1</tspan></text>
   </g>
 
   <rect class="box-warm" x="384" y="20" width="312" height="212" rx="4"/>
@@ -122,11 +124,10 @@ conformance term.
   <text x="540" y="68" class="t-sm t-it" text-anchor="middle">what it means</text>
   <g>
     <text x="406" y="98">Keep MUST apart from MAY.</text>
-    <text x="406" y="122">Keep normative apart from informative.</text>
-    <text x="406" y="146">Say what a thing <tspan font-style="italic">means</tspan>, not what</text>
-    <text x="406" y="164">software should do about it.</text>
-    <text x="406" y="192" style="fill:#5a8f5a">&#10003; &#8220;x&#8221; indicated that the check is void</text>
-    <text x="406" y="212" style="fill:#8a9a9a">&#10007; not: should be rejected with an error</text>
+    <text x="406" y="128">Keep normative apart from</text>
+    <text x="406" y="146">informative.</text>
+    <text x="406" y="176">Say what a thing <tspan font-style="italic">means</tspan>, not what</text>
+    <text x="406" y="194">software should do about it.</text>
   </g>
 
   <line class="ln-mut" x1="24" y1="254" x2="696" y2="254"/>
@@ -275,13 +276,22 @@ Two short passages lift this note above a style guide.
 </p>
 
 <p>
-The first is about contracts. When a message binds human parties, the
-specification must say so, and Berners-Lee gives the reason without
-softening it: you could end up in court explaining it. He then writes out a
-fragment of the kind of prose required, naming a debtor, a creditor and how
-each is identified. This is Chapter 20&#8217;s argument, that the fields a
-specification defines are statements people can be held to, arriving as
-drafting advice.
+The first is about contracts. When a message binds people or organisations,
+the specification must say so, or its authors could end up in court
+explaining it. The note sketches the kind of prose required:
+</p>
+
+<blockquote>
+The MMTP protocol defines the meaning of a message sent by or on behalf of a
+party herein referred to as the &ldquo;debtor&rdquo; to a party referred to as
+the &ldquo;creditor&rdquo;. The creditor is identified by the
+foo-email-address...
+<cite>The essentials of a specification, 1999</cite>
+</blockquote>
+
+<p>
+MMTP is invented. This is Chapter 20&#8217;s argument, that defined fields are
+statements people can be held to, arriving as drafting advice.
 </p>
 
 <p>
@@ -296,27 +306,23 @@ deliberately made similar to another, the note asks the author to:
 <li>think about whether such changes could break this system;</li>
 <li>if necessary, negotiate constraints with whoever controls changes to the other document.</li>
 </ol>
-<p>
-The last item is the one people skip.
-</p>
 
 <h2>21.4 The four test questions</h2>
 
 <p>
-The note ends with questions to ask of a draft, and they are short enough to
-use.
+The note ends with questions to ask of a draft.
 </p>
 
 <table>
 <tr><th>Question</th><th>What a failure means</th></tr>
 <tr><td>Does the spec decide, for any arbitrary object, whether the conformance term applies?</td><td>The left-hand side is undefined</td></tr>
-<tr><td>Could you write a program to test conformance?</td><td>The definition is not operational</td></tr>
+<tr><td>Could a program be written to test conformance?</td><td>Nobody can build a checker, so arguments about conformance cannot be settled</td></tr>
 <tr><td>Is conformance alone enough to make systems work as intended?</td><td>Something necessary is unstated</td></tr>
-<tr><td>Can you prove important properties from the state transition tables?</td><td>The protocol is under-specified</td></tr>
+<tr><td>Can important properties be proved from the state transition tables?</td><td>Two correct implementations can still deadlock or disagree; Figure 21.3 should let one prove, say, that a reply never arrives unasked</td></tr>
 </table>
 
 <p>
-The third is the one most drafts fail. A specification can be perfectly
+The third is the easiest to overlook, because a specification can be perfectly
 decidable and still describe something that does not work, because the
 requirement that made it work was left in somebody&#8217;s head.
 </p>

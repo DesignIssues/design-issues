@@ -205,11 +205,10 @@ not suitable, because it loses that information.
 </blockquote>
 
 <p>
-The two descriptions are not merely different in form. They describe
-different graphs, even when the two names refer to the same person, because a
-graph is made of the symbols it actually used. If the system knows the two
-names are equivalent, the second can be derived from the first. But it matters
-to know which name a graph used.
+The two descriptions describe different graphs, even when the names refer to
+the same person, because a graph is made of the symbols it actually used.
+Equivalence lets one be derived from the other, but it matters which name a
+graph used.
 </p>
 
 <h2>44.2 Describing a blank node</h2>
@@ -236,9 +235,9 @@ unnamed node it describes.
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig44-3-t fig44-3-d">
   <title id="fig44-3-t">The describer is not the described</title>
-  <desc id="fig44-3-d">Left, the original graph: an empty circle, a blank node,
-  with an ex:name arrow to James Doe. Right, the description: a node named
-  ex:bnode1 of type rei:BNode, with a dashed arrow labelled describes running
+  <desc id="fig44-3-d">Left, the original graph: an empty circle, a blank node
+  with no name, with an ex:name arrow to James Doe. Right, the description: a node named
+  ex:bnode1 of type rei:BNode, used only for describing, with a dashed arrow labelled describes running
   back to the empty circle. A label notes that these are two different
   nodes.</desc>
 
@@ -254,10 +253,13 @@ unnamed node it describes.
   <rect class="box-green" x="470" y="82" width="210" height="36" rx="3"/>
   <text x="575" y="105" class="t-mono" text-anchor="middle">ex:bnode1 a rei:BNode</text>
 
+  <text x="90" y="62" class="t-sm" text-anchor="middle">blank: no name</text>
+  <text x="575" y="62" class="t-sm" text-anchor="middle">named ex:bnode1, for describing only</text>
+
   <path class="ln-dash" d="M 575 118 L 575 160 L 90 160 L 90 130"/>
   <path d="M 90 121 L 85 131 L 95 131 Z" fill="#8a9a9a"/>
   <text x="330" y="151" class="t-sm t-it" text-anchor="middle">describes</text>
-  <text x="330" y="184" class="t-sm" text-anchor="middle" style="fill:#b08d57">two different nodes</text>
+  <text x="330" y="180" class="t-sm" text-anchor="middle" style="fill:#b08d57">two different nodes</text>
 </svg>
 <figcaption><span class="fig-label">Figure 44.3</span>
 Naming the describing node does not name the original.</figcaption>
@@ -267,8 +269,10 @@ Naming the describing node does not name the original.</figcaption>
 
 <p>
 A graph is a set of statements, and the model has ordered lists but no sets.
-Berners-Lee builds one out of a list and the relation that holds between a
-class and a list of its members, and then says exactly what it costs:
+A list alone fails: <code>(3 4 5)</code> and <code>(5 4 3)</code> would describe
+the same graph as two different ones. Berners-Lee borrows <a class="gl-ref" href="../glossary.html#owl">OWL</a>&#8217;s
+<code>owl:oneOf</code>, which links a class to a list of its members, so the set
+of 3, 4 and 5 is <code>[ owl:oneOf (3 4 5) ]</code>. He then says what it costs:
 </p>
 
 <blockquote>
@@ -278,9 +282,8 @@ the same statements are demonstrably the same in their reified form.
 </blockquote>
 
 <p>
-He adds, in a parenthesis, that later systems might process sets explicitly
-and that the notation could gain set syntax. Chapter 43 argues for doing so;
-RDF never added sets, and this workaround is the consequence.
+He adds that later systems might process sets explicitly and the notation
+could gain set syntax. Chapter 43 argues for that; RDF never added sets.
 </p>
 
 <h2>44.4 Why quotation is not assertion</h2>
@@ -335,14 +338,20 @@ does not license rewriting what Jane knows.</figcaption>
 </figure>
 
 <p>
-A formula can also introduce variables, so a description of it must carry
+A formula can also contain variables, so a description of it must carry
 three things: the statements, the <em>universals</em> (symbols that stand for
 anything) and the <em>existentials</em> (symbols that stand for some
-particular thing). The note&#8217;s example reads, roughly, &ldquo;There is a
-car. Anything which is a car is a vehicle&rdquo;: <code>x</code> is a
-universal, meaning anything, and <code>c</code> an existential, meaning some
-particular car. Run through the note&#8217;s tool, the description comes out several times
-longer than the input.
+particular thing). The note&#8217;s example is:
+</p>
+
+<pre><code>[] a car.  { ?x a car } =&gt; { ?x a vehicle }.</code></pre>
+
+<p>
+Here <code>[]</code> is &ldquo;some unnamed thing&rdquo; and <code>=&gt;</code>
+reads &ldquo;if &hellip; then&rdquo;. The note glosses it as &ldquo;There is a
+car. Anything which is a car is a vehicle&rdquo;: <code>?x</code> is a
+universal, and the unnamed car an existential. Described in full, the result is
+several times longer than the input.
 </p>
 
 <h2>44.5 The final distinction</h2>
@@ -367,17 +376,20 @@ anything.
 </table>
 
 <p>
-A system that conflates the two believes everything it reads, including
+Here <code>log:Truth</code> is the N3 class of formulae the writer asserts.
+Writing <code>{ ex:joe ex:name "James Doe" }</code> as something Jane knows
+commits the writer to nothing about Joe; typing the same formula
+<code>log:Truth</code> asserts it. A system that conflates the two believes
 everything it was merely told about.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The standard mechanism was abandoned.</strong> The <a class="gl-ref" href="../glossary.html#reification">reification</a>
-<a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> this note criticises was little used and its removal was proposed
-in the 2010 note restated in Chapter 47. It survives in the specification and is avoided in
-practice.</li>
+<li><strong>The standard mechanism fell out of use.</strong> The <a class="gl-ref" href="../glossary.html#reification">reification</a>
+<a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> this note criticises was little used, and its deprecation was
+proposed in the 2010 note restated in Chapter 47. It survives in the
+specification.</li>
 <li><strong>The requirement was met differently.</strong> Named graphs, proposed
 in 2005, built into <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> datasets (<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, January 2008) and RDF 1.1
 (2014), let a set of statements be identified and
@@ -412,9 +424,9 @@ describe different graphs, using the definition of a graph.</p>
 </div>
 <div class="question">
 <p><span class="question-number">44.2</span>
-The node describing a nameless node is not that node. Give a case where
-confusing the two produces a false statement. (Hint: think of a report about
-some unnamed person.)</p>
+A report says that someone is called James Doe. If the describing node
+<code>ex:bnode1</code> is taken to be that someone, what false statement
+follows?</p>
 </div>
 <div class="question">
 <p><span class="question-number">44.3</span>

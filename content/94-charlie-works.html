@@ -52,8 +52,8 @@ The Charlie app has a button which allows Bob to give or not give consent.
   <desc id="fig94-1-d">Bob, a fictional user, asks a question through the
   Charlie app. The app sends the question to Claude, a large language model,
   and receives an answer. The app has a consent switch. Bob's simulated pod,
-  holding bank records, Strava runs and more, is passed to the model as
-  context only when the switch is on.</desc>
+  holding bank records, Strava runs and more, runs into the app through the
+  switch and on to the model with the question, only when the switch is on.</desc>
 
   <rect class="box" x="16" y="50" width="120" height="50" rx="4"/>
   <text x="76" y="80" text-anchor="middle">Bob (fictional)</text>
@@ -79,10 +79,11 @@ The Charlie app has a button which allows Bob to give or not give consent.
   <text x="612" y="58" text-anchor="middle">Claude (LLM)</text>
   <text x="612" y="82" class="t-sm" text-anchor="middle">the same model either way</text>
 
-  <line class="ln-dash" x1="612" y1="170" x2="612" y2="110"/>
-  <path d="M 612 100 L 616 110 L 608 110 Z" fill="#2f4f4f"/>
-  <text x="598" y="130" class="t-sm" text-anchor="end">passed as context</text>
-  <text x="598" y="148" class="t-sm" text-anchor="end">only when consent is on</text>
+  <path class="ln-dash" d="M 520 220 L 280 220 L 280 130"/>
+  <path d="M 280 120 L 284 130 L 276 130 Z" fill="#2f4f4f"/>
+  <text x="400" y="210" class="t-sm" text-anchor="middle">pod sent with the question only when on</text>
+  <path class="ln-dash" d="M 306 96 L 340 66 L 510 66"/>
+  <path d="M 520 66 L 510 70 L 510 62 Z" fill="#2f4f4f"/>
 
   <rect class="box-green" x="520" y="170" width="184" height="100" rx="4"/>
   <text x="612" y="194" text-anchor="middle">Bob&#8217;s pod (simulated)</text>
@@ -103,7 +104,7 @@ two replies side by side.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 356" width="720" height="356" role="img"
      aria-labelledby="fig94-2-t fig94-2-d">
   <title id="fig94-2-t">The same question, with the consent switch off and on</title>
   <desc id="fig94-2-d">Without access the assistant asks four sensible
@@ -112,10 +113,11 @@ two replies side by side.
   particular shoes, a Seattle maker, the shop Bob already uses and the card
   that earns points.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle">consent off</text>
+  <text x="360" y="26" class="t-sm" text-anchor="middle">&#8220;I need new running shoes. What should I buy?&#8221;</text>
+  <g transform="translate(0,16)">
+  <text x="179" y="48" class="t-caps" text-anchor="middle">consent off</text>
   <line class="ln-mut" x1="360" y1="60" x2="360" y2="290"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">consent on</text>
-  <text x="360" y="48" class="t-sm" text-anchor="middle">&#8220;I need new running shoes. What should I buy?&#8221;</text>
+  <text x="541" y="48" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">consent on</text>
 
   <rect class="box-plain" x="24" y="62" width="310" height="224" rx="4"/>
   <text x="179" y="86" class="t-sm" text-anchor="middle">it asks Bob four questions:</text>
@@ -140,6 +142,7 @@ two replies side by side.
 
   <line class="ln-mut" x1="24" y1="304" x2="696" y2="304"/>
   <text x="360" y="328" class="t-sm t-it" text-anchor="middle">&#8220;devastatingly much more useful than the response without&#8221;</text>
+  </g>
 </svg>
 <figcaption><span class="fig-label">Figure 94.2</span>
 The comparison is the whole experiment. The model is the same on both sides;
@@ -174,8 +177,9 @@ Extracting data from the world of APIs into a pod is a lot of work.
 That sentence sums up where Solid&#8217;s plan for personal data stores now
 stands. The pod works, the model works, and so does the combination; what
 remains is the labour of getting a real person&#8217;s data out of the places
-that hold it. Chapter 93 said the obstacle was never technical, and this
-confirms it from the other side: the technical part succeeded first.
+that hold it. Chapter 93 named three routes to Bob&#8217;s data (anger, law,
+architecture); this shows the architecture working, while the labour of filling
+it remains.
 </p>
 
 <p>
@@ -247,9 +251,9 @@ matter most for this book&#8217;s subject.
   <text x="500" y="230" class="t-sm" text-anchor="middle">reads as context</text>
 </svg>
 <figcaption><span class="fig-label">Figure 94.3</span>
-The third and fourth findings in one picture. The model helps fill the graph
-and then reads it, and two models communicate through the graph rather than
-directly.</figcaption>
+The model helps fill the graph and then reads it (the third finding). The
+dashed write-back from assistant A is the book&#8217;s example of the fourth,
+not part of the demonstration: models communicating through the graph.</figcaption>
 </figure>
 
 <p>
@@ -261,8 +265,8 @@ The expensive step becomes something the machine does.
 
 <p>
 The fourth is the more consequential claim. If systems communicate through a
-shared graph rather than through each other, then everything in Volumes IV to
-VI applies: identifiers that mean the same thing to everyone, vocabularies
+shared graph rather than through each other, then, the book argues, everything
+in Volumes IV to VI applies: identifiers that mean the same thing to everyone, vocabularies
 mixed from several communities, statements that can be checked, and a pod
 whose owner decides who reads it.
 </p>
@@ -285,15 +289,15 @@ it, and, in this book&#8217;s view, those services have little reason to help.
 <h3>What happened since</h3>
 <ul>
 <li><strong>Connecting assistants to personal data became ordinary.</strong>
-Several large providers, from 2023, wired their assistants to the documents
-and mail they already held, which is the concentration Chapter 72 warned
-of.</li>
+Microsoft 365 Copilot, generally available from November 2023, wired an
+assistant to the mail and documents Microsoft already held, which is the
+concentration Chapter 72 warned of.</li>
 <li><strong>Standard connectors emerged.</strong> Anthropic published the Model
 Context Protocol in November 2024, an open standard for giving models access
-to tools and data sources. It was widely adopted, making part of the plumbing
+to tools and data sources. OpenAI adopted it in March 2025, making part of the plumbing
 this note calls a lot of work into a common component.</li>
-<li><strong>The extraction problem remains.</strong> No widely used service
-yet fills a personal pod from a person&#8217;s existing accounts.</li>
+<li><strong>The extraction problem remains.</strong> As of 2025, no widely
+used service fills a personal pod from a person&#8217;s existing accounts.</li>
 </ul>
 </div>
 

@@ -64,7 +64,9 @@ many small vocabularies can be mixed, rather than forcing one giant one.
 <p>
 Written in July 2007 with the editing status &ldquo;stable&rdquo;, which in
 this collection is rare. It describes a mechanism that everyone has
-experienced and almost nobody has named, and it states it as a law.
+experienced and almost nobody has named, and it states it as a law. Why
+does the thing that helps a group talk make it harder for anyone else to
+follow?
 </p>
 </div>
 
@@ -172,9 +174,15 @@ sense.
 
 <p>
 An illustration (ours, not the note&#8217;s): sales and billing disagree on how
-many customers the firm has. Listening reveals that sales counts signed
-contracts and billing counts invoices paid this year. Both numbers are right.
+many customers the firm has. Listening reveals that each uses the word
+differently, and both numbers are right:
 </p>
+
+<table>
+<tr><th>Team</th><th>What <em>customer</em> means</th></tr>
+<tr><td>Sales</td><td>anyone with a signed contract</td></tr>
+<tr><td>Billing</td><td>anyone who paid an invoice this year</td></tr>
+</table>
 
 <p>
 This is what makes standards slow. When a small group&#8217;s <a class="gl-ref" href="../glossary.html#specification">specification</a>
@@ -210,7 +218,7 @@ people concerned about a global issue.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 282" width="720" height="282" role="img"
      aria-labelledby="fig88-2-t fig88-2-d">
   <title id="fig88-2-t">Nested versus tangled communities</title>
   <desc id="fig88-2-d">Left: before the Web, a person sits in a town, inside a
@@ -244,11 +252,8 @@ people concerned about a global issue.
   <text x="470" y="214" class="t-sm" text-anchor="middle">a global issue</text>
   <text x="470" y="230" class="t-sm" text-anchor="middle">(very many people)</text>
   <circle cx="540" cy="160" r="5" fill="#1c5a7a"/>
-  <path class="ln-mut" d="M 548 160 L 634 160"/>
-  <text x="640" y="164" class="t-sm">a person</text>
-
-  <line class="ln-mut" x1="24" y1="272" x2="696" y2="272"/>
-  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">Small groups carry many local terms; the largest carries a little language shared by very many.</text>
+  <path class="ln-mut" d="M 540 153 L 540 72"/>
+  <text x="540" y="64" class="t-sm" text-anchor="middle">a person</text>
 </svg>
 <figcaption><span class="fig-label">Figure 88.2</span>
 Groups no longer fit inside one another. Each person sits in many groups of
@@ -296,9 +301,9 @@ the re-use of data, which just does not happen, to our great detriment.
 
 <p>
 A stovepipe is a system that only talks to itself, like a pipe with no side
-openings. These are the two ways a system can fail that Chapter 87 described
-for cultures: one vocabulary too big to agree on, or many too small to
-share.
+openings. These are the two failures that the scale-free requirement of Chapter 87
+(designs must work for groups of every size) rules out: one vocabulary too big
+to agree on, or many too small to share.
 </p>
 
 <figure>
@@ -384,9 +389,8 @@ And so we engineer specifically for a fractal topology.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Mixing vocabularies became normal practice.</strong> <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>
-(from 2006) and <a class="gl-ref" href="../glossary.html#schema">schema</a>.org (launched 2011) published data that mixes terms from
-several vocabularies. Schema.org itself, though, is one large shared
+<li><a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> (from 2006) and <a class="gl-ref" href="../glossary.html#schema">schema</a>.org (launched 2011) published data
+that mixes terms from several vocabularies. Schema.org itself, though, is one large shared
 vocabulary, closer to the first arrangement in Figure 88.3.</li>
 </ul>
 </div>

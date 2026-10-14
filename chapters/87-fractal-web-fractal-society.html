@@ -52,14 +52,10 @@ a Design Issues note by Tim Berners-Lee, 1998-12-31.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A society can fail in two ways. Everybody ends up sharing the same language
-and ideas, and nothing new can arise; or people divide into sealed groups that
-cannot speak to each other.
-</p>
-<p>
-Avoiding both needs groups of every size, from the world down to two people:
-a scale-free pattern, which looks much the same at any zoom. Web traffic at
-DEC&#8217;s firewall followed one such curve, a Zipf distribution. In 2000 a mathematical result supported part of the claim.
+A society can fail in two ways: everybody shares the same ideas, so nothing
+new arises, or people split into sealed groups that cannot talk. Avoiding both
+needs groups of every size, a scale-free pattern that looks much the same at
+any zoom. In 2000 a mathematical result supported part of the claim.
 </p>
 </div>
 
@@ -131,7 +127,7 @@ The two deaths, outside; groups inside groups at every size, in the middle.</fig
 </figure>
 
 <p>
-The case for the middle, argued from experience:
+The case for the middle, from experience:
 </p>
 <ol>
 <li>A group is stable when it has peers and a substructure.</li>
@@ -140,7 +136,7 @@ The case for the middle, argued from experience:
 very smallest.</li>
 </ol>
 <p>
-He admits what this lacks:
+He admits:
 </p>
 <blockquote>
 I have no mathematical theory to demonstrate that this is an optimization of
@@ -152,7 +148,7 @@ nor have I even that metric.
 <h2>87.2 The same tension, in language</h2>
 
 <p>
-The claim is restated for language:
+Restated for language:
 </p>
 
 <blockquote>
@@ -178,17 +174,66 @@ each stage.
 <h2>87.3 What the Web changes</h2>
 
 <p>
-Geography used to make communities nest: a household in a town in a region in
-a country. The Web allows groups that do not nest, such as a profession, a
-medical condition or a global concern. Berners-Lee&#8217;s hunch is that a
-spread across all scales will matter.
+Geography made communities nest: household, town, region, country. The Web
+allows groups that do not nest, such as a profession or a medical condition.
+Berners-Lee&#8217;s hunch is that a spread across all scales will matter.
 </p>
 
 <p>
-Someone (he asks who) suggested the bicycle improved health in the Welsh
-valleys by widening the gene pool; global travel could instead reduce
-diversity.
+Mixing helps up to a point. Someone (he asks who) suggested the bicycle
+improved health in the Welsh valleys by widening the gene pool through
+intermarriage; but global travel could reduce diversity, making one pool.
+Viruses carried through schools and by business travellers show the cost of
+global mixing.
 </p>
+
+<h3>Zipf happens</h3>
+
+<p>
+Early measurements at DEC&#8217;s firewall found its staff visiting sites with
+a <em>Zipf</em> (1/<em>n</em>) distribution of popularity: the top site gets
+twice the visits of the second, three times the third&#8217;s, and so on
+(Figure 87.2).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+     aria-labelledby="fig87-2-t fig87-2-d">
+  <title id="fig87-2-t">A Zipf curve on logarithmic axes</title>
+  <desc id="fig87-2-d">Visits plotted against popularity rank, both on
+  logarithmic scales with marks at 1, 10, 100 and 1000. The points fall on one
+  straight line, labelled 1/n: rank 1 has 1000 visits, rank 10 has 100, rank
+  100 has 10, rank 1000 has 1.</desc>
+
+  <line class="ln" x1="120" y1="20" x2="120" y2="210"/>
+  <line class="ln" x1="120" y1="210" x2="560" y2="210"/>
+
+  <text x="110" y="34" class="t-sm" text-anchor="end">1000</text>
+  <text x="110" y="92" class="t-sm" text-anchor="end">100</text>
+  <text x="110" y="150" class="t-sm" text-anchor="end">10</text>
+  <text x="110" y="208" class="t-sm" text-anchor="end">1</text>
+  <text x="120" y="230" class="t-sm" text-anchor="middle">1</text>
+  <text x="260" y="230" class="t-sm" text-anchor="middle">10</text>
+  <text x="400" y="230" class="t-sm" text-anchor="middle">100</text>
+  <text x="540" y="230" class="t-sm" text-anchor="middle">1000</text>
+  <text x="340" y="252" class="t-sm" text-anchor="middle">site&#8217;s popularity rank (log scale)</text>
+  <text x="24" y="120" class="t-sm" transform="rotate(-90 24 120)" text-anchor="middle">visits (log scale)</text>
+
+  <line class="ln-accent" x1="120" y1="30" x2="540" y2="204"/>
+  <circle cx="120" cy="30" r="4" fill="#1c5a7a"/>
+  <circle cx="260" cy="88" r="4" fill="#1c5a7a"/>
+  <circle cx="400" cy="146" r="4" fill="#1c5a7a"/>
+  <circle cx="540" cy="204" r="4" fill="#1c5a7a"/>
+  <text x="340" y="104" class="t-mono" style="fill:#1c5a7a">1/n</text>
+
+  <text x="580" y="60" class="t-sm">ten times the rank,</text>
+  <text x="580" y="78" class="t-sm">a tenth of the visits,</text>
+  <text x="580" y="96" class="t-sm">at every scale</text>
+</svg>
+<figcaption><span class="fig-label">Figure 87.2</span>
+An illustrative Zipf curve. On logarithmic axes it is a straight line, with the
+same slope at every zoom: that is what scale-free means.</figcaption>
+</figure>
 
 <h2>87.4 Looking for a metric</h2>
 
@@ -210,13 +255,20 @@ between two points, captures global effectiveness but not what he calls the
 &#8220;chewiness&#8221;, the structure at every scale in between.
 </p>
 
+<p>
+As a personal check, the note suggests eleven jars, one per power of ten, and
+a marble for each period spent at that scale. In his observation the global jar
+gets least, of money at least: international aid is far smaller than taxes
+spent nearer home.
+</p>
+
 <h2>87.5 Kleinberg&#8217;s answer, 2000</h2>
 
 <p>
 In March 2000 a &#8220;Stop Press&#8221; reported Jon Kleinberg&#8217;s
-result. On a grid of cells with links of various lengths, a message reaches any
-cell in steps growing only with the logarithm of the grid&#8217;s size in just
-one arrangement:
+result. On a uniform two-dimensional grid of cells with links of various
+lengths, a message reaches any cell in steps growing only with the logarithm
+of the grid&#8217;s size in just one arrangement:
 </p>
 
 <blockquote>
@@ -227,9 +279,9 @@ away as to cells 10-100 away, etc.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig87-2-t fig87-2-d">
-  <title id="fig87-2-t">Kleinberg&#8217;s rings and the postcard</title>
-  <desc id="fig87-2-d">Left: a person, Ann, at the centre of three rings marking
+     aria-labelledby="fig87-3-t fig87-3-d">
+  <title id="fig87-3-t">Kleinberg&#8217;s rings and the postcard</title>
+  <desc id="fig87-3-d">Left: a person, Ann, at the centre of three rings marking
   distances of 1 to 10, 10 to 100 and 100 to 1000 cells, with exactly three links
   into each ring. Right: a postcard travels in four hops, one long hop to a
   friend near Massachusetts and then three ever shorter hops to the target.
@@ -302,7 +354,7 @@ away as to cells 10-100 away, etc.
   <text x="622" y="304" class="t-sm" text-anchor="middle">land nearby,</text>
   <text x="622" y="320" class="t-sm" text-anchor="middle">cannot home in</text>
 </svg>
-<figcaption><span class="fig-label">Figure 87.2</span>
+<figcaption><span class="fig-label">Figure 87.3</span>
 Left: three links into each ring, each ten times farther out. Right: the long
 link gets the postcard close, the short ones finish; remove either kind and
 delivery fails.</figcaption>
@@ -310,7 +362,7 @@ delivery fails.</figcaption>
 
 <p>
 Sending a postcard to a stranger in Massachusetts through friends (Figure
-87.2):
+87.3):
 </p>
 
 <blockquote>
@@ -321,9 +373,9 @@ only works if there is connectivity on each scale.
 </blockquote>
 
 <p>
-The proof justifies one metric, the number of hops, like those between a
-problem and its solution in a large organisation. Chewiness remains
-unmeasured.
+Kleinberg showed which link pattern keeps hop counts low. Nobody has shown that
+hops are the right measure, though the note sees an analogy with the hops
+between a problem and its solution in a large organisation.
 </p>
 
 <h2>87.6 The total cost of ontologies</h2>
@@ -331,8 +383,10 @@ unmeasured.
 <p>
 In 2005 the note priced ontologies, the shared vocabularies of the Semantic
 Web. Assume, naively as he says, one <a class="gl-ref" href="../glossary.html#ontology">ontology</a> per order of magnitude of
-community; a committee three larger per tenfold growth; time to agree growing
-with the committee&#8217;s square; cost shared by the whole community.
+community; a committee three people larger for each tenfold growth; time to
+agree growing with the committee&#8217;s square; cost shared by the whole
+community. Read across: bigger communities take far longer to agree but split
+the cost among far more people. Six of the note&#8217;s eleven rows:
 </p>
 
 <table>
@@ -340,20 +394,14 @@ with the committee&#8217;s square; cost shared by the whole community.
 <tr><td>1</td><td>Me</td><td>1</td><td>1</td><td>1</td></tr>
 <tr><td>10</td><td>My team</td><td>4</td><td>16</td><td>1.6</td></tr>
 <tr><td>100</td><td>Group</td><td>7</td><td>49</td><td>0.49</td></tr>
-<tr><td>1000</td><td></td><td>10</td><td>100</td><td>0.1</td></tr>
 <tr><td>10k</td><td>Enterprise</td><td>13</td><td>169</td><td>0.017</td></tr>
-<tr><td>100k</td><td>Business area</td><td>16</td><td>256</td><td>0.0026</td></tr>
-<tr><td>1M</td><td></td><td>19</td><td>361</td><td>0.00036</td></tr>
-<tr><td>10M</td><td></td><td>22</td><td>484</td><td>0.000048</td></tr>
 <tr><td>100M</td><td>National, State</td><td>25</td><td>625</td><td>0.000006</td></tr>
-<tr><td>1G</td><td>EU, US</td><td>28</td><td>784</td><td>0.000001</td></tr>
 <tr><td>10G</td><td>Planet</td><td>31</td><td>961</td><td>almost 0</td></tr>
 </table>
 
 <p>
-A planet-wide ontology takes years, but billions share the bill; each person&#8217;s cost
-lies in what their own team makes. Ten ontologies cost each person 3.2 weeks. The
-lesson:
+Each person&#8217;s cost lies in what their own team makes; ten ontologies
+cost each person 3.2 weeks. The lesson:
 </p>
 
 <blockquote>
@@ -363,35 +411,35 @@ Do your bit. Others will do theirs.
 
 <p>
 In 2007 he added: think of communities, not one domain of discourse. Tagging a
-photo of his car, offering it to a car pool and registering it with the Registry
-of Motor Vehicles probably use three ontologies. A message mixes global terms
+photo of his car, lending it to a car pool and registering it with the Registry
+of Motor Vehicles may use three ontologies. A message mixes global terms
 such as <code>geo:longitude</code> with local ones (Figure 53.4); how much
 another agent can reuse depends on the communities they share.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 196" width="720" height="196" role="img"
-     aria-labelledby="fig87-3-t fig87-3-d">
-  <title id="fig87-3-t">Reuse depends on communities in common</title>
-  <desc id="fig87-3-d">Four rows of terms: global terms such as geo:longitude
-  and ical:dtstart, tags on photos of my car, the car pool, and the Registry of
-  Motor Vehicles. I use all four. A photo-sharing site uses only the first two.
-  Those two rows, shared by both, are the data that is reusable between
-  us.</desc>
+     aria-labelledby="fig87-4-t fig87-4-d">
+  <title id="fig87-4-t">Reuse depends on communities in common</title>
+  <desc id="fig87-4-d">Four rows of terms: global terms such as geo:longitude
+  and ical:dtstart, the car pool&#8217;s terms, tags on photos of my car, and the
+  Registry of Motor Vehicles. I use all four. The car-pool app uses only the
+  first two. Those two rows, shared by both, are the data that is reusable
+  between us.</desc>
 
   <text x="24" y="30" class="t-caps">terms from</text>
   <text x="400" y="30" text-anchor="middle">me</text>
-  <text x="560" y="30" text-anchor="middle">a photo-sharing site</text>
+  <text x="560" y="30" text-anchor="middle">the car-pool app</text>
 
   <text x="24" y="66">global: geo:longitude, ical:dtstart</text>
   <rect class="box-green" x="340" y="49" width="280" height="26" rx="3"/>
   <text x="480" y="66" text-anchor="middle">both use these terms</text>
 
-  <text x="24" y="102">tags on photos of my car</text>
+  <text x="24" y="102">the car pool</text>
   <rect class="box-green" x="340" y="85" width="280" height="26" rx="3"/>
   <text x="480" y="102" text-anchor="middle">both use these terms</text>
 
-  <text x="24" y="138">the car pool</text>
+  <text x="24" y="138">tags on photos of my car</text>
   <rect class="box-plain" x="340" y="121" width="120" height="26" rx="3"/>
   <text x="400" y="138" text-anchor="middle">uses</text>
 
@@ -402,9 +450,8 @@ another agent can reuse depends on the communities they share.
   <line class="ln-mut" x1="632" y1="49" x2="632" y2="111"/>
   <text x="642" y="84" class="t-sm" style="fill:#5a8f5a">reusable</text>
 </svg>
-<figcaption><span class="fig-label">Figure 87.3</span>
-Only shared rows carry reusable data. The photo-sharing site is
-illustrative.</figcaption>
+<figcaption><span class="fig-label">Figure 87.4</span>
+Only shared rows carry reusable data.</figcaption>
 </figure>
 
 <p>
@@ -416,16 +463,13 @@ The answer is a mix of a few ontologies at different scales.
 <ul>
 <li><strong>The Web&#8217;s link pattern was measured.</strong> Albert, Jeong
 and Barab&aacute;si (<em>Nature</em>, 1999), cited in the note, found a power
-law: a few pages have vast numbers of links. Broder and colleagues mapped the
-Web <a class="gl-ref" href="../glossary.html#graph">graph</a>&#8217;s large-scale shape in 2000.</li>
+law: a few pages have vast numbers of links.</li>
 <li><strong>Weblogs showed the same curve.</strong> Clay Shirky&#8217;s 2003
 essay <em>Power Laws, Weblogs, and Inequality</em>, listed in the note, found a
 few weblogs drawing most links.</li>
 <li><strong>The argument reached the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.</strong> Berners-Lee and
 Lalana Kagal published <em>The Fractal Nature of the Semantic Web</em> in
 <em>AI Magazine</em> in 2008; the note lists it as 2007.</li>
-<li><strong>Half the metric arrived.</strong> Kleinberg justified counting
-hops; no measure of chewiness has been justified.</li>
 </ul>
 </div>
 

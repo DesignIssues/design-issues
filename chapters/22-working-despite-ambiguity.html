@@ -129,8 +129,8 @@ that concedes everything and gives up nothing.
 </svg>
 <figcaption><span class="fig-label">Figure 22.1</span>
 Physics keeps the classical ball for everyday work and brings out the atoms
-only when needed. The Web keeps &ldquo;a URI names one thing&rdquo; in the
-same way.</figcaption>
+only when needed. The Web keeps the rule that a URI names one thing in
+the same way.</figcaption>
 </figure>
 
 <p>
@@ -157,61 +157,9 @@ supply one by other means.
 
 <p>
 The central move is to treat disambiguation not as a philosophical problem
-but as a catalogue of working systems. Berners-Lee lists five, from the
-kindergarten dictionary to the standards committee.
+but as a catalogue of working systems. Berners-Lee lists five, none of which
+removes ambiguity entirely.
 </p>
-
-<figure>
-<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
-     aria-labelledby="fig22-2-t fig22-2-d">
-  <title id="fig22-2-t">Five models for making a word definite enough</title>
-  <desc id="fig22-2-d">An authoritative dictionary, meaning as use, trained
-  experts, experts by area, and a standards committee. None delivers complete
-  unambiguity. All five are engineered institutions rather than natural
-  facts.</desc>
-
-  <line class="ln" x1="24" y1="252" x2="696" y2="252"/>
-  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">five engineered institutions, none complete</text>
-
-  <line class="ln-mut" x1="96" y1="244" x2="96" y2="260"/>
-  <rect class="box-plain" x="16" y="44" width="160" height="76" rx="4"/>
-  <text x="96" y="66" class="t-caps" text-anchor="middle">1. dictionary</text>
-  <text x="96" y="88" class="t-sm" text-anchor="middle">the OED editor knows;</text>
-  <text x="96" y="104" class="t-sm" text-anchor="middle">send him a note</text>
-  <line class="ln-mut" x1="96" y1="120" x2="96" y2="244"/>
-
-  <line class="ln-mut" x1="228" y1="244" x2="228" y2="260"/>
-  <rect class="box-plain" x="148" y="140" width="160" height="76" rx="4"/>
-  <text x="228" y="162" class="t-caps" text-anchor="middle">2. meaning as use</text>
-  <text x="228" y="184" class="t-sm" text-anchor="middle">a word is never</text>
-  <text x="228" y="200" class="t-sm" text-anchor="middle">used wrongly</text>
-  <line class="ln-mut" x1="228" y1="216" x2="228" y2="244"/>
-
-  <line class="ln-mut" x1="360" y1="244" x2="360" y2="260"/>
-  <rect class="box-warm" x="280" y="44" width="160" height="76" rx="4"/>
-  <text x="360" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">3. expertise</text>
-  <text x="360" y="88" class="t-sm" text-anchor="middle">trained lawyers;</text>
-  <text x="360" y="104" class="t-sm" text-anchor="middle">then go to court</text>
-  <line class="ln-mut" x1="360" y1="120" x2="360" y2="244"/>
-
-  <line class="ln-mut" x1="492" y1="244" x2="492" y2="260"/>
-  <rect class="box-warm" x="412" y="140" width="160" height="76" rx="4"/>
-  <text x="492" y="162" class="t-caps" text-anchor="middle" style="fill:#b08d57">4. by area</text>
-  <text x="492" y="184" class="t-sm" text-anchor="middle">specialists write it,</text>
-  <text x="492" y="200" class="t-sm" text-anchor="middle">and testify to it</text>
-  <line class="ln-mut" x1="492" y1="216" x2="492" y2="244"/>
-
-  <line class="ln-mut" x1="624" y1="244" x2="624" y2="260"/>
-  <rect class="box-green" x="544" y="44" width="160" height="76" rx="4"/>
-  <text x="624" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">5. committee</text>
-  <text x="624" y="88" class="t-sm" text-anchor="middle">defines local terms</text>
-  <text x="624" y="104" class="t-sm" text-anchor="middle">until tight enough</text>
-  <line class="ln-mut" x1="624" y1="120" x2="624" y2="244"/>
-</svg>
-<figcaption><span class="fig-label">Figure 22.2</span>
-Five systems people built for making a word definite enough; none removes
-ambiguity entirely.</figcaption>
-</figure>
 
 <table>
 <tr><th>Model</th><th>How meaning is fixed</th><th>Example</th></tr>
@@ -274,25 +222,26 @@ fix its meaning however it likes.
 The Domain Name System (<a class="gl-ref" href="../glossary.html#dns">DNS</a>), which hands out names such as
 <code>example.org</code>, lets a person or organisation own a term. <a class="gl-ref" href="../glossary.html#http">HTTP</a>, the
 Web&#8217;s fetching protocol, lets a machine look the term up. What comes back
-explains it in natural language and in logic, and says, openly or by
+explains it in natural language and in logic (statements a program can
+reason with, such as that every seminar is an event), and says, openly or by
 implication, which model, or mix of models, fixes its meaning.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
-     aria-labelledby="fig22-3-t fig22-3-d">
-  <title id="fig22-3-t">Looking up a term on the Semantic Web</title>
-  <desc id="fig22-3-d">An example term, http://example.org/events#Seminar.
+     aria-labelledby="fig22-2-t fig22-2-d">
+  <title id="fig22-2-t">Looking up a term on the Semantic Web</title>
+  <desc id="fig22-2-d">An example term, http://example.org/events#Seminar.
   The Domain Name System says who owns example.org: a group, company or
   person. Fetching the term over HTTP returns an explanation in words, a
   statement in logic that a Seminar is a kind of Event, and a note that its
   meaning is fixed by a committee, model 5.</desc>
   <defs>
-    <marker id="fig22-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig22-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
     </marker>
-    <marker id="fig22-3-arra" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig22-2-arra" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
     </marker>
@@ -302,25 +251,25 @@ implication, which model, or mix of models, fixes its meaning.
   <rect class="box" x="16" y="40" width="264" height="44" rx="4"/>
   <text x="148" y="66" class="t-mono" text-anchor="middle">http://example.org/events#Seminar</text>
 
-  <line class="ln" x1="148" y1="84" x2="148" y2="148" marker-end="url(#fig22-3-arr)"/>
+  <line class="ln" x1="148" y1="84" x2="148" y2="148" marker-end="url(#fig22-2-arr)"/>
   <text x="160" y="120" class="t-sm">DNS: who owns example.org?</text>
   <rect class="box-plain" x="16" y="150" width="264" height="44" rx="4"/>
   <text x="148" y="176" text-anchor="middle">Owner: a group, company or person</text>
 
   <path class="ln-accent" d="M 280 62 L 392 62 M 392 62 L 392 182"/>
   <text x="336" y="52" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">HTTP: fetch it</text>
-  <line class="ln-accent" x1="392" y1="62" x2="408" y2="62" marker-end="url(#fig22-3-arra)"/>
-  <line class="ln-accent" x1="392" y1="122" x2="408" y2="122" marker-end="url(#fig22-3-arra)"/>
-  <line class="ln-accent" x1="392" y1="182" x2="408" y2="182" marker-end="url(#fig22-3-arra)"/>
+  <line class="ln-accent" x1="392" y1="62" x2="408" y2="62" marker-end="url(#fig22-2-arra)"/>
+  <line class="ln-accent" x1="392" y1="122" x2="408" y2="122" marker-end="url(#fig22-2-arra)"/>
+  <line class="ln-accent" x1="392" y1="182" x2="408" y2="182" marker-end="url(#fig22-2-arra)"/>
 
   <rect class="box" x="410" y="40" width="294" height="44" rx="4"/>
-  <text x="557" y="66" text-anchor="middle">In words: &#8216;a talk followed by discussion&#8217;</text>
+  <text x="557" y="66" text-anchor="middle">In words: a talk followed by discussion</text>
   <rect class="box-green" x="410" y="100" width="294" height="44" rx="4"/>
   <text x="557" y="126" text-anchor="middle">In logic: a Seminar is a kind of Event</text>
   <rect class="box-warm" x="410" y="160" width="294" height="44" rx="4"/>
   <text x="557" y="186" text-anchor="middle">Meaning fixed by: a committee (model 5)</text>
 </svg>
-<figcaption><span class="fig-label">Figure 22.3</span>
+<figcaption><span class="fig-label">Figure 22.2</span>
 A hypothetical term. The Web does not fix its meaning; it says where to look
 and who answers for it.</figcaption>
 </figure>
@@ -342,16 +291,16 @@ The note gives two examples, both about an online form for a seminar.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig22-4-t fig22-4-d">
-  <title id="fig22-4-t">Two people, one form</title>
-  <desc id="fig22-4-d">Left, the person filling in the form: Date, Start and
+     aria-labelledby="fig22-3-t fig22-3-d">
+  <title id="fig22-3-t">Two people, one form</title>
+  <desc id="fig22-3-d">Left, the person filling in the form: Date, Start and
   End are safe; the Category menu offers talk, class, seminar and concert, and
   hovering shows a comment pulled from the vocabulary. Right, the person
   building the form: each new field takes a standard term, a term from
   another vocabulary, or one made up here, and a made-up term needs buttons
   to invite comments, form a group or ask another group.</desc>
   <defs>
-    <marker id="fig22-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig22-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
     </marker>
@@ -393,9 +342,9 @@ The note gives two examples, both about an online form for a seminar.
   <rect class="box" x="384" y="52" width="110" height="28" rx="3"/>
   <text x="439" y="71" text-anchor="middle">+ new field</text>
   <line class="ln" x1="396" y1="80" x2="396" y2="194"/>
-  <line class="ln" x1="396" y1="114" x2="412" y2="114" marker-end="url(#fig22-4-arr)"/>
-  <line class="ln" x1="396" y1="154" x2="412" y2="154" marker-end="url(#fig22-4-arr)"/>
-  <line class="ln" x1="396" y1="194" x2="412" y2="194" marker-end="url(#fig22-4-arr)"/>
+  <line class="ln" x1="396" y1="114" x2="412" y2="114" marker-end="url(#fig22-3-arr)"/>
+  <line class="ln" x1="396" y1="154" x2="412" y2="154" marker-end="url(#fig22-3-arr)"/>
+  <line class="ln" x1="396" y1="194" x2="412" y2="194" marker-end="url(#fig22-3-arr)"/>
 
   <rect class="box-green" x="414" y="100" width="122" height="28" rx="3"/>
   <text x="475" y="118" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">standard terms</text>
@@ -405,9 +354,9 @@ The note gives two examples, both about an online form for a seminar.
   <text x="475" y="198" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">made up here</text>
 
   <text x="628" y="160" class="t-sm t-it" text-anchor="middle">the cost of agreeing</text>
-  <line class="ln" x1="536" y1="194" x2="564" y2="183" marker-end="url(#fig22-4-arr)"/>
-  <line class="ln" x1="536" y1="194" x2="564" y2="219" marker-end="url(#fig22-4-arr)"/>
-  <line class="ln" x1="536" y1="194" x2="564" y2="255" marker-end="url(#fig22-4-arr)"/>
+  <line class="ln" x1="536" y1="194" x2="564" y2="183" marker-end="url(#fig22-3-arr)"/>
+  <line class="ln" x1="536" y1="194" x2="564" y2="219" marker-end="url(#fig22-3-arr)"/>
+  <line class="ln" x1="536" y1="194" x2="564" y2="255" marker-end="url(#fig22-3-arr)"/>
   <rect class="box-plain" x="566" y="170" width="124" height="26" rx="13"/>
   <text x="628" y="187" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">invite comments</text>
   <rect class="box-plain" x="566" y="206" width="124" height="26" rx="13"/>
@@ -415,7 +364,7 @@ The note gives two examples, both about an online form for a seminar.
   <rect class="box-plain" x="566" y="242" width="124" height="26" rx="13"/>
   <text x="628" y="259" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">ask another group</text>
 </svg>
-<figcaption><span class="fig-label">Figure 22.4</span>
+<figcaption><span class="fig-label">Figure 22.3</span>
 For the person filling in the form, ambiguity costs a hover; for the person
 building it, it costs an institution.</figcaption>
 </figure>
@@ -429,7 +378,8 @@ events already filed under each choice.
 </p>
 
 <p>
-Someone building the form must pick a property for each field, ideally from
+Someone building the form must pick a <em>property</em>, a published term for
+one kind of fact such as a start time, for each field, ideally from
 a widely used vocabulary, so that the events reach people&#8217;s calendars.
 They will find some standard terms, a few from other vocabularies, and then
 have to make some up. At that point, Berners-Lee says, the system should show
@@ -453,6 +403,12 @@ unambiguous meanings which are independent of context.
 <cite>Pat Hayes, quoted in Working despite Ambiguity, 2012</cite>
 </blockquote>
 
+<p>
+That is why the note asks for definitions good enough for the situation, not
+unambiguous ones: the fully pinned-down alternative is a language few could
+use.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
@@ -460,8 +416,6 @@ unambiguous meanings which are independent of context.
 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>. It says that an IRI&#8217;s owner can help establish
 what the IRI refers to, and that dereferencing it can return information
 about it: much of the meta-model of section 22.4, in a standard.</li>
-<li><strong>November 2021.</strong> The note was last revised on 1 November
-2021, according to its own <a class="gl-ref" href="../glossary.html#header">header</a>.</li>
 </ul>
 </div>
 
