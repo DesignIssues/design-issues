@@ -58,19 +58,17 @@ us; systems that reason about everything; the grand encyclopaedia of facts.
 Those projects were real, and they did fail.
 </p>
 <p>
-This chapter answers six such objections, and the method is the interesting
-part. Each fear is granted rather than denied, and then the assumption that
-caused the original failure is shown to be one the new plan never makes. In
-every case the claim turns out to be smaller than the thing being feared.
+This chapter answers six such objections. Each fear is granted, and each
+claim turns out smaller than the fear. The note then maps ordinary database
+tables onto the new model.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Berners-Lee describes this note in his own subtitle as parenthetical, written
-so as not to disturb the flow of what a <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> is. It answers the
-objections, and its framing of why they need answering is worth noting:
+Berners-Lee calls this note parenthetical, written so as not to disturb the
+flow of what a <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> is. It explains why the objections need answering:
 </p>
 <blockquote>
 Where the other models are related to previous unmet promises of computer
@@ -80,92 +78,231 @@ that the goal of a Semantic Web is inappropriate.
 </blockquote>
 <p>
 The objections are not technical mistakes. They are memories of earlier
-failures, and the note&#8217;s method is to grant each failure and identify the
-assumption that caused it.
+failures.
 </p>
 </div>
 
 <h2>31.1 Six denials</h2>
 
+
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 326" width="720" height="326" role="img"
      aria-labelledby="fig31-1-t fig31-1-d">
   <title id="fig31-1-t">What is feared, and what is claimed</title>
-  <desc id="fig31-1-d">Six objections, each raised from an earlier failure in
-  knowledge representation, set against what the roadmap actually asks for.
-  In each case the claim is smaller than the fear.</desc>
+  <desc id="fig31-1-d">Six objections, each raised from an earlier failure,
+  each shown as a fear box with an arrow to the smaller claim the note
+  actually makes.</desc>
+  <defs>
+    <marker id="fig31-1-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
 
-  <text x="188" y="26" class="t-caps" text-anchor="middle" fill="#b04a4a">what is feared</text>
-  <text x="512" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">what is claimed</text>
-  <line class="ln-mut" x1="24" y1="36" x2="696" y2="36"/>
+  <text x="174" y="28" class="t-caps" text-anchor="middle" style="fill:#b08d57">what is feared</text>
+  <text x="542" y="28" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what is claimed</text>
 
-  <g class="t-sm">
-    <text x="24" y="64">machines understanding human speech</text>
-    <text x="368" y="64" fill="#3f6f3f">well-defined operations on well-defined data</text>
-    <text x="24" y="106">every application must handle arbitrary complexity</text>
-    <text x="368" y="106" fill="#3f6f3f">most will emit access lists and preferences</text>
-    <text x="24" y="148">the engine must find proofs</text>
-    <text x="368" y="148" fill="#3f6f3f">it need only check one it is handed</text>
-    <text x="24" y="190">another run at a failed experiment</text>
-    <text x="368" y="190" fill="#3f6f3f">the same experiment, decentralised</text>
-    <text x="24" y="232">predicate calculus never had wide impact</text>
-    <text x="368" y="232" fill="#3f6f3f">neither did hypertext, before 1990</text>
-    <text x="24" y="274">much of it is not efficiently computable</text>
-    <text x="368" y="274" fill="#3f6f3f">true; make subsets where it is</text>
+  <rect class="box-warm" x="24" y="44" width="300" height="30" rx="3"/>
+  <rect class="box-warm" x="24" y="84" width="300" height="30" rx="3"/>
+  <rect class="box-warm" x="24" y="124" width="300" height="30" rx="3"/>
+  <rect class="box-warm" x="24" y="164" width="300" height="30" rx="3"/>
+  <rect class="box-warm" x="24" y="204" width="300" height="30" rx="3"/>
+  <rect class="box-warm" x="24" y="244" width="300" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="44" width="308" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="84" width="308" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="124" width="308" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="164" width="308" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="204" width="308" height="30" rx="3"/>
+  <rect class="box-green" x="388" y="244" width="308" height="30" rx="3"/>
+
+  <g class="ln-accent" marker-end="url(#fig31-1-a)">
+    <line x1="334" y1="59" x2="378" y2="59"/>
+    <line x1="334" y1="99" x2="378" y2="99"/>
+    <line x1="334" y1="139" x2="378" y2="139"/>
+    <line x1="334" y1="179" x2="378" y2="179"/>
+    <line x1="334" y1="219" x2="378" y2="219"/>
+    <line x1="334" y1="259" x2="378" y2="259"/>
   </g>
 
-  <line class="ln-mut" x1="356" y1="44" x2="356" y2="292"/>
-  <line class="ln-mut" x1="24" y1="292" x2="696" y2="292"/>
-  <text x="360" y="316" class="t-sm t-it" text-anchor="middle">Each earlier failure is granted. In each case the diagnosis is the same: centralisation.</text>
+  <g>
+    <text class="t-sm" x="36" y="63" style="fill:#2f4f4f">machines understanding human speech</text>
+    <text class="t-sm" x="400" y="63" style="fill:#2f4f4f">well-defined operations on well-defined data</text>
+    <text class="t-sm" x="36" y="103" style="fill:#2f4f4f">every application handles arbitrary complexity</text>
+    <text class="t-sm" x="400" y="103" style="fill:#2f4f4f">most emit access lists and preferences</text>
+    <text class="t-sm" x="36" y="143" style="fill:#2f4f4f">the engine must find proofs</text>
+    <text class="t-sm" x="400" y="143" style="fill:#2f4f4f">it need only check one it is handed</text>
+    <text class="t-sm" x="36" y="183" style="fill:#2f4f4f">much of it is not efficiently computable</text>
+    <text class="t-sm" x="400" y="183" style="fill:#2f4f4f">true; make ordered subsets where needed</text>
+    <text class="t-sm" x="36" y="223" style="fill:#2f4f4f">another run at a failed experiment</text>
+    <text class="t-sm" x="400" y="223" style="fill:#2f4f4f">the same experiment, decentralised</text>
+    <text class="t-sm" x="36" y="263" style="fill:#2f4f4f">predicate calculus never had wide impact</text>
+    <text class="t-sm" x="400" y="263" style="fill:#2f4f4f">neither did hypertext, before 1990</text>
+  </g>
+
+  <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
+  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Each earlier failure is granted; each claim is smaller than the fear.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 31.1</span>
-The note&#8217;s structure is a list of denials, and its unity is that every
-objection is answered by removing a centralising assumption rather than by
-claiming a technical advance.</figcaption>
+The six denials, in this chapter&#8217;s order. The first four ask for less;
+the last two remove a centralising assumption.</figcaption>
 </figure>
 
 <h2>31.2 Not artificial intelligence</h2>
 
 <p>
-The first denial is the one the note is remembered for:
+The first denial is the one the note is remembered for, and the cost is
+stated in the same breath:
 </p>
 
 <blockquote>
 The concept of machine-understandable documents does not imply some magical
 artificial intelligence which allows machines to comprehend human mumblings.
 It only indicates a machine's ability to solve a well-defined problem by
-performing well-defined operations on existing well-defined data.
+performing well-defined operations on existing well-defined data. Instead of
+asking machines to understand people's language, it involves asking people to
+make the extra effort
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
 
 <p>
-And the cost is stated in the same breath, which is the part usually left
-out. Instead of asking machines to understand people&#8217;s language, it involves
-asking people to make the extra effort. The whole programme&#8217;s difficulty is
-in that clause.
+The last sentence is usually left out, and the programme&#8217;s difficulty
+is in it.
 </p>
 
 <h2>31.3 Complete language, limited applications</h2>
 
 <p>
-The second denial separates two things that objectors run together. The
-language must be complete, capable of expressing paradox and tautology,
-because it must represent the world. Berners-Lee accepts the consequence
-frankly: it will be possible to phrase questions whose answers would require
-a search of the entire Web and an unimaginable amount of time.
+The language must be complete, because it must represent the world. It must be
+able to state a paradox (a statement that contradicts itself) and a tautology
+(one that is true whatever the facts). Berners-Lee accepts the consequence:
+it will be possible to phrase questions whose answers would require a search
+of the entire Web and an unimaginable amount of time.
 </p>
 
 <p>
-This should not deter us, he says, from making the language complete. Each
-application uses a <a class="gl-ref" href="../glossary.html#schema">schema</a> to restrict itself to a deliberately limited
-language. Completeness at the bottom, restraint at the top.
+This should not deter us, he says. Each application uses a <a class="gl-ref" href="../glossary.html#schema">schema</a>, a
+declared list of the terms it will handle, to restrict itself to a limited
+language; most will produce simple access control lists, privacy preferences
+and search criteria. Completeness at the bottom, restraint at the top.
+</p>
+
+<h3>Checking a proof, not finding one</h3>
+
+<p>
+The first uses, such as access control on web sites, involve only the
+validation of a previously prepared proof. Generating a proof for an
+arbitrary question is typically intractable, and the plan does not need it.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig31-2-t fig31-2-d">
+  <title id="fig31-2-t">Generating a proof versus validating one</title>
+  <desc id="fig31-2-d">Left: a question fans out into a branching tree of
+  possible reasoning paths, only one of which reaches a proof; the search is
+  often intractable. Right: a request to read a file arrives with a chain of
+  three statements already supplied; each is checked in turn and the answer
+  is yes or no.</desc>
+  <defs>
+    <marker id="fig31-2-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="182" y="24" class="t-caps" text-anchor="middle">generate: find a proof</text>
+  <text x="538" y="24" class="t-caps" text-anchor="middle">validate: check a proof</text>
+  <line class="ln-mut" x1="360" y1="12" x2="360" y2="258"/>
+
+  <!-- left: search tree -->
+  <rect class="box-plain" x="132" y="38" width="100" height="26" rx="3"/>
+  <text x="182" y="56" text-anchor="middle">question</text>
+  <g class="ln-mut">
+    <line x1="182" y1="64" x2="82" y2="112"/>
+    <line x1="182" y1="64" x2="182" y2="112"/>
+    <line x1="82" y1="112" x2="52" y2="162"/>
+    <line x1="82" y1="112" x2="112" y2="162"/>
+    <line x1="182" y1="112" x2="152" y2="162"/>
+    <line x1="182" y1="112" x2="212" y2="162"/>
+    <line x1="282" y1="112" x2="312" y2="162"/>
+    <line x1="52" y1="162" x2="40" y2="192"/>
+    <line x1="52" y1="162" x2="64" y2="192"/>
+    <line x1="112" y1="162" x2="100" y2="192"/>
+    <line x1="112" y1="162" x2="124" y2="192"/>
+    <line x1="152" y1="162" x2="140" y2="192"/>
+    <line x1="212" y1="162" x2="224" y2="192"/>
+    <line x1="312" y1="162" x2="300" y2="192"/>
+    <line x1="312" y1="162" x2="324" y2="192"/>
+  </g>
+  <g class="ln-accent">
+    <line x1="182" y1="64" x2="282" y2="112"/>
+    <line x1="282" y1="112" x2="252" y2="162"/>
+    <line x1="252" y1="162" x2="252" y2="198"/>
+  </g>
+  <g fill="#8a9a9a">
+    <circle cx="82" cy="112" r="3.5"/><circle cx="182" cy="112" r="3.5"/>
+    <circle cx="52" cy="162" r="3.5"/><circle cx="112" cy="162" r="3.5"/>
+    <circle cx="152" cy="162" r="3.5"/><circle cx="212" cy="162" r="3.5"/>
+    <circle cx="312" cy="162" r="3.5"/>
+  </g>
+  <g fill="#1c5a7a">
+    <circle cx="282" cy="112" r="3.5"/><circle cx="252" cy="162" r="3.5"/>
+  </g>
+  <rect class="box-warm" x="212" y="198" width="80" height="24" rx="3"/>
+  <text x="252" y="215" text-anchor="middle">proof?</text>
+  <text x="110" y="216" class="t-sm" text-anchor="middle">&#8230; and so on</text>
+  <text x="182" y="250" class="t-sm t-it" text-anchor="middle">search: often intractable</text>
+
+  <!-- right: validation chain -->
+  <rect class="box-plain" x="438" y="38" width="200" height="26" rx="3"/>
+  <text x="538" y="56" text-anchor="middle">let me read /payroll</text>
+  <rect class="box-green" x="408" y="80" width="260" height="26" rx="3"/>
+  <rect class="box-green" x="408" y="116" width="260" height="26" rx="3"/>
+  <rect class="box-green" x="408" y="152" width="260" height="26" rx="3"/>
+  <g>
+    <text class="t-sm" x="420" y="97" style="fill:#2f4f4f">Alice is in group Staff</text>
+    <text class="t-sm" x="420" y="133" style="fill:#2f4f4f">Staff may read /payroll</text>
+    <text class="t-sm" x="420" y="169" style="fill:#2f4f4f">therefore Alice may read /payroll</text>
+  </g>
+  <g fill="none" stroke="#5a8f5a" stroke-width="2">
+    <path d="M642 93 L647 98 L656 87"/>
+    <path d="M642 129 L647 134 L656 123"/>
+    <path d="M642 165 L647 170 L656 159"/>
+  </g>
+  <line class="ln-accent" x1="538" y1="178" x2="538" y2="196" marker-end="url(#fig31-2-a)"/>
+  <rect class="box" x="498" y="198" width="80" height="24" rx="3"/>
+  <text x="538" y="215" text-anchor="middle">yes / no</text>
+  <text x="538" y="250" class="t-sm t-it" text-anchor="middle">Alice and Staff are an invented illustration</text>
+</svg>
+<figcaption><span class="fig-label">Figure 31.2</span>
+Finding a proof means searching a tree that may never end. An access-control
+check only walks a chain it was handed, which is why it can work where
+general reasoning cannot.</figcaption>
+</figure>
+
+<h3>Real life is not efficiently computable</h3>
+
+<p>
+To the objection that much of this is not efficiently computable, his
+answer begins &ldquo;Dead right.&rdquo; The classical solution constrains
+the language so that every query finishes. The weblike one keeps the full
+language and creates subsets of the Web whose constraints give specific
+computational properties.
+</p>
+
+<p>
+Earlier information systems kept data in a fixed hierarchy or matrix, which
+made them consistent; he bets DARPA, the American defence research agency,
+still has many. They could only be joined up through global hypertext, where
+people feared getting lost: &ldquo;You could follow links forever.&rdquo;
+Yet many web sites are orderly inside, and the gain is that ordered and
+unordered can now be linked.
 </p>
 
 <h2>31.4 The globalisation argument</h2>
 
 <p>
-The central claim of the note is an analogy, and it is the clearest statement
-anywhere of what the Semantic Web was meant to be:
+The next objection is that this is another run at knowledge representation,
+the field that writes facts down for programs to reason over. Berners-Lee
+agrees it has been tried:
 </p>
 
 <blockquote>
@@ -177,10 +314,6 @@ exactly the state which the hypertext field was in before the Web.
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
 
-<p>
-And the prescription:
-</p>
-
 <blockquote>
 The Semantic Web is what we will get if we perform the same globalization
 process to Knowledge Representation that the Web initially did to Hypertext.
@@ -190,82 +323,222 @@ total provability, and see what we can do with limited knowledge.
 </blockquote>
 
 <p>
-Three things are given up in that sentence, and the giving up is the design.
-Chapter 26 gives the recipe in general form; this is its application to a
-whole field.
+The objection that predicate calculus (formal logic with &ldquo;for
+all&rdquo; and &ldquo;there exists&rdquo;) never had wide impact gets the
+same answer: neither did hypertext before 1990. Both were centralised.
+Knowledge bases could not be merged, because each concept had one place in a
+tree. KIF, a standard language for passing logic between programs, is very
+centralised; Cyc, a long project to hand-write common-sense knowledge, suggests
+everyone agree on the same terms for common English words. The cure is hypertext&#8217;s:
 </p>
 
-<p>
-The diagnosis of the earlier systems is specific rather than dismissive. Many
-knowledge representation systems could not merge two knowledge bases because
-the model held that a concept had one and only one place in a tree of
-knowledge. So they did not scale and did not pass the test of independent
-invention. He names KIF as centralised in its approach and observes that the
-Cyc <a class="gl-ref" href="../glossary.html#ontology">ontology</a> suggests everyone agree on the same terms for common English
-words, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> does not.
-</p>
+<blockquote>
+Replace identifiers with URIs. Remove any requirement for global consistency.
+Put in a significant effort into getting critical mass. Sit back.
+<cite>What the Semantic Web can represent, 1998</cite>
+</blockquote>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+     aria-labelledby="fig31-3-t fig31-3-d">
+  <title id="fig31-3-t">The same recipe, applied twice</title>
+  <desc id="fig31-3-d">Two fields that stayed small, hypertext before 1990 and
+  knowledge representation such as KIF and Cyc, both pass through the same
+  four steps: replace identifiers with URIs, remove any requirement for
+  global consistency, put in effort to reach critical mass, sit back. The
+  first becomes the Web, the second the Semantic Web.</desc>
+  <defs>
+    <marker id="fig31-3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="130" y="24" class="t-caps" text-anchor="middle">a field that stayed small</text>
+  <text x="392" y="24" class="t-caps" text-anchor="middle">the recipe</text>
+  <text x="620" y="24" class="t-caps" text-anchor="middle">what results</text>
+
+  <rect class="box-plain" x="16" y="40" width="228" height="64" rx="4"/>
+  <text x="28" y="64">Hypertext, 1970&#8211;1990</text>
+  <text x="28" y="86" class="t-sm">links had to be globally consistent</text>
+
+  <rect class="box-plain" x="16" y="150" width="228" height="64" rx="4"/>
+  <text x="28" y="174">Knowledge representation</text>
+  <text x="28" y="196" class="t-sm">KIF, Cyc: one place per concept</text>
+
+  <rect class="box-warm" x="280" y="40" width="224" height="174" rx="4"/>
+  <g>
+    <text class="t-sm" x="292" y="64" style="fill:#2f4f4f">Replace identifiers with URIs.</text>
+    <text class="t-sm" x="292" y="92" style="fill:#2f4f4f">Remove any requirement for</text>
+    <text class="t-sm" x="292" y="108" style="fill:#2f4f4f">global consistency.</text>
+    <text class="t-sm" x="292" y="136" style="fill:#2f4f4f">Put in a significant effort into</text>
+    <text class="t-sm" x="292" y="152" style="fill:#2f4f4f">getting critical mass.</text>
+    <text class="t-sm" x="292" y="180" style="fill:#2f4f4f">Sit back.</text>
+  </g>
+
+  <rect class="box-green" x="540" y="54" width="160" height="36" rx="4"/>
+  <text x="620" y="77" text-anchor="middle">The Web</text>
+  <rect class="box-green" x="540" y="164" width="160" height="36" rx="4"/>
+  <text x="620" y="187" text-anchor="middle">Semantic Web</text>
+
+  <g class="ln-accent" marker-end="url(#fig31-3-a)">
+    <line x1="244" y1="72" x2="278" y2="72"/>
+    <line x1="244" y1="182" x2="278" y2="182"/>
+    <line x1="504" y1="72" x2="538" y2="72"/>
+    <line x1="504" y1="182" x2="538" y2="182"/>
+  </g>
+</svg>
+<figcaption><span class="fig-label">Figure 31.3</span>
+The same operation, in the note&#8217;s words, applied twice. Each time what
+is removed is the demand for global agreement (Chapter 26 generalises
+it).</figcaption>
+</figure>
 
 <h2>31.5 On inconsistency, and what he will not concede</h2>
 
+<h3>Check the source</h3>
+
 <p>
-The sharpest passage answers the objection that predicate calculus is
-intolerant of contradiction, where anything follows from a contradiction,
-while the Web is full of them.
+In classical logic, once a system believes a statement and its opposite,
+it can derive any conclusion at all. The Web is full of contradictions, so
+the objection runs that only a fuzzy system will do.
 </p>
 
 <p>
-Berners-Lee refuses the fuzzy answer. A real system will work not by
-believing anything it reads but by checking the source, and a rule will let a
-system infer things only from statements of a particular form signed by
-particular keys. Within such a system inconsistency is a serious problem, not
-something to be worked around. His examples are domestic and then abrupt: if
+Berners-Lee refuses. A real system will not believe anything it reads but
+check the source, inferring only from statements signed by particular keys
+(a digital signature proves who wrote them). Within such a system
+an inconsistency is a serious problem, not something to be worked around. If
 my bank says my balance is one hundred dollars and my computer says two
 hundred, we need to figure out the problem. Same with launching missiles.
 </p>
 
+<h3>Rules are statements too</h3>
+
 <p>
-He also identifies a confusion in earlier systems that is still common. Most
-of them store a rule not as a statement but as an entry in a table of rules
-to be applied at a particular time, which makes the classification of rules a
-meta level that the language itself cannot express. Two systems must be able
-to interchange what a rule means even when neither recognises the other&#8217;s
-notion of when to apply it.
+Earlier systems mixed information with tips on how to use it. A rule such as &ldquo;a daughter of one&#8217;s
+daughter is one&#8217;s grandaughter&rdquo; is typically stored not as that
+statement but in a table of rules to apply at a particular time, for example
+whenever a parent of a daughter is found. That timing is information about the rule,
+which the language cannot express. Two systems must exchange what the rule
+means even when their engines apply it differently.
 </p>
 
 <h2>31.6 The closed world</h2>
 
 <p>
-The note names, in its opening, the difference it treats as fundamental
-between the Semantic Web and most programming data models: the closed world
-assumption. A database that does not list a fact treats it as false. An open
-system may only treat it as unknown.
+At its opening the note names &ldquo;one consistent difference&rdquo; between
+the Semantic Web and many programming data models: the closed world
+assumption. The note does not define it. In the usual sense, which this
+chapter supplies, a database that does not list a fact treats it as false,
+while an open system may only treat it as unknown.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 282" width="720" height="282" role="img"
+     aria-labelledby="fig31-4-t fig31-4-d">
+  <title id="fig31-4-t">Closed world and open world</title>
+  <desc id="fig31-4-d">The question "Is Bob an employee?" asked of the same
+  three names. A database table lists Ann, Carlos and Dee and answers no.
+  Three linked documents say the same three people work here, and the
+  answer is unknown, because someone else may say Bob does.</desc>
+  <defs>
+    <marker id="fig31-4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="260" y="14" width="200" height="30" rx="4"/>
+  <text x="360" y="34" text-anchor="middle">Is Bob an employee?</text>
+  <line class="ln-mut" x1="300" y1="44" x2="190" y2="58"/>
+  <line class="ln-mut" x1="420" y1="44" x2="530" y2="58"/>
+
+  <text x="180" y="78" class="t-caps" text-anchor="middle">closed world: a database</text>
+  <text x="540" y="78" class="t-caps" text-anchor="middle">open world: the Web</text>
+
+  <rect class="box-plain" x="90" y="92" width="180" height="26"/>
+  <rect class="box-plain" x="90" y="118" width="180" height="26"/>
+  <rect class="box-plain" x="90" y="144" width="180" height="26"/>
+  <rect class="box-plain" x="90" y="170" width="180" height="26"/>
+  <text x="102" y="110" class="t-sm">employees</text>
+  <text x="102" y="136">Ann</text>
+  <text x="102" y="162">Carlos</text>
+  <text x="102" y="188">Dee</text>
+  <line class="ln-accent" x1="180" y1="196" x2="180" y2="212" marker-end="url(#fig31-4-a)"/>
+  <rect class="box-warm" x="100" y="214" width="160" height="30" rx="4"/>
+  <text x="180" y="234" text-anchor="middle">No (false)</text>
+
+  <rect class="box-plain" x="396" y="92" width="128" height="30" rx="3"/>
+  <rect class="box-plain" x="556" y="92" width="128" height="30" rx="3"/>
+  <rect class="box-plain" x="476" y="148" width="128" height="30" rx="3"/>
+  <g>
+    <text class="t-sm" x="460" y="111" text-anchor="middle">Ann works here</text>
+    <text class="t-sm" x="620" y="111" text-anchor="middle">Carlos works here</text>
+    <text class="t-sm" x="540" y="167" text-anchor="middle">Dee works here</text>
+  </g>
+  <g class="ln-mut">
+    <line x1="524" y1="107" x2="556" y2="107"/>
+    <line x1="470" y1="122" x2="510" y2="148"/>
+    <line x1="610" y1="122" x2="570" y2="148"/>
+  </g>
+  <line class="ln-accent" x1="540" y1="178" x2="540" y2="212" marker-end="url(#fig31-4-a)"/>
+  <rect class="box-plain" x="420" y="214" width="240" height="30" rx="4"/>
+  <text x="540" y="234" text-anchor="middle">Unknown: someone may say so</text>
+
+  <text x="360" y="270" class="t-sm t-it" text-anchor="middle">Ann, Carlos, Dee and Bob are invented for illustration.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 31.4</span>
+Same data, different conclusion: on the Web another document may add the
+missing fact.</figcaption>
+</figure>
+
+<p>
+That difference is what makes the mappings in Chapter 33 approximate rather
+than exact, and it is the reason the deduction in Chapter 7 could not default
+to treating a <a class="gl-ref" href="../glossary.html#uri">URI</a> as a page.
+</p>
+
+<h2>31.7 Records, columns and cells</h2>
+
+<p>
+The note&#8217;s second half maps existing data models onto the new one.
+An entity-relationship model, the boxes-and-lines diagram used to design
+databases, maps almost directly, except that relationships have URIs, so
+anyone can make one. One person may define a vehicle as having wheels, a
+weight and a length, and not foresee colour; someone else can still say a
+given car is red, using a colour <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> from elsewhere.
 </p>
 
 <p>
-That assumption is what makes the mappings in Chapter 33 approximate rather
-than exact, and it is the reason the deduction in Chapter 7 could not default
-to treating a <a class="gl-ref" href="../glossary.html#uri">URI</a> as a page.
+For relational databases the mapping is three lines (the example column is
+ours).
+</p>
+
+<table>
+<tr><th>In a database</th><th>In <a class="gl-ref" href="../glossary.html#rdf">RDF</a></th><th>Example</th></tr>
+<tr><td>a record (row)</td><td>a node</td><td>employee 42</td></tr>
+<tr><td>a field (column) name</td><td>a property</td><td>shoe size</td></tr>
+<tr><td>a field&#8217;s contents (table cell)</td><td>a value</td><td>44</td></tr>
+</table>
+
+<p>
+A database never checks meaning: a query can join any columns of matching
+type, listing, in his example, houses with as many rooms as an
+employee&#8217;s shoe size. On the Web, information relating different
+databases can be added alongside them.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The denial had to be repeated.</strong> The claim that the
-Semantic Web was artificial intelligence by another name persisted for
-twenty years, and the distinction this note draws, between operating on
-well-defined data and comprehending language, is now the distinction between
-knowledge graphs and language models.</li>
-<li><strong>Both approaches arrived, separately.</strong> Systems that
-understand human mumblings were built after all, and they are not this. The
-two are now often combined, with structured data used to ground and check
-what a language model produces.</li>
-<li><strong>The globalisation argument held.</strong> Decentralised
-vocabularies that anyone may extend, and merging by mapping rather than by
-agreement, are how large-scale data integration is now done, whether or not
-RDF is used.</li>
-<li><strong>Inconsistency was handled by provenance, as predicted.</strong>
-Production systems record who said what and filter by source, which is
-section 31.5&#8217;s prescription, arrived at by necessity.</li>
+<li><strong>Knowledge graphs.</strong> Google announced its Knowledge <a class="gl-ref" href="../glossary.html#graph">Graph</a>
+in 2012: well-defined facts about entities, used in search.</li>
+<li><strong>Provenance was standardised.</strong> <a class="gl-ref" href="../glossary.html#w3c">W3C</a> PROV, a vocabulary for
+recording who produced data and how, became a Recommendation in 2013: a tool
+for the source checking of section 31.5.</li>
+<li><strong>Both approaches arrived.</strong> Systems that understand
+human mumblings were built after all, and they are not this; since
+retrieval-augmented generation was described in 2020, structured data often
+grounds what they produce.</li>
 </ul>
 </div>
 
@@ -274,14 +547,14 @@ section 31.5&#8217;s prescription, arrived at by necessity.</li>
 <p>
 The plan being defended is Chapter 30, and the test of independent invention
 invoked against earlier systems is Chapters 1 and 16. The globalisation recipe
-is Chapter 26. The relational mapping sketched here is Chapter 33, the <a class="gl-ref" href="../glossary.html#graph">graph</a>
-model is Chapter 32, and the trust argument is Chapter 37. Conceptual Graphs,
-mentioned in passing, are Chapter 39.
+is Chapter 26. The relational mapping of section 31.7 is developed in
+Chapter 33, the graph model is Chapter 32, and the trust argument is Chapter
+37. Conceptual Graphs, mentioned in passing, are Chapter 39.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">31.1</span>
 &ldquo;Asking people to make the extra effort.&rdquo; Estimate that effort for
@@ -289,9 +562,8 @@ a dataset you know, and say what would make it worth paying.</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.2</span>
-The language must be complete while applications stay limited. Explain why
-limiting the language instead would fail, using the test of independent
-invention.</p>
+A booking site only needs dates and prices. Why does the note still want the
+full language underneath?</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.3</span>
@@ -303,6 +575,11 @@ provability. For each, name something that becomes impossible.</p>
 Berners-Lee refuses to tolerate inconsistency and requires source checking
 instead. Describe a case where a system must act despite contradictory
 sources, and say what it should do.</p>
+</div>
+<div class="question">
+<p><span class="question-number">31.5</span>
+Turn one row of a spreadsheet you use into three statements, each a node, a
+property and a value.</p>
 </div>
 </details>
 

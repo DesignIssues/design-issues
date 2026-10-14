@@ -49,6 +49,17 @@
 a Design Issues note by Tim Berners-Lee, 2008-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Identity.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> data is written in <a class="gl-ref" href="../glossary.html#xml">XML</a> markup, so a tag such as <code>#foo</code> can
+mean a piece of the document, a node in the data, or the real person. Berners-Lee
+gives each kind of pointer its own attribute, shows that one <a class="gl-ref" href="../glossary.html#uri">URI</a> can change
+meaning with the file&#8217;s label, and says to identify a person by something
+unique, such as a mailbox, without confusing the two.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -75,20 +86,78 @@ People resolve these levels without noticing. Machines cannot.
 <h2>34.1 Three things a reference might mean</h2>
 
 <p>
-For a marked-up description of a person, Berners-Lee counts the levels. The
-element has attributes and children. The node has properties. The person has
-children of quite a different kind. A reference to the same identifier could
-pick out any of the three.
+The markup is XML: tagged <em>elements</em>, which carry
+<em>attributes</em> (name=value settings) and contain child elements. The data
+is RDF: a graph whose <em>nodes</em> stand for things, linked by properties.
+The XML encodes the graph; the graph describes the world.
 </p>
 
 <p>
-In an ordinary programming language one would add a character to distinguish
-them. Here that is not available, since the aim is to do everything possible
-in the existing language. His solution is to distinguish by the name of the
-attribute doing the referring, rather than by the value: one form for a
-literal string, one for the document or fragment referred to, and one for the
-abstract node.
+Berners-Lee&#8217;s example describes a person, Albert, in an element with
+<code>id="foo"</code>, and counts the levels (Figure 34.1). When something
+points at <code>#foo</code>, which does it mean?
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig34-1-t fig34-1-d">
+  <title id="fig34-1-t">One #foo, three targets</title>
+  <desc id="fig34-1-d">An excerpt of the markup: a z:person element with
+  id foo, containing Albert&#8217;s name, a z:wrote element with href pointing
+  to #foo and a z:friend element with resource pointing to #foo. Three
+  candidate targets are stacked on the right: the XML element, with one
+  attribute and four children; the RDF node, with three properties; and Albert
+  the person, with two children. The href arrow goes to the element; the
+  resource arrow goes to Albert.</desc>
+
+  <text x="160" y="24" class="t-caps" text-anchor="middle">the markup</text>
+  <text x="570" y="24" class="t-caps" text-anchor="middle">what #foo might pick out</text>
+
+  <rect class="box-plain" x="20" y="36" width="280" height="140" rx="4"/>
+  <text x="34" y="60" class="t-mono">&lt;z:person id="foo"&gt;</text>
+  <text x="50" y="80" class="t-mono">  &lt;play:name&gt;Albert&lt;/play:name&gt;</text>
+  <text x="50" y="100" class="t-mono">  &#8230;</text>
+  <text x="50" y="120" class="t-mono">  &lt;z:wrote href="#foo"/&gt;</text>
+  <text x="50" y="140" class="t-mono">  &lt;z:friend resource="#foo"/&gt;</text>
+  <text x="34" y="160" class="t-mono">&lt;/z:person&gt;</text>
+
+  <path class="ln" d="M306 116 L360 116 L360 59 L432 59"/>
+  <path d="M432 55 L440 59 L432 63 Z" fill="#2f4f4f"/>
+  <text x="372" y="50" class="t-mono">href=</text>
+
+  <path class="ln-accent" d="M306 136 L340 136 L340 179 L432 179"/>
+  <path d="M432 175 L440 179 L432 183 Z" fill="#1c5a7a"/>
+  <text x="352" y="170" class="t-mono" style="fill:#1c5a7a">resource=</text>
+
+  <rect class="box-plain" x="440" y="36" width="260" height="46" rx="4"/>
+  <text x="570" y="55" text-anchor="middle">the XML element</text>
+  <text x="570" y="72" class="t-sm" text-anchor="middle">1 attribute, 4 child elements</text>
+
+  <rect class="box" x="440" y="96" width="260" height="46" rx="4"/>
+  <text x="570" y="115" text-anchor="middle">the RDF node</text>
+  <text x="570" y="132" class="t-sm" text-anchor="middle">3 properties stated</text>
+
+  <rect class="box-warm" x="440" y="156" width="260" height="46" rx="4"/>
+  <text x="570" y="175" text-anchor="middle">Albert, the person</text>
+  <text x="570" y="192" class="t-sm" text-anchor="middle">2 children: Bill and Claire</text>
+</svg>
+<figcaption><span class="fig-label">Figure 34.1</span>
+The same identifier, three possible targets. The attribute doing the pointing,
+not the identifier, decides which level is meant.</figcaption>
+</figure>
+
+<p>
+A programming language would add a marker character, but the aim is to use
+only the existing language. So he distinguishes by the name of the referring
+attribute, not its value:
+</p>
+
+<table>
+<tr><th>Attribute</th><th>What it refers to</th><th>In the example</th></tr>
+<tr><td><code>value=</code></td><td>a <em>literal</em>: the string itself, not a reference</td><td>the name &ldquo;Joe&rdquo;</td></tr>
+<tr><td><code>href=</code></td><td>the piece of document (text, or XML fragment) that the URI points at</td><td><code>z:wrote</code> points at the element</td></tr>
+<tr><td><code>resource=</code></td><td>the abstract thing that the RDF node for that fragment describes</td><td><code>z:friend</code> points at Albert</td></tr>
+</table>
 
 <p>
 He notes why the middle form has to exist at all, and the reason is
@@ -105,16 +174,57 @@ not (in sigend XML) bits of RDF.
 
 <p>
 A section added in February 2000 is flagged in the original as a bug in the
-relationship between the two layers, and it is a clean example of the
-interpretation problem from Chapter 24.
+relationship between the two layers: Chapter 24&#8217;s interpretation
+problem, where the same bytes read differently under different rules.
 </p>
 
 <p>
-Take a <a class="gl-ref" href="../glossary.html#uri">URI</a> with a fragment, pointing into a file that describes a person. If
-the file is treated as data, the fragment identifies the person. If it is
-treated as markup, the fragment identifies the element. Since the semantics
-of a fragment come from the <a class="gl-ref" href="../glossary.html#media-type">media type</a>, as Chapter 11 requires, the same
-string means two different things depending on how the document is labelled.
+Take a URI with a <em>fragment</em> (the part after <code>#</code>) pointing
+into a file describing Ora Lassila. A fragment&#8217;s meaning comes from the
+<em><a class="gl-ref" href="../glossary.html#media-type">media type</a></em>, the label saying what kind of file it is (Chapter 11).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig34-2-t fig34-2-d">
+  <title id="fig34-2-t">Same URI, two readings</title>
+  <desc id="fig34-2-d">The URI .../foo.rdf#bar forks two ways. Served as
+  application/rdf it names Ora Lassila, the person the RDF node describes.
+  Served as text/xml it names the rdf:description element, or is undefined, or
+  names another element. The claim &#8220;I am the author of foo.rdf#bar&#8221;
+  is false under the first reading and true under the second.</desc>
+
+  <rect class="box-plain" x="230" y="16" width="260" height="34" rx="4"/>
+  <text x="360" y="38" class="t-mono" text-anchor="middle">.../foo.rdf#bar</text>
+
+  <path class="ln-mut" d="M360 50 L360 66"/>
+  <path class="ln-accent" d="M360 66 L180 66 L180 112"/>
+  <path d="M176 112 L180 120 L184 112 Z" fill="#1c5a7a"/>
+  <path class="ln-dash" d="M360 66 L540 66 L540 112"/>
+  <path d="M536 112 L540 120 L544 112 Z" fill="#8a9a9a"/>
+  <text x="192" y="97" class="t-sm" style="fill:#1c5a7a">served as application/rdf</text>
+  <text x="552" y="97" class="t-sm">served as text/xml</text>
+
+  <rect class="box-green" x="40" y="120" width="280" height="62" rx="4"/>
+  <text x="180" y="146" text-anchor="middle">Ora Lassila, the person</text>
+  <text x="180" y="166" class="t-sm" text-anchor="middle">the thing the RDF node describes</text>
+
+  <rect class="box-warm" x="400" y="120" width="280" height="62" rx="4"/>
+  <text x="540" y="146" text-anchor="middle">the rdf:description element</text>
+  <text x="540" y="166" class="t-sm" text-anchor="middle">or undefined, or another element</text>
+
+  <text x="360" y="212" text-anchor="middle">Claim: I am the author of foo.rdf#bar</text>
+  <text x="180" y="236" class="t-sm" text-anchor="middle">false: he did not author Ora Lassila</text>
+  <text x="540" y="236" class="t-sm" text-anchor="middle">true: he wrote the snippet</text>
+</svg>
+<figcaption><span class="fig-label">Figure 34.2</span>
+A fragment&#8217;s meaning comes from the media type, so relabelling the file
+changes what the URI names, and with it whether a statement is true.</figcaption>
+</figure>
+
+<p>
+Even the XML reading is unclear: it might name the element and its contents,
+nothing, or another element with the same id. His verdict:
 </p>
 
 <blockquote>
@@ -126,20 +236,26 @@ documents. So this distinction is nonsense.
 </blockquote>
 
 <p>
-He explains why the easy fix is not enough. The data layer could simply defer
-to the markup definition and refer to the node described by the element. But
-the data layer needs to make statements about documents and elements
-themselves, and the two must stay distinguishable. His own example is the one
-that makes it vivid: he might want to state that he wrote a snippet, and it
-would be tempting to say he is the author of that <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a>, but he
-is not the author of Ora Lassila.
+The easy fix fails. RDF could take the URI to mean the node the element
+describes, but RDF must also make statements about elements themselves.
+</p>
+
+<p>
+He wrote the snippet, and might say he is the author of
+<code>foo.rdf#bar</code>; but he is not the author of Ora Lassila (Figure
+34.2). He lists three remedies. For data written
+inline, RDF already has <code>parseType="Resource"</code> (the reference is to
+the RDF thing) and <code>parseType="Literal"</code> (it is to the XML). An
+interpretation property could link an XML subtree to the RDF object it
+describes. And he proposes a new attribute, <code>object=</code>, to refer to
+the RDF node, leaving <code>resource=</code> to point at a fragment.
 </p>
 
 <h2>34.3 Identifying things that have no address</h2>
 
 <p>
-The second half is the part that became standard practice, and it begins with
-a warning about terminology.
+The second half is the part that became standard practice, and it carries a
+warning about terminology.
 </p>
 
 <blockquote>
@@ -153,96 +269,109 @@ not of course good design.
 <p>
 The method he proposes instead is to identify a thing by a property that
 happens to be unambiguous, rather than by giving it an address it does not
-have.
+have. Ora gets an anonymous node, with no URI. If no two people share a
+mailbox, two descriptions with the same mailbox can be <em>merged</em> into
+one person, and conclusions drawn.
+</p>
+
+<p>
+Shortcuts are sometimes needed, but they cost something. A <em>compound
+property</em> such as <code>author-mailbox</code> collapses two steps into one
+arrow.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig34-1-t fig34-1-d">
-  <title id="fig34-1-t">Identifying a person without giving them a URI</title>
-  <desc id="fig34-1-d">The wrong model conflates a person with their mailbox.
-  The right model gives the person an anonymous node and attaches the mailbox
-  as a property; because no two people share a mailbox, two descriptions can
-  be merged and conclusions drawn.</desc>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig34-3-t fig34-3-d">
+  <title id="fig34-3-t">Identifying a person without giving them a URI</title>
+  <desc id="fig34-3-d">Left, the shortcut: a book has an author-mailbox arrow
+  straight to a mailbox, and the dashed empty circle where the author should
+  be is not in the graph, so facts about the author have nowhere to go.
+  Right, the model: the book has an author arrow to an anonymous node, which
+  has a mailbox arrow to the mailbox. A second record, another anonymous
+  node, has the same mailbox and the name Ora Lassila. Because no two people
+  share a mailbox, the two nodes are merged and a machine can conclude that
+  the author of the book is named Ora Lassila.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#b04a4a">the shortcut</text>
-  <circle cx="120" cy="98" r="30" fill="#fdf5f5" stroke="#d9b0b0" stroke-width="1.6"/>
-  <text x="120" y="94" class="t-sm" text-anchor="middle">the</text>
-  <text x="120" y="110" class="t-sm" text-anchor="middle">author</text>
-  <path class="ln" stroke="#c98a8a" d="M 152 98 L 216 98"/>
-  <path d="M 210 93 L 222 98 L 210 103 Z" fill="#c98a8a"/>
-  <text x="184" y="88" class="t-sm" text-anchor="middle" fill="#b04a4a">author-mailbox</text>
-  <rect x="222" y="82" width="106" height="32" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="275" y="102" class="t-sm" text-anchor="middle">a mailbox</text>
-  <text x="180" y="152" class="t-sm" text-anchor="middle">There is no node for the person.</text>
-  <text x="180" y="170" class="t-sm t-it" text-anchor="middle">Nothing can be said about them later.</text>
+  <text x="170" y="24" class="t-caps" text-anchor="middle" style="fill:#b08d57">the shortcut</text>
+  <rect class="box-warm" x="20" y="60" width="90" height="34" rx="4"/>
+  <text x="65" y="82" text-anchor="middle">a book</text>
+  <path class="ln" d="M110 77 L214 77"/>
+  <path d="M214 73 L222 77 L214 81 Z" fill="#2f4f4f"/>
+  <text x="166" y="66" class="t-sm" text-anchor="middle">author-mailbox</text>
+  <rect class="box-plain" x="222" y="60" width="100" height="34" rx="4"/>
+  <text x="272" y="82" text-anchor="middle">a mailbox</text>
+  <circle class="ln-dash" cx="166" cy="150" r="26"/>
+  <text x="166" y="196" class="t-sm" text-anchor="middle">no node for the author</text>
+  <text x="166" y="214" class="t-sm t-it" text-anchor="middle">facts about the author have nowhere to go</text>
 
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="196"/>
+  <line class="ln-mut" x1="350" y1="14" x2="350" y2="240"/>
 
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">the model</text>
-  <circle cx="452" cy="98" r="30" fill="#ffffff" stroke="#5a8f5a" stroke-width="1.8" stroke-dasharray="4 3"/>
-  <text x="452" y="94" class="t-sm" text-anchor="middle">a</text>
-  <text x="452" y="110" class="t-sm" text-anchor="middle">person</text>
-  <text x="452" y="146" class="t-sm t-it" text-anchor="middle">no URI needed</text>
-  <path class="ln" stroke="#5a8f5a" d="M 484 88 L 552 68"/>
-  <path d="M 544 63 L 558 67 L 545 73 Z" fill="#5a8f5a"/>
-  <text x="520" y="56" class="t-sm" text-anchor="middle" fill="#3f6f3f">mailbox</text>
-  <rect x="558" y="52" width="106" height="30" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="611" y="72" class="t-sm" text-anchor="middle">a mailbox</text>
-  <path class="ln" stroke="#5a8f5a" d="M 484 110 L 552 130"/>
-  <path d="M 544 126 L 558 132 L 543 136 Z" fill="#5a8f5a"/>
-  <text x="520" y="150" class="t-sm" text-anchor="middle" fill="#3f6f3f">name</text>
-  <rect x="558" y="116" width="106" height="30" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="611" y="136" class="t-sm" text-anchor="middle">a name</text>
+  <text x="540" y="24" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">the model</text>
+  <rect class="box-warm" x="370" y="44" width="80" height="32" rx="4"/>
+  <text x="410" y="65" text-anchor="middle">a book</text>
+  <path class="ln" d="M450 60 L500 60"/>
+  <path d="M500 56 L508 60 L500 64 Z" fill="#2f4f4f"/>
+  <text x="479" y="50" class="t-sm" text-anchor="middle">author</text>
+  <circle class="box-green" cx="530" cy="60" r="22" style="stroke-dasharray:4 3"/>
+  <text x="560" y="64" class="t-sm t-it">anonymous node</text>
 
-  <line class="ln-mut" x1="24" y1="212" x2="696" y2="212"/>
-  <text x="24" y="236" class="t-sm">Because no two people share a mailbox, the property is unambiguous, and so:</text>
-  <rect class="box-green" x="24" y="250" width="672" height="72" rx="4"/>
-  <text x="360" y="274" class="t-sm" text-anchor="middle">the author of the book has this mailbox &#183; the person with this mailbox is named Ora Lassila</text>
-  <path class="ln-mut" d="M 360 282 L 360 294"/>
-  <text x="360" y="312" class="t-sm" text-anchor="middle" fill="#3f6f3f">therefore: the name of the author of the book is Ora Lassila</text>
+  <path class="ln" d="M530 82 L530 122"/>
+  <path d="M526 122 L530 130 L534 122 Z" fill="#2f4f4f"/>
+  <text x="538" y="108" class="t-sm">mailbox</text>
+  <rect class="box-plain" x="480" y="130" width="100" height="32" rx="4"/>
+  <text x="530" y="151" text-anchor="middle">a mailbox</text>
+
+  <text x="670" y="116" class="t-sm t-it" text-anchor="middle">another record</text>
+  <circle class="box-green" cx="670" cy="146" r="20" style="stroke-dasharray:4 3"/>
+  <path class="ln" d="M650 146 L588 146"/>
+  <path d="M588 142 L580 146 L588 150 Z" fill="#2f4f4f"/>
+  <text x="615" y="138" class="t-sm" text-anchor="middle">mailbox</text>
+  <path class="ln" d="M670 166 L670 204"/>
+  <path d="M666 204 L670 212 L674 204 Z" fill="#2f4f4f"/>
+  <text x="678" y="192" class="t-sm">name</text>
+  <rect class="box-green" x="610" y="212" width="100" height="32" rx="4"/>
+  <text x="660" y="233" text-anchor="middle">Ora Lassila</text>
+
+  <line class="ln-mut" x1="24" y1="258" x2="696" y2="258"/>
+  <text x="360" y="284" class="t-sm" text-anchor="middle">One mailbox, so one person: merging the two nodes lets a machine conclude that the book&#8217;s author is named Ora Lassila.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 34.1</span>
-Berners-Lee&#8217;s gloss: the shortcut &ldquo;the author is this address&rdquo;
-really means &ldquo;the author is somebody with that mailbox&rdquo;, and
-making the two steps explicit exposes both the nature of the identity claim
-and its limits.</figcaption>
+<figcaption><span class="fig-label">Figure 34.3</span>
+Berners-Lee&#8217;s gloss: the shortcut &ldquo;the author is
+ora.lassila@research.nokia.com&rdquo; really means the author is somebody with
+that mailbox. Drawing the two steps exposes the identity claim and its
+limits.</figcaption>
 </figure>
 
 <p>
-He is clear that shortcuts are sometimes needed, and equally clear about what
-they cost. Where a compound property collapses the two steps, there is no
-node for the author at all, and the fact that a person wrote the book and has
-that mailbox must be expressed somewhere else. The <a class="gl-ref" href="../glossary.html#schema">schema</a> is a good place,
-because it makes the expansion evident to any processing machinery.
+With the shortcut there is no node for the author, and the fact that a person
+wrote the book and has that mailbox must be stated elsewhere. The
+<em><a class="gl-ref" href="../glossary.html#schema">schema</a></em>, the published definition of a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>&#8217;s terms, is
+a good place, because it makes the expansion evident to any processing
+machinery.
 </p>
 
 <p>
-He also declines, twice and explicitly, to settle which properties should be
-treated as identifying, calling it a rat hole that is not core to the
-discussion. That restraint is the same one as Chapter 22: the mechanism can
-be specified without settling the philosophy.
+He also declines, explicitly, to settle which properties should be treated as
+identifying, calling it a rat hole that is not core to the discussion. That
+restraint is the same one as Chapter 22: the mechanism can be specified
+without settling the philosophy.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The mechanism was standardised.</strong> Inverse functional
-properties, which formalise &ldquo;no two things share this value&rdquo;,
-are part of <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of February 2004, and identifying a
-person by a hashed mailbox became the standard practice in the Friend of a
-Friend <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>.</li>
-<li><strong>The fragment clash was resolved by media type.</strong>
-Registering data-carrying media types with their own fragment rules settled
-which interpretation applies, which is Chapter 11&#8217;s axiom doing the work it
-was designed for.</li>
-<li><strong>The rat hole stayed open.</strong> Which properties may be treated
-as identifying is still decided per vocabulary and per application, and
-incorrect assumptions remain a standard source of bad merges.</li>
-<li><strong>The privacy cost arrived later.</strong> Identifying people by an
-unambiguous property makes records joinable across datasets by design, which
-is useful for integration and is exactly the mechanism Volume VII worries
-about.</li>
+<li><strong>The mechanism was standardised.</strong> <em>Inverse
+functional</em> properties, which formalise &ldquo;no two things share this value&rdquo;,
+are part of <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of February 2004. The Friend of a
+Friend (FOAF) vocabulary identifies people by mailbox, or by a scrambled
+(hashed) form that hides the address.</li>
+<li><strong>RDF got its own media type.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3870, published in
+September 2004, registered <code>application/rdf+xml</code>, a label under
+which RDF&#8217;s own fragment rules apply.</li>
+<li><strong>The question of what a URI names went to the <a class="gl-ref" href="../glossary.html#tag">TAG</a>.</strong> In June
+2005 the W3C Technical Architecture Group resolved its &ldquo;httpRange-14&rdquo;
+issue: a URI with a fragment may name anything, including a person.</li>
 </ul>
 </div>
 
@@ -251,8 +380,8 @@ about.</li>
 <p>
 The confusion over the word resource is Chapter 9, and the fragment semantics
 that produce the clash are Chapter 11. The graph model is Chapter 32, and
-what to do when a URI must be quoted rather than used is Chapter 35. The
-consequences for personal data are Chapters 72 and 73.
+what to do when a URI must be quoted rather than used is Chapter 35. Identifying people by a unique property makes records joinable across
+datasets; the consequences for personal data are Chapters 72 and 73.
 </p>
 </div>
 
@@ -260,24 +389,25 @@ consequences for personal data are Chapters 72 and 73.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">34.1</span>
-Name three things a single identifier in a marked-up document might denote,
-and say how a reader of that document tells them apart.</p>
+Name three things <code>#foo</code> might denote in Albert&#8217;s description,
+and say which attribute a writer uses to point at each.</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.2</span>
-Berners-Lee wants to say he authored a snippet without claiming to have
-authored the person it describes. Write both statements so they cannot be
-confused.</p>
+Berners-Lee wants to say he wrote a snippet without claiming to have authored
+the person it describes. Write both statements as plain English sentences, and
+say what each one needs to point at.</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.3</span>
 Pick a property you would treat as identifying. Construct the case where the
-assumption fails, and say what a merge would then produce.</p>
+assumption fails, and say what merging two descriptions into one person would
+then produce.</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.4</span>
-The compound shortcut leaves no node for the person. Show what becomes
-unsayable, using a fact you would want to add later.</p>
+The compound shortcut leaves no node for the person. Which fact about the
+author can you no longer record?</p>
 </div>
 </details>
 

@@ -1,3 +1,15 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Metadata is data about things, written so that a program can use it.
+Berners-Lee lays down two rules. First, metadata is ordinary data, so it can
+live inside a page, travel with it, or sit in a separate document, and it can
+itself be described. Second, it is a set of separate statements, none of which
+overrides another. The names for kinds of statement are URIs, so anyone can
+invent one.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -5,8 +17,9 @@ This note, begun in January 1997, opens Volume IV because it is where the
 Semantic Web starts, though it does not use the phrase. Berners-Lee says so
 himself in a preface added later: it was written before the roadmap of
 Chapter 30 and introduces the same ideas, in the historical order they arose
-at the Consortium, where the first driving application of machine-readable
-data was endorsement labels.
+at the Consortium. There the first driving application of machine-readable
+data was endorsement labels: ratings such as &ldquo;suitable for
+children&rdquo; attached to pages.
 </p>
 <p>
 The definition it gives is narrower than the word&#8217;s ordinary use, and the
@@ -23,7 +36,11 @@ things
 </blockquote>
 
 <p>
-Berners-Lee immediately says which part matters:
+When a browser fetches a page, the server also sends lines such as
+<code>Date:</code> and <code>Expires:</code>. Those lines are metadata: data
+about the page, written so that a program can act on them. Berners-Lee
+immediately says which part of the definition matters (&ldquo;software
+agents&rdquo; are programs acting on someone&#8217;s behalf):
 </p>
 
 <blockquote>
@@ -35,12 +52,9 @@ we are doing, and make everything work more smoothly and rapidly.
 </blockquote>
 
 <p>
-The clause &ldquo;or other things&rdquo; is the seed of everything in
-Volumes IV to VI. He states the intention plainly: metadata was so called
-because it began as data about web resources, but in future it should form a
-basis for machine-understandable information about anything, about people,
-things, concepts and ideas. The first step is information about information;
-the design keeps the rest in mind.
+The clause &ldquo;or other things&rdquo; is the seed of Volumes IV to VI.
+Metadata began as data about web resources, but it should in future describe
+anything: people, things, concepts and ideas. The design keeps that in mind.
 </p>
 
 <h2>27.2 The first axiom, and its consequence</h2>
@@ -51,73 +65,72 @@ the design keeps the rest in mind.
 
 <p>
 Information about information counts in all respects as information. Two
-consequences follow, and Berners-Lee draws both.
-</p>
-
-<p>
-The first is that metadata can live anywhere. It can be stored in a resource,
-and one resource may carry information about itself or about another.
+consequences follow. The first is that metadata can live anywhere, in the
+three places of Figure 27.1. (An HTML page&#8217;s <em>head</em> is the
+undisplayed part holding its title; <em>HTTP headers</em> are the lines the
+server sends ahead of the page.)
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig27-1-t fig27-1-d">
   <title id="fig27-1-t">The three places metadata is found</title>
-  <desc id="fig27-1-d">Inside the document, as in an HTML head. Carried
-  alongside it during transfer, as HTTP headers. Or in a separate document
-  that describes it. Because metadata is data, all three are the same kind of
-  thing, and the question of who is making the statement must be answered
-  separately in each case.</desc>
+  <desc id="fig27-1-d">Inside the document, as in an HTML head, where it is the
+  author&#8217;s statement. Carried alongside it during transfer, as HTTP
+  headers, where it is the publisher&#8217;s statement sent by the server. Or in
+  a separate document that describes it, written by whoever wrote that other
+  document. Because metadata is data, all three are the same kind of thing.</desc>
 
   <rect class="box" x="24" y="30" width="200" height="150" rx="4"/>
   <text x="124" y="56" class="t-caps" text-anchor="middle">inside</text>
-  <rect x="46" y="72" width="156" height="88" fill="#ffffff" stroke="#cfdde5"/>
-  <rect x="58" y="84" width="132" height="30" fill="#e8f0f5" stroke="#9dbfd0"/>
-  <text x="124" y="104" class="t-sm" text-anchor="middle" fill="#1c5a7a">the head</text>
+  <rect class="box-plain" x="46" y="72" width="156" height="88"/>
+  <rect class="box" x="58" y="82" width="132" height="30"/>
+  <text x="124" y="102" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the head</text>
   <line class="ln-mut" x1="62" y1="128" x2="186" y2="128"/>
   <line class="ln-mut" x1="62" y1="140" x2="186" y2="140"/>
   <line class="ln-mut" x1="62" y1="152" x2="150" y2="152"/>
-  <text x="124" y="202" class="t-sm" text-anchor="middle">the author&#8217;s statement</text>
+  <text x="124" y="204" class="t-sm" text-anchor="middle">the author&#8217;s statement</text>
 
   <rect class="box-warm" x="260" y="30" width="200" height="150" rx="4"/>
-  <text x="360" y="56" class="t-caps" text-anchor="middle" fill="#a07d47">alongside</text>
-  <rect x="282" y="72" width="156" height="40" fill="#fbf7f1" stroke="#d8c3a2"/>
-  <text x="292" y="88" class="t-mono" fill="#a07d47">Date:</text>
-  <text x="292" y="104" class="t-mono" fill="#a07d47">Expires:</text>
-  <path class="ln-mut" d="M 360 116 L 360 128"/>
-  <rect x="282" y="128" width="156" height="32" fill="#ffffff" stroke="#cfdde5"/>
+  <text x="360" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">alongside</text>
+  <rect class="box-plain" x="282" y="70" width="156" height="42" style="stroke:#b08d57"/>
+  <text x="294" y="87" class="t-mono" style="fill:#b08d57">Date:</text>
+  <text x="294" y="104" class="t-mono" style="fill:#b08d57">Expires:</text>
+  <path class="ln-mut" d="M 360 112 L 360 128"/>
+  <rect class="box-plain" x="282" y="128" width="156" height="32"/>
   <text x="360" y="148" class="t-sm" text-anchor="middle">the document</text>
-  <text x="360" y="202" class="t-sm" text-anchor="middle">the server&#8217;s statement</text>
+  <text x="360" y="204" class="t-sm" text-anchor="middle">the publisher&#8217;s statement,</text>
+  <text x="360" y="220" class="t-sm" text-anchor="middle">sent by the server</text>
 
   <rect class="box-green" x="496" y="30" width="200" height="150" rx="4"/>
-  <text x="596" y="56" class="t-caps" text-anchor="middle" fill="#3f6f3f">elsewhere</text>
-  <rect x="512" y="78" width="70" height="76" fill="#ffffff" stroke="#cfdde5"/>
+  <text x="596" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">elsewhere</text>
+  <rect class="box-plain" x="512" y="78" width="70" height="76"/>
   <text x="547" y="120" class="t-sm" text-anchor="middle">doc</text>
-  <rect x="614" y="78" width="70" height="76" fill="#f2f7ef" stroke="#b6cfb6"/>
-  <text x="649" y="112" class="t-sm" text-anchor="middle" fill="#3f6f3f">about</text>
-  <text x="649" y="128" class="t-sm" text-anchor="middle" fill="#3f6f3f">it</text>
-  <path class="ln" stroke="#5a8f5a" d="M 610 116 L 588 116"/>
-  <path d="M 592 111 L 582 116 L 592 121 Z" fill="#5a8f5a"/>
-  <text x="596" y="202" class="t-sm" text-anchor="middle">a third party&#8217;s statement</text>
+  <rect class="box-plain" x="614" y="78" width="70" height="76" style="stroke:#5a8f5a"/>
+  <text x="649" y="112" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">about</text>
+  <text x="649" y="128" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">it</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 612 116 L 592 116"/>
+  <path d="M 594 111 L 584 116 L 594 121 Z" fill="#5a8f5a"/>
+  <text x="596" y="204" class="t-sm" text-anchor="middle">whoever wrote the</text>
+  <text x="596" y="220" class="t-sm" text-anchor="middle">other document</text>
 
-  <line class="ln-mut" x1="24" y1="228" x2="696" y2="228"/>
-  <text x="360" y="252" class="t-sm" text-anchor="middle">Because metadata is data, it can be a first class object: it gets a URI like anything else.</text>
-  <text x="360" y="276" class="t-sm t-it" text-anchor="middle">And because metadata is data, metadata can describe metadata, without a new level of the architecture.</text>
-  <text x="360" y="308" class="t-sm" text-anchor="middle">The question the placement does not answer, and which the architecture must: whose statement is it?</text>
+  <line class="ln-mut" x1="24" y1="242" x2="696" y2="242"/>
+  <text x="360" y="266" class="t-sm" text-anchor="middle">Because metadata is data, it can be a document in its own right, with its own URI.</text>
+  <text x="360" y="288" class="t-sm t-it" text-anchor="middle">And metadata can describe metadata, without a new level of the architecture.</text>
+  <text x="360" y="314" class="t-sm" text-anchor="middle">The question the placement does not answer, and the architecture must: whose statement is it?</text>
 </svg>
 <figcaption><span class="fig-label">Figure 27.1</span>
-Berners-Lee names the open question in the same breath as the answer: one of
-the things to be rationalised is who exactly is making the statement, and
-whose property that metadata is.</figcaption>
+The same kind of data in three places. Notice the open question at the
+bottom, which Berners-Lee raises in the same breath. For headers he answers
+it: the server acts for the publisher.</figcaption>
 </figure>
 
 <p>
 The second consequence is recursion without hierarchy. Metadata may itself
-have an owner and an expiry date, so there is meta-metadata, but the
-architecture does not distinguish many levels. It says metadata is data and
-lets the rest follow. Berners-Lee calls this a certain consistency, and it is
-the same move as Chapter 2&#8217;s refusal to distinguish names from addresses:
-one kind of thing, not a tower of kinds.
+have an owner and an expiry date, so there is meta-metadata (data about the
+metadata), but the architecture does not distinguish many levels. It says
+metadata is data and lets the rest follow. It is the same move as Chapter 3&#8217;s refusal to
+distinguish names from addresses: one kind of thing, not a tower of kinds.
 </p>
 
 <h2>27.3 The second axiom: independent assertions</h2>
@@ -128,14 +141,10 @@ set of independent assertions.</p>
 </div>
 
 <p>
-Two assertions about the same resource stand alone. Grouped, they mean their
-logical conjunction, and since conjunction commutes, a collection of
-assertions is an unordered set.
-</p>
-
-<p>
-The consequence is a prohibition, and it rules out a great deal of existing
-practice:
+Two assertions about the same resource stand alone. Taken together they
+simply mean &ldquo;this AND that&rdquo;, and AND does not care about order, so
+a collection of assertions is an unordered set. The consequence is a
+prohibition, and it rules out a great deal of existing practice:
 </p>
 
 <blockquote>
@@ -145,46 +154,188 @@ Each assertion stands independently of others.
 <cite>Metadata Architecture, 1997</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig27-2-t fig27-2-d">
+  <title id="fig27-2-t">Independent statements and statements that are really one</title>
+  <desc id="fig27-2-d">Left: a label on a pair of jeans says waist 32 inches
+  and price 28 dollars. Dropping one statement leaves a label saying price 28
+  dollars, which is still true. Right: a label says the punishment is 2 months
+  in jail and a 3000 dollar fine. Dropping the fine to leave &ldquo;punishment:
+  2 months&rdquo; is not a valid deduction.</desc>
+  <defs>
+    <marker id="fig27-2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box-green" x="20" y="20" width="330" height="168" rx="4"/>
+  <text x="185" y="46" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">jeans: two statements</text>
+  <rect class="box-plain" x="40" y="66" width="130" height="80"/>
+  <rect class="box-plain" x="50" y="76" width="110" height="26"/>
+  <text x="105" y="94" text-anchor="middle">waist: 32 in</text>
+  <rect class="box-plain" x="50" y="110" width="110" height="26"/>
+  <text x="105" y="128" text-anchor="middle">price: $28</text>
+  <path class="ln" d="M 178 106 L 216 106" marker-end="url(#fig27-2-ah)"/>
+  <rect class="box-plain" x="224" y="92" width="110" height="28" style="stroke:#5a8f5a"/>
+  <text x="279" y="111" text-anchor="middle">price: $28</text>
+  <text x="185" y="172" class="t-sm" text-anchor="middle">dropping one: still true</text>
+
+  <rect class="box-warm" x="370" y="20" width="330" height="168" rx="4"/>
+  <text x="535" y="46" class="t-caps" text-anchor="middle" style="fill:#b08d57">sentence: one statement</text>
+  <rect class="box-plain" x="386" y="76" width="142" height="60"/>
+  <text x="457" y="100" text-anchor="middle">punishment:</text>
+  <text x="457" y="120" text-anchor="middle">2 months AND $3000</text>
+  <path class="ln" d="M 534 106 L 570 106" marker-end="url(#fig27-2-ah)"/>
+  <path class="ln" style="stroke:#b08d57" d="M 546 98 L 558 114 M 558 98 L 546 114"/>
+  <rect class="ln-dash" x="578" y="84" width="108" height="44"/>
+  <text x="632" y="102" text-anchor="middle" style="fill:#8a9a9a">punishment:</text>
+  <text x="632" y="120" text-anchor="middle" style="fill:#8a9a9a">2 months</text>
+  <text x="535" y="172" class="t-sm" text-anchor="middle">not deducible</text>
+
+  <text x="360" y="222" class="t-sm" text-anchor="middle">Independent assertions are joined by an unordered AND: reorder or remove them freely.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 27.2</span>
+The note&#8217;s own pair of examples. Independence is what lets software
+shuffle or drop statements without understanding them. A statement whose parts
+only mean something together has to be written as one assertion.</figcaption>
+</figure>
+
 <p>
-Configuration files where later rules override earlier ones, headers whose
-order determines what was applied to what, and formats where a flag elsewhere
-changes what a field means are all excluded. Chapter 32 shows what such
-constructs actually mean once written out as independent statements, and the
-answer is usually a large nested conditional that the specification never
-admitted to.
+Configuration files where later rules override earlier ones are excluded.
+Chapter 32 shows that such constructs, written out as independent statements,
+are usually a large nested conditional the specification never admitted to.
 </p>
 
 <h2>27.4 Assertions have a shape</h2>
 
 <p>
-The form is given by analogy with grammar: an assertion has a name or type,
-and a set of parameters, just as a sentence has a verb, a subject, an object
-and clauses. Where the subject is a resource and the assertion says it has a
-named property, the assertion is called an attribute of the resource.
+An assertion has a type, a subject and parameters (the other things the
+statement mentions), as a sentence has a verb, a subject and an object. The
+note writes <code>(A u1 p q&hellip;)</code>: <code>A</code> names the type,
+<code>u1</code> is the URI of the subject, and <code>p</code>, <code>q</code>
+are the rest. An assertion that a resource has a named property, such as its
+author, is an attribute. Who said it, and when, are usually left implicit.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig27-3-t fig27-3-d">
+  <title id="fig27-3-t">Anatomy of an assertion</title>
+  <desc id="fig27-3-d">Top: an attribute with type author, subject
+  http://example.org/report and value Jane Smith, read like a sentence of verb,
+  subject and object. Middle: a link, where the report points to an earlier
+  version through the relationship previous-version, which is itself defined
+  in a document with its own URI. Bottom: every assertion also has implicit
+  parameters, who said it and when.</desc>
+  <defs>
+    <marker id="fig27-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="24" class="t-caps">an attribute: (A u1 p)</text>
+  <rect class="box-plain" x="24" y="36" width="180" height="52" rx="3"/>
+  <text x="114" y="56" class="t-sm" text-anchor="middle">type (A)</text>
+  <text x="114" y="76" text-anchor="middle">author</text>
+  <rect class="box" x="228" y="36" width="264" height="52" rx="3"/>
+  <text x="360" y="56" class="t-sm" text-anchor="middle">subject (u1)</text>
+  <text x="360" y="77" class="t-mono" text-anchor="middle">http://example.org/report</text>
+  <rect class="box-plain" x="516" y="36" width="180" height="52" rx="3"/>
+  <text x="606" y="56" class="t-sm" text-anchor="middle">value (p)</text>
+  <text x="606" y="76" text-anchor="middle">Jane Smith</text>
+  <path class="ln-mut" d="M 24 98 L 24 104 L 696 104 L 696 98"/>
+  <text x="360" y="124" class="t-sm" text-anchor="middle">like a sentence: verb &#183; subject &#183; object</text>
+
+  <text x="24" y="154" class="t-caps">a link: (A u1 u2)</text>
+  <rect class="box" x="24" y="164" width="160" height="40" rx="3"/>
+  <text x="104" y="189" text-anchor="middle">u1 (report)</text>
+  <rect class="box" x="480" y="164" width="216" height="40" rx="3"/>
+  <text x="588" y="189" text-anchor="middle">u2 (earlier version)</text>
+  <path class="ln-accent" d="M 184 184 L 476 184" marker-end="url(#fig27-3-ah)"/>
+  <text x="330" y="206" text-anchor="middle" style="fill:#1c5a7a">previous-version</text>
+  <path class="ln-dash" d="M 330 213 L 330 234"/>
+  <rect class="box-green" x="180" y="234" width="300" height="32" rx="3"/>
+  <text x="330" y="254" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">definition of previous-version (its own URI)</text>
+
+  <line class="ln-mut" x1="24" y1="284" x2="696" y2="284"/>
+  <text x="360" y="306" class="t-sm" text-anchor="middle">implicit in every assertion: who said it &#183; when it was said</text>
+</svg>
+<figcaption><span class="fig-label">Figure 27.3</span>
+Every assertion has a type, a subject and parameters. A link is the case where
+the parameter is another URI. The type is named by a URI too, so anyone can
+coin one.</figcaption>
+</figure>
+
+<h3>Links are assertions too</h3>
+
 <p>
-From this the note derives what it needs: a space for attribute names, which
-must be global because anyone may coin one, which means URIs. The path from
-this paragraph to the triple of Chapter 32 is short and the note takes it
-without ceremony.
+A link is an assertion relating two resources: the triple
+<code>(A u1 u2)</code> of a relationship type and two URIs, as in the
+versioning example of Figure 27.3. Names for types must come from a global
+space, because anyone may coin one, and that means URIs. The triple of
+Chapter 32 is already here.
 </p>
 
 <h2>27.5 Self-describing information</h2>
 
 <p>
-The goal stated in the middle of the note is the one that explains why any of
-this was worth doing. Berners-Lee wants information that carries, with
-itself, enough to say what it is, so that a program meeting it for the first
-time can do something correct with it rather than guessing.
+The note&#8217;s central goal explains why this was worth doing. Berners-Lee wants data that &ldquo;carries a reference to the
+specification of the semantics&rdquo; of its assertions: each type of
+statement points, by URI, to its own definition. A program meeting an
+unfamiliar type can follow that link and extend what it understands, rather
+than guessing.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig27-4-t fig27-4-d">
+  <title id="fig27-4-t">Learning a new word by following its link</title>
+  <desc id="fig27-4-d">A program meets the statement &ldquo;coolness:
+  high&rdquo;, whose type it does not know. It follows the type&#8217;s URI
+  and can find, in increasing order of power, a human-readable definition, as
+  PICS offered in 1997; a machine-readable syntax, as in PICS or an SGML DTD;
+  and a machine-readable meaning, which needed a future logic language.</desc>
+  <defs>
+    <marker id="fig27-4-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="24" y="20" width="140" height="40" rx="3"/>
+  <text x="94" y="45" text-anchor="middle">program</text>
+  <path class="ln-mut" d="M 94 60 L 94 100"/>
+  <text x="104" y="84" class="t-sm">meets an unknown type</text>
+  <rect class="box-warm" x="24" y="100" width="140" height="40" rx="3"/>
+  <text x="94" y="125" text-anchor="middle">coolness: high</text>
+
+  <path class="ln-accent" d="M 164 120 L 300 120" marker-end="url(#fig27-4-ah)"/>
+  <text x="232" y="110" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">follow the type&#8217;s URI</text>
+  <path class="ln-mut" d="M 312 30 L 304 30 L 304 210 L 312 210"/>
+
+  <rect class="box-plain" x="320" y="20" width="380" height="44" rx="3"/>
+  <text x="340" y="47" class="t-caps">1</text>
+  <text x="362" y="47">human-readable definition (PICS, 1997)</text>
+  <rect class="box-plain" x="320" y="98" width="380" height="44" rx="3"/>
+  <text x="340" y="125" class="t-caps">2</text>
+  <text x="362" y="125">machine-readable syntax (PICS / SGML DTD)</text>
+  <rect class="box-plain" x="320" y="176" width="380" height="44" rx="3"/>
+  <text x="340" y="203" class="t-caps">3</text>
+  <text x="362" y="203">machine-readable meaning (future: logic language)</text>
+  <path class="ln-mut" d="M 510 64 L 510 98 M 510 142 L 510 176"/>
+</svg>
+<figcaption><span class="fig-label">Figure 27.4</span>
+Self-description means the data points to its own dictionary. Each rung lets
+software do more without waiting for large companies or a standards committee
+to agree.</figcaption>
+</figure>
+
 <p>
-The rest of the note works through what was then the concrete case: PICS
-labels, the endorsement format whose architecture already allowed a label to
-be embedded, retrieved separately, or passed during the transfer. Berners-Lee
-uses it as the worked example of a general shape, and the generalisation is
-what survived. PICS did not.
+PICS (the Platform for Internet Content Selection, W3C&#8217;s endorsement
+label format) is the note&#8217;s running example. The rest of the note,
+rough by its own account, covers label syntax, authorship, manipulating
+labels without knowing their vocabulary, and ordering. The generalisation
+survived. PICS did not.
 </p>
 
 <div class="since">
@@ -192,7 +343,8 @@ what survived. PICS did not.
 <ul>
 <li><strong>The general form replaced the specific one.</strong> RDF became a
 W3C Recommendation in February 1999, generalising the label idea into
-assertions about anything. PICS was superseded and formally obsoleted; the
+assertions about anything. PICS was superseded, with POWDER (a W3C
+Recommendation of 2009) taking over its job of describing groups of pages; the
 architecture described here outlived its first application by decades.</li>
 <li><strong>All three placements survive.</strong> Metadata in the document,
 in the transfer and in a separate description are still the three options, now
@@ -200,11 +352,11 @@ as embedded structured data, HTTP headers, and separately published
 descriptions.</li>
 <li><strong>The authorship question was never fully answered.</strong> Who is
 making a statement, which section 27.2 flags as needing rationalisation,
-remains the weak point: most published metadata carries no indication of who
+remains the weak point: much published metadata carries no indication of who
 asserted it, which is why Chapter 37&#8217;s treatment of trust matters.</li>
-<li><strong>The prohibition on ordering was widely ignored.</strong>
-Configuration formats and header conventions that depend on order remain
-normal, and the diagnosis in Chapter 32 still applies to them.</li>
+<li><strong>Ordering never went away.</strong> Even in 1997 the note listed
+HTTP header lines as ordered; order-dependent formats remain common, and the
+diagnosis in Chapter 32 still applies to them.</li>
 </ul>
 </div>
 
@@ -225,7 +377,8 @@ in Chapter 49.
 <div class="question">
 <p><span class="question-number">27.1</span>
 Metadata is data, so metadata can describe metadata. Show that this does not
-produce an infinite regress by writing three levels and saying where it
+produce an infinite regress by writing three levels (for instance: a page; a
+review of the page; the date the review was written) and saying where it
 stops.</p>
 </div>
 <div class="question">
@@ -235,14 +388,19 @@ and who is making the statement in each case?</p>
 </div>
 <div class="question">
 <p><span class="question-number">27.3</span>
-The independence axiom rules out later-overrides-earlier. Rewrite one
-override rule from a configuration format you know as a set of independent
-assertions.</p>
+The independence axiom rules out later-overrides-earlier. A file says
+<code>allow everyone</code> then <code>deny Bob</code>. Rewrite it as
+statements that mean the same whatever order they are read in.</p>
 </div>
 <div class="question">
 <p><span class="question-number">27.4</span>
 &ldquo;Machine understandable&rdquo; is doing the work in the definition.
 Give an example of information about a resource that is not metadata under
 this definition, and say why.</p>
+</div>
+<div class="question">
+<p><span class="question-number">27.5</span>
+The note compares a label to the label on a jam jar. Why does a label not need
+to name its subject?</p>
 </div>
 </div>

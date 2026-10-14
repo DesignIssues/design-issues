@@ -49,11 +49,20 @@
 a Design Issues note by Tim Berners-Lee, 2001-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/CG.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Conceptual Graphs are a logic drawn as boxes and arrows, older than the
+<a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>. To put them on the Web, their names are given URIs. What has to
+go is not the logic but the assumption of one closed, central knowledge base.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume IV closes with a comparison, and with an admission of why it was
-overdue. People had been telling Berners-Lee for years that the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>
+overdue. People had been telling Berners-Lee for years that the Semantic Web
 was really Conceptual Graphs, or the reverse. He explains, in January 2001,
 why the message had not landed:
 </p>
@@ -66,9 +75,8 @@ driving at.
 </blockquote>
 <p>
 Then he read the <a class="gl-ref" href="../glossary.html#specification">specification</a> and found that the two were closer than the
-examples had suggested. The chapter is worth reading as a demonstration of
-the method of Chapter 26 applied to a rival system, and as the fairest
-treatment of a competitor in the collection.
+examples had suggested. The chapter applies the webizing of Chapter 26, turning a system&#8217;s
+local names into URIs, to a rival.
 </p>
 </div>
 
@@ -83,10 +91,11 @@ conventional serializations
 </blockquote>
 
 <p>
-The operative phrase is closed worlds, and the operative consequence is in the
-next sentence: they are basically as expressive as the older interchange
-format, and so in a way only have to be webized to serve as a basis for the
-Semantic Web.
+The operative phrase is closed worlds: everything the system knows lives in
+one knowledge base, so whatever is not there is treated as absent. The next
+sentence says CGs are basically as expressive as KIF (the Knowledge
+Interchange Format, a standard text format for logic), and so only have to be
+webized to serve as a basis for the Semantic Web.
 </p>
 
 <p>
@@ -96,16 +105,15 @@ That is a considerable concession. The rival is not wrong; it is unwebized.
 <h2>39.2 Webizing, applied to a rival</h2>
 
 <p>
-The procedure is exactly the one set out in Chapter 26, and takes two
-paragraphs. Modify the syntax so that a concept or a relation may carry a
+The procedure is Chapter 26&#8217;s. Modify the syntax so that a concept or a relation may carry a
 <a class="gl-ref" href="../glossary.html#uri">URI</a>, which means allowing the characters of a URI in identifiers. Then map
 local identifiers to global ones in the usual way: the document&#8217;s URI, a hash,
 and the local name.
 </p>
 
 <p>
-Berners-Lee then separates two kinds of obstacle, and the separation is the
-most useful idea in the chapter.
+He then separates two kinds of obstacle, the most useful idea in the
+chapter.
 </p>
 
 <figure>
@@ -119,26 +127,27 @@ most useful idea in the chapter.
 
   <rect class="box" x="24" y="34" width="320" height="228" rx="4"/>
   <text x="184" y="60" class="t-caps" text-anchor="middle">intended, and kept</text>
-  <g class="t-sm">
-    <text x="44" y="92">concepts and relations are disjoint</text>
-    <text x="44" y="112" fill="#666">so you cannot describe a relation with a relation</text>
-    <text x="44" y="144">concept types map to classes</text>
-    <text x="44" y="164">relations map to properties</text>
-    <text x="44" y="196">a logic, with higher-order reach</text>
-    <text x="44" y="228" class="t-it" fill="#666">The designers meant this. The mapping</text>
-    <text x="44" y="246" class="t-it" fill="#666">is direct and nothing is lost.</text>
+  <g>
+    <text class="t-sm" x="44" y="92">concepts and relations are disjoint</text>
+    <text class="t-sm" x="60" y="112" style="fill:#8a9a9a">so a relation cannot describe a relation</text>
+    <text class="t-sm" x="44" y="144">concept types map to classes</text>
+    <text class="t-sm" x="44" y="164">relations map to properties</text>
+    <text class="t-sm" x="44" y="184">relation types map to subclasses</text>
+    <text class="t-sm" x="60" y="202" style="fill:#8a9a9a">of rdf:Property</text>
+    <text x="44" y="228" class="t-sm t-it" style="fill:#8a9a9a">The designers meant this. The mapping</text>
+    <text x="44" y="246" class="t-sm t-it" style="fill:#8a9a9a">is direct and nothing is lost.</text>
   </g>
 
   <rect class="box-warm" x="376" y="34" width="320" height="228" rx="4"/>
-  <text x="536" y="60" class="t-caps" text-anchor="middle" fill="#a07d47">incidental, and removable</text>
-  <g class="t-sm">
-    <text x="396" y="92">a closed knowledge base</text>
-    <text x="396" y="116">one central catalogue of individuals</text>
-    <text x="396" y="140">a concept has a single type</text>
-    <text x="396" y="164">a coreference set has one dominant concept</text>
-    <text x="396" y="200" class="t-it" fill="#666">Engineering decisions made before</text>
-    <text x="396" y="218" class="t-it" fill="#666">anyone needed Web scale. Removing</text>
-    <text x="396" y="236" class="t-it" fill="#666">them does the idea no damage at all.</text>
+  <text x="536" y="60" class="t-caps" text-anchor="middle" style="fill:#b08d57">incidental, and removable</text>
+  <g>
+    <text class="t-sm" x="396" y="92">a closed knowledge base</text>
+    <text class="t-sm" x="396" y="116">one central catalogue of individuals</text>
+    <text class="t-sm" x="396" y="140">a concept has a single type</text>
+    <text class="t-sm" x="396" y="164">a coreference set has one dominant concept</text>
+    <text x="396" y="200" class="t-sm t-it" style="fill:#8a9a9a">Engineering decisions made before</text>
+    <text x="396" y="218" class="t-sm t-it" style="fill:#8a9a9a">anyone needed Web scale. Removing</text>
+    <text x="396" y="236" class="t-sm t-it" style="fill:#8a9a9a">them does the idea no damage at all.</text>
   </g>
 
   <line class="ln-mut" x1="24" y1="284" x2="696" y2="284"/>
@@ -146,24 +155,23 @@ most useful idea in the chapter.
   <text x="360" y="330" class="t-sm t-it" text-anchor="middle">Only the right-hand column has to go.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 39.1</span>
-Berners-Lee is explicit that the centralising features are not an
-architectural problem with the design, but decisions made without the scaling
-requirement in view.</figcaption>
+The centralising features are not an architectural problem, only decisions
+made without Web scale in view. A coreference set is a group of names for the same
+thing; CGs make one of them the dominant, defining name.</figcaption>
 </figure>
 
 <h2>39.3 The one real difference</h2>
 
 <p>
-The disjointness of concepts and relations is treated as a deliberate choice
-to be respected rather than a defect. Berners-Lee observes that a true
-bidirectional mapping would require the rival to describe an arbitrary <a class="gl-ref" href="../glossary.html#graph">graph</a>
-at a meta level, and says he does not think that would be useful.
+In CGs, concepts and relations are disjoint: two worlds that never overlap,
+so a relation can never be the subject of another relation. This is a
+deliberate choice, not a defect. A true two-way mapping would require CGs to
+reify an arbitrary <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#graph">graph</a>, describing it as data about statements, and
+Berners-Lee does not think that would be useful.
 </p>
 
 <p>
-The principle he states in passing is the one worth carrying out of the
-chapter, and it applies to every language that has ever been asked to be more
-general than its designers wanted:
+The principle he states in passing is the one worth keeping:
 </p>
 
 <blockquote>
@@ -174,42 +182,204 @@ language to be universal itself.
 </blockquote>
 
 <p>
-Universality is a property required of the substrate, not of everything built
-on it. Chapter 2&#8217;s third axiom says the same thing about identifier spaces.
+Universality is a property required of the base language, not of everything
+built on it. Section 2.7 makes a neighbouring point about names: URI space
+must be universal, but nothing obliges it to be the only universal space.
 </p>
 
 <h2>39.4 Where the shapes do not match</h2>
 
-<p>
-One structural difference is recorded without a resolution. Properties in the
-Semantic Web model take exactly two arguments; relations in Conceptual Graphs
-need not. Relations of more than two arguments must therefore be broken up,
-which is possible and is not free.
-</p>
+<h3>Two arguments or many</h3>
 
 <p>
-A second difference is more interesting because it is about authority. In the
-rival system a concept is associated with a single type, usually its
-creator&#8217;s. Berners-Lee notes that on the Web a third party may equally well
-assert a type for something, and that such statements are ordinary rather than
-exceptional. Anyone may say anything about anything, so a thing&#8217;s type is not
-the property of whoever first named it.
+Properties in the Semantic Web take exactly two arguments, a subject and an
+object. Relations in CGs may be n-ary, taking any number. A three-way
+relation such as <em>Leeds lies between York and Manchester</em> must be
+broken up, which is possible and is not free.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig39-2-t fig39-2-d">
+  <title id="fig39-2-t">Breaking a three-way relation into two-way links</title>
+  <desc id="fig39-2-d">On the left, a Conceptual Graph relation Between has
+  three numbered arcs to Leeds, York and Manchester. On the right, RDF
+  introduces an extra node of type Between, with three properties arg1, arg2
+  and arg3 pointing to the same three cities.</desc>
+  <defs>
+    <marker id="fig39-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="175" y="28" class="t-caps" text-anchor="middle">conceptual graph</text>
+  <ellipse class="box-warm" cx="175" cy="100" rx="52" ry="20"/>
+  <text x="175" y="105" text-anchor="middle">Between</text>
+  <line class="ln" x1="145" y1="116" x2="70" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="175" y1="120" x2="175" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="205" y1="116" x2="285" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <text x="96" y="156" class="t-sm" text-anchor="end">1</text>
+  <text x="184" y="160" class="t-sm">2</text>
+  <text x="256" y="156" class="t-sm">3</text>
+  <rect class="box" x="25" y="190" width="80" height="30" rx="3"/>
+  <text x="65" y="210" text-anchor="middle">Leeds</text>
+  <rect class="box" x="135" y="190" width="80" height="30" rx="3"/>
+  <text x="175" y="210" text-anchor="middle">York</text>
+  <rect class="box" x="235" y="190" width="110" height="30" rx="3"/>
+  <text x="290" y="210" text-anchor="middle">Manchester</text>
+  <text x="175" y="252" class="t-sm" text-anchor="middle">one relation node; its arcs are numbered</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="258"/>
+
+  <text x="540" y="28" class="t-caps" text-anchor="middle">rdf</text>
+  <text x="540" y="70" class="t-sm" text-anchor="middle" style="fill:#b08d57">extra node</text>
+  <rect class="box-warm" x="480" y="82" width="120" height="34" rx="3"/>
+  <text x="540" y="104" text-anchor="middle" class="t-mono">[a :Between]</text>
+  <line class="ln" x1="505" y1="116" x2="420" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="540" y1="116" x2="540" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="575" y1="116" x2="655" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <text x="446" y="156" class="t-sm t-mono" text-anchor="end">:arg1</text>
+  <text x="549" y="160" class="t-sm t-mono">:arg2</text>
+  <text x="626" y="156" class="t-sm t-mono">:arg3</text>
+  <rect class="box" x="380" y="190" width="80" height="30" rx="3"/>
+  <text x="420" y="210" text-anchor="middle">Leeds</text>
+  <rect class="box" x="500" y="190" width="80" height="30" rx="3"/>
+  <text x="540" y="210" text-anchor="middle">York</text>
+  <rect class="box" x="600" y="190" width="110" height="30" rx="3"/>
+  <text x="655" y="210" text-anchor="middle">Manchester</text>
+  <text x="540" y="252" class="t-sm" text-anchor="middle">a new node; each arc becomes a property</text>
+</svg>
+<figcaption><span class="fig-label">Figure 39.2</span>
+A CG arc already carries a small integer, so the mapping into two-argument
+RDF is natural. The cost is the extra node on the right, which every query
+must now step through.</figcaption>
+</figure>
+
+<h3>Who may say what type a thing is</h3>
+
+<p>
+In CGs a concept has a single type, usually its creator&#8217;s. On the Web,
+Berners-Lee notes, a third party may equally well assert a type for
+something, and that is ordinary. A thing&#8217;s type is not the
+property of whoever first named it.
 </p>
 
 <h2>39.5 Why this chapter closes the volume</h2>
 
 <p>
-Volume IV has been about giving meaning to data, and this is where the
-question is asked of a system that had been doing so for years before the Web
-existed. The answer, that the logic was sound and the assumptions were
-parochial, is the same answer Chapter 31 gives about knowledge representation
-in general, arrived at here by examination rather than by argument.
+Volume IV has been about giving meaning to data, and here the question is
+asked of a system that did so before the Web existed. The answer, that the
+logic was sound and the assumptions local, is Chapter 31&#8217;s answer about
+knowledge representation, reached here by examination rather than argument.
 </p>
 
 <p>
-It also establishes the shape of Volume V. If the rival is a logic and the
-Semantic Web needs one, the next question is what that logic should look like
-and how it should be written down.
+It also sets up Volume V: if the Semantic Web needs a logic, what should it
+look like and how should it be written down?
+</p>
+
+<h2>39.6 Striking similarities</h2>
+
+<p>
+The best evidence is one sentence written twice: John
+Sowa&#8217;s CG form for <em>John goes to Boston by bus</em>, followed by
+Berners-Lee&#8217;s N3, the compact notation for RDF he was then developing:
+</p>
+
+<blockquote>
+<pre>[Go]-
+   (Agnt)-&gt;[Person: John]
+   (Dest)-&gt;[City: Boston]
+   (Inst)-&gt;[Bus].</pre>
+<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
+</blockquote>
+
+<blockquote>
+<pre>@prefix : &lt;#&gt;.
+[a :Go]
+   &gt;- :agent -&gt; [a :Person; = &lt;#John&gt;];
+   &gt;- :dest -&gt; [ a :City; = &lt;#Boston&gt;];
+   &gt;- :inst -&gt; [ a :Bus].</pre>
+<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
+</blockquote>
+
+<p>
+The likeness is &ldquo;remarkable down to the final period&rdquo;. Drawn out,
+the two show the one structural difference.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig39-3-t fig39-3-d">
+  <title id="fig39-3-t">John goes to Boston by bus, drawn both ways</title>
+  <desc id="fig39-3-d">On the left, the Conceptual Graph: a Go concept box
+  links through three relation ovals, Agnt, Dest and Inst, to the concept
+  boxes Person: John, City: Boston and Bus. On the right, the RDF version: a
+  blank node of type Go has three labelled arcs, agent, dest and inst, to
+  John, Boston and a Bus.</desc>
+  <defs>
+    <marker id="fig39-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="28" class="t-caps" text-anchor="middle">conceptual graph</text>
+  <rect class="box" x="20" y="125" width="70" height="30" rx="3"/>
+  <text x="55" y="145" text-anchor="middle">Go</text>
+  <ellipse class="box-warm" cx="170" cy="70" rx="36" ry="16"/>
+  <text x="170" y="75" text-anchor="middle">Agnt</text>
+  <ellipse class="box-warm" cx="170" cy="140" rx="36" ry="16"/>
+  <text x="170" y="145" text-anchor="middle">Dest</text>
+  <ellipse class="box-warm" cx="170" cy="210" rx="36" ry="16"/>
+  <text x="170" y="215" text-anchor="middle">Inst</text>
+  <line class="ln" x1="90" y1="132" x2="134" y2="78" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="90" y1="140" x2="132" y2="140" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="90" y1="148" x2="134" y2="202" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="206" y1="70" x2="238" y2="70" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="206" y1="140" x2="238" y2="140" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="206" y1="210" x2="238" y2="210" marker-end="url(#fig39-3-arr)"/>
+  <rect class="box" x="240" y="55" width="104" height="30" rx="3"/>
+  <text x="292" y="75" text-anchor="middle">Person: John</text>
+  <rect class="box" x="240" y="125" width="104" height="30" rx="3"/>
+  <text x="292" y="145" text-anchor="middle">City: Boston</text>
+  <rect class="box" x="240" y="195" width="104" height="30" rx="3"/>
+  <text x="292" y="215" text-anchor="middle">Bus</text>
+  <text x="180" y="262" class="t-sm" text-anchor="middle">boxes are concepts; ovals are relations</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="268"/>
+
+  <text x="540" y="28" class="t-caps" text-anchor="middle">rdf / n3</text>
+  <rect class="box" x="385" y="125" width="70" height="30" rx="3"/>
+  <text x="420" y="145" text-anchor="middle" class="t-mono">[a :Go]</text>
+  <line class="ln" x1="455" y1="132" x2="598" y2="72" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="455" y1="140" x2="598" y2="140" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="455" y1="148" x2="598" y2="208" marker-end="url(#fig39-3-arr)"/>
+  <text x="508" y="94" class="t-sm t-mono" text-anchor="end">:agent</text>
+  <text x="527" y="132" class="t-sm t-mono" text-anchor="middle">:dest</text>
+  <text x="508" y="196" class="t-sm t-mono" text-anchor="end">:inst</text>
+  <rect class="box" x="600" y="55" width="100" height="30" rx="3"/>
+  <text x="650" y="75" text-anchor="middle" class="t-mono">&lt;#John&gt;</text>
+  <rect class="box" x="600" y="125" width="100" height="30" rx="3"/>
+  <text x="650" y="145" text-anchor="middle" class="t-mono">&lt;#Boston&gt;</text>
+  <rect class="box" x="600" y="195" width="100" height="30" rx="3"/>
+  <text x="650" y="215" text-anchor="middle" class="t-mono">[a :Bus]</text>
+  <text x="540" y="262" class="t-sm" text-anchor="middle">every node is a thing; relations are arc labels</text>
+</svg>
+<figcaption><span class="fig-label">Figure 39.3</span>
+In a CG the relation is a node of its own kind, so the graph has two
+disjoint sorts of node (a bipartite graph). In RDF the relation is the label
+on an arc, and everything else is a Thing.</figcaption>
+</figure>
+
+<p>
+It extends to contexts. Both systems quote a whole formula to talk about it,
+as in the note&#8217;s example, loosely &ldquo;Tom
+believes that Mary wants to marry a sailor&rdquo;: CGs nest a proposition
+inside a box, and N3 wraps it in braces. Berners-Lee says the concept occurs
+&ldquo;very equivalently&rdquo; in the two. One small mismatch survives at the
+level of names: CGIF identifiers are not case sensitive, while URIs are.
 </p>
 
 <div class="since">
@@ -217,8 +387,8 @@ and how it should be written down.
 <ul>
 <li><strong>Both were standardised, separately.</strong> Conceptual Graphs
 became part of the ISO Common Logic standard, published in 2007, while the
-Web stack went through <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, RDF <a class="gl-ref" href="../glossary.html#schema">Schema</a>, <a class="gl-ref" href="../glossary.html#owl">OWL</a> and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>. The webizing described
-here was never carried out on the rival.</li>
+Web stack went through RDF, RDF <a class="gl-ref" href="../glossary.html#schema">Schema</a>, <a class="gl-ref" href="../glossary.html#owl">OWL</a> and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>. Common Logic, which
+absorbed the CG interchange format, allows names to be IRIs.</li>
 <li><strong>The n-ary problem was met by convention.</strong> Relations of
 more than two arguments are represented by introducing an intermediate node, a
 pattern the Semantic Web Best Practices group documented in April 2006. It is
@@ -229,7 +399,7 @@ Multiple types asserted by different parties are now routine, which is the
 open-world behaviour section 39.4 predicts.</li>
 <li><strong>The two-dimensional tradition outlived its notation.</strong>
 Drawing logic as circles and arrows, which the rival emphasised, is how
-graph data is universally presented, including in this book.</li>
+graph data is commonly presented, including in this book.</li>
 </ul>
 </div>
 
@@ -248,18 +418,19 @@ towards is Volume V, beginning at Chapter 40.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">39.1</span>
-Sort the design decisions of a system you know into the two columns of
-Figure 39.1. Which column is larger, and does that surprise you?</p>
+Sort the design decisions of a familiar system, such as a library catalogue
+or a phone&#8217;s contacts app, into the two columns of Figure 39.1. Which
+column is larger, and does that surprise you?</p>
 </div>
 <div class="question">
 <p><span class="question-number">39.2</span>
-The substrate must be universal; the languages on it need not be. Give an
-example of each from outside computing.</p>
+English can describe any game&#8217;s rules, but chess notation describes only
+chess. Find another pair like this.</p>
 </div>
 <div class="question">
 <p><span class="question-number">39.3</span>
-Represent a relation of four arguments using only two-argument properties.
-What did the intermediate node cost you?</p>
+Following Figure 39.2, represent <em>Anna gave Ben a book</em> using only
+two-argument properties. What did the intermediate node cost you?</p>
 </div>
 <div class="question">
 <p><span class="question-number">39.4</span>

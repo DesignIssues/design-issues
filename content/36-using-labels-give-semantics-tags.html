@@ -1,12 +1,22 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Tags are quick but mean different things to different people. Well-defined
+data is reusable but slow to enter. Berners-Lee proposes a <em>label</em>,
+made once from shared terms such as place, and attached to a folder. Every
+item in the folder carries that meaning; the folder keeps its private name.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
 Written in November 2006, at the height of enthusiasm for tagging, this note
-tries to reconcile two things that were then treated as opposites: the ease of
-typing a word, and the reusability of a well-defined term.
+tries to reconcile the ease of typing a word with the reusability of a
+well-defined term.
 </p>
 <p>
-Berners-Lee states the worry about tags without dismissing the enthusiasm:
+Berners-Lee states the worry:
 </p>
 <blockquote>
 On the other hand, there is the sinking feeling that tags are headed the same
@@ -16,8 +26,9 @@ and the hopeless ambiguity of uncontrolled user-generated keywords.
 <cite>Using labels to give semantics to tags, 2006</cite>
 </blockquote>
 <p>
-Two failure modes, and the note&#8217;s proposal is a way to sit between them
-without choosing.
+Information Retrieval is the field of document search. A controlled
+vocabulary is a fixed list of approved terms. The note looks for a way between
+that and free keywords.
 </p>
 </div>
 
@@ -26,18 +37,15 @@ without choosing.
 <p>
 On one side, tagging: quick, personal, and hard to reuse, because the same
 word means different things when used by another person or on another site.
-On the other, well-defined data: locations, relationships, authorship, all
-recorded with global identifiers under the covers, producing data that is
-extremely reusable. The problem with the second is stated plainly: it is not
-as quick as tagging with a single word off the top of one&#8217;s head.
+On the other, well-defined data: locations, relationships, authorship, each
+recorded with a global identifier (a name that means the same everywhere).
+Such data is extremely reusable, but not as quick as tagging with a single
+word off the top of one&#8217;s head.
 </p>
 
 <p>
-Berners-Lee also records a live tension in the tagging world, between tags
-whose meaning is global and tags whose meaning depends on the tagger, and
-mentions a community considering a way to declare formally that one has
-committed to use a tag the same way as another person. His comment on that
-idea describes the whole design goal:
+He mentions a community considering a way to declare that one uses a tag
+the same way as another person, and his comment states the design goal:
 </p>
 
 <blockquote>
@@ -51,125 +59,237 @@ private idea to being a group global standard.
 
 <p>
 The proposal takes its name from a physical object. A luggage label is tied to
-a bag, is written by whoever owns the bag, and carries information anyone can
-read without having to know the owner&#8217;s filing system.
+a bag by its owner and can be read by anyone. In software, a label is a set
+of common facts, built once from menus of shared terms and dropped on a
+folder.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig36-1-t fig36-1-d">
-  <title id="fig36-1-t">A label ties a private tag to a public term</title>
-  <desc id="fig36-1-d">A personal folder or tag keeps its local name and
-  convenience. A label attached to it carries statements in a shared
-  vocabulary, so everything in the folder inherits well-defined meaning without
-  the user having to choose global terms while tagging.</desc>
+  <title id="fig36-1-t">A label ties a private folder to shared terms</title>
+  <desc id="fig36-1-d">A personal folder called Soccer vs Wayland keeps its
+  local name. A label tied to it says, in shared vocabularies for place and
+  depiction, that the photos were taken at the playing field (lat 47, long 78)
+  and show our team. Everything in the folder inherits those statements.</desc>
 
   <rect class="box-warm" x="24" y="44" width="220" height="160" rx="4"/>
-  <text x="134" y="70" class="t-caps" text-anchor="middle" fill="#a07d47">my folder</text>
+  <text x="134" y="70" class="t-caps" text-anchor="middle" style="fill:#b08d57">my folder</text>
   <text x="134" y="94" class="t-mono" text-anchor="middle">Soccer vs Wayland</text>
-  <g fill="#ffffff" stroke="#d8c3a2">
+  <g fill="#fdfdfc" stroke="#b08d57">
     <rect x="44" y="112" width="54" height="40"/><rect x="106" y="112" width="54" height="40"/>
     <rect x="168" y="112" width="54" height="40"/><rect x="44" y="158" width="54" height="40"/>
     <rect x="106" y="158" width="54" height="40"/><rect x="168" y="158" width="54" height="40"/>
   </g>
-  <text x="134" y="222" class="t-sm" text-anchor="middle">quick, local, mine</text>
+  <text x="134" y="226" class="t-sm" text-anchor="middle">quick, local, mine</text>
 
   <!-- the label, drawn as a luggage tag -->
-  <g>
-    <path d="M 286 96 L 404 96 L 428 128 L 404 160 L 286 160 Z"
-          fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
-    <circle cx="300" cy="128" r="5" fill="#ffffff" stroke="#5a8f5a"/>
-    <path class="ln-mut" d="M 244 128 L 295 128"/>
-    <text x="360" y="124" class="t-caps" text-anchor="middle" fill="#3f6f3f">label</text>
-    <text x="360" y="144" class="t-sm" text-anchor="middle">attached, not renamed</text>
-  </g>
+  <path d="M 286 96 L 404 96 L 428 128 L 404 160 L 286 160 Z"
+        fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
+  <circle cx="300" cy="128" r="5" fill="#ffffff" stroke="#5a8f5a"/>
+  <path class="ln-mut" d="M 244 128 L 295 128"/>
+  <text x="358" y="122" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">label</text>
+  <text x="358" y="144" class="t-sm" text-anchor="middle">made once</text>
 
-  <path class="ln" stroke="#5a8f5a" d="M 430 128 L 472 128"/>
+  <path class="ln" style="stroke:#5a8f5a" d="M 432 128 L 470 128"/>
   <path d="M 466 123 L 478 128 L 466 133 Z" fill="#5a8f5a"/>
 
   <rect class="box-green" x="478" y="44" width="218" height="160" rx="4"/>
-  <text x="587" y="70" class="t-caps" text-anchor="middle" fill="#3f6f3f">shared vocabulary</text>
-  <g class="t-sm">
-    <text x="496" y="98">a sporting event</text>
-    <text x="496" y="122">played on this date</text>
-    <text x="496" y="146">at this location</text>
-    <text x="496" y="170">between these two teams</text>
-  </g>
-  <text x="587" y="222" class="t-sm" text-anchor="middle">reusable by anyone</text>
+  <text x="587" y="70" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">shared vocabulary</text>
+  <text x="494" y="100">location: the playing field</text>
+  <text x="494" y="118">(lat 47, long 78)</text>
+  <text x="494" y="144">shows: our team</text>
+  <text x="494" y="174" class="t-sm">terms from shared vocabularies</text>
+  <text x="494" y="190" class="t-sm">(place, depiction)</text>
+  <text x="587" y="226" class="t-sm" text-anchor="middle">reusable by anyone</text>
 
   <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
   <text x="360" y="272" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements. The user never chose a global term.</text>
-  <text x="360" y="296" class="t-sm t-it" text-anchor="middle">The tag stays private and convenient; the meaning becomes public and checkable.</text>
-  <text x="360" y="322" class="t-sm" text-anchor="middle">A folder is a class. A label is what is true of everything in it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 36.1</span>
-The move is to stop asking users to tag with shared terms, and instead let
-them keep their own names while attaching, once per folder, a statement in a
-vocabulary that others can read.</figcaption>
+The user keeps the folder&#8217;s private name and attaches, once, a label
+written in terms others can read. The place and subject shown are the ones in
+the note&#8217;s own example.</figcaption>
 </figure>
 
 <h2>36.3 The example, which is a complaint about software</h2>
 
 <p>
-The worked case is domestic and is the reason the note persuades. Berners-Lee
-photographs a local soccer team twice, against two opponents, and wants to
-find the pictures later and burn a disc for the team.
+Berners-Lee photographs a local soccer team twice, against Wayland and
+against Arlington, loads the pictures into iPhoto, and wants to burn a CD for
+the team and find the photographs later.
 </p>
 
 <p>
-The first day&#8217;s photographs are all from one day, so a rule-based folder
-suffices. The second day has other photographs mixed in, so he selects the
-right ones and puts them in a plain folder. Then the wish, which any user of
-such software will recognise: he wants a folder called Soccer with the two
-others as subfolders, so that anything in either is in it.
+On the first day he took no other photographs, so a folder defined by date
+was enough (iPhoto&#8217;s smart album, whose contents are chosen by a
+rule). On the second day he took others too, so he picked the right ones by
+hand into a plain folder. Then the wish: a folder Soccer with the two as
+subfolders. Another smart album combining them works, but is not as intuitive
+and lacks the hierarchical interface he wants.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig36-2-t fig36-2-d">
+  <title id="fig36-2-t">The soccer folders as classes</title>
+  <desc id="fig36-2-d">On the left, the folders as he wanted them on screen: a
+  parent folder Soccer, which he could not make, over Soccer vs Wayland (a
+  smart album of that day's photos) and Soccer vs Arlington (a plain folder of
+  photos picked by hand). On the right, the same structure in the data model:
+  classes SoccerWaylandPhoto and SoccerArlingtonPhoto, each rdfs:subClassOf
+  Soccer. Dashed lines pair them: folder equals class, subfolder equals
+  subclass, folder name equals local tag.</desc>
+
+  <text x="145" y="28" class="t-caps" text-anchor="middle">on screen (wanted)</text>
+  <text x="575" y="28" class="t-caps" text-anchor="middle">in the data model</text>
+
+  <!-- left: folder tree -->
+  <rect class="box-warm" x="20" y="44" width="150" height="46" rx="4" style="stroke-dasharray:5 4"/>
+  <text x="95" y="63" text-anchor="middle">Soccer</text>
+  <text x="95" y="81" class="t-sm" text-anchor="middle">wanted: parent folder</text>
+  <path class="ln" d="M 35 90 L 35 206 M 35 140 L 50 140 M 35 206 L 50 206"/>
+
+  <rect class="box-warm" x="50" y="118" width="220" height="44" rx="4"/>
+  <text x="160" y="136" text-anchor="middle">Soccer vs Wayland</text>
+  <text x="160" y="153" class="t-sm" text-anchor="middle">smart album: that day&#8217;s photos</text>
+
+  <rect class="box-warm" x="50" y="184" width="220" height="44" rx="4"/>
+  <text x="160" y="202" text-anchor="middle">Soccer vs Arlington</text>
+  <text x="160" y="219" class="t-sm" text-anchor="middle">plain folder: picked by hand</text>
+
+  <!-- right: class tree -->
+  <rect class="box" x="500" y="44" width="200" height="46" rx="4"/>
+  <text x="600" y="72" class="t-mono" text-anchor="middle">Soccer</text>
+  <rect class="box" x="450" y="118" width="200" height="44" rx="4"/>
+  <text x="550" y="144" class="t-mono" text-anchor="middle">SoccerWaylandPhoto</text>
+  <rect class="box" x="450" y="184" width="200" height="44" rx="4"/>
+  <text x="550" y="210" class="t-mono" text-anchor="middle">SoccerArlingtonPhoto</text>
+  <path class="ln" d="M 650 140 L 685 140 M 650 206 L 685 206 M 685 206 L 685 98"/>
+  <path d="M 680 100 L 685 90 L 690 100 Z" fill="#2f4f4f"/>
+  <text x="672" y="109" class="t-sm t-mono" text-anchor="end">rdfs:subClassOf</text>
+
+  <!-- correspondences -->
+  <path class="ln-dash" d="M 170 67 L 500 67"/>
+  <text x="335" y="60" class="t-sm" text-anchor="middle">folder = class</text>
+  <path class="ln-dash" d="M 270 140 L 450 140"/>
+  <text x="360" y="133" class="t-sm" text-anchor="middle">subfolder = subclass</text>
+  <path class="ln-dash" d="M 270 206 L 450 206"/>
+  <text x="360" y="199" class="t-sm" text-anchor="middle">folder name = local tag</text>
+
+  <text x="360" y="262" class="t-sm t-it" text-anchor="middle">Every structure he wanted on screen is already present on the right.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 36.2</span>
+What he wanted on screen, and what it already is in the data model: the
+hierarchy is missing from the interface, not from the model.</figcaption>
+</figure>
+
+<p>
+The note observes, in separate places, that these folders are classes in
+RDF (a class is a named set of things) and that the folder names are his
+local tags. Nothing new is needed in the model, only a way to say what a
+folder means.
 </p>
 
 <p>
-He records that it can be done, as a rule-based folder combining the two, and
-says exactly what is wrong with that: it is not as intuitive, and it does not
-give him the hierarchical interface he wants. The gap is not in the data model
-but in the metaphor the software offers.
+The software&#8217;s workaround is to apply keywords to every photograph in
+a folder as a batch. The data is then stored in each photograph, but the fact
+that it was applied to the whole folder is lost. A label keeps that fact, so
+each photograph can show which label, and hence which folder, its properties
+came from.
+</p>
+
+<h2>36.4 Writing a label down</h2>
+
+<p>
+Under the covers, a label describes a set of things, so in RDF it is a class.
+The note gives three ways to write the same label, and says they are
+&ldquo;more or less inter-convertible&rdquo;:
+</p>
+
+<table>
+<tr><th>Form</th><th>What it says</th><th>Who it suits</th></tr>
+<tr><td>A rule (N3)</td><td>Anything in SoccerWaylandPhoto was taken at the
+field and shows our team.</td><td>Those who write rules</td></tr>
+<tr><td>OWL restrictions</td><td>SoccerWaylandPhoto is a subclass of the
+things at the field that depict our team.</td><td>Users of OWL, an ontology
+language (one for defining terms)</td></tr>
+<tr><td>A label vocabulary</td><td>Label-only terms on the class, plus a
+general rule copying them to each member.</td><td>A system built for
+labels</td></tr>
+</table>
+
+<h3>A label is not a photo</h3>
+
+<p>
+The note warns of one trap. The label is a class, not a photograph: who made
+the label, and when, has nothing to do with who took the photographs, or when.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
+     aria-labelledby="fig36-3-t fig36-3-d">
+  <title id="fig36-3-t">Two ways to write the label</title>
+  <desc id="fig36-3-d">Right: every photo in SoccerWaylandPhoto has location
+  the field and shows our team. Wrong: the class SoccerWaylandPhoto itself has
+  location the field and shows our team, which says the category itself is at
+  the field.</desc>
+
+  <rect class="box-green" x="20" y="20" width="330" height="170" rx="4"/>
+  <text x="40" y="48" class="t-caps" style="fill:#5a8f5a">right: about the members</text>
+  <text x="40" y="82">every photo in <tspan class="t-mono">SoccerWaylandPhoto</tspan></text>
+  <text x="56" y="108">&#8594; location: the field</text>
+  <text x="56" y="132">&#8594; shows: our team</text>
+  <text x="40" y="166" class="t-sm">each photograph was taken at the field</text>
+
+  <rect class="box-warm" x="370" y="20" width="330" height="170" rx="4"/>
+  <text x="390" y="48" class="t-caps" style="fill:#b08d57">wrong: about the class</text>
+  <path class="ln" style="stroke:#b08d57;stroke-width:2" d="M 666 34 L 682 50 M 682 34 L 666 50"/>
+  <text x="390" y="82" class="t-mono">SoccerWaylandPhoto</text>
+  <text x="406" y="108">&#8594; location: the field</text>
+  <text x="406" y="132">&#8594; shows: our team</text>
+  <text x="390" y="166" class="t-sm">this says the category itself is at the field</text>
+</svg>
+<figcaption><span class="fig-label">Figure 36.3</span>
+The label describes the members of the class, not the class.</figcaption>
+</figure>
+
+<h3>Sharing and smart labels</h3>
+
+<p>
+Tags stay local, but they can be shared, and then a rule applies: tagging
+things with another person&#8217;s tag gives them the properties of that
+tag&#8217;s label. Using someone&#8217;s tag means taking on its meaning,
+which is the mechanism behind the hope quoted in 36.1.
 </p>
 
 <p>
-The modelling observation follows in one line. The folders are classes, the
-subfolder relation is subclass, and the local names are tags. Nothing new is
-needed in the model; what is needed is a way to say what a folder means.
-</p>
-
-<h2>36.4 Where it goes next</h2>
-
-<p>
-The rest of the note works through ways to express such a label: as a rule, in
-an ontology language, in a purpose-built vocabulary, and a section headed how
-not to. It then turns to sharing labels between people, and to what
-Berners-Lee calls smart labels, where a label carries a rule with a single
-variable so that membership can be computed rather than listed.
-</p>
-
-<p>
-The direction of travel is the one described in Chapter 22: a private
-definition becomes a group&#8217;s definition by a social process, and the software
-should make each step of that process cheap.
+Combine a smart album&#8217;s selection rule with a label and the result is
+a smart label, a rule with a single variable: <em>any photo that matches X
+also has Y</em>, such as: any photo taken on the day of the Wayland game
+shows our team. Berners-Lee suggests the two metaphors together could let lay
+users write rules.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
+<li><strong>The labelling language arrived.</strong> The W3C Content Labelling
+Incubator Group mentioned in the note led to POWDER (Protocol for Web
+Description Resources), which became a W3C Recommendation in September
+2009.</li>
 <li><strong>Tagging went the way the note feared.</strong> Folksonomies
-largely did not become interoperable, and general-purpose tag reuse across
-sites never arrived.</li>
-<li><strong>The label idea won in a narrower form.</strong> Structured
-annotation attached to collections, rather than chosen per item, is how
-photograph and media libraries now record places, people and events, with the
-vocabulary supplied by the software rather than by the user.</li>
-<li><strong>Machine labelling replaced manual labelling.</strong> The gap
-between a quick tag and a well-defined term was closed from the other side:
-recognition systems now attach structured terms without the user typing
-anything, which is the outcome this note does not anticipate.</li>
-<li><strong>The interface complaint stands.</strong> Hierarchies of
-collections, where membership of a child implies membership of the parent,
-remain unusual in consumer software twenty years on.</li>
+(the unplanned tag sets of sites such as del.icio.us and Flickr) did not
+become interoperable through the 2010s.</li>
+<li><strong>The label idea won in a narrower form.</strong> Photograph
+libraries record places, people and events as structured data, with the
+vocabulary supplied by the software.</li>
+<li><strong>Machine labelling replaced manual labelling.</strong> Recognition
+systems now attach structured terms without the user typing anything, an
+outcome the note does not anticipate.</li>
+<li><strong>The interface complaint stands.</strong> Nested collections,
+where membership of a child implies membership of the parent, remain unusual
+in consumer software.</li>
 </ul>
 </div>
 
@@ -194,12 +314,13 @@ Describe a system you use that has fallen into one of them.</p>
 <div class="question">
 <p><span class="question-number">36.2</span>
 A folder is a class and a label says what is true of its members. Write the
-label for a folder on your own machine.</p>
+label for a folder on your own machine. (For example: folder Gran&#8217;s 80th
+&rarr; place: Leeds; date: 3 June; shows: Gran.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">36.3</span>
-Berners-Lee wants a way to declare that one uses a tag as another person
-does. Design that declaration, and say what it must not assume.</p>
+You and a friend both tag photographs &ldquo;holiday&rdquo;. What would each of
+you need to agree for one search to find both sets correctly?</p>
 </div>
 <div class="question">
 <p><span class="question-number">36.4</span>

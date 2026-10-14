@@ -8,8 +8,8 @@ reasonable ways to do it.
 <p>
 To a person all five say the same thing. To a program they are five unrelated
 shapes, and a program that can find the fact in one will fail on the other four.
-This chapter is the clearest explanation in the book of why knowing a
-document&#8217;s structure is not the same as knowing what it says.
+RDF records the fact itself, page &middot; author &middot; Ora, so every layout
+reduces to the same thing.
 </p>
 </div>
 
@@ -27,17 +27,24 @@ those who though in terms of the XML model.
 <p>
 The occasion was a query language workshop where two camps had become
 visible: those who wanted to query documents, and those who wanted to extract
-the meaning and query that. This chapter is the argument for the second camp,
-and it is the most useful single explanation in Volume IV.
+the meaning and query that. This chapter is the argument for the second camp.
 </p>
 </div>
 
 <h2>32.1 One fact, many documents, one graph</h2>
 
 <p>
-The demonstration is the whole argument. Take one assertion, that the author
-of a page is Ora, and write it in XML. Berners-Lee gives five renderings, all
-perfectly good XML, all meaning the same thing to a human reader, all
+XML is built of <em>elements</em>, named tags such as
+<code>&lt;author&gt;&hellip;&lt;/author&gt;</code> that nest inside one
+another, so a file forms a <em>tree</em>. An element may carry
+<em>attributes</em>, such as <code>href="page"</code>. A <em>parser</em> reads
+the file and builds the tree; a <em>query</em> is a question a program asks of
+it.
+</p>
+
+<p>
+Take one assertion, that the author of a page is Ora. Berners-Lee writes it
+five ways, all perfectly good XML, all meaning the same thing to a person, all
 producing different trees to a machine.
 </p>
 
@@ -51,60 +58,56 @@ producing different trees to a machine.
   once.</desc>
 
   <text x="24" y="24" class="t-caps">the same fact, five ways</text>
-  <g class="t-mono" font-size="11.5">
-    <rect x="24" y="36" width="318" height="52" fill="#fcfcfa" stroke="#e0e0e0"/>
-    <text x="34" y="52">&lt;author&gt;</text>
-    <text x="44" y="66">&lt;uri&gt;page&lt;/uri&gt;</text>
-    <text x="44" y="80">&lt;name&gt;Ora&lt;/name&gt;</text>
+  <rect class="box-plain" x="24" y="36" width="318" height="52"/>
+  <text x="34" y="54" class="t-mono">&lt;author&gt;</text>
+  <text x="44" y="68" class="t-mono">&lt;uri&gt;page&lt;/uri&gt;</text>
+  <text x="44" y="82" class="t-mono">&lt;name&gt;Ora&lt;/name&gt;</text>
 
-    <rect x="24" y="96" width="318" height="52" fill="#fcfcfa" stroke="#e0e0e0"/>
-    <text x="34" y="112">&lt;document href=&quot;page&quot;&gt;</text>
-    <text x="44" y="126">&lt;author&gt;Ora&lt;/author&gt;</text>
-    <text x="34" y="140">&lt;/document&gt;</text>
+  <rect class="box-plain" x="24" y="96" width="318" height="52"/>
+  <text x="34" y="114" class="t-mono">&lt;document href=&quot;page&quot;&gt;</text>
+  <text x="44" y="128" class="t-mono">&lt;author&gt;Ora&lt;/author&gt;</text>
+  <text x="34" y="142" class="t-mono">&lt;/document&gt;</text>
 
-    <rect x="24" y="156" width="318" height="66" fill="#fcfcfa" stroke="#e0e0e0"/>
-    <text x="34" y="172">&lt;document&gt;&lt;details&gt;</text>
-    <text x="44" y="186">&lt;uri&gt;page&lt;/uri&gt;</text>
-    <text x="44" y="200">&lt;author&gt;&lt;name&gt;Ora&lt;/name&gt;&lt;/author&gt;</text>
-    <text x="34" y="214">&lt;/details&gt;&lt;/document&gt;</text>
+  <rect class="box-plain" x="24" y="156" width="318" height="66"/>
+  <text x="34" y="174" class="t-mono">&lt;document&gt;&lt;details&gt;</text>
+  <text x="44" y="188" class="t-mono">&lt;uri&gt;page&lt;/uri&gt;</text>
+  <text x="44" y="202" class="t-mono">&lt;author&gt;&lt;name&gt;Ora&lt;/name&gt;&lt;/author&gt;</text>
+  <text x="34" y="216" class="t-mono">&lt;/details&gt;&lt;/document&gt;</text>
 
-    <rect x="24" y="230" width="318" height="66" fill="#fcfcfa" stroke="#e0e0e0"/>
-    <text x="34" y="246">&lt;document&gt;&lt;author&gt;</text>
-    <text x="44" y="260">&lt;uri&gt;page&lt;/uri&gt;</text>
-    <text x="44" y="274">&lt;details&gt;&lt;name&gt;Ora&lt;/name&gt;&lt;/details&gt;</text>
-    <text x="34" y="288">&lt;/author&gt;&lt;/document&gt;</text>
+  <rect class="box-plain" x="24" y="230" width="318" height="66"/>
+  <text x="34" y="248" class="t-mono">&lt;document&gt;&lt;author&gt;</text>
+  <text x="44" y="262" class="t-mono">&lt;uri&gt;page&lt;/uri&gt;</text>
+  <text x="44" y="276" class="t-mono">&lt;details&gt;&lt;name&gt;Ora&lt;/name&gt;&lt;/details&gt;</text>
+  <text x="34" y="290" class="t-mono">&lt;/author&gt;&lt;/document&gt;</text>
 
-    <rect x="24" y="304" width="318" height="34" fill="#fcfcfa" stroke="#e0e0e0"/>
-    <text x="34" y="325">&lt;document href=&quot;page&quot; author=&quot;Ora&quot;/&gt;</text>
-  </g>
+  <rect class="box-plain" x="24" y="304" width="318" height="34"/>
+  <text x="34" y="326" class="t-mono">&lt;document href=&quot;page&quot; author=&quot;Ora&quot;/&gt;</text>
 
-  <path class="ln-accent" d="M 352 188 L 396 188"/>
-  <path d="M 392 182 L 404 188 L 392 194 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 354 111 L 400 111"/>
+  <path d="M 398 105 L 410 111 L 398 117 Z" fill="#1c5a7a"/>
 
-  <text x="420" y="24" class="t-caps" fill="#3f6f3f">one triple</text>
+  <text x="420" y="24" class="t-caps" style="fill:#5a8f5a">one triple</text>
   <rect class="box-green" x="420" y="36" width="276" height="150" rx="4"/>
 
-  <circle cx="466" cy="80" r="26" fill="#ffffff" stroke="#5a8f5a" stroke-width="1.6"/>
-  <text x="466" y="84" class="t-sm" text-anchor="middle">page</text>
-  <circle cx="652" cy="146" r="26" fill="#ffffff" stroke="#5a8f5a" stroke-width="1.6"/>
-  <text x="652" y="150" class="t-sm" text-anchor="middle">Ora</text>
-  <path class="ln" stroke="#5a8f5a" d="M 488 95 L 628 133"/>
-  <path d="M 620 127 L 634 135 L 619 139 Z" fill="#5a8f5a"/>
-  <text x="556" y="104" class="t-sm" text-anchor="middle" fill="#3f6f3f">author</text>
-  <text x="558" y="176" class="t-sm t-it" text-anchor="middle">subject, predicate, object</text>
+  <circle cx="466" cy="80" r="26" fill="#fdfdfc" stroke="#5a8f5a" stroke-width="1.6"/>
+  <text x="466" y="84" text-anchor="middle">page</text>
+  <circle cx="652" cy="146" r="26" fill="#fdfdfc" stroke="#5a8f5a" stroke-width="1.6"/>
+  <text x="652" y="150" text-anchor="middle">Ora</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 491 87 L 618 121"/>
+  <path d="M 614 114 L 627 124 L 611 125 Z" fill="#5a8f5a"/>
+  <text x="548" y="88" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">author</text>
+  <text x="530" y="172" class="t-sm t-it" text-anchor="middle">subject, predicate, object</text>
 
   <rect class="box" x="420" y="200" width="276" height="138" rx="4"/>
   <text x="558" y="224" class="t-caps" text-anchor="middle">what this buys</text>
-  <g class="t-sm">
-    <text x="436" y="248">one query, not five</text>
-    <text x="436" y="270">no schema needed to find the fact</text>
-    <text x="436" y="292">a new wrapper element breaks nothing</text>
-    <text x="436" y="314">take the triples you understand,</text>
-    <text x="436" y="330">ignore the ones you do not</text>
-  </g>
+  <text x="436" y="248" class="t-sm">one query, not five</text>
+  <text x="436" y="270" class="t-sm">no document schema needed</text>
+  <text x="436" y="292" class="t-sm">a new wrapper element breaks nothing</text>
+  <text x="436" y="314" class="t-sm">a program uses the triples it knows</text>
+  <text x="436" y="330" class="t-sm">and ignores the rest</text>
 
   <line class="ln-mut" x1="24" y1="356" x2="696" y2="356"/>
-  <text x="360" y="380" class="t-sm t-it" text-anchor="middle">The same RDF graph results from many XML trees. That is the whole of the difference.</text>
+  <text x="360" y="380" class="t-sm t-it" text-anchor="middle">Five XML trees on the left; one RDF graph on the right.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 32.1</span>
 Berners-Lee&#8217;s summary: much of an XML query is an attempt to convert the set
@@ -113,12 +116,85 @@ what RDF does.</figcaption>
 </figure>
 
 <p>
-He then removes the crutch. Shown a tree of elements named v, x, y, z and w,
-a reader can say a great deal about the structure and nothing about the
-meaning. You cannot tell whether one value is a property of another or the
-reverse. You cannot even tell what real questions may be asked. The element
-names were a big hint, and they were a hint to the human only.
+The source contrasts two kinds of question:
 </p>
+
+<table>
+<tr><th>Questions about the document</th><th>Question about the world</th></tr>
+<tr><td>Is there a w element within a details element?</td><td rowspan="2">What is the author of page?</td></tr>
+<tr><td>What is the content of the w element within the first x element?</td></tr>
+</table>
+
+<p>
+The right-hand question can be answered only if the reader knows the document&#8217;s
+schema, its rules for which elements go where, and only if that schema allows
+few ways of saying the same thing. Berners-Lee calls each condition a big if.
+</p>
+
+<p>
+He then removes the crutch by renaming the elements v, x, y, z and w. The
+names were a big hint, and only to the human.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
+     aria-labelledby="fig32-2-t fig32-2-d">
+  <title id="fig32-2-t">Strip the names</title>
+  <desc id="fig32-2-d">On the left, a tree: v contains x; x contains y, which
+  carries a="ppppp", and z, which contains w with the text qqqqq. On the right,
+  two possible readings, ppppp is a y of qqqqq, or qqqqq is a z of ppppp, each
+  marked with a question mark.</desc>
+
+  <text x="24" y="24" class="t-caps">what the parser knows: structure</text>
+
+  <path class="ln-mut" d="M 170 76 L 170 99"/>
+  <path class="ln-mut" d="M 159 127 L 121 158"/>
+  <path class="ln-mut" d="M 181 127 L 219 158"/>
+  <path class="ln-mut" d="M 230 186 L 230 209"/>
+
+  <circle class="box-plain" cx="170" cy="60" r="16"/>
+  <text x="170" y="65" class="t-mono" text-anchor="middle">v</text>
+  <circle class="box-plain" cx="170" cy="115" r="16"/>
+  <text x="170" y="120" class="t-mono" text-anchor="middle">x</text>
+  <circle class="box-plain" cx="110" cy="170" r="16"/>
+  <text x="110" y="175" class="t-mono" text-anchor="middle">y</text>
+  <circle class="box-plain" cx="230" cy="170" r="16"/>
+  <text x="230" y="175" class="t-mono" text-anchor="middle">z</text>
+  <circle class="box-plain" cx="230" cy="225" r="16"/>
+  <text x="230" y="230" class="t-mono" text-anchor="middle">w</text>
+
+  <text x="110" y="208" class="t-mono" text-anchor="middle">a=&quot;ppppp&quot;</text>
+  <text x="230" y="262" class="t-mono" text-anchor="middle">qqqqq</text>
+
+  <line class="ln-mut" x1="350" y1="40" x2="350" y2="270"/>
+
+  <text x="380" y="24" class="t-caps">what it cannot know: meaning</text>
+
+  <rect class="box-plain" x="390" y="72" width="80" height="30"/>
+  <text x="430" y="92" class="t-mono" text-anchor="middle">ppppp</text>
+  <path class="ln-dash" d="M 472 87 L 590 87"/>
+  <path d="M 588 82 L 598 87 L 588 92 Z" fill="#8a9a9a"/>
+  <text x="535" y="76" class="t-mono" text-anchor="middle">y ?</text>
+  <rect class="box-plain" x="600" y="72" width="80" height="30"/>
+  <text x="640" y="92" class="t-mono" text-anchor="middle">qqqqq</text>
+
+  <text x="535" y="137" class="t-it" text-anchor="middle">or</text>
+
+  <rect class="box-plain" x="390" y="158" width="80" height="30"/>
+  <text x="430" y="178" class="t-mono" text-anchor="middle">qqqqq</text>
+  <path class="ln-dash" d="M 472 173 L 590 173"/>
+  <path d="M 588 168 L 598 173 L 588 178 Z" fill="#8a9a9a"/>
+  <text x="535" y="162" class="t-mono" text-anchor="middle">z ?</text>
+  <rect class="box-plain" x="600" y="158" width="80" height="30"/>
+  <text x="640" y="178" class="t-mono" text-anchor="middle">ppppp</text>
+
+  <text x="535" y="236" class="t-sm t-it" text-anchor="middle">or something else again</text>
+</svg>
+<figcaption><span class="fig-label">Figure 32.2</span>
+Without names a human can read, the structure is fully known and the fact is
+not. Nothing in the tree says which value describes which, or what questions
+are worth asking.</figcaption>
+</figure>
 
 <h2>32.2 Why the mapping is hairy</h2>
 
@@ -130,13 +206,88 @@ for it is hairy, and he gives four reasons.
 <table>
 <tr><th>Problem</th><th>Consequence</th></tr>
 <tr><td>The mapping is many to one</td><td>A query must cover every rendering</td></tr>
-<tr><td>You need the schema to know the mapping</td><td>Nothing can be learned from the document alone</td></tr>
+<tr><td>The schema is needed to know the mapping</td><td>Nothing can be learned from the document alone</td></tr>
 <tr><td>Schemas of the day did not carry it</td><td>An inference language would have to be added</td></tr>
-<tr><td>Queries over structure are longer than queries over statements</td><td>Combining two properties becomes unmanageable</td></tr>
+<tr><td>Queries over structure are longer than queries over statements</td><td>Combining two properties, such as books by the same author as this one, becomes unmanageable</td></tr>
 </table>
 
 <p>
-The fourth is called out as the big one, with an analogy that settles it:
+Even one property is fragile. A schema change often adds a wrapper element,
+such as <code>details</code> above or <code>div</code> in HTML, which may break
+any query built on the old structure.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig32-3-t fig32-3-d">
+  <title id="fig32-3-t">A new wrapper breaks the path</title>
+  <desc id="fig32-3-d">Top: document contains author contains name contains
+  Ora, and the path document/author/name finds Ora. Middle: the same tree with a
+  details element inserted under document; the same path stops at details and
+  finds nothing. Bottom: the triple page, author, Ora, unchanged in both
+  layouts.</desc>
+
+  <text x="24" y="30" class="t-caps">before</text>
+  <rect class="box-plain" x="24" y="44" width="96" height="30"/>
+  <text x="72" y="64" class="t-mono" text-anchor="middle">document</text>
+  <path class="ln-mut" d="M 120 59 L 150 59"/>
+  <rect class="box-plain" x="150" y="44" width="80" height="30"/>
+  <text x="190" y="64" class="t-mono" text-anchor="middle">author</text>
+  <path class="ln-mut" d="M 230 59 L 260 59"/>
+  <rect class="box-plain" x="260" y="44" width="70" height="30"/>
+  <text x="295" y="64" class="t-mono" text-anchor="middle">name</text>
+  <path class="ln-mut" d="M 330 59 L 360 59"/>
+  <rect class="box-green" x="360" y="44" width="60" height="30"/>
+  <text x="390" y="64" text-anchor="middle">Ora</text>
+
+  <path class="ln-accent" d="M 72 74 L 72 88 L 390 88 L 390 84"/>
+  <path d="M 384 86 L 390 76 L 396 86 Z" fill="#1c5a7a"/>
+  <text x="140" y="106" class="t-mono" style="fill:#1c5a7a">document/author/name</text>
+  <text x="460" y="64" style="fill:#5a8f5a">finds Ora</text>
+
+  <text x="24" y="138" class="t-caps">after a schema change adds details</text>
+  <rect class="box-plain" x="24" y="152" width="96" height="30"/>
+  <text x="72" y="172" class="t-mono" text-anchor="middle">document</text>
+  <path class="ln-mut" d="M 120 167 L 150 167"/>
+  <rect class="box-warm" x="150" y="152" width="80" height="30"/>
+  <text x="190" y="172" class="t-mono" text-anchor="middle">details</text>
+  <path class="ln-mut" d="M 230 167 L 260 167"/>
+  <rect class="box-plain" x="260" y="152" width="80" height="30"/>
+  <text x="300" y="172" class="t-mono" text-anchor="middle">author</text>
+  <path class="ln-mut" d="M 340 167 L 370 167"/>
+  <rect class="box-plain" x="370" y="152" width="70" height="30"/>
+  <text x="405" y="172" class="t-mono" text-anchor="middle">name</text>
+  <path class="ln-mut" d="M 440 167 L 470 167"/>
+  <rect class="box-plain" x="470" y="152" width="60" height="30"/>
+  <text x="500" y="172" text-anchor="middle">Ora</text>
+
+  <path class="ln-accent" d="M 72 182 L 72 196 L 190 196 L 190 192"/>
+  <path d="M 184 194 L 190 184 L 196 194 Z" fill="#1c5a7a"/>
+  <path d="M 212 186 L 224 198 M 224 186 L 212 198" stroke="#b08d57" stroke-width="2" fill="none"/>
+  <text x="140" y="216" class="t-mono" style="fill:#1c5a7a">document/author/name</text>
+  <text x="560" y="172" style="fill:#b08d57">finds nothing</text>
+
+  <rect class="box-green" x="24" y="238" width="672" height="62" rx="4"/>
+  <text x="40" y="274" class="t-caps" style="fill:#5a8f5a">as a triple</text>
+  <rect class="box-plain" x="200" y="254" width="70" height="30"/>
+  <text x="235" y="274" text-anchor="middle">page</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 270 269 L 392 269"/>
+  <path d="M 390 264 L 400 269 L 390 274 Z" fill="#5a8f5a"/>
+  <text x="335" y="261" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">author</text>
+  <rect class="box-plain" x="400" y="254" width="60" height="30"/>
+  <text x="430" y="274" text-anchor="middle">Ora</text>
+  <text x="490" y="274" class="t-sm t-it">unchanged in both layouts</text>
+</svg>
+<figcaption><span class="fig-label">Figure 32.3</span>
+A query over structure is tied to the layout: insert one wrapper and the path
+no longer reaches the fact. A query over statements does not care where the
+elements sit.</figcaption>
+</figure>
+
+<p>
+The fourth problem is the big one. The analogy needs one term: a <em>regular
+expression</em> is a pattern-matching notation for text, blind to what the
+characters stand for.
 </p>
 
 <blockquote>
@@ -150,45 +301,81 @@ reinventing numbers as a separate type.
 <h2>32.3 What a missing model looks like</h2>
 
 <p>
-The last part of the note is the most transferable, because it applies to any
-format, not just XML. Berners-Lee argues that if you have not gone to the
-trouble of making a semantic model, you may not have a well defined one, and
-gives four symptoms.
+The last part of the note applies to any format, not just XML. Berners-Lee
+argues that a format whose designers have not gone to the trouble of making a
+semantic model may not have a well defined one, and gives four symptoms.
 </p>
 
+<table>
+<tr><th>Symptom</th><th>Example</th><th>What the format never says</th></tr>
+<tr><td>The jam jar</td><td>A label reading &ldquo;Expires 1999&rdquo;</td><td>Which thing expires, the label or the jam</td></tr>
+<tr><td>The qualifier at a distance</td><td>An author flagged elsewhere as the translated work&#8217;s author</td><td>That <code>author</code> has changed meaning</td></tr>
+<tr><td>Order that means something</td><td>Access rules processed in order</td><td>Unless an earlier rule has already matched</td></tr>
+<tr><td>Unordered notes on an ordered process</td><td>Mail headers listing encodings</td><td>Which encoding wraps which</td></tr>
+</table>
+
+<h3>Statements about statements</h3>
 <p>
-<strong>The jam jar.</strong> A label reads &ldquo;Expires 1999&rdquo;. What
-expires: the label, or the jam? The ambiguity is between a statement about a
-statement and a statement about a thing, and nothing in the format
-distinguishes them.
+The jam jar confuses a statement about a thing with a statement about a
+statement. The qualifier at a distance is subtler: once a separate flag can
+say that &ldquo;author&rdquo; means the author of a translated work, the safe
+inference that a Finnish document&#8217;s author speaks Finnish can be
+overturned from elsewhere in the record.
 </p>
 
+<h3>Order</h3>
 <p>
-<strong>The qualifier at a distance.</strong> One element describes the
-author; another, elsewhere in the record, flags that &ldquo;author&rdquo;
-here means the author of the work that was translated. An inference that was
-safe, that a Finnish document&#8217;s author speaks Finnish, is invalidated by
-something in a different part of the record.
+Independent assertions are valid one at a time and in any order, so records
+whose order matters are not independent. A
+server rule that reads &ldquo;any member has access to the page&rdquo; may
+really mean that any member has access, unless an earlier rule in this file
+has already matched. The specification said only that rules are processed in
+order. Written out logically, there is a large nested conditional that it
+never declared.
+</p>
+<p>
+Mail headers saying a message is encrypted, compressed, ASCII-encoded and in
+HTML read as a flat list, but the truth is a nesting (Figure 32.4). Chapter 38
+shows how to write it properly.
 </p>
 
-<p>
-<strong>Order that means something.</strong> When the order of ostensibly
-independent records matters, the records are not independent. A server rule
-that reads &ldquo;any member has access&rdquo; may really mean &ldquo;any
-member has access unless no other rule in this file matched&rdquo;, and the
-specification said only that rules are processed in order. Written out
-logically, there is a large nested conditional that the specification never
-declared.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig32-4-t fig32-4-d">
+  <title id="fig32-4-t">Flat headers, nested message</title>
+  <desc id="fig32-4-d">Left: four equal boxes, encrypted, compressed, ASCII
+  encoded and HTML, as the headers list them. Right: nested boxes, an ASCII
+  encoding of an encrypted version of a compressed version of a message in
+  HTML.</desc>
 
-<p>
-<strong>Unordered annotations of an ordered process.</strong> Headers saying
-a message is encrypted, compressed, ASCII-encoded and in HTML describe an
-ASCII encoding of an encrypted version of a compressed version of an HTML
-message. The nesting is real and the format cannot express it, so the
-specification carries it in fine print. Chapter 38 shows how to write it
-properly.
-</p>
+  <text x="24" y="24" class="t-caps">what the headers say</text>
+  <rect class="box-plain" x="24" y="50" width="240" height="32"/>
+  <text x="144" y="71" text-anchor="middle">encrypted</text>
+  <rect class="box-plain" x="24" y="92" width="240" height="32"/>
+  <text x="144" y="113" text-anchor="middle">compressed</text>
+  <rect class="box-plain" x="24" y="134" width="240" height="32"/>
+  <text x="144" y="155" text-anchor="middle">ASCII encoded</text>
+  <rect class="box-plain" x="24" y="176" width="240" height="32"/>
+  <text x="144" y="197" text-anchor="middle">HTML</text>
+  <text x="144" y="230" class="t-sm t-it" text-anchor="middle">an unordered list</text>
+
+  <line class="ln-mut" x1="304" y1="40" x2="304" y2="236"/>
+
+  <text x="340" y="24" class="t-caps">what is actually true</text>
+  <rect class="box" x="340" y="40" width="356" height="178" rx="4"/>
+  <text x="354" y="59" class="t-sm">an ASCII encoding of</text>
+  <rect class="box-warm" x="356" y="70" width="324" height="136" rx="4"/>
+  <text x="370" y="89" class="t-sm">an encrypted version of</text>
+  <rect class="box-plain" x="372" y="100" width="292" height="94" rx="4"/>
+  <text x="386" y="119" class="t-sm">a compressed version of</text>
+  <rect class="box-green" x="388" y="130" width="260" height="52" rx="4"/>
+  <text x="518" y="161" text-anchor="middle">a message in HTML</text>
+  <text x="518" y="240" class="t-sm t-it" text-anchor="middle">each layer wraps the next</text>
+</svg>
+<figcaption><span class="fig-label">Figure 32.4</span>
+The nesting is real, but the header format cannot express it, so it hides in
+the specification&#8217;s fine print.</figcaption>
+</figure>
 
 <h2>32.4 The concession about order</h2>
 
@@ -198,6 +385,12 @@ document meant to be read by a person, order is how associations are built up
 in a reader&#8217;s mind, and it matters a great deal. Berners-Lee suggests that
 reluctance to give up order comes from processing human-readable documents,
 and that such documents are typically not ripe for conversion anyway.
+</p>
+
+<p>
+RDF can still hold a list: it breaks down into unordered statements such as
+&ldquo;The first element of L is x&rdquo;, so the order is itself recorded as
+facts.
 </p>
 
 <blockquote>
@@ -216,18 +409,18 @@ renderings are now five JSON shapes, and the problem is identical: a
 consumer must know the producer&#8217;s chosen structure. JSON-LD, a W3C
 Recommendation of January 2014, exists to attach a graph model to JSON for
 exactly this reason.</li>
-<li><strong>The qualifier problem was named.</strong> What this note describes
-as an element invalidating another is now handled by RDF-star and by
-annotation vocabularies, which make the statement about the statement
-explicit rather than implicit.</li>
+<li><strong>The jam jar got a notation.</strong> RDF-star lets one triple be
+the subject of another, making statements about statements explicit. It was
+set out in a W3C Community Group report in 2021 and carried into the
+W3C&#8217;s RDF 1.2 work.</li>
 <li><strong>Order-dependent formats did not go away.</strong> Rule files
 evaluated in order remain the normal way to configure firewalls, routing and
 access control, with the nested conditional still in the prose.</li>
 <li><strong>The note&#8217;s own prediction came true the other way.</strong>
 Berners-Lee asks whether it would be nice to label XML so a parser could find
-the assertions. Schema.org markup embedded in pages does precisely that, at
-enormous scale, and is consumed by search engines rather than by the general
-agents he imagined.</li>
+the assertions. Schema.org, launched in June 2011, does precisely that with
+markup embedded in pages, at enormous scale, and is consumed by search engines
+rather than by the general agents he imagined.</li>
 </ul>
 </div>
 
@@ -246,8 +439,8 @@ question is Chapter 24.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">32.1</span>
-Write one fact five ways in a format you use. Then write a query that finds it
-in all five.</p>
+Write &ldquo;this book&#8217;s author is Tim&rdquo; in three different XML
+layouts. What must a program be told to find the author in each?</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.2</span>
@@ -256,12 +449,13 @@ statement. Find a real example in a format you work with.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.3</span>
-Take an order-dependent rule file you know and write the first three rules as
-independent assertions. What does the nesting turn out to be?</p>
+Take the access rule from section 32.3 and suppose an earlier rule in the same
+file says that nobody may read the page on Sundays. Rewrite the member rule so
+that it is true on its own, whatever order the rules are read in.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.4</span>
-Berners-Lee concedes that order matters for documents meant for people. Where
-is the boundary between a document and a dataset, and what decides it?</p>
+Name one thing where order matters (a recipe) and one where it does not (a
+contact card). What makes the difference?</p>
 </div>
 </div>

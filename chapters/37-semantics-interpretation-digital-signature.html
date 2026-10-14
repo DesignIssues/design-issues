@@ -49,12 +49,30 @@
 a Design Issues note by Tim Berners-Lee, 1999-12-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Interpretation.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A digital signature is a mark that only the holder of a secret key can make,
+and that anyone can check against the matching public key. A signed document
+can name other keys, so one key can vouch for the next.
+</p>
+<p>
+A computer can therefore follow a chain of keys vouching for keys without knowing who anybody is. Berners-Lee&#8217;s advice is to
+let the machine run that chain on its own, and to connect it to people and law
+at only a few edges.
+</p>
+<p>
+Documents have meaning; signatures only carry trust.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in December 1999 with an apology in the status line that its terms
-probably do not match those used in philosophy, this note asks what a digital
-signature means, and answers by arguing that the question is the wrong one.
+Written in 1999 (the header says 1998) with an apology in the status line that
+its terms probably do not match those used in philosophy, this note asks what a
+digital signature means, and answers by arguing that the question is the wrong
+one.
 </p>
 <p>
 Its opening states the ambition plainly:
@@ -65,8 +83,8 @@ and the semantic web.
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 <p>
-What follows is the most useful piece of engineering advice in Volume IV: keep
-the machine&#8217;s loop closed, and touch the social world only at the edges.
+The engineering advice that follows is to keep the machine&#8217;s loop
+closed, and to touch the social world only at the edges.
 </p>
 </div>
 
@@ -79,8 +97,80 @@ reaches outside only at a few places: the physical delivery of goods, or the
 presentation of a document to a person for signature.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 44 600 320" width="600" height="320" role="img"
+     aria-labelledby="fig37-1-t fig37-1-d">
+  <title id="fig37-1-t">The closed loop and its two edges</title>
+  <desc id="fig37-1-d">Four green boxes form a loop joined by arrows. The
+  server is set up to trust key k3; k3 signs the member list, which names k2;
+  k2 signs the employee list, which names k1; a request signed with k1 is
+  granted access, which is checked back to k3. Inside the loop everything can
+  be checked and proved. Below a boundary line, in the social world, two warm
+  boxes attach by dashed lines: under the granting step, the server gives
+  access to a document; under the employee list, a person signs a request or
+  a list.</desc>
+  <defs>
+    <marker id="fig37-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-green" x="150" y="70" width="190" height="48" rx="4"/>
+  <text x="164" y="90">d. server is set up</text>
+  <text x="164" y="108">to trust key k3</text>
+
+  <rect class="box-green" x="380" y="70" width="190" height="48" rx="4"/>
+  <text x="394" y="90">c. k3 signs the member</text>
+  <text x="394" y="108">list, which names k2</text>
+
+  <rect class="box-green" x="380" y="190" width="190" height="48" rx="4"/>
+  <text x="394" y="210">b. k2 signs the employee</text>
+  <text x="394" y="228">list, which names k1</text>
+
+  <rect class="box-green" x="150" y="190" width="190" height="48" rx="4"/>
+  <text x="164" y="210">a. a request signed with</text>
+  <text x="164" y="228">k1 is granted access</text>
+
+  <line class="ln-accent" x1="342" y1="94" x2="377" y2="94" marker-end="url(#fig37-1-arr)"/>
+  <line class="ln-accent" x1="475" y1="120" x2="475" y2="187" marker-end="url(#fig37-1-arr)"/>
+  <line class="ln-accent" x1="378" y1="214" x2="343" y2="214" marker-end="url(#fig37-1-arr)"/>
+  <line class="ln-accent" x1="245" y1="188" x2="245" y2="121" marker-end="url(#fig37-1-arr)"/>
+  <text x="237" y="158" class="t-sm" text-anchor="end">checked</text>
+  <text x="237" y="172" class="t-sm" text-anchor="end">back to k3</text>
+
+  <text x="360" y="148" class="t-caps" text-anchor="middle">the machine</text>
+  <text x="360" y="166" class="t-sm" text-anchor="middle">can be checked and proved</text>
+
+  <line class="ln-mut" x1="16" y1="268" x2="584" y2="268"/>
+  <text x="16" y="258" class="t-caps">machine</text>
+  <text x="16" y="290" class="t-caps" style="fill:#b08d57">social world</text>
+
+  <g stroke="#b08d57" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
+    <path d="M 245 240 L 245 300"/>
+    <path d="M 475 240 L 475 300"/>
+  </g>
+
+  <rect class="box-warm" x="150" y="300" width="190" height="48" rx="4"/>
+  <text x="164" y="320">the server gives access</text>
+  <text x="164" y="338">to a document</text>
+
+  <rect class="box-warm" x="380" y="300" width="190" height="48" rx="4"/>
+  <text x="394" y="320">a person signs a</text>
+  <text x="394" y="338">request or a list</text>
+</svg>
+<figcaption><span class="fig-label">Figure 37.1</span>
+The access loop from section 37.2. Inside it, each step is a signature checked
+against a key. The machine needs to know nothing about people except at the
+two dashed edges.</figcaption>
+</figure>
+
 <p>
-The analogy he uses is monetary, and it does a great deal of work:
+His first example is a cheque, defined only as something which, fed into the
+bank&#8217;s black box, makes it do a certain thing. Dollars and transfers can
+then be defined in terms of the cheque, and trade can run on electronic
+currency, invoices and delivery notes, falling back on a paper cheque only
+when necessary. The analogy he then reaches for is monetary too:
 </p>
 
 <blockquote>
@@ -95,85 +185,90 @@ self-sufficient.
 </blockquote>
 
 <p>
-The reasons for touching reality at all are given as three, and none of them
-is that the existing definitions are correct. An interface is needed because
-that is how the system will work initially; the social machine has legislative
-backing and public understanding worth exploiting; and the existing system
-works, so change should be incremental. He adds the disclaimer directly:
-this is not because the current definitions are fundamental or beautiful, and
-indeed many existing systems are really crufty.
+He gives three reasons for touching reality at all:
+</p>
+
+<ol>
+<li>an interface is needed, because that is how the system will work, at
+least at first;</li>
+<li>the social system has legislative backing and public understanding worth
+exploiting;</li>
+<li>it works, so change should be gradual.</li>
+</ol>
+
+<p>
+None of them is that the existing definitions are correct. He says so
+directly: they are not fundamental or beautiful, and many existing systems are
+really crufty, meaning messy and overgrown.
 </p>
 
 <h2>37.2 Two loops, and the mistake of joining them</h2>
 
 <p>
-The worked example is access control, and it is the clearest illustration in
-the book of a distinction people routinely collapse.
+The worked example is access control on the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own member web site,
+where Hugo is the person deemed responsible for deciding who has member access.
+It is the clearest illustration in the book of a distinction people routinely
+collapse.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
-     aria-labelledby="fig37-1-t fig37-1-d">
-  <title id="fig37-1-t">The machine loop and the social loop</title>
-  <desc id="fig37-1-d">Four mechanical steps grant access by chaining
+<svg class="dia" viewBox="0 0 720 296" width="720" height="296" role="img"
+     aria-labelledby="fig37-2-t fig37-2-d">
+  <title id="fig37-2-t">The machine loop and the social loop</title>
+  <desc id="fig37-2-d">Four mechanical steps grant access by chaining
   signatures back to a key the server trusts. Four social steps say the same
-  thing about people and organisations. The mechanical chain can be proved.
-  Joining the two at every rung introduces directories, identity questions and
-  trusted third parties, and each join is a hole.</desc>
+  thing about people and organisations. Dashed joins connect each mechanical
+  step to its social counterpart, and every join is labelled a rat hole.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">the machine loop</text>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">the social loop</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="296"/>
+  <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">the machine loop</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">the social loop</text>
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="258"/>
 
-  <g class="t-sm">
+  <g>
     <rect class="box-green" x="24" y="42" width="300" height="44" rx="4"/>
-    <text x="38" y="60">a. access granted to a request</text>
-    <text x="38" y="76">signed with key k1</text>
+    <text class="t-sm" x="38" y="60">a. access granted to a request</text>
+    <text class="t-sm" x="38" y="76">signed with key k1</text>
 
     <rect class="box-green" x="24" y="98" width="300" height="44" rx="4"/>
-    <text x="38" y="116">b. k1 is on an employee list</text>
-    <text x="38" y="132">signed with k2</text>
+    <text class="t-sm" x="38" y="116">b. k1 is on an employee list</text>
+    <text class="t-sm" x="38" y="132">signed with k2</text>
 
     <rect class="box-green" x="24" y="154" width="300" height="44" rx="4"/>
-    <text x="38" y="172">c. k2 is on a member list</text>
-    <text x="38" y="188">signed with k3</text>
+    <text class="t-sm" x="38" y="172">c. k2 is on a member list</text>
+    <text class="t-sm" x="38" y="188">signed with k3</text>
 
     <rect class="box-green" x="24" y="210" width="300" height="44" rx="4"/>
-    <text x="38" y="228">d. k3 is the key the server</text>
-    <text x="38" y="244">was set up to trust</text>
+    <text class="t-sm" x="38" y="228">d. k3 is the key the server</text>
+    <text class="t-sm" x="38" y="244">was set up to trust</text>
 
     <rect class="box-warm" x="396" y="42" width="300" height="44" rx="4"/>
-    <text x="410" y="60">A. person P1 may read</text>
-    <text x="410" y="76">the member site</text>
+    <text class="t-sm" x="410" y="60">A. person P1 may read</text>
+    <text class="t-sm" x="410" y="76">the member site</text>
 
     <rect class="box-warm" x="396" y="98" width="300" height="44" rx="4"/>
-    <text x="410" y="116">B. P1 is an employee</text>
-    <text x="410" y="132">of company C2</text>
+    <text class="t-sm" x="410" y="116">B. P1 is an employee</text>
+    <text class="t-sm" x="410" y="132">of company C2</text>
 
     <rect class="box-warm" x="396" y="154" width="300" height="44" rx="4"/>
-    <text x="410" y="172">C. C2 is a member,</text>
-    <text x="410" y="188">according to Hugo</text>
+    <text class="t-sm" x="410" y="172">C. C2 is a member,</text>
+    <text class="t-sm" x="410" y="188">according to Hugo</text>
 
     <rect class="box-warm" x="396" y="210" width="300" height="44" rx="4"/>
-    <text x="410" y="228">D. Hugo is responsible for</text>
-    <text x="410" y="244">deciding member access</text>
+    <text class="t-sm" x="410" y="228">D. Hugo is responsible for</text>
+    <text class="t-sm" x="410" y="244">deciding member access</text>
   </g>
 
-  <g stroke="#c98a8a" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
+  <g stroke="#b08d57" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
     <path d="M 330 64 L 390 64"/><path d="M 330 120 L 390 120"/>
     <path d="M 330 176 L 390 176"/><path d="M 330 232 L 390 232"/>
   </g>
-  <text x="360" y="278" class="t-sm" text-anchor="middle" fill="#b04a4a">every dashed join is a rat hole</text>
-
-  <line class="ln-mut" x1="24" y1="306" x2="696" y2="306"/>
-  <text x="24" y="330" class="t-sm">Join them at rung b and you must identify a person with a key: a directory, a third party, a hole.</text>
-  <text x="24" y="352" class="t-sm">Join them at rung c and you must decide whether Hugo believes it, or only certifies it in his role.</text>
-  <text x="24" y="374" class="t-sm t-it">Leave them apart and the left column can be written in mathematics and proved.</text>
+  <text x="360" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">every dashed join is a rat hole</text>
 </svg>
-<figcaption><span class="fig-label">Figure 37.1</span>
-Berners-Lee&#8217;s judgement of the social column: as written it is always a rough
-approximation to a very complex web of trust, which is often less dependable
-than the simpler model on the left.</figcaption>
+<figcaption><span class="fig-label">Figure 37.2</span>
+The left column can be written in mathematics and proved. The right column, in
+Berners-Lee&#8217;s judgement, is always a rough approximation to a very
+complex web of trust, often less dependable than the simpler model on the
+left.</figcaption>
 </figure>
 
 <p>
@@ -187,19 +282,31 @@ Security has always been plagued by people trying to connect the SW steps
 </blockquote>
 
 <p>
-He follows the consequences. Identifying a person with a key introduces a
-directory system that is not part of the trust loop and becomes a security
-hole, bringing in unnecessary third parties. It raises endless questions about
-what identity is. Before those are settled one is arguing about belief, and
-whether someone really believes a claim or merely certifies it in an official
-role. He calls these rat holes and adds a distinction worth keeping: people do
-not simply believe things, they trust certain sources for certain purposes.
+Joining them at rung b means identifying a person with a key. That brings in a
+directory system (he names X.500) which is not part of the trust loop, becomes
+a security hole, and adds unnecessary third parties. It also raises endless
+questions about what identity is.
+</p>
+
+<p>
+Before those are settled, one is arguing about belief: whether Hugo really
+believes a company is a member, or only certifies it in his official role. He
+calls these rat holes, and adds that people do not simply believe things; they
+trust certain sources for certain purposes.
+</p>
+
+<p>
+He suggests a separate word, &ldquo;interpretation&rdquo;, for the mapping
+between the machine world and the real one. The practical upshot: a signature
+<a class="gl-ref" href="../glossary.html#specification">specification</a> should give only the link between a signature and a string of
+bits, and a toolbox only a language for writing a&ndash;d. Neither should try
+to link a&ndash;d to A&ndash;D.
 </p>
 
 <h2>37.3 The inversion</h2>
 
 <p>
-What happens once the loop is closed is the part that reads as prophecy:
+Once the loop is closed, the direction of definition reverses:
 </p>
 
 <blockquote>
@@ -209,22 +316,55 @@ expert becomes defined as someone whose key is on a given list.
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 
-<p>
-The status stops being a fact about the world that the system records and
-becomes a fact about the system. Berners-Lee presents this as a feature, and
-it is: the questions of invited in what sense, by whom, and whether the
-invitation was accepted never have to be answered.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 214" width="720" height="214" role="img"
+     aria-labelledby="fig37-3-t fig37-3-d">
+  <title id="fig37-3-t">Before and after the inversion</title>
+  <desc id="fig37-3-d">Two panels. Before: the social fact that P is an
+  invited expert is recorded in the list, so P's key is on the list. After:
+  the key being on the list defines who is an invited expert.</desc>
+  <defs>
+    <marker id="fig37-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle">before</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle">after</text>
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="200"/>
+
+  <rect class="box-warm" x="60" y="42" width="240" height="46" rx="4"/>
+  <text x="180" y="62" text-anchor="middle">P is an invited expert</text>
+  <text x="180" y="79" class="t-sm" text-anchor="middle">(a social fact)</text>
+  <line class="ln" x1="180" y1="90" x2="180" y2="147" marker-end="url(#fig37-3-arr)"/>
+  <text x="192" y="123" class="t-sm">recorded in</text>
+  <rect class="box-green" x="60" y="150" width="240" height="46" rx="4"/>
+  <text x="180" y="178" text-anchor="middle">P&#8217;s key is on the list</text>
+
+  <rect class="box-green" x="420" y="42" width="240" height="46" rx="4"/>
+  <text x="540" y="70" text-anchor="middle">P&#8217;s key is on the list</text>
+  <line class="ln" x1="540" y1="90" x2="540" y2="147" marker-end="url(#fig37-3-arr)"/>
+  <text x="552" y="123" class="t-sm">defines</text>
+  <rect class="box-warm" x="420" y="150" width="240" height="46" rx="4"/>
+  <text x="540" y="170" text-anchor="middle">P is an invited expert</text>
+  <text x="540" y="187" class="t-sm" text-anchor="middle">(by definition)</text>
+</svg>
+<figcaption><span class="fig-label">Figure 37.3</span>
+The arrow reverses. Status stops being a fact about the world that the system
+records and becomes a fact about the system, so questions such as invited in
+what sense, or by whom, never need answering.</figcaption>
+</figure>
 
 <p>
-It is also the mechanism by which administrative systems come to define the
-categories they were built to track, which is a theme Volume X returns to.
+This is also how administrative systems come to define the categories they
+were built to track, a theme Volume X returns to.
 </p>
 
 <h2>37.4 What a signature is not</h2>
 
 <p>
-The conclusion is stated twice, and the second time in six words:
+The conclusion is stated twice, and the second time in eight words:
 </p>
 
 <blockquote>
@@ -249,30 +389,66 @@ We must be careful not to confuse what is said with where it is stored
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 
-<p>
-The four rules of the access machine could be sent in a request, kept on
-several sites, carried on a card, sent by mail, or etched in marble. The
-design must not constrain where things are stored.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 640 266" width="640" height="266" role="img"
+     aria-labelledby="fig37-4-t fig37-4-d">
+  <title id="fig37-4-t">One set of rules, many places to keep it</title>
+  <desc id="fig37-4-d">A central box holding the four rules a to d, with
+  arrows to five places they could be kept: in an HTTP request, on any number
+  of web sites, in Java rings and smartcards, sent by email, or etched in
+  marble.</desc>
+  <defs>
+    <marker id="fig37-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="30" y="108" width="180" height="50" rx="4"/>
+  <text x="120" y="129" text-anchor="middle">the four rules a&#8211;d</text>
+  <text x="120" y="147" class="t-sm" text-anchor="middle">(what is said)</text>
+
+  <g>
+    <rect class="box-plain" x="350" y="16" width="260" height="34" rx="4"/>
+    <text class="t-sm" x="364" y="37">in an HTTP request</text>
+    <rect class="box-plain" x="350" y="66" width="260" height="34" rx="4"/>
+    <text class="t-sm" x="364" y="87">on any number of web sites</text>
+    <rect class="box-plain" x="350" y="116" width="260" height="34" rx="4"/>
+    <text class="t-sm" x="364" y="137">in Java rings and smartcards</text>
+    <rect class="box-plain" x="350" y="166" width="260" height="34" rx="4"/>
+    <text class="t-sm" x="364" y="187">sent by email</text>
+    <rect class="box-plain" x="350" y="216" width="260" height="34" rx="4"/>
+    <text class="t-sm" x="364" y="237">etched in marble</text>
+  </g>
+
+  <line class="ln-accent" x1="214" y1="128" x2="345" y2="33" marker-end="url(#fig37-4-arr)"/>
+  <line class="ln-accent" x1="214" y1="130" x2="345" y2="83" marker-end="url(#fig37-4-arr)"/>
+  <line class="ln-accent" x1="214" y1="133" x2="345" y2="133" marker-end="url(#fig37-4-arr)"/>
+  <line class="ln-accent" x1="214" y1="136" x2="345" y2="183" marker-end="url(#fig37-4-arr)"/>
+  <line class="ln-accent" x1="214" y1="138" x2="345" y2="233" marker-end="url(#fig37-4-arr)"/>
+</svg>
+<figcaption><span class="fig-label">Figure 37.4</span>
+The places the note lists for keeping the access rules. The meaning is the
+same wherever they are stored, so the design must not constrain where that
+is.</figcaption>
+</figure>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The architecture won on the Web.</strong> Capability-style and
-token-based authorisation, where a bearer presents a chain that a server
-verifies without identifying a person, is now the normal shape. OAuth 2.0,
-published in October 2012, checks a chain rather than a person.</li>
-<li><strong>The directory approach faded.</strong> The identity-first model
-Berners-Lee warns against, with hierarchical directories binding people to
-keys, did not become the general mechanism, and the trusted third parties it
-requires have been a recurring source of compromise.</li>
-<li><strong>The inversion happened.</strong> Access lists now define
-categories of person in many organisations, rather than recording them, which
-is section 37.3 realised without anyone deciding to.</li>
-<li><strong>Signing graphs remained hard.</strong> The separation of what is
-said from where it is stored is a requirement that verifiable credentials, a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2022, meets by signing a self-contained document,
-which is Chapter 28&#8217;s constraint respected.</li>
+<li><strong>Token-based authorisation became normal.</strong> OAuth 2.0,
+published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a server check a token it issued,
+not who is holding it.</li>
+<li><strong>The global directory never arrived; its certificates did.</strong>
+The X.500 global directory never materialised, but X.509 certificates, which
+come from it, underpin every HTTPS connection. The certificate authorities they
+rely on are trusted third parties, and their compromise became a recurring
+problem, as with DigiNotar in 2011.</li>
+<li><strong>Signing self-contained documents.</strong> Verifiable Credentials
+Data Model 1.0 became a W3C Recommendation in November 2019 (1.1 in March 2022,
+2.0 in 2025). It signs a self-contained document rather than a <a class="gl-ref" href="../glossary.html#graph">graph</a> scattered
+across the Web, respecting Chapter 28&#8217;s point that a signature does not alter
+what a document means.</li>
 </ul>
 </div>
 
@@ -297,7 +473,8 @@ where does it touch the social world?</p>
 <div class="question">
 <p><span class="question-number">37.2</span>
 Berners-Lee calls each join between the two columns a rat hole. Name a system
-that joins them at every rung, and say what it gains.</p>
+that joins them at every rung (for example, a bank branch checking photo ID),
+and say what it gains.</p>
 </div>
 <div class="question">
 <p><span class="question-number">37.3</span>
@@ -306,8 +483,9 @@ that definition and the social one come apart, and say which should win.</p>
 </div>
 <div class="question">
 <p><span class="question-number">37.4</span>
-&ldquo;Do not confuse what is said with where it is stored.&rdquo; Find a
-design you know that confuses them, and say what it costs.</p>
+&ldquo;We must be careful not to confuse what is said with where it is
+stored.&rdquo; Find a design you know that confuses them, and say what it
+costs.</p>
 </div>
 </details>
 

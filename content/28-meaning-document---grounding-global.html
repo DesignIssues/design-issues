@@ -1,14 +1,18 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A document&#8217;s meaning comes from its text plus the definition of its
+language. On the Web both have addresses, so both can be looked up. A
+signature says who vouches for a document; it never changes what it says.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 1999 when, as Berners-Lee puts it, the namespace argument came
-around again, this note answers the question Chapter 27 leaves standing. If
-metadata is a set of assertions in some language, what fixes what those
-assertions mean?
-</p>
-<p>
-The answer is given in the abstract in a single formula, and the rest of the
-note unpacks it.
+Written in 1999, as the namespace argument came around again, this note
+answers the question Chapter 27 leaves: if metadata is assertions in some
+language, what fixes what they mean?
 </p>
 </div>
 
@@ -21,79 +25,125 @@ some language) and the meaning of the language.
 </blockquote>
 
 <p>
-Two factors, and on the Web both of them can be named. The document has a
-URI. The language has a URI. And in each case the party who says what the URI
-refers to is its owner, which is the identity axiom of Chapter 2 doing the
-decisive work.
+On the Web the document and the language each have a URI, and each
+URI&#8217;s owner says what it refers to: the identity axiom of Chapter 2.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig28-1-t fig28-1-d">
   <title id="fig28-1-t">What a document means, and who decides each half</title>
   <desc id="fig28-1-d">Meaning is the text multiplied by the meaning of the
   language. The text is fixed by the document's publisher, the language by the
-  language's publisher. Both are named by URIs, so both can be dereferenced,
-  and neither party has to be consulted in person.</desc>
+  language's publisher. Both are named by URIs, so the definition of each can
+  be fetched from its address rather than guessed.</desc>
 
-  <rect class="box" x="40" y="56" width="230" height="88" rx="4"/>
-  <text x="155" y="82" class="t-caps" text-anchor="middle">the text</text>
-  <text x="155" y="106" class="t-mono" text-anchor="middle" fill="#1c5a7a">http://example.org/doc</text>
-  <text x="155" y="128" class="t-sm" text-anchor="middle">fixed by the document&#8217;s publisher</text>
+  <rect class="box" x="40" y="20" width="230" height="88" rx="4"/>
+  <text x="155" y="46" class="t-caps" text-anchor="middle">the text</text>
+  <text x="155" y="70" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">http://example.org/doc</text>
+  <text x="155" y="92" class="t-sm" text-anchor="middle">fixed by the document&#8217;s publisher</text>
 
-  <text x="315" y="108" class="t-lg" text-anchor="middle">&#215;</text>
+  <text x="315" y="70" class="t-lg" text-anchor="middle">&#215;</text>
 
-  <rect class="box-warm" x="360" y="56" width="230" height="88" rx="4"/>
-  <text x="475" y="82" class="t-caps" text-anchor="middle" fill="#a07d47">the language</text>
-  <text x="475" y="106" class="t-mono" text-anchor="middle" fill="#a07d47">http://vocab.org/ns#</text>
-  <text x="475" y="128" class="t-sm" text-anchor="middle">fixed by the language&#8217;s publisher</text>
+  <rect class="box-warm" x="360" y="20" width="230" height="88" rx="4"/>
+  <text x="475" y="46" class="t-caps" text-anchor="middle" style="fill:#b08d57">the language</text>
+  <text x="475" y="70" class="t-mono" text-anchor="middle" style="fill:#b08d57">http://vocab.org/ns#</text>
+  <text x="475" y="92" class="t-sm" text-anchor="middle">fixed by the language&#8217;s publisher</text>
 
-  <text x="632" y="108" class="t-lg" text-anchor="middle">=</text>
+  <path class="ln-mut" d="M 155 108 L 155 136 M 475 108 L 475 136 M 155 136 L 475 136 M 315 136 L 315 168"/>
+  <text x="325" y="158" class="t-sm t-it">gives</text>
+  <rect class="box-green" x="196" y="168" width="238" height="52" rx="4"/>
+  <text x="315" y="192" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">the meaning</text>
+  <text x="315" y="212" class="t-sm" text-anchor="middle">well defined for both parties, and for a third</text>
 
-  <path class="ln-mut" d="M 155 144 L 155 172 M 475 144 L 475 172 M 155 172 L 475 172 M 315 172 L 315 190"/>
-  <rect class="box-green" x="196" y="190" width="238" height="52" rx="4"/>
-  <text x="315" y="214" class="t-caps" text-anchor="middle" fill="#3f6f3f">the meaning</text>
-  <text x="315" y="234" class="t-sm" text-anchor="middle">well defined for both parties, and for a third</text>
+  <text x="460" y="182" class="t-sm">Each factor can be looked up at its</text>
+  <text x="460" y="198" class="t-sm">address, so the definition is</text>
+  <text x="460" y="214" class="t-sm">fetched, not guessed.</text>
 
-  <text x="600" y="200" class="t-sm">Each factor is</text>
-  <text x="600" y="218" class="t-sm">dereferenceable, so</text>
-  <text x="600" y="236" class="t-sm">the definition can be</text>
-  <text x="600" y="254" class="t-sm">fetched, not guessed.</text>
-
-  <line class="ln-mut" x1="40" y1="272" x2="680" y2="272"/>
-  <text x="40" y="292" class="t-sm t-it">In a natural language the second factor is the sum of associations in a reader&#8217;s mind. Here it is a document.</text>
+  <line class="ln-mut" x1="40" y1="236" x2="680" y2="236"/>
+  <text x="40" y="256" class="t-sm t-it">In a natural language the second factor is the sum of associations in a reader&#8217;s mind. Here it is a document.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.1</span>
-Berners-Lee&#8217;s point is comparative. Hypertext let a document point exactly at
-another instead of referring to it vaguely. This does the same for the
-language a document is written in.</figcaption>
+Just as a link points exactly at another document, a URI points exactly at
+the language a document uses.</figcaption>
 </figure>
 
 <p>
-&ldquo;Language&rdquo; is given a precise sense: the set of symbols, the
-syntactic rules constraining their combination, and semantics conveyed by
-interpretation into other formal languages or into a natural one.
+&ldquo;Language&rdquo; is given a precise sense with three parts. HTML shows
+each of them:
 </p>
+
+<table>
+<tr><th>Part</th><th>What it is</th><th>In HTML</th></tr>
+<tr><td>Symbols</td><td>The marks the language uses</td><td>The <code>&lt;h2&gt;</code> element</td></tr>
+<tr><td>Syntactic rules</td><td>Rules on how symbols may be combined</td><td><code>&lt;h2&gt;</code> needs a closing tag and sits inside <code>&lt;body&gt;</code></td></tr>
+<tr><td>Semantics</td><td>What the symbols mean, given in another formal language or a natural one</td><td>The HTML specification says, in English, that <code>&lt;h2&gt;</code> is a second-level heading</td></tr>
+</table>
 
 <h2>28.2 Two kinds of language</h2>
 
 <p>
-A distinction in the middle of the note explains how the whole edifice
-bottoms out. Some languages are terminal, defined only in natural language,
-and programs that process them must be hand coded. Others have
-machine-readable interpretations into further formal languages, and documents
-in them can be converted automatically into the first kind.
+That last row matters. <em>Terminal</em> languages are defined only in prose,
+so programs for them are written by hand by someone who has read it. The
+note&#8217;s example is the style sheet language, which &ldquo;gives a good
+definition (in English)&rdquo;. Other languages have machine-readable
+definitions: a schema might state, in RDF, that one vocabulary&#8217;s
+&ldquo;author&rdquo; is a kind of another&#8217;s &ldquo;creator&rdquo;. Documents in
+these can be converted automatically until they reach a terminal language.
 </p>
 
-<p>
-That is the whole layered structure of Chapter 30 stated in two sentences. At
-the bottom sits a small number of languages a human had to explain to a
-programmer. Everything above is reachable by machine.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig28-2-t fig28-2-d">
+  <title id="fig28-2-t">Formal languages resting on terminal ones</title>
+  <desc id="fig28-2-d">Three vocabularies at the top have machine-readable
+  mappings into two formal languages, which in turn convert automatically into
+  terminal languages defined only in prose. Below those a programmer reads the
+  specification and writes code by hand.</desc>
+  <defs>
+    <marker id="fig28-2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig28-2-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
 
-<p>
-Berners-Lee draws the contrast with ordinary words sharply:
-</p>
+  <rect class="box" x="60" y="20" width="160" height="40" rx="4"/>
+  <text x="140" y="45" text-anchor="middle">Vocabulary A</text>
+  <rect class="box" x="280" y="20" width="160" height="40" rx="4"/>
+  <text x="360" y="45" text-anchor="middle">Vocabulary B</text>
+  <rect class="box" x="500" y="20" width="160" height="40" rx="4"/>
+  <text x="580" y="45" text-anchor="middle">Vocabulary C</text>
+
+  <path class="ln" d="M 140 60 L 200 110" marker-end="url(#fig28-2-ah)"/>
+  <path class="ln" d="M 360 60 L 300 110" marker-end="url(#fig28-2-ah)"/>
+  <path class="ln" d="M 580 60 L 520 110" marker-end="url(#fig28-2-ah)"/>
+  <text x="610" y="84" class="t-sm t-it">machine-readable</text>
+  <text x="610" y="99" class="t-sm t-it">mapping</text>
+
+  <rect class="box" x="140" y="110" width="200" height="40" rx="4"/>
+  <text x="240" y="135" text-anchor="middle">Formal language X</text>
+  <rect class="box" x="400" y="110" width="200" height="40" rx="4"/>
+  <text x="500" y="135" text-anchor="middle">Formal language Y</text>
+
+  <path class="ln" d="M 240 150 L 240 190" marker-end="url(#fig28-2-ah)"/>
+  <path class="ln" d="M 500 150 L 500 190" marker-end="url(#fig28-2-ah)"/>
+  <text x="252" y="175" class="t-sm t-it">converted automatically</text>
+
+  <rect class="box-warm" x="60" y="190" width="600" height="50" rx="4"/>
+  <text x="360" y="212" class="t-caps" text-anchor="middle" style="fill:#b08d57">terminal languages</text>
+  <text x="360" y="230" class="t-sm" text-anchor="middle">defined only in prose, e.g. a style sheet language defined in English</text>
+
+  <path class="ln-dash" d="M 360 240 L 360 270" marker-end="url(#fig28-2-am)"/>
+  <text x="372" y="260" class="t-sm t-it">by hand</text>
+  <rect class="box-plain" x="200" y="270" width="320" height="36" rx="4"/>
+  <text x="360" y="293" text-anchor="middle">a programmer reads the spec and writes code</text>
+</svg>
+<figcaption><span class="fig-label">Figure 28.2</span>
+Only the bottom layer needs a human; everything above it is converted by
+machine. This is Chapter 30&#8217;s layering in miniature.</figcaption>
+</figure>
 
 <blockquote>
 In practice, the meaning of a word in a natural language is the sum of the
@@ -103,28 +153,28 @@ writer.
 </blockquote>
 
 <p>
-He adds that society works on a very strong similarity between the webs of
-association in different minds, and then states the departure: in the
-Semantic Web meaning is not vague, and languages must be defined formally and
-as precisely as possible. Chapter 22 is the later, humbler revision of this
-confidence.
+In the Semantic Web, by contrast, meaning is not to be vague: languages must
+be defined formally and precisely. Chapter 22 is the later, humbler revision
+of this confidence.
 </p>
 
 <h2>28.3 Subsets, precisely</h2>
 
 <p>
-Similarity between languages is dismissed as meaning little, and replaced
-with something checkable: language A is a subset of language B when a
-document in A can be treated precisely as though it had been in B. This is
-the sublanguage assertion of Chapter 18, arriving here as a semantic claim
-rather than a processing hint.
+&ldquo;Similarity&rdquo; between languages means little; what is checkable is
+this: language A is a subset, or sublanguage, of language
+B when a document in A can be treated precisely as though it had been in B.
+Every XHTML 1.0 Strict document, for example, is also valid XHTML 1.0
+Transitional, which only adds elements and attributes. This is the
+sublanguage assertion of Chapter 18, here a claim about meaning rather than a
+processing hint.
 </p>
 
 <h2>28.4 What a signature does not do</h2>
 
 <p>
-The last third of the note is about digital signature, and it makes an
-argument that is easy to state and easy to get wrong.
+A digital signature is a mathematical seal, made with a secret key, proving
+who vouched for a document and that it has not changed since.
 </p>
 
 <blockquote>
@@ -134,15 +184,10 @@ enough, It is not the place of a digital signature to define semantics.
 </blockquote>
 
 <p>
-A signature may give a party reason to use information they would otherwise
-ignore, and a key&#8217;s issuer may constrain what guarantees signing with it
-carries. But the signature must not change what the document means, because
-that would open a gap between what the writer intended and what the signed
-document says.
-</p>
-
-<p>
-The conclusion is stated in four words that Chapter 37 repeats:
+A signature may give someone reason to use information they would otherwise
+ignore. But it must not change what the document means, or the signed
+document could say something its writer never intended. Hence one short
+sentence that Chapter 37 develops:
 </p>
 
 <blockquote>
@@ -151,12 +196,164 @@ So, signatures themselves have no meaning.
 </blockquote>
 
 <p>
-There is a consequence for what can be signed at all. Because a language
-defines meaning for whole documents, one cannot speak of the meaning of part
-of a document without first saying how that part reassembles into a second
-whole document. Signing a fragment requires a rule for making the fragment
-into a document. This is the same constraint that Chapter 24 reaches from the
-processing side.
+Other documents must give a signature its meaning. The note&#8217;s example is
+a trust statement: if a document signed with this key says an organisation is
+a W3C member, it is one.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig28-3-t fig28-3-d">
+  <title id="fig28-3-t">What a signature adds</title>
+  <desc id="fig28-3-d">A document saying X is a member of W3C gets its meaning
+  from its text and language. A signature with key K attached to it says only
+  that K vouches for it. A separate trust statement says that whatever key K
+  signs about membership is true. Together they lead to the conclusion that X
+  is a member.</desc>
+  <defs>
+    <marker id="fig28-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="20" y="20" width="230" height="80" rx="4"/>
+  <text x="135" y="44" class="t-caps" text-anchor="middle">the document</text>
+  <text x="135" y="66" text-anchor="middle">&#8220;X is a member of W3C&#8221;</text>
+  <text x="135" y="88" class="t-sm" text-anchor="middle">meaning: text &#215; language</text>
+
+  <path class="ln-mut" d="M 135 100 L 135 130"/>
+  <rect class="box-warm" x="50" y="130" width="170" height="32" rx="4"/>
+  <text x="135" y="151" text-anchor="middle">signature, key K</text>
+  <path class="ln-dash" d="M 135 162 L 135 190"/>
+  <text x="135" y="206" class="t-sm" text-anchor="middle">says only: key K vouches for it</text>
+
+  <rect class="box-plain" x="300" y="20" width="230" height="88" rx="4"/>
+  <text x="415" y="44" class="t-caps" text-anchor="middle">a trust statement</text>
+  <text x="415" y="64" class="t-sm" text-anchor="middle">&#8220;If a document signed with key K</text>
+  <text x="415" y="80" class="t-sm" text-anchor="middle">says X is a member of W3C,</text>
+  <text x="415" y="96" class="t-sm" text-anchor="middle">then X is a member.&#8221;</text>
+
+  <path class="ln" d="M 220 146 L 560 146" marker-end="url(#fig28-3-ah)"/>
+  <text x="390" y="138" class="t-sm t-it" text-anchor="middle">signed with K</text>
+  <path class="ln" d="M 530 72 L 628 120" marker-end="url(#fig28-3-ah)"/>
+
+  <rect class="box-green" x="560" y="120" width="140" height="52" rx="4"/>
+  <text x="630" y="141" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">conclusion</text>
+  <text x="630" y="161" text-anchor="middle">X is a member</text>
+
+  <text x="20" y="238" class="t-sm t-it">Meaning comes from the language; trust comes from another document; the signature adds neither.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 28.3</span>
+The signature only links the document to a key; a second document says what
+the key is good for.</figcaption>
+</figure>
+
+<p>
+Languages define meaning for whole documents, so signing a fragment (part
+of a document) requires a rule for reassembling it into a second whole
+document. Chapter 24 reaches the same constraint from the processing side.
+</p>
+
+<h2>28.5 Grounded documents</h2>
+
+<p>
+Look up each term in a document, then each term in those definitions, and so
+on. A document is <em>grounded</em> if every chain ends in a set of documents
+one accepts; &ldquo;grounded in W3C Recommendations&rdquo; means every chain ends
+in W3C standards. The note calls this the basis of the whole Internet stack:
+each message&#8217;s meaning is fixed by a series of specifications.
+</p>
+
+<h2>28.6 Grounding as a myth: the web of meaning</h2>
+
+<p>
+Grounding is needed for predictable systems, but the note calls it a bad
+model for the Web in the long run. English words have no base set:
+</p>
+
+<blockquote>
+Every time you look one up in the dictionary all you find are more words.
+<cite>The meaning of a document, 1999</cite>
+</blockquote>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig28-4-t fig28-4-d">
+  <title id="fig28-4-t">A tree of definitions and a web of definitions</title>
+  <desc id="fig28-4-d">On the left, a term is defined by two terms, each of
+  which is defined in a base set of W3C Recommendations, so every look-up ends.
+  On the right, five terms define one another in cycles, with no base.</desc>
+  <defs>
+    <marker id="fig28-4-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle">grounded: a tree</text>
+  <rect class="box" x="130" y="40" width="100" height="30" rx="4"/>
+  <text x="180" y="60" text-anchor="middle">a term</text>
+  <rect class="box" x="60" y="100" width="100" height="30" rx="4"/>
+  <text x="110" y="120" text-anchor="middle">term</text>
+  <rect class="box" x="200" y="100" width="100" height="30" rx="4"/>
+  <text x="250" y="120" text-anchor="middle">term</text>
+  <rect class="box-green" x="40" y="170" width="280" height="34" rx="4"/>
+  <text x="180" y="192" text-anchor="middle">W3C Recommendations</text>
+  <path class="ln" d="M 165 70 L 125 100" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 195 70 L 235 100" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 110 130 L 110 170" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 250 130 L 250 170" marker-end="url(#fig28-4-ah)"/>
+  <text x="180" y="232" class="t-sm t-it" text-anchor="middle">every chain of look-ups ends in the base set</text>
+
+  <line class="ln-mut" x1="360" y1="20" x2="360" y2="236"/>
+
+  <text x="540" y="24" class="t-caps" text-anchor="middle">a web of meaning</text>
+  <rect class="box" x="400" y="50" width="90" height="28" rx="4"/>
+  <text x="445" y="69" text-anchor="middle">term</text>
+  <rect class="box" x="590" y="50" width="90" height="28" rx="4"/>
+  <text x="635" y="69" text-anchor="middle">term</text>
+  <rect class="box" x="495" y="110" width="90" height="28" rx="4"/>
+  <text x="540" y="129" text-anchor="middle">term</text>
+  <rect class="box" x="400" y="170" width="90" height="28" rx="4"/>
+  <text x="445" y="189" text-anchor="middle">term</text>
+  <rect class="box" x="590" y="170" width="90" height="28" rx="4"/>
+  <text x="635" y="189" text-anchor="middle">term</text>
+  <path class="ln" d="M 490 64 L 590 64" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 612 78 L 563 110" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 517 110 L 468 78" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 517 138 L 468 170" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 490 184 L 590 184" marker-end="url(#fig28-4-ah)"/>
+  <path class="ln" d="M 612 170 L 563 138" marker-end="url(#fig28-4-ah)"/>
+  <text x="540" y="232" class="t-sm t-it" text-anchor="middle">definitions loop back; there is no bottom</text>
+</svg>
+<figcaption><span class="fig-label">Figure 28.4</span>
+The Semantic Web as a whole will be web-shaped, because no one will agree
+which terms are more basic.</figcaption>
+</figure>
+
+<p>
+Both views hold, one inside the other. Meaning is use, but society
+constrains Internet use to follow the specifications, just as a tax form leaves no choice about what
+&ldquo;Adjusted Gross Income on line 39 of a US IRS form 1040&rdquo; means: a
+government department owns the term. But the Semantic Web will have no single
+Dewey decimal system. Everyone will define terms using others they find
+stable, and stable specifications stay essential, but forcing one tree would
+stop the Web scaling.
+</p>
+
+<h2>28.7 Two objections</h2>
+
+<p>
+<strong>&ldquo;Meaning is only defined by use.&rdquo;</strong> Interpretation
+does need some agreement outside the message, the note concedes. But the Web
+is one big agreement: fetching a page over HTTP means accepting that it is read
+by the specifications. Debate is over their details, not whether they apply.
+</p>
+
+<p>
+<strong>&ldquo;Doesn&#8217;t the meaning of a document depend on its context?&rdquo;</strong> It does: enclosing a
+photocopy of a letter is not sending that letter. But publishing on the Web,
+posting to a public list or nailing a page to a tree all fix meaning the same
+way, and that common case is simply called the document&#8217;s meaning.
 </p>
 
 <div class="since">
@@ -167,28 +364,20 @@ a W3C Recommendation first published in February 2004, fixes meaning exactly
 this way: an interpretation maps the vocabulary, and the document&#8217;s meaning
 follows from the vocabulary&#8217;s.</li>
 <li><strong>Canonicalisation proved as hard as the note implies.</strong>
-Signing part of a graph requires a rule for making it a document, and RDF
-Dataset Canonicalization only became a W3C Recommendation in May 2024,
-twenty-five years after the problem was named here.</li>
-<li><strong>Terminal languages stayed terminal.</strong> The small set of
-vocabularies defined only in prose and implemented by hand has not shrunk.
-Most working systems still bottom out in a programmer reading a
-specification.</li>
-<li><strong>The confidence was revised.</strong> The claim that meaning in
-the Semantic Web is not vague is softened considerably by the same author in
-Chapter 22, which argues instead for definitions that are good enough and for
-a record of which model made them so.</li>
+Signing data needs one fixed way of writing it. RDF Dataset Canonicalization,
+which defines one for RDF, became a W3C Recommendation only in May 2024.</li>
+<li><strong>The confidence was revised.</strong> Chapter 22, by the same
+author, argues instead for definitions that are good enough, with a record of
+which model made them so.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The ownership half of the formula is Chapter 2 and Chapter 15. The metadata
-this chapter gives meaning to is Chapter 27, and the layers it implies are
-Chapter 30. The sublanguage relation is Chapter 18. The treatment of
-signatures is continued in Chapter 37, and the constraint on signing
-fragments meets Chapter 24 from the other side.
+Ownership: Chapters 2 and 15. Metadata: Chapter 27. Layers: Chapter 30.
+Sublanguages: Chapter 18. Signatures: Chapter 37. Signing fragments: Chapter
+24.
 </p>
 </div>
 
@@ -201,17 +390,23 @@ the language&#8217;s publisher changes the definition of a term.</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.2</span>
-Name a terminal language you use, defined only in prose. What would it take
-to give it a machine-readable interpretation?</p>
+CSS is defined in English prose. What would a program need before it could
+apply a new CSS property it has never seen?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.3</span>
-Signing a fragment requires a rule for making it a whole document. Write such
-a rule for a format you know, and say what it must preserve.</p>
+You sign only page 3 of a contract. Which other parts must travel with it for
+the signature to make sense?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.4</span>
 If a signature could change meaning, construct the abuse that would follow.
 Who is harmed, and how would they detect it?</p>
+</div>
+<div class="question">
+<p><span class="question-number">28.5</span>
+Look up a word in a dictionary, then a word in its definition, and repeat.
+Does the chain end or loop? What would make a set of web vocabularies
+grounded?</p>
 </div>
 </div>

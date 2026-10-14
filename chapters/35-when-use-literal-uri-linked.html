@@ -49,12 +49,21 @@
 a Design Issues note by Tim Berners-Lee, 2017-11-05.
 <a class="source-link" href="https://www.w3.org/DesignIssues/QuotingURIs.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+In <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>, a web address in angle brackets stands for the thing it names;
+in quotation marks it is only a string of characters. When a statement is
+about the name itself, quote it, or a later merge will silently rewrite it.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The shortest note in Volume IV, written in November 2017, and by its author&#8217;s
-own account a small point that sometimes needs careful explanation. It exists
-because a habit becomes a trap.
+The shortest note in Volume IV, dated 5 November 2017, marked a first draft,
+and by its author&#8217;s own account a small point that sometimes needs
+careful explanation. It exists because a habit becomes a trap.
 </p>
 <blockquote>
 When you use RDF, we get used to using URIs a symbols so much that we can slip
@@ -64,16 +73,20 @@ the URI itself as a string.
 <cite>When use a literal for a URI in Linked Data, 2017</cite>
 </blockquote>
 <p>
-A whole note, as he says, just to make that point. It is included at chapter
-length because the distinction it draws, between using a name and mentioning
-it, is one that every system with identifiers eventually gets wrong.
+A whole note, as he says, just to make that point. It earns a chapter because
+the distinction between using a name and mentioning it is one every system
+with identifiers eventually gets wrong.
 </p>
 </div>
 
 <h2>35.1 The rule</h2>
 
 <p>
-Berners-Lee offers a mnemonic that settles the matter in one line:
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>: subject, property,
+value. <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> is a common way of writing those triples down. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
+in angle brackets is a symbol: it names a thing. A value in quotation marks is
+a literal: a piece of text, taken as it stands. Berners-Lee offers a mnemonic
+for the brackets:
 </p>
 
 <blockquote>
@@ -82,113 +95,201 @@ identified by.
 <cite>When use a literal for a URI in Linked Data, 2017</cite>
 </blockquote>
 
+<table>
+<tr><th>Written as</th><th>Means</th><th>Joe&#8217;s example</th></tr>
+<tr><td><code>&lt;&#8230;&gt;</code></td><td>the thing the URI names</td><td><code>&lt;https://uni.edu/students#JRMeadows&gt;</code> is Joe himself</td></tr>
+<tr><td><code>"&#8230;"</code></td><td>the characters themselves</td><td><code>"https://uni.edu/students#JRMeadows"</code> is a 34-character string</td></tr>
+</table>
+
 <p>
-Angle brackets mean the thing. Quotation marks mean the string. Almost always
-you want the thing, which is why the rare case catches people.
+Almost always the thing is what is wanted, so the rare case catches people.
 </p>
 
 <h2>35.2 What goes wrong, exactly</h2>
 
 <p>
-The example is chosen so that the error is not merely inelegant but
-destroys the statement. Two databases describe the same person under
-different identifiers, and a third statement says they are the same. A system
-may then normalise, replacing one identifier with the other everywhere.
+The note&#8217;s example builds up in four steps.
 </p>
 
+<ol>
+<li>Example.com calls Joe <code>&lt;https://example.com/people#Joe&gt;</code>
+and says he is a person.</li>
+<li>A university calls him <code>&lt;https://uni.edu/students#JRMeadows&gt;</code>
+and says he is a student.</li>
+<li>Someone states that the two are the same, using the property
+<code>owl:sameAs</code>.</li>
+<li>A system may now normalise: pick one name and use it everywhere, so the
+data is &ldquo;smushed together&rdquo;.</li>
+</ol>
+
+<figure>
+<svg class="dia" viewBox="0 0 680 262" width="680" height="262" role="img"
+     aria-labelledby="fig35-1-t fig35-1-d">
+  <title id="fig35-1-t">Two names, one person, then a merge</title>
+  <desc id="fig35-1-d">Two names for Joe, linked by a same-as statement,
+  both point at Joe. Smushing rewrites the second as the first, leaving three
+  statements that all begin ex:Joe.</desc>
+
+  <rect class="box" x="20" y="24" width="250" height="48" rx="4"/>
+  <text x="145" y="44" class="t-mono" text-anchor="middle">example.com/people#Joe</text>
+  <text x="145" y="62" class="t-sm" text-anchor="middle">Example.com&#8217;s name</text>
+
+  <rect class="box" x="20" y="120" width="250" height="48" rx="4"/>
+  <text x="145" y="140" class="t-mono" text-anchor="middle">uni.edu/students#JRMeadows</text>
+  <text x="145" y="158" class="t-sm" text-anchor="middle">the university&#8217;s name</text>
+
+  <path class="ln-dash" d="M 145 82 L 145 110"/>
+  <path d="M 145 75 L 141 83 L 149 83 Z" fill="#8a9a9a"/>
+  <path d="M 145 117 L 141 109 L 149 109 Z" fill="#8a9a9a"/>
+  <text x="157" y="100" class="t-sm">same as (owl:sameAs)</text>
+
+  <rect class="box-warm" x="470" y="68" width="190" height="48" rx="24"/>
+  <text x="565" y="97" text-anchor="middle">Joe (the person)</text>
+
+  <path class="ln" d="M 274 50 L 462 84"/>
+  <path d="M 468 85 L 459 80 L 458 88 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 274 142 L 462 102"/>
+  <path d="M 468 101 L 458 98 L 460 106 Z" fill="#2f4f4f"/>
+
+  <path class="ln-accent" d="M 145 174 L 145 204"/>
+  <path d="M 145 211 L 140 202 L 150 202 Z" fill="#1c5a7a"/>
+  <text x="157" y="196" class="t-sm">smush: rewrite every use of the second name as the first</text>
+
+  <rect class="box-green" x="20" y="214" width="640" height="38" rx="4"/>
+  <text x="36" y="238" class="t-mono">ex:Joe a foaf:Person</text>
+  <text x="222" y="238" class="t-mono">ex:Joe a uni:Student</text>
+  <text x="408" y="238" class="t-mono">ex:Joe foaf:name "Joe Meadows"</text>
+</svg>
+<figcaption><span class="fig-label">Figure 35.1</span>
+Two names point at one person. Once a system knows that, it may keep only one
+name and rewrite the rest. That is harmless until a statement is about the name
+rather than the person.</figcaption>
+</figure>
+
 <p>
-Now the person records a preference about which identifier they would like to
-be known by.
+Now Joe adds a line to his profile: he prefers to be known by the university
+name. That line is about a name, not about Joe, so the name must be quoted.
+Figure 35.2 follows both versions through the merge.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
-     aria-labelledby="fig35-1-t fig35-1-d">
-  <title id="fig35-1-t">Why the preferred identifier must be quoted</title>
-  <desc id="fig35-1-d">Written as a symbol, the preferred identifier is
-  replaced along with every other use when a system normalises on one name,
-  and the statement collapses into saying the person prefers to be called what
-  they are already called. Written as a string it survives, because strings
-  are not symbols and are not substituted.</desc>
+<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
+     aria-labelledby="fig35-2-t fig35-2-d">
+  <title id="fig35-2-t">Why the preferred identifier must be quoted</title>
+  <desc id="fig35-2-d">Written as a symbol, the preferred identifier is
+  rewritten in the merge and the statement becomes ex:Joe prefers ex:Joe.
+  Written as a string it is not substituted and survives.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#b04a4a">as a symbol</text>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">as a string</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="300"/>
+  <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">as a symbol (wrong)</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">as a string (right)</text>
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="118"/>
+  <line class="ln-mut" x1="360" y1="148" x2="360" y2="272"/>
 
-  <text x="24" y="58" class="t-sm">Joe writes:</text>
-  <rect x="24" y="68" width="312" height="34" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="34" y="90" class="t-mono" font-size="11.5">ex:Joe preferredURI &lt;uni:JRMeadows&gt; .</text>
+  <text x="20" y="50" class="t-sm">Joe adds to his profile:</text>
+  <rect class="box-warm" x="20" y="60" width="320" height="52"/>
+  <text x="32" y="81" class="t-mono">ex:Joe contact:preferredURI</text>
+  <text x="44" y="100" class="t-mono">&lt;https://uni.edu/students#JRMeadows&gt; .</text>
 
-  <text x="404" y="58" class="t-sm">Joe writes:</text>
-  <rect x="404" y="68" width="292" height="34" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="414" y="90" class="t-mono" font-size="11.5">ex:Joe preferredURI "uni:JRMeadows" .</text>
+  <text x="380" y="50" class="t-sm">Joe adds to his profile:</text>
+  <rect class="box-green" x="380" y="60" width="320" height="52"/>
+  <text x="392" y="81" class="t-mono">ex:Joe contact:preferredURI</text>
+  <text x="404" y="100" class="t-mono">"https://uni.edu/students#JRMeadows" .</text>
 
-  <path class="ln-mut" d="M 180 106 L 180 130"/>
-  <path class="ln-mut" d="M 540 106 L 540 130"/>
-  <text x="180" y="124" class="t-sm" text-anchor="middle">&#160;</text>
-  <text x="360" y="126" class="t-sm t-it" text-anchor="middle">the system learns the two names are the same and normalises</text>
+  <path class="ln" d="M 180 116 L 180 140"/>
+  <path d="M 180 148 L 175 139 L 185 139 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 540 116 L 540 140"/>
+  <path d="M 540 148 L 535 139 L 545 139 Z" fill="#2f4f4f"/>
+  <text x="360" y="137" class="t-sm t-it" text-anchor="middle">smush: the two names are known to be the same</text>
 
-  <rect x="24" y="140" width="312" height="34" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="34" y="162" class="t-mono" font-size="11.5">ex:Joe preferredURI ex:Joe .</text>
-  <text x="180" y="196" class="t-sm" text-anchor="middle" fill="#b04a4a">Joe prefers to be called what he</text>
-  <text x="180" y="214" class="t-sm" text-anchor="middle" fill="#b04a4a">is already called. The preference</text>
-  <text x="180" y="232" class="t-sm" text-anchor="middle" fill="#b04a4a">is gone, and nothing reports an error.</text>
+  <rect class="box-warm" x="20" y="152" width="320" height="52"/>
+  <text x="32" y="173" class="t-mono">ex:Joe contact:preferredURI</text>
+  <text x="44" y="192" class="t-mono">ex:Joe .</text>
+  <text x="180" y="228" class="t-sm" text-anchor="middle" style="fill:#b08d57">Joe prefers to be called what he</text>
+  <text x="180" y="246" class="t-sm" text-anchor="middle" style="fill:#b08d57">is already called. The preference</text>
+  <text x="180" y="264" class="t-sm" text-anchor="middle" style="fill:#b08d57">is gone, and nothing reports an error.</text>
 
-  <rect x="404" y="140" width="292" height="34" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="414" y="162" class="t-mono" font-size="11.5">ex:Joe preferredURI "uni:JRMeadows" .</text>
-  <text x="540" y="196" class="t-sm" text-anchor="middle" fill="#3f6f3f">Unchanged. A string is not a symbol,</text>
-  <text x="540" y="214" class="t-sm" text-anchor="middle" fill="#3f6f3f">so nothing substitutes it, and the</text>
-  <text x="540" y="232" class="t-sm" text-anchor="middle" fill="#3f6f3f">preference survives the merge.</text>
+  <rect class="box-green" x="380" y="152" width="320" height="52"/>
+  <text x="392" y="173" class="t-mono">ex:Joe contact:preferredURI</text>
+  <text x="404" y="192" class="t-mono">"https://uni.edu/students#JRMeadows" .</text>
+  <text x="540" y="228" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">Unchanged. A string is not a symbol,</text>
+  <text x="540" y="246" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">so nothing substitutes it, and the</text>
+  <text x="540" y="264" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">preference survives the merge.</text>
 
-  <line class="ln-mut" x1="24" y1="268" x2="696" y2="268"/>
-  <text x="360" y="292" class="t-sm" text-anchor="middle">Use the name to talk about the thing. Mention the name to talk about the name.</text>
-  <rect class="box" x="150" y="308" width="420" height="40" rx="4"/>
-  <text x="360" y="333" class="t-sm" text-anchor="middle">The angle brackets mean <tspan font-style="italic">identified by</tspan>. The quotes mean the characters themselves.</text>
+  <line class="ln-mut" x1="20" y1="284" x2="700" y2="284"/>
+  <text x="360" y="306" class="t-sm" text-anchor="middle">Use the name to talk about the thing. Mention the name to talk about the name.</text>
+  <rect class="box" x="100" y="320" width="520" height="38" rx="4"/>
+  <text x="360" y="344" class="t-sm" text-anchor="middle">The angle brackets mean <tspan font-style="italic">identified by</tspan>. The quotes mean the characters themselves.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 35.1</span>
-The failure is silent, which is what makes it worth a chapter. Nothing rejects
-the malformed version; it simply becomes a tautology at the moment two
-datasets are merged.</figcaption>
+<figcaption><span class="fig-label">Figure 35.2</span>
+The failure is silent. Nothing rejects the wrong version; it simply becomes a
+tautology when the datasets are merged.</figcaption>
 </figure>
 
 <h2>35.3 Why this is not a quirk of one notation</h2>
 
 <p>
-The mistake is the use-mention distinction, and the reason it bites here is
-that the system is permitted to substitute equals for equals. Any system that
-normalises identifiers, whether it calls them URIs, primary keys or object
-references, will replace a mentioned name along with the used ones unless the
-format distinguishes them.
+The mistake is a confusion of use and mention. Paris is a city; &ldquo;Paris&rdquo;
+has five letters. The first sentence uses the word to talk about a place; the
+second mentions the word to talk about the word.
 </p>
 
-<p>
-The same shape appears wherever a value can be either a reference or text:
-configuration where a field may hold a path or a literal, message formats
-where an identifier is sometimes an address and sometimes a label, and any
-<a class="gl-ref" href="../glossary.html#schema">schema</a> where a string column holds foreign keys. In each case a later
-rewriting pass cannot tell the two apart.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 560 160" width="560" height="160" role="img"
+     aria-labelledby="fig35-3-t fig35-3-d">
+  <title id="fig35-3-t">Use versus mention</title>
+  <desc id="fig35-3-d">Paris is a city points to the city; the quoted
+  word Paris points to its five letters.</desc>
+
+  <text x="130" y="18" class="t-caps" text-anchor="middle">use</text>
+  <text x="430" y="18" class="t-caps" text-anchor="middle">mention</text>
+
+  <rect class="box" x="20" y="30" width="220" height="40" rx="4"/>
+  <text x="130" y="55" text-anchor="middle">Paris is a city</text>
+  <path class="ln" d="M 130 74 L 130 102"/>
+  <path d="M 130 110 L 125 101 L 135 101 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="50" y="112" width="160" height="36" rx="4"/>
+  <text x="130" y="135" text-anchor="middle">the city</text>
+
+  <rect class="box" x="320" y="30" width="220" height="40" rx="4"/>
+  <text x="430" y="55" text-anchor="middle">&#8220;Paris&#8221; has five letters</text>
+  <path class="ln" d="M 430 74 L 430 102"/>
+  <path d="M 430 110 L 425 101 L 435 101 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="350" y="112" width="160" height="36" rx="4"/>
+  <text x="430" y="135" class="t-mono" text-anchor="middle">P a r i s</text>
+</svg>
+<figcaption><span class="fig-label">Figure 35.3</span>
+The same word can point at a thing or be the thing under discussion. Angle
+brackets and quotation marks make that choice explicit.</figcaption>
+</figure>
 
 <p>
-Berners-Lee&#8217;s own summary is that this is one of the very rare occasions when
-one is not talking about the thing the symbol represents. Rare occasions are
-exactly the ones a habit destroys.
+It bites in RDF because the system may substitute equals for equals. Any
+system that rewrites identifiers will rewrite a mentioned name along with the
+used ones unless the format tells them apart. Many everyday tools do:
+</p>
+
+<table>
+<tr><th>Setting</th><th>Used as a reference</th><th>Mentioned as text</th><th>What a rewrite does</th></tr>
+<tr><td>Spreadsheet</td><td>the formula <code>=B2</code></td><td>the typed note &ldquo;see B2&rdquo;</td><td>Inserting a row above moves the formula to B3; the note still says B2.</td></tr>
+<tr><td>Word processor</td><td>an automatic cross-reference to Figure 3</td><td>the words &ldquo;Figure 3&rdquo; typed by hand</td><td>Renumbering updates the cross-reference, not the typed words.</td></tr>
+<tr><td>Database</td><td>a customer number in a foreign-key column</td><td>the same number in a free-text comment</td><td>Merging two customers updates the key, not the comment.</td></tr>
+</table>
+
+<p>
+Where the format cannot record the difference, a rewriting pass treats every
+occurrence alike and the rare mention is lost. Rare occasions are exactly the
+ones a habit destroys.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The specific property stayed marginal.</strong> Declaring a
-preferred identifier never became common practice, and the problem of one
-thing with many names is now usually handled by canonicalisation at the point
-of publication rather than by the subject stating a preference.</li>
-<li><strong>The general hazard grew.</strong> Systems that merge records from
-several sources are far more common than in 2017, and silent collapse on
-merge remains a standard failure, now usually in formats with no use-mention
-distinction at all.</li>
-<li><strong>The mnemonic outlived the note.</strong> Reading angle brackets as
-&ldquo;identified by&rdquo; is the clearest short explanation of the
-distinction anyone has written, and applies to every <a class="gl-ref" href="../glossary.html#graph">graph</a> notation.</li>
+<li><strong>The notation was already standard.</strong> RDF 1.1 Turtle became
+a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in February 2014, so the bracket-versus-quote syntax the
+note relies on was fixed three years before it was written.</li>
+<li><strong>So was the merge.</strong> <code>owl:sameAs</code>, the
+&ldquo;same as&rdquo; statement that licenses smushing, comes from <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a W3C
+Recommendation since February 2004.</li>
 </ul>
 </div>
 
@@ -206,8 +307,9 @@ mentioned rather than acted upon is the same requirement as Chapter 24.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">35.1</span>
-State the use-mention distinction in one sentence, then find a place in a
-format you use where it cannot be expressed.</p>
+State the use-mention distinction in one sentence, then find a place in an
+everyday tool, such as a spreadsheet or a contacts app, where it cannot be
+expressed.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.2</span>
@@ -221,8 +323,8 @@ a name rather than use it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.4</span>
-Normalising on one identifier is a useful optimisation. What else does it
-destroy, and how would a system know before doing it?</p>
+Joe&#8217;s preference survived because it was quoted. Write the one line that
+would have destroyed it, and say what the merged data then claims.</p>
 </div>
 </details>
 

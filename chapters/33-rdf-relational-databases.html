@@ -49,6 +49,20 @@
 a Design Issues note by Tim Berners-Lee, 1998-09-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/RDB-RDF.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Most of the world&#8217;s structured data sits in tables. Read a table the
+right way and it is already a <a class="gl-ref" href="../glossary.html#graph">graph</a>: each row is a thing, each column is a
+property, each cell is a value.
+</p>
+<p>
+Two things do not carry over. A table quietly claims to be complete, and
+nothing in either model writes that claim down. And the keys that name rows
+can change, which is harmless inside one database and breaks links on the Web.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -69,83 +83,94 @@ information in a way that can be processsed by machines.
 <h2>33.1 The mapping</h2>
 
 <p>
-The correspondence is stated in three lines and is exact enough to implement
-from.
+A relational database stores data in tables. Each row is one record, say
+one employee, and each column holds one kind of fact, such as a shoe size. The
+primary key is the column whose value picks out exactly one row, such as an
+employee number. The correspondence takes three lines (Figure 33.1).
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig33-1-t fig33-1-d">
   <title id="fig33-1-t">A table, read as a graph</title>
-  <desc id="fig33-1-d">Each row becomes a node, each column name becomes a
-  property, and each cell becomes a value. A record is nothing but the content
-  of its fields, just as a node is nothing but its property values.</desc>
+  <desc id="fig33-1-d">A three-column table of employees with id, name and shoe
+  size. The row with id 1234 becomes a node named employees/1234#item, with a
+  name property whose value is Joe and a shoe property whose value is 10. Each
+  record becomes a node, each column name a property and each cell a value.
+  Below, a note that the table's claim to be complete is written down by
+  neither model.</desc>
 
   <text x="24" y="26" class="t-caps">a table</text>
-  <g class="t-sm">
-    <rect x="24" y="38" width="300" height="26" fill="#f2f2f2" stroke="#d5d5d5"/>
-    <text x="38" y="56" class="t-mono" font-size="11.5">id</text>
-    <text x="106" y="56" class="t-mono" font-size="11.5" fill="#a07d47">name</text>
-    <text x="206" y="56" class="t-mono" font-size="11.5" fill="#a07d47">shoe</text>
-    <rect x="24" y="64" width="300" height="26" fill="#ffffff" stroke="#e2e2e2"/>
-    <text x="38" y="82" class="t-mono" font-size="11.5">1234</text>
-    <text x="106" y="82" class="t-mono" font-size="11.5">Joe</text>
-    <text x="206" y="82" class="t-mono" font-size="11.5">10</text>
-    <rect x="24" y="90" width="300" height="26" fill="#ffffff" stroke="#e2e2e2"/>
-    <text x="38" y="108" class="t-mono" font-size="11.5">1235</text>
-    <text x="106" y="108" class="t-mono" font-size="11.5">Ann</text>
-    <text x="206" y="108" class="t-mono" font-size="11.5">7</text>
-  </g>
+  <rect x="24" y="38" width="300" height="26" class="box"/>
+  <text x="38" y="56" class="t-mono">id</text>
+  <text x="126" y="56" class="t-mono" style="fill:#b08d57">name</text>
+  <text x="226" y="56" class="t-mono" style="fill:#b08d57">shoe</text>
+  <rect x="24" y="64" width="300" height="26" class="box-plain"/>
+  <text x="38" y="82" class="t-mono">1234</text>
+  <text x="126" y="82" class="t-mono">Joe</text>
+  <text x="226" y="82" class="t-mono">10</text>
+  <rect x="24" y="90" width="300" height="26" class="box-plain"/>
+  <text x="38" y="108" class="t-mono">1235</text>
+  <text x="126" y="108" class="t-mono">Ann</text>
+  <text x="226" y="108" class="t-mono">7</text>
 
-  <path class="ln-accent" d="M 336 78 L 380 78"/>
-  <path d="M 376 72 L 388 78 L 376 84 Z" fill="#1c5a7a"/>
+  <text x="396" y="26" class="t-caps">the same row, as a graph</text>
+  <path class="ln-accent" d="M 336 78 L 384 78"/>
+  <path d="M 382 72 L 394 78 L 382 84 Z" fill="#1c5a7a"/>
 
-  <circle cx="452" cy="78" r="28" fill="#ffffff" stroke="#1c5a7a" stroke-width="1.6"/>
-  <text x="452" y="82" class="t-sm" text-anchor="middle">1234</text>
-  <circle cx="640" cy="44" r="24" fill="#f8f5f0" stroke="#b08d57" stroke-width="1.5"/>
-  <text x="640" y="48" class="t-sm" text-anchor="middle">Joe</text>
-  <circle cx="640" cy="118" r="24" fill="#f8f5f0" stroke="#b08d57" stroke-width="1.5"/>
-  <text x="640" y="122" class="t-sm" text-anchor="middle">10</text>
-  <path class="ln" d="M 478 68 L 614 48"/>
-  <path d="M 606 43 L 620 47 L 607 53 Z" fill="#2f4f4f"/>
-  <path class="ln" d="M 478 90 L 614 113"/>
-  <path d="M 606 108 L 620 114 L 605 118 Z" fill="#2f4f4f"/>
-  <text x="540" y="50" class="t-sm" text-anchor="middle" fill="#a07d47">name</text>
-  <text x="540" y="116" class="t-sm" text-anchor="middle" fill="#a07d47">shoe</text>
+  <rect x="396" y="62" width="160" height="32" rx="4" class="box"/>
+  <text x="476" y="82" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">employees/1234#item</text>
+  <circle cx="672" cy="44" r="22" class="box-warm"/>
+  <text x="672" y="48" class="t-mono" text-anchor="middle">Joe</text>
+  <circle cx="672" cy="118" r="22" class="box-warm"/>
+  <text x="672" y="122" class="t-mono" text-anchor="middle">10</text>
+  <path class="ln" d="M 556 70 L 643 49"/>
+  <path d="M 638 44 L 651 47 L 640 54 Z" fill="#2f4f4f"/>
+  <path class="ln" d="M 556 88 L 643 112"/>
+  <path d="M 640 106 L 651 114 L 637 116 Z" fill="#2f4f4f"/>
+  <text x="575" y="46" class="t-mono" style="fill:#b08d57">name</text>
+  <text x="575" y="122" class="t-mono" style="fill:#b08d57">shoe</text>
+  <text x="476" y="116" class="t-sm" text-anchor="middle">the id becomes part of the name</text>
 
   <line class="ln-mut" x1="24" y1="146" x2="696" y2="146"/>
-  <g class="t-sm">
-    <text x="24" y="172">a record</text>
-    <text x="200" y="172">&#8594;</text>
-    <text x="248" y="172" fill="#1c5a7a">a node</text>
-    <text x="24" y="196">the column name</text>
-    <text x="200" y="196">&#8594;</text>
-    <text x="248" y="196" fill="#1c5a7a">a property</text>
-    <text x="24" y="220">the cell</text>
-    <text x="200" y="220">&#8594;</text>
-    <text x="248" y="220" fill="#1c5a7a">a value</text>
-  </g>
+  <text x="24" y="172" class="t-sm">a record</text>
+  <text x="200" y="172" class="t-sm">&#8594;</text>
+  <text x="248" y="172" class="t-sm" style="fill:#1c5a7a">a node</text>
+  <text x="24" y="196" class="t-sm">the column name</text>
+  <text x="200" y="196" class="t-sm">&#8594;</text>
+  <text x="248" y="196" class="t-sm" style="fill:#1c5a7a">a property</text>
+  <text x="24" y="220" class="t-sm">the cell</text>
+  <text x="200" y="220" class="t-sm">&#8594;</text>
+  <text x="248" y="220" class="t-sm" style="fill:#1c5a7a">a value</text>
   <text x="400" y="196" class="t-sm t-it">A record is nothing but the content of its fields,</text>
   <text x="400" y="216" class="t-sm t-it">just as a node is nothing but its property values.</text>
 
   <line class="ln-mut" x1="24" y1="244" x2="696" y2="244"/>
-  <rect x="24" y="256" width="672" height="60" rx="4" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="360" y="278" class="t-sm" text-anchor="middle" fill="#b04a4a">What the mapping loses: the table also says that if any car has a Massachusetts plate,</text>
-  <text x="360" y="298" class="t-sm" text-anchor="middle" fill="#b04a4a">it must be in the table. Neither model has a simple way to say that.</text>
+  <rect x="24" y="256" width="672" height="60" rx="4" class="box-warm"/>
+  <text x="360" y="280" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">What neither model writes down: the table&#8217;s unwritten claim to be complete,</text>
+  <text x="360" y="300" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">that anything which belongs in it is in it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 33.1</span>
-Berners-Lee calls this unwritten completeness claim the definitive quality of
-a table, and notes that the scope over which a value is unique is a very
-interesting property. It is the closed world assumption of Chapter 31,
-appearing as a practical loss.</figcaption>
+Rows, columns and cells map one to one onto nodes, properties and values.
+What does not map is the table&#8217;s silent claim to be the whole list,
+which is the closed world assumption of Chapter 31.</figcaption>
 </figure>
+
+<p>
+Berners-Lee&#8217;s example is a table of cars. A row says there is a red
+car whose Massachusetts plate is 123XYZ, but the table may also mean that any
+car with a Massachusetts plate is in it. Neither model has a simple way to say
+so.
+</p>
 
 <h2>33.2 One difference, and it is the whole difference</h2>
 
 <p>
-The comparison with entity-relationship modelling gets a yes and no. The
-model is great as a basis for such modelling and more general, because it is
-used for other things too. The change is small and consequential:
+Entity-relationship modelling is the standard way of designing a database on
+paper: list the kinds of thing, and the relationships each kind can have.
+Asked whether <a class="gl-ref" href="../glossary.html#rdf">RDF</a> is such a model, Berners-Lee answers yes and no. It is a
+good basis for one, but more general, because RDF is used for other things
+too. The change is small and consequential:
 </p>
 
 <blockquote>
@@ -155,32 +180,85 @@ of slots of an object is not defined when the class of an object is defined.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig33-2-t fig33-2-d">
+  <title id="fig33-2-t">Fixed slots versus open statements</title>
+  <desc id="fig33-2-d">On the left, a class Vehicle with slots for wheels,
+  weight and length; colour has no slot. On the right, site A says car 42 has
+  4 wheels and weighs 1200, and a separate site B says car 42 has the colour
+  red, using a property from another vocabulary. A dashed line shows that the
+  two car 42 nodes are the same URI.</desc>
+
+  <text x="24" y="26" class="t-caps">a class fixes the slots</text>
+  <rect x="24" y="40" width="200" height="130" rx="4" class="box-plain"/>
+  <text x="40" y="62">Class: Vehicle</text>
+  <text x="40" y="88" class="t-sm">wheels</text>
+  <text x="40" y="110" class="t-sm">weight</text>
+  <text x="40" y="132" class="t-sm">length</text>
+  <text x="40" y="154" class="t-sm">colour?</text>
+  <line class="ln-mut" x1="38" y1="150" x2="84" y2="150"/>
+  <text x="100" y="154" class="t-sm" style="fill:#b08d57">no slot</text>
+
+  <text x="260" y="26" class="t-caps">anyone can add a statement</text>
+  <rect x="260" y="40" width="240" height="130" rx="4" class="box-plain"/>
+  <text x="272" y="58" class="t-sm">site A</text>
+  <rect x="276" y="91" width="64" height="28" rx="4" class="box"/>
+  <text x="308" y="110" text-anchor="middle">car 42</text>
+  <path class="ln" d="M 340 98 L 452 74"/>
+  <path d="M 447 69 L 459 72 L 449 78 Z" fill="#2f4f4f"/>
+  <text x="468" y="78">4</text>
+  <path class="ln" d="M 340 112 L 452 138"/>
+  <path d="M 449 132 L 459 140 L 447 141 Z" fill="#2f4f4f"/>
+  <text x="464" y="144">1200</text>
+  <text x="350" y="78" class="t-sm">wheels</text>
+  <text x="350" y="140" class="t-sm">weight</text>
+
+  <rect x="520" y="40" width="180" height="130" rx="4" class="box-plain"/>
+  <text x="532" y="58" class="t-sm">site B</text>
+  <text x="610" y="80" class="t-sm" text-anchor="middle">property: a URI from</text>
+  <text x="610" y="96" class="t-sm" text-anchor="middle">another vocabulary</text>
+  <rect x="530" y="120" width="64" height="28" rx="4" class="box"/>
+  <text x="562" y="139" text-anchor="middle">car 42</text>
+  <path class="ln-accent" d="M 594 134 L 654 134"/>
+  <path d="M 652 128 L 664 134 L 652 140 Z" fill="#1c5a7a"/>
+  <text x="627" y="124" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">colour</text>
+  <text x="668" y="138">red</text>
+
+  <path class="ln-dash" d="M 308 119 L 308 192 L 562 192 L 562 148"/>
+  <text x="435" y="208" class="t-sm" text-anchor="middle">the same URI, so the statements join up</text>
+</svg>
+<figcaption><span class="fig-label">Figure 33.2</span>
+In an object system the class decides in advance which facts an object can
+hold. In RDF a relationship is a named thing in its own right, so anyone can
+add one and store it anywhere.</figcaption>
+</figure>
+
 <p>
-The consequence is that a relationship between two things may be stored apart
-from any information about either of them, which object-oriented systems
-generally assume is impossible. The example is the one Berners-Lee returns to
-often: someone defines a vehicle as having wheels, a weight and a length, and
-does not foresee colour. That does not stop anybody else asserting that a
-given car is red, using a colour <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> from elsewhere.
+Object-oriented systems, the usual way of building such models in
+software, assume the opposite: an object&#8217;s data lives inside the object,
+in slots its class set aside. Whoever defined a vehicle without a colour
+cannot stop anybody else saying that a given car is red.
 </p>
 
 <h2>33.3 What a database does that a graph does not</h2>
 
 <p>
-The note is careful about what relational systems are good at, and the
-description is fair. Tables hold many records with the same properties, an
-individual cell is rarely thought of alone, queries join tables and yield
-tables, and the software is optimised for operations on a few tables some of
-which are very large.
+Relational systems are good at something specific. A table holds many
+records with the same properties. Queries join tables, matching rows on a
+shared value, and yield another table. The software is optimised for work on
+a few tables, some very large.
 </p>
 
+<h3>Typing</h3>
+
 <p>
-Two further observations survive well. The first is about typing. Codd&#8217;s
-original model included datatyping with inheritance, intended to be
-implemented more fully than it was, so a shoe size and a house number may
-both be integers and nothing prevents joining on them. Practical systems
-leave it to the application to only do things that make sense, and
-Berners-Lee notes what changes on the Web:
+E. F. Codd, who invented the relational model, included datatypes with
+inheritance, and meant them to be implemented more fully than they were. In
+practice a house number and a shoe size are both just integers, so nothing
+stops anyone asking to &ldquo;list people whose shoe size equals their house
+number&rdquo;. Practical systems trust the application to ask only sensible
+questions. On the Web that trust no longer holds:
 </p>
 
 <blockquote>
@@ -190,23 +268,76 @@ a set of inference rules.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
 
+<h3>Keys that change</h3>
+
 <p>
-The second is about primary keys, and it is the naming problem of Chapter 3
-arriving in a new place. A primary key identifies a row, and can change
-without changing the row&#8217;s identity: a person may change their name.
-Cascading updates preserve referential integrity locally and cannot work
-across the Web. He lists the three options honestly: use a row identifier,
-constrain the key not to change, or put up with links breaking.
+Here the naming problem of Chapter 3 arrives in a new place. A primary key
+can change without the row changing identity: a person may change their name.
+Other tables refer to the row by its key, and SQL can cascade the change,
+rewriting every such reference so none points at nothing (referential
+integrity). That works inside one database; it cannot reach links made from
+elsewhere on the Web.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 272" width="720" height="272" role="img"
+     aria-labelledby="fig33-3-t fig33-3-d">
+  <title id="fig33-3-t">Where cascading stops</title>
+  <desc id="fig33-3-d">Inside a dashed boundary labelled one database, the key
+  of an employee row is renamed from Smith to Jones, and cascade arrows update
+  a payroll row and a projects row. Outside the boundary, a page elsewhere
+  links to employees/Smith; its link is shown broken. Below are the three
+  options: use a row ID, never change the key, or accept broken links.</desc>
+
+  <rect x="24" y="36" width="420" height="130" rx="6" class="ln-dash"/>
+  <text x="36" y="56" class="t-caps">one database</text>
+  <rect x="44" y="72" width="150" height="30" rx="4" class="box"/>
+  <text x="119" y="91" text-anchor="middle">key: Smith &#8594; Jones</text>
+  <rect x="284" y="66" width="140" height="26" rx="4" class="box-plain"/>
+  <text x="354" y="84" class="t-sm" text-anchor="middle">payroll row: Jones</text>
+  <rect x="284" y="112" width="140" height="26" rx="4" class="box-plain"/>
+  <text x="354" y="130" class="t-sm" text-anchor="middle">projects row: Jones</text>
+  <path class="ln-accent" d="M 194 82 L 274 79"/>
+  <path d="M 272 73 L 284 79 L 272 85 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 194 94 L 274 122"/>
+  <path d="M 274 115 L 284 125 L 270 126 Z" fill="#1c5a7a"/>
+  <text x="239" y="70" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">cascade</text>
+
+  <rect x="500" y="60" width="196" height="34" rx="4" class="box-plain"/>
+  <text x="598" y="82" text-anchor="middle">a page elsewhere</text>
+  <text x="598" y="118" class="t-mono" text-anchor="middle">&#8230;/employees/Smith</text>
+  <path class="ln-dash" style="stroke:#b08d57" d="M 598 126 L 598 192 L 330 192"/>
+  <path class="ln-dash" style="stroke:#b08d57" d="M 300 192 L 119 192 L 119 112"/>
+  <path d="M 113 114 L 119 102 L 125 114 Z" fill="#b08d57"/>
+  <text x="315" y="196" text-anchor="middle" style="fill:#b08d57">&#215;</text>
+  <text x="470" y="184" class="t-sm" text-anchor="middle" style="fill:#b08d57">link breaks</text>
+
+  <text x="24" y="220" class="t-caps">the three options</text>
+  <rect x="24" y="230" width="216" height="30" rx="4" class="box-green"/>
+  <text x="132" y="250" text-anchor="middle">1. use a row ID</text>
+  <rect x="252" y="230" width="216" height="30" rx="4" class="box-green"/>
+  <text x="360" y="250" text-anchor="middle">2. never change the key</text>
+  <rect x="480" y="230" width="216" height="30" rx="4" class="box-green"/>
+  <text x="588" y="250" text-anchor="middle">3. accept broken links</text>
+</svg>
+<figcaption><span class="fig-label">Figure 33.3</span>
+SQL fixes every reference to a renamed key that it knows about. On the Web it
+knows about none of them, which leaves the three options at the bottom.</figcaption>
+</figure>
+
+<p>
+Many systems do keep an internal row ID, he notes, although SQL does not
+expose it in a standard way.
 </p>
 
 <h2>33.4 Two kinds of schema</h2>
 
 <p>
-A short observation explains why the two worlds feel so different, and it is
-about numbers rather than technology. There will be relatively few document
-schemas, and many sites will export documents defined by the same one, which
-is what provides interoperability. Database schemas are created independently
-per database:
+A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the declared shape of some data: its tables and columns, or the
+elements a document may contain. The two worlds differ in how many there are.
+There will be relatively few document schemas, and many sites will export
+documents defined by the same one, which is what provides interoperability.
+Database schemas are created independently per database:
 </p>
 
 <blockquote>
@@ -224,42 +355,76 @@ conversion layer of Chapter 30, and it is still where the work is.
 <h2>33.5 Exposing a database</h2>
 
 <p>
-The rest of the note is a strawman <a class="gl-ref" href="../glossary.html#uri">URI</a> layout, giving addresses to the
-catalogue, <a class="gl-ref" href="../glossary.html#schema">schema</a>, database, table, column, row, cell and arbitrary query,
-with a later revision based on code Dan Connolly implemented. Berners-Lee
-flags his own uncertainty in the margins and asks the question that matters:
-is a query on a primary key really an identifier? Is extracting a single cell?
+The rest of the note is a strawman, a first draft put up to be criticised: a
+layout giving a <a class="gl-ref" href="../glossary.html#uri">URI</a> to each part of a database, down to a single cell and an
+arbitrary query. A 2002 version, based on code Dan Connolly implemented,
+looks like Figure 33.4.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 222" width="720" height="222" role="img"
+     aria-labelledby="fig33-4-t fig33-4-d">
+  <title id="fig33-4-t">A database laid out as URIs</title>
+  <desc id="fig33-4-d">An indented tree of URIs relative to a base address.
+  personnel describes the database; personnel/employees describes the table,
+  and employees#email names a column; employees/1234 is the data in the row
+  whose primary key is 1234; 1234#item is the employee that row is about;
+  1234/email is one cell. A separate branch, _sql followed by a query, is an
+  arbitrary query using the question mark convention, which must never be an
+  UPDATE or DELETE.</desc>
+
+  <text x="24" y="26" class="t-sm">relative to http://www.acme.com/wherever/</text>
+  <path class="ln-mut" d="M 48 66 L 48 196 L 60 196 M 48 84 L 60 84"/>
+  <path class="ln-mut" d="M 72 94 L 72 168 L 84 168 M 72 112 L 84 112 M 72 140 L 84 140"/>
+
+  <text x="40" y="60" class="t-mono" style="fill:#1c5a7a">personnel</text>
+  <text x="64" y="88" class="t-mono" style="fill:#1c5a7a">employees</text>
+  <text x="88" y="116" class="t-mono" style="fill:#1c5a7a">1234</text>
+  <text x="88" y="144" class="t-mono" style="fill:#1c5a7a">1234#item</text>
+  <text x="88" y="172" class="t-mono" style="fill:#1c5a7a">1234/email</text>
+  <text x="64" y="200" class="t-mono" style="fill:#b08d57">_sql?select+empno+from&#8230;</text>
+
+  <text x="290" y="60" class="t-sm">describes the whole database</text>
+  <text x="290" y="88" class="t-sm">describes the table; employees#email names a column</text>
+  <text x="290" y="116" class="t-sm">the data in the row whose primary key is 1234</text>
+  <text x="290" y="144" class="t-sm">the employee that row is about</text>
+  <text x="290" y="172" class="t-sm">the data in one cell</text>
+  <text x="290" y="200" class="t-sm" style="fill:#b08d57">a query: ? convention, never UPDATE or DELETE</text>
+</svg>
+<figcaption><span class="fig-label">Figure 33.4</span>
+Every level of the database gets an address. Because the layout nests, any
+name inside the database can be written as a short relative URI.</figcaption>
+</figure>
+
 <p>
-His ruling is the axiom of Chapter 2 applied to databases. A URI should never
-refer to the results of a table-changing operation, and a general query should
-use the question mark convention or be posted rather than fetched.
+Berners-Lee is unsure whether a query on a primary key, or a single cell,
+is really an identifier. His ruling is the axiom of Chapter 2 applied to
+databases. A URI must never refer to the result of a table-changing operation
+such as UPDATE or DELETE. A general query should be marked with a question
+mark in the URI, or be posted (sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> POST, which asks the server to
+act) rather than fetched with GET, which only reads.
 </p>
 
 <p>
 One practical note closes it, and it is the same advice as Chapter 26: export
 a derived view rather than the internal storage, so that the external form
 can be persistent and suit the consumer while the internal one stays
-efficient and suits you.
+efficient and suits the publisher.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The mapping was standardised twice.</strong> Direct Mapping of
-Relational Data to <a class="gl-ref" href="../glossary.html#rdf">RDF</a> and R2RML, a customisable mapping language, both
+Relational Data to RDF and R2RML, a customisable mapping language, both
 became <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendations in September 2012. The three-line correspondence
 of section 33.1 is the direct mapping almost verbatim.</li>
-<li><strong>Querying across both became routine.</strong> Systems that answer
-<a class="gl-ref" href="../glossary.html#graph">graph</a> queries by translating them into SQL against an unchanged database are
-now ordinary, which is the arrangement this note sketches.</li>
-<li><strong>The primary key problem was solved by convention.</strong>
-Practice settled on surrogate keys and stable identifiers, which is the first
-of the three options offered here.</li>
+<li><strong>The primary key problem was settled by convention.</strong>
+Practice moved to surrogate keys, meaningless identifiers that never change,
+which is closest to the first of the three options offered here.</li>
 <li><strong>The million schemas are still there.</strong> Mapping between
-independently designed schemas remains largely manual, and is the main cost
-of every data integration project.</li>
+independently designed schemas remains largely manual, and is a large part
+of the cost of data integration projects.</li>
 </ul>
 </div>
 
@@ -267,10 +432,10 @@ of every data integration project.</li>
 <h3>Connections</h3>
 <p>
 The graph model this maps onto is Chapter 32, and the plan it serves is
-Chapter 30. The closed world assumption that the mapping loses is named in
-Chapter 31. The naming problem behind primary keys is Chapter 3, and the
-advice to export a derived view is Chapter 26. Publishing such data at scale
-is Chapters 49 and 53.
+Chapter 30. The closed world assumption that neither model writes down is
+named in Chapter 31. The naming problem behind primary keys is Chapter 3, and
+the advice to export a derived view is Chapter 26. Publishing such data at
+scale is Chapters 49 and 53.
 </p>
 </div>
 
@@ -288,13 +453,13 @@ schema author never foresaw. Name a case where that is dangerous.</p>
 </div>
 <div class="question">
 <p><span class="question-number">33.3</span>
-A primary key may change without changing the row&#8217;s identity. Which of the
-three options does your system take, and what breaks?</p>
+A library member changes her name. Which of the three options keeps links to
+her record working, and at what cost?</p>
 </div>
 <div class="question">
 <p><span class="question-number">33.4</span>
-Berners-Lee says a URI must never refer to the result of a table-changing
-operation. Restate that using the axioms of Chapter 2.</p>
+Why must a URI never name the result of a DELETE? What happens when a search
+engine follows it?</p>
 </div>
 </details>
 

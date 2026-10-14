@@ -58,8 +58,9 @@ nothing in the page tells it which words are prices and which are dates.
 </p>
 <p>
 This chapter is the first full plan for fixing that: a stack of layers, each
-one useful on its own before the layer above it exists. It is worth reading
-for the plan, and worth reading again for how much of it happened.
+one useful on its own before the layer above it exists. Its central bet is a
+modest one. The system is never asked to work out an answer from scratch; it
+only checks a proof that someone hands it.
 </p>
 </div>
 
@@ -77,15 +78,14 @@ thought experiments.
 </blockquote>
 <p>
 It is the first full statement of the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> as a programme rather than
-an idea, and it is a plan with an order: each layer assumes the one below and
-is useful before the one above exists.
+an idea.
 </p>
 </div>
 
 <h2>30.1 The problem being solved</h2>
 
 <p>
-The diagnosis is one sentence and has not aged at all:
+The diagnosis has not aged:
 </p>
 
 <blockquote>
@@ -97,11 +97,10 @@ that the structure of the data is not evident to a robot browsing the web.
 </blockquote>
 
 <p>
-Berners-Lee then sets aside the approach he is not taking. Leaving the
-artificial intelligence problem of training machines to behave like people to
-one side, the Semantic Web approach develops languages for expressing
-information in machine-processable form. The negative claim is made properly
-in Chapter 31.
+Berners-Lee sets aside the artificial intelligence problem of training
+machines to behave like people. The Semantic Web instead develops languages
+for writing information in a form machines can process. Chapter 31 makes
+the negative case.
 </p>
 
 <h2>30.2 The layers</h2>
@@ -113,34 +112,35 @@ in Chapter 31.
   <desc id="fig30-1-d">Assertions at the bottom, then a schema layer
   declaring properties and constraining them, then a conversion language
   relating vocabularies, then logic, then proof validation, with digital
-  signature running alongside. Each layer is useful before the one above it
-  exists.</desc>
+  signature running alongside and developed in parallel. Each layer is
+  useful before the one above it exists.</desc>
 
   <g>
     <rect class="box-green" x="120" y="30" width="420" height="50" rx="4"/>
-    <text x="330" y="52" class="t-caps" text-anchor="middle" fill="#3f6f3f">proof</text>
+    <text x="330" y="52" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">proof</text>
     <text x="330" y="70" class="t-sm" text-anchor="middle">validate a proof someone else found</text>
 
     <rect class="box" x="100" y="90" width="460" height="50" rx="4"/>
     <text x="330" y="112" class="t-caps" text-anchor="middle">logic</text>
-    <text x="330" y="130" class="t-sm" text-anchor="middle">rules, queries, implication</text>
+    <text x="330" y="130" class="t-sm" text-anchor="middle">not, and, for all x; rules and queries</text>
 
     <rect class="box" x="80" y="150" width="500" height="50" rx="4"/>
     <text x="330" y="172" class="t-caps" text-anchor="middle">conversion</text>
     <text x="330" y="190" class="t-sm" text-anchor="middle">say that this vocabulary means that one</text>
 
     <rect class="box-warm" x="60" y="210" width="540" height="50" rx="4"/>
-    <text x="330" y="232" class="t-caps" text-anchor="middle" fill="#a07d47">schema</text>
+    <text x="330" y="232" class="t-caps" text-anchor="middle" style="fill:#b08d57">schema</text>
     <text x="330" y="250" class="t-sm" text-anchor="middle">declare a property; constrain what it applies to</text>
 
     <rect class="box-warm" x="40" y="270" width="580" height="60" rx="4"/>
-    <text x="330" y="294" class="t-caps" text-anchor="middle" fill="#a07d47">assertions</text>
-    <text x="330" y="314" class="t-sm" text-anchor="middle">the triple, and quotation: assertions about assertions</text>
+    <text x="330" y="294" class="t-caps" text-anchor="middle" style="fill:#b08d57">assertions</text>
+    <text x="330" y="314" class="t-sm" text-anchor="middle">single statements, and quotation: statements about statements</text>
   </g>
 
   <!-- signature alongside -->
   <rect class="box-plain" x="636" y="30" width="56" height="300" rx="4"/>
-  <text x="664" y="184" class="t-caps" text-anchor="middle" transform="rotate(-90 664 184)">signature</text>
+  <text x="658" y="180" class="t-caps" text-anchor="middle" transform="rotate(-90 658 180)">signature</text>
+  <text x="680" y="180" class="t-sm" text-anchor="middle" transform="rotate(-90 680 180)">developed in parallel</text>
 
   <path class="ln-accent" d="M 24 330 L 24 40"/>
   <path d="M 20 48 L 24 34 L 28 48 Z" fill="#1c5a7a"/>
@@ -151,34 +151,128 @@ in Chapter 31.
   <text x="360" y="392" class="t-sm t-it" text-anchor="middle">The power, and the trouble, arrive together at the logical layer.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 30.1</span>
-This is the ancestor of the diagram that later became famous as the layer
-cake. Its virtue is the incremental claim: most metadata applications are
-served by the bottom layer alone.</figcaption>
+The ancestor of the diagram later famous as the layer cake. Its virtue is the
+incremental claim: most metadata applications are served by the bottom layer
+alone.</figcaption>
 </figure>
 
 <p>
 Berners-Lee justifies the base by minimalism. A universal web of assertions
-must rest on a model general enough that any prospective application maps
-onto it, and generality forces simplicity. The base contains two things only:
-the assertion, and quotation, which is making assertions about assertions. He
-gives two reasons for including quotation this early, and the second is
-practical: most early applications are data about data, where assertions about
-assertions are basic even before logic arrives.
+must rest on a model general enough that any application maps onto it, and
+generality forces simplicity. An <em>assertion</em> is a single statement,
+such as <i>this page&#8217;s author is Alice</i>. <em>Quotation</em> is
+a statement about a statement: <i>Bob says that this page&#8217;s author
+is Alice</i>. The base contains these two things only. Quotation is there
+early for two reasons: it will be needed later anyway, and most early
+applications are <em>metadata</em>, data about data, where statements about
+statements are basic even before logic arrives.
 </p>
 
 <p>
-He is honest about how little the base layer does. There is no negation and
-no implication, so given a set of facts it is easy to say whether a proof
-exists, because neither facts nor questions have enough power to make the
-problem intractable.
+The base layer has no negation (saying something is not so) and no
+implication (if one thing holds, then another does). So, given a set of facts, it is always easy to say
+whether a question can be answered. Nothing can be intractable, meaning it
+would take impossibly long to work out.
+</p>
+
+<h3>Schema</h3>
+<p>
+A <em><a class="gl-ref" href="../glossary.html#schema">schema</a></em> declares a new property and constrains how it is used,
+typically what kinds of thing it applies to. That allows simple checks: that a driver&#8217;s licence has the name of a person, and not a
+model of car, as its name. The schema language is kept deliberately weak.
+</p>
+
+<h3>Conversion</h3>
+<p>
+Two applications seldom use the same <em><a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a></em>, the set of terms
+their data is written in. The conversion layer states rules for translating
+one into another. It is allowed implication but still no negation. The
+note&#8217;s example is three databases built independently and put on the
+Web (Figure 30.2).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+     aria-labelledby="fig30-2-t fig30-2-d">
+  <title id="fig30-2-t">Widening a query across three databases</title>
+  <desc id="fig30-2-d">Three tables: friends with name and where, places with
+  zip, employees with zip and name. Someone noticed that where in friends
+  means the same as zip in places; someone else documented that zip in places
+  means the same as zip in employees. A query for an employee called Fred at
+  zip 02139 is asked of employees first, then widened through the two
+  equivalences to friends.</desc>
+
+  <rect class="box-warm" x="220" y="16" width="280" height="50" rx="4"/>
+  <text x="360" y="36" class="t-caps" text-anchor="middle" style="fill:#b08d57">query</text>
+  <text x="360" y="56" text-anchor="middle">any employee called Fred, zip 02139</text>
+
+  <path class="ln-dash" d="M 500 41 L 635 41 L 635 110"/>
+  <path d="M 631 108 L 635 120 L 639 108 Z" fill="#8a9a9a"/>
+  <text x="625" y="92" class="t-sm" text-anchor="end">first asked of employees</text>
+
+  <!-- tables -->
+  <rect class="box" x="20" y="120" width="130" height="105" rx="4"/>
+  <text x="85" y="142" class="t-caps" text-anchor="middle">friends</text>
+  <line class="ln-mut" x1="20" y1="154" x2="150" y2="154"/>
+  <text x="32" y="190" class="t-mono">name</text>
+  <text x="140" y="190" class="t-mono" text-anchor="end">where</text>
+
+  <rect class="box" x="295" y="120" width="130" height="105" rx="4"/>
+  <text x="360" y="142" class="t-caps" text-anchor="middle">places</text>
+  <line class="ln-mut" x1="295" y1="154" x2="425" y2="154"/>
+  <text x="360" y="190" class="t-mono" text-anchor="middle">zip</text>
+
+  <rect class="box" x="570" y="120" width="130" height="105" rx="4"/>
+  <text x="635" y="142" class="t-caps" text-anchor="middle">employees</text>
+  <line class="ln-mut" x1="570" y1="154" x2="700" y2="154"/>
+  <text x="582" y="190" class="t-mono">zip</text>
+  <text x="690" y="190" class="t-mono" text-anchor="end">name</text>
+
+  <!-- equivalences -->
+  <path class="ln-accent" d="M 166 186 L 279 186"/>
+  <path d="M 168 182 L 156 186 L 168 190 Z" fill="#1c5a7a"/>
+  <path d="M 277 182 L 289 186 L 277 190 Z" fill="#1c5a7a"/>
+  <text x="222" y="174" class="t-sm" text-anchor="middle">equivalent</text>
+  <text x="222" y="206" class="t-sm t-it" text-anchor="middle">someone noticed</text>
+
+  <path class="ln-accent" d="M 441 186 L 554 186"/>
+  <path d="M 443 182 L 431 186 L 443 190 Z" fill="#1c5a7a"/>
+  <path d="M 552 182 L 564 186 L 552 190 Z" fill="#1c5a7a"/>
+  <text x="497" y="174" class="t-sm" text-anchor="middle">equivalent</text>
+  <text x="497" y="206" class="t-sm t-it" text-anchor="middle">someone documented</text>
+
+  <!-- widening -->
+  <path class="ln-dash" d="M 635 233 L 635 262 L 85 262 L 85 243"/>
+  <path d="M 81 245 L 85 233 L 89 245 Z" fill="#8a9a9a"/>
+  <text x="360" y="284" class="t-sm" text-anchor="middle">then widened to friends, because where = zip = zip</text>
+</svg>
+<figcaption><span class="fig-label">Figure 30.2</span>
+None of the databases was designed with the others in mind, yet two small
+statements of equivalence carry the query across.</figcaption>
+</figure>
+
+<h3>Logic</h3>
+<p>
+The logical layer adds &ldquo;not&rdquo; and &ldquo;and&rdquo;, then
+&ldquo;for all x&rdquo;. With these a document can carry general rules. Where
+a Library of Congress schema says &ldquo;author&rdquo; and a British Library
+one says &ldquo;creator&rdquo;, a small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> can state that for any
+person x and resource y, if x is the author of y then x is the creator of y.
+</p>
+
+<h3>Signature</h3>
+<p>
+For reasoning to take trust into account, public keys become first-class
+objects, things the logic can talk about, and the model records which key
+signed which assertion. Proof checking then verifies signatures as well as
+logic. It matters once proofs exist, but can be developed in parallel.
 </p>
 
 <h2>30.3 Why bother at the bottom</h2>
 
 <p>
-The note anticipates the obvious objection. If an application&#8217;s data is
-simple, why express it in this model at all? The answer is the argument for
-the whole enterprise:
+If an application&#8217;s data is simple, why express it in this model at
+all? The answer is the argument for the whole enterprise:
 </p>
 
 <blockquote>
@@ -189,43 +283,153 @@ Web.
 </blockquote>
 
 <p>
-The example given is access control, where a decision may combine privacy
-preferences, group membership and data typing, each of which is trivial alone
-and none of which shares a format with the others. Chapter 37 works that
-example through in detail.
+The example is access control, where a decision may combine privacy
+preferences, group membership and data typing, each trivial alone and none
+sharing a format with the others. Chapter 37 works it through in detail.
 </p>
 
 <h2>30.4 Proof, and the asymmetry that makes it work</h2>
 
 <p>
-The most important design decision in the roadmap is a restriction, and it is
-what separates this plan from the artificial intelligence projects it is
-compared to. The system is required to validate proofs, not to find them.
+The most important design decision in the roadmap is a restriction, and it
+separates this plan from the artificial intelligence projects it is compared
+to. The system is required to validate proofs, not to find them.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig30-3-t fig30-3-d">
+  <title id="fig30-3-t">A request that carries its own proof</title>
+  <desc id="fig30-3-d">A client sends GET for a document to a server, with a
+  proof attached; the response is itself a proof. The proof is a chain of
+  three steps: a key signed that Alice is in group G; the site's key signed
+  that members of G may read the document; so Alice may read it. The server
+  checks the signature on the first two and the logic of the third.</desc>
+
+  <rect class="box" x="20" y="20" width="130" height="70" rx="4"/>
+  <text x="85" y="48" class="t-caps" text-anchor="middle">client</text>
+  <text x="85" y="68" class="t-sm" text-anchor="middle">Alice</text>
+
+  <rect class="box" x="570" y="20" width="130" height="70" rx="4"/>
+  <text x="635" y="48" class="t-caps" text-anchor="middle">server</text>
+  <text x="635" y="68" class="t-sm" text-anchor="middle">holds /doc</text>
+
+  <path class="ln-accent" d="M 152 38 L 558 38"/>
+  <path d="M 556 34 L 568 38 L 556 42 Z" fill="#1c5a7a"/>
+  <text x="360" y="58" class="t-sm" text-anchor="middle">GET /doc, with a proof attached</text>
+
+  <path class="ln-dash" d="M 568 76 L 162 76"/>
+  <path d="M 164 72 L 152 76 L 164 80 Z" fill="#8a9a9a"/>
+  <text x="360" y="96" class="t-sm" text-anchor="middle">the response: a proof that it is what was asked for</text>
+
+  <text x="310" y="132" class="t-caps" text-anchor="middle">the proof the server is handed</text>
+
+  <rect class="box-warm" x="150" y="145" width="320" height="40" rx="4"/>
+  <text x="310" y="170" text-anchor="middle">Key K signed: Alice is in group G</text>
+  <rect class="box-warm" x="150" y="205" width="320" height="40" rx="4"/>
+  <text x="310" y="230" text-anchor="middle">Site key signed: members of G may read /doc</text>
+  <rect class="box-green" x="150" y="265" width="320" height="40" rx="4"/>
+  <text x="310" y="290" text-anchor="middle">So Alice may read /doc</text>
+
+  <path class="ln-mut" d="M 310 185 L 310 197"/>
+  <path d="M 306 195 L 310 204 L 314 195 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 310 245 L 310 257"/>
+  <path d="M 306 255 L 310 264 L 314 255 Z" fill="#8a9a9a"/>
+
+  <path d="M 492 166 L 497 171 L 506 160" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="514" y="170" class="t-sm">check the signature</text>
+  <path d="M 492 226 L 497 231 L 506 220" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="514" y="230" class="t-sm">check the signature</text>
+  <path d="M 492 286 L 497 291 L 506 280" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="514" y="290" class="t-sm">check the logic</text>
+
+  <text x="360" y="330" class="t-sm t-it" text-anchor="middle">No searching: every link is a signature to verify or a step to re-check.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 30.3</span>
+The note&#8217;s example, with illustrative names. The server never works
+out why Alice should be let in; it only follows the chain it was handed.</figcaption>
+</figure>
+
 <p>
-Finding a proof for an arbitrary question is intractable. Checking one that
-arrives with the request is cheap. The applications Berners-Lee has in mind,
-access control first among them, need only the second. Chapter 31 makes the
-point at length, and it is the single answer to most objections raised
-against the whole programme.
+Someone granted access to a site is given a document explaining to the server
+why they should have it. The proof is &ldquo;a chain [well, DAG] of assertions
+and reasoning rules&rdquo;, with pointers to the supporting material. The
+note expects the same of privacy and most electronic commerce:
+</p>
+
+<blockquote>
+The HTTP "GET" will contain a proof that the client has a right to the
+response. the response will be a proof that the response is in deed what was
+asked for.
+<cite>Semantic Web Road map, 1998</cite>
+</blockquote>
+
+<p>
+Finding a proof for an arbitrary question is intractable; checking one that
+arrives with the request is not. Chapter 31 makes the point at length.
 </p>
 
 <h2>30.5 Engines of the future</h2>
 
 <p>
-The closing section is the most speculative and, read now, the most
-interesting. Search engines cover a huge part of the Web, return many
-inappropriate answers, and have no notion of correctness. Logical engines
-restrict output to provably correct answers, and have failed to rummage
-through intertwined data to construct them.
+The closing sections are the most speculative. Indexes of terms, Berners-Lee expects, will let the Web be
+searched &ldquo;as though it were one giant database, rather than one giant
+book&rdquo;. He then proposes joining two kinds of engine that had each
+failed alone (Figure 30.4).
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig30-4-t fig30-4-d">
+  <title id="fig30-4-t">Search engine, logic engine, and both together</title>
+  <desc id="fig30-4-d">A search engine covers a huge part of the Web but
+  returns many inappropriate answers and has no notion of correctness. A
+  logic engine gives only provably correct answers but is stuck by the
+  combinatorial explosion. The combined engine looks up a term in an index,
+  takes a few steps of inference out on the wild web, does the rest of the
+  reasoning locally, and reaches an answer.</desc>
+
+  <rect class="box-plain" x="20" y="20" width="210" height="250" rx="4"/>
+  <text x="125" y="44" class="t-caps" text-anchor="middle">search engine</text>
+  <text x="125" y="80" class="t-sm" text-anchor="middle">covers a huge part of the Web</text>
+  <text x="125" y="102" class="t-sm" text-anchor="middle">many inappropriate answers</text>
+  <text x="125" y="124" class="t-sm" text-anchor="middle">no notion of correctness</text>
+  <text x="125" y="250" class="t-it" text-anchor="middle">wide, but not correct</text>
+
+  <rect class="box-plain" x="255" y="20" width="210" height="250" rx="4"/>
+  <text x="360" y="44" class="t-caps" text-anchor="middle">logic engine</text>
+  <text x="360" y="80" class="t-sm" text-anchor="middle">only provably correct answers</text>
+  <text x="360" y="102" class="t-sm" text-anchor="middle">cannot rummage through</text>
+  <text x="360" y="124" class="t-sm" text-anchor="middle">the mass of intertwined data</text>
+  <text x="360" y="250" class="t-it" text-anchor="middle">correct, but stuck</text>
+
+  <rect class="box" x="490" y="20" width="210" height="250" rx="4"/>
+  <text x="595" y="44" class="t-caps" text-anchor="middle">combined</text>
+
+  <rect class="box-plain" x="505" y="58" width="180" height="30" rx="3"/>
+  <text x="595" y="78" class="t-sm" text-anchor="middle">look up the term in an index</text>
+  <path class="ln-mut" d="M 595 88 L 595 98"/>
+  <path d="M 591 96 L 595 105 L 599 96 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="505" y="106" width="180" height="44" rx="3"/>
+  <text x="595" y="124" class="t-sm" text-anchor="middle">a few (say two) inference</text>
+  <text x="595" y="141" class="t-sm" text-anchor="middle">steps out on the wild web</text>
+  <path class="ln-mut" d="M 595 150 L 595 160"/>
+  <path d="M 591 158 L 595 167 L 599 158 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="505" y="168" width="180" height="44" rx="3"/>
+  <text x="595" y="186" class="t-sm" text-anchor="middle">the rest done locally, where</text>
+  <text x="595" y="203" class="t-sm" text-anchor="middle">proofs are given or computable</text>
+  <path class="ln-mut" d="M 595 212 L 595 222"/>
+  <path d="M 591 220 L 595 229 L 599 220 Z" fill="#8a9a9a"/>
+  <rect class="box-green" x="545" y="230" width="100" height="28" rx="3"/>
+  <text x="595" y="249" text-anchor="middle">answer</text>
+</svg>
+<figcaption><span class="fig-label">Figure 30.4</span>
+Reach from the index, correctness from the logic, and only a few steps of
+inference on the open Web.</figcaption>
+</figure>
+
 <p>
-Berners-Lee proposes combining them: an engine that reaches out to indexes
-holding complete lists of occurrences of a term, and then uses logic to
-discard all but those useful for the problem. His estimate of the depth
-available is modest and specific:
+The estimate of how deep the combined engine must go is modest and specific:
 </p>
 
 <blockquote>
@@ -237,19 +441,18 @@ algorithms.
 </blockquote>
 
 <p>
-He expects commercial incentive to produce engines for specific problem
-types, with caches of intermediate results analogous to a search index. And
-he states the limit plainly: no machine will guarantee to answer arbitrary
+He states the limit plainly: no machine will guarantee to answer arbitrary
 questions.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The bottom three layers shipped.</strong> <a class="gl-ref" href="../glossary.html#rdf">RDF</a> became a
-Recommendation in February 1999, RDF <a class="gl-ref" href="../glossary.html#schema">Schema</a> in February 2004, <a class="gl-ref" href="../glossary.html#owl">OWL</a> in the same
-month, and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> for querying in January 2008. The plan was executed
-upward, in order, over a decade.</li>
+<li><strong>The lower layers shipped.</strong> RDF, for assertions, became a
+Recommendation in February 1999; RDF Schema, for schema, in February 2004;
+<a class="gl-ref" href="../glossary.html#owl">OWL</a> in the same month, whose <code>equivalentProperty</code> states exactly
+the conversion of Figure 30.2; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, for queries, in January 2008. The
+plan was executed upward, in order, over a decade.</li>
 <li><strong>The proof layer did not.</strong> No interoperable proof exchange
 format was standardised. The asymmetry of section 30.4, which the roadmap
 treats as its central bet, was never cashed.</li>
@@ -257,9 +460,6 @@ treats as its central bet, was never cashed.</li>
 Large knowledge graphs behind search, beginning with Google&#8217;s in May 2012,
 combine indexing with structured data at exactly the scale described here,
 without the proof machinery.</li>
-<li><strong>Conversion between vocabularies remains the hard part.</strong>
-The layer Berners-Lee places third is where most practical effort still goes,
-and it is largely done by hand.</li>
 </ul>
 </div>
 
@@ -274,7 +474,7 @@ logic layer is Volume V, and the access control example is Chapter 37.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">30.1</span>
 The base layer has no negation. Give a useful statement you cannot make
@@ -292,8 +492,14 @@ would justify it alone.</p>
 </div>
 <div class="question">
 <p><span class="question-number">30.4</span>
-The roadmap expects two steps of <a class="gl-ref" href="../glossary.html#inference">inference</a> on the open Web. Why two? What
-makes the third step qualitatively harder?</p>
+Berners-Lee guesses that two steps of <a class="gl-ref" href="../glossary.html#inference">inference</a> on the open Web are enough for
+many real problems. Why does each extra step multiply the work a
+search-plus-logic engine must do?</p>
+</div>
+<div class="question">
+<p><span class="question-number">30.5</span>
+Write the single equivalence statement that widens the search for Fred from
+employees to friends. Then say why the figure needs two.</p>
 </div>
 </details>
 
