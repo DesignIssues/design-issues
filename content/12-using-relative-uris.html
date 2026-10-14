@@ -1,3 +1,15 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A full web address says two things: where a thing lives, and what it is
+called there. A relative reference gives only the second part, and the
+reader&#8217;s software supplies the first part from wherever the document
+happens to be. That lets a set of files move from one computer or server to
+another without being edited. Berners-Lee complains that some standards (XML
+namespaces) and tools (Jena) took this ability away.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -31,10 +43,13 @@ The note restates the whole mechanism compactly enough to memorise:
 </blockquote>
 
 <p>
-Berners-Lee calls the operation webizing: take a system with local
-identifiers, prepend the URI of the document those identifiers live in, and
-they become global. Hypertext becomes the Web. Data files become the Web of
-Data.
+A local identifier is a name that only means something inside one file: a
+heading named <code>#intro</code> inside a page, say, or a variable inside a
+program. Berners-Lee calls the operation webizing: take a system with local
+identifiers, put the URI of the document those identifiers live in in front
+of them, and they become global, usable from anywhere. Hypertext becomes the
+Web. Data files become the Web of Data, his name for data published and
+linked in the same way as pages.
 </p>
 
 <p>
@@ -43,22 +58,72 @@ Within a document, a local identifier suffices, and the document need not
 contain its own address in order to refer to itself.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 560 235" width="560" height="235" role="img" aria-labelledby="fig12-1-t fig12-1-d">
+<title id="fig12-1-t">Anatomy of a webized identifier</title>
+<desc id="fig12-1-d">Top row, the full form: a box containing https://example.org/people.ttl, a hash sign, and a green box containing alice. Under the left box: global id of the document, changes if the file moves. Under the right box: local id, the same wherever the file goes. Second row, the relative form: an empty dashed outline where the document address was, then the hash sign and alice. It is written in the file as #alice, and the left half is filled in from wherever the document was read.</desc>
+<text class="t-caps" x="20" y="22">full form</text>
+<rect class="box" x="20" y="34" width="245" height="34" rx="3"/>
+<text class="t-mono" x="142" y="56" text-anchor="middle">https://example.org/people.ttl</text>
+<text class="t-lg" x="282" y="57" text-anchor="middle">#</text>
+<rect class="box-green" x="300" y="34" width="80" height="34" rx="3"/>
+<text class="t-mono" x="340" y="56" text-anchor="middle">alice</text>
+<text class="t-sm" x="142" y="88" text-anchor="middle">global id of the document:</text>
+<text class="t-sm" x="142" y="103" text-anchor="middle">changes if the file moves</text>
+<text class="t-sm" x="340" y="88" text-anchor="middle">local id: the same</text>
+<text class="t-sm" x="340" y="103" text-anchor="middle">wherever the file goes</text>
+<text class="t-caps" x="20" y="138">relative form</text>
+<rect class="ln-dash" x="20" y="150" width="245" height="34" rx="3"/>
+<text class="t-lg" x="282" y="173" text-anchor="middle">#</text>
+<rect class="box-green" x="300" y="150" width="80" height="34" rx="3"/>
+<text class="t-mono" x="340" y="172" text-anchor="middle">alice</text>
+<text class="t-sm" x="400" y="163">written in the file as:</text>
+<text class="t-mono" x="400" y="181">#alice</text>
+<text class="t-sm" x="20" y="206">the left half is filled in from wherever</text>
+<text class="t-sm" x="20" y="221">the document was read</text>
+</svg>
+<figcaption><span class="fig-label">Figure 12.1</span> Only the left half of an identifier depends on location; a relative reference leaves it out.</figcaption>
+</figure>
+
+<p>
+The same idea works between files. The note&#8217;s own example is a link from
+one page to another, wrapped round a picture:
+</p>
+
+<pre><code>&lt;a href="intro.html"&gt;&lt;img src="../images/foo.png"/&gt;&lt;/a&gt;</code></pre>
+
+<p>
+<code>intro.html</code> means &ldquo;the file next to this one&rdquo;;
+<code>../images/foo.png</code> means &ldquo;go up one folder, then into
+<code>images</code>&rdquo;. The browser fills in the rest from wherever the
+page was loaded.
+</p>
+
 <h2>12.2 The argument by absurdity</h2>
 
 <p>
 The note&#8217;s best passage makes the case by writing out what the alternative
-would look like in a programming language. A two-line program that sets a
-constant and prints twice its value becomes:
+would look like in a programming language. Take a two-line program that sets
+a constant and prints twice its value:
 </p>
 
-<pre><code>&lt;file:///users/foo/programs/play/circles.py#pi&gt; = 3.14159265359;
-print (2 * &lt;file:///users/andys/programs/play/circles.py#pi&gt;);</code></pre>
+<table>
+<tr><th>Before: local names</th></tr>
+<tr><td><pre><code>pi = 3.14159265359;
+print (2 * pi);</code></pre></td></tr>
+<tr><th>After: every name spelled out in full</th></tr>
+<tr><td><pre><code>&lt;file:///users/foo/programs/play/circles.py#pi&gt; = 3.14159265359;
+print (2 * &lt;file:///users/andys/programs/play/circles.py#pi&gt;);</code></pre></td></tr>
+</table>
 
 <p>
-Berners-Lee&#8217;s verdict on it is four words: not practical, not the sort of
-thing you can copy and move around. The example carries an accidental
-demonstration of the very problem, since the two paths differ in the user
-name, which is exactly the class of breakage absolute references produce.
+A <code>file:///users/foo/&hellip;</code> address is the address of a file on
+one person&#8217;s own computer. In the second version every use of
+<code>pi</code> carries the full address of the file it was saved in. His
+verdict is short: &ldquo;Not practical, not the sort of thing you can copy and move
+around.&rdquo; The example carries an accidental demonstration of the very problem,
+since the two paths differ in the user name, which is exactly the class of
+breakage absolute references produce.
 </p>
 
 <blockquote>
@@ -89,6 +154,38 @@ operate on the same material a browser sees. Chapter 14 takes up the problems
 that arise where the two views meet.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 660 225" width="660" height="225" role="img" aria-labelledby="fig12-2-t fig12-2-d">
+<title id="fig12-2-t">One folder seen through three bases</title>
+<desc id="fig12-2-d">On the left, a folder tree: site, containing pages with intro.html, and images with foo.png. An arrow runs from intro.html to foo.png; the link written inside intro.html is ../images/foo.png. On the right, three cases. On a laptop, the page file:///home/tim/site/pages/intro.html resolves the link to file:///home/tim/site/images/foo.png. On a test server, https://test.acme.com/pages/intro.html resolves it to https://test.acme.com/images/foo.png. On the live site, https://production.acme.com/pages/intro.html resolves it to https://production.acme.com/images/foo.png. All three work.</desc>
+<text class="t-caps" x="16" y="22">one folder, unedited</text>
+<rect class="box-plain" x="16" y="32" width="210" height="140" rx="3"/>
+<text class="t-mono" x="30" y="58">site/</text>
+<text class="t-mono" x="48" y="82">pages/</text>
+<text class="t-mono" x="66" y="106">intro.html</text>
+<text class="t-mono" x="48" y="130">images/</text>
+<text class="t-mono" x="66" y="154">foo.png</text>
+<path class="ln-accent" d="M150 102 C 200 102, 200 150, 134 150"/>
+<path d="M135 146 L127 150 L135 154 Z" fill="#1c5a7a"/>
+<text class="t-sm" x="16" y="196">link inside intro.html:</text>
+<text class="t-mono" x="16" y="213">../images/foo.png</text>
+<text class="t-caps" x="290" y="22">seen through three bases</text>
+<text class="t-sm t-it" x="290" y="48">laptop (file:// glasses)</text>
+<text class="t-mono" x="290" y="65" style="font-size:11.5px">file:///home/tim/site/pages/intro.html</text>
+<text class="t-mono" x="290" y="82" style="font-size:11.5px">&#8594; file:///home/tim/site/images/foo.png</text>
+<text class="t-sm" x="618" y="82" style="fill:#5a8f5a">works</text>
+<text class="t-sm t-it" x="290" y="110">test server</text>
+<text class="t-mono" x="290" y="127" style="font-size:11.5px">https://test.acme.com/pages/intro.html</text>
+<text class="t-mono" x="290" y="144" style="font-size:11.5px">&#8594; https://test.acme.com/images/foo.png</text>
+<text class="t-sm" x="618" y="144" style="fill:#5a8f5a">works</text>
+<text class="t-sm t-it" x="290" y="172">live site</text>
+<text class="t-mono" x="290" y="189" style="font-size:11.5px">https://production.acme.com/pages/intro.html</text>
+<text class="t-mono" x="290" y="206" style="font-size:11.5px">&#8594; https://production.acme.com/images/foo.png</text>
+<text class="t-sm" x="618" y="206" style="fill:#5a8f5a">works</text>
+</svg>
+<figcaption><span class="fig-label">Figure 12.2</span> One unedited relative link resolves correctly on a laptop, a test server and the live site. In each row the first line is where the page was loaded from; the second is the image address the browser works out.</figcaption>
+</figure>
+
 <h2>12.4 What the pattern buys</h2>
 
 <p>
@@ -106,11 +203,14 @@ many sites.</li>
 </ul>
 
 <p>
-Berners-Lee generalises the property: such a system is better built without
-knowledge of its own base URI, because for its local identifiers there are no
-absolute URIs, only whatever the base happens to be today. He is careful to
-add that not all systems are like this, and that absolute URIs must remain an
-option.
+Berners-Lee generalises the property. Many systems, including most of those
+he builds and uses, are better built without knowledge of their own base URI,
+so that the URIs they store are always relative. The software may turn them
+into absolute URIs while processing them, but no fixed absolute URI exists
+for the local identifiers. He is careful to add that not all systems are like
+this, and that absolute URIs must remain an option. He also notes smaller
+gains: relative references are easier to read, take less storage space and
+are shorter to transmit.
 </p>
 
 <h2>12.5 Two named failures</h2>
@@ -120,18 +220,27 @@ The note ends by naming implementations, which is unusual for the collection
 and is the reason it reads as a complaint rather than an essay.
 </p>
 
-<p>
-The first is XML namespaces, which forbid relative references in namespace
-declarations. Berners-Lee&#8217;s diagnosis is that the authors envisaged a narrow
-set of cases in which namespace terms were stable and global while the
-document was local, and did not see the general need to generate relative
-URIs in arbitrary situations.
-</p>
+<h3>XML namespaces</h3>
 
 <p>
-The second is Jena, whose serialisers at the time emitted only absolute URIs,
-which he says prevents its use for a wide range of systems. And the
-consequence, stated as the failure mode practitioners will recognise:
+The first is XML namespaces. A namespace declaration is the line at the top
+of an XML file that says which vocabulary its tags come from, and the XML
+rules officially rule out relative references there (the specification
+deprecates them). Berners-Lee&#8217;s diagnosis is that the authors envisaged a
+narrow set of cases in which namespace terms were stable and global while the
+document was local, and did not see the general need to generate relative
+URIs in arbitrary situations. His own command-line tool, cwm, has an option to
+override the rule and write relative URIs anyway.
+</p>
+
+<h3>Jena</h3>
+
+<p>
+The second is Jena, a widely used open-source library for handling RDF data.
+Its serialisers (a serialiser is the part of a program that writes data out
+as a file) emitted only absolute URIs, which he says prevents its use for a
+wide range of systems. And the consequence, stated as the failure mode
+practitioners will recognise:
 </p>
 
 <blockquote>
@@ -141,11 +250,48 @@ links break.
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 680 215" width="680" height="215" role="img" aria-labelledby="fig12-3-t fig12-3-d">
+<title id="fig12-3-t">Moving data from test to production</title>
+<desc id="fig12-3-d">Two panels. Left, absolute: a file moved to production.acme.com still contains https://test.acme.com/data#x, and a dashed arrow points down to a grey test.acme.com box marked switched off or stale. Right, relative: the same file on production.acme.com contains #x, and a solid arrow loops back into the same production box, because the reference resolves against wherever the file now is.</desc>
+<text class="t-caps" x="30" y="22">absolute</text>
+<rect class="box-warm" x="30" y="34" width="280" height="76" rx="3"/>
+<text x="170" y="54" text-anchor="middle">production.acme.com</text>
+<rect class="box-plain" x="50" y="66" width="240" height="32" rx="3"/>
+<text class="t-mono" x="170" y="87" text-anchor="middle" style="font-size:11.5px">https://test.acme.com/data#x</text>
+<path class="ln-dash" d="M170 110 L170 146"/>
+<path d="M166 145 L170 152 L174 145 Z" fill="#8a9a9a"/>
+<text class="t-sm" x="182" y="134">link still points here</text>
+<rect class="box-plain" x="90" y="152" width="160" height="48" rx="3"/>
+<text x="170" y="172" text-anchor="middle" style="fill:#8a9a9a">test.acme.com</text>
+<text class="t-sm" x="170" y="190" text-anchor="middle">switched off / stale</text>
+<text class="t-caps" x="370" y="22">relative</text>
+<rect class="box-green" x="370" y="34" width="280" height="76" rx="3"/>
+<text x="510" y="54" text-anchor="middle">production.acme.com</text>
+<rect class="box-plain" x="390" y="66" width="240" height="32" rx="3"/>
+<text class="t-mono" x="510" y="87" text-anchor="middle">#x</text>
+<path class="ln" d="M590 110 C 620 160, 400 160, 430 117"/>
+<path d="M425 119 L432 111 L433 122 Z" fill="#2f4f4f"/>
+<text class="t-sm" x="510" y="172" text-anchor="middle">resolves against wherever</text>
+<text class="t-sm" x="510" y="187" text-anchor="middle">the file now is</text>
+</svg>
+<figcaption><span class="fig-label">Figure 12.3</span> Absolute links keep pointing at the server the data was made on. Relative links move with the data.</figcaption>
+</figure>
+
+<h3>Best practice</h3>
+
 <p>
-The recommendation is correspondingly blunt: any library that serialises a
-Web format must offer relative URIs as an option or a default; data stored in
-files should use them; data sent across the network should use them.
+The recommendation is correspondingly blunt:
 </p>
+
+<ul>
+<li>Any library that serialises a Web format, such as HTML or Turtle, must
+offer relative URIs as an option or as the default.</li>
+<li>Data stored in files, for example on a web server, should use relative
+URIs.</li>
+<li>Data sent across the network, as in HTTP, should use them too.</li>
+<li>Absolute URIs remain an option for the systems that need them.</li>
+</ul>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -158,14 +304,9 @@ which permits a relative base.</li>
 Recommendation in February 2014 with an <code>@base</code> directive and
 relative reference support, which is the capability this note asks
 serialisers to provide.</li>
-<li><strong>The complaint was partly answered.</strong> The note records in a
-line dated 2015 that Jena still did not generate relative URIs, four years
-after it was written. Relative output is now available in common RDF
-toolchains, though rarely the default.</li>
-<li><strong>The failure mode survives its cause.</strong> Moving a system
-between hostnames still breaks absolute identifiers, and the practice of
-minting identifiers from a deployment hostname remains widespread in systems
-that have nothing to do with RDF.</li>
+<li><strong>The complaint went unanswered for years.</strong> The note
+records in a line dated 2015 that Jena still did not generate relative URIs,
+four years after it was written.</li>
 </ul>
 </div>
 
@@ -190,19 +331,18 @@ requires it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">12.2</span>
-XML namespaces forbid relative references. Reconstruct the argument for that
-prohibition as its authors would have made it, then say what it costs.</p>
+Why might the authors of XML namespaces have wanted namespace names to be
+absolute? Use the chapter&#8217;s description of &ldquo;stable and
+global&rdquo; terms.</p>
 </div>
 <div class="question">
 <p><span class="question-number">12.3</span>
-A dataset is published with absolute URIs under a test hostname. Describe
-what breaks on promotion to production, and which of the breakages a redirect
-can repair.</p>
+A site moves from test.acme.com to production.acme.com. Using Figure 12.3,
+say which links break, and why.</p>
 </div>
 <div class="question">
 <p><span class="question-number">12.4</span>
-Relative references make a document portable and make its identifiers depend
-on where it is served from. State when that dependency is a defect rather
-than a feature.</p>
+A page says <code>#alice</code>. Copied to two servers, it now names two
+different Alices. When is that a problem?</p>
 </div>
 </div>

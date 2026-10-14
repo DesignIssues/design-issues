@@ -49,15 +49,26 @@
 a Design Issues note by Tim Berners-Lee, 2002-07-29.
 <a class="source-link" href="https://www.w3.org/DesignIssues/PhilosophicalEngineering.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A protocol&#8217;s designer decides what its words mean, and users accept that
+by joining in. A <a class="gl-ref" href="../glossary.html#uri">URI</a> contains a domain name, a domain has an owner, and that
+owner may and must say what the name means. Systems also rest on unwritten
+social rules; spam came from one of them, that everyone is friendly, turning
+out false.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This chapter closes Volume II with a document unlike any other in the
 collection. It is not a note but an interview, conducted by Harry Halpin and
 Alexandre Monnin for a volume of writings from the PhiloWeb workshops, dated
-March 2013. Berners-Lee is being asked what kind of activity Web design is,
-and the answer explains why a book of architecture notes contains so many
-arguments about meaning.
+March 2013. Berners-Lee is asked what kind of activity Web design is, and the
+answer explains why a book of architecture notes contains so many arguments
+about meaning.
 </p>
 <p>
 It is placed last in the volume on naming because it states, more directly
@@ -72,8 +83,11 @@ somebody owns a name and therefore gets to say what it means.
 The origin is an Oxford joke that turned out to be serious. Berners-Lee
 recalls being amused that the physics degree at Oxford is formally called
 experimental philosophy, a philosophy done by dropping things and seeing
-whether they continue to drop. The phrase returned when he tried to explain
-what writing a protocol is:
+whether they continue to drop. The phrase came up while the idea of Web
+Science was being discussed: designing a system, then studying what it does
+at scale. What came to be called Web Science, he says, could have been called
+philosophical engineering, because of what writing a protocol is. (A protocol
+is an agreed set of rules two programs follow when they talk.)
 </p>
 
 <blockquote>
@@ -86,22 +100,19 @@ they have to join in and agree they will work with your system.
 </blockquote>
 
 <p>
-He adds the qualification immediately: that is exciting, and a source of
-responsibility as well.
+He adds at once that this is exciting, and a source of responsibility as
+well.
 </p>
 
 <h2>15.2 Specification as an agreement to stop arguing</h2>
 
 <p>
 Asked whether writing standards is philosophy in progress, Berners-Lee gives
-an account of <a class="gl-ref" href="../glossary.html#specification">specification</a> that anyone who has sat in a working group will
-recognise. People argue about what words mean until the concepts in different
-heads are sufficiently aligned, and then it is written down in language
-everyone can live with.
-</p>
-
-<p>
-What makes it work is a refusal to reopen the question:
+an account that anyone who has sat in a working group (the committee writing
+a standard) will recognise. People argue about what words mean until the
+concepts in different heads are aligned enough, and then it is written down in
+language everyone can live with. What makes it work is a refusal to reopen
+the question:
 </p>
 
 <blockquote>
@@ -112,15 +123,12 @@ specification-writing], you're not going to argue about that.
 </blockquote>
 
 <p>
-The illustration is a refusal of payment. Nobody may send <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers to buy
-something and then argue afterwards that headers do not actually mean
-anything. He quotes a spammer saying that a form field can contain anything
-and need not be the person sending the email, and answers: it does if you are
-playing the game.
-</p>
-
-<p>
-From which he derives a gap he says is missing:
+His illustration is a payment someone tries to disown afterwards. Nobody may
+pay a bill online and then argue that the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers they sent (the
+labelled lines that go with every Web request) do not actually mean anything.
+He quotes a spammer who said that the form field, here the <em>From</em> line
+of an email, can contain anything and need not be the person sending it. It
+does, he answers, for anyone playing the game. From this he derives a gap:
 </p>
 
 <blockquote>
@@ -148,19 +156,98 @@ mean. It's not a question of philosophical discussions between third parties.
 
 <p>
 The right and the obligation are named in the same sentence, and the
-obligation is the less obvious half. Owning the name means being the party
-who must publish what it means, at an address anyone can look up in real
-time.
+obligation is the less obvious half. He then gives the mechanism. In a
+dispute about what a URI stands for, the question goes to the owner of the domain name,
+who typically delegates to someone else, who has written an <a class="gl-ref" href="../glossary.html#ontology">ontology</a> (a
+machine-readable set of definitions) and stored it on a Web server. Anyone
+can look the URI up in real time and get that answer straight away.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
+     aria-labelledby="fig15-1-t fig15-1-d">
+  <title id="fig15-1-t">Who settles what a name means</title>
+  <desc id="fig15-1-d">Left, a word: the word bank is pulled at by a
+  dictionary, a court and everyday use, all argued by third parties. Right, a
+  URI, http://example.org/terms#Bank: a reader follows the name to the domain
+  example.org, which is owned by the domain owner, who delegates to a
+  vocabulary author, who publishes a definition on a Web server. An arrow
+  runs from the definition back to the reader: look up in real time.</desc>
+
+  <!-- left panel: a word -->
+  <text x="135" y="24" class="t-caps" text-anchor="middle">A word</text>
+  <rect class="box-warm" x="20" y="70" width="100" height="32" rx="4"/>
+  <text x="70" y="91" text-anchor="middle">dictionary</text>
+  <rect class="box-warm" x="150" y="70" width="100" height="32" rx="4"/>
+  <text x="200" y="91" text-anchor="middle">a court</text>
+  <rect class="box-warm" x="80" y="262" width="110" height="32" rx="4"/>
+  <text x="135" y="283" text-anchor="middle">everyday use</text>
+
+  <rect class="box-plain" x="95" y="180" width="80" height="36" rx="4"/>
+  <text x="135" y="203" class="t-lg t-it" text-anchor="middle">bank</text>
+
+  <path class="ln-dash" d="M 70 102 L 111 171"/>
+  <path d="M 106.96 172.3 L 115 178 L 113.84 168.26 Z" fill="#8a9a9a"/>
+  <path class="ln-dash" d="M 200 102 L 159 171"/>
+  <path d="M 156.16 168.26 L 155 178 L 163.04 172.3 Z" fill="#8a9a9a"/>
+  <path class="ln-dash" d="M 135 262 L 135 226"/>
+  <path d="M 131 227 L 135 218 L 139 227 Z" fill="#8a9a9a"/>
+
+  <text x="135" y="326" class="t-sm t-it" text-anchor="middle">argued by third parties</text>
+
+  <line class="ln-mut" x1="282" y1="12" x2="282" y2="332"/>
+
+  <!-- right panel: a URI -->
+  <text x="505" y="24" class="t-caps" text-anchor="middle">A URI</text>
+  <text x="505" y="46" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">http://example.org/terms#Bank</text>
+
+  <rect class="box" x="360" y="64" width="200" height="32" rx="4"/>
+  <text x="460" y="85" text-anchor="middle">reader</text>
+  <rect class="box" x="360" y="122" width="200" height="32" rx="4"/>
+  <text x="460" y="143" text-anchor="middle">domain: example.org</text>
+  <rect class="box" x="360" y="180" width="200" height="32" rx="4"/>
+  <text x="460" y="201" text-anchor="middle">domain owner</text>
+  <rect class="box" x="360" y="238" width="200" height="32" rx="4"/>
+  <text x="460" y="259" text-anchor="middle">vocabulary author</text>
+  <rect class="box" x="360" y="296" width="200" height="32" rx="4"/>
+  <text x="460" y="317" text-anchor="middle">definition on a Web server</text>
+
+  <path class="ln" d="M 460 96 L 460 114"/>
+  <path d="M 456 113 L 460 121 L 464 113 Z" fill="#2f4f4f"/>
+  <text x="472" y="113" class="t-sm">follows the name</text>
+  <path class="ln" d="M 460 154 L 460 172"/>
+  <path d="M 456 171 L 460 179 L 464 171 Z" fill="#2f4f4f"/>
+  <text x="472" y="171" class="t-sm">owned by</text>
+  <path class="ln" d="M 460 212 L 460 230"/>
+  <path d="M 456 229 L 460 237 L 464 229 Z" fill="#2f4f4f"/>
+  <text x="472" y="229" class="t-sm">delegates</text>
+  <path class="ln" d="M 460 270 L 460 288"/>
+  <path d="M 456 287 L 460 295 L 464 287 Z" fill="#2f4f4f"/>
+  <text x="472" y="287" class="t-sm">publishes</text>
+
+  <!-- the lookup -->
+  <path class="ln-accent" d="M 560 312 L 610 312 L 610 80 L 571 80"/>
+  <path d="M 571 75 L 562 80 L 571 85 Z" fill="#1c5a7a"/>
+  <text x="620" y="192" class="t-sm" style="fill:#1c5a7a">look up</text>
+  <text x="620" y="207" class="t-sm" style="fill:#1c5a7a">in real time</text>
+</svg>
+<figcaption><span class="fig-label">Figure 15.1</span>
+A word&#8217;s meaning is argued by everyone; a URI&#8217;s is settled by
+following the name to its owner, who is obliged to answer.</figcaption>
+</figure>
+
 <p>
-Monnin presses the point: a <a class="gl-ref" href="../glossary.html#uri">URI</a> is an artefact, so it can be owned, whereas a
-philosophical name cannot. Berners-Lee accepts the distinction and turns it
-into a claim about which world is under discussion. Some philosophies treat
-meaning as a function of use rather than definition. Lawyers work in a world
-where terms have legal definitions, because otherwise people could be jailed
-over usage. The Web adds a third model:
+Monnin presses the point: a URI is an artefact, so it can be owned, whereas a
+philosophical name cannot. Berners-Lee accepts the distinction and places it
+among other models of meaning:
 </p>
+
+<table>
+<tr><th>Model</th><th>Who decides</th><th>How a dispute ends</th></tr>
+<tr><td>Meaning as use</td><td>The speakers</td><td>More usage</td></tr>
+<tr><td>Legal definition</td><td>The law</td><td>A court, because &ldquo;otherwise people could get put in jail&rdquo;</td></tr>
+<tr><td>Owner&#8217;s definition</td><td>The domain owner</td><td>Look the URI up</td></tr>
+</table>
 
 <blockquote>
 So there are models, and now we're adding another one, in which meaning is
@@ -171,14 +258,11 @@ defined by the owner of a name.
 <h2>15.4 The one he wishes he had not conceded</h2>
 
 <p>
-A short exchange settles a question Chapter 2 leaves hanging: why the U in
-URI stands for Uniform rather than Universal.
-</p>
-
-<p>
-Berners-Lee says he originally called them Universal Document Identifiers,
-that the IETF found &ldquo;universal&rdquo; too much hubris, and that he
-gave way. He now regards this as a mistake:
+A short exchange explains why the U in URI stands for Uniform rather than
+Universal. Berners-Lee says he originally called them Universal Document
+Identifiers, that the IETF (the body that publishes the Internet&#8217;s
+standards) found &ldquo;universal&rdquo; too much hubris, and that he gave
+way. He now regards this as a mistake:
 </p>
 
 <blockquote>
@@ -190,8 +274,8 @@ it.
 </blockquote>
 
 <p>
-That is the theorem of Chapter 2 restated seventeen years later as a
-regret. The argument was sound; it lost on tone.
+That is the theorem of Chapter 2 restated seventeen years later as a regret.
+The objection was to the word&#8217;s apparent arrogance, not its truth.
 </p>
 
 <h2>15.5 Two protocols, and why spam is an architecture problem</h2>
@@ -202,13 +286,92 @@ two protocols, and that only one of them is written down.
 </p>
 
 <p>
-Berners-Lee works the example of email. The technical protocol is SMTP for
-sending and IMAP for retrieval. The social protocol is that everyone runs a
-machine with room to store their friends&#8217; mail in transit, that people write
-to each other on reasonable topics, and that people read what they receive.
-Together these form a microscopic system whose interest lies in what emerges
-at scale.
+Berners-Lee works the example of email. The technical protocol is SMTP and
+IMAP, the rules for sending mail and for collecting it. The social protocol
+is that everyone runs a machine with room to store their friends&#8217; mail
+in transit, that people write to each other on reasonable topics, and that
+people read what they receive. Together these form a microscopic system whose
+interest lies in what emerges at scale.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 286" width="720" height="286" role="img"
+     aria-labelledby="fig15-2-t fig15-2-d">
+  <title id="fig15-2-t">The two protocols of email</title>
+  <desc id="fig15-2-d">Top band, the social protocol, unwritten: hosts store
+  friends' mail in transit; people write on reasonable topics; people read
+  what they get; everyone is friendly. The last is marked false, leading to
+  spam. Bottom band, the technical protocol, written: sender, SMTP, relay,
+  SMTP, recipient's server, IMAP, reader. A bracket groups both bands as the
+  micro level, one message over a few hops; at scale this becomes the macro
+  level, millions of senders, where spam emerges.</desc>
+
+  <!-- social protocol -->
+  <rect class="box-warm" x="16" y="16" width="544" height="128" rx="4"/>
+  <text x="30" y="38" class="t-caps" style="fill:#b08d57">Social protocol: unwritten</text>
+
+  <rect class="box-plain" x="30" y="52" width="122" height="60" rx="4"/>
+  <text x="91" y="70" class="t-sm" text-anchor="middle">hosts store</text>
+  <text x="91" y="85" class="t-sm" text-anchor="middle">friends&#8217; mail</text>
+  <text x="91" y="100" class="t-sm" text-anchor="middle">in transit</text>
+
+  <rect class="box-plain" x="161" y="52" width="122" height="60" rx="4"/>
+  <text x="222" y="77" class="t-sm" text-anchor="middle">people write on</text>
+  <text x="222" y="92" class="t-sm" text-anchor="middle">reasonable topics</text>
+
+  <rect class="box-plain" x="292" y="52" width="122" height="60" rx="4"/>
+  <text x="353" y="77" class="t-sm" text-anchor="middle">people read</text>
+  <text x="353" y="92" class="t-sm" text-anchor="middle">what they get</text>
+
+  <rect class="box-plain" x="423" y="52" width="122" height="60" rx="4" style="stroke:#b08d57;stroke-width:2"/>
+  <text x="484" y="77" class="t-sm" text-anchor="middle">everyone is</text>
+  <text x="484" y="92" class="t-sm" text-anchor="middle">friendly</text>
+  <text x="484" y="131" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">false &#8594; spam</text>
+
+  <!-- technical protocol -->
+  <rect class="box" x="16" y="160" width="544" height="110" rx="4"/>
+  <text x="30" y="182" class="t-caps">Technical protocol: written</text>
+
+  <rect class="box-plain" x="30" y="200" width="70" height="34" rx="4"/>
+  <text x="65" y="222" text-anchor="middle">sender</text>
+  <rect class="box-plain" x="158" y="200" width="70" height="34" rx="4"/>
+  <text x="193" y="222" text-anchor="middle">relay</text>
+  <rect class="box-plain" x="286" y="200" width="130" height="34" rx="4"/>
+  <text x="351" y="222" text-anchor="middle">recipient&#8217;s server</text>
+  <rect class="box-plain" x="474" y="200" width="70" height="34" rx="4"/>
+  <text x="509" y="222" text-anchor="middle">reader</text>
+
+  <path class="ln" d="M 100 217 L 150 217"/>
+  <path d="M 149 213 L 157 217 L 149 221 Z" fill="#2f4f4f"/>
+  <text x="128" y="207" class="t-mono t-sm" text-anchor="middle">SMTP</text>
+  <path class="ln" d="M 228 217 L 278 217"/>
+  <path d="M 277 213 L 285 217 L 277 221 Z" fill="#2f4f4f"/>
+  <text x="256" y="207" class="t-mono t-sm" text-anchor="middle">SMTP</text>
+  <path class="ln" d="M 416 217 L 466 217"/>
+  <path d="M 465 213 L 473 217 L 465 221 Z" fill="#2f4f4f"/>
+  <text x="444" y="207" class="t-mono t-sm" text-anchor="middle">IMAP</text>
+
+  <text x="30" y="259" class="t-sm t-it">works exactly as specified</text>
+
+  <!-- micro / macro -->
+  <path class="ln-mut" d="M 568 16 L 576 16 L 576 270 L 568 270"/>
+  <path class="ln-mut" d="M 576 86 L 584 86"/>
+  <text x="592" y="72" class="t-caps">Micro</text>
+  <text x="592" y="90" class="t-sm">one message,</text>
+  <text x="592" y="105" class="t-sm">few hops</text>
+
+  <path class="ln" d="M 620 118 L 620 162"/>
+  <path d="M 616 161 L 620 169 L 624 161 Z" fill="#2f4f4f"/>
+  <text x="632" y="148" class="t-sm t-it">at scale</text>
+
+  <text x="592" y="192" class="t-caps" style="fill:#b08d57">Macro</text>
+  <text x="592" y="210" class="t-sm">millions of senders:</text>
+  <text x="592" y="225" class="t-sm">spam emerges</text>
+</svg>
+<figcaption><span class="fig-label">Figure 15.2</span>
+SMTP did what it was specified to do; the failure was in the layer nobody
+wrote down.</figcaption>
+</figure>
 
 <blockquote>
 So when you do the science, the analysis, and the whole rest of the cycle for
@@ -220,18 +383,21 @@ the other person wants to read it.
 </blockquote>
 
 <p>
-Spam is thus not a failure of SMTP. It is the falsification of an unwritten
-assumption in the social protocol, and Berners-Lee notes that nobody has
-succeeded in redesigning either half to remove it. He ends the answer by
-naming what is missing: the mathematics connecting the microscopic design to
-the macroscopic behaviour.
+Spam is thus not a failure of SMTP but the falsification of an unwritten
+assumption, and Berners-Lee notes that nobody has succeeded in redesigning
+either half to remove it. What is missing, he says, is the mathematics
+connecting the microscopic design to the macroscopic behaviour.
 </p>
 
 <h2>15.6 What he wants from philosophers</h2>
 
 <p>
-The closing request is modest and slightly comic, and it describes the job
-this book is attempting:
+He sees two jobs for philosophy. One is legal. Anyone can link to any Web page,
+but a lawyer may claim the right to charge for linking to theirs; then
+someone has to explain how a protocol defined over a name, a mere reference,
+grounds out in concepts lawyers understand. The other is the request that
+closes the interview, modest and slightly comic, which describes the job this
+book is attempting:
 </p>
 
 <blockquote>
@@ -243,9 +409,10 @@ link? Quite a lot of that is philosophy.
 </blockquote>
 
 <p>
-The purpose is not edification. It is to stop working groups halting. He
-imagines someone saying that a proposal does not match what they learned from
-Wittgenstein, and wants a pamphlet to hand them so that work can continue.
+The purpose is to stop working groups halting. He imagines someone saying
+that a proposal does not match what they learned from Wittgenstein (a
+philosopher who held that meaning is use), and wants a pamphlet to hand them
+so that work can continue.
 </p>
 
 <div class="since">
@@ -257,18 +424,19 @@ Halpin and Monnin, appeared from Wiley-Blackwell in 2014.</li>
 <li><strong>The law-and-protocol gap remains.</strong> Disobeying a protocol
 is still not straightforwardly unlawful. Where computer-misuse law has
 reached protocol behaviour, it has done so through statutes about
-unauthorised access whose boundaries are contested, not through the direct
-path described here.</li>
-<li><strong>The obligation to publish meaning was widely ignored.</strong>
-Domain owners rarely serve definitions for the terms they mint, which is the
-first snag recorded in Chapter 9, restated here as a duty rather than a
-practice.</li>
-<li><strong>The two-protocol analysis has been vindicated repeatedly.</strong>
-Every subsequent failure of a social assumption at scale, from spam to
-coordinated manipulation of platforms, has the shape described here: the
-technical protocol working exactly as specified while an unwritten social
-assumption turns out to be false. Chapter 90 is the same argument applied to
-social networks.</li>
+unauthorised access whose boundaries are contested; in <em>Van Buren v.
+United States</em> (2021) the US Supreme Court narrowed the reach of the
+Computer Fraud and Abuse Act. This is not the direct path described
+here.</li>
+<li><strong>The obligation to publish meaning has often been
+ignored.</strong> Domain owners frequently serve no definitions for the terms
+they mint, the first snag recorded in Chapter 9, restated here as a duty
+rather than a practice.</li>
+<li><strong>The two-protocol analysis remains a useful lens.</strong> Many
+later failures at scale, from spam to coordinated manipulation of platforms,
+have the shape described here: the technical protocol working as specified
+while an unwritten social assumption turns out to be false. Chapter 90 is the
+same argument applied to social networks.</li>
 </ul>
 </div>
 
@@ -289,7 +457,8 @@ in Chapter 87 and Chapter 90.
 <div class="question">
 <p><span class="question-number">15.1</span>
 Berners-Lee says a protocol designer gets to define what words mean. Name a
-term whose protocol definition departs sharply from ordinary usage, and say
+term whose protocol definition departs sharply from ordinary usage (for
+example, what a <em>From</em> line or a GET request commits you to), and say
 what the departure buys.</p>
 </div>
 <div class="question">
@@ -305,9 +474,8 @@ Then name the assumption in it that would be most damaging if false.</p>
 </div>
 <div class="question">
 <p><span class="question-number">15.4</span>
-Berners-Lee regrets conceding &ldquo;universal&rdquo; to
-&ldquo;uniform&rdquo;. Would the stronger word have changed any technical
-outcome, or only the argument?</p>
+Berners-Lee says any naming system can be mapped into URIs. Show how, for
+phone numbers or ISBNs.</p>
 </div>
 </details>
 

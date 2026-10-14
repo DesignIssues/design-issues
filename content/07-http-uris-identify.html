@@ -1,3 +1,19 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A web address (an HTTP URI) names a document, not the thing the document is
+about. The page about a car is not the car. Berners-Lee held this view in
+2002 while in a minority on the W3C&#8217;s architecture group. He took the rival
+views one at a time and turned each one down.
+</p>
+<p>
+His answer for naming things that are not documents is the hash (#):
+<code>page#car</code> names something described in <code>page</code>. In 2005
+the group settled on a compromise that kept his distinction but used a
+redirect instead of the hash.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -10,29 +26,34 @@ Technical Architecture Group, and yet finding it the only one I could accept.
 <cite>What do HTTP URIs Identify?, 2002</cite>
 </blockquote>
 <p>
-The question is what an HTTP URI denotes. For a decade nobody had needed to
-ask. Berners-Lee notes with some amusement that the ambiguity of natural
-language had concealed the problem so well that the original author of HTTP
-and its later co-author, who wrote his doctoral thesis analysing the Web,
-held conflicting ideas of what the terms meant without either noticing.
+The Technical Architecture Group is the small W3C committee charged with
+deciding questions about the Web&#8217;s overall design. The question put to it
+was what an HTTP URI denotes, meaning what thing in the world it is a name
+for. For a decade nobody had needed to ask. Berners-Lee notes with some
+amusement that the ambiguity of natural language had concealed the problem so
+well that the original author of HTTP and its later co-author, who wrote his
+doctoral thesis analysing the Web, held conflicting ideas of what the terms
+meant without either noticing.
 </p>
 <p>
-What forced the question was RDF. A language with well-defined logical
-properties cannot leave denotation vague, and once people began using HTTP
-URIs to name properties and classes rather than pages, two parties could use
-the same identifier for different things and never discover it.
+What forced the question was RDF, a language for machine-readable statements
+of the form <em>subject, property, value</em>, in which every name is a URI.
+A language with well-defined logical properties cannot leave denotation
+vague. Once people began using HTTP URIs to name ideas such as &ldquo;colour&rdquo;
+or &ldquo;is a kind of car&rdquo; rather than pages, two parties could use the
+same identifier for different things and never discover it.
 </p>
 </div>
 
 <h2>7.1 The position being defended</h2>
 
 <p>
-Berners-Lee&#8217;s answer is that an HTTP URI without a fragment identifies a
-document, in a sense of &ldquo;document&rdquo; deliberately stretched to
-breaking point. His own list of what counts includes a poem, an order for
-ball bearings, a painting, a film, a review of a film, a sound clip, a record
-of the temperature of a furnace, and an array of a million integers all zero.
-He is explicit that the word is a placeholder:
+Berners-Lee&#8217;s answer is that an HTTP URI without a fragment (the part
+after a # sign) identifies a document, in a sense of &ldquo;document&rdquo;
+deliberately stretched to breaking point. His own list of what counts
+includes a poem, an order for ball bearings, a painting, a film, a review of a
+film, a sound clip, a record of the temperature of a furnace, and an array of
+a million integers all zero. He is explicit that the word is a placeholder:
 </p>
 
 <blockquote>
@@ -43,12 +64,64 @@ does not mean a conventional office document
 </blockquote>
 
 <p>
-These documents are generic in the sense of Chapter 10: abstractions that may
-have many bit representations varying by time, content type, natural
-language, and machine language. What holds them together is that the
-representations have a great deal in common, and that the publisher is the
-authority on how much variation is permitted.
+Each such document is one abstract work that can be delivered as many
+different files, varying by date, format and language (Chapter 10 develops
+this). What holds the files together is that they have a great deal in
+common, and that the publisher is the authority on how much variation is
+permitted.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 680 260" width="680" height="260" role="img"
+     aria-labelledby="fig7-1-t fig7-1-d">
+  <title id="fig7-1-t">Three layers behind one address</title>
+  <desc id="fig7-1-d">On the left, the address http://example.com/car. An
+  arrow labelled identifies runs to a central box, the document, which holds
+  three representations: HTML in English from May, a PNG image, and HTML in
+  French from June. A dashed arrow labelled is about runs from the document to
+  the car, a thing in the world. No arrow runs from the address straight to
+  the car.</desc>
+
+  <!-- the address -->
+  <rect class="box-plain" x="8" y="110" width="190" height="40" rx="3"/>
+  <text x="103" y="134" class="t-mono" text-anchor="middle">http://example.com/car</text>
+
+  <!-- identifies -->
+  <path class="ln-accent" d="M 198 130 L 274 130"/>
+  <path d="M 282 130 L 272 125 L 272 135 Z" fill="#1c5a7a"/>
+  <text x="240" y="119" class="t-sm" text-anchor="middle">identifies</text>
+
+  <!-- the document -->
+  <rect class="box" x="282" y="25" width="210" height="220" rx="4"/>
+  <text x="387" y="50" class="t-lg" text-anchor="middle">The document</text>
+  <text x="387" y="68" class="t-sm" text-anchor="middle">what the URI names</text>
+  <rect class="box-plain" x="302" y="85" width="170" height="30" rx="3"/>
+  <text x="387" y="105" text-anchor="middle">HTML, English, May</text>
+  <rect class="box-plain" x="302" y="125" width="170" height="30" rx="3"/>
+  <text x="387" y="145" text-anchor="middle">PNG image</text>
+  <rect class="box-plain" x="302" y="165" width="170" height="30" rx="3"/>
+  <text x="387" y="185" text-anchor="middle">HTML, French, June</text>
+  <text x="387" y="215" class="t-sm" text-anchor="middle">representations vary by</text>
+  <text x="387" y="230" class="t-sm" text-anchor="middle">time, format and language</text>
+
+  <!-- is about -->
+  <path class="ln-dash" d="M 492 130 L 568 130"/>
+  <path d="M 576 130 L 566 125 L 566 135 Z" fill="#8a9a9a"/>
+  <text x="534" y="119" class="t-sm" text-anchor="middle">is about</text>
+
+  <!-- the car -->
+  <rect class="box-warm" x="576" y="92" width="96" height="76" rx="4"/>
+  <text x="624" y="116" class="t-lg" text-anchor="middle">The car</text>
+  <text x="624" y="138" class="t-sm" text-anchor="middle">(a thing in</text>
+  <text x="624" y="154" class="t-sm" text-anchor="middle">the world)</text>
+  <text x="624" y="192" class="t-sm t-it" text-anchor="middle">no arrow from</text>
+  <text x="624" y="206" class="t-sm t-it" text-anchor="middle">the URI reaches</text>
+  <text x="624" y="220" class="t-sm t-it" text-anchor="middle">here directly</text>
+</svg>
+<figcaption><span class="fig-label">Figure 7.1</span> The address names the
+middle box. The car is reached only through what the document says about it.
+Collapsing the two is what section 7.2 argues against.</figcaption>
+</figure>
 
 <h2>7.2 Why the distinction must be kept</h2>
 
@@ -73,14 +146,35 @@ you are buying a car.
 <cite>What do HTTP URIs Identify?, 2002</cite>
 </blockquote>
 
+<h3>The test of a shared link</h3>
+
 <p>
-He then answers the opposing view directly. Some had argued that the
-abstract document is a fiction, and that all that exists when a page
-describes a car is the car and some bit streams. His reply is that the bit
-streams have far more in common with each other than any of them has with the
-car, and that the relationship between a page and a car can be any of home
-page, picture, catalogue entry, invoice, remote control panel or weblog. To
-dismiss the document is to lose the ability to say which.
+The note&#8217;s most concrete passage turns this into a test anyone can run.
+Berners-Lee sees a web page with a photograph of a car. He copies the address
+from his browser and emails it to a friend: look, the car is a Toyota. The
+friend clicks the link. The same address comes up, but the page is a table of the
+car&#8217;s weight, length, colour and registration number.
+</p>
+
+<p>
+Both pages are about the same car, yet the Web has failed. Every link carries
+the expectation that the person who follows it gets basically the same
+information as the person who made it. Some differences would not have
+mattered. A JPEG instead of a GIF, a lower resolution, a black-and-white copy,
+or for a reader who cannot see the picture a well-written description of it:
+each of these still carries the same information. A table of measurements
+does not. The test fixes what the address names:
+</p>
+
+<blockquote>
+The sameness we are after is the sameness of information content.
+<cite>What do HTTP URIs Identify?, 2002</cite>
+</blockquote>
+
+<p>
+If an address named the car, both pages would pass, since both are about the
+car. Only if it names the document does the test explain why one of them
+counts as failure.
 </p>
 
 <h2>7.3 Eight alternatives, tried and rejected</h2>
@@ -89,18 +183,23 @@ dismiss the document is to lose the ability to say which.
 The bulk of the note works through the positions Berners-Lee does not hold.
 The method is worth more than the verdicts: each alternative is stated in its
 proponents&#8217; terms, granted whatever it has going for it, and then failed on a
-specific consequence.
+specific consequence. One term needs explaining first. Closed-world reasoning
+means assuming that anything not stated is false. The Web is open,
+so new information can always arrive, and conclusions drawn that way can be
+overturned at any moment.
 </p>
 
 <table>
 <tr><th>Alternative</th><th>Why it is rejected</th></tr>
-<tr><td>The URI identifies the abstract thing, not a document</td><td>Leaves no way to refer to the page itself</td></tr>
+<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
 <tr><td>The owner may define it to mean whatever they like</td><td>Consistent, but nothing can be used before consulting the owner</td></tr>
-<tr><td>Default to a page until told otherwise</td><td>Requires closed-world reasoning, which the Web forbids</td></tr>
-<tr><td>Decide by a protocol operation such as GET</td><td>Would work logically, but cannot be retrofitted to deployed servers</td></tr>
-<tr><td>Let logic disambiguate</td><td>Requires every consumer to carry the disambiguating rules</td></tr>
-<tr><td>Let different properties imply different levels</td><td>Same objection, and fails when a property is new</td></tr>
+<tr><td>&emsp;&hellip; with a page as the default until told otherwise</td><td>Requires closed-world reasoning, which an open Web forbids</td></tr>
+<tr><td>&emsp;&hellip; settled by a protocol operation such as GET</td><td>Would work logically, but cannot be retrofitted to the millions of servers already deployed</td></tr>
+<tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
+<tr><td>Let different properties imply different levels</td><td>Fails when a page describes a page; the &ldquo;two-level&rdquo; trap</td></tr>
 <tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, breaking universality</td></tr>
+<tr><td>Disambiguate by context</td><td>Works only while the two communities never talk to each other; breaks the rule that a URI names one thing</td></tr>
+<tr><td>Change the meaning for the Semantic Web</td><td>A change that large would need a new URI scheme</td></tr>
 <tr><td>Abandon abstract identification entirely</td><td>Consistent, but bars RDF from talking about documents</td></tr>
 </table>
 
@@ -125,7 +224,53 @@ recommending the Vietnam War.
 <cite>What do HTTP URIs Identify?, 2002</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 640 180" width="640" height="180" role="img"
+     aria-labelledby="fig7-2-t fig7-2-d">
+  <title id="fig7-2-t">One statement, two readings</title>
+  <desc id="fig7-2-d">A single statement gives the address of a page about
+  the Vietnam War a rating of excellent. It branches into two readings. On
+  the left, the page is excellent, which is what the reviewer meant. On the
+  right, the war is excellent, which is what the statement says if the owner
+  has defined the address to name the war.</desc>
+
+  <rect class="box-plain" x="130" y="20" width="380" height="36" rx="3"/>
+  <text x="320" y="43" class="t-mono" text-anchor="middle">&lt;http://example.org/vietnam&gt; rating "excellent"</text>
+
+  <path class="ln" d="M 320 56 L 320 80 M 160 80 L 480 80 M 160 80 L 160 102 M 480 80 L 480 102"/>
+  <path d="M 160 110 L 155 100 L 165 100 Z" fill="#2f4f4f"/>
+  <path d="M 480 110 L 475 100 L 485 100 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="40" y="110" width="240" height="52" rx="4"/>
+  <text x="160" y="132" text-anchor="middle">Reading 1: the page is excellent</text>
+  <text x="160" y="151" class="t-sm" text-anchor="middle">what the reviewer meant</text>
+
+  <rect class="box-warm" x="360" y="110" width="240" height="52" rx="4"/>
+  <text x="480" y="132" text-anchor="middle">Reading 2: the war is excellent</text>
+  <text x="480" y="151" class="t-sm" text-anchor="middle">if the owner says it names the war</text>
+</svg>
+<figcaption><span class="fig-label">Figure 7.2</span> One address, two
+meanings. If the owner decides what an address names, nobody can safely make
+the statement at the top without asking the owner first.</figcaption>
+</figure>
+
 <h2>7.4 The redirect he proposed and did not get</h2>
+
+<p>
+When a browser asks a server for an address, the reply starts with a
+three-digit status code: 200 means &ldquo;here it is&rdquo;, 404 &ldquo;not
+found&rdquo;, and codes in the 300s mean &ldquo;look elsewhere&rdquo;. A reply
+of that last kind is a redirect.
+</p>
+
+<p>
+The note gives a real case of the problem. The RDF test suite used the
+address <code>http://www.w3.org/2000/10/rdf-tests/TestSchema/NegativeParserTest</code>
+to name a kind of software test, not a page. Asked for that address, the
+server returned 404. It had little choice: HTTP has no way to return a class
+of tests, only a document. And had it returned a document, nobody could refer
+to that document without accidentally referring to the class of tests too.
+</p>
 
 <p>
 Having rejected the alternatives, Berners-Lee sketches the change to HTTP
@@ -138,7 +283,8 @@ document about it.
 <p>
 He does not adopt it. He notes only that the avenue remains open and that the
 community could take it if it wished. Chapter 8 records what the community
-actually did, which is the same mechanism with a different number.
+actually did: in 2005 it adopted the same mechanism using an existing code,
+303 &ldquo;See Other&rdquo;, in place of a new 343.
 </p>
 
 <h2>7.5 The defence of the hash</h2>
@@ -159,9 +305,78 @@ abstraction and specification!
 The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
 names a document. That is the whole of Berners-Lee&#8217;s position in one line,
-and it is why he preferred hash URIs to the alternative that eventually won
-alongside them.
+and it is why he preferred hash URIs to the redirect approach, which was
+adopted in 2005 and now coexists with them. Figure 7.3 sets the two side by
+side.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 700 310" width="700" height="310" role="img"
+     aria-labelledby="fig7-3-t fig7-3-d">
+  <title id="fig7-3-t">Two ways to name a car with a web address</title>
+  <desc id="fig7-3-d">Two lanes. Left, the hash: the address
+  example.org/cars#mine; the client drops #mine and sends GET example.org/cars;
+  the server replies 200 OK with a document; #mine names the car described
+  inside it. Right, the redirect: the client sends GET example.org/id/car; the
+  server replies 303 See Other, the code adopted in 2005 in place of the
+  proposed 343 Abstract Object, please see; the client asks again with GET
+  example.org/doc/car and receives 200 OK, a document about the car.</desc>
+
+  <path class="ln-mut" d="M 350 10 L 350 300"/>
+
+  <!-- left lane: hash -->
+  <text x="175" y="24" class="t-caps" text-anchor="middle">hash</text>
+  <text x="175" y="41" class="t-sm" text-anchor="middle">preferred in this note</text>
+
+  <rect class="box-plain" x="65" y="56" width="220" height="32" rx="3"/>
+  <text x="175" y="77" class="t-mono" text-anchor="middle">example.org/cars#mine</text>
+  <path class="ln" d="M 175 88 L 175 120"/>
+  <path d="M 175 128 L 170 118 L 180 118 Z" fill="#2f4f4f"/>
+  <text x="187" y="112" class="t-sm">client drops #mine</text>
+
+  <rect class="box-plain" x="65" y="128" width="220" height="32" rx="3"/>
+  <text x="175" y="149" class="t-mono" text-anchor="middle">GET example.org/cars</text>
+  <path class="ln" d="M 175 160 L 175 188"/>
+  <path d="M 175 196 L 170 186 L 180 186 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="65" y="196" width="220" height="32" rx="3"/>
+  <text x="175" y="217" text-anchor="middle">200 OK: a document</text>
+  <path class="ln-dash" d="M 175 228 L 175 256"/>
+
+  <rect class="box-warm" x="65" y="256" width="220" height="44" rx="4"/>
+  <text x="175" y="275" text-anchor="middle">#mine = the car</text>
+  <text x="175" y="292" class="t-sm" text-anchor="middle">described inside the document</text>
+
+  <!-- right lane: redirect -->
+  <text x="525" y="24" class="t-caps" text-anchor="middle">redirect</text>
+  <text x="525" y="41" class="t-sm" text-anchor="middle">proposed as 343 in 2002; adopted as 303 in 2005</text>
+
+  <rect class="box-plain" x="415" y="56" width="220" height="32" rx="3"/>
+  <text x="525" y="77" class="t-mono" text-anchor="middle">GET example.org/id/car</text>
+  <path class="ln" d="M 525 88 L 525 120"/>
+  <path d="M 525 128 L 520 118 L 530 118 Z" fill="#2f4f4f"/>
+  <text x="537" y="112" class="t-sm">server replies</text>
+
+  <rect class="box-green" x="405" y="128" width="240" height="44" rx="4"/>
+  <text x="525" y="147" text-anchor="middle">303 See Other</text>
+  <text x="525" y="164" class="t-sm" text-anchor="middle">(343 &#8220;Abstract Object, please see&#8221;)</text>
+  <path class="ln" d="M 525 172 L 525 188"/>
+  <path d="M 525 196 L 520 186 L 530 186 Z" fill="#2f4f4f"/>
+  <text x="537" y="187" class="t-sm">asks again</text>
+
+  <rect class="box-plain" x="415" y="196" width="220" height="32" rx="3"/>
+  <text x="525" y="217" class="t-mono" text-anchor="middle">GET example.org/doc/car</text>
+  <path class="ln" d="M 525 228 L 525 248"/>
+  <path d="M 525 256 L 520 246 L 530 246 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="415" y="256" width="220" height="44" rx="4"/>
+  <text x="525" y="275" text-anchor="middle">200 OK: a document</text>
+  <text x="525" y="292" class="t-sm" text-anchor="middle">about the car</text>
+</svg>
+<figcaption><span class="fig-label">Figure 7.3</span> Both keep &ldquo;a plain
+HTTP URI names a document&rdquo;. The hash does it with one character; the
+redirect costs an extra round trip to the server.</figcaption>
+</figure>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -169,9 +384,9 @@ alongside them.
 <li><strong>The author lost and the mechanism won.</strong> In June 2005 the
 Technical Architecture Group resolved the issue it had recorded as
 httpRange-14, adopting a runtime test rather than a rule fixed in the
-specification, which is the position section 7.3 rejects. It did so using a
-redirect closely resembling the one proposed here. Chapter 8 is
-Berners-Lee&#8217;s account of the resolution.</li>
+specification, which is the protocol-operation option in section 7.3&#8217;s
+table. It did so using a redirect closely resembling the one proposed here.
+Chapter 8 is Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
 2006 the page carried a header saying the question had been decided by the
 Group &ldquo;in a compromise which I think works quite well&rdquo;. The
@@ -181,10 +396,6 @@ are both in wide use, and the split has never closed. Vocabularies that
 predate the resolution, including Dublin Core and Friend of a Friend, use
 hashless HTTP URIs for properties, which is the practice this note argues
 against.</li>
-<li><strong>The recommendation problem persists outside RDF.</strong> Social
-platforms that resolve a link to a preview of the thing it describes rather
-than the page itself reproduce the Vietnam War ambiguity at consumer scale,
-without any of the machinery for detecting it.</li>
 </ul>
 </div>
 
@@ -209,20 +420,25 @@ Web forbids it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.2</span>
-The owner-defines position is called both tempting and consistent, then
-rejected on engineering grounds. Construct the smallest change to HTTP that
-would make it workable, and say what it would cost deployed clients.</p>
+Using Figure 7.3, explain what a browser does differently with a hash URI and
+with a 303 URI.</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.3</span>
-Take a vocabulary you use that names properties with hashless HTTP URIs.
-Determine what its server returns for one of them, and say whether a client
-can tell a property from a page about it.</p>
+Paste <code>http://xmlns.com/foaf/0.1/name</code> into a browser. Did you get
+a property or a page about it? How could you tell?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.4</span>
 The note argues that representations of a document have more in common with
 each other than with the thing described. Give a case where that is false,
 and say whether it damages the argument.</p>
+</div>
+<div class="question">
+<p><span class="question-number">7.5</span>
+The note ends with exercises. One asks what an address ending
+<code>magritte.gif</code> identifies: a pipe, a painting, a photograph of a
+painting, or a file of bits? Give your answer and say which of these the Web
+can be vague about and which it cannot.</p>
 </div>
 </div>

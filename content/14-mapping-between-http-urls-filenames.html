@@ -1,30 +1,48 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A server can show the same files both as web pages and as ordinary files on
+disk. But if anyone may upload under any name, a stranger can upload a web
+page called <code>virus.exe</code>, and a user&#8217;s computer will treat it as a
+program. The fix: keep the name when it is honest; otherwise add a
+<code>$</code> and the right extension (<code>foo.exe$.html</code>).
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the most practical note in Volume II and the only one that reaches a
-constructive answer rather than a principle. Written in April 2015 after a
-discussion with Andrei Sambra and elaborated in 2018 with Ruben Verborgh, it
-asks a question every read-write server must answer: given an HTTP URI, which
-file on disk does it name?
+This is a practical note that ends in a concrete rule. Written in April 2015
+after a discussion with Andrei Sambra and elaborated in 2018 with Ruben
+Verborgh, it asks a question every read-write server (one that lets clients
+store files as well as fetch them) must answer: given an HTTP URI, which file
+on disk does it name?
 </p>
 <p>
 It belongs here because it is Chapter 12&#8217;s file-and-HTTP correspondence
-meeting Chapter 2&#8217;s opacity axiom, and discovering that the two cannot both
-be had in full.
+meeting Chapter 2&#8217;s opacity axiom (do not read meaning into the
+characters of a URI), and discovering that the two cannot both be had in
+full.
 </p>
 </div>
 
 <h2>14.1 Why anyone would want both views</h2>
 
 <p>
-The motivation is that the two spaces are good at different things, and the
-note sets them side by side. HTTP space gives access to people who are not on
-the machine, and access control by Web-wide or server-wide identity. File
-space gives files one does not want to share, access control by ordinary
-users and groups, and faster access for serious data munging. On one side,
-browsers and Web services; on the other, command-line programs, scripts, a
-version control system, and a build system.
+Take a concrete case: a script edits a CSV file on a server, and colleagues
+read the same file in a browser. The script sees <em>file space</em>, the
+folders and filenames of the operating system. The colleagues see <em>HTTP
+space</em>, the same files reached by URI over the Web. The note sets out what
+each is good at:
 </p>
+
+<table>
+<tr><th>HTTP space</th><th>File space</th></tr>
+<tr><td>Who can reach it: people not on the machine</td><td>Who can reach it: the owner, including files not meant to be shared</td></tr>
+<tr><td>Access control by Web-wide or server-wide identity</td><td>Access control by Unix users and groups</td></tr>
+<tr><td>Slower</td><td>Faster, for serious data processing</td></tr>
+<tr><td>Tools: browsers and Web services</td><td>Tools: command-line programs, scripts, version control, build systems</td></tr>
+</table>
 
 <blockquote>
 It is actually pretty interesting to live on the edge, or more specifically
@@ -33,10 +51,19 @@ as local files and as resources on the web.
 <cite>Mapping between HTTP URLs and filenames on a server, 2015</cite>
 </blockquote>
 
+<p>
+The obvious mapping is to make the URI path the filename. The snag is types.
+A file&#8217;s <em>extension</em> is the part after the last dot; the operating
+system uses it to decide what a file is. HTTP sends the type separately, in a
+<code>Content-Type</code> header such as <code>text/html</code>. On a server
+that accepts uploads, the two can disagree.
+</p>
+
 <h2>14.2 Three requirements, two of which may be had</h2>
 
 <p>
-The note&#8217;s contribution is to state the conflict exactly. Three things are
+The note states the conflict exactly. Two HTTP verbs
+matter: PUT (upload to a chosen address) and GET (fetch). Three things are
 wanted, and they cannot all hold.
 </p>
 
@@ -58,30 +85,29 @@ wanted, and they cannot all hold.
   <text x="360" y="64" class="t-sm" text-anchor="middle">links work in both spaces</text>
 
   <rect class="box-warm" x="34" y="302" width="236" height="48" rx="4"/>
-  <text x="152" y="322" class="t-caps" text-anchor="middle" fill="#a07d47">arbitrary PUT</text>
+  <text x="152" y="322" class="t-caps" text-anchor="middle" style="fill:#b08d57">arbitrary PUT</text>
   <text x="152" y="340" class="t-sm" text-anchor="middle">any URI a client chooses</text>
 
   <rect class="box-green" x="450" y="302" width="236" height="48" rx="4"/>
-  <text x="568" y="322" class="t-caps" text-anchor="middle" fill="#3f6f3f">correct extensions</text>
+  <text x="568" y="322" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">correct extensions</text>
   <text x="568" y="340" class="t-sm" text-anchor="middle">the type on disk is the real type</text>
 
   <!-- edge labels: each design keeps the two it joins -->
-  <rect x="162" y="158" width="136" height="42" fill="#fefefe"/>
+  <rect x="162" y="158" width="136" height="42" fill="#fdfdfc"/>
   <text x="230" y="175" class="t-caps" text-anchor="middle">Try 3</text>
   <text x="230" y="193" class="t-sm" text-anchor="middle">drops extensions</text>
 
-  <rect x="426" y="158" width="136" height="42" fill="#fefefe"/>
+  <rect x="426" y="158" width="136" height="42" fill="#fdfdfc"/>
   <text x="494" y="175" class="t-caps" text-anchor="middle">Try 2</text>
   <text x="494" y="193" class="t-sm" text-anchor="middle">drops arbitrary PUT</text>
 
-  <rect x="286" y="282" width="148" height="42" fill="#fefefe"/>
-  <text x="360" y="299" class="t-caps" text-anchor="middle">Try 1</text>
-  <text x="360" y="317" class="t-sm" text-anchor="middle">drops correspondence</text>
+  <text x="360" y="324" class="t-caps" text-anchor="middle">Try 1</text>
+  <text x="360" y="342" class="t-sm" text-anchor="middle">drops correspondence</text>
 
   <text x="360" y="228" class="t-sm t-it" text-anchor="middle">each edge keeps the two corners it joins</text>
 
   <line class="ln-mut" x1="34" y1="366" x2="686" y2="366"/>
-  <text x="360" y="390" class="t-sm" text-anchor="middle"><tspan font-style="italic">The resolution: weaken the top corner from </tspan><tspan fill="#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan fill="#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
+  <text x="360" y="390" class="t-sm" text-anchor="middle" xml:space="preserve"><tspan font-style="italic">The resolution: weaken the top corner from </tspan><tspan style="fill:#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan style="fill:#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
 </svg>
 <figcaption><span class="fig-label">Figure 14.1</span>
 Berners-Lee&#8217;s method here is worth as much as his answer: state the
@@ -90,12 +116,24 @@ theorem, then look for the weakest one to weaken.</figcaption>
 </figure>
 
 <p>
-He works each corner in turn and rejects all three. Dropping direct
-correspondence defeats the premise of the exercise. Dropping arbitrary PUT
-turns a general-purpose storage space into one that only applications adapted
-to that server&#8217;s constraints can use. Dropping correct extensions is the one
-he refuses outright, and the refusal is worth quoting because it is the only
-place in the collection where he calls something non-negotiable:
+He tries each design on the same three uploads, all sent as
+<code>text/html</code>. The table gathers his examples, with the sweet spot
+of section 14.3 for comparison; the <code>http://localhost/space/</code> and
+<code>/users/bob/space/</code> prefixes are left out.
+</p>
+
+<table>
+<tr><th>URI</th><th>Try 1</th><th>Try 2</th><th>Try 3</th><th>Sweet spot</th></tr>
+<tr><td><code>foo.html</code></td><td><code>foo.html.html</code></td><td><code>foo.html</code></td><td><code>foo.html</code></td><td><code>foo.html</code></td></tr>
+<tr><td><code>foo.bar</code></td><td><code>foo.bar.html</code></td><td>blocked</td><td><code>foo.bar</code></td><td><code>foo.bar$.html</code></td></tr>
+<tr><td><code>foo.exe</code></td><td><code>foo.exe.html</code></td><td>blocked</td><td><code>foo.exe</code> (danger)</td><td><code>foo.exe$.html</code></td></tr>
+</table>
+
+<p>
+He rejects all three. Try 1 breaks the correspondence that was the point of
+the exercise. Try 2 turns a general-purpose storage space into one that only
+applications adapted to that server&#8217;s constraints can use. Try 3, which
+leaves extensions wrong, he refuses outright:
 </p>
 
 <blockquote>
@@ -105,12 +143,65 @@ crucial part of web security 101 and not negotiable.
 </blockquote>
 
 <p>
-The attack he has in mind is stated concretely: someone writes a file whose
-URI ends in <code>.exe</code> but whose content type is
-<code>text/html</code>, and in file space the operating system sees a
-program. The extension is metadata that the local system trusts and that a
-remote party supplied.
+The attack he has in mind is concrete. Someone uploads a file whose URI ends
+in <code>.exe</code> but whose content type is <code>text/html</code>, and in
+file space the operating system sees a program. The extension is metadata
+that the local system trusts and that a remote party supplied.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig14-2-t fig14-2-d">
+  <title id="fig14-2-t">The upload attack</title>
+  <desc id="fig14-2-d">A stranger uploads read.exe with Content-Type text/html.
+  A server using Try 3 saves it as read.exe, and when a user double-clicks it the
+  operating system runs it as a program. A server using the sweet spot saves
+  the same upload as read.exe$.html, which opens in a browser as a page.</desc>
+
+  <!-- stranger -->
+  <rect class="box" x="16" y="30" width="210" height="80" rx="4"/>
+  <text x="121" y="54" class="t-caps" text-anchor="middle">a stranger</text>
+  <text x="121" y="76" class="t-mono" text-anchor="middle">PUT /space/read.exe</text>
+  <text x="121" y="96" class="t-sm" text-anchor="middle">Content-Type: text/html</text>
+
+  <!-- Try 3 path -->
+  <line class="ln" x1="226" y1="70" x2="250" y2="70"/>
+  <path d="M 256 70 L 248 66 L 248 74 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="256" y="30" width="200" height="80" rx="4"/>
+  <text x="356" y="54" class="t-caps" text-anchor="middle">server, Try 3</text>
+  <text x="356" y="76" class="t-sm" text-anchor="middle">saves the file as</text>
+  <text x="356" y="96" class="t-mono" text-anchor="middle">read.exe</text>
+
+  <line class="ln" x1="456" y1="70" x2="482" y2="70"/>
+  <path d="M 488 70 L 480 66 L 480 74 Z" fill="#2f4f4f"/>
+
+  <rect class="box-warm" x="488" y="30" width="216" height="80" rx="4"/>
+  <text x="596" y="54" class="t-caps" text-anchor="middle" style="fill:#b08d57">a user&#8217;s computer</text>
+  <text x="596" y="76" text-anchor="middle">a double-click,</text>
+  <text x="596" y="96" text-anchor="middle">and the OS runs a program</text>
+
+  <!-- sweet spot path -->
+  <path class="ln-dash" d="M 121 110 V 195 H 250"/>
+  <path d="M 256 195 L 248 191 L 248 199 Z" fill="#8a9a9a"/>
+  <text x="131" y="152" class="t-sm">same upload</text>
+
+  <rect class="box-green" x="256" y="155" width="200" height="80" rx="4"/>
+  <text x="356" y="179" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">server, sweet spot</text>
+  <text x="356" y="201" class="t-sm" text-anchor="middle">saves the file as</text>
+  <text x="356" y="221" class="t-mono" text-anchor="middle">read.exe$.html</text>
+
+  <line class="ln" x1="456" y1="195" x2="482" y2="195"/>
+  <path d="M 488 195 L 480 191 L 480 199 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="488" y="155" width="216" height="80" rx="4"/>
+  <text x="596" y="179" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a user&#8217;s computer</text>
+  <text x="596" y="201" text-anchor="middle">a double-click,</text>
+  <text x="596" y="221" text-anchor="middle">and it opens as a web page</text>
+</svg>
+<figcaption><span class="fig-label">Figure 14.2</span>
+A stranger chooses the extension, and the user&#8217;s own machine trusts it.</figcaption>
+</figure>
 
 <h2>14.3 The sweet spot</h2>
 
@@ -128,19 +219,13 @@ both spaces for people who pick those names
 <p>
 The rule is then mechanical. A URI maps directly to a filename if and only if
 that produces a correct extension. Otherwise it maps to a different filename
-that can be round-tripped back to the URI and does have the right extension,
-flagged by an otherwise forbidden character such as a dollar sign.
+that has the right extension and from which the URI can be recovered exactly,
+flagged by a character people do not normally use in names, such as a dollar
+sign. The last column of the table in section 14.2 shows the result.
 </p>
 
-<table>
-<tr><th>URI on the web</th><th>Content type</th><th>Filename on the system</th></tr>
-<tr><td><code>/space/foo.html</code></td><td><code>text/html</code></td><td><code>/space/foo.html</code></td></tr>
-<tr><td><code>/space/foo.bar</code></td><td><code>text/html</code></td><td><code>/space/foo.bar$.html</code></td></tr>
-<tr><td><code>/space/foo.exe</code></td><td><code>text/html</code></td><td><code>/space/foo.exe$.html</code></td></tr>
-</table>
-
 <p>
-The bargain is stated plainly. A publisher willing to use URIs with
+A publisher willing to use URIs with
 file-like extensions gets the two-space mapping. One who is not does not, and
 everything else still works.
 </p>
@@ -148,23 +233,68 @@ everything else still works.
 <h2>14.4 The asymmetry nobody expects</h2>
 
 <p>
-A short passage at the end is the most useful thing in the note for anyone
-implementing this, because it notices that the mapping is not one function
-but three.
+A short passage at the end, the most useful for implementers, notices that
+the mapping is not one function but three.
 </p>
 
-<p>
-On PUT, the client supplies both the URI and the content type, so the server
-computes the filename directly: a simple mathematical function. On GET, the
-server has only the URI, and must search the directory for the file that is
-either the URI or the URI with a dollar suffix, so the mapping depends on
-what is on disk. Listing a directory is a simple function again, in the other
-direction.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig14-3-t fig14-3-d">
+  <title id="fig14-3-t">One mapping or three</title>
+  <desc id="fig14-3-d">On PUT, the URI and content type together give the
+  filename foo.exe$.html by pure calculation. On GET, the server has only the
+  URI and must look in the directory for foo.exe or foo.exe$ followed by an
+  extension. On listing, the filename foo.exe$.html becomes the URI
+  /space/foo.exe by stripping $.html.</desc>
+
+  <text x="111" y="26" class="t-caps" text-anchor="middle">HTTP side</text>
+  <text x="609" y="26" class="t-caps" text-anchor="middle">file side</text>
+
+  <!-- PUT -->
+  <rect class="box" x="16" y="44" width="190" height="52" rx="4"/>
+  <text x="111" y="66" class="t-mono" text-anchor="middle">PUT /space/foo.exe</text>
+  <text x="111" y="84" class="t-sm" text-anchor="middle">URI + type text/html</text>
+  <line class="ln-accent" x1="206" y1="70" x2="506" y2="70"/>
+  <path d="M 514 70 L 505 65.5 L 505 74.5 Z" fill="#1c5a7a"/>
+  <text x="360" y="60" class="t-sm" text-anchor="middle">pure calculation</text>
+  <rect class="box-plain" x="514" y="44" width="190" height="52" rx="4"/>
+  <text x="609" y="75" class="t-mono" text-anchor="middle">foo.exe$.html</text>
+
+  <!-- GET -->
+  <rect class="box" x="16" y="124" width="190" height="52" rx="4"/>
+  <text x="111" y="146" class="t-mono" text-anchor="middle">GET /space/foo.exe</text>
+  <text x="111" y="164" class="t-sm" text-anchor="middle">URI only</text>
+  <line class="ln-dash" x1="206" y1="150" x2="262" y2="150"/>
+  <path d="M 270 150 L 262 146 L 262 154 Z" fill="#8a9a9a"/>
+  <rect class="box-warm" x="270" y="118" width="180" height="64" rx="4"/>
+  <text x="360" y="142" text-anchor="middle">look in the directory:</text>
+  <text x="360" y="164" class="t-mono" text-anchor="middle">foo.exe or foo.exe$.*</text>
+  <line class="ln-dash" x1="450" y1="150" x2="506" y2="150"/>
+  <path d="M 514 150 L 506 146 L 506 154 Z" fill="#8a9a9a"/>
+  <text x="360" y="200" class="t-sm" text-anchor="middle">needs a lookup</text>
+  <rect class="box-plain" x="514" y="124" width="190" height="52" rx="4"/>
+  <text x="609" y="155" class="t-mono" text-anchor="middle">foo.exe$.html</text>
+
+  <!-- listing -->
+  <rect class="box-plain" x="16" y="224" width="190" height="52" rx="4"/>
+  <text x="111" y="255" class="t-mono" text-anchor="middle">/space/foo.exe</text>
+  <line class="ln" x1="514" y1="250" x2="214" y2="250"/>
+  <path d="M 206 250 L 215 245.5 L 215 254.5 Z" fill="#2f4f4f"/>
+  <text x="360" y="240" class="t-sm" text-anchor="middle">listing: strip $.html</text>
+  <rect class="box" x="514" y="224" width="190" height="52" rx="4"/>
+  <text x="609" y="255" class="t-mono" text-anchor="middle">foo.exe$.html</text>
+</svg>
+<figcaption><span class="fig-label">Figure 14.3</span>
+Only GET must consult the disk, because the URI does not record which
+extension was added.</figcaption>
+</figure>
 
 <p>
-Berners-Lee notes the prize for getting it right, which is larger than one
-server:
+On PUT the client supplies both the URI and the content type, so the filename
+is, in the note&#8217;s words, &#8220;a simple mathematical function&#8221;. On
+GET the server must search the directory. Listing a directory is a simple
+function again, in the other direction. Berners-Lee notes the prize for
+getting it right, which is larger than one server:
 </p>
 
 <blockquote>
@@ -174,27 +304,32 @@ can simultaneously run more than one HTTP server over the same file space.
 </blockquote>
 
 <p>
-A shared mapping makes a directory tree portable between servers: it can be
-archived on one and unpacked on another and remain the same Web space. That
-is the file-system equivalent of the relative-URI property argued for in
-Chapter 12.
+A shared mapping also makes a directory tree portable: it can be archived
+(the note says &#8220;tar up&#8221;) on one server, unpacked on another, and
+remain the same Web space. That is the file-system counterpart of the
+relative-URI property of Chapter 12: links inside the tree keep working
+wherever it is unpacked.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The problem became a specification question.</strong> The Solid
-Protocol, whose version 0.9 was published in December 2021, specifies how
-servers map resource URIs to storage and how auxiliary metadata is kept
-alongside, which is the interoperability goal section 14.4 names.</li>
-<li><strong>The attack it defends against stayed real.</strong> Content type
-confusion remains a standard class of vulnerability, and the general defence
-is the one implied here: do not let a remote party&#8217;s chosen name determine
-how a local system treats a file.</li>
+<li><strong>Solid servers adopted the convention.</strong> Ruben Verborgh
+added a URL-to-file mapper to Node Solid Server in March 2018, and version
+5.0.0 (March 2019) stores a resource whose name lacks the right extension
+under a <code>$</code>-suffixed filename, so <code>foo.bar</code> sent as
+<code>text/html</code> becomes <code>foo.bar$.html</code>. The Community
+Solid Server&#8217;s extension-based mapper, written from 2020, does the
+same. The Solid Protocol itself leaves storage to each implementation.</li>
+<li><strong>The attack it defends against stayed real.</strong> Unrestricted
+upload of a file with a dangerous type is catalogued as CWE-434 in MITRE&#8217;s
+Common Weakness Enumeration, and the general defence is the one implied
+here: do not let a remote party&#8217;s chosen name decide how a local system
+treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>
-Off-the-shelf servers still map URLs to filenames directly, which is Try 3,
-and therefore rely on not granting untrusted write access rather than on
-making writes safe.</li>
+Servers such as Apache and nginx, when configured to accept WebDAV PUT,
+still map URLs to filenames directly, which is Try 3, and generally rely on
+not granting untrusted write access rather than on making writes safe.</li>
 <li><strong>The two-space workflow persisted.</strong> Static site generators
 and file-backed publishing pipelines are the mainstream version of what this
 note describes, and they avoid the problem entirely by having no arbitrary
@@ -218,8 +353,9 @@ Chapter 54.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">14.1</span>
-Restate the three requirements as propositions and show that they are jointly
-unsatisfiable. Which one does the resolution weaken, and by how much?</p>
+For <code>notes.txt</code> sent as <code>text/html</code>, give the filename
+under each Try and under the sweet spot, and say what goes wrong in each
+Try.</p>
 </div>
 <div class="question">
 <p><span class="question-number">14.2</span>
@@ -228,12 +364,12 @@ Explain why, and say what this costs a server handling many requests.</p>
 </div>
 <div class="question">
 <p><span class="question-number">14.3</span>
-The dollar sign is chosen because it is otherwise forbidden. What breaks if a
-character already in use is chosen instead?</p>
+Why must the marker be a character people do not normally use in names?
+What breaks if it were <code>_</code>?</p>
 </div>
 <div class="question">
 <p><span class="question-number">14.4</span>
-Berners-Lee calls control of local file extensions non-negotiable. Identify
-the trust boundary this protects and name the party on each side of it.</p>
+Berners-Lee calls control of local file extensions non-negotiable. Who
+chooses the extension, and whose computer acts on it?</p>
 </div>
 </div>

@@ -1,3 +1,21 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A web address has two parts: the domain name (<code>example.com</code>) and
+the path after it (<code>/downloads</code>). The publisher can keep the path
+stable. Nobody can keep the domain stable, because domain names are rented:
+they can lapse, be sold, or be lost in a lawsuit, and then the same address
+leads somewhere else.
+</p>
+<p>
+Berners-Lee proposed new domains stamped with a year, such as
+<code>.y2000</code>, bought once and held forever. Each would come with a duty
+to keep its pages available, and that duty would pass to whoever bought the
+domain. If the owner disappeared, copies kept by other organisations would
+take over. It was never built.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -12,10 +30,9 @@ times in various contexts.
 <cite>Persistent Domains, 2000</cite>
 </blockquote>
 <p>
-It is labelled a strawman, and nothing in it was built. It is included at
-full chapter length because the analysis in its first half is correct and
-still unaddressed, and because the proposal in its second half shows what
-taking persistence seriously would actually require.
+He labels it a strawman: a rough proposal put up so that others can knock it
+down. Its first half diagnoses a problem still unsolved;
+its second shows what solving it would demand.
 </p>
 </div>
 
@@ -24,20 +41,76 @@ taking persistence seriously would actually require.
 <p>
 The note begins by splitting URI persistence into two independent questions:
 the persistence of the opaque string after the domain name, and the
-persistence of the domain name itself.
+persistence of the domain name itself. Figure 13.1 uses the note&#8217;s own
+example.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig13-1-t fig13-1-d">
+  <title id="fig13-1-t">Two halves of a URI, two owners of the problem</title>
+  <desc id="fig13-1-d">The address http://www.example.com/downloads, with the
+  domain name and the path bracketed separately. The domain name is rented and
+  can lapse, be sold or be lost; its fix is the subject of this note, and its
+  typical failure is the same address showing someone else's content, which
+  the note calls worse. The path is chosen and kept by the publisher; its fix
+  is publisher discipline, as in Cool URIs Don't Change and a persistence
+  policy; its typical failure is 404 Not Found.</desc>
+
+  <text x="168" y="38" class="t-mono" style="font-size:20px">http://www.example.com/downloads</text>
+  <path class="ln-accent" d="M254 50 V58 H430 V50"/>
+  <path class="ln-accent" d="M436 50 V58 H550 V50"/>
+  <path class="ln-mut" d="M342 58 V74 H195 V92"/>
+  <path class="ln-mut" d="M493 58 V74 H525 V92"/>
+
+  <rect class="box-warm" x="40" y="92" width="310" height="60" rx="4"/>
+  <text x="195" y="114" class="t-caps" text-anchor="middle">the domain name</text>
+  <text x="195" y="138" text-anchor="middle">rented: can lapse, be sold or be lost</text>
+
+  <rect class="box" x="370" y="92" width="310" height="60" rx="4"/>
+  <text x="525" y="114" class="t-caps" text-anchor="middle">the path</text>
+  <text x="525" y="138" text-anchor="middle">chosen and kept by the publisher</text>
+
+  <line class="ln" x1="195" y1="152" x2="195" y2="168"/>
+  <path d="M191 168 L195 176 L199 168 Z" fill="#2f4f4f"/>
+  <line class="ln" x1="525" y1="152" x2="525" y2="168"/>
+  <path d="M521 168 L525 176 L529 168 Z" fill="#2f4f4f"/>
+
+  <rect class="box-plain" x="40" y="176" width="310" height="60" rx="4"/>
+  <text x="195" y="198" text-anchor="middle">Fix: the subject of this note</text>
+  <text x="195" y="222" class="t-sm" text-anchor="middle">no publisher can promise to keep a name it only rents</text>
+
+  <rect class="box-plain" x="370" y="176" width="310" height="60" rx="4"/>
+  <text x="525" y="198" text-anchor="middle">Fix: the publisher&#8217;s discipline</text>
+  <text x="525" y="222" class="t-sm" text-anchor="middle">Cool URIs Don&#8217;t Change; a persistence policy</text>
+
+  <line class="ln-dash" x1="195" y1="236" x2="195" y2="262"/>
+  <line class="ln-dash" x1="525" y1="236" x2="525" y2="262"/>
+
+  <text x="195" y="280" class="t-sm" text-anchor="middle">typical failure if nothing is done</text>
+  <text x="195" y="302" text-anchor="middle" style="fill:#b08d57">same address, someone else&#8217;s content</text>
+  <text x="195" y="322" class="t-sm" text-anchor="middle">(the note calls this the worse failure)</text>
+
+  <text x="525" y="280" class="t-sm" text-anchor="middle">typical failure if nothing is done</text>
+  <text x="525" y="302" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">404 Not Found</text>
+</svg>
+<figcaption><span class="fig-label">Figure 13.1</span>
+Persistence fails at two separate points. Discipline can fix the path; only a
+change in how names are held can fix the domain.</figcaption>
+</figure>
+
 <p>
-The first is the publisher&#8217;s to solve, and Berners-Lee notes that the failure
+The first is the publisher&#8217;s to solve. Berners-Lee notes that the failure
 is usually thoughtlessness rather than malice, aggravated by a dearth of
-tools that help run a server with persistent URIs. He had already written
-<em>Cool URIs Don&#8217;t Change</em> about it and had led the Consortium to a
-persistence policy. He is clear that this addresses only half the problem.
+tools for running a server with persistent URIs. He had already written
+<em>Cool URIs Don&#8217;t Change</em> about it, and that covers only half the
+problem.
 </p>
 
 <p>
-The second half is where the note earns its place, and it is summarised by
-quoting someone else:
+The second half is summarised in a line from Esther Dyson (the note spells
+her name Ester), then chair of ICANN, the body that oversees the domain name
+system. A meme is a phrase that spreads and sticks:
 </p>
 
 <blockquote>
@@ -48,30 +121,36 @@ public expectation that domain names should be persistent.
 </blockquote>
 
 <p>
-He then makes the case against his own alarm, which is the mark of the better
-notes in this collection. The planet&#8217;s investment in domain names as
-references is huge, the dereferencing technology has become sophisticated,
-and the legal weight behind a significant organisation&#8217;s ownership is
-considerable. Nobody imagines a legal battle over a well-known domain being
-lost to a sneaky entrepreneur. The section ends with three words: but is this
-enough?
+In principle, he goes on, whoever next holds <code>example.com</code>, by
+purchase, lawsuit or an owner&#8217;s accidental failure to renew, could make
+<code>/downloads</code> point to anything at all.
+</p>
+
+<h3>Why it might already be fine</h3>
+
+<p>
+He then argues against his own alarm. The investment in domain names as references is
+huge, the lookup technology sophisticated, and the legal weight behind a
+significant organisation&#8217;s ownership considerable. Nobody imagines a legal battle over <code>microsoft.com</code>
+or <code>ietf.org</code> being lost to a sneaky entrepreneur. The section ends
+with four words: but is this enough?
 </p>
 
 <p>
-He also names a second-order symptom that Volume II has been circling since
-Chapter 3: the constant stream of proposals for new URI schemes with
-incompatible lookup technology, usually made with less attention to the
-social issues than HTTP and DNS receive, and proposing to be otherwise
-similar except in persistence.
+He also names a symptom: a constant stream of proposals for new URI schemes
+(URNs and Handles are examples), each with its own lookup system, usually made
+with less attention to the social issues than HTTP and DNS receive, and
+otherwise similar except in persistence.
 </p>
 
 <h2>13.2 The proposal: date-stamped top-level domains</h2>
 
 <p>
-The mechanism is a single trick, borrowed twice over. Create a series of
-top-level domains named for years. A name under <code>.y2000</code> could be
-registered only during the year 2000, and once acquired would be held
-forever.
+The mechanism is a single trick, borrowed twice over. A top-level domain is
+the last part of a name, such as <code>.com</code> or <code>.org</code>.
+Create a series of top-level domains named for years. A name under
+<code>.y2000</code> could be registered only during the year 2000, and once
+acquired would be held forever.
 </p>
 
 <blockquote>
@@ -82,35 +161,105 @@ code them.
 </blockquote>
 
 <p>
-The date code does the work because it removes contention over time. A name
-in a year that has passed cannot be applied for by anyone, so the incentive
-to take a name from its holder disappears, and the expectation that the name
-will never be reused can be set from the beginning.
+The date code removes competition for a name over time. No one can apply for
+a name in a year that has passed, so the incentive to take it from its holder
+disappears, and the expectation that it will never be reused is set from the
+start.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
+     aria-labelledby="fig13-2-t fig13-2-d">
+  <title id="fig13-2-t">Date-stamped registration over time</title>
+  <desc id="fig13-2-d">A timeline from 2000 to 2003 and later. Each domain,
+  .y2000 to .y2003, is open for registration only during its own year, then
+  closed for good, with its names held forever. A name such as
+  bankboston.y2000, registered in 2000, can never be applied for again. The
+  same trick is used by W3C's dated URIs and British number plates.</desc>
+
+  <text x="175" y="26" text-anchor="middle">2000</text>
+  <text x="305" y="26" text-anchor="middle">2001</text>
+  <text x="435" y="26" text-anchor="middle">2002</text>
+  <text x="565" y="26" text-anchor="middle">2003</text>
+  <text x="665" y="26" class="t-sm" text-anchor="middle">later</text>
+  <line class="ln" x1="110" y1="38" x2="700" y2="38"/>
+  <path d="M700 34 L708 38 L700 42 Z" fill="#2f4f4f"/>
+  <line class="ln" x1="110" y1="34" x2="110" y2="42"/>
+  <line class="ln" x1="240" y1="34" x2="240" y2="42"/>
+  <line class="ln" x1="370" y1="34" x2="370" y2="42"/>
+  <line class="ln" x1="500" y1="34" x2="500" y2="42"/>
+  <line class="ln" x1="630" y1="34" x2="630" y2="42"/>
+
+  <text x="20" y="67" class="t-mono">.y2000</text>
+  <rect class="box-green" x="110" y="52" width="130" height="22"/>
+  <rect class="box-plain" x="240" y="52" width="460" height="22"/>
+  <text x="470" y="67" class="t-sm" text-anchor="middle">closed: no one can apply for bankboston.y2000 again</text>
+
+  <text x="20" y="101" class="t-mono">.y2001</text>
+  <rect class="box-green" x="240" y="86" width="130" height="22"/>
+  <text x="305" y="101" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="370" y="86" width="330" height="22"/>
+  <text x="535" y="101" class="t-sm" text-anchor="middle">closed for good: names held forever</text>
+
+  <text x="20" y="135" class="t-mono">.y2002</text>
+  <rect class="box-green" x="370" y="120" width="130" height="22"/>
+  <text x="435" y="135" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="500" y="120" width="200" height="22"/>
+  <text x="600" y="135" class="t-sm" text-anchor="middle">closed for good</text>
+
+  <text x="20" y="169" class="t-mono">.y2003</text>
+  <rect class="box-green" x="500" y="154" width="130" height="22"/>
+  <text x="565" y="169" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="630" y="154" width="70" height="22"/>
+  <text x="665" y="169" class="t-sm" text-anchor="middle">closed</text>
+
+  <circle cx="175" cy="63" r="4" style="fill:#5a8f5a"/>
+  <line class="ln-mut" x1="175" y1="67" x2="175" y2="190"/>
+  <text x="175" y="208" text-anchor="middle">bankboston.y2000 registered in 2000</text>
+  <text x="700" y="208" class="t-sm" text-anchor="end">the same trick as W3C&#8217;s dated URIs and British number plates</text>
+</svg>
+<figcaption><span class="fig-label">Figure 13.2</span>
+Each year&#8217;s domain opens once (green), then closes for good, so there is
+never a later chance to take a name from its holder.</figcaption>
+</figure>
+
 <p>
-The sanity rules Berners-Lee attaches are as interesting as the mechanism,
-because each one anticipates an abuse: trademark diligence before granting an
-alphanumeric name; a cap on how many persistent domains one organisation may
-hold, or at least a queue that favours those holding fewer; immediate,
-automatic, non-transferable allocation for anyone content with a random
-numeric name; constraints on sitting on an unused domain and on transfer.
+Each of the sanity rules he attaches anticipates an abuse:
 </p>
+<ul>
+<li>some trademark checking before granting an alphanumeric name, which stops
+people squatting on brand names;</li>
+<li>a cap on how many persistent domains one organisation may hold, or at
+least a queue that favours those holding fewer, which stops hoarding;</li>
+<li>immediate, automatic allocation for anyone content with a random numeric
+name such as <code>6872364.y2000</code>, not transferable, so it is cheap to
+get and worthless to trade;</li>
+<li>some constraint on sitting on a domain without using it, and possibly on
+transfer, which discourages speculation.</li>
+</ul>
 
 <h2>13.3 The obligations</h2>
 
 <p>
-The second half of the proposal is the part that makes it a contract rather
-than a naming scheme, and it is the part that is genuinely hard.
+The second half makes the proposal a contract rather than a naming scheme,
+and it is the hard part.
 </p>
 
 <p>
-An organisation entering the scheme must join a mirroring arrangement, so
-that other parties hold copies. There must be a contract under which, if the
-original publisher comes to a voluntary or involuntary end, the mirrors
-continue to serve. The documents then enter what Berners-Lee calls an
-<em>archive state</em>, in which the original publisher loses the authority
-to change the domain and the public gain rights of access.
+An organisation entering the scheme must join a mirroring arrangement, in
+which others keep live copies of its site under a contract that, if the
+publisher comes to a voluntary or involuntary end, the mirrors continue to
+serve. The documents
+then enter what Berners-Lee calls an <em>archive state</em>, in which the
+original publisher loses the authority to change the domain and the public
+gain rights of access.
+</p>
+
+<p>
+For material so uninteresting that no one will pay to keep it, serious
+archival institutions, such as the major national libraries, should have the
+right to take over an archive for the public good. He also suggests mirroring confidential,
+access-controlled documents, with a 30-year timeout on the confidentiality.
 </p>
 
 <p>
@@ -126,31 +275,85 @@ obligations. Transfer of the domain name would carry within it both.
 <p>
 The worked case is one bank acquiring another and being unable simply to drop
 support for the acquired bank&#8217;s documents without all of them falling into
-archive state. That is the whole idea in one example: the acquirer inherits
-the duty along with the asset.
+archive state. Archive state is also the penalty for
+cheating. A domain whose publisher &ldquo;consistently flaunts the
+rules&rdquo; would be declared dead and pass into archive state as though the
+organisation had ceased to exist; it could then ask for a new domain and
+start again, at least the first time.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig13-3-t fig13-3-d">
+  <title id="fig13-3-t">Lifecycle of a persistent domain</title>
+  <desc id="fig13-3-d">A registered domain, whose owner publishes and may
+  update, can be sold or acquired; the new owner inherits the rights and the
+  duties. From either state, if the owner vanishes, defaults or keeps breaking
+  the rules, the domain enters archive state: mirrors keep serving, the owner
+  loses control, and the public gains rights of access. Mirrors hold copies
+  all along and take over service.</desc>
+
+  <rect class="box" x="20" y="40" width="190" height="76" rx="4"/>
+  <text x="115" y="62" class="t-caps" text-anchor="middle">registered</text>
+  <text x="115" y="84" class="t-sm" text-anchor="middle">the owner publishes</text>
+  <text x="115" y="102" class="t-sm" text-anchor="middle">and may update</text>
+
+  <line class="ln" x1="210" y1="78" x2="322" y2="78"/>
+  <path d="M322 74 L330 78 L322 82 Z" fill="#2f4f4f"/>
+  <text x="270" y="66" class="t-sm" text-anchor="middle">sold or acquired</text>
+
+  <rect class="box" x="330" y="40" width="190" height="76" rx="4"/>
+  <text x="425" y="62" class="t-caps" text-anchor="middle">new owner</text>
+  <text x="425" y="84" class="t-sm" text-anchor="middle">inherits the rights</text>
+  <text x="425" y="102" class="t-sm" text-anchor="middle">and the duties</text>
+
+  <rect class="box-plain" x="560" y="40" width="140" height="76" rx="4"/>
+  <text x="630" y="62" class="t-caps" text-anchor="middle">mirrors</text>
+  <text x="630" y="84" class="t-sm" text-anchor="middle">hold copies</text>
+  <text x="630" y="102" class="t-sm" text-anchor="middle">all along</text>
+
+  <path class="ln" d="M115 116 V226 H172"/>
+  <path d="M172 222 L180 226 L172 230 Z" fill="#2f4f4f"/>
+  <line class="ln" x1="425" y1="116" x2="425" y2="182"/>
+  <path d="M421 182 L425 190 L429 182 Z" fill="#2f4f4f"/>
+  <text x="270" y="148" class="t-sm" text-anchor="middle">owner vanishes, defaults,</text>
+  <text x="270" y="164" class="t-sm" text-anchor="middle">or keeps breaking the rules</text>
+
+  <path class="ln-dash" d="M630 116 V226 H548"/>
+  <path d="M548 222 L540 226 L548 230 Z" fill="#8a9a9a"/>
+  <text x="620" y="160" class="t-sm" text-anchor="end">take over service</text>
+
+  <rect class="box-warm" x="180" y="190" width="360" height="72" rx="4"/>
+  <text x="360" y="212" class="t-caps" text-anchor="middle">archive state</text>
+  <text x="360" y="232" class="t-sm" text-anchor="middle">mirrors keep serving; the owner loses control;</text>
+  <text x="360" y="250" class="t-sm" text-anchor="middle">the public gains rights of access</text>
+</svg>
+<figcaption><span class="fig-label">Figure 13.3</span>
+The duties travel with the name. The only way out is archive state, never
+silent abandonment.</figcaption>
+</figure>
+
 <p>
-Berners-Lee also floats, and explicitly declines to commit to, a limited
-redistribution licence attaching to material in archive state. He offers the
-analogy of an implicit right to photocopy a book that is out of print, and a
-footnote records Joseph Reagle pointing out that courts would not necessarily
-accept the parallel between Web and paper distribution.
+Berners-Lee also floats, without committing to it, a limited redistribution
+licence for material in archive state, by analogy with an implicit right to
+photocopy an out-of-print book. A footnote records Joseph Reagle&#8217;s point
+that courts might not accept the parallel.
 </p>
 
 <h2>13.4 What the note gets right about what it is</h2>
 
 <p>
-The clarification about re-use is the part practitioners should carry away.
-Most URIs are generic in the sense of Chapter 10: they refer to a conceptual
-resource whose representation varies with time, technology and language. That
-is permitted inside a persistent domain. What is forbidden is reallocating a
-URI to something else.
+The clarification about re-use is the part to carry away. Most URIs are generic in the sense of Chapter 10: they refer to a conceptual
+resource whose representation varies with time, technology and language, as
+one address for &ldquo;today&#8217;s weather&rdquo; shows different content each
+day. That is permitted inside a persistent domain. What is forbidden is
+reallocating a URI to something else. Ideally the generic resource and each specific
+version of it (one format, one exact sequence of bytes) would have separate
+URIs, and providing them could be one of the owner&#8217;s obligations.
 </p>
 
 <p>
-Berners-Lee is honest that he does not know how to enforce this, and the
-guess he offers is characteristic:
+He admits he does not know how to enforce this, and guesses:
 </p>
 
 <blockquote>
@@ -161,43 +364,43 @@ known&rdquo;!).
 </blockquote>
 
 <p>
-The note closes with a joke at its own expense, a note addressed to readers
-after the year 2100 with invented citations, and a summary list of rules
-ending with a request for one dollar from anyone who uses the scheme.
+The note ends with a summary list of rules. Two say who would hold the
+power: the registry would be a neutral non-profit cooperative, and
+ICANN&#8217;s delegation of the year domains would be irrevocable for all time.
+The list closes by asking one dollar from anyone who uses the scheme
+(&ldquo;just kidding!&rdquo;), and a footnote jokes about how this era will
+look to historians after the year 2100.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Nothing was built.</strong> No date-stamped top-level domain
-exists. The expansion of the top-level namespace that did occur, beginning
+<li><strong>Nothing was built.</strong> The expansion of the top-level namespace that did occur, beginning
 with ICANN&#8217;s new generic top-level domain programme in 2012, sold names as
 rentals on the existing model and added no persistence obligations.</li>
 <li><strong>The contract was written elsewhere, privately.</strong> The
-Handle System and the Digital Object Identifier supply the undertaking this
-note describes, funded by registration fees rather than by a change to DNS.
-The obligation attaches to a registrant, not to a domain, and does not
-transfer automatically on acquisition.</li>
-<li><strong>Archive state arrived without rights.</strong> Web archives
-preserve material after publishers disappear, at scale, but as a voluntary
-third-party act rather than a condition of holding a name. There is no
-contractual succession of the kind section 13.3 describes.</li>
+Handle System and the Digital Object Identifier (DOI, the identifiers printed
+on academic papers, such as <code>doi.org/10.…</code>) supply the undertaking
+this note describes, funded by registration fees rather than by a change to
+DNS. The obligation attaches to a
+registrant through a registration agency, not to a domain name.</li>
+<li><strong>Archive state arrived without rights.</strong> Web archives, such
+as the Internet Archive&#8217;s Wayback Machine (public since 2001), preserve
+material after publishers disappear, but as a voluntary third-party act, not a
+condition of holding a name, and with no contractual succession.</li>
 <li><strong>Dyson&#8217;s line held.</strong> Domain names are still rented. Lapsed
-domains are still re-registered and repointed, which is the second and worse
-failure the note names in its opening: not an error message, but a URI
-resolving to something entirely different from what the person linking to it
-meant.</li>
+domains are still re-registered and repointed: the worse failure the note
+names, a URI resolving to something other than what the linker meant.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is the constructive answer to the naming problem stated in
-Chapter 3, and it depends on the sense of genericity defined in Chapter 10.
-The centralisation of the DNS root that makes the proposal need ICANN&#8217;s
-cooperation is named in Chapter 5. The stream of rival naming schemes that
-this note treats as a symptom is discussed in Chapter 4. The question of who
+This chapter answers the naming problem stated in Chapter 3 and relies on
+the genericity defined in Chapter 10. The centralised DNS root that makes the
+proposal need ICANN is named in Chapter 5; the rival naming schemes are
+discussed in Chapter 4. The question of who
 may copy material after its publisher stops serving it returns in Chapter 80.
 </p>
 </div>
@@ -206,20 +409,18 @@ may copy material after its publisher stops serving it returns in Chapter 80.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">13.1</span>
-The date code removes contention by making a name unobtainable once its year
-has passed. Explain why that also removes most of the commercial pressure
-that makes domain names change hands.</p>
+Explain why making a name unobtainable once its year has passed also removes
+most of the commercial pressure that makes domain names change hands.</p>
 </div>
 <div class="question">
 <p><span class="question-number">13.2</span>
-Section 13.3 requires obligations to transfer with the domain. Name the party
-who would have to enforce this and the mechanism by which they could.</p>
+Obligations must transfer with the domain. Who would enforce this, and by
+what mechanism?</p>
 </div>
 <div class="question">
 <p><span class="question-number">13.3</span>
-A persistent domain holder wishes to serve a document in a new format ten
-years on. Under the clarification in section 13.4, is this permitted? What
-would not be?</p>
+Under section 13.4, may a persistent domain holder serve a document in a new
+format ten years on? What would not be permitted?</p>
 </div>
 <div class="question">
 <p><span class="question-number">13.4</span>

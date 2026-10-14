@@ -49,17 +49,29 @@
 a Design Issues note by Tim Berners-Lee, 1997-04-08.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Fragment.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+In an address such as
+<code>https://en.wikipedia.org/wiki/World_Wide_Web#References</code>, the part
+after the <code>#</code> is the fragment. The browser keeps it and never
+sends it to the server. Once the document arrives, the browser decides what
+the fragment means from the kind of file that came back. So each new kind of
+file can invent its own meaning for <code>#</code>, and if the server switches
+formats, the link can quietly stop working.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 4 established that the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> stays on the client and
 that access specifications and fragment specifications are independent. This
-note, written in April 1997, says what follows from that: who decides what a
-fragment means, and what the decision makes possible.
+note, written in April 1997, asks who decides what a fragment means, and what
+that decision makes possible.
 </p>
 <p>
-It opens by correcting its own title, which is the sort of thing that makes
-these notes worth reading:
+It opens by correcting its own title:
 </p>
 <blockquote>
 The URI reference is a thing you build by taking a URI for an information
@@ -69,16 +81,12 @@ fragment).
 <cite>URI References: Fragment Identifiers on URIs, 1997</cite>
 </blockquote>
 <p>
-It is badly named, he says, because it can identify anything. The rest of the
-chapter is about how much work that misnomer turned out to do.
+That loose word let <code>#</code> name parts of pages, moments in videos,
+and things that are not documents at all.
 </p>
 </div>
 
 <h2>11.1 The axiom</h2>
-
-<p>
-One sentence carries the chapter:
-</p>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> The significance of the fragment identifier is a
@@ -86,28 +94,79 @@ function of the MIME type of the object.</p>
 </div>
 
 <p>
-Berners-Lee draws out the two consequences immediately. The fragment is
-<a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the rest of the client: the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine can assume nothing about
-it. And the server is not even given it.
+A MIME type is the label a server attaches to say what kind of data it is
+sending, such as <code>text/html</code> for a web page or
+<code>application/pdf</code> for a PDF.
 </p>
 
 <p>
-That second clause is the one people forget. A fragment is not sent over the
-network. It is applied after the response arrives, by whatever software was
-selected to handle the <a class="gl-ref" href="../glossary.html#media-type">media type</a> that came back.
+Two consequences follow. The fragment is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the part of the browser
+that fetches documents, which he calls the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine. And the server is not
+even given it: the fragment is applied after the response arrives, by
+whatever software handles the returned type (Figure 11.1).
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig11-1-t fig11-1-d">
-  <title id="fig11-1-t">One syntax, one meaning per media type</title>
-  <desc id="fig11-1-d">The same fragment syntax after the hash means something
+  <title id="fig11-1-t">What happens to the fragment when a link is followed</title>
+  <desc id="fig11-1-d">The browser splits the address http://example.org/report#results.
+  Only the path /report is sent across the network to the server, which finds the
+  document; the fragment #results is kept back in the browser. The document comes
+  back labelled text/html, and the HTML handler, given the kept-back fragment,
+  jumps to the element named results.</desc>
+
+  <text x="145" y="22" class="t-caps" text-anchor="middle">the browser</text>
+  <text x="365" y="22" class="t-caps" text-anchor="middle">the network</text>
+  <text x="575" y="22" class="t-caps" text-anchor="middle">the server</text>
+
+  <text x="145" y="50" class="t-mono" text-anchor="middle"><tspan>http://example.org/report</tspan><tspan style="fill:#5a8f5a">#results</tspan></text>
+
+  <rect class="box-plain" x="30" y="64" width="230" height="46" rx="4"/>
+  <text x="145" y="84" text-anchor="middle">1. split the address</text>
+  <text x="145" y="101" class="t-sm" text-anchor="middle">send the path, keep the fragment</text>
+
+  <path class="ln-accent" d="M 260 87 L 458 87"/>
+  <path d="M 470 87 L 458 82 L 458 92 Z" fill="#1c5a7a"/>
+  <text x="365" y="77" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">GET /report</text>
+
+  <rect class="box" x="470" y="64" width="210" height="46" rx="4"/>
+  <text x="575" y="84" text-anchor="middle">2. find the document</text>
+  <text x="575" y="101" class="t-sm" text-anchor="middle">it never sees #results</text>
+
+  <path class="ln-dash" d="M 145 110 L 145 122"/>
+  <path d="M 145 130 L 141 122 L 149 122 Z" fill="#8a9a9a"/>
+  <rect class="ln-dash" x="55" y="130" width="180" height="40" rx="4"/>
+  <text x="145" y="147" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">#results</text>
+  <text x="145" y="163" class="t-sm" text-anchor="middle">kept back, never sent</text>
+
+  <path class="ln-dash" d="M 145 170 L 145 178"/>
+  <path d="M 145 186 L 141 178 L 149 178 Z" fill="#8a9a9a"/>
+
+  <path class="ln-accent" d="M 575 110 L 575 213 L 272 213"/>
+  <path d="M 260 213 L 272 208 L 272 218 Z" fill="#1c5a7a"/>
+  <text x="420" y="203" class="t-sm" text-anchor="middle">the document, labelled text/html</text>
+
+  <rect class="box-green" x="30" y="186" width="230" height="54" rx="4"/>
+  <text x="145" y="207" text-anchor="middle">3. hand it to the HTML handler</text>
+  <text x="145" y="226" class="t-sm" text-anchor="middle">which jumps to the element &ldquo;results&rdquo;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 11.1</span>
+The server never sees the fragment. Only the software chosen for the returned
+type interprets it, which is why its meaning belongs to the media type.</figcaption>
+</figure>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 244" width="720" height="244" role="img"
+     aria-labelledby="fig11-2-t fig11-2-d">
+  <title id="fig11-2-t">One syntax, one meaning per media type</title>
+  <desc id="fig11-2-d">The same fragment syntax after the hash means something
   different depending on the media type of what came back: an element in HTML,
   a thing in RDF, a time range in media, a character range in text. Each
   meaning is fixed when the media type is registered, and none of them
   required a change to HTTP.</desc>
 
-  <text x="360" y="28" class="t-mono" text-anchor="middle"><tspan fill="#8a9a9a">http://example.org/thing</tspan><tspan fill="#5a8f5a">#name</tspan></text>
+  <text x="360" y="28" class="t-mono" text-anchor="middle"><tspan style="fill:#8a9a9a">http://example.org/thing</tspan><tspan style="fill:#5a8f5a">#name</tspan></text>
   <text x="360" y="48" class="t-sm" text-anchor="middle">one syntax, resolved entirely on the client</text>
 
   <path class="ln-mut" d="M 360 58 L 360 76 M 108 76 L 612 76
@@ -115,17 +174,17 @@ selected to handle the <a class="gl-ref" href="../glossary.html#media-type">medi
                           M 444 76 L 444 96 M 612 76 L 612 96"/>
 
   <rect class="box" x="30" y="96" width="156" height="38" rx="4"/>
-  <text x="108" y="120" class="t-mono" text-anchor="middle" fill="#1c5a7a">text/html</text>
+  <text x="108" y="120" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">text/html</text>
   <text x="108" y="158" class="t-sm" text-anchor="middle">an element</text>
   <text x="108" y="174" class="t-sm" text-anchor="middle">in the document</text>
 
   <rect class="box-green" x="198" y="96" width="156" height="38" rx="4"/>
-  <text x="276" y="120" class="t-mono" text-anchor="middle" fill="#3f6f3f">text/turtle</text>
+  <text x="276" y="120" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">text/turtle</text>
   <text x="276" y="158" class="t-sm" text-anchor="middle">a thing the document</text>
   <text x="276" y="174" class="t-sm" text-anchor="middle">describes, not part of it</text>
 
   <rect class="box-warm" x="366" y="96" width="156" height="38" rx="4"/>
-  <text x="444" y="120" class="t-mono" text-anchor="middle" fill="#a07d47">video/*</text>
+  <text x="444" y="120" class="t-mono" text-anchor="middle" style="fill:#b08d57">video/*</text>
   <text x="444" y="158" class="t-sm" text-anchor="middle">a range in time,</text>
   <text x="444" y="174" class="t-sm" text-anchor="middle">or a track</text>
 
@@ -136,22 +195,17 @@ selected to handle the <a class="gl-ref" href="../glossary.html#media-type">medi
 
   <line class="ln-mut" x1="30" y1="204" x2="690" y2="204"/>
   <text x="360" y="228" class="t-sm" text-anchor="middle">The meaning is fixed when the media type is registered, not when HTTP is revised.</text>
-
-  <rect class="box-plain" x="150" y="248" width="420" height="54" rx="4"/>
-  <text x="360" y="270" class="t-caps" text-anchor="middle">the known bug</text>
-  <text x="360" y="290" class="t-sm" text-anchor="middle">Negotiate across types that disagree, and the fragment may mean nothing.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 11.1</span>
-Because no access specification refers to fragment semantics, a new media
-type may invent whatever notion of a part or a view suits it. The cost is
-recorded in section 11.4.</figcaption>
+<figcaption><span class="fig-label">Figure 11.2</span>
+Nothing in HTTP says what <code>#</code> means, so each type of document
+defines it for itself. A new media type may invent whatever notion of a part
+or a view suits it. The cost is recorded in section 11.4.</figcaption>
 </figure>
 
 <h2>11.2 The invitation to invent</h2>
 
 <p>
-Berners-Lee spends most of the note on what the axiom permits, and the list
-reads as a set of predictions:
+Most of the note is about what the axiom permits, and reads as predictions:
 </p>
 
 <blockquote>
@@ -166,8 +220,19 @@ number
 </blockquote>
 
 <p>
-The procedural consequence follows, and it is the note&#8217;s concrete
-recommendation:
+Most of the list has since been built, though not always as he imagined:
+</p>
+
+<table>
+<tr><th>1997 prediction</th><th>What exists now</th></tr>
+<tr><td>A viewport into a 3D object</td><td>Nothing standard</td></tr>
+<tr><td>A section in time of a music object</td><td>Media Fragments (2012): <code>#t=10,20</code> for seconds 10 to 20 of audio or video</td></tr>
+<tr><td>A range of an <a class="gl-ref" href="../glossary.html#html">HTML</a> document</td><td>Text fragments (2020): <code>#:~:text=</code> picks out a passage by quoting its words, rather than by position in the element tree</td></tr>
+<tr><td>Line and character ranges in plain text</td><td><a class="gl-ref" href="../glossary.html#rfc">RFC</a> 5147 (2008): <code>#line=10,20</code> and <code>#char=</code> for <code>text/plain</code>; text fragments also serve</td></tr>
+</table>
+
+<p>
+The note&#8217;s concrete recommendation follows:
 </p>
 
 <blockquote>
@@ -179,17 +244,29 @@ registration process.
 <h2>11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-The section on the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> is the argument Chapter 7 would restate at
-length five years later, and it is sharper here because it is shorter.
+This is the argument Chapter 7 would restate at length five years later. A
+fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document identifies not a part of the document but
+whatever thing the document describes under that name. Why must it be a
+fragment? The reasoning runs in three steps:
 </p>
 
+<ol>
+<li>Asking for an <code>http:</code> address always gets back a document, a
+message about a document (that it has moved, say, or is unavailable), or
+nothing at all.</li>
+<li>So an <code>http:</code> address without a hash names a document. A
+client can conclude this from the protocol alone, even if no server runs,
+because an error saying the document is unavailable is still about a
+document.</li>
+<li>So a person, a dog or a concept cannot have a hashless address of its
+own. It needs a <code>#</code> name inside a document.</li>
+</ol>
+
 <p>
-A fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document identifies not a part of the document but
-whatever thing the document describes under that name. Why must it be a
-fragment? Because a hashless HTTP <a class="gl-ref" href="../glossary.html#uri">URI</a> necessarily identifies a document: a
-client that understands HTTP can conclude that much from the protocol alone,
-and can conclude it even if the owner runs no server, since a 404 is still a
-statement about a document.
+Concretely, <code>http://example.org/people</code> names the document, and
+<code>http://example.org/people#alice</code> names Alice herself, the person
+the document describes. For a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, whose terms are all built on one
+shared prefix called its <a class="gl-ref" href="../glossary.html#namespace">namespace</a>, the consequence is direct:
 </p>
 
 <blockquote>
@@ -201,57 +278,92 @@ identifiers. This, in turn, means that RDF namespaces should end with
 
 <p>
 This <a class="gl-ref" href="../glossary.html#inference">inference</a> is what the resolution of Chapter 8 overturned. The 2005
-compromise denies the premise: a client may not conclude from the protocol
-alone that a hashless URI names a document, only from a 200 response. Reading
-the two chapters together shows exactly which sentence had to give way.
+compromise denies step 2: a client may conclude that a hashless <a class="gl-ref" href="../glossary.html#uri">URI</a> names a
+document only from a successful response, not from the protocol alone.
 </p>
 
 <h2>11.4 The bug he recorded and did not fix</h2>
 
 <p>
-The note contains one of the collection&#8217;s rare admissions of an unresolved
-defect, flagged in its own heading as a known bug. If <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>
-selects between media types that do not share a fragment <a class="gl-ref" href="../glossary.html#specification">specification</a>, a
-fragment valid for one may be meaningless in the other.
+The note flags one unresolved defect as a known bug. It concerns content
+negotiation: a server may hold one document in several formats and pick one
+per request. If the formats do not share a fragment <a class="gl-ref" href="../glossary.html#specification">specification</a>, a fragment
+valid in one may be meaningless in the other, as Figure 11.3 shows.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig11-3-t fig11-3-d">
+  <title id="fig11-3-t">The known bug: one link, two formats</title>
+  <desc id="fig11-3-d">The address http://example.org/report#page=3 is requested.
+  Content negotiation lets the server choose a format. If it sends PDF, #page=3
+  opens page 3. If it sends HTML, there is no element named page=3 and the
+  reader lands at the top. The server picked the format but never saw the
+  fragment, so it could not translate it.</desc>
+
+  <text x="360" y="26" class="t-mono" text-anchor="middle"><tspan>http://example.org/report</tspan><tspan style="fill:#5a8f5a">#page=3</tspan></text>
+  <text x="360" y="46" class="t-sm" text-anchor="middle">content negotiation: the server chooses a format</text>
+
+  <path class="ln-mut" d="M 360 56 L 360 70 M 180 70 L 540 70 M 180 70 L 180 80 M 540 70 L 540 80"/>
+  <path d="M 180 88 L 176 80 L 184 80 Z" fill="#8a9a9a"/>
+  <path d="M 540 88 L 536 80 L 544 80 Z" fill="#8a9a9a"/>
+
+  <rect class="box-green" x="40" y="88" width="280" height="68" rx="4"/>
+  <text x="180" y="112" text-anchor="middle">server sends PDF</text>
+  <text x="180" y="134" class="t-sm" text-anchor="middle">#page=3 opens page 3</text>
+
+  <rect class="box-warm" x="400" y="88" width="280" height="68" rx="4"/>
+  <text x="540" y="112" text-anchor="middle">server sends HTML</text>
+  <text x="540" y="130" class="t-sm" text-anchor="middle">no element named page=3,</text>
+  <text x="540" y="146" class="t-sm" text-anchor="middle">so the reader lands at the top</text>
+
+  <rect class="ln-dash" x="40" y="176" width="640" height="34" rx="4"/>
+  <text x="360" y="197" class="t-sm" text-anchor="middle">The server picked the format but never saw the fragment, so it could not translate it.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 11.3</span>
+The same link works or silently fails depending on which format the server
+chose.</figcaption>
+</figure>
+
+<p>
+In 1997 it did no harm, because HTML was effectively the only type that used
+fragments, and falling back to the whole document was acceptable. In a
+passage added around 2001 Berners-Lee notes it has become more of a problem. He records
+proposals to add the fragment to the HTTP request, and suggests that warnings
+sent with the response, or new protocols that pass the fragment as a hint,
+could let server and client negotiate an equivalent fragment.
 </p>
 
 <p>
-Berners-Lee dates the change in severity himself. In 1997 it did no harm,
-because <a class="gl-ref" href="../glossary.html#html">HTML</a> was effectively the only type that used fragments and others
-ignored them, and falling back from a view to the whole document was
-acceptable. In a passage added around 2001 he notes it has become more of a
-problem, and records the proposal that the requested fragment be sent to the
-server as a hint so that the two could negotiate an equivalent.
-</p>
-
-<p>
-That proposal was never adopted. The fragment is still not sent.
+None of these was adopted for the Web. The fragment is still not sent.
 </p>
 
 <h2>11.5 Two kinds of bookmark</h2>
 
 <p>
-A closing section raises a user-interface consequence that has never been
-addressed. When a fragment is attached to a URI that is generic in any
-dimension, the fragment may fail to denote anything in some specific version.
-Berners-Lee argues the client should therefore offer a choice: a bookmark to
-the whole living document, a bookmark to a specific part of a frozen version,
-or something between.
+A closing section raises a user-interface consequence. Many addresses are
+generic: their content can change by language, version or format, so a
+fragment may denote nothing in some specific version. The client, he argues,
+should offer a choice: a bookmark to the whole living
+document, a bookmark to a specific part of a frozen version, or something
+between.
 </p>
 
 <p>
-No browser offers it. The problem is real and is usually met by the link
-silently landing at the top of the page.
+No browser offers it; the link usually just lands at the top of the page.
+Some sites offer half the choice themselves: Wikipedia&#8217;s &ldquo;Permanent link&rdquo; points to one
+fixed revision of an article, and GitHub can link to a file as it stood
+at a specific commit. Both are the &ldquo;frozen version&rdquo; bookmark,
+supplied by the site rather than the browser.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The axiom is normative.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, of January 2005,
-specifies that fragment semantics are defined by the media type of the
+<li><strong>The axiom is normative.</strong> RFC 3986, of January 2005,
+specifies that fragment semantics are defined by the <a class="gl-ref" href="../glossary.html#media-type">media type</a> of the
 retrieved representation, and RFC 6838, of January 2013, requires media type
-registrations to state fragment identifier considerations. Section 11.2&#8217;s
-recommendation became process.</li>
+registrations to state fragment identifier considerations.</li>
 <li><strong>The predictions came true, one at a time.</strong> Media Fragments
 URI 1.0 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in September 2012, giving time ranges and
 spatial regions. Text fragments, addressing a passage by quoting its words,
@@ -292,8 +404,8 @@ step the 2005 resolution denies.</p>
 </div>
 <div class="question">
 <p><span class="question-number">11.3</span>
-Design a fragment identifier syntax for a media type you work with. State
-what it must not assume about HTTP.</p>
+Design a fragment identifier syntax for a recipe, a spreadsheet or a map.
+State what it must not assume about HTTP.</p>
 </div>
 <div class="question">
 <p><span class="question-number">11.4</span>

@@ -49,6 +49,19 @@
 a Design Issues note by Tim Berners-Lee, 1996-03-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Generic.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+One address can stand for something that comes in several forms: a report in
+English and in French, say, or as a web page and as a PDF. Whoever owns the
+address decides how much the thing it names is allowed to vary. When a
+reader follows the link, the browser and the server agree which form to send; this
+is called <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>. Berners-Lee&#8217;s observation is that the ways
+things vary are few: time, language, format, and the kind of device they are
+meant for.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -62,30 +75,65 @@ designs to use URIs and HTTP properly.
 <cite>Generic Resources, note added 2000</cite>
 </blockquote>
 <p>
-The question it answers is what a <a class="gl-ref" href="../glossary.html#uri">URI</a> identifies when the thing identified
-does not have one fixed sequence of bits. The answer supplies the notion of
-&ldquo;document&rdquo; that Chapter 7 depends on, and the reason content
-negotiation exists at all. Berners-Lee records that this was the thinking
-behind <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a> in 1992.
+The question is what a <a class="gl-ref" href="../glossary.html#uri">URI</a> identifies when the thing identified has no one
+fixed sequence of bits. The answer supplies the notion of
+&ldquo;document&rdquo; that Chapter 7 depends on, and was the thinking behind
+<a class="gl-ref" href="../glossary.html#http">HTTP</a> content negotiation in 1992.
 </p>
 </div>
 
 <h2>10.1 A ladder, not a pair</h2>
 
 <p>
-The note opens with a distinction and immediately refuses to let it be
-binary. A resource may correspond to exactly one possible bit stream: the
-text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> is the example, and it will always have the same
-checksum. Or it may be generic, well specified as a concept but not
-specified closely enough to fix the bits.
+A resource may correspond to exactly one bit stream, as the text of an
+Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> always has the same checksum. Or it may be generic: well
+specified as a concept but not closely enough to fix the bits. The note
+refuses to make this binary; Figure 10.1 shows its ladder.
 </p>
 
-<p>
-The illustration is a ladder of four rungs, each more specific than the last:
-the Bible; the Bible in the King James Version; that version in English; and
-one particular ASCII rendering of it. Each rung may have a URI of its own, and
-the relation between rungs is genericity.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
+     aria-labelledby="fig10-1-t fig10-1-d">
+  <title id="fig10-1-t">The ladder of genericity</title>
+  <desc id="fig10-1-d">Four stacked boxes, from most generic to most specific:
+  The Bible; The Bible, King James Version; the KJV in English; a particular
+  ASCII rendering of the KJV in English. An arrow on the left points down,
+  labelled more specific. The bottom box is one bit stream with the same
+  checksum every time, like an RFC. A bracket on the right notes that each
+  rung may have its own URI, and its owner decides which rung it names.</desc>
+
+  <line class="ln-mut" x1="100" y1="22" x2="100" y2="244"/>
+  <path d="M 95 242 L 100 254 L 105 242 Z" fill="#8a9a9a"/>
+  <text x="88" y="132" class="t-sm" text-anchor="end">more</text>
+  <text x="88" y="148" class="t-sm" text-anchor="end">specific</text>
+
+  <rect class="box" x="140" y="20" width="360" height="40" rx="4"/>
+  <text x="320" y="45" text-anchor="middle">The Bible</text>
+  <line class="ln-mut" x1="320" y1="60" x2="320" y2="80"/>
+
+  <rect class="box" x="140" y="80" width="360" height="40" rx="4"/>
+  <text x="320" y="105" text-anchor="middle">The Bible, King James Version</text>
+  <line class="ln-mut" x1="320" y1="120" x2="320" y2="140"/>
+
+  <rect class="box" x="140" y="140" width="360" height="40" rx="4"/>
+  <text x="320" y="165" text-anchor="middle">The KJV in English</text>
+  <line class="ln-mut" x1="320" y1="180" x2="320" y2="200"/>
+
+  <rect class="box-green" x="140" y="200" width="360" height="56" rx="4"/>
+  <text x="320" y="223" text-anchor="middle">A particular ASCII rendering of the KJV in English</text>
+  <text x="320" y="243" class="t-sm" text-anchor="middle">one bit stream: same checksum every time, like an RFC</text>
+
+  <path class="ln-mut" d="M 515 20 L 525 20 L 525 256 L 515 256 M 525 138 L 533 138"/>
+  <text x="541" y="118" class="t-sm">each rung may have</text>
+  <text x="541" y="134" class="t-sm">its own URI; its owner</text>
+  <text x="541" y="150" class="t-sm">decides which rung</text>
+  <text x="541" y="166" class="t-sm">it names</text>
+</svg>
+<figcaption><span class="fig-label">Figure 10.1</span>
+Genericity is a ladder, not a yes/no. Only the bottom rung fixes the bits;
+every rung above it is a real thing that can be named, and a URI may name any
+of them.</figcaption>
+</figure>
 
 <p>
 Ownership decides where on the ladder a given URI sits:
@@ -99,13 +147,9 @@ determines to what extent that resource is generic or specific.
 </blockquote>
 
 <p>
-This is Chapter 2&#8217;s identity axiom applied to a particular question, and it
-is why the answer to &ldquo;how much may this URI&#8217;s content vary?&rdquo; is
-always &ldquo;ask the publisher&rdquo;.
-</p>
-
-<p>
-Berners-Lee is careful that this is not a design decision he is making:
+This is Chapter 2&#8217;s identity axiom (whoever owns a URI decides what it
+means): &ldquo;how much may this URI&#8217;s content vary?&rdquo; is always
+answered by the publisher. Nor is it a design decision:
 </p>
 
 <blockquote>
@@ -117,71 +161,123 @@ general for its own purposes.
 <cite>Generic Resources, 1996</cite>
 </blockquote>
 
-<h2>10.2 Four dimensions</h2>
+<h3>How a generic URI is served</h3>
 
 <p>
-The useful empirical claim of the note is that genericity, for electronic
-resources, turns out to run along a small number of axes, and that the number
-being small is itself significant.
+A generic URI still has to deliver particular bits. A browser&#8217;s request
+carries headers, labelled lines of information; <code>Accept-Language</code>
+names the reader&#8217;s languages and <code>Accept</code> the formats it can
+display. The server picks the best-fitting form and says which it chose
+(Figure 10.2). This is content negotiation.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
-     aria-labelledby="fig10-1-t fig10-1-d">
-  <title id="fig10-1-t">The four dimensions of genericity</title>
-  <desc id="fig10-1-d">A generic resource may be made specific along four
-  independent axes: time, language, content type and target medium. Each axis
-  may be fixed or left open, and a URI names whichever combination its owner
-  chose.</desc>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig10-2-t fig10-2-d">
+  <title id="fig10-2-t">Content negotiation in action</title>
+  <desc id="fig10-2-d">A browser sends a request to one URI, /report, with the
+  headers Accept-Language: fr and Accept: text/html. The publisher allows three
+  variants for that URI: English HTML, French PDF, and French HTML. The server
+  chooses French HTML, and the response travels back to the browser labelled
+  Content-Language: fr.</desc>
 
-  <rect class="box" x="250" y="20" width="220" height="52" rx="4"/>
-  <text x="360" y="44" class="t-lg" text-anchor="middle">The Bible</text>
-  <text x="360" y="62" class="t-sm" text-anchor="middle">generic in every dimension</text>
+  <rect class="box" x="20" y="80" width="190" height="110" rx="4"/>
+  <text x="115" y="106" class="t-lg" text-anchor="middle">Browser</text>
+  <text x="34" y="142" class="t-mono">Accept-Language: fr</text>
+  <text x="34" y="164" class="t-mono">Accept: text/html</text>
+
+  <text x="250" y="124" class="t-sm" text-anchor="middle">request</text>
+  <line class="ln-accent" x1="210" y1="136" x2="280" y2="136"/>
+  <path d="M 278 131 L 290 136 L 278 141 Z" fill="#1c5a7a"/>
+
+  <rect class="box" x="290" y="106" width="150" height="60" rx="4"/>
+  <text x="365" y="131" text-anchor="middle">One URI</text>
+  <text x="365" y="152" class="t-mono" text-anchor="middle">/report</text>
+
+  <text x="610" y="22" class="t-sm" text-anchor="middle">variants the publisher allows</text>
+  <line class="ln-mut" x1="440" y1="136" x2="520" y2="56"/>
+  <line class="ln-mut" x1="440" y1="136" x2="520" y2="136"/>
+  <line class="ln-accent" x1="440" y1="136" x2="520" y2="216"/>
+
+  <rect class="box-plain" x="520" y="34" width="180" height="44" rx="4"/>
+  <text x="610" y="61" text-anchor="middle">English, HTML</text>
+  <rect class="box-plain" x="520" y="114" width="180" height="44" rx="4"/>
+  <text x="610" y="141" text-anchor="middle">French, PDF</text>
+  <rect class="box-green" x="520" y="194" width="180" height="44" rx="4"/>
+  <text x="610" y="213" text-anchor="middle">French, HTML</text>
+  <text x="610" y="230" class="t-sm" text-anchor="middle">chosen</text>
+
+  <path class="ln-accent" d="M 610 238 L 610 264 L 115 264 L 115 202"/>
+  <path d="M 110 204 L 115 192 L 120 204 Z" fill="#1c5a7a"/>
+  <text x="300" y="286" class="t-sm" text-anchor="end">response, labelled</text>
+  <text x="308" y="286" class="t-mono">Content-Language: fr</text>
+</svg>
+<figcaption><span class="fig-label">Figure 10.2</span>
+One name, several sets of bits. The server picks one; the publisher has
+already decided that all three are acceptable for this URI. (The address
+<code>/report</code> is an invented example.)</figcaption>
+</figure>
+
+<h2>10.2 Four dimensions</h2>
+
+<p>
+The note&#8217;s empirical claim is that genericity in electronic resources
+runs along a small number of axes, and that the smallness matters.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig10-3-t fig10-3-d">
+  <title id="fig10-3-t">The four dimensions of genericity</title>
+  <desc id="fig10-3-d">A generic resource may be made specific along four
+  independent axes: time, language, content type and target medium. Language
+  and content type are negotiated in core HTTP. Time is negotiated only by the
+  Memento extension of 2013. Target medium is never negotiated in HTTP and is
+  handled by stylesheets instead.</desc>
+
+  <rect class="box" x="240" y="20" width="240" height="52" rx="4"/>
+  <text x="360" y="44" class="t-lg" text-anchor="middle">A generic resource</text>
+  <text x="360" y="62" class="t-sm" text-anchor="middle">may be made specific in four ways</text>
 
   <path class="ln-mut" d="M 360 72 L 360 92 M 100 92 L 620 92
                           M 100 92 L 100 112 M 273 92 L 273 112
                           M 447 92 L 447 112 M 620 92 L 620 112"/>
 
-  <g>
-    <rect class="box-warm" x="22" y="112" width="156" height="40" rx="4"/>
-    <text x="100" y="137" class="t-caps" text-anchor="middle" fill="#a07d47">time</text>
-    <text x="100" y="176" class="t-sm" text-anchor="middle">this week&#8217;s issue,</text>
-    <text x="100" y="192" class="t-sm" text-anchor="middle">not the newspaper</text>
+  <rect class="box-plain" x="22" y="112" width="156" height="40" rx="4"/>
+  <text x="100" y="137" class="t-caps" text-anchor="middle">time</text>
+  <text x="100" y="176" class="t-sm" text-anchor="middle">this week&#8217;s issue,</text>
+  <text x="100" y="192" class="t-sm" text-anchor="middle">not the newspaper</text>
 
-    <rect class="box-warm" x="195" y="112" width="156" height="40" rx="4"/>
-    <text x="273" y="137" class="t-caps" text-anchor="middle" fill="#a07d47">language</text>
-    <text x="273" y="176" class="t-sm" text-anchor="middle">the French text,</text>
-    <text x="273" y="192" class="t-sm" text-anchor="middle">not the work</text>
+  <rect class="box-warm" x="195" y="112" width="156" height="40" rx="4"/>
+  <text x="273" y="137" class="t-caps" text-anchor="middle" style="fill:#b08d57">language</text>
+  <text x="273" y="176" class="t-sm" text-anchor="middle">the French translation,</text>
+  <text x="273" y="192" class="t-sm" text-anchor="middle">not the work</text>
 
-    <rect class="box-warm" x="369" y="112" width="156" height="40" rx="4"/>
-    <text x="447" y="137" class="t-caps" text-anchor="middle" fill="#a07d47">content type</text>
-    <text x="447" y="176" class="t-sm" text-anchor="middle">the PNG,</text>
-    <text x="447" y="192" class="t-sm" text-anchor="middle">not the picture</text>
+  <rect class="box-warm" x="369" y="112" width="156" height="40" rx="4"/>
+  <text x="447" y="137" class="t-caps" text-anchor="middle" style="fill:#b08d57">content type</text>
+  <text x="447" y="176" class="t-sm" text-anchor="middle">the PNG,</text>
+  <text x="447" y="192" class="t-sm" text-anchor="middle">not the picture</text>
 
-    <rect class="box-plain" x="542" y="112" width="156" height="40" rx="4"/>
-    <text x="620" y="137" class="t-caps" text-anchor="middle">target medium</text>
-    <text x="620" y="176" class="t-sm" text-anchor="middle">the print layout,</text>
-    <text x="620" y="192" class="t-sm" text-anchor="middle">not the page</text>
-  </g>
+  <rect class="box-plain" x="542" y="112" width="156" height="40" rx="4"/>
+  <text x="620" y="137" class="t-caps" text-anchor="middle">target medium</text>
+  <text x="620" y="176" class="t-sm" text-anchor="middle">the print layout,</text>
+  <text x="620" y="192" class="t-sm" text-anchor="middle">not the page</text>
 
   <line class="ln-mut" x1="22" y1="216" x2="698" y2="216"/>
-  <text x="22" y="240" class="t-sm t-it">Negotiated by HTTP since 1992:</text>
-  <text x="300" y="240" class="t-sm">time, language, content type.</text>
-  <text x="22" y="262" class="t-sm t-it">Never negotiated by HTTP:</text>
-  <text x="300" y="262" class="t-sm">target medium, which went to CSS instead.</text>
-
-  <rect class="box-green" x="200" y="286" width="320" height="52" rx="4"/>
-  <text x="360" y="310" class="t-sm" text-anchor="middle">A particular ASCII rendering of the</text>
-  <text x="360" y="328" class="t-sm" text-anchor="middle">King James Version in English: specific in all four</text>
+  <text x="22" y="240" class="t-sm t-it">Negotiated in core HTTP:</text>
+  <text x="180" y="240" class="t-sm">language and content type (the warm boxes).</text>
+  <text x="22" y="262" class="t-sm t-it">Time:</text>
+  <text x="180" y="262" class="t-sm">only through the Memento extension, RFC 7089 (2013), used by web archives.</text>
+  <text x="22" y="284" class="t-sm t-it">Target medium:</text>
+  <text x="180" y="284" class="t-sm">never negotiated in HTTP; chosen by stylesheets instead.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 10.1</span>
-Berners-Lee&#8217;s claim is not that four is a magic number but that the number is
-small, and that smallness is a reason to expose the axes separately in a user
-interface while treating them as one concept in the architecture.</figcaption>
+<figcaption><span class="fig-label">Figure 10.3</span>
+Four is not a magic number; the point is that it is small. The bottom rows
+record how far HTTP actually went along each axis.</figcaption>
 </figure>
 
 <p>
-The <a class="gl-ref" href="../glossary.html#inference">inference</a> he draws from the smallness is a design instruction:
+From the smallness he draws a design instruction:
 </p>
 
 <blockquote>
@@ -193,63 +289,116 @@ concpet.
 </blockquote>
 
 <p>
-One mechanism underneath, four controls on top. The architecture negotiates;
-the interface offers a language menu.
+One mechanism underneath, four controls on top. The browser&#8217;s language
+setting is the interface; the <code>Accept-Language</code> header it sends is
+the architecture.
 </p>
 
 <h2>10.3 Derivation is not genericity</h2>
 
 <p>
-A short section makes a distinction that is easy to lose. When a document is
-translated, one language version may have been the source, but it need not
-have been: a specific version may derive from unrelated or multiple sources.
-The derived-from relation is therefore interesting and separate, and
-Berners-Lee declines to fold it into genericity.
+A specific version may derive from one source, several, or unrelated ones.
+Berners-Lee keeps this derived-from relation separate from genericity.
+Take a Russian novel whose French translation was made from the English. All
+three are language versions of the novel, any of which a server could send for
+its URI: that is genericity. The chain Russian, English, French is history:
+that is derivation.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+     aria-labelledby="fig10-4-t fig10-4-d">
+  <title id="fig10-4-t">Genericity and derivation are different relations</title>
+  <desc id="fig10-4-d">A generic box, The novel, has solid lines to three
+  boxes: Russian original, English translation and French translation, each a
+  language version of the novel. Separately, dashed arrows run from Russian to
+  English and from English to French, labelled translated into, recording
+  which text each translation was made from.</desc>
+
+  <rect class="box" x="260" y="20" width="200" height="44" rx="4"/>
+  <text x="360" y="40" text-anchor="middle">The novel</text>
+  <text x="360" y="56" class="t-sm" text-anchor="middle">generic: one URI, any language</text>
+
+  <line class="ln" x1="300" y1="64" x2="100" y2="170"/>
+  <line class="ln" x1="360" y1="64" x2="360" y2="170"/>
+  <line class="ln" x1="420" y1="64" x2="620" y2="170"/>
+  <text x="370" y="122" class="t-sm">language version of</text>
+
+  <rect class="box-plain" x="25" y="170" width="150" height="44" rx="4"/>
+  <text x="100" y="189" text-anchor="middle">Russian original</text>
+  <text x="100" y="205" class="t-sm" text-anchor="middle">its own URI</text>
+
+  <rect class="box-plain" x="285" y="170" width="150" height="44" rx="4"/>
+  <text x="360" y="189" text-anchor="middle">English translation</text>
+  <text x="360" y="205" class="t-sm" text-anchor="middle">its own URI</text>
+
+  <rect class="box-plain" x="545" y="170" width="150" height="44" rx="4"/>
+  <text x="620" y="189" text-anchor="middle">French translation</text>
+  <text x="620" y="205" class="t-sm" text-anchor="middle">its own URI</text>
+
+  <line class="ln-dash" x1="175" y1="196" x2="276" y2="196"/>
+  <path d="M 274 191 L 284 196 L 274 201 Z" fill="#8a9a9a"/>
+  <text x="230" y="186" class="t-sm" text-anchor="middle">translated into</text>
+
+  <line class="ln-dash" x1="435" y1="196" x2="536" y2="196"/>
+  <path d="M 534 191 L 544 196 L 534 201 Z" fill="#8a9a9a"/>
+  <text x="490" y="186" class="t-sm" text-anchor="middle">translated into</text>
+</svg>
+<figcaption><span class="fig-label">Figure 10.4</span>
+The solid lines say what may be served for the novel&#8217;s URI; the dashed
+arrows record history. The French is a language version of the novel, not of
+the English it was made from.</figcaption>
+</figure>
+
 <p>
-The discipline matters because the two relations answer different questions.
-Genericity answers &ldquo;is this an acceptable thing to serve for that
-URI?&rdquo; Derivation answers &ldquo;where did this come from?&rdquo; A
-system that conflates them will serve a translation as though it were
-authoritative.
+Genericity answers &ldquo;may this be served for that URI?&rdquo; Derivation
+answers &ldquo;where did this come from?&rdquo; A system that conflates them
+will serve a translation as though it were authoritative.
 </p>
 
 <h2>10.4 Saying it in metadata</h2>
 
 <p>
-The rest of the note is proposals, and they are useful mainly as a record of
-what was being attempted. Two kinds of statement are wanted: which dimensions
-a URI is generic in, and how two resources are related along a dimension.
+The rest of the note is proposals, useful mainly as a record. Two statements
+are wanted: which dimensions a URI is generic in, and how two resources relate
+along a dimension. Both matter to a cache, a program that keeps copies of pages
+and must know when a stored copy is still good.
 </p>
 
 <p>
-The first was proposed as a <code>vary=</code> field in an HTTP
-<code>URI:</code> header, written as
-<code>URI: http//foo.com/bar/baz vary=time,language</code>. Berners-Lee
-notes that this is a statement about the relationship between the URI and the
-resource, and points back to the quality-of-service argument of Chapter 3.
+The first was a <code>vary=</code> field in an HTTP <code>URI:</code> header,
+<code>URI: http//foo.com/bar/baz vary=time,language</code>, a statement about
+the URI&#8217;s relation to the resource, recalling Chapter 3&#8217;s
+quality-of-service argument (an owner should state how stable a URI is). The
+second was a typed link, one that names its relation. In September 2000
+Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for machine-readable
+statements), using classes (categories a resource belongs to) and properties
+(named relations between resources):
 </p>
 
+<table>
+<tr><th>Statement wanted</th><th>1996 proposal</th><th>2000 RDF form</th></tr>
+<tr><td>Which dimensions a URI varies in</td><td><code>URI: &#8230; vary=time,language</code></td><td>Classes for what does <em>not</em> vary: <code>TimeInvariant</code>, <code>LanguageInvariant</code>, <code>ContentTypeInvariant</code>, and <code>Fixed</code>, a subclass of all three</td></tr>
+<tr><td>How resource A relates to resource B</td><td><code>&lt;link rel="language-specific" href="baz.fr"&gt;</code></td><td>Properties such as <code>isLanguageSpecificVersionOf</code></td></tr>
+</table>
+
 <p>
-The second was proposed as typed links, and later, in a section added in
-September 2000, as an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>. That vocabulary defines classes for
-invariance, <code>TimeInvariant</code>, <code>LanguageInvariant</code>,
-<code>ContentTypeInvariant</code>, and <code>Fixed</code> as a subclass of all
-three, together with properties such as
-<code>isLanguageSpecificVersionOf</code>. Berners-Lee notes that the
-<a class="gl-ref" href="../glossary.html#ontology">ontology</a> does not cover the target-medium dimension, which is the one HTTP
-never negotiated either.
+The note now marks the 2000 <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> as superseded by a later <a class="gl-ref" href="../glossary.html#ontology">ontology</a> at
+<code>w3.org/2006/gen/ont</code>, which does not cover target medium, the one
+dimension HTTP never negotiated either.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Three dimensions shipped; the fourth went elsewhere.</strong>
+<li><strong>Language and format shipped; time came later; the fourth went elsewhere.</strong>
 Content negotiation for <a class="gl-ref" href="../glossary.html#media-type">media type</a>, language and encoding is specified in
-what is now RFC 9110, of June 2022. Target medium was never negotiated in
-HTTP and was handled by CSS media queries instead, first a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-Recommendation in June 2012.</li>
+what is now RFC 9110, of June 2022. Time was never part of core HTTP
+negotiation; the Memento extension, RFC 7089 of December 2013, added it with
+an <code>Accept-Datetime</code> request header, used mainly by web archives.
+Target medium was never negotiated in HTTP. It was handled by stylesheet media
+types from CSS2 in 1998, refined by Media Queries (a W3C Recommendation in June
+2012).</li>
 <li><strong>The <code>vary=</code> proposal became something narrower.</strong>
 The <code>Vary</code> response header exists, but it describes which request
 headers affect the response for cache purposes. It does not state the
@@ -288,13 +437,13 @@ whether it is a fifth axis or a case of derivation.</p>
 <div class="question">
 <p><span class="question-number">10.2</span>
 Publishers largely chose separate URIs over negotiation. State the strongest
-argument for negotiation that this outcome discards.</p>
+argument for negotiation that this outcome discards. (Hint: think about
+sharing a link to the French version.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">10.3</span>
 A URI is <code>Fixed</code> in the sense of section 10.4. What does that
-commit the publisher to, and what could a client safely do that it otherwise
-could not?</p>
+commit the publisher to? Could a cache keep its copy forever? Why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">10.4</span>
