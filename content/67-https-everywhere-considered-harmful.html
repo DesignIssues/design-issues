@@ -1,14 +1,14 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The letter s in https. It means the connection to the site is encrypted, and
-a generation of readers has been taught to look for it.
+Web addresses begin <code>http:</code> or <code>https:</code>; the s means the
+connection is encrypted. Berners-Lee argues that encryption should happen on
+every connection, invisibly, as faster modems did. Changing the s changes the
+address, and old links to the other address break.
 </p>
 <p>
-This chapter argues that putting that letter in the address was a mistake, and
-that correcting it by moving the whole Web into a second address space did
-more damage than anything else in the Web&#8217;s history. The author is not
-arguing against encryption. He is arguing about where the fact belongs.
+He is not arguing against encryption. He is arguing that the fact
+&ldquo;this connection is secure&rdquo; does not belong in the name of a page.
 </p>
 </div>
 
@@ -16,29 +16,31 @@ arguing against encryption. He is arguing about where the fact belongs.
 <h3>The question</h3>
 <p>
 Chapter 5 recorded a complaint, in 1998, that security should have been
-negotiated within one namespace rather than forking it. Seventeen years later
-Berners-Lee returns to the same decision, with the benefit of knowing how it
-turned out, and makes the strongest claim in the collection about what was at
-stake.
+negotiated within one set of names rather than splitting it in two.
+Seventeen years later Berners-Lee returns to the same decision, knowing how
+it turned out, and makes the strongest claim in the collection about what was
+at stake.
 </p>
 <p>
-The title of the note is a deliberate provocation and the argument beneath it
-is careful. He is not against encryption. He is against putting the letter in
-the identifier.
+The title of the note is a provocation; the argument beneath it is careful.
 </p>
 </div>
 
 <h2>67.1 The decision, reconstructed</h2>
 
 <p>
-Two secure versions of the protocol were proposed in the mid-1990s, and one
-prevailed. Within it there was a further choice: extend the existing protocol,
-or give the secure version its own identifier prefix.
+A protocol is the set of rules a browser and a server follow to talk to each
+other; HTTP is the Web&#8217;s. Every address begins with a prefix (also called
+a scheme), such as <code>http:</code>, naming the protocol used to fetch it.
+In the mid-1990s two secure versions of HTTP were proposed, S-HTTP and HTTP-S,
+and HTTP-S prevailed. That left a further choice: extend the existing protocol
+behind the existing <code>http:</code> prefix, or give the secure version a
+prefix of its own, <code>https:</code>.
 </p>
 
 <p>
-Berners-Lee reconstructs the arguments as a table, and insists on the frame
-that makes the trade legible:
+Berners-Lee reconstructs the arguments as a table, and reminds us that a link
+passes between two people: whoever writes it and whoever later clicks it.
 </p>
 
 <blockquote>
@@ -50,37 +52,39 @@ and clicks ion it.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig67-1-t fig67-1-d">
   <title id="fig67-1-t">The 1990s choice, and who it served</title>
-  <desc id="fig67-1-d">Extending the existing scheme would have kept one Web
-  and allowed a smooth upgrade, leaving the follower of a link responsible for
-  security. A separate prefix let the maker of a link insist that the follower
-  be secure, at the cost of a second space and of confusing security with
-  identity.</desc>
+  <desc id="fig67-1-d">Extending the existing scheme, so that a bank&#8217;s
+  address stays http://bank.example/, would have kept one Web and allowed a
+  smooth upgrade, leaving the follower of a link responsible for security. A
+  separate prefix, https://bank.example/, let the maker of a link insist that
+  the follower be secure, at the cost of a second space and of confusing the
+  security level with the identity of the thing. The separate prefix won.</desc>
 
   <text x="180" y="26" class="t-caps" text-anchor="middle">extend the existing scheme</text>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">a separate prefix</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="234"/>
+  <text x="538" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">a separate prefix</text>
+  <text x="180" y="48" class="t-mono" text-anchor="middle">http://bank.example/</text>
+  <text x="538" y="48" class="t-mono" text-anchor="middle">https://bank.example/</text>
+  <line class="ln-mut" x1="360" y1="14" x2="360" y2="238"/>
 
-  <g class="t-sm">
-    <text x="24" y="60" fill="#3f6f3f">+ keeps the web one web</text>
-    <text x="24" y="90" fill="#3f6f3f">+ allows a smooth upgrade to a more secure protocol</text>
-    <text x="24" y="120">&#160;&#160; the link follower is responsible for being secure</text>
+  <text x="24" y="80" class="t-sm" style="fill:#5a8f5a">+ keeps the web one web</text>
+  <text x="24" y="106" class="t-sm" style="fill:#5a8f5a">+ allows a smooth upgrade to a more secure protocol</text>
+  <text x="24" y="132" class="t-sm">&#183; the link follower is responsible for being secure</text>
 
-    <text x="396" y="60" fill="#3f6f3f">+ the link maker can insist the follower is secure</text>
-    <text x="396" y="90" fill="#b04a4a">&#8722; creates a separate space, a &#8220;secure web&#8221;</text>
-    <text x="396" y="120" fill="#b04a4a">&#8722; confuses the security level with the identity of the thing</text>
-  </g>
+  <text x="380" y="80" class="t-sm" style="fill:#5a8f5a">+ the link maker can insist the follower is secure</text>
+  <text x="380" y="106" class="t-sm" style="fill:#b08d57">&#8722; creates a separate space, a &#8220;secure web&#8221;</text>
+  <text x="380" y="132" class="t-sm" style="fill:#b08d57">&#8722; confuses the security level with</text>
+  <text x="390" y="148" class="t-sm" style="fill:#b08d57">the identity of the thing</text>
 
-  <rect class="box-warm" x="396" y="146" width="300" height="70" rx="4"/>
-  <text x="546" y="170" class="t-sm" text-anchor="middle">a bank prints its address and knows</text>
-  <text x="546" y="188" class="t-sm" text-anchor="middle">every reader gets a secure session</text>
-  <text x="546" y="208" class="t-sm t-it" text-anchor="middle">this is what won</text>
+  <rect class="box-warm" x="380" y="164" width="316" height="68" rx="4"/>
+  <text x="538" y="186" class="t-sm" text-anchor="middle">a bank prints its address and knows</text>
+  <text x="538" y="204" class="t-sm" text-anchor="middle">every reader gets a secure session</text>
+  <text x="538" y="223" class="t-sm t-it" text-anchor="middle">this is what won</text>
 
-  <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
-  <text x="360" y="272" class="t-sm" text-anchor="middle">&#8220;It turns out not that was not the most important assurance to give.&#8221;</text>
-  <text x="360" y="298" class="t-sm t-it" text-anchor="middle">It is now the user&#8217;s task to ensure their interactions are secure, not the link maker&#8217;s.</text>
+  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
+  <text x="360" y="282" class="t-sm" text-anchor="middle">&#8220;It turns out not that was not the most important assurance to give.&#8221;</text>
+  <text x="360" y="308" class="t-sm t-it" text-anchor="middle">It is now the user&#8217;s task to ensure their interactions are secure, not the link maker&#8217;s.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 67.1</span>
 The decision was right for the threat of 1995 and wrong for the threat of
@@ -91,16 +95,16 @@ feasible, so ubiquitous snooping was not the driver.</figcaption>
 <h2>67.2 What changed</h2>
 
 <p>
-Three things, and the third is the one that settles it.
+Three things, and the third settles it.
 </p>
 
-<p>
-People became individually aware and individually under attack, so protecting
-the follower became the browser&#8217;s job rather than the publisher&#8217;s. People
-learned to look not at the letter in the address but at the padlock, and then
-at the name of the certificate holder. And then the address itself began to
-disappear:
-</p>
+<ol>
+<li>Users came under attack individually, so protecting the person who
+follows a link became the browser&#8217;s job rather than the publisher&#8217;s.</li>
+<li>People learned to look not at the s in the address but at the padlock,
+and then at the name of the certificate holder shown by the browser.</li>
+<li>Browsers stopped showing the prefix at all.</li>
+</ol>
 
 <blockquote>
 The 'http:' has in fact (2015) relatively recently been removed from the
@@ -129,7 +133,78 @@ web.
 </blockquote>
 
 <p>
-And then the comparison that makes it the strongest sentence in Volume VII:
+<code>http://x.org/report</code> and <code>https://x.org/report</code> are
+different names. A link written years ago keeps pointing at the old one.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig67-2-t fig67-2-d">
+  <title id="fig67-2-t">What an old link meets after each kind of change</title>
+  <desc id="fig67-2-d">Left, a new prefix: an old page from 2005 links to
+  http://x.org/report, which has moved; a dashed redirect, if someone keeps
+  it, leads on to https://x.org/report. An archived copy with the same link
+  ends at not found where no redirect was kept. Right, TLS in the protocol: the
+  same two links reach the same, unchanged http://x.org/report, and beneath
+  them the connection is upgraded to encrypted.</desc>
+  <defs>
+    <marker id="fig67-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig67-2-arrm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="24" class="t-caps">a new prefix</text>
+  <line class="ln-mut" x1="362" y1="12" x2="362" y2="290"/>
+
+  <rect class="box" x="12" y="48" width="116" height="34" rx="3"/>
+  <text x="70" y="70" text-anchor="middle">old page (2005)</text>
+  <rect class="box-plain" x="180" y="48" width="168" height="34" rx="3" style="stroke-dasharray:4 3"/>
+  <text x="264" y="70" class="t-mono" text-anchor="middle">http://x.org/report</text>
+  <line class="ln" x1="128" y1="65" x2="176" y2="65" marker-end="url(#fig67-2-arr)"/>
+  <text x="264" y="100" class="t-sm t-it" text-anchor="middle">page moved away</text>
+
+  <line class="ln-dash" x1="264" y1="108" x2="264" y2="140" marker-end="url(#fig67-2-arrm)"/>
+  <text x="254" y="128" class="t-sm" text-anchor="end">redirect, if someone keeps it</text>
+  <rect class="box-green" x="180" y="144" width="168" height="34" rx="3"/>
+  <text x="264" y="166" class="t-mono" text-anchor="middle">https://x.org/report</text>
+
+  <rect class="box" x="12" y="208" width="116" height="34" rx="3"/>
+  <text x="70" y="230" text-anchor="middle">archived copy</text>
+  <rect class="box-warm" x="180" y="202" width="168" height="46" rx="3"/>
+  <text x="264" y="221" class="t-mono" text-anchor="middle">http://x.org/report</text>
+  <text x="264" y="239" class="t-sm" text-anchor="middle" style="fill:#b08d57">&#10007; not found</text>
+  <line class="ln" x1="128" y1="225" x2="176" y2="225" marker-end="url(#fig67-2-arr)"/>
+  <text x="264" y="268" class="t-sm t-it" text-anchor="middle">where no redirect was kept</text>
+
+  <text x="380" y="24" class="t-caps">TLS in the protocol</text>
+
+  <rect class="box" x="380" y="48" width="116" height="34" rx="3"/>
+  <text x="438" y="70" text-anchor="middle">old page (2005)</text>
+  <rect class="box" x="380" y="186" width="116" height="34" rx="3"/>
+  <text x="438" y="208" text-anchor="middle">archived copy</text>
+
+  <rect class="box-green" x="540" y="117" width="168" height="34" rx="3"/>
+  <text x="624" y="139" class="t-mono" text-anchor="middle">http://x.org/report</text>
+  <text x="624" y="170" class="t-sm t-it" text-anchor="middle">same name, unchanged</text>
+  <line class="ln" x1="496" y1="70" x2="536" y2="125" marker-end="url(#fig67-2-arr)"/>
+  <line class="ln" x1="496" y1="198" x2="536" y2="144" marker-end="url(#fig67-2-arr)"/>
+
+  <rect class="box-plain" x="380" y="242" width="328" height="32" rx="3"/>
+  <text x="544" y="263" class="t-sm" text-anchor="middle">connection upgraded to encrypted</text>
+</svg>
+<figcaption><span class="fig-label">Figure 67.2</span>
+On the left the <em>name</em> changed, so every old link depends on someone
+keeping a redirect. On the right only the <em>connection</em> changed, and old
+links need nothing.</figcaption>
+</figure>
+
+<p>
+Then comes the comparison that makes it the strongest sentence in Volume VII:
 </p>
 
 <blockquote>
@@ -140,17 +215,72 @@ the web of links in so doing.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig67-3-t fig67-3-d">
+  <title id="fig67-3-t">Changes beneath the links, and the one that reached them</title>
+  <desc id="fig67-3-d">At the top, the web of links, a few pages joined by
+  arrows. Beneath it, three bands of change: connection speed from 300 bps to
+  300 Gbps, addressing from IPv4 to IPv6, and TLS added inside the protocol as
+  the note proposes. Each leaves the links untouched. One arrow, the change
+  from http: to https:, rises through all the bands into the link layer,
+  because it changes the names themselves.</desc>
+  <defs>
+    <marker id="fig67-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig67-3-arra" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="24" y="14" width="672" height="92" rx="4"/>
+  <text x="40" y="36" class="t-caps">web of links</text>
+  <line class="ln" x1="370" y1="62" x2="449" y2="50" marker-end="url(#fig67-3-arr)"/>
+  <line class="ln" x1="470" y1="52" x2="549" y2="76" marker-end="url(#fig67-3-arr)"/>
+  <line class="ln" x1="570" y1="78" x2="639" y2="60" marker-end="url(#fig67-3-arr)"/>
+  <circle class="box-plain" cx="360" cy="64" r="10"/>
+  <circle class="box-plain" cx="460" cy="48" r="10"/>
+  <circle class="box-plain" cx="560" cy="80" r="10"/>
+  <circle class="box-plain" cx="650" cy="56" r="10"/>
+  <text x="124" y="74" class="t-sm" style="fill:#b08d57">names change: old links break</text>
+
+  <rect class="box-plain" x="24" y="124" width="672" height="32" rx="3"/>
+  <text x="170" y="145">speed: 300 bps &#8594; 300 Gbps</text>
+  <text x="680" y="145" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
+
+  <rect class="box-plain" x="24" y="164" width="672" height="32" rx="3"/>
+  <text x="170" y="185">addressing: IPv4 &#8594; IPv6</text>
+  <text x="680" y="185" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
+
+  <rect class="box-plain" x="24" y="204" width="672" height="32" rx="3"/>
+  <text x="170" y="225">TLS added inside the protocol (the proposal)</text>
+  <text x="680" y="225" class="t-sm" text-anchor="end" style="fill:#5a8f5a">&#10003; links untouched</text>
+
+  <line class="ln-accent" x1="110" y1="262" x2="110" y2="58" marker-end="url(#fig67-3-arra)"/>
+  <text x="110" y="284" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">http: &#8594; https:</text>
+</svg>
+<figcaption><span class="fig-label">Figure 67.3</span>
+Faster lines, new network addresses and encryption inside the protocol all
+happen beneath the links. Changing the prefix is the only change that reaches
+the layer where links live.</figcaption>
+</figure>
+
 <p>
-Every other change to the infrastructure was invisible to the links. This one
-was not, because the security level was put where the identity lives, which is
-what Chapter 2&#8217;s opacity axiom forbids.
+The security level was put where the identity lives. Chapter 2&#8217;s opacity
+axiom says an address is a sealed label: it names a thing, and nothing else
+should be read from its letters. The s breaks that rule.
 </p>
 
 <h2>67.4 The single-valued trust mistake</h2>
 
 <p>
-A parenthesis in the middle contains a generalisation worth more than the
-argument it interrupts:
+Once https: was treated as a safe space, browsers ring-fenced it. Under the
+Same Origin Policy, everything loaded into an https: page must itself arrive
+securely, which, the note says, &ldquo;has led to a class of web apps being
+broken&rdquo;. A parenthesis that follows draws the general lesson:
 </p>
 
 <blockquote>
@@ -162,10 +292,61 @@ could be disastrous.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 176" width="720" height="176" role="img"
+     aria-labelledby="fig67-4-t fig67-4-d">
+  <title id="fig67-4-t">One boundary compared with trust scoped to a purpose</title>
+  <desc id="fig67-4-d">Left: a single bar split into secure and insecure,
+  with the divider shown at three other dashed positions and the question of
+  where it should go; the note calls this an oil/water boundary. Right: a grid
+  with rows friend A, friend B and a web app, and columns food, films and private
+  files. Friend A is trusted for food only, friend B for films only, and the
+  web app for private files only.</desc>
+
+  <text x="24" y="24" class="t-caps">one boundary</text>
+  <rect class="box-green" x="24" y="56" width="140" height="40"/>
+  <rect class="box-warm" x="164" y="56" width="140" height="40"/>
+  <text x="32" y="81" class="t-sm" style="fill:#2f4f4f">secure</text>
+  <text x="296" y="81" class="t-sm" text-anchor="end" style="fill:#2f4f4f">insecure</text>
+  <line class="ln" x1="164" y1="48" x2="164" y2="104"/>
+  <line class="ln-dash" x1="110" y1="48" x2="110" y2="104"/>
+  <line class="ln-dash" x1="200" y1="48" x2="200" y2="104"/>
+  <line class="ln-dash" x1="228" y1="48" x2="228" y2="104"/>
+  <text x="164" y="126" class="t-sm t-it" text-anchor="middle">where should it go?</text>
+  <text x="164" y="152" class="t-sm" text-anchor="middle">an &#8220;oil/water boundary&#8221;</text>
+
+  <line class="ln-mut" x1="344" y1="12" x2="344" y2="168"/>
+
+  <text x="376" y="24" class="t-caps">trust scoped to a purpose</text>
+  <text x="500" y="56" class="t-sm" text-anchor="middle">food</text>
+  <text x="580" y="56" class="t-sm" text-anchor="middle">films</text>
+  <text x="660" y="56" class="t-sm" text-anchor="middle">private files</text>
+  <line class="ln-mut" x1="376" y1="66" x2="700" y2="66"/>
+
+  <text x="376" y="92">friend A</text>
+  <text x="500" y="92" text-anchor="middle" style="fill:#5a8f5a">&#10003;</text>
+  <text x="580" y="92" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+  <text x="660" y="92" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+
+  <text x="376" y="124">friend B</text>
+  <text x="500" y="124" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+  <text x="580" y="124" text-anchor="middle" style="fill:#5a8f5a">&#10003;</text>
+  <text x="660" y="124" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+
+  <text x="376" y="156">a web app</text>
+  <text x="500" y="156" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+  <text x="580" y="156" text-anchor="middle" style="fill:#b08d57">&#10007;</text>
+  <text x="660" y="156" text-anchor="middle" style="fill:#5a8f5a">&#10003;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 67.4</span>
+One boundary gives every party the same answer. Trust that varies by purpose
+needs a separate answer in each cell, which no single line can draw.</figcaption>
+</figure>
+
 <p>
-A boundary between a secure region and an insecure one implements
-single-valued trust. And Berners-Lee gives the diagnostic symptom that reveals
-the mistake in any system:
+A wall between a secure region and an insecure one implements single-valued
+trust, and Berners-Lee gives the symptom that reveals the mistake in any
+system:
 </p>
 
 <blockquote>
@@ -181,36 +362,50 @@ kinds of thing. That test applies far beyond this argument.
 <h2>67.5 The proposal</h2>
 
 <p>
-The alternative is in the note&#8217;s own title. Encrypt everything, at the
-protocol level, and stop marking it in the identifier. Upgrade in real time,
-or try the encrypted version first. Show the assurance in the interface, where
-people already look, and let the prefix be phased out.
+The alternative is in the note&#8217;s own title. TLS (Transport Layer
+Security) is the encryption layer that https: uses. Use it everywhere, inside
+the protocol, and stop marking it in the address. A connection can be upgraded
+to TLS as it is made, an in-band upgrade already described in 2000 in an RFC
+(one of the Internet&#8217;s numbered standards documents), or the browser can
+simply try the encrypted version first. Show the assurance in the browser,
+where people already look, and let the prefix be phased out.
 </p>
 
 <p>
-Berners-Lee is precise about what users should then be taught to understand:
-the level of assurance being given, including authentication of the other
-party, encryption of the communication, and the anonymity, traceability or
-strong authentication of the user to the other party. Four separate
-properties, which one letter cannot convey.
+Users should then be taught to understand the level of assurance being given,
+which has three parts:
+</p>
+
+<ol>
+<li>authentication of the other party (is this really the bank?);</li>
+<li>encryption of the communication;</li>
+<li>how the user appears to the other party, which ranges from anonymous,
+through traceable, to strongly authenticated.</li>
+</ol>
+
+<p>
+One letter cannot convey any of these on its own terms, let alone all three.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The campaign won completely.</strong> The encrypted prefix became
-the default, browsers began marking the plain one insecure from July 2018, and
-most of the Web migrated.</li>
-<li><strong>The breakage was real and was absorbed.</strong> Redirects and
-upgrade headers repaired most links, at the cost of a permanent layer of
-rewriting, which is the tax this note predicted.</li>
-<li><strong>The upgrade mechanism the note prefers exists and lost.</strong>
+<li><strong>The note&#8217;s target.</strong> A footnote makes clear that it
+criticises the general drive for https: addresses everywhere, not the
+EFF&#8217;s HTTPS Everywhere browser extension of the same name. The note also
+names Let&#8217;s Encrypt, a project for free, automatic certificates, which
+began issuing them in late 2015.</li>
+<li><strong>The campaign won completely.</strong> The https: prefix became the
+default, Chrome 68 began marking plain http: pages &ldquo;Not secure&rdquo; in
+July 2018, and most of the Web migrated.</li>
+<li><strong>The breakage was real and was absorbed.</strong> Redirects, HSTS
+(RFC 6797, 2012, which tells browsers to rewrite a site&#8217;s http: links to
+https:) and the <code>upgrade-insecure-requests</code> directive repaired most
+links. They are a permanent layer of rewriting, the breakage the note warned
+of.</li>
+<li><strong>The upgrade mechanism the note prefers existed and lost.</strong>
 RFC 2817&#8217;s in-band upgrade was available and was not adopted; the industry
 chose the separate space.</li>
-<li><strong>The single-valued trust point was vindicated elsewhere.</strong>
-Fine-grained permissions replaced binary trust in nearly every other part of
-the platform, from device access to storage, which is section 67.4&#8217;s argument
-accepted everywhere except here.</li>
 </ul>
 </div>
 
@@ -234,16 +429,18 @@ design where the two interests diverge.</p>
 <div class="question">
 <p><span class="question-number">67.2</span>
 A boundary you can never place correctly indicates a false dichotomy. Apply
-that test to a boundary in a system you maintain.</p>
+that test to an everyday boundary, such as the permissions a phone app asks
+for.</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.3</span>
-Four properties are listed that one letter cannot convey. Design the interface
-that would convey all four.</p>
+Section 67.5 lists three properties that one letter cannot convey. Sketch what
+a browser could show for each of them.</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.4</span>
-Every other infrastructure change was invisible to links. Explain what made
-this one different, using the axioms of Chapter 2.</p>
+Faster lines and new network addresses were invisible to links; the new
+prefix was not. Using the opacity axiom (an address is a sealed label),
+explain the difference.</p>
 </div>
 </div>

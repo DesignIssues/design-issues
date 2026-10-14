@@ -49,6 +49,16 @@
 a Design Issues note by Tim Berners-Lee, 2024.
 <a class="source-link" href="https://www.w3.org/DesignIssues/PersonalPublic.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Some data about a person is meant for everyone: a name, a job, a way to make
+contact, even a blood group. Today it is scattered across platforms.
+Berners-Lee proposes keeping it in one place the person controls, readable by people
+and programs alike, and pointing every profile at it.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -74,44 +84,40 @@ read. Everyone has some. Almost no infrastructure treats it as a category.
      aria-labelledby="fig73-1-t fig73-1-d">
   <title id="fig73-1-t">The column between the two that get attention</title>
   <desc id="fig73-1-d">Open public data has institutions, standards and
-  programmes. Personal private data has regulation and storage designs. In
-  between, the things a person deliberately publishes about themselves have
+  programmes. Personal private data has regulation and storage designed for it.
+  In between, the things a person deliberately publishes about themselves have
   neither, and live in whatever platform happens to host them.</desc>
 
-  <rect class="box-plain" x="24" y="40" width="200" height="180" rx="4"/>
-  <text x="124" y="66" class="t-caps" text-anchor="middle">personal private</text>
-  <g class="t-sm">
-    <text x="44" y="96">health records</text>
-    <text x="44" y="118">finances</text>
-    <text x="44" y="140">messages</text>
-    <text x="44" y="162">settings</text>
-  </g>
-  <text x="124" y="200" class="t-sm t-it" text-anchor="middle" fill="#666">regulated, and designed for</text>
+  <rect class="box-plain" x="24" y="40" width="196" height="184" rx="4"/>
+  <text x="122" y="66" class="t-caps" text-anchor="middle">personal private</text>
+  <text x="42" y="96" class="t-sm">health records</text>
+  <text x="42" y="118" class="t-sm">finances</text>
+  <text x="42" y="140" class="t-sm">messages</text>
+  <text x="42" y="162" class="t-sm">settings</text>
+  <text x="122" y="192" class="t-sm t-it" text-anchor="middle">regulated;</text>
+  <text x="122" y="208" class="t-sm t-it" text-anchor="middle">storage designed for it</text>
 
-  <rect class="box-green" x="256" y="40" width="208" height="180" rx="4"/>
-  <text x="360" y="66" class="t-caps" text-anchor="middle" fill="#3f6f3f">personal public</text>
-  <g class="t-sm">
-    <text x="276" y="96">name, photograph, contact</text>
-    <text x="276" y="118">achievements, r&#233;sum&#233;, skills</text>
-    <text x="276" y="140">languages spoken</text>
-    <text x="276" y="162">allergies, blood type, next of kin</text>
-    <text x="276" y="184">links to your other accounts</text>
-  </g>
-  <text x="360" y="208" class="t-sm t-it" text-anchor="middle" fill="#3f6f3f">almost overlooked</text>
+  <rect class="box-green" x="244" y="40" width="232" height="184" rx="4"/>
+  <text x="360" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">personal public</text>
+  <text x="262" y="96" class="t-sm">name, photograph, contact</text>
+  <text x="262" y="118" class="t-sm">achievements, r&#233;sum&#233;, skills</text>
+  <text x="262" y="140" class="t-sm">languages spoken</text>
+  <text x="262" y="162" class="t-sm">allergies, blood type, next of kin</text>
+  <text x="262" y="184" class="t-sm">links to one&#8217;s other accounts</text>
+  <text x="360" y="208" class="t-sm t-it" text-anchor="middle" style="fill:#5a8f5a">almost overlooked</text>
 
-  <rect class="box-plain" x="496" y="40" width="200" height="180" rx="4"/>
-  <text x="596" y="66" class="t-caps" text-anchor="middle">open public</text>
-  <g class="t-sm">
-    <text x="516" y="96">government statistics</text>
-    <text x="516" y="118">maps</text>
-    <text x="516" y="140">scientific data</text>
-    <text x="516" y="162">catalogues</text>
-  </g>
-  <text x="596" y="200" class="t-sm t-it" text-anchor="middle" fill="#666">programmes, portals, five stars</text>
+  <rect class="box-plain" x="500" y="40" width="196" height="184" rx="4"/>
+  <text x="598" y="66" class="t-caps" text-anchor="middle">open public</text>
+  <text x="518" y="96" class="t-sm">government statistics</text>
+  <text x="518" y="118" class="t-sm">maps</text>
+  <text x="518" y="140" class="t-sm">scientific data</text>
+  <text x="518" y="162" class="t-sm">catalogues</text>
+  <text x="598" y="192" class="t-sm t-it" text-anchor="middle">programmes, portals,</text>
+  <text x="598" y="208" class="t-sm t-it" text-anchor="middle">five stars</text>
 
   <line class="ln-mut" x1="24" y1="248" x2="696" y2="248"/>
   <text x="360" y="272" class="t-sm" text-anchor="middle">For many people, and professional people especially, what the world knows about them matters.</text>
-  <text x="360" y="298" class="t-sm" text-anchor="middle">Safety information sits here too: the things a stranger may need to know about you in an emergency.</text>
+  <text x="360" y="298" class="t-sm" text-anchor="middle">Safety information sits here too: the things a stranger may need to know about someone in an emergency.</text>
   <text x="360" y="322" class="t-sm t-it" text-anchor="middle">&#8220;this is all very dependent on the person.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 73.1</span>
@@ -123,8 +129,7 @@ sense and one wants it public at exactly one moment.</figcaption>
 <h2>73.2 A history of attempts</h2>
 
 <p>
-The note traces the idea back to the beginning, and the trajectory is the
-argument:
+The note traces the idea back to the beginning:
 </p>
 
 <blockquote>
@@ -135,18 +140,20 @@ an internet-connected computer could put up a home page.
 </blockquote>
 
 <p>
-Berners-Lee then lists the hosting services that came and went through the
-2000s, noting that they were about hypermedia rather than data. A page said
-things to a reader; nothing about it was machine-readable, so nothing could be
-done with it except read it.
+Berners-Lee then lists the hosting services of the late 1990s and 2000s, some
+long closed (GeoCities, AOL Hometown, Friendster), others still running
+(Facebook, Twitter). All of them were about hypermedia rather than data. A page
+said things to a reader; no program could do anything with it except display it.
 </p>
 
 <p>
-Two projects tried to change that and are described with care. One held that
-everyone should have their own site, obtained by registering a name and
-running a server. The other, a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> created around the turn of the
-millennium, let anyone who controlled a site publish machine-readable
-statements about themselves and their relationships.
+Two projects tried to change that. IndieWeb held that everyone should have
+their own site, on a domain name they register and a server they run. FOAF,
+<em>Friend of a Friend</em>, created around 2000 by Dan Brickley and Libby
+Miller, was a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> that let anyone who controlled a site publish
+machine-readable statements about themselves and their relationships. Its key
+term, <code>foaf:knows</code>, says on one person&#8217;s page that they know
+another, by linking to theirs.
 </p>
 
 <blockquote>
@@ -155,14 +162,14 @@ It was linked data - you could follow the foaf:knows graph across the web.
 </blockquote>
 
 <p>
-That is the social network of Chapter 49, built openly, in which the network
-is the set of documents and no company holds it.
+That is an open social network built on Chapter 49&#8217;s rules, in which the
+network is the set of documents and no company holds it.
 </p>
 
 <h2>73.3 Where the energy went</h2>
 
 <p>
-The note then records, without complaint, what happened to that effort:
+The note records what happened to that effort:
 </p>
 
 <blockquote>
@@ -171,8 +178,7 @@ The enregy of the FOAF project has recently gone into the schema.org ontolgies.
 </blockquote>
 
 <p>
-And explains why that vocabulary won, in terms that are entirely about
-incentives:
+And why that vocabulary won, purely on incentives:
 </p>
 
 <blockquote>
@@ -183,19 +189,19 @@ web sites have this.
 </blockquote>
 
 <p>
-Machine-readable data about people and things is now published at enormous
-scale, because a search engine rewards it. Chapter 49&#8217;s four rules are followed
-by millions of sites that have never heard of them, for a reason the rules
-never mentioned.
+Millions of sites now publish machine-readable statements, which was half of
+Chapter 49&#8217;s hope, for a reason Chapter 49 never mentioned: a search
+engine rewards it.
 </p>
 
 <h2>73.4 The business card</h2>
 
 <p>
-The proposal is characteristically modest about where to start. The basic
-level of public data is what people put on a business card: a name, a way to
-reach you, sometimes a picture. And then one sentence that makes the whole
-thing concrete:
+The proposal: keep a personal data store, a <em><a class="gl-ref" href="../glossary.html#pod">pod</a></em>, on the Web under the
+owner&#8217;s control (Chapter 54), with a WebID, a single web address that stands for
+the person. Put on it the things meant for everyone to see, as data rather than only as
+a page. The note starts modestly, with what people put on a business card: a
+name, a way to make contact, sometimes a picture.
 </p>
 
 <blockquote>
@@ -204,46 +210,160 @@ If you put that on your pod, you can use a QR code as business card.
 </blockquote>
 
 <p>
-Beyond that, an instant photograph, the most recent of a stream or the whole
-stream, a blog post or a whole blog, a list of papers. The list grows by
-adding things, not by adding infrastructure.
+From there the list grows by adding things, not infrastructure:
 </p>
 
+<table>
+<tr><th>Kind</th><th>Examples from the note</th></tr>
+<tr><td>Business card</td><td>Name, phone or email, a picture; shared as a QR code</td></tr>
+<tr><td>Stream</td><td>A photograph, a photo stream, a blog post or a whole blog</td></tr>
+<tr><td>Professional</td><td>Papers, skills, experience, qualifications, organisations worked with</td></tr>
+<tr><td>Safety</td><td>Blood group, allergies, next of kin</td></tr>
+<tr><td>Pointers</td><td>Other social media accounts; registries such as ORCID</td></tr>
+</table>
+
 <p>
-Berners-Lee assumes throughout that the same data will be served as a page for
-people and as data for machines from the same place, which is Chapter 10&#8217;s
-genericity doing quiet work.
+Berners-Lee assumes the pod serves the same data as a page for people and as
+data for machines, which is Chapter 10&#8217;s genericity doing quiet work.
 </p>
 
 <h2>73.5 Why it belongs in a volume about trust</h2>
 
 <p>
-Personal public data is the part of yourself you choose to expose, and the
-choosing is the whole point. Volume VII has been about systems that model
-trust too narrowly. This is the case where a person wants to be identified,
-wants to be read, and still needs the arrangement to be theirs.
+Many social platforms allow exactly one clickable link in a profile,
+or <em>bio</em>. People point it at a page listing all their other
+accounts, because there is nowhere else for that list to live. Berners-Lee
+suggests that this link should be the person&#8217;s WebID.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig73-2-t fig73-2-d">
+  <title id="fig73-2-t">The link-in-bio chain, before and after</title>
+  <desc id="fig73-2-d">Today: a platform profile carries one link to a
+  link-list page run by a third party, a page for people rather than data,
+  which points to other accounts. Proposed: the same link goes to a WebID on
+  the person&#8217;s own pod, which serves HTML for browsers and data for programs, and
+  links to other accounts and to organisations&#8217; pods.</desc>
+  <defs>
+    <marker id="fig73-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="84" class="t-caps">today</text>
+  <rect class="box-plain" x="110" y="40" width="140" height="80" rx="4"/>
+  <text x="180" y="85" text-anchor="middle">platform profile</text>
+  <line class="ln" x1="250" y1="80" x2="308" y2="80" marker-end="url(#fig73-2-arr)"/>
+  <text x="280" y="70" class="t-sm" text-anchor="middle">one link</text>
+  <rect class="box-plain" x="310" y="40" width="190" height="80" rx="4"/>
+  <text x="405" y="64" text-anchor="middle">link-list page</text>
+  <text x="405" y="86" class="t-sm" text-anchor="middle">a page for people, not data</text>
+  <text x="405" y="106" class="t-sm" text-anchor="middle">run by a third party</text>
+  <line class="ln" x1="500" y1="80" x2="548" y2="80" marker-end="url(#fig73-2-arr)"/>
+  <rect class="box-plain" x="550" y="40" width="160" height="80" rx="4"/>
+  <text x="630" y="85" text-anchor="middle">other accounts</text>
+
+  <text x="24" y="204" class="t-caps">proposed</text>
+  <rect class="box-plain" x="110" y="160" width="140" height="80" rx="4"/>
+  <text x="180" y="205" text-anchor="middle">platform profile</text>
+  <line class="ln" x1="250" y1="200" x2="308" y2="200" marker-end="url(#fig73-2-arr)"/>
+  <text x="280" y="190" class="t-sm" text-anchor="middle">one link</text>
+  <rect class="box-green" x="310" y="160" width="190" height="80" rx="4"/>
+  <text x="405" y="184" text-anchor="middle">WebID on personal pod</text>
+  <text x="405" y="206" class="t-sm" text-anchor="middle">HTML for browsers,</text>
+  <text x="405" y="226" class="t-sm" text-anchor="middle">data for programs</text>
+  <line class="ln" x1="500" y1="200" x2="548" y2="200" marker-end="url(#fig73-2-arr)"/>
+  <rect class="box-plain" x="550" y="160" width="160" height="80" rx="4"/>
+  <text x="630" y="194" text-anchor="middle">other accounts,</text>
+  <text x="630" y="214" text-anchor="middle">organisations&#8217; pods</text>
+</svg>
+<figcaption><span class="fig-label">Figure 73.2</span>
+The shape is the same. What changes is who owns the middle box, and whether a
+program can read it.</figcaption>
+</figure>
+
+<h3>Proving the accounts belong to one person</h3>
+
 <p>
-The title names the thing this replaces. A single link in a profile, on a
-platform that owns the profile, pointing at a page listing your other
-accounts, because there is nowhere else for that list to live.
+The note ends with a use for the pod that no single platform can offer:
+</p>
+
+<blockquote>
+Put your Solid WebID in each bio, and link each account from your pod.
+Then you have proved that all accounts belong to the same person.
+<cite>Link in Bio: Personal Public Data, 2024</cite>
+</blockquote>
+
+<figure>
+<svg class="dia" viewBox="0 0 640 300" width="640" height="300" role="img"
+     aria-labelledby="fig73-3-t fig73-3-d">
+  <title id="fig73-3-t">The two-way link proof</title>
+  <desc id="fig73-3-d">A pod with a WebID sits on the left; a Mastodon
+  profile, a GitHub profile and an ORCID record sit on the right. Each account
+  is joined to the pod by two links: a solid arrow from the pod listing the
+  account, and a dashed arrow from the account&#8217;s bio back to the WebID.</desc>
+  <defs>
+    <marker id="fig73-3-acc" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig73-3-mut" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-green" x="40" y="100" width="170" height="80" rx="4"/>
+  <text x="125" y="134" text-anchor="middle">one person&#8217;s pod</text>
+  <text x="125" y="156" text-anchor="middle">and WebID</text>
+
+  <rect class="box-plain" x="430" y="30" width="180" height="50" rx="4"/>
+  <text x="520" y="60" text-anchor="middle">Mastodon profile</text>
+  <rect class="box-plain" x="430" y="115" width="180" height="50" rx="4"/>
+  <text x="520" y="145" text-anchor="middle">GitHub profile</text>
+  <rect class="box-plain" x="430" y="200" width="180" height="50" rx="4"/>
+  <text x="520" y="230" text-anchor="middle">ORCID record</text>
+
+  <line class="ln-accent" x1="212" y1="116" x2="428" y2="46" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="64" x2="214" y2="132" marker-end="url(#fig73-3-mut)"/>
+  <line class="ln-accent" x1="212" y1="134" x2="428" y2="133" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="148" x2="214" y2="149" marker-end="url(#fig73-3-mut)"/>
+  <line class="ln-accent" x1="212" y1="150" x2="428" y2="216" marker-end="url(#fig73-3-acc)"/>
+  <line class="ln-dash" x1="430" y1="234" x2="214" y2="166" marker-end="url(#fig73-3-mut)"/>
+
+  <line class="ln-accent" x1="40" y1="282" x2="82" y2="282" marker-end="url(#fig73-3-acc)"/>
+  <text x="92" y="286" class="t-sm">pod lists account</text>
+  <line class="ln-dash" x1="330" y1="282" x2="372" y2="282" marker-end="url(#fig73-3-mut)"/>
+  <text x="382" y="286" class="t-sm">bio links WebID</text>
+</svg>
+<figcaption><span class="fig-label">Figure 73.3</span>
+Either link alone can be faked by a stranger. Both directions together show
+one person controls both ends.</figcaption>
+</figure>
+
+<p>
+Volume VII has been about systems that model trust too narrowly. This is the
+case where a person wants to be identified and read, chooses what to expose,
+and still needs the arrangement to be theirs.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The category acquired a market and not a standard.</strong>
-Services offering a single page of links became widely used, which is evidence
-of the need and not of the architecture.</li>
-<li><strong>Verification arrived through the platforms.</strong> Proving that
-an account and a site belong to the same person is now done by markup that the
-platform checks, which answers part of section 73.2&#8217;s problem inside one
-company at a time.</li>
+Link-list services such as Linktree (launched 2016, and cited in the
+note&#8217;s references) became widely used, evidence of the need, not of the architecture.</li>
+<li><strong>Verification arrived through the platforms.</strong> Since 2018
+Mastodon checks <code>rel="me"</code> links: if a person&#8217;s site links to their
+profile with that marker and the profile links back, the link is shown as
+verified. That is section 73.5&#8217;s two-way proof, run inside one platform
+at a time.</li>
 <li><strong>Emergency information stayed with device makers.</strong>
-Allergies, blood type and next of kin are held by phone operating systems and
-shown on a locked screen, which is the use case of Figure 73.1 solved in a
-place the Web cannot reach.</li>
+Apple&#8217;s Medical ID (iOS 8, 2014) and Android&#8217;s emergency information
+(Android 7, 2016) show allergies, blood type and emergency contacts on a locked
+phone: the use case of Figure 73.1 solved in a place the Web cannot reach.</li>
 <li><strong>Structured data about people is ubiquitous and not
 portable.</strong> It is published for search engines, in the shape search
 engines want, and cannot easily be moved or reused by its subject.</li>
@@ -255,14 +375,14 @@ engines want, and cannot easily be moved or reused by its subject.</li>
 <p>
 The storage this would live in is Chapter 54, and the arrangement of it is
 Chapter 55. Identifying people by an unambiguous property is Chapter 34, and
-the open social network described here is Chapter 49. Serving the same thing to
+the <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> rules behind FOAF are Chapter 49. Serving the same thing to
 people and machines is Chapter 10, and the gradient between public and private
 is Chapter 74.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">73.1</span>
 List what you would put in your own personal public data. Where does each item
@@ -270,18 +390,24 @@ live today?</p>
 </div>
 <div class="question">
 <p><span class="question-number">73.2</span>
-Emergency information is private except at one moment. Design the access rule
-that expresses that.</p>
+Your blood group is useful to a paramedic and to nobody else. Should it be
+public? Give one argument each way.</p>
 </div>
 <div class="question">
 <p><span class="question-number">73.3</span>
 One vocabulary won because a search engine rewarded it. Name another standard
-adopted for an incentive its designers did not intend.</p>
+adopted for an incentive its designers did not intend. (Think of a format
+adopted mainly to rank higher in search or to pass a platform&#8217;s checks.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">73.4</span>
 A single link in a profile is a symptom. What is it a symptom of, and what
 would remove the need for it?</p>
+</div>
+<div class="question">
+<p><span class="question-number">73.5</span>
+Why does a link from your pod to an account, on its own, prove nothing? What
+does the return link add?</p>
 </div>
 </details>
 

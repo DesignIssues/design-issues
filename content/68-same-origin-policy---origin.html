@@ -1,8 +1,27 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Web pages carry small programs, called scripts, that run in the browser. A
+script from one site must not read another site&#8217;s data, so the browser
+needs a rule for what counts as one site.
+</p>
+<p>
+That rule is the Same Origin Policy: two addresses are one party when they
+share an origin, meaning scheme, host name and port. In practice the host name,
+such as <code>camps.org</code>, decides.
+</p>
+<p>
+Berners-Lee&#8217;s complaint is that the path, the slashed part after the
+host name, is a hierarchy too. The browser ignores it, so sites must contort
+their addresses.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-The third of the 2015 notes opens with a question that sounds abstract and
-turns out to govern how every website is laid out:
+The third of four related 2015 notes opens with a question that turns out
+to govern how every website is laid out:
 </p>
 <blockquote>
 You can't discuss authentication of parties without discussing what constitutes
@@ -10,53 +29,76 @@ a party.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 <p>
-The browser&#8217;s answer is the domain name. Berners-Lee&#8217;s objection is that the
-identifier already contains a second hierarchy, which the browser ignores, and
-that ignoring it forces the wrong shape on everything built above.
+The browser&#8217;s answer is the domain name.
 </p>
 </div>
 
 <h2>68.1 Two hierarchies, one used</h2>
 
+<p>
+A web address contains two trees. The host name, also called the authority, is
+a tree read right to left: <code>org</code>, then <code>camps.org</code>, then
+the subdomain <code>campsunshine.camps.org</code>. The path, everything after
+the first single slash, is a tree read left to right.
+</p>
+
+<p>
+The browser uses only the first. Berners-Lee notes it even ranks names within
+it: an application at <code>mit.edu</code> is assumed able to reach data from
+scripts at <code>csail.mit.edu</code>, not the reverse. The path gets no such
+treatment, so giving Jane Smith her own scripting space means rewriting her
+address.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 368" width="720" height="368" role="img"
      aria-labelledby="fig68-1-t fig68-1-d">
   <title id="fig68-1-t">The hierarchy that counts, and the one that does not</title>
-  <desc id="fig68-1-d">A URI has two hierarchies: the dotted one in the
-  authority, read right to left, and the slashed one in the path, read left to
-  right. The browser derives trust boundaries only from the first, so a
-  natural path arrangement must be contorted into a domain arrangement.</desc>
+  <desc id="fig68-1-d">Top: the address the site wants, with Jane's space
+  nested in the path as camp, family and person, growing more specific to the
+  right. Bottom: the address the browser requires, with the same names moved
+  into the host name, growing more specific to the left. Below it, four things
+  that break as a result.</desc>
 
-  <text x="24" y="28" class="t-caps">what the site wants to say</text>
-  <rect class="box-green" x="24" y="40" width="672" height="34" rx="3"/>
-  <text x="36" y="62" class="t-mono" font-size="11.5">https://camps.org/campsunshine/families/smith/jane/stuff</text>
-  <text x="36" y="94" class="t-sm">A place for Jane, inside her family&#8217;s area, inside a camp, inside the organisation.</text>
-  <path class="ln-mut" d="M 116 66 L 116 78 M 236 66 L 236 78 M 316 66 L 316 78 M 376 66 L 376 78"/>
+  <text x="24" y="24" class="t-caps" style="fill:#5a8f5a">what the site wants to say</text>
+  <rect class="box-green" x="24" y="34" width="672" height="34" rx="3"/>
+  <text x="36" y="56" class="t-mono">https://camps.org/campsunshine/families/smith/jane/stuff</text>
+  <path class="ln-mut" d="M 166 74 L 166 80 L 259 80 L 259 74 M 263 74 L 263 80 L 372 80 L 372 74 M 375 74 L 375 80 L 410 80 L 410 74"/>
+  <text x="212" y="96" class="t-sm" text-anchor="middle">camp</text>
+  <text x="317" y="96" class="t-sm" text-anchor="middle">family</text>
+  <text x="392" y="96" class="t-sm" text-anchor="middle">person</text>
+  <path class="ln-accent" d="M 166 110 L 444 110"/>
+  <path d="M 442 105 L 452 110 L 442 115 Z" fill="#1c5a7a"/>
+  <text x="466" y="114" class="t-sm" style="fill:#1c5a7a">path: more specific to the right</text>
 
-  <path class="ln-accent" d="M 360 112 L 360 134"/>
-  <path d="M 355 128 L 360 140 L 365 128 Z" fill="#1c5a7a"/>
-  <text x="376" y="128" class="t-sm" fill="#1c5a7a">to get a trust boundary, it must become</text>
+  <path class="ln-accent" d="M 60 126 L 60 146"/>
+  <path d="M 55 142 L 60 152 L 65 142 Z" fill="#1c5a7a"/>
+  <text x="76" y="144" class="t-sm" style="fill:#1c5a7a">to give Jane&#8217;s scripts their own trust boundary, it must become</text>
 
-  <text x="24" y="166" class="t-caps" fill="#a07d47">what the browser requires</text>
-  <rect class="box-warm" x="24" y="178" width="672" height="34" rx="3"/>
-  <text x="36" y="200" class="t-mono" font-size="11.5">https://jane.smith.families.campsunshine.camps.org/stuff</text>
+  <text x="24" y="178" class="t-caps" style="fill:#b08d57">what the browser requires</text>
+  <rect class="box-warm" x="24" y="188" width="672" height="34" rx="3"/>
+  <text x="36" y="210" class="t-mono">https://jane.smith.families.campsunshine.camps.org/stuff</text>
+  <path class="ln-accent" d="M 408 236 L 108 236"/>
+  <path d="M 110 231 L 100 236 L 110 241 Z" fill="#1c5a7a"/>
+  <text x="422" y="240" class="t-sm" style="fill:#1c5a7a">host name: more specific to the left</text>
 
-  <g class="t-sm">
-    <text x="36" y="236" fill="#b04a4a">every existing link breaks</text>
-    <text x="36" y="258" fill="#b04a4a">relative links between the family pages and Jane&#8217;s stop working</text>
-    <text x="36" y="280" fill="#b04a4a">it invites the same rearrangement to happen again, and again</text>
-    <text x="36" y="302" fill="#b04a4a">a lookup now reveals to observers that a reader visited <tspan font-style="italic">Jane&#8217;s</tspan> pages, not just the camp&#8217;s</text>
-  </g>
+  <text x="24" y="274" class="t-caps" style="fill:#b08d57">what breaks</text>
+  <text x="36" y="294" class="t-sm" style="fill:#b08d57">1&#160;&#160;Every existing link to these pages breaks.</text>
+  <text x="36" y="314" class="t-sm" style="fill:#b08d57">2&#160;&#160;Relative links between the family pages and Jane&#8217;s stop working.</text>
+  <text x="36" y="334" class="t-sm" style="fill:#b08d57">3&#160;&#160;It invites the same rearrangement to happen again, and again.</text>
+  <text x="36" y="354" class="t-sm" style="fill:#b08d57">4&#160;&#160;A name lookup now tells observers the reader visited Jane&#8217;s pages (Figure 68.2).</text>
 </svg>
 <figcaption><span class="fig-label">Figure 68.1</span>
-The last consequence is the one nobody intends. Moving a name from the path
-into the authority moves it from an encrypted request into a lookup that
-everybody on the path can see.</figcaption>
+The same nesting, written two ways. Only the bottom form gives Jane a boundary
+the browser recognises.</figcaption>
 </figure>
 
 <p>
-That privacy consequence is stated by Berners-Lee in terms that make the
-stakes concrete:
+Relative links matter because they let a family move its pages to a home
+server, or work offline. The fourth cost is the one nobody intends. Before
+fetching a page, the browser makes a DNS lookup, asking which machine serves the
+host name, usually unencrypted; the path travels inside the encrypted
+connection.
 </p>
 
 <blockquote>
@@ -66,19 +108,55 @@ activist Jane Smith. The reader's privacy is being whittled away a little more.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 252" width="720" height="252" role="img"
+     aria-labelledby="fig68-2-t fig68-2-d">
+  <title id="fig68-2-t">What an observer of the network sees</title>
+  <desc id="fig68-2-d">Two cases. With Jane's name in the path, the visible
+  name lookup shows only camps.org, and the encrypted request hides the path.
+  With Jane's name in the host name, the visible lookup shows the whole name,
+  and only /stuff is hidden.</desc>
+
+  <text x="24" y="24" class="t-caps" style="fill:#5a8f5a">jane&#8217;s pages in the path</text>
+  <rect class="box-plain" x="24" y="38" width="80" height="74" rx="3"/>
+  <text x="64" y="80" text-anchor="middle">reader</text>
+  <text x="118" y="52" class="t-mono" style="font-size:11.5px">name lookup: camps.org</text>
+  <path class="ln" d="M 104 62 L 516 62"/>
+  <path d="M 514 57 L 524 62 L 514 67 Z" fill="#2f4f4f"/>
+  <text x="540" y="66" class="t-sm" style="fill:#b08d57">visible to anyone watching</text>
+  <rect class="box-green" x="112" y="78" width="412" height="30" rx="15"/>
+  <text x="128" y="97" class="t-mono" style="font-size:11.5px">encrypted: GET /campsunshine/families/smith/jane/stuff</text>
+  <text x="540" y="97" class="t-sm" style="fill:#5a8f5a">hidden</text>
+
+  <text x="24" y="150" class="t-caps" style="fill:#b08d57">jane&#8217;s pages in the host name</text>
+  <rect class="box-plain" x="24" y="164" width="80" height="74" rx="3"/>
+  <text x="64" y="206" text-anchor="middle">reader</text>
+  <text x="118" y="178" class="t-mono" style="font-size:11.5px">name lookup: jane.smith.families.campsunshine.camps.org</text>
+  <path class="ln" d="M 104 188 L 516 188"/>
+  <path d="M 514 183 L 524 188 L 514 193 Z" fill="#2f4f4f"/>
+  <text x="540" y="192" class="t-sm" style="fill:#b08d57">visible to anyone watching</text>
+  <rect class="box-green" x="112" y="204" width="412" height="30" rx="15"/>
+  <text x="128" y="223" class="t-mono" style="font-size:11.5px">encrypted: GET /stuff</text>
+  <text x="540" y="223" class="t-sm" style="fill:#5a8f5a">hidden</text>
+</svg>
+<figcaption><span class="fig-label">Figure 68.2</span>
+Moving names into the host name moves them into the clear.</figcaption>
+</figure>
+
 <h2>68.2 Why the path hierarchy was already there</h2>
 
 <p>
-The note&#8217;s strongest point is historical. Making the path hierarchy visible was
-a deliberate early decision, and it already carries delegation everywhere
-except in the browser&#8217;s security model.
+The note&#8217;s strongest point is historical. Making the path hierarchy
+visible with the slash was a very early decision, and servers use it to hand
+out control.
 </p>
 
 <p>
-Berners-Lee lists what the file system provides when addresses map onto it:
-permissions inherited down a tree, and access rules at a point in the tree
-governing everything below it and nothing above. He calls this very useful, and
-gives the reason:
+In a classic Apache server, addresses map onto Unix folders, and permissions
+are inherited down the tree. An <code>.htaccess</code> file in a folder controls
+everything below it, nothing above. A reverse proxy, the site quietly passing
+one branch of its addresses to another service, builds on this. Berners-Lee
+calls it very useful:
 </p>
 
 <blockquote>
@@ -88,17 +166,63 @@ external services.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
+     aria-labelledby="fig68-3-t fig68-3-d">
+  <title id="fig68-3-t">Delegation down the path</title>
+  <desc id="fig68-3-d">A tree of addresses under camps.org. Under /board/ sit
+  /board/papers and /board/AcmeDiscss/; an .htaccess file at /board/ governs
+  everything below it. /board/AcmeDiscss/ is passed by reverse proxy to an
+  outside AcmeDiscss service.</desc>
+
+  <rect class="box" x="280" y="20" width="160" height="34" rx="3"/>
+  <text x="360" y="42" class="t-mono" text-anchor="middle">camps.org/</text>
+  <path class="ln" d="M 360 54 L 360 77 L 170 77 L 170 100 M 360 77 L 550 77 L 550 100"/>
+
+  <rect class="box" x="80" y="100" width="180" height="34" rx="3"/>
+  <text x="170" y="122" class="t-mono" text-anchor="middle">/campsunshine/</text>
+  <path class="ln" d="M 170 134 L 170 190"/>
+  <rect class="box-plain" x="70" y="190" width="200" height="34" rx="3"/>
+  <text x="170" y="212" class="t-mono" text-anchor="middle">/campsunshine/families/</text>
+
+  <rect class="box" x="460" y="100" width="180" height="34" rx="3"/>
+  <text x="550" y="122" class="t-mono" text-anchor="middle">/board/</text>
+  <rect class="box-plain" x="306" y="104" width="112" height="26" rx="3"/>
+  <text x="362" y="121" class="t-mono" style="font-size:11.5px" text-anchor="middle">.htaccess</text>
+  <path class="ln-mut" d="M 418 117 L 460 117"/>
+  <text x="350" y="152" class="t-sm" text-anchor="middle">rules here govern everything</text>
+  <text x="350" y="167" class="t-sm" text-anchor="middle">below them, nothing above</text>
+
+  <path class="ln" d="M 550 134 L 550 162 L 455 162 L 455 190 M 550 162 L 630 162 L 630 190"/>
+  <rect class="box-green" x="380" y="190" width="150" height="34" rx="3"/>
+  <text x="455" y="212" class="t-mono" text-anchor="middle">/board/papers</text>
+  <rect class="box-warm" x="550" y="190" width="160" height="34" rx="3"/>
+  <text x="630" y="212" class="t-mono" text-anchor="middle">/board/AcmeDiscss/</text>
+
+  <path class="ln-dash" d="M 630 224 L 630 260"/>
+  <path d="M 625 256 L 630 266 L 635 256 Z" fill="#8a9a9a"/>
+  <text x="620" y="248" class="t-sm" text-anchor="end">reverse proxy</text>
+  <rect class="box-plain" x="550" y="266" width="160" height="34" rx="3"/>
+  <text x="630" y="288" text-anchor="middle">AcmeDiscss service</text>
+  <text x="630" y="316" class="t-sm" text-anchor="middle">outside camps.org</text>
+</svg>
+<figcaption><span class="fig-label">Figure 68.3</span>
+The server already delegates by path. The browser draws no boundary anywhere
+in this tree.</figcaption>
+</figure>
+
 <h2>68.3 The case that shows the cost</h2>
 
 <p>
-The worked example is a board using an outside discussion tool, mounted inside
-its own site. What one wants is for the outside tool to be unable to read the
-board&#8217;s papers, which sit elsewhere in the same tree.
+The camps.org board proxies an outside meeting tool into
+<code>https://camps.org/board/AcmeDiscss/stuff</code>. Its papers sit at
+<code>https://camps.org/board/papers</code>, under the same parent. The tool&#8217;s
+scripts should not read the papers, but to the browser both are one origin.
 </p>
 
 <p>
-The browser cannot express that. So the tool is given a subdomain, or it is
-hosted by its supplier entirely, and Berners-Lee names what has been lost:
+So the tool gets a subdomain, or its supplier hosts it, and Berners-Lee names
+what is lost:
 </p>
 
 <blockquote>
@@ -108,17 +232,41 @@ data.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
-<p>
-The arrangement that actually obtains, the tool&#8217;s supplier hosting the board&#8217;s
-pages under the supplier&#8217;s own domain, inverts the relationship: the party
-being engaged for one small purpose becomes the party the data belongs to.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig68-4-t fig68-4-d">
+  <title id="fig68-4-t">Where the board&#8217;s trust boundary can go</title>
+  <desc id="fig68-4-d">Three addresses for the board's discussion tool. The
+  wanted one sits inside the board's own path, but the browser cannot wall it
+  off from the papers. The workaround gives it a subdomain, at the price of a
+  contorted address. What usually happens is that it lives under the
+  supplier's own domain.</desc>
+
+  <text x="24" y="24" class="t-caps" style="fill:#5a8f5a">wanted</text>
+  <rect class="box-green" x="24" y="34" width="380" height="34" rx="3"/>
+  <text x="36" y="56" class="t-mono">https://camps.org/board/AcmeDiscss/stuff</text>
+  <text x="420" y="48" class="t-sm">a wall between this and /board/papers</text>
+  <text x="420" y="64" class="t-sm" style="fill:#b08d57">the browser cannot enforce it</text>
+
+  <text x="24" y="100" class="t-caps" style="fill:#b08d57">workaround</text>
+  <rect class="box-warm" x="24" y="110" width="380" height="34" rx="3"/>
+  <text x="36" y="132" class="t-mono">https://AcmeDiscss.board.camps.org/</text>
+  <text x="420" y="132" class="t-sm" style="fill:#b08d57">possible, but the address is contorted</text>
+
+  <text x="24" y="176" class="t-caps" style="fill:#b08d57">what happens</text>
+  <rect class="box-warm" x="24" y="186" width="380" height="34" rx="3"/>
+  <text x="36" y="208" class="t-mono">https://campsboard.AcmeDiscss.com/</text>
+  <text x="420" y="208" class="t-sm" style="fill:#b08d57">the board&#8217;s pages live under the supplier&#8217;s name</text>
+</svg>
+<figcaption><span class="fig-label">Figure 68.4</span>
+Each step moves the data further from its owner, until the supplier&#8217;s
+domain is the party the browser trusts with it.</figcaption>
+</figure>
 
 <h2>68.4 A general caution about identifiers</h2>
 
 <p>
-One sentence generalises past the argument, and it is a rule worth carrying
-into any addressing scheme:
+One sentence generalises to any addressing scheme:
 </p>
 
 <blockquote>
@@ -128,10 +276,9 @@ is necessary -- the best of many bad choices.
 </blockquote>
 
 <p>
-He then names the two places where opacity was accepted, and the second is
-striking. The letter discussed in Chapter 67 is one. The other is the domain
-name itself, which he calls the massive opaqueness, because it is the path by
-which the user&#8217;s trust in the session travels at all.
+He names two accepted opacities. The <em>s</em> in https, discussed in Chapter 67, is one. The other is
+the domain name itself, which he calls the massive opaqueness, because it is the
+path by which the user&#8217;s trust in the session travels at all.
 </p>
 
 <p>
@@ -143,17 +290,18 @@ move away from reliance on domain names generally.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The boundary moved, repeatedly.</strong> Site isolation work from
-2018 onward refined what counts as a party, introducing distinctions between
-an origin and a registrable domain, which is the symptom Chapter 67 names: a
+<li><strong>The boundary moved, repeatedly.</strong> Chrome turned on Site
+Isolation by default on desktop in 2018, keyed on the registrable domain (such
+as camps.org) rather than the full origin: the symptom Chapter 67 names, a
 boundary that can never be placed correctly.</li>
 <li><strong>Path-based boundaries were never added.</strong> Trust still
 derives from the authority alone, so the contortion of Figure 68.1 is still
 required.</li>
-<li><strong>The privacy leak was partly closed.</strong> Encrypted name
-lookup, standardised from 2018, hides requests from the network, though the
-server name is still visible in most connections.</li>
-<li><strong>Embedding a supplier&#8217;s tool under your own tree stayed
+<li><strong>The privacy leak was partly closed.</strong> DNS over TLS (RFC 7858,
+2016) and DNS over HTTPS (RFC 8484, October 2018) encrypt the lookup. The server
+name is still sent in the clear when the connection opens, unless Encrypted
+Client Hello is used.</li>
+<li><strong>Embedding a supplier&#8217;s tool under a site&#8217;s own tree stayed
 impossible.</strong> Third-party components are hosted by their suppliers or
 served from a subdomain, which is the arrangement section 68.3
 describes.</li>
@@ -174,8 +322,8 @@ applications reading data are Chapter 54.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">68.1</span>
-Take a site you run. If you had to give one subtree its own trust boundary
-today, what would you have to change?</p>
+Take the camps.org example. List what must change to give
+<code>/board/AcmeDiscss/</code> its own boundary today.</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.2</span>
@@ -184,12 +332,13 @@ the mechanism, and say what now mitigates it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.3</span>
-Path-based permissions are ordinary in file systems. Name what makes them
-harder to apply in a browser.</p>
+The board&#8217;s papers and the discussion tool share the parent
+<code>/board/</code>. Why can&#8217;t the browser keep them apart, when the
+server&#8217;s <code>.htaccess</code> rules already can?</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.4</span>
 The domain name is called the massive opaqueness. Explain why it is accepted,
-using the argument of Chapter 6.</p>
+using the argument of Chapter 2.</p>
 </div>
 </div>

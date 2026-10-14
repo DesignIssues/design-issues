@@ -49,6 +49,16 @@
 a Design Issues note by Tim Berners-Lee, 2023-04-14.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Gradient.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Life happens in groups of many sizes, but software offers only public and
+private. Buildings solve this with a sequence of rooms that can be told apart
+at a glance. Berners-Lee proposes doing the same for data in <a class="gl-ref" href="../glossary.html#solid">Solid</a>, starting
+with colour, and designing the private end as carefully as the public one.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -66,10 +76,6 @@ combinations of different sized groups of people.
 
 <h2>74.1 The building</h2>
 
-<p>
-The image is worked carefully before it is applied:
-</p>
-
 <blockquote>
 A city has public places where I can do all kinds of things, and also a private
 house with a private room which may be by myself. In that house there are spaces
@@ -77,64 +83,72 @@ where I do things with family, friends, colleagues.
 <cite>The Intimacy Gradient, 2022</cite>
 </blockquote>
 
+<p>
+Christopher Alexander was an architect whose book <em>A Pattern Language</em>
+catalogues recurring design solutions; pattern 125 is the one Berners-Lee
+cites. Its resolution is a building laid out as a sequence: from the entrance
+and the most public parts, through slightly more private areas, to the most
+private ones.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig74-1-t fig74-1-d">
   <title id="fig74-1-t">A gradient, not a switch</title>
   <desc id="fig74-1-d">A building leads from the street through a porch, a
-  hall and a sitting room to a bedroom, and everyone knows which they are in
-  without being told. Most systems offer only the two ends, so everything in
-  between has to be approximated.</desc>
+  hall, a sitting room and a kitchen to a private room, and each room has the
+  people who are welcome there: strangers, clients, guests, friends, family,
+  and the owner alone. Most systems offer only the two ends, public and private, so
+  everything in between has to be approximated.</desc>
 
-  <g>
-    <rect x="24" y="60" width="118" height="120" fill="#fdfdfc" stroke="#8a9a9a"/>
-    <text x="83" y="126" class="t-sm" text-anchor="middle">the street</text>
-    <rect x="142" y="60" width="118" height="120" fill="#f6f8f9" stroke="#9dbfd0"/>
-    <text x="201" y="126" class="t-sm" text-anchor="middle">the porch</text>
-    <rect x="260" y="60" width="118" height="120" fill="#eef4f7" stroke="#79a6bc"/>
-    <text x="319" y="126" class="t-sm" text-anchor="middle">the hall</text>
-    <rect x="378" y="60" width="118" height="120" fill="#f8f5f0" stroke="#c9ab7d"/>
-    <text x="437" y="126" class="t-sm" text-anchor="middle">the sitting room</text>
-    <rect x="496" y="60" width="118" height="120" fill="#f3f0ea" stroke="#b08d57"/>
-    <text x="555" y="126" class="t-sm" text-anchor="middle">the kitchen</text>
-    <rect x="614" y="60" width="82" height="120" fill="#efeae1" stroke="#a07d47"/>
-    <text x="655" y="118" class="t-sm" text-anchor="middle">your</text>
-    <text x="655" y="136" class="t-sm" text-anchor="middle">room</text>
-  </g>
+  <rect x="24" y="60" width="116" height="110" fill="#fdfdfc" style="stroke:#8a9a9a"/>
+  <text x="82" y="108" text-anchor="middle">street</text>
+  <text x="82" y="150" class="t-sm" text-anchor="middle">strangers</text>
+  <rect x="140" y="60" width="116" height="110" fill="#f0f5f8" fill-opacity="0.5" stroke="#1c5a7a" stroke-opacity="0.45"/>
+  <text x="198" y="108" text-anchor="middle">porch</text>
+  <text x="198" y="150" class="t-sm" text-anchor="middle">clients</text>
+  <rect x="256" y="60" width="116" height="110" fill="#f0f5f8" stroke="#1c5a7a" stroke-opacity="0.8"/>
+  <text x="314" y="108" text-anchor="middle">hall</text>
+  <text x="314" y="150" class="t-sm" text-anchor="middle">guests</text>
+  <rect x="372" y="60" width="116" height="110" fill="#f8f5f0" fill-opacity="0.6" stroke="#b08d57" stroke-opacity="0.5"/>
+  <text x="430" y="108" text-anchor="middle">sitting room</text>
+  <text x="430" y="150" class="t-sm" text-anchor="middle">friends</text>
+  <rect x="488" y="60" width="116" height="110" fill="#f8f5f0" stroke="#b08d57" stroke-opacity="0.8"/>
+  <text x="546" y="108" text-anchor="middle">kitchen</text>
+  <text x="546" y="150" class="t-sm" text-anchor="middle">family</text>
+  <rect x="604" y="60" width="92" height="110" fill="#f8f5f0" stroke="#b08d57" stroke-width="2.2"/>
+  <text x="650" y="108" text-anchor="middle">my room</text>
+  <text x="650" y="150" class="t-sm" text-anchor="middle">me alone</text>
+
   <path class="ln-accent" d="M 24 46 L 690 46"/>
   <path d="M 684 41 L 696 46 L 684 51 Z" fill="#1c5a7a"/>
-  <text x="360" y="36" class="t-sm" text-anchor="middle" fill="#1c5a7a">nobody has to be told which room they are in</text>
+  <text x="360" y="34" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">more private at each step, and it is easy to know which room one is in</text>
 
-  <line class="ln-mut" x1="24" y1="204" x2="696" y2="204"/>
-  <text x="24" y="228" class="t-caps" fill="#b04a4a">what most systems offer</text>
-  <rect x="200" y="212" width="150" height="26" fill="#fdfdfc" stroke="#8a9a9a"/>
-  <text x="275" y="230" class="t-sm" text-anchor="middle">public</text>
-  <rect x="546" y="212" width="150" height="26" fill="#efeae1" stroke="#a07d47"/>
-  <text x="621" y="230" class="t-sm" text-anchor="middle">private</text>
-  <path class="ln-dash" d="M 350 225 L 546 225"/>
-  <text x="448" y="216" class="t-sm" text-anchor="middle" fill="#b04a4a">everything else</text>
+  <line class="ln-mut" x1="24" y1="196" x2="696" y2="196"/>
+  <text x="24" y="229" class="t-caps">what most systems offer</text>
+  <rect x="236" y="212" width="130" height="26" fill="#fdfdfc" style="stroke:#8a9a9a"/>
+  <text x="301" y="230" class="t-sm" text-anchor="middle">public</text>
+  <rect x="566" y="212" width="130" height="26" fill="#f8f5f0" stroke="#b08d57" stroke-width="2.2"/>
+  <text x="631" y="230" class="t-sm" text-anchor="middle">private</text>
+  <path class="ln-dash" d="M 366 225 L 566 225"/>
+  <text x="466" y="214" class="t-sm" text-anchor="middle" style="fill:#b08d57">everything else</text>
 
   <text x="360" y="268" class="t-sm" text-anchor="middle">&#8220;Unless the spaces in a building are arranged in a sequence which corresponds</text>
   <text x="360" y="286" class="t-sm" text-anchor="middle">to their degrees of privacy the visits made by strangers, friends, guests,</text>
   <text x="360" y="304" class="t-sm" text-anchor="middle">clients, family, will always be a little awkward.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 74.1</span>
-The quoted conflict is from Christopher Alexander&#8217;s pattern 125, which
-Berners-Lee cites directly. The resolution is to lay out the spaces so that
-they form a sequence from the entrance inwards.</figcaption>
+Room names are illustrative; the visitors are Alexander&#8217;s list, and the
+quotation is pattern 125&#8217;s conflict. A two-setting system keeps only the
+first and last rooms.</figcaption>
 </figure>
 
 <p>
-The requirement this produces is threefold, and each part is about the person
-rather than the mechanism: that I can easily recognise the difference, easily
+The web, he says, must do the same, so that I can easily recognise the difference, easily
 know which I am in, and easily welcome people into the more intimate areas.
 </p>
 
 <h2>74.2 The mechanism he proposes is colour</h2>
-
-<p>
-The practical suggestion is almost disarmingly small:
-</p>
 
 <blockquote>
 A simple way to start making an intimacy gradient on the web is with style.
@@ -142,9 +156,9 @@ A simple way to start making an intimacy gradient on the web is with style.
 </blockquote>
 
 <p>
-His own organisation&#8217;s site had used three background colours for three levels
-of access for decades, and the reason given is about safety rather than
-aesthetics:
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> pages are public, member-only or team-only, and by convention their
+backgrounds are white, pale blue and straw; the mailing-list archives use the
+same colours. The reason is safety, not looks:
 </p>
 
 <blockquote>
@@ -154,9 +168,9 @@ cannot share things with.
 </blockquote>
 
 <p>
-The convention of putting a warning word in the name of public mailing lists is
-recorded as a second measure, because the first was not enough. And then the
-observation that names the gap in every tool anyone uses:
+People still mailed non-public material to public lists, so W3C put the
+warning word &#8220;public-&#8221; in every public list&#8217;s address. Then
+the gap:
 </p>
 
 <blockquote>
@@ -166,17 +180,111 @@ could!
 <cite>The Intimacy Gradient, 2022</cite>
 </blockquote>
 
-<p>
-The mistake this would prevent is one almost everyone has made, and no widely
-used tool prevents it.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
+     aria-labelledby="fig74-2-t fig74-2-d">
+  <title id="fig74-2-t">Colour as a warning</title>
+  <desc id="fig74-2-d">On the left, three W3C page backgrounds: white for public
+  pages anyone may see, pale blue for member-only pages shared with W3C members,
+  and straw for team-only pages shared with W3C staff. On the right, a mail
+  composing window addressed to a public list still has a plain white body; a
+  dashed arrow leads to a second window whose background is tinted according
+  to the size of the audience, as the note suggests.</desc>
+
+  <text x="24" y="30" class="t-caps">w3c pages and list archives</text>
+  <rect x="24" y="44" width="112" height="84" fill="#fdfdfc" style="stroke:#8a9a9a"/>
+  <text x="80" y="80" text-anchor="middle">white</text>
+  <text x="80" y="102" class="t-sm" text-anchor="middle">public</text>
+  <rect x="148" y="44" width="112" height="84" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1.4"/>
+  <text x="204" y="80" text-anchor="middle">pale blue</text>
+  <text x="204" y="102" class="t-sm" text-anchor="middle">member-only</text>
+  <rect x="272" y="44" width="112" height="84" fill="#f8f5f0" stroke="#b08d57" stroke-width="1.4"/>
+  <text x="328" y="80" text-anchor="middle">straw</text>
+  <text x="328" y="102" class="t-sm" text-anchor="middle">team-only</text>
+
+  <text x="80" y="152" class="t-sm" text-anchor="middle">may share with</text>
+  <text x="80" y="170" text-anchor="middle">anyone</text>
+  <text x="204" y="152" class="t-sm" text-anchor="middle">may share with</text>
+  <text x="204" y="170" text-anchor="middle">W3C members</text>
+  <text x="328" y="152" class="t-sm" text-anchor="middle">may share with</text>
+  <text x="328" y="170" text-anchor="middle">W3C staff</text>
+
+  <text x="456" y="30" class="t-caps">a mail composing window</text>
+  <rect x="456" y="44" width="240" height="72" fill="#fdfdfc" style="stroke:#8a9a9a"/>
+  <text x="468" y="64" class="t-mono">To: public-&#8230;@w3.org</text>
+  <line class="ln-mut" x1="456" y1="74" x2="696" y2="74"/>
+  <text x="468" y="100" class="t-sm">body: plain white, whoever reads it</text>
+
+  <path class="ln-dash" d="M 576 120 L 576 156"/>
+  <path d="M 571 152 L 576 162 L 581 152 Z" fill="#8a9a9a"/>
+  <text x="566" y="136" class="t-sm" text-anchor="end">what the note suggests:</text>
+  <text x="566" y="151" class="t-sm" text-anchor="end">tint by audience</text>
+
+  <rect x="456" y="166" width="240" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1.4"/>
+  <text x="468" y="186" class="t-mono">To: public-&#8230;@w3.org</text>
+  <line x1="456" y1="196" x2="696" y2="196" stroke="#b08d57" stroke-width="1.1"/>
+  <text x="468" y="222" class="t-sm">background varies with audience size</text>
+</svg>
+<figcaption><span class="fig-label">Figure 74.2</span>
+The pages carry the cue; the composing window, where the mistake happens,
+does not. The lower tint is illustrative: the note names no colours for mail.</figcaption>
+</figure>
 
 <h2>74.3 Both ends of the gradient deserve design</h2>
 
 <p>
-The note does something unusual with its own proposal in the last third. Having
-argued for letting people style their public profile, because people want to be
-proud of it and direct others to it, Berners-Lee turns the argument around:
+The note&#8217;s real subject is Solid, where each person keeps their data in a
+<a class="gl-ref" href="../glossary.html#pod">pod</a>: a personal store on the web that they control (Chapter 54). A pod holds
+public things such as a profile, private things such as settings and
+preferences, and things shared with groups and combinations of groups.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
+     aria-labelledby="fig74-3-t fig74-3-d">
+  <title id="fig74-3-t">One pod, three zones</title>
+  <desc id="fig74-3-d">A pod drawn as three nested zones. The outer, public zone
+  holds the profile in colours the owner chose. The middle, shared zone holds
+  overlapping groups of different sizes: family, a project and a company. The
+  inner, private zone holds settings and preferences. An arrow on the left
+  shows that styling today reaches only the public edge; an arrow on the right
+  shows the note asking for the private centre to be styled too.</desc>
+
+  <rect class="box-green" x="150" y="20" width="420" height="280" rx="18"/>
+  <text x="168" y="44" class="t-caps">public</text>
+  <text x="552" y="44" class="t-sm" text-anchor="end">profile (chosen colours)</text>
+
+  <rect class="box" x="190" y="60" width="340" height="224" rx="14"/>
+  <text x="206" y="82" class="t-caps">shared</text>
+  <ellipse class="ln-accent" cx="262" cy="125" rx="48" ry="30"/>
+  <ellipse class="ln-accent" cx="340" cy="118" rx="48" ry="28"/>
+  <ellipse class="ln-accent" cx="440" cy="130" rx="72" ry="40"/>
+  <text x="250" y="134" class="t-sm" text-anchor="middle">family</text>
+  <text x="336" y="112" class="t-sm" text-anchor="middle">project</text>
+  <text x="456" y="140" class="t-sm" text-anchor="middle">company</text>
+
+  <rect class="box-warm" x="250" y="186" width="220" height="80" rx="10"/>
+  <text x="266" y="208" class="t-caps">private</text>
+  <text x="360" y="244" class="t-sm" text-anchor="middle">settings, preferences</text>
+
+  <text x="24" y="160" class="t-sm">styled today</text>
+  <path class="ln-mut" d="M 24 172 L 160 172"/>
+  <path d="M 156 167 L 166 172 L 156 177 Z" fill="#8a9a9a"/>
+
+  <text x="696" y="204" class="t-sm" text-anchor="end" style="fill:#1c5a7a">the note:</text>
+  <text x="696" y="220" class="t-sm" text-anchor="end" style="fill:#1c5a7a">style this too</text>
+  <path class="ln-accent" d="M 696 234 L 470 234"/>
+  <path d="M 474 229 L 464 234 L 474 239 Z" fill="#1c5a7a"/>
+</svg>
+<figcaption><span class="fig-label">Figure 74.3</span>
+Shared groups overlap and differ in size. Design attention has gone to the
+public edge, where Solid lets people pick their profile&#8217;s colours; the note
+asks for the same care at the centre.</figcaption>
+</figure>
+
+<p>
+Profiles are styled because people want to be proud of them. Then Berners-Lee
+turns the argument around:
 </p>
 
 <blockquote>
@@ -187,32 +295,55 @@ style of the private places too.
 </blockquote>
 
 <p>
-Personal expression has been thought about only at the public end, because
-that is the end other people see. The private end is where a person spends most
-of their time, and it has been left to look like whatever the software looks
-like.
+His instruction has two sides: make the default experience in intimate places
+one that respects that intimacy, and also let people control it.
 </p>
 
+<h3>A home, not a showroom</h3>
+
 <p>
-The instruction he gives is two-sided, and it is the general form of the whole
-chapter: make the default experience in intimate places one that respects that
-intimacy, and also let people control it.
+The private parts of a pod, he says, should feel like a home. The owner feels secure
+there and is in charge, arranging things their own way, in their own styles,
+filed alphabetically or by date. And because Solid lets people choose their apps,
+they can adopt a developer&#8217;s ideas about home they would not have had.
 </p>
 
 <h2>74.4 Why this closes the volume</h2>
 
 <p>
-Every chapter in Volume VII has been about a system that models a social
-arrangement too narrowly. Trust is modelled as one hierarchy. Security is
-modelled as a boundary. A party is modelled as a domain. Identity is modelled
-as a password. Sharing is modelled as a switch.
+Most chapters in Volume VII are about a system that models a social
+arrangement too narrowly. Trust is treated as a single yes-or-no value, so a
+padlock either shows or it does not (Chapter 67). Every application on one
+domain is treated as one party (Chapter 68). Sharing is a switch between
+nobody and the whole Web (Chapter 72).
 </p>
 
 <p>
-This chapter names what all of them are missing, and the name comes from
-someone who was designing buildings rather than protocols. People do not live
-at the ends of a scale. They live in the rooms between, and a system with two
-settings makes every visit a little awkward.
+This chapter names what they all miss, borrowing from an architect: people
+live in the rooms between.
+</p>
+
+<h2>74.5 What varies along the gradient</h2>
+
+<p>
+The note ends by asking what the gradient is a gradient in, and names the
+four rows below. The cells are this book&#8217;s illustration, not the
+author&#8217;s claims.
+</p>
+
+<table>
+<tr><th>Dimension</th><th>Public end</th><th>Intimate end</th></tr>
+<tr><td>Colour and theme</td><td>A clear warning that many can see</td><td>The owner&#8217;s choice, restful</td></tr>
+<tr><td>Fonts</td><td>The community&#8217;s house style</td><td>Whatever the owner finds easy to read</td></tr>
+<tr><td>Protection from mistakes</td><td>Confirm before anything goes out</td><td>Few interruptions</td></tr>
+<tr><td>Fact-checking</td><td>Claims checked before they spread</td><td>Notes to oneself left as written</td></tr>
+</table>
+
+<p>
+Because the gradient runs through the whole Solid ecosystem, everyone who
+codes a piece of it has to know where each interaction falls, and code
+accordingly. A start is to pick up key colours from the user&#8217;s preferences
+and from their communities&#8217;.
 </p>
 
 <div class="since">
@@ -222,13 +353,9 @@ settings makes every visit a little awkward.
 offer a small fixed set of audiences, which is the three-option model of
 Chapter 64, and overlapping groups of different sizes remain hard to
 express.</li>
-<li><strong>Colour as a safety cue spread partially.</strong> Some
-collaboration tools now mark external or public channels visibly, which is
-section 74.2&#8217;s proposal adopted where the cost of a mistake is
-commercial.</li>
-<li><strong>The composing window is still uncoloured.</strong> No widely used
-mail client varies its appearance with the size of the audience, and sending
-to the wrong list remains an ordinary accident.</li>
+<li><strong>The composing window is still uncoloured.</strong> Some mail
+systems warn before sending to a large or external audience, but the warning
+is a dialog box, not a change in how the composing window looks.</li>
 <li><strong>The pattern language kept being borrowed.</strong> Alexander&#8217;s
 patterns continued to be applied to software, and this is among the more
 literal applications: a gradient of rooms, for data.</li>
@@ -260,12 +387,12 @@ are the boundaries?</p>
 <div class="question">
 <p><span class="question-number">74.3</span>
 Private places have been left undesigned. Describe what you would change about
-a tool you use alone.</p>
+a tool you use only by yourself (notes, photos, a password manager).</p>
 </div>
 <div class="question">
 <p><span class="question-number">74.4</span>
-A two-setting system makes every visit awkward. Give an instance from outside
-computing where the same failure occurs.</p>
+Berners-Lee suggests that protection from mistakes could vary along the
+gradient. Where should a tool be most cautious, and where least?</p>
 </div>
 </details>
 

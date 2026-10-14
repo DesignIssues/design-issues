@@ -26,16 +26,36 @@ web for society places requirements also on the Internet layer.
 <cite>No Snooping, 2009</cite>
 </blockquote>
 <p>
-The occasion was a proposal to inspect the contents of network traffic at the
-provider, build a profile of every address a household visited, and use it to
-target advertising.
+The occasion was a proposal by the company Phorm to inspect the contents of
+network traffic at the provider, build a profile of every address a household
+visited, and use it to target advertising.
 </p>
 </div>
 
 <h2>71.1 The equivalence</h2>
 
 <p>
-The argument opens by refusing to treat this as a new kind of thing:
+The argument opens by refusing to treat this as new:
+</p>
+
+<blockquote>
+The Internet in general has and deserves the same protection as paper mail and
+telephone.
+<cite>No Snooping, 2009</cite>
+</blockquote>
+
+<p>
+It then claims more protection, not the same:
+</p>
+
+<blockquote>
+If fact you could argue that it needs it more, as it carries more or our lives
+and is more revealing than our phone calls or our mail.
+<cite>No Snooping, 2009</cite>
+</blockquote>
+
+<p>
+And it says exactly where the line falls:
 </p>
 
 <blockquote>
@@ -46,60 +66,132 @@ sealed postal mail.
 </blockquote>
 
 <p>
-And then goes further, which is the move that makes the note useful rather
-than merely correct:
+An internet service provider (ISP) is the company that carries a customer&#8217;s traffic.
+Every message is cut into pieces called packets. The outside of each packet carries the delivery address;
+the inside carries the content. The provider needs only the outside to do its
+job. Reading the inside on the way past is called deep packet inspection, and
+it was the technique Phorm proposed to use.
 </p>
 
-<blockquote>
-If fact you could argue that it needs it more, as it carries more or our lives
-and is more revealing than our phone calls or our mail.
-<cite>No Snooping, 2009</cite>
-</blockquote>
+<figure>
+<svg class="dia" viewBox="0 0 720 346" width="720" height="346" role="img"
+     aria-labelledby="fig71-1-t fig71-1-d">
+  <title id="fig71-1-t">The outside and the inside of a packet</title>
+  <desc id="fig71-1-d">Traffic passes from a home through the provider&#8217;s
+  equipment to a website. Each packet has a routing header, which the provider
+  needs in order to deliver it, and a payload holding the page address, form
+  contents and page content. Deep packet inspection reads the payload and passes
+  it to a profiling and advertising company. Below, a letter and a phone call are
+  compared: the envelope and the number dialled are outside, the sealed contents
+  and the conversation are inside.</desc>
+
+  <rect class="box" x="16" y="60" width="100" height="50" rx="4"/>
+  <text x="66" y="90" text-anchor="middle">a home</text>
+
+  <rect class="box-plain" x="150" y="16" width="420" height="154" rx="4"/>
+  <text x="360" y="38" class="t-caps" text-anchor="middle">ISP equipment</text>
+
+  <rect class="box" x="170" y="56" width="150" height="96"/>
+  <text x="245" y="78" text-anchor="middle">routing header</text>
+  <text x="245" y="98" class="t-sm" text-anchor="middle">where to deliver</text>
+  <text x="245" y="120" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">&#10003; allowed:</text>
+  <text x="245" y="138" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">needed to deliver</text>
+
+  <rect class="box-warm" x="320" y="56" width="230" height="96"/>
+  <text x="435" y="78" text-anchor="middle">payload</text>
+  <text x="435" y="98" class="t-sm" text-anchor="middle">the page address,</text>
+  <text x="435" y="114" class="t-sm" text-anchor="middle">a form filled in,</text>
+  <text x="435" y="130" class="t-sm" text-anchor="middle">the content</text>
+
+  <rect class="box" x="604" y="60" width="100" height="50" rx="4"/>
+  <text x="654" y="90" text-anchor="middle">website</text>
+
+  <line class="ln" x1="116" y1="85" x2="162" y2="85"/>
+  <path d="M170,85 l-9,-4 v8 z" fill="#2f4f4f"/>
+  <line class="ln" x1="550" y1="85" x2="596" y2="85"/>
+  <path d="M604,85 l-9,-4 v8 z" fill="#2f4f4f"/>
+
+  <line class="ln-dash" x1="435" y1="152" x2="435" y2="214" style="stroke:#b08d57"/>
+  <path d="M435,222 l-4,-9 h8 z" fill="#b08d57"/>
+  <text x="447" y="196" class="t-sm" style="fill:#b08d57">deep packet inspection reads this</text>
+
+  <rect class="box-warm" x="330" y="222" width="210" height="36" rx="4"/>
+  <text x="435" y="245" text-anchor="middle">profile / advertising company</text>
+
+  <line class="ln-mut" x1="16" y1="272" x2="704" y2="272"/>
+  <text x="245" y="292" class="t-caps" text-anchor="middle">outside</text>
+  <text x="435" y="292" class="t-caps" text-anchor="middle">inside</text>
+  <text x="24" y="314">letter</text>
+  <text x="245" y="314" text-anchor="middle">the envelope</text>
+  <text x="435" y="314" text-anchor="middle">the sealed contents</text>
+  <text x="24" y="336">phone call</text>
+  <text x="245" y="336" text-anchor="middle">the number dialled</text>
+  <text x="435" y="336" text-anchor="middle">the conversation</text>
+</svg>
+<figcaption><span class="fig-label">Figure 71.1</span>
+The provider needs only the outside of the packet. Reading the inside is the
+equivalent of steaming open a letter. That is the note&#8217;s whole legal
+claim.</figcaption>
+</figure>
 
 <h2>71.2 What an address discloses</h2>
 
+<p>
+A web address (URL) names the exact page someone asked for, not just the site.
+A list of them is therefore a diary of what a person wanted to know, kept
+before they had told anyone.
+</p>
+
+<blockquote>
+The URLs which people use reveal a huge amount about their lives, loves, hates,
+and fears. This is extremely sensitive material.
+<cite>No Snooping, 2009</cite>
+</blockquote>
+
+<p>
+Forms make it worse. A search can produce an address such as
+<code>https://example.org/search?q=chest+pain+left+arm</code>: the words typed
+are now part of the address, visible to anyone who reads the payload.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig71-1-t fig71-1-d">
-  <title id="fig71-1-t">What a list of addresses says about a person</title>
-  <desc id="fig71-1-d">The addresses a person visits reveal their health
-  worries, their sexuality, their politics and their finances. Addresses
-  produced by filling in forms contain what was typed into the form. A
-  browsing history is a record of what someone wanted to know before anyone
-  else knew they wanted to know it.</desc>
+<svg class="dia" viewBox="0 0 720 362" width="720" height="362" role="img"
+     aria-labelledby="fig71-2-t fig71-2-d">
+  <title id="fig71-2-t">What a list of addresses says about a person</title>
+  <desc id="fig71-2-d">The addresses a person visits reveal their health
+  worries, their sexuality and their politics. The note lists six ways the
+  information could be misused, from buying a profile of someone to predators
+  choosing victims. Addresses produced by filling in forms contain what was
+  typed into the form.</desc>
 
-  <rect class="box-plain" x="24" y="34" width="310" height="200" rx="4"/>
+  <rect class="box-plain" x="24" y="34" width="310" height="224" rx="4"/>
   <text x="179" y="58" class="t-caps" text-anchor="middle">what people look up</text>
-  <g class="t-sm">
-    <text x="46" y="88">whether they have an infection</text>
-    <text x="46" y="112">whether a symptom means cancer</text>
-    <text x="46" y="136">whether they are homosexual,</text>
-    <text x="46" y="154">and whether to talk about it</text>
-    <text x="46" y="180">political views others find abhorrent</text>
-    <text x="46" y="210" class="t-it" fill="#666">&#8220;People use the web in crisis&#8221;</text>
-  </g>
+  <text x="46" y="88" class="t-sm">whether they have an infection</text>
+  <text x="46" y="112" class="t-sm">whether a symptom means cancer</text>
+  <text x="46" y="136" class="t-sm">whether they are homosexual,</text>
+  <text x="46" y="154" class="t-sm">and whether to talk about it</text>
+  <text x="46" y="180" class="t-sm">political views others find abhorrent</text>
+  <text x="46" y="242" class="t-sm t-it" style="fill:#8a9a9a">&#8220;People use the web in crisis&#8221;</text>
 
-  <rect class="box-warm" x="386" y="34" width="310" height="200" rx="4"/>
-  <text x="541" y="58" class="t-caps" text-anchor="middle" fill="#a07d47">what could be done with it</text>
-  <g class="t-sm">
-    <text x="408" y="88">buy a profile of a person you dislike</text>
-    <text x="408" y="112">screen job applicants by what they read</text>
-    <text x="408" y="136">refuse insurance to anyone who looked</text>
-    <text x="408" y="154">up cardiac symptoms</text>
-    <text x="408" y="180">choose, stalk and target a victim</text>
-    <text x="408" y="210" class="t-it" fill="#666">&#8220;to name a few&#8221;</text>
-  </g>
+  <rect class="box-warm" x="386" y="34" width="310" height="224" rx="4"/>
+  <text x="541" y="58" class="t-caps" text-anchor="middle" style="fill:#b08d57">what could be done with it</text>
+  <text x="408" y="88" class="t-sm">buy a profile of any person of interest</text>
+  <text x="408" y="110" class="t-sm">screen job applicants by their profiles</text>
+  <text x="408" y="132" class="t-sm">refuse insurance to anyone who looked</text>
+  <text x="408" y="150" class="t-sm">up cardiac symptoms</text>
+  <text x="408" y="172" class="t-sm">criminal attacks on officials at home</text>
+  <text x="408" y="194" class="t-sm">foreign states targeting key individuals</text>
+  <text x="408" y="216" class="t-sm">predators choosing and stalking victims</text>
+  <text x="408" y="242" class="t-sm t-it" style="fill:#8a9a9a">&#8220;to name a few&#8221;</text>
 
-  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Addresses produced by filling in a form contain what was typed into the form.</text>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">&#8220;it is like the company having a video camera inside your house,</text>
-  <text x="360" y="326" class="t-sm" text-anchor="middle">except that it gives them actually much more information about you.&#8221;</text>
+  <line class="ln-mut" x1="24" y1="280" x2="696" y2="280"/>
+  <text x="360" y="304" class="t-sm" text-anchor="middle">Addresses produced by filling in a form contain what was typed into the form.</text>
+  <text x="360" y="328" class="t-sm" text-anchor="middle">&#8220;it is like the company having a video camera inside your house,</text>
+  <text x="360" y="348" class="t-sm" text-anchor="middle">except that it gives them actually much more information about you.&#8221;</text>
 </svg>
-<figcaption><span class="fig-label">Figure 71.1</span>
-The list is not rhetorical. Berners-Lee&#8217;s harms run from commercial
-discrimination through criminal attacks on officials to foreign states
-targeting individuals, and he notes the data may be abused by an insider as
-easily as stolen from outside.</figcaption>
+<figcaption><span class="fig-label">Figure 71.2</span>
+The six harms are the note&#8217;s own list. It adds that the data may be
+abused by an insider as easily as stolen from outside.</figcaption>
 </figure>
 
 <h2>71.3 The argument about democracy</h2>
@@ -142,11 +234,13 @@ web access.
 </blockquote>
 
 <p>
-Written as a warning against surveillance on efficiency grounds, six years
-before Chapter 67 argues about how that encryption should be marked, and nine
-before it became universal. The prediction was right about the mechanism and
-wrong about the cost: encryption got cheap, and the loss of shared caches was
-absorbed by moving the caches inside the encrypted relationship.
+SSL (now TLS) scrambles traffic so that only the two ends can read it. A
+proxy or shared cache is a machine in the middle that keeps copies of popular
+pages, and it cannot do that with traffic it cannot read. This was a warning
+against surveillance on efficiency grounds, six years before Chapter 67. The
+prediction was right about the mechanism and wrong about the cost: encryption
+got cheap, and content-delivery companies now run caches on the site&#8217;s
+behalf, holding its keys.
 </p>
 
 <h2>71.5 Why it must be illegal rather than discouraged</h2>
@@ -171,7 +265,7 @@ applies.
 </p>
 
 <p>
-The closing line is the shortest statement of principle in Volume VII:
+The note closes with a statement of principle:
 </p>
 
 <blockquote>
@@ -183,31 +277,31 @@ It must be available without interference or spying.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The specific proposal failed.</strong> The company whose plans
-prompted the meeting abandoned its British deployment, and the European
-Commission brought infringement proceedings against the United Kingdom in
-2009 over its handling of the interception rules.</li>
+<li><strong>The specific proposal failed.</strong> The large British
+providers that had trialled or planned to adopt Phorm&#8217;s system withdrew
+during 2009, and in April 2009 the European Commission began infringement
+proceedings against the United Kingdom over its handling of the interception
+rules.</li>
 <li><strong>The encryption prediction came true and the costs did
-not.</strong> Encrypted browsing became the default within a decade, and the
-processing cost that section 71.4 warns of fell to negligible.</li>
+not.</strong> Let&#8217;s Encrypt, a free certificate authority, began issuing
+certificates in December 2015, and from July 2018 Chrome labelled every
+unencrypted page as not secure.</li>
 <li><strong>The surveillance moved to where encryption does not
-reach.</strong> Profiling shifted from the network to the endpoints, through
-tracking within pages and in applications, which the argument here does not
-address.</li>
-<li><strong>The principle entered law unevenly.</strong> European data
-protection law from May 2018 treats browsing history as personal data
-requiring a legal basis; elsewhere provider-level collection remains
-lawful.</li>
+reach.</strong> Profiling shifted from the network to tracking within pages
+and applications, which the argument here does not address.</li>
+<li><strong>The principle entered law unevenly.</strong> The EU&#8217;s
+General Data Protection Regulation, applying from May 2018, treats browsing
+data linked to a person as personal data requiring a legal basis.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The encryption whose marking is argued about is Chapter 67, and the addresses
-that leak through lookups are Chapter 68. Reading as an act that leaves a
-trace is Chapter 61. Inference over private data is Chapter 72, and filtering
-at the network layer is Chapter 77.
+The encryption whose marking is argued about is Chapter 67, and Chapter 68
+asks what counts as a single party on the Web, which decides who may see what.
+Inference over private data is Chapter 72, and filtering at the network layer
+is Chapter 77.
 </p>
 </div>
 
@@ -220,8 +314,9 @@ changes when observed, and say what society loses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.2</span>
-Encryption defeated network-level inspection. Where did the observation go
-instead, and what would the equivalent argument look like there?</p>
+Encryption defeated network-level inspection. Using the third bullet of
+&#8220;What happened since&#8221;, say where the observation went instead, and
+what the equivalent argument would look like there.</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.3</span>
@@ -230,7 +325,8 @@ which is harder to obtain.</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.4</span>
-Addresses from forms contain what was typed. Find an example in your own
-browsing history.</p>
+Here is an address produced by a search form:
+<code>https://example.org/search?q=pregnancy+test+results&amp;near=Leeds</code>.
+List what a provider reading it learns.</p>
 </div>
 </div>

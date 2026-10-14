@@ -49,6 +49,17 @@
 a Design Issues note by Tim Berners-Lee, 2015-03-28.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Security-ClientCerts.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A person proves who they are to a website with a password, which is sent to the
+site and stored there. The browser could instead keep a private key, give the
+site the matching public key, and sign a random challenge from the site, so
+the secret never leaves the person&#8217;s machine. Berners-Lee asks browsers to make this
+easy, and to show which identity is in use.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -71,54 +82,123 @@ The question is why, in those cases, we still use passwords.
 <h2>69.1 The comparison</h2>
 
 <p>
-The note&#8217;s central passage is a single long sentence that lays out everything
-wrong with a password by simply describing what one is:
+A client certificate is, in the note&#8217;s words, one of the &ldquo;Public Key
+certificates used by the browser to authenticate the user&rdquo;: that is, to
+prove to a site who the user is. It rests on a key pair: a private key that
+stays with its owner, and a public key that anyone may hold, which can check a
+signature made with the private key but cannot make one.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig69-1-t fig69-1-d">
-  <title id="fig69-1-t">A password and a key pair, side by side</title>
-  <desc id="fig69-1-d">A good password is unmemorable, must differ per site,
+  <title id="fig69-1-t">What crosses the wire</title>
+  <desc id="fig69-1-d">With a password, the secret travels from the browser
+  across the network to the site and is copied into the site&#8217;s database,
+  so a breach exposes it. With a key pair, the private key stays in the
+  browser; the site sends a random challenge, the browser returns a signature,
+  and the database holds only the public key, which is useless to a
+  thief.</desc>
+
+  <text x="24" y="30" class="t-caps">with a password</text>
+  <text x="656" y="30" class="t-caps" text-anchor="middle">breach exposes</text>
+  <path class="ln-dash" d="M 596 40 L 596 266"/>
+
+  <rect class="box" x="24" y="44" width="116" height="60" rx="4"/>
+  <text x="82" y="79" text-anchor="middle">Browser</text>
+  <path class="ln" d="M 140 74 L 318 74"/>
+  <path d="M 318 68 L 330 74 L 318 80 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="196" y="62" width="66" height="24" rx="3"/>
+  <text x="229" y="78" text-anchor="middle">secret</text>
+  <text x="235" y="104" class="t-sm" text-anchor="middle">sent across the network</text>
+  <rect class="box" x="330" y="44" width="100" height="60" rx="4"/>
+  <text x="380" y="79" text-anchor="middle">Site</text>
+  <path class="ln" d="M 430 74 L 462 74"/>
+  <path d="M 462 68 L 474 74 L 462 80 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="474" y="44" width="110" height="60" rx="4"/>
+  <text x="529" y="64" text-anchor="middle">Database</text>
+  <rect class="box-warm" x="496" y="74" width="66" height="22" rx="3"/>
+  <text x="529" y="90" text-anchor="middle">secret</text>
+  <text x="656" y="79" text-anchor="middle" style="fill:#b08d57">a user&#8217;s secret</text>
+
+  <path class="ln-mut" d="M 24 124 L 712 124"/>
+
+  <text x="24" y="148" class="t-caps">with a key pair</text>
+  <rect class="box" x="24" y="162" width="116" height="88" rx="4"/>
+  <text x="82" y="184" text-anchor="middle">Browser</text>
+  <rect class="box-green" x="36" y="200" width="92" height="36" rx="3"/>
+  <text x="82" y="222" text-anchor="middle">private key</text>
+  <text x="82" y="270" class="t-sm" text-anchor="middle">never leaves the device</text>
+
+  <path class="ln" d="M 330 188 L 152 188"/>
+  <path d="M 152 182 L 140 188 L 152 194 Z" fill="#2f4f4f"/>
+  <text x="235" y="178" class="t-sm" text-anchor="middle">random challenge</text>
+  <path class="ln" d="M 140 226 L 318 226"/>
+  <path d="M 318 220 L 330 226 L 318 232 Z" fill="#2f4f4f"/>
+  <text x="235" y="246" class="t-sm" text-anchor="middle">signature</text>
+
+  <rect class="box" x="330" y="162" width="100" height="88" rx="4"/>
+  <text x="380" y="210" text-anchor="middle">Site</text>
+  <path class="ln" d="M 430 206 L 462 206"/>
+  <path d="M 462 200 L 474 206 L 462 212 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="474" y="162" width="110" height="88" rx="4"/>
+  <text x="529" y="184" text-anchor="middle">Database</text>
+  <rect class="box-green" x="489" y="200" width="80" height="36" rx="3"/>
+  <text x="529" y="222" text-anchor="middle">public key</text>
+  <text x="656" y="200" text-anchor="middle" style="fill:#5a8f5a">a public key,</text>
+  <text x="656" y="218" class="t-sm" text-anchor="middle">useless to a thief</text>
+</svg>
+<figcaption><span class="fig-label">Figure 69.1</span>
+With a password the secret travels and is copied into someone else&#8217;s
+database. With a key pair it never leaves the user&#8217;s device; only a signature
+crosses the wire.</figcaption>
+</figure>
+
+<p>
+The note&#8217;s central passage lays out everything wrong with a password simply
+by describing what one is:
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 336" width="720" height="336" role="img"
+     aria-labelledby="fig69-2-t fig69-2-d">
+  <title id="fig69-2-t">A password and a key pair, side by side</title>
+  <desc id="fig69-2-d">A good password is unmemorable, must differ per site,
   is sent across the network, and is stored by the other party. A private key
   is generated once, never sent, never stored by anyone else, and can be used
   with many parties.</desc>
 
-  <rect class="box-plain" x="24" y="34" width="310" height="212" rx="4" stroke="#d9b0b0"/>
-  <text x="179" y="60" class="t-caps" text-anchor="middle" fill="#b04a4a">a password</text>
-  <g class="t-sm">
-    <text x="46" y="94">must be huge, so you cannot remember it</text>
-    <text x="46" y="122">so your computer remembers it for you</text>
-    <text x="46" y="150">must be different for every party</text>
-    <text x="46" y="178" fill="#b04a4a">is sent across the network</text>
-    <text x="46" y="206" fill="#b04a4a">is stored by the other party</text>
-    <text x="46" y="234" fill="#b04a4a">&#8220;which can be pretty insecure, to judge from history&#8221;</text>
-  </g>
+  <rect class="box-warm" x="24" y="34" width="310" height="230" rx="4"/>
+  <text x="179" y="60" class="t-caps" text-anchor="middle" style="fill:#b08d57">a password</text>
+  <text x="46" y="92" class="t-sm">must be huge, so no one can remember it</text>
+  <text x="46" y="120" class="t-sm">so a computer has to remember it</text>
+  <text x="46" y="148" class="t-sm">must be different for every party</text>
+  <text x="46" y="176" class="t-sm" style="fill:#b08d57">is sent across the network</text>
+  <text x="46" y="204" class="t-sm" style="fill:#b08d57">is stored by the other party,</text>
+  <text x="46" y="230" class="t-sm" style="fill:#b08d57">&#8220;which can be pretty insecure,</text>
+  <text x="52" y="246" class="t-sm" style="fill:#b08d57">to judge from history&#8221;</text>
 
-  <rect class="box-green" x="386" y="34" width="310" height="212" rx="4"/>
-  <text x="541" y="60" class="t-caps" text-anchor="middle" fill="#3f6f3f">a key pair</text>
-  <g class="t-sm">
-    <text x="408" y="94">generated once, stupendously long</text>
-    <text x="408" y="122">unguessable, and you never type it</text>
-    <text x="408" y="150">one key serves many parties</text>
-    <text x="408" y="178" fill="#3f6f3f">never sent to anyone</text>
-    <text x="408" y="206" fill="#3f6f3f">never seen or stored by anyone else</text>
-    <text x="408" y="234" fill="#3f6f3f">nothing to steal from their database</text>
-  </g>
+  <rect class="box-green" x="386" y="34" width="310" height="230" rx="4"/>
+  <text x="541" y="60" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a key pair</text>
+  <text x="408" y="92" class="t-sm">generated once, stupendously long</text>
+  <text x="408" y="120" class="t-sm">unguessable, and never typed in</text>
+  <text x="408" y="148" class="t-sm">one key serves many parties</text>
+  <text x="408" y="176" class="t-sm" style="fill:#5a8f5a">never sent to anyone</text>
+  <text x="408" y="204" class="t-sm" style="fill:#5a8f5a">never seen or stored by anyone else</text>
+  <text x="408" y="232" class="t-sm" style="fill:#5a8f5a">nothing to steal from their database</text>
 
-  <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
-  <text x="360" y="290" class="t-sm" text-anchor="middle">&#8220;Yes, you can&#8217;t scribble your secret key on a Post-It&#8482; note</text>
-  <text x="360" y="310" class="t-sm" text-anchor="middle">but that is actually an advantage.&#8221;</text>
+  <path class="ln-mut" d="M 24 284 L 696 284"/>
+  <text x="360" y="306" class="t-sm" text-anchor="middle">&#8220;Yes, you can&#8217;t scribble your secret key on a Post-It&#8482; note</text>
+  <text x="360" y="324" class="t-sm" text-anchor="middle">but that is actually an advantage.&#8221;</text>
 </svg>
-<figcaption><span class="fig-label">Figure 69.1</span>
-Berners-Lee&#8217;s observation about the reception of the idea: ask people about
-client certificates and they say they are going out of fashion and hard to use;
-ask the same people about passwords and they scream that they hate
-them.</figcaption>
+<figcaption><span class="fig-label">Figure 69.2</span>
+Read the bottom rows. The password travels and is stored by someone else.
+The private key does neither.</figcaption>
 </figure>
 
 <p>
-His summary of why the mathematics deserves better treatment is one line:
+People call client certificates unfashionable and hard to use, he notes,
+yet say they hate passwords. His summary:
 </p>
 
 <blockquote>
@@ -130,29 +210,59 @@ be making better use of it.
 <h2>69.2 Six things a browser would have to do</h2>
 
 <p>
-The note is unusual in the collection for being a feature <a class="gl-ref" href="../glossary.html#specification">specification</a>. The
-list is short and the absence of any of it explains why the mechanism failed.
+The note is unusual in the collection for being a feature <a class="gl-ref" href="../glossary.html#specification">specification</a>.
 </p>
 
 <table>
 <tr><th>Function</th><th>What it means for a person</th></tr>
 <tr><td>Create a key pair and keep it locally</td><td>On the laptop, phone or a hardware device</td></tr>
 <tr><td>Choose which identity to use for a site, and remember it</td><td>With enough shown to tell one from another</td></tr>
-<tr><td>Show who you are logged in as, near the address</td><td>Beside where the site&#8217;s own identity is shown</td></tr>
+<tr><td>Show who the user is logged in as, near the address</td><td>Beside where the site&#8217;s own identity is shown</td></tr>
 <tr><td>Log out</td><td>Drop the credentials, optionally choose another identity</td></tr>
-<tr><td>Manage those preferences</td><td>Editable when you get muddled</td></tr>
+<tr><td>Manage those preferences</td><td>Editable when the user gets muddled</td></tr>
 <tr><td>Back up and synchronise keys, selectively</td><td>Marked for extra credit; some keys should never leave one machine</td></tr>
 </table>
 
 <p>
-The third is the one that reveals the asymmetry most sharply. A browser shows
-who the site is, prominently, and shows nothing about who you are being. The
-conversation is displayed from one side only.
+The third reveals the asymmetry most sharply. A browser shows who the site is,
+prominently, and shows nothing about who the user is being.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
+     aria-labelledby="fig69-3-t fig69-3-d">
+  <title id="fig69-3-t">The missing half of the address bar</title>
+  <desc id="fig69-3-d">Today the address bar shows a padlock and the
+  site&#8217;s name, bank.example, and nothing about who the user is. In the
+  proposed bar, a slot on the right shows the identity in use, such as
+  Alice with her work key.</desc>
+
+  <text x="24" y="36" class="t-caps">today</text>
+  <rect class="box-plain" x="24" y="48" width="672" height="44" rx="6"/>
+  <path class="ln-accent" d="M 47 66 L 47 61 A 4 4 0 0 1 55 61 L 55 66"/>
+  <rect x="44" y="66" width="14" height="12" rx="2" fill="#1c5a7a"/>
+  <text x="68" y="75" class="t-mono" style="fill:#1c5a7a">bank.example</text>
+  <text x="172" y="75" class="t-sm">(who the site is)</text>
+  <rect class="ln-dash" x="440" y="56" width="240" height="28" rx="4" style="stroke:#b08d57"/>
+  <text x="560" y="74" class="t-sm" text-anchor="middle" style="fill:#b08d57">who the user is: nothing shown</text>
+
+  <text x="24" y="128" class="t-caps">as proposed</text>
+  <rect class="box-plain" x="24" y="140" width="672" height="44" rx="6"/>
+  <path class="ln-accent" d="M 47 158 L 47 153 A 4 4 0 0 1 55 153 L 55 158"/>
+  <rect x="44" y="158" width="14" height="12" rx="2" fill="#1c5a7a"/>
+  <text x="68" y="167" class="t-mono" style="fill:#1c5a7a">bank.example</text>
+  <text x="172" y="167" class="t-sm">(who the site is)</text>
+  <rect class="box-green" x="440" y="148" width="240" height="28" rx="4"/>
+  <text x="560" y="167" text-anchor="middle">user: Alice (work key)</text>
+</svg>
+<figcaption><span class="fig-label">Figure 69.3</span>
+Browsers display the conversation from one side only. The note suggests the
+missing half might sit on the right of the address bar.</figcaption>
+</figure>
+
 <p>
-The complaint about how identities are presented is specific and is the kind
-of detail that decides whether a feature is usable:
+The complaint about how identities are presented is the kind of detail that
+decides whether a feature is usable:
 </p>
 
 <blockquote>
@@ -161,10 +271,23 @@ not all just labelled with my name (duh!).
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 
+<h3>What web developers need</h3>
+
+<p>The note&#8217;s further points include:</p>
+<ul>
+<li>Label each certificate by the party that signed it or, where it is a
+WebID, by the domain of the WebID.</li>
+<li>Give a web app a way to find out which certificate the user chose to
+reach a given resource.</li>
+<li>When a page makes a new key with <code>&lt;keygen&gt;</code>, the <a class="gl-ref" href="../glossary.html#html">HTML</a>
+element that asked the browser to generate a key pair, fire an event or
+Promise so the page can carry on with its workflow.</li>
+</ul>
+
 <h2>69.3 The refusal</h2>
 
 <p>
-The note ends with a section titled with two words, and it is directed at a
+The note ends with a section titled &ldquo;Just do it&rdquo;, directed at a
 habit rather than at a technology:
 </p>
 
@@ -188,43 +311,46 @@ tried out in browsers really fast.
 </blockquote>
 
 <p>
-The closing instruction is four words: let us just change it. Coming from
-someone who had spent thirty years unable to change how browsers work, it is
-either optimism or exasperation, and possibly both.
+The closing instruction is four words: &ldquo;Let&#8217;s just change it.&rdquo;
+It reads as optimism or exasperation, and possibly both.
 </p>
 
 <h2>69.4 Why this closes the set</h2>
 
 <p>
-The four notes together make one argument. Chapter 66 says the system models
-one kind of trust. Chapter 67 says it marks security in the wrong place.
-Chapter 68 says it draws the party boundary in the wrong place. This one says
-it authenticates the wrong side.
+The four notes together make one argument. Each finds a place where the
+machine&#8217;s model of a social arrangement is narrower than the arrangement:
 </p>
 
+<table>
+<tr><th>Chapter</th><th>What the system assumes</th><th>What is actually true</th></tr>
+<tr><td>66</td><td>Trust flows only from a certificate authority</td><td>People trust others because they met them, know them or work for them</td></tr>
+<tr><td>67</td><td>Security is marked in the address, by the s in https</td><td>Encryption is a fact about the connection, not the name</td></tr>
+<tr><td>68</td><td>A party is a domain name</td><td>A party can be a path within a site</td></tr>
+<tr><td>69</td><td>Only the site needs strong proof of identity</td><td>The user needs it too, at the bank or among friends</td></tr>
+</table>
+
 <p>
-Each is a case of the same thing: the machine&#8217;s model of a social arrangement
-is narrower than the arrangement, and the narrowing is invisible because it
-has been there since the beginning.
+In each case the narrowing is invisible because it has been there since the
+beginning.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The mechanism was replaced rather than fixed.</strong> WebAuthn, a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2019, gives exactly the properties of the right
-column of Figure 69.1: a key generated locally, never sent, never stored by
-the other party.</li>
-<li><strong>The interface requirements were met.</strong> Passkeys, from 2022,
-supply the creation, selection, synchronisation and per-site memory that
-section 69.2 lists, with the operating system rather than the browser doing
-most of it.</li>
-<li><strong>The key element the note asks for is still missing.</strong> No
-browser shows, beside the site&#8217;s identity, which identity you are currently
-presenting. The conversation is still displayed from one side.</li>
-<li><strong>The old mechanism was removed.</strong> The element for generating
-a key pair in a page, which the note mentions, was removed from browsers
-around 2019, before its replacement was widely usable.</li>
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2019, gives the properties of the bottom lane of
+Figure 69.1.</li>
+<li><strong>The interface requirements were met.</strong> Passkeys, announced
+by Apple, Google and Microsoft in May 2022, supply most of what section 69.2 lists,
+with the operating system rather than the browser doing the work. Synced
+passkeys do leave the machine, which the note warns against for some keys.</li>
+<li><strong>The key element the note asks for is still missing.</strong> As
+of 2026, no major browser shows, beside the site&#8217;s identity, which
+identity the user is currently presenting.</li>
+<li><strong>The old mechanism was removed.</strong> <code>&lt;keygen&gt;</code>
+was removed from Chrome in version 57 (March 2017) and from Firefox in
+version 69 (2019), before its replacement was widely usable.</li>
 </ul>
 </div>
 
@@ -251,13 +377,13 @@ indicator, and say what it must not show.</p>
 </div>
 <div class="question">
 <p><span class="question-number">69.3</span>
-Some keys should never leave one machine. Which of yours, and how would you
-express that?</p>
+You have a work laptop, a phone and a shared family tablet. Which keys should
+stay on one device, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">69.4</span>
-&ldquo;That's not how browsers work.&rdquo; Name a change you believe is
-impossible for that reason, and test the belief.</p>
+Name a browser feature once called impossible that now exists. What made it
+possible?</p>
 </div>
 </details>
 
