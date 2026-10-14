@@ -49,21 +49,32 @@
 a Design Issues note by Tim Berners-Lee, 2017.
 <a class="source-link" href="https://www.w3.org/DesignIssues/NetNeutrality.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Net neutrality is &ldquo;the principle that internet service providers (ISPs)
+treat all traffic equally&rdquo;: an ISP must not block sites, slow them
+down, or charge them to go faster. Berners-Lee wrote this as the US regulator
+was about to drop those rules. Keeping the carrier out of the content business,
+he argues, keeps both markets competitive.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is not a design note. It is a call to action, published on 10 December
-2017, two days before a regulator voted on removing the rules it defends. It
-is included at chapter length because the architectural argument inside it is
-the clearest statement in the collection of why a market boundary matters.
+This is not a design note but a call to action, dated 10 December 2017, in the
+days before the US Federal Communications Commission (FCC) voted on 14 December
+to remove the rules it defends. It is the collection&#8217;s clearest statement
+of why the company that carries someone&#8217;s data should not also choose
+what they see.
 </p>
 </div>
 
 <h2>78.1 The personal argument</h2>
 
 <p>
-Berners-Lee makes the case from his own position, and the sentence is the most
-quoted thing he wrote about this subject:
+Berners-Lee makes the case from his own experience:
 </p>
 
 <blockquote>
@@ -74,7 +85,7 @@ was write a new app and plug my computer into the net.
 </blockquote>
 
 <p>
-The counterfactual follows immediately:
+He then says what would change:
 </p>
 
 <blockquote>
@@ -85,60 +96,147 @@ means no more permissionless space for innovation.
 </blockquote>
 
 <p>
-Permissionless is the operative word, and it is the same property Chapter 1
-calls decentralisation and Chapter 49 relies on when it says anyone may publish
-without asking.
+Permissionless is the operative word: the decentralisation of section 1.5.
+Figure 78.1 follows one newcomer through both worlds.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig78-1-t fig78-1-d">
+  <title id="fig78-1-t">A newcomer&#8217;s path to readers</title>
+  <desc id="fig78-1-d">Top row, with neutrality: a new website reaches readers
+  through the reader&#8217;s ISP with no fee and no permission. Bottom row,
+  without it: an incumbent that pays rides a fast lane through the ISP, while
+  the new website meets a gate, must negotiate first, and is left in the slow
+  lane.</desc>
+  <defs>
+    <marker id="fig78-1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig78-1-ahb" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="12" markerHeight="12" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig78-1-ahm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="24" class="t-caps" style="fill:#5a8f5a">with neutrality</text>
+  <rect class="box" x="40" y="36" width="160" height="40" rx="4"/>
+  <text x="120" y="61" text-anchor="middle">new website</text>
+  <rect class="box" x="280" y="36" width="160" height="40" rx="4"/>
+  <text x="360" y="61" text-anchor="middle">reader&#8217;s ISP</text>
+  <rect class="box" x="520" y="36" width="160" height="40" rx="4"/>
+  <text x="600" y="61" text-anchor="middle">reader</text>
+  <line class="ln" x1="200" y1="56" x2="279" y2="56" marker-end="url(#fig78-1-ah)"/>
+  <line class="ln" x1="440" y1="56" x2="519" y2="56" marker-end="url(#fig78-1-ah)"/>
+  <text x="360" y="96" class="t-sm" text-anchor="middle">no fee, no permission</text>
+
+  <line class="ln-mut" x1="24" y1="116" x2="696" y2="116"/>
+
+  <text x="40" y="142" class="t-caps" style="fill:#b08d57">without</text>
+  <rect class="box" x="40" y="162" width="160" height="36" rx="4"/>
+  <text x="120" y="185" text-anchor="middle">incumbent that pays</text>
+  <rect class="box" x="40" y="218" width="160" height="36" rx="4"/>
+  <text x="120" y="241" text-anchor="middle">new website</text>
+  <rect class="box-warm" x="280" y="156" width="160" height="104" rx="4"/>
+  <text x="360" y="213" text-anchor="middle">reader&#8217;s ISP</text>
+  <line x1="292" y1="224" x2="292" y2="248" style="stroke:#b08d57;stroke-width:5"/>
+  <rect class="box" x="520" y="186" width="160" height="48" rx="4"/>
+  <text x="600" y="215" text-anchor="middle">reader</text>
+
+  <line class="ln-accent" x1="200" y1="180" x2="279" y2="180" style="stroke-width:4" marker-end="url(#fig78-1-ahb)"/>
+  <text x="240" y="168" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">fast lane</text>
+  <line class="ln-dash" x1="200" y1="236" x2="286" y2="236" marker-end="url(#fig78-1-ahm)"/>
+  <text x="240" y="256" class="t-sm" text-anchor="middle">slow lane</text>
+  <line class="ln-accent" x1="440" y1="198" x2="519" y2="198" style="stroke-width:4" marker-end="url(#fig78-1-ahb)"/>
+  <line class="ln-dash" x1="440" y1="224" x2="519" y2="224" marker-end="url(#fig78-1-ahm)"/>
+  <text x="360" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">negotiate first</text>
+</svg>
+<figcaption><span class="fig-label">Figure 78.1</span>
+Neutrality takes the carrier out of the decision about which sites reach
+readers, and how fast. Figure 25.4 shows the same rule from the users&#8217;
+side.</figcaption>
+</figure>
 
 <h2>78.2 The architectural argument</h2>
 
-<figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig78-1-t fig78-1-d">
-  <title id="fig78-1-t">Two markets, separate or joined</title>
-  <desc id="fig78-1-d">When connectivity and content are separate markets, each
-  competes on its own terms and a newcomer needs no permission. When the same
-  firms control both, the carrier chooses which content succeeds, which is the
-  older television model.</desc>
+<p>
+The core of the note is about markets:
+</p>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">separate markets</text>
+<blockquote>
+Net neutrality separates the connectivity market from the content market. As
+separate markets, both have flourished. But if the US allows the internet to
+become like the old cable TV model — with the same firms controlling the cables
+and the content — competition in both markets will suffer.
+<cite>Act now to save the internet as we know it, 2017</cite>
+</blockquote>
+
+<p>
+Connectivity is what a customer pays an ISP for; content is what the customer
+reaches through it. Under the cable television model one firm controls both.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig78-2-t fig78-2-d">
+  <title id="fig78-2-t">Two markets, separate or joined</title>
+  <desc id="fig78-2-d">When connectivity and content are separate markets, with
+  a boundary between them, each competes on its own terms and a newcomer needs
+  no permission. When the same firms control both, the carrier chooses which
+  content succeeds, which is the older television model.</desc>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">separate markets</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="244"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">one market</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">one market</text>
 
   <rect class="box" x="40" y="46" width="280" height="54" rx="4"/>
   <text x="180" y="70" class="t-sm" text-anchor="middle">content: many, competing</text>
   <text x="180" y="88" class="t-sm" text-anchor="middle">anyone may enter, today</text>
-  <line class="ln-accent" x1="40" y1="114" x2="320" y2="114"/>
+  <line class="ln-accent" x1="40" y1="114" x2="196" y2="114"/>
+  <text x="206" y="118" class="t-sm" style="fill:#1c5a7a">market boundary</text>
   <rect class="box" x="40" y="128" width="280" height="54" rx="4"/>
   <text x="180" y="152" class="t-sm" text-anchor="middle">connectivity: competing on</text>
   <text x="180" y="170" class="t-sm" text-anchor="middle">price and speed</text>
-  <text x="180" y="212" class="t-sm" text-anchor="middle" fill="#3f6f3f">both flourish; neither can</text>
-  <text x="180" y="230" class="t-sm" text-anchor="middle" fill="#3f6f3f">decide the other&#8217;s winners</text>
+  <text x="180" y="212" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">both flourish; neither can</text>
+  <text x="180" y="230" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">decide the other&#8217;s winners</text>
 
   <rect class="box-warm" x="400" y="46" width="280" height="136" rx="4"/>
   <text x="540" y="76" class="t-sm" text-anchor="middle">the same firms own</text>
   <text x="540" y="100" class="t-sm" text-anchor="middle">the cables and the content</text>
   <path class="ln-mut" d="M 440 116 L 640 116"/>
-  <text x="540" y="140" class="t-sm" text-anchor="middle" fill="#a07d47">whoever pays rides in the fast lane</text>
-  <text x="540" y="164" class="t-sm" text-anchor="middle" fill="#a07d47">a newcomer must negotiate first</text>
+  <text x="540" y="140" class="t-sm" text-anchor="middle" style="fill:#b08d57">whoever pays rides in the fast lane</text>
+  <text x="540" y="164" class="t-sm" text-anchor="middle" style="fill:#b08d57">a newcomer must negotiate first</text>
   <text x="540" y="212" class="t-sm" text-anchor="middle">competition in both markets suffers</text>
   <text x="540" y="230" class="t-sm t-it" text-anchor="middle">the old cable television model</text>
-
-  <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
-  <text x="360" y="286" class="t-sm" text-anchor="middle">&#8220;Net neutrality separates the connectivity market from the content market.</text>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">As separate markets, both have flourished.&#8221;</text>
 </svg>
-<figcaption><span class="fig-label">Figure 78.1</span>
-The argument is about market structure rather than about fairness. Two
-separate markets each competing beats one market where the carrier picks the
-winners.</figcaption>
+<figcaption><span class="fig-label">Figure 78.2</span>
+The argument is about market structure, not fairness: two competing markets
+beat one where the carrier picks the winners.</figcaption>
 </figure>
+
+<p>
+The note names three things the FCC told ISPs they could not do:
+&ldquo;blocking content, throttling site speed, or charging for content to be
+prioritised&rdquo;.
+</p>
+
+<table>
+<tr><th>Practice</th><th>What the ISP does</th><th>Who loses</th></tr>
+<tr><td>Blocking</td><td>Refuses to carry a site</td><td>The site and its readers</td></tr>
+<tr><td>Throttling</td><td>Deliberately slows a site</td><td>The site, which looks broken</td></tr>
+<tr><td>Paid prioritisation (&ldquo;fast lane&rdquo;)</td><td>Speeds up sites that pay</td><td>Sites that cannot pay, usually the newest</td></tr>
+<tr><td>Zero-rating (not in the note)</td><td>Data from favoured services does not count against the user&#8217;s monthly allowance</td><td>Rivals, which cost more to use</td></tr>
+</table>
 
 <h2>78.3 Why it was not needed at first</h2>
 
 <p>
-One paragraph explains why the principle had to be written down only later, and
-it is a general observation about how norms become rules:
+The note explains why the rule came late:
 </p>
 
 <blockquote>
@@ -149,23 +247,69 @@ neutrality was a fact of life.
 </blockquote>
 
 <p>
-Neutrality was an accident of capability. When the capability arrived, the
-incentive was already there, and Berners-Lee names it: as the value of the
-content flowing through the network increased, carriers developed both the
-ability and the reason to take a cut.
+Neutrality was an accident: routers could not inspect and sort traffic fast
+enough to favour one site over another. As technology improved and content grew
+more valuable, carriers gained the ability and the incentive to take a cut.
 </p>
 
 <p>
-A property that held because nobody could break it is not a property. It is a
-gap that eventually closes, and at that moment somebody must decide whether to
-write the rule down.
+A property that held because nobody could break it is a gap that eventually
+closes. Then somebody must decide whether to write the rule down (Figure 78.3).
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig78-3-t fig78-3-d">
+  <title id="fig78-3-t">Neutrality from accident to rule</title>
+  <desc id="fig78-3-d">A timeline with a break between 1995 and 2014. Below the
+  line: 1989, the Web invented with no fee or permission; April 2016, the
+  European Union&#8217;s open internet regulation applies. Above the line: the
+  early years, when ISPs were too slow to discriminate; 2015, US rules
+  formalised; 10 December 2017, this note; 14 December 2017, the FCC repeals
+  the rules; 2018, California passes its own law; April 2024, rules readopted;
+  January 2025, a court vacates them.</desc>
+
+  <line class="ln" x1="40" y1="130" x2="172" y2="130"/>
+  <line class="ln-mut" x1="176" y1="138" x2="184" y2="122"/>
+  <line class="ln-mut" x1="186" y1="138" x2="194" y2="122"/>
+  <line class="ln" x1="198" y1="130" x2="696" y2="130"/>
+
+  <line class="ln" x1="50" y1="124" x2="50" y2="146"/>
+  <text x="44" y="162" class="t-sm">1989: Web invented;</text>
+  <text x="44" y="178" class="t-sm">no fee, no permission</text>
+
+  <line class="ln-mut" x1="70" y1="118" x2="170" y2="118" style="stroke-width:3"/>
+  <text x="120" y="92" class="t-sm" text-anchor="middle">early years: neutral</text>
+  <text x="120" y="107" class="t-sm" text-anchor="middle">by incapacity</text>
+
+  <line class="ln" x1="259" y1="106" x2="259" y2="136"/>
+  <text x="262" y="100" class="t-sm" text-anchor="middle">2015: US rules formalised</text>
+
+  <line class="ln" x1="312" y1="124" x2="312" y2="148" style="stroke:#5a8f5a"/>
+  <text x="312" y="162" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">Apr 2016: EU open internet</text>
+  <text x="312" y="178" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">regulation applies; still in force</text>
+
+  <line class="ln-accent" x1="376" y1="74" x2="376" y2="136"/>
+  <text x="376" y="50" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">10 Dec 2017: this note</text>
+  <text x="376" y="66" class="t-sm" text-anchor="middle" style="fill:#b08d57">14 Dec 2017: FCC repeals the rules</text>
+
+  <line class="ln" x1="404" y1="106" x2="404" y2="136"/>
+  <text x="410" y="100" class="t-sm">2018: California&#8217;s own law</text>
+
+  <line class="ln" x1="616" y1="74" x2="616" y2="136"/>
+  <line class="ln" x1="643" y1="74" x2="643" y2="136"/>
+  <text x="696" y="50" class="t-sm" text-anchor="end">Apr 2024: rules readopted</text>
+  <text x="696" y="66" class="t-sm" text-anchor="end" style="fill:#b08d57">Jan 2025: a court vacates them</text>
+</svg>
+<figcaption><span class="fig-label">Figure 78.3</span>
+First a technical accident, then a rule, then a political football in the
+United States (above). Europe (below, green) stayed put. The axis is broken.</figcaption>
+</figure>
 
 <h2>78.4 What the argument asks for</h2>
 
 <p>
-Berners-Lee&#8217;s statement of what he wants is three sentences of parallel
-construction, and it is the clearest thing in the piece:
+His statement of what he wants is the clearest thing in the piece:
 </p>
 
 <blockquote>
@@ -178,16 +322,16 @@ online, and where ISPs focus on providing the best connectivity.
 </blockquote>
 
 <p>
-Each sentence names a decision and says who should make it. Quality decides,
-not payment. Readers decide, not carriers. Consumers decide, and carriers do
-the thing they are good at.
+Each sentence names a decision and who should make it: quality, not payment;
+readers, not carriers; consumers, while carriers do what they are good at. The
+instruction that follows is short:
+&ldquo;act now. Not tomorrow, not next week. Now.&rdquo;
 </p>
 
 <h2>78.5 The tactical note</h2>
 
 <p>
-The last section is unusual for this collection in being about lobbying, and
-it contains one observation of some coldness:
+The last section, unusually, is about lobbying:
 </p>
 
 <blockquote>
@@ -197,11 +341,7 @@ But they all understand how many votes they need to stay in office.
 </blockquote>
 
 <p>
-Understanding is unevenly distributed, and the incentive to respond is not. The
-instruction that follows is four words long: not tomorrow, not next week, now.
-</p>
-
-<p>
+Understanding is unevenly distributed, and the incentive to respond is not.
 Chapter 15 argued that every system has a technical protocol and a social one.
 This is the same author operating on the social protocol directly, because the
 technical one has no defence against a change in the law.
@@ -210,27 +350,27 @@ technical one has no defence against a change in the law.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The vote went the other way.</strong> The rules were repealed on
-14 December 2017, four days after this was published.</li>
+<li><strong>The vote went the other way.</strong> The FCC repealed the rules on
+14 December 2017. Several US states then passed neutrality laws of their own,
+California&#8217;s in 2018.</li>
 <li><strong>The predicted collapse did not immediately follow.</strong>
-Blocking and throttling of competitors did not become widespread in the years
-after, though zero-rating arrangements, which favour some content, did.</li>
+Blocking and throttling of competitors did not become widespread, though
+zero-rating continued and spread.</li>
 <li><strong>The rules came back and went again.</strong> They were readopted in
 April 2024 and then vacated by a court in January 2025, leaving the question
 open.</li>
 <li><strong>Europe held the line.</strong> The European Union&#8217;s open internet
 regulation has applied since 2016 and was not repealed, so the separation of
-the two markets described in Figure 78.1 persists there.</li>
+the two markets described in Figure 78.2 persists there.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Permissionless publication is Chapter 49 and decentralisation is Chapter 1.
-The network layer&#8217;s obligations to the Web are Chapter 71. Openness in its
-several senses is Chapter 25, and the social protocol being addressed is
-Chapter 15.
+Decentralisation is section 1.5; linking without permission is Chapter 76.
+The network layer&#8217;s obligations are Chapter 71. Openness is Chapter 25,
+with net neutrality in section 25.7. The social protocol is Chapter 15.
 </p>
 </div>
 
@@ -238,8 +378,8 @@ Chapter 15.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">78.1</span>
-A property that holds because nobody can break it is not a property. Name
-another that is currently in that state.</p>
+Neutrality once held only because ISPs&#8217; computers were too slow to
+discriminate. Why did that stop being enough?</p>
 </div>
 <div class="question">
 <p><span class="question-number">78.2</span>
@@ -248,13 +388,13 @@ principle as argued here?</p>
 </div>
 <div class="question">
 <p><span class="question-number">78.3</span>
-Two separate markets are said to beat one. State the conditions under which
-that is true, and one where it is not.</p>
+Name a service you use where the company selling the connection also sells the
+content. What choices does that give it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">78.4</span>
 The technical protocol has no defence against a change in the law. Name
-something in your own work that is in the same position.</p>
+something in your own life or work that is in the same position.</p>
 </div>
 </details>
 

@@ -49,18 +49,29 @@
 a Design Issues note by Tim Berners-Lee, 2004-04-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/TLD.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A web address such as <code>www.example.com</code> is read from the right.
+The last part, <code>.com</code>, is the top-level domain; <code>example</code>
+is the name rented beneath it. ICANN, a non-profit body, runs the top of the
+tree; companies called registries run each top-level domain and charge fees.
+</p>
+<p>
+In 2004 ICANN was considering <code>.mobi</code> (mobile content) and
+<code>.xxx</code> (adult content). Berners-Lee argues that every new
+top-level domain costs name-holders money, and that <code>.mobi</code> breaks
+links, because the same page would need a different address on a phone.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Written in April 2004 and, unusually for this collection, formally supported:
-the note records that the Technical Architecture Group resolved to support it,
-with one member abstaining and one recusing himself. It is the only chapter
-here with a recorded vote.
-</p>
-<p>
-The occasion was proposals for new top-level domains, one of them intended for
-content for mobile devices. Berners-Lee&#8217;s objection to that one is
-architectural rather than commercial.
+at its meeting of 14 May 2004 the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Technical Architecture Group resolved to
+support the note, with one member abstaining and one recusing himself.
+Its objection to the mobile domain is architectural rather than commercial.
 </p>
 </div>
 
@@ -75,8 +86,7 @@ manageable.
 </p>
 
 <p>
-Then names moved out of protocols and into speech, and Berners-Lee describes
-what that did:
+Then names moved out of protocols and into speech:
 </p>
 
 <blockquote>
@@ -89,29 +99,25 @@ space into a limited commodity.
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig79-1-t fig79-1-d">
   <title id="fig79-1-t">What the public actually remembers</title>
-  <desc id="fig79-1-d">A company must register its name under many top-level
-  domains and in many countries, because the public remembers only the name in
-  the middle. The hierarchy exists in the specification and not in anybody's
-  memory, so each new top-level domain multiplies the defensive registrations
-  everyone must make.</desc>
+  <desc id="fig79-1-d">The public remembers only the name in the middle, so a
+  company must register it under many top-level domains, and each new one adds
+  to the list.</desc>
 
-  <text x="360" y="42" class="t-mono" text-anchor="middle" font-size="18"><tspan fill="#bbb">www.</tspan><tspan fill="#1c5a7a">example</tspan><tspan fill="#bbb">.com</tspan></text>
-  <path class="ln-accent" d="M 306 54 L 306 72 M 306 72 L 414 72 M 414 72 L 414 54"/>
-  <text x="360" y="92" class="t-sm" text-anchor="middle" fill="#1c5a7a">this is what people remember</text>
-  <text x="360" y="112" class="t-sm t-it" text-anchor="middle">the rest is bread</text>
+  <text x="360" y="42" class="t-mono" text-anchor="middle" style="font-size:18px"><tspan style="fill:#8a9a9a">www.</tspan><tspan style="fill:#1c5a7a">example</tspan><tspan style="fill:#8a9a9a">.com</tspan></text>
+  <path class="ln-accent" d="M 322 54 L 322 66 L 398 66 L 398 54"/>
+  <text x="360" y="86" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">this is what people remember</text>
+  <text x="360" y="106" class="t-sm t-it" text-anchor="middle">www. and .com are mostly ignored</text>
 
   <line class="ln-mut" x1="24" y1="136" x2="696" y2="136"/>
   <text x="24" y="160" class="t-sm">So the company must also hold, defensively:</text>
-  <g class="t-mono" font-size="12" fill="#a07d47">
-    <text x="60" y="188">example.net</text>
-    <text x="220" y="188">example.org</text>
-    <text x="380" y="188">example.fr</text>
-    <text x="540" y="188">example.co.uk</text>
-    <text x="60" y="214">example.mobi</text>
-    <text x="220" y="214">example.xxx</text>
-    <text x="380" y="214">example.&#8230;</text>
-    <text x="540" y="214">and so on, for ever</text>
-  </g>
+  <text x="60" y="188" class="t-mono" style="fill:#b08d57">example.net</text>
+  <text x="220" y="188" class="t-mono" style="fill:#b08d57">example.org</text>
+  <text x="380" y="188" class="t-mono" style="fill:#b08d57">example.fr</text>
+  <text x="540" y="188" class="t-mono" style="fill:#b08d57">example.co.uk</text>
+  <text x="60" y="214" class="t-mono" style="fill:#b08d57">example.mobi</text>
+  <text x="220" y="214" class="t-mono" style="fill:#b08d57">example.xxx</text>
+  <text x="380" y="214" class="t-mono" style="fill:#b08d57">example.&#8230;</text>
+  <text x="540" y="214" class="t-mono" style="fill:#b08d57">and so on, for ever</text>
   <text x="24" y="246" class="t-sm">Each new top level domain multiplies the registrations every trademark holder must make.</text>
 
   <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
@@ -124,8 +130,7 @@ hierarchicalisation of the domain system had failed to happen.</figcaption>
 </figure>
 
 <p>
-He also names an anomaly in the allocation rules that he treats as the source
-of much of the instability:
+He names the anomaly behind much of the instability:
 </p>
 
 <blockquote>
@@ -136,43 +141,160 @@ more logical owner of a name.
 <cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
 </blockquote>
 
+<h3>The cost of each new top-level domain</h3>
+
+<blockquote>
+The first effect is a little like printing more money.
+<cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
+</blockquote>
+
+<p>
+The value of every existing registration drops, while the cost of protecting
+a brand rises from three domains to four, five and more. For a large company
+this is trivial; for a small business, a charity or a family it is not. The
+second effect is instability: a rush to reserve names that nobody can afford
+to miss, and a rash of attempts to take valuable ones.
+</p>
+
 <h2>79.2 The specific objection</h2>
 
 <p>
-The general costs apply to any new top-level domain. The particular objection
-to a domain for mobile content is different in kind, and it is the one that
-made this an architectural note rather than a policy one.
+Those costs apply to any new top-level domain. The objection to
+<code>.mobi</code> is different in kind: it is architectural.
 </p>
 
 <p>
-A page is a page. Chapter 10 established that one resource may be served in
-many forms, chosen by negotiation, and Chapter 2 established that the
-identifier names the thing rather than the rendering. A separate <a class="gl-ref" href="../glossary.html#namespace">namespace</a> for
-the same content in a different form does what the letter in Chapter 67 does:
-it puts a property of the delivery into the name of the thing.
+The Web works by reference: an address is bookmarked, emailed and passed on,
+then looked up later somewhere else. The note&#8217;s example is a
+restaurant looked up and bookmarked on a laptop, and the bookmark used later,
+when only a phone is to hand, to check the evening menu. Or a travel itinerary
+read in the office on a large screen for the map, and at the airport on a
+phone for the gate number.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig79-2-t fig79-2-d">
+  <title id="fig79-2-t">A bookmark carried from laptop to phone</title>
+  <desc id="fig79-2-d">Left: laptop and phone fetch one address and the server
+  adapts. Right: each device has its own address, so the laptop's bookmark is
+  wrong on the phone.</desc>
+
+  <text x="20" y="24" class="t-caps">one name per thing</text>
+  <rect class="box-plain" x="20" y="50" width="100" height="32" rx="3"/>
+  <text x="70" y="70" text-anchor="middle">laptop</text>
+  <rect class="box-plain" x="20" y="130" width="100" height="32" rx="3"/>
+  <text x="70" y="150" text-anchor="middle">phone</text>
+  <rect class="box" x="150" y="90" width="190" height="32" rx="3"/>
+  <text x="245" y="110" class="t-mono" text-anchor="middle">restaurant.example/menu</text>
+  <path class="ln" d="M 120 70 L 148 96"/>
+  <path d="M 141 96 L 148 96 L 146 89" fill="none" stroke="#2f4f4f" stroke-width="1.3"/>
+  <path class="ln" d="M 120 142 L 148 116"/>
+  <path d="M 141 116 L 148 116 L 146 123" fill="none" stroke="#2f4f4f" stroke-width="1.3"/>
+  <text x="150" y="150" class="t-sm">the server adapts the layout</text>
+  <text x="150" y="166" class="t-sm">(negotiation, style sheets)</text>
+
+  <line class="ln-mut" x1="360" y1="12" x2="360" y2="238"/>
+
+  <text x="380" y="24" class="t-caps">one name per device</text>
+  <rect class="box-plain" x="380" y="50" width="100" height="32" rx="3"/>
+  <text x="430" y="70" text-anchor="middle">laptop</text>
+  <rect class="box-plain" x="380" y="170" width="100" height="32" rx="3"/>
+  <text x="430" y="190" text-anchor="middle">phone</text>
+  <rect class="box" x="510" y="50" width="190" height="32" rx="3"/>
+  <text x="605" y="70" class="t-mono" text-anchor="middle">restaurant.example/menu</text>
+  <rect class="box-warm" x="510" y="170" width="190" height="32" rx="3"/>
+  <text x="605" y="190" class="t-mono" text-anchor="middle">restaurant.mobi/menu</text>
+  <path class="ln" d="M 480 66 L 508 66"/>
+  <path d="M 502 62 L 508 66 L 502 70" fill="none" stroke="#2f4f4f" stroke-width="1.3"/>
+  <path class="ln" d="M 480 186 L 508 186"/>
+  <path d="M 502 182 L 508 186 L 502 190" fill="none" stroke="#2f4f4f" stroke-width="1.3"/>
+  <path class="ln-dash" d="M 430 82 L 430 168"/>
+  <path d="M 423 119 L 437 133 M 437 119 L 423 133" fill="none" stroke="#b08d57" stroke-width="2"/>
+  <text x="448" y="120" class="t-sm">bookmark made on the laptop</text>
+  <text x="448" y="136" class="t-sm">is the wrong address on the phone</text>
+  <text x="380" y="230" class="t-sm">one menu, two names: a link shared between devices fails</text>
+</svg>
+<figcaption><span class="fig-label">Figure 79.2</span>
+On the left the device travels in the request and the menu keeps one name. On
+the right the device is written into the name, so the same menu has two
+addresses and a bookmark no longer carries across.</figcaption>
+</figure>
+
+<blockquote>
+Dividing the Web into information destined for different devices, or
+different classes of user, or different classes of information, breaks the Web
+in a fundamental way.
+<cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
+</blockquote>
+
 <p>
-The consequence is that a link becomes device-specific. A person on a small
-screen and a person on a large one, reading the same article, hold different
-addresses and cannot exchange them. That is the universality of Chapter 2
-broken along a new axis, and Berners-Lee&#8217;s phrase for what it does is that it
-attacks the universality of the Web.
+Chapter 10 established that one resource may be served in many forms, and
+Chapter 2 that the identifier names the thing rather than the rendering.
+Chapter 67 makes the same complaint about the <code>s</code> in
+<code>https</code>: a property of the delivery put into the name of the thing.
+</p>
+
+<h3>Better ways to tell the server about the device</h3>
+
+<p>
+The tools already existed. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a> lets a device say what it
+can handle with each request; CC/PP lets it describe its capabilities in
+detail; CSS can apply rules only on hand-held screens. And
+&#8220;mobile&#8221; is a moving target: small devices will have high
+bandwidth, and some phones will be mounted permanently on kitchen walls. A
+domain name is the worst place to record any of this.
 </p>
 
 <h2>79.3 Who bears the cost of the root</h2>
 
 <p>
-The note is careful about the structure of ownership, and the description is
-still the clearest short account of it.
+Figure 79.3 draws the note&#8217;s account of who owns what.
 </p>
 
-<p>
-Each node in the tree is a potentially valuable asset, so control of any
-subset is valuable. Control of the whole is held by a non-profit institution
-intended to carry the trust of the entire community. Control of the large
-subtrees is delegated to registries whose nominal business is charging fees.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
+     aria-labelledby="fig79-3-t fig79-3-d">
+  <title id="fig79-3-t">Who controls each part of the name tree</title>
+  <desc id="fig79-3-d">ICANN at the root; fee-charging registries for .com,
+  .net and .org; under .com a rented name and an unclaimed one, with an arrow
+  marked temptation from the registry to the unclaimed name.</desc>
+
+  <rect class="box" x="210" y="16" width="300" height="48" rx="3"/>
+  <text x="360" y="36" text-anchor="middle">root of the tree: ICANN</text>
+  <text x="360" y="54" class="t-sm" text-anchor="middle">non-profit, meant to hold the public trust</text>
+
+  <path class="ln-mut" d="M 360 64 L 160 110 M 360 64 L 360 110 M 360 64 L 560 110"/>
+
+  <rect class="box-plain" x="85" y="110" width="150" height="44" rx="3"/>
+  <text x="160" y="128" class="t-mono" text-anchor="middle">.com</text>
+  <text x="160" y="146" class="t-sm" text-anchor="middle">registry, charges fees</text>
+  <rect class="box-plain" x="285" y="110" width="150" height="44" rx="3"/>
+  <text x="360" y="128" class="t-mono" text-anchor="middle">.net</text>
+  <text x="360" y="146" class="t-sm" text-anchor="middle">registry, charges fees</text>
+  <rect class="box-plain" x="485" y="110" width="150" height="44" rx="3"/>
+  <text x="560" y="128" class="t-mono" text-anchor="middle">.org</text>
+  <text x="560" y="146" class="t-sm" text-anchor="middle">registry, charges fees</text>
+
+  <path class="ln-mut" d="M 160 154 L 90 210 M 160 154 L 290 210"/>
+
+  <rect class="box-green" x="15" y="210" width="150" height="44" rx="3"/>
+  <text x="90" y="228" class="t-mono" text-anchor="middle">example.com</text>
+  <text x="90" y="246" class="t-sm" text-anchor="middle">rented by its holder</text>
+  <rect class="ln-dash" x="205" y="210" width="170" height="44" rx="3"/>
+  <text x="290" y="228" text-anchor="middle">unclaimed name</text>
+  <text x="290" y="246" class="t-sm" text-anchor="middle">who owns it?</text>
+
+  <path class="ln-accent" d="M 212 154 C 300 168, 355 186, 356 206"/>
+  <path d="M 351 199 L 356 207 L 361 199" fill="none" stroke="#1c5a7a" stroke-width="1.6"/>
+  <text x="372" y="186" class="t-sm" style="fill:#1c5a7a">temptation</text>
+
+</svg>
+<figcaption><span class="fig-label">Figure 79.3</span>
+Control of any branch is valuable. The registries&#8217; business is charging
+fees, and the one that sells names also stands between the public and every
+name not yet sold.</figcaption>
+</figure>
 
 <p>
 And then the temptation, recorded as rumour because that is what it was:
@@ -188,55 +310,56 @@ so on.
 </blockquote>
 
 <p>
-Both rumoured behaviours later happened. A party that operates a namespace and
-also sells names in it has an interest in what happens when you ask about a
-name, which is the single-point-of-control problem of Chapter 5 appearing at
-the one place the Web cannot route around.
+Both kinds of behaviour have been seen in practice: one shortly before the
+note was written, one after. This is the single point of control of Chapter
+5, at the one place the Web cannot route around.
 </p>
 
 <h2>79.4 Why a chapter for a proposal that failed</h2>
 
 <p>
 The value of the note is the general form of the argument. Adding a
-distinction to the top of a namespace does three things: it multiplies
+distinction to the top of a <a class="gl-ref" href="../glossary.html#namespace">namespace</a> does three things: it multiplies
 defensive work for everyone already in it, it hands value to whoever operates
 the new division, and it invites people to encode in the name a property that
 does not belong there.
 </p>
 
 <p>
-That argument applies to package registries, to media types, to identifier
-schemes, and to every proposal to add a new top-level category to something
-already established. Chapter 4 makes it about schemes; this makes it about
-names.
+Suppose a software package registry added a top-level prefix for mobile
+builds: every author would claim each name twice, the prefix&#8217;s operator
+would collect, and a property of the build would sit in the package&#8217;s
+name. Chapter 4 makes the argument about schemes; this chapter makes it
+about names.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The mobile domain launched and failed.</strong> It was approved
-and delegated in 2005, never achieved wide use, and separate mobile addresses
-were abandoned in favour of responsive design serving one address to every
-device, which is the outcome section 79.2 argues for.</li>
+<li><strong>The rumoured behaviours happened.</strong> In September 2003,
+months before the note, VeriSign, the <code>.com</code> and <code>.net</code>
+registry, redirected unregistered names to its own search page (Site Finder),
+withdrawing it in October 2003 after objections. In 2008 the registrar
+Network Solutions was found reserving names customers had searched for.</li>
+<li><strong>The mobile domain launched and faded.</strong> ICANN approved it
+in 2005; general registration opened in 2006. Separate mobile addresses gave
+way to responsive design (a term coined in 2010), one address for every
+device, as section 79.2 argues.</li>
 <li><strong>The namespace expanded enormously.</strong> The programme begun in
-2012 added over a thousand new top-level domains, multiplying exactly the
-defensive registration burden described in Figure 79.1.</li>
-<li><strong>The rumoured behaviour happened.</strong> A registry introduced
-redirection of mistyped names to its own search page in 2003, and withdrew it
-after objection; the practice recurred at other levels.</li>
-<li><strong>The adult-content domain launched in 2011</strong> and had the
-effect the objectors predicted, becoming a defensive registration exercise
-rather than a category.</li>
+2012 added over a thousand new top-level domains, multiplying the burden of
+Figure 79.1.</li>
+<li><strong>The adult-content domain launched in 2011.</strong> Before it
+opened, trademark holders filed tens of thousands of paid
+&#8220;Sunrise B&#8221; applications simply to block their names from it.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The naming problem is Chapter 3, and the persistence proposal that would need
-the root&#8217;s cooperation is Chapter 13. The single centralised point is named in
-Chapter 5, and the equivalent argument about schemes is Chapter 4. Putting a
-delivery property into a name is Chapter 67.
+The naming problem is Chapter 3; persistent names needing the root&#8217;s
+cooperation, Chapter 13; the single centralised point, Chapter 5; the same
+argument about schemes, Chapter 4; a delivery property in a name, Chapter 67.
 </p>
 </div>
 
@@ -244,8 +367,8 @@ delivery property into a name is Chapter 67.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">79.1</span>
-The hierarchy exists in the <a class="gl-ref" href="../glossary.html#specification">specification</a> and not in memory. Name another
-hierarchy with the same problem.</p>
+Postal addresses are hierarchical: country, town, street. Which part do people
+actually remember, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.2</span>
@@ -254,8 +377,8 @@ case where an address is still specific to how it is being read.</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.3</span>
-A registry that sells names has an interest in your queries about them. Name
-the safeguard that prevents this, and say whether it is sufficient.</p>
+The note relies on ICANN being non-profit to keep the root fair. Is a
+non-profit operator enough? What else could help?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.4</span>

@@ -49,6 +49,20 @@
 a Design Issues note by Tim Berners-Lee, 2023-05-29.
 <a class="source-link" href="https://www.w3.org/DesignIssues/DRM.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Digital rights management (DRM) is software that lets a film play on a
+viewer&#8217;s machine while stopping the viewer from copying it. Around 2013 the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> was split
+over whether <a class="gl-ref" href="../glossary.html#html">HTML</a> should offer a standard slot for it. Berners-Lee separates
+four things people want and shows that they cannot all hold at once. The W3C
+accepted the slot, Encrypted Media Extensions (EME), in 2017, to keep films on
+the Web. Looking back in 2023, he finds that he can still install what he
+likes on his own laptop, but an artist who wants protection must still go
+through the big platforms.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -64,63 +78,86 @@ entangled.
 <cite>General Computation, Digital Rights Management, and FOSS, 2013</cite>
 </blockquote>
 <p>
-The method is the contribution. Separating the entangled claims does not
-resolve them, and it does show why no resolution is available.
+He does not settle the argument. He separates four wants and shows every
+design gives up at least one.
 </p>
 </div>
 
 <h2>80.1 Four rights that cannot all hold</h2>
 
+<p>
+The Electronic Frontier Foundation and the author Cory Doctorow argued that
+HTML should not allow DRM at all, because it moved computing platforms towards
+big-company control. A concrete case shows what is at stake. A film streamed
+to a browser plays on the screen, but the viewer cannot clip a scene to quote it,
+keep it if the service closes, or read the code of the decoder that unlocks
+it.
+</p>
+
+<p>
+Berners-Lee pulls four wants out of the argument (Figure 80.1). Three belong
+to the user: the open-source right to have and change the code one runs; the
+right to have <em>root</em>, meaning full administrator control, over one&#8217;s own
+computer; and the right to copy what one watches. The fourth belongs to the
+seller.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 356" width="720" height="356" role="img"
      aria-labelledby="fig80-1-t fig80-1-d">
   <title id="fig80-1-t">Four things people want, which conflict</title>
-  <desc id="fig80-1-d">The right to read and change the software you run, the
-  right to control your own machine, the right to copy what you watch for fair
-  use and archiving, and the right to sell something in a form that cannot be
-  copied. Any design satisfies some and violates others.</desc>
+  <desc id="fig80-1-d">Three user rights on the left: to see and change the
+  code, to control one&#8217;s own machine, and to copy what one watches. On the right,
+  the seller&#8217;s wish to sell something uncopyable. A line joins the
+  seller&#8217;s wish to each user right: it needs code the user cannot see, needs
+  hardware the user does not control, and blocks the copy. The user rights do not
+  conflict with one another.</desc>
 
-  <rect class="box-green" x="24" y="34" width="320" height="94" rx="4"/>
-  <text x="184" y="60" class="t-caps" text-anchor="middle" fill="#3f6f3f">to see and change the code</text>
-  <text x="184" y="86" class="t-sm" text-anchor="middle">have, modify and distribute the source</text>
-  <text x="184" y="108" class="t-sm" text-anchor="middle">of a program you are running</text>
+  <rect class="box-plain" x="24" y="24" width="260" height="70" rx="4"/>
+  <text x="154" y="46" class="t-caps" text-anchor="middle">to see and change the code</text>
+  <text x="154" y="66" class="t-sm" text-anchor="middle">have, modify and distribute the source</text>
+  <text x="154" y="82" class="t-sm" text-anchor="middle">of a program one is running</text>
 
-  <rect class="box-green" x="376" y="34" width="320" height="94" rx="4"/>
-  <text x="536" y="60" class="t-caps" text-anchor="middle" fill="#3f6f3f">to control your own machine</text>
-  <text x="536" y="86" class="t-sm" text-anchor="middle">to be able to decide completely</text>
-  <text x="536" y="108" class="t-sm" text-anchor="middle">what software it runs</text>
+  <rect class="box-plain" x="24" y="114" width="260" height="70" rx="4"/>
+  <text x="154" y="136" class="t-caps" text-anchor="middle">to control one&#8217;s own machine</text>
+  <text x="154" y="156" class="t-sm" text-anchor="middle">have root: decide completely</text>
+  <text x="154" y="172" class="t-sm" text-anchor="middle">what software it runs</text>
 
-  <rect class="box" x="24" y="144" width="320" height="110" rx="4"/>
-  <text x="184" y="170" class="t-caps" text-anchor="middle">to copy what you watch</text>
-  <text x="184" y="196" class="t-sm" text-anchor="middle">quotation, parody and other fair use</text>
-  <text x="184" y="216" class="t-sm" text-anchor="middle">archiving</text>
-  <text x="184" y="236" class="t-sm" text-anchor="middle">use on a different machine</text>
+  <rect class="box-plain" x="24" y="204" width="260" height="70" rx="4"/>
+  <text x="154" y="226" class="t-caps" text-anchor="middle">to copy what one watches</text>
+  <text x="154" y="246" class="t-sm" text-anchor="middle">quotation, parody, archiving,</text>
+  <text x="154" y="262" class="t-sm" text-anchor="middle">use on a different machine</text>
 
-  <rect class="box-warm" x="376" y="144" width="320" height="110" rx="4"/>
-  <text x="536" y="170" class="t-caps" text-anchor="middle" fill="#a07d47">to sell something uncopyable</text>
-  <text x="536" y="200" class="t-sm" text-anchor="middle">to be able to sell music or video</text>
-  <text x="536" y="220" class="t-sm" text-anchor="middle">in an encrypted form</text>
+  <rect class="box-warm" x="500" y="24" width="196" height="250" rx="4"/>
+  <text x="598" y="122" class="t-caps" text-anchor="middle">to sell something</text>
+  <text x="598" y="140" class="t-caps" text-anchor="middle">uncopyable</text>
+  <text x="598" y="166" class="t-sm" text-anchor="middle">music or video, sold in</text>
+  <text x="598" y="182" class="t-sm" text-anchor="middle">encrypted form so it</text>
+  <text x="598" y="198" class="t-sm" text-anchor="middle">cannot be stolen</text>
 
-  <g stroke="#c98a8a" stroke-width="1.4" fill="none">
-    <path d="M 344 80 L 376 80"/><path d="M 184 128 L 184 144"/>
-    <path d="M 536 128 L 536 144"/><path d="M 344 200 L 376 200"/>
-    <path d="M 344 100 L 376 180"/>
-  </g>
-  <text x="360" y="284" class="t-sm" text-anchor="middle" fill="#b04a4a">It is impossible to build a system that protects content</text>
-  <text x="360" y="304" class="t-sm" text-anchor="middle" fill="#b04a4a">and that its user can change.</text>
-  <text x="360" y="326" class="t-sm t-it" text-anchor="middle">&#8220;Everything violates one or more of the rights we want to preserve.&#8221;</text>
+  <path class="ln-accent" d="M 284 59 L 500 59"/>
+  <path class="ln-accent" d="M 284 149 L 500 149"/>
+  <path class="ln-accent" d="M 284 239 L 500 239"/>
+  <text x="392" y="50" class="t-sm" text-anchor="middle">needs code users can&#8217;t see</text>
+  <text x="392" y="140" class="t-sm" text-anchor="middle">needs hardware users can&#8217;t control</text>
+  <text x="392" y="230" class="t-sm" text-anchor="middle">blocks the copy</text>
+
+  <text x="360" y="304" class="t-sm" text-anchor="middle">No system can both protect content and let its user change it.</text>
+  <text x="360" y="332" class="t-it" text-anchor="middle">&#8220;Everything violates one or more of the rights we want to preserve.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 80.1</span>
-The impossibility is not a matter of engineering effort. A mechanism whose
-purpose is to withhold something from the machine&#8217;s owner cannot also be under
-the owner&#8217;s control.</figcaption>
+The three user rights sit together without trouble; the seller&#8217;s wish
+conflicts with each of them. This is not a matter of engineering effort. A
+mechanism whose purpose is to withhold something from the machine&#8217;s owner
+cannot also be under the owner&#8217;s control.</figcaption>
 </figure>
 
 <h2>80.2 The tactical argument</h2>
 
 <p>
-The case for allowing a hook in the standard is not that the mechanism is good.
-It is an argument about where people end up otherwise:
+The case for allowing a <em>hook</em> in the standard, a standard slot through
+which a page hands encrypted video to a closed decoder, is not that the
+mechanism is good. It is an argument about where people end up otherwise:
 </p>
 
 <blockquote>
@@ -132,7 +169,8 @@ in other words use a completely locked down platform.
 </blockquote>
 
 <p>
-And the conclusion drawn from it:
+Flash was Adobe&#8217;s proprietary plug-in, then widely used for video on the
+Web. The conclusion drawn:
 </p>
 
 <blockquote>
@@ -141,12 +179,78 @@ it will just force users off the web.
 <cite>General Computation, Digital Rights Management, and FOSS, 2013</cite>
 </blockquote>
 
-<p>
-Berners-Lee then states the choice in its bluntest form, which is the form the
-argument actually took: refuse to collaborate and drive people to applications
-where the whole thing is locked down, or open a slot in an open system through
-which a locked-down system may be reached.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+     aria-labelledby="fig80-2-t fig80-2-d">
+  <title id="fig80-2-t">Where the film goes</title>
+  <desc id="fig80-2-d">Three paths from a studio&#8217;s film to a viewer.
+  With no DRM slot, the film goes through a native app, Flash or a set-top
+  box: the whole platform is locked. With a DRM slot, it goes through an open
+  browser page containing a small closed DRM module: only the decoder is
+  locked. A third path, the studio dropping DRM, is greyed out as not on
+  offer.</desc>
+  <defs>
+    <marker id="fig80-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig80-2-arrm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="124" y="26" class="t-caps" text-anchor="middle">no DRM slot</text>
+  <text x="360" y="26" class="t-caps" text-anchor="middle">DRM slot (EME)</text>
+  <text x="596" y="26" class="t-caps" text-anchor="middle" style="fill:#8a9a9a">studio drops DRM</text>
+
+  <rect class="box-plain" x="54" y="42" width="140" height="34" rx="4"/>
+  <text x="124" y="64" text-anchor="middle">studio&#8217;s film</text>
+  <rect class="box-plain" x="290" y="42" width="140" height="34" rx="4"/>
+  <text x="360" y="64" text-anchor="middle">studio&#8217;s film</text>
+  <rect class="box-plain" x="526" y="42" width="140" height="34" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="596" y="64" text-anchor="middle" style="fill:#8a9a9a">studio&#8217;s film</text>
+
+  <path class="ln" d="M 124 76 L 124 104" marker-end="url(#fig80-2-arr)"/>
+  <path class="ln" d="M 360 76 L 360 104" marker-end="url(#fig80-2-arr)"/>
+  <path class="ln-dash" d="M 596 76 L 596 104" marker-end="url(#fig80-2-arrm)"/>
+
+  <rect class="box-warm" x="19" y="106" width="210" height="122" rx="4"/>
+  <text x="124" y="130" class="t-caps" text-anchor="middle" style="fill:#b08d57">closed platform</text>
+  <text x="124" y="158" text-anchor="middle">native app</text>
+  <text x="124" y="180" text-anchor="middle">Flash plug-in</text>
+  <text x="124" y="202" text-anchor="middle">set-top box</text>
+
+  <rect class="box-green" x="255" y="106" width="210" height="122" rx="4"/>
+  <text x="360" y="130" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">open browser page</text>
+  <rect class="box-warm" x="295" y="150" width="130" height="60" rx="4"/>
+  <text x="360" y="175" text-anchor="middle">DRM module</text>
+  <text x="360" y="194" class="t-sm" text-anchor="middle">closed decoder</text>
+
+  <rect class="box-plain" x="491" y="106" width="210" height="122" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="596" y="164" text-anchor="middle" style="fill:#8a9a9a">unprotected stream</text>
+  <text x="596" y="184" class="t-sm" text-anchor="middle">in an open browser</text>
+
+  <path class="ln" d="M 124 228 L 124 256" marker-end="url(#fig80-2-arr)"/>
+  <path class="ln" d="M 360 228 L 360 256" marker-end="url(#fig80-2-arr)"/>
+  <path class="ln-dash" d="M 596 228 L 596 256" marker-end="url(#fig80-2-arrm)"/>
+
+  <rect class="box-plain" x="54" y="258" width="140" height="34" rx="4"/>
+  <text x="124" y="280" text-anchor="middle">viewer</text>
+  <rect class="box-plain" x="290" y="258" width="140" height="34" rx="4"/>
+  <text x="360" y="280" text-anchor="middle">viewer</text>
+  <rect class="box-plain" x="526" y="258" width="140" height="34" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="596" y="280" text-anchor="middle" style="fill:#8a9a9a">viewer</text>
+
+  <text x="124" y="318" class="t-sm t-it" text-anchor="middle">whole platform locked</text>
+  <text x="360" y="318" class="t-sm t-it" text-anchor="middle">only the decoder locked</text>
+  <text x="596" y="318" class="t-sm t-it" text-anchor="middle">not on offer</text>
+</svg>
+<figcaption><span class="fig-label">Figure 80.2</span>
+The tactical argument compares how much is locked, not locked against free.
+If studios will not drop protection, refusing the slot leads to the left-hand
+path, not the right-hand one.</figcaption>
+</figure>
 
 <h2>80.3 Four positions, fairly stated</h2>
 
@@ -157,22 +261,17 @@ without labelling any of them wrong.
 
 <table>
 <tr><th>Position</th><th>What it rests on</th></tr>
-<tr><td>Copyright itself is wrong</td><td>Artists should be supported by performance and donation</td></tr>
+<tr><td>Copyright itself is wrong</td><td>Artists should be supported by live gigs and donations</td></tr>
 <tr><td>I judge when to copy</td><td>The law has been twisted, and protection blocks fair use, backups, and archives that later stop working</td></tr>
-<tr><td>Protection is worth it for a thriving industry</td><td>Not troubled by the archive problem, and without an answer for artists outside the channels</td></tr>
+<tr><td>Protection is worth it for a thriving industry</td><td>Not troubled by the archive problem, and without an answer for bands without a DRM distribution channel</td></tr>
 <tr><td>I object to hardware I do not control</td><td>Independent of any wish to copy anything</td></tr>
 </table>
 
 <p>
-The second position contains the prediction that has aged best: that protected
-files typically fail in the future when the supporting system changes, and an
-archive becomes unusable. The fourth is the one that separates the argument
-from copyright entirely.
-</p>
-
-<p>
-Berners-Lee closes the section with the question he says is related and that
-nobody was asking:
+The second position contains the prediction that has aged best: protected
+files typically fail when the supporting system changes, and an archive
+becomes unusable. The fourth separates the argument from copyright entirely.
+Berners-Lee closes the section with a related question:
 </p>
 
 <blockquote>
@@ -186,7 +285,7 @@ market, with no 3rd party gatekeeper?
 
 <p>
 The 2023 revision is a rare thing: an author auditing his own decision. He
-records what was standardised and what it does, in plain terms:
+records what was standardised and what it does:
 </p>
 
 <blockquote>
@@ -196,11 +295,12 @@ the device -- gadgets which the user has no control of.
 </blockquote>
 
 <p>
-Then the assessment. Streaming happened at enormous scale, on the Web and off.
-The competition between sites and applications continued, and the platforms
-still push people towards applications for more control of the environment. On
-his own position, he reports a check:
+Streaming happened at enormous scale, on the Web and off, and the platforms
+still push people from the Web towards their apps for more control of the
+environment.
 </p>
+
+<h3>What survived</h3>
 
 <blockquote>
 As a developer, I can still develop code on my Apple laptop and still install
@@ -209,10 +309,11 @@ open source code and random apps written by other people on it.
 </blockquote>
 
 <p>
-The right to control the general-purpose computer survived, which was the
-thing the objectors said was at risk. And then the finding that goes the other
-way:
+This is a check on one machine, not a general verdict, but it is the thing
+the objectors said was at risk: control of a general-purpose computer.
 </p>
+
+<h3>What did not</h3>
 
 <blockquote>
 As an artist, there is no way for me to make my own DRM platform if a person
@@ -221,41 +322,113 @@ platforms.
 <cite>General Computation, Digital Rights Management, and FOSS, 2023</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
+     aria-labelledby="fig80-3-t fig80-3-d">
+  <title id="fig80-3-t">Who can supply the lock</title>
+  <desc id="fig80-3-d">Left: a browser page with an EME slot connects to one
+  of a small set of DRM gadgets, which the user has no control of. Right: an
+  independent artist cannot build their own DRM; the protected route runs
+  through the big platforms, which return little to artists; the open route
+  is to give work away, sell it unprotected, or rely on patronage, live gigs
+  and merchandise.</desc>
+  <defs>
+    <marker id="fig80-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig80-3-arrm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+    <marker id="fig80-3-arrg" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a8f5a"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="22" class="t-caps" text-anchor="middle">the browser&#8217;s side</text>
+  <rect class="box-green" x="30" y="64" width="130" height="80" rx="4"/>
+  <text x="95" y="98" text-anchor="middle">browser page</text>
+  <text x="95" y="118" class="t-sm" text-anchor="middle">EME slot</text>
+
+  <text x="275" y="44" class="t-sm" text-anchor="middle">small set of DRM gadgets</text>
+  <rect class="box-warm" x="220" y="54" width="110" height="28" rx="4"/>
+  <text x="275" y="73" text-anchor="middle">DRM gadget</text>
+  <rect class="box-warm" x="220" y="90" width="110" height="28" rx="4"/>
+  <text x="275" y="109" text-anchor="middle">DRM gadget</text>
+  <rect class="box-warm" x="220" y="126" width="110" height="28" rx="4"/>
+  <text x="275" y="145" text-anchor="middle">DRM gadget</text>
+  <path class="ln" d="M 160 104 L 218 70" marker-end="url(#fig80-3-arr)"/>
+  <path class="ln" d="M 160 104 L 218 104" marker-end="url(#fig80-3-arr)"/>
+  <path class="ln" d="M 160 104 L 218 138" marker-end="url(#fig80-3-arr)"/>
+  <text x="275" y="176" class="t-sm t-it" text-anchor="middle">user has no control</text>
+
+  <path class="ln-mut" d="M 362 12 L 362 224"/>
+
+  <text x="550" y="22" class="t-caps" text-anchor="middle">the artist&#8217;s side</text>
+  <rect class="box-plain" x="384" y="100" width="108" height="44" rx="4"/>
+  <text x="438" y="118" text-anchor="middle">independent</text>
+  <text x="438" y="136" text-anchor="middle">artist</text>
+
+  <rect class="box-plain" x="540" y="36" width="172" height="28" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="626" y="55" text-anchor="middle" style="fill:#8a9a9a">own DRM</text>
+  <path class="ln-dash" d="M 492 110 L 538 54" marker-end="url(#fig80-3-arrm)"/>
+  <path d="M 509 76 L 521 88 M 521 76 L 509 88" stroke="#b08d57" stroke-width="2" fill="none"/>
+
+  <rect class="box-warm" x="540" y="84" width="172" height="28" rx="4"/>
+  <text x="626" y="103" text-anchor="middle">big platforms</text>
+  <path class="ln" d="M 492 120 L 538 100" marker-end="url(#fig80-3-arr)"/>
+  <text x="626" y="130" class="t-sm" text-anchor="middle">little returned to artists</text>
+
+  <rect class="box-green" x="540" y="146" width="172" height="68" rx="4"/>
+  <text x="626" y="166" class="t-sm" text-anchor="middle">free or unprotected sale</text>
+  <text x="626" y="184" class="t-sm" text-anchor="middle">patronage, live gigs,</text>
+  <text x="626" y="202" class="t-sm" text-anchor="middle">merchandise</text>
+  <path class="ln" d="M 492 134 L 538 172" style="stroke:#5a8f5a" marker-end="url(#fig80-3-arrg)"/>
+</svg>
+<figcaption><span class="fig-label">Figure 80.3</span>
+Standardising the slot did not widen who can fill it. The browser can reach
+only a few protection systems, and an artist who wants protection must go
+through the platforms that own them.</figcaption>
+</figure>
+
 <p>
-The mechanism was standardised, and only a handful of parties can implement
-it. An artist who wants protection must go through them, and Berners-Lee notes
-without elaboration that those platforms are infamous for returning very little
-to the original artists. The question at the end of section 80.3 is still
-unanswered.
+Berners-Lee notes without elaboration that those platforms are infamous for
+returning very little to the original artists. The question at the end of
+section 80.3 gets only a partial answer: an artist can give work away or sell
+it unprotected from their own website, and patronage, live gigs and
+merchandise may bring in revenue. Payment for protected work, without a
+gatekeeper, remains unsolved.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The <a class="gl-ref" href="../glossary.html#specification">specification</a> was published.</strong> Encrypted Media
-Extensions became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation on 18 September 2017, over formal
+Extensions became a W3C Recommendation on 18 September 2017, over formal
 objection, and the Electronic Frontier Foundation resigned from the
 Consortium in protest.</li>
-<li><strong>The archive prediction came true.</strong> Purchased media has
-repeatedly become unplayable when a protection service was retired, which is
-the second position&#8217;s specific warning.</li>
-<li><strong>Implementation stayed concentrated.</strong> A small number of
-protection systems, all controlled by large firms, are what browsers support,
-so the barrier section 80.4 describes remains.</li>
-<li><strong>The payment question found partial answers.</strong> Direct
-patronage and subscription platforms grew substantially, supplying some of
-what the closing question asks for, without solving it for protected
-works.</li>
+<li><strong>Flash ended.</strong> Adobe stopped supporting Flash Player at the
+end of 2020, so one of the locked alternatives in the tactical argument is
+gone.</li>
+<li><strong>The archive prediction came true.</strong> In 2019 Microsoft
+closed the books section of its store, and the protected e-books customers
+had bought stopped working; Microsoft refunded them. This is the second
+position&#8217;s specific warning.</li>
+<li><strong>Implementation stayed concentrated.</strong> Browsers support a
+handful of protection systems, chiefly Google&#8217;s Widevine,
+Microsoft&#8217;s PlayReady and Apple&#8217;s FairPlay, so the barrier in
+Figure 80.3 remains.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The open platform sense of openness is Chapter 25, and general computation is
-its subject. The laws that colour this debate are named there too. The
-argument about where people end up if the Web refuses them is Chapter 65, and
-the concentration of implementers is Chapter 78.
+The open-platform sense of openness is Chapter 25, and general computation is
+its subject. The laws that colour this debate, the DMCA and CFAA, are named in
+section 25.5.
 </p>
 </div>
 
@@ -268,13 +441,12 @@ up.</p>
 </div>
 <div class="question">
 <p><span class="question-number">80.2</span>
-The tactical argument says refusing drives people off the Web. Name another
-case where a standards body faced that choice.</p>
+Under each choice in Figure 80.2, what exactly stays locked?</p>
 </div>
 <div class="question">
 <p><span class="question-number">80.3</span>
-An artist cannot build their own protection platform. What would it take, and
-why does nobody?</p>
+Using Figure 80.3, explain what stops an artist making their own DRM
+platform.</p>
 </div>
 <div class="question">
 <p><span class="question-number">80.4</span>

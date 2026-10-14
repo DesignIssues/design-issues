@@ -49,14 +49,24 @@
 a Design Issues note by Tim Berners-Lee, 1997-12-19.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Filtering.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Governments wanted one rule for what counts as indecent. Berners-Lee argued
+instead for letting anyone publish ratings and letting each reader choose whose
+ratings to trust. The technology should provide the mechanism and leave the
+policy to society.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Begun in December 1997, when governments faced with the question of what
-children might read were contemplating legislation against the transmission of
-indecent material. The note is Berners-Lee&#8217;s defence of an alternative, and
-also his answer to people who asked whether he regretted what the Web was used
-for.
+Written in December 1997, looking back at a threat that arose from 1994
+onwards, when governments worried about what children might read were
+contemplating laws against transmitting &ldquo;indecent&rdquo; material. It defends an
+alternative, and answers those who asked if Berners-Lee regretted the
+Web&#8217;s uses.
 </p>
 </div>
 
@@ -71,31 +81,67 @@ than the other way around as it should be.
 </blockquote>
 
 <p>
-The answer is not that the uses do not matter. It is about which of the two
-things should be subordinate. He then states the opposing view fairly, in the
-form someone might actually hold it: that our society is not strong enough to
-be trusted with a powerful information system, and that the pain might exceed
-the gain. His reply is a belief rather than a proof, and he marks it as one:
-that the democratic process and the judicial process are sufficient to defend
-the health of an evolving society.
+The question is which of technology and society should shape the other. He states the opposing view fairly:
+that our society is not strong enough to be trusted with a powerful information
+system, and that the pain might exceed the gain. His reply is a belief, and he
+marks it as one: that the democratic process and the judicial process are
+sufficient to defend the health of an evolving society.
 </p>
 
-<h2>77.2 Four things wrong with the legislation</h2>
-
-<p>
-The objections are specific, and each is a different kind of error.
-</p>
+<h2>77.2 Three things wrong with the legislation</h2>
 
 <table>
 <tr><th>Objection</th><th>The error</th></tr>
 <tr><td>Indecency was being enforced as one central concept</td><td>A subjective, distributed judgement made singular</td></tr>
 <tr><td>The problem was reading, and the rule addressed transmission</td><td>The wrong act was targeted</td></tr>
-<tr><td>Transmission included parties with no editorial role</td><td>Responsibility placed where there is no control</td></tr>
-<tr><td>The structure was imposed by technology on society</td><td>The relation of the two reversed</td></tr>
+<tr><td>Transmission included parties who neither wrote nor chose the content</td><td>Responsibility placed where there is no control</td></tr>
 </table>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
+     aria-labelledby="fig77-1-t fig77-1-d">
+  <title id="fig77-1-t">Where the law aimed, and where the problem was</title>
+  <desc id="fig77-1-d">Author, server, carriers, child reader. The law
+  targeted the two middle parties; the problem was the reading.</desc>
+  <defs>
+    <marker id="fig77-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <path class="ln-accent" d="M 204 72 L 204 60 L 524 60 L 524 72"/>
+  <text x="364" y="46" text-anchor="middle" style="fill:#1c5a7a">the law targeted transmission</text>
+
+  <path class="ln" d="M 564 72 L 564 60 L 704 60 L 704 72" style="stroke:#b08d57"/>
+  <text x="634" y="46" text-anchor="middle" style="fill:#b08d57">the problem was reading</text>
+
+  <rect class="box-plain" x="24" y="84" width="140" height="50" rx="4"/>
+  <text x="94" y="114" text-anchor="middle">author</text>
+  <rect class="box" x="204" y="84" width="140" height="50" rx="4"/>
+  <text x="274" y="114" text-anchor="middle">server / host</text>
+  <rect class="box" x="384" y="84" width="140" height="50" rx="4"/>
+  <text x="454" y="114" text-anchor="middle">network carriers</text>
+  <rect class="box-warm" x="564" y="84" width="140" height="50" rx="4"/>
+  <text x="634" y="114" text-anchor="middle">reader (a child)</text>
+
+  <path class="ln-mut" d="M 166 109 L 202 109" marker-end="url(#fig77-1-arr)"/>
+  <path class="ln-mut" d="M 346 109 L 382 109" marker-end="url(#fig77-1-arr)"/>
+  <path class="ln-mut" d="M 526 109 L 562 109" marker-end="url(#fig77-1-arr)"/>
+
+  <text x="94" y="160" class="t-sm t-it" text-anchor="middle">wrote it</text>
+  <path class="ln-dash" d="M 204 148 L 524 148"/>
+  <text x="364" y="170" class="t-sm t-it" text-anchor="middle">no editorial role: did not write or choose the content</text>
+  <text x="634" y="160" class="t-sm t-it" text-anchor="middle">reads it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 77.1</span>
+The rule placed responsibility on the parties in the middle, who have no
+control over the content, and missed the one act that mattered: the reading at
+the end.</figcaption>
+</figure>
+
 <p>
-The first is developed into an architectural claim:
+The first objection is developed into an architectural claim:
 </p>
 
 <blockquote>
@@ -109,8 +155,8 @@ itself.
 <h2>77.3 Quality, made subjective on purpose</h2>
 
 <p>
-The underlying problem is identified as something more general than indecency,
-and the connection Berners-Lee draws is unexpected:
+The underlying problem is more general than indecency, and the connection
+Berners-Lee draws is unexpected:
 </p>
 
 <blockquote>
@@ -132,76 +178,169 @@ need, then, to be able to represent "quality" in a completely subjective way.
 <cite>Filtering and Censorship, 1997</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig77-2-t fig77-2-d">
+  <title id="fig77-2-t">One central rule against many profiles</title>
+  <desc id="fig77-2-d">Left: one definition gives three readers the same
+  result. Right: two scales label one page; three profiles give shown, hidden,
+  shown.</desc>
+  <defs>
+    <marker id="fig77-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle">one central rule</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle">PICS: many scales, many profiles</text>
+  <path class="ln-mut" d="M 360 14 L 360 286"/>
+
+  <rect class="box" x="60" y="48" width="240" height="50" rx="4"/>
+  <text x="180" y="69" class="t-sm" text-anchor="middle">government definition</text>
+  <text x="180" y="86" class="t-sm" text-anchor="middle">of indecency</text>
+
+  <path class="ln-mut" d="M 160 98 L 84 196" marker-end="url(#fig77-2-arr)"/>
+  <path class="ln-mut" d="M 180 98 L 180 196" marker-end="url(#fig77-2-arr)"/>
+  <path class="ln-mut" d="M 200 98 L 276 196" marker-end="url(#fig77-2-arr)"/>
+
+  <rect class="box-plain" x="40" y="200" width="80" height="34" rx="4"/>
+  <text x="80" y="222" class="t-sm" text-anchor="middle">reader</text>
+  <rect class="box-plain" x="140" y="200" width="80" height="34" rx="4"/>
+  <text x="180" y="222" class="t-sm" text-anchor="middle">reader</text>
+  <rect class="box-plain" x="240" y="200" width="80" height="34" rx="4"/>
+  <text x="280" y="222" class="t-sm" text-anchor="middle">reader</text>
+  <text x="80" y="254" class="t-sm" text-anchor="middle" style="fill:#b08d57">hidden</text>
+  <text x="180" y="254" class="t-sm" text-anchor="middle" style="fill:#b08d57">hidden</text>
+  <text x="280" y="254" class="t-sm" text-anchor="middle" style="fill:#b08d57">hidden</text>
+  <text x="180" y="280" class="t-sm t-it" text-anchor="middle">everyone gets the same answer</text>
+
+  <rect class="box-warm" x="396" y="42" width="136" height="44" rx="4"/>
+  <text x="464" y="60" class="t-sm" text-anchor="middle">parents&#8217; group</text>
+  <text x="464" y="76" class="t-sm" text-anchor="middle">scale</text>
+  <rect class="box-warm" x="556" y="42" width="136" height="44" rx="4"/>
+  <text x="624" y="60" class="t-sm" text-anchor="middle">school&#8217;s</text>
+  <text x="624" y="76" class="t-sm" text-anchor="middle">scale</text>
+
+  <path class="ln-mut" d="M 480 86 L 516 116" marker-end="url(#fig77-2-arr)"/>
+  <path class="ln-mut" d="M 608 86 L 572 116" marker-end="url(#fig77-2-arr)"/>
+  <text x="456" y="108" class="t-sm t-it" text-anchor="end">label</text>
+  <text x="632" y="108" class="t-sm t-it" text-anchor="start">label</text>
+
+  <rect class="box" x="484" y="120" width="120" height="40" rx="4"/>
+  <text x="544" y="145" class="t-sm" text-anchor="middle">the same page</text>
+
+  <path class="ln-mut" d="M 524 160 L 446 196" marker-end="url(#fig77-2-arr)"/>
+  <path class="ln-mut" d="M 544 160 L 544 196" marker-end="url(#fig77-2-arr)"/>
+  <path class="ln-mut" d="M 564 160 L 640 196" marker-end="url(#fig77-2-arr)"/>
+
+  <rect class="box-green" x="404" y="200" width="84" height="34" rx="4"/>
+  <text x="446" y="222" class="t-sm" text-anchor="middle">profile A</text>
+  <rect class="box-green" x="502" y="200" width="84" height="34" rx="4"/>
+  <text x="544" y="222" class="t-sm" text-anchor="middle">profile B</text>
+  <rect class="box-green" x="600" y="200" width="84" height="34" rx="4"/>
+  <text x="642" y="222" class="t-sm" text-anchor="middle">profile C</text>
+  <text x="446" y="254" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">shown</text>
+  <text x="544" y="254" class="t-sm" text-anchor="middle" style="fill:#b08d57">hidden</text>
+  <text x="642" y="254" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">shown</text>
+  <text x="544" y="280" class="t-sm t-it" text-anchor="middle">each reader&#8217;s profile decides</text>
+</svg>
+<figcaption><span class="fig-label">Figure 77.2</span>
+Quality cannot be defined centrally, so the decision moves to the reader&#8217;s
+end.</figcaption>
+</figure>
+
 <h2>77.4 The three documents</h2>
 
+<p>
+The alternative was PICS, the Platform for Internet Content Selection, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+standard for attaching ratings to Web pages. Berners-Lee says it was aimed at
+showing that individuals could obtain their own subjective notion of quality
+without a government enforcing a centralised one. It needed three kinds of
+document. A <em>rating system</em> defines a scale. A <em>label</em> places
+something on that scale. A <em>profile</em> says which scales, and which
+levels, a given person will accept. For example, a parents&#8217; group
+publishes a violence scale from 0 to 4; a reviewer labels page X
+&ldquo;violence 3&rdquo;; a parent&#8217;s profile allows up to 2, so the
+browser hides page X.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig77-1-t fig77-1-d">
-  <title id="fig77-1-t">Rating system, label, profile</title>
-  <desc id="fig77-1-d">Anyone may define a scale. Anyone may apply it to
-  anything, whether or not they wrote it. Each reader chooses which scales and
-  which levels count as quality for them, and may take that choice from someone
-  they trust. No central party is involved at any step.</desc>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig77-3-t fig77-3-d">
+  <title id="fig77-3-t">Rating system, label, profile</title>
+  <desc id="fig77-3-d">A rating system defines a scale, a label applies it,
+  a profile chooses levels; the browser compares label with profile and shows
+  or blocks the page.</desc>
+  <defs>
+    <marker id="fig77-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
 
-  <rect class="box" x="24" y="40" width="200" height="140" rx="4"/>
-  <text x="124" y="66" class="t-caps" text-anchor="middle">a rating system</text>
-  <text x="124" y="94" class="t-sm" text-anchor="middle">defines a scale</text>
-  <text x="124" y="122" class="t-sm" text-anchor="middle">anyone may make one</text>
-  <text x="124" y="154" class="t-sm t-it" text-anchor="middle">this breaks the central</text>
-  <text x="124" y="170" class="t-sm t-it" text-anchor="middle">definition of indecency</text>
+  <rect class="box" x="24" y="30" width="200" height="140" rx="4"/>
+  <text x="124" y="56" class="t-caps" text-anchor="middle">a rating system</text>
+  <text x="124" y="84" class="t-sm" text-anchor="middle">defines a scale</text>
+  <text x="124" y="112" class="t-sm" text-anchor="middle">anyone may make one</text>
+  <text x="124" y="144" class="t-sm t-it" text-anchor="middle">this breaks the central</text>
+  <text x="124" y="160" class="t-sm t-it" text-anchor="middle">definition of indecency</text>
 
-  <path class="ln-mut" d="M 224 110 L 256 110"/>
-  <path d="M 252 105 L 264 110 L 252 115 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 226 100 L 264 100" marker-end="url(#fig77-3-arr)"/>
 
-  <rect class="box-warm" x="266" y="40" width="200" height="140" rx="4"/>
-  <text x="366" y="66" class="t-caps" text-anchor="middle" fill="#a07d47">a label</text>
-  <text x="366" y="94" class="t-sm" text-anchor="middle">a statement about</text>
-  <text x="366" y="112" class="t-sm" text-anchor="middle">something, on that scale</text>
-  <text x="366" y="144" class="t-sm t-it" text-anchor="middle">by any party: not only</text>
-  <text x="366" y="160" class="t-sm t-it" text-anchor="middle">the author, not only a state</text>
+  <rect class="box-warm" x="266" y="30" width="200" height="140" rx="4"/>
+  <text x="366" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">a label</text>
+  <text x="366" y="84" class="t-sm" text-anchor="middle">a statement about</text>
+  <text x="366" y="102" class="t-sm" text-anchor="middle">something, on that scale</text>
+  <text x="366" y="134" class="t-sm t-it" text-anchor="middle">by any party: not only</text>
+  <text x="366" y="150" class="t-sm t-it" text-anchor="middle">the author, not only a state</text>
 
-  <path class="ln-mut" d="M 466 110 L 498 110"/>
-  <path d="M 494 105 L 506 110 L 494 115 Z" fill="#8a9a9a"/>
+  <rect class="box-green" x="508" y="30" width="188" height="140" rx="4"/>
+  <text x="602" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a profile</text>
+  <text x="602" y="84" class="t-sm" text-anchor="middle">which scales, and</text>
+  <text x="602" y="102" class="t-sm" text-anchor="middle">which levels, for me</text>
+  <text x="602" y="134" class="t-sm t-it" text-anchor="middle">set with sliders, or taken</text>
+  <text x="602" y="150" class="t-sm t-it" text-anchor="middle">from someone trusted</text>
 
-  <rect class="box-green" x="508" y="40" width="188" height="140" rx="4"/>
-  <text x="602" y="66" class="t-caps" text-anchor="middle" fill="#3f6f3f">a profile</text>
-  <text x="602" y="94" class="t-sm" text-anchor="middle">which scales, and</text>
-  <text x="602" y="112" class="t-sm" text-anchor="middle">which levels, for me</text>
-  <text x="602" y="144" class="t-sm t-it" text-anchor="middle">set with sliders, or taken</text>
-  <text x="602" y="160" class="t-sm t-it" text-anchor="middle">from someone you trust</text>
+  <path class="ln-mut" d="M 366 172 L 366 206" marker-end="url(#fig77-3-arr)"/>
+  <path class="ln-mut" d="M 602 172 L 602 206" marker-end="url(#fig77-3-arr)"/>
 
-  <line class="ln-mut" x1="24" y1="210" x2="696" y2="210"/>
-  <text x="360" y="234" class="t-sm" text-anchor="middle">Being able to pass a profile to someone else is what lets a community form around a standard.</text>
-  <text x="360" y="262" class="t-sm" text-anchor="middle">&#8220;Agreement over a large community enhances global harmony, but threatens diversity.</text>
-  <text x="360" y="282" class="t-sm" text-anchor="middle">Agreement over a small community does the reverse.&#8221;</text>
-  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">So in fact some balance is necessary.</text>
+  <rect class="box-plain" x="266" y="210" width="430" height="44" rx="4"/>
+  <text x="481" y="237" text-anchor="middle">the browser compares the label with the profile</text>
+
+  <path class="ln-mut" d="M 264 232 L 226 232" marker-end="url(#fig77-3-arr)"/>
+
+  <rect class="box-plain" x="24" y="210" width="200" height="44" rx="4"/>
+  <text x="124" y="237" text-anchor="middle">show, or block</text>
 </svg>
-<figcaption><span class="fig-label">Figure 77.1</span>
-Berners-Lee is explicit about the political claim: this is a system necessary
-for the preservation of free speech on the Internet, because it lets people
-obtain their own notion of quality without a government enforcing a central
-one.</figcaption>
+<figcaption><span class="fig-label">Figure 77.3</span>
+Anyone may write each of the three documents; the decision is made at the
+reader&#8217;s end, with no central party involved.</figcaption>
 </figure>
 
 <p>
-The sentence about community size is the most durable thing in the note.
-Agreement at scale buys harmony and costs diversity; agreement in small groups
-does the reverse. Neither is right, and the design must allow both. That is
-Chapter 87&#8217;s argument, arriving eighteen months early.
+Being able to pass a profile to someone else, whether family, organisation or
+friend, is what lets a community form around a shared standard. How large that
+community should be is the most durable point in the note:
+</p>
+
+<blockquote>
+Agreement over a large community enhances global harmony, but threatens
+diversity. Agreement over a small community does the reverse.
+<cite>Filtering and Censorship, 1997</cite>
+</blockquote>
+
+<p>
+The design must allow both, as Chapter 87 argues later.
 </p>
 
 <h2>77.5 On the responsibility of the people who build things</h2>
 
 <p>
-The last section answers a charge that the technology should be suppressed
-because governments might abuse it. Berners-Lee notes the stronger version,
-that the whole <a class="gl-ref" href="../glossary.html#scheme">scheme</a> was a plot to promote censorship, and denies it flatly as
-to idea, funding and intent.
-</p>
-
-<p>
-Then the general answer, which is the reason this chapter belongs in a book
-about architecture:
+The last part answers a charge that PICS should be suppressed because
+governments might abuse it. Berners-Lee notes the stronger version, that the
+whole <a class="gl-ref" href="../glossary.html#scheme">scheme</a> was a plot to promote censorship, and denies it flatly as to idea,
+funding and intent. Then the general answer:
 </p>
 
 <blockquote>
@@ -213,28 +352,52 @@ scientist is often best aware of the potential of the work.
 </blockquote>
 
 <p>
-The argument is not that engineers are wiser but that they know sooner. The
-person who built a thing understands what it could be used for before anybody
-else is in a position to ask.
+The argument is not that engineers are wiser but that they know sooner.
+</p>
+
+<h2>77.6 Mechanism, not policy</h2>
+
+<p>
+Responsibility does not mean building policy into the protocol. Protocol
+specifications, Berners-Lee writes, enable but do not enforce what software
+will do, so the technology can leave policy to others, though PICS by its
+nature leans towards diversity and free speech.
+</p>
+
+<p>
+Metadata, information about information, enables every kind of use at once:
+</p>
+
+<ul>
+<li>finding information</li>
+<li>talking about information</li>
+<li>making laws about information</li>
+<li>breaking laws about information</li>
+</ul>
+
+<p>
+Limiting those uses belongs to the democratic process, not to the metadata
+system. Engineers can explain to lawmakers what the technology does, as this
+note attempts.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The legislation was struck down and the mechanism failed
-too.</strong> The American indecency provisions were held unconstitutional in
-1997, and the labelling system this note defends was never widely adopted and
-was formally obsoleted.</li>
+<li><strong>The law fell, and so did PICS.</strong> The American indecency
+provisions were held unconstitutional in June 1997 (Reno v. ACLU). PICS was
+never widely adopted, and W3C superseded it with POWDER, a Recommendation of
+September 2009.</li>
 <li><strong>Filtering was centralised after all.</strong> What arrived instead
-was platform moderation and national blocking, both of which are the single
-central definition of acceptability that section 77.2 objects to.</li>
-<li><strong>Subjective quality became ranking.</strong> The junk problem was
-answered by search and feed ranking, which is a profile chosen by the
-platform rather than by the reader.</li>
-<li><strong>The transferable profile did not arrive.</strong> Being able to
-adopt someone else&#8217;s standards, which the note calls essential for building
-communities of common trust, is still unavailable in any mainstream
-system.</li>
+was platform moderation and national blocking, a few central definitions of
+acceptability, chosen by platforms and states rather than readers.</li>
+<li><strong>Subjective quality became ranking.</strong> Search and feed ranking
+answered the junk problem, with a profile chosen by the platform, not the
+reader.</li>
+<li><strong>The transferable profile arrived only in niches.</strong> Ad-blocker
+filter-list subscriptions such as EasyList (from the mid-2000s) and
+Bluesky&#8217;s subscribable labelling services (2024) let a user take a
+standard from someone they trust.</li>
 </ul>
 </div>
 
@@ -249,7 +412,7 @@ is Chapters 75 and 76.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">77.1</span>
 Protecting children and filtering search results are called the same problem.
@@ -262,13 +425,19 @@ and say what was lost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">77.3</span>
-Nobody can adopt another person&#8217;s filtering standards today. Design that
-mechanism, and say why it has not been built.</p>
+Ad-blockers let you subscribe to someone else&#8217;s filter list. How close is
+that to a PICS profile, and what is missing?</p>
 </div>
 <div class="question">
 <p><span class="question-number">77.4</span>
-Engineers know the implications of their work soonest. Name something you know
-about your own work that nobody outside it does.</p>
+Berners-Lee says engineers often know first what their work could be used for.
+Pick an invention from the last twenty years and say what its builders could
+have foreseen.</p>
+</div>
+<div class="question">
+<p><span class="question-number">77.5</span>
+A protocol enables but does not enforce. Name a protocol whose design still
+favoured one policy over another, and say how.</p>
 </div>
 </details>
 

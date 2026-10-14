@@ -49,11 +49,21 @@
 a Design Issues note by Tim Berners-Lee, 2017-10-31.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Blockchain.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A blockchain is a shared ledger, copied to every participant. Mining spends
+computing power to add to it, and is paid in new coin. The note asks which part
+of such a system people mean, and concludes that blockchains are a poor general
+place for Web data.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Volume VIII closes with a note from October 2017, written at the height of an
-enthusiasm, and its opening move is to refuse the question:
+enthusiasm, and opens by refusing the question:
 </p>
 <blockquote>
 What technical problem is there in the world in 2017 where someone has not asked
@@ -63,61 +73,114 @@ system you are talking about.
 <cite>Blockchain and the Web, 2017</cite>
 </blockquote>
 <p>
-Berners-Lee is careful about his standing: he makes no attempt to explain the
-technology, about which he says he is not an expert. What he does is separate
-the things being named by one word, which is the method of Chapter 25 applied
-to a different word.
+Claiming no expertise, Berners-Lee separates the things one word names, as
+in Chapter 25.
 </p>
 </div>
 
 <h2>81.1 Five things in one system</h2>
 
+<p>
+The original Bitcoin system announced five things at once. Notarising uses a
+<em>hash</em>, a short fingerprint of data that changes if the data changes at
+all; putting it in the ledger proves the data existed by that date.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
      aria-labelledby="fig81-1-t fig81-1-d">
   <title id="fig81-1-t">What was announced, and how each part touches the Web</title>
   <desc id="fig81-1-d">One system offered a shared ledger, a currency, a
   first-come first-served name allocator, a way to publish a public key, and
-  further proposals. Each connects to Web architecture differently, and asking
-  whether the whole thing solves a problem confuses them.</desc>
+  further proposals. Each connects to Web architecture differently.</desc>
 
   <text x="24" y="26" class="t-caps">what the original system offered</text>
-  <text x="392" y="26" class="t-caps" fill="#1c5a7a">how it meets the Web</text>
+  <text x="392" y="26" class="t-caps">how it meets the Web</text>
   <line class="ln-mut" x1="24" y1="36" x2="696" y2="36"/>
 
-  <g class="t-sm">
-    <text x="24" y="66">a shared global ledger, for notarising</text>
-    <text x="392" y="66" fill="#1c5a7a">put the hash of a site&#8217;s state in it, and claim a date</text>
+  <text x="24" y="66" class="t-sm">a shared global ledger, for notarising</text>
+  <text x="392" y="66" class="t-sm" style="fill:#1c5a7a">put the hash of a site&#8217;s state in it, and claim a date</text>
 
-    <text x="24" y="102">a currency, traded rapidly and cheaply</text>
-    <text x="392" y="102" fill="#1c5a7a">a payment method a browser could offer among others</text>
+  <text x="24" y="102" class="t-sm">a currency, traded rapidly and cheaply</text>
+  <text x="392" y="102" class="t-sm" style="fill:#1c5a7a">a payment method a browser could offer among others</text>
 
-    <text x="24" y="138">first-come first-served name allocation</text>
-    <text x="392" y="138" fill="#1c5a7a">a rival to the naming system of Chapters 3 and 79</text>
+  <text x="24" y="138" class="t-sm">first-come first-served name allocation</text>
+  <text x="392" y="138" class="t-sm" style="fill:#1c5a7a">a rival to the naming system of Chapters 3 and 79</text>
 
-    <text x="24" y="174">a way to declare your public key</text>
-    <text x="392" y="174" fill="#1c5a7a">log in with a key pair the ledger vouches for</text>
+  <text x="24" y="174" class="t-sm">a way to declare a public key</text>
+  <text x="392" y="174" class="t-sm" style="fill:#1c5a7a">log in with a key pair the ledger vouches for</text>
 
-    <text x="24" y="210">many further proposals</text>
-    <text x="392" y="210" class="t-it" fill="#666">it all depends which one you meant</text>
-  </g>
-  <line class="ln-mut" x1="24" y1="230" x2="696" y2="230"/>
-
-  <rect class="box-warm" x="24" y="244" width="672" height="82" rx="4"/>
-  <text x="360" y="268" class="t-caps" text-anchor="middle" fill="#a07d47">the mutual dependency</text>
-  <text x="360" y="292" class="t-sm" text-anchor="middle">the ledger keeps its integrity because people mine the currency</text>
-  <text x="360" y="312" class="t-sm" text-anchor="middle">the currency needs the ledger in order to be bought and sold</text>
+  <text x="24" y="210" class="t-sm">many further proposals</text>
+  <text x="392" y="210" class="t-sm t-it" style="fill:#8a9a9a">it all depends which one is meant</text>
 </svg>
 <figcaption><span class="fig-label">Figure 81.1</span>
-Berners-Lee&#8217;s first act is to note that the parts depend on each other, so one
-cannot take the ledger and leave the currency, which is what many proposals of
-the period assumed.</figcaption>
+Five parts, each meeting the Web in a different place.</figcaption>
+</figure>
+
+<p>
+The parts depend on each other, so one cannot take the ledger and leave the
+currency, as many proposals of the period assumed (Figure 81.2).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig81-2-t fig81-2-d">
+  <title id="fig81-2-t">The mining loop that keeps the ledger running</title>
+  <desc id="fig81-2-d">A cycle of five steps: miners spend electricity; this
+  makes new coins and checked blocks; the ledger stays trustworthy; the coin
+  can be traded; its price rewards the miners, who spend more electricity. Each
+  new coin needs more energy than the last. If mining stops paying, mining
+  stops and the chain stops.</desc>
+  <defs>
+    <marker id="fig81-2-ah" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="230" y="40" width="190" height="40" rx="4"/>
+  <text x="325" y="65" text-anchor="middle">miners spend electricity</text>
+
+  <rect class="box" x="480" y="40" width="220" height="40" rx="4"/>
+  <text x="590" y="65" text-anchor="middle">new coins and checked blocks</text>
+
+  <rect class="box" x="480" y="140" width="220" height="40" rx="4"/>
+  <text x="590" y="165" text-anchor="middle">ledger stays trustworthy</text>
+
+  <rect class="box" x="480" y="240" width="220" height="40" rx="4"/>
+  <text x="590" y="265" text-anchor="middle">coin can be traded</text>
+
+  <rect class="box" x="230" y="240" width="190" height="40" rx="4"/>
+  <text x="325" y="265" text-anchor="middle">price rewards miners</text>
+
+  <line class="ln" x1="420" y1="60" x2="478" y2="60" marker-end="url(#fig81-2-ah)"/>
+  <line class="ln" x1="590" y1="80" x2="590" y2="138" marker-end="url(#fig81-2-ah)"/>
+  <line class="ln" x1="590" y1="180" x2="590" y2="238" marker-end="url(#fig81-2-ah)"/>
+  <line class="ln" x1="480" y1="260" x2="422" y2="260" marker-end="url(#fig81-2-ah)"/>
+  <line class="ln" x1="325" y1="240" x2="325" y2="82" marker-end="url(#fig81-2-ah)"/>
+
+  <text x="402" y="164" class="t-caps" text-anchor="middle">the loop</text>
+
+  <rect class="box-warm" x="16" y="34" width="180" height="52" rx="4"/>
+  <text x="106" y="56" class="t-sm" text-anchor="middle">each new coin needs</text>
+  <text x="106" y="74" class="t-sm" text-anchor="middle">more energy than the last</text>
+  <line class="ln-mut" x1="196" y1="60" x2="230" y2="60"/>
+
+  <rect class="box-plain" x="16" y="234" width="180" height="52" rx="4"/>
+  <text x="106" y="256" class="t-sm" text-anchor="middle">if not profitable: mining</text>
+  <text x="106" y="274" class="t-sm" text-anchor="middle">stops, chain stops</text>
+  <line class="ln-dash" x1="230" y1="260" x2="198" y2="260" marker-end="url(#fig81-2-ah)"/>
+</svg>
+<figcaption><span class="fig-label">Figure 81.2</span>
+The ledger&#8217;s integrity is paid for by the currency&#8217;s price. If
+the market stops paying for the electricity, the chain takes the dashed
+exit.</figcaption>
 </figure>
 
 <h2>81.2 Two ironies</h2>
 
 <p>
-The note records two, and calls them that. The first is about openness:
+The first irony is about openness:
 </p>
 
 <blockquote>
@@ -129,32 +192,16 @@ be used anonymously for criminal purposes with impunity.
 </blockquote>
 
 <p>
-Total transparency of the record, used to obtain total opacity of the
-participants.
-</p>
-
-<p>
-The second is about cost:
-</p>
-
-<blockquote>
-Also, for a new fast and light system of transfer of value, it was ironic that
-the mining needed to both generate new coin and maintain the verified integrity
-of the chain necessarily by design involves burning huge amounts of energy,
-which is not ecologically sustainable.
-<cite>Blockchain and the Web, 2017</cite>
-</blockquote>
-
-<p>
-A lightweight replacement for heavy institutions, whose integrity is purchased
-with electricity, by design.
+A completely open record was used to hide who the participants were. The
+second is about cost: a system offered as a fast, light way to transfer
+value runs, by design, on &ldquo;burning huge amounts of energy, which is not ecologically
+sustainable.&rdquo;
 </p>
 
 <h2>81.3 The warning about encrypting in public</h2>
 
 <p>
-One paragraph makes a point that applies far beyond this subject and is rarely
-stated so plainly:
+One point applies far beyond this subject:
 </p>
 
 <blockquote>
@@ -165,18 +212,17 @@ timescale which is important to the parties.
 </blockquote>
 
 <p>
-Publishing an encrypted thing is a bet about the future. The cost of breaking
-it falls over time, with faster machines, discovered weaknesses and new
-techniques, while the published copy stays available to everyone forever. A
-system that records permanently is a system that must assume its encryption is
-eventually broken.
+Breaking encryption gets cheaper with time, while the published copy stays
+available for ever. And even unreadable data gives something away:
+&ldquo;even if
+people can&#8217;t decrypt they see that you have put something there, which
+may already be revealing.&rdquo;
 </p>
 
 <h2>81.4 Speculation, and an old chart</h2>
 
 <p>
-The section on value opens with an observation about what the price is for,
-and it is unsentimental:
+On value, the note is unsentimental:
 </p>
 
 <blockquote>
@@ -189,35 +235,145 @@ them in Haiti.
 </blockquote>
 
 <p>
-For the use he considers most valuable, moving money to somewhere it is hard to
-move money, the price does not matter, because nobody holds it. And then the
-note places, beside a chart of the rise in value, a chart of a technology stock
-index up to 1999, with a remark about people buying because of the prices they
-imagine other people will pay. No conclusion is drawn. The juxtaposition is the
-comment.
+Beside a chart of the price&#8217;s rise the note places the NASDAQ up to
+1999, when people bought at prices they imagined others would pay. Yet the
+price matters to the system:
 </p>
 
-<h2>81.5 Why this closes the volume</h2>
+<blockquote>
+The promise of rise in value of Bitcoin motivates the miners, who keep the
+blockchain operating and ensure its integrity.
+<cite>Blockchain and the Web, 2017</cite>
+</blockquote>
 
 <p>
-Volume VIII has been about the places where the Web&#8217;s architecture meets
-institutions: courts, regulators, registries, copyright. Every chapter has
-described a mechanism whose limits are social rather than technical.
+This is the loop of Figure 81.2, and nothing guarantees anyone will pay what
+each new coin costs in energy.
+</p>
+
+<h2>81.5 A mechanism in place of an institution</h2>
+
+<p>
+Volume VIII has been about where the Web meets institutions: courts,
+regulators, registries, copyright. A distributed ledger proposes to replace the
+institution with a mechanism. The note declines that framing, since the
+integrity everyone admires is bought with a currency.
+</p>
+
+<h2>81.6 What stored data depends on</h2>
+
+<p>
+On a blockchain everybody stores everything; on the Web each site stores its
+own. Either way, something must keep working (Figure 81.3).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
+     aria-labelledby="fig81-3-t fig81-3-d">
+  <title id="fig81-3-t">What keeps stored data available, on the Web and on a blockchain</title>
+  <desc id="fig81-3-d">Two stacks on a shared base of Internet infrastructure.
+  The Web stack adds the Domain Name System and the web server the data is put
+  on. The blockchain stack adds the community that stores the chain and the
+  market conditions that motivate it.</desc>
+
+  <text x="190" y="26" class="t-caps" text-anchor="middle">on the web</text>
+  <text x="530" y="26" class="t-caps" text-anchor="middle">on a blockchain</text>
+
+  <rect class="box" x="40" y="40" width="300" height="44" rx="4"/>
+  <text x="190" y="67" text-anchor="middle">the web server it is put on</text>
+  <rect class="box" x="40" y="92" width="300" height="44" rx="4"/>
+  <text x="190" y="119" text-anchor="middle">the Domain Name System</text>
+
+  <rect class="box-warm" x="380" y="40" width="300" height="44" rx="4"/>
+  <text x="530" y="67" text-anchor="middle">the market conditions that motivate it</text>
+  <rect class="box-warm" x="380" y="92" width="300" height="44" rx="4"/>
+  <text x="530" y="119" text-anchor="middle">the community that stores the chain</text>
+
+  <rect class="box-plain" x="40" y="144" width="640" height="44" rx="4"/>
+  <text x="360" y="171" text-anchor="middle">the Internet infrastructure (shared by both)</text>
+</svg>
+<figcaption><span class="fig-label">Figure 81.3</span>
+The blockchain replaces a server someone pays
+for with a community and an economy that nobody using it controls.</figcaption>
+</figure>
+
+<p>
+A web server lasts as long as someone pays for it: people who built AOL
+Hometown sites lost them when AOL switched it off. On a blockchain, without
+miners there are no new blocks and nobody checks the old ones.
+</p>
+
+<h2>81.7 Too slow, too expensive, too public</h2>
+
+<p>
+One chain for everyone is like one club with one fee, speed and
+reliability. Gamers, retailers and banks would each soon want their own.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig81-4-t fig81-4-d">
+  <title id="fig81-4-t">One club against many independent sites</title>
+  <desc id="fig81-4-d">On the left, one chain holds gamers, retailers and banks,
+  who all share one fee, one speed and one reliability. On the right, the Web
+  is many separate sites of different sizes, such as Alice&#8217;s site, a bank&#8217;s
+  site, a game server, a shop and a blog.</desc>
+
+  <text x="184" y="26" class="t-caps" text-anchor="middle">one chain</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle">the web</text>
+
+  <rect class="box" x="24" y="40" width="320" height="190" rx="6"/>
+  <rect class="box-plain" x="44" y="64" width="80" height="36" rx="4"/>
+  <text x="84" y="87" text-anchor="middle">gamers</text>
+  <rect class="box-plain" x="139" y="64" width="90" height="36" rx="4"/>
+  <text x="184" y="87" text-anchor="middle">retailers</text>
+  <rect class="box-plain" x="244" y="64" width="80" height="36" rx="4"/>
+  <text x="284" y="87" text-anchor="middle">banks</text>
+  <text x="184" y="150" class="t-sm" text-anchor="middle">one fee, one speed,</text>
+  <text x="184" y="170" class="t-sm" text-anchor="middle">one reliability for all</text>
+
+  <rect class="box-green" x="384" y="46" width="100" height="36" rx="4"/>
+  <text x="434" y="69" text-anchor="middle">Alice&#8217;s site</text>
+  <rect class="box-green" x="520" y="40" width="170" height="64" rx="4"/>
+  <text x="605" y="77" text-anchor="middle">a bank&#8217;s site</text>
+  <rect class="box-green" x="400" y="120" width="140" height="52" rx="4"/>
+  <text x="470" y="151" text-anchor="middle">a game server</text>
+  <rect class="box-green" x="572" y="128" width="80" height="32" rx="4"/>
+  <text x="612" y="149" text-anchor="middle">a blog</text>
+  <rect class="box-green" x="420" y="190" width="90" height="34" rx="4"/>
+  <text x="465" y="212" text-anchor="middle">a shop</text>
+  <text x="604" y="210" class="t-sm" text-anchor="middle">each sets its own</text>
+  <text x="604" y="226" class="t-sm" text-anchor="middle">size, speed and cost</text>
+</svg>
+<figcaption><span class="fig-label">Figure 81.4</span>
+The note&#8217;s claim that, in social and economic terms, the Bitcoin
+blockchain is centralised and the Web is not.</figcaption>
+</figure>
+
+<p>
+For applications, a chain is public, since every node holds a copy; slow,
+since all must agree on each block; and expensive, through fees. It also
+re-centralises when users reach it through a few portals. The conclusion:
+</p>
+
+<blockquote>
+But in general use as a place for Web apps to to store data, blockchains are
+too slow, too expensive, and too public.
+<cite>Blockchain and the Web, 2017</cite>
+</blockquote>
+
+<h2>81.8 Doing it with the Web instead</h2>
+
+<p>
+Given a trusted known party, a page on its site can be the head of a
+ledger. Signed linked data can be chained, each document citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash
+those it depends on, as in Chapter 62. And git repositories already fill the Web with hash trees.
 </p>
 
 <p>
-A distributed ledger is the proposal to replace the institution with a
-mechanism, and the note is a careful refusal to accept that framing. It grants
-the parts that are genuinely new, notes the ways they connect to what exists,
-and observes that the integrity everyone admires is purchased in a currency
-that has to come from somewhere.
-</p>
-
-<p>
-Its most useful contribution is the first paragraph&#8217;s demand: say which thing
-you mean. A word that names a ledger, a currency, a naming system, an identity
-system and a movement cannot be evaluated as one thing, and most argument about
-it is people answering different questions.
+The weak point is the domain name. Without a domain of their own, people&#8217;s data sits
+under their provider&#8217;s name and they are tied to it, so anything that helps people
+get one, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (Chapter 54), helps.
 </p>
 
 <div class="since">
@@ -227,16 +383,17 @@ it is people answering different questions.
 other.</strong> Ethereum replaced mining with staking in September 2022,
 cutting its consumption by around 99 per cent; the original network did
 not.</li>
-<li><strong>Identity took the route the note names.</strong> Decentralised
-identifiers became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in July 2022, giving people
-identifiers that do not depend on the domain name system, which is one of the
-five parts of Figure 81.1 arriving as a standard.</li>
+<li><strong>The note&#8217;s own update tested the loop.</strong> It links a
+CryptoSlate report of 12 December 2022 that a bitcoin had become cheaper than
+the all-in cost of mining one: the dashed exit of Figure 81.2.</li>
+<li><strong>Identity was standardised without a blockchain.</strong>
+Decentralised identifiers, the identity part of Figure 81.1, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+Recommendation in July 2022.</li>
 <li><strong>Payments arrived in the browser, generically.</strong> The Payment
-Request <a class="gl-ref" href="../glossary.html#specification">specification</a> became a Recommendation in September 2022, providing the
-modular slot this note describes, without favouring any currency.</li>
+Request <a class="gl-ref" href="../glossary.html#specification">specification</a> became a Recommendation in September 2022: the modular
+slot the note describes, favouring no currency.</li>
 <li><strong>The speculation chart resolved.</strong> The price rose far beyond
-2017 levels and fell sharply more than once, and the remittance use the note
-considers the most valuable remains marginal relative to trading.</li>
+2017 levels and fell sharply more than once.</li>
 </ul>
 </div>
 
@@ -245,17 +402,16 @@ considers the most valuable remains marginal relative to trading.</li>
 <p>
 Naming and the authority behind it are Chapters 3 and 79, and identity by key
 is Chapter 69. Notarising a state is the mechanism of Chapter 62, and endorsing
-by checksum is Chapter 46. Separating several meanings of one word is the
-method of Chapter 25.
+by checksum is Chapter 46. Personal data stores are Chapter 54.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">81.1</span>
-Take a question of the form &ldquo;will this solve that?&rdquo; from your own
-field. Separate the several things the word names.</p>
+Take a &ldquo;will this solve that?&rdquo; question from your own field and
+separate the things its key word names.</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.2</span>
@@ -264,13 +420,18 @@ how long does the bet have to hold?</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.3</span>
-The ledger and the currency depend on each other. Design a shared ledger whose
-integrity does not require a currency, and say what it costs.</p>
+If a trusted website serves as a ledger, what do you give up compared with a
+blockchain, and what do you gain?</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.4</span>
-The price is irrelevant to the remittance use. Explain why, and say what would
-make it relevant again.</p>
+Why does the price barely matter to someone making a remittance? What
+happens if it swings sharply during the minute they hold the coins?</p>
+</div>
+<div class="question">
+<p><span class="question-number">81.5</span>
+For something you have stored online, name the three things that must keep
+working for it to stay available, and who pays for each.</p>
 </div>
 </details>
 
