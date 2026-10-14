@@ -49,11 +49,28 @@
 a Design Issues note by Tim Berners-Lee, 2001-10-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/LookAtiCalendar.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Calendar invitations pass between programs in a standard text format called
+iCalendar. This note reads its <a class="gl-ref" href="../glossary.html#specification">specification</a> closely, asking how it would look
+as simple linked data.
+</p>
+<p>
+Most of it translates neatly, because the structure is already there. The
+faults found are common ones: no single list of what each field may hold,
+behaviour shown only in examples, relationships dressed up as objects, and a
+rule letting each field set its own grammar, so no general reader can exist.
+Above all, the format says what a meeting is but not what sending one means.
+The same checks apply to any data format.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 In October 2001 Berners-Lee spent a few hours reading fifty pages of
-iCalendar, the <a class="gl-ref" href="../glossary.html#specification">specification</a> (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445) for exchanging calendar entries,
+iCalendar, the specification (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445) for exchanging calendar entries,
 with a view to evaluating proposals for putting it into <a class="gl-ref" href="../glossary.html#xml">XML</a>. The note is
 what he found: the one worked example of the analysis Volume IV keeps
 recommending.
@@ -225,7 +242,7 @@ Each item in his summary is a failure mode that recurs elsewhere.
 
 <table>
 <tr><th>Finding</th><th>Example</th><th>The general problem</th></tr>
-<tr><td>Full of extension prefixes and registries</td><td>Private <code>X-</code> names; IANA tokens</td><td>An extension mechanism rebuilt because none was inherited</td></tr>
+<tr><td>Full of extension prefixes and registries</td><td>Private <code>X-</code> names; <a class="gl-ref" href="../glossary.html#iana">IANA</a> tokens</td><td>An extension mechanism rebuilt because none was inherited</td></tr>
 <tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
 <tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
 <tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
@@ -385,7 +402,7 @@ problem which HTTP has in spades: One parser per page of the spec.
 </blockquote>
 
 <p>
-RFC 822, the 1982 email-header standard, gives each header its own syntax;
+RFC 822, the 1982 email-header standard, gives each <a class="gl-ref" href="../glossary.html#header">header</a> its own syntax;
 Chapter 32 treats that as a symptom of a missing model. Here the defect
 reappears in a format designed sixteen years later.
 </p>
@@ -418,10 +435,10 @@ the note&#8217;s own preface mentions, began in late 2002 with running code,
 example data and schemas.</li>
 <li><strong>The protocol was next door.</strong> It was in a companion
 RFC (iTIP, RFC 2446, 1998), revised as RFC 5546 in 2009; CalDAV (RFC 4791,
-2007) added server access.</li>
+2007) added <a class="gl-ref" href="../glossary.html#server">server</a> access.</li>
 <li><strong>The format was revised, not restructured.</strong> RFC 5545
 (2009) replaced RFC 2445 and kept per-property parameters.</li>
-<li><strong>XML and JSON forms arrived.</strong> xCal (RFC 6321, 2011) and
+<li><strong>XML and <a class="gl-ref" href="../glossary.html#json">JSON</a> forms arrived.</strong> xCal (RFC 6321, 2011) and
 jCal (RFC 7265, 2014), the kind of translation he was evaluating.</li>
 <li><strong>The note joined the series in 2014,</strong> its preface says,
 because of later work on RDF, iCalendar and vCard.</li>
