@@ -49,6 +49,17 @@
 a Design Issues note by Tim Berners-Lee, 2007-10-23.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Abstractions.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+An abstraction is a way of working that lets someone forget the machinery
+underneath it. The Web stacks four of them: cables, then computers, then
+documents, then the things the documents are about. A user may ignore every
+lower layer except in two cases, when something breaks and when trust is in
+question, and in both cases the web address itself says who is responsible.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -68,98 +79,117 @@ the one beneath.
 <h2>6.1 Three refusals</h2>
 
 <p>
-The note advances by rejecting three answers in turn, and the rhetorical
-shape is the content.
+The note advances by rejecting three answers in turn. Each step is an
+abstraction: a way of working that lets a person forget the layer underneath.
+The note names each step by what no longer has to be thought about.
 </p>
 
-<p>
-<strong>It is not the wires.</strong> When computers were connected by
-telephone lines, one ran a program to connect to a particular machine, and to
-reach a third machine one had to know how to drive the second. Mail travelled
-by machines calling each other at night, and addresses named the route:
-Berners-Lee gives the example
-<code>timbl@mcvax!cernvax!cernvms</code>. The Internet removed the wires from
-the picture. Messages enter and emerge, and the Domain Name System with TCP
-and IP let a program on one machine address a program on another without
-anybody tracing the path.
-</p>
+<h3>Not the wires</h3>
 
 <p>
-<strong>It is not the computers.</strong> That power was not usable by
-ordinary people until the Web, whose realisation he states as a slogan: it is
-not the computers which are interesting, it is the documents. The user is
-then in a web of interconnected documents and need not think about the
-protocols underneath.
-</p>
-
-<p>
-<strong>It is not the documents.</strong> The <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s realisation is
-the same move again: it is not the documents which are interesting, it is the
-things they are about. A reader of a page about a protein is usually
-interested in the protein. In business and science the customers, products,
-genes and proteins are the objects of interest, and a good browser would show
-information about the thing, merged from many sources.
+When computers were connected by telephone lines, one ran a program to
+connect to a particular machine, and to reach a third machine one had to know
+how to drive the second. Mail travelled by machines calling each other at
+night, and addresses named the route: Berners-Lee gives the example
+<code>timbl@mcvax!cernvax!cernvms</code>, in which each <code>!</code>
+separates one machine on the path from the next. The Internet removed the
+wires from the picture. Messages enter and emerge, and two pieces of
+machinery let a program on one machine address a program on another without
+anybody tracing the path: the Domain Name System, which gives computers
+names, and TCP/IP, the pair of protocols (agreed rules) that break messages
+into packets and route them from computer to computer.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
+<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
      aria-labelledby="fig6-1-t fig6-1-d">
-  <title id="fig6-1-t">Four layers, and the identifier that records them</title>
-  <desc id="fig6-1-d">Cables carry computers, computers carry documents,
-  documents carry things. Each layer adds one segment to the identifier, so a
-  name for a thing contains the name of the document that describes it, which
-  contains the domain name of the party responsible for serving it.</desc>
+  <title id="fig6-1-t">The route versus the name</title>
+  <desc id="fig6-1-d">Left: before the Internet, the address
+  timbl@mcvax!cernvax!cernvms lists the machines the mail must pass through,
+  mcvax, then cernvax, then cernvms, so the sender must know the route. Right:
+  on the Internet the sender names only the destination, and the network,
+  using a DNS name and TCP/IP, finds the route.</desc>
 
-  <text x="150" y="24" class="t-caps" text-anchor="middle">The layer</text>
-  <text x="500" y="24" class="t-caps" text-anchor="middle">What the identifier says</text>
-  <line class="ln-mut" x1="20" y1="34" x2="700" y2="34"/>
+  <text x="180" y="26" class="t-caps" text-anchor="middle">Before: the address is the route</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle">After: the address names the destination</text>
+  <line class="ln-mut" x1="360" y1="14" x2="360" y2="200"/>
 
-  <!-- Layer 4: things -->
-  <rect class="box-green" x="20" y="48" width="260" height="62" rx="4"/>
-  <text x="150" y="72" class="t-lg" text-anchor="middle">A web of things</text>
-  <text x="150" y="92" class="t-sm" text-anchor="middle">the gene, not the page about it</text>
-  <text x="500" y="72" class="t-mono" text-anchor="middle"><tspan fill="#8a9a9a">http://acme.example.com/truc</tspan><tspan fill="#5a8f5a">#part3</tspan></text>
-  <text x="500" y="92" class="t-sm" text-anchor="middle">the document&#8217;s name is inside the thing&#8217;s name</text>
+  <!-- left: hop-by-hop chain -->
+  <rect class="box-plain" x="20" y="50" width="60" height="36" rx="4"/>
+  <text x="50" y="73" text-anchor="middle">sender</text>
+  <rect class="box-warm" x="100" y="50" width="60" height="36" rx="4"/>
+  <text x="130" y="73" text-anchor="middle">mcvax</text>
+  <rect class="box-warm" x="180" y="50" width="60" height="36" rx="4"/>
+  <text x="210" y="73" text-anchor="middle">cernvax</text>
+  <rect class="box-warm" x="260" y="50" width="60" height="36" rx="4"/>
+  <text x="290" y="73" text-anchor="middle">cernvms</text>
 
-  <!-- Layer 3: documents -->
-  <rect class="box" x="20" y="126" width="260" height="62" rx="4"/>
-  <text x="150" y="150" class="t-lg" text-anchor="middle">A web of documents</text>
-  <text x="150" y="170" class="t-sm" text-anchor="middle">not the computer serving it</text>
-  <text x="500" y="150" class="t-mono" text-anchor="middle"><tspan fill="#8a9a9a">http://acme.example.com</tspan><tspan fill="#1c5a7a">/truc</tspan></text>
-  <text x="500" y="170" class="t-sm" text-anchor="middle">the owner&#8217;s name is inside the document&#8217;s name</text>
+  <path class="ln-accent" d="M 80 68 L 92 68"/>
+  <path d="M 92 64 L 100 68 L 92 72 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 160 68 L 172 68"/>
+  <path d="M 172 64 L 180 68 L 172 72 Z" fill="#1c5a7a"/>
+  <path class="ln-accent" d="M 240 68 L 252 68"/>
+  <path d="M 252 64 L 260 68 L 252 72 Z" fill="#1c5a7a"/>
 
-  <!-- Layer 2: computers -->
-  <rect class="box-warm" x="20" y="204" width="260" height="62" rx="4"/>
-  <text x="150" y="228" class="t-lg" text-anchor="middle">A net of computers</text>
-  <text x="150" y="248" class="t-sm" text-anchor="middle">not the route between them</text>
-  <text x="500" y="228" class="t-mono" text-anchor="middle"><tspan fill="#b08d57">acme.example.com</tspan></text>
-  <text x="500" y="248" class="t-sm" text-anchor="middle">a registry binds this to a responsible party</text>
+  <!-- the bang path, each segment bracketed to its machine -->
+  <text x="79" y="152" class="t-mono" textLength="202.5" lengthAdjust="spacingAndGlyphs">timbl@mcvax!cernvax!cernvms</text>
+  <path class="ln-mut" d="M 125 132 L 125 126 L 161 126 L 161 132"/>
+  <path class="ln-mut" d="M 170 132 L 170 126 L 221 126 L 221 132"/>
+  <path class="ln-mut" d="M 230 132 L 230 126 L 281 126 L 281 132"/>
+  <path class="ln-dash" d="M 143 126 L 130 90"/>
+  <path class="ln-dash" d="M 195 126 L 210 90"/>
+  <path class="ln-dash" d="M 255 126 L 290 90"/>
+  <text x="180" y="188" class="t-sm" text-anchor="middle">the sender must know every hop on the way</text>
 
-  <!-- Layer 1: cables -->
-  <rect class="box-plain" x="20" y="282" width="260" height="62" rx="4"/>
-  <text x="150" y="306" class="t-lg" text-anchor="middle">Cables</text>
-  <text x="150" y="326" class="t-sm" text-anchor="middle">named by where they run</text>
-  <text x="500" y="312" class="t-sm t-it" text-anchor="middle">nothing of this layer survives into the name</text>
-
-  <!-- the stacking arrows -->
-  <path class="ln-accent" d="M 12 344 L 12 52"/>
-  <path d="M 8 60 L 12 48 L 16 60 Z" fill="#1c5a7a"/>
-  <text x="6" y="200" class="t-sm" text-anchor="middle" transform="rotate(-90 6 200)">each layer rests on the one below</text>
-
-  <line class="ln-mut" x1="20" y1="360" x2="700" y2="360"/>
-  <text x="360" y="382" class="t-sm t-it" text-anchor="middle">Each layer borrows the accountability of the layer beneath it.</text>
+  <!-- right: name the destination, the network finds the route -->
+  <rect class="box-plain" x="380" y="50" width="52" height="36" rx="4"/>
+  <text x="406" y="73" text-anchor="middle">sender</text>
+  <rect class="box-green" x="610" y="50" width="90" height="36" rx="4"/>
+  <text x="655" y="73" text-anchor="middle">destination</text>
+  <rect class="ln-dash" x="446" y="34" width="150" height="94" rx="20"/>
+  <path class="ln-accent" d="M 432 68 L 602 68"/>
+  <path d="M 602 64 L 610 68 L 602 72 Z" fill="#1c5a7a"/>
+  <text x="521" y="56" class="t-sm" text-anchor="middle">DNS name + TCP/IP</text>
+  <text x="521" y="94" text-anchor="middle">the Internet</text>
+  <text x="521" y="112" class="t-sm" text-anchor="middle">the route is hidden</text>
+  <text x="540" y="160" class="t-sm" text-anchor="middle">the sender names only the end point;</text>
+  <text x="540" y="178" class="t-sm" text-anchor="middle">packets are routed from computer to computer</text>
 </svg>
 <figcaption><span class="fig-label">Figure 6.1</span>
-The seams between layers are legible in the identifier itself. Remove the
-accountability at any level and every level above it loses its footing.</figcaption>
+When the address spells out the route, the sender must know the network; the
+Internet lets the address name only the destination.</figcaption>
 </figure>
 
-<h2>6.2 The two exceptions, repeated at every level</h2>
+<h3>Not the computers</h3>
 
 <p>
-Each abstraction is said to hold except in two cases, and the pair recurs
-identically at every level, which is what makes the pattern an architecture
-rather than a story.
+That power was not usable by ordinary people until the Web, whose insight he
+states as a slogan: it is not the computers which are interesting, it is the
+documents. The user is then in a web of interconnected documents and need not
+think about the protocols underneath.
+</p>
+
+<h3>Not the documents</h3>
+
+<p>
+The <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s insight is the same move again: it is not the
+documents which are interesting, it is the things they are about. A reader of
+a page about a protein is usually interested in the protein. In business and
+science the customers, products, genes and proteins are the objects of
+interest, and a good browser would show information about the thing, merged
+from many sources. What the user sees is then a web of connections between
+things, which the note illustrates with a chain: this person is a customer
+who made this order which includes this item which is manufactured by this
+facility, and so on.
+</p>
+
+<h2>6.2 The two exceptions</h2>
+
+<p>
+Each abstraction is said to hold except in two cases. The pair recurs at the
+document and data levels, with debugging already present at the network
+level, and that recurrence is what makes the pattern an architecture rather
+than a story.
 </p>
 
 <p>
@@ -187,9 +217,70 @@ when it isn't.
 </blockquote>
 
 <p>
-Provenance is therefore not an optional feature layered on top. It is the
-reason the abstraction is allowed to be an abstraction at all.
+A phishing attack is a fake page, usually reached from a deceptive email,
+that poses as an organisation the reader trusts in order to collect passwords
+or payment details. It works precisely by attacking the trust exception.
+Provenance, meaning the record of where a piece of information came from and
+who stands behind it, is therefore not an optional feature layered on top. It
+is the reason the abstraction is allowed to be an abstraction at all.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
+     aria-labelledby="fig6-2-t fig6-2-d">
+  <title id="fig6-2-t">Lifting the hood at each level</title>
+  <desc id="fig6-2-d">A grid of three levels against two questions. Net:
+  debugging asks whether the fault is in the user&#8217;s own computer, the WiFi base
+  unit, the router, the cable modem, the middle of the Internet or the far
+  end; trust is not raised at this level. Web: debugging asks whether the
+  fault is the user&#8217;s connection, the URI in the link, or the server; trust asks
+  whose registered server this is and whether they will keep a bookmark
+  alive. Things: debugging asks whether the document was fetched but lacked
+  the data, or was not fetched; trust asks which document a map point or
+  table cell came from.</desc>
+
+  <text x="275" y="28" class="t-caps" text-anchor="middle">Debugging: where did it fail?</text>
+  <text x="565" y="28" class="t-caps" text-anchor="middle">Trust: who stands behind it?</text>
+
+  <!-- Net row -->
+  <rect class="box-warm" x="20" y="48" width="100" height="76" rx="4"/>
+  <text x="70" y="83" class="t-lg" text-anchor="middle">Net</text>
+  <text x="70" y="101" class="t-sm" text-anchor="middle">of computers</text>
+  <rect class="box-warm" x="130" y="48" width="290" height="76" rx="4"/>
+  <text x="275" y="72" text-anchor="middle">own computer, WiFi base unit, router,</text>
+  <text x="275" y="90" text-anchor="middle">cable modem, middle of the Internet,</text>
+  <text x="275" y="108" text-anchor="middle">or the far end?</text>
+  <rect class="box-warm" x="430" y="48" width="270" height="76" rx="4"/>
+  <text x="565" y="91" class="t-it" text-anchor="middle">not raised at this level</text>
+
+  <!-- Web row -->
+  <rect class="box" x="20" y="132" width="100" height="76" rx="4"/>
+  <text x="70" y="167" class="t-lg" text-anchor="middle">Web</text>
+  <text x="70" y="185" class="t-sm" text-anchor="middle">of documents</text>
+  <rect class="box" x="130" y="132" width="290" height="76" rx="4"/>
+  <text x="275" y="156" text-anchor="middle">my connection to the Internet,</text>
+  <text x="275" y="174" text-anchor="middle">the URI in the link I followed,</text>
+  <text x="275" y="192" text-anchor="middle">or an error at the server?</text>
+  <rect class="box" x="430" y="132" width="270" height="76" rx="4"/>
+  <text x="565" y="156" text-anchor="middle">whose registered server is this?</text>
+  <text x="565" y="174" text-anchor="middle">will they keep my bookmark</text>
+  <text x="565" y="192" text-anchor="middle">alive tomorrow?</text>
+
+  <!-- Things row -->
+  <rect class="box-green" x="20" y="216" width="100" height="76" rx="4"/>
+  <text x="70" y="251" class="t-lg" text-anchor="middle">Things</text>
+  <text x="70" y="269" class="t-sm" text-anchor="middle">of data</text>
+  <rect class="box-green" x="130" y="216" width="290" height="76" rx="4"/>
+  <text x="275" y="240" text-anchor="middle">document fetched but data missing,</text>
+  <text x="275" y="258" text-anchor="middle">or document not fetched at all</text>
+  <text x="275" y="276" text-anchor="middle">(then: which web problem?)</text>
+  <rect class="box-green" x="430" y="216" width="270" height="76" rx="4"/>
+  <text x="565" y="249" text-anchor="middle">which document did this map point</text>
+  <text x="565" y="267" text-anchor="middle">or table cell come from?</text>
+</svg>
+<figcaption><span class="fig-label">Figure 6.2</span>
+The same two questions recur; the answer always lies one level down.</figcaption>
+</figure>
 
 <h2>6.3 The seams are visible in the identifier</h2>
 
@@ -201,14 +292,17 @@ the URI itself. In
 <pre><code>http://acme.example.com/products/machin/truc</code></pre>
 
 <p>
-the owner&#8217;s domain name is part of the name of the document, so the company
-is identifiably responsible for supporting that document. In
+the owner&#8217;s domain name, <code>acme.example.com</code>, is part of the
+name of the document, so the company is identifiably responsible for
+supporting that document. In
 </p>
 
 <pre><code>http://acme.example.com/products/machin/truc#part3</code></pre>
 
 <p>
-the name of the document is part of the name of the thing. The thing is
+the name of the document is part of the name of the thing. The part after
+the <code>#</code> picks out something within or described by the document,
+and everything before it is the document&#8217;s own name. The thing is
 identified as the thing described by that document: a gene as defined in the
 Gene <a class="gl-ref" href="../glossary.html#ontology">Ontology</a>, a protein as defined in a particular taxonomy, a citizen as
 defined in a particular glossary. A thing may have many URIs, but a URI of
@@ -223,6 +317,58 @@ calls this more complicated and moves on. Chapters 7 and 8 are what lies
 behind the parenthesis.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
+     aria-labelledby="fig6-3-t fig6-3-d">
+  <title id="fig6-3-t">Four layers, and the identifier that records them</title>
+  <desc id="fig6-3-d">Cables carry computers, computers carry documents,
+  documents carry things. Each layer adds one segment to the identifier: the
+  domain name acme.example.com names the computer&#8217;s owner, the document
+  name http://acme.example.com/products/machin/truc contains it, and the
+  thing&#8217;s name, the same with #part3 added, contains the document&#8217;s
+  name.</desc>
+
+  <text x="162" y="24" class="t-caps" text-anchor="middle">The layer</text>
+  <text x="500" y="24" class="t-caps" text-anchor="middle">What the identifier says</text>
+  <line class="ln-mut" x1="38" y1="34" x2="700" y2="34"/>
+
+  <!-- Layer 4: things -->
+  <rect class="box-green" x="38" y="48" width="248" height="62" rx="4"/>
+  <text x="162" y="72" class="t-lg" text-anchor="middle">A web of things</text>
+  <text x="162" y="92" class="t-sm" text-anchor="middle">the gene, not the page about it</text>
+  <text x="500" y="72" class="t-mono" text-anchor="middle"><tspan style="fill:#8a9a9a">http://</tspan><tspan style="fill:#b08d57">acme.example.com</tspan><tspan style="fill:#1c5a7a">/products/machin/truc</tspan><tspan style="fill:#5a8f5a">#part3</tspan></text>
+  <text x="500" y="92" class="t-sm" text-anchor="middle">the document&#8217;s name is inside the thing&#8217;s name</text>
+
+  <!-- Layer 3: documents -->
+  <rect class="box" x="38" y="126" width="248" height="62" rx="4"/>
+  <text x="162" y="150" class="t-lg" text-anchor="middle">A web of documents</text>
+  <text x="162" y="170" class="t-sm" text-anchor="middle">not the computer serving it</text>
+  <text x="500" y="150" class="t-mono" text-anchor="middle"><tspan style="fill:#8a9a9a">http://</tspan><tspan style="fill:#b08d57">acme.example.com</tspan><tspan style="fill:#1c5a7a">/products/machin/truc</tspan></text>
+  <text x="500" y="170" class="t-sm" text-anchor="middle">the owner&#8217;s name is inside the document&#8217;s name</text>
+
+  <!-- Layer 2: computers -->
+  <rect class="box-warm" x="38" y="204" width="248" height="62" rx="4"/>
+  <text x="162" y="228" class="t-lg" text-anchor="middle">A net of computers</text>
+  <text x="162" y="248" class="t-sm" text-anchor="middle">not the route between them</text>
+  <text x="500" y="228" class="t-mono" text-anchor="middle"><tspan style="fill:#b08d57">acme.example.com</tspan></text>
+  <text x="500" y="248" class="t-sm" text-anchor="middle">a registry binds this to a responsible party</text>
+
+  <!-- Layer 1: cables -->
+  <rect class="box-plain" x="38" y="282" width="248" height="62" rx="4"/>
+  <text x="162" y="306" class="t-lg" text-anchor="middle">Cables</text>
+  <text x="162" y="326" class="t-sm" text-anchor="middle">connections once driven by hand</text>
+  <text x="500" y="317" class="t-sm t-it" text-anchor="middle">nothing of this layer survives into the name</text>
+
+  <!-- the stacking arrow -->
+  <path class="ln-accent" d="M 24 344 L 24 58"/>
+  <path d="M 20 60 L 24 48 L 28 60 Z" fill="#1c5a7a"/>
+  <text x="12" y="200" class="t-sm" text-anchor="middle" transform="rotate(-90 12 200)">each layer rests on the one below</text>
+</svg>
+<figcaption><span class="fig-label">Figure 6.3</span>
+Read each address left to right: each level&#8217;s name contains the name of
+the party responsible below it.</figcaption>
+</figure>
+
 <h2>6.4 The conclusion, which is about people</h2>
 
 <blockquote>
@@ -232,6 +378,14 @@ of interconnected cables. This is an architecture which provides a social
 backing to the names for things.
 <cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
 </blockquote>
+
+<p>
+The note spells out what that social backing buys. Because each layer rests
+on a named party, people can find out the social side of the things they deal
+with, not only the raw data: provenance, trust, persistence, licensing and
+appropriate use. And when things do not work, they can work out what has gone
+wrong, because the layering makes clear who is responsible.
+</p>
 
 <p>
 And then the sentence the note exists to deliver:
@@ -244,38 +398,55 @@ components of the lower layer's architecture.
 </blockquote>
 
 <p>
-A name for a gene is trustworthy because a document is trustworthy, which is
-trustworthy because a domain owner is accountable, which is meaningful
-because a registry binds the domain to a party. Take away the accountability
-at any level and the levels above lose their footing. This is why Chapter 3
-concluded that naming is a contractual matter, and why the failures catalogued
-in Volumes VII and VIII are failures of the same structure rather than a
-separate set of problems.
+Read from the bottom up, as in Figure 6.3, the chain of borrowed trust runs
+like this:
+</p>
+
+<ol>
+<li>A registry binds the domain name to a party.</li>
+<li>So the domain owner is accountable for what its computers serve.</li>
+<li>So a document published under that domain is trustworthy to the degree
+the owner is.</li>
+<li>So a name for a gene, built from that document&#8217;s name, is trustworthy
+to the degree the document is.</li>
+</ol>
+
+<p>
+Take away the accountability at any level and the levels above lose their
+footing. This is why Chapter 3 concluded that naming is a contractual matter.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The trust exception failed in the field.</strong> Extended
-Validation certificates were the mechanism for showing a user which
-organisation stood behind a page. Research through the 2010s found that users
-did not act on the indicator, and both Chrome and Firefox removed the
-prominent EV display in 2019. The layer Berners-Lee identified as load-bearing
-was one that browsers concluded users could not see.</li>
+Validation (EV) certificates, a costlier kind of security certificate issued
+only after checking the organisation&#8217;s legal identity, were the mechanism
+for showing a user which organisation stood behind a page, typically as a
+company name beside the address bar. Both Chrome and Firefox removed that
+prominent EV display in 2019, having concluded that users did not act on it.
+The layer Berners-Lee identified as load-bearing was one that browsers
+concluded users could not see.</li>
 <li><strong>The parenthesis became a decade of argument.</strong> The
 Technical Architecture Group&#8217;s resolution of the issue known as httpRange-14,
 in June 2005, established the 303 redirect convention for URIs denoting things
-that are not documents. Practice afterwards split between that pattern and
-hash URIs, and the split has not closed.</li>
+that are not documents: asked for such a URI, the server answers with the
+status code 303 (&ldquo;See Other&rdquo;) and the address of a document about
+the thing. Practice afterwards split between that pattern and hash URIs,
+which, like the <code>#part3</code> example above, put the thing&#8217;s name
+inside a document&#8217;s name. The split has not closed. Chapters 7 and 8
+take this up.</li>
 <li><strong>The third layer arrived partially.</strong> <a class="gl-ref" href="../glossary.html#schema">Schema</a>.org, launched
 in June 2011, put structured descriptions of things on a large fraction of
 pages, and search engines consume them. The browser showing a user a merged
 view of a thing, which this note describes, remains uncommon outside
 specialist tools.</li>
-<li><strong>Layer separation weakened elsewhere.</strong> Consolidation of
-hosting and content delivery means that the domain owner named in a URI is
-frequently not the party in control of what is served, which complicates the
-<a class="gl-ref" href="../glossary.html#inference">inference</a> from name to responsibility that the whole argument rests on.</li>
+<li><strong>Layer separation weakened elsewhere.</strong> Content delivery
+networks, of which Akamai, founded in 1998, was the first large one, and the
+later move of sites onto shared cloud hosting mean that the domain owner
+named in a URI is frequently not the party running the machines that serve
+it. That complicates the <a class="gl-ref" href="../glossary.html#inference">inference</a> from name to responsibility that the
+whole argument rests on.</li>
 </ul>
 </div>
 
@@ -285,9 +456,10 @@ frequently not the party in control of what is served, which complicates the
 This chapter completes Volume I by explaining what the earlier axioms are for.
 The parenthetical question about URIs for things opens Volume II at
 Chapters 7 and 8. The trust exception is the starting point of Volume VII,
-especially Chapter 66 on modelling real trust. The social reading of naming
-returns from Chapter 3 and reaches its full statement in Chapter 49 on Linked
-Data.
+especially Chapter 66 on modelling real trust, and the failures catalogued in
+Volumes VII and VIII are failures of this same layered structure rather than
+a separate set of problems. The social reading of naming returns from
+Chapter 3 and reaches its full statement in Chapter 49 on <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>.
 </p>
 </div>
 
@@ -295,9 +467,8 @@ Data.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">6.1</span>
-The two exceptions, debugging and trust, recur at every layer. Construct the
-pair for a fourth layer above the web of things, and say what would have to be
-visible for the pattern to hold.</p>
+A link to a recipe gives an error. Using the layers, list in order where the
+fault could be.</p>
 </div>
 <div class="question">
 <p><span class="question-number">6.2</span>

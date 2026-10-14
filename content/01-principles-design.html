@@ -7,8 +7,11 @@ accepted, or forgiving? Control kept in one place, or given away?
 </p>
 <p>
 Berners-Lee had answered these questions many times in arguments and had never
-written the answers down. This is the note where he does: six rules, borrowed
-from three different traditions, that the rest of this book keeps applying.
+written the answers down. This is the note where he does: six rules, two from
+software engineering, two from the Internet, and two he found the Web needed.
+They are simplicity and modularity; tolerance and decentralization; and the
+test of independent invention and the principle of least power. The rest of
+this book keeps applying them.
 </p>
 </div>
 
@@ -71,28 +74,43 @@ cannot be consulted.
 <p>
 The definition offered is narrow and worth keeping: &ldquo;A language which
 uses fewer basic elements to achieve the same power is simpler.&rdquo;
-Berners-Lee then separates this from familiarity. A two-line recursive
-solution is simpler than a ten-line iterative one even where readers find
-the longer version easier to follow.
+Berners-Lee then separates this from familiarity. A two-line solution that
+uses recursion (a function that calls itself) is simpler than a ten-line one
+that avoids it with an explicit loop, even where some readers find the
+longer version easier to follow.
 </p>
 
 <p>
-The worked example is XML processing instructions, the constructs beginning
-with a question mark. His objection is not that they are large but that they
-are contagious: they add a third kind of thing to a design that had only
-elements and attributes, and so every specification that refers to XML
-processing must afterwards say what it does about them. Simplicity here is
-measured in other people&#8217;s specifications, not in one&#8217;s own.
+The worked example is XML. An XML document is built from two kinds of thing:
+elements, the named and nested pieces such as <code>&lt;p&gt;</code>, and
+attributes, the name-and-value settings attached to them, such as the
+<code>class="x"</code> in <code>&lt;p class="x"&gt;</code>. Processing
+instructions are a third kind, the constructs that begin with
+<code>&lt;?</code>, such as <code>&lt;?xml-stylesheet &hellip;?&gt;</code>.
+</p>
+
+<p>
+His objection is not that processing instructions are large but that they
+are contagious. They complicate what was a clean design of elements and
+attributes, and so every specification that refers to XML processing must
+afterwards say what it does about them as well. Simplicity here is measured
+in other people&#8217;s specifications, not in one&#8217;s own.
 </p>
 
 <h2>1.3 Modularity, and being a module</h2>
 
 <p>
-The first half is conventional: group features so that bindings within a
-group are tight and bindings between groups are loose, and the groups become
-the units of independent change. Berners-Lee adds the standard warning that
-a design in which each module must know the insides of the others is not
-modular but merely partitioned.
+The first half is conventional. Group features so that the bindings within a
+group (the ways one feature depends on another) are tight, and the bindings
+between groups are loose. The groups then become the units of independent
+change: one person can alter one part, understanding and testing only that
+part, while others alter other parts at the same time.
+</p>
+
+<p>
+Berners-Lee adds the standard warning. Modularity depends on a simple,
+abstract interface between the modules. A design in which each module must
+know the insides of the others is not modular but merely partitioned.
 </p>
 
 <p>
@@ -106,55 +124,269 @@ larger system. This is often much more difficult than modularity.
 <cite>Principles of Design, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig1-1-t fig1-1-d">
+  <title id="fig1-1-t">Partitioned, modular, part of something larger</title>
+  <desc id="fig1-1-d">Three panels. In the first, three parts A, B and C sit
+  in one box with lines running into each other's interiors. In the second,
+  the same three parts each connect by one short line to a shared interface.
+  In the third, a box labelled one system sits inside a dashed boundary
+  labelled a larger system nobody has designed yet, beside two unknown boxes
+  marked with question marks.</desc>
+
+  <!-- panel a: partitioned -->
+  <text x="120" y="24" class="t-caps" text-anchor="middle">partitioned</text>
+  <rect class="box-plain" x="20" y="40" width="200" height="160" rx="6"/>
+  <rect class="box" x="40" y="60" width="60" height="40" rx="4"/>
+  <rect class="box" x="140" y="60" width="60" height="40" rx="4"/>
+  <rect class="box" x="90" y="140" width="60" height="40" rx="4"/>
+  <text x="70" y="85" text-anchor="middle">A</text>
+  <text x="170" y="85" text-anchor="middle">B</text>
+  <text x="120" y="165" text-anchor="middle">C</text>
+  <line class="ln" x1="88" y1="92" x2="152" y2="68"/>
+  <line class="ln" x1="52" y1="94" x2="102" y2="150"/>
+  <line class="ln" x1="188" y1="94" x2="138" y2="150"/>
+  <circle cx="88" cy="92" r="2.5" fill="#2f4f4f"/>
+  <circle cx="152" cy="68" r="2.5" fill="#2f4f4f"/>
+  <circle cx="52" cy="94" r="2.5" fill="#2f4f4f"/>
+  <circle cx="102" cy="150" r="2.5" fill="#2f4f4f"/>
+  <circle cx="188" cy="94" r="2.5" fill="#2f4f4f"/>
+  <circle cx="138" cy="150" r="2.5" fill="#2f4f4f"/>
+  <text x="120" y="222" class="t-sm" text-anchor="middle">parts reach into each other</text>
+
+  <!-- panel b: modular -->
+  <text x="360" y="24" class="t-caps" text-anchor="middle">modular</text>
+  <rect class="box-plain" x="250" y="40" width="220" height="160" rx="6"/>
+  <rect class="box" x="265" y="54" width="60" height="40" rx="4"/>
+  <rect class="box" x="395" y="54" width="60" height="40" rx="4"/>
+  <rect class="box" x="330" y="146" width="60" height="40" rx="4"/>
+  <text x="295" y="79" text-anchor="middle">A</text>
+  <text x="425" y="79" text-anchor="middle">B</text>
+  <text x="360" y="171" text-anchor="middle">C</text>
+  <rect class="box-warm" x="320" y="104" width="80" height="24" rx="3"/>
+  <text x="360" y="120" class="t-sm" text-anchor="middle">interface</text>
+  <line class="ln" x1="305" y1="94" x2="322" y2="106"/>
+  <line class="ln" x1="415" y1="94" x2="398" y2="106"/>
+  <line class="ln" x1="360" y1="146" x2="360" y2="128"/>
+  <text x="360" y="222" class="t-sm" text-anchor="middle">parts meet only at an interface</text>
+
+  <!-- panel c: part of something larger -->
+  <text x="600" y="24" class="t-caps" text-anchor="middle">part of something larger</text>
+  <rect class="ln-dash" x="490" y="40" width="220" height="160" rx="6"/>
+  <text x="600" y="60" class="t-sm" text-anchor="middle">a larger system nobody</text>
+  <text x="600" y="75" class="t-sm" text-anchor="middle">has designed yet</text>
+  <rect class="box" x="502" y="110" width="94" height="44" rx="4"/>
+  <text x="549" y="136" text-anchor="middle">one system</text>
+  <rect class="box-plain" x="610" y="110" width="40" height="44" rx="4"/>
+  <text x="630" y="136" text-anchor="middle">?</text>
+  <rect class="box-plain" x="660" y="110" width="40" height="44" rx="4"/>
+  <text x="680" y="136" text-anchor="middle">?</text>
+  <text x="600" y="222" class="t-sm" text-anchor="middle">fits a whole not yet designed</text>
+</svg>
+<figcaption><span class="fig-label">Figure 1.1</span>
+The first two panels are the textbook lesson: parts should meet only at an
+interface. The third is the step Berners-Lee calls &ldquo;much more
+difficult&rdquo;, designing a system to be one part of something nobody
+has designed yet. It leads straight to the test of independent invention in
+section 1.6.</figcaption>
+</figure>
+
 <p>
 This is modularity turned inside out, and it is the bridge to the fifth
 principle. A system designed to be a component of something unspecified must
 do one thing, must leave the rest alone, and must not claim to be the centre.
+The note calls this corollary &ldquo;the TOII&rdquo;, its shorthand for the
+test of independent invention.
 </p>
 
 <h2>1.4 Tolerance, and its cost</h2>
 
 <p>
-The rule quoted is Postel&#8217;s, restated: be liberal in what is required, and
-conservative in what is done. Write strict, accept loose.
+The rule is stated in quotation marks in the note: &ldquo;Be liberal in what
+you require but conservative in what you do&rdquo;. It is usually credited to
+Jon Postel, who edited many of the early Internet protocol specifications and
+put a version of it into the specification of TCP in 1981. The note does not
+name him; it calls the rule &ldquo;a typical UU tenet&rdquo;, a principle that
+applies &ldquo;pretty well in life&rdquo; as well as across the Internet.
 </p>
 
 <p>
+The note gives its own concrete case: &ldquo;Write HTML 4.0-strict. Accept
+HTML-4.0-Transitional (a superset of strict).&rdquo; HTML 4.0 came in two main
+versions. Strict left out the older presentational features; Transitional
+kept them, so every Strict document is also a Transitional one. A careful
+program sends the narrower kind and accepts the wider.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig1-2-t fig1-2-d">
+  <title id="fig1-2-t">Write strict, accept loose</title>
+  <desc id="fig1-2-d">Nested boxes. The inner box is HTML 4.0 Strict, inside
+  a larger box for HTML 4.0 Transitional, inside a dashed boundary marking
+  what the specification counts as conforming. An arrow leaves the inner box
+  labelled what is sent. An arrow enters the middle box labelled what is
+  accepted. Outside the dashed line is not conforming.</desc>
+  <defs>
+    <marker id="fig1-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <rect class="ln-dash" x="170" y="20" width="420" height="230" rx="12"/>
+  <text x="380" y="40" class="t-sm" text-anchor="middle">the specification: conforming documents</text>
+
+  <rect class="box-warm" x="200" y="54" width="360" height="176" rx="10"/>
+  <text x="380" y="78" text-anchor="middle">HTML 4.0 Transitional</text>
+  <text x="380" y="96" class="t-sm" text-anchor="middle">(a superset of Strict)</text>
+
+  <rect class="box-green" x="290" y="116" width="180" height="84" rx="8"/>
+  <text x="380" y="163" text-anchor="middle">HTML 4.0 Strict</text>
+
+  <line class="ln" x1="290" y1="150" x2="32" y2="150" marker-end="url(#fig1-2-arr)"/>
+  <text x="40" y="140">what is sent</text>
+
+  <line class="ln" x1="712" y1="210" x2="563" y2="210" marker-end="url(#fig1-2-arr)"/>
+  <text x="602" y="200">what is accepted</text>
+
+  <text x="380" y="270" class="t-sm" text-anchor="middle">outside the dashed line: not conforming</text>
+</svg>
+<figcaption><span class="fig-label">Figure 1.2</span>
+Tolerance widens what a program accepts, from the green box to the warm one.
+It does not move the dashed line. The specification still says exactly what
+conforms and what does not.</figcaption>
+</figure>
+
+<p>
 Berners-Lee records the objection as well as the rule, which is why the
-section survives re-reading. Lax browsers make the system work better in the
-short term and encourage lax authors, which makes the system worse in the
-long term. He draws the line carefully: tolerance in an implementation is
-never a licence for vagueness in a specification, and never an excuse for a
-product that contravenes one. A specification must still draw a precise
-boundary between conformance and non-conformance, whatever implementations
-then choose to accept across it.
+section survives re-reading. When browsers are lax about what they expect,
+the system works better, but the laxness teaches page authors to be lax too.
+</p>
+
+<p>
+He then draws the limit. Tolerance in a program is never a licence for
+vagueness in a specification. The specification must still draw a precise
+line between conformance (meeting every requirement it sets) and
+non-conformance, whatever programs then choose to accept across that line.
+Nor is tolerance an excuse for a product that breaks a standard.
 </p>
 
 <h2>1.5 Decentralization, including of concepts</h2>
 
 <p>
 The network argument is familiar: a common point involved in every operation
-limits scaling and concentrates failure. The extension is the part worth
-carrying forward. Berners-Lee applies decentralization to vocabulary as well
-as to infrastructure. A knowledge representation system that requires every
-user of the concept of an automobile to use one particular identifier for it
-has created a conceptual bottleneck, and restricts the system to those for
-whom that one formulation works.
+limits how far the system can grow, and is a single point at which all of it
+can fail. The extension is the part worth carrying forward. Berners-Lee
+applies decentralization to vocabulary as well as to infrastructure.
 </p>
 
 <p>
-This sentence is the seed of the argument that runs through Volumes IV and
-VI: that the Semantic Web must let anyone mint a term, and must solve
-agreement by mapping between vocabularies rather than by mandating one.
+His example is a knowledge representation system, a system that records
+facts in a form a program can reason with. Suppose it requires anyone who
+uses the concept of an automobile to use the one term
+<code>http://www.kr.org/stds/industry/automobile</code>. It then works only
+for those whose idea of an automobile matches that one formulation. The
+Semantic Web, he writes, must avoid such conceptual bottlenecks just as the
+Internet avoids network bottlenecks.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+     aria-labelledby="fig1-3-t fig1-3-d">
+  <title id="fig1-3-t">One term for everyone, or many terms and mappings</title>
+  <desc id="fig1-3-d">Left: a car maker, an insurer, a museum and a tax
+  office all point to a single term, kr.org/stds/industry/automobile, which
+  is a bottleneck. Right: each of the four has its own term, auto, vehicle,
+  motor car and car, and dashed links marked maps to join neighbouring
+  terms.</desc>
+  <defs>
+    <marker id="fig1-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <!-- left panel -->
+  <text x="172" y="22" class="t-caps" text-anchor="middle">one term for everyone</text>
+  <rect class="box-plain" x="10" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="92" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="174" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="256" y="40" width="78" height="30" rx="4"/>
+  <text x="49" y="60" text-anchor="middle">car maker</text>
+  <text x="131" y="60" text-anchor="middle">insurer</text>
+  <text x="213" y="60" text-anchor="middle">museum</text>
+  <text x="295" y="60" text-anchor="middle">tax office</text>
+  <line class="ln" x1="49" y1="70" x2="120" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="131" y1="70" x2="155" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="213" y1="70" x2="190" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="295" y1="70" x2="225" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <rect class="box-warm" x="20" y="150" width="310" height="40" rx="4"/>
+  <text x="175" y="175" class="t-mono" text-anchor="middle">kr.org/stds/industry/automobile</text>
+  <text x="175" y="214" class="t-sm" text-anchor="middle">a bottleneck: one formulation for all</text>
+
+  <!-- divider -->
+  <line class="ln-mut" x1="358" y1="30" x2="358" y2="240"/>
+
+  <!-- right panel -->
+  <text x="553" y="22" class="t-caps" text-anchor="middle">many terms, with mappings</text>
+  <rect class="box-plain" x="390" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="472" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="554" y="40" width="78" height="30" rx="4"/>
+  <rect class="box-plain" x="636" y="40" width="78" height="30" rx="4"/>
+  <text x="429" y="60" text-anchor="middle">car maker</text>
+  <text x="511" y="60" text-anchor="middle">insurer</text>
+  <text x="593" y="60" text-anchor="middle">museum</text>
+  <text x="675" y="60" text-anchor="middle">tax office</text>
+  <line class="ln" x1="429" y1="70" x2="429" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="511" y1="70" x2="511" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="593" y1="70" x2="593" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <line class="ln" x1="675" y1="70" x2="675" y2="148" marker-end="url(#fig1-3-arr)"/>
+  <rect class="box" x="390" y="150" width="78" height="40" rx="4"/>
+  <rect class="box" x="472" y="150" width="78" height="40" rx="4"/>
+  <rect class="box" x="554" y="150" width="78" height="40" rx="4"/>
+  <rect class="box" x="636" y="150" width="78" height="40" rx="4"/>
+  <text x="429" y="175" class="t-mono" text-anchor="middle">auto</text>
+  <text x="511" y="175" class="t-mono" text-anchor="middle">vehicle</text>
+  <text x="593" y="175" class="t-mono" text-anchor="middle">motor car</text>
+  <text x="675" y="175" class="t-mono" text-anchor="middle">car</text>
+  <path class="ln-dash" d="M 429 190 Q 470 234 511 190"/>
+  <path class="ln-dash" d="M 511 190 Q 552 234 593 190"/>
+  <path class="ln-dash" d="M 593 190 Q 634 234 675 190"/>
+  <text x="552" y="236" class="t-sm" text-anchor="middle">maps to</text>
+</svg>
+<figcaption><span class="fig-label">Figure 1.3</span>
+On the left, every user must adopt one identifier, and the system works only
+for those it suits. On the right, each community keeps its own term and the
+terms are linked by mappings. The decentralization that keeps the Internet
+free of single points of failure is here applied to words.</figcaption>
+</figure>
+
+<p>
+This is the seed of the argument that runs through Volumes IV and VI: that
+the Semantic Web must let anyone mint a term, and must solve agreement by
+mapping between vocabularies rather than by mandating one.
 </p>
 
 <h2>1.6 The test of independent invention</h2>
 
 <p>
-The test is a single question: if someone else had already invented this
-system, would theirs work with ours? It is a thought experiment about
-arbitrary decisions. Where two independent designers would have chosen
-differently, the design must not assume its own choice is the only one.
+The test is a single question: &ldquo;If someone else had already invented your
+system, would theirs work with yours?&rdquo; Put another way, does this system have
+to be the only one of its kind? The note says the test is described in more
+detail in another of the Design Issues notes, <em>Evolution</em>, and adds
+three points of its own.
+</p>
+
+<p>
+First, the test is &ldquo;modularity inside-out&rdquo;: designing a system
+not to be modular in itself, but to be one part of a larger system that has
+not yet been specified (the third panel of Figure 1.1). Second, such a system
+should try to do one thing well, and leave other things to other modules.
+Third, it must avoid conceptual and other centralization, because &ldquo;no
+two modules can claim the need to be the unique center of a larger
+system&rdquo;.
 </p>
 
 <p>
@@ -167,10 +399,81 @@ universal space from existing and enveloping URI space as a subset.
 
 <p>
 This is the longest section of the note and the one with the clearest
-argument. Berners-Lee sets out a scale, from the plainly descriptive through
-limited logics and declarative languages to the unashamedly procedural, and
-observes that the profession spent the 1960s to the 1980s trying to move up
-it. His claim is that for data on the Web the incentive runs the other way:
+argument. It turns on the difference between two kinds of language. A
+declarative language states what is the case and leaves the reader to decide
+what to do with it; HTML says &ldquo;this is a heading&rdquo;. A procedural
+language is a list of steps for a computer to carry out, as in Java or C.
+</p>
+
+<p>
+Berners-Lee sets out a scale, from the plainly descriptive, through limited
+logics and two kinds of declarative language, to the unashamedly procedural.
+The two middle kinds are separated by whether a language is Turing complete,
+that is, able in principle to express any computation at all. PostScript, he
+notes, is; PDF is not. XSLT and SQL are, though &ldquo;one is led not to use
+them that way&rdquo;.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+     aria-labelledby="fig1-4-t fig1-4-d">
+  <title id="fig1-4-t">The scale of the principle of least power</title>
+  <desc id="fig1-4-d">A scale with five points: descriptive (Dublin Core,
+  HTML); limited logic (access lists, conneg); near-complete (PostScript,
+  PDF); complete but used declaratively (XSLT, SQL); and procedural (Java,
+  C). Moving right increases what an author can express. Moving left
+  increases what anyone else can do with the result.</desc>
+
+  <!-- labels above -->
+  <text x="80" y="54" class="t-caps" text-anchor="middle">descriptive</text>
+  <text x="80" y="76" class="t-sm" text-anchor="middle">Dublin Core, HTML</text>
+  <text x="220" y="54" class="t-caps" text-anchor="middle">limited logic</text>
+  <text x="220" y="76" class="t-sm" text-anchor="middle">access lists, conneg</text>
+  <text x="360" y="54" class="t-caps" text-anchor="middle">near-complete</text>
+  <text x="360" y="76" class="t-sm" text-anchor="middle">PostScript, PDF</text>
+  <text x="500" y="38" class="t-caps" text-anchor="middle">complete, used</text>
+  <text x="500" y="54" class="t-caps" text-anchor="middle">declaratively</text>
+  <text x="500" y="76" class="t-sm" text-anchor="middle">XSLT, SQL</text>
+  <text x="640" y="54" class="t-caps" text-anchor="middle">procedural</text>
+  <text x="640" y="76" class="t-sm" text-anchor="middle">Java, C</text>
+
+  <!-- the axis -->
+  <line class="ln" x1="30" y1="98" x2="690" y2="98"/>
+  <path d="M 684 93 L 694 98 L 684 103 Z" fill="#2f4f4f"/>
+  <path d="M 36 93 L 26 98 L 36 103 Z" fill="#2f4f4f"/>
+
+  <!-- ticks -->
+  <line class="ln-mut" x1="80" y1="90" x2="80" y2="106"/>
+  <line class="ln-mut" x1="220" y1="90" x2="220" y2="106"/>
+  <line class="ln-mut" x1="360" y1="90" x2="360" y2="106"/>
+  <line class="ln-mut" x1="500" y1="90" x2="500" y2="106"/>
+  <line class="ln-mut" x1="640" y1="90" x2="640" y2="106"/>
+
+  <!-- the two gains -->
+  <path class="ln-accent" d="M 228 132 L 64 132"/>
+  <path class="ln-accent" d="M 650 132 L 492 132"/>
+  <path d="M 68 127 L 56 132 L 68 137 Z" fill="#1c5a7a"/>
+  <text x="360" y="136" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">more that anyone else can do with the data</text>
+
+  <path class="ln" style="stroke:#b08d57" d="M 70 164 L 255 164"/>
+  <path class="ln" style="stroke:#b08d57" d="M 465 164 L 656 164"/>
+  <path d="M 652 159 L 664 164 L 652 169 Z" fill="#b08d57"/>
+  <text x="360" y="168" class="t-sm" text-anchor="middle" style="fill:#b08d57">more that the author can express</text>
+
+  <line class="ln-mut" x1="30" y1="190" x2="690" y2="190"/>
+  <text x="360" y="214" class="t-sm t-it" text-anchor="middle">Weather as a table can be averaged, plotted and combined. The same weather inside an applet can only be watched.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 1.4</span>
+The principle asks the designer to choose the leftmost point on this scale
+that still does the job, and it is the only one of the six principles that
+tells an author to give something up.</figcaption>
+</figure>
+
+<p>
+The powerful end of the scale is attractive: an open-ended hook into which
+anything can be placed. The profession spent the 1960s to the 1980s trying
+to move up it. His claim is that for data on the Web the incentive runs the
+other way:
 </p>
 
 <blockquote>
@@ -180,61 +483,13 @@ declarative from, anyone can write a program to analyze it in many ways.
 <cite>Principles of Design, 1998</cite>
 </blockquote>
 
-<figure>
-<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
-     aria-labelledby="fig1-1-t fig1-1-d">
-  <title id="fig1-1-t">The scale of the principle of least power</title>
-  <desc id="fig1-1-d">A scale running from plainly descriptive languages to
-  unashamedly procedural ones. Moving right increases what an author can
-  express. Moving left increases what anyone else can do with the result.</desc>
-
-  <!-- the axis -->
-  <line class="ln" x1="40" y1="112" x2="680" y2="112"/>
-  <path d="M 674 107 L 684 112 L 674 117 Z" fill="#2f4f4f"/>
-  <path d="M 46 107 L 36 112 L 46 117 Z" fill="#2f4f4f"/>
-
-  <!-- ticks -->
-  <line class="ln-mut" x1="110" y1="104" x2="110" y2="120"/>
-  <line class="ln-mut" x1="270" y1="104" x2="270" y2="120"/>
-  <line class="ln-mut" x1="420" y1="104" x2="420" y2="120"/>
-  <line class="ln-mut" x1="560" y1="104" x2="560" y2="120"/>
-
-  <!-- labels above -->
-  <text x="110" y="64" class="t-caps" text-anchor="middle">descriptive</text>
-  <text x="110" y="86" class="t-sm" text-anchor="middle">Dublin Core, HTML</text>
-  <text x="270" y="64" class="t-caps" text-anchor="middle">limited logic</text>
-  <text x="270" y="86" class="t-sm" text-anchor="middle">access control lists</text>
-  <text x="420" y="64" class="t-caps" text-anchor="middle">declarative</text>
-  <text x="420" y="86" class="t-sm" text-anchor="middle">XSLT, SQL</text>
-  <text x="560" y="64" class="t-caps" text-anchor="middle">procedural</text>
-  <text x="560" y="86" class="t-sm" text-anchor="middle">Java, C</text>
-
-  <!-- the two gains -->
-  <path class="ln-accent" d="M 640 160 L 60 160"/>
-  <path d="M 68 155 L 56 160 L 68 165 Z" fill="#1c5a7a"/>
-  <rect x="182" y="148" width="336" height="16" fill="#fefefe"/>
-  <text x="350" y="160" class="t-sm" text-anchor="middle" fill="#1c5a7a" dominant-baseline="middle">more that anyone else can do with the data</text>
-
-  <path class="ln" stroke="#b08d57" d="M 80 200 L 660 200"/>
-  <path d="M 652 195 L 664 200 L 652 205 Z" fill="#b08d57"/>
-  <rect x="240" y="188" width="260" height="16" fill="#fefefe"/>
-  <text x="370" y="200" class="t-sm" text-anchor="middle" fill="#a07d47" dominant-baseline="middle">more that the author can express</text>
-
-  <line class="ln-mut" x1="40" y1="224" x2="680" y2="224"/>
-  <text x="360" y="248" class="t-sm t-it" text-anchor="middle">Weather as a table can be averaged, plotted and combined. The same weather inside an applet can only be watched.</text>
-</svg>
-<figcaption><span class="fig-label">Figure 1.1</span>
-The principle asks the designer to choose the leftmost point on this scale
-that still does the job, and it is the only one of the six principles that
-tells an author to give something up.</figcaption>
-</figure>
-
 <p>
 The comparison offered is weather data. Published as a table of values with
 a declarative description, it can be averaged, plotted, combined with other
 sources, and queried in ways its publisher never considered. Published
-through a Java applet, it may look better and can be analysed by nobody: the
-only way to discover what an applet means is to run it in front of a person.
+through a Java applet, a small program that the browser downloads and runs
+inside the page, it may look better and can be analysed by nobody: the only
+way to discover what an applet means is to run it in front of a person.
 </p>
 
 <p>
@@ -250,9 +505,9 @@ tables of contents, index it, and so on.
 
 <p>
 A follow-up added later in the life of the page credits Meredith Patterson&#8217;s
-talk <em>The Science of Insecurity</em> with the observation that least power
-also governs security: an interface exposed to attack is safer when the
-language it accepts is weak enough to be decided.
+talk <em>The Science of Insecurity</em> with the point that the principle of
+least power is also important for the security of interfaces that may be
+exposed to attack.
 </p>
 
 <div class="since">
@@ -264,7 +519,10 @@ Power</em>, edited by Berners-Lee and Noah Mendelsohn, published in
 February 2006.</li>
 <li><strong>The security reading became a field.</strong> The language-theoretic
 security work that Patterson&#8217;s talk introduced, dating from around 2011,
-made the argument that parser expressiveness is itself the attack surface.</li>
+made the argument that parser expressiveness is itself the attack surface. It
+holds that inputs an interface accepts should be in a language simple enough
+to be decidable: simple enough that a program can always tell whether a given
+input is valid.</li>
 <li><strong>Tolerance was reconsidered.</strong> The Internet Architecture Board
 published RFC 9413, <em>Maintaining Robust Protocols</em>, in June 2023,
 arguing that liberal acceptance degrades interoperability over time because
@@ -275,9 +533,6 @@ HTML5, whose first W3C Recommendation came in October 2014, specified error
 handling exactly, so that lax input produces one defined result rather than
 many. That is neither strictness nor tolerance but a third answer the 1998
 note does not anticipate.</li>
-<li><strong>Least power lost the data argument in practice.</strong> The
-weather-applet comparison recurred with JavaScript-rendered pages, which by
-the 2010s made a large share of published data readable only by running it.</li>
 </ul>
 </div>
 
@@ -297,10 +552,8 @@ V, and is stated again at the opening of Chapter 5.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">1.1</span>
-Berners-Lee objects to XML processing instructions on grounds of simplicity,
-not size. Restate his objection as a claim about the number of documents
-that must change when a construct is added to a widely referenced
-specification.</p>
+If XML gains a third kind of construct, which other documents have to
+change, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">1.2</span>
@@ -311,9 +564,9 @@ and say what it cost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">1.3</span>
-Apply the test of independent invention to the Domain Name System. If a
-second, independently designed global naming system had existed in 1985,
-could the two have interoperated? What in the design decides the answer?</p>
+Apply the test of independent invention to a photo-sharing site that only
+lets you link to other users of the same site. Would a rival site&#8217;s
+links work with it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">1.4</span>

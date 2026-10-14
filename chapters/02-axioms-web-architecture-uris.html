@@ -57,20 +57,20 @@ disk. It is not. It is a name, and the single most consequential decision in
 the Web&#8217;s design was that everything worth mentioning gets one.
 </p>
 <p>
-This note sets out nine rules about those names which the Web&#8217;s specifications
-assume and never state. They are the reason a link can be sent to anybody at
-all and still mean the same thing at the other end.
+This note sets out ten rules about those names. Together they are the reason
+a link can be sent to anybody at all and still mean the same thing at the
+other end.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is the longest and most consequential note in the collection, and the
-one that most repays being read as a chapter rather than a page. Written in
-December 1996, revised until at least 2009, it attempts to state in one place
-the rules that the Web&#8217;s specifications assume but do not contain. The author
-is explicit that the rigour is borrowed:
+Written in December 1996 and revised until at least 2009, this note gathers
+in one place the rules of Web design that are, in its own words,
+&ldquo;implied or stated in various specifications or in some cases simply
+part of the folk law of how the Web ought to be used.&rdquo; The author is
+explicit that the rigour is borrowed:
 </p>
 <blockquote>
 Terms such as &ldquo;axiom&rdquo;, and &ldquo;theorem&rdquo; are used with gay
@@ -78,18 +78,14 @@ abandon rather than precision as this not a mathematical treatise.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 <p>
-The disclaimer is fair, and it should not be allowed to obscure what the note
-achieves. Nine numbered claims are made here. Seven of them became, over the
-following decade, the content of <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986 and of the <a class="gl-ref" href="../glossary.html#http">HTTP</a> specifications.
-Two of them are still argued about.
+The table at the end of section 2.1 lists the ten rules in plain words.
 </p>
 </div>
 
 <h2>2.1 What is on the Web</h2>
 
 <p>
-The chapter opens with a definition that is doing more work than it appears
-to:
+The note opens with a definition that does more work than it appears to:
 </p>
 
 <blockquote>
@@ -102,18 +98,35 @@ it, and the power of the Web is the less for that.
 </blockquote>
 
 <p>
-Membership of the Web is thereby made a property of naming, not of storage,
-protocol, or format. Nothing is on the Web because it sits on a Web server.
-It is on the Web because it can be referred to. Every later argument in this
-book about what deserves a <a class="gl-ref" href="../glossary.html#uri">URI</a>, from government datasets in Chapter 53 to
-the parts of a person&#8217;s own data in Chapter 54, follows from this sentence.
+Membership of the Web is a property of naming, not of storage, protocol, or
+format. Every later argument in this book about what deserves a <a class="gl-ref" href="../glossary.html#uri">URI</a>, from
+government datasets in Chapter 53 to a person&#8217;s own data in Chapter 54,
+follows from this sentence.
 </p>
+
+<p>
+The rules are scattered through the note, some numbered, some not. Gathered
+together, they are these.
+</p>
+
+<table>
+<tr><th>Axiom</th><th>In plain words</th><th>Section</th></tr>
+<tr><td>0, universality 1</td><td>Anything at all can be given a URI.</td><td>2.2</td></tr>
+<tr><td>0a, universality 2</td><td>Anything that matters should be given one.</td><td>2.2</td></tr>
+<tr><td>1, global scope</td><td>A URI means the same thing whoever uses it, and wherever.</td><td>2.2</td></tr>
+<tr><td>2a, sameness</td><td>A URI keeps referring to &ldquo;the same&rdquo; thing from one day to the next.</td><td>2.3</td></tr>
+<tr><td>2b, identity</td><td>What counts as &ldquo;the same&rdquo; is decided by the URI&#8217;s owner.</td><td>2.3</td></tr>
+<tr><td>Same URI (unnumbered)</td><td>Two URIs are the same only if they match character for character.</td><td>2.4</td></tr>
+<tr><td>Opacity</td><td>Use a URI to refer to something; do not read other meaning out of the string.</td><td>2.5</td></tr>
+<tr><td>GET is safe</td><td>In <a class="gl-ref" href="../glossary.html#http">HTTP</a>, a GET request must not have side effects.</td><td>2.6</td></tr>
+<tr><td>Safe means GET</td><td>In HTTP, anything without side effects should use GET.</td><td>2.6</td></tr>
+<tr><td>3, non-unique</td><td>URI space need not be the only universal space.</td><td>2.7</td></tr>
+</table>
 
 <h2>2.2 The axioms of universality</h2>
 
 <p>
-Two claims are numbered zero, which is itself informative: they are prior to
-the rest.
+Two claims are numbered zero: they are prior to the rest.
 </p>
 
 <div class="editors-note">
@@ -124,29 +137,30 @@ should be given a URI.</p>
 </div>
 
 <p>
-The first is a claim about the design, and Berners-Lee offers an argument
-for it. There is no limit on the length of a URI, so any existing or future
-naming <a class="gl-ref" href="../glossary.html#scheme">scheme</a> can be folded into URI space by encoding its identifiers as a
-printable string and prefixing a scheme name. The second is not a claim but
-an instruction, and it is the one that turns into <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> ten years
-later.
+The first is a claim about the design, and Berners-Lee argues for it. Every
+URI begins with a <a class="gl-ref" href="../glossary.html#scheme">scheme</a>: the word before the colon, such as
+<code>http</code> or <code>mailto</code>, which says which rules apply to
+the rest. A URI has no length limit. So any naming scheme can be folded into
+URI space by writing its identifiers as a printable string behind a new
+scheme name, such as <code>ISBN:</code> for book numbers.
 </p>
 
 <p>
-<strong>Axiom 1, global scope</strong> follows: it does not matter to whom or
-where a URI is given, it has the same meaning. There is no enclosing context
-that a URI needs in order to hold. This is what makes the sentence
-&ldquo;it is on the Web&rdquo; sufficient by itself.
+The second is an instruction, and it turns into <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> ten years later.
+</p>
+
+<p>
+<strong>Axiom 1, global scope</strong> follows: whoever a URI is given to,
+and wherever, it has the same meaning. It needs no enclosing context.
 </p>
 
 <h2>2.3 Sameness, identity, and who decides</h2>
 
 <p>
-Axiom 2 comes in two parts because the first part is vague and the author
-knows it. <strong>Axiom 2a, sameness</strong>: a URI will repeatably refer to
+Axiom 2 comes in two parts because the first is vague and the author knows
+it. <strong>Axiom 2a, sameness</strong>: a URI will repeatably refer to
 &ldquo;the same&rdquo; thing. The quotation marks are his. <strong>Axiom 2b,
-identity</strong> then resolves the vagueness in a way that is easy to read
-past and hard to overstate:
+identity</strong> resolves the vagueness in a way easy to read past:
 </p>
 
 <blockquote>
@@ -156,17 +170,26 @@ owns the URI, who first determined what it points to.
 </blockquote>
 
 <p>
-The Web does not define what a URI means. The owner does. What the
-architecture supplies is the guarantee that there is exactly one owner and
-that the question of meaning has a determinate address. Berners-Lee attaches
-this to a design principle he credits to Bob Scheifler and others: the
-technology should define mechanisms wherever possible without defining
-policy.
+The Web does not define what a URI means. The owner does, within bounds the
+scheme sets:
+</p>
+
+<blockquote>
+The scheme, if you like, imposes constraints within which the owner of a URI
+is free to define identity.
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
+
+<p>
+Berners-Lee credits the principle to Bob Scheifler and others: define
+mechanisms wherever possible without defining policy. Whether a page never
+changes, changes daily, or comes in several formats is the owner&#8217;s
+business.
 </p>
 
 <p>
-He then places a limit on the owner&#8217;s freedom, and it is a moral one rather
-than a technical one:
+He then sets a moral limit on that freedom. A server often knows who is
+asking, and could send each reader something different.
 </p>
 
 <blockquote>
@@ -177,28 +200,71 @@ deception.
 </blockquote>
 
 <p>
-The mechanism he names for indicating it is the HTTP <code>Vary</code>
-header. The practice he is objecting to, of varying content by who is asking
-without saying so, became in the following two decades the ordinary
-behaviour of large parts of the Web.
+The mechanism he names is the HTTP <code>Vary</code> header, a line in the
+server&#8217;s reply saying that it depends on something in the request, such
+as the reader&#8217;s language. Undisclosed variation, he adds, &ldquo;also of
+course messes up caches&rdquo;.
 </p>
 
 <h2>2.4 When two URIs are one URI</h2>
 
 <p>
-The rule is stated without qualification: two URIs are the same if and only
-if they are the same character for character. Everything else is
-equivalence, not identity, and equivalence is knowledge that a particular
-agent may or may not have.
+The rule is unqualified: two URIs are the same if and only if they are the
+same character for character. Everything else is equivalence, not identity,
+and whether a program can tell two strings are equivalent depends on what it
+knows. Some equivalences follow from the standards: the Domain Name System
+(<a class="gl-ref" href="../glossary.html#dns">DNS</a>), which turns names like <code>example.org</code> into network
+addresses, ignores case. Others need knowledge of one particular site.
+Figure 2.1 sets the cases side by side.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+     aria-labelledby="fig2-1-t fig2-1-d">
+  <title id="fig2-1-t">Identical, equivalent, or unknowable</title>
+  <desc id="fig2-1-d">Three pairs of URIs. The first pair are the same
+  string and so the same URI. The second differ only in the capital E of the
+  host name, and are equivalent to any agent that knows DNS ignores case. The
+  third are a directory path and the same path with index.html added, which
+  are equivalent only to an agent with knowledge of that site. Signature code
+  compares characters only.</desc>
+
+  <text x="36" y="30" class="t-caps">the two URIs</text>
+  <text x="340" y="30" class="t-caps">verdict</text>
+
+  <rect class="box-plain" x="20" y="44" width="680" height="66" rx="4"/>
+  <line class="ln-mut" x1="320" y1="52" x2="320" y2="102"/>
+  <text x="36" y="70" class="t-mono">http://example.org/a</text>
+  <text x="36" y="94" class="t-mono">http://example.org/a</text>
+  <text x="340" y="70" class="t-caps" style="fill:#5a8f5a">identical: same URI</text>
+  <text x="340" y="92" class="t-sm">every character matches; any agent can tell</text>
+
+  <rect class="box-plain" x="20" y="124" width="680" height="66" rx="4"/>
+  <line class="ln-mut" x1="320" y1="132" x2="320" y2="182"/>
+  <text x="36" y="150" class="t-mono">http://<tspan style="fill:#b08d57">E</tspan>xample.org/a</text>
+  <text x="36" y="174" class="t-mono">http://example.org/a</text>
+  <text x="340" y="150" class="t-caps">equivalent</text>
+  <text x="340" y="172" class="t-sm">to any agent that knows DNS ignores case</text>
+
+  <rect class="box-plain" x="20" y="204" width="680" height="66" rx="4"/>
+  <line class="ln-mut" x1="320" y1="212" x2="320" y2="262"/>
+  <text x="36" y="230" class="t-mono">http://example.org/docs/</text>
+  <text x="36" y="254" class="t-mono">http://example.org/docs/index.html</text>
+  <text x="340" y="230" class="t-caps" style="fill:#b08d57">site-dependent</text>
+  <text x="340" y="252" class="t-sm">equivalent only with knowledge of this site</text>
+
+  <line class="ln-mut" x1="20" y1="294" x2="700" y2="294"/>
+  <text x="36" y="320" class="t-sm t-it">Signature code compares characters only: to it, the second and third pairs are different URIs.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 2.1</span>
+Identity is string equality. Equivalence depends on what the agent knows,
+and different agents know different things.</figcaption>
+</figure>
+
 <p>
-An agent that knows the Domain Name System is case-insensitive may conclude
-that two URIs differing only in the case of the host are equivalent. An
-agent with out-of-band knowledge of a site may know that a path ending in a
-slash and the same path with <code>index.html</code> appended are
-equivalent. Neither conclusion is available generically, and Berners-Lee
-draws the consequence that matters for cryptography:
+Canonicalization means rewriting a URI into one standard spelling. Because
+equivalence depends on knowledge, no single rewriting suits everyone, and
+Berners-Lee draws the consequence for cryptography:
 </p>
 
 <blockquote>
@@ -213,8 +279,9 @@ arbitrariness of any attempt to define a canonicalization algorithm.
 <h2>2.5 Opacity</h2>
 
 <p>
-The opacity axiom is the one most often broken and the one whose breach is
-hardest to reverse.
+The opacity axiom is the easiest to break, because the string is right there
+to be read. To <a class="gl-ref" href="../glossary.html#dereference">dereference</a> a URI is to use it to fetch the thing it names.
+Otherwise, a program should treat the URI as a sealed label.
 </p>
 
 <div class="editors-note">
@@ -223,109 +290,220 @@ for is to refer to an object. When not dereferencing, one should not look
 inside the string to gain other information.</p>
 </div>
 
+<p>
+Even when fetching, the client reads only the scheme and the authority (the
+part after <code>//</code>, usually a host name) to decide which server to
+contact. The rest is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to it. Figure 2.2 shows who may read what.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
-     aria-labelledby="fig2-1-t fig2-1-d">
-  <title id="fig2-1-t">Who is permitted to read which part of a URI</title>
-  <desc id="fig2-1-d">The scheme is read by every agent. The authority is read
-  by the client to find a server. The path is opaque to the client and
-  meaningful only to that server. The query is built by the client and read by
-  the server but must stay opaque to intermediaries. The fragment is never
-  sent over the network at all.</desc>
+     aria-labelledby="fig2-2-t fig2-2-d">
+  <title id="fig2-2-t">Who is permitted to read which part of a URI</title>
+  <desc id="fig2-2-d">The scheme is read by every agent. The authority is read
+  by the client to find a server. The path is meaningful only to that server.
+  The query is built by the client and read by the server but should stay
+  opaque to proxies. The fragment is never sent over the network at all.</desc>
 
-  <text x="30" y="40" class="t-mono" xml:space="preserve"><tspan fill="#1c5a7a">https</tspan><tspan fill="#8a9a9a">://</tspan><tspan fill="#b08d57">example.org</tspan><tspan fill="#2f4f4f">/reports/1997</tspan><tspan fill="#8a9a9a">?</tspan><tspan fill="#5a8f5a">q=axioms</tspan><tspan fill="#8a9a9a">#</tspan><tspan fill="#5a8f5a">top</tspan></text>
-  <text x="392" y="44" class="t-sm t-it">each bar marks that part of the URI above</text>
+  <text x="30" y="40" class="t-mono" xml:space="preserve"><tspan style="fill:#1c5a7a">https</tspan><tspan style="fill:#8a9a9a">://</tspan><tspan style="fill:#b08d57">example.org</tspan><tspan style="fill:#2f4f4f">/reports/1997</tspan><tspan style="fill:#8a9a9a">?</tspan><tspan style="fill:#5a8f5a">q=axioms</tspan><tspan style="fill:#8a9a9a">#</tspan><tspan style="fill:#5a8f5a">top</tspan></text>
+  <text x="400" y="40" class="t-sm t-it">each bar marks that part of the URI</text>
   <line class="ln-mut" x1="30" y1="62" x2="690" y2="62"/>
 
-  <line x1="30" y1="96" x2="368" y2="96" stroke="#e6e6e6" stroke-width="5"/>
+  <line x1="30" y1="96" x2="368" y2="96" stroke="#f0f5f8" stroke-width="5"/>
   <line x1="30" y1="96" x2="67" y2="96" stroke="#1c5a7a" stroke-width="5"/>
-  <text x="392" y="100" class="t-caps" fill="#1c5a7a">scheme</text>
-  <text x="470" y="100">read by every agent, to know what the rest means</text>
-  <line x1="30" y1="138" x2="368" y2="138" stroke="#e6e6e6" stroke-width="5"/>
+  <text x="385" y="100" class="t-caps" style="fill:#1c5a7a">scheme</text>
+  <text x="470" y="100">read by all, to know what follows</text>
+  <line x1="30" y1="138" x2="368" y2="138" stroke="#f0f5f8" stroke-width="5"/>
   <line x1="90" y1="138" x2="172" y2="138" stroke="#b08d57" stroke-width="5"/>
-  <text x="392" y="142" class="t-caps" fill="#b08d57">authority</text>
-  <text x="470" y="142">read by the client, to find the server</text>
-  <line x1="30" y1="180" x2="368" y2="180" stroke="#e6e6e6" stroke-width="5"/>
+  <text x="385" y="142" class="t-caps" style="fill:#b08d57">authority</text>
+  <text x="470" y="142">read by the client to find a server</text>
+  <line x1="30" y1="180" x2="368" y2="180" stroke="#f0f5f8" stroke-width="5"/>
   <line x1="172" y1="180" x2="270" y2="180" stroke="#2f4f4f" stroke-width="5"/>
-  <text x="392" y="184" class="t-caps" fill="#2f4f4f">path</text>
-  <text x="470" y="184">opaque to the client; meaningful to that server</text>
-  <line x1="30" y1="222" x2="368" y2="222" stroke="#e6e6e6" stroke-width="5"/>
+  <text x="385" y="184" class="t-caps" style="fill:#2f4f4f">path</text>
+  <text x="470" y="184">meaningful only to that server</text>
+  <line x1="30" y1="222" x2="368" y2="222" stroke="#f0f5f8" stroke-width="5"/>
   <line x1="278" y1="222" x2="338" y2="222" stroke="#5a8f5a" stroke-width="5"/>
-  <text x="392" y="226" class="t-caps" fill="#5a8f5a">query</text>
-  <text x="470" y="226">client and server read it; proxies must not</text>
-  <line x1="30" y1="264" x2="368" y2="264" stroke="#e6e6e6" stroke-width="5"/>
+  <text x="385" y="226" class="t-caps" style="fill:#5a8f5a">query</text>
+  <text x="470" y="226">built by client; opaque to proxies</text>
+  <line x1="30" y1="264" x2="368" y2="264" stroke="#f0f5f8" stroke-width="5"/>
   <line x1="345" y1="264" x2="368" y2="264" stroke="#5a8f5a" stroke-width="5"/>
-  <text x="392" y="268" class="t-caps" fill="#5a8f5a">fragment</text>
-  <text x="470" y="268">never sent; resolved by the client alone</text>
+  <text x="385" y="268" class="t-caps" style="fill:#5a8f5a">fragment</text>
+  <text x="470" y="268">never sent; the client resolves it</text>
 
   <line class="ln-mut" x1="30" y1="306" x2="690" y2="306"/>
   <text x="30" y="328" class="t-sm t-it">Inferring a media type from a trailing &#8220;.html&#8221; reads the path. Only the server may.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 2.1</span>
-Opacity is not secrecy. It is a statement about which agent has standing to
-interpret which part, and every guarantee in this chapter depends on agents
-declining to read past their own segment.</figcaption>
+<figcaption><span class="fig-label">Figure 2.2</span>
+Opacity is not secrecy. Each part has one reader with standing to interpret
+it; a client guessing from the path reads someone else&#8217;s segment.</figcaption>
 </figure>
 
 <p>
-The example given is the temptation to read <code>.html</code> at the end of
-a URI as a statement about format. A client that does so has begun to depend
-on a convention that the architecture does not guarantee, and that a server
-mapping some legacy <a class="gl-ref" href="../glossary.html#namespace">namespace</a> into URI space may produce by pure coincidence.
-Metadata that a client might wish to infer from the string must instead be
-carried in the protocol, which is what a substantial part of the HTTP header
-set exists to do.
+The note&#8217;s example is reading <code>.html</code> at the end of a URI as
+its <a class="gl-ref" href="../glossary.html#media-type">media type</a>, the label (such as <code>text/html</code>) that says what
+kind of file something is. The architecture guarantees no such convention: a
+server mapping names from an older database may produce <code>.html</code>
+by coincidence. Such information belongs in the protocol, which is what much
+of the HTTP header set exists to carry.
 </p>
 
 <p>
-Berners-Lee makes an exception for query strings, and it is a careful one.
-The portion after a question mark is not <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the client, which
-constructs it, but it should remain opaque to intermediaries such as proxies.
-He then records that the axiom had already been broken in his own time, and
-by whom: caches that declined to store any document whose URI contained a
-question mark led authors to insert question marks deliberately in order to
-defeat caching. A rule broken by implementations became a technique relied
-on by authors.
+The query string, the part after a question mark that a search form fills
+in, is an exception: the client constructs it. But it should stay opaque to
+proxies, the servers between reader and site that pass requests on and
+often cache them, keeping copies so pages need not be fetched again.
+</p>
+
+<p>
+Some caches of the time guessed that a URI with a question mark would change
+quickly, and refused to store it. That broke opacity. Authors then inserted
+question marks deliberately to avoid being cached, and the note warns that
+this harms sites using query strings for perfectly cacheable pages.
 </p>
 
 <h2>2.6 GET, and the price of getting it wrong</h2>
 
 <p>
-Two axioms govern HTTP&#8217;s principal method. In HTTP, GET must not have side
-effects. In HTTP, anything which does not have side effects should use GET.
+Every HTTP request carries a method. Following a link sends a GET (show me
+this); submitting an order sends a POST (do this). A side effect is anything
+a request changes beyond fetching a page: an order placed, a record deleted.
+</p>
+
+<div class="editors-note">
+<p><strong>Axiom.</strong> In HTTP, GET must not have side effects.</p>
+<p><strong>Axiom.</strong> In HTTP, anything which does not have side
+effects should use GET.</p>
+</div>
+
+<p>
+A search form only asks for information, so it should use GET, and its
+result then has a URI that can be bookmarked or sent on. A GET must never
+commit the user to anything; ignoring this, the note warns, can open a
+serious security hole. Figure 2.3 shows why.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
+     aria-labelledby="fig2-3-t fig2-3-d">
+  <title id="fig2-3-t">Safe and unsafe requests</title>
+  <desc id="fig2-3-d">On the left, a link, bookmark or search form sends a
+  GET and a page is returned; a cache may reuse it and the user commits to
+  nothing. On the right, an order or subscribe form sends a POST and the
+  server's state changes. Below, a dashed strip shows what goes wrong when
+  GET is unsafe: a prefetcher follows every link, sends GET /delete?id=7,
+  and the data is gone.</desc>
+
+  <text x="40" y="28" class="t-caps">safe: get</text>
+  <text x="400" y="28" class="t-caps" style="fill:#b08d57">unsafe: post</text>
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="200"/>
+
+  <rect class="box" x="40" y="42" width="260" height="40" rx="4"/>
+  <text x="170" y="67" text-anchor="middle">link / bookmark / search form</text>
+  <line class="ln" x1="170" y1="82" x2="170" y2="126"/>
+  <path d="M165,125 L170,134 L175,125 Z" fill="#2f4f4f"/>
+  <text x="182" y="113" class="t-mono">GET</text>
+  <rect class="box" x="40" y="134" width="260" height="40" rx="4"/>
+  <text x="170" y="159" text-anchor="middle">page returned</text>
+  <text x="170" y="194" class="t-sm" text-anchor="middle">cache may reuse; user commits to nothing</text>
+
+  <rect class="box" x="400" y="42" width="260" height="40" rx="4"/>
+  <text x="530" y="67" text-anchor="middle">order / subscribe form</text>
+  <line class="ln" x1="530" y1="82" x2="530" y2="126"/>
+  <path d="M525,125 L530,134 L535,125 Z" fill="#2f4f4f"/>
+  <text x="542" y="113" class="t-mono">POST</text>
+  <rect class="box-warm" x="400" y="134" width="260" height="40" rx="4"/>
+  <text x="530" y="159" text-anchor="middle">server state changes</text>
+  <text x="530" y="194" class="t-sm" text-anchor="middle">the user has asked for something to be done</text>
+
+  <rect class="ln-dash" x="20" y="214" width="680" height="96" rx="4"/>
+  <text x="40" y="236" class="t-caps" style="fill:#8a9a9a">when a get is not safe</text>
+  <rect class="box-plain" x="40" y="252" width="220" height="40" rx="4"/>
+  <text x="150" y="277" text-anchor="middle">prefetcher follows every link</text>
+  <line class="ln" x1="260" y1="272" x2="292" y2="272"/>
+  <path d="M291,267 L300,272 L291,277 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="300" y="252" width="170" height="40" rx="4"/>
+  <text x="385" y="276" class="t-mono" text-anchor="middle">GET /delete?id=7</text>
+  <line class="ln" x1="470" y1="272" x2="502" y2="272"/>
+  <path d="M501,267 L510,272 L501,277 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="510" y="252" width="160" height="40" rx="4"/>
+  <text x="590" y="277" text-anchor="middle">data gone</text>
+</svg>
+<figcaption><span class="fig-label">Figure 2.3</span>
+GET must be safe because software, not only people, follows links. A
+program that fetches every link on a page in advance cannot tell a
+&ldquo;delete&rdquo; link from any other.</figcaption>
+</figure>
+
+<p>
+The first axiom is about safety; the second is about universality. If some
+other method were used for requests without side effects, its results would
+form a separate space that links could not reach, because a link carries a
+URI and not a method. People would soon want to put the method into the
+link.
 </p>
 
 <p>
-The first is a safety property. The second is a universality property, and
-the reasoning is the more interesting of the two. If an operation without
-side effects were given its own method, its results would form a separate
-address space that hypertext links could not reach, because a link carries a
-URI and not a method. The symptom Berners-Lee predicts is that people would
-begin wanting to put the method into the link.
-</p>
-
-<p>
-He states the user&#8217;s protection in plain terms: a user can never be held
-accountable for anything as a result of doing a GET. A server may log the
-request, but logging is not communication between the parties.
+A user, he says, can never be held accountable for anything as a result of
+doing a GET. A server may log the request, but logging is not communication
+between the parties.
 </p>
 
 <h2>2.7 Not the only space</h2>
 
 <p>
 <strong>Axiom 3, non-unique</strong> is the most philosophically deliberate of
-the nine. URI space does not have to be the only universal space. The
-objection it answers is the objection that no single space should be
-privileged, and the answer is that none is: any rival universal space would,
-by being universal, be able to contain URI space as a subset, and so the two
-could interoperate.
+the ten. URI space need not be the only universal space. To the objection
+that no space should be privileged, the answer is that none is: any rival
+universal space could contain URI space as a subset, and the two could
+interoperate.
 </p>
 
 <p>
-This is the test of independent invention from Chapter 1, applied to the
-Web&#8217;s own foundation. Berners-Lee gives the worked example of mapping
-telephone numbers into URI space and URI space into telephone numbers, and
-draws the conclusion he cares about:
+This is Chapter 1&#8217;s test of independent invention, applied to the
+Web&#8217;s own foundation. The worked example is the international telephone
+system, mapped both ways, as Figure 2.4 shows.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
+     aria-labelledby="fig2-4-t fig2-4-d">
+  <title id="fig2-4-t">Two universal spaces, each containing the other</title>
+  <desc id="fig2-4-d">A box for URI space and a box for international phone
+  numbers. An arrow from phone numbers to URI space is labelled: prefix
+  phone: before the number. An arrow from URI space to phone numbers is
+  labelled: reserved country code plus the URI written as digits. URIs are
+  alphanumeric; phone numbers are digits only.</desc>
+
+  <text x="360" y="30" class="t-caps" text-anchor="middle">two universal spaces, each able to contain the other</text>
+
+  <rect class="box" x="30" y="62" width="180" height="80" rx="4"/>
+  <text x="120" y="107" text-anchor="middle" class="t-lg">URI space</text>
+  <rect class="box" x="510" y="62" width="180" height="80" rx="4"/>
+  <text x="600" y="98" text-anchor="middle" class="t-lg">International</text>
+  <text x="600" y="118" text-anchor="middle" class="t-lg">phone numbers</text>
+
+  <line class="ln-accent" x1="508" y1="88" x2="220" y2="88"/>
+  <path d="M220,83 L211,88 L220,93 Z" fill="#1c5a7a"/>
+  <text x="360" y="76" text-anchor="middle">prefix <tspan class="t-mono">phone:</tspan> before the number</text>
+
+  <line class="ln-accent" x1="212" y1="116" x2="500" y2="116"/>
+  <path d="M500,111 L509,116 L500,121 Z" fill="#1c5a7a"/>
+  <text x="360" y="138" text-anchor="middle">reserved country code + URI as digits</text>
+
+  <text x="120" y="164" class="t-sm" text-anchor="middle">letters, digits, punctuation</text>
+  <text x="600" y="164" class="t-sm" text-anchor="middle">digits only</text>
+
+  <line class="ln-mut" x1="30" y1="182" x2="690" y2="182"/>
+  <text x="360" y="206" class="t-sm t-it" text-anchor="middle">Neither space has to be the only one; each can hold the other as a subset.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 2.4</span>
+No space need be the only one. Two systems invented separately can each
+contain the other, which is the test of independent invention.</figcaption>
+</figure>
+
+<p>
+In principle any Web object could be dialled from a telephone, and any
+telephone pointed to from a hypertext document. The conclusion he cares about:
 </p>
 
 <blockquote>
@@ -335,28 +513,55 @@ its future evolvability.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 
+<h2>2.8 Schemes promise different things</h2>
+
+<p>
+The note ends with a table comparing the limits different schemes set. Five
+rows are given here, in its own words with typing slips corrected.
+&ldquo;Reuse&rdquo; is whether a URI may later be given to something else;
+&ldquo;(no dereference)&rdquo; marks URIs that give nothing to fetch.
+</p>
+
+<table>
+<tr><th>Scheme</th><th>What the URI corresponds to</th><th>Reuse</th><th>Persistence</th></tr>
+<tr><td><code>http</code></td><td>Generic document as defined by publisher</td><td>defined by publisher</td><td>defined by publisher</td></tr>
+<tr><td><code>ftp:</code></td><td>sequence of bits</td><td>defined by publisher</td><td>defined by publisher</td></tr>
+<tr><td><code>uuid:</code></td><td>expectation of uniqueness has to be upheld by publisher</td><td>defined by publisher</td><td>(no dereference)</td></tr>
+<tr><td><code>sha1:</code></td><td>sequence of bits</td><td>mathematically extremely unlikely</td><td>(no dereference)</td></tr>
+<tr><td><code>mailto:</code></td><td>mailbox as used in email protocols</td><td>Socially unacceptable</td><td>(no dereference)</td></tr>
+</table>
+
+<p>
+For <code>http</code> almost everything is left to the publisher. A
+<code>sha1:</code> URI is computed from the bits themselves, so uniqueness
+is a matter of mathematics, not promise. Reassigning a <code>mailto:</code>
+address is a social offence rather than a technical one.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The syntax was standardised.</strong> RFC 3986, published in
+<li><strong>The syntax was standardised.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, published in
 January 2005 as STD 66, replaced the earlier RFC 2396 and the informational
 RFC 1630 that Berners-Lee wrote in 1994 and quotes here. Character-for-character
 identity and the limits on canonicalization survive in it.</li>
 <li><strong>The GET rule was given a name and a test case.</strong> Safe
 methods are specified in what is now RFC 9110, of June 2022. The practical
-demonstration came earlier: the Google Web Accelerator, released in May 2005,
-prefetched links, and deleted data in applications that had used GET for
-destructive actions. The axiom had been ignored for nine years and was
-enforced in a week.</li>
-<li><strong>Opacity eroded.</strong> Browsers adopted content sniffing, and
-file extensions in URIs became load-bearing in practice. The countermeasure,
-the <code>X-Content-Type-Options: nosniff</code> header, is an admission that
-clients read what they were told not to read.</li>
-<li><strong>Varying content silently became normal.</strong> Personalisation
-by viewer is now the default behaviour of large platforms, and the
-<code>Vary</code> header describes caching behaviour rather than disclosing
-the variance to the reader. Berners-Lee&#8217;s characterisation of this as
-deception has not been retracted and has not been adopted.</li>
+demonstration came earlier. The Google Web Accelerator, released in May
+2005, fetched the links on a page in advance. In applications that used
+plain links for destructive actions, it followed the deletion links and
+deleted data.</li>
+<li><strong>Browsers learned to guess types.</strong> When servers labelled
+content wrongly, browsers began guessing its media type from the content
+itself, a practice called content sniffing. In 2008 Microsoft introduced the
+<code>X-Content-Type-Options: nosniff</code> header with Internet Explorer 8,
+so that a server could tell the browser to trust the declared type and not
+guess.</li>
+<li><strong>Vary stayed a caching tool.</strong> The <code>Vary</code> header
+was defined in HTTP/1.1 (RFC 2068, January 1997) and remains in RFC 9110. It
+tells caches which parts of a request affect the response; it does not
+display anything to the reader. The note, last revised in 2009, still calls
+undisclosed variation a form of deception.</li>
 </ul>
 </div>
 
@@ -382,10 +587,9 @@ assumption that makes it work.</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.2</span>
-The opacity axiom forbids inferring a <a class="gl-ref" href="../glossary.html#media-type">media type</a> from a URI ending in
-<code>.html</code>. Content sniffing infers a media type from the first bytes
-of the response body instead. Does that respect opacity? What does it
-violate?</p>
+A site uses links of the form <code>/delete?id=7</code> to remove records.
+What happens when a browser prefetches every link on the page? Which axiom
+did the site break, and how should the page have been built?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.3</span>
@@ -395,10 +599,10 @@ supplies no way to settle it. What would have to be added?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.4</span>
-Caches that refused to store URIs containing question marks caused authors to
-add question marks in order to avoid caching. Name one other place in Web
-history where a violated rule became a technique, and say whether the rule
-could have been restored.</p>
+Some caches refused to store pages whose URIs contained a question mark, and
+authors then added question marks to avoid being cached. Which rule did the
+caches break? Explain why the authors&#8217; workaround harms a site that uses
+query strings for pages that never change.</p>
 </div>
 </details>
 

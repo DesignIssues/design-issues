@@ -68,11 +68,12 @@ revised for decades without any one revision breaking the others.
 <h3>The question</h3>
 <p>
 Berners-Lee numbered this note zero in his axioms sequence, though he wrote
-it in January 1998, more than a year after the two it precedes. The
-renumbering is a judgement about order of exposition: the axioms of Chapter 2
-describe what URIs are, and this note describes the machine that consumes
-them. It is the most software-engineering-minded piece in Volume I, and its
-subject is information hiding.
+it in January 1998, more than a year after the Axioms note of Chapter 2
+(December 1996), which it now precedes. The renumbering is a judgement about
+order of exposition: the axioms of Chapter 2 describe what URIs are, and this
+note describes the machine that consumes them. It is the most
+software-engineering-minded piece in Volume I, and its subject is information
+hiding.
 </p>
 <p>
 The question it answers is why the Web&#8217;s specifications can be revised
@@ -84,7 +85,9 @@ module boundaries in the right places, and this note says where they are.
 <h2>4.1 Three modules</h2>
 
 <p>
-The model divides a browser, or anything else that follows a link, into three
+Information hiding means each part of a system knows only what it needs, so
+the others can change without it noticing. The model applies that idea to a
+browser, or to anything else that follows a link, by dividing it into three
 parts that know different things.
 </p>
 
@@ -96,70 +99,147 @@ parts that know different things.
 </table>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
      aria-labelledby="fig4-1-t fig4-1-d">
   <title id="fig4-1-t">The three modules of the Web model</title>
-  <desc id="fig4-1-d">A URI is split at the hash. Everything before it goes to
-  the access module, which returns a data stream and a media type. The
-  fragment goes, untouched, to the presentation object built from them. The
-  access module never sees the fragment; the presentation object never sees
-  the URI.</desc>
+  <desc id="fig4-1-d">A followed link reaches the application, which splits
+  it at the hash. Everything before the hash, http://example.org/paper, goes
+  to the access module, which returns a data stream and a media type to the
+  presentation object. The fragment, #section3, is carried straight to the
+  presentation object without being inspected. The access module never sees
+  the fragment; the presentation object never sees the URI.</desc>
 
-  <!-- the URI, split -->
-  <text x="360" y="30" class="t-mono" text-anchor="middle"><tspan fill="#1c5a7a">http://example.org/paper</tspan><tspan fill="#5a8f5a">#section3</tspan></text>
-  <path class="ln-accent" d="M 330 42 L 330 60 L 360 60 L 360 84"/>
-  <path d="M 356 78 L 360 88 L 364 78 Z" fill="#1c5a7a"/>
-  <path class="ln" stroke="#5a8f5a" d="M 452 42 L 452 60 L 610 60 L 610 128"/>
-  <path d="M 606 122 L 610 132 L 614 122 Z" fill="#5a8f5a"/>
-  <text x="322" y="56" class="t-sm" text-anchor="end" fill="#1c5a7a">identifier</text>
-  <text x="462" y="56" class="t-sm" fill="#3f6f3f">view</text>
+  <!-- the URI arrives at the application -->
+  <text x="18" y="30" class="t-mono"><tspan style="fill:#1c5a7a">http://example.org/paper</tspan><tspan style="fill:#5a8f5a">#section3</tspan></text>
+  <path class="ln" d="M 110 38 L 110 64"/>
+  <path d="M 106 62 L 110 71 L 114 62 Z" fill="#2f4f4f"/>
+  <text x="122" y="58" class="t-sm">a link is followed</text>
 
-  <!-- boxes -->
-  <rect class="box-warm" x="18" y="132" width="184" height="70" rx="4"/>
-  <text x="110" y="160" class="t-caps" text-anchor="middle">Application</text>
-  <text x="110" y="181" class="t-sm" text-anchor="middle">holds the absolute URI</text>
-  <text x="110" y="196" class="t-sm" text-anchor="middle">resolves relative ones</text>
+  <!-- application -->
+  <rect class="box-warm" x="18" y="72" width="184" height="84" rx="4"/>
+  <text x="110" y="98" class="t-caps" text-anchor="middle" style="fill:#b08d57">Application</text>
+  <text x="110" y="117" class="t-sm" text-anchor="middle">holds the absolute URI</text>
+  <text x="110" y="132" class="t-sm" text-anchor="middle">resolves relative ones</text>
+  <text x="110" y="147" class="t-sm" text-anchor="middle">splits at the hash</text>
 
-  <rect class="box" x="262" y="88" width="196" height="70" rx="4"/>
-  <text x="360" y="116" class="t-caps" text-anchor="middle">Access</text>
-  <text x="360" y="137" class="t-sm" text-anchor="middle">knows the scheme</text>
-  <text x="360" y="152" class="t-sm" text-anchor="middle">speaks the protocol</text>
+  <!-- access -->
+  <rect class="box" x="458" y="72" width="244" height="84" rx="4"/>
+  <text x="580" y="98" class="t-caps" text-anchor="middle">Access</text>
+  <text x="580" y="117" class="t-sm" text-anchor="middle">knows the scheme</text>
+  <text x="580" y="132" class="t-sm" text-anchor="middle">speaks the protocol</text>
+  <text x="580" y="147" class="t-sm" text-anchor="middle">fetches the document</text>
 
-  <rect class="box-green" x="518" y="132" width="184" height="70" rx="4"/>
-  <text x="610" y="160" class="t-caps" text-anchor="middle" fill="#3f6f3f">Presentation object</text>
-  <text x="610" y="181" class="t-sm" text-anchor="middle">knows the media type</text>
-  <text x="610" y="196" class="t-sm" text-anchor="middle">interprets the fragment</text>
+  <!-- presentation object -->
+  <rect class="box-green" x="458" y="216" width="244" height="84" rx="4"/>
+  <text x="580" y="242" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">Presentation object</text>
+  <text x="580" y="261" class="t-sm" text-anchor="middle">built by a factory</text>
+  <text x="580" y="276" class="t-sm" text-anchor="middle">knows the media type</text>
+  <text x="580" y="291" class="t-sm" text-anchor="middle">interprets the fragment</text>
 
-  <!-- application to access -->
-  <path class="ln" d="M 202 152 L 240 152 L 240 118 L 256 118"/>
-  <path class="ln" d="M 250 114 L 258 118 L 250 122 Z" fill="#2f4f4f"/>
-  <text x="228" y="108" class="t-sm" text-anchor="middle">URI, hash removed</text>
+  <!-- application to access: the URI without the fragment -->
+  <path class="ln-accent" d="M 202 104 L 448 104"/>
+  <path d="M 446 99 L 456 104 L 446 109 Z" fill="#1c5a7a"/>
+  <text x="329" y="91" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">http://example.org/paper</text>
+  <text x="329" y="123" class="t-sm" text-anchor="middle">URI, hash removed</text>
 
   <!-- access to presentation -->
-  <path class="ln" d="M 458 118 L 480 118 L 480 152 L 512 152"/>
-  <path class="ln" d="M 506 148 L 514 152 L 506 156 Z" fill="#2f4f4f"/>
-  <text x="492" y="108" class="t-sm" text-anchor="middle">stream + media type</text>
+  <path class="ln" d="M 580 156 L 580 206"/>
+  <path d="M 576 204 L 580 213 L 584 204 Z" fill="#2f4f4f"/>
+  <text x="568" y="190" class="t-sm" text-anchor="end">data stream + media type</text>
 
-  <!-- application to presentation, the fragment carried past -->
-  <path class="ln-dash" d="M 110 202 L 110 262 L 610 262 L 610 212"/>
-  <path d="M 606 212 L 610 202 L 614 212 Z" fill="#8a9a9a"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">the fragment, carried across and never inspected</text>
+  <!-- application to presentation: the fragment carried past -->
+  <path class="ln-dash" style="stroke:#5a8f5a" d="M 110 156 L 110 258 L 448 258"/>
+  <path d="M 446 253 L 456 258 L 446 263 Z" fill="#5a8f5a"/>
+  <text x="280" y="245" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">#section3</text>
+  <text x="280" y="277" class="t-sm" text-anchor="middle">carried across, never inspected</text>
 
   <!-- the two axioms -->
-  <line class="ln-mut" x1="18" y1="300" x2="702" y2="300"/>
-  <text x="360" y="322" class="t-sm t-it" text-anchor="middle">Access never sees the fragment. The presentation object never sees the URI.</text>
+  <line class="ln-mut" x1="18" y1="316" x2="702" y2="316"/>
+  <text x="360" y="338" class="t-sm t-it" text-anchor="middle">Access never sees the fragment. The presentation object never sees the URI.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 4.1</span>
-The split that lets HTTP and the media types evolve without consulting each
-other. Because the hash is universal across schemes, a document can link to
-its own parts without knowing what URI it will be served under.</figcaption>
+The application splits the link at the hash. The part before it goes to
+access (solid line); the fragment goes straight to the presentation object
+(dashed line). Each half reaches exactly one module, which is what lets HTTP
+and the media types evolve without consulting each other.</figcaption>
 </figure>
 
 <p>
-Access is handed a URI with the fragment removed. It returns two things, a
-data stream and a media type, which are passed to a factory that constructs
-an object representing the resource. That object is then given the fragment
-identifier. Berners-Lee states the arrangement as two axioms:
+Access is handed the URI with the fragment removed. It returns two things: a
+data stream, which is simply the bytes of the document as they arrive, and a
+media type such as <code>text/html</code>, which says what kind of document
+those bytes are. Both are passed to a factory, meaning code that builds an
+object of the right kind, and the object it builds is then given the
+fragment identifier. Figure 4.2 follows one link through these steps.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
+     aria-labelledby="fig4-2-t fig4-2-d">
+  <title id="fig4-2-t">Following one link</title>
+  <desc id="fig4-2-d">Five steps. One: the reader clicks a link written as
+  paper#section3. Two: the application makes it absolute,
+  http://example.org/paper#section3, and splits it at the hash. Three: access
+  fetches http://example.org/paper, and never sees #section3. Four: a factory
+  builds the page object from the bytes and the media type text/html. Five:
+  the page object is given only #section3 and scrolls to that part; it never
+  sees the URI.</desc>
+
+  <!-- step 1 -->
+  <circle class="box-plain" cx="30" cy="40" r="13"/>
+  <text x="30" y="45" text-anchor="middle">1</text>
+  <rect class="box-warm" x="56" y="16" width="420" height="48" rx="4"/>
+  <text x="72" y="36">The reader clicks a link in the page</text>
+  <text x="72" y="54" class="t-sm">the link, as written: <tspan class="t-mono" style="fill:#2f4f4f">paper#section3</tspan></text>
+  <path class="ln" d="M 266 64 L 266 74"/>
+  <path d="M 262 72 L 266 81 L 270 72 Z" fill="#2f4f4f"/>
+
+  <!-- step 2 -->
+  <circle class="box-plain" cx="30" cy="106" r="13"/>
+  <text x="30" y="111" text-anchor="middle">2</text>
+  <rect class="box-warm" x="56" y="82" width="420" height="48" rx="4"/>
+  <text x="72" y="102">The application makes it absolute and splits it</text>
+  <text x="72" y="120" class="t-sm"><tspan class="t-mono" style="fill:#1c5a7a">http://example.org/paper</tspan><tspan class="t-mono" style="fill:#5a8f5a">#section3</tspan> split at the hash</text>
+  <path class="ln" d="M 266 130 L 266 140"/>
+  <path d="M 262 138 L 266 147 L 270 138 Z" fill="#2f4f4f"/>
+
+  <!-- step 3 -->
+  <circle class="box-plain" cx="30" cy="172" r="13"/>
+  <text x="30" y="177" text-anchor="middle">3</text>
+  <rect class="box" x="56" y="148" width="420" height="48" rx="4"/>
+  <text x="72" y="168">Access fetches the document</text>
+  <text x="72" y="186" class="t-mono" style="fill:#1c5a7a">GET http://example.org/paper</text>
+  <line class="ln-mut" x1="480" y1="172" x2="494" y2="172"/>
+  <text x="502" y="176" class="t-sm t-it" style="fill:#b08d57">never sees #section3</text>
+  <path class="ln" d="M 266 196 L 266 206"/>
+  <path d="M 262 204 L 266 213 L 270 204 Z" fill="#2f4f4f"/>
+
+  <!-- step 4 -->
+  <circle class="box-plain" cx="30" cy="238" r="13"/>
+  <text x="30" y="243" text-anchor="middle">4</text>
+  <rect class="box-green" x="56" y="214" width="420" height="48" rx="4"/>
+  <text x="72" y="234">A factory builds the page object</text>
+  <text x="72" y="252" class="t-sm">from the bytes and the media type <tspan class="t-mono" style="fill:#2f4f4f">text/html</tspan></text>
+  <path class="ln" d="M 266 262 L 266 272"/>
+  <path d="M 262 270 L 266 279 L 270 270 Z" fill="#2f4f4f"/>
+
+  <!-- step 5 -->
+  <circle class="box-plain" cx="30" cy="304" r="13"/>
+  <text x="30" y="309" text-anchor="middle">5</text>
+  <rect class="box-green" x="56" y="280" width="420" height="48" rx="4"/>
+  <text x="72" y="300">The page object scrolls to the part</text>
+  <text x="72" y="318" class="t-sm">given only <tspan class="t-mono" style="fill:#5a8f5a">#section3</tspan></text>
+  <line class="ln-mut" x1="480" y1="304" x2="494" y2="304"/>
+  <text x="502" y="308" class="t-sm t-it" style="fill:#b08d57">never sees the URI</text>
+</svg>
+<figcaption><span class="fig-label">Figure 4.2</span>
+Following one link. Each step receives only what it needs: the colours match
+the modules of Figure 4.1, and the two notes on the right are the two axioms
+below.</figcaption>
+</figure>
+
+<p>
+Berners-Lee states the arrangement as two axioms:
 </p>
 
 <div class="editors-note">
@@ -183,21 +263,29 @@ for fragment identifiers.
 <h2>4.2 Why the fragment stays on the client</h2>
 
 <p>
-The immediate payoff is the link that goes nowhere. A link within a document
-specifies only a fragment, and the object can follow it without consulting
-the access code at all, because the hash syntax is universal across every
-scheme.
+The immediate payoff is a link that stays on the same page, such as
+<code>&lt;a href="#notes"&gt;</code>. A link within a document specifies only
+a fragment, and the object can follow it without consulting the access code
+at all, because the hash syntax is universal across every scheme.
 </p>
 
 <p>
 The consequence is that an author can write a document full of internal links
 without knowing what URI the document will eventually be served under, and
-can move it without editing it. Berners-Lee credits Jim Gettys with the
-observation that makes this more than a convenience: as digitally signed
-documents become common, editing a document to fix its own internal links
-would break the signature on it. A document that can be self-consistent
-independently of its <a class="gl-ref" href="../glossary.html#namespace">namespace</a> is one that can be signed once.
+can move it without editing it.
 </p>
+
+<h3>Signed documents</h3>
+
+<p>
+Berners-Lee credits Jim Gettys with the observation that makes this more than
+a convenience. As digitally signed documents become common, editing a
+document to fix its own internal links would break the signature on it. A
+document that can be self-consistent independently of its <a class="gl-ref" href="../glossary.html#namespace">namespace</a> is one
+that can be signed once.
+</p>
+
+<h3>Room to evolve</h3>
 
 <p>
 The second payoff is evolutionary, and he is emphatic about it. Because no
@@ -228,12 +316,75 @@ Chapter 6 and of the whole of Volume IV is introduced here in two sentences.
 <h2>4.3 Why relative resolution is universal</h2>
 
 <p>
-A design decision is recorded here that could have gone the other way. When a
-relative reference is found in a document, the application could have passed
-both the relative reference and the base to the access module, letting each
-scheme define its own resolution algorithm. Instead, one algorithm was made
-common to all schemes.
+Suppose Ann writes a book as a set of files on her own disk. Chapter one is
+at <code>file:///home/ann/book/ch1.html</code>, and it links to chapter two
+by writing only <code>href="ch2.html"</code>. That short form is a relative
+reference: it gives only the part of the address that differs. The address
+of the document it appears in, here chapter one&#8217;s, is the base URI. To
+follow the link, the application combines the two, replacing the last part
+of the base with <code>ch2.html</code>.
 </p>
+
+<p>
+A design decision is recorded here that could have gone the other way. The
+application could have passed both the relative reference and the base to
+the access module, letting each scheme define its own resolution algorithm.
+Instead, one algorithm was made common to all schemes.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+     aria-labelledby="fig4-3-t fig4-3-d">
+  <title id="fig4-3-t">One link, two homes</title>
+  <desc id="fig4-3-d">Left: on disk, ch1.html at
+  file:///home/ann/book/ch1.html contains the link ch2.html, which resolves to
+  file:///home/ann/book/ch2.html. Right: the same unedited file at
+  http://example.org/book/ch1.html resolves the same link to
+  http://example.org/book/ch2.html. Bottom: when only ch1 is moved to the
+  website, the link resolves to http://example.org/book/ch2.html, where there
+  is nothing, because ch2 is still on the disk.</desc>
+
+  <text x="184" y="24" class="t-caps" text-anchor="middle">On Ann&#8217;s disk</text>
+  <text x="536" y="24" class="t-caps" text-anchor="middle">On a website</text>
+
+  <!-- left column -->
+  <rect class="box" x="18" y="36" width="332" height="60" rx="4"/>
+  <text x="184" y="60" class="t-mono" text-anchor="middle">file:///home/ann/book/ch1.html</text>
+  <text x="184" y="84" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">&lt;a href="ch2.html"&gt;</text>
+  <path class="ln" d="M 100 96 L 100 128"/>
+  <path d="M 96 126 L 100 135 L 104 126 Z" fill="#2f4f4f"/>
+  <text x="112" y="120" class="t-sm">resolved against the base URI</text>
+  <rect class="box" x="18" y="136" width="332" height="40" rx="4"/>
+  <text x="184" y="161" class="t-mono" text-anchor="middle">file:///home/ann/book/ch2.html</text>
+
+  <!-- right column -->
+  <rect class="box" x="370" y="36" width="332" height="60" rx="4"/>
+  <text x="536" y="60" class="t-mono" text-anchor="middle">http://example.org/book/ch1.html</text>
+  <text x="536" y="84" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">&lt;a href="ch2.html"&gt;</text>
+  <path class="ln" d="M 452 96 L 452 128"/>
+  <path d="M 448 126 L 452 135 L 456 126 Z" fill="#2f4f4f"/>
+  <text x="464" y="120" class="t-sm">same file, same rule, no edits</text>
+  <rect class="box" x="370" y="136" width="332" height="40" rx="4"/>
+  <text x="536" y="161" class="t-mono" text-anchor="middle">http://example.org/book/ch2.html</text>
+
+  <!-- half moved -->
+  <line class="ln-mut" x1="18" y1="196" x2="702" y2="196"/>
+  <text x="360" y="220" class="t-caps" text-anchor="middle" style="fill:#b08d57">Half moved</text>
+  <rect class="box-warm" x="18" y="232" width="332" height="60" rx="4"/>
+  <text x="184" y="256" class="t-mono" text-anchor="middle">http://example.org/book/ch1.html</text>
+  <text x="184" y="280" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">&lt;a href="ch2.html"&gt;</text>
+  <path class="ln" style="stroke:#b08d57" d="M 350 262 L 370 262"/>
+  <path d="M 368 257 L 378 262 L 368 267 Z" fill="#b08d57"/>
+  <rect class="box-plain" x="380" y="232" width="322" height="60" rx="4" style="stroke:#b08d57;stroke-dasharray:4 3"/>
+  <text x="541" y="256" class="t-mono" text-anchor="middle">http://example.org/book/ch2.html</text>
+  <text x="541" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">nothing here: the link is broken</text>
+  <text x="360" y="316" class="t-sm" text-anchor="middle">ch2.html is still on the disk, at file:///home/ann/book/ch2.html</text>
+</svg>
+<figcaption><span class="fig-label">Figure 4.3</span>
+One rule for every scheme lets a set move unedited; splitting it still breaks
+links. The same <code>href="ch2.html"</code> works under <code>file:</code>
+and under <code>http:</code>, but only while both chapters move together.</figcaption>
+</figure>
 
 <p>
 The justification is the same shape as the one for fragments, and equally
@@ -254,8 +405,8 @@ inside.
 <h2>4.4 The scheme, and why it must not be spent</h2>
 
 <p>
-The last section of the note is a warning, and it is the part that has aged
-into prophecy.
+The last section of the note is a warning, and it is the part that later
+events bore out.
 </p>
 
 <blockquote>
@@ -279,20 +430,111 @@ a better hope that you can in the future.
 <p>
 The danger is that spending the hatch destroys it. If many schemes are
 introduced, the space of scheme names becomes a namespace with all the
-properties that make namespaces hard: clashes destroy interoperability,
-ownership becomes commercially valuable, and fair management becomes both
-essential and difficult. Worse, software would be needed to look up schemes
-and fetch handlers for them, which means something like <a class="gl-ref" href="../glossary.html#dns">DNS</a>, which means that
-the top level of the Web&#8217;s namespace has silently become DNS again. At that
-point, he observes, there is no top-level extension switch left.
+properties that make namespaces hard:
 </p>
+
+<ul>
+<li>clashes between names destroy interoperability;</li>
+<li>ownership of names becomes commercially valuable;</li>
+<li>fair management becomes both essential and difficult.</li>
+</ul>
+
+<p>
+Worse, software would be needed to look up schemes and fetch handlers for
+them, which means something like <a class="gl-ref" href="../glossary.html#dns">DNS</a>, which means that the top level of the
+Web&#8217;s namespace has silently become DNS again. At that point, he
+observes, there is no top-level extension switch left.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
+     aria-labelledby="fig4-4-t fig4-4-d">
+  <title id="fig4-4-t">The extension switch, kept and spent</title>
+  <desc id="fig4-4-d">Left, kept: the scheme is one top-level switch with a
+  short list of spaces, http, ftp, gopher and mailto, and an empty slot left
+  as room for a new space. Right, spent: many schemes such as myapp, fb,
+  shop and chat need a lookup service like DNS and a way to download a
+  handler; the lookup service is now the top level, with no switch left
+  above it.</desc>
+
+  <!-- left panel: kept -->
+  <text x="165" y="24" class="t-caps" text-anchor="middle">Kept: few schemes</text>
+  <rect class="box" x="40" y="38" width="250" height="34" rx="4"/>
+  <text x="165" y="60" text-anchor="middle">the scheme: one top-level switch</text>
+  <path class="ln" d="M 70 72 L 70 218"/>
+  <path class="ln" d="M 70 98 L 90 98 M 70 128 L 90 128 M 70 158 L 90 158 M 70 188 L 90 188 M 70 218 L 90 218"/>
+  <rect class="box-plain" x="90" y="86" width="200" height="24" rx="3"/>
+  <text x="104" y="102" class="t-mono">http:</text>
+  <rect class="box-plain" x="90" y="116" width="200" height="24" rx="3"/>
+  <text x="104" y="132" class="t-mono">ftp:</text>
+  <rect class="box-plain" x="90" y="146" width="200" height="24" rx="3"/>
+  <text x="104" y="162" class="t-mono">gopher:</text>
+  <rect class="box-plain" x="90" y="176" width="200" height="24" rx="3"/>
+  <text x="104" y="192" class="t-mono">mailto:</text>
+  <rect class="box-plain" x="90" y="206" width="200" height="24" rx="3" style="stroke-dasharray:4 3"/>
+  <text x="190" y="222" class="t-sm t-it" text-anchor="middle">room for a new space</text>
+
+  <line class="ln-mut" x1="355" y1="14" x2="355" y2="236"/>
+
+  <!-- right panel: spent -->
+  <text x="541" y="24" class="t-caps" text-anchor="middle">Spent: many schemes</text>
+  <rect class="box-plain" x="388" y="38" width="70" height="24" rx="3"/>
+  <text x="423" y="54" class="t-mono" text-anchor="middle">myapp:</text>
+  <rect class="box-plain" x="466" y="38" width="70" height="24" rx="3"/>
+  <text x="501" y="54" class="t-mono" text-anchor="middle">fb:</text>
+  <rect class="box-plain" x="544" y="38" width="70" height="24" rx="3"/>
+  <text x="579" y="54" class="t-mono" text-anchor="middle">shop:</text>
+  <rect class="box-plain" x="622" y="38" width="70" height="24" rx="3"/>
+  <text x="657" y="54" class="t-mono" text-anchor="middle">chat:</text>
+  <rect class="box-plain" x="388" y="68" width="70" height="24" rx="3"/>
+  <text x="423" y="84" class="t-mono" text-anchor="middle">game:</text>
+  <rect class="box-plain" x="466" y="68" width="70" height="24" rx="3"/>
+  <text x="501" y="84" class="t-mono" text-anchor="middle">pay:</text>
+  <rect class="box-plain" x="544" y="68" width="70" height="24" rx="3"/>
+  <text x="579" y="84" class="t-mono" text-anchor="middle">maps:</text>
+  <text x="657" y="84" text-anchor="middle">&#8230;</text>
+  <path class="ln" d="M 541 92 L 541 106"/>
+  <path d="M 537 104 L 541 113 L 545 104 Z" fill="#2f4f4f"/>
+  <rect class="box" x="430" y="114" width="222" height="30" rx="4"/>
+  <text x="541" y="134" text-anchor="middle">lookup service (like DNS)</text>
+  <path class="ln" d="M 541 144 L 541 156"/>
+  <path d="M 537 154 L 541 163 L 545 154 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="430" y="164" width="222" height="30" rx="4"/>
+  <text x="541" y="184" text-anchor="middle">download a handler</text>
+  <text x="541" y="216" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">the lookup service is now the top level:</text>
+  <text x="541" y="232" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">no switch left above it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 4.4</span>
+The extension switch, kept and spent. Spend the top-level switch and it
+becomes one more namespace to manage. The scheme names on the right are
+illustrations of the pattern, not a survey.</figcaption>
+</figure>
 
 <p>
 The conclusion is procedural: access schemes should not be open to trivial
 extension, and should be extended only by new standards with full open
-review. He suggests that many proposed schemes would be better expressed as
-extensions within HTTP.
+review. He does not rule new schemes out. He accepts <code>data:</code>, which
+puts a small document inside the URI itself, as genuinely new and orthogonal
+to HTTP, but suggests that many other proposed schemes would be better
+expressed as extensions within HTTP.
 </p>
+
+<h3>A space first, a protocol second</h3>
+
+<p>
+The note ends this section with a distinction that softens the warning. A
+scheme names a part of the URI space first, and a protocol only second. The
+protocols used to reach a space can therefore be replaced while the names in
+it stay the same: a new protocol for looking up DNS names, for example,
+could take over gradually without any <code>http:</code> address changing.
+His analogy is the telephone:
+</p>
+
+<blockquote>
+When touch-tone dialing was introduced, the telephone numbering system
+remained the same.
+<cite>The Web Model, 1998</cite>
+</blockquote>
 
 <h2>4.5 A note on the word &ldquo;resource&rdquo;</h2>
 
@@ -302,11 +544,19 @@ The first Web specification said Universal Document Identifier. The IETF
 discussion changed &ldquo;document&rdquo; to &ldquo;resource&rdquo; on two
 grounds: documents did not obviously cover films and sounds, and URIs exist
 for endpoints such as mailboxes and login ports, which are not documents at
-all. <a class="gl-ref" href="../glossary.html#rdf">RDF</a> later adopted &ldquo;resource&rdquo; for anything whatever, the
-class of which every class is a subclass. The Technical Architecture Group
-then introduced &ldquo;information resource&rdquo; for the narrower original
-sense. Three meanings, one word, and the reader of any given specification
-must determine which is in force.
+all. The word then picked up two further senses.
+</p>
+
+<table>
+<tr><th>Sense</th><th>Introduced by</th><th>Covers</th></tr>
+<tr><td>&ldquo;resource&rdquo;</td><td>The IETF</td><td>Anything with a URI, including mailboxes (<code>mailto:</code>) and login ports (<code>telnet:</code>)</td></tr>
+<tr><td>&ldquo;resource&rdquo;</td><td><a class="gl-ref" href="../glossary.html#rdf">RDF</a></td><td>Anything at all: the class of which every class is a subclass</td></tr>
+<tr><td>&ldquo;information resource&rdquo;</td><td>The Technical Architecture Group</td><td>Document-like things, the narrower original sense</td></tr>
+</table>
+
+<p>
+Three meanings, one word, and the reader of any given specification must
+determine which is in force.
 </p>
 
 <div class="since">
@@ -319,7 +569,7 @@ chapter&#8217;s first axiom in normative form.</li>
 <li><strong>The client-side fragment was abused, then replaced.</strong>
 Single-page applications used fragments to encode application state, and
 Google&#8217;s AJAX crawling scheme of 2009 made a convention of it before
-deprecating it in October 2015. The History API&#8217;s pushState, in HTML5,
+deprecating it in October 2015. The History API&#8217;s pushState method
 restored a distinct URI per view, which is what the model asked for.</li>
 <li><strong>New fragment conventions kept arriving, as predicted.</strong>
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Media Fragments URI 1.0 became a Recommendation in September 2012. Text
@@ -353,14 +603,13 @@ warning about scheme proliferation returns in Chapter 5.
 <div class="question">
 <p><span class="question-number">4.1</span>
 State what would have to change in HTTP if fragment identifiers were resolved
-on the server. Name one capability that would be gained and two that would be
-lost.</p>
+on the server (see 4.2). Name one capability that would be gained and two
+that would be lost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.2</span>
-The note argues that universal relative-resolution rules let document sets
-move without editing. Content-addressed systems have no relative references
-at all. What do they trade away, and what do they gain?</p>
+A book&#8217;s chapters use relative links. What happens to them when the
+whole book moves from your disk to a website, and when only half does?</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.3</span>
@@ -371,9 +620,8 @@ whether verified https links solved the problem or deferred it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.4</span>
-The word &ldquo;resource&rdquo; carries three senses. Take one specification
-you know and determine which sense it uses, giving the sentence that decides
-it.</p>
+Using section 4.5, say which sense of &ldquo;resource&rdquo; fits a web page,
+a mailbox, and a person described in RDF.</p>
 </div>
 </details>
 
