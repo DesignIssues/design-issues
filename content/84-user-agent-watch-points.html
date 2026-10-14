@@ -1,8 +1,19 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A browser is the user&#8217;s agent, not a mere viewer, so it must pass on what
+the protocol means. The note picks three cases. Two kinds of redirect differ in
+which address to keep. Forms that commit the user should look
+different from links and leave a record. And people should deal in titles, not
+raw addresses.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 1999, this note begins by insisting that a term of art is not merely
-a term of art:
+First dated 1998 and revised in 1999, this note begins by insisting that a term
+of art is not merely a term of art:
 </p>
 <blockquote>
 Browsers and Email programs are user agents. This isn't just a formal long term
@@ -20,61 +31,121 @@ system of peeople and machines breaks.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 <p>
-Chapter 20 established that the meaning travels up the stack. This says
-somebody has to deliver it at the top.
+Chapter 20 established that meaning travels up a stack of specifications. This
+says somebody has to deliver it at the top.
 </p>
 </div>
 
 <h2>84.1 Two redirections that mean opposite things</h2>
 
+<p>
+A server asked for one address can reply, in effect, that the browser should look somewhere else.
+HTTP has two ways of saying this, for opposite reasons. In the note&#8217;s
+example, a university gives its theses durable addresses on one reliable
+machine but serves them from fast department machines.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
      aria-labelledby="fig84-1-t fig84-1-d">
-  <title id="fig84-1-t">Moved, and found</title>
-  <desc id="fig84-1-d">A permanent move says the original address should no
-  longer be used, and every bookmark and link should be changed. A temporary
-  redirect says the original address is correct and the content is presently
-  served elsewhere, so the original is what should be kept.</desc>
+  <title id="fig84-1-t">Following a 302</title>
+  <desc id="fig84-1-d">The browser asks the university for theses.example/123,
+  is told 302 Found at dept.example/x, and fetches the thesis from the
+  department. It should keep the first address, not the second.</desc>
 
-  <rect class="box-plain" x="24" y="34" width="310" height="180" rx="4" stroke="#d9b0b0"/>
-  <text x="179" y="60" class="t-mono" text-anchor="middle" font-size="13" fill="#b04a4a">301 Moved permanently</text>
-  <text x="179" y="88" class="t-sm" text-anchor="middle">&#8220;the server has committed the unthinkable&#8221;</text>
-  <text x="179" y="116" class="t-sm" text-anchor="middle">change every reference, including</text>
-  <text x="179" y="134" class="t-sm" text-anchor="middle">bookmarks and links in documents</text>
-  <text x="179" y="166" class="t-sm t-it" text-anchor="middle">an expensive solution to a serious problem</text>
-  <text x="179" y="192" class="t-sm" text-anchor="middle" fill="#b04a4a">keep: the new address</text>
+  <rect class="box" x="30" y="20" width="140" height="56" rx="4"/>
+  <text x="100" y="53" text-anchor="middle">browser</text>
 
-  <rect class="box-green" x="386" y="34" width="310" height="180" rx="4"/>
-  <text x="541" y="60" class="t-mono" text-anchor="middle" font-size="13" fill="#3f6f3f">302 Found</text>
-  <text x="541" y="88" class="t-sm" text-anchor="middle">the server is acting as a name server</text>
-  <text x="541" y="116" class="t-sm" text-anchor="middle">you asked for a good document;</text>
-  <text x="541" y="134" class="t-sm" text-anchor="middle">here is where it currently lives</text>
-  <text x="541" y="166" class="t-sm t-it" text-anchor="middle">a success, not a repair</text>
-  <text x="541" y="192" class="t-sm" text-anchor="middle" fill="#3f6f3f">keep: the original address</text>
+  <rect class="box-green" x="250" y="20" width="220" height="56" rx="4"/>
+  <text x="360" y="43" text-anchor="middle">university name server</text>
+  <text x="360" y="63" class="t-sm" text-anchor="middle">persistent addresses</text>
 
-  <line class="ln-mut" x1="24" y1="242" x2="696" y2="242"/>
-  <text x="360" y="266" class="t-sm" text-anchor="middle">A university gives its theses durable addresses on a small reliable machine,</text>
-  <text x="360" y="286" class="t-sm" text-anchor="middle">and serves the content from fast machines in the departments.</text>
-  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Bookmark the department&#8217;s copy and you have kept the address nobody promised to maintain.</text>
+  <rect class="box" x="490" y="20" width="210" height="56" rx="4"/>
+  <text x="595" y="43" text-anchor="middle">department server</text>
+  <text x="595" y="63" class="t-sm" text-anchor="middle">fast, no promise to persist</text>
+
+  <line class="ln-mut" x1="100" y1="76" x2="100" y2="262"/>
+  <line class="ln-mut" x1="360" y1="76" x2="360" y2="262"/>
+  <line class="ln-mut" x1="595" y1="76" x2="595" y2="262"/>
+
+  <text x="230" y="104" class="t-mono" text-anchor="middle">GET theses.example/123</text>
+  <line class="ln" x1="100" y1="114" x2="350" y2="114"/>
+  <path d="M350,109 L359,114 L350,119 Z" fill="#2f4f4f"/>
+
+  <text x="230" y="146" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">302 Found: dept.example/x</text>
+  <line class="ln" x1="110" y1="156" x2="360" y2="156"/>
+  <path d="M110,151 L101,156 L110,161 Z" fill="#2f4f4f"/>
+
+  <text x="230" y="188" class="t-mono" text-anchor="middle">GET dept.example/x</text>
+  <line class="ln" x1="100" y1="198" x2="585" y2="198"/>
+  <path d="M585,193 L594,198 L585,203 Z" fill="#2f4f4f"/>
+
+  <text x="230" y="230" class="t-sm" text-anchor="middle">the thesis itself</text>
+  <line class="ln" x1="110" y1="240" x2="595" y2="240"/>
+  <path d="M110,235 L101,240 L110,245 Z" fill="#2f4f4f"/>
+
+  <text x="30" y="292" class="t-caps">what the browser should remember</text>
+  <text x="30" y="322">bookmark, link, copy</text>
+  <line class="ln-accent" x1="180" y1="318" x2="282" y2="318"/>
+  <path d="M282,313 L291,318 L282,323 Z" fill="#1c5a7a"/>
+  <text x="300" y="322" class="t-mono" style="fill:#1c5a7a">theses.example/123</text>
+  <text x="450" y="322" class="t-sm">keep: the promised address</text>
+
+  <line class="ln-mut" x1="180" y1="348" x2="282" y2="348"/>
+  <line class="ln-mut" x1="222" y1="340" x2="238" y2="356"/>
+  <line class="ln-mut" x1="238" y1="340" x2="222" y2="356"/>
+  <text x="300" y="352" class="t-mono" style="fill:#8a9a9a">dept.example/x</text>
+  <line class="ln-mut" x1="298" y1="348" x2="408" y2="348"/>
+  <text x="450" y="352" class="t-sm">not: the address it was served from</text>
 </svg>
 <figcaption><span class="fig-label">Figure 84.1</span>
-Berners-Lee&#8217;s assessment of implementations in 1999 is a parenthesis with two
-names and a question mark: very few browsers implement this
-properly.</figcaption>
+The browser fetches the thesis from the second address but should remember the
+first. The same holds when a server redirects to a mirror.</figcaption>
+</figure>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+     aria-labelledby="fig84-2-t fig84-2-d">
+  <title id="fig84-2-t">Moved, and found</title>
+  <desc id="fig84-2-d">301 Moved permanently: change every reference and keep
+  the new address. 302 Found: a success; keep the original address.</desc>
+
+  <rect class="box-warm" x="24" y="20" width="310" height="190" rx="4"/>
+  <text x="179" y="48" class="t-mono" text-anchor="middle" style="fill:#b08d57">301 Moved permanently</text>
+  <text x="179" y="78" class="t-sm" text-anchor="middle">&#8220;the server has committed the unthinkable&#8221;</text>
+  <text x="179" y="106" class="t-sm" text-anchor="middle">change every reference, including</text>
+  <text x="179" y="124" class="t-sm" text-anchor="middle">bookmarks and links in documents</text>
+  <text x="179" y="154" class="t-sm t-it" text-anchor="middle">an expensive repair to a serious problem</text>
+  <text x="179" y="190" class="t-lg" text-anchor="middle" style="fill:#b08d57;font-weight:bold">keep: the new address</text>
+
+  <rect class="box-green" x="386" y="20" width="310" height="190" rx="4"/>
+  <text x="541" y="48" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">302 Found</text>
+  <text x="541" y="78" class="t-sm" text-anchor="middle">the server is acting as a name server</text>
+  <text x="541" y="106" class="t-sm" text-anchor="middle">the client asked for a good document;</text>
+  <text x="541" y="124" class="t-sm" text-anchor="middle">here is where it currently lives</text>
+  <text x="541" y="154" class="t-sm t-it" text-anchor="middle">a success, not a repair</text>
+  <text x="541" y="190" class="t-lg" text-anchor="middle" style="fill:#5a8f5a;font-weight:bold">keep: the original address</text>
+</svg>
+<figcaption><span class="fig-label">Figure 84.2</span>
+Both replies send the browser elsewhere, but one says the old address is dead
+and the other says the old address is the one to keep.</figcaption>
 </figure>
 
 <p>
-The distinction matters because the two addresses carry different promises. The
-institution has made a persistence commitment for one and not for the other,
-which is Chapter 3&#8217;s argument about where information in a name comes from,
-appearing as a question about which address a person copies down.
+The two addresses carry different promises. This is Chapter 3&#8217;s point that
+a name is only as durable as the commitment of whoever runs it, turned into a
+question about which address a person copies down. Berners-Lee&#8217;s verdict
+on the browsers of 1999 is a parenthesis with two names and a question mark:
+very few implemented this properly.
 </p>
 
 <h2>84.2 The commitment the interface hides</h2>
 
 <p>
-The second watch point is about the distinction of Chapter 2, and Berners-Lee
-asks for it to be visible:
+Following an ordinary link sends a GET request. In the note&#8217;s words it is
+reversible, has no long-term effect and cannot commit a user to anything.
+Submitting a form to order a book sends a POST, and that does commit the user.
+Berners-Lee asks for the difference to be visible:
 </p>
 
 <blockquote>
@@ -84,7 +155,7 @@ is hovering over a POST button to when the user is hovering over a GET link.
 </blockquote>
 
 <p>
-And then makes the analogy that gives the requirement its force:
+Then comes the analogy that gives the requirement its force:
 </p>
 
 <blockquote>
@@ -93,9 +164,8 @@ Doing a POST is like sending an email.
 </blockquote>
 
 <p>
-From which the missing feature follows. Everyone expects to be able to look at
-what they have sent, because those are the things they are committed to. The
-same should be true of forms:
+Everyone expects to be able to look at what they have sent, because those are
+the things they are committed to. The same should be true of forms:
 </p>
 
 <blockquote>
@@ -103,17 +173,54 @@ The web client should keep a record of POSTs which have been submitted.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 
-<p>
-A sent-items folder for the Web. Twenty-six years later no browser has one, and
-the record of what a person has committed themselves to exists only in the
-inboxes of the parties they committed to.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig84-3-t fig84-3-d">
+  <title id="fig84-3-t">Looking versus committing</title>
+  <desc id="fig84-3-d">GET, following a link, commits the user to nothing and is
+  recorded in browser history. POST, ordering a book, commits the user, yet the
+  sent-items record for it was never built. Each has its own cursor.</desc>
+
+  <path d="M170,14 L170,40 L176,34 L181,45 L185,43 L180,32 L188,32 Z" fill="#1c5a7a"/>
+  <path d="M532,14 L532,40 L538,34 L543,45 L547,43 L542,32 L550,32 Z" fill="#b08d57"/>
+  <circle cx="556" cy="38" r="6" fill="none" stroke="#b08d57" stroke-width="1.6"/>
+  <text x="360" y="34" class="t-sm" text-anchor="middle">a different cursor for each</text>
+
+  <rect class="box" x="24" y="56" width="310" height="128" rx="4"/>
+  <text x="179" y="82" text-anchor="middle">GET: follow a link</text>
+  <text x="179" y="112" class="t-sm" text-anchor="middle">reversible</text>
+  <text x="179" y="134" class="t-sm" text-anchor="middle">no lasting effect</text>
+  <text x="179" y="156" class="t-sm" text-anchor="middle">commits to nothing</text>
+
+  <rect class="box-warm" x="386" y="56" width="310" height="128" rx="4"/>
+  <text x="541" y="82" text-anchor="middle">POST: submit a form to order a book</text>
+  <text x="541" y="112" class="t-sm" text-anchor="middle">commits the user</text>
+  <text x="541" y="134" class="t-sm" text-anchor="middle">like sending an email</text>
+  <text x="541" y="156" class="t-sm" text-anchor="middle">a signature: the same, with weight added</text>
+
+  <line class="ln" x1="179" y1="184" x2="179" y2="220"/>
+  <path d="M174,219 L179,228 L184,219 Z" fill="#2f4f4f"/>
+  <line class="ln-dash" x1="541" y1="184" x2="541" y2="220"/>
+  <path d="M536,219 L541,228 L546,219 Z" fill="#8a9a9a"/>
+
+  <rect class="box-plain" x="64" y="228" width="230" height="56" rx="4"/>
+  <text x="179" y="252" text-anchor="middle">browser history</text>
+  <text x="179" y="272" class="t-sm" text-anchor="middle">kept by every browser</text>
+
+  <rect class="box-plain" x="426" y="228" width="230" height="56" rx="4"/>
+  <text x="541" y="252" text-anchor="middle">sent-items record</text>
+  <text x="541" y="272" class="t-sm" text-anchor="middle">asked for, never built</text>
+</svg>
+<figcaption><span class="fig-label">Figure 84.3</span>
+The browser keeps a record of where the user looked but not of what the user agreed to,
+which is the reverse of what matters.</figcaption>
+</figure>
 
 <p>
-He anticipates the objection that this would waste space for sites that confuse
-the two methods, and dismisses it: those sites are fundamentally broken anyway
-and the sooner the misuse is fixed on all sides the better. Then the statement
-of principle:
+More than a quarter of a century later, that record still exists only in the
+inboxes of the parties a person committed to. Sites that muddle the two methods
+would waste the space, he concedes, but they are broken anyway. He adds that a digital signature will one day be an action
+just like POST, but with weight added. Then the principle:
 </p>
 
 <blockquote>
@@ -135,51 +242,59 @@ or browsing.
 </blockquote>
 
 <p>
-The techniques are practical: put identifiers behind a status bar or an
-under-the-hood window, identify things by their titles, and add properties for
-short titles and icons to make that easier.
+The techniques the note lists are practical:
+</p>
+<ul>
+<li>keep addresses in an under-the-hood window or the status bar (the strip at
+the foot of the window that shows where a link leads);</li>
+<li>identify things by their titles;</li>
+<li>add properties for short titles and icons to make that easier;</li>
+<li>move every address-handling function to an optional menu;</li>
+<li>refer to files and documents by drag-and-drop or a copied reference, not by
+typing addresses.</li>
+</ul>
+<p>
+Servers help by generating the addresses of new documents.
 </p>
 
 <p>
-The tension with Chapter 68 is worth noticing. There, the address bar is where
-a person learns who they are dealing with, and Chapter 6 makes the domain name
-the visible seam carrying accountability. Here the identifier should never be
-seen. Both are right about different things: a person needs to know whose site
-this is, and does not need to see the path.
+This is in tension with Chapter 68, where the address bar is how a person learns
+who they are dealing with, and Chapter 6, where the domain name is the visible
+part that says who is accountable. Both are right about different things: a
+person needs to know whose site this is, and does not need to see the path.
 </p>
 
 <h2>84.4 Why an agent is not a viewer</h2>
 
 <p>
-The word the note insists on carries a duty. A viewer displays what arrives. An
-agent represents someone, which means conveying what the other party has
-actually said, including the parts the other party would rather not emphasise.
+A viewer displays what arrives. An agent represents someone, which means
+conveying what the other party has actually said, including what that party
+would rather not emphasise. A site that redirects to a mirror might prefer users to
+bookmark the mirror; the agent should keep the original address anyway.
 </p>
 
 <p>
-Each watch point is a case of the browser failing to pass on a distinction the
-protocol took care to make. Chapter 20 showed that the chain of specifications
-delivers meaning to the top of the stack. If the last link drops it, the
-precision below was wasted.
+Each watch point is a distinction the protocol made carefully and the browser
+failed to pass on, wasting the precision below.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The redirection distinction was implemented and hidden.</strong>
-Browsers handle the two correctly for caching and bookmarks, and never show
-the user which occurred, so the choice of which address to share is still made
-blind.</li>
-<li><strong>The sent-items folder was never built.</strong> No browser records
-what a user has submitted, and the nearest equivalents are password managers
-and per-site account pages.</li>
-<li><strong>Identifiers were hidden, then partly restored.</strong> Browsers
-trimmed and then un-trimmed what they show in the address bar through the 2010s
-and 2020s, and the balance between Chapter 68&#8217;s requirement and this chapter&#8217;s
-remains unsettled.</li>
-<li><strong>The commitment cue never arrived.</strong> Nothing distinguishes
-hovering over a link that commits you from one that does not, and the
-consequences are absorbed by confirmation dialogues instead.</li>
+<li><strong>The redirection distinction stayed below the surface.</strong>
+Browsers cache permanent redirects, but whichever kind of redirect occurred they
+show, and bookmark, the address they ended up at, and never say which kind it
+was.</li>
+<li><strong>More redirect codes arrived.</strong> HTTP added 307 Temporary
+Redirect, which the note mentions, and in 2015 308 Permanent Redirect (RFC 7538).</li>
+<li><strong>The sent-items folder was never built.</strong> The nearest
+equivalents are password managers and per-site account pages.</li>
+<li><strong>Hiding addresses was tried and contested.</strong> Safari shows only
+the domain by default, while Chrome tested a domain-only address bar in 2020 and
+dropped the experiment in 2021.</li>
+<li><strong>The commitment cue never arrived.</strong> Its one common trace is
+the warning browsers give on reloading a page reached by POST, asking whether to
+resubmit the form.</li>
 </ul>
 </div>
 
@@ -198,7 +313,8 @@ in Chapter 85.
 <div class="question">
 <p><span class="question-number">84.1</span>
 You follow a redirect and want to share the page. Which address should you
-share, and how would you find out which kind it was?</p>
+share, and why can&#8217;t your browser currently tell you which kind of redirect
+it was?</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.2</span>
@@ -211,7 +327,7 @@ conflict in a concrete design.</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.4</span>
-Name a distinction a protocol you use makes carefully and the interface
-discards.</p>
+Your browser lets you go Back after buying something. Why is going Back not the
+same as undoing the purchase?</p>
 </div>
 </div>

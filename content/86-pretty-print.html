@@ -1,18 +1,26 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Write data so people can read it. Same data, same text. Small change, small
+diff.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in October 2023, the most recent technical note in the collection and
-the most domestic. Its subject is how data should be laid out when written to a
-file, and its argument is that legibility is a system property rather than a
-courtesy.
+Written in October 2023. &ldquo;Pretty printing&rdquo; is formatting code
+&ldquo;so that it is easy to read by humans, and aesthetically pleasing&rdquo;.
+The note asks how a program should lay out data in a Solid pod (the personal
+data store of Chapter 54), and argues that legibility is a system property
+rather than a courtesy.
 </p>
 </div>
 
 <h2>86.1 The view-source effect</h2>
 
 <p>
-The reason given first is the one that connects this note to the whole
-history:
+The first reason given connects this note to the whole history:
 </p>
 
 <blockquote>
@@ -22,15 +30,13 @@ and adapting each others web pages is important linked data in Solid pods too.
 </blockquote>
 
 <p>
-Chapter 56 identified the four steps by which the document Web spread: copy,
-change, look, show someone. The first step requires that the source be readable
-by someone who did not write it. A format that is legible only through a tool
-loses the first step, and with it the others.
+Chapter 56 traced how the Web spread: copy, change, look, show someone. Copying
+needs a source that a stranger can read; a format legible only through a tool
+loses that step, and the others with it.
 </p>
 
 <p>
-Berners-Lee then reports the collective experience of the field, which is a
-stronger claim than an aesthetic preference:
+He then reports the experience of the field, and answers the obvious objection:
 </p>
 
 <blockquote>
@@ -39,10 +45,6 @@ community that simple text formats (like FTP, SNTP, HTTP, HTML, XML) have been
 key to adoption and understanding of new systems.
 <cite>Pretty Printing, 2023</cite>
 </blockquote>
-
-<p>
-And answers the obvious objection before it is raised:
-</p>
 
 <blockquote>
 So while you can ship a binary format and give everyone tools for translating it
@@ -53,64 +55,126 @@ across the net.
 
 <h2>86.2 Small change, small difference</h2>
 
+<p>
+The part of a program that writes data out as text is its <em>serialiser</em>.
+The note asks two things of it. First, it is useful &ldquo;for the same data to
+consistently give the same text&rdquo;. Second, &ldquo;small changes in the data
+produce small changes in the text&rdquo;. The second matters because of
+version control: tools such as Mercurial, git, SVN and CVS keep every past
+version of a file and show, as a <em>diff</em>, the lines that changed between
+two of them.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig86-1-t fig86-1-d">
-  <title id="fig86-1-t">Why consistent layout matters beyond reading</title>
-  <desc id="fig86-1-d">If the same data always produces the same text, and a
-  small change to the data produces a small change to the text, then version
-  history is readable, tests compare cleanly, and a person can see what
-  actually changed.</desc>
+  <title id="fig86-1-t">One change to Joe&#8217;s age, as two serialisers report it</title>
+  <desc id="fig86-1-d">On the left, a serialiser that writes the record in a
+  different order and indentation each time: the diff removes all four lines and
+  adds four new ones, although only the age changed from 41 to 42. On the right,
+  a serialiser that keeps the same order: the diff removes one line and adds one,
+  showing exactly the age change.</desc>
 
-  <rect class="box-plain" x="24" y="34" width="310" height="140" rx="4" stroke="#d9b0b0"/>
-  <text x="179" y="58" class="t-caps" text-anchor="middle" fill="#b04a4a">inconsistent layout</text>
-  <g class="t-mono" font-size="11">
-    <rect x="44" y="72" width="270" height="18" fill="#fdf5f5"/>
-    <text x="50" y="85" fill="#b04a4a">- everything</text>
-    <rect x="44" y="92" width="270" height="18" fill="#fdf5f5"/>
-    <text x="50" y="105" fill="#b04a4a">- on every line</text>
-    <rect x="44" y="112" width="270" height="18" fill="#f5f8f0"/>
-    <text x="50" y="125" fill="#3f6f3f">+ everything</text>
-    <rect x="44" y="132" width="270" height="18" fill="#f5f8f0"/>
-    <text x="50" y="145" fill="#3f6f3f">+ on every line</text>
-  </g>
-  <text x="179" y="166" class="t-sm" text-anchor="middle">what actually changed? nobody knows</text>
+  <rect class="box-warm" x="24" y="34" width="320" height="230" rx="4"/>
+  <text x="184" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">re-written in a new order</text>
+  <rect x="40" y="68" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="88" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="108" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="128" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="148" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="168" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="188" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="40" y="208" width="288" height="18" fill="#fdfdfc"/>
+  <text x="48" y="81" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">- :joe a     :Person;</text>
+  <text x="48" y="101" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      name  "Joe Meadows";</text>
+  <text x="48" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      age   41;</text>
+  <text x="48" y="141" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      email &lt;mailto:joe@ex.org&gt;.</text>
+  <text x="48" y="161" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+ :joe email &lt;mailto:joe@ex.org&gt;;</text>
+  <text x="48" y="181" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   age 42;</text>
+  <text x="48" y="201" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   a :Person;</text>
+  <text x="48" y="221" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   name "Joe Meadows".</text>
+  <text x="184" y="250" class="t-sm" text-anchor="middle">only the age changed, but every line differs</text>
 
-  <rect class="box-green" x="386" y="34" width="310" height="140" rx="4"/>
-  <text x="541" y="58" class="t-caps" text-anchor="middle" fill="#3f6f3f">consistent layout</text>
-  <g class="t-mono" font-size="11">
-    <text x="412" y="85">  name  "Joe Meadows";</text>
-    <rect x="406" y="92" width="270" height="18" fill="#fdf5f5"/>
-    <text x="412" y="105" fill="#b04a4a">- age   41;</text>
-    <rect x="406" y="112" width="270" height="18" fill="#f5f8f0"/>
-    <text x="412" y="125" fill="#3f6f3f">+ age   42;</text>
-    <text x="412" y="145">  email &lt;mailto:joe@ex.org&gt;.</text>
-  </g>
-  <text x="541" y="166" class="t-sm" text-anchor="middle">one line, and it says what happened</text>
-
-  <line class="ln-mut" x1="24" y1="202" x2="696" y2="202"/>
-  <text x="24" y="226" class="t-sm">Two requirements, and the second is the one people forget:</text>
-  <text x="60" y="252" class="t-sm">the same data should consistently give the same text</text>
-  <text x="60" y="276" class="t-sm">small changes in the data should produce small changes in the text</text>
-  <text x="24" y="302" class="t-sm t-it">Without the second, version history and test comparison both stop working.</text>
+  <rect class="box-green" x="376" y="34" width="320" height="230" rx="4"/>
+  <text x="536" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">same order every time</text>
+  <rect x="392" y="108" width="288" height="18" fill="#fdfdfc"/>
+  <rect x="392" y="128" width="288" height="18" fill="#fdfdfc"/>
+  <text x="400" y="81" class="t-mono" xml:space="preserve" style="white-space:pre">  :joe a     :Person;</text>
+  <text x="400" y="101" class="t-mono" xml:space="preserve" style="white-space:pre">       name  "Joe Meadows";</text>
+  <text x="400" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      age   41;</text>
+  <text x="400" y="141" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+      age   42;</text>
+  <text x="400" y="161" class="t-mono" xml:space="preserve" style="white-space:pre">       email &lt;mailto:joe@ex.org&gt;.</text>
+  <text x="536" y="250" class="t-sm" text-anchor="middle">one line out, one line in: the age changed</text>
 </svg>
 <figcaption><span class="fig-label">Figure 86.1</span>
-The second requirement is what makes a format usable with the ordinary tools of
-software work. It is a property of the serialiser, not of the data.</figcaption>
+One edit, Joe&#8217;s age from 41 to 42, seen in version control. The
+difference lies in the serialiser, not the data.</figcaption>
 </figure>
 
 <p>
-The testing case is given as a separate reason and is the one that persuades
-implementers. Comparing what a system produced against what it should have
-produced is easy when both are laid out the same way and impossible when they
-are not.
+Tests benefit too. A test compares actual output with expected output; the note
+advises comparing pretty-printed versions rather than raw triples, so a person
+can see why they differ.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
+     aria-labelledby="fig86-2-t fig86-2-d">
+  <title id="fig86-2-t">Where a stable serialiser pays off</title>
+  <desc id="fig86-2-d">Data in a pod passes through a serialiser that gives the
+  same text for the same data, producing a text file. That file serves three
+  readers: source control, where a change shows as a small diff; tests, where
+  expected and actual output are compared; and collaboration, where the text is
+  pasted into a chat and discussed.</desc>
+  <defs>
+    <marker id="fig86-2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig86-2-aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-plain" x="24" y="96" width="124" height="56" rx="4"/>
+  <text x="86" y="120" text-anchor="middle">data in a pod</text>
+  <text x="86" y="138" class="t-sm" text-anchor="middle">an RDF graph</text>
+
+  <rect class="box" x="180" y="96" width="180" height="56" rx="4"/>
+  <text x="270" y="120" text-anchor="middle">serialiser</text>
+  <text x="270" y="138" class="t-sm" text-anchor="middle">same data &#8594; same text</text>
+
+  <rect class="box-plain" x="392" y="96" width="80" height="56" rx="4"/>
+  <text x="432" y="120" text-anchor="middle">text file</text>
+  <text x="432" y="138" class="t-sm" text-anchor="middle">Turtle</text>
+
+  <line class="ln" x1="148" y1="124" x2="178" y2="124" marker-end="url(#fig86-2-ah)"/>
+  <line class="ln" x1="360" y1="124" x2="390" y2="124" marker-end="url(#fig86-2-ah)"/>
+
+  <path class="ln-accent" d="M472,124 L504,52" marker-end="url(#fig86-2-aa)"/>
+  <path class="ln-accent" d="M472,124 L504,124" marker-end="url(#fig86-2-aa)"/>
+  <path class="ln-accent" d="M472,124 L504,196" marker-end="url(#fig86-2-aa)"/>
+
+  <rect class="box-green" x="506" y="24" width="190" height="56" rx="4"/>
+  <text x="601" y="48" text-anchor="middle">source control</text>
+  <text x="601" y="66" class="t-sm" text-anchor="middle">a small, readable diff</text>
+
+  <rect class="box-green" x="506" y="96" width="190" height="56" rx="4"/>
+  <text x="601" y="120" text-anchor="middle">tests</text>
+  <text x="601" y="138" class="t-sm" text-anchor="middle">expected vs actual compared</text>
+
+  <rect class="box-green" x="506" y="168" width="190" height="56" rx="4"/>
+  <text x="601" y="192" text-anchor="middle">collaboration</text>
+  <text x="601" y="210" class="t-sm" text-anchor="middle">pasted into a chat</text>
+</svg>
+<figcaption><span class="fig-label">Figure 86.2</span>
+One property of the writer serves three different readers, each named in the
+note.</figcaption>
+</figure>
 
 <h2>86.3 Writing, not only reading</h2>
 
 <p>
-The note makes a point that most discussions of formatting miss, because they
-consider only the reader:
+Most discussions of formatting consider only the reader. The note does not:
 </p>
 
 <blockquote>
@@ -122,14 +186,8 @@ English like way also is more pleasant, and easier to check for mistakes.
 </blockquote>
 
 <p>
-This is the case for the notation of Chapter 42 stated as an ergonomic
-argument rather than a logical one. A syntax close to a sentence is easier to
-get right by hand, and data written by hand is where most vocabularies and
-rules come from.
-</p>
-
-<p>
-The last case is the most specific and the most modern:
+This is the case for the notation of Chapter 42, made on grounds of comfort
+rather than logic: a syntax close to a sentence is easier to get right by hand.
 </p>
 
 <blockquote>
@@ -139,46 +197,111 @@ whiteboard or in a chat, then legibility and writability are both important.
 </blockquote>
 
 <p>
-Data gets pasted into conversations. A format that can be read in a chat window
-by someone without tooling is a format a team can discuss.
+Data gets pasted into conversations, and a format that can be read in a chat
+window without tooling is one a team can discuss.
 </p>
 
 <h2>86.4 The argument in general</h2>
 
 <p>
-Four benefits are claimed and they are of different kinds, which is what makes
-the case strong rather than sentimental.
+The note lists six benefits of different kinds; the case does not rest on the
+first.
 </p>
 
 <table>
-<tr><th>Benefit</th><th>Who gains</th></tr>
-<tr><td>Understanding how existing programs work</td><td>A developer arriving new</td></tr>
-<tr><td>Seeing what has gone wrong</td><td>The same developer, later</td></tr>
-<tr><td>Readable version history and clean comparisons</td><td>Everyone maintaining it</td></tr>
-<tr><td>Smaller text, sometimes</td><td>The network, marginally</td></tr>
+<tr><th>Benefit</th><th>What the note says</th><th>Section</th></tr>
+<tr><td>Storage and bandwidth</td><td>Smaller files; may not matter once compressed</td><td>86.4</td></tr>
+<tr><td>Consistency and continuity</td><td>Same data, same text; small change, small change</td><td>86.2</td></tr>
+<tr><td>Tests</td><td>Compare pretty-printed output, so a mismatch can be understood</td><td>86.2</td></tr>
+<tr><td>Source control</td><td>A smaller record of changes; before and after can be compared</td><td>86.2</td></tr>
+<tr><td>Writing</td><td>Configuration files and rules are easier to write clearly</td><td>86.3</td></tr>
+<tr><td>Collaboration</td><td>Data shared on a whiteboard or in a chat</td><td>86.3</td></tr>
 </table>
 
+
 <p>
-Berners-Lee is honest about the last, noting it may or may not matter since the
-text may be compressed at another stage. The case does not rest on it.
+The note ends with a caution. Indentation, line length and the &ldquo;spaces or
+tabs&rdquo; question are matters of taste, and a developer whose output users
+will see must guess their preferences rather than impose his own.
+</p>
+
+<h2>86.5 What makes Turtle legible</h2>
+
+<p>
+Pod data is usually Turtle, JSON-LD, or N3 (a superset of Turtle). Turtle lets
+spaces and line breaks be used freely, and has shorthands a serialiser should
+use:
+</p>
+
+<table>
+<tr><th>Feature</th><th>Long form</th><th>Short form</th></tr>
+<tr><td>Prefix</td><td><code>&lt;http://xmlns.com/foaf/0.1/name&gt;</code></td><td><code>foaf:name</code></td></tr>
+<tr><td>Semicolon</td><td>Subject repeated</td><td><code>p:joe foaf:name "Joe"; foaf:age 42.</code></td></tr>
+<tr><td>Comma</td><td>Subject and property repeated</td><td><code>p:joe foaf:knows p:ann, p:bob.</code></td></tr>
+<tr><td>Square brackets</td><td>Blank node labelled <code>_:b1</code></td><td><code>[ foaf:name "Ann" ]</code></td></tr>
+<tr><td>Parentheses</td><td>A list built node by node</td><td><code>( 1 2 3 )</code></td></tr>
+<tr><td>Raw number</td><td><code>"42"^^xsd:integer</code></td><td><code>42</code></td></tr>
+</table>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+     aria-labelledby="fig86-3-t fig86-3-d">
+  <title id="fig86-3-t">Four facts about Joe, without and with Turtle&#8217;s shorthands</title>
+  <desc id="fig86-3-d">Top: four triples written in full, each repeating Joe&#8217;s
+  full URI and a full property URI, with the age carrying an explicit integer
+  datatype. Bottom: the same four triples in Turtle, using two prefix
+  declarations, a semicolon to avoid repeating the subject, a raw number for the
+  age, and a comma to avoid repeating the property.</desc>
+  <defs>
+    <marker id="fig86-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-warm" x="24" y="34" width="672" height="132" rx="4"/>
+  <text x="40" y="56" class="t-caps" style="fill:#b08d57">every triple written out in full</text>
+  <text x="40" y="78" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">&lt;https://ex.org/people#joe&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Joe Meadows" .</text>
+  <text x="40" y="96" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">&lt;https://ex.org/people#joe&gt; &lt;http://xmlns.com/foaf/0.1/age&gt;</text>
+  <text x="40" y="114" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">    "42"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .</text>
+  <text x="40" y="132" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">&lt;https://ex.org/people#joe&gt; &lt;http://xmlns.com/foaf/0.1/knows&gt; &lt;https://ex.org/people#ann&gt; .</text>
+  <text x="40" y="150" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">&lt;https://ex.org/people#joe&gt; &lt;http://xmlns.com/foaf/0.1/knows&gt; &lt;https://ex.org/people#bob&gt; .</text>
+
+  <rect class="box-green" x="24" y="190" width="672" height="146" rx="4"/>
+  <text x="40" y="212" class="t-caps" style="fill:#5a8f5a">Turtle, using its shorthands</text>
+  <text x="40" y="236" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt;.</text>
+  <text x="40" y="254" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">@prefix p: &lt;https://ex.org/people#&gt;.</text>
+  <text x="40" y="280" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">p:joe foaf:name "Joe Meadows";</text>
+  <text x="40" y="298" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">      foaf:age 42;</text>
+  <text x="40" y="316" class="t-mono" xml:space="preserve" style="font-size:11px;white-space:pre">      foaf:knows p:ann, p:bob.</text>
+
+  <path class="ln-accent" d="M420,245 L338,245" marker-end="url(#fig86-3-ah)"/>
+  <path class="ln-accent" d="M420,276 L252,276" marker-end="url(#fig86-3-ah)"/>
+  <path class="ln-accent" d="M420,294 L174,294" marker-end="url(#fig86-3-ah)"/>
+  <path class="ln-accent" d="M420,312 L252,312" marker-end="url(#fig86-3-ah)"/>
+  <text x="430" y="249" class="t-sm" style="fill:#1c5a7a">prefix: short names for long URIs</text>
+  <text x="430" y="280" class="t-sm" style="fill:#1c5a7a">semicolon: same subject, next property</text>
+  <text x="430" y="298" class="t-sm" style="fill:#1c5a7a">raw number: no datatype written</text>
+  <text x="430" y="316" class="t-sm" style="fill:#1c5a7a">comma: same property, next object</text>
+</svg>
+<figcaption><span class="fig-label">Figure 86.3</span>
+The same graph in both panels; only the layout differs.</figcaption>
+</figure>
+
+<p>
+N3 adds raw dates, an <code>is &#8230; of</code> form for links pointing in,
+<code>@keywords</code> to drop leading colons, and curly brackets for nested
+graphs. Of shared sketching in a chat, the note remarks: &ldquo;(This is what
+N3 was originally made for.)&rdquo;
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Canonical serialisation became a standard.</strong> RDF Dataset
-Canonicalization, a W3C Recommendation of May 2024, supplies the deterministic
-form section 86.2 asks for, for comparison and signing.</li>
-<li><strong>Automatic formatting became universal.</strong> Opinionated
-formatters that produce one layout from any input became standard practice
-across programming languages, which is the first requirement adopted
-everywhere.</li>
-<li><strong>Diff-friendliness became a format design criterion.</strong>
-Formats intended to live in version control are now judged on whether a small
-edit produces a small difference, which is the second requirement.</li>
-<li><strong>Legible wire formats held their ground.</strong> Text formats
-remain dominant for configuration and data interchange, with binary encodings
-used where volume demands, which is the balance this note argues for.</li>
+<li><strong>A canonical form, but not a pretty one.</strong> RDF Dataset
+Canonicalization (W3C Recommendation, May 2024) writes any dataset as a
+deterministic list of N-Quads lines for comparison and signing. That meets the
+first requirement of section 86.2, but the output is not meant for reading and
+does not promise small diffs.</li>
 </ul>
 </div>
 
@@ -195,8 +318,8 @@ The storage this data lives in is Chapter 54.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">86.1</span>
-Take a format your system writes. Does the same data always produce the same
-text? Test it.</p>
+Two programs save the same address book. One sorts entries by name, one by
+date added. What happens when you compare their files?</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.2</span>
@@ -210,7 +333,7 @@ you have written by hand.</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.4</span>
-When is a binary format the right choice? State the threshold in terms of the
-benefits in section 86.4.</p>
+Name one situation where shipping a binary format is worth losing view-source,
+and say which benefit in section 86.4 you are giving up.</p>
 </div>
 </div>

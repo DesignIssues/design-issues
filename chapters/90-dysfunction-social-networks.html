@@ -52,15 +52,13 @@ a Design Issues note by Tim Berners-Lee, 2024.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Something went wrong with the part of the Web where people talk to each other,
-and by 2024 its inventor thought it was worth writing down exactly what.
+Social networks earn money by collecting data about each user so that
+advertisers can target them. Separately, their feeds learn to show whatever
+keeps people scrolling, and that is often false or enraging.
 </p>
 <p>
-This chapter takes it apart mechanism by mechanism: keeping a record of what
-somebody did, recognising the same person across different sites, assembling a
-picture from the two, and then the separate and larger problem of choosing
-what to show in order to keep them there. The care it takes over which steps
-are actually harmful is what makes it worth reading.
+This 2024 note takes both mechanisms apart, step by step, and is careful about
+which steps are actually harmful. It ends with a list of who can fix them.
 </p>
 </div>
 
@@ -99,14 +97,10 @@ technology could become a wise, warm, self-governing one.
 </blockquote>
 
 <p>
-He cites a famous manifesto of the period and calls it a great example of a
-naive utopian vision, which is unusually direct about a document he would once
-have been associated with.
-</p>
-
-<p>
-The turn is described in one sentence, and it is a structural claim rather than
-a complaint about content:
+He calls John Perry Barlow&#8217;s <em>A Declaration of the Independence of
+Cyberspace</em> (1996) a great example of a naive utopian vision. Yet the
+early years had a lot that was good: anyone could make their own website and
+link it to other people&#8217;s. Then came the turn:
 </p>
 
 <blockquote>
@@ -115,63 +109,145 @@ websites,and the social networks became monopolies.
 <cite>The Dysfunction of Social Networks, 2024</cite>
 </blockquote>
 
-<h2>90.2 The chain</h2>
+<p>
+A monopoly is a service with no practical rival.
+</p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
      aria-labelledby="fig90-1-t fig90-1-d">
-  <title id="fig90-1-t">The mechanisms, in order</title>
-  <desc id="fig90-1-d">Retaining data, then correlating it to identify a
-  person across sites, then building a profile, then targeting. Separately, and
-  worse, optimising what is shown in order to maximise engagement. Each step is
-  reasonable alone and the chain is not.</desc>
+  <title id="fig90-1-t">From hope to dysfunction</title>
+  <desc id="fig90-1-d">A timeline, not to scale. 1996: Barlow's manifesto, a
+  utopian vision. Early years: anyone makes a website and links to others.
+  After a few years: people join social networks, which become monopolies.
+  2016: the US election and Brexit vote raise fears of manipulation. 2018: the
+  Cambridge Analytica scandal shows targeted-advertising manipulation.
+  February 2024: this note; June 2024: Chapter 91.</desc>
+  <defs>
+    <marker id="fig90-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
 
-  <g>
-    <rect class="box" x="24" y="40" width="150" height="62" rx="4"/>
-    <text x="99" y="66" class="t-caps" text-anchor="middle">retention</text>
-    <text x="99" y="88" class="t-sm" text-anchor="middle">what you typed,</text>
-    <text x="99" y="104" class="t-sm" text-anchor="middle">and what you did not</text>
+  <line class="ln-mut" x1="24" y1="110" x2="700" y2="110" marker-end="url(#fig90-1-arr)"/>
 
-    <path class="ln-mut" d="M 174 71 L 204 71"/>
-    <path d="M 200 66 L 212 71 L 200 76 Z" fill="#8a9a9a"/>
+  <line class="ln-mut" x1="40" y1="84" x2="40" y2="110"/>
+  <line class="ln-mut" x1="280" y1="84" x2="280" y2="110"/>
+  <line class="ln-mut" x1="540" y1="84" x2="540" y2="110"/>
+  <line class="ln-mut" x1="160" y1="110" x2="160" y2="120"/>
+  <line class="ln-mut" x1="420" y1="110" x2="420" y2="120"/>
+  <line class="ln-mut" x1="660" y1="110" x2="660" y2="120"/>
 
-    <rect class="box" x="214" y="40" width="150" height="62" rx="4"/>
-    <text x="289" y="66" class="t-caps" text-anchor="middle">correlation</text>
-    <text x="289" y="88" class="t-sm" text-anchor="middle">browser, processor,</text>
-    <text x="289" y="104" class="t-sm" text-anchor="middle">even typing rhythm</text>
+  <circle cx="40" cy="110" r="5" fill="#5a8f5a"/>
+  <circle cx="160" cy="110" r="5" fill="#5a8f5a"/>
+  <circle cx="280" cy="110" r="5" fill="#b08d57"/>
+  <circle cx="420" cy="110" r="5" fill="#b08d57"/>
+  <circle cx="540" cy="110" r="5" fill="#b08d57"/>
+  <circle cx="660" cy="110" r="5" fill="#1c5a7a"/>
 
-    <path class="ln-mut" d="M 364 71 L 394 71"/>
-    <path d="M 390 66 L 402 71 L 390 76 Z" fill="#8a9a9a"/>
+  <text x="32" y="38" class="t-caps" style="fill:#5a8f5a">1996</text>
+  <text x="32" y="56" class="t-sm">Barlow&#8217;s manifesto:</text>
+  <text x="32" y="72" class="t-sm">a utopian vision</text>
 
-    <rect class="box-warm" x="404" y="40" width="150" height="62" rx="4"/>
-    <text x="479" y="66" class="t-caps" text-anchor="middle" fill="#a07d47">profiling</text>
-    <text x="479" y="92" class="t-sm" text-anchor="middle">not itself the problem</text>
+  <text x="280" y="38" class="t-caps" text-anchor="middle" style="fill:#b08d57">after a few years</text>
+  <text x="280" y="56" class="t-sm" text-anchor="middle">people join social networks;</text>
+  <text x="280" y="72" class="t-sm" text-anchor="middle">networks become monopolies</text>
 
-    <path class="ln-mut" d="M 554 71 L 584 71"/>
-    <path d="M 580 66 L 592 71 L 580 76 Z" fill="#8a9a9a"/>
+  <text x="540" y="38" class="t-caps" text-anchor="middle" style="fill:#b08d57">2018</text>
+  <text x="540" y="56" class="t-sm" text-anchor="middle">Cambridge Analytica scandal:</text>
+  <text x="540" y="72" class="t-sm" text-anchor="middle">manipulation by targeted ads</text>
 
-    <rect class="box-plain" x="594" y="40" width="102" height="62" rx="4" stroke="#d9b0b0"/>
-    <text x="645" y="66" class="t-caps" text-anchor="middle" fill="#b04a4a">targeting</text>
-    <text x="645" y="92" class="t-sm" text-anchor="middle">to take advantage</text>
-  </g>
+  <text x="160" y="140" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">early years</text>
+  <text x="160" y="158" class="t-sm" text-anchor="middle">anyone makes a website</text>
+  <text x="160" y="174" class="t-sm" text-anchor="middle">and links to others</text>
 
-  <line class="ln-mut" x1="24" y1="134" x2="696" y2="134"/>
+  <text x="420" y="140" class="t-caps" text-anchor="middle" style="fill:#b08d57">2016</text>
+  <text x="420" y="158" class="t-sm" text-anchor="middle">US election and Brexit vote:</text>
+  <text x="420" y="174" class="t-sm" text-anchor="middle">fears of manipulation</text>
 
-  <rect class="box-plain" x="120" y="152" width="480" height="76" rx="4" stroke="#d9b0b0"/>
-  <text x="360" y="178" class="t-caps" text-anchor="middle" fill="#b04a4a">and separately: optimising for engagement</text>
-  <text x="360" y="204" class="t-sm" text-anchor="middle">content chosen to maximise attention, at the expense of</text>
-  <text x="360" y="220" class="t-sm" text-anchor="middle">truth and of societal well-being</text>
-
-  <path class="ln-mut" d="M 360 228 L 360 248"/>
-  <text x="360" y="272" class="t-sm" text-anchor="middle">political polarisation &#183; mental health harm &#183; erosion of trust in institutions</text>
-
-  <line class="ln-mut" x1="24" y1="292" x2="696" y2="292"/>
-  <text x="360" y="316" class="t-sm t-it" text-anchor="middle">&#8220;For the world as a whole, that can be a bigger problem than the problems which just stem from tracking.&#8221;</text>
+  <text x="692" y="140" class="t-caps" text-anchor="end" style="fill:#1c5a7a">2024</text>
+  <text x="692" y="158" class="t-sm" text-anchor="end">this note (February);</text>
+  <text x="692" y="174" class="t-sm" text-anchor="end">Chapter 91 (June)</text>
 </svg>
 <figcaption><span class="fig-label">Figure 90.1</span>
-Berners-Lee is careful to separate the two. Profiling and targeting are one
-harm. Ranking to maximise engagement is a different and, he judges, larger
-one.</figcaption>
+The turn came from where people published, not from any change in the
+technology. Green marks the hopeful period, warm the events the note
+cites as dysfunction. Not to scale.</figcaption>
+</figure>
+
+<h2>90.2 The chain</h2>
+
+<p>
+A <em>profile</em> is the picture a service keeps of a user: interests,
+habits, contacts. <em>Targeting</em> is choosing which advertisement each
+person sees according to it. The note sets out the steps as a chain.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig90-2-t fig90-2-d">
+  <title id="fig90-2-t">The data chain, and the separate harm</title>
+  <desc id="fig90-2-d">Five steps in a row: retention of data the user knows
+  of and data they do not; correlation, recognising the same person across
+  sites; profiling, which is not itself the problem; trading, where profiles
+  are sold on and augmented; targeting, to take advantage of the user. Below,
+  separately: the feed optimised for engagement, leading to political
+  polarisation, mental health harm and erosion of trust in
+  institutions.</desc>
+  <defs>
+    <marker id="fig90-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="10" y="30" width="124" height="74" rx="4"/>
+  <text x="72" y="56" class="t-caps" text-anchor="middle">retention</text>
+  <text x="72" y="78" class="t-sm" text-anchor="middle">data a user knows of</text>
+  <text x="72" y="94" class="t-sm" text-anchor="middle">and data they don&#8217;t</text>
+
+  <path class="ln-mut" d="M 134 67 L 152 67" marker-end="url(#fig90-2-arr)"/>
+
+  <rect class="box" x="154" y="30" width="124" height="74" rx="4"/>
+  <text x="216" y="56" class="t-caps" text-anchor="middle">correlation</text>
+  <text x="216" y="78" class="t-sm" text-anchor="middle">same person across</text>
+  <text x="216" y="94" class="t-sm" text-anchor="middle">different sites</text>
+
+  <path class="ln-mut" d="M 278 67 L 296 67" marker-end="url(#fig90-2-arr)"/>
+
+  <rect class="box-green" x="298" y="30" width="124" height="74" rx="4"/>
+  <text x="360" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">profiling</text>
+  <text x="360" y="78" class="t-sm" text-anchor="middle">not itself</text>
+  <text x="360" y="94" class="t-sm" text-anchor="middle">the problem</text>
+
+  <path class="ln-mut" d="M 422 67 L 440 67" marker-end="url(#fig90-2-arr)"/>
+
+  <rect class="box" x="442" y="30" width="124" height="74" rx="4"/>
+  <text x="504" y="56" class="t-caps" text-anchor="middle">trading</text>
+  <text x="504" y="78" class="t-sm" text-anchor="middle">sold on, and</text>
+  <text x="504" y="94" class="t-sm" text-anchor="middle">augmented</text>
+
+  <path class="ln-mut" d="M 566 67 L 584 67" marker-end="url(#fig90-2-arr)"/>
+
+  <rect class="box-warm" x="586" y="30" width="124" height="74" rx="4" style="stroke:#b08d57"/>
+  <text x="648" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">targeting</text>
+  <text x="648" y="78" class="t-sm" text-anchor="middle">to take</text>
+  <text x="648" y="94" class="t-sm" text-anchor="middle">advantage of them</text>
+
+  <line class="ln-mut" x1="10" y1="128" x2="710" y2="128"/>
+
+  <rect class="box-warm" x="150" y="146" width="420" height="64" rx="4" style="stroke:#b08d57"/>
+  <text x="360" y="172" class="t-caps" text-anchor="middle" style="fill:#b08d57">separately: the feed optimised for engagement</text>
+  <text x="360" y="194" class="t-sm" text-anchor="middle">what is shown is chosen to keep people on the site</text>
+
+  <path class="ln-mut" d="M 360 210 L 360 238" marker-end="url(#fig90-2-arr)"/>
+  <text x="360" y="262" class="t-sm" text-anchor="middle">political polarisation &#183; mental health harm &#183; erosion of trust in institutions</text>
+</svg>
+<figcaption><span class="fig-label">Figure 90.2</span>
+Berners-Lee keeps the two apart. The chain along the top, ending in
+targeting, is one harm. Ranking the feed for engagement is a separate harm,
+treated below.</figcaption>
 </figure>
 
 <p>
@@ -190,6 +266,96 @@ to target the user in a way as to take advantage of them
 The mechanism is not the harm. The use is.
 </p>
 
+<h3>How a feed learns to make people angry</h3>
+
+<p>
+The feed is the stream of posts a site chooses to show each user. The note
+says sites use an AI system that learns whatever keeps a user there; the time
+spent and clicks it counts are called <em>engagement</em>. What works, it
+reports, is things which are not true and things which make people angry.
+The first spreads misinformation, which damages a democracy that needs
+informed voters. The second makes the online world toxic and polarises
+society into hostile camps.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
+     aria-labelledby="fig90-3-t fig90-3-d">
+  <title id="fig90-3-t">The engagement loop and what it selects</title>
+  <desc id="fig90-3-d">A circular loop with the objective, time on site, at
+  its centre. The feed shows an item; the user reacts, with time spent and clicks;
+  the AI scores it, more engagement counting as success; the next feed
+  favours similar items; and the loop returns to the start. A side branch
+  from the scoring step shows what wins, untrue items and items that make
+  people angry, leading to misinformation and polarisation.</desc>
+  <defs>
+    <marker id="fig90-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig90-3-warm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b08d57"/>
+    </marker>
+  </defs>
+
+  <path class="ln-accent" d="M 349 76 A 140 140 0 0 1 383.1 131.7" fill="none" marker-end="url(#fig90-3-arr)"/>
+  <path class="ln-accent" d="M 383.1 218.3 A 140 140 0 0 1 354 268.7" fill="none" marker-end="url(#fig90-3-arr)"/>
+  <path class="ln-accent" d="M 146 268.7 A 140 140 0 0 1 116.9 218.3" fill="none" marker-end="url(#fig90-3-arr)"/>
+  <path class="ln-accent" d="M 116.9 131.7 A 140 140 0 0 1 151 76" fill="none" marker-end="url(#fig90-3-arr)"/>
+
+  <rect class="box" x="170" y="15" width="160" height="40" rx="4"/>
+  <text x="250" y="40" text-anchor="middle">feed shows an item</text>
+
+  <rect class="box" x="315" y="151" width="150" height="48" rx="4"/>
+  <text x="390" y="171" text-anchor="middle">user reacts:</text>
+  <text x="390" y="189" text-anchor="middle">time spent, clicks</text>
+
+  <rect class="box" x="155" y="291" width="190" height="48" rx="4"/>
+  <text x="250" y="311" text-anchor="middle">AI scores it:</text>
+  <text x="250" y="329" text-anchor="middle">more engagement = success</text>
+
+  <rect class="box" x="35" y="151" width="150" height="48" rx="4"/>
+  <text x="110" y="171" text-anchor="middle">next feed favours</text>
+  <text x="110" y="189" text-anchor="middle">similar items</text>
+
+  <text x="250" y="170" class="t-caps" text-anchor="middle">objective</text>
+  <text x="250" y="188" class="t-sm" text-anchor="middle">time on site</text>
+
+  <path class="ln" d="M 345 315 L 488 315" style="stroke:#b08d57" marker-end="url(#fig90-3-warm)"/>
+  <text x="416" y="303" class="t-sm" text-anchor="middle" style="fill:#b08d57">what wins</text>
+
+  <rect class="box-warm" x="490" y="291" width="214" height="48" rx="4" style="stroke:#b08d57"/>
+  <text x="597" y="311" text-anchor="middle">untrue items,</text>
+  <text x="597" y="329" text-anchor="middle">items that make people angry</text>
+
+  <path class="ln" d="M 597 291 L 597 249" style="stroke:#b08d57" marker-end="url(#fig90-3-warm)"/>
+
+  <rect class="box-warm" x="490" y="205" width="214" height="42" rx="4" style="stroke:#b08d57"/>
+  <text x="597" y="231" text-anchor="middle">misinformation &#183; polarisation</text>
+</svg>
+<figcaption><span class="fig-label">Figure 90.3</span>
+Nobody chooses to promote lies. The loop rewards whatever holds attention,
+and the objective it optimises selects for untrue and enraging items.</figcaption>
+</figure>
+
+<p>
+The worked example is from the 2016 US election. Young people in Macedonia
+made a living from websites funded by Google advertisements, trying headlines
+and keeping whichever drew most traffic:
+</p>
+
+<blockquote>
+The Google add machine was training them what to say to be rewarded with
+money.
+<cite>The Dysfunction of Social Networks, 2024</cite>
+</blockquote>
+
+<p>
+So untruths were spread by people with &ldquo;no skin in the game&rdquo;. The
+incentive did the choosing.
+</p>
+
 <h2>90.3 The assumption underneath</h2>
 
 <p>
@@ -203,10 +369,8 @@ revenue on the web is with targeted advertising.
 </blockquote>
 
 <p>
-If that assumption holds, everything follows: revenue requires targeting,
-targeting requires profiles, profiles require collection and correlation. If it
-does not hold, none of it is forced. Berners-Lee does not argue it here; he
-marks it as questionable and moves on, which leaves the reader with the
+If it holds, the whole chain of Figure 90.2 is forced. If not, none of it is.
+Berners-Lee marks it questionable and moves on, leaving the reader the
 question.
 </p>
 
@@ -222,15 +386,15 @@ Here we use "Spying" for any retention of user data.
 </blockquote>
 
 <p>
-And then divides it in the way that matters to a person: data the user knows
-about, such as what they typed and the pictures they uploaded, and data they do
-not, such as their address, their location, and the parameters that identify
-them.
+Some of that data the user knows about, such as forms and photos. Some they
+do not: their IP address (the numeric address of their internet
+connection), their location, and super-cookie parameters (hidden identifiers
+that survive clearing cookies).
 </p>
 
 <p>
-The description of correlation is the most unsettling passage, because of what
-is on the list:
+<em>Correlation</em> means concluding that two records describe the same
+person. How it is done is the most unsettling passage:
 </p>
 
 <blockquote>
@@ -241,9 +405,10 @@ consistent between different sites.
 </blockquote>
 
 <p>
-How fast you type. Chapter 71 argued that reading should be unobserved, and
-this is the same act observed by a party the reader has no relationship with at
-all.
+Such a signature is called a <em>fingerprint</em>. Some browsers, such as Tor
+Browser, resist it by making every user look alike. Chapter 71 argued that
+reading should be unobserved; this observes it from sites the reader has no
+relationship with.
 </p>
 
 <h2>90.5 What the response requires</h2>
@@ -260,50 +425,64 @@ impacts of social networks.
 </blockquote>
 
 <p>
-Three elements are called crucial: transparency, ethical design, and regulatory
-measures. And the framing of the whole, which keeps the note from being a
-recantation:
+Who can act, and how, in summary:
+</p>
+
+<table>
+<tr><th>Who</th><th>What the note suggests</th></tr>
+<tr><td>Tech companies</td><td>Optimise the feed for something other than
+time on site, such as constructive discussion or a Stretch Friend (Chapter
+89); be transparent about algorithms.</td></tr>
+<tr><td>Governments</td><td>Legislation; and &ldquo;pre-bunking&rdquo;,
+preparing people for fake news before an election.</td></tr>
+<tr><td>Parents</td><td>Talk to children, use parental controls, teach
+scepticism.</td></tr>
+<tr><td>Activists</td><td>Protest.</td></tr>
+<tr><td>Everyone</td><td>Use the good stuff.</td></tr>
+<tr><td>Developers</td><td>Build better stuff.</td></tr>
+</table>
+
+<p>
+Its last sentence applies the collection&#8217;s method to society:
 </p>
 
 <blockquote>
-We need a collective effort to harness the positive potential of the internet
-while addressing its darker aspects.
+Then you need to re-engineer the system, technical, social, regulatory and
+legal, to fix the problems, and enhance the benefits.
 <cite>The Dysfunction of Social Networks, 2024</cite>
 </blockquote>
 
 <p>
-Chapter 91 is the other half of that sentence, written four months later,
-because Berners-Lee found that saying this had left people with the impression
-that there was nothing good left.
+Chapter 91, four months later, is the other half: a map of the good
+things on the Internet.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Regulation arrived in force.</strong> The European Union&#8217;s Digital
-Services Act became fully applicable in February 2024, requiring risk
-assessment and transparency from large platforms, which is one of the three
-crucial elements named here.</li>
-<li><strong>The evidence on children remained contested.</strong> The claim
-about adolescent mental health was argued vigorously through 2024 and 2025,
-with researchers disputing the strength of the causal case while agreeing on
-the association.</li>
-<li><strong>Fingerprinting outlived cookies.</strong> Restrictions on
-third-party cookies pushed correlation towards exactly the signature-based
-methods described in section 90.4.</li>
-<li><strong>The revenue assumption began to weaken.</strong> Subscription and
-paid tiers grew on several major platforms, which tests the assumption section
-90.3 marks as questionable, without displacing advertising.</li>
+<li><strong>Regulation arrived in force.</strong> The European Union&#8217;s
+Digital Services Act became fully applicable in February 2024. The UK measure
+the note calls a Bill had become the Online Safety Act in October 2023.</li>
+<li><strong>The evidence on children stayed contested.</strong> In June 2024
+the US Surgeon General called for a warning label on social media, as the note
+records; researchers still dispute the strength of the causal case.</li>
+<li><strong>Third-party cookies survived in Chrome.</strong> Safari (March
+2020) and Firefox (June 2022) block or isolate third-party cookies by default;
+Google dropped its plan to remove them from Chrome in July 2024, confirming
+this in April 2025. Fingerprinting works either way.</li>
+<li><strong>The revenue assumption was tested.</strong> Paid tiers grew, such
+as Meta&#8217;s ad-free subscription in Europe (November 2023), without
+displacing advertising.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The observation that reading leaves a trace is Chapter 71, and network-level
-inspection is its subject. The silos are Chapter 54, the recommendation
-mechanism is Chapter 89, and audience granularity is Chapter 64. The companion
-note is Chapter 91, and the two-protocol analysis is Chapter 15.
+Reading leaves a trace: Chapter 71. The silos: Chapter 54. The Stretch
+Friend, which the note cites: Chapter 89. The harm reaction systems can do:
+section 64.4. The companion note: Chapter 91. Technical and social protocols
+re-engineered together: section 15.5.
 </p>
 </div>
 
@@ -316,13 +495,13 @@ service you use.</p>
 </div>
 <div class="question">
 <p><span class="question-number">90.2</span>
-Test the revenue assumption. Name three services funded another way and say why
-the model does not generalise.</p>
+Test the revenue assumption. Name three services funded another way and say
+whether the model could work for a social network.</p>
 </div>
 <div class="question">
 <p><span class="question-number">90.3</span>
-Engagement optimisation is judged a larger harm than targeting. Argue for or
-against, using a mechanism rather than an example.</p>
+Which do you think does more damage, targeting or feed optimisation? Explain
+the mechanism, not an example.</p>
 </div>
 <div class="question">
 <p><span class="question-number">90.4</span>

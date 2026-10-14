@@ -1,8 +1,17 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Desktop and browser are two interfaces for one idea: things to open. A folder
+should be a list of links, not a place. Mail, news and the Web all make links,
+so the user should not have to pick a protocol, or a filename.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Volume IX opens with a note from February 1997 written under protest.
-Berners-Lee names its audience and his own reluctance in the same breath:
+Volume IX opens with a note from February 1997, written with some reluctance.
+Berners-Lee names its audience:
 </p>
 <blockquote>
 Those people who asked what I meant by a consistent user interface and then
@@ -10,56 +19,58 @@ said, "Don't just say it, write it down!". For software developers in the hope
 that some of this will come true.
 <cite>Cleaning up the User Interface, 1997</cite>
 </blockquote>
-<p>
-He adds that he is a bit embarrassed, because everyone has pet ideas about how
-interfaces frustrate them and listening to them can be tedious, and suggests
-that is why he had not written it down before.
-</p>
 </div>
 
 <h2>82.1 The inconsistency nobody notices</h2>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig82-1-t fig82-1-d">
   <title id="fig82-1-t">Two metaphors on one screen</title>
   <desc id="fig82-1-d">The whole screen represents the files on one machine,
   using folders. One window represents everything else in the world, using
-  hypertext. Both are collections of things you can open, and the boundary
-  between them is the edge of a disk.</desc>
+  hypertext. In both, things open with a double-click.</desc>
 
-  <rect x="24" y="40" width="672" height="200" rx="4" fill="#fafafa" stroke="#d5d5d5"/>
-  <text x="44" y="64" class="t-caps">the whole screen: this machine, as folders</text>
-  <g>
-    <rect x="44" y="80" width="54" height="42" rx="3" fill="#f8f5f0" stroke="#c9ab7d"/>
-    <rect x="112" y="80" width="54" height="42" rx="3" fill="#f8f5f0" stroke="#c9ab7d"/>
-    <rect x="44" y="134" width="54" height="42" rx="3" fill="#f8f5f0" stroke="#c9ab7d"/>
-    <rect x="112" y="134" width="54" height="42" rx="3" fill="#f8f5f0" stroke="#c9ab7d"/>
-  </g>
-  <text x="105" y="200" class="t-sm" text-anchor="middle">double-click to open</text>
+  <rect class="box-plain" x="24" y="8" width="672" height="204" rx="4"/>
+  <text x="44" y="32" class="t-caps">the whole screen: this machine, as folders</text>
 
-  <rect x="276" y="76" width="396" height="148" rx="3" fill="#ffffff" stroke="#9dbfd0" stroke-width="1.6"/>
-  <rect x="276" y="76" width="396" height="20" fill="#eef4f7" stroke="#9dbfd0"/>
-  <text x="474" y="90" class="t-sm" text-anchor="middle" fill="#1c5a7a">one window: everything else, as hypertext</text>
-  <line class="ln-mut" x1="292" y1="118" x2="656" y2="118"/>
-  <line class="ln-mut" x1="292" y1="136" x2="600" y2="136"/>
-  <text x="292" y="164" class="t-sm" fill="#1c5a7a">a link</text>
-  <line class="ln-mut" x1="292" y1="186" x2="656" y2="186"/>
-  <text x="474" y="212" class="t-sm" text-anchor="middle">click to open</text>
+  <rect class="box-warm" x="44" y="46" width="26" height="8" rx="2"/>
+  <rect class="box-warm" x="44" y="52" width="70" height="40" rx="3"/>
+  <text x="79" y="108" class="t-sm" text-anchor="middle">Letters</text>
+  <rect class="box-warm" x="134" y="46" width="26" height="8" rx="2"/>
+  <rect class="box-warm" x="134" y="52" width="70" height="40" rx="3"/>
+  <text x="169" y="108" class="t-sm" text-anchor="middle">Photos</text>
+  <rect class="box-warm" x="44" y="118" width="26" height="8" rx="2"/>
+  <rect class="box-warm" x="44" y="124" width="70" height="40" rx="3"/>
+  <text x="79" y="180" class="t-sm" text-anchor="middle">Work</text>
+  <rect class="box-warm" x="134" y="118" width="26" height="8" rx="2"/>
+  <rect class="box-warm" x="134" y="124" width="70" height="40" rx="3"/>
+  <text x="169" y="180" class="t-sm" text-anchor="middle">Taxes</text>
+  <text x="124" y="200" class="t-sm" text-anchor="middle">double-click to open</text>
 
-  <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
-  <text x="360" y="286" class="t-sm" text-anchor="middle">&#8220;What&#8217;s the difference between hypertext and a desktop anyway?</text>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">You can double click on things you find in either.&#8221;</text>
+  <rect class="box" x="264" y="48" width="408" height="148" rx="3"/>
+  <rect class="box" x="264" y="48" width="408" height="22"/>
+  <text x="468" y="63" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">one window: everything else, as hypertext</text>
+  <line class="ln-mut" x1="282" y1="92" x2="654" y2="92"/>
+  <line class="ln-mut" x1="282" y1="110" x2="600" y2="110"/>
+  <text x="282" y="134" class="t-sm" style="fill:#1c5a7a">a link</text>
+  <line class="ln-accent" x1="282" y1="138" x2="317" y2="138"/>
+  <line class="ln-mut" x1="328" y1="130" x2="620" y2="130"/>
+  <line class="ln-mut" x1="282" y1="154" x2="654" y2="154"/>
+  <text x="468" y="184" class="t-sm" text-anchor="middle">double-click to open</text>
+
+  <line class="ln-mut" x1="24" y1="232" x2="696" y2="232"/>
+  <text x="360" y="256" class="t-sm" text-anchor="middle">&#8220;What&#8217;s the difference between hypertext and a desktop anyway?</text>
+  <text x="360" y="276" class="t-sm" text-anchor="middle">You can double click on things you find in either.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 82.1</span>
-Berners-Lee&#8217;s own summary of the arrangement: it is crazy, if you think about
-it, that the whole screen represents what happens to be on your local file
+Berners-Lee&#8217;s own summary of the arrangement: it is crazy, on reflection,
+that the whole screen represents what happens to be on the local file
 system while one window represents the rest of the world.</figcaption>
 </figure>
 
 <p>
-The questions that follow the observation are the ones nobody asks because the
-arrangement is so familiar:
+The arrangement is so familiar that nobody asks the obvious questions:
 </p>
 
 <blockquote>
@@ -69,15 +80,14 @@ desk?
 </blockquote>
 
 <p>
-He is careful not to over-reach. The concepts could be extended until they were
-the same, and he says he does not think that would necessarily be a good idea:
-it is fine to have different forms of object for distinctly different uses.
+He does not want folders and documents merged entirely: different forms of
+object for distinctly different uses are fine.
 </p>
 
 <h2>82.2 Location fixation</h2>
 
 <p>
-The actual difference is identified precisely, and it is a single relationship:
+The real difference is a single relationship:
 </p>
 
 <blockquote>
@@ -88,9 +98,10 @@ is "is".
 </blockquote>
 
 <p>
-That relationship is an artefact of storage, and the proposal is to break it.
-File everything under its creator and creation date, make everything else a
-pointer, and the consequence is stated as a small triumph:
+That relationship is an artefact of storage. Unix lets a file sit in several
+directories only on the same disk; DOS allows just one. Users should not have
+to care which disk a file is on. So file everything under its creator and
+creation date, and make everything else a pointer:
 </p>
 
 <blockquote>
@@ -101,18 +112,64 @@ consistency!
 <cite>Cleaning up the User Interface, 1997</cite>
 </blockquote>
 
-<p>
-A folder stops being a place and becomes a document that lists things. The
-same thing can then be in several, without copies, because being in one is a
-statement rather than a location.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 226" width="720" height="226" role="img"
+     aria-labelledby="fig82-2-t fig82-2-d">
+  <title id="fig82-2-t">Where a file is, and where it is listed</title>
+  <desc id="fig82-2-d">Left: three folders; a report sits inside one of them,
+  and the others can hold only copies, because Unix hard links work only on the
+  same disk and DOS allows one directory. Right: the report is stored once,
+  filed by creator and date, and three folders each point to it with a link.</desc>
+  <defs>
+    <marker id="fig82-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="184" y="24" class="t-caps" text-anchor="middle">today (1997)</text>
+  <rect class="box-plain" x="28" y="40" width="96" height="124" rx="3"/>
+  <text x="76" y="60" class="t-sm" text-anchor="middle">Travel</text>
+  <rect class="box-warm" x="48" y="76" width="56" height="64" rx="2"/>
+  <text x="76" y="113" text-anchor="middle">report</text>
+  <rect class="box-plain" x="136" y="40" width="96" height="124" rx="3"/>
+  <text x="184" y="60" class="t-sm" text-anchor="middle">Projects</text>
+  <rect class="ln-dash" x="156" y="76" width="56" height="64" rx="2"/>
+  <text x="184" y="113" class="t-sm" text-anchor="middle">copy</text>
+  <rect class="box-plain" x="244" y="40" width="96" height="124" rx="3"/>
+  <text x="292" y="60" class="t-sm" text-anchor="middle">Archive</text>
+  <rect class="ln-dash" x="264" y="76" width="56" height="64" rx="2"/>
+  <text x="292" y="113" class="t-sm" text-anchor="middle">copy</text>
+  <text x="184" y="192" class="t-sm" text-anchor="middle">Unix hard links: only on the same disk.</text>
+  <text x="184" y="210" class="t-sm" text-anchor="middle">DOS: one directory only.</text>
+
+  <line class="ln-dash" x1="360" y1="12" x2="360" y2="214"/>
+
+  <text x="536" y="24" class="t-caps" text-anchor="middle">the proposal</text>
+  <rect class="box-plain" x="380" y="40" width="96" height="40" rx="3"/>
+  <text x="428" y="64" class="t-sm" text-anchor="middle">Travel</text>
+  <rect class="box-plain" x="488" y="40" width="96" height="40" rx="3"/>
+  <text x="536" y="64" class="t-sm" text-anchor="middle">Projects</text>
+  <rect class="box-plain" x="596" y="40" width="96" height="40" rx="3"/>
+  <text x="644" y="64" class="t-sm" text-anchor="middle">Archive</text>
+  <line class="ln-accent" x1="428" y1="80" x2="478" y2="118" marker-end="url(#fig82-2-arr)"/>
+  <line class="ln-accent" x1="536" y1="80" x2="536" y2="118" marker-end="url(#fig82-2-arr)"/>
+  <line class="ln-accent" x1="644" y1="80" x2="594" y2="118" marker-end="url(#fig82-2-arr)"/>
+  <rect class="box-green" x="420" y="120" width="232" height="50" rx="3"/>
+  <text x="536" y="142" text-anchor="middle">report</text>
+  <text x="536" y="160" class="t-sm" text-anchor="middle">stored once, by creator and date</text>
+  <text x="536" y="192" class="t-sm" text-anchor="middle">folder = a document of links</text>
+</svg>
+<figcaption><span class="fig-label">Figure 82.2</span>
+Stored once and linked from every folder, being in a folder becomes a
+statement rather than a location.</figcaption>
+</figure>
 
 <h2>82.3 Protocols the user never asked about</h2>
 
 <p>
-The second inconsistency is the division between mail, news and browsing, and
-the argument is that it reflects the engineers&#8217; categories rather than the
-user&#8217;s.
+The second inconsistency is the split between mail, news and browsing tools,
+each speaking its own protocol:
 </p>
 
 <blockquote>
@@ -120,51 +177,183 @@ This is of course totally meaningless to a user.
 <cite>Cleaning up the User Interface, 1997</cite>
 </blockquote>
 
-<p>
-He then re-describes each program in terms of what it actually does, and the
-descriptions converge. A mail program moves data between mailboxes, which are
-folders by another name, and links it into someone else&#8217;s incoming folder. The
-word he insists on is link, because the relationship it creates is that this
-message is in this mailbox, and he has already argued that such a relationship
-should be a link.
-</p>
+
+<table>
+<tr><th>Program</th><th>Protocol it speaks</th><th>What it does, in the user&#8217;s terms</th></tr>
+<tr><td>Mail</td><td>Simple Mail Transfer Protocol</td><td>Links a message into someone else&#8217;s &#8220;In&#8221; box, which is a folder by another name.</td></tr>
+<tr><td>News</td><td>Network News Transfer Protocol</td><td>Links a document from a group visible all over the world; much like mailing a list.</td></tr>
+<tr><td>Web editor</td><td>Hypertext Transfer Protocol</td><td>Uploads a document to a server. HTTP&#8217;s POST was originally meant to make a new document and a link to it.</td></tr>
+</table>
 
 <p>
-Three programs, three protocols, one operation.
+Described by what they do, all three make links. So suppose someone wants one
+item linked from a few inboxes, a few newsgroups and a few pages: which
+application should they use? The user, he says, should not have to choose.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig82-3-t fig82-3-d">
+  <title id="fig82-3-t">One object, many links</title>
+  <desc id="fig82-3-d">A new document at the top has six links: to two inboxes,
+  two newsgroups and two web pages. Below a dashed line, the system picks the
+  protocol for each group: SMTP for inboxes, NNTP for newsgroups, HTTP for web
+  pages.</desc>
+  <defs>
+    <marker id="fig82-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="22" class="t-caps">what the user does: make links</text>
+  <rect class="box-warm" x="290" y="36" width="140" height="36" rx="3"/>
+  <text x="360" y="59" text-anchor="middle">a new document</text>
+
+  <line class="ln-accent" x1="340" y1="72" x2="74" y2="138" marker-end="url(#fig82-3-arr)"/>
+  <line class="ln-accent" x1="346" y1="72" x2="172" y2="138" marker-end="url(#fig82-3-arr)"/>
+  <line class="ln-accent" x1="354" y1="72" x2="312" y2="138" marker-end="url(#fig82-3-arr)"/>
+  <line class="ln-accent" x1="366" y1="72" x2="408" y2="138" marker-end="url(#fig82-3-arr)"/>
+  <line class="ln-accent" x1="374" y1="72" x2="548" y2="138" marker-end="url(#fig82-3-arr)"/>
+  <line class="ln-accent" x1="380" y1="72" x2="646" y2="138" marker-end="url(#fig82-3-arr)"/>
+
+  <rect class="box" x="24" y="140" width="92" height="34" rx="3"/>
+  <text x="70" y="162" text-anchor="middle">inbox</text>
+  <rect class="box" x="124" y="140" width="92" height="34" rx="3"/>
+  <text x="170" y="162" text-anchor="middle">inbox</text>
+  <rect class="box" x="264" y="140" width="92" height="34" rx="3"/>
+  <text x="310" y="162" text-anchor="middle">newsgroup</text>
+  <rect class="box" x="364" y="140" width="92" height="34" rx="3"/>
+  <text x="410" y="162" text-anchor="middle">newsgroup</text>
+  <rect class="box-green" x="504" y="140" width="92" height="34" rx="3"/>
+  <text x="550" y="162" text-anchor="middle">web page</text>
+  <rect class="box-green" x="604" y="140" width="92" height="34" rx="3"/>
+  <text x="650" y="162" text-anchor="middle">web page</text>
+
+  <line class="ln-dash" x1="16" y1="196" x2="704" y2="196"/>
+  <text x="24" y="218" class="t-caps">what the system does: pick protocols</text>
+  <text x="120" y="246" class="t-sm t-mono" text-anchor="middle">SMTP</text>
+  <text x="360" y="246" class="t-sm t-mono" text-anchor="middle">NNTP</text>
+  <text x="600" y="246" class="t-sm t-mono" text-anchor="middle">HTTP</text>
+  <text x="120" y="266" class="t-sm" text-anchor="middle">Simple Mail Transfer Protocol</text>
+  <text x="360" y="266" class="t-sm" text-anchor="middle">Network News Transfer Protocol</text>
+  <text x="600" y="266" class="t-sm" text-anchor="middle">Hypertext Transfer Protocol</text>
+</svg>
+<figcaption><span class="fig-label">Figure 82.3</span>
+The user makes links; choosing a protocol for each one is the system&#8217;s
+job.</figcaption>
+</figure>
 
 <h2>82.4 Why this belongs in a book about architecture</h2>
 
 <p>
-The chapter is the interface counterpart of Chapter 26. Webizing a language
-means replacing local names with global ones so that references can cross
-boundaries. Webizing an interface means the same thing: if the relationship
-between a folder and a file is a link, and a mailbox is a folder, then moving
+This is the interface counterpart of Chapter 26. Webizing means giving things
+global names, such as Web addresses, so they can be pointed at from anywhere.
+In an interface, if a folder holds links and a mailbox is a folder, moving
 something between them is the same operation everywhere, and the boundaries
 between applications stop being boundaries.
 </p>
 
 <p>
-The obstacle is that the categories are not in the software but in the
-institutions that produced it. Mail, news and hypertext were three communities
-with three protocols, and the user inherited the org chart.
+One reading is that the obstacle is history: mail, news and hypertext grew up
+separately, and the user was handed their divisions.
+</p>
+
+<h2>82.5 The last thing I want to be asked is the filename</h2>
+
+<blockquote>
+The "save as" filename dialog box is one of the things currently holding up our
+civilization.
+<cite>Cleaning up the User Interface, 1997</cite>
+</blockquote>
+
+<p>
+It asks the wrong question at the wrong time: about disks, once the writing is
+finished. He would rather choose at creation who may see the document and what
+storage it needs (archived for posterity, or rapidly available), usually by
+picking a template, and get a URI back.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 184" width="720" height="184" role="img"
+     aria-labelledby="fig82-4-t fig82-4-d">
+  <title id="fig82-4-t">When Save As asks, and when the proposal asks</title>
+  <desc id="fig82-4-d">Top track: start a new document, write, finish, then
+  Save As asks for a filename and a disk. Bottom track: choose a template that
+  sets the access list and storage quality, write, send or commit, and a URI
+  is returned.</desc>
+  <defs>
+    <marker id="fig82-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="t-caps">save as (1997)</text>
+  <rect class="box-plain" x="16" y="34" width="120" height="40" rx="3"/>
+  <text x="76" y="51" text-anchor="middle">start</text>
+  <text x="76" y="66" class="t-sm" text-anchor="middle">new document</text>
+  <rect class="box-plain" x="176" y="34" width="120" height="40" rx="3"/>
+  <text x="236" y="59" text-anchor="middle">write</text>
+  <rect class="box-plain" x="336" y="34" width="120" height="40" rx="3"/>
+  <text x="396" y="59" text-anchor="middle">finish</text>
+  <rect class="box-warm" x="496" y="34" width="208" height="40" rx="3"/>
+  <text x="600" y="51" text-anchor="middle">Save As</text>
+  <text x="600" y="66" class="t-sm" text-anchor="middle">filename? which disk?</text>
+  <line class="ln-mut" x1="136" y1="54" x2="174" y2="54" marker-end="url(#fig82-4-arr)"/>
+  <line class="ln-mut" x1="296" y1="54" x2="334" y2="54" marker-end="url(#fig82-4-arr)"/>
+  <line class="ln-mut" x1="456" y1="54" x2="494" y2="54" marker-end="url(#fig82-4-arr)"/>
+
+  <text x="16" y="112" class="t-caps">the proposal</text>
+  <rect class="box-green" x="16" y="124" width="200" height="40" rx="3"/>
+  <text x="116" y="141" text-anchor="middle">choose template</text>
+  <text x="116" y="156" class="t-sm" text-anchor="middle">access list, storage quality</text>
+  <rect class="box-plain" x="256" y="124" width="120" height="40" rx="3"/>
+  <text x="316" y="149" text-anchor="middle">write</text>
+  <rect class="box-plain" x="416" y="124" width="120" height="40" rx="3"/>
+  <text x="476" y="149" text-anchor="middle">send / commit</text>
+  <rect class="box" x="576" y="124" width="128" height="40" rx="3"/>
+  <text x="640" y="149" text-anchor="middle">URI returned</text>
+  <line class="ln-mut" x1="216" y1="144" x2="254" y2="144" marker-end="url(#fig82-4-arr)"/>
+  <line class="ln-mut" x1="376" y1="144" x2="414" y2="144" marker-end="url(#fig82-4-arr)"/>
+  <line class="ln-mut" x1="536" y1="144" x2="574" y2="144" marker-end="url(#fig82-4-arr)"/>
+</svg>
+<figcaption><span class="fig-label">Figure 82.4</span>
+The question moves from the moment the writer stops thinking about the document
+to the moment the writer starts.</figcaption>
+</figure>
+
+<h2>82.6 Documents and deeds</h2>
+
+<p>
+Documents that can always change suit an encyclopaedia, not a cheque book.
+Signing turns a document into a deed, which freezes: it can be cancelled by
+another deed, but not edited.
+</p>
+
+<blockquote>
+Every time you press "send" in your email you are making a deed.
+<cite>Cleaning up the User Interface, 1997</cite>
+</blockquote>
+
+<p>
+The interface should make it plain when the user is committing rather than
+just searching. How the Web tells a user whether to trust something, the
+&#8220;Oh, yeah?&#8221; button, is discussed in Chapter 41.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The desktop and the browser did converge, from the other
-direction.</strong> Files moved into the browser rather than the Web moving
-onto the desktop, and most people&#8217;s documents now live in a window.</li>
-<li><strong>Location fixation weakened.</strong> Search-first file systems and
-tagging reduced how much people must know about where a thing is, and the
-folder survives as the primary metaphor.</li>
-<li><strong>A file can be in several places.</strong> Synchronised stores let
-one item appear in several collections without copies, which is section 82.2&#8217;s
-proposal in ordinary use.</li>
-<li><strong>The protocol division dissolved.</strong> Mail, chat and feeds are
-now read in whatever application the user prefers, and the underlying protocol
-is genuinely invisible, which is what the note asks for.</li>
+<li><strong>Documents moved into the browser</strong> with suites such as
+Google Docs (2006).</li>
+<li><strong>One message, many folders.</strong> Gmail (2004) used labels,
+so a message can sit in several without copies.</li>
+<li><strong>One home, everything else a pointer.</strong> In 2020 Google Drive
+gave each file a single folder, with shortcuts elsewhere, close to section
+82.2.</li>
+<li><strong>Protocols partly hidden.</strong> Webmail hides SMTP and IMAP,
+but mail, chat and the Web remain separate applications for most people.</li>
 </ul>
 </div>
 
@@ -174,7 +363,7 @@ is genuinely invisible, which is what the note asks for.</li>
 The editing half of this argument is Chapter 83, and the browser behaviour it
 requires is Chapter 84. Later interface advice is Chapter 85. Webizing a system
 is Chapter 26, and the correspondence between file space and Web space is
-Chapter 14.
+Chapter 14. The &#8220;Oh, yeah?&#8221; button is in Chapter 41.
 </p>
 </div>
 
@@ -187,8 +376,8 @@ whether the technical answer is a good reason.</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.2</span>
-Filing by creator and date makes folders into documents. Name two things that
-would break, and two that would improve.</p>
+If folders were documents of links, name two things that would break and two
+that would improve.</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.3</span>
@@ -197,7 +386,12 @@ they speak. Do the descriptions converge?</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.4</span>
-Users inherit the organisational chart of the people who built their tools.
-Find an example in software you use daily.</p>
+Find a division in software you use that follows how it was built rather
+than what you are doing.</p>
+</div>
+<div class="question">
+<p><span class="question-number">82.5</span>
+What does the Save As dialog ask you, and at what moment? What would you rather
+be asked, and when?</p>
 </div>
 </div>

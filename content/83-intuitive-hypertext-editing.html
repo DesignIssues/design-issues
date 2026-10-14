@@ -1,8 +1,18 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Writing the Web should be as easy as reading it. Ease can be measured by
+counting the steps an operation takes, with a heavy penalty for every name the
+user has to invent. A good editor has no separate edit mode and never asks
+where things are stored.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-The companion to Chapter 82, written in April 1998, and it opens with the
-sentence that has been quoted at every discussion of the read-write Web since:
+The companion to Chapter 82, written in April 1998, opens with a sentence still
+often quoted:
 </p>
 <blockquote>
 If you think surfing hypertext is cool, that's because you haven't tried writing
@@ -19,56 +29,73 @@ simplest form of hypertext editing there is, as a compromise.
 <h2>83.1 Counting the clicks</h2>
 
 <p>
-The method is a measure suggested by Dan Connolly: count the actions, with a
-penalty of ten when the user has to invent a filename or an identifier. The
-penalty is the interesting part, because it prices thinking rather than doing.
+Berners-Lee compares his own 1990 editor, WorldWideWeb, with AOLPress, which
+he was writing in. Set beside these, and beside KMS (an early hypertext system)
+and Doug Engelbart&#8217;s interface, the Web of 1998 had lost some immediacy.
 </p>
 
+<p>
+Dan Connolly suggested the yardstick: count the actions, adding ten whenever
+the user must invent a filename or an anchor ID (the name of a spot inside a
+page that a link can point to). The penalty prices thinking rather than
+doing:
+</p>
+
+<table>
+<tr><th>Operation</th><th>Steps</th><th>Penalty</th><th>Score</th></tr>
+<tr><td>Make a link, WorldWideWeb</td><td>5</td><td>0</td><td>5</td></tr>
+<tr><td>Make a link, AOLPress</td><td>7</td><td>0</td><td>7</td></tr>
+<tr><td>Make a new linked page, WorldWideWeb</td><td>2</td><td>10 (a filename)</td><td>12</td></tr>
+</table>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig83-1-t fig83-1-d">
   <title id="fig83-1-t">Making a link, in two editors</title>
-  <desc id="fig83-1-d">In the original 1990 editor, marking a place and linking
-  to it took two keystrokes and generated the anchor name for you. In a 1998
-  editor the same operation took three extra steps, one of them naming the
-  anchor. The direction of travel was backwards.</desc>
+  <desc id="fig83-1-d">In WorldWideWeb (1990) making a link took five steps;
+  the second, a single Mark keystroke, generated the anchor name automatically. In
+  AOLPress (1998) that Mark step became three button presses, so the same link
+  took seven steps: two extra, though the user still did not have to invent a
+  name.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">1990</text>
+  <text x="180" y="28" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">WorldWideWeb (1990)</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="252"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">1998</text>
+  <text x="540" y="28" class="t-caps" text-anchor="middle" style="fill:#b08d57">AOLPress (1998)</text>
 
-  <g class="t-sm">
-    <text x="30" y="60">1. select the target phrase</text>
-    <text x="30" y="86">2. one keystroke to mark it</text>
-    <text x="46" y="108" class="t-it" fill="#3f6f3f">the anchor name is made up for you</text>
-    <text x="30" y="136">3. go to the other document</text>
-    <text x="30" y="162">4. select the text to link</text>
-    <text x="30" y="188">5. one keystroke to link</text>
+  <text x="36" y="60" class="t-sm">1. select the target phrase</text>
+  <rect class="box-green" x="24" y="74" width="300" height="56" rx="6"/>
+  <text x="36" y="96" class="t-sm">2. one keystroke marks the place</text>
+  <text x="52" y="118" class="t-sm t-it" style="fill:#5a8f5a">anchor name made up automatically</text>
+  <text x="36" y="186" class="t-sm">3. go to the other document</text>
+  <text x="36" y="212" class="t-sm">4. select the text to link</text>
+  <text x="36" y="238" class="t-sm">5. one keystroke makes the link</text>
 
-    <text x="392" y="60">1. select the target phrase</text>
-    <text x="392" y="86">2. press the anchor button</text>
-    <text x="392" y="112">3. accept the suggested name</text>
-    <text x="392" y="138">4. press copy address</text>
-    <text x="392" y="164">5. go to the other document</text>
-    <text x="392" y="190">6. select the text to link</text>
-    <text x="392" y="216">7. make the link</text>
-  </g>
+  <text x="396" y="60" class="t-sm">1. select the target phrase</text>
+  <rect class="box-warm" x="384" y="74" width="312" height="88" rx="6"/>
+  <text x="396" y="96" class="t-sm">2. press the anchor button</text>
+  <text x="396" y="122" class="t-sm">3. press return to accept the suggested name</text>
+  <text x="396" y="148" class="t-sm">4. press the copy URL button</text>
+  <text x="396" y="186" class="t-sm">5. go to the other document</text>
+  <text x="396" y="212" class="t-sm">6. select the text to link</text>
+  <text x="396" y="238" class="t-sm">7. make the link</text>
 
-  <line class="ln-mut" x1="24" y1="268" x2="696" y2="268"/>
-  <text x="360" y="292" class="t-sm" text-anchor="middle">Ten clicks of penalty apply whenever the user must think of a filename or an identifier.</text>
-  <text x="360" y="316" class="t-sm t-it" text-anchor="middle">&#8220;for all the fancy HTML we have nowadays, there is some immediacy we have lost.&#8221;</text>
+  <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
+  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">&#8220;for all the fancy HTML we have nowadays, there is some immediacy we have lost.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 83.1</span>
-Berners-Lee&#8217;s proposal for the drag-and-drop era is one line: every window
-should have an icon for the document it holds, which can be dragged to make a
-link.</figcaption>
+The same link in two editors. The later editor turned one Mark keystroke into
+three button presses; Berners-Lee&#8217;s fix is a draggable document icon in
+every window.</figcaption>
 </figure>
 
 <h2>83.2 No mode, no location</h2>
 
 <p>
-The two assumptions are stated as a heading that is a joke and a requirement
-that is not:
+The two assumptions sit under a heading borrowed from John Lennon&#8217;s
+&ldquo;Imagine&rdquo;: &ldquo;Imagine there's no mode, imagine there's no
+location&rdquo;. A mode is a state the program must be switched into, as when
+an editor makes the user press a button before a page being read can be
+changed. A modeless editor has no such switch.
 </p>
 
 <blockquote>
@@ -78,10 +105,57 @@ switch from browsing mode to editing mode, then you have lost already.
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
+     aria-labelledby="fig83-2-t fig83-2-d">
+  <title id="fig83-2-t">Losing three times</title>
+  <desc id="fig83-2-d">A staircase of detours. From browsing a page, the user
+  switches to edit mode (lost once), invents a local filename (lost doubly,
+  ten clicks of penalty), and answers questions about absolute or relative
+  links (lost yet again, probably messing up the file). A modeless editor goes
+  straight from browsing to an edited, saved page.</desc>
+
+  <rect class="box-green" x="16" y="20" width="150" height="54" rx="6"/>
+  <text x="91" y="52" text-anchor="middle">Browsing a page</text>
+
+  <rect class="box-warm" x="196" y="70" width="150" height="54" rx="6"/>
+  <text x="271" y="102" text-anchor="middle">Switch to edit mode</text>
+  <text x="271" y="144" class="t-sm" text-anchor="middle">lost once</text>
+
+  <rect class="box-warm" x="376" y="120" width="150" height="54" rx="6"/>
+  <text x="451" y="143" text-anchor="middle">Invent a local</text>
+  <text x="451" y="162" text-anchor="middle">filename</text>
+  <text x="451" y="194" class="t-sm" text-anchor="middle">lost doubly &#183; +10 clicks</text>
+
+  <rect class="box-warm" x="556" y="170" width="150" height="66" rx="6"/>
+  <text x="631" y="191" text-anchor="middle">Answer questions</text>
+  <text x="631" y="208" text-anchor="middle">about absolute or</text>
+  <text x="631" y="225" text-anchor="middle">relative links</text>
+  <text x="631" y="256" class="t-sm" text-anchor="middle">lost yet again, and probably</text>
+  <text x="631" y="272" class="t-sm" text-anchor="middle">messed up the file</text>
+
+  <line class="ln" x1="166" y1="47" x2="190" y2="90"/>
+  <polygon points="196,97 184,91 193,86" fill="#2f4f4f"/>
+  <line class="ln" x1="346" y1="97" x2="370" y2="140"/>
+  <polygon points="376,147 364,141 373,136" fill="#2f4f4f"/>
+  <line class="ln" x1="526" y1="147" x2="550" y2="190"/>
+  <polygon points="556,197 544,191 553,186" fill="#2f4f4f"/>
+
+  <line class="ln-accent" x1="91" y1="74" x2="91" y2="240"/>
+  <polygon points="91,248 86,238 96,238" fill="#1c5a7a"/>
+  <text x="104" y="160" class="t-sm" style="fill:#1c5a7a">modeless editor:</text>
+  <text x="104" y="176" class="t-sm" style="fill:#1c5a7a">no mode, no location</text>
+
+  <rect class="box-green" x="16" y="248" width="150" height="44" rx="6"/>
+  <text x="91" y="275" text-anchor="middle">Edited page, saved</text>
+</svg>
+<figcaption><span class="fig-label">Figure 83.2</span>
+Every detour makes the user think about where something is: which mode, which
+file, how links are stored. The modeless path asks none of this.</figcaption>
+</figure>
+
 <p>
-The losses compound. Switching mode loses once. Having to invent a local
-filename loses twice. Answering questions about where to save links loses again
-and has probably damaged the file. And the principle underneath all three:
+The principle underneath all three losses:
 </p>
 
 <blockquote>
@@ -90,32 +164,38 @@ You should not have to think about "where" things are.
 </blockquote>
 
 <p>
-That is Chapter 82&#8217;s location fixation, stated as a demand on the editor rather
-than as an observation about the file system.
+That is Chapter 82&#8217;s location fixation (the habit of making every document
+live in exactly one folder), restated as a demand on the editor.
 </p>
 
 <h2>83.3 The operations he wants</h2>
 
 <p>
-Three are described, and each is a thing people still do by hand.
+Three are described. One already existed in 1990; the other two still have to
+be done by hand.
 </p>
 
 <p>
-<strong>Make a new linked node.</strong> Select a phrase, one keystroke, and a
-new document appears from a template, already linked from the phrase, with the
-cursor waiting. Berners-Lee marks the one remaining step with a sad face: the
-dialogue asking where to save it.
+<strong>Make a new linked node</strong> (a node is one page in the web of
+links). His own 1990 editor, WorldWideWeb, already did this: select a phrase,
+press one key, and a new page appears from a template (a ready-made starting
+page), already linked from the phrase, with the cursor waiting. Berners-Lee marks the one remaining step with a sad face:
+the dialogue asking for a filename.
 </p>
 
 <p>
-<strong>Annotate something you cannot write to.</strong> Create a note where you
-do have permission, make a label pointing at it, and store the label on a
-server that serves labels about other people&#8217;s pages. The mechanism is
-Chapter 77&#8217;s, used for commentary rather than for filtering.
+<strong>Annotate a page without write access.</strong> Create a note where the
+annotator does have permission, make a PICS label pointing at it, and store the label on a
+label server that hands out labels about other people&#8217;s pages: the
+labelling system of Chapter 77, used for commentary rather than filtering. He
+hoped XML linking would also allow a link into the middle of an
+existing unwritable document &ldquo;with some hope of reliability&rdquo;.
 </p>
 
 <p>
-<strong>Excerpt.</strong> This is the one he says nobody has built:
+<strong>Excerpt.</strong> Connolly did this by hand; Berners-Lee had never
+seen an editor do it automatically, though Dan had found some JavaScript hacks.
+(BLOCKQUOTE is the HTML element for a quoted passage.)
 </p>
 
 <blockquote>
@@ -126,10 +206,72 @@ made, or else the document as a whole failing that.
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 470" width="720" height="470" role="img"
+     aria-labelledby="fig83-3-t fig83-3-d">
+  <title id="fig83-3-t">The excerpt fallback chain</title>
+  <desc id="fig83-3-d">Starting from selected text, the excerpt operation asks
+  whether an anchor already exists there; if so it links to that anchor. If
+  not, it asks whether a new anchor can be made; if so it makes one and links
+  to it. Otherwise it links to the whole document. In every case the result is
+  a blockquote of the selected text with a link back to its source.</desc>
+
+  <rect class="box" x="40" y="16" width="160" height="40" rx="6"/>
+  <text x="120" y="41" text-anchor="middle">Selected text</text>
+  <line class="ln" x1="120" y1="56" x2="120" y2="72"/>
+  <polygon points="120,80 115,70 125,70" fill="#2f4f4f"/>
+
+  <polygon class="box-plain" points="20,120 120,80 220,120 120,160"/>
+  <text x="120" y="117" class="t-sm" text-anchor="middle">Existing anchor</text>
+  <text x="120" y="133" class="t-sm" text-anchor="middle">here?</text>
+
+  <line class="ln" x1="220" y1="120" x2="292" y2="120"/>
+  <polygon points="300,120 290,115 290,125" fill="#2f4f4f"/>
+  <text x="256" y="110" class="t-sm" text-anchor="middle">yes</text>
+  <rect class="box-green" x="300" y="100" width="220" height="40" rx="6"/>
+  <text x="410" y="125" text-anchor="middle">link to that anchor</text>
+
+  <line class="ln" x1="120" y1="160" x2="120" y2="192"/>
+  <polygon points="120,200 115,190 125,190" fill="#2f4f4f"/>
+  <text x="132" y="184" class="t-sm">no</text>
+
+  <polygon class="box-plain" points="20,240 120,200 220,240 120,280"/>
+  <text x="120" y="237" class="t-sm" text-anchor="middle">Can a new anchor</text>
+  <text x="120" y="253" class="t-sm" text-anchor="middle">be made?</text>
+
+  <line class="ln" x1="220" y1="240" x2="292" y2="240"/>
+  <polygon points="300,240 290,235 290,245" fill="#2f4f4f"/>
+  <text x="256" y="230" class="t-sm" text-anchor="middle">yes</text>
+  <rect class="box-green" x="300" y="220" width="220" height="40" rx="6"/>
+  <text x="410" y="245" text-anchor="middle">make one, link to it</text>
+
+  <line class="ln" x1="120" y1="280" x2="120" y2="312"/>
+  <polygon points="120,320 115,310 125,310" fill="#2f4f4f"/>
+  <text x="132" y="304" class="t-sm">no</text>
+
+  <rect class="box-warm" x="20" y="320" width="200" height="40" rx="6"/>
+  <text x="120" y="345" text-anchor="middle">link to the whole document</text>
+
+  <line class="ln-mut" x1="520" y1="120" x2="620" y2="120"/>
+  <line class="ln-mut" x1="520" y1="240" x2="620" y2="240"/>
+  <line class="ln-mut" x1="620" y1="120" x2="620" y2="392"/>
+  <polygon points="620,400 615,390 625,390" fill="#8a9a9a"/>
+  <line class="ln-mut" x1="120" y1="360" x2="120" y2="392"/>
+  <polygon points="120,400 115,390 125,390" fill="#8a9a9a"/>
+
+  <rect class="box-plain" x="20" y="400" width="680" height="54" rx="6"/>
+  <text x="360" y="422" text-anchor="middle">Copied to the clipboard: a BLOCKQUOTE holding the selected text,</text>
+  <text x="360" y="441" text-anchor="middle">with a link back to the most precise point the source allows</text>
+</svg>
+<figcaption><span class="fig-label">Figure 83.3</span>
+Whichever rung it reaches, the quotation carries its own provenance (a record
+of where it came from), as precise as the source allows. Text fragments (2020)
+now supply the missing middle rung.</figcaption>
+</figure>
+
 <p>
-Quote something and have the quotation carry its own provenance, as precisely
-as the source allows, with a graceful fallback. Every chapter of this book does
-that operation, by hand, with a script to check the result.
+Every chapter of this book performs that operation by hand, with a script to
+check the result.
 </p>
 
 <h2>83.4 Why the note ends with a screenshot</h2>
@@ -146,27 +288,25 @@ take?
 </blockquote>
 
 <p>
-The measure is the same throughout, and it is why the note works as criticism.
-Not whether a thing is possible, but how many steps it takes, counted honestly,
-including the steps where you have to stop and think of a name.
+The measure is the same throughout, which is why the note works as criticism:
+not whether a thing is possible, but how many steps it takes, counting the
+pauses to think of a name.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Modeless editing arrived, inside applications.</strong> Editing in
-place became normal in documents, wikis and note systems, and did not become a
-property of the Web itself.</li>
-<li><strong>Naming was abolished.</strong> Automatic titles and generated
-identifiers removed the ten-click penalty in most modern tools, which is the
-single biggest improvement since the note.</li>
-<li><strong>Excerpt still is not built.</strong> Copying a passage with a link
-back to its exact location remains manual, though text fragments, which
-shipped in 2020, finally supply the addressing it needs.</li>
-<li><strong>Annotation layers were built repeatedly.</strong> Systems for
-commenting on pages one does not control have been created many times and none
-has become general, which is the same fate as the labelling system of
-Chapter 77.</li>
+<li><strong>Modeless editing arrived, inside applications.</strong> Wikis
+(WikiWikiWeb, 1995) and online office tools (Google Docs, 2006) made editing in
+place normal, but it did not become a property of the Web itself.</li>
+<li><strong>Naming largely went away.</strong> Automatic titles and generated
+identifiers removed most of the ten-click penalty in modern tools.</li>
+<li><strong>Excerpt is still mostly manual</strong>, though text fragments,
+which shipped in 2020, supply the addressing it needs.</li>
+<li><strong>Annotation layers were built repeatedly.</strong> W3C published the
+Web Annotation Recommendations in February 2017, and many commenting systems
+have been built; none has become general, the fate of Chapter 77&#8217;s
+labels.</li>
 </ul>
 </div>
 
@@ -194,12 +334,12 @@ a case where it misleads.</p>
 </div>
 <div class="question">
 <p><span class="question-number">83.3</span>
-Implement excerpt for a tool you use. What must it do when the source has no
-anchor at that point?</p>
+Describe, step by step, what an excerpt button should do in a tool you use.
+What must it do when the source has no anchor at that point?</p>
 </div>
 <div class="question">
 <p><span class="question-number">83.4</span>
-Modeless editing arrived inside applications and not on the Web. Say what
-prevented it.</p>
+Name one tool where you can edit a page in place and one where you cannot. What
+does the second one make you do first?</p>
 </div>
 </div>

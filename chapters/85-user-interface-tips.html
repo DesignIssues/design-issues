@@ -49,12 +49,21 @@
 a Design Issues note by Tim Berners-Lee, 2016-12-15.
 <a class="source-link" href="https://www.w3.org/DesignIssues/UserInterface.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A dozen everyday interface rules: let people copy and paste, do not interrupt
+them, name pages so they can be found again, and never lose what they typed.
+Most are broken by replacing or interrupting what the browser already does well,
+and the failures are invisible to whoever built them.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in December 2016 and, by the author&#8217;s own description, a list of his
-own biases in a bit of a random order. It is the least architectural note in
-the collection and it is included because of an observation in its opening:
+Written in December 2016, this is by its author&#8217;s account a list of his
+own biases in a bit of a random order. It is included for its opening:
 </p>
 <blockquote>
 In a way, more than 25 years after the WWW project started, you'd think that
@@ -64,8 +73,7 @@ out.
 <cite>User Interface: Random tips, 2016</cite>
 </blockquote>
 <p>
-Twenty-five years, well documented, still being got wrong. That is the
-interesting fact, and most of the items have a common cause.
+Sections 85.1 to 85.3 take the rules about text; section 85.5 lists the rest.
 </p>
 </div>
 
@@ -87,32 +95,32 @@ interesting fact, and most of the items have a common cause.
   <text x="189" y="126" class="t-sm t-it" text-anchor="middle">exception: a password field</text>
 
   <rect class="box-warm" x="366" y="30" width="330" height="106" rx="4"/>
-  <text x="531" y="56" class="t-caps" text-anchor="middle" fill="#a07d47">in: all fields pasteable</text>
+  <text x="531" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">in: all fields pasteable</text>
   <text x="531" y="82" class="t-sm" text-anchor="middle">especially password fields</text>
-  <text x="531" y="106" class="t-sm" text-anchor="middle">because good passwords are not typed, they are pasted</text>
-  <text x="531" y="126" class="t-sm t-it" text-anchor="middle">you have to work to break this</text>
+  <text x="531" y="106" class="t-sm" text-anchor="middle">long passwords are stored and pasted, not remembered</text>
+  <text x="531" y="126" class="t-sm t-it" text-anchor="middle">it takes work to break this</text>
 
   <rect class="box-green" x="24" y="152" width="330" height="80" rx="4"/>
-  <text x="189" y="178" class="t-caps" text-anchor="middle" fill="#3f6f3f">passwords optionally visible</text>
-  <text x="189" y="204" class="t-sm" text-anchor="middle">you cannot type a long one correctly</text>
+  <text x="189" y="178" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">passwords optionally visible</text>
+  <text x="189" y="204" class="t-sm" text-anchor="middle">nobody can type a long one correctly</text>
   <text x="189" y="222" class="t-sm" text-anchor="middle">without being able to look at it</text>
 
   <rect class="box-green" x="366" y="152" width="330" height="80" rx="4"/>
-  <text x="531" y="178" class="t-caps" text-anchor="middle" fill="#3f6f3f">focus where I will type</text>
+  <text x="531" y="178" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">focus where I will type</text>
   <text x="531" y="204" class="t-sm" text-anchor="middle">but only as a result of my own action,</text>
   <text x="531" y="222" class="t-sm" text-anchor="middle">so that I am expecting it</text>
 
   <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Each rule breaks when a developer captures keystrokes to make a field behave cleverly.</text>
+  <text x="360" y="280" class="t-sm" text-anchor="middle">Three of the four break when a developer overrides what the browser already does with text.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 85.1</span>
-The rules are unrelated on their face and share one cause: replacing the
-platform&#8217;s own text handling with something custom, which Berners-Lee calls
-being over-cute.</figcaption>
+The text rules share a cause: replacing the browser&#8217;s own text handling
+with something custom. The focus rule is about timing instead.</figcaption>
 </figure>
 
 <p>
-The argument for copyable error messages is about who can be helped:
+The <em>focus</em> is the place where typed characters will go. The argument
+for copyable error messages is about who can be helped:
 </p>
 
 <blockquote>
@@ -123,16 +131,13 @@ friend.
 </blockquote>
 
 <p>
-A message nobody can copy can only be used by someone who already understands
-it. Making it copyable moves it from the small set of people who can act on it
-to the whole Web of people who might.
+A message nobody can copy helps only someone who already understands it.
 </p>
 
 <h2>85.2 The self-defeating password field</h2>
 
 <p>
-The argument about pasting is a chain of consequences ending in the opposite of
-what was intended:
+The argument about pasting is a chain of consequences:
 </p>
 
 <blockquote>
@@ -142,16 +147,67 @@ up and switch to using a short and unsafe password out of frustration.
 <cite>User Interface: Random tips, 2016</cite>
 </blockquote>
 
-<p>
-A field that blocks pasting was built to be more secure and makes users less
-secure, because the security of a password is decided by whether it can be
-remembered, and blocking the paste requires it to be. This is Chapter 23&#8217;s
-incentive analysis in miniature: the design shapes behaviour, and the behaviour
-is what matters.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
+     aria-labelledby="fig85-2-t fig85-2-d">
+  <title id="fig85-2-t">The self-defeating password field</title>
+  <desc id="fig85-2-d">Five steps. The site asks for a strong password. A strong
+  password is too long to remember and is stored in an app. The field blocks
+  pasting. The user retypes it on a phone with dots for echo. The user gives up
+  and picks a short, weak password. A dashed arrow runs back from the last step
+  to the first: the opposite of the intent.</desc>
+  <defs>
+    <marker id="fig85-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig85-2-arrm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="12" y="30" width="128" height="86" rx="4"/>
+  <text x="76" y="66" text-anchor="middle">Site asks for a</text>
+  <text x="76" y="84" text-anchor="middle">strong password</text>
+
+  <rect class="box" x="154" y="30" width="128" height="86" rx="4"/>
+  <text x="218" y="52" text-anchor="middle">Strong password</text>
+  <text x="218" y="69" text-anchor="middle">is too long to</text>
+  <text x="218" y="86" text-anchor="middle">remember, so it</text>
+  <text x="218" y="103" text-anchor="middle">is stored in an app</text>
+
+  <rect class="box-warm" x="296" y="30" width="128" height="86" rx="4"/>
+  <text x="360" y="66" text-anchor="middle">Field blocks</text>
+  <text x="360" y="84" text-anchor="middle">pasting</text>
+
+  <rect class="box-warm" x="438" y="30" width="128" height="86" rx="4"/>
+  <text x="502" y="60" text-anchor="middle">User retypes it</text>
+  <text x="502" y="77" text-anchor="middle">on a phone, with</text>
+  <text x="502" y="94" text-anchor="middle">dots for echo</text>
+
+  <rect class="box-warm" x="580" y="30" width="128" height="86" rx="4" style="stroke-width:2.6"/>
+  <text x="644" y="60" text-anchor="middle">User gives up,</text>
+  <text x="644" y="77" text-anchor="middle">picks a short,</text>
+  <text x="644" y="94" text-anchor="middle">weak password</text>
+
+  <line class="ln" x1="141" y1="73" x2="152" y2="73" marker-end="url(#fig85-2-arr)"/>
+  <line class="ln" x1="283" y1="73" x2="294" y2="73" marker-end="url(#fig85-2-arr)"/>
+  <line class="ln" x1="425" y1="73" x2="436" y2="73" marker-end="url(#fig85-2-arr)"/>
+  <line class="ln" x1="567" y1="73" x2="578" y2="73" marker-end="url(#fig85-2-arr)"/>
+
+  <path class="ln-dash" d="M 644 118 L 644 160 L 76 160 L 76 120" marker-end="url(#fig85-2-arrm)"/>
+  <text x="360" y="186" class="t-sm t-it" text-anchor="middle">the result is the opposite of the intent</text>
+</svg>
+<figcaption><span class="fig-label">Figure 85.2</span>
+A rule added for security produces the insecure outcome. The failure is three
+steps away from the rule, which is why its author does not see it.</figcaption>
+</figure>
 
 <p>
-The demand for visibility is the same argument from the other side:
+Blocking paste forces a password short enough to remember, which is a weak
+one: Chapter 23&#8217;s point that the design shapes behaviour, and the behaviour
+is what matters. The demand for visibility is the same argument reversed:
 </p>
 
 <blockquote>
@@ -163,7 +219,7 @@ without mistakes -- unless you let me see it as I type it
 <h2>85.3 The cause underneath</h2>
 
 <p>
-Berners-Lee names the mechanism by which these things go wrong:
+Berners-Lee names the mechanism:
 </p>
 
 <blockquote>
@@ -174,69 +230,189 @@ cuteness.
 </blockquote>
 
 <p>
-Every item on the list is the same act. The platform supplies text handling
-that works everywhere, in every language, with every assistive technology, and
-a developer replaces it to make one field prettier or stricter. The
-replacement handles the case it was written for and loses everything else the
-original did.
+The three text rules share one act. The <em>platform</em>, the browser or
+phone&#8217;s built-in text box, works in every language and with every
+<em>assistive technology</em> (screen readers and similar aids). A developer
+replaces it to make one field stricter, such as his numeric field that accepts
+only digits and so refuses a pasted 1,200. The replacement handles its own case
+and loses everything else.
 </p>
 
 <p>
-He names the usual culprit specifically: auto-completion libraries, and gives
-the test. If one does not allow pasting, it is a step backwards, and the right
-response is to go back to the basic widget.
+A usual culprit is an <em>auto-complete library</em>, ready-made code that
+suggests entries during typing. One that blocks pasting is a step backwards; go
+back to the basic <em>widget</em>, the standard input box.
 </p>
 
 <h2>85.4 Why the list still needed writing</h2>
 
+<h3>Why authors don&#8217;t notice</h3>
+
 <p>
-The chapter&#8217;s value is not its advice, which is elementary, but the question in
-its opening. Why does something so well documented still need saying?
+Each violation is invisible to its author, whose own situation hides it. The
+developer already knows what the error means, tests the input they had in mind,
+attends to the app without interruption and finishes in one sitting. The user
+may have none of these advantages, and every rule in section 85.5 falls into
+that gap.
 </p>
 
 <p>
-Because each violation is invisible to its author. A developer who replaces a
-field tests that it accepts the input they had in mind. Nobody tests that an
-error message can be selected, because the test is performed by someone who
-already knows what the error means. The failures are all in the gap between the
-author&#8217;s situation and the user&#8217;s.
+Chapter 88 describes the same gap for language, and its remedy: the hard work
+of imagining somebody on the other side of a boundary.
 </p>
 
+<h2>85.5 The rest of the list</h2>
+
 <p>
-That is the same gap Chapter 88 describes for language, and it has the same
-remedy: the work of thinking about what somebody on the other side of a
-boundary is doing, which Berners-Lee there calls hard work.
+The note gives eight more tips.
 </p>
+
+<table>
+<tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
+<tr><td>Never use modals</td><td>It blocks the rest of the page until answered, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, between related things, and close it when done.</td></tr>
+<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. <code>alert()</code> and <code>confirm()</code> cannot hold links.</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
+<tr><td>Set and update the title</td><td>Bookmarks and tabs show the title out of context; &#8220;Orders&#8221; or &#8220;Acme Inc&#8221; is useless months later.</td><td>&#8220;Acme Order 8948375 Complete&#8221;, specific part first; change it per view, each view with its own <a class="gl-ref" href="../glossary.html#uri">URI</a>.</td></tr>
+<tr><td>Useful download filenames</td><td>A PDF has no title the user sees, and file browsers sort alphabetically.</td><td>Put the date first, year then month then day.</td></tr>
+<tr><td>Never use a carousel</td><td>Anything that moves by itself distracts.</td><td>Move only when the user starts it, as with a video.</td></tr>
+<tr><td>Never throw away my data</td><td>Unsaved input is lost; one bad field can wipe a whole form.</td><td>Save automatically; show saving and errors by colour; keep the valid fields.</td></tr>
+<tr><td>Stick with the default font size</td><td>Text at 80% overrides the size the reader chose.</td><td>Keep body text at 100%.</td></tr>
+<tr><td>Don&#8217;t time out my session</td><td>Getting the passport whose number is asked for may take weeks.</td><td>Keep what was entered; time out only powerful sessions such as banking.</td></tr>
+</table>
+
+<p>
+Popups also train users to type an administrator password into whatever
+box appears, and
+</p>
+
+<blockquote>
+Popups are too easy to fake.
+<cite>User Interface: Random tips, 2016</cite>
+</blockquote>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig85-3-t fig85-3-d">
+  <title id="fig85-3-t">A modal transfer form and an in-place one</title>
+  <desc id="fig85-3-d">Left: a bank page greyed out behind a modal transfer
+  form. The account number is in the greyed panel and cannot be reached to copy.
+  Right: the same page with the transfer form opened between the accounts and
+  balances panels, and the account number copied straight into the form.</desc>
+  <defs>
+    <marker id="fig85-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="22" class="t-caps" text-anchor="middle">modal</text>
+  <rect class="box-plain" x="10" y="34" width="340" height="200" rx="4"/>
+  <rect class="box-plain" x="24" y="48" width="150" height="56" rx="3"/>
+  <text x="99" y="70" class="t-sm" text-anchor="middle">Accounts</text>
+  <text x="99" y="92" class="t-mono" text-anchor="middle" style="fill:#8a9a9a">no. 4021 7788</text>
+  <rect class="box-plain" x="186" y="48" width="150" height="56" rx="3"/>
+  <text x="261" y="70" class="t-sm" text-anchor="middle">Balances</text>
+  <text x="261" y="92" class="t-mono" text-anchor="middle" style="fill:#8a9a9a">1,240.00</text>
+  <rect x="11" y="35" width="338" height="198" fill="#8a9a9a" fill-opacity="0.22"/>
+
+  <rect class="box-warm" x="40" y="134" width="170" height="84" rx="4"/>
+  <text x="56" y="156" class="t-caps" style="fill:#b08d57">transfer</text>
+  <text x="56" y="180">amount: ______</text>
+  <text x="56" y="202">to account: ____</text>
+
+  <line class="ln-dash" x1="99" y1="132" x2="99" y2="107"/>
+  <line x1="93" y1="114" x2="105" y2="126" style="stroke:#b08d57;stroke-width:1.8"/>
+  <line x1="105" y1="114" x2="93" y2="126" style="stroke:#b08d57;stroke-width:1.8"/>
+  <text x="222" y="160" class="t-sm">account number is</text>
+  <text x="222" y="176" class="t-sm">behind the modal:</text>
+  <text x="222" y="192" class="t-sm">cannot be copied</text>
+
+  <text x="540" y="22" class="t-caps" text-anchor="middle">in place</text>
+  <rect class="box-plain" x="370" y="34" width="340" height="200" rx="4"/>
+  <rect class="box-plain" x="384" y="46" width="312" height="48" rx="3"/>
+  <text x="400" y="64" class="t-sm">Accounts</text>
+  <text x="400" y="85" class="t-mono">no. 4021 7788</text>
+
+  <rect class="box-warm" x="384" y="104" width="312" height="74" rx="4"/>
+  <text x="400" y="124" class="t-caps" style="fill:#b08d57">transfer</text>
+  <text x="400" y="146">amount: ______</text>
+  <text x="400" y="168">to account: 4021 7788</text>
+
+  <path class="ln-accent" d="M 506 81 C 600 81, 620 150, 547 163" marker-end="url(#fig85-3-arr)"/>
+  <text x="608" y="140" class="t-sm">copied in</text>
+
+  <rect class="box-plain" x="384" y="188" width="312" height="36" rx="3"/>
+  <text x="400" y="211" class="t-sm">Balances</text>
+  <text x="520" y="211" class="t-mono">1,240.00</text>
+</svg>
+<figcaption><span class="fig-label">Figure 85.3</span>
+A modal blocks the very information the user needs to finish the task it
+demands; opened in place, it does not.</figcaption>
+</figure>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig85-4-t fig85-4-d">
+  <title id="fig85-4-t">Truncated tab titles and sorted filenames</title>
+  <desc id="fig85-4-d">Left: three browser tabs whose titles begin with the
+  series name cannot be told apart once truncated; three whose titles begin with
+  the page name can. Right: downloaded files named with the year first sort into
+  date order; files named with the month name first sort Feb, Jan, Nov.</desc>
+
+  <text x="10" y="24" class="t-caps">series title first</text>
+  <rect class="box-plain" x="10" y="34" width="134" height="28" rx="4"/>
+  <text x="18" y="52" class="t-sm">Design Issues - Us&#8230;</text>
+  <rect class="box-plain" x="150" y="34" width="134" height="28" rx="4"/>
+  <text x="158" y="52" class="t-sm">Design Issues - Pr&#8230;</text>
+  <rect class="box-plain" x="290" y="34" width="134" height="28" rx="4"/>
+  <text x="298" y="52" class="t-sm">Design Issues - Ax&#8230;</text>
+  <text x="10" y="82" class="t-sm t-it" style="fill:#b08d57">three tabs that cannot be told apart</text>
+
+  <text x="10" y="114" class="t-caps">page title first</text>
+  <rect class="box" x="10" y="124" width="134" height="28" rx="4"/>
+  <text x="18" y="142" class="t-sm" style="fill:#2f4f4f">User Interface, ra&#8230;</text>
+  <rect class="box" x="150" y="124" width="134" height="28" rx="4"/>
+  <text x="158" y="142" class="t-sm" style="fill:#2f4f4f">Principles of Des&#8230;</text>
+  <rect class="box" x="290" y="124" width="134" height="28" rx="4"/>
+  <text x="298" y="142" class="t-sm" style="fill:#2f4f4f">Axioms of Web Arc&#8230;</text>
+  <text x="10" y="172" class="t-sm t-it" style="fill:#5a8f5a">each tab recognisable</text>
+
+  <line class="ln-mut" x1="448" y1="12" x2="448" y2="188"/>
+
+  <text x="466" y="24" class="t-caps">downloads, sorted a&#8211;z</text>
+  <text x="466" y="46" class="t-sm">year first</text>
+  <text x="466" y="66" class="t-mono" style="fill:#5a8f5a">2022-11-03-Ac-41.pdf</text>
+  <text x="466" y="84" class="t-mono" style="fill:#5a8f5a">2023-01-12-Ac-87612374.pdf</text>
+  <text x="466" y="102" class="t-mono" style="fill:#5a8f5a">2023-02-07-Ac-73.pdf</text>
+  <text x="466" y="126" class="t-sm">month name first</text>
+  <text x="466" y="146" class="t-mono" style="fill:#b08d57">Feb-07-2023-Ac-73.pdf</text>
+  <text x="466" y="164" class="t-mono" style="fill:#b08d57">Jan-12-2023-Ac-87612374.pdf</text>
+  <text x="466" y="182" class="t-mono" style="fill:#b08d57">Nov-03-2022-Ac-41.pdf</text>
+</svg>
+<figcaption><span class="fig-label">Figure 85.4</span>
+Put the specific part first: truncation cuts from the end, and sorting reads
+from the start.</figcaption>
+</figure>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Password fields became pasteable by consensus.</strong> Major
-security guidance from the mid-2010s explicitly told sites to allow pasting,
-and browsers began overriding attempts to block it, which is the rule of
-section 85.2 enforced by the platform.</li>
-<li><strong>Visibility toggles became standard.</strong> The option to reveal a
-password is now offered by the platform on most devices.</li>
-<li><strong>Copyable error messages did not improve.</strong> Uncopyable
-messages remain common, particularly in mobile applications and in dialogues
-rendered outside the ordinary text system.</li>
-<li><strong>The cause persists.</strong> Custom input components replacing
-platform ones are more common than in 2016, and each generation reintroduces
-the same losses.</li>
+<li><strong>Security guidance took his side on pasting.</strong> In 2017 the UK
+National Cyber Security Centre told sites to let users paste passwords,
+and the US NIST guideline SP 800-63B said sites should permit pasting
+and offer to display the password.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The earlier interface arguments are Chapters 82 to 84. The incentive analysis
-is Chapter 23, and the difficulty of imagining someone on the other side of a
-boundary is Chapter 88. Password fields and their alternative are Chapter 69.
+Earlier interface arguments: Chapters 82 to 84. Incentives: Chapter 23. The
+other side of a boundary: Chapter 88. Passwords and their alternative: Chapter 69.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">85.1</span>
 Find an error message in software you use that cannot be copied. Who is
@@ -244,18 +420,22 @@ excluded from fixing the problem?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.2</span>
-A field blocks pasting for security and reduces security. Trace the chain, and
-name the assumption that fails.</p>
+Trace the password-paste chain, and name the assumption that fails.</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.3</span>
-List what the platform&#8217;s own text field gives you for free. How many does a
-custom one reimplement?</p>
+Name three things you can do in an ordinary text box that a numeric-only
+custom field might stop you doing.</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.4</span>
-Each failure is invisible to its author. Design a test that would catch one of
-these without the author having to think of it.</p>
+Design a test that would catch one of these failures without the author
+having to think of it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">85.5</span>
+Why does the note put the page&#8217;s own title before the site name? Give an
+example of a modal that kept you from finding information you needed.</p>
 </div>
 </details>
 

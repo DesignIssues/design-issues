@@ -1,3 +1,12 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Most of the internet is benign, and much of it is good. The serious harm comes
+mainly from feeds ranked for engagement, which a few platforms run. The good
+parts tend to run on open protocols, which let people choose their own app.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -11,16 +20,15 @@ things which people should not forget.
 <cite>The Good on the Internet, 2024</cite>
 </blockquote>
 <p>
-The note is a companion to a diagram, which is unusual in this collection and
-makes this the one chapter where the figure is the primary text.
+The note is built around a large diagram of sites, apps and their effects.
+Figure 91.1 is a simplified sketch of it, not Berners-Lee&#8217;s map.
 </p>
 </div>
 
 <h2>91.1 The proportion</h2>
 
 <p>
-The claim is quantitative, and Berners-Lee states it three times in different
-words because it is the whole argument:
+The claim is quantitative, and it is the whole argument:
 </p>
 
 <blockquote>
@@ -31,70 +39,88 @@ actually wonderful.
 </blockquote>
 
 <p>
-The occasion is named precisely, and it is domestic rather than political:
-parents worrying about harm to their children, and schools wondering whether to
-ban telephones.
+The occasion is domestic rather than political: parents worrying about harm to
+their children, and schools wondering whether to ban phones. In the map,
+rounded boxes are sites and apps, diamonds are problems with the platforms, and
+circles are the processes they lead to in the world.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig91-1-t fig91-1-d">
-  <title id="fig91-1-t">The map, in outline</title>
-  <desc id="fig91-1-d">Rounded boxes are sites and applications. Circles are
-  processes in the world that they lead to, good or bad. Diamonds are things
-  platforms do, such as tracking or optimising a feed for engagement. Most of
-  the map is benign; the harmful processes issue from a small part of it.</desc>
+  <title id="fig91-1-t">Where the harm enters</title>
+  <desc id="fig91-1-d">Top row: five groups of sites and apps. Email and chat,
+  podcasts and blogs, and Solid apps are green; LinkedIn, Amazon and Google
+  search are plain; Facebook, Instagram and TikTok are warm. Middle row: two
+  diamonds, profiling users (fed by the plain and warm boxes) and feed tuned for
+  engagement (fed by the warm box only). Bottom row: circles for working
+  together, reached directly from the green boxes; relevant service, reached
+  from profiling; and manipulation and polarisation, reached from profiling
+  when there are third-party ads and from the engagement feed.</desc>
+  <defs>
+    <marker id="ar91-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+    <marker id="ar91-1w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b08d57"/>
+    </marker>
+  </defs>
 
-  <text x="24" y="28" class="t-caps">the legend</text>
-  <rect class="box" x="24" y="40" width="130" height="34" rx="10"/>
-  <text x="89" y="62" class="t-sm" text-anchor="middle">a site or app</text>
-  <path d="M 230 40 L 262 57 L 230 74 L 198 57 Z" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="230" y="61" class="t-sm" text-anchor="middle" fill="#b04a4a">a practice</text>
-  <circle cx="330" cy="57" r="24" fill="#f2f2f2" stroke="#b5b5b5"/>
-  <text x="330" y="61" class="t-sm" text-anchor="middle">a process</text>
-  <text x="380" y="52" class="t-sm">things they lead to in the world:</text>
-  <text x="380" y="70" class="t-sm">communal decision making, or disinformation</text>
+  <text x="8" y="26" class="t-caps">sites and apps</text>
+  <rect class="box-green" x="8" y="40" width="120" height="52" rx="10"/>
+  <text x="68" y="62" text-anchor="middle">Email, chat</text>
+  <text x="68" y="80" class="t-sm" text-anchor="middle">open protocols</text>
+  <rect class="box-green" x="140" y="40" width="120" height="52" rx="10"/>
+  <text x="200" y="62" text-anchor="middle">Podcasts, blogs</text>
+  <text x="200" y="80" class="t-sm" text-anchor="middle">RSS readers</text>
+  <rect class="box-green" x="272" y="40" width="120" height="52" rx="10"/>
+  <text x="332" y="62" text-anchor="middle">Solid apps</text>
+  <text x="332" y="80" class="t-sm" text-anchor="middle">Solid Protocol</text>
+  <rect class="box-plain" x="404" y="40" width="148" height="52" rx="10"/>
+  <text x="478" y="62" text-anchor="middle">LinkedIn, Amazon,</text>
+  <text x="478" y="80" text-anchor="middle">Google search</text>
+  <rect class="box-warm" x="564" y="40" width="148" height="52" rx="10"/>
+  <text x="638" y="62" text-anchor="middle">Facebook,</text>
+  <text x="638" y="80" text-anchor="middle">Instagram, TikTok</text>
 
-  <line class="ln-mut" x1="24" y1="96" x2="696" y2="96"/>
+  <path d="M 430 140 L 500 170 L 430 200 L 360 170 Z" class="box-plain"/>
+  <text x="430" y="174" class="t-sm" text-anchor="middle">profiles users</text>
+  <path d="M 628 134 L 716 170 L 628 206 L 540 170 Z" class="box-warm"/>
+  <text x="628" y="168" class="t-sm" text-anchor="middle">feed tuned</text>
+  <text x="628" y="182" class="t-sm" text-anchor="middle">for engagement</text>
 
-  <g>
-    <rect class="box-green" x="24" y="112" width="200" height="94" rx="8"/>
-    <text x="124" y="136" class="t-caps" text-anchor="middle" fill="#3f6f3f">before the web</text>
-    <text x="124" y="160" class="t-sm" text-anchor="middle">mail, chat</text>
-    <text x="124" y="180" class="t-sm" text-anchor="middle">podcast and blog readers</text>
-    <text x="124" y="198" class="t-sm t-it" text-anchor="middle">no feed to optimise</text>
+  <circle class="box-green" cx="200" cy="282" r="48"/>
+  <text x="200" y="278" class="t-sm" text-anchor="middle">working</text>
+  <text x="200" y="292" class="t-sm" text-anchor="middle">together</text>
+  <circle class="box-plain" cx="400" cy="282" r="48"/>
+  <text x="400" y="278" class="t-sm" text-anchor="middle">relevant</text>
+  <text x="400" y="292" class="t-sm" text-anchor="middle">service</text>
+  <circle class="box-warm" cx="600" cy="282" r="48"/>
+  <text x="600" y="278" class="t-sm" text-anchor="middle">manipulation,</text>
+  <text x="600" y="292" class="t-sm" text-anchor="middle">polarisation</text>
 
-    <rect class="box-green" x="248" y="112" width="200" height="94" rx="8"/>
-    <text x="348" y="136" class="t-caps" text-anchor="middle" fill="#3f6f3f">beneficent platforms</text>
-    <text x="348" y="160" class="t-sm" text-anchor="middle">open source systems</text>
-    <text x="348" y="180" class="t-sm" text-anchor="middle">reference works, tools</text>
-    <text x="348" y="198" class="t-sm t-it" text-anchor="middle">the great majority</text>
-
-    <rect class="box-green" x="472" y="112" width="224" height="94" rx="8"/>
-    <text x="584" y="136" class="t-caps" text-anchor="middle" fill="#3f6f3f">digital sovereignty</text>
-    <text x="584" y="160" class="t-sm" text-anchor="middle">systems where the person</text>
-    <text x="584" y="180" class="t-sm" text-anchor="middle">holds their own data</text>
-    <text x="584" y="198" class="t-sm t-it" text-anchor="middle">Volume VI&#8217;s architecture</text>
-  </g>
-
-  <rect class="box-plain" x="180" y="226" width="360" height="66" rx="8" stroke="#d9b0b0"/>
-  <text x="360" y="250" class="t-caps" text-anchor="middle" fill="#b04a4a">platforms that profile you</text>
-  <text x="360" y="272" class="t-sm" text-anchor="middle">most do; a few also optimise a feed for engagement</text>
-
-  <line class="ln-mut" x1="24" y1="308" x2="696" y2="308"/>
-  <text x="360" y="332" class="t-sm t-it" text-anchor="middle">&#8220;A small minority are harmful. - the rest are ok to use and many are wonderful.&#8221;</text>
+  <line class="ln-mut" x1="68" y1="92" x2="190" y2="230" marker-end="url(#ar91-1)"/>
+  <line class="ln-mut" x1="200" y1="92" x2="200" y2="230" marker-end="url(#ar91-1)"/>
+  <line class="ln-mut" x1="332" y1="92" x2="210" y2="230" marker-end="url(#ar91-1)"/>
+  <line class="ln-mut" x1="478" y1="92" x2="434" y2="139" marker-end="url(#ar91-1)"/>
+  <line class="ln-mut" x1="600" y1="92" x2="442" y2="144" marker-end="url(#ar91-1)"/>
+  <line class="ln" x1="638" y1="92" x2="630" y2="132" style="stroke:#b08d57" marker-end="url(#ar91-1w)"/>
+  <line class="ln-mut" x1="424" y1="202" x2="408" y2="232" marker-end="url(#ar91-1)"/>
+  <line class="ln-dash" x1="440" y1="202" x2="556" y2="259" style="stroke:#b08d57" marker-end="url(#ar91-1w)"/>
+  <text x="472" y="210" class="t-sm">with third-party ads</text>
+  <line class="ln" x1="622" y1="208" x2="610" y2="233" style="stroke:#b08d57" marker-end="url(#ar91-1w)"/>
 </svg>
 <figcaption><span class="fig-label">Figure 91.1</span>
-Berners-Lee apologises in the note for a bit of overloading of colours and
-shapes to get some points across, and for having missed off the reader&#8217;s
-favourite site.</figcaption>
+Harm reaches the bottom row only through the diamonds, and few boxes feed
+them. The green boxes lead straight to good outcomes.</figcaption>
 </figure>
 
 <h2>91.2 The distinction the map is drawing</h2>
 
 <p>
-The most careful passage separates two things that are usually treated as one,
-and it is generous about the first:
+The most careful passage separates two things usually treated as one. A
+<em>profile</em> is what a service learns about a person from what they do on it. It
+is generous about this first thing:
 </p>
 
 <blockquote>
@@ -105,7 +131,8 @@ with people and ideas and products which you will find relevant.
 </blockquote>
 
 <p>
-Then the qualification, stated as a capability rather than an accusation:
+Then the qualification. <em>Third-party advertising</em> means letting other
+companies buy space aimed at a person using that profile:
 </p>
 
 <blockquote>
@@ -116,8 +143,9 @@ by targeted advertising to do something against your own best interests
 </blockquote>
 
 <p>
-And then the judgement that ranks the two harms, repeating Chapter 90&#8217;s
-finding:
+To <em>optimise for engagement</em> is to choose what the feed shows by what
+keeps people scrolling. He names Facebook, Instagram and TikTok as platforms whose
+feeds are tuned for engagement, and ranks that above tracking:
 </p>
 
 <blockquote>
@@ -126,11 +154,55 @@ just stem from tracking, spying, profile building and targeted advertising.
 <cite>The Good on the Internet, 2024</cite>
 </blockquote>
 
+<p>
+The picture is not static. Instagram once showed posts from people he
+followed; years later it showed clickable videos and products.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 142" width="720" height="142" role="img"
+     aria-labelledby="fig91-2-t fig91-2-d">
+  <title id="fig91-2-t">Platforms drift toward one model</title>
+  <desc id="fig91-2-d">An arrow runs from a box reading posts from people
+  followed to a warm box reading feed chosen for engagement. Instagram is marked
+  near the start as it was at first and near the end as it is now. Skype, with
+  subjects to follow, and WhatsApp, with channels, are marked partway
+  along.</desc>
+  <defs>
+    <marker id="ar91-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <rect class="box-green" x="16" y="66" width="200" height="48" rx="10"/>
+  <text x="116" y="88" text-anchor="middle">posts from</text>
+  <text x="116" y="104" text-anchor="middle">people followed</text>
+  <rect class="box-warm" x="504" y="66" width="200" height="48" rx="10"/>
+  <text x="604" y="88" text-anchor="middle">feed chosen</text>
+  <text x="604" y="104" text-anchor="middle">for engagement</text>
+  <line class="ln" x1="216" y1="90" x2="502" y2="90" marker-end="url(#ar91-2)"/>
+  <circle cx="250" cy="90" r="5" fill="#1c5a7a"/>
+  <text x="244" y="72" class="t-sm">Instagram, at first</text>
+  <circle cx="470" cy="90" r="5" fill="#1c5a7a"/>
+  <text x="480" y="52" class="t-sm" text-anchor="end">Instagram, now</text>
+  <line class="ln-mut" x1="470" y1="58" x2="470" y2="84"/>
+  <circle cx="330" cy="90" r="5" fill="#1c5a7a"/>
+  <text x="330" y="114" class="t-sm" text-anchor="middle">Skype:</text>
+  <text x="330" y="128" class="t-sm" text-anchor="middle">subjects</text>
+  <circle cx="410" cy="90" r="5" fill="#1c5a7a"/>
+  <text x="410" y="114" class="t-sm" text-anchor="middle">WhatsApp:</text>
+  <text x="410" y="128" class="t-sm" text-anchor="middle">channels</text>
+</svg>
+<figcaption><span class="fig-label">Figure 91.2</span>
+The reward for attention pulls platforms toward one model. Berners-Lee asks
+whether that drift is inevitable; the stages of the harm itself are Figure
+90.2.</figcaption>
+</figure>
+
 <h2>91.3 What the map is for</h2>
 
 <p>
-The purpose is stated as a double obligation, and the second half is what
-distinguishes this from reassurance:
+The purpose is a double obligation, and the second half is what distinguishes
+this from reassurance:
 </p>
 
 <blockquote>
@@ -140,48 +212,125 @@ it, while protecting ourselves from the harms.
 </blockquote>
 
 <p>
-Not that the harms are exaggerated. That responding to them by withdrawal
-forfeits things that help people be creative, work together, have a good time,
-and understand the world and the many people in it better.
+The point is not that the harms are exaggerated, but that withdrawal forfeits
+things that help people be creative, work together, have a good time, and
+understand the world and the many people in it better.
 </p>
 
 <h2>91.4 Why the volume ends here</h2>
 
 <p>
-Volume IX has moved from the shape of a window to the shape of a society. It
-began with a complaint about two metaphors on one screen and ends with a map of
-what the thing became.
+Placed after Chapter 90, this chapter says what is at stake if the response to
+failure is abandonment.
 </p>
 
 <p>
-Placing this chapter after Chapter 90 rather than before it matters. The
-sequence is: here is how it fails, and here is what is at stake if the response
-to failure is abandonment. A book that stopped at the previous chapter would
-have described the harm and left the reader with nothing to protect.
+The note defines <em>digital sovereignty</em> broadly: people are in charge of
+their internet experience and can use it how they like. It says they already have
+this power to a large extent, though how much depends on their expertise, and
+that systems built on Solid, the architecture of Volume VI, naturally provide
+it.
+</p>
+
+<h2>91.5 The good parts run on protocols</h2>
+
+<p>
+The map covers the whole internet: besides the Web&#8217;s HTTP, much runs on
+other protocols.
+</p>
+
+<table>
+<tr><th>Protocol</th><th>App</th><th>Gives access to</th></tr>
+<tr><td>SMTP, IMAP, POP</td><td>Email clients</td><td>Emails</td></tr>
+<tr><td>RSS</td><td>Podcast app, feed reader</td><td>Podcasts, blogs</td></tr>
+<tr><td>CalDAV, CardDAV</td><td>Calendar, contacts apps</td><td>Events, contacts and groups</td></tr>
+<tr><td>ActivityPub</td><td>Mastodon etc.</td><td>Profiles, chat rooms, individual chats</td></tr>
+<tr><td>Matrix</td><td>Matrix client</td><td>Chat rooms, individual chats</td></tr>
+<tr><td>Signal protocol</td><td>Signal client</td><td>Individual chats</td></tr>
+</table>
+
+<p>
+An open protocol lets the user choose the app: the same mailbox opens in Apple
+Mail, Outlook or an open-source client. Web mail such as Gmail is easier, but
+leaves the user less power.
 </p>
 
 <p>
-The term Berners-Lee introduces for the third category on the map, digital
-sovereignty, is the name he gives to what Volume VI was building. A person who
-holds their own data is not exposed to the chain of Chapter 90, because the
-chain begins with somebody else holding it.
+Once pages could carry JavaScript, the site owner chose the program the reader
+ran, and the data stayed on the owner&#8217;s server: Facebook keeps its users&#8217; posts
+at facebook.com. With no common protocol there is no interoperability, so
+Flickr, Facebook and LinkedIn became closed silos.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig91-3-t fig91-3-d">
+  <title id="fig91-3-t">Protocol versus platform</title>
+  <desc id="fig91-3-d">Left: three mail apps, Apple Mail, Outlook and an
+  open-source app, each with an arrow to one box labelled the mailbox. Right:
+  a box labelled facebook.com encloses both the program and the posts; the
+  user&#8217;s browser sits outside it and receives the program.</desc>
+  <defs>
+    <marker id="ar91-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <text x="16" y="26" class="t-caps">open protocol</text>
+  <rect class="box-plain" x="16" y="48" width="150" height="36" rx="8"/>
+  <text x="91" y="71" text-anchor="middle">Apple Mail</text>
+  <rect class="box-plain" x="16" y="104" width="150" height="36" rx="8"/>
+  <text x="91" y="127" text-anchor="middle">Outlook</text>
+  <rect class="box-plain" x="16" y="160" width="150" height="36" rx="8"/>
+  <text x="91" y="183" text-anchor="middle">open-source app</text>
+  <rect class="box-green" x="226" y="94" width="120" height="56" rx="8"/>
+  <text x="286" y="127" text-anchor="middle">the mailbox</text>
+  <line class="ln" x1="166" y1="66" x2="224" y2="108" marker-end="url(#ar91-3)"/>
+  <line class="ln" x1="166" y1="122" x2="224" y2="122" marker-end="url(#ar91-3)"/>
+  <line class="ln" x1="166" y1="178" x2="224" y2="136" marker-end="url(#ar91-3)"/>
+  <text x="181" y="228" class="t-sm t-it" text-anchor="middle">the user chooses the app</text>
+
+  <line class="ln-mut" x1="372" y1="20" x2="372" y2="236"/>
+
+  <text x="396" y="26" class="t-caps">platform</text>
+  <rect class="box-warm" x="396" y="40" width="168" height="168" rx="8"/>
+  <text x="480" y="62" class="t-mono" text-anchor="middle">facebook.com</text>
+  <rect class="box-plain" x="416" y="80" width="128" height="40" rx="6"/>
+  <text x="480" y="105" text-anchor="middle">the program</text>
+  <rect class="box-plain" x="416" y="148" width="128" height="40" rx="6"/>
+  <text x="480" y="173" text-anchor="middle">the posts</text>
+  <rect class="box" x="604" y="80" width="104" height="40" rx="6"/>
+  <text x="656" y="105" text-anchor="middle">the browser</text>
+  <line class="ln" x1="544" y1="100" x2="602" y2="100" marker-end="url(#ar91-3)"/>
+  <text x="552" y="228" class="t-sm t-it" text-anchor="middle">the publisher holds both</text>
+</svg>
+<figcaption><span class="fig-label">Figure 91.3</span>
+With a protocol the user chooses the app and the data stays reachable by any of them;
+with a platform the publisher controls both the program and the data. Chapter
+64 draws the same split for social feeds.</figcaption>
+</figure>
+
+<h2>91.6 Federation and hosted chat</h2>
+
+<p>
+Federated systems are client&#8211;server systems where anyone can start a
+server; together they are called the Fediverse. ActivityPub, a W3C
+Recommendation, carries Mastodon, and in 2023 Meta said Threads would use it.
+Much of the open source community, including Solid, chats on Matrix. ADP,
+behind Bluesky, came from Jack Dorsey&#8217;s conclusion that Twitter should
+have been a protocol, though the note doubts it is truly decentralised. Among
+hosted chat services, Signal is run by a non-profit on an open protocol
+that WhatsApp also uses.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The phone bans happened.</strong> Restrictions on telephones in
-schools spread through many countries during 2024 and 2025, which is the
-response this note was written to complicate.</li>
-<li><strong>The pre-web categories kept working.</strong> Mail, chat, feeds and
-podcasts continued to operate without engagement ranking, which is the
-existence proof the map relies on.</li>
-<li><strong>Federated alternatives grew.</strong> Networks without a single
-owner expanded substantially, offering the third category at a larger scale
-than when this was written.</li>
-<li><strong>The map itself did not spread.</strong> The diagram remains a
-personal artefact rather than a reference, though the argument that most of the
-Web is benign became a common corrective in public debate.</li>
+<li><strong>Warning labels.</strong> As the note was being written, the US
+Surgeon General called in a New York Times opinion piece (June 2024) for warning
+labels on social media platforms; the note cites it.</li>
+<li><strong>Restrictions spread.</strong> Australia passed a law in November
+2024 setting a minimum age of 16 for social media accounts, the kind of
+withdrawal this note was written to complicate.</li>
 </ul>
 </div>
 
@@ -205,16 +354,22 @@ proportion ranks a feed?</p>
 <div class="question">
 <p><span class="question-number">91.2</span>
 Tracking that helps a service and tracking that enables manipulation are the
-same mechanism. What distinguishes them in practice?</p>
+same mechanism. The note draws the line at advertising by third parties. Is
+that the right place?</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.3</span>
-Withdrawal forfeits the good along with the harm. Name what a school banning
-telephones gives up.</p>
+Withdrawal forfeits the good along with the harm. Using the table in 91.5,
+name what a school banning phones gives up.</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.4</span>
 Define digital sovereignty precisely enough to tell whether a given system has
 it.</p>
+</div>
+<div class="question">
+<p><span class="question-number">91.5</span>
+Does an app you use every day speak an open protocol? How would you find
+out?</p>
 </div>
 </div>

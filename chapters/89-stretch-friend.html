@@ -52,8 +52,9 @@ a Design Issues note by Tim Berners-Lee, 2017-01-01.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Presented in talks from 2011 onwards and written down later, this note asks
-whether the thing the Web is praised for is actually being used.
+Dated 2011, presented in talks including the 2012 WWW conference keynote in
+Lyon, and left as a first draft, this note asks whether the thing the Web is
+praised for is actually being used.
 </p>
 <blockquote>
 We celebrate the web as a space which allows you to discover all kinds of new
@@ -68,7 +69,7 @@ aspect, of it?
 <h2>89.1 What recommendation does</h2>
 
 <p>
-The mechanism is described neutrally, because there is nothing wrong with it:
+Social networking sites suggest people a user might know, usually like this:
 </p>
 
 <blockquote>
@@ -89,10 +90,84 @@ becomes a solid mass of mutually connected people. We make cliques.
 </blockquote>
 
 <p>
-The example he gives is the one that makes the abstraction concrete: children
-able to play a game with anyone logged on anywhere in the world end up playing
-with the child next door, or the one at the other end of the sofa. Then the
-question:
+A clique is a closed group in which everyone knows everyone else. Each accepted
+suggestion closes a triangle (Figure 89.1), and the result, in the note&#8217;s
+words, &#8220;doesn&#8217;t in fact add new social experience&#8221;.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
+     aria-labelledby="fig89-1-t fig89-1-d">
+  <title id="fig89-1-t">How a clique forms</title>
+  <desc id="fig89-1-d">Three stages. First, Ann is friends with A and B, and C
+  is a friend of both A and B but not of Ann. Second, the system suggests C to
+  Ann because they have two friends in common. Third, the suggestion is accepted
+  and every person is linked to every other: a closed group with no new
+  contacts.</desc>
+  <defs>
+    <marker id="fig89-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="110" y="26" class="t-caps" text-anchor="middle">1. Ann&#8217;s friends</text>
+  <text x="360" y="26" class="t-caps" text-anchor="middle">2. a suggestion</text>
+  <text x="610" y="26" class="t-caps" text-anchor="middle">3. a clique</text>
+
+  <!-- panel 1, centre 110 -->
+  <path class="ln-mut" d="M 64 120 L 98 86 M 64 140 L 98 174 M 122 86 L 156 120 M 122 174 L 156 140"/>
+  <circle class="box-green" cx="50" cy="130" r="16"/>
+  <text x="50" y="134" text-anchor="middle">Ann</text>
+  <circle class="box-plain" cx="110" cy="75" r="16"/>
+  <text x="110" y="79" text-anchor="middle">A</text>
+  <circle class="box-plain" cx="110" cy="185" r="16"/>
+  <text x="110" y="189" text-anchor="middle">B</text>
+  <circle class="box-plain" cx="170" cy="130" r="16"/>
+  <text x="170" y="134" text-anchor="middle">C</text>
+  <text x="110" y="226" class="t-sm" text-anchor="middle">C is a friend of A and B,</text>
+  <text x="110" y="242" class="t-sm" text-anchor="middle">but not of Ann</text>
+
+  <path class="ln" marker-end="url(#fig89-1-arr)" d="M 204 130 L 268 130"/>
+
+  <!-- panel 2, centre 360 -->
+  <path class="ln-mut" d="M 314 120 L 348 86 M 314 140 L 348 174 M 372 86 L 406 120 M 372 174 L 406 140"/>
+  <path class="ln-accent" stroke-dasharray="5 4" d="M 316 130 L 404 130"/>
+  <circle class="box-green" cx="300" cy="130" r="16"/>
+  <text x="300" y="134" text-anchor="middle">Ann</text>
+  <circle class="box-plain" cx="360" cy="75" r="16"/>
+  <text x="360" y="79" text-anchor="middle">A</text>
+  <circle class="box-plain" cx="360" cy="185" r="16"/>
+  <text x="360" y="189" text-anchor="middle">B</text>
+  <circle class="box" cx="420" cy="130" r="16"/>
+  <text x="420" y="134" text-anchor="middle">C</text>
+  <text x="360" y="226" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">suggested: 2 friends</text>
+  <text x="360" y="242" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">in common</text>
+
+  <path class="ln" marker-end="url(#fig89-1-arr)" d="M 454 130 L 518 130"/>
+
+  <!-- panel 3, centre 610 -->
+  <path class="ln-mut" d="M 564 120 L 598 86 M 564 140 L 598 174 M 622 86 L 656 120 M 622 174 L 656 140 M 566 130 L 654 130 M 610 91 L 610 169"/>
+  <circle class="box-green" cx="550" cy="130" r="16"/>
+  <text x="550" y="134" text-anchor="middle">Ann</text>
+  <circle class="box-plain" cx="610" cy="75" r="16"/>
+  <text x="610" y="79" text-anchor="middle">A</text>
+  <circle class="box-plain" cx="610" cy="185" r="16"/>
+  <text x="610" y="189" text-anchor="middle">B</text>
+  <circle class="box-plain" cx="670" cy="130" r="16"/>
+  <text x="670" y="134" text-anchor="middle">C</text>
+  <text x="610" y="226" class="t-sm" text-anchor="middle">a closed group;</text>
+  <text x="610" y="242" class="t-sm" text-anchor="middle">no new contacts</text>
+</svg>
+<figcaption><span class="fig-label">Figure 89.1</span>
+Each suggestion closes a triangle, so the network folds in on itself.</figcaption>
+</figure>
+
+<p>
+The note cites Eli Pariser&#8217;s <em>The Filter Bubble</em> (2011): a
+filter bubble is a feed that shows a person only people and views like their own.
+Children able to play an online game with anyone in the world end up playing
+with the child next door, or the one at the other end of the sofa.
 </p>
 
 <blockquote>
@@ -103,62 +178,98 @@ planet?
 
 <h2>89.2 The proposal</h2>
 
+<p>
+Now and then, instead of a friend of a friend, the system would suggest someone
+almost identical to the user who differs in one respect, such as race or home town.
+The note&#8217;s own example:
+</p>
+
+<blockquote>
+You are a white male liberal geek in New York and you are offered a black male
+liberal geek in New York or maybe a white male liberal geek in Saudi Arabia.
+<cite>Stretch friends, 2011</cite>
+</blockquote>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig89-1-t fig89-1-d">
-  <title id="fig89-1-t">One axis at a time</title>
-  <desc id="fig89-1-d">A recommendation of a friend of a friend closes the
-  network into a clique. A stretch friend is someone almost identical to you
-  who differs along exactly one axis: race, creed, politics, interests or
-  place. One boundary, crossed deliberately.</desc>
+<svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
+     aria-labelledby="fig89-2-t fig89-2-d">
+  <title id="fig89-2-t">One axis at a time</title>
+  <desc id="fig89-2-d">Ann is described by five attributes: white, male,
+  liberal, geek, New York. The first stretch friend matches on all of them
+  except race, being black. The second matches on all except place, being in
+  Saudi Arabia. Below, the boundaries the note lists: race, colour, creed,
+  intellectual interests, political leaning, culture and location.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">friends of friends</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="248"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">a stretch friend</text>
+  <text x="24" y="67">Ann</text>
+  <rect class="box-plain" x="150" y="44" width="100" height="36" rx="4"/>
+  <text x="200" y="67" text-anchor="middle">white</text>
+  <rect class="box-plain" x="258" y="44" width="100" height="36" rx="4"/>
+  <text x="308" y="67" text-anchor="middle">male</text>
+  <rect class="box-plain" x="366" y="44" width="100" height="36" rx="4"/>
+  <text x="416" y="67" text-anchor="middle">liberal</text>
+  <rect class="box-plain" x="474" y="44" width="100" height="36" rx="4"/>
+  <text x="524" y="67" text-anchor="middle">geek</text>
+  <rect class="box-plain" x="582" y="44" width="100" height="36" rx="4"/>
+  <text x="632" y="67" text-anchor="middle">New York</text>
 
-  <g>
-    <circle cx="180" cy="130" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <circle cx="130" cy="96" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <circle cx="230" cy="96" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <circle cx="112" cy="160" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <circle cx="248" cy="160" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <circle cx="180" cy="190" r="8" fill="#f8f5f0" stroke="#b08d57"/>
-    <g stroke="#d8c3a2" stroke-width="1.1" fill="none">
-      <path d="M 180 130 L 130 96 M 180 130 L 230 96 M 180 130 L 112 160
-               M 180 130 L 248 160 M 180 130 L 180 190
-               M 130 96 L 230 96 M 112 160 L 180 190 M 248 160 L 180 190
-               M 130 96 L 112 160 M 230 96 L 248 160"/>
-    </g>
-  </g>
-  <text x="180" y="228" class="t-sm" text-anchor="middle">a solid mass; nothing new arrives</text>
+  <text x="24" y="20" class="t-caps">who</text>
+  <text x="416" y="20" class="t-caps" text-anchor="middle">attributes</text>
 
-  <circle cx="470" cy="130" r="10" fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
-  <text x="470" y="160" class="t-sm" text-anchor="middle">you</text>
-  <path class="ln" stroke="#5a8f5a" stroke-dasharray="5 4" d="M 484 130 L 606 130"/>
-  <circle cx="620" cy="130" r="10" fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
-  <text x="620" y="160" class="t-sm" text-anchor="middle">almost you</text>
-  <text x="545" y="112" class="t-sm" text-anchor="middle" fill="#3f6f3f">one axis</text>
-  <text x="545" y="196" class="t-sm" text-anchor="middle">race &#183; colour &#183; creed &#183; interests</text>
-  <text x="545" y="216" class="t-sm" text-anchor="middle">politics &#183; culture &#183; location</text>
-  <text x="545" y="240" class="t-sm t-it" text-anchor="middle">just one at a time</text>
+  <text x="24" y="127">offered</text>
+  <rect class="box-green" x="150" y="104" width="100" height="36" rx="4"/>
+  <text x="200" y="127" text-anchor="middle">black</text>
+  <rect class="box-plain" x="258" y="104" width="100" height="36" rx="4"/>
+  <text x="308" y="127" text-anchor="middle">male</text>
+  <rect class="box-plain" x="366" y="104" width="100" height="36" rx="4"/>
+  <text x="416" y="127" text-anchor="middle">liberal</text>
+  <rect class="box-plain" x="474" y="104" width="100" height="36" rx="4"/>
+  <text x="524" y="127" text-anchor="middle">geek</text>
+  <rect class="box-plain" x="582" y="104" width="100" height="36" rx="4"/>
+  <text x="632" y="127" text-anchor="middle">New York</text>
 
-  <line class="ln-mut" x1="24" y1="264" x2="696" y2="264"/>
-  <text x="360" y="288" class="t-sm" text-anchor="middle">&#8220;Can you put the effort in to talk to someone whose life or beliefs or interests</text>
-  <text x="360" y="308" class="t-sm" text-anchor="middle">differ along one axis?&#8221;</text>
+  <text x="24" y="187">or maybe</text>
+  <rect class="box-plain" x="150" y="164" width="100" height="36" rx="4"/>
+  <text x="200" y="187" text-anchor="middle">white</text>
+  <rect class="box-plain" x="258" y="164" width="100" height="36" rx="4"/>
+  <text x="308" y="187" text-anchor="middle">male</text>
+  <rect class="box-plain" x="366" y="164" width="100" height="36" rx="4"/>
+  <text x="416" y="187" text-anchor="middle">liberal</text>
+  <rect class="box-plain" x="474" y="164" width="100" height="36" rx="4"/>
+  <text x="524" y="187" text-anchor="middle">geek</text>
+  <rect class="box-green" x="582" y="164" width="100" height="36" rx="4"/>
+  <text x="632" y="187" text-anchor="middle">Saudi Arabia</text>
+
+  <line class="ln-mut" x1="24" y1="218" x2="696" y2="218"/>
+  <text x="360" y="240" class="t-sm" text-anchor="middle">boundaries the note lists: race &#183; colour &#183; creed &#183; intellectual interests &#183; political leaning &#183; culture &#183; location</text>
 </svg>
-<figcaption><span class="fig-label">Figure 89.1</span>
-The restraint is the design. One axis at a time, because a person who differs
-along every axis is not someone you will talk to.</figcaption>
+<figcaption><span class="fig-label">Figure 89.2</span>
+Everything is shared except one thing (green), which gives the two people
+common ground from which to cross the one difference.</figcaption>
 </figure>
+
+<p>
+Only one boundary is crossed at a time:
+</p>
+
+<blockquote>
+Just one at a time. Maybe more later, but for now, let's see how you get on.
+<cite>Stretch friends, 2011</cite>
+</blockquote>
+
+<p>
+If lots of people had stretch friends, the note asks, would the world
+be &#8220;an incrementaly better place, or maybe after a while a dramatically
+different place?&#8221;
+</p>
 
 <h2>89.3 The evidence he cites</h2>
 
 <p>
-The note rests on one piece of survey analysis, recounted with an explicit note
-to check the details. In the American election of 2008, an analyst was puzzled
-that the shift towards one candidate occurred almost everywhere except among
-one group. Those people, when asked, said they could not imagine a person of
-that race being president. And who were they?
+The note rests on one analysis, flagged as needing checking. In a TED talk,
+Nate Silver described his puzzlement that in the election which first elected
+Barack Obama, almost the whole country shifted to the liberal side except one
+group, people who could not imagine a black person being president. Who were
+they?
 </p>
 
 <blockquote>
@@ -167,9 +278,52 @@ question, "Have you ever lived or worked with someone of a different race".
 <cite>Stretch friends, 2011</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 176" width="720" height="176" role="img"
+     aria-labelledby="fig89-3-t fig89-3-d">
+  <title id="fig89-3-t">The evidence chain</title>
+  <desc id="fig89-3-d">Three linked findings. A general shift to the liberal
+  side, except in one group. That group could not imagine a black president.
+  Its members had, by strong correlation, never lived or worked with someone of
+  a different race. The note flags the details as needing checking.</desc>
+  <defs>
+    <marker id="fig89-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="120" y="26" class="t-caps" text-anchor="middle">the puzzle</text>
+  <text x="360" y="26" class="t-caps" text-anchor="middle">the attitude</text>
+  <text x="600" y="26" class="t-caps" text-anchor="middle">the predictor</text>
+
+  <rect class="box-plain" x="20" y="40" width="200" height="90" rx="5"/>
+  <text x="120" y="72" text-anchor="middle">a general shift to the</text>
+  <text x="120" y="90" text-anchor="middle">liberal side, except</text>
+  <text x="120" y="108" text-anchor="middle">in one group</text>
+
+  <path class="ln" marker-end="url(#fig89-3-arr)" d="M 224 85 L 256 85"/>
+
+  <rect class="box-warm" x="260" y="40" width="200" height="90" rx="5"/>
+  <text x="360" y="81" text-anchor="middle">they could not imagine</text>
+  <text x="360" y="99" text-anchor="middle">a black president</text>
+
+  <path class="ln" marker-end="url(#fig89-3-arr)" d="M 464 85 L 496 85"/>
+
+  <rect class="box-green" x="500" y="40" width="200" height="90" rx="5"/>
+  <text x="600" y="72" text-anchor="middle">they had never lived or</text>
+  <text x="600" y="90" text-anchor="middle">worked with someone</text>
+  <text x="600" y="108" text-anchor="middle">of a different race</text>
+
+  <text x="360" y="160" class="t-sm t-it" text-anchor="middle">the author&#8217;s own flag on this passage: @@check details</text>
+</svg>
+<figcaption><span class="fig-label">Figure 89.3</span>
+Each box explains the one before it: the absence of contact predicted the
+attitude, and the attitude explained the exception.</figcaption>
+</figure>
+
 <p>
-The generalisation Berners-Lee draws is about human beings rather than about
-that election:
+Berners-Lee generalises from the election to human beings:
 </p>
 
 <blockquote>
@@ -180,23 +334,20 @@ tribal at the drop of a hat
 </blockquote>
 
 <p>
-He cites the classroom experiment in which children were divided by eye colour
-and calls it rather horrid. The conclusion is stated as urgency: breaking down
-these single differences, which otherwise let people switch into a tribal mode,
-becomes a matter of urgency.
+He calls &#8220;rather horrid&#8221; the experiments in which school children
+wore badges showing their eye colour; the reference is left as a placeholder. (Editor&#8217;s note: this is
+presumably Jane Elliott&#8217;s 1968 blue-eyes/brown-eyes classroom exercise.)
+Breaking down such single differences, which otherwise let people switch into
+a tribal mode, therefore becomes a matter of urgency.
 </p>
 
 <h2>89.4 The invitation</h2>
 
 <p>
-The note ends without a design, which is unusual and appropriate. Berners-Lee
-notes the idea could be expanded, and connects it to town and school twinning
-schemes, with a parenthetical observation that when such things are arranged by
-churches they do not always cross religious boundaries.
-</p>
-
-<p>
-Then the closing line, which is an argument about method:
+The note ends without a worked-out <a class="gl-ref" href="../glossary.html#scheme">scheme</a>. It links the idea to twinning
+projects, in which towns or schools pair up with partners in very different
+parts of the world, noting that church-arranged ones do not always cross
+religious boundaries. The closing line is an argument about method:
 </p>
 
 <blockquote>
@@ -206,27 +357,29 @@ work out what the effect would be. Or we could just try it.
 </blockquote>
 
 <p>
-Chapter 87 admits it has no mathematics for the shape of a healthy society.
-This says the shortage of mathematics is not a reason to wait, because the
-intervention is cheap, reversible and refusable by anyone who does not want it.
+Chapter 87 admits it has no mathematics for a healthy society; this note treats
+that as no reason to wait. One reading is that the intervention is cheap and
+easy to decline, so it can be tried first and measured afterwards.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Nobody built it.</strong> No major platform has offered a
-recommendation deliberately chosen to cross a boundary, and the incentive runs
-the other way: similar people engage more.</li>
-<li><strong>The diagnosis was confirmed at scale.</strong> Homophily in
-recommendation and the resulting narrowing of exposure became one of the most
-studied properties of social platforms in the following decade.</li>
-<li><strong>The contact hypothesis held up.</strong> Research since has
-continued to find that contact across a difference reduces prejudice, with
-conditions attached, which is the mechanism this proposal relies on.</li>
-<li><strong>Exposure to difference grew and did not help.</strong> Platforms
-increased encounters across political lines, and evidence suggests the
-encounters were adversarial rather than acquainted, which is a distinction the
-note does not draw and which turns out to matter.</li>
+<li><strong>No major platform is known to have built it.</strong> The
+incentive runs the other way: similar people engage more.</li>
+<li><strong>The diagnosis was studied at scale.</strong> Homophily, people&#8217;s
+tendency to connect with people like themselves, became a central topic; in
+2015 Bakshy, Messing and Adamic (<em>Science</em>) measured how far Facebook
+users&#8217; friends and choices narrowed their exposure to opposing news.</li>
+<li><strong>The contact hypothesis held up.</strong> Gordon Allport&#8217;s 1954
+idea that contact across a difference reduces prejudice, the mechanism this
+proposal relies on, was supported by Pettigrew and Tropp&#8217;s 2006 review of
+over 500 studies, with conditions attached.</li>
+<li><strong>Exposure to difference can backfire.</strong> Bail and colleagues
+(<em>PNAS</em>, 2018) paid Twitter users to follow a bot retweeting the other
+political side; Republicans in particular became more polarised. Such encounters
+are adversarial rather than acquainted, a distinction the note does not
+draw.</li>
 </ul>
 </div>
 
@@ -248,17 +401,18 @@ differ from you?</p>
 </div>
 <div class="question">
 <p><span class="question-number">89.2</span>
-One axis at a time is a design restraint. Explain why crossing several at once
-fails.</p>
+Why might the note limit the stretch to one axis? Give a reason the note does
+not state.</p>
 </div>
 <div class="question">
 <p><span class="question-number">89.3</span>
-Exposure increased and did not reduce hostility. What distinguishes contact
-that helps from contact that does not?</p>
+Using the distinction between adversarial and acquainted encounters, explain
+what separates contact that helps from contact that does not.</p>
 </div>
 <div class="question">
 <p><span class="question-number">89.4</span>
-No platform has an incentive to build this. Design one that would.</p>
+Who besides an advertising-funded platform (a school, a town-twinning scheme)
+might run stretch friends, and why?</p>
 </div>
 </details>
 

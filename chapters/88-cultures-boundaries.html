@@ -49,6 +49,16 @@
 a Design Issues note by Tim Berners-Lee, 2007.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Culture.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Groups invent words to talk better among themselves. Every such word also
+makes the group harder to understand from outside. The cure is the hard work of
+figuring out what the other side means. The <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> was designed so that
+many small vocabularies can be mixed, rather than forcing one giant one.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -70,37 +80,40 @@ other.
 
 <p>
 The first effect is the intended one: a shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> broadens what can be
-discussed without misunderstanding. The second effect is not intended by
-anybody:
+discussed without misunderstanding. The second effect is, in most cases, not
+intended by anyone:
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig88-1-t fig88-1-d">
   <title id="fig88-1-t">Every shared word raises the wall</title>
-  <desc id="fig88-1-d">Each term a group settles makes communication inside it
-  easier by some amount, and communication across its boundary harder by a
-  corresponding amount. The two effects are the same event seen from inside and
-  outside.</desc>
+  <desc id="fig88-1-d">A circle holds the group and its shared terms, and a thick
+  ring around it marks the boundary. Inside, more can be said, faster. To an
+  outsider on the right, each term is one more thing that must be explained.
+  The two effects are the same event seen from inside and outside.</desc>
 
+  <text x="200" y="20" class="t-sm" text-anchor="middle" style="fill:#b08d57">boundary</text>
+  <circle cx="200" cy="130" r="96" fill="none" stroke="#b08d57" stroke-width="5"/>
   <circle cx="200" cy="130" r="88" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1.6"/>
-  <text x="200" y="100" class="t-sm" text-anchor="middle">a shared term</text>
-  <text x="200" y="122" class="t-sm" text-anchor="middle">another shared term</text>
-  <text x="200" y="144" class="t-sm" text-anchor="middle">a coined word</text>
-  <text x="200" y="166" class="t-sm" text-anchor="middle">a word with a twist</text>
-  <text x="200" y="244" class="t-sm" text-anchor="middle" fill="#1c5a7a">inside: more can be said, faster</text>
+  <text x="200" y="74" class="t-caps" text-anchor="middle">the group</text>
+  <text x="200" y="102" class="t-sm" text-anchor="middle">a shared term</text>
+  <text x="200" y="124" class="t-sm" text-anchor="middle">another shared term</text>
+  <text x="200" y="146" class="t-sm" text-anchor="middle">a coined word</text>
+  <text x="200" y="168" class="t-sm" text-anchor="middle">a word with a twist</text>
+  <text x="200" y="250" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">inside: more can be said, faster</text>
 
-  <g stroke="#b08d57" stroke-width="2.4" fill="none">
-    <path d="M 296 96 L 320 96"/><path d="M 296 118 L 326 118"/>
-    <path d="M 296 140 L 330 140"/><path d="M 296 162 L 322 162"/>
-  </g>
-  <text x="420" y="122" class="t-sm" fill="#a07d47">outside: each term is one more</text>
-  <text x="420" y="144" class="t-sm" fill="#a07d47">thing that must be explained</text>
-  <text x="420" y="184" class="t-sm t-it">the group may see outsiders as slow;</text>
-  <text x="420" y="204" class="t-sm t-it">outsiders may see the group as using jargon</text>
+  <rect class="box-warm" x="330" y="84" width="366" height="130" rx="4"/>
+  <text x="346" y="110" class="t-sm" style="fill:#b08d57">outside: each term is one more</text>
+  <text x="346" y="130" class="t-sm" style="fill:#b08d57">thing that must be explained</text>
+  <text x="346" y="168" class="t-sm t-it">the group may see outsiders as slow;</text>
+  <text x="346" y="188" class="t-sm t-it">outsiders may see the group as using jargon</text>
+  <circle cx="650" cy="116" r="8" fill="none" stroke="#2f4f4f" stroke-width="1.4"/>
+  <path class="ln" d="M 650 124 L 650 152 M 636 134 L 664 134 M 650 152 L 640 172 M 650 152 L 660 172"/>
+  <text x="650" y="198" class="t-sm" text-anchor="middle">an outsider</text>
 
-  <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
-  <text x="360" y="288" class="t-sm" text-anchor="middle">&#8220;That which makes a group culture stronger necessarily isolates it from others.&#8221;</text>
+  <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
+  <text x="360" y="290" class="t-sm" text-anchor="middle">&#8220;That which makes a group culture stronger necessarily isolates it from others.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 88.1</span>
 Berners-Lee states the effect as inexorable and unintentional: for every
@@ -112,8 +125,7 @@ boundary.</figcaption>
 <h2>88.2 What it looks like in practice</h2>
 
 <p>
-The example is drawn from his own working life and will be recognised by anyone
-who has sat on a committee:
+An example from his own working life:
 </p>
 
 <blockquote>
@@ -125,12 +137,10 @@ this will be a surprise to the members of the group.
 </blockquote>
 
 <p>
-The surprise is the diagnostic detail. The group did not notice the wall going
-up, because from inside it looked like progress.
-</p>
-
-<p>
-Then the escalation, described without softening:
+The surprise is the telling detail: from inside, the wall going up looked
+like progress. Each side then explains the gap in its own way. The group finds outsiders &ldquo;rather slow to
+understand&rdquo;, and the outsiders see the group as using, or misusing,
+jargon. From there it can escalate:
 </p>
 
 <blockquote>
@@ -142,8 +152,7 @@ being stupid, malicious, or even heretical.
 <h2>88.3 The remedy, and what it costs</h2>
 
 <p>
-The solution offered is called incomplete but essential, and it is not a
-technique:
+The solution offered is not a technique, and the note admits it is incomplete:
 </p>
 
 <blockquote>
@@ -154,20 +163,23 @@ hard work.
 </blockquote>
 
 <p>
-Berners-Lee cites neuroscience for the claim that this involves specific parts
-of the brain, and describes what it means in a technical setting: a careful
-study of the words in the other party&#8217;s seemingly senseless protestations, in
-order to build up logically a conclusion about how those words must be related
-in the other&#8217;s mind.
+In a technical setting it means carefully studying the words in the other
+party&#8217;s seemingly senseless protestations, to work out how those words must
+be related in the other&#8217;s mind: not deciding they are wrong, but asking
+what would have to be true of their vocabulary for what they said to make
+sense.
 </p>
 
 <p>
-Not deciding they are wrong. Working out what would have to be true of their
-vocabulary for what they said to make sense.
+An illustration (ours, not the note&#8217;s): sales and billing disagree on how
+many customers the firm has. Listening reveals that sales counts signed
+contracts and billing counts invoices paid this year. Both numbers are right.
 </p>
 
 <p>
-The consequence for standards work is stated as a cost:
+This is what makes standards slow. When a small group&#8217;s <a class="gl-ref" href="../glossary.html#specification">specification</a>
+goes out for wide agreement, its terms are re-examined and often changed, as the
+wider group repeats what the small group already went through. Hence:
 </p>
 
 <blockquote>
@@ -179,9 +191,74 @@ understanding which takes so much more time.
 
 <h2>88.4 Why the technology was shaped by this</h2>
 
+<h3>From nested to tangled</h3>
+
 <p>
-The last section makes the connection that places this chapter at the centre of
-the book:
+In practice, the note says, life is a &ldquo;fractal tangle of overlapping
+communities&rdquo;. &ldquo;Fractal&rdquo; here means the same pattern of
+overlapping groups at every scale, from a family to the whole world. So there is
+always a little language shared by very many people, a great deal of language
+local to individuals, and everything in between.
+</p>
+
+<p>
+In earlier centuries geography constrained who could form a group, so
+communities were nested: town inside region inside country. The Internet and
+the Web remove that constraint. A person can also belong, worldwide, to the
+specialists in a field, to people with a particular medical condition, or to
+people concerned about a global issue.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig88-2-t fig88-2-d">
+  <title id="fig88-2-t">Nested versus tangled communities</title>
+  <desc id="fig88-2-d">Left: before the Web, a person sits in a town, inside a
+  region, inside a country. Right: with the Web, the same person sits where four
+  overlapping circles of different sizes meet: a town, specialists in a field,
+  people with a medical condition, and a much larger group concerned with a
+  global issue.</desc>
+
+  <text x="182" y="30" class="t-caps" text-anchor="middle">Before: nested by geography</text>
+  <rect class="box-plain" x="40" y="48" width="284" height="212" rx="10"/>
+  <text x="54" y="70" class="t-sm">country</text>
+  <rect class="box-plain" x="70" y="86" width="224" height="150" rx="10"/>
+  <text x="84" y="106" class="t-sm">region</text>
+  <rect class="box" x="110" y="124" width="144" height="86" rx="10"/>
+  <text x="124" y="144" class="t-sm">town</text>
+  <circle cx="160" cy="180" r="5" fill="#1c5a7a"/>
+  <text x="172" y="184" class="t-sm">a person</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="262"/>
+
+  <text x="540" y="30" class="t-caps" text-anchor="middle">With the Web: overlapping</text>
+  <circle cx="480" cy="180" r="90" fill="#f8f5f0" fill-opacity="0.6" stroke="#b08d57" stroke-width="1.4"/>
+  <circle cx="510" cy="136" r="44" fill="#f0f5f8" fill-opacity="0.6" stroke="#1c5a7a" stroke-width="1.4"/>
+  <circle cx="576" cy="132" r="50" fill="#f0f5f8" fill-opacity="0.6" stroke="#1c5a7a" stroke-width="1.4"/>
+  <circle cx="576" cy="192" r="52" fill="#f5f8f0" fill-opacity="0.6" stroke="#5a8f5a" stroke-width="1.4"/>
+  <text x="502" y="128" class="t-sm" text-anchor="middle">town</text>
+  <text x="594" y="124" class="t-sm" text-anchor="middle">medical</text>
+  <text x="594" y="138" class="t-sm" text-anchor="middle">condition</text>
+  <text x="586" y="200" class="t-sm" text-anchor="middle">specialists</text>
+  <text x="586" y="214" class="t-sm" text-anchor="middle">in a field</text>
+  <text x="470" y="214" class="t-sm" text-anchor="middle">a global issue</text>
+  <text x="470" y="230" class="t-sm" text-anchor="middle">(very many people)</text>
+  <circle cx="540" cy="160" r="5" fill="#1c5a7a"/>
+  <path class="ln-mut" d="M 548 160 L 634 160"/>
+  <text x="640" y="164" class="t-sm">a person</text>
+
+  <line class="ln-mut" x1="24" y1="272" x2="696" y2="272"/>
+  <text x="360" y="292" class="t-sm t-it" text-anchor="middle">Small groups carry many local terms; the largest carries a little language shared by very many.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 88.2</span>
+Groups no longer fit inside one another. Each person sits in many groups of
+every size at once, which is what the note means by a fractal
+tangle.</figcaption>
+</figure>
+
+<p>
+Then comes the connection that places this chapter at the centre of the
+book:
 </p>
 
 <blockquote>
@@ -189,16 +266,24 @@ The Semantic Web is a technology engineered specifically for this situation.
 <cite>Cultures and boundaries, 2007</cite>
 </blockquote>
 
-<p>
-The four sentences that follow are the whole design compressed. Terms are
-defined in groups of consistent related terms. Those groups are defined by
-communities. A person belongs to many communities. A message mixes terms from
-many groups, and an operation requires consistency only between the parts
-actually in use.
-</p>
+<h3>The design in five sentences</h3>
 
 <p>
-And the two failures it is built to avoid, named as things already known:
+Five sentences follow that compress the whole design. An <em><a class="gl-ref" href="../glossary.html#ontology">ontology</a></em> is
+a vocabulary: a set of related terms with agreed meanings.
+</p>
+
+<ol>
+<li>Terms are defined in ontologies.</li>
+<li>Ontologies are defined by communities.</li>
+<li>A person is involved in many communities.</li>
+<li>A message mixes terms from many ontologies.</li>
+<li>An operation needs consistency only between the parts of ontologies it
+actually uses.</li>
+</ol>
+
+<p>
+The note then names the two failures this is built to avoid:
 </p>
 
 <blockquote>
@@ -210,8 +295,85 @@ the re-use of data, which just does not happen, to our great detriment.
 </blockquote>
 
 <p>
-Those are Chapter 87&#8217;s two deaths, arriving as a <a class="gl-ref" href="../glossary.html#specification">specification</a> requirement. And
-the conclusion is a single clause about what follows:
+A stovepipe is a system that only talks to itself, like a pipe with no side
+openings. These are the two ways a system can fail that Chapter 87 described
+for cultures: one vocabulary too big to agree on, or many too small to
+share.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+     aria-labelledby="fig88-3-t fig88-3-d">
+  <title id="fig88-3-t">Three ways to share vocabulary</title>
+  <desc id="fig88-3-d">Left: one vocabulary for everyone, surrounded by many
+  people; consensus is never reached. Centre: stovepipes, three separate
+  systems each with its own terms and data and no connections; data is not
+  reused. Right: mixed vocabularies, three overlapping circles of terms, with a
+  message whose arrows point to one term in each; consistency is needed only
+  for the terms used.</desc>
+  <defs>
+    <marker id="fig88-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c5a7a"/>
+    </marker>
+  </defs>
+
+  <line class="ln-mut" x1="244" y1="16" x2="244" y2="244"/>
+  <line class="ln-mut" x1="476" y1="16" x2="476" y2="244"/>
+
+  <text x="130" y="30" text-anchor="middle">One ontology of everything</text>
+  <rect class="box" x="66" y="66" width="128" height="100" rx="4"/>
+  <text x="130" y="112" class="t-sm" text-anchor="middle">one vocabulary</text>
+  <text x="130" y="128" class="t-sm" text-anchor="middle">for everyone</text>
+  <g fill="#8a9a9a">
+    <circle cx="70" cy="50" r="4"/><circle cx="96" cy="50" r="4"/><circle cx="122" cy="50" r="4"/>
+    <circle cx="148" cy="50" r="4"/><circle cx="174" cy="50" r="4"/><circle cx="200" cy="50" r="4"/>
+    <circle cx="70" cy="184" r="4"/><circle cx="96" cy="184" r="4"/><circle cx="122" cy="184" r="4"/>
+    <circle cx="148" cy="184" r="4"/><circle cx="174" cy="184" r="4"/><circle cx="200" cy="184" r="4"/>
+    <circle cx="48" cy="82" r="4"/><circle cx="48" cy="116" r="4"/><circle cx="48" cy="150" r="4"/>
+    <circle cx="212" cy="82" r="4"/><circle cx="212" cy="116" r="4"/><circle cx="212" cy="150" r="4"/>
+  </g>
+  <text x="130" y="222" class="t-sm" text-anchor="middle" style="fill:#b08d57">consensus never reached</text>
+
+  <text x="360" y="30" text-anchor="middle">Stovepipes</text>
+  <rect class="box" x="260" y="70" width="56" height="40" rx="4"/>
+  <rect class="box" x="332" y="70" width="56" height="40" rx="4"/>
+  <rect class="box" x="404" y="70" width="56" height="40" rx="4"/>
+  <text x="288" y="94" class="t-sm" text-anchor="middle">terms</text>
+  <text x="360" y="94" class="t-sm" text-anchor="middle">terms</text>
+  <text x="432" y="94" class="t-sm" text-anchor="middle">terms</text>
+  <g fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1.2">
+    <path d="M 270 134 L 270 166 A 18 5 0 0 0 306 166 L 306 134"/><ellipse cx="288" cy="134" rx="18" ry="5"/>
+    <path d="M 342 134 L 342 166 A 18 5 0 0 0 378 166 L 378 134"/><ellipse cx="360" cy="134" rx="18" ry="5"/>
+    <path d="M 414 134 L 414 166 A 18 5 0 0 0 450 166 L 450 134"/><ellipse cx="432" cy="134" rx="18" ry="5"/>
+  </g>
+  <text x="288" y="158" class="t-sm" text-anchor="middle">data</text>
+  <text x="360" y="158" class="t-sm" text-anchor="middle">data</text>
+  <text x="432" y="158" class="t-sm" text-anchor="middle">data</text>
+  <text x="360" y="222" class="t-sm" text-anchor="middle" style="fill:#b08d57">data not reused</text>
+
+  <text x="586" y="30" text-anchor="middle">Mixed vocabularies</text>
+  <text x="586" y="46" class="t-sm" text-anchor="middle">(the Semantic Web)</text>
+  <g fill="#f0f5f8" fill-opacity="0.6" stroke="#1c5a7a" stroke-width="1.2">
+    <circle cx="554" cy="94" r="36"/><circle cx="618" cy="94" r="36"/><circle cx="586" cy="132" r="36"/>
+  </g>
+  <circle cx="536" cy="82" r="4" fill="#1c5a7a"/>
+  <circle cx="636" cy="82" r="4" fill="#1c5a7a"/>
+  <circle cx="586" cy="152" r="4" fill="#1c5a7a"/>
+  <rect class="box-green" x="546" y="178" width="80" height="24" rx="3"/>
+  <text x="586" y="194" class="t-sm" text-anchor="middle">a message</text>
+  <path class="ln-accent" d="M 560 178 L 539 89" marker-end="url(#fig88-3-ah)"/>
+  <path class="ln-accent" d="M 612 178 L 633 89" marker-end="url(#fig88-3-ah)"/>
+  <path class="ln-accent" d="M 586 178 L 586 160" marker-end="url(#fig88-3-ah)"/>
+  <text x="586" y="222" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">consistency needed only</text>
+  <text x="586" y="238" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">for the terms used</text>
+</svg>
+<figcaption><span class="fig-label">Figure 88.3</span>
+The note rejects the first two arrangements and designs for the
+third.</figcaption>
+</figure>
+
+<p>
+The conclusion follows in a single clause:
 </p>
 
 <blockquote>
@@ -222,20 +384,10 @@ And so we engineer specifically for a fractal topology.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The mechanism became a standard observation.</strong> The way
-shared vocabulary both bonds and excludes is now routinely described in work
-on organisations and on online communities, usually without reference to this
-note.</li>
-<li><strong>Mixing vocabularies became normal practice.</strong> Combining
-terms from several communities in one message is how structured data is
-published, which is the engineering response section 88.4 describes.</li>
-<li><strong>Translation work remained undervalued.</strong> The listening
-described in section 88.3 is still done by individuals rather than
-institutionalised, and standards bodies still discover late that their
-documents are unreadable outside the group.</li>
-<li><strong>The escalation got worse.</strong> Groups seeing each other as
-stupid or malicious became a defining feature of public discourse in the
-following decade, which Chapter 90 treats directly.</li>
+<li><strong>Mixing vocabularies became normal practice.</strong> <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>
+(from 2006) and <a class="gl-ref" href="../glossary.html#schema">schema</a>.org (launched 2011) published data that mixes terms from
+several vocabularies. Schema.org itself, though, is one large shared
+vocabulary, closer to the first arrangement in Figure 88.3.</li>
 </ul>
 </div>
 
@@ -250,7 +402,7 @@ Chapter 89.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">88.1</span>
 List five terms your team uses that an outsider would not understand. When did
@@ -268,8 +420,12 @@ speaker&#8217;s vocabulary for it to make sense.</p>
 </div>
 <div class="question">
 <p><span class="question-number">88.4</span>
-A single vocabulary for everything cannot be agreed, and purely local ones
-prevent reuse. Where is your own field on that scale?</p>
+Which of the three panels in Figure 88.3 best describes how data is shared in a
+field you know? Give one example.</p>
+</div>
+<div class="question">
+<p><span class="question-number">88.5</span>
+Why did geography once make communities nested, and what changed?</p>
 </div>
 </details>
 
