@@ -1,15 +1,23 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A delta lists what to remove and what to add; sigma means applying it.
+Sending deltas between copies is cheaper than sending whole copies, but only
+safe if the delta names things that cannot be confused.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the most paper-shaped note in the collection, written with an abstract
-and references, and it asks a question that sounds like plumbing and is not:
-what is the difference between two graphs, and how do you send it?
+This is the most paper-shaped note in the collection, written by Berners-Lee
+with Dan Connolly. It asks a question that sounds like plumbing and is not:
+what is the difference between two graphs, and how is it sent?
 </p>
 <p>
-Berners-Lee starts from what already works elsewhere. Text files have
-differences and version control. Databases have insert and update statements.
-In both cases the states are represented explicitly and so are the transitions
-between them.
+Text files have differences and version control; databases have insert and
+update statements. In both, the states and the transitions between them are
+represented explicitly.
 </p>
 <blockquote>
 Since the transitions can be represented much more compactly than the pairs of
@@ -17,19 +25,77 @@ states, and the sigma function is straightforward to compute, the deltas are
 useful for efficiently updating data distributed among two or more peers.
 <cite>Delta: an ontology for the distribution of differences between RDF graphs, 2001</cite>
 </blockquote>
+<p>
+Delta (&Delta;) is the difference between two versions; sigma (&Sigma;)
+applies a difference to a version to get the next one.
+</p>
 </div>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+     aria-labelledby="fig45-1-t fig45-1-d">
+  <title id="fig45-1-t">Sending the change instead of the state</title>
+  <desc id="fig45-1-d">Peer A edits its address book from version v0, where
+  Ann's number is 1234, to version v1, where it is 5678. The delta between the
+  two, delete Ann 1234 and add Ann 5678, travels to peer B, which holds a copy
+  of v0. Applying the delta to v0 with sigma gives v1. The alternative, sending
+  all of v1, is much larger.</desc>
+
+  <text x="150" y="26" class="t-caps" text-anchor="middle">peer A</text>
+  <text x="570" y="26" class="t-caps" text-anchor="middle">peer B</text>
+
+  <rect class="box" x="40" y="40" width="220" height="72" rx="4"/>
+  <text x="150" y="60" class="t-caps" text-anchor="middle">v0</text>
+  <text x="150" y="82" class="t-mono" text-anchor="middle" font-size="12">Ann 1234</text>
+  <text x="150" y="101" class="t-sm t-it" text-anchor="middle">and many other entries</text>
+
+  <rect class="box" x="460" y="40" width="220" height="72" rx="4"/>
+  <text x="570" y="60" class="t-caps" text-anchor="middle">v0 (copy)</text>
+  <text x="570" y="82" class="t-mono" text-anchor="middle" font-size="12">Ann 1234</text>
+  <text x="570" y="101" class="t-sm t-it" text-anchor="middle">and many other entries</text>
+
+  <path class="ln" d="M 150 112 L 150 160"/>
+  <path d="M 145 158 L 150 168 L 155 158 Z" fill="#2f4f4f"/>
+  <text x="160" y="144" class="t-sm">edit</text>
+
+  <path class="ln" d="M 570 112 L 570 160"/>
+  <path d="M 565 158 L 570 168 L 575 158 Z" fill="#2f4f4f"/>
+  <text x="580" y="158" class="t-sm">&#931;(v0, &#916;) = v1</text>
+
+  <rect class="box" x="40" y="168" width="220" height="72" rx="4"/>
+  <text x="150" y="188" class="t-caps" text-anchor="middle">v1</text>
+  <text x="150" y="210" class="t-mono" text-anchor="middle" font-size="12">Ann 5678</text>
+  <text x="150" y="229" class="t-sm t-it" text-anchor="middle">and many other entries</text>
+
+  <rect class="box" x="460" y="168" width="220" height="72" rx="4"/>
+  <text x="570" y="188" class="t-caps" text-anchor="middle">v1</text>
+  <text x="570" y="210" class="t-mono" text-anchor="middle" font-size="12">Ann 5678</text>
+  <text x="570" y="229" class="t-sm t-it" text-anchor="middle">and many other entries</text>
+
+  <path class="ln-mut" d="M 260 80 L 290 128 M 260 200 L 290 150"/>
+  <text x="360" y="106" class="t-sm" text-anchor="middle">&#916;(v0, v1)</text>
+  <rect class="box-green" x="290" y="116" width="140" height="44" rx="4"/>
+  <text x="360" y="134" class="t-sm" text-anchor="middle">delete Ann 1234</text>
+  <text x="360" y="151" class="t-sm" text-anchor="middle">add Ann 5678</text>
+
+  <path class="ln-accent" style="stroke-dasharray:5 4" d="M 430 138 L 558 138"/>
+  <path d="M 556 133 L 566 138 L 556 143 Z" fill="#1c5a7a"/>
+
+  <text x="360" y="194" class="t-sm t-it" text-anchor="middle">or send all of v1: much larger</text>
+  <path class="ln-mut" style="stroke-dasharray:3 3" d="M 260 206 L 460 206"/>
+</svg>
+<figcaption><span class="fig-label">Figure 45.1</span>
+Send the change, not the state. Peer B applies &Delta; to its copy of v0 and
+arrives at v1: &Sigma; undoes &Delta;.</figcaption>
+</figure>
 
 <h2>45.1 The three problems hiding in one</h2>
 
 <p>
-The motivating example is chosen for being universally annoying: synchronising
-calendars and address books between devices, which Berners-Lee calls one of
-the most stubborn problems in practical computing, producing very strange
-results on not-so-rare occasions.
-</p>
-
-<p>
-He then separates it into three problems that are usually confused.
+The motivating example is universally annoying: synchronising calendars and
+address books between devices, one of the most stubborn problems in practical
+computing. The note separates it into three problems that are usually
+confused.
 </p>
 
 <table>
@@ -40,38 +106,184 @@ He then separates it into three problems that are usually confused.
 </table>
 
 <p>
-Most synchronisation failures people experience are failures of the second,
-dressed as failures of the third. The rest of the note addresses the third
-and assumes the first two are solved.
+The note suspects the semantic problem, or the mixing of the three, explains
+why so many packages break, and proposes keeping them separate. It then
+addresses only the third.
 </p>
 
 <h2>45.2 Why a line-oriented diff will not do</h2>
 
 <p>
-A graph has no lines. Two files may serialise the same graph with statements
-in a different order, with different abbreviations, and with different
-arbitrary names for the nodes that have no names. A textual difference between
-them reports enormous change where nothing has changed.
+A graph has no lines. Two files may write the same graph with statements in
+a different order, and with different labels for its blank nodes: nodes the
+data mentions but has not named, such as Bob&#8217;s pet in Figure 45.2. Any
+label will do, so a textual comparison reports change where there is none.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig45-2-t fig45-2-d">
+  <title id="fig45-2-t">One graph written as two different files</title>
+  <desc id="fig45-2-d">A small graph: Bob has brother Pete; Bob has a pet, an
+  unnamed node whose size is small; that pet's mother is another unnamed node,
+  which is Pete's pet. Two files list the same five statements, one in the
+  order written with blank-node labels p and p2, the other sorted with labels
+  g1 and g0. A line diff finds four lines removed and four added; a graph diff
+  finds no change.</desc>
+
+  <text x="150" y="24" class="t-caps" text-anchor="middle">the graph</text>
+
+  <rect class="box" x="30" y="40" width="70" height="30" rx="4"/>
+  <text x="65" y="60" text-anchor="middle">Bob</text>
+  <rect class="box" x="200" y="40" width="70" height="30" rx="4"/>
+  <text x="235" y="60" text-anchor="middle">Pete</text>
+  <circle class="box-plain" cx="65" cy="150" r="14"/>
+  <circle class="box-plain" cx="235" cy="150" r="14"/>
+  <rect class="box-plain" x="30" y="210" width="70" height="28" rx="4"/>
+  <text x="65" y="229" class="t-mono" text-anchor="middle" font-size="11.5">"small"</text>
+
+  <path class="ln" d="M 100 55 L 192 55"/>
+  <path d="M 190 51 L 199 55 L 190 59 Z" fill="#2f4f4f"/>
+  <text x="150" y="45" class="t-sm" text-anchor="middle">brother</text>
+
+  <path class="ln" d="M 65 70 L 65 128"/>
+  <path d="M 61 126 L 65 135 L 69 126 Z" fill="#2f4f4f"/>
+  <text x="73" y="106" class="t-sm">pet</text>
+
+  <path class="ln" d="M 235 70 L 235 128"/>
+  <path d="M 231 126 L 235 135 L 239 126 Z" fill="#2f4f4f"/>
+  <text x="243" y="106" class="t-sm">pet</text>
+
+  <path class="ln" d="M 79 150 L 213 150"/>
+  <path d="M 211 146 L 220 150 L 211 154 Z" fill="#2f4f4f"/>
+  <text x="150" y="141" class="t-sm" text-anchor="middle">mother</text>
+
+  <path class="ln" d="M 65 164 L 65 202"/>
+  <path d="M 61 200 L 65 209 L 69 200 Z" fill="#2f4f4f"/>
+  <text x="73" y="190" class="t-sm">size</text>
+
+  <rect class="box-plain" x="310" y="40" width="190" height="130" rx="4"/>
+  <text x="405" y="60" class="t-sm" text-anchor="middle">file 1: as written</text>
+  <text x="320" y="84" class="t-mono" font-size="11.5">:Bob :pet _:p .</text>
+  <text x="320" y="102" class="t-mono" font-size="11.5">_:p :size "small" .</text>
+  <text x="320" y="120" class="t-mono" font-size="11.5">:Bob :brother :Pete .</text>
+  <text x="320" y="138" class="t-mono" font-size="11.5">_:p :mother _:p2 .</text>
+  <text x="320" y="156" class="t-mono" font-size="11.5">:Pete :pet _:p2 .</text>
+
+  <rect class="box-plain" x="516" y="40" width="190" height="130" rx="4"/>
+  <text x="611" y="60" class="t-sm" text-anchor="middle">file 2: sorted, relabelled</text>
+  <text x="526" y="84" class="t-mono" font-size="11.5">:Bob :brother :Pete .</text>
+  <text x="526" y="102" class="t-mono" font-size="11.5">:Bob :pet _:g1 .</text>
+  <text x="526" y="120" class="t-mono" font-size="11.5">:Pete :pet _:g0 .</text>
+  <text x="526" y="138" class="t-mono" font-size="11.5">_:g1 :mother _:g0 .</text>
+  <text x="526" y="156" class="t-mono" font-size="11.5">_:g1 :size "small" .</text>
+
+  <text x="508" y="202" class="t-sm" text-anchor="middle" style="fill:#b08d57">line diff: 4 lines out, 4 lines in</text>
+  <text x="508" y="226" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">graph diff: no change</text>
+  <text x="508" y="256" class="t-sm t-it" text-anchor="middle">_:p in file 1 is the same node as _:g1 in file 2</text>
+</svg>
+<figcaption><span class="fig-label">Figure 45.2</span>
+The note&#8217;s example graph, written twice. Order and blank-node labels
+are arbitrary, so compare statements, not lines.</figcaption>
+</figure>
+
 <p>
-A difference between graphs must therefore be computed over the statements
-themselves, and expressed as a pattern to match rather than a position to
+Line diffs worked for hand-edited files, but failed badly for
+machine-written test results: every slight change to the printing program
+produced false test failures. A graph difference must be computed over the
+statements, and expressed as a pattern to match rather than a position to
 edit.
 </p>
 
 <h2>45.3 Weak and strong</h2>
 
 <p>
-The note&#8217;s contribution is a distinction that turns out to govern every
-distributed update system.
+The note&#8217;s patch format, in Notation3, is a pattern that finds the
+node, then what to remove and what to add. This is the form cwm implemented:
+</p>
+
+<pre><code>{ ?x bank:accountNo "1234578"}
+  diff:deletion  { ?x bank:balance 4000};
+  diff:insertion { ?x bank:balance 3575}.</code></pre>
+
+<p>
+That is: find the thing whose account number is 1234578; remove
+&ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. A single
+alternative property, <code>diff:replacement</code>, can express any change.
+Applied to a copy that has itself changed, a patch can fail in three ways.
+</p>
+
+<table>
+<tr><th>Failure</th><th>What happens</th><th>Can it be prevented?</th></tr>
+<tr><td>Inconsistent changes</td><td>One person moves a meeting while another deletes it.</td><td>No; a person must decide.</td></tr>
+<tr><td>No match</td><td>The patch cannot find where to apply.</td><td>Yes, for certain graph deltas.</td></tr>
+<tr><td>Misapplied</td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be: &ldquo;This is unacceptable.&rdquo;</td></tr>
+</table>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+     aria-labelledby="fig45-3-t fig45-3-d">
+  <title id="fig45-3-t">Applying a patch to a copy that has also changed</title>
+  <desc id="fig45-3-d">Version v0 has a meeting on Tuesday. One person moves
+  it to Friday, giving v1a; another deletes it, giving v1b. The delta from v0
+  to v1b is then applied to v1a rather than to v0. Three outcomes are
+  possible: a conflict a person must settle, a patch that cannot find its
+  place and is rejected, or a patch applied at the wrong place, giving
+  corrupted data, which is unacceptable.</desc>
+
+  <rect class="box" x="270" y="20" width="180" height="44" rx="4"/>
+  <text x="360" y="38" class="t-caps" text-anchor="middle">v0</text>
+  <text x="360" y="56" class="t-sm" text-anchor="middle">meeting on Tuesday</text>
+
+  <path class="ln-mut" d="M 320 64 L 180 104 M 400 64 L 540 104"/>
+
+  <rect class="box" x="60" y="104" width="220" height="44" rx="4"/>
+  <text x="170" y="122" class="t-caps" text-anchor="middle">v1a</text>
+  <text x="170" y="140" class="t-sm" text-anchor="middle">meeting moved to Friday</text>
+
+  <rect class="box" x="440" y="104" width="220" height="44" rx="4"/>
+  <text x="550" y="122" class="t-caps" text-anchor="middle">v1b</text>
+  <text x="550" y="140" class="t-sm" text-anchor="middle">meeting deleted</text>
+
+  <path class="ln-accent" style="stroke-dasharray:5 4" d="M 440 126 L 292 126"/>
+  <path d="M 294 121 L 284 126 L 294 131 Z" fill="#1c5a7a"/>
+  <text x="362" y="117" class="t-sm" text-anchor="middle">&#916;(v0, v1b)</text>
+  <text x="362" y="143" class="t-sm" text-anchor="middle">applied to v1a</text>
+
+  <path class="ln-mut" d="M 170 148 L 170 176 M 120 176 L 600 176 M 120 176 L 120 192 M 360 176 L 360 192 M 600 176 L 600 192"/>
+  <path d="M 116 190 L 120 199 L 124 190 Z" fill="#8a9a9a"/>
+  <path d="M 356 190 L 360 199 L 364 190 Z" fill="#8a9a9a"/>
+  <path d="M 596 190 L 600 199 L 604 190 Z" fill="#8a9a9a"/>
+
+  <rect class="box-plain" x="20" y="200" width="200" height="90" rx="4"/>
+  <text x="120" y="224" class="t-caps" text-anchor="middle">conflict</text>
+  <text x="120" y="250" class="t-sm" text-anchor="middle">the edits disagree;</text>
+  <text x="120" y="268" class="t-sm" text-anchor="middle">a person must decide</text>
+
+  <rect class="box" x="260" y="200" width="200" height="90" rx="4"/>
+  <text x="360" y="224" class="t-caps" text-anchor="middle">no match</text>
+  <text x="360" y="250" class="t-sm" text-anchor="middle">cannot find the place:</text>
+  <text x="360" y="268" class="t-sm" text-anchor="middle">rejected</text>
+
+  <rect class="box-warm" x="500" y="200" width="200" height="90" rx="4"/>
+  <text x="600" y="224" class="t-caps" text-anchor="middle" style="fill:#b08d57">wrong place</text>
+  <text x="600" y="246" class="t-sm" text-anchor="middle" style="fill:#b08d57">corrupted data</text>
+  <text x="600" y="272" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">&#8220;This is unacceptable.&#8221;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 45.3</span>
+A delta applied to a version it was not computed from. A robust patch never
+takes the third path.</figcaption>
+</figure>
+
+<p>
+Whether a patch can take the third path depends on what its pattern names.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
-     aria-labelledby="fig45-1-t fig45-1-d">
-  <title id="fig45-1-t">A weak patch and a strong patch</title>
-  <desc id="fig45-1-d">A patch identifies what to change by a pattern. If the
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig45-4-t fig45-4-d">
+  <title id="fig45-4-t">A weak patch and a strong patch</title>
+  <desc id="fig45-4-d">A patch identifies what to change by a pattern. If the
   pattern fixes on a value that is unique across all graphs, such as an account
   number that no two accounts share, the patch may be applied anywhere and
   still hit the right node. If the value is not unique, the same patch applied
@@ -84,64 +296,56 @@ distributed update system.
   <path class="ln-mut" d="M 360 68 L 360 86 M 176 86 L 544 86 M 176 86 L 176 106 M 544 86 L 544 106"/>
 
   <rect class="box-green" x="24" y="106" width="312" height="150" rx="4"/>
-  <text x="180" y="130" class="t-caps" text-anchor="middle" fill="#3f6f3f">strong</text>
+  <text x="180" y="130" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">strong</text>
   <text x="180" y="156" class="t-sm" text-anchor="middle">the pattern fixes on a value that</text>
   <text x="180" y="174" class="t-sm" text-anchor="middle">no two things can share</text>
-  <text x="180" y="202" class="t-mono" text-anchor="middle" font-size="11.5" fill="#3f6f3f">accountNumber "80-11-4523"</text>
+  <text x="180" y="202" class="t-mono" text-anchor="middle" font-size="11.5" style="fill:#5a8f5a">accountNo "1234578"</text>
   <text x="180" y="230" class="t-sm" text-anchor="middle">apply it to any store,</text>
   <text x="180" y="248" class="t-sm" text-anchor="middle">and it lands on the right node</text>
 
-  <rect class="box-plain" x="384" y="106" width="312" height="150" rx="4" stroke="#d9b0b0"/>
-  <text x="540" y="130" class="t-caps" text-anchor="middle" fill="#b04a4a">weak</text>
+  <rect class="box-warm" x="384" y="106" width="312" height="150" rx="4"/>
+  <text x="540" y="130" class="t-caps" text-anchor="middle" style="fill:#b08d57">weak</text>
   <text x="540" y="156" class="t-sm" text-anchor="middle">the pattern fixes on something</text>
   <text x="540" y="174" class="t-sm" text-anchor="middle">several things could match</text>
-  <text x="540" y="202" class="t-mono" text-anchor="middle" font-size="11.5" fill="#b04a4a">name "J. Smith"</text>
-  <text x="540" y="230" class="t-sm" text-anchor="middle" fill="#b04a4a">apply it anywhere but the graph it</text>
-  <text x="540" y="248" class="t-sm" text-anchor="middle" fill="#b04a4a">came from, and it may alter the wrong one</text>
+  <text x="540" y="202" class="t-mono" text-anchor="middle" font-size="11.5" style="fill:#b08d57">name "J. Smith"</text>
+  <text x="540" y="230" class="t-sm" text-anchor="middle" style="fill:#b08d57">apply it anywhere but the graph it</text>
+  <text x="540" y="248" class="t-sm" text-anchor="middle" style="fill:#b08d57">came from, and it may alter the wrong one</text>
 
-  <line class="ln-mut" x1="24" y1="282" x2="696" y2="282"/>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">The difference is not in the file format. It is in what the patch happens to name.</text>
-  <text x="360" y="334" class="t-sm t-it" text-anchor="middle">Whether a patch is strong depends on the vocabulary: is this property one that identifies?</text>
-  <text x="360" y="358" class="t-sm" text-anchor="middle">In ordinary life, account numbers exist precisely to avoid this confusion.</text>
+  <line class="ln-mut" x1="24" y1="272" x2="696" y2="272"/>
+  <text x="360" y="292" class="t-sm" text-anchor="middle">The format is the same; what differs is whether the pattern names something unique.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 45.1</span>
-Berners-Lee&#8217;s own framing: a weak delta gives enough information to apply it
-to exactly the graph it was computed from; a strong delta specifies the change
-in a context-independent manner.</figcaption>
+<figcaption><span class="fig-label">Figure 45.4</span>
+The authors&#8217; framing: a weak delta can be applied only to the graph it
+was computed from; a strong one is context-independent.</figcaption>
 </figure>
 
 <p>
-The property that makes a patch strong is the one Chapter 34 introduced for
-identifying people: a property no two things can share. That earlier chapter
-used it to name someone without giving them an address; here the same property
-lets a change travel between stores without going astray.
+Account numbers exist precisely to avoid this confusion. The property that
+makes a patch strong is the one Chapter 34 used to identify people: one no two
+things can share. Here it lets a change travel between stores without going
+astray.
 </p>
 
 <h2>45.4 What a patch is, besides an instruction</h2>
 
 <p>
-Two short sections turn the mechanism into something larger, and they are why
-the note is in this volume rather than filed under tooling.
+<strong>Patches as knowledge.</strong> A strong patch has meaning in itself.
+A phone number changing from 1234 to 5678 suggests the person moved or changed
+jobs. For houses for sale, the change is the news; for currency rates,
+listening to the changes builds a working knowledge.
 </p>
 
 <p>
-<strong>Patches as knowledge.</strong> A difference between two graphs is
-itself expressible as statements, so it can be published, described, signed
-and reasoned about like anything else. The record of a change is data.
-</p>
-
-<p>
-<strong>Patches as news.</strong> If the record of a change is data, it can be
-distributed to interested parties as it happens. A feed becomes a stream of
-differences rather than a sequence of whole states, which is both smaller and
-more informative: it says what changed, not merely what is now true.
+<strong>Patches as news.</strong> When the state is held in RDF, a
+difference between graphs is news. The W3C RSS feed was in effect partly a
+list of changes to the W3C&#8217;s technical reports list, and publishing RDF
+differences could make that formal.
 </p>
 
 <h2>45.5 The follow-up, and what it concedes</h2>
 
 <p>
-A section added in 2015 looks back at fourteen years, and grants that the
-ideas became common property:
+A section added in 2015 grants that the ideas became common property:
 </p>
 
 <blockquote>
@@ -152,39 +356,38 @@ constant themes in distributed systems.
 </blockquote>
 
 <p>
-He discusses an architecture in which differences travel in loops, so that a
-party receives back both the other side&#8217;s edits and, in his phrase, their
-apologies for not being able to apply a patch. The observation he draws from
-it is an architectural preference:
+It cites Neil Fraser&#8217;s 2008 paper <em>Differential Synchronization</em>,
+in which differences travel in loops, carrying edits and apologies for patches
+that could not be applied. That design watches a user editing with other tools,
+then computes a difference to discover what changed.
 </p>
 
 <p>
-Such systems assume they must watch for a user editing with other tools and
-then compute a difference to discover what changed. The alternative is for the
-editing tool to send the difference explicitly, which is the style adopted in
-the later work described in Volume VI. Computing a difference is a way of
-recovering information that was thrown away; sending one is a way of not
-throwing it away.
+The alternative is for the editing tool to send the difference itself. In the
+Solid work of Volume VI, the patch is sent just before the interface shows the
+change, so it can be reverted if the patch fails. The W3C&#8217;s Linked Data
+Platform work was standardising patch formats. Computing a difference is a way of recovering
+information that was thrown away; sending one is a way of not throwing it
+away.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The strong patch problem was solved by canonicalisation.</strong>
-RDF Dataset Canonicalization, a W3C Recommendation of May 2024, gives nameless
-nodes deterministic labels, which makes comparing and patching graphs
-tractable without relying on an identifying property.</li>
+<li><strong>Canonicalisation was standardised.</strong>
+RDF Dataset Canonicalization, a W3C Recommendation of May 2024, gives blank
+nodes deterministic labels, making graph comparison deterministic. It does not
+make patches strong: one added triple can still relabel many blank nodes.</li>
 <li><strong>Patch formats arrived.</strong> SPARQL Update became a
-Recommendation in March 2013, and later work produced patch formats used for
-synchronising stores, which is section 45.3&#8217;s proposal in standard form.</li>
-<li><strong>Explicit change won over computed change.</strong>
-Conflict-free replicated data types and operation-based synchronisation became
-the standard approach in collaborative editing, and they work by sending
-operations rather than diffing states, which is the preference expressed in
-the 2015 follow-up.</li>
-<li><strong>The semantic problem remains the hard one.</strong> Contact and
-calendar synchronisation still fails, and still mostly fails on the second of
-the three problems in section 45.1 rather than the third.</li>
+Recommendation in March 2013, and LD Patch was published as a W3C Working
+Group Note in 2015: section 45.3&#8217;s proposal in standard form.</li>
+<li><strong>Explicit change won over computed change.</strong> Collaborative
+editors came to rely on operational transformation and conflict-free replicated data types, both of which
+send operations rather than diffing states, as the 2015 follow-up
+preferred.</li>
+<li><strong>An open question.</strong> Contact and calendar synchronisation
+still goes wrong. Is the cause mostly the semantic problem, as the note
+suspected?</li>
 </ul>
 </div>
 
@@ -207,8 +410,8 @@ problems of section 45.1. Which one was it really?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.2</span>
-Write a patch for a record in a system you use. Is it weak or strong, and what
-would make it strong?</p>
+Write a patch, in the form of section 45.3, for a record in a system you use.
+Is it weak or strong, and what would make it strong?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.3</span>
@@ -217,7 +420,8 @@ first can answer and the second cannot.</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.4</span>
-Computing a difference recovers information that was discarded. Name a system
-that discards it, and say what sending the change explicitly would require.</p>
+Your phone&#8217;s contacts app syncs by comparing whole address books. What
+would it need to record at the moment you edit a number, so it could send the
+change instead?</p>
 </div>
 </div>

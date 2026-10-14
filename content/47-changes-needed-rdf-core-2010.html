@@ -1,3 +1,16 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+RDF records facts as three-part statements: subject, property, object (the
+workshop, began on, 2010-06-26). In 2010 Berners-Lee asked for unused features
+to be removed, the model to be documented apart from any syntax, a JSON form,
+and more kinds of thing allowed in each part of a statement. The documentation
+and JSON arrived in 2014, the removals became advice, and the changes to the
+statement were not made. Changing the shape of a statement means changing every
+program and dataset built on the old shape.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -12,55 +25,73 @@ the semantic web, but just the RDF model and its common serializations.
 </blockquote>
 <p>
 It is a list, and the interest lies in which items were acted on, which were
-not, and what the pattern of each says about how a deployed standard can and
-cannot change.
+not, and what the pattern says about how a deployed standard can and cannot
+change.
 </p>
 </div>
 
 <h2>47.1 The list</h2>
 
+<p>
+Two terms recur. A <em>serialisation</em> is a way of writing the same data
+down as text; RDF/XML and Turtle are two. To <em>deprecate</em> a feature is to
+mark it as not to be used, while leaving it in place for old data. The note
+also proposes extensions to N3 itself (dates, quoted variables, rule
+languages); this chapter treats only the dates, in section 47.4.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
+<svg class="dia" viewBox="0 0 720 436" width="720" height="436" role="img"
      aria-labelledby="fig47-1-t fig47-1-d">
   <title id="fig47-1-t">The 2010 proposals, and what became of them</title>
-  <desc id="fig47-1-d">Proposals to remove unused features, to define the
-  model separately from any serialisation, to allow anything in the subject
-  position, and to add a standard JSON form. Most of the clean-up happened.
-  The change with the widest consequences, allowing a literal as a subject, did
-  not.</desc>
+  <desc id="fig47-1-d">Nine proposals in three groups. Removals: the
+  reification vocabulary and bags and sequences were left in and merely
+  avoided, and no new RDF/XML document without them was produced.
+  Documentation and syntax: the model was defined apart from any syntax and a
+  JSON form was defined, both in 2014, but RDF/XML was not extended to allow a
+  collection anywhere. Changes to a statement: literals as subjects and
+  variables in any position were not adopted, and graphs in statements arrived
+  only partly, much later.</desc>
 
   <text x="24" y="26" class="t-caps">proposal</text>
-  <text x="560" y="26" class="t-caps">outcome</text>
+  <text x="500" y="26" class="t-caps">outcome</text>
   <line class="ln-mut" x1="24" y1="36" x2="696" y2="36"/>
 
-  <g class="t-sm">
-    <text x="24" y="64">deprecate the old reification vocabulary</text>
-    <text x="560" y="64" fill="#a07d47">left in, avoided</text>
-    <text x="24" y="98">deprecate bags and sequences</text>
-    <text x="560" y="98" fill="#a07d47">left in, avoided</text>
-    <text x="24" y="132">define the model apart from any syntax</text>
-    <text x="560" y="132" fill="#3f6f3f">done, 2014</text>
-    <text x="24" y="166">let a collection appear anywhere</text>
-    <text x="560" y="166" fill="#3f6f3f">done in the readable syntax</text>
-    <text x="24" y="200">define a common JSON serialisation</text>
-    <text x="560" y="200" fill="#3f6f3f">done, 2014</text>
-    <text x="24" y="234">let the subject take any form the object can</text>
-    <text x="560" y="234" fill="#b04a4a">not done</text>
-    <text x="24" y="268">let a graph appear as subject or object</text>
-    <text x="560" y="268" fill="#a07d47">partly, much later</text>
-    <text x="24" y="302">allow variables in any position</text>
-    <text x="560" y="302" fill="#b04a4a">not done</text>
-  </g>
-  <line class="ln-mut" x1="24" y1="320" x2="696" y2="320"/>
+  <text x="24" y="60" class="t-caps">remove features</text>
+  <text x="40" y="82">deprecate the old reification vocabulary</text>
+  <text x="500" y="82" class="t-sm" style="fill:#b08d57">left in, advised against</text>
+  <text x="40" y="104">deprecate bags and sequences</text>
+  <text x="500" y="104" class="t-sm" style="fill:#b08d57">left in, advised against</text>
+  <text x="40" y="126">a new RDF/XML document without them</text>
+  <text x="500" y="126" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
 
-  <rect class="box" x="24" y="334" width="672" height="52" rx="4"/>
-  <text x="360" y="356" class="t-sm" text-anchor="middle">Every proposal that removed or documented something was eventually done.</text>
-  <text x="360" y="376" class="t-sm" text-anchor="middle">Every proposal that changed what a statement may contain was not.</text>
+  <text x="24" y="156" class="t-caps">document and add syntax</text>
+  <text x="40" y="178">define the model apart from any syntax</text>
+  <text x="500" y="178" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
+  <text x="40" y="200">define a common JSON serialisation</text>
+  <text x="500" y="200" class="t-sm" style="fill:#5a8f5a">done, 2014</text>
+  <text x="40" y="222">in RDF/XML, let a collection appear anywhere</text>
+  <text x="500" y="222" class="t-sm t-it" style="fill:#8a9a9a">not done in RDF/XML</text>
+
+  <text x="24" y="252" class="t-caps">change what a statement may contain</text>
+  <text x="40" y="274">let the subject take any form the object can</text>
+  <text x="500" y="274" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+  <text x="40" y="296">let a graph appear as subject or object</text>
+  <text x="500" y="296" class="t-sm" style="fill:#b08d57">partly, much later</text>
+  <text x="40" y="318">allow variables in any position</text>
+  <text x="500" y="318" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
+
+  <line class="ln-mut" x1="24" y1="336" x2="696" y2="336"/>
+
+  <rect class="box" x="24" y="348" width="672" height="74" rx="4"/>
+  <text x="360" y="370" class="t-sm" text-anchor="middle">New documentation and a JSON form were produced; RDF/XML itself was left as it was.</text>
+  <text x="360" y="390" class="t-sm" text-anchor="middle">Proposals to remove features were softened to advice.</text>
+  <text x="360" y="410" class="t-sm" text-anchor="middle">Proposals that changed what a statement may contain were not adopted.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 47.1</span>
-The pattern is the lesson. A deployed model tolerates tidying and resists
-changes to its shape, because everything written against the old shape would
-have to be revisited.</figcaption>
+The pattern is the lesson. A deployed model tolerates new documents beside it
+and resists changes to its shape, because everything written against the old
+shape would have to be revisited.</figcaption>
 </figure>
 
 <h2>47.2 The one that mattered most</h2>
@@ -77,18 +108,81 @@ allowed for the object. Currently, this means including literals
 </blockquote>
 
 <p>
-The model permits a value to appear as the object of a statement and not as
-its subject, so nothing can be said about a value. That is the obstruction
-Chapter 38 ran into: to say that a string has an interpretation, one must first
-invent a node for it, which Berners-Lee there called frightful. This proposal
-removes the obstruction in one line, and it was not adopted.
+A <em>literal</em> is a plain value, such as a date, a number or a piece of
+text. The model lets a literal be the object of a statement but not its
+subject. One can say that the workshop began on 2010-06-26, but not that
+2010-06-26 was a Saturday. To say anything about a value, one must first
+invent a node to stand for it, which in Chapter 38 Berners-Lee called
+frightful. This proposal removes the obstruction in one line, and it was not
+adopted.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
+     aria-labelledby="fig47-2-t fig47-2-d">
+  <title id="fig47-2-t">A value may be an object, never a subject</title>
+  <desc id="fig47-2-d">First row, allowed: the workshop, began on,
+  2010-06-26. Second row, not allowed in RDF: 2010-06-26, day of week,
+  Saturday. Third row, the workaround: the workshop began on an invented
+  node; that node has the value 2010-06-26 and the day of week
+  Saturday.</desc>
+
+  <defs>
+    <marker id="fig47-2-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig47-2-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <!-- row 1 -->
+  <text x="24" y="24" class="t-caps">allowed</text>
+  <rect class="box" x="24" y="36" width="160" height="36" rx="4"/>
+  <text x="104" y="59" text-anchor="middle">the workshop</text>
+  <line class="ln" x1="184" y1="54" x2="538" y2="54" marker-end="url(#fig47-2-a)"/>
+  <text x="361" y="44" class="t-sm" text-anchor="middle">began on</text>
+  <rect class="box-warm" x="540" y="36" width="156" height="36" rx="4"/>
+  <text x="618" y="58" class="t-mono" text-anchor="middle">2010-06-26</text>
+
+  <!-- row 2 -->
+  <text x="24" y="108" class="t-caps" style="fill:#8a9a9a">not allowed in RDF</text>
+  <rect class="box-warm" x="24" y="120" width="160" height="36" rx="4"/>
+  <text x="104" y="142" class="t-mono" text-anchor="middle">2010-06-26</text>
+  <line class="ln-dash" x1="184" y1="138" x2="538" y2="138" marker-end="url(#fig47-2-m)"/>
+  <text x="361" y="128" class="t-sm" text-anchor="middle">day of week</text>
+  <rect class="box-warm" x="540" y="120" width="156" height="36" rx="4"/>
+  <text x="618" y="142" class="t-mono" text-anchor="middle">Saturday</text>
+
+  <!-- row 3 -->
+  <text x="24" y="192" class="t-caps">workaround</text>
+  <rect class="box" x="24" y="242" width="140" height="36" rx="4"/>
+  <text x="94" y="265" text-anchor="middle">the workshop</text>
+  <line class="ln" x1="164" y1="260" x2="254" y2="260" marker-end="url(#fig47-2-a)"/>
+  <text x="209" y="248" class="t-sm" text-anchor="middle">began on</text>
+  <rect class="box-plain" x="256" y="242" width="140" height="36" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="326" y="264" class="t-sm t-it" text-anchor="middle">extra node invented</text>
+  <path class="ln" d="M 396 260 H 420 V 225 H 538" marker-end="url(#fig47-2-a)"/>
+  <path class="ln" d="M 420 260 V 295 H 538" marker-end="url(#fig47-2-a)"/>
+  <text x="480" y="215" class="t-sm" text-anchor="middle">value</text>
+  <text x="480" y="285" class="t-sm" text-anchor="middle">day of week</text>
+  <rect class="box-warm" x="540" y="207" width="156" height="36" rx="4"/>
+  <text x="618" y="229" class="t-mono" text-anchor="middle">2010-06-26</text>
+  <rect class="box-warm" x="540" y="277" width="156" height="36" rx="4"/>
+  <text x="618" y="299" class="t-mono" text-anchor="middle">Saturday</text>
+</svg>
+<figcaption><span class="fig-label">Figure 47.2</span>
+Values (warm boxes) may sit only on the right of a statement, so speaking
+about one forces an invented stand-in. That stand-in is the obstruction the
+proposal would remove.</figcaption>
+</figure>
 
 <h2>47.3 How hard to push</h2>
 
 <p>
-One paragraph is worth more than the list, because it is about the politics of
-changing a standard rather than the content of the change:
+Bags and sequences are an early way of writing an unordered or ordered group;
+RDF&#8217;s lists now do the ordered job. One paragraph concerns how to change a standard rather than what
+to change:
 </p>
 
 <blockquote>
@@ -105,19 +199,20 @@ costs almost nothing at runtime and costs every new reader a page.
 </p>
 
 <p>
-He also proposes a migration path rather than a cliff, suggesting that
-sequences be converted to lists as a parser option, for systems that handle one
-and not the other. That is the evolvability argument of Chapter 16 applied by
-the same author to his own design: give implementations a way to move rather
-than a date by which to have moved.
+He also proposes a migration path rather than a cliff: a parser (the program
+that reads the text in) could convert sequences to lists as an option, for
+systems that handle one and not the other. That is the evolvability argument
+of Chapter 16 applied by the same author to his own design: give
+implementations a way to move rather than a date by which to have moved.
 </p>
 
-<h2>47.4 The small ergonomic complaint</h2>
+<h2>47.4 Making dates easy to write</h2>
 
 <p>
-One proposal is about nothing more than typing effort, and it is the most
-human item in the collection&#8217;s technical notes. Berners-Lee wants dates and
-times to be writable without ceremony:
+This proposal sits under the note&#8217;s heading on extending N3, not under
+the RDF model. It asks that a date or time be writable bare, in the standard
+form, such as 2010-06-26 or 2010-06-26T12:04Z, without the datatype label
+normally attached to it. The reason is plain:
 </p>
 
 <blockquote>
@@ -137,13 +232,45 @@ functionality
 <cite>The Future of RDF, 2010</cite>
 </blockquote>
 
-<p>
-Friction in a notation does not merely annoy. It changes what people publish,
-and therefore what software can do with what they published. A date written as
-a string cannot be sorted, compared or displayed in a local calendar. The
-inconvenience of the correct form is paid by every consumer of the data
-forever.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
+     aria-labelledby="fig47-3-t fig47-3-d">
+  <title id="fig47-3-t">Three ways to write the same date</title>
+  <desc id="fig47-3-d">Written as a plain string, the date is easy to type
+  but software sees only text and cannot sort it or put it on a calendar.
+  Written with an explicit datatype it is correct but tedious. The proposed
+  bare form is as easy as the string and as useful as the typed form.</desc>
+
+  <text x="128" y="24" class="t-caps" text-anchor="middle">as a plain string</text>
+  <text x="360" y="24" class="t-caps" text-anchor="middle">with a datatype</text>
+  <text x="592" y="24" class="t-caps" text-anchor="middle">proposed bare form</text>
+
+  <rect class="box-plain" x="24" y="36" width="208" height="128" rx="4"/>
+  <text x="128" y="68" class="t-mono" text-anchor="middle">"2010-06-26"</text>
+  <text x="128" y="108" class="t-sm" text-anchor="middle">software sees only text:</text>
+  <text x="128" y="128" class="t-sm" text-anchor="middle">it cannot sort, compare,</text>
+  <text x="128" y="148" class="t-sm" text-anchor="middle">or put it on a calendar</text>
+
+  <rect class="box-warm" x="256" y="36" width="208" height="128" rx="4"/>
+  <text x="360" y="68" class="t-mono" text-anchor="middle">"2010-06-26"^^xsd:date</text>
+  <text x="360" y="108" class="t-sm" text-anchor="middle">software knows it is a date,</text>
+  <text x="360" y="128" class="t-sm" text-anchor="middle">but it is tedious to read</text>
+  <text x="360" y="148" class="t-sm" text-anchor="middle">and to write</text>
+
+  <rect class="box-green" x="488" y="36" width="208" height="128" rx="4"/>
+  <text x="592" y="68" class="t-mono" text-anchor="middle">2010-06-26</text>
+  <text x="592" y="108" class="t-sm" text-anchor="middle">as easy to write as</text>
+  <text x="592" y="128" class="t-sm" text-anchor="middle">the string, and as useful</text>
+  <text x="592" y="148" class="t-sm" text-anchor="middle">as the typed form</text>
+
+  <text x="128" y="192" class="t-it" text-anchor="middle" style="fill:#8a9a9a">easy, but wrong</text>
+  <text x="360" y="192" class="t-it" text-anchor="middle" style="fill:#b08d57">right, but tedious</text>
+  <text x="592" y="192" class="t-it" text-anchor="middle" style="fill:#5a8f5a">easy and right</text>
+</svg>
+<figcaption><span class="fig-label">Figure 47.3</span>
+Friction in a notation changes what is published: when the correct form is
+tedious, people publish the wrong one, and every consumer of the data pays.</figcaption>
+</figure>
 
 <h2>47.5 Consistency as a constraint on proposals</h2>
 
@@ -161,8 +288,9 @@ unnecessary incompatibility.
 A research language and a standard exist side by side, and Berners-Lee&#8217;s
 instruction is that when the standard grows it should grow towards the
 research language, so that the two do not diverge into rival vocabularies for
-the same thing. This is the test of independent invention applied
-pre-emptively, to two systems by the same author.
+the same thing. It is the test of independent invention (section 16.5: would a
+design fit one built separately by someone else?) applied in advance, to two
+systems by the same author.
 </p>
 
 <div class="since">
@@ -174,12 +302,12 @@ syntax and includes a JSON serialisation, both of which are on this list.</li>
 <li><strong>The deprecations were softened to advice.</strong> Reification,
 bags and sequences remain in the specification and are avoided by convention,
 which is the weakest of the options section 47.3 considers.</li>
-<li><strong>Literals as subjects came back.</strong> The proposal was revived
-in the RDF 1.2 work begun in 2022, which is twelve years after this note and
-still under way.</li>
+<li><strong>Literals as subjects came back as a question.</strong> The
+proposal was raised again in the RDF 1.2 work that W3C began in 2022, twelve
+years after this note.</li>
 <li><strong>Graphs in statements arrived partially.</strong> RDF-star work
-from 2021 onward lets a statement be the subject of another, which is the
-narrower half of the proposal here.</li>
+from 2021 onward lets a quoted statement, not a whole graph, be the subject of
+another, which is the narrower half of the proposal here.</li>
 </ul>
 </div>
 
@@ -197,14 +325,14 @@ is Chapter 42, and the migration argument is Chapter 16.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">47.1</span>
-Every proposal that removed something was done; every one that changed the
-shape was not. Explain why, in terms of what existing implementations must
-do in each case.</p>
+New documentation was produced, removals were softened to advice, and
+changes to what a statement may contain were not adopted. Explain why, in terms
+of what existing implementations must do in each case.</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.2</span>
-Removing an unused feature is justified by shorter documentation. Estimate
-that benefit for a specification you know.</p>
+Name a feature of a program you have never used. Who pays for its
+existence?</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.3</span>
@@ -213,7 +341,7 @@ format you use, and say who pays.</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.4</span>
-A standard and a research language by the same author risk divergence. Name
-another such pair, and say whether they converged.</p>
+Why might two languages for the same job drift apart, and what does the rule
+in section 47.5 do about it?</p>
 </div>
 </div>

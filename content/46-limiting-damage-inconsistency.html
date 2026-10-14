@@ -1,3 +1,14 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+In classical logic, once two statements that contradict each other are both
+accepted, any conclusion at all can be proved. The Web is certain to contain
+contradictions. The answer is that nothing on the Web is believed just because
+it is there: it is believed only for a reason, for a limited purpose, and for
+a limited time.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -8,16 +19,24 @@ it in the reader&#8217;s own voice before answering:
 What, many people ask, will happen when this huge mass of classical logic
 meets its first inconsistncy? Surely, once you have one staement that A and
 another somewhere on the web that not A, then doesn't the whole system fall
-apart?
+apart? Surely, then you can deduce anything you want?
 <cite>Inconsistent data, 1998</cite>
 </blockquote>
 <p>
-The answer is that the objection is correct about logic and wrong about what a
-system does with documents.
+The objection is correct about logic and wrong about what a system does with
+documents.
 </p>
 </div>
 
 <h2>46.1 Where the objection goes wrong</h2>
+
+<p>
+Suppose a naive logic engine holds both &ldquo;the meeting is on Tuesday&rdquo;
+and &ldquo;the meeting is not on Tuesday&rdquo;. By the ordinary rules of
+inference (drawing new conclusions from old ones), it can then prove that the
+moon is made of cheese, or anything else. Logicians call this the principle of
+explosion.
+</p>
 
 <blockquote>
 This fear of course is quite valid - or would be if all assertions in the whole
@@ -29,9 +48,10 @@ actually work.
 </blockquote>
 
 <p>
-The correction is a chain. A fact is asserted in an expression, which is part
-of a formula, which is found by parsing a document. And then the sentence that
-does the work:
+An RDF parser is the program that reads a document and extracts the
+statements in it. The correction is a chain: a fact is asserted in an
+expression, which is part of a formula, which is found by parsing a document.
+And then the sentence that does the work:
 </p>
 
 <blockquote>
@@ -40,74 +60,154 @@ There is no a priori reason to believe any document on the web.
 </blockquote>
 
 <p>
-A reason to believe a document is itself information about that document,
-which is a statement found in another document, and so on. Belief is not a
-property of facts encountered; it is something conferred by a traceable chain.
+The note leaves a placeholder for a picture here; Figure 46.1 supplies it.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 460" width="720" height="460" role="img"
+     aria-labelledby="fig46-1-t fig46-1-d">
+  <title id="fig46-1-t">Where belief in a document comes from</title>
+  <desc id="fig46-1-d">On the right, a document found on the Web is parsed
+  into a formula, which contains expressions, one of which asserts a fact. On
+  the left, a chain of endorsements leads from an already trusted source,
+  through an endorsement in another document, to metadata endorsing the
+  document, which gives the reason to believe it.</desc>
+
+  <defs>
+    <marker id="fig46-1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig46-1-ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig46-1-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="150" y="26" class="t-caps" text-anchor="middle">why believe it</text>
+  <text x="550" y="26" class="t-caps" text-anchor="middle">what was found</text>
+
+  <rect class="box-plain" x="20" y="44" width="260" height="40" rx="4"/>
+  <text x="150" y="69" text-anchor="middle">an already trusted source</text>
+  <path class="ln-dash" d="M 150 84 L 150 114" marker-end="url(#fig46-1-am)"/>
+  <text x="162" y="104" class="t-sm t-it">and so on</text>
+
+  <rect class="box-green" x="20" y="116" width="260" height="40" rx="4"/>
+  <text x="150" y="141" text-anchor="middle">an endorsement in another document</text>
+  <path class="ln-accent" d="M 150 156 L 150 186" marker-end="url(#fig46-1-ah)"/>
+
+  <rect class="box-green" x="20" y="188" width="260" height="40" rx="4"/>
+  <text x="150" y="213" text-anchor="middle">metadata: an endorsement of D</text>
+
+  <path class="ln-accent" d="M 280 208 L 418 208" marker-end="url(#fig46-1-ah)"/>
+  <text x="349" y="197" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">reason to believe</text>
+
+  <text x="150" y="300" class="t-sm t-it" text-anchor="middle">Each link is itself a statement</text>
+  <text x="150" y="318" class="t-sm t-it" text-anchor="middle">that must be found and believed.</text>
+
+  <text x="550" y="104" class="t-sm t-it" text-anchor="middle">Nothing on this side is believed</text>
+  <text x="550" y="122" class="t-sm t-it" text-anchor="middle">just because it was found.</text>
+
+  <rect class="box" x="420" y="188" width="260" height="40" rx="4"/>
+  <text x="550" y="213" text-anchor="middle">document D (found on the Web)</text>
+  <path class="ln" d="M 550 228 L 550 258" marker-end="url(#fig46-1-ai)"/>
+  <rect class="box" x="420" y="260" width="260" height="40" rx="4"/>
+  <text x="550" y="285" text-anchor="middle">parsed into a formula</text>
+  <path class="ln" d="M 550 300 L 550 330" marker-end="url(#fig46-1-ai)"/>
+  <rect class="box" x="420" y="332" width="260" height="40" rx="4"/>
+  <text x="550" y="357" text-anchor="middle">the formula contains expressions</text>
+  <path class="ln" d="M 550 372 L 550 402" marker-end="url(#fig46-1-ai)"/>
+  <rect class="box" x="420" y="404" width="260" height="40" rx="4"/>
+  <text x="550" y="429" text-anchor="middle">one expression asserts a fact</text>
+</svg>
+<figcaption><span class="fig-label">Figure 46.1</span>
+Belief is not attached to the fact. It flows down a chain of endorsements,
+each found in some document, and the chain must end in something
+already trusted.</figcaption>
+</figure>
 
 <h2>46.2 Forwards and backwards</h2>
 
 <p>
-Two ways of organising such a system are named, and they behave quite
-differently under attack.
+Two ways of organising such a system are named. Working forwards starts from a
+configuration page, a document the system&#8217;s owner has chosen as its
+starting point. Working backwards starts from a global index, a search service
+that lists every document mentioning a given term.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig46-1-t fig46-1-d">
-  <title id="fig46-1-t">Working forwards and working backwards</title>
-  <desc id="fig46-1-d">Working forwards starts from a configuration that
-  points at trusted sources and uses only what they reach. Working backwards
-  finds a candidate answer anywhere, then checks whether it can be derived from
-  a trusted source. Both end at trust; only the second ever looks at untrusted
-  material.</desc>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig46-2-t fig46-2-d">
+  <title id="fig46-2-t">Working forwards and working backwards</title>
+  <desc id="fig46-2-d">Working forwards starts from a configuration page that
+  points at other pages and uses those as valid data. Working backwards looks
+  in a global index for any document mentioning a term, searches what turns up,
+  and only then checks the answer against trusted sources.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">working forwards</text>
+  <defs>
+    <marker id="fig46-2-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">working forwards</text>
   <text x="540" y="26" class="t-caps" text-anchor="middle">working backwards</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="248"/>
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="220"/>
 
   <rect class="box-green" x="40" y="44" width="280" height="36" rx="4"/>
   <text x="180" y="67" class="t-sm" text-anchor="middle">start from a configuration page</text>
-  <path class="ln-mut" d="M 180 80 L 180 96"/>
+  <path class="ln-mut" d="M 180 80 L 180 95" marker-end="url(#fig46-2-am)"/>
   <rect class="box-green" x="40" y="96" width="280" height="36" rx="4"/>
   <text x="180" y="119" class="t-sm" text-anchor="middle">follow it to the pages it points at</text>
-  <path class="ln-mut" d="M 180 132 L 180 148"/>
+  <path class="ln-mut" d="M 180 132 L 180 147" marker-end="url(#fig46-2-am)"/>
   <rect class="box-green" x="40" y="148" width="280" height="36" rx="4"/>
   <text x="180" y="171" class="t-sm" text-anchor="middle">use those as valid data</text>
-  <text x="180" y="212" class="t-sm" text-anchor="middle">nothing untrusted is ever read</text>
+  <text x="180" y="208" class="t-sm" text-anchor="middle">reads only what the configuration points to</text>
 
   <rect class="box-plain" x="400" y="44" width="280" height="36" rx="4"/>
   <text x="540" y="67" class="t-sm" text-anchor="middle">look in a global index for the term</text>
-  <path class="ln-mut" d="M 540 80 L 540 96"/>
+  <path class="ln-mut" d="M 540 80 L 540 95" marker-end="url(#fig46-2-am)"/>
   <rect class="box-plain" x="400" y="96" width="280" height="36" rx="4"/>
   <text x="540" y="119" class="t-sm" text-anchor="middle">search what turns up for an answer</text>
-  <path class="ln-mut" d="M 540 132 L 540 148"/>
+  <path class="ln-mut" d="M 540 132 L 540 147" marker-end="url(#fig46-2-am)"/>
   <rect class="box" x="400" y="148" width="280" height="36" rx="4"/>
   <text x="540" y="171" class="t-sm" text-anchor="middle">only then check it against trusted sources</text>
-  <text x="540" y="212" class="t-sm" text-anchor="middle">wide reach; trust applied last</text>
+  <text x="540" y="208" class="t-sm" text-anchor="middle">wide reach; trust applied last</text>
 
-  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Both are legitimate, and a real system may do both.</text>
-  <text x="360" y="302" class="t-sm t-it" text-anchor="middle">Neither ever treats what it found as true because it found it.</text>
+  <line class="ln-mut" x1="24" y1="228" x2="696" y2="228"/>
+  <text x="360" y="252" class="t-sm" text-anchor="middle">Both are legitimate, and a real system may do both.</text>
+  <text x="360" y="274" class="t-sm t-it" text-anchor="middle">Neither ever treats what it found as true because it found it.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 46.1</span>
-The difference matters for performance rather than for safety. Working
-backwards can consult the whole Web and still conclude nothing without a
-chain back to a trusted source.</figcaption>
+<figcaption><span class="fig-label">Figure 46.2</span>
+Working forwards trusts first and reads second; working backwards reads
+widely and trusts last. Either way, finding a statement is not a reason to
+believe it.</figcaption>
 </figure>
 
 <h2>46.3 Scoping trust to a key and a form</h2>
 
 <p>
-Signature adds the security step, and Berners-Lee is precise about the first
-requirement: a document is not endorsed without recording the checksum it had
-when it was believed. Endorsing a location endorses whatever appears there
-later; endorsing a checksum does not.
+Digital signature adds security: a document signed with a key carries a mark
+only that key&#8217;s holder can make. The first requirement is that a
+document is not endorsed without recording its checksum when it was believed:
+a short fingerprint computed from its exact contents. Endorsing a location
+endorses whatever appears there later; endorsing a checksum does not.
 </p>
 
 <p>
-Then the rules themselves, which are quoted in the note as sentences rather
-than as syntax:
+The second step is a rule. Its bluntest form trusts a key for everything:
+</p>
+
+<blockquote>
+&ldquo;whatever any document says so long it is signed with key
+57832498437&rdquo;.
+<cite>Inconsistent data, 1998</cite>
+</blockquote>
+
+<p>
+In practice, Berners-Lee says, authorities are trusted only for specific
+purposes, and the rule must be narrowed to match:
 </p>
 
 <blockquote>
@@ -116,36 +216,34 @@ as it is signed wiht key 32457934759432&rdquo;.
 <cite>Inconsistent data, 1998</cite>
 </blockquote>
 
+<blockquote>
+&ldquo;whatever any document says of the form &ldquo;a is an employee of
+IBM&rdquo; so long as it is signed by with key 3213123098129&rdquo;.
+<cite>Inconsistent data, 1998</cite>
+</blockquote>
+
 <p>
-Trust is not granted to a party but to a party for a purpose. Berners-Lee
-makes the point twice, with a second example about employment, because the
+Trust is granted not to a party but to a party for a purpose, and that
 narrowness is what limits the damage.
 </p>
 
 <h2>46.4 The choice he does not make</h2>
 
 <p>
-The centre of the note is a dilemma left open, and both horns are bad in ways
-worth understanding.
+The centre of the note is a dilemma left open, and both options are bad in
+ways worth understanding.
 </p>
 
 <table>
 <tr><th>Rule</th><th>Cost</th></tr>
-<tr><td>Believe statements <em>of this form</em> signed with this key</td><td>Bureaucratic: the form must be preserved, so equivalent statements cannot be substituted</td></tr>
+<tr><td>Believe statements <em>of this form</em> signed with this key</td><td>Bureaucratic: the exact wording must be kept, so an equivalent statement phrased differently will not match</td></tr>
 <tr><td>Believe what <em>can be inferred</em> from information signed with this key</td><td>One contradiction under that key makes everything derivable from it</td></tr>
 </table>
 
 <p>
-The first breaks a property we normally rely on. Berners-Lee puts it as a
-preference we have to give up: normally we like to be able to replace any set
-of formulae with another set deducible from it, and here the actual form must
-be preserved in case it needs to be matched against a pattern. He calls this
-very messy.
-</p>
-
-<p>
-The second is the inconsistency trap, and the description of the failure is
-the most vivid sentence in the note:
+The first gives up something we normally rely on: being able to replace any
+set of formulae with another set deducible from it. He calls this very messy.
+The second is the inconsistency trap:
 </p>
 
 <blockquote>
@@ -154,16 +252,71 @@ been convinced that the sun rises in the west.
 <cite>Inconsistent data, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 24 720 266" width="720" height="266" role="img"
+     aria-labelledby="fig46-3-t fig46-3-d">
+  <title id="fig46-3-t">A contradiction contained by one key</title>
+  <desc id="fig46-3-d">Inside a box for everything signed with key K, the
+  statements X is a member and X is not a member both lead to anything at all,
+  such as the sun rising in the west. Keys L and M, outside the box, are
+  unaffected. A trust system can withdraw trust from key K once it notices.</desc>
+
+  <defs>
+    <marker id="fig46-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig46-3-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="20" y="40" width="440" height="230" rx="6"/>
+  <text x="240" y="66" class="t-caps" text-anchor="middle">everything signed with key K</text>
+
+  <rect class="box-warm" x="40" y="96" width="160" height="36" rx="4"/>
+  <text x="120" y="119" text-anchor="middle">X is a member</text>
+  <rect class="box-warm" x="40" y="196" width="160" height="36" rx="4"/>
+  <text x="120" y="219" text-anchor="middle">X is not a member</text>
+
+  <rect class="box-warm" x="260" y="136" width="180" height="56" rx="4"/>
+  <text x="350" y="159" text-anchor="middle">anything at all</text>
+  <text x="350" y="179" class="t-sm" text-anchor="middle">(the sun rises in the west)</text>
+
+  <path class="ln-accent" d="M 200 114 L 258 150" marker-end="url(#fig46-3-ah)"/>
+  <path class="ln-accent" d="M 200 214 L 258 178" marker-end="url(#fig46-3-ah)"/>
+
+  <text x="240" y="258" class="t-sm" text-anchor="middle">a contradiction here makes every conclusion follow</text>
+
+  <rect class="box-green" x="580" y="40" width="120" height="36" rx="4"/>
+  <text x="640" y="63" text-anchor="middle">key L</text>
+  <rect class="box-green" x="580" y="90" width="120" height="36" rx="4"/>
+  <text x="640" y="113" text-anchor="middle">key M</text>
+  <text x="640" y="146" class="t-sm" text-anchor="middle">unaffected</text>
+
+  <rect class="box-plain" x="580" y="200" width="120" height="40" rx="4"/>
+  <text x="640" y="225" text-anchor="middle">trust system</text>
+  <path class="ln-dash" d="M 580 220 L 463 220" marker-end="url(#fig46-3-am)"/>
+  <text x="521" y="209" class="t-sm" text-anchor="middle">withdraw trust</text>
+  <text x="640" y="260" class="t-sm t-it" text-anchor="middle">once it notices</text>
+</svg>
+<figcaption><span class="fig-label">Figure 46.3</span>
+A contradiction under one key explodes only that key&#8217;s conclusions, and
+it is stopped only once someone notices.</figcaption>
+</figure>
+
 <p>
 The containment is real but partial. Only that key is broken, and a trust
-system can withdraw its reasons for trusting it. The damage is bounded by the
-key, which is the whole achievement, and it is not bounded in time.
+system can withdraw its reasons for trusting it. The damage is limited to one
+key, but nothing guarantees the system notices the break before it has acted
+on absurd conclusions.
 </p>
 
 <p>
-The way out he offers is to qualify what counts as inference: to limit the
-kinds of rule that may be used. He notes what that costs the implementer, and
-does not pretend to have finished the thought.
+The way out he offers is to limit the kinds of inference rule that may be
+used, as knowledge-representation systems with limited logics already do. The
+cost falls on the implementer: a general proof engine must either be told the
+permitted rules as data, or have each limited reasoner built in. He does not
+pretend to have finished the thought.
 </p>
 
 <h2>46.5 Time, and the tortoise again</h2>
@@ -174,48 +327,79 @@ attack at all, and opens with the dialogue characters of Chapter 29:
 </p>
 
 <blockquote>
+Tortoise: What's the time, Achilles?<br>
+Achilles: Five past ten, my friend. [They chat for a minute]<br>
+Tortoise: What is the time, Achilles?<br>
+Achilles: Six minutes past ten, Mr. Toroise.<br>
 Tortoise: But Achilles, you just told me just a minute ago it was five minutes
 past ten. How can I ever believe you again?
 <cite>Inconsistent data, 1998</cite>
 </blockquote>
 
 <p>
-Two remedies are proposed. The first is expiry: everything carries a date after
-which conclusions drawn from it are cancelled, unless a fresher copy says the
-same thing. Berners-Lee illustrates what a fully qualified statement looks
-like, with a gauge, a place and a time, and contrasts it drily with what a
-fuzzy system and a classical system would each conclude from it.
+Both answers were true when given. People and documents change status, and
+the contradiction comes from forgetting when each statement was made.
 </p>
 
-<p>
-The second is more interesting and applies far beyond this subject: make the
-looseness in the real system visible in the rule. Rather than saying any
-employee of a member organisation may register, say that any person who was at
-some time in the last two months an employee of an organisation which was at
-some time in the last two months a member may register.
-</p>
+<h3>Expiry</h3>
 
 <p>
-The system then does not need to propagate changes instantly, because the
-slack it was relying on has been written down. Every distributed system runs on
-such slack. Almost none of them state it.
+The first remedy is an expiry date on everything, as an HTTP server can
+already send with a resource. All conclusions drawn from a document are
+cancelled when its date arrives, unless a fresher copy says the same thing.
+Statements should also be fully qualified: not &ldquo;It is rainy&rdquo; but
+what a named gauge recorded at a stated time.
+</p>
+
+<table>
+<tr><th>The fully qualified statement</th><th>What a fuzzy system concludes</th><th>What a classical system concludes</th></tr>
+<tr><td>At a stated time, gauge 5 at Dublin Airport recorded rain in the last hour</td><td>Dublin is wet</td><td>At least once, it rained in at least one place in Dublin</td></tr>
+</table>
+
+<h3>Writing the slack into the rule</h3>
+
+<p>
+The second remedy applies far beyond this subject: make the looseness in the
+real system visible. Instead of
+</p>
+
+<blockquote>
+Any employee of any member orgainzation of W3C may register
+<cite>Inconsistent data, 1998</cite>
+</blockquote>
+
+<p>the registration engine is told</p>
+
+<blockquote>
+Any person who was some time in the last 2 months an employy of an
+organization which was som etim ein the last 2 montsh a W3C member may
+register.
+<cite>Inconsistent data, 1998</cite>
+</blockquote>
+
+<p>
+If an organisation drops its membership, the system need not propagate that
+instantly: the slack has been written down. Berners-Lee also expects
+time-unaware reasoners fed data with expiry dates, their results used only
+while all the inputs are still valid.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Scoped trust became the norm.</strong> Trusting a key for
-statements of a particular kind, rather than trusting a party generally, is
-how certificate extensions, token scopes and capability systems all work.</li>
-<li><strong>Content addressing answered the checksum requirement.</strong>
-Endorsing a document by its hash rather than its location is now ordinary
-practice in package ecosystems and supply-chain attestation.</li>
-<li><strong>The dilemma of section 46.4 was never resolved.</strong> Practical
-systems take the first horn: they check statements of a given form, and accept
-that equivalent statements phrased differently will not match.</li>
-<li><strong>Explicit staleness windows became standard.</strong> Tokens with
-lifetimes and revocation lists with validity periods are the second remedy of
-section 46.5, arrived at by necessity rather than by this argument.</li>
+<li><strong>Trust scoped by purpose became standard.</strong> X.509
+certificates carry an extended key usage field (RFC 5280, 2008) limiting what
+a key is trusted for; OAuth 2.0 (RFC 6749, 2012) grants tokens limited
+scopes.</li>
+<li><strong>Endorsing by checksum became ordinary.</strong> W3C Subresource
+Integrity (2016) lets a page load a script only if its hash matches; SLSA
+(2021) attestations identify software by hash.</li>
+<li><strong>Most deployed systems behave like the first option in section
+46.4.</strong> They check statements of a given form, and accept that
+equivalent statements phrased differently will not match.</li>
+<li><strong>Explicit validity periods are built into revocation.</strong>
+Certificate revocation lists and OCSP responses (RFC 6960, 2013) state when
+the next update is due.</li>
 </ul>
 </div>
 
@@ -234,21 +418,19 @@ what a signature does not mean is Chapter 28.
 <div class="question">
 <p><span class="question-number">46.1</span>
 Endorse a document by location and by checksum. Describe an attack the first
-permits and the second does not.</p>
+permits and the second does not (for example, the page at an address is later
+replaced).</p>
 </div>
 <div class="question">
 <p><span class="question-number">46.2</span>
-Take the dilemma of section 46.4. Which horn does a system you use take, and
-what does it therefore fail to accept?</p>
+A building pass is issued to anyone listed as an employee of a member company.
+Rewrite the rule so that a company leaving does not have to be processed
+instantly. What has the building&#8217;s system stopped having to do?</p>
 </div>
 <div class="question">
 <p><span class="question-number">46.3</span>
-Rewrite a rule from your own work so that its reliance on freshness is
-explicit. What does the system no longer have to do?</p>
-</div>
-<div class="question">
-<p><span class="question-number">46.4</span>
-A broken key makes everything derivable from it. Describe how a system might
-detect this before it believes something absurd.</p>
+Why does a contradiction signed by key K not make the whole system
+unreliable? What must the trust system do, and what can go wrong before it
+does?</p>
 </div>
 </div>

@@ -52,16 +52,14 @@ a Design Issues note by Tim Berners-Lee, 1999.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-There is a trade in the design of any system that reasons: the more kinds of
-thing it can express, the less able it is to work out answers quickly, and a
-system expressive enough to say anything interesting may never finish.
-Decades of research went into trying to have both.
+Any system that reasons faces a trade: the more it can express, the harder
+it is to work out answers. Decades of research went into trying to have both.
 </p>
 <p>
-This chapter takes the other road. It keeps the expressive power and gives up
-the fast reasoner, on the grounds that the Web does not need one. Checking a
-proof that somebody hands over is easy even when finding it was not, and that
-asymmetry is enough to build on.
+This chapter keeps the expressive power and gives up the fast reasoner,
+because checking a proof is easy even when finding it was not. A maths teacher cannot always solve a hard problem,
+but can check a worked solution line by line. The Web only asks its programs
+to be teachers.
 </p>
 </div>
 
@@ -86,11 +84,21 @@ turns on giving up something that every earlier system treated as essential.
 <h2>40.1 Five requirements, and the one that has to go</h2>
 
 <p>
-The note quotes Crawford and Kuipers on what a knowledge representation system
-must have: a compact syntax, well-defined semantics, enough expressive power
-to represent human knowledge, an efficient and understandable reasoning
-mechanism, and usability for large knowledge bases. Then the observation that
-sets up everything:
+A knowledge representation system is a program that stores facts in a strict
+form so that a computer can draw conclusions from them. For example:
+</p>
+
+<p><em>Every invoice over &#163;1,000 needs approval. Invoice 17 is for
+&#163;1,200. So invoice 17 needs approval.</em></p>
+
+<p>
+The note quotes Crawford and Kuipers on what such a system must have: a
+compact syntax, well-defined semantics, enough expressive power to represent
+human knowledge, an efficient and understandable reasoning mechanism, and
+usability for large knowledge bases. Expressive power means how many kinds of
+statement like the first line the language lets a writer express. Efficient
+reasoning means how quickly a program gets from the first two lines to the
+third. Then the observation that sets up everything:
 </p>
 
 <blockquote>
@@ -99,59 +107,100 @@ simultaneously.
 <cite>Crawford and Kuipers, quoted in The Semantic Web as a language of logic, 1999</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+     aria-labelledby="fig40-1-t fig40-1-d">
+  <title id="fig40-1-t">The trade-off between expressive power and reasoning</title>
+  <desc id="fig40-1-d">As expressive power rises, answers come less quickly
+  and surely: database lookup, then restricted logic, then full first-order
+  logic, which may never finish. The Semantic Web sits at the far right and
+  requires only checking.</desc>
+
+  <line class="ln" x1="60" y1="240" x2="60" y2="44"/>
+  <path d="M55,52 L60,40 L65,52 Z" fill="#2f4f4f"/>
+  <text x="72" y="30" class="t-sm">how fast and how surely answers are found</text>
+
+  <line class="ln" x1="60" y1="240" x2="684" y2="240"/>
+  <path d="M676,235 L688,240 L676,245 Z" fill="#2f4f4f"/>
+  <text x="60" y="260" class="t-sm">says little</text>
+  <text x="350" y="262" class="t-caps" text-anchor="middle">expressive power</text>
+  <text x="645" y="260" class="t-sm" text-anchor="end">says anything</text>
+
+  <line class="ln-mut" x1="90" y1="80" x2="540" y2="201"/>
+  <circle cx="110" cy="85" r="5" fill="#1c5a7a"/>
+  <circle cx="330" cy="145" r="5" fill="#1c5a7a"/>
+  <circle cx="540" cy="201" r="5" fill="#1c5a7a"/>
+
+  <text x="124" y="58" class="t-sm">answers fast</text>
+  <text x="124" y="74">simple database lookup</text>
+  <text x="344" y="114" class="t-sm">tractable if carefully restricted</text>
+  <text x="344" y="130">restricted logic, e.g. a subset</text>
+  <text x="528" y="226" text-anchor="end">full first-order logic</text>
+  <text x="552" y="205" class="t-sm">may never finish</text>
+
+  <line class="ln-accent" x1="660" y1="44" x2="660" y2="285"/>
+  <text x="690" y="36" text-anchor="end" style="fill:#1c5a7a">Semantic Web chooses here</text>
+
+  <rect class="box-green" x="420" y="285" width="276" height="54" rx="4"/>
+  <text x="558" y="307" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">answers are found elsewhere, by any means;</text>
+  <text x="558" y="327" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">only checking is required</text>
+</svg>
+<figcaption><span class="fig-label">Figure 40.1</span>
+Knowledge representation designers fought over the middle of this line,
+looking for the most expressive language that still answers reliably.
+Berners-Lee takes the far end and moves the speed problem out of the
+language altogether.</figcaption>
+</figure>
+
 <p>
-Expressive power and efficient reasoning pull against each other. Berners-Lee
-chooses expressive power, and says exactly what is surrendered: the parts of
-the fourth requirement that conflict, notably a single efficient reasoning
-system.
+Berners-Lee chooses expressive power, and says exactly what is surrendered:
+the parts of the fourth requirement that conflict, notably a single efficient
+reasoning system.
 </p>
 
 <h2>40.2 A validator, not a prover</h2>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
-     aria-labelledby="fig40-1-t fig40-1-d">
-  <title id="fig40-1-t">The asymmetry the design rests on</title>
-  <desc id="fig40-1-d">Finding a proof for an arbitrary question may not
-  terminate and cannot be guaranteed. Checking a proof that arrives with the
-  claim is a bounded, mechanical operation. The Web requires only the second,
-  which is why a system with no efficient reasoner can still be useful.</desc>
+     aria-labelledby="fig40-2-t fig40-2-d">
+  <title id="fig40-2-t">The asymmetry the design rests on</title>
+  <desc id="fig40-2-d">Finding a proof may not terminate; checking one that
+  arrives with the claim is bounded and mechanical. The Web requires only
+  checking.</desc>
 
-  <rect class="box-plain" x="24" y="34" width="310" height="180" rx="4" stroke="#d9b0b0"/>
-  <text x="179" y="60" class="t-caps" text-anchor="middle" fill="#b04a4a">finding a proof</text>
-  <text x="179" y="90" class="t-sm" text-anchor="middle">&#8220;is this true?&#8221;</text>
-  <g class="t-sm">
-    <text x="46" y="122">search an unbounded space</text>
-    <text x="46" y="146">may not terminate</text>
-    <text x="46" y="170">needs a strategy, so a restricted language</text>
-    <text x="46" y="194" fill="#b04a4a">not required of any Web agent</text>
+  <rect class="box-warm" x="24" y="34" width="310" height="180" rx="4"/>
+  <text x="179" y="60" class="t-caps" text-anchor="middle" style="fill:#b08d57">finding a proof</text>
+  <text x="179" y="90" class="t-sm" text-anchor="middle">question: is it true?</text>
+  <g>
+    <text class="t-sm" x="46" y="122">search an unbounded space</text>
+    <text class="t-sm" x="46" y="146">may not terminate</text>
+    <text class="t-sm" x="46" y="170">needs a strategy, so a restricted language</text>
+    <text class="t-sm" x="46" y="194" style="fill:#b08d57">not required of any Web agent</text>
   </g>
 
   <rect class="box-green" x="386" y="34" width="310" height="180" rx="4"/>
-  <text x="541" y="60" class="t-caps" text-anchor="middle" fill="#3f6f3f">checking a proof</text>
-  <text x="541" y="90" class="t-sm" text-anchor="middle">&#8220;does this follow?&#8221;</text>
-  <g class="t-sm">
-    <text x="408" y="122">follow the steps you were handed</text>
-    <text x="408" y="146">terminates, always</text>
-    <text x="408" y="170">needs only the basic rules</text>
-    <text x="408" y="194" fill="#3f6f3f">required of every Web agent</text>
+  <text x="541" y="60" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">checking a proof</text>
+  <text x="541" y="90" class="t-sm" text-anchor="middle">question: does the explanation hold?</text>
+  <g>
+    <text class="t-sm" x="408" y="122">follow the steps provided</text>
+    <text class="t-sm" x="408" y="146">terminates, always</text>
+    <text class="t-sm" x="408" y="170">needs only the basic rules</text>
+    <text class="t-sm" x="408" y="194" style="fill:#5a8f5a">required of every Web agent</text>
   </g>
 
   <line class="ln-mut" x1="24" y1="240" x2="696" y2="240"/>
   <text x="360" y="264" class="t-sm" text-anchor="middle">A party must be able to follow a proof of a theorem but is not expected to generate one.</text>
   <text x="360" y="292" class="t-sm t-it" text-anchor="middle">Heuristics, guesses and specialist engines may find the proof by any means they like.</text>
-  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Once found, anyone can check it, and nobody has to trust how it was found.</text>
+  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Once found, anyone can check it; the method of finding need not be shared.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 40.1</span>
-Berners-Lee&#8217;s own summary is blunter than the diagram: if there is a Semantic
-Web machine, it is a proof validator, not a theorem prover. It cannot find
-answers and cannot even check that an answer is right, but it can follow a
-simple explanation that an answer is right.</figcaption>
+<figcaption><span class="fig-label">Figure 40.2</span>
+In Berners-Lee&#8217;s words, a Semantic Web machine would be a proof validator,
+not a theorem prover. It cannot find answers, or even check that an answer is
+right, but it can follow a simple explanation that an answer is right.</figcaption>
 </figure>
 
 <p>
-He offers a precedent for the move, and the parallel is the whole argument of
-Volume I arriving in a new field:
+He offers a precedent, the argument of Volume I arriving in a new field:
 </p>
 
 <blockquote>
@@ -163,43 +212,93 @@ flexibility and scalability.
 </blockquote>
 
 <p>
-Hypertext gave up the guarantee that links resolve. Logic gives up the
-guarantee that questions are answerable. In each case the guarantee was what
-had kept the system small.
+Hypertext gave up the guarantee that links resolve; logic gives up the
+guarantee that questions are answerable. Each guarantee had kept its system
+small.
 </p>
 
 <h2>40.3 Tractability by subsetting</h2>
 
 <p>
-Nothing is efficient about the whole, so efficiency is arranged in parts.
-Berners-Lee lists five ways a workable subsystem can be carved out of an
-intractable whole: subset the language by removing operations and rules; limit
-the statements to those from particular documents or sites; constrain the form
-of formulae with schemas; make application design decisions that guarantee
-tractable results with common engines; or construct proofs with hand-built
-application-specific programs.
+Efficiency is arranged in parts. A problem is tractable when a program can solve it in a reasonable time.
+Berners-Lee lists five ways to carve a tractable subsystem out of an
+intractable whole:
+</p>
+
+<table>
+<tr><th>Method</th><th>What it restricts</th><th>Everyday example</th></tr>
+<tr><td>Subset the language</td><td>removes operations, axioms and rules</td><td>a spreadsheet that can add and compare but not loop</td></tr>
+<tr><td>Limit the sources</td><td>only statements from particular documents or sites</td><td>a shop&#8217;s app trusts only its own catalogue</td></tr>
+<tr><td>Constrain the form</td><td>schemas fix the shape of formulae</td><td>an order form that takes only a product code and a quantity</td></tr>
+<tr><td>Design the application</td><td>choices that guarantee tractable results with common reasoning engines</td><td>a booking site that asks only questions a database answers quickly</td></tr>
+<tr><td>Hand-build the prover</td><td>proofs come from application-specific programs</td><td>a payroll program written for one calculation</td></tr>
+</table>
+
+<p>
+His own example is Access Limited Logic, which, as he understands it, uses
+only relations r(a,b) that are available when r is accessed, and whose rules
+only chain forward along such links. The work therefore depends on local
+connections, not on the size of everything known.
 </p>
 
 <p>
-What the whole must guarantee is correspondingly small, and he states it as
-three requirements: consistency, so that a contradiction cannot be deduced
-unless one was given; strength, so that all applications are subsets; and
-grounding in reality.
+What the whole must guarantee is correspondingly small:
 </p>
+
+<ul>
+<li><strong>Consistency</strong>: a contradiction cannot be deduced unless one was given.</li>
+<li><strong>Strength</strong>: all applications are subsets of it.</li>
+<li><strong>Grounding</strong> in reality.</li>
+</ul>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig40-3-t fig40-3-d">
+  <title id="fig40-3-t">Tractable islands in an intractable whole</title>
+  <desc id="fig40-3-d">Inside the whole Semantic Web, three subsystems are
+  each made tractable by one restriction and run a fast engine. Only
+  consistency, subsetting and grounding must hold everywhere.</desc>
+
+  <rect class="box-warm" x="24" y="16" width="672" height="40" rx="4"/>
+  <text x="360" y="41" text-anchor="middle">must hold everywhere: consistency &#183; all applications are subsets &#183; grounding</text>
+
+  <rect class="box-plain" x="24" y="76" width="672" height="208" rx="4"/>
+  <text x="360" y="100" text-anchor="middle">the whole Semantic Web: expressive, no guaranteed answers</text>
+
+  <rect class="box-green" x="50" y="120" width="190" height="144" rx="4"/>
+  <text x="145" y="146" text-anchor="middle">fewer rules</text>
+  <text x="145" y="166" class="t-sm" text-anchor="middle">operations and rules removed</text>
+  <rect class="box" x="95" y="196" width="100" height="40" rx="4"/>
+  <text x="145" y="221" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">fast engine</text>
+
+  <rect class="box-green" x="265" y="120" width="190" height="144" rx="4"/>
+  <text x="360" y="146" text-anchor="middle">trusted sites only</text>
+  <text x="360" y="166" class="t-sm" text-anchor="middle">statements from chosen sources</text>
+  <rect class="box" x="310" y="196" width="100" height="40" rx="4"/>
+  <text x="360" y="221" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">fast engine</text>
+
+  <rect class="box-green" x="480" y="120" width="190" height="144" rx="4"/>
+  <text x="575" y="146" text-anchor="middle">fixed schema</text>
+  <text x="575" y="166" class="t-sm" text-anchor="middle">schemas constrain formulae</text>
+  <rect class="box" x="525" y="196" width="100" height="40" rx="4"/>
+  <text x="575" y="221" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">fast engine</text>
+</svg>
+<figcaption><span class="fig-label">Figure 40.3</span>
+Efficiency is arranged locally, inside subsystems that each accept a
+restriction. Only three properties are guaranteed across the whole.</figcaption>
+</figure>
 
 <h2>40.4 Grounding, which is not a logical matter</h2>
 
 <p>
-The section that separates this note from a logic paper is the one on
-grounding. It is not enough, Berners-Lee argues, to show that the system can
-be constrained so as to be isomorphic to some algebra. A particular mapping
-must be defined so that the representation conveys its semantics in a way that
-can meaningfully be combined with everything else.
+What separates this note from a logic paper is grounding. It is not enough, Berners-Lee argues, to show that the system can
+be constrained to behave like some well-understood mathematical system. A
+particular mapping must be defined so that the representation conveys its
+meaning in a way that can be combined with everything else.
 </p>
 
 <p>
-He then gives the reason for urgency, dated 1999 and aimed at a specific
-future:
+His reason for urgency was dated:
 </p>
 
 <blockquote>
@@ -213,14 +312,13 @@ derivation settles arguments.
 </blockquote>
 
 <p>
-Electronic commerce did expand as a mass of vaguely defined semantics and ad
-hoc syntax, and arguments are settled in court. The prediction was right and
-the intervention did not happen.
+Much of electronic commerce did grow this way. A partial counter-example is
+<a class="gl-ref" href="../glossary.html#schema">schema</a>.org, launched in 2011, whose shared terms for products and offers many
+shop pages now carry.
 </p>
 
 <p>
-Where meaning actually bottoms out is stated practically in the next
-paragraph: the meaning of data is grounded in the non-Semantic-Web
+In practice, the meaning of data is grounded in the non-Semantic-Web
 applications interfaced to it. A currency transfer application that accepts
 such input defines, for practical purposes, what the terms in the instrument
 mean. That is Chapter 37&#8217;s closed loop, seen from the logic side.
@@ -230,59 +328,89 @@ mean. That is Chapter 37&#8217;s closed loop, seen from the logic side.
 
 <p>
 One requirement is derived that later chapters depend on. Most knowledge
-representation systems keep their <a class="gl-ref" href="../glossary.html#inference">inference</a> rules outside the language,
-because rules like substitution cannot be written in it. Berners-Lee observes
-that such rule sets are often not only redundant but arbitrary, and that a
+representation systems treat their <a class="gl-ref" href="../glossary.html#inference">inference</a> rules, the permitted steps from
+one statement to the next, as different from the other information they
+believe. In some cases that is because the rules, such as substitution in a
+formula, cannot be written in the language at all. Berners-Lee observes that
+such rule sets are often not only redundant but arbitrary, and that a
 universal design must be minimalist.
 </p>
 
 <p>
-The consequence is that different machines will use different algorithms and
-different sets of inference rules, and that what must be shared is not the
-algorithm but the check:
+Different machines will therefore use different algorithms and different
+rule sets. What must be shared is not the algorithm but the check:
 </p>
 
 <blockquote>
 The essential this is that the results of either must be provably correct
-against the same basic minimalist rules.
+against the same basic minimalist rules. In fact for interchange of proof,
+the set of rules is an engineering choice.
 <cite>The Semantic Web as a language of logic, 1999</cite>
 </blockquote>
 
 <p>
-Chapter 41 takes this apart properly, showing that a rule holds two separable
-things: a fact that anyone can use, and a procedural hint that only its own
-engine can.
+Chapter 41 shows that a rule holds two separable things: a fact anyone can
+use, and a procedural hint only its own engine can.
+</p>
+
+<h2>40.6 Saying &#8220;that statement is false&#8221;</h2>
+
+<p>
+Logicians once hoped for languages in which every sentence was provably true
+or false, which meant forbidding self-contradiction. On the Web, where data is
+untrustworthy anyway, the note calls this a very academic problem. Systems
+that endorse statements must be able to say &#8220;that statement is
+false&#8221;, so self-contradictory loops will arise. A contradiction may be
+expressed but must never be derived. A program that meets one can stop
+trusting the source, or the public key, that supplied it.
+</p>
+
+<p>
+Nor must anyone decide everything an agent could deduce, which in first-order
+logic is impossible. What it actually deduces depends on its engine, storage
+and indexes.
+</p>
+
+<blockquote>
+Keeping a language less powerful than first order predicate calculus is quite
+reasonable within an application, but not for the Web.
+<cite>The Semantic Web as a language of logic, 1999</cite>
+</blockquote>
+
+<p>
+Chapter 46 develops how a reader limits the damage once a contradiction
+turns up.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The subsetting strategy was adopted formally.</strong> The Web
-<a class="gl-ref" href="../glossary.html#ontology">Ontology</a> Language shipped in 2004 with named profiles of deliberately
-different expressive power, and <a class="gl-ref" href="../glossary.html#owl">OWL</a> 2 in October 2009 added three more, each
-chosen so that reasoning stays tractable. That is section 40.3 turned into a
-standard.</li>
-<li><strong>The proof layer was never built.</strong> No interoperable format
-for exchanging proofs was standardised, so the asymmetry of Figure 40.1,
+<li><strong>The subsetting strategy was adopted formally.</strong> <a class="gl-ref" href="../glossary.html#owl">OWL</a>
+(February 2004) came in three species, Lite, DL and Full; OWL 2 (October
+2009) added three profiles, EL, QL and RL, each chosen so that reasoning
+stays tractable. That is section 40.3 turned into a standard.</li>
+<li><strong>The proof layer was never built.</strong> By 2026 there was no
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation for exchanging proofs, so the asymmetry of Figure 40.2,
 which the whole design rests on, was never cashed in practice.</li>
 <li><strong>Grounding happened in applications, as predicted.</strong> What
 terms mean in practice is still fixed by the programs that consume them,
-which is the note&#8217;s own fallback rather than its ambition.</li>
+which is the note&#8217;s fallback, not its ambition.</li>
 <li><strong>Checkability returned from another direction.</strong> The
 distinction between generating an answer by any means and verifying it
-cheaply is now the central design question in systems that use language
-models, which reach conclusions unverifiably and are increasingly paired with
-checkers that do not.</li>
+cheaply is now central to systems built on language models, which reach
+conclusions unverifiably and are increasingly paired with
+checkers (test suites, proof assistants) whose verdicts can be relied
+on.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The layer this chapter occupies is planned in Chapter 30, and the objections
-it answers are Chapter 31. The separation of rule from fact is Chapter 41, and
-the notation that carries both is Chapter 42. The closed loop that grounds
-meaning is Chapter 37, and the handling of contradiction is Chapter 46.
+This layer is planned in Chapter 30 and defended against objections in
+Chapter 31. Rule and fact are separated in Chapter 41 and written down in
+Chapter 42. The closed loop that grounds meaning is Chapter 37; contradiction
+is handled in Chapter 46.
 </p>
 </div>
 
@@ -290,23 +418,23 @@ meaning is Chapter 37, and the handling of contradiction is Chapter 46.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">40.1</span>
-Expressive power and efficient reasoning conflict. Name a system you use that
-chose the other way, and say what it cannot represent.</p>
+A spreadsheet can only add, compare and look up. Name one thing you could not
+write in it, and say why that keeps it fast.</p>
 </div>
 <div class="question">
 <p><span class="question-number">40.2</span>
-The Web gave up link consistency; this gives up answerability. Name a third
-guarantee a system might give up to gain scale.</p>
+What did each of the hypertext and logic designs give up, and what did each
+gain?</p>
 </div>
 <div class="question">
 <p><span class="question-number">40.3</span>
-Five ways are given to carve out a tractable subsystem. Which would you use
-for a system you know, and what does it forbid?</p>
+Your phone&#8217;s contacts app trusts only entries you added. Which of the
+five subsetting methods is that?</p>
 </div>
 <div class="question">
 <p><span class="question-number">40.4</span>
 A proof validator cannot check that an answer is right, only that an
-explanation holds. Explain the difference with an example.</p>
+explanation holds. Explain the difference using the invoice example.</p>
 </div>
 </details>
 

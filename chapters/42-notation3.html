@@ -49,13 +49,26 @@
 a Design Issues note by Tim Berners-Lee, 2000-10-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Notation3.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Notation3 (N3) is <a class="gl-ref" href="../glossary.html#rdf">RDF</a> plus braces, which quote a group of statements
+without asserting them. That makes rules possible, and statements about what
+a document says. To stay safe on an open Web it allows only one kind of
+<em>not</em>: this named document does not contain that fact. The data part
+became <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>; the logic stayed experimental.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 This is the <a class="gl-ref" href="../glossary.html#specification">specification</a> of the notation Berners-Lee designed to write the
 logic of Chapter 40 down. It is the most technical note in the collection and
 the only one that reads as a paper, with formal syntax, a definition of
-entailment, and a catalogue of built-in operators.
+entailment (what follows from what), and a catalogue of built-in operators.
+The catalogue dates it to 2000; the copy online is dated August 2005 and
+calls itself an early draft of the semantics.
 </p>
 <p>
 The design question it answers is not what logic is true, but what logic
@@ -80,48 +93,106 @@ pattern. Quotation is therefore not an advanced feature but a starting
 condition, which is why Chapter 30 puts it in the base layer.
 </p>
 
+<p>
+In Figure 42.1, a prefix such as <code>foaf:</code> abbreviates the start
+of a long <a class="gl-ref" href="../glossary.html#uri">URI</a>, and a semicolon means the same subject again.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
+<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
      aria-labelledby="fig42-1-t fig42-1-d">
   <title id="fig42-1-t">The same fact, written four ways</title>
   <desc id="fig42-1-d">One statement written in full with complete URIs, then
-  with prefixes, then with the shorthand for a repeated subject, then with the
-  keyword for type. Each step is shorter and means exactly the same. The
-  fourth line quotes a graph inside a statement, which is what the notation
-  adds to the underlying model.</desc>
+  with prefixes, then with a second fact added about the same subject using
+  the semicolon shorthand. The fourth line quotes a graph inside a statement,
+  which is what the notation adds to the underlying model.</desc>
 
   <text x="24" y="26" class="t-caps">1. in full</text>
-  <rect x="24" y="36" width="672" height="34" fill="#fcfcfa" stroke="#e0e0e0"/>
-  <text x="36" y="58" class="t-mono" font-size="11">&lt;http://ex.org/#joe&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Joe Meadows" .</text>
+  <rect x="24" y="36" width="672" height="34" fill="#fdfdfc" stroke="#8a9a9a"/>
+  <text x="36" y="58" class="t-mono" style="font-size:11.5px">&lt;http://ex.org/#joe&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Joe Meadows" .</text>
 
   <text x="24" y="98" class="t-caps">2. with prefixes</text>
-  <rect x="24" y="108" width="672" height="34" fill="#fcfcfa" stroke="#e0e0e0"/>
-  <text x="36" y="130" class="t-mono" font-size="11.5">ex:joe foaf:name "Joe Meadows" .</text>
+  <rect x="24" y="108" width="672" height="34" fill="#fdfdfc" stroke="#8a9a9a"/>
+  <text x="36" y="130" class="t-mono">ex:joe foaf:name "Joe Meadows" .</text>
 
-  <text x="24" y="170" class="t-caps">3. one subject, several properties</text>
-  <rect x="24" y="180" width="672" height="50" fill="#fcfcfa" stroke="#e0e0e0"/>
-  <text x="36" y="200" class="t-mono" font-size="11.5">ex:joe foaf:name "Joe Meadows";</text>
-  <text x="90" y="220" class="t-mono" font-size="11.5">foaf:mbox &lt;mailto:joe@ex.org&gt; .</text>
+  <text x="24" y="170" class="t-caps">3. one subject, a second property</text>
+  <rect x="24" y="180" width="672" height="50" fill="#fdfdfc" stroke="#8a9a9a"/>
+  <text x="36" y="200" class="t-mono">ex:joe foaf:name "Joe Meadows";</text>
+  <text x="90" y="220" class="t-mono">foaf:mbox &lt;mailto:joe@ex.org&gt; .</text>
 
-  <text x="24" y="258" class="t-caps" fill="#3f6f3f">4. a graph quoted inside a statement</text>
-  <rect x="24" y="268" width="672" height="34" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="36" y="290" class="t-mono" font-size="11.5" fill="#3f6f3f">ex:jane ex:knows { ex:joe foaf:name "Joe Meadows" } .</text>
+  <text x="24" y="258" class="t-caps" style="fill:#5a8f5a">4. a graph quoted inside a statement</text>
+  <rect class="box-green" x="24" y="268" width="672" height="34"/>
+  <text x="36" y="290" class="t-mono">ex:jane ex:knows { ex:joe foaf:name "Joe Meadows" } .</text>
 
   <line class="ln-mut" x1="24" y1="318" x2="696" y2="318"/>
-  <text x="24" y="340" class="t-sm t-it">Lines 1 to 3 are the same statement. Line 4 is a statement about a statement, and is what the braces buy.</text>
+  <text x="24" y="340" class="t-sm t-it">Lines 1 and 2 say the same thing. Line 3 adds a second fact about the same subject.</text>
+  <text x="24" y="360" class="t-sm t-it">Line 4 is a statement about a statement, and is what the braces buy.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 42.1</span>
-The braces are the addition. Jane knows that Joe&#8217;s name is Joe Meadows, and
-she may know that without knowing anything about whatever other names Joe
-goes by, which is the point Chapter 44 turns into a rule about
-reification.</figcaption>
+The braces are the addition. Jane knows what the quoted statement says
+about Joe, which says nothing about his other names; Chapter 44 turns this
+into a rule about reification.</figcaption>
+</figure>
+
+<h3>A rule, worked through</h3>
+
+<p>
+The note&#8217;s first example puts the braces to work. A rule is a
+statement whose subject and object are quoted formulas, joined by the
+built-in property <code>log:implies</code>, written <code>=&gt;</code> for
+short.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig42-2-t fig42-2-d">
+  <title id="fig42-2-t">A rule firing</title>
+  <desc id="fig42-2-d">On the left, the data: Joe parent Alan, and Alan sister
+  Susie. In the middle, the rule: if x parent y and y sister z, then x aunt z.
+  The data matches the if-part with x as Joe, y as Alan and z as Susie. On the
+  right, the then-part filled in with those names gives the new statement Joe
+  aunt Susie.</desc>
+
+  <text x="109" y="34" class="t-caps" text-anchor="middle">data</text>
+  <rect class="box-plain" x="24" y="44" width="170" height="80" rx="4"/>
+  <text x="38" y="78" class="t-mono">Joe parent Alan .</text>
+  <text x="38" y="100" class="t-mono">Alan sister Susie .</text>
+
+  <text x="377" y="34" class="t-caps" text-anchor="middle">rule</text>
+  <rect class="box" x="262" y="44" width="230" height="80" rx="4"/>
+  <text x="377" y="78" class="t-mono" text-anchor="middle">{ x parent y . y sister z }</text>
+  <text x="377" y="100" class="t-mono" text-anchor="middle">=&gt; { x aunt z }</text>
+
+  <text x="628" y="34" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">new statement</text>
+  <rect class="box-green" x="560" y="44" width="136" height="80" rx="4"/>
+  <text x="628" y="89" class="t-mono" text-anchor="middle">Joe aunt Susie .</text>
+
+  <line class="ln-accent" x1="196" y1="84" x2="252" y2="84"/>
+  <path d="M250,79 L260,84 L250,89 Z" fill="#1c5a7a"/>
+  <line class="ln-accent" x1="494" y1="84" x2="550" y2="84"/>
+  <path d="M548,79 L558,84 L548,89 Z" fill="#1c5a7a"/>
+
+  <text x="227" y="152" class="t-sm" text-anchor="middle">1. match the if-part</text>
+  <text x="525" y="152" class="t-sm" text-anchor="middle">2. fill in the then-part</text>
+
+  <rect class="box-plain" x="200" y="174" width="354" height="34" rx="4"/>
+  <text x="377" y="196" class="t-mono" text-anchor="middle">bindings:&#160;&#160; x = Joe&#160;&#160; y = Alan&#160;&#160; z = Susie</text>
+
+  <text x="360" y="236" class="t-sm t-it" text-anchor="middle">The braces quote the if-part and the then-part: neither is asserted on its own.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 42.2</span>
+A rule is a pattern in braces. The engine finds names that make it match
+the data and copies them into the conclusion.</figcaption>
 </figure>
 
 <h2>42.2 The trap that shaped the design</h2>
 
 <p>
 Quotation plus reference brings self-reference, and self-reference brings
-paradox. Berners-Lee&#8217;s response is unusually direct about the cost:
+paradox: a sentence such as <em>this statement is false</em>, which is true
+only if it is false. Berners-Lee&#8217;s response is unusually direct about
+the cost. (First-order logic, below, is the ordinary logic of <em>all</em>,
+<em>some</em> and <em>not</em>.)
 </p>
 
 <blockquote>
@@ -134,9 +205,10 @@ negation.
 </blockquote>
 
 <p>
-A language built to express anything is deliberately made unable to express
-general negation, because the alternative is a system that can tie itself in
-knots. Negated forms of particular built-in operations are provided instead.
+A language built to express anything is deliberately made unable to say a
+general <em>not</em>, because the alternative is a system that can tie itself
+in knots. Negated forms of particular built-in operations are provided
+instead.
 </p>
 
 <h2>42.3 Monotonicity as a publishing requirement</h2>
@@ -153,13 +225,18 @@ knowledge without affecting systems we have already built.
 </blockquote>
 
 <p>
-New information may contradict old information, which must then be resolved.
-What it must not do is silently change what the old information meant. That is
-monotonicity, and Berners-Lee identifies exactly where non-monotonicity comes
-from in existing systems: a form of negation that treats a sentence as false
-when it is not derivable from the current knowledge base. The culprit is the
-phrase &ldquo;current knowledge base&rdquo;, which is a variable quantity that
-can be referred to implicitly.
+Consider a booking system that concludes a guest has no allergy because none
+is on file. Someone records an allergy elsewhere, and the conclusion silently
+flips. A logic is <em><a class="gl-ref" href="../glossary.html#monotonic">monotonic</a></em> when adding facts never withdraws a
+conclusion. New information may still contradict old, but the conflict must
+be resolved openly, not by quietly changing what the old information meant.
+</p>
+
+<p>
+The culprit, Berners-Lee says, is <em>negation as failure</em>: treating a
+sentence as false when it cannot be derived from the &ldquo;current knowledge
+base&rdquo;, everything the system holds at the moment. That is a changing
+quantity, referred to only implicitly.
 </p>
 
 <h2>42.4 Scoped negation as failure</h2>
@@ -168,42 +245,44 @@ can be referred to implicitly.
 The solution is to keep the useful behaviour and remove the implicit
 reference. Negation is permitted only about a specific named document or
 formula: whether that document holds, or allows derivation of, a given fact.
+The built-in <code>log:notIncludes</code> does this, and the note calls it
+completely monotonic, since no other knowledge gained can change its answer.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig42-2-t fig42-2-d">
-  <title id="fig42-2-t">Two kinds of &#8220;not known&#8221;</title>
-  <desc id="fig42-2-d">Ordinary negation as failure asks whether a fact is
+     aria-labelledby="fig42-3-t fig42-3-d">
+  <title id="fig42-3-t">Two kinds of &#8220;not known&#8221;</title>
+  <desc id="fig42-3-d">Ordinary negation as failure asks whether a fact is
   absent from the current knowledge base, which changes as knowledge is added,
   so conclusions can be withdrawn. Scoped negation asks whether a fact is
   absent from one named document, which is a stable question with a stable
   answer.</desc>
 
-  <rect class="box-plain" x="24" y="30" width="310" height="160" rx="4" stroke="#d9b0b0"/>
-  <text x="179" y="56" class="t-caps" text-anchor="middle" fill="#b04a4a">unscoped</text>
-  <text x="179" y="84" class="t-sm" text-anchor="middle">&#8220;this is not known&#8221;</text>
+  <rect class="box-warm" x="24" y="30" width="310" height="160" rx="4"/>
+  <text x="179" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">unscoped</text>
+  <text x="179" y="84" class="t-sm t-it" text-anchor="middle">this is not known</text>
   <text x="179" y="110" class="t-sm" text-anchor="middle">known <tspan font-style="italic">by whom</tspan>? By everything</text>
   <text x="179" y="128" class="t-sm" text-anchor="middle">the system currently holds.</text>
-  <text x="179" y="158" class="t-sm" text-anchor="middle" fill="#b04a4a">Add a document elsewhere and</text>
-  <text x="179" y="176" class="t-sm" text-anchor="middle" fill="#b04a4a">a past conclusion silently flips.</text>
+  <text x="179" y="158" class="t-sm" text-anchor="middle" style="fill:#b08d57">Add a document elsewhere and</text>
+  <text x="179" y="176" class="t-sm" text-anchor="middle" style="fill:#b08d57">a past conclusion silently flips.</text>
 
   <rect class="box-green" x="386" y="30" width="310" height="160" rx="4"/>
-  <text x="541" y="56" class="t-caps" text-anchor="middle" fill="#3f6f3f">scoped</text>
-  <text x="541" y="84" class="t-sm" text-anchor="middle">&#8220;this document does not say it&#8221;</text>
+  <text x="541" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">scoped</text>
+  <text x="541" y="84" class="t-sm t-it" text-anchor="middle">this document does not say it</text>
   <text x="541" y="110" class="t-sm" text-anchor="middle">A question about one named</text>
   <text x="541" y="128" class="t-sm" text-anchor="middle">formula, answerable and stable.</text>
-  <text x="541" y="158" class="t-sm" text-anchor="middle" fill="#3f6f3f">Anyone may publish anything</text>
-  <text x="541" y="176" class="t-sm" text-anchor="middle" fill="#3f6f3f">without disturbing your system.</text>
+  <text x="541" y="158" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">Anyone may publish anything</text>
+  <text x="541" y="176" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">without disturbing anyone else.</text>
 
   <line class="ln-mut" x1="24" y1="216" x2="696" y2="216"/>
   <text x="360" y="240" class="t-sm" text-anchor="middle">The difference is a single implicit word: known to <tspan font-style="italic">everything</tspan>, or stated in <tspan font-style="italic">this</tspan>.</text>
-  <text x="360" y="268" class="t-sm t-it" text-anchor="middle">Default reasoning is kept. The global closed-world assumption is not.</text>
-  <text x="360" y="290" class="t-sm" text-anchor="middle">Berners-Lee calls the result a design goal met for distributed rule systems.</text>
+  <text x="360" y="266" class="t-sm t-it" text-anchor="middle">Default reasoning is kept. The global closed-world assumption is not.</text>
+  <text x="360" y="288" class="t-sm" text-anchor="middle">Berners-Lee counts this as meeting a design goal for distributed rule systems.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 42.2</span>
-This is the answer to the penguin of Chapter 41. Defaults become statements
-about a named corpus rather than about the world, so adding knowledge
+<figcaption><span class="fig-label">Figure 42.3</span>
+The answer to the penguin of Chapter 41. The closed-world assumption (what
+is not on file is false) applies only to a named corpus, so knowledge added
 elsewhere cannot retract a conclusion drawn here.</figcaption>
 </figure>
 
@@ -211,14 +290,63 @@ elsewhere cannot retract a conclusion drawn here.</figcaption>
 
 <p>
 Two built-in properties do something no logic textbook contains: they make
-retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>. One relates a document to what it means, and the
-other to what it says. Berners-Lee defines the semantics of a document as the
-result of retrieving a representation, parsing it, and assimilating it into
-the local framework.
+retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>. <code>log:semantics</code> relates a document to
+what it means, and <code>log:says</code> to what it says. Berners-Lee defines
+the semantics of a document as the result of retrieving a representation,
+parsing it, and assimilating it into the local framework.
 </p>
 
 <p>
-A reviewer was aghast at defining semantics that way, and the footnote
+The note&#8217;s second example looks inside what people wrote, using
+<code>log:includes</code> to believe weather reports only from residents.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig42-4-t fig42-4-d">
+  <title id="fig42-4-t">Whom to believe about the weather</title>
+  <desc id="fig42-4-d">Bob lives in Boston and wrote a quoted formula saying
+  Boston weather is sunny. Alice lives in Adelaide and wrote a quoted formula
+  saying Boston weather is cold. Both feed a rule that believes a weather
+  statement only from someone who lives in the place, looking inside each
+  formula with log:includes. Bob's claim passes and becomes the believed
+  statement Boston weather sunny; Alice's is not used.</desc>
+
+  <text x="24" y="34" class="t-caps">bob</text>
+  <rect class="box-plain" x="24" y="44" width="310" height="70" rx="4"/>
+  <text x="38" y="72" class="t-mono">Bob livesIn Boston .</text>
+  <text x="38" y="94" class="t-mono">Bob wrote { Boston weather sunny } .</text>
+
+  <text x="24" y="154" class="t-caps">alice</text>
+  <rect class="box-plain" x="24" y="164" width="310" height="70" rx="4"/>
+  <text x="38" y="192" class="t-mono">Alice livesIn Adelaide .</text>
+  <text x="38" y="214" class="t-mono">Alice wrote { Boston weather cold } .</text>
+  <text x="38" y="260" class="t-sm" style="fill:#b08d57">not used: Alice lives in Adelaide</text>
+
+  <rect class="box" x="410" y="44" width="286" height="106" rx="4"/>
+  <text x="553" y="66" class="t-caps" text-anchor="middle">rule</text>
+  <text x="553" y="90" class="t-sm" text-anchor="middle">Believe a statement about the weather</text>
+  <text x="553" y="108" class="t-sm" text-anchor="middle">at a place only from a resident.</text>
+  <text x="553" y="134" class="t-mono" text-anchor="middle">y log:includes { z weather w }</text>
+
+  <line class="ln-accent" x1="336" y1="79" x2="400" y2="79"/>
+  <path d="M398,74 L408,79 L398,84 Z" fill="#1c5a7a"/>
+  <path class="ln-dash" d="M 336 199 L 404 140"/>
+
+  <line class="ln-accent" x1="553" y1="152" x2="553" y2="184"/>
+  <path d="M548,182 L553,192 L558,182 Z" fill="#1c5a7a"/>
+  <text x="565" y="176" class="t-sm">believed</text>
+
+  <rect class="box-green" x="440" y="194" width="226" height="40" rx="4"/>
+  <text x="553" y="219" class="t-mono" text-anchor="middle">Boston weather sunny .</text>
+</svg>
+<figcaption><span class="fig-label">Figure 42.4</span>
+Quoting lets the system hold both claims without believing either, then
+pick one by its source: the provenance of section 42.1, written as a rule.</figcaption>
+</figure>
+
+<p>
+A reviewer was aghast at defining semantics as retrieval, and the footnote
 answering the objection is the wittiest passage in the collection:
 </p>
 
@@ -256,22 +384,20 @@ of this work outlived the rest.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The notation won; the logic did not.</strong> <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, which is the
+<li><strong>The notation won; the logic did not.</strong> Turtle, which is the
 data half of this notation with the logic removed, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 Recommendation in February 2014 and is now the ordinary way people read and
 write <a class="gl-ref" href="../glossary.html#graph">graph</a> data. The rules, formulae and built-ins remained a research
 language.</li>
-<li><strong>Scoped negation stayed a minority position.</strong> The
-distinction of Figure 42.2 is correct and is rarely offered by the systems
-people actually use, most of which treat absence from their own store as
-falsehood.</li>
+<li><strong>Scoped negation stayed largely within N3 reasoners.</strong>
+Most rule systems in everyday use test absence against whatever store they
+run on, the unscoped form of Figure 42.3.</li>
 <li><strong>Quoting graphs was standardised twice over.</strong> Named graphs
-arrived with <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> in 2008, and RDF-star work from 2021 onward added
-statements about statements, which is the requirement section 42.1 opens
-with.</li>
-<li><strong>Retrieval as inference did not survive.</strong> Making a network
-fetch part of evaluating a rule proved difficult to reason about, and
-production systems load data first and reason afterwards.</li>
+arrived with <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> in 2008 and became datasets in RDF 1.1 (February 2014);
+RDF-star work from 2021 onward added statements about statements.</li>
+<li><strong>Retrieval as inference stayed in research reasoners.</strong>
+Reasoners such as cwm and EYE implement fetching a document during a rule,
+but production systems load data first and reason afterwards.</li>
 </ul>
 </div>
 
@@ -290,8 +416,9 @@ are Chapter 47.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">42.1</span>
-The notation omits general negation to avoid paradox. Write a statement you
-cannot make without it, and say whether a scoped form would serve.</p>
+Write in plain English a fact that needs a general <em>not</em>, such as
+<em>no one in this room is a doctor</em>. Could you say it instead about one
+named document, and would that serve?</p>
 </div>
 <div class="question">
 <p><span class="question-number">42.2</span>

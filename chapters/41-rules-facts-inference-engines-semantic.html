@@ -49,12 +49,22 @@
 a Design Issues note by Tim Berners-Lee, 2000-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Rules.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A reasoning program stores rules that mix two things: what is true, and when
+to work it out. Only the first can be shared on the Web. The Web uses
+classical logic because it is the only kind in which adding new facts never
+overturns old conclusions, so anyone can check anyone else&#8217;s proof.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 40 concluded that <a class="gl-ref" href="../glossary.html#inference">inference</a> rules cannot live outside the language.
-This note, from 1998, shows what happens when you take a rule out of an
-engine and try to put it on the Web, and finds that a rule is two things
+This note, from 1998, shows what happens when a rule is taken out of an
+engine and put on the Web, and finds that a rule is two things
 wearing one coat.
 </p>
 </div>
@@ -62,12 +72,30 @@ wearing one coat.
 <h2>41.1 A rule contains two separable things</h2>
 
 <p>
-The worked example is kinship. An engine holds a rule about daughters and
-granddaughters, and Berners-Lee reads it aloud in the way the engine
-understands it: whenever a new daughter relationship is found, look for the
-next one up, and conclude the granddaughter relationship, where
-&ldquo;conclude&rdquo; means add to the database.
+An inference engine is a program that draws new conclusions from the facts it
+has stored, its database. The worked example is kinship. An engine holds a
+rule about daughters and granddaughters, and Berners-Lee reads it the way the
+engine understands it: whenever a new daughter relationship is found, look for
+the next one up, and conclude the granddaughter relationship, where
+&ldquo;conclude&rdquo; means add to the database. Whether to do this at once
+or only when someone asks is decided outside the rule itself, possibly by a
+person; the note calls this an out-of-band decision.
 </p>
+
+<p>
+Written down, the rule and the fact beneath it look almost the same (g stands
+for granddaughter, d for daughter; &#8704; reads as for all):
+</p>
+
+<table>
+<tr><th>Form</th><th>Notation</th><th>What it means</th></tr>
+<tr><td>As a rule</td><td><code>g(a,c) |= d(a,b) &amp; d(b,c)</code></td><td>An
+instruction: on finding the two daughter links, add the granddaughter
+link.</td></tr>
+<tr><td>As a fact</td><td><code>&#8704;a,b,c g(a,c) &lt;= d(a,b) &amp; d(b,c)</code></td><td>A
+statement: whenever the two daughter links hold, so does the granddaughter
+link.</td></tr>
+</table>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
@@ -80,39 +108,40 @@ next one up, and conclude the granddaughter relationship, where
 
   <rect class="box-plain" x="180" y="20" width="360" height="52" rx="4"/>
   <text x="360" y="42" class="t-caps" text-anchor="middle">a rule, as an engine holds it</text>
-  <text x="360" y="62" class="t-sm" text-anchor="middle">when you find a daughter link, chain up, and add the result</text>
+  <text x="360" y="62" class="t-sm" text-anchor="middle">on finding a daughter link, chain up, and add the result</text>
 
   <path class="ln-mut" d="M 360 72 L 360 90 M 180 90 L 540 90 M 180 90 L 180 110 M 540 90 L 540 110"/>
 
   <rect class="box-green" x="24" y="110" width="312" height="120" rx="4"/>
-  <text x="180" y="134" class="t-caps" text-anchor="middle" fill="#3f6f3f">the fact underneath</text>
+  <text x="180" y="134" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">the fact underneath</text>
   <text x="180" y="162" class="t-sm" text-anchor="middle">if a is the daughter of b,</text>
   <text x="180" y="180" class="t-sm" text-anchor="middle">and b the daughter of c,</text>
   <text x="180" y="198" class="t-sm" text-anchor="middle">then a is the granddaughter of c</text>
   <text x="180" y="220" class="t-sm t-it" text-anchor="middle">true of the world, not of any engine</text>
 
   <rect class="box-warm" x="384" y="110" width="312" height="120" rx="4"/>
-  <text x="540" y="134" class="t-caps" text-anchor="middle" fill="#a07d47">the procedural hint</text>
-  <text x="540" y="162" class="t-sm" text-anchor="middle">compute it the moment you can,</text>
+  <text x="540" y="134" class="t-caps" text-anchor="middle" style="fill:#b08d57">the procedural hint</text>
+  <text x="540" y="162" class="t-sm" text-anchor="middle">compute it as soon as possible,</text>
   <text x="540" y="180" class="t-sm" text-anchor="middle">or wait until someone asks</text>
-  <text x="540" y="202" class="t-sm t-it" text-anchor="middle">an out-of-band decision,</text>
-  <text x="540" y="220" class="t-sm t-it" text-anchor="middle">often made by a person</text>
+  <text x="540" y="202" class="t-sm t-it" text-anchor="middle">decided outside the rule,</text>
+  <text x="540" y="220" class="t-sm t-it" text-anchor="middle">possibly by a person</text>
 
-  <path class="ln" stroke="#5a8f5a" d="M 180 230 L 180 258"/>
+  <path class="ln" style="stroke:#5a8f5a" d="M 180 230 L 180 258"/>
   <path d="M 175 252 L 180 264 L 185 252 Z" fill="#5a8f5a"/>
-  <path class="ln-dash" d="M 540 230 L 540 258"/>
-  <path d="M 534 252 L 540 264 L 546 252 Z" fill="#c98a8a"/>
+  <path class="ln-dash" style="stroke:#b08d57" d="M 540 230 L 540 258"/>
+  <path d="M 534 252 L 540 264 L 546 252 Z" fill="#b08d57"/>
 
-  <text x="180" y="284" class="t-sm" text-anchor="middle" fill="#3f6f3f">goes on the Web; any validator handles it</text>
-  <text x="540" y="284" class="t-sm" text-anchor="middle" fill="#b04a4a">makes sense only to engines of the same kind</text>
+  <text x="180" y="284" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">goes on the Web; any validator handles it</text>
+  <text x="540" y="284" class="t-sm" text-anchor="middle" style="fill:#b08d57">makes sense only to engines of the same kind</text>
 
   <line class="ln-mut" x1="24" y1="302" x2="696" y2="302"/>
   <text x="360" y="322" class="t-sm t-it" text-anchor="middle">The rule would be nonsense were the fact not true. Publishing the fact strips the hint.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 41.1</span>
-Berners-Lee is explicit about what is lost and what is gained: publishing the
-facts puts all the knowledge in one space, and the drawback is that no single
-engine can then answer arbitrary queries.</figcaption>
+Only the fact can be written in the Semantic Web language, and every proof
+validator (a program that checks each step of a proof) can handle it.
+Publishing them puts all knowledge in one space, at the cost that no single
+engine can answer arbitrary queries.</figcaption>
 </figure>
 
 <p>
@@ -127,7 +156,10 @@ The goal is to unify everything which can be expressed in classical logic
 </blockquote>
 
 <p>
-And the reason no compromise is available:
+Classical logic here means the ordinary logic of mathematics, in which a
+statement once proved stays proved. (Spellings such as &ldquo;futher&rdquo;
+are the note&#8217;s own; it was typed in haste.) And the reason no compromise
+is available:
 </p>
 
 <blockquote>
@@ -139,26 +171,73 @@ A system which tries to constrain the expressive power cannot be universal.
 
 <p>
 The hardest case is a system where adding a fact can make a previous
-conclusion false. Berners-Lee works it with the standard example: birds fly, a
-penguin is a bird, so Pingu flies, until the system learns that penguins do
-not. Such systems rest on defaults, and defaults are implicitly relative to a
-fixed set of facts.
+conclusion false. The note calls these non-monotonic logics: their stock of
+conclusions does not only grow. They rest on defaults, things assumed unless
+one is told otherwise, and so they are closed-world systems: whatever is not
+in their fixed set of facts is treated as false.
 </p>
 
-<p>
-Two ways of exporting such knowledge are offered, and the first is described
-in a way that makes its unattractiveness clear. One can export the rule system
-itself, producing a statement that a certain assertion is unchallenged in a
-certain corpus by anything contradicting it for birds or any superclass of
-penguins. That is a <a class="gl-ref" href="../glossary.html#reification">reification</a> of the inference system rather than a claim
-about penguins, and Berners-Lee calls it possibly so unwieldy that only
-systems using the same engine can use it.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig41-2-t fig41-2-d">
+  <title id="fig41-2-t">The penguin, step by step</title>
+  <desc id="fig41-2-d">First row: knowing that birds fly, penguins are birds
+  and Pingu is a penguin, a default system believes Pingu flies. Second row:
+  told that penguins cannot fly, it now believes Pingu does not fly and
+  withdraws its earlier conclusion. Classical logic never withdraws a
+  conclusion when a fact is added.</desc>
+
+  <rect class="box-plain" x="24" y="20" width="270" height="72" rx="4"/>
+  <text x="159" y="44" class="t-caps" text-anchor="middle">known</text>
+  <text x="159" y="64" class="t-sm" text-anchor="middle">birds fly; penguins are birds;</text>
+  <text x="159" y="82" class="t-sm" text-anchor="middle">Pingu is a penguin</text>
+  <path class="ln" d="M 294 56 L 344 56"/>
+  <path d="M 340 51 L 352 56 L 340 61 Z" fill="#2f4f4f"/>
+  <rect class="box-green" x="352" y="20" width="200" height="72" rx="4"/>
+  <text x="452" y="44" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">believed</text>
+  <text x="452" y="70" text-anchor="middle">Pingu flies</text>
+  <text x="572" y="60" class="t-sm t-it">conclusion drawn</text>
+
+  <rect class="box-plain" x="24" y="116" width="270" height="72" rx="4"/>
+  <text x="159" y="140" class="t-caps" text-anchor="middle">fact added</text>
+  <text x="159" y="164" class="t-sm" text-anchor="middle">penguins can&#8217;t fly</text>
+  <path class="ln" d="M 294 152 L 344 152"/>
+  <path d="M 340 147 L 352 152 L 340 157 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="352" y="116" width="200" height="72" rx="4"/>
+  <text x="452" y="140" class="t-caps" text-anchor="middle" style="fill:#b08d57">believed</text>
+  <text x="452" y="160" text-anchor="middle">Pingu does not fly</text>
+  <text x="452" y="178" class="t-sm" text-anchor="middle" style="fill:#8a9a9a">Pingu flies</text>
+  <line class="ln-mut" x1="416" y1="174" x2="488" y2="174"/>
+  <text x="572" y="148" class="t-sm t-it">earlier conclusion</text>
+  <text x="572" y="166" class="t-sm t-it">withdrawn</text>
+
+  <line class="ln-mut" x1="24" y1="208" x2="696" y2="208"/>
+  <text x="360" y="232" class="t-sm t-it" text-anchor="middle">In classical logic a new fact can only add conclusions; it never withdraws one.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 41.2</span>
+A default system changes its mind when facts are added, so what it believes
+depends on exactly which facts it happened to hold.</figcaption>
+</figure>
 
 <p>
-The second is to record the output as a plain statement: that a particular
-system has concluded that Pingu flies. He notes that a system might risk
-incorporating such statements, and describes what doing so amounts to:
+Two ways of exporting such knowledge to the Web are offered:
+</p>
+
+<table>
+<tr><th>Option</th><th>What gets published</th><th>Who can use it</th><th>Problem</th></tr>
+<tr><td>Export the rule system</td><td>Nothing in a certain corpus
+contradicts birds flying, for birds or any superclass of penguins</td><td>Possibly
+only engines of the same kind</td><td>It describes the engine&#8217;s state, not
+penguins</td></tr>
+<tr><td>Export the output</td><td>A particular system has concluded that Pingu
+flies</td><td>Anyone</td><td>Treating it as true is the catalogue mistake
+below</td></tr>
+</table>
+
+<p>
+The first is a <a class="gl-ref" href="../glossary.html#reification">reification</a>: a description of the reasoning system&#8217;s own
+state rather than of the world. Of the second, Berners-Lee notes that a system
+might risk incorporating such statements, and says what that amounts to:
 </p>
 
 <blockquote>
@@ -168,10 +247,11 @@ book exists becase it wasn't in Blackwell's catalog&rdquo;.
 </blockquote>
 
 <p>
-People reason this way constantly, and a secure system should not. The
-alternative he sketches is to obtain a definitive list from a party entitled
-to give one, which converts an absence of evidence into a positive statement
-that someone is answerable for.
+Blackwell&#8217;s is an Oxford bookshop; a book missing from its catalogue may
+still have been published. The remedy he sketches is a definitive list from a party
+entitled to give one, such as the publisher&#8217;s list for that year, which
+turns an absence of evidence into a positive statement someone is answerable
+for.
 </p>
 
 <h2>41.3 Why classical logic, and not as a matter of taste</h2>
@@ -188,17 +268,24 @@ the web.
 </blockquote>
 
 <p>
-Two alternatives are ruled out for specific reasons. Fuzzy systems may lack a
-consistent set of axioms, and Berners-Lee&#8217;s objection is that such a system
-tends to believe something more strongly as a function of how often evidence
-has been presented, which on an open network is a description of how to be
-manipulated. Closed-world systems do not scale because the scope of a default
-is typically implicit and differs from fact to fact.
+Two alternatives are ruled out. Fuzzy systems, which hold beliefs to a degree
+rather than as true or false, tend to believe something more strongly the more
+often evidence for it is presented. On an open network that is a recipe for
+manipulation: a claim repeated on a thousand spam pages would be believed a
+thousand times more strongly.
 </p>
 
 <p>
-What classical logic buys is a particular social move, and he names it with a
-phrase that recurs in his writing:
+Closed-world systems do not scale because the scope of a default is usually
+left implicit and differs from fact to fact. A list showing no flights
+on Sunday may be true of one airline&#8217;s timetable but not of the
+world, and a bare statement that there are none does not say which list it was
+relative to.
+</p>
+
+<p>
+What classical logic buys is a particular social move, named with a phrase
+that recurs in his writing:
 </p>
 
 <blockquote>
@@ -209,17 +296,61 @@ proof.
 </blockquote>
 
 <p>
-The concession that follows matters as much as the claim. Non-classical
-heuristic systems may have been used to discover the proof. Once found, it can
-be checked as valid by any system. How an answer was reached stops being
-anyone&#8217;s business, which is the asymmetry of Chapter 40 doing its work.
+(For &ldquo;satsfifed by a roof&rdquo; read satisfied by a proof.) Heuristic systems, which
+search by rules of thumb rather than strict logic, may have been used to
+discover the proof. Once found, it can be checked as valid by any <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>
+system. The note places heuristic systems above a shared Semantic Web
+bus and classical systems below it.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig41-3-t fig41-3-d">
+  <title id="fig41-3-t">Many ways to find, one way to check</title>
+  <desc id="fig41-3-d">Three different engines, a heuristic engine, a default
+  reasoner and a fuzzy system, each find a proof their own way. All deliver it
+  written in classical logic. Below a dashed line, the Semantic Web bus, any
+  validator checks that proof and gives the same verdict.</desc>
+
+  <rect class="box-warm" x="24" y="20" width="200" height="48" rx="4"/>
+  <text x="124" y="40" text-anchor="middle">heuristic engine</text>
+  <text x="124" y="58" class="t-sm" text-anchor="middle">rules of thumb</text>
+  <rect class="box-warm" x="260" y="20" width="200" height="48" rx="4"/>
+  <text x="360" y="40" text-anchor="middle">default reasoner</text>
+  <text x="360" y="58" class="t-sm" text-anchor="middle">its own assumptions</text>
+  <rect class="box-warm" x="496" y="20" width="200" height="48" rx="4"/>
+  <text x="596" y="40" text-anchor="middle">fuzzy system</text>
+  <text x="596" y="58" class="t-sm" text-anchor="middle">its own weighting</text>
+
+  <path class="ln" d="M 124 68 L 124 104 M 360 68 L 360 104 M 596 68 L 596 104"/>
+  <path d="M 119 98 L 124 110 L 129 98 Z" fill="#2f4f4f"/>
+  <path d="M 355 98 L 360 110 L 365 98 Z" fill="#2f4f4f"/>
+  <path d="M 591 98 L 596 110 L 601 98 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="100" y="110" width="520" height="52" rx="4"/>
+  <text x="360" y="141" text-anchor="middle" style="fill:#1c5a7a">a proof, written in classical logic</text>
+
+  <line class="ln-dash" x1="24" y1="190" x2="696" y2="190"/>
+  <text x="24" y="180" class="t-sm t-it">above: finding, many ways</text>
+  <text x="24" y="210" class="t-sm t-it">below: checking, one way</text>
+  <text x="696" y="180" class="t-sm" text-anchor="end">the Semantic Web bus</text>
+
+  <path class="ln" d="M 360 162 L 360 220"/>
+  <path d="M 355 214 L 360 226 L 365 214 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="200" y="226" width="320" height="56" rx="4"/>
+  <text x="360" y="248" text-anchor="middle">any Semantic Web validator</text>
+  <text x="360" y="270" class="t-sm" text-anchor="middle">valid or invalid: the same verdict for all</text>
+</svg>
+<figcaption><span class="fig-label">Figure 41.3</span>
+How a proof was found does not matter. Once it is written in the shared logic,
+anyone can check it. Chapter 40 shows why checking is the easy half.</figcaption>
+</figure>
 
 <h2>41.4 What publishing a rule strips out</h2>
 
 <p>
-The operation at the centre of this chapter is given its plainest statement
-near the end:
+The operation at the centre of this chapter is given its plainest statement:
 </p>
 
 <blockquote>
@@ -236,13 +367,16 @@ everyone else gets the fact.
 </p>
 
 <p>
-The companion note of Chapter 31 names the underlying error in five words,
-saying that most knowledge representation systems confuse information with
-inference tips. A rule stored in a table of rules to be fired at a particular
-moment has had its meaning entangled with its scheduling, and the
-classification between data and kinds of rule becomes a meta level the
-language cannot express. Two systems must be able to exchange what a rule
-means even when neither recognises the other&#8217;s notion of when to apply it.
+The companion note of Chapter 31 names the underlying error: most knowledge
+representation systems confuse information with inference tips. A rule stored
+in a table to be fired at a particular moment has its meaning tangled up with
+its scheduling. Two systems must be able to exchange what a rule means even
+when neither recognises the other&#8217;s notion of when to apply it.
+</p>
+
+<p>
+The note then turns to a further problem, what happens when the Web holds
+both a statement and its contradiction. Chapter 46 treats that question.
 </p>
 
 <div class="since">
@@ -256,14 +390,9 @@ requirement.</li>
 narrowly.</strong> Chapter 42 describes the scoped form of negation that
 permits default reasoning without the global closed-world assumption this note
 rejects.</li>
-<li><strong>The catalogue argument stayed live.</strong> Treating absence from
-a dataset as evidence of non-existence remains one of the most common errors
-in practical data work, and the remedy is still the one given here: get a
-positive statement from a party entitled to make it.</li>
-<li><strong>The confusion persists.</strong> Systems that store policy as
-ordered rules evaluated by one engine, rather than as statements with a
-separate execution strategy, remain the norm in access control and routing,
-with the consequences described in Chapter 32.</li>
+<li><strong>The catalogue argument still applies.</strong> Treating absence
+from a dataset as evidence of non-existence remains a familiar error, and the
+remedy is still the one given here.</li>
 </ul>
 </div>
 
@@ -281,19 +410,19 @@ Chapter 27, and the scoped negation that answers the penguin is Chapter 42.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">41.1</span>
-Take a rule from a system you run. Write the fact it depends on and the
-scheduling hint separately.</p>
+Take the rule: when a parcel arrives, notify the owner. Separate the fact it
+depends on from the timing.</p>
 </div>
 <div class="question">
 <p><span class="question-number">41.2</span>
-Reifying a default reasoner produces statements about the reasoner rather than
-the world. Give such a statement, and say who could use it.</p>
+Explain in your own words why &ldquo;The xxxx system has output that Pingu can
+fly&rdquo; is safer to publish than the bare statement that Pingu can fly.</p>
 </div>
 <div class="question">
 <p><span class="question-number">41.3</span>
-The catalogue example turns absence of evidence into a conclusion. Find a
-place in your own work where you do this, and say what a positive statement
-would look like.</p>
+The catalogue example turns absence of evidence into a conclusion. Give an
+everyday case where people do this, and say what a positive statement would
+look like.</p>
 </div>
 <div class="question">
 <p><span class="question-number">41.4</span>

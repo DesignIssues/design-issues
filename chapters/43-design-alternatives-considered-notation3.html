@@ -49,33 +49,39 @@
 a Design Issues note by Tim Berners-Lee, 2002-03-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/N3Alternatives.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<ul>
+<li>The problem: a compact way to write one step along a link, such as from
+a person to their email address.</li>
+<li>Forward steps are easy to write; backward steps read badly in every
+notation tried.</li>
+<li>Sets and lists are different shapes, and a set stored as a list
+suffers.</li>
+</ul>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This note is unusual in the collection and unusual anywhere: it is a designer
-working in public on choices that have not yet been made. There is no
-conclusion, several candidates are left standing, and the reasoning is visible
-in a way that finished specifications never allow.
-</p>
-<p>
-It is included at full length because Volume III argued that specifications
-should record which decisions were arbitrary. This is what that looks like
-while the decision is still open.
+Berners-Lee describes this note as &ldquo;simply a footnote historical record
+about some rather arbitrary choices, to save me going over the reasons again
+and again.&rdquo; Volume III argued that specifications should record which decisions were
+arbitrary. This is what such a record looks like while the decisions are still
+open.
 </p>
 </div>
 
 <h2>43.1 The problem: saying &ldquo;one step along&rdquo;</h2>
 
 <p>
-The need is small and constant. Given an expression for a person, one wants an
-expression for that person&#8217;s email address: some value related to the first by
-a named property.
+In <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, data is a <a class="gl-ref" href="../glossary.html#graph">graph</a>: things joined by labelled links. Each label is a
+<em>property</em>, such as <code>email</code> or <code>boss</code>. Moving
+along links is <em>traversal</em>. The need is constant: given an expression
+for a person, write one for the thing one <code>email</code> link away.
 </p>
 
-<p>
-Berners-Lee sets the criteria before the candidates, and the last one is the
-interesting criterion:
-</p>
+<p>Berners-Lee sets the criteria first:</p>
 
 <blockquote>
 &ldquo;Neat&rdquo;? Compact, powerful, simple, naturally understandable because
@@ -84,99 +90,203 @@ of metaphors with existing use of similar syntax.
 </blockquote>
 
 <p>
-Familiarity is treated as a design property rather than a concession. A syntax
-borrowed from something readers already use costs less to learn, and that is
-counted as a genuine advantage.
+Familiarity counts as a design property: borrowed syntax costs less to learn.
+Two directions are named. Forward traversal follows a link the way it points;
+backward traversal asks what points here. His instinct is that forward traversal is
+the more common need.
 </p>
 
-<p>
-Two directions are named. Forward traversal moves from a thing to the value of
-one of its properties; backward traversal moves the other way. His instinct is
-recorded as an instinct: forward traversal, the only thing possible in many
-systems of linked objects, is the more common need.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 184" width="720" height="184" role="img"
+     aria-labelledby="fig43-1-t fig43-1-d">
+  <title id="fig43-1-t">Forward and backward along a chain of links</title>
+  <desc id="fig43-1-d">Four nodes in a row: x, a person; someone, reached by
+  boss; a house, reached by home; and the number 555-0100, reached by phone.
+  A solid arrow above runs left to right, labelled forward: x's boss's home's
+  phone. A dashed arrow below runs right to left, labelled backward: whose
+  boss's home's phone is 555-0100?</desc>
+  <defs>
+    <marker id="fig43-1-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig43-1-acc" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig43-1-warm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b08d57"/>
+    </marker>
+  </defs>
+
+  <text x="365" y="30" text-anchor="middle" style="fill:#1c5a7a">forward: x&#8217;s boss&#8217;s home&#8217;s phone</text>
+  <line class="ln-accent" x1="40" y1="44" x2="690" y2="44" marker-end="url(#fig43-1-acc)"/>
+
+  <ellipse class="box" cx="90" cy="95" rx="58" ry="26"/>
+  <text x="90" y="92" text-anchor="middle" class="t-mono">x</text>
+  <text x="90" y="108" text-anchor="middle" class="t-sm">a person</text>
+
+  <ellipse class="box-plain" cx="285" cy="95" rx="58" ry="26"/>
+  <text x="285" y="100" text-anchor="middle" class="t-it">someone</text>
+
+  <ellipse class="box-plain" cx="480" cy="95" rx="58" ry="26"/>
+  <text x="480" y="100" text-anchor="middle" class="t-it">a house</text>
+
+  <ellipse class="box-warm" cx="650" cy="95" rx="52" ry="26"/>
+  <text x="650" y="99" text-anchor="middle" class="t-mono">555-0100</text>
+
+  <line class="ln" x1="148" y1="95" x2="226" y2="95" marker-end="url(#fig43-1-ink)"/>
+  <text x="187" y="86" text-anchor="middle" class="t-mono">boss</text>
+  <line class="ln" x1="343" y1="95" x2="421" y2="95" marker-end="url(#fig43-1-ink)"/>
+  <text x="382" y="86" text-anchor="middle" class="t-mono">home</text>
+  <line class="ln" x1="538" y1="95" x2="597" y2="95" marker-end="url(#fig43-1-ink)"/>
+  <text x="567" y="86" text-anchor="middle" class="t-mono">phone</text>
+
+  <line class="ln-dash" x1="690" y1="146" x2="40" y2="146" style="stroke:#b08d57;stroke-width:1.4" marker-end="url(#fig43-1-warm)"/>
+  <text x="365" y="170" text-anchor="middle" style="fill:#b08d57">backward: whose boss&#8217;s home&#8217;s phone is 555-0100?</text>
+</svg>
+<figcaption><span class="fig-label">Figure 43.1</span>
+Forward traversal follows the arrows from <code>x</code>; backward traversal
+starts at the number and asks who points here. The links are the same; only
+the direction of the question changes.</figcaption>
+</figure>
 
 <h2>43.2 The candidates</h2>
 
+<p>
+The note weighs seven families of notation, several with variants, each
+borrowing a metaphor:
+</p>
+
+<table>
+<tr><th>Candidate</th><th>Example</th><th>Metaphor</th><th>Main objection</th></tr>
+<tr><td>Dot, with caret for backward</td><td><code>x.email</code>, <code>y^email</code></td><td>Object slots in Python and C++</td><td>A dot also ends an N3 sentence</td></tr>
+<tr><td>Bang</td><td><code>mcvax!cernvax!online!timbl</code></td><td>Old email routing</td><td>Few will remember it (though <code>!</code> is otherwise unused)</td></tr>
+<tr><td>Star and slash</td><td><code>Cost = 100*dollars</code></td><td>Units of measure</td><td>Implies commutativity; reserved for arithmetic</td></tr>
+<tr><td>Keywords <code>which</code>, <code>thatwhich</code></td><td><code>:joe :son thatWhich :girlfriend :jane</code></td><td>English</td><td>&ldquo;thatwhich is unbeliveably ugly&rdquo;</td></tr>
+<tr><td>Keyword <code>of</code></td><td><code>email of home of boss of x</code></td><td>English</td><td>Parses right to left; already a keyword in N3</td></tr>
+<tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Uses up a quote character</td></tr>
+<tr><td>Arrows</td><td><code>&lt;&lt;foo&gt;test</code></td><td>Multics directories</td><td>N3 already puts <code>&lt;&gt;</code> around URIs</td></tr>
+<tr><td>Slashes</td><td><code>x/uncle\boss/home/email</code></td><td>Directory paths</td><td>Backslash is Unix&#8217;s escape character</td></tr>
+<tr><td>Parentheses</td><td><code>math:max(y z w)</code></td><td>Function calls</td><td>Only for list arguments; a stray space changes the meaning</td></tr>
+</table>
+
+<p>
+The note then sorts them by two questions: does the operator come before or
+after the term, and which way does it travel?
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
-     aria-labelledby="fig43-1-t fig43-1-d">
-  <title id="fig43-1-t">Six ways to write &#8220;one step along the graph&#8221;</title>
-  <desc id="fig43-1-d">Each candidate syntax for moving from a thing to the
-  value of one of its properties, with the language it borrows from, shown for
-  both directions of travel. Backward traversal is awkward in every candidate,
-  which is itself a finding.</desc>
+<svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
+     aria-labelledby="fig43-2-t fig43-2-d">
+  <title id="fig43-2-t">The note&#8217;s own summary: suffix and prefix, forward and backward</title>
+  <desc id="fig43-2-d">A two-by-two grid. Suffix forward: x.email and
+  x's email. Suffix backward: y^email. Prefix forward: email of x and
+  email(x). Prefix backward: [] which email y and [] | email y. Below, a note
+  that the backward forms are hard to read because English, like the Web, is
+  built for going forward.</desc>
 
-  <text x="24" y="26" class="t-caps">candidate</text>
-  <text x="236" y="26" class="t-caps">forward</text>
-  <text x="424" y="26" class="t-caps">backward</text>
-  <text x="600" y="26" class="t-caps">borrowed from</text>
-  <line class="ln-mut" x1="24" y1="36" x2="696" y2="36"/>
+  <text x="310" y="32" text-anchor="middle" class="t-caps">forward</text>
+  <text x="568" y="32" text-anchor="middle" class="t-caps">backward</text>
 
-  <g class="t-sm">
-    <text x="24" y="64">dot</text>
-    <text x="236" y="64" class="t-mono" fill="#1c5a7a">x.email</text>
-    <text x="424" y="64" class="t-sm t-it" fill="#b04a4a">awkward</text>
-    <text x="600" y="64">object languages</text>
+  <rect class="box-plain" x="180" y="44" width="516" height="160"/>
+  <line class="ln-mut" x1="440" y1="44" x2="440" y2="204"/>
+  <line class="ln-mut" x1="180" y1="124" x2="696" y2="124"/>
 
-    <text x="24" y="100">possessive</text>
-    <text x="236" y="100" class="t-mono" fill="#1c5a7a">x's email</text>
-    <text x="424" y="100" class="t-sm t-it" fill="#b04a4a">awkward</text>
-    <text x="600" y="100">English</text>
+  <text x="24" y="80">suffix</text>
+  <text x="24" y="98" class="t-sm">operator after the term</text>
+  <text x="24" y="160">prefix</text>
+  <text x="24" y="178" class="t-sm">operator before the term</text>
 
-    <text x="24" y="136">the keyword <tspan class="t-mono">of</tspan></text>
-    <text x="236" y="136" class="t-mono" fill="#1c5a7a">email of x</text>
-    <text x="424" y="136" class="t-mono" fill="#a07d47">[] which email y</text>
-    <text x="600" y="136">English, reversed</text>
+  <text x="310" y="78" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">x.email</text>
+  <text x="310" y="102" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">x's email</text>
+  <text x="568" y="90" text-anchor="middle" class="t-mono" style="fill:#b08d57">y^email</text>
 
-    <text x="24" y="172">function call</text>
-    <text x="236" y="172" class="t-mono" fill="#1c5a7a">email(x)</text>
-    <text x="424" y="172" class="t-sm t-it" fill="#b04a4a">awkward</text>
-    <text x="600" y="172">mathematics</text>
+  <text x="310" y="158" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">email of x</text>
+  <text x="310" y="182" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">email(x)</text>
+  <text x="568" y="158" text-anchor="middle" class="t-mono" style="fill:#b08d57">[] which email y</text>
+  <text x="568" y="182" text-anchor="middle" class="t-mono" style="fill:#b08d57">[] | email y</text>
 
-    <text x="24" y="208">caret</text>
-    <text x="236" y="208" class="t-sm t-it" fill="#b04a4a">&#8212;</text>
-    <text x="424" y="208" class="t-mono" fill="#a07d47">y^email</text>
-    <text x="600" y="208">nothing familiar</text>
-
-    <text x="24" y="244">pipe</text>
-    <text x="236" y="244" class="t-sm t-it" fill="#b04a4a">&#8212;</text>
-    <text x="424" y="244" class="t-mono" fill="#a07d47">[] | email y</text>
-    <text x="600" y="244">shell pipelines</text>
-  </g>
-
-  <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
-  <rect class="box-warm" x="24" y="280" width="672" height="54" rx="4"/>
-  <text x="360" y="302" class="t-sm" text-anchor="middle">One thing that becomes evident: it can be really difficult to read the backward traversal in English.</text>
-  <text x="360" y="322" class="t-sm" text-anchor="middle">Like many systems, including the Web, English is optimised for forward traversal.</text>
-
-  <text x="360" y="360" class="t-sm t-it" text-anchor="middle">The test target: &#8220;the person whose wife&#8217;s uncle is driving my brother&#8217;s car&#8221;.</text>
+  <rect class="box-warm" x="24" y="222" width="672" height="44" rx="4"/>
+  <text x="360" y="248" text-anchor="middle" class="t-sm" style="fill:#2f4f4f">Every cell has a candidate, but the right-hand column is hard to read: English, like the Web, is built for going forward.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 43.1</span>
-The finding is in the blank column. Backward traversal is hard to write in
-every candidate, and Berners-Lee&#8217;s diagnosis is not about notation at all: it
-is about the language he is borrowing metaphors from.</figcaption>
+<figcaption><span class="fig-label">Figure 43.2</span>
+The note&#8217;s own summary table, redrawn. No cell is empty, but the
+backward forms read badly, and the diagnosis is about English, not
+punctuation.</figcaption>
 </figure>
 
 <p>
-That observation is the most transferable thing in the note. A notation that
-borrows familiarity from a natural language inherits that language&#8217;s
-asymmetries, including the ones its designers did not choose. English makes it
-easy to go from a person to their email and hard to go from an email to its
-owner, and any syntax that feels natural in English will do the same.
+This is the most transferable point in the note. A notation that borrows
+familiarity from a natural language inherits its asymmetries: any syntax that
+feels natural in English will find an email&#8217;s owner harder to name than a
+person&#8217;s email.
 </p>
 
 <p>
-Berners-Lee notes the alternative available in the model rather than the
-syntax: backward traversal is forward traversal along the inverse property, so
-a compact way to write an inverse would serve, provided it is clear when it is
-merely syntax and when the inverse is genuinely being named.
+The note also offers a way round. A backward step along <code>email</code>
+is a forward step along its inverse. So a compact way to write an inverse
+would serve, if it is clear when that is merely syntax and when the inverse is
+really being named.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 214" width="720" height="214" role="img"
+     aria-labelledby="fig43-3-t fig43-3-d">
+  <title id="fig43-3-t">Dot and caret are inverses</title>
+  <desc id="fig43-3-d">Two nodes, x and y, joined by an arrow labelled email.
+  An arc above, labelled x.email, runs from x to y. An arc below, labelled
+  y^email, runs from y back to x. A side box gives the alternative: treat
+  the caret as naming the inverse property, written y.^email, which costs one
+  extra triple.</desc>
+  <defs>
+    <marker id="fig43-3-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+    <marker id="fig43-3-acc" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1c5a7a"/>
+    </marker>
+    <marker id="fig43-3-warm" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b08d57"/>
+    </marker>
+  </defs>
+
+  <text x="210" y="34" text-anchor="middle" class="t-mono" style="fill:#1c5a7a">x.email</text>
+  <path class="ln-accent" d="M 110 86 Q 210 10 310 86" marker-end="url(#fig43-3-acc)"/>
+
+  <ellipse class="box" cx="90" cy="108" rx="44" ry="24"/>
+  <text x="90" y="113" text-anchor="middle" class="t-mono">x</text>
+  <ellipse class="box-warm" cx="330" cy="108" rx="44" ry="24"/>
+  <text x="330" y="113" text-anchor="middle" class="t-mono">y</text>
+
+  <line class="ln" x1="134" y1="108" x2="285" y2="108" marker-end="url(#fig43-3-ink)"/>
+  <text x="210" y="100" text-anchor="middle" class="t-mono">email</text>
+
+  <path class="ln-dash" d="M 310 130 Q 210 206 110 130" style="stroke:#b08d57;stroke-width:1.4" marker-end="url(#fig43-3-warm)"/>
+  <text x="210" y="194" text-anchor="middle" class="t-mono" style="fill:#b08d57">y^email</text>
+
+  <rect class="box" x="420" y="40" width="276" height="140" rx="4"/>
+  <text x="436" y="66">Or name the inverse itself</text>
+  <text x="436" y="94" class="t-mono" style="fill:#1c5a7a">y.^email</text>
+  <text x="436" y="122" class="t-sm">one forward step along the inverse</text>
+  <text x="436" y="140" class="t-sm">of email, at the cost of one extra</text>
+  <text x="436" y="158" class="t-sm">triple to represent it</text>
+</svg>
+<figcaption><span class="fig-label">Figure 43.3</span>
+One link, read two ways. The dot follows <code>email</code> forward; the
+caret follows it back. The side box makes the caret name the inverse, so every
+step is forward.</figcaption>
+</figure>
 
 <h2>43.3 Sets, and why containers were the wrong shape</h2>
 
 <p>
-The second half argues for adding sets, and the argument is empirical:
+A later section, dated 2005, argues for adding sets, and the argument is
+empirical:
 </p>
 
 <blockquote>
@@ -185,13 +295,10 @@ in fact logically unordered sets, not ordered lists. Whether it is mail
 addresses on a mailing list, or rows in a database, or statements in an N3
 formula, the order is immaterial, and something can occur in the set once or
 not at all.
-<cite>Alternative design choices in Notation3, 2002</cite>
+<cite>Alternative design choices in Notation3, 2005</cite>
 </blockquote>
 
-<p>
-Three costs of using a list for a set are listed, and the third is the kind of
-thing only an implementer notices.
-</p>
+<p>Using a list for a set has three costs:</p>
 
 <table>
 <tr><th>Cost</th><th>What it means in practice</th></tr>
@@ -201,46 +308,56 @@ thing only an implementer notices.
 </table>
 
 <p>
-The requirement that follows is the same pair the whole notation is built on:
-a way of expressing sets in ordinary statements so they pass through
-general-purpose software unharmed, and a shorthand so people can write them
-without suffering.
+So sets need what lists have: a form in ordinary statements, which
+general-purpose software can pass along, and a shorthand for people.
+</p>
+
+<h3>What was proposed</h3>
+
+<p>
+For statements, the note borrows from <a class="gl-ref" href="../glossary.html#owl">OWL</a>: <code>[ owl:oneOf (1 2 3) ]</code>
+is the class whose members are exactly 1, 2 and 3, in any order. The
+shorthand was harder; the note tables seven syntaxes, including:
+</p>
+
+<table>
+<tr><th>Syntax</th><th>For</th><th>Against</th></tr>
+<tr><td><code>(1, 2, 3)</code></td><td>Almost no new punctuation</td><td>Parser must read ahead a whole expression</td></tr>
+<tr><td><code>($ 1 2 3 $)</code></td><td>Otherwise just like a list</td><td>None recorded</td></tr>
+<tr><td><code>{$ 1, 2, 3 $}</code></td><td>Curly braces are conventional for sets</td><td>Braces already mean formulae</td></tr>
+<tr><td><code>@Set{1, 2, 3}</code></td><td>Just a new keyword</td><td>None recorded</td></tr>
+</table>
+
+<p>
+It records that &ldquo;The current choice is {$ 1, 2, 3 $}&rdquo;, with
+dollar signs to tell a set from a formula. A harder question stays open: does
+<code>{$ :a, :b, :c $}</code> say that the three are different things? If so,
+members can be counted, but union and intersection need to know which are the
+same. If not, union is safe but counting is not.
 </p>
 
 <h2>43.4 Why an unfinished note is worth a chapter</h2>
 
 <p>
-Nothing here is decided. Candidates are listed with their borrowings, one
-column comes out empty, sets are argued for and not specified, and a section
-of loose material is headed simply as fodder.
-</p>
-
-<p>
-Chapter 21 asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to state which decisions are arbitrary and
-which follow from logic. In finished documents that distinction is invisible,
-because the arbitrary choices have hardened into the only way things are
-written. Here they are still soft, and one can see which parts of a notation
-were forced and which were a matter of taste, personal history, and what
-looked passable on the day.
+Little here is final: the set syntax is a current choice, and a section of
+loose material is headed simply as fodder. Chapter 21 asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to state which decisions are arbitrary and
+which follow from logic. In finished documents the arbitrary choices have hardened
+into the only way things are written. Here they are still soft, and one can
+see which parts of a notation
+were forced, as when a parser cannot tell a list from a set in time, and which
+were a matter of taste and personal history.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Path syntax arrived in the query language.</strong> Property paths
-became part of <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2013, with an inverse
-operator that writes backward traversal as forward traversal along a reversed
-property, which is the alternative section 43.2 names.</li>
-<li><strong>Sets were never added.</strong> The model still has ordered
-collections and no set construct, so the three costs listed here are still
-paid, and unordered data is still carried in ordered containers.</li>
-<li><strong>The dot won elsewhere.</strong> Dotted path traversal became the
-universal way to reach into structured data, in query languages, template
-languages and configuration tools, which is the candidate with the strongest
-borrowed metaphor.</li>
-<li><strong>The asymmetry finding generalises.</strong> Notations that borrow
-readability from English inherit its directionality, which is why reverse
-lookups read badly in nearly every query language in use.</li>
+<li><strong>Caret and slash arrived in the query language.</strong> Property
+paths became part of <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2013. They use
+<code>^</code> for an inverse step and <code>/</code> for a sequence: two of
+the candidates weighed here.</li>
+<li><strong>No set literal was standardised.</strong> RDF 1.1 and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, both
+W3C Recommendations of February 2014, kept ordered collections and
+<code>rdf:Bag</code> but added no set syntax or semantics.</li>
 </ul>
 </div>
 
@@ -263,8 +380,8 @@ identify what it borrows from, and say what that borrowing cost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.2</span>
-Backward traversal reads badly in English. Find a language where it reads
-well, and say what about that language makes it work.</p>
+Write &ldquo;the person whose email is y&rdquo; in two of the candidate
+syntaxes. Which reads better, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.3</span>
@@ -273,8 +390,8 @@ the three costs are you paying, and which have you noticed?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.4</span>
-Pick a syntax decision in a language you use. Was it forced, or arbitrary? How
-would you tell from the specification alone?</p>
+Of the set syntaxes in section 43.3, which choice was forced by the parser and
+which was a matter of taste?</p>
 </div>
 </details>
 

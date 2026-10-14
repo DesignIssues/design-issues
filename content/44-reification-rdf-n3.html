@@ -1,3 +1,14 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+RDF data is three-part statements. Sometimes a writer needs to talk <em>about</em> a
+statement without making it. Berners-Lee makes three points. A
+description must keep the exact names the original used, so it holds them as
+strings. A description of a thing is not the thing. Describing a statement
+commits the writer to nothing; asserting it as true does.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
@@ -11,25 +22,81 @@ using the language, so that it becomes treatable by the language.
 <cite>Reifying RDF (properly), and N3, 2004</cite>
 </blockquote>
 <p>
-The chapter matters beyond its notation because it isolates a mistake that any
-system describing its own data can make.
+It isolates a mistake that any system describing its own data can make.
 </p>
 </div>
 
 <h2>44.1 The rule, and the reason for it</h2>
 
 <p>
-To describe a statement, one describes its three parts. The question is how to
-refer to the identifier in the subject position. The obvious answer, to use
-the identifier itself, is marked in the note with a comment reading
-&ldquo;Wrong&rdquo;.
+An RDF statement has three parts: a subject, a predicate and an object. The
+statement <code>ex:joe ex:name "James Doe"</code> reads &ldquo;Joe&#8217;s name
+is James Doe&rdquo;. To describe it, one makes a new node that stands for the
+statement and gives that node three properties, one for each part.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig44-1-t fig44-1-d">
+  <title id="fig44-1-t">A statement and its description</title>
+  <desc id="fig44-1-d">Top: the original statement, ex:joe linked by ex:name to
+  the literal James Doe. Below: the description, a node of type rei:Statement
+  with rei:subject, rei:predicate and rei:object arrows to three nodes that give
+  the joe URI as a string, the name URI as a string, and the value James Doe.
+  Dashed lines join each original part to the node describing it.</desc>
+
+  <text x="24" y="24" class="t-caps">the original graph</text>
+  <ellipse class="box" cx="170" cy="64" rx="52" ry="20"/>
+  <text x="170" y="69" class="t-mono" text-anchor="middle">ex:joe</text>
+  <line class="ln" x1="222" y1="64" x2="510" y2="64"/>
+  <path d="M 519 64 L 509 59 L 509 69 Z" fill="#2f4f4f"/>
+  <text x="380" y="54" class="t-mono" text-anchor="middle">ex:name</text>
+  <rect class="box-plain" x="520" y="46" width="140" height="36" rx="3"/>
+  <text x="590" y="69" class="t-mono" text-anchor="middle">"James Doe"</text>
+
+  <line class="ln-dash" x1="170" y1="90" x2="170" y2="145"/>
+  <line class="ln-dash" x1="380" y1="72" x2="380" y2="145"/>
+  <line class="ln-dash" x1="590" y1="88" x2="590" y2="145"/>
+
+  <text x="24" y="128" class="t-caps">its description</text>
+  <rect class="box-green" x="75" y="145" width="190" height="34" rx="3"/>
+  <text x="170" y="167" class="t-mono" text-anchor="middle">rei:uri "&#8230;#joe"</text>
+  <rect class="box-green" x="285" y="145" width="190" height="34" rx="3"/>
+  <text x="380" y="167" class="t-mono" text-anchor="middle">rei:uri "&#8230;#name"</text>
+  <rect class="box-green" x="495" y="145" width="190" height="34" rx="3"/>
+  <text x="590" y="167" class="t-mono" text-anchor="middle">rei:value "James Doe"</text>
+
+  <line class="ln" x1="310" y1="270" x2="176" y2="185"/>
+  <path d="M 170 181 L 179.7 182.4 L 175.5 189.2 Z" fill="#2f4f4f"/>
+  <line class="ln" x1="380" y1="270" x2="380" y2="190"/>
+  <path d="M 380 181 L 375 191 L 385 191 Z" fill="#2f4f4f"/>
+  <line class="ln" x1="450" y1="270" x2="584" y2="185"/>
+  <path d="M 590 181 L 584.5 189.2 L 580.3 182.4 Z" fill="#2f4f4f"/>
+  <text x="236" y="236" class="t-mono t-sm" text-anchor="end">rei:subject</text>
+  <text x="390" y="236" class="t-mono t-sm">rei:predicate</text>
+  <text x="520" y="236" class="t-mono t-sm">rei:object</text>
+
+  <rect class="box" x="300" y="270" width="160" height="34" rx="3"/>
+  <text x="380" y="292" class="t-mono" text-anchor="middle">a rei:Statement</text>
+</svg>
+<figcaption><span class="fig-label">Figure 44.1</span>
+One statement becomes four nodes. Every name in the original is held as a
+string.</figcaption>
+</figure>
+
+<p>
+The difficult question is how to refer to the identifier in the subject
+position. The obvious answer, to use the identifier <code>ex:joe</code>
+itself, is marked in the note with a comment reading &ldquo;Wrong&rdquo;. The
+note&#8217;s example uses a second identifier, <code>ex:jd1</code>, for the
+same person.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
-     aria-labelledby="fig44-1-t fig44-1-d">
-  <title id="fig44-1-t">Describing a statement, and why the name must be quoted</title>
-  <desc id="fig44-1-d">If a description uses the identifier as a symbol, then a
+     aria-labelledby="fig44-2-t fig44-2-d">
+  <title id="fig44-2-t">Describing a statement, and why the name must be quoted</title>
+  <desc id="fig44-2-d">If a description uses the identifier as a symbol, then a
   system that knows two identifiers denote the same person may rewrite the
   description, and the record of which name the original graph used is lost.
   Giving the identifier as a string preserves it.</desc>
@@ -37,38 +104,42 @@ the identifier itself, is marked in the note with a comment reading
   <rect class="box" x="24" y="26" width="672" height="44" rx="4"/>
   <text x="360" y="52" class="t-mono" text-anchor="middle" font-size="12">the original graph:  ex:joe ex:name "James Doe" .</text>
 
-  <text x="180" y="100" class="t-caps" text-anchor="middle" fill="#b04a4a">described with the symbol</text>
-  <text x="540" y="100" class="t-caps" text-anchor="middle" fill="#3f6f3f">described with the string</text>
-  <line class="ln-mut" x1="360" y1="88" x2="360" y2="300"/>
+  <text x="180" y="100" class="t-caps" text-anchor="middle" style="fill:#b08d57">described with the symbol</text>
+  <text x="540" y="100" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">described with the string</text>
+  <line class="ln-mut" x1="360" y1="88" x2="360" y2="196"/>
+  <line class="ln-mut" x1="360" y1="226" x2="360" y2="300"/>
 
-  <rect x="24" y="112" width="312" height="72" fill="#fdf5f5" stroke="#d9b0b0"/>
+  <rect class="box-warm" x="24" y="112" width="312" height="72"/>
   <text x="36" y="132" class="t-mono" font-size="11">[ a rei:Statement;</text>
-  <text x="36" y="150" class="t-mono" font-size="11">  rei:subject ex:joe;</text>
-  <text x="36" y="168" class="t-mono" font-size="11">  rei:predicate ex:name ]</text>
+  <text x="52" y="150" class="t-mono" font-size="11">rei:subject ex:joe;</text>
+  <text x="52" y="168" class="t-mono" font-size="11">rei:predicate ex:name ]</text>
 
-  <rect x="384" y="112" width="312" height="72" fill="#f5f8f0" stroke="#b6cfb6"/>
+  <rect class="box-green" x="384" y="112" width="312" height="72"/>
   <text x="396" y="132" class="t-mono" font-size="11">[ a rei:Statement;</text>
-  <text x="396" y="150" class="t-mono" font-size="11">  rei:subject [rei:uri "...#joe"];</text>
-  <text x="396" y="168" class="t-mono" font-size="11">  rei:predicate [rei:uri "...#name"] ]</text>
+  <text x="412" y="150" class="t-mono" font-size="11">rei:subject [rei:uri "...#joe"];</text>
+  <text x="412" y="168" class="t-mono" font-size="11">rei:predicate [rei:uri "...#name"] ]</text>
 
-  <text x="360" y="212" class="t-sm t-it" text-anchor="middle">now the system learns that two identifiers denote the same person</text>
+  <text x="360" y="212" class="t-sm t-it" text-anchor="middle">now the system learns ex:joe and ex:jd1 denote the same person</text>
   <path class="ln-mut" d="M 180 220 L 180 236 M 540 220 L 540 236"/>
 
-  <rect x="24" y="236" width="312" height="48" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="36" y="256" class="t-mono" font-size="11">  rei:subject ex:jd1;</text>
-  <text x="36" y="276" class="t-sm" fill="#b04a4a">the description has been rewritten</text>
+  <rect class="box-warm" x="24" y="236" width="312" height="48"/>
+  <text x="52" y="256" class="t-mono" font-size="11">rei:subject ex:jd1;</text>
+  <text x="36" y="276" class="t-sm" style="fill:#b08d57">the description has been rewritten</text>
 
-  <rect x="384" y="236" width="312" height="48" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="396" y="256" class="t-mono" font-size="11">  rei:subject [rei:uri "...#joe"];</text>
-  <text x="396" y="276" class="t-sm" fill="#3f6f3f">unchanged: a string is not a symbol</text>
+  <rect class="box-green" x="384" y="236" width="312" height="48"/>
+  <text x="412" y="256" class="t-mono" font-size="11">rei:subject [rei:uri "...#joe"];</text>
+  <text x="396" y="276" class="t-sm" style="fill:#5a8f5a">unchanged: a string is not a symbol</text>
 
   <line class="ln-mut" x1="24" y1="308" x2="696" y2="308"/>
   <text x="360" y="330" class="t-sm" text-anchor="middle">The two graphs are different graphs, even when the two names denote the same person.</text>
   <text x="360" y="352" class="t-sm t-it" text-anchor="middle">A description of a graph must record which name the graph used.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 44.1</span>
-This is the use-mention distinction of Chapter 35 arriving as a specification
-requirement rather than as an author&#8217;s slip.</figcaption>
+<figcaption><span class="fig-label">Figure 44.2</span>
+Left: the description uses the name itself, so a system that learns
+<code>ex:joe</code> = <code>ex:jd1</code> may swap them, and which name the
+graph used is lost. Right: a string cannot be swapped. This is the use-mention
+distinction of Chapter 35 arriving as a specification requirement rather than
+as an author&#8217;s slip.</figcaption>
 </figure>
 
 <p>
@@ -83,20 +154,19 @@ not suitable, because it loses that information.
 </blockquote>
 
 <p>
-He is careful to explain that the two descriptions are not merely different in
-form. They describe different graphs, even when the two names refer to the
-same person, because a graph is made of the symbols it actually used. If the
-system knows the two names are equivalent, the second description can be
-derived from the first. The derivation must go that way, and not be performed
-silently in advance.
+The two descriptions are not merely different in form. They describe
+different graphs, even when the two names refer to the same person, because a
+graph is made of the symbols it actually used. If the system knows the two
+names are equivalent, the second can be derived from the first. But it matters
+to know which name a graph used.
 </p>
 
 <h2>44.2 Describing a blank node</h2>
 
 <p>
-A short passage makes a distinction that catches almost everyone. When
-describing a node that has no name, one says of it that it is a nameless node.
-The node doing the describing is not the node being described.
+A blank node is a node with no URI, standing for &ldquo;something&rdquo;. When
+a description meets one, it says that the node is blank. The node doing the
+describing is not the node being described.
 </p>
 
 <blockquote>
@@ -106,10 +176,41 @@ original graph. They are node the same blank node.
 </blockquote>
 
 <p>
-One may even give the describing node a name, which is not a contradiction:
-naming the thing that describes an unnamed thing changes nothing about the
-thing described.
+The second sentence is evidently meant to read &ldquo;not the same&rdquo;. The
+describing node may even be given a name; that changes nothing about the
+unnamed node it describes.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig44-3-t fig44-3-d">
+  <title id="fig44-3-t">The describer is not the described</title>
+  <desc id="fig44-3-d">Left, the original graph: an empty circle, a blank node,
+  with an ex:name arrow to James Doe. Right, the description: a node named
+  ex:bnode1 of type rei:BNode, with a dashed arrow labelled describes running
+  back to the empty circle. A label notes that these are two different
+  nodes.</desc>
+
+  <text x="40" y="30" class="t-caps">original graph</text>
+  <circle class="box" cx="90" cy="100" r="20"/>
+  <line class="ln" x1="110" y1="100" x2="204" y2="100"/>
+  <path d="M 213 100 L 203 95 L 203 105 Z" fill="#2f4f4f"/>
+  <text x="160" y="90" class="t-mono" text-anchor="middle">ex:name</text>
+  <rect class="box-plain" x="214" y="82" width="100" height="36" rx="3"/>
+  <text x="264" y="105" class="t-mono" text-anchor="middle">"James Doe"</text>
+
+  <text x="470" y="30" class="t-caps">description</text>
+  <rect class="box-green" x="470" y="82" width="210" height="36" rx="3"/>
+  <text x="575" y="105" class="t-mono" text-anchor="middle">ex:bnode1 a rei:BNode</text>
+
+  <path class="ln-dash" d="M 575 118 L 575 160 L 90 160 L 90 130"/>
+  <path d="M 90 121 L 85 131 L 95 131 Z" fill="#8a9a9a"/>
+  <text x="330" y="151" class="t-sm t-it" text-anchor="middle">describes</text>
+  <text x="330" y="184" class="t-sm" text-anchor="middle" style="fill:#b08d57">two different nodes</text>
+</svg>
+<figcaption><span class="fig-label">Figure 44.3</span>
+Naming the describing node does not name the original.</figcaption>
+</figure>
 
 <h2>44.3 Sets, and the ungainliness admitted</h2>
 
@@ -126,28 +227,71 @@ the same statements are demonstrably the same in their reified form.
 </blockquote>
 
 <p>
-He adds, in a parenthesis, that later systems might have explicit processing
-for sets and that the notation could be extended with set syntax. Chapter 43
-is the argument for doing so; it was never done, and this workaround is the
-consequence.
+He adds, in a parenthesis, that later systems might process sets explicitly
+and that the notation could gain set syntax. Chapter 43 argues for doing so;
+RDF never added sets, and this workaround is the consequence.
 </p>
 
 <h2>44.4 Why quotation is not assertion</h2>
 
 <p>
-The reason the whole apparatus is needed is stated with an example about what
-one person knows about another. Jane knows that Joe&#8217;s name is James Doe. The
-quotation matters because Jane&#8217;s knowledge is in those terms: even if two
-identifiers refer to the same person, Jane may not know that, and so may not
-know the corresponding fact about the other name.
+The reason for the whole apparatus is an example about what one person knows.
+In N3, curly braces enclose a <em>formula</em>: a small graph treated as one
+thing, which can sit inside a statement.
 </p>
 
+<pre><code>ex:jane  ex:knows   { ex:joe ex:name  "James Doe" }.</code></pre>
+
 <p>
-A description of a formula must therefore carry three things: the statements,
-the symbols quantified over all cases, and the symbols asserted to exist. The
-note gives the output of running a small example through the tool that
-performs this transformation, and the result is several times longer than the
-input, which is itself part of the argument.
+Jane&#8217;s knowledge is in those terms. Even if two identifiers refer to the
+same person, Jane may not know that, and so may not know the corresponding
+fact about the other name.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig44-4-t fig44-4-d">
+  <title id="fig44-4-t">A quoted formula blocks substitution</title>
+  <desc id="fig44-4-d">ex:jane is linked by ex:knows to a bracketed formula
+  containing ex:joe ex:name James Doe. Beside it, the system also knows that
+  ex:joe equals ex:jd1. Below, the derived statement in which Jane knows
+  ex:jd1's name is struck through, marked not allowed because Jane may not
+  know they are the same.</desc>
+
+  <ellipse class="box" cx="90" cy="70" rx="52" ry="20"/>
+  <text x="90" y="75" class="t-mono" text-anchor="middle">ex:jane</text>
+  <line class="ln" x1="142" y1="70" x2="240" y2="70"/>
+  <path d="M 249 70 L 239 65 L 239 75 Z" fill="#2f4f4f"/>
+  <text x="196" y="60" class="t-mono t-sm" text-anchor="middle">ex:knows</text>
+
+  <text x="405" y="30" class="t-sm" text-anchor="middle">a formula: a graph treated as one thing</text>
+  <rect class="box-plain" x="250" y="42" width="310" height="56" rx="3"/>
+  <text x="405" y="75" class="t-mono" text-anchor="middle">{ ex:joe ex:name "James Doe" }</text>
+
+  <text x="644" y="44" class="t-sm" text-anchor="middle">the system also knows</text>
+  <rect class="box-warm" x="574" y="54" width="140" height="34" rx="3"/>
+  <text x="644" y="76" class="t-mono" text-anchor="middle">ex:joe = ex:jd1</text>
+
+  <line class="ln-dash" x1="405" y1="104" x2="405" y2="134"/>
+  <path d="M 405 142 L 400 133 L 410 133 Z" fill="#8a9a9a"/>
+  <text x="360" y="166" class="t-mono" text-anchor="middle">ex:jane ex:knows { ex:jd1 ex:name "James Doe" }</text>
+  <line class="ln" style="stroke:#b08d57" x1="182" y1="162" x2="538" y2="162"/>
+  <text x="360" y="200" class="t-sm" text-anchor="middle" style="fill:#b08d57">not allowed: Jane may not know they are the same</text>
+</svg>
+<figcaption><span class="fig-label">Figure 44.4</span>
+Inside the braces, names are quoted. Knowing that two names denote one person
+does not license rewriting what Jane knows.</figcaption>
+</figure>
+
+<p>
+A formula can also introduce variables, so a description of it must carry
+three things: the statements, the <em>universals</em> (symbols that stand for
+anything) and the <em>existentials</em> (symbols that stand for some
+particular thing). The note&#8217;s example reads, roughly, &ldquo;There is a
+car. Anything which is a car is a vehicle&rdquo;: <code>x</code> is a
+universal, meaning anything, and <code>c</code> an existential, meaning some
+particular car. Run through the note&#8217;s tool, the description comes out several times
+longer than the input.
 </p>
 
 <h2>44.5 The final distinction</h2>
@@ -165,10 +309,15 @@ anything.
 <cite>Reifying RDF (properly), and N3, 2004</cite>
 </blockquote>
 
+<table>
+<tr><th>Form</th><th>Commits the writer to</th></tr>
+<tr><td>A formula described as existing</td><td>Nothing; all formulae exist</td></tr>
+<tr><td>A formula typed <code>log:Truth</code></td><td>Its contents</td></tr>
+</table>
+
 <p>
-Describing a statement commits you to nothing. Asserting it commits you to its
-contents. A system that conflates the two believes everything it reads,
-including everything it was merely told about.
+A system that conflates the two believes everything it reads, including
+everything it was merely told about.
 </p>
 
 <div class="since">
@@ -176,14 +325,16 @@ including everything it was merely told about.
 <ul>
 <li><strong>The standard mechanism was abandoned.</strong> The reification
 vocabulary this note criticises was little used and its removal was proposed
-in Chapter 47. It survives in the specification and is avoided in
+in the 2010 note restated in Chapter 47. It survives in the specification and is avoided in
 practice.</li>
-<li><strong>The requirement was met differently.</strong> Named graphs, which
-arrived with SPARQL in January 2008, let a set of statements be identified and
+<li><strong>The requirement was met differently.</strong> Named graphs, proposed
+in 2005, built into SPARQL datasets (Recommendation, January 2008) and RDF 1.1
+(2014), let a set of statements be identified and
 described without being restated, which is what this note is trying to
 achieve.</li>
-<li><strong>Statements about statements returned.</strong> RDF-star work from
-2021 onward added a compact way to annotate a statement, and had to settle
+<li><strong>Statements about statements returned.</strong> The RDF-star
+Community Group report (2021) and the RDF 1.2 work that followed from 2022
+added a compact way to annotate a statement, and had to settle
 exactly the question this chapter raises: whether annotating a statement
 asserts it.</li>
 <li><strong>Sets are still absent.</strong> The workaround of section 44.3 is
@@ -211,16 +362,18 @@ describe different graphs, using the definition of a graph.</p>
 <div class="question">
 <p><span class="question-number">44.2</span>
 The node describing a nameless node is not that node. Give a case where
-confusing the two produces a false statement.</p>
+confusing the two produces a false statement. (Hint: think of a report about
+some unnamed person.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">44.3</span>
-Describing a formula asserts nothing; asserting it commits you. Find a system
-that conflates them, and say what an attacker could do.</p>
+A crawler stores statements it finds inside quoted formulae. Which should it
+treat as true, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">44.4</span>
-Jane knows a fact under one name and not another. Model that, and say what
-your model forbids an inference engine from doing.</p>
+Write the Jane statement in N3. If a system knows
+<code>ex:joe</code> = <code>ex:jd1</code>, which statement must it
+<em>not</em> add?</p>
 </div>
 </div>
