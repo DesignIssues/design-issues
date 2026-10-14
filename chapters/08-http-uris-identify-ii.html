@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2005-06-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-When a browser asks a web server for an address, the server replies with a
+When a browser asks a web <a class="gl-ref" href="../glossary.html#server">server</a> for an address, the server replies with a
 number before it sends anything else. A reply of 200 means &ldquo;here it is&rdquo;. The rule
 agreed in 2005 says that a 200 shows the address names a document, and
 that any other reply does not show that.
@@ -63,7 +63,7 @@ that any other reply does not show that.
 <h3>The question</h3>
 <p>
 Three years after the argument of Chapter 7, the Technical Architecture Group
-(the <a class="gl-ref" href="../glossary.html#tag">TAG</a>) decided the matter. The TAG called it &ldquo;httpRange-14&rdquo;:
+(the <a class="gl-ref" href="../glossary.html#tag">TAG</a>) decided the matter. The TAG called it &ldquo;<a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>&rdquo;:
 its name for the issue, number 14 on its list of open questions. This note is
 Berners-Lee&#8217;s account of the decision, written in June 2005. It is
 short because the answer turned out to be a rule about response codes rather
@@ -249,7 +249,7 @@ answers 200.</figcaption>
 Chapter 7 argued that this question should be fixed in the <a class="gl-ref" href="../glossary.html#specification">specification</a>;
 the Group fixed it in the protocol exchange. Berners-Lee accepts the result
 without pretending it is what he asked for, and his 2002 page acquired a
-header saying the compromise works quite well.
+<a class="gl-ref" href="../glossary.html#header">header</a> saying the compromise works quite well.
 </p>
 
 <h2>8.3 How the problem arose in practice</h2>
@@ -269,7 +269,7 @@ browser.
 </blockquote>
 
 <p>
-Dublin Core is a set of names for describing documents (title, creator,
+<a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a set of names for describing documents (title, creator,
 date); Friend of a Friend is a set for describing people. In each, a
 &ldquo;property&rdquo; is a word like <em>title</em> given a web address.
 Figure 8.3 shows the danger the note spells out.
@@ -316,11 +316,11 @@ conceded what.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The redirect pattern was codified.</strong> The TAG&#8217;s 2007
+<li><strong>The <a class="gl-ref" href="../glossary.html#redirect">redirect</a> pattern was codified.</strong> The TAG&#8217;s 2007
 draft finding <em>Dereferencing <a class="gl-ref" href="../glossary.html#http">HTTP</a> URIs</em> and the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Interest Group note
 <em>Cool URIs for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></em>, of December 2008, turned the
 resolution into publishing guidance, setting out both the 303 pattern and the
-hash pattern (Chapter 11) as acceptable.</li>
+<a class="gl-ref" href="../glossary.html#hash">hash</a> pattern (Chapter 11) as acceptable.</li>
 <li><strong>The rule was questioned again.</strong> The extra round trip
 made 303 unpopular. In 2012 the TAG issued a call for change
 proposals on httpRange-14, which explored serving descriptions directly, but

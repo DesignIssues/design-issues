@@ -53,7 +53,7 @@ a Design Issues note by Tim Berners-Lee, 1999-12-01.
 <h3>The short version</h3>
 <p>
 A browser is the user&#8217;s agent, not a mere viewer, so it must pass on what
-the protocol means. The note picks three cases. Two kinds of redirect differ in
+the protocol means. The note picks three cases. Two kinds of <a class="gl-ref" href="../glossary.html#redirect">redirect</a> differ in
 which address to keep. Forms that commit the user should look
 different from links and leave a record. And people should deal in titles, not
 raw addresses.
@@ -90,7 +90,7 @@ says somebody has to deliver it at the top.
 <h2>84.1 Two redirections that mean opposite things</h2>
 
 <p>
-A server asked for one address can reply, in effect, that the browser should look somewhere else.
+A <a class="gl-ref" href="../glossary.html#server">server</a> asked for one address can reply, in effect, that the browser should look somewhere else.
 <a class="gl-ref" href="../glossary.html#http">HTTP</a> has two ways of saying this, for opposite reasons. In the note&#8217;s
 example, a university gives its theses durable addresses on one reliable
 machine but serves them from fast department machines.
@@ -193,9 +193,9 @@ very few implemented this properly.
 <h2>84.2 The commitment the interface hides</h2>
 
 <p>
-Following an ordinary link sends a GET request. In the note&#8217;s words it is
+Following an ordinary link sends a <a class="gl-ref" href="../glossary.html#get">GET</a> request. In the note&#8217;s words it is
 reversible, has no long-term effect and cannot commit a user to anything.
-Submitting a form to order a book sends a POST, and that does commit the user.
+Submitting a form to order a book sends a <a class="gl-ref" href="../glossary.html#post">POST</a>, and that does commit the user.
 Berners-Lee asks for the difference to be visible:
 </p>
 
@@ -270,7 +270,7 @@ which is the reverse of what matters.</figcaption>
 <p>
 More than a quarter of a century later, that record still exists only in the
 inboxes of the parties a person committed to. Sites that muddle the two methods
-would waste the space, he concedes, but they are broken anyway. He adds that a digital signature will one day be an action
+would waste the space, he concedes, but they are broken anyway. He adds that a <a class="gl-ref" href="../glossary.html#digital-signature">digital signature</a> will one day be an action
 just like POST, but with weight added. Then the principle:
 </p>
 
@@ -310,7 +310,7 @@ Servers help by generating the addresses of new documents.
 
 <p>
 This is in tension with Chapter 68, where the address bar is how a person learns
-who they are dealing with, and Chapter 6, where the domain name is the visible
+who they are dealing with, and Chapter 6, where the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the visible
 part that says who is accountable. Both are right about different things: a
 person needs to know whose site this is, and does not need to see the path.
 </p>
@@ -333,7 +333,7 @@ failed to pass on, wasting the precision below.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The redirection distinction stayed below the surface.</strong>
-Browsers cache permanent redirects, but whichever kind of redirect occurred they
+Browsers <a class="gl-ref" href="../glossary.html#cache">cache</a> permanent redirects, but whichever kind of redirect occurred they
 show, and bookmark, the address they ended up at, and never say which kind it
 was.</li>
 <li><strong>More redirect codes arrived.</strong> HTTP added 307 Temporary

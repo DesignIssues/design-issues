@@ -55,7 +55,7 @@ a Design Issues note by Tim Berners-Lee, 1997-04-08.
 In an address such as
 <code>https://en.wikipedia.org/wiki/World_Wide_Web#References</code>, the part
 after the <code>#</code> is the fragment. The browser keeps it and never
-sends it to the server. Once the document arrives, the browser decides what
+sends it to the <a class="gl-ref" href="../glossary.html#server">server</a>. Once the document arrives, the browser decides what
 the fragment means from the kind of file that came back. So each new kind of
 file can invent its own meaning for <code>#</code>, and if the server switches
 formats, the link can quietly stop working.
@@ -254,7 +254,7 @@ fragment? The reasoning runs in three steps:
 <li>Asking for an <code>http:</code> address always gets back a document, a
 message about a document (that it has moved, say, or is unavailable), or
 nothing at all.</li>
-<li>So an <code>http:</code> address without a hash names a document. A
+<li>So an <code>http:</code> address without a <a class="gl-ref" href="../glossary.html#hash">hash</a> names a document. A
 client can conclude this from the protocol alone, even if no server runs,
 because an error saying the document is unavailable is still about a
 document.</li>
@@ -362,13 +362,14 @@ supplied by the site rather than the browser.
 <ul>
 <li><strong>The axiom is normative.</strong> RFC 3986, of January 2005,
 specifies that fragment semantics are defined by the <a class="gl-ref" href="../glossary.html#media-type">media type</a> of the
-retrieved representation, and RFC 6838, of January 2013, requires media type
-registrations to state fragment identifier considerations.</li>
+retrieved representation, and RFC 6838, of January 2013, gives every media type
+registration template a field for fragment identifier considerations.</li>
 <li><strong>The predictions came true, one at a time.</strong> Media Fragments
-URI 1.0 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in September 2012, giving time ranges and
+URI 1.0 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2012, giving time ranges and
 spatial regions. Text fragments, addressing a passage by quoting its words,
-shipped in Chrome in 2020, which is the plain-text range proposal arriving
-twenty-three years late.</li>
+shipped in Chrome in 2020: the HTML range proposal arriving twenty-three years
+late, by quoted words rather than by position in the element tree. Line and
+character ranges for plain text came with RFC 5147 in April 2008.</li>
 <li><strong>The hash-only rule for vocabularies did not hold.</strong> The
 resolution of June 2005, described in Chapter 8, permitted hashless URIs for
 things, which is the practice section 11.3 argues against.</li>

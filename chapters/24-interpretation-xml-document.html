@@ -198,7 +198,7 @@ Top-down is not one procedure. The note sketches three:
 <table>
 <tr><th>Strategy</th><th>How it works</th></tr>
 <tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left.</td></tr>
-<tr><td>Recursive parser</td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
+<tr><td>Recursive <a class="gl-ref" href="../glossary.html#parser">parser</a></td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
 <tr><td>Lazy viewer</td><td>Elaborate a function only when the reader scrolls to it.</td></tr>
 </table>
 
@@ -296,7 +296,7 @@ step changes only what lies inside the dashed outline; <code>html</code> and
 <tr><th>Namespace</th><th>The element is replaced by</th></tr>
 <tr><td>XSLT, in &ldquo;Literal Result Element as Stylesheet&rdquo; mode</td><td>the output its template computes</td></tr>
 <tr><td>XInclude</td><td>the referenced document or part</td></tr>
-<tr><td>XML Encryption</td><td>the decrypted content</td></tr>
+<tr><td>XML <a class="gl-ref" href="../glossary.html#encryption">Encryption</a></td><td>the decrypted content</td></tr>
 <tr><td>XQuery (listed with a question mark)</td><td>the result of the query</td></tr>
 <tr><td>&ldquo;Do not translate&rdquo; tags</td><td>their contents, marked not to be translated</td></tr>
 </table>
@@ -403,7 +403,7 @@ choice is sometimes useful.</li>
 
 <p>
 Because the root element decides, its namespace says what the whole document
-is: an XHTML root yields a hypertext page, an SVG root a diagram. The note
+is: an <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> root yields a hypertext page, an SVG root a diagram. The note
 recommends a specific MIME type, so that the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers alone show this,
 and the <code>+xml</code> suffix only where the top-down model applies.
 </p>
@@ -420,7 +420,7 @@ integration an n&sup2; problem; he would rather each facility had its own.
 become the ordinary way to publish, and the branch that won, described in
 Chapter 23, has no author-declared namespaces.</li>
 <li><strong>A pipeline language was standardised.</strong> XProc became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-Recommendation in May 2010: a separate pipeline language, though one that
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010: a separate pipeline language, though one that
 sits at the top of the tree, as the note allowed.</li>
 <li><strong>The security concern was correct in general.</strong> Processors
 that resolve external references without the containing context&#8217;s

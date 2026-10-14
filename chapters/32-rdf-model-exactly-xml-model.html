@@ -88,7 +88,7 @@ the meaning and query that. This chapter is the argument for the second camp.
 <a class="gl-ref" href="../glossary.html#xml">XML</a> is built of <em>elements</em>, named tags such as
 <code>&lt;author&gt;&hellip;&lt;/author&gt;</code> that nest inside one
 another, so a file forms a <em>tree</em>. An element may carry
-<em>attributes</em>, such as <code>href="page"</code>. A <em>parser</em> reads
+<em>attributes</em>, such as <code>href="page"</code>. A <em><a class="gl-ref" href="../glossary.html#parser">parser</a></em> reads
 the file and builds the tree; a <em>query</em> is a question a program asks of
 it.
 </p>
@@ -378,7 +378,7 @@ overturned from elsewhere in the record.
 <p>
 Independent assertions are valid one at a time and in any order, so records
 whose order matters are not independent. A
-server rule that reads &ldquo;any member has access to the page&rdquo; may
+<a class="gl-ref" href="../glossary.html#server">server</a> rule that reads &ldquo;any member has access to the page&rdquo; may
 really mean that any member has access, unless an earlier rule in this file
 has already matched. The <a class="gl-ref" href="../glossary.html#specification">specification</a> said only that rules are processed in
 order. Written out logically, there is a large nested conditional that it
@@ -456,9 +456,9 @@ important to recognise the difference.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The argument outlived its example.</strong> The five XML
-renderings are now five JSON shapes, and the problem is identical: a
+renderings are now five <a class="gl-ref" href="../glossary.html#json">JSON</a> shapes, and the problem is identical: a
 consumer must know the producer&#8217;s chosen structure. JSON-LD, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-Recommendation of January 2014, exists to attach a graph model to JSON for
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of January 2014, exists to attach a graph model to JSON for
 exactly this reason.</li>
 <li><strong>The jam jar got a notation.</strong> RDF-star lets one <a class="gl-ref" href="../glossary.html#triple">triple</a> be
 the subject of another, making statements about statements explicit. It was
@@ -466,11 +466,11 @@ set out in a W3C Community Group report in 2021 and carried into the
 W3C&#8217;s RDF 1.2 work.</li>
 <li><strong>Order-dependent formats did not go away.</strong> Rule files
 evaluated in order remain the normal way to configure firewalls, routing and
-access control, with the nested conditional still in the prose.</li>
+<a class="gl-ref" href="../glossary.html#access-control">access control</a>, with the nested conditional still in the prose.</li>
 <li><strong>The note&#8217;s own prediction came true the other way.</strong>
 Berners-Lee asks whether it would be nice to label XML so a parser could find
 the assertions. Schema.org, launched in June 2011, does precisely that with
-markup embedded in pages, at enormous scale, and is consumed by search engines
+<a class="gl-ref" href="../glossary.html#markup">markup</a> embedded in pages, at enormous scale, and is consumed by search engines
 rather than by the general agents he imagined.</li>
 </ul>
 </div>

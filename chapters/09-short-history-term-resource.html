@@ -55,8 +55,8 @@ a Design Issues note by Tim Berners-Lee, 2009-08-01.
 The word &ldquo;resource&rdquo; began life as &ldquo;document&rdquo;: a web
 address named a page. Over the years it was stretched to mean anything at
 all. People using <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the Web&#8217;s language for data, then wanted plain web
-addresses, with no hash in them, to name people and ideas rather than pages
-about them. The compromise was a rule about the server&#8217;s reply: a
+addresses, with no <a class="gl-ref" href="../glossary.html#hash">hash</a> in them, to name people and ideas rather than pages
+about them. The compromise was a rule about the <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s reply: a
 200 answer means the address names a page, and a 303 answer means it names
 something else and points to a page describing it. Berners-Lee&#8217;s own
 preference, stated at the end, is to stop saying &ldquo;resource&rdquo; and
@@ -86,7 +86,7 @@ position he held and his decision to give way.
 <table>
 <tr><th>Order</th><th>Who</th><th>What &ldquo;resource&rdquo; meant</th></tr>
 <tr><td>1</td><td>The first Web <a class="gl-ref" href="../glossary.html#specification">specification</a></td><td>Nothing: the term was &ldquo;document&rdquo;, in Universal Document Identifier (UDI)</td></tr>
-<tr><td>2</td><td>The online-information community at the IETF (the Internet Engineering Task Force, which standardises Internet protocols)</td><td>A useful thing out there: a page, a file, a film</td></tr>
+<tr><td>2</td><td>The online-information community at the <a class="gl-ref" href="../glossary.html#ietf">IETF</a> (the Internet Engineering Task Force, which standardises Internet protocols)</td><td>A useful thing out there: a page, a file, a film</td></tr>
 <tr><td>3</td><td>REST, Roy Fielding&#8217;s 2000 description of the Web&#8217;s architectural style</td><td>A time-varying mapping between a <a class="gl-ref" href="../glossary.html#uri">URI</a> and a representation (the bytes a server sends back)</td></tr>
 <tr><td>4</td><td>RDF</td><td>Anything at all; <code>rdf:Resource</code> is the class of everything</td></tr>
 <tr><td>5</td><td>The Architecture of the World Wide Web, the W3C&#8217;s 2004 summary of how the Web works</td><td>&ldquo;Information resource&rdquo; for a page; &ldquo;resource&rdquo; for anything</td></tr>
@@ -273,7 +273,7 @@ The specification was not changed, and its IETF editors were not brought
 round to the new model; it was interpreted. Berners-Lee calls the resolution a
 truce, negotiated by the TAG between the HTTP specification, the RDF systems
 already built, and the people who wanted hashless URIs for people. It is known
-as httpRange-14, after its number in the TAG&#8217;s list of issues.
+as <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>, after its number in the TAG&#8217;s list of issues.
 </p>
 
 <p>
@@ -372,7 +372,7 @@ remains in the URI specification (<a class="gl-ref" href="../glossary.html#rfc">
 specification (RFC 9110, 2022), and in RDF 1.1 (2014), carrying different
 senses in each.</li>
 <li><strong>The Web <a class="gl-ref" href="../glossary.html#ontology">Ontology</a> Language had already moved.</strong> As the note
-records, <a class="gl-ref" href="../glossary.html#owl">OWL</a> (a W3C Recommendation since 2004) uses <code>owl:Thing</code>
+records, <a class="gl-ref" href="../glossary.html#owl">OWL</a> (a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> since 2004) uses <code>owl:Thing</code>
 for the universal class rather than <code>rdf:Resource</code>: the
 substitution Berners-Lee recommends, made five years earlier.</li>
 <li><strong>The truce was questioned, not replaced.</strong> In 2012 the TAG

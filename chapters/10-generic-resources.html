@@ -55,7 +55,7 @@ a Design Issues note by Tim Berners-Lee, 1996-03-01.
 One address can stand for something that comes in several forms: a report in
 English and in French, say, or as a web page and as a PDF. Whoever owns the
 address decides how much the thing it names is allowed to vary. When a
-reader follows the link, the browser and the server agree which form to send; this
+reader follows the link, the browser and the <a class="gl-ref" href="../glossary.html#server">server</a> agree which form to send; this
 is called <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>. Berners-Lee&#8217;s observation is that the ways
 things vary are few: time, language, format, and the kind of device they are
 meant for.
@@ -290,7 +290,7 @@ concpet.
 
 <p>
 One mechanism underneath, four controls on top. The browser&#8217;s language
-setting is the interface; the <code>Accept-Language</code> header it sends is
+setting is the interface; the <code>Accept-Language</code> <a class="gl-ref" href="../glossary.html#header">header</a> it sends is
 the architecture.
 </p>
 
@@ -361,7 +361,7 @@ will serve a translation as though it were authoritative.
 <p>
 The rest of the note is proposals, useful mainly as a record. Two statements
 are wanted: which dimensions a URI is generic in, and how two resources relate
-along a dimension. Both matter to a cache, a program that keeps copies of pages
+along a dimension. Both matter to a <a class="gl-ref" href="../glossary.html#cache">cache</a>, a program that keeps copies of pages
 and must know when a stored copy is still good.
 </p>
 
@@ -397,7 +397,7 @@ what is now RFC 9110, of June 2022. Time was never part of core HTTP
 negotiation; the Memento extension, RFC 7089 of December 2013, added it with
 an <code>Accept-Datetime</code> request header, used mainly by web archives.
 Target medium was never negotiated in HTTP. It was handled by stylesheet media
-types from CSS2 in 1998, refined by Media Queries (a W3C Recommendation in June
+types from CSS2 in 1998, refined by Media Queries (a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in June
 2012).</li>
 <li><strong>The <code>vary=</code> proposal became something narrower.</strong>
 The <code>Vary</code> response header exists, but it describes which request
@@ -419,7 +419,7 @@ distinctions it draws are now usually made informally, or not at all.</li>
 <h3>Connections</h3>
 <p>
 This chapter supplies the sense of &ldquo;document&rdquo; used throughout
-Chapter 7 and referred to in Chapter 13. The quality-of-service metadata
+Chapter 7 and referred to in Chapter 13. The quality-of-service <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
 proposed here is Chapter 3&#8217;s closing recommendation. The interaction between
 genericity and fragment identifiers is the known bug recorded in Chapter 11.
 The metadata architecture these proposals assume is Chapter 27.

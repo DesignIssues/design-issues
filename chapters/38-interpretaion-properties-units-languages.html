@@ -256,7 +256,7 @@ Once named, the pattern turns up everywhere:
 <tr><th>Property</th><th>Reads&hellip;</th><th>&hellip;as</th><th>Plain meaning</th></tr>
 <tr><td>A language (Finnish)</td><td>a string</td><td>a name or phrase</td><td>The words mean this in that language</td></tr>
 <tr><td>Base 64</td><td>printable text</td><td>raw bytes</td><td>A reversible way of writing any bytes as ordinary characters</td></tr>
-<tr><td>A hash (SHA-1)</td><td>a short code</td><td>a fingerprint of a document</td><td>Any change to the document changes the code</td></tr>
+<tr><td>A <a class="gl-ref" href="../glossary.html#hash">hash</a> (SHA-1)</td><td>a short code</td><td>a fingerprint of a document</td><td>Any change to the document changes the code</td></tr>
 <tr><td>Canonicalisation</td><td>a document</td><td>its standard form</td><td>Trivial differences, such as spacing, are ironed out first</td></tr>
 <tr><td>Type coercion</td><td>a date and time</td><td>a date</td><td>Use only part of the value</td></tr>
 <tr><td>Units (added 2006)</td><td>a number</td><td>a quantity</td><td>&ldquo;10&rdquo; read in feet is a length</td></tr>
@@ -439,7 +439,7 @@ last column gives the answers he understood XML <a class="gl-ref" href="../gloss
 
 <table>
 <tr><th>Question</th><th>Why it matters</th><th>XML Schema&#8217;s answer</th></tr>
-<tr><td>Can the type be told from the representation in every case? (1.4e4 against 1.4d4, which differ in precision)</td><td>Decides whether a parser needs a schema</td><td>No</td></tr>
+<tr><td>Can the type be told from the representation in every case? (1.4e4 against 1.4d4, which differ in precision)</td><td>Decides whether a <a class="gl-ref" href="../glossary.html#parser">parser</a> needs a schema</td><td>No</td></tr>
 <tr><td>Are values of different datatypes distinct? Is 1 the same as 1.0?</td><td>Decides what equality means</td><td>Yes</td></tr>
 <tr><td>Is the set of datatypes extensible? Could complex or prime numbers be added?</td><td>Decides whether anyone else may add one</td><td>Yes</td></tr>
 <tr><td>Does representation equality imply value equality?</td><td>Decides whether comparison may be textual</td><td>Yes</td></tr>
@@ -458,7 +458,7 @@ are known.
 Recommendations of February 2004 introduced typed literals, written
 <code>"10"^^xsd:integer</code>, which pair the string with an XML Schema
 datatype: the first real answer to section 38.4&#8217;s problem.</li>
-<li><strong>RDF 1.1 went further.</strong> In the W3C Recommendation of
+<li><strong>RDF 1.1 went further.</strong> In the W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of
 February 2014 every literal carries a datatype, and language-tagged strings
 have a datatype of their own. A literal is now a pair of text and tag, closer to
 attempt two than to attempt three.</li>
@@ -470,7 +470,7 @@ Signature, a W3C Recommendation of 2002, describes canonicalisation, digest
 and base-64 encoding as an ordered chain, which is section 38.3&#8217;s
 argument.</li>
 <li><strong>The flat-header problem persists.</strong> <a class="gl-ref" href="../glossary.html#http">HTTP</a>&#8217;s current
-definition (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 9110, 2022) requires the Content-Encoding header to list the
+definition (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 9110, 2022) requires the Content-Encoding <a class="gl-ref" href="../glossary.html#header">header</a> to list the
 codings in the order in which they were applied: a rule about order, stated in
 prose.</li>
 </ul>

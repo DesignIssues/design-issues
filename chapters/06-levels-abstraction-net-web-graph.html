@@ -96,7 +96,7 @@ separates one machine on the path from the next. The Internet removed the
 wires from the picture. Messages enter and emerge, and two pieces of
 machinery let a program on one machine address a program on another without
 anybody tracing the path: the Domain Name System, which gives computers
-names, and TCP/IP, the pair of protocols (agreed rules) that break messages
+names, and <a class="gl-ref" href="../glossary.html#tcp">TCP</a>/<a class="gl-ref" href="../glossary.html#ip">IP</a>, the pair of protocols (agreed rules) that break messages
 into packets and route them from computer to computer.
 </p>
 
@@ -196,7 +196,7 @@ than a story.
 The first exception is <strong>debugging</strong>. When something fails, the
 user must be able to lift the hood and determine at which layer it failed:
 whether the connection broke locally or in the middle of the network, whether
-the <a class="gl-ref" href="../glossary.html#uri">URI</a> was wrong or the server erred, whether the document was fetched
+the <a class="gl-ref" href="../glossary.html#uri">URI</a> was wrong or the <a class="gl-ref" href="../glossary.html#server">server</a> erred, whether the document was fetched
 correctly but lacked the data.
 </p>
 
@@ -292,7 +292,7 @@ the URI itself. In
 <pre><code>http://acme.example.com/products/machin/truc</code></pre>
 
 <p>
-the owner&#8217;s domain name, <code>acme.example.com</code>, is part of the
+the owner&#8217;s <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>, <code>acme.example.com</code>, is part of the
 name of the document, so the company is identifiably responsible for
 supporting that document. In
 </p>
@@ -420,7 +420,7 @@ footing. This is why Chapter 3 concluded that naming is a contractual matter.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The trust exception failed in the field.</strong> Extended
-Validation (EV) certificates, a costlier kind of security certificate issued
+Validation (EV) certificates, a costlier kind of security <a class="gl-ref" href="../glossary.html#certificate">certificate</a> issued
 only after checking the organisation&#8217;s legal identity, were the mechanism
 for showing a user which organisation stood behind a page, typically as a
 company name beside the address bar. Both Chrome and Firefox removed that
@@ -428,11 +428,11 @@ prominent EV display in 2019, having concluded that users did not act on it.
 The layer Berners-Lee identified as load-bearing was one that browsers
 concluded users could not see.</li>
 <li><strong>The parenthesis became a decade of argument.</strong> The
-Technical Architecture Group&#8217;s resolution of the issue known as httpRange-14,
-in June 2005, established the 303 redirect convention for URIs denoting things
+Technical Architecture Group&#8217;s resolution of the issue known as <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>,
+in June 2005, established the 303 <a class="gl-ref" href="../glossary.html#redirect">redirect</a> convention for URIs denoting things
 that are not documents: asked for such a URI, the server answers with the
-status code 303 (&ldquo;See Other&rdquo;) and the address of a document about
-the thing. Practice afterwards split between that pattern and hash URIs,
+<a class="gl-ref" href="../glossary.html#status-code">status code</a> 303 (&ldquo;See Other&rdquo;) and the address of a document about
+the thing. Practice afterwards split between that pattern and <a class="gl-ref" href="../glossary.html#hash">hash</a> URIs,
 which, like the <code>#part3</code> example above, put the thing&#8217;s name
 inside a document&#8217;s name. The split has not closed. Chapters 7 and 8
 take this up.</li>
@@ -442,7 +442,7 @@ pages, and search engines consume them. The browser showing a user a merged
 view of a thing, which this note describes, remains uncommon outside
 specialist tools.</li>
 <li><strong>Layer separation weakened elsewhere.</strong> Content delivery
-networks, of which Akamai, founded in 1998, was the first large one, and the
+networks, of which Akamai, founded in 1998, was an early large one, and the
 later move of sites onto shared cloud hosting mean that the domain owner
 named in a URI is frequently not the party running the machines that serve
 it. That complicates the <a class="gl-ref" href="../glossary.html#inference">inference</a> from name to responsibility that the

@@ -330,6 +330,7 @@ def index_html():
     total = len(chapters)
     srcnotes = len(cat)
     words = sum(c["words"] for c in chapters)
+    latest = max(e["date"] for e in cat.values() if e["date"])[:4]
     figures = sum(open(content_path(c), encoding="utf-8").read().count("<figure")
                   for c in chapters if has_content(c))
     desc = (f"A book made from Tim Berners-Lee's Design Issues notes: "
@@ -342,7 +343,7 @@ def index_html():
 <p class="subtitle">The Web&#8217;s design notes, put in order</p>
 <p class="ornament">&sect;</p>
 <p class="description">
-Between 1996 and 2024, {AUTHOR_SRC} wrote {srcnotes} notes on why the Web is
+Between 1996 and {latest}, {AUTHOR_SRC} wrote {srcnotes} notes on why the Web is
 built the way it is. They were written as they were needed, not as a book,
 and they are scattered across three decades and ten subjects. This is an
 attempt to read them as one argument: in order, with the context each one
@@ -457,7 +458,7 @@ with dates, and ends with connections and questions.
 <tr><th>Words in the source notes</th><td>{words:,}</td></tr>
 <tr><th>Figures</th><td>{figures} inline diagrams</td></tr>
 <tr><th>Earliest note</th><td>1996</td></tr>
-<tr><th>Latest note</th><td>2024</td></tr>
+<tr><th>Latest note</th><td>{latest}</td></tr>
 </table>
 <p>
 Corrections are contributions. The claims here are checkable: the dates against

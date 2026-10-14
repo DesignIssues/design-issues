@@ -52,8 +52,8 @@ a Design Issues note by Tim Berners-Lee, 1999-12-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A digital signature is a mark that only the holder of a secret key can make,
-and that anyone can check against the matching public key. A signed document
+A <a class="gl-ref" href="../glossary.html#digital-signature">digital signature</a> is a mark that only the holder of a secret key can make,
+and that anyone can check against the matching <a class="gl-ref" href="../glossary.html#public-key">public key</a>. A signed document
 can name other keys, so one key can vouch for the next.
 </p>
 <p>
@@ -69,7 +69,7 @@ Documents have meaning; signatures only carry trust.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in 1999 (the header says 1998) with an apology in the status line that
+Written in 1999 (the <a class="gl-ref" href="../glossary.html#header">header</a> says 1998) with an apology in the status line that
 its terms probably do not match those used in philosophy, this note asks what a
 digital signature means, and answers by arguing that the question is the wrong
 one.
@@ -205,7 +205,7 @@ really crufty, meaning messy and overgrown.
 <h2>37.2 Two loops, and the mistake of joining them</h2>
 
 <p>
-The worked example is access control on the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own member web site,
+The worked example is <a class="gl-ref" href="../glossary.html#access-control">access control</a> on the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own member web site,
 where Hugo is the person deemed responsible for deciding who has member access.
 It is the clearest illustration in the book of a distinction people routinely
 collapse.
@@ -436,16 +436,16 @@ is.</figcaption>
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Token-based authorisation became normal.</strong> OAuth 2.0,
-published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a server check a token it issued,
+<li><strong>Token-based authorisation became normal.</strong> <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> 2.0,
+published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a <a class="gl-ref" href="../glossary.html#server">server</a> check an access token,
 not who is holding it.</li>
 <li><strong>The global directory never arrived; its certificates did.</strong>
 The X.500 global directory never materialised, but X.509 certificates, which
-come from it, underpin every HTTPS connection. The certificate authorities they
+come from it, underpin every HTTPS connection. The <a class="gl-ref" href="../glossary.html#certificate">certificate</a> authorities they
 rely on are trusted third parties, and their compromise became a recurring
 problem, as with DigiNotar in 2011.</li>
 <li><strong>Signing self-contained documents.</strong> Verifiable Credentials
-Data Model 1.0 became a W3C Recommendation in November 2019 (1.1 in March 2022,
+Data Model 1.0 became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in November 2019 (1.1 in March 2022,
 2.0 in 2025). It signs a self-contained document rather than a <a class="gl-ref" href="../glossary.html#graph">graph</a> scattered
 across the Web, respecting Chapter 28&#8217;s point that a signature does not alter
 what a document means.</li>

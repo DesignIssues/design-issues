@@ -118,7 +118,7 @@ together, they are these.
 <tr><td>2b, identity</td><td>What counts as &ldquo;the same&rdquo; is decided by the URI&#8217;s owner.</td><td>2.3</td></tr>
 <tr><td>Same URI (unnumbered)</td><td>Two URIs are the same only if they match character for character.</td><td>2.4</td></tr>
 <tr><td>Opacity</td><td>Use a URI to refer to something; do not read other meaning out of the string.</td><td>2.5</td></tr>
-<tr><td>GET is safe</td><td>In <a class="gl-ref" href="../glossary.html#http">HTTP</a>, a GET request must not have side effects.</td><td>2.6</td></tr>
+<tr><td><a class="gl-ref" href="../glossary.html#get">GET</a> is safe</td><td>In <a class="gl-ref" href="../glossary.html#http">HTTP</a>, a GET request must not have side effects.</td><td>2.6</td></tr>
 <tr><td>Safe means GET</td><td>In HTTP, anything without side effects should use GET.</td><td>2.6</td></tr>
 <tr><td>3, non-unique</td><td>URI space need not be the only universal space.</td><td>2.7</td></tr>
 </table>
@@ -188,7 +188,7 @@ business.
 </p>
 
 <p>
-He then sets a moral limit on that freedom. A server often knows who is
+He then sets a moral limit on that freedom. A <a class="gl-ref" href="../glossary.html#server">server</a> often knows who is
 asking, and could send each reader something different.
 </p>
 
@@ -200,7 +200,7 @@ deception.
 </blockquote>
 
 <p>
-The mechanism he names is the HTTP <code>Vary</code> header, a line in the
+The mechanism he names is the HTTP <code>Vary</code> <a class="gl-ref" href="../glossary.html#header">header</a>, a line in the
 server&#8217;s reply saying that it depends on something in the request, such
 as the reader&#8217;s language. Undisclosed variation, he adds, &ldquo;also of
 course messes up caches&rdquo;.
@@ -351,7 +351,7 @@ of the HTTP header set exists to carry.
 The query string, the part after a question mark that a search form fills
 in, is an exception: the client constructs it. But it should stay opaque to
 proxies, the servers between reader and site that pass requests on and
-often cache them, keeping copies so pages need not be fetched again.
+often <a class="gl-ref" href="../glossary.html#cache">cache</a> them, keeping copies so pages need not be fetched again.
 </p>
 
 <p>
@@ -365,7 +365,7 @@ this harms sites using query strings for perfectly cacheable pages.
 
 <p>
 Every HTTP request carries a method. Following a link sends a GET (show me
-this); submitting an order sends a POST (do this). A side effect is anything
+this); submitting an order sends a <a class="gl-ref" href="../glossary.html#post">POST</a> (do this). A side effect is anything
 a request changes beyond fetching a page: an order placed, a record deleted.
 </p>
 
@@ -542,8 +542,9 @@ address is a social offence rather than a technical one.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The syntax was standardised.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, published in
-January 2005 as STD 66, replaced the earlier RFC 2396 and the informational
-RFC 1630 that Berners-Lee wrote in 1994 and quotes here. Character-for-character
+January 2005 as STD 66, replaced the earlier RFC 2396, and in practice took
+the place of the informational RFC 1630 that Berners-Lee wrote in 1994 and
+quotes here, which was never formally withdrawn. Character-for-character
 identity and the limits on canonicalization survive in it.</li>
 <li><strong>The GET rule was given a name and a test case.</strong> Safe
 methods are specified in what is now RFC 9110, of June 2022. The practical

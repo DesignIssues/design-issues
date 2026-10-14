@@ -53,9 +53,9 @@ a Design Issues note by Tim Berners-Lee, 1998-09-04.
 <h3>The short version</h3>
 <p>
 Everything worth talking about on the Web should have its own address, a <a class="gl-ref" href="../glossary.html#uri">URI</a>.
-Fetching with GET must only fetch, and any answer worth retrieving should be
+Fetching with <a class="gl-ref" href="../glossary.html#get">GET</a> must only fetch, and any answer worth retrieving should be
 given an address of its own rather than hidden behind a special command. The
-one central weak point in the whole design is the root of the domain name
+one central weak point in the whole design is the root of the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>
 system, which a single body has to run for everyone. Berners-Lee names two
 mistakes he wanted corrected: the separate <code>https</code> <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, and the
 split between the messages protocols send and the documents they carry.
@@ -206,7 +206,7 @@ Figure 5.1 shows.
 
 <p>
 He adds that the Consortium did not address this, except indirectly through
-ICANN (the Internet Corporation for Assigned Names and Numbers, set up in 1998
+<a class="gl-ref" href="../glossary.html#icann">ICANN</a> (the Internet Corporation for Assigned Names and Numbers, set up in 1998
 to oversee the DNS root). The admission is characteristic: a structural
 weakness is named and no solution offered.
 </p>
@@ -375,9 +375,9 @@ The gain is compositional: whatever can be done to one can be done to the
 other. Messages become signable because documents are, and documents become
 binary-encodable (packed as compact bytes) because messages are. The recursion
 already exists, he notes: email messages contain email messages, and business
-is conducted with documents carried by SMTP (the protocol that moves email)
+is conducted with documents carried by <a class="gl-ref" href="../glossary.html#smtp">SMTP</a> (the protocol that moves email)
 and HTTP. It nearly happened once, with HTTP messages almost defined in SGML,
-the older markup language from which <a class="gl-ref" href="../glossary.html#html">HTML</a> was derived.
+the older <a class="gl-ref" href="../glossary.html#markup">markup</a> language from which <a class="gl-ref" href="../glossary.html#html">HTML</a> was derived.
 </p>
 
 <h3>The wish list for HTTP</h3>
@@ -410,7 +410,7 @@ Services.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The DNS root question was answered, slowly.</strong> The United
-States relinquished its stewardship of the IANA functions (the bookkeeping of
+States relinquished its stewardship of the <a class="gl-ref" href="../glossary.html#iana">IANA</a> functions (the bookkeeping of
 the DNS root and of protocol numbers) to the global multi-stakeholder
 community on 1 October 2016. Whether that constitutes governance &ldquo;by and for the world as a
 whole in a fair way&rdquo; is contested; that it was addressed at all took
@@ -424,7 +424,7 @@ argument was lost.</li>
 protocol; the work was done a decade later by other groups.</li>
 <li><strong>Web Services went the other way.</strong> The XML-based
 remote-operation stack was built, then largely displaced through the 2010s
-by resource-oriented interfaces exchanging JSON, closer to his own
+by resource-oriented interfaces exchanging <a class="gl-ref" href="../glossary.html#json">JSON</a>, closer to his own
 architectural preference than the stack he expected.</li>
 <li><strong>The https objection lost.</strong> Rather than negotiating
 security within one namespace, the Web deprecated the insecure one. HTTP

@@ -264,7 +264,7 @@ format needs to know about any output format.</figcaption>
 <p>
 <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> is the query language of this toolkit: a program anywhere can send a
 question to a SPARQL service and get the answer back as RDF, <a class="gl-ref" href="../glossary.html#xml">XML</a>, sometimes
-JSON or CSV. Some users prefer each, so the outputs should be generated
+<a class="gl-ref" href="../glossary.html#json">JSON</a> or CSV. Some users prefer each, so the outputs should be generated
 automatically.
 </p>
 
@@ -370,7 +370,7 @@ survey: an inventory of every dataset may take longer than publishing one.
 The most important rule is not to disturb the systems, or the people,
 responsible for the data, who may have spent years assembling it. Extract the
 data with the export facilities it already has and add &ldquo;a thin
-shim&rdquo; to adapt it to the standard. Likewise, do not run a public server
+shim&rdquo; to adapt it to the standard. Likewise, do not run a public <a class="gl-ref" href="../glossary.html#server">server</a>
 on the live database unless it is built for heavy use: take a copy, or
 generate the RDF once and serve that.
 </p>
@@ -379,7 +379,7 @@ generate the RDF once and serve that.
 
 <table>
 <tr><th>The data is in</th><th>What the note suggests</th></tr>
-<tr><td>A relational database</td><td>Use an open-source tool such as D2RServer or Triplify, with a mapping file that says how the tables represent things and their relationships</td></tr>
+<tr><td>A <a class="gl-ref" href="../glossary.html#relational-database">relational database</a></td><td>Use an open-source tool such as D2RServer or Triplify, with a mapping file that says how the tables represent things and their relationships</td></tr>
 <tr><td>A spreadsheet</td><td>If it is a plain table, export it as CSV and convert that to RDF; spreadsheets full of headings and notes are harder</td></tr>
 <tr><td>XML</td><td>Put the XML up as it is while thinking, then write a script that converts each file to RDF</td></tr>
 <tr><td>A proprietary format</td><td>Someone writes a program to get the data out and convert it</td></tr>
@@ -416,7 +416,7 @@ where the law allows.
 <table>
 <tr><th>Do</th><th>Do not</th></tr>
 <tr><td>pick URIs which are likely to be persistent</td><td>hide data files inside zip files unless they are also available directly</td></tr>
-<tr><td>put RDF metadata giving the license</td><td>put data up in proprietary formats</td></tr>
+<tr><td>put RDF <a class="gl-ref" href="../glossary.html#metadata">metadata</a> giving the license</td><td>put data up in proprietary formats</td></tr>
 <tr><td>use the RDF and SPARQL standards</td><td>wait until there is a complete <a class="gl-ref" href="../glossary.html#schema">schema</a> or ontology to publish data</td></tr>
 <tr><td>make sure the human readable pages are accessible</td><td>seek to replace existing data systems</td></tr>
 </table>

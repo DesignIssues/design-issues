@@ -56,7 +56,7 @@ A module is a part that can be changed or reused without understanding the parts
 around it. By 2008 the HTML5 draft had grown into parts that all depended on
 one another. Berners-Lee asked for separable pieces, such as the canvas
 drawing commands, to be split out, because the Web works only because each
-layer (IP, TCP, <a class="gl-ref" href="../glossary.html#http">HTTP</a>) offers a simple interface to the next.
+layer (<a class="gl-ref" href="../glossary.html#ip">IP</a>, <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, <a class="gl-ref" href="../glossary.html#http">HTTP</a>) offers a simple interface to the next.
 </p>
 </div>
 
@@ -82,7 +82,7 @@ actually do can also be one that others can build on.
 <p>
 The note opens with what it calls a classic example: HTTP and <a class="gl-ref" href="../glossary.html#html">HTML</a> are
 specified independently. HTTP first carried HTML, then images, PDF, SVG
-and JSON, each announced by a media-type label such as
+and <a class="gl-ref" href="../glossary.html#json">JSON</a>, each announced by a media-type label such as
 <code>image/png</code>, and HTTP itself did not change for any of them.
 </p>
 
@@ -276,9 +276,9 @@ touching them, and for the same reason taken elsewhere.</figcaption>
 
 <p>
 Berners-Lee applies this to the <em>canvas</em> element: a blank rectangle in
-a page that a script can draw on. Its drawing API (the commands a program
+a page that a script can draw on. Its drawing <a class="gl-ref" href="../glossary.html#api">API</a> (the commands a program
 uses) differs in nature from the rest of HTML, which mostly sets and reads
-values in the markup; the client-side database storage section is another
+values in the <a class="gl-ref" href="../glossary.html#markup">markup</a>; the client-side database storage section is another
 such interface. The element belongs in HTML, he argues, but the drawing API
 belongs in a separate document. Hickson agreed in principle, but other parts
 needed splitting out more urgently, and nobody had volunteered to edit it.

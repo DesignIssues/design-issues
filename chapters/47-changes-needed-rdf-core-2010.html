@@ -54,7 +54,7 @@ a Design Issues note by Tim Berners-Lee, 2000-01-01.
 <p>
 <a class="gl-ref" href="../glossary.html#rdf">RDF</a> records facts as three-part statements: subject, property, object (the
 workshop, began on, 2010-06-26). In 2010 Berners-Lee asked for unused features
-to be removed, the model to be documented apart from any syntax, a JSON form,
+to be removed, the model to be documented apart from any syntax, a <a class="gl-ref" href="../glossary.html#json">JSON</a> form,
 and more kinds of thing allowed in each part of a statement. The documentation
 and JSON arrived in 2014, the removals became advice, and the changes to the
 statement were not made. Changing the shape of a statement means changing every
@@ -87,7 +87,7 @@ change.
 Two terms recur. A <em>serialisation</em> is a way of writing the same data
 down as text; RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> are two. To <em>deprecate</em> a feature is to
 mark it as not to be used, while leaving it in place for old data. The note
-also proposes extensions to N3 itself (dates, quoted variables, rule
+also proposes extensions to <a class="gl-ref" href="../glossary.html#n3">N3</a> itself (dates, quoted variables, rule
 languages); this chapter treats only the dates, in section 47.4.
 </p>
 
@@ -250,7 +250,7 @@ costs almost nothing at runtime and costs every new reader a page.
 </p>
 
 <p>
-He also proposes a migration path rather than a cliff: a parser (the program
+He also proposes a migration path rather than a cliff: a <a class="gl-ref" href="../glossary.html#parser">parser</a> (the program
 that reads the text in) could convert sequences to lists as an option, for
 systems that handle one and not the other. That is the evolvability argument
 of Chapter 16 applied by the same author to his own design: give
@@ -348,17 +348,18 @@ systems by the same author.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The documentation proposals were carried out.</strong> RDF 1.1, a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of February 2014, defines the model independently of any
-syntax and includes a JSON serialisation, both of which are on this list.</li>
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of February 2014, defines the model independently of any
+syntax, and JSON-LD, a JSON serialisation from the same working group, became a
+Recommendation the month before: both are on this list.</li>
 <li><strong>The deprecations were softened to advice.</strong> <a class="gl-ref" href="../glossary.html#reification">Reification</a>,
 bags and sequences remain in the <a class="gl-ref" href="../glossary.html#specification">specification</a> and are avoided by convention,
 which is the weakest of the options section 47.3 considers.</li>
-<li><strong>Literals as subjects came back as a question.</strong> The
-proposal was raised again in the RDF 1.2 work that W3C began in 2022, twelve
-years after this note.</li>
+<li><strong>Literals as subjects are still not allowed.</strong> The RDF 1.2
+work that W3C began in 2022 kept the restriction, and admits literal subjects
+only in its non-standard &#8220;generalised&#8221; form.</li>
 <li><strong>Graphs in statements arrived partially.</strong> RDF-star work
-from 2021 onward lets a quoted statement, not a whole <a class="gl-ref" href="../glossary.html#graph">graph</a>, be the subject of
-another, which is the narrower half of the proposal here.</li>
+from 2021 onward lets a single statement, not a whole <a class="gl-ref" href="../glossary.html#graph">graph</a>, be described by
+another (in RDF 1.2, only as its object), which is the narrower half of the proposal here.</li>
 </ul>
 </div>
 

@@ -215,7 +215,7 @@ the ordinary thing.
 <p>
 A browser cannot tell a private webcam from open government data, and webcams
 could not be changed, so publishers must opt in under Cross-Origin Resource
-Sharing (CORS) by adding a <em>header</em>, a labelled line sent with a reply:
+Sharing (CORS) by adding a <em><a class="gl-ref" href="../glossary.html#header">header</a></em>, a labelled line sent with a reply:
 </p>
 
 <table>
@@ -235,7 +235,7 @@ reply headers the app may see, and the browser first sends a hidden
 <p>
 Fearing <code>*</code> was a &#8220;footgun&#8221; managers would put even on
 per-user pages, the designers made browsers refuse it when a request carries
-credentials, such as a login; the server must name the origin exactly.
+credentials, such as a login; the <a class="gl-ref" href="../glossary.html#server">server</a> must name the origin exactly.
 </p>
 
 <p>
@@ -311,7 +311,7 @@ of thought. But that is not how CORS was done.
 <h2>70.7 Vary: Origin and the cache</h2>
 
 <p>
-Browsers keep copies of replies in a <em>cache</em>; a
+Browsers keep copies of replies in a <em><a class="gl-ref" href="../glossary.html#cache">cache</a></em>; a
 copy marked for origin A, reused for an app from B, is silently blocked. One
 more header, <code>Vary: Origin</code>, makes the cache keep a copy per origin.
 </p>

@@ -99,7 +99,7 @@ actually work.
 </blockquote>
 
 <p>
-An <a class="gl-ref" href="../glossary.html#rdf">RDF</a> parser is the program that reads a document and extracts the
+An <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#parser">parser</a> is the program that reads a document and extracts the
 statements in it. The correction is a chain: a fact is asserted in an
 expression, which is part of a formula, which is found by parsing a document.
 And then the sentence that does the work:
@@ -239,7 +239,7 @@ believe it.</figcaption>
 <h2>46.3 Scoping trust to a key and a form</h2>
 
 <p>
-Digital signature adds security: a document signed with a key carries a mark
+<a class="gl-ref" href="../glossary.html#digital-signature">Digital signature</a> adds security: a document signed with a key carries a mark
 only that key&#8217;s holder can make. The first requirement is that a
 document is not endorsed without recording its checksum when it was believed:
 a short fingerprint computed from its exact contents. Endorsing a location
@@ -395,7 +395,7 @@ the contradiction comes from forgetting when each statement was made.
 <h3>Expiry</h3>
 
 <p>
-The first remedy is an expiry date on everything, as an <a class="gl-ref" href="../glossary.html#http">HTTP</a> server can
+The first remedy is an expiry date on everything, as an <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#server">server</a> can
 already send with a resource. All conclusions drawn from a document are
 cancelled when its date arrives, unless a fresher copy says the same thing.
 Statements should also be fully qualified: not &ldquo;It is rainy&rdquo; but
@@ -440,16 +440,16 @@ while all the inputs are still valid.
 <ul>
 <li><strong>Trust scoped by purpose became standard.</strong> X.509
 certificates carry an extended key usage field (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 5280, 2008) limiting what
-a key is trusted for; OAuth 2.0 (RFC 6749, 2012) grants tokens limited
+a key is trusted for; <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> 2.0 (RFC 6749, 2012) grants tokens limited
 scopes.</li>
 <li><strong>Endorsing by checksum became ordinary.</strong> <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Subresource
-Integrity (2016) lets a page load a script only if its hash matches; SLSA
+Integrity (2016) lets a page load a script only if its <a class="gl-ref" href="../glossary.html#hash">hash</a> matches; SLSA
 (2021) attestations identify software by hash.</li>
 <li><strong>Most deployed systems behave like the first option in section
 46.4.</strong> They check statements of a given form, and accept that
 equivalent statements phrased differently will not match.</li>
 <li><strong>Explicit validity periods are built into revocation.</strong>
-Certificate revocation lists and OCSP responses (RFC 6960, 2013) state when
+<a class="gl-ref" href="../glossary.html#certificate">Certificate</a> revocation lists and OCSP responses (RFC 6960, 2013) state when
 the next update is due.</li>
 </ul>
 </div>

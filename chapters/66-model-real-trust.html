@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2015-03-28.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Browsers trust a website only if a big certificate company vouches for it.
+Browsers trust a website only if a big <a class="gl-ref" href="../glossary.html#certificate">certificate</a> company vouches for it.
 But people trust others for many reasons: they met them, they know them, they
 work for them. Berners-Lee argues the browser should let people record those
 reasons, rather than treat everything outside the company chain as an attack.
@@ -76,7 +76,7 @@ When a browser connects securely to a site, the site shows a
 <em>certificate</em>: a document that ties its name to a cryptographic key.
 </p>
 <p>
-The browser accepts it if a <em>certificate authority</em> it already trusts
+The browser accepts it if a <em><a class="gl-ref" href="../glossary.html#certificate-authority">certificate authority</a></em> it already trusts
 has signed it. Browsers ship with a list of these, the <em>root store</em>, so
 trust flows down a chain.
 </p>
@@ -158,7 +158,7 @@ computer must let the user add the specific certificate because of it.
 <h2>66.2 The objection</h2>
 
 <p>
-The complaint is about whose interests a default serves. (<a class="gl-ref" href="../glossary.html#pki">PKI</a>, public key infrastructure, is the system of certificate
+The complaint is about whose interests a default serves. (<a class="gl-ref" href="../glossary.html#pki">PKI</a>, <a class="gl-ref" href="../glossary.html#public-key">public key</a> infrastructure, is the system of certificate
 authorities described in 66.1.)
 </p>
 
@@ -173,7 +173,7 @@ being used to convey these trust paths.
 
 <p>
 Three reasons are given for calling this inappropriate. Routing a family
-server&#8217;s trust through a commercial hierarchy is expensive. It misrepresents
+<a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s trust through a commercial hierarchy is expensive. It misrepresents
 why the server is trusted. And it is a security liability:
 </p>
 
@@ -338,7 +338,7 @@ hierarchy-backed certificates free. That answered the expense objection and
 none of the others.</li>
 <li><strong>The weakest-authority problem was mitigated rather than
 solved.</strong> Certificate Transparency, public append-only logs of every
-certificate issued, was standardised as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 9162 in December 2021. It makes
+certificate issued, was first specified in <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962 (June 2013) and revised as RFC 9162 in December 2021, both as experimental RFCs. It makes
 certificates issued to the wrong party detectable after the fact, without
 changing who must be trusted.</li>
 <li><strong>Personal and peer trust moved elsewhere.</strong> Messaging

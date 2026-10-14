@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2008-01-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> data is written in <a class="gl-ref" href="../glossary.html#xml">XML</a> markup, so a tag such as <code>#foo</code> can
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> data is written in <a class="gl-ref" href="../glossary.html#xml">XML</a> <a class="gl-ref" href="../glossary.html#markup">markup</a>, so a tag such as <code>#foo</code> can
 mean a piece of the document, a node in the data, or the real person. Berners-Lee
 gives each kind of pointer its own attribute, shows that one <a class="gl-ref" href="../glossary.html#uri">URI</a> can change
 meaning with the file&#8217;s label, and says to identify a person by something
@@ -363,15 +363,16 @@ without settling the philosophy.
 <ul>
 <li><strong>The mechanism was standardised.</strong> <em>Inverse
 functional</em> properties, which formalise &ldquo;no two things share this value&rdquo;,
-are part of <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of February 2004. The Friend of a
-Friend (FOAF) vocabulary identifies people by mailbox, or by a scrambled
+are part of <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of February 2004. The Friend of a
+Friend (<a class="gl-ref" href="../glossary.html#foaf">FOAF</a>) vocabulary identifies people by mailbox, or by a scrambled
 (hashed) form that hides the address.</li>
 <li><strong>RDF got its own media type.</strong> <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3870, published in
 September 2004, registered <code>application/rdf+xml</code>, a label under
 which RDF&#8217;s own fragment rules apply.</li>
 <li><strong>The question of what a URI names went to the <a class="gl-ref" href="../glossary.html#tag">TAG</a>.</strong> In June
-2005 the W3C Technical Architecture Group resolved its &ldquo;httpRange-14&rdquo;
-issue: a URI with a fragment may name anything, including a person.</li>
+2005 the W3C Technical Architecture Group resolved its &ldquo;<a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>&rdquo;
+issue: an http URI may name anything, including a person, but one without a
+fragment that answers with a document names a document.</li>
 </ul>
 </div>
 

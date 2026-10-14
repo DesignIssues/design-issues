@@ -17,7 +17,7 @@ quotation with a citation.
 ## Why it exists
 
 The Design Issues notes are the closest thing the Web has to a statement of
-its architecture by its designer. They were written between 1996 and 2024 as
+its architecture by its designer. They were written between 1996 and 2025 as
 each question arose, never arranged for a new reader, and their author says
 in his own preface that looking for an order of concepts in them offers "as
 much hope as you would with words in the dictionary." This book supplies the

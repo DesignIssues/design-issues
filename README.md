@@ -13,7 +13,7 @@ about what happened since carry the specification and the date.
 
 ## Why
 
-Between 1996 and 2024, Berners-Lee wrote 97 notes on why the Web is built the
+Between 1996 and 2025, Berners-Lee wrote 97 notes on why the Web is built the
 way it is. They are the closest thing the Web has to a statement of its own
 architecture by the person who designed it. They were also written as they
 were needed, published when they were useful, and never arranged for a reader

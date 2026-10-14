@@ -231,7 +231,7 @@ to the document.
 </p>
 
 <p>
-The markup gives no clue which is which. Internet mail&#8217;s rule was to
+The <a class="gl-ref" href="../glossary.html#markup">markup</a> gives no clue which is which. Internet mail&#8217;s rule was to
 ignore anything not understood. In <a class="gl-ref" href="../glossary.html#html">HTML</a> that came to mean dropping the
 unknown tag and showing its text, which is the third option. That is right
 for emphasis, wrong for a comment, whose private text is shown to the reader,
@@ -320,18 +320,18 @@ travel with the document, not wait at the end of a network request.
 mark an extension mandatory or ignorable was added to XML or to namespaces;
 XML itself never gained one. SOAP 1.1 (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, 2000), a messaging format
 built on XML, added exactly this: a <code>mustUnderstand</code> attribute on
-header entries, which a receiver must either honour or fail on.</li>
+<a class="gl-ref" href="../glossary.html#header">header</a> entries, which a receiver must either honour or fail on.</li>
 <li><strong>It was adopted elsewhere.</strong> The <a class="gl-ref" href="../glossary.html#http">HTTP</a> Extension Framework
 (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2774, 2000) let a request declare an extension mandatory with a
 <code>Man:</code> header. Internet certificates, as profiled in RFC 2459
-(1999), carry a &ldquo;critical&rdquo; flag on X.509 extensions: a certificate
+(1999), carry a &ldquo;critical&rdquo; flag on X.509 extensions: a <a class="gl-ref" href="../glossary.html#certificate">certificate</a>
 with an unrecognised critical extension must be rejected.</li>
 <li><strong>The distinction moved into the data itself.</strong> PNG 1.0
 (1996) marks each chunk of an image file critical or ancillary by the case of
 the first letter of its name, so a decoder knows whether it may skip an
 unknown chunk without consulting any schema, the instinct of section 18.3.</li>
 <li><strong>HTML chose the third option permanently.</strong> The HTML5
-parsing rules, specified from 2008 onward, define unwrapping behaviour for
+parsing rules, first published by the W3C in January 2008, define unwrapping behaviour for
 unknown elements exactly, which removes the ambiguity without supplying the
 mandatory flag.</li>
 </ul>

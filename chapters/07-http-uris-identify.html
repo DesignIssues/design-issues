@@ -58,10 +58,10 @@ about. The page about a car is not the car. Berners-Lee held this view in
 views one at a time and turned each one down.
 </p>
 <p>
-His answer for naming things that are not documents is the hash (#):
+His answer for naming things that are not documents is the <a class="gl-ref" href="../glossary.html#hash">hash</a> (#):
 <code>page#car</code> names something described in <code>page</code>. In 2005
 the group settled on a compromise that kept his distinction but used a
-redirect instead of the hash.
+<a class="gl-ref" href="../glossary.html#redirect">redirect</a> instead of the hash.
 </p>
 </div>
 
@@ -245,7 +245,7 @@ overturned at any moment.
 <tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
 <tr><td>The owner may define it to mean whatever they like</td><td>Consistent, but nothing can be used before consulting the owner</td></tr>
 <tr><td>&emsp;&hellip; with a page as the default until told otherwise</td><td>Requires closed-world reasoning, which an open Web forbids</td></tr>
-<tr><td>&emsp;&hellip; settled by a protocol operation such as GET</td><td>Would work logically, but cannot be retrofitted to the millions of servers already deployed</td></tr>
+<tr><td>&emsp;&hellip; settled by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a></td><td>Would work logically, but cannot be retrofitted to the millions of servers already deployed</td></tr>
 <tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
 <tr><td>Let different properties imply different levels</td><td>Fails when a page describes a page; the &ldquo;two-level&rdquo; trap</td></tr>
 <tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, breaking universality</td></tr>
@@ -308,8 +308,8 @@ the statement at the top without asking the owner first.</figcaption>
 <h2>7.4 The redirect he proposed and did not get</h2>
 
 <p>
-When a browser asks a server for an address, the reply starts with a
-three-digit status code: 200 means &ldquo;here it is&rdquo;, 404 &ldquo;not
+When a browser asks a <a class="gl-ref" href="../glossary.html#server">server</a> for an address, the reply starts with a
+three-digit <a class="gl-ref" href="../glossary.html#status-code">status code</a>: 200 means &ldquo;here it is&rdquo;, 404 &ldquo;not
 found&rdquo;, and codes in the 300s mean &ldquo;look elsewhere&rdquo;. A reply
 of that last kind is a redirect.
 </p>
@@ -434,17 +434,17 @@ redirect costs an extra round trip to the server.</figcaption>
 <ul>
 <li><strong>The author lost and the mechanism won.</strong> In June 2005 the
 Technical Architecture Group resolved the issue it had recorded as
-httpRange-14, adopting a runtime test rather than a rule fixed in the
+<a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>, adopting a runtime test rather than a rule fixed in the
 <a class="gl-ref" href="../glossary.html#specification">specification</a>, which is the protocol-operation option in section 7.3&#8217;s
 table. It did so using a redirect closely resembling the one proposed here.
 Chapter 8 is Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
-2006 the page carried a header saying the question had been decided by the
+2006 the page carried a <a class="gl-ref" href="../glossary.html#header">header</a> saying the question had been decided by the
 Group &ldquo;in a compromise which I think works quite well&rdquo;. The
 argument was left standing and the verdict was overtaken.</li>
 <li><strong>Both patterns survive.</strong> Hash URIs and redirect-based URIs
 are both in wide use, and the split has never closed. Vocabularies that
-predate the resolution, including Dublin Core and Friend of a Friend, use
+predate the resolution, including <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> and Friend of a Friend, use
 hashless HTTP URIs for properties, which is the practice this note argues
 against.</li>
 </ul>

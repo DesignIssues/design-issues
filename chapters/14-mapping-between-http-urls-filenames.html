@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 2015-04-10.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A server can show the same files both as web pages and as ordinary files on
+A <a class="gl-ref" href="../glossary.html#server">server</a> can show the same files both as web pages and as ordinary files on
 disk. But if anyone may upload under any name, a stranger can upload a web
 page called <code>virus.exe</code>, and a user&#8217;s computer will treat it as a
 program. The fix: keep the name when it is honest; otherwise add a
@@ -90,7 +90,7 @@ each is good at:
 <table>
 <tr><th>HTTP space</th><th>File space</th></tr>
 <tr><td>Who can reach it: people not on the machine</td><td>Who can reach it: the owner, including files not meant to be shared</td></tr>
-<tr><td>Access control by Web-wide or server-wide identity</td><td>Access control by Unix users and groups</td></tr>
+<tr><td><a class="gl-ref" href="../glossary.html#access-control">Access control</a> by Web-wide or server-wide identity</td><td>Access control by Unix users and groups</td></tr>
 <tr><td>Slower</td><td>Faster, for serious data processing</td></tr>
 <tr><td>Tools: browsers and Web services</td><td>Tools: command-line programs, scripts, version control, build systems</td></tr>
 </table>
@@ -106,7 +106,7 @@ as local files and as resources on the web.
 The obvious mapping is to make the URI path the filename. The snag is types.
 A file&#8217;s <em>extension</em> is the part after the last dot; the operating
 system uses it to decide what a file is. HTTP sends the type separately, in a
-<code>Content-Type</code> header such as <code>text/html</code>. On a server
+<code>Content-Type</code> <a class="gl-ref" href="../glossary.html#header">header</a> such as <code>text/html</code>. On a server
 that accepts uploads, the two can disagree.
 </p>
 
@@ -114,7 +114,7 @@ that accepts uploads, the two can disagree.
 
 <p>
 The note states the conflict exactly. Two HTTP verbs
-matter: PUT (upload to a chosen address) and GET (fetch). Three things are
+matter: <a class="gl-ref" href="../glossary.html#put">PUT</a> (upload to a chosen address) and <a class="gl-ref" href="../glossary.html#get">GET</a> (fetch). Three things are
 wanted, and they cannot all hold.
 </p>
 
@@ -196,7 +196,7 @@ crucial part of web security 101 and not negotiable.
 <p>
 The attack he has in mind is concrete. Someone uploads a file whose URI ends
 in <code>.exe</code> but whose content type is <code>text/html</code>, and in
-file space the operating system sees a program. The extension is metadata
+file space the operating system sees a program. The extension is <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
 that the local system trusts and that a remote party supplied.
 </p>
 

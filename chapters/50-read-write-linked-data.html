@@ -53,7 +53,7 @@ a Design Issues note by Tim Berners-Lee, 2009-10-11.
 <h3>The short version</h3>
 <p>
 Data on the Web can be written back as well as read. Send changes rather than
-whole files, and the server must refuse loudly when a change no longer
+whole files, and the <a class="gl-ref" href="../glossary.html#server">server</a> must refuse loudly when a change no longer
 applies. A &ldquo;data wiki&rdquo; treats every unused address as an empty
 document ready to fill.
 </p>
@@ -115,7 +115,7 @@ which several people edit at once.
 </p>
 
 <p>
-There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> PUT uploads a fresh copy of
+There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh copy of
 the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a> saying the
 age is 65, add one saying 66. Figure 50.1 shows what goes wrong with PUT.
 </p>
@@ -177,7 +177,7 @@ erases the earlier. Each server reply is a plain success.</figcaption>
 
 <p>
 The note&#8217;s patch is written in <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update, the editing half of the
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> query language, and sent by HTTP POST to the document&#8217;s own URI. A
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> query language, and sent by HTTP <a class="gl-ref" href="../glossary.html#post">POST</a> to the document&#8217;s own URI. A
 typical patch is a DELETE followed by an INSERT.
 </p>
 
@@ -311,7 +311,7 @@ document (in RDF/XML or N3) which contains zero triples.
 
 <p>
 The real HTTP code for not found is 404; 400 means Bad
-Request. 200 OK is the ordinary success reply. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and N3 are two
+Request. 200 OK is the ordinary success reply. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#n3">N3</a> are two
 ways of writing triples down, one in XML and one in a terser text notation.
 The note adds that an empty RDF/XML document is not a zero-length file, though
 an empty N3 one can be.
@@ -329,7 +329,7 @@ real page from an empty one.
 
 <p>
 A server must also advertise that it accepts writes, and a footnote explains
-the header used. Microsoft first built a proprietary write-back protocol, the
+the <a class="gl-ref" href="../glossary.html#header">header</a> used. Microsoft first built a proprietary write-back protocol, the
 &ldquo;Microsoft Frontpage Extensions&rdquo;, then introduced the <code>MS-Author-Via</code> header
 so that its clients could switch those off and use WebDAV instead, a standard
 extension of HTTP for editing files on a server. Most WebDAV servers of the
@@ -356,7 +356,7 @@ implementations, which is Chapter 16&#8217;s cycle in miniature.
 <p>
 The note names its own boundaries twice, and both exclusions matter. It does
 not deal with database-like storage interfaces, atomic transactions, or
-fine-grained access control. And it is explicit that a space anyone may write
+fine-grained <a class="gl-ref" href="../glossary.html#access-control">access control</a>. And it is explicit that a space anyone may write
 to is not what most applications want:
 </p>
 
@@ -381,7 +381,7 @@ system where it is the default and permission is the constraint.
 Store HTTP Protocol became <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendations on 21 March 2013. The
 note&#8217;s Followup cites a 2010 draft of the latter.</li>
 <li><strong><a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> Platform.</strong> LDP 1.0 became a W3C
-Recommendation on 26 February 2015, specifying reading and writing linked
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> on 26 February 2015, specifying reading and writing linked
 data over HTTP.</li>
 <li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a>.</strong> The Solid Protocol, built on LDP, is a
 specification of the W3C Solid Community Group (version 0.9, 2021), not a W3C

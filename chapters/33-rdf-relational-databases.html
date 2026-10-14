@@ -83,7 +83,7 @@ information in a way that can be processsed by machines.
 <h2>33.1 The mapping</h2>
 
 <p>
-A relational database stores data in tables. Each row is one record, say
+A <a class="gl-ref" href="../glossary.html#relational-database">relational database</a> stores data in tables. Each row is one record, say
 one employee, and each column holds one kind of fact, such as a shoe size. The
 primary key is the column whose value picks out exactly one row, such as an
 employee number. The correspondence takes three lines (Figure 33.1).
@@ -273,7 +273,7 @@ a set of inference rules.
 <p>
 Here the naming problem of Chapter 3 arrives in a new place. A primary key
 can change without the row changing identity: a person may change their name.
-Other tables refer to the row by its key, and SQL can cascade the change,
+Other tables refer to the row by its key, and <a class="gl-ref" href="../glossary.html#sql">SQL</a> can cascade the change,
 rewriting every such reference so none points at nothing (referential
 integrity). That works inside one database; it cannot reach links made from
 elsewhere on the Web.
@@ -401,8 +401,8 @@ Berners-Lee is unsure whether a query on a primary key, or a single cell,
 is really an identifier. His ruling is the axiom of Chapter 2 applied to
 databases. A URI must never refer to the result of a table-changing operation
 such as UPDATE or DELETE. A general query should be marked with a question
-mark in the URI, or be posted (sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> POST, which asks the server to
-act) rather than fetched with GET, which only reads.
+mark in the URI, or be posted (sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#post">POST</a>, which asks the <a class="gl-ref" href="../glossary.html#server">server</a> to
+act) rather than fetched with <a class="gl-ref" href="../glossary.html#get">GET</a>, which only reads.
 </p>
 
 <p>

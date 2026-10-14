@@ -54,7 +54,7 @@ a Design Issues note by Tim Berners-Lee, 2015-03-28.
 <p>
 A person proves who they are to a website with a password, which is sent to the
 site and stored there. The browser could instead keep a private key, give the
-site the matching public key, and sign a random challenge from the site, so
+site the matching <a class="gl-ref" href="../glossary.html#public-key">public key</a>, and sign a random challenge from the site, so
 the secret never leaves the person&#8217;s machine. Berners-Lee asks browsers to make this
 easy, and to show which identity is in use.
 </p>
@@ -63,7 +63,7 @@ easy, and to show which identity is in use.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The last of the four notes of March 2015 asks why the Web authenticates one
+The last of the four notes of early 2015 asks why the Web authenticates one
 side of a conversation well and the other side badly. Berners-Lee grants the
 case for anonymity before making his argument:
 </p>
@@ -82,7 +82,7 @@ The question is why, in those cases, we still use passwords.
 <h2>69.1 The comparison</h2>
 
 <p>
-A client certificate is, in the note&#8217;s words, one of the &ldquo;Public Key
+A client <a class="gl-ref" href="../glossary.html#certificate">certificate</a> is, in the note&#8217;s words, one of the &ldquo;Public Key
 certificates used by the browser to authenticate the user&rdquo;: that is, to
 prove to a site who the user is. It rests on a key pair: a private key that
 stays with its owner, and a public key that anyone may hold, which can check a
@@ -276,7 +276,7 @@ not all just labelled with my name (duh!).
 <p>The note&#8217;s further points include:</p>
 <ul>
 <li>Label each certificate by the party that signed it or, where it is a
-WebID, by the domain of the WebID.</li>
+<a class="gl-ref" href="../glossary.html#webid">WebID</a>, by the domain of the WebID.</li>
 <li>Give a web app a way to find out which certificate the user chose to
 reach a given resource.</li>
 <li>When a page makes a new key with <code>&lt;keygen&gt;</code>, the <a class="gl-ref" href="../glossary.html#html">HTML</a>
@@ -324,9 +324,9 @@ machine&#8217;s model of a social arrangement is narrower than the arrangement:
 
 <table>
 <tr><th>Chapter</th><th>What the system assumes</th><th>What is actually true</th></tr>
-<tr><td>66</td><td>Trust flows only from a certificate authority</td><td>People trust others because they met them, know them or work for them</td></tr>
-<tr><td>67</td><td>Security is marked in the address, by the s in https</td><td>Encryption is a fact about the connection, not the name</td></tr>
-<tr><td>68</td><td>A party is a domain name</td><td>A party can be a path within a site</td></tr>
+<tr><td>66</td><td>Trust flows only from a <a class="gl-ref" href="../glossary.html#certificate-authority">certificate authority</a></td><td>People trust others because they met them, know them or work for them</td></tr>
+<tr><td>67</td><td>Security is marked in the address, by the s in https</td><td><a class="gl-ref" href="../glossary.html#encryption">Encryption</a> is a fact about the connection, not the name</td></tr>
+<tr><td>68</td><td>A party is a <a class="gl-ref" href="../glossary.html#domain-name">domain name</a></td><td>A party can be a path within a site</td></tr>
 <tr><td>69</td><td>Only the site needs strong proof of identity</td><td>The user needs it too, at the bank or among friends</td></tr>
 </table>
 
@@ -339,7 +339,7 @@ beginning.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The mechanism was replaced rather than fixed.</strong> WebAuthn, a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation of March 2019, gives the properties of the bottom lane of
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of March 2019, gives the properties of the bottom lane of
 Figure 69.1.</li>
 <li><strong>The interface requirements were met.</strong> Passkeys, announced
 by Apple, Google and Microsoft in May 2022, supply most of what section 69.2 lists,
