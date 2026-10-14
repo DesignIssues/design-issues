@@ -52,10 +52,10 @@ a Design Issues note by Tim Berners-Lee, 2024-02-16.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The last chapter, and the one where its author concedes the most. Trying to
-describe what a new arrangement of the Web would be like, he remembers trying to
-describe the first one, when there were five websites and he was persuading
-somebody to make the sixth.
+The book&#8217;s final chapter, and the one where its author concedes the most.
+Trying to describe what a new arrangement of the Web would be like, he
+remembers trying to describe the first one, when there were only a handful of
+websites and he was persuading somebody to make the sixth.
 </p>
 <p>
 He could not imagine then what would be built. He says so, and then argues that
@@ -67,8 +67,8 @@ thread running through all ninety-six chapters.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The last chapter. Written in December 2024, and its subject is a difficulty
-the author has met before:
+Written in December 2024, the note&#8217;s subject is a difficulty the author
+has met before:
 </p>
 <blockquote>
 There has been a common problem in all this, though, that it is really hard for
@@ -76,8 +76,7 @@ people to imagine what this new world will be like.
 <cite>The Vision of a new World, 2024</cite>
 </blockquote>
 <p>
-He then says where he has met it, and the passage is the best thing in the
-note because it is an argument against his own authority.
+He then says where he has met it before.
 </p>
 </div>
 
@@ -93,8 +92,7 @@ Google search, Wikipedia, Github, and XKCD.
 </blockquote>
 
 <p>
-The person who designed the Web could not imagine what would be built on it.
-Then the conclusion he draws about what he was actually doing:
+Then the conclusion he draws about what he was doing:
 </p>
 
 <blockquote>
@@ -106,99 +104,251 @@ of us could really imagine how exciting and powerful it would become.
 <p>
 This is the last word on a theme the collection has carried since Chapter 1.
 Modularity, evolvability, the test of independent invention and the principle
-of least power are all ways of building for people whose plans you cannot know.
+of least power are all ways of building for people whose plans cannot be known.
 Here the author says plainly that he never knew them, including at the moment
 he was arguing for the thing.
 </p>
 
 <h2>96.2 What cannot be imagined this time</h2>
 
+<p>
+The new arrangement is <a class="gl-ref" href="../glossary.html#solid">Solid</a>: each person, or community, keeps data in a
+<em><a class="gl-ref" href="../glossary.html#pod">pod</a></em>, a personal store on the Web that any application they permit can
+read and write. What is hard to picture is a store that is not tied to one
+kind of thing.
+</p>
+
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig96-1-t fig96-1-d">
   <title id="fig96-1-t">A store that is not for one kind of thing</title>
-  <desc id="fig96-1-d">A calendar server holds calendars, a message server
-  holds messages, and a file service holds files without being usable as an
-  application's store. A personal store holds any kind of data and any
-  application may use it, which is the property that is hard to
+  <desc id="fig96-1-d">A calendar server holds only calendars and a chat
+  server holds only messages; a file service holds any kind of file but has
+  no fast way to serve as an application's store. A pod holds any type of
+  data and any application may use it, which is the property that is hard to
   imagine.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">servers today</text>
+  <text x="183" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">servers today</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="250"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">a personal store</text>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a pod</text>
 
-  <g>
-    <rect class="box-warm" x="30" y="46" width="94" height="58" rx="4"/>
-    <text x="77" y="70" class="t-sm" text-anchor="middle">calendar</text>
-    <text x="77" y="90" class="t-sm" text-anchor="middle">calendars</text>
-    <rect class="box-warm" x="136" y="46" width="94" height="58" rx="4"/>
-    <text x="183" y="70" class="t-sm" text-anchor="middle">chat</text>
-    <text x="183" y="90" class="t-sm" text-anchor="middle">messages</text>
-    <rect class="box-warm" x="242" y="46" width="94" height="58" rx="4"/>
-    <text x="289" y="70" class="t-sm" text-anchor="middle">photos</text>
-    <text x="289" y="90" class="t-sm" text-anchor="middle">photos</text>
-  </g>
+  <rect class="box-warm" x="30" y="46" width="145" height="58" rx="4"/>
+  <text x="102" y="70" class="t-sm" text-anchor="middle">calendar server</text>
+  <text x="102" y="90" class="t-sm" text-anchor="middle">only calendars</text>
+  <rect class="box-warm" x="191" y="46" width="145" height="58" rx="4"/>
+  <text x="263" y="70" class="t-sm" text-anchor="middle">chat server</text>
+  <text x="263" y="90" class="t-sm" text-anchor="middle">only messages</text>
+
   <rect class="box-plain" x="30" y="122" width="306" height="52" rx="4"/>
   <text x="183" y="144" class="t-sm" text-anchor="middle">a file service: any kind of file, and</text>
   <text x="183" y="162" class="t-sm" text-anchor="middle">no fast way to use it as an app&#8217;s store</text>
   <text x="183" y="206" class="t-sm" text-anchor="middle">syncing takes minutes</text>
 
-  <g>
-    <rect class="box" x="400" y="46" width="88" height="40" rx="4"/>
-    <text x="444" y="71" class="t-sm" text-anchor="middle">any app</text>
-    <rect class="box" x="496" y="46" width="88" height="40" rx="4"/>
-    <text x="540" y="71" class="t-sm" text-anchor="middle">any app</text>
-    <rect class="box" x="592" y="46" width="88" height="40" rx="4"/>
-    <text x="636" y="71" class="t-sm" text-anchor="middle">any app</text>
-  </g>
-  <path class="ln" stroke="#5a8f5a" d="M 444 86 L 444 120 M 540 86 L 540 120 M 636 86 L 636 120"/>
+  <rect class="box" x="400" y="46" width="88" height="40" rx="4"/>
+  <text x="444" y="71" class="t-sm" text-anchor="middle">any app</text>
+  <rect class="box" x="496" y="46" width="88" height="40" rx="4"/>
+  <text x="540" y="71" class="t-sm" text-anchor="middle">any app</text>
+  <rect class="box" x="592" y="46" width="88" height="40" rx="4"/>
+  <text x="636" y="71" class="t-sm" text-anchor="middle">any app</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 444 86 L 444 120 M 540 86 L 540 120 M 636 86 L 636 120"/>
   <rect class="box-green" x="400" y="120" width="280" height="54" rx="4"/>
-  <text x="540" y="144" class="t-caps" text-anchor="middle" fill="#3f6f3f">one store, any type of data</text>
+  <text x="540" y="144" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">one store, any type of data</text>
   <text x="540" y="164" class="t-sm" text-anchor="middle">no reconfiguration for a new kind of thing</text>
   <text x="540" y="206" class="t-sm" text-anchor="middle">two people looking at the same thing</text>
   <text x="540" y="224" class="t-sm" text-anchor="middle">sync in a fraction of a second</text>
 
   <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
   <text x="360" y="290" class="t-sm" text-anchor="middle">&#8220;Developers can&#8217;t imagine a world where they write a new web app,</text>
-  <text x="360" y="310" class="t-sm" text-anchor="middle">and people immediately start using it, storing the data on their own pods.&#8221;</text>
+  <text x="360" y="309" class="t-sm" text-anchor="middle">and people immediately start using it, storing the data on their own pods</text>
+  <text x="360" y="328" class="t-sm" text-anchor="middle">and their community&#8217;s pods.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 96.1</span>
-The claim being made is about a missing category. Nobody is running a public
-service of this kind for ordinary people, so the thing is hard to imagine
-because it is not there to be used.</figcaption>
+The claim is about a missing category. Nobody runs a public service of this
+kind for ordinary people, so the thing is hard to imagine because it is not
+there to be used.</figcaption>
 </figure>
 
 <p>
 The note is honest about the state of deployment: the software is stable and
 exists in several compatible versions, some open and some commercial, and
-almost nobody is offering it to the public. One regional government provides
-stores to its citizens for a limited number of purposes.
+almost nobody is offering it to the public. The Flanders government provides
+pods to its citizens, but for a limited number of purposes.
 </p>
 
 <h2>96.3 The value of connection</h2>
 
 <p>
-The economic argument is made by borrowing a law about networks and applying it
-to something else:
+The economic argument borrows a law about networks. Bob Metcalfe, inventor of
+Ethernet, proposed that a network&#8217;s value grows with the square of its
+members: a telephone is worth more the more people it can call. The
+note applies this to applications sharing a pod:
 </p>
 
 <blockquote>
-By applying Metcalfe's law to interconnected Solid Apps, the article highlights
-the extra value generated.
+In the vision of the world where everyone does everything with Solid apps on
+Solid pods, the extra value is not just from the number of apps a person uses.
+The apps all connect with each other, in a network of apps -- and so the extra
+value from those connections goes as the square. Hence the difficulty in people
+seeing the point of getting Solid for just one app.
 <cite>The Vision of a new World, 2024</cite>
 </blockquote>
 
 <p>
-The original claim is that a network&#8217;s value grows with the square of its
-members, because each can reach every other. Applied to applications over a
-shared store, the members are not people but programs, and what each gains is
-access to what the others produced. Two applications that both see your
-calendar can do something neither could do alone, and every application added
-is a new pairing with all the existing ones.
+One app alone has nothing to connect to. People advise picking a killer app
+and rolling it out; the note answers that everyone&#8217;s killer app is
+different, and the square law adds that one app alone shows little.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
+     aria-labelledby="fig96-2-t fig96-2-d">
+  <title id="fig96-2-t">Why one app is not enough</title>
+  <desc id="fig96-2-d">Three panels over a shared pod. Two apps give one
+  connection, three apps give three, five apps give ten. Below them, a single
+  app on a pod has nothing to connect to.</desc>
+
+  <!-- panel 1: two apps -->
+  <line class="ln-accent" x1="104" y1="95" x2="136" y2="95"/>
+  <circle class="box" cx="90" cy="95" r="14"/>
+  <circle class="box" cx="150" cy="95" r="14"/>
+  <line class="ln-dash" x1="90" y1="109" x2="90" y2="160"/>
+  <line class="ln-dash" x1="150" y1="109" x2="150" y2="160"/>
+  <rect class="box-green" x="30" y="160" width="180" height="24" rx="4"/>
+  <text x="120" y="176" class="t-sm" text-anchor="middle">shared pod</text>
+  <text x="120" y="210" class="t-sm" text-anchor="middle">2 apps</text>
+  <text x="120" y="232" class="t-lg" text-anchor="middle">1 connection</text>
+
+  <!-- panel 2: three apps -->
+  <path class="ln-accent" d="M 360 60 L 324 122 L 396 122 Z"/>
+  <circle class="box" cx="360" cy="60" r="14"/>
+  <circle class="box" cx="324" cy="122" r="14"/>
+  <circle class="box" cx="396" cy="122" r="14"/>
+  <line class="ln-dash" x1="324" y1="136" x2="324" y2="160"/>
+  <line class="ln-dash" x1="396" y1="136" x2="396" y2="160"/>
+  <rect class="box-green" x="270" y="160" width="180" height="24" rx="4"/>
+  <text x="360" y="176" class="t-sm" text-anchor="middle">shared pod</text>
+  <text x="360" y="210" class="t-sm" text-anchor="middle">3 apps</text>
+  <text x="360" y="232" class="t-lg" text-anchor="middle">3 connections</text>
+
+  <!-- panel 3: five apps, fully meshed -->
+  <path class="ln-accent" d="M 600 48 L 640 77 L 625 124 L 575 124 L 560 77 Z M 600 48 L 625 124 L 560 77 L 640 77 L 575 124 Z"/>
+  <circle class="box" cx="600" cy="48" r="12"/>
+  <circle class="box" cx="640" cy="77" r="12"/>
+  <circle class="box" cx="625" cy="124" r="12"/>
+  <circle class="box" cx="575" cy="124" r="12"/>
+  <circle class="box" cx="560" cy="77" r="12"/>
+  <line class="ln-dash" x1="575" y1="136" x2="575" y2="160"/>
+  <line class="ln-dash" x1="625" y1="136" x2="625" y2="160"/>
+  <rect class="box-green" x="510" y="160" width="180" height="24" rx="4"/>
+  <text x="600" y="176" class="t-sm" text-anchor="middle">shared pod</text>
+  <text x="600" y="210" class="t-sm" text-anchor="middle">5 apps</text>
+  <text x="600" y="232" class="t-lg" text-anchor="middle">10 connections</text>
+
+  <!-- one app alone -->
+  <line class="ln-mut" x1="24" y1="252" x2="696" y2="252"/>
+  <circle class="box-plain" cx="200" cy="278" r="12"/>
+  <line class="ln-dash" x1="200" y1="290" x2="200" y2="296"/>
+  <rect class="box-plain" x="150" y="296" width="100" height="18" rx="4"/>
+  <text x="200" y="309" class="t-sm" text-anchor="middle">pod</text>
+  <text x="280" y="291" class="t-lg">one app: nothing to connect to</text>
+</svg>
+<figcaption><span class="fig-label">Figure 96.2</span>
+Connections grow far faster than apps: five apps make ten. With one app there
+are none, so the value is invisible until many apps share the same
+store.</figcaption>
+</figure>
+
+<p>
+A glimpse exists inside one large platform. An email in Gmail asks for a
+meeting; a couple of clicks add it to Google Calendar, create
+a Google Meet link and send the link to everyone invited. Solid would offer that
+kind of integration across every application a person uses, not only within
+one company&#8217;s.
+</p>
+
+<h3>Linking across applications</h3>
+
+<p>
+The note&#8217;s slogan for this is &#8220;you can do anything with
+anything&#8221;. Today an event lists its invitees from the user&#8217;s contacts, but from
+a contact there is no way to find the events they were invited to. The note&#8217;s
+chain of steps shows what changes when the links run both ways.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig96-3-t fig96-3-d">
+  <title id="fig96-3-t">Anything with anything</title>
+  <desc id="fig96-3-d">Seven steps, each a different application: an event
+  with invitees; the invitees as a group; a poll on when to meet; a
+  teleconference; a new group of those who came; a list of their actions; one
+  action delegated to another community. Every step reads from and writes to
+  one shared pod.</desc>
+
+  <!-- row 1, left to right -->
+  <rect class="box" x="21" y="30" width="150" height="54" rx="4"/>
+  <text x="96" y="53" class="t-sm" text-anchor="middle">an event</text>
+  <text x="96" y="71" class="t-sm" text-anchor="middle">with invitees</text>
+  <rect class="box" x="197" y="30" width="150" height="54" rx="4"/>
+  <text x="272" y="53" class="t-sm" text-anchor="middle">the invitees</text>
+  <text x="272" y="71" class="t-sm" text-anchor="middle">as a group</text>
+  <rect class="box" x="373" y="30" width="150" height="54" rx="4"/>
+  <text x="448" y="53" class="t-sm" text-anchor="middle">a poll on when</text>
+  <text x="448" y="71" class="t-sm" text-anchor="middle">to meet again</text>
+  <rect class="box" x="549" y="30" width="150" height="54" rx="4"/>
+  <text x="624" y="53" class="t-sm" text-anchor="middle">a teleconference</text>
+  <text x="624" y="71" class="t-sm" text-anchor="middle">for the meeting</text>
+  <path class="ln" d="M 175 57 L 187 57 M 351 57 L 363 57 M 527 57 L 539 57"/>
+  <path d="M 193 57 L 186 53 L 186 61 Z" fill="#2f4f4f"/>
+  <path d="M 369 57 L 362 53 L 362 61 Z" fill="#2f4f4f"/>
+  <path d="M 545 57 L 538 53 L 538 61 Z" fill="#2f4f4f"/>
+
+  <!-- wrap from row 1 to row 2 -->
+  <path class="ln" d="M 703 57 L 712 57 L 712 233 L 709 233"/>
+  <path d="M 703 233 L 710 229 L 710 237 Z" fill="#2f4f4f"/>
+
+  <!-- shared pod -->
+  <line class="ln-mut" x1="96" y1="84" x2="96" y2="130"/>
+  <line class="ln-mut" x1="272" y1="84" x2="272" y2="130"/>
+  <line class="ln-mut" x1="448" y1="84" x2="448" y2="130"/>
+  <line class="ln-mut" x1="624" y1="84" x2="624" y2="130"/>
+  <rect class="box-green" x="21" y="130" width="660" height="30" rx="4"/>
+  <text x="351" y="150" class="t-sm" text-anchor="middle">one pod: each step uses what the last one left</text>
+  <line class="ln-mut" x1="624" y1="160" x2="624" y2="206"/>
+  <line class="ln-mut" x1="448" y1="160" x2="448" y2="206"/>
+  <line class="ln-mut" x1="272" y1="160" x2="272" y2="206"/>
+
+  <!-- row 2, right to left -->
+  <rect class="box" x="549" y="206" width="150" height="54" rx="4"/>
+  <text x="624" y="229" class="t-sm" text-anchor="middle">a new group:</text>
+  <text x="624" y="247" class="t-sm" text-anchor="middle">those who came</text>
+  <rect class="box" x="373" y="206" width="150" height="54" rx="4"/>
+  <text x="448" y="229" class="t-sm" text-anchor="middle">a list of</text>
+  <text x="448" y="247" class="t-sm" text-anchor="middle">their actions</text>
+  <rect class="box-warm" x="197" y="206" width="150" height="54" rx="4"/>
+  <text x="272" y="229" class="t-sm" text-anchor="middle">one action delegated</text>
+  <text x="272" y="247" class="t-sm" text-anchor="middle">to another community</text>
+  <path class="ln" d="M 545 233 L 533 233 M 369 233 L 357 233"/>
+  <path d="M 527 233 L 534 229 L 534 237 Z" fill="#2f4f4f"/>
+  <path d="M 351 233 L 358 229 L 358 237 Z" fill="#2f4f4f"/>
+</svg>
+<figcaption><span class="fig-label">Figure 96.3</span>
+Each step is a different application using the data the last one left in the
+pod.</figcaption>
+</figure>
+
+<p>
+The note adds a colleague&#8217;s travel example: a traveller tells an airline&#8217;s
+app which flight they want, so it knows where they will be and when, yet it never
+tells Google Maps where they need to be at the airport.
 </p>
 
 <p>
-The framing of what follows from that is careful about ends and means:
+Who pays for the pods is answered with familiar models: free at first with
+heavier users paying, as with consumer cloud storage; bundled with an email
+account, a domain name or a club membership; or run by a co-operative whose
+users share the costs. The framing of the economics is careful about ends and
+means:
 </p>
 
 <blockquote>
@@ -226,52 +376,49 @@ use technology to shape the world.
 Communities of all sizes is Chapter 87&#8217;s requirement, stated as an outcome
 rather than as a design constraint. The whole architecture of Volume VI exists
 to make groups of every scale expressible, from a household sharing a list to a
-profession sharing a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, which is what a two-setting system of
-Chapter 74 cannot do.
+profession sharing a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>. A system with only two settings, public or
+private and nothing in between, which is Chapter 74&#8217;s complaint, cannot do
+that.
 </p>
 
 <h2>96.5 How the book ends</h2>
 
 <p>
-Ninety-six chapters, written across twenty-eight years, ending with an
-admission that the author could not imagine what his own work would produce,
-and an argument that this is a reason to proceed rather than to wait.
+Ninety-six chapters, written from 1996 to 2024, end with an admission that the
+author could not imagine what his own work would produce, and an argument that
+this is a reason to proceed rather than to wait. That is the through line. Three
+early pieces of advice are all about acting without knowing what comes next:
 </p>
 
-<p>
-That is the through line. Chapter 1 asks designers to choose the least powerful
-means and to assume someone else will independently invent the same thing.
-Chapter 16 asks them to design so that version four can read version five.
-Chapter 19 asks them to build interfaces for systems that have not been
-imagined. Every one of those is advice about acting under ignorance of what
-comes next.
-</p>
+<table>
+<tr><th>Chapter</th><th>Advice</th><th>What it assumes cannot be known</th></tr>
+<tr><td>1</td><td>Choose the least powerful means; assume someone else will
+independently invent the same thing</td><td>What others will do with the work,
+or build beside it</td></tr>
+<tr><td>16</td><td>Design so that version four can read version five</td><td>What
+the next version will contain</td></tr>
+<tr><td>19</td><td>Build interfaces for systems that have not been
+imagined</td><td>What will be connected later</td></tr>
+</table>
 
 <p>
-The notes were never a plan. They are a record of decisions made by someone who
-knew he could not see far, choosing repeatedly to keep things open rather than
-to make them good, on the grounds that openness is what lets other people make
-them good later. The Web is the evidence that this works. Whether the rest of
-it works is not yet known, which is the condition every chapter here was
-written in.
+The notes were never a plan. They record decisions made by someone who knew he
+could not see far, choosing repeatedly to keep things open rather than to make
+them good, on the grounds that openness lets other people make them good later.
+The Web is the evidence that this works. Whether the rest of it works is not
+yet known, which is the condition every chapter here was written in.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Public provision is still missing.</strong> No widely available
-service offers ordinary people a personal store of this kind, which the note
-identifies as the gap.</li>
-<li><strong>Government pilots continued.</strong> Regional and national
-programmes exploring citizen-held data expanded, still for limited purposes
-rather than as general storage.</li>
-<li><strong>Portability rights strengthened.</strong> European data
-regulation from 2024 and 2025 extended access and portability, which is the
+service offers ordinary people a personal store of this kind.</li>
+<li><strong>Portability rights strengthened.</strong> The EU&#8217;s Digital
+Markets Act obligations on the largest platforms, including data portability,
+applied from March 2024, and the Data Act, which gives users access to data
+from their connected devices, applied from September 2025. This is the
 non-technical route Chapter 93 identified.</li>
-<li><strong>The imagination problem persists.</strong> It remains as hard to
-describe this arrangement to someone as the note says, and for the reason it
-gives: the examples that would make it obvious have not been built
-yet.</li>
 </ul>
 </div>
 
@@ -296,12 +443,12 @@ that imply about how to evaluate a proposed architecture?</p>
 <div class="question">
 <p><span class="question-number">96.2</span>
 Apply the network law to applications rather than people. What must be true for
-the pairing to produce value?</p>
+two applications sharing a store to produce value?</p>
 </div>
 <div class="question">
 <p><span class="question-number">96.3</span>
-The missing piece is a public service nobody runs. Say why, in terms of who
-would pay and who would benefit.</p>
+The missing piece is a public service nobody runs. Using the payment models the
+note lists, say who would pay and who would benefit.</p>
 </div>
 <div class="question">
 <p><span class="question-number">96.4</span>

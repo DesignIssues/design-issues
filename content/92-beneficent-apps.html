@@ -1,22 +1,72 @@
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Volume X opens with a note begun in 2018 and revisited in 2023, and
-Berners-Lee explains where the word comes from. It is from the rules governing
-experiments with human subjects at his own institution: besides being informed,
-the subjects must be the beneficiaries. The work must be trying to cure disease
-rather than generate it.
+A beneficent app is one that works in the interest of the person using it.
+Who does a program work for, and how would anyone know? This note, begun in 2018,
+was revisited in 2023 because Solid (Chapter 54) needs the concept.
 </p>
 <p>
-He also notes that the idea is not foreign to the Web, since the specification
-already calls a browser a user agent.
+The word comes from the rules at Berners-Lee&#8217;s own institution for
+experiments with human subjects: besides being informed, the subjects must
+benefit, so the work must be trying to cure disease rather than generate it. The
+idea is not foreign to the Web. The HTTP specification calls the browser a user
+agent, because it acts for the user.
 </p>
 </div>
 
 <h2>92.1 The moment</h2>
 
 <p>
-The argument is made through one incident, recounted precisely.
+On the floppy-disk PCs people bought a program to do something useful
+or fun: play a game, write an essay, do their taxes. The program sat in the A:
+drive and the user&#8217;s data on a disk in the B: drive. That data could go to other
+programs, and the program was the user&#8217;s tool. It worked for them.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
+     aria-labelledby="fig92-1-t fig92-1-d">
+  <title id="fig92-1-t">Two drives, and what the arrangement guaranteed</title>
+  <desc id="fig92-1-d">The program sat in drive A and read and wrote the data in
+  drive B. The data disk belonged to the user and could be taken to a different
+  program without anyone&#8217;s permission.</desc>
+
+  <rect class="box-plain" x="30" y="40" width="170" height="110" rx="4"/>
+  <text x="115" y="66" class="t-caps" text-anchor="middle">drive A</text>
+  <rect class="box" x="51" y="84" width="128" height="46" rx="3"/>
+  <text x="115" y="112" text-anchor="middle">the program</text>
+  <text x="115" y="194" class="t-sm" text-anchor="middle">the user&#8217;s tool</text>
+
+  <path class="ln" d="M 190 112 L 310 112"/>
+  <path d="M 183 112 L 193 107 L 193 117 Z" fill="#2f4f4f"/>
+  <path d="M 317 112 L 307 107 L 307 117 Z" fill="#2f4f4f"/>
+  <text x="260" y="100" class="t-sm" text-anchor="middle">reads and writes</text>
+
+  <rect class="box-green" x="320" y="40" width="180" height="110" rx="4"/>
+  <text x="410" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">drive B</text>
+  <rect class="box-green" x="346" y="84" width="128" height="46" rx="3"/>
+  <text x="410" y="112" text-anchor="middle">the user&#8217;s data</text>
+  <text x="410" y="194" class="t-sm" text-anchor="middle">theirs, removable</text>
+
+  <path class="ln" style="stroke:#5a8f5a" d="M 410 150 L 410 172 L 630 172 L 630 158"/>
+  <path d="M 625 160 L 630 150 L 635 160 Z" fill="#5a8f5a"/>
+  <rect class="box" x="560" y="40" width="140" height="110" rx="4"/>
+  <text x="630" y="66" class="t-caps" text-anchor="middle">a different</text>
+  <text x="630" y="84" class="t-caps" text-anchor="middle">program</text>
+  <text x="630" y="116" class="t-sm" text-anchor="middle">same data,</text>
+  <text x="630" y="134" class="t-sm" text-anchor="middle">no permission needed</text>
+
+  <line class="ln-mut" x1="24" y1="214" x2="696" y2="214"/>
+  <text x="360" y="242" class="t-sm" text-anchor="middle">&#8220;The data on the B: drive was completely in your control.&#8221;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 92.1</span>
+Notice that the data lived on its own disk, usable by any program. No promise
+was needed because the separation was physical.</figcaption>
+</figure>
+
+<p>
+The argument turns on one incident. Quicken was a personal-finance program he
+had bought:
 </p>
 
 <blockquote>
@@ -27,78 +77,38 @@ great insurance?"
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
-<p>
-And the verdict on it:
-</p>
-
 <blockquote>
 That was the end of an era: the era in which I trusted Quicken to be my
 representative and work on my behalf.
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
-<figure>
-<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
-     aria-labelledby="fig92-1-t fig92-1-d">
-  <title id="fig92-1-t">Two drives, and what the arrangement guaranteed</title>
-  <desc id="fig92-1-d">When the program was in one drive and the data in
-  another, the separation was physical: you could take the data to a different
-  program, and the program could not keep anything. Nothing about that
-  arrangement had to be trusted, because it was visible.</desc>
-
-  <rect class="box-plain" x="60" y="40" width="200" height="110" rx="4"/>
-  <text x="160" y="66" class="t-caps" text-anchor="middle">drive A</text>
-  <rect x="96" y="82" width="128" height="46" rx="3" fill="#f0f5f8" stroke="#9dbfd0"/>
-  <text x="160" y="110" class="t-sm" text-anchor="middle">the program</text>
-  <text x="160" y="170" class="t-sm" text-anchor="middle">your tool</text>
-
-  <rect class="box-green" x="300" y="40" width="200" height="110" rx="4"/>
-  <text x="400" y="66" class="t-caps" text-anchor="middle" fill="#3f6f3f">drive B</text>
-  <rect x="336" y="82" width="128" height="46" rx="3" fill="#f5f8f0" stroke="#b6cfb6"/>
-  <text x="400" y="110" class="t-sm" text-anchor="middle">your data</text>
-  <text x="400" y="170" class="t-sm" text-anchor="middle">yours, removable</text>
-
-  <path class="ln-mut" d="M 264 95 L 296 95"/>
-  <path class="ln" stroke="#5a8f5a" d="M 400 150 L 400 178 L 560 178 L 560 150"/>
-  <path d="M 555 158 L 560 146 L 565 158 Z" fill="#5a8f5a"/>
-  <rect class="box" x="520" y="40" width="140" height="110" rx="4"/>
-  <text x="590" y="66" class="t-caps" text-anchor="middle">a different</text>
-  <text x="590" y="84" class="t-caps" text-anchor="middle">program</text>
-  <text x="590" y="116" class="t-sm" text-anchor="middle">same data,</text>
-  <text x="590" y="134" class="t-sm" text-anchor="middle">no permission needed</text>
-
-  <line class="ln-mut" x1="24" y1="216" x2="696" y2="216"/>
-  <text x="360" y="240" class="t-sm" text-anchor="middle">&#8220;The data on the B: drive was completely in your control.&#8221;</text>
-  <text x="360" y="266" class="t-sm t-it" text-anchor="middle">Nobody had to promise anything. The separation was physical and you could see it.</text>
-  <text x="360" y="296" class="t-sm" text-anchor="middle">Volume VI is an attempt to rebuild that guarantee without the second drive.</text>
-</svg>
-<figcaption><span class="fig-label">Figure 92.1</span>
-Berners-Lee&#8217;s observation about what a generation lost: people used to
-web-based tools working in someone else&#8217;s interest may assume that is normal,
-and take it as the default.</figcaption>
-</figure>
+<p>
+People who have only known web-based tools, he observes of millennials, are so
+used to those tools working in someone else&#8217;s interest that they may take
+it as the default.
+</p>
 
 <h2>92.2 What a browser owes</h2>
 
 <p>
-The list of duties is specific enough to audit against, and every item is
-something a browser can fail at silently.
+The browser is his main example of a beneficent app. Its duties are specific
+enough to audit, and each can fail silently.
 </p>
 
 <table>
-<tr><th>Duty</th><th>What it protects against</th></tr>
-<tr><td>Help the user know which party they are talking to</td><td>Impersonation</td></tr>
-<tr><td>Help the user remember where they have been</td><td>Losing what you found</td></tr>
-<tr><td>Help the user curate a valuable subset of the Web</td><td>Drowning</td></tr>
-<tr><td>Store passwords and keys safely</td><td>Everything else failing</td></tr>
-<tr><td>Help the user avoid being tricked, fooled or manipulated</td><td>The rest of Volume X</td></tr>
+<tr><th>Duty</th><th>Example of failure</th></tr>
+<tr><td>Help the user know which party they are talking to</td><td>A look-alike bank site passes as the real one</td></tr>
+<tr><td>Help the user remember where they have been</td><td>A page that cannot be found again</td></tr>
+<tr><td>Help the user curate a valuable subset of the Web</td><td>Everything worth keeping is lost in the flood</td></tr>
+<tr><td>Store passwords and keys safely</td><td>A password leak</td></tr>
+<tr><td>Help the user avoid being tricked, fooled or manipulated</td><td>A trick button that signs the user up</td></tr>
 </table>
 
 <p>
-Berners-Lee adds that beneficent applications are not the norm on the Web or on
-mobile devices and are nonetheless common, because every open source
-application should be one: developed by a community for its own use, with the
-needs of the end user in mind.
+Beneficent apps are not the norm on the Web or on mobile devices, yet they are
+common: every open source application should be one, because it is built by a
+community for its own use, with the end user&#8217;s needs in mind.
 </p>
 
 <h2>92.3 The design question, and the disqualifying condition</h2>
@@ -114,12 +124,9 @@ would the user want the app to do?
 </blockquote>
 
 <p>
-With the qualification that the designer must think of users who differ from
-them, in technical ability, in sociability, in situation and in personality.
-</p>
-
-<p>
-And then the sentence that decides the matter before any design begins:
+The designer must also think of users who differ from them, in technical
+ability, sociability, situation and personality. Then comes the sentence that
+decides the matter before any design begins:
 </p>
 
 <blockquote>
@@ -131,8 +138,8 @@ not likely to build a Beneficent App by default.
 <h2>92.4 The measurement problem</h2>
 
 <p>
-The most useful section is about why the good version is harder to run as a
-business, and it is not about ethics:
+The good version is harder to run as a business, and the reason is not
+ethics:
 </p>
 
 <blockquote>
@@ -142,23 +149,85 @@ difficult to measure how useful you have been to your user.
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+     aria-labelledby="fig92-2-t fig92-2-d">
+  <title id="fig92-2-t">Easy numbers and the number that matters</title>
+  <desc id="fig92-2-d">Top lane: a non-beneficent app counts engagement,
+  click-through and revenue directly. Bottom lane: a party-organising app
+  measures proxies (amount of chat, whether the chat is happy and constructive,
+  whether tasks are done by people other than those who raised them), checks
+  them against past parties, chooses what to optimise, and aims at a great
+  party, which is rare. A user being well informed may be invisible to it.</desc>
+
+  <rect class="box-warm" x="16" y="20" width="688" height="100" rx="4"/>
+  <text x="32" y="42" class="t-caps">non-beneficent: easy to count</text>
+  <rect class="box-plain" x="32" y="56" width="200" height="48" rx="3"/>
+  <text x="132" y="76" text-anchor="middle">engagement</text>
+  <text x="132" y="94" class="t-sm" text-anchor="middle">measured directly</text>
+  <rect class="box-plain" x="260" y="56" width="200" height="48" rx="3"/>
+  <text x="360" y="76" text-anchor="middle">click-through</text>
+  <text x="360" y="94" class="t-sm" text-anchor="middle">measured directly</text>
+  <rect class="box-plain" x="488" y="56" width="200" height="48" rx="3"/>
+  <text x="588" y="76" text-anchor="middle">ad or sales revenue</text>
+  <text x="588" y="94" class="t-sm" text-anchor="middle">measured directly</text>
+
+  <rect class="box-green" x="16" y="136" width="688" height="152" rx="4"/>
+  <text x="32" y="158" class="t-caps" style="fill:#5a8f5a">beneficent: goal rare or invisible</text>
+
+  <rect class="box-plain" x="32" y="170" width="190" height="26" rx="3"/>
+  <text x="127" y="187" class="t-sm" text-anchor="middle">amount of chat</text>
+  <rect class="box-plain" x="32" y="204" width="190" height="26" rx="3"/>
+  <text x="127" y="221" class="t-sm" text-anchor="middle">is it happy, constructive?</text>
+  <rect class="box-plain" x="32" y="238" width="190" height="40" rx="3"/>
+  <text x="127" y="254" class="t-sm" text-anchor="middle">tasks done by people other</text>
+  <text x="127" y="269" class="t-sm" text-anchor="middle">than those who raised them</text>
+
+  <path class="ln-dash" d="M 222 183 L 256 215"/>
+  <path class="ln-dash" d="M 222 217 L 256 225"/>
+  <path class="ln-dash" d="M 222 258 L 256 235"/>
+  <path d="M 262 225 L 252 220 L 252 230 Z" fill="#8a9a9a"/>
+
+  <rect class="box" x="264" y="205" width="130" height="40" rx="3"/>
+  <text x="329" y="222" class="t-sm" text-anchor="middle">check against</text>
+  <text x="329" y="237" class="t-sm" text-anchor="middle">past parties</text>
+
+  <path class="ln" d="M 394 225 L 414 225"/>
+  <path d="M 420 225 L 410 220 L 410 230 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="422" y="205" width="120" height="40" rx="3"/>
+  <text x="482" y="222" class="t-sm" text-anchor="middle">choose what</text>
+  <text x="482" y="237" class="t-sm" text-anchor="middle">to optimise</text>
+
+  <path class="ln" d="M 542 225 L 564 225"/>
+  <path d="M 570 225 L 560 220 L 560 230 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="572" y="205" width="120" height="40" rx="3"/>
+  <text x="632" y="222" text-anchor="middle">a great party</text>
+  <text x="632" y="237" class="t-sm" text-anchor="middle">(rare)</text>
+
+  <rect class="ln-dash" x="572" y="160" width="120" height="36" rx="3"/>
+  <text x="632" y="175" class="t-sm" text-anchor="middle">user well informed</text>
+  <text x="632" y="189" class="t-sm" text-anchor="middle">(invisible)</text>
+</svg>
+<figcaption><span class="fig-label">Figure 92.2</span>
+The non-beneficent app reads its success straight off the counter. The
+beneficent one must infer usefulness from proxies, and its best outcomes may
+never show up at all, which is why the good version is harder to run as a
+business.</figcaption>
+</figure>
+
 <p>
-The difficulty is named exactly: a user may be really well informed of something
-really important and do nothing the application can observe. The most valuable
-outcome is invisible.
+A user may become well informed of something important and do nothing the app
+can observe. Users can be surveyed, and activity can be measured. For an app that
+organises parties, count the parties; since those are infrequent, measure what
+leads up to them, then check which measures accompanied good parties. Each
+candidate can also be tried in A/B testing, where two versions go to different
+users and the results are compared.
 </p>
 
 <p>
-The worked example is an application for organising parties, and Berners-Lee
-follows it properly. Count the parties organised. But those come infrequently,
-so measure the things leading to them: the amount of chat, whether it is happy
-and constructive, whether tasks in a shared list get done by people other than
-those who raised them. Then check which of those actually accompanied good
-parties, and decide which to optimise for.
-</p>
-
-<p>
-The warning attached is the note&#8217;s conclusion, and it names a specific harm:
+The warning attached names a specific harm:
 </p>
 
 <blockquote>
@@ -172,7 +241,7 @@ be beneficent, you have to also do no harm!
 <h2>92.5 The precedent</h2>
 
 <p>
-The closing argument is that agents bound to a client&#8217;s interest already exist:
+Agents bound to a client&#8217;s interest already exist:
 </p>
 
 <blockquote>
@@ -184,13 +253,16 @@ doctors, and with lawyers.
 
 <p>
 A doctor takes an oath; a lawyer is bound to put the client first. Berners-Lee
-suggests those bodies of law as a source to draw on for anyone wanting to write
-such commitments for software.
+offers those bodies of law as a source for anyone drafting such commitments for
+software. As AI grows more powerful, he adds, it matters more at every step that
+it works for the user and not for someone else.
 </p>
 
 <p>
-The last section applies it to what was coming, and the test he proposes is
-four words long:
+His example is an online advertising system that recommends a restaurant: is it
+the best one for the user, or the winner of an instant auction among restaurants
+bidding for their custom? The test he proposes is a single question to put to
+the agent: &#8220;who do you work for?&#8221;
 </p>
 
 <blockquote>
@@ -198,21 +270,76 @@ Hey, Siri, who do you work for? Hey, Alexa, who to you work for?
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig92-3-t fig92-3-d">
+  <title id="fig92-3-t">Who does the agent work for?</title>
+  <desc id="fig92-3-d">Three columns. A doctor or lawyer owes a duty to the
+  patient or client, set by oath and professional rules. A beneficent app such
+  as a browser or open-source tool works for its user. An ad-driven agent, such
+  as Quicken&#8217;s insurance prompt or an auctioned restaurant pick, turns
+  away from the user towards the seller or highest bidder.</desc>
+
+  <text x="120" y="28" class="t-caps" text-anchor="middle">doctor or lawyer</text>
+  <rect class="box-plain" x="60" y="44" width="120" height="36" rx="3"/>
+  <text x="120" y="66" class="t-sm" text-anchor="middle">patient or client</text>
+  <rect class="box" x="60" y="170" width="120" height="44" rx="3"/>
+  <text x="120" y="197" text-anchor="middle">doctor or lawyer</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 120 170 L 120 92"/>
+  <path d="M 120 82 L 115 94 L 125 94 Z" fill="#5a8f5a"/>
+  <text x="130" y="122" class="t-sm">oath /</text>
+  <text x="130" y="138" class="t-sm">professional rules</text>
+
+  <line class="ln-mut" x1="240" y1="20" x2="240" y2="224"/>
+
+  <text x="360" y="28" class="t-caps" text-anchor="middle">beneficent app</text>
+  <rect class="box-plain" x="300" y="44" width="120" height="36" rx="3"/>
+  <text x="360" y="66" class="t-sm" text-anchor="middle">user</text>
+  <rect class="box" x="300" y="170" width="120" height="44" rx="3"/>
+  <text x="360" y="188" class="t-sm" text-anchor="middle">browser or</text>
+  <text x="360" y="204" class="t-sm" text-anchor="middle">open-source tool</text>
+  <path class="ln" style="stroke:#5a8f5a" d="M 360 170 L 360 92"/>
+  <path d="M 360 82 L 355 94 L 365 94 Z" fill="#5a8f5a"/>
+  <text x="370" y="130" class="t-sm">works for the user</text>
+
+  <line class="ln-mut" x1="480" y1="20" x2="480" y2="224"/>
+
+  <text x="596" y="28" class="t-caps" text-anchor="middle">ad-driven agent</text>
+  <rect class="box-plain" x="536" y="44" width="120" height="36" rx="3"/>
+  <text x="596" y="66" class="t-sm" text-anchor="middle">user</text>
+  <rect class="box" x="492" y="170" width="110" height="44" rx="3"/>
+  <text x="547" y="188" class="t-sm" text-anchor="middle">insurance prompt,</text>
+  <text x="547" y="204" class="t-sm" text-anchor="middle">restaurant pick</text>
+  <rect class="box-warm" x="612" y="170" width="96" height="44" rx="3"/>
+  <text x="660" y="188" class="t-sm" text-anchor="middle">seller or</text>
+  <text x="660" y="204" class="t-sm" text-anchor="middle">highest bidder</text>
+  <path class="ln" style="stroke:#b08d57" d="M 547 170 L 547 140 L 660 140 L 660 160"/>
+  <path d="M 660 168 L 655 156 L 665 156 Z" fill="#b08d57"/>
+  <text x="604" y="128" class="t-sm" text-anchor="middle">works for the bidder</text>
+</svg>
+<figcaption><span class="fig-label">Figure 92.3</span>
+One question, three relationships. Only the first is bound by law; in the third,
+the agent&#8217;s effort bends away from the person using it.</figcaption>
+</figure>
+
+<p>
+The note ends by asking whether one can imagine an AI that works for its user. He
+can, and names it Charlie, the subject of Chapter 93.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The question became the standard framing.</strong> Asking whose
-interest an assistant serves is now central to debate about these systems, and
-the answer for the major assistants is still their maker&#8217;s.</li>
-<li><strong>Regulation approached the duty.</strong> Rules on dark patterns and
-on design that exploits users, in European platform law from 2024, encode part
-of what section 92.3 asks designers to ask themselves.</li>
-<li><strong>The measurement problem persists.</strong> Nobody has a standard
-way to measure usefulness to a user, so products are still steered by
-engagement, which is the mechanism of Chapter 90.</li>
-<li><strong>Professional duties were proposed for software.</strong>
-Information fiduciary arguments, which apply the doctor and lawyer precedent to
-data holders, gained ground in legal scholarship without becoming law.</li>
+<li><strong>Regulation approached the duty.</strong> The EU Digital Services
+Act, applying in full from 17 February 2024, bans dark patterns in online
+platform interfaces in Article 25, encoding part of what section 92.3 asks
+designers to ask themselves.</li>
+<li><strong>Professional duties were proposed for software.</strong> Jack
+Balkin&#8217;s 2016 argument that data holders should be information fiduciaries applies the doctor
+and lawyer precedent to them. The US Data Care Act, a 2018 bill built
+on it, did not pass.</li>
+<li><strong>The measurement problem persists.</strong> Products are still
+largely steered by engagement, the mechanism of Chapter 90.</li>
 </ul>
 </div>
 
@@ -222,7 +349,7 @@ data holders, gained ground in legal scholarship without becoming law.</li>
 The agent&#8217;s duty to represent the user is Chapter 84. The separation of
 application from storage is Chapter 54, and the harms of the alternative are
 Chapter 90. The assistant this anticipates is Chapters 93 and 94, and inference
-over your own data is Chapter 72.
+over one&#8217;s own data is Chapter 72.
 </p>
 </div>
 
@@ -230,8 +357,8 @@ over your own data is Chapter 72.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">92.1</span>
-Ask the four-word question of every application on your device. How many have a
-clear answer?</p>
+Ask the single question, who do you work for, of every application on your
+device. How many have a clear answer?</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.2</span>
@@ -240,8 +367,8 @@ for something you build, and say what it would miss.</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.3</span>
-Selling user data disqualifies an application by default. Is there a case where
-it does not?</p>
+He says &#8220;not likely &#8230; by default&#8221;. Describe a data-selling app
+that could still serve its user, or argue none can.</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.4</span>

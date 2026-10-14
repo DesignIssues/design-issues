@@ -1,23 +1,43 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Engineers asked the same assistant the same question twice, with one switch
+deciding whether it could see a (fake) person&#8217;s personal data. With the
+data it gave a far better answer. The hard part left is getting real data out
+of the services that hold it today.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Seven years after the scene of Chapter 93, an attempt to build it. The note&#8217;s
-own header states the occasion with unusual directness: the blog post was seven
-years ago, now we can build it, publish in time to discuss at a conference in
-January 2025.
+Seven years after the scene of Chapter 93, an attempt to build it. The note,
+dated 13 January 2025, states its occasion directly in its header: the blog
+post was seven years ago, now we can build it, publish in time to discuss at
+Davos in 2025.
 </p>
 <p>
-It is the only chapter in the collection reporting an experiment, and the
-finding is about data rather than about the model.
+Unusually for this collection, it reports an experiment, and the finding is
+about data rather than about the model.
 </p>
 </div>
 
 <h2>94.1 The setup</h2>
 
 <p>
-A fictional person was given a simulated personal store containing data of the
-kind a real person accumulates: banking, fitness, and the rest. A large
-language model was connected to it. And the interface carried one control:
+Chapter 93 imagined Charlie, an assistant that works for its user, Bob, and
+can see everything about him. Late in 2024, engineers at Inrupt built Charlie.
+They invented Bob and filled a Solid pod for him (Chapter 54: a personal data
+store that its owner controls) with simulated data from his bank, from Strava,
+the running app, and so on. The pod holds this as linked, structured
+statements, a <em>graph</em>, rather than as loose files. Then they connected
+Claude, Anthropic&#8217;s large language model, and let Bob pass his pod to it.
+</p>
+
+<p>
+A large language model is the kind of program behind ChatGPT: it answers in
+prose from what it was trained on, plus whatever it is given to read. The pod
+was the extra reading. The interface carried one control:
 </p>
 
 <blockquote>
@@ -25,57 +45,103 @@ The Charlie app has a button which allows Bob to give or not give consent.
 <cite>Charlie Works, 2025</cite>
 </blockquote>
 
-<p>
-One button, two answers to the same question, which makes this the only
-controlled comparison in the book.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
+     aria-labelledby="fig94-1-t fig94-1-d">
+  <title id="fig94-1-t">The Charlie set-up: one model, one consent switch</title>
+  <desc id="fig94-1-d">Bob, a fictional user, asks a question through the
+  Charlie app. The app sends the question to Claude, a large language model,
+  and receives an answer. The app has a consent switch. Bob's simulated pod,
+  holding bank records, Strava runs and more, is passed to the model as
+  context only when the switch is on.</desc>
+
+  <rect class="box" x="16" y="50" width="120" height="50" rx="4"/>
+  <text x="76" y="80" text-anchor="middle">Bob (fictional)</text>
+  <line class="ln" x1="136" y1="75" x2="180" y2="75"/>
+  <path d="M 190 75 L 180 80 L 180 70 Z" fill="#2f4f4f"/>
+
+  <rect class="box" x="190" y="30" width="180" height="110" rx="4"/>
+  <text x="280" y="54" text-anchor="middle">Charlie app</text>
+  <text x="280" y="82" class="t-caps" text-anchor="middle">consent</text>
+  <rect class="box-plain" x="250" y="94" width="60" height="24" rx="12"/>
+  <circle cx="298" cy="106" r="8" fill="#5a8f5a"/>
+  <text x="242" y="110" class="t-sm" text-anchor="end">off</text>
+  <text x="318" y="110" class="t-sm">on</text>
+
+  <line class="ln" x1="370" y1="50" x2="510" y2="50"/>
+  <path d="M 520 50 L 510 54 L 510 46 Z" fill="#2f4f4f"/>
+  <text x="445" y="40" class="t-sm" text-anchor="middle">question</text>
+  <line class="ln" x1="520" y1="80" x2="380" y2="80"/>
+  <path d="M 370 80 L 380 76 L 380 84 Z" fill="#2f4f4f"/>
+  <text x="445" y="98" class="t-sm" text-anchor="middle">answer</text>
+
+  <rect class="box" x="520" y="30" width="184" height="70" rx="4"/>
+  <text x="612" y="58" text-anchor="middle">Claude (LLM)</text>
+  <text x="612" y="82" class="t-sm" text-anchor="middle">the same model either way</text>
+
+  <line class="ln-dash" x1="612" y1="170" x2="612" y2="110"/>
+  <path d="M 612 100 L 616 110 L 608 110 Z" fill="#2f4f4f"/>
+  <text x="598" y="130" class="t-sm" text-anchor="end">passed as context</text>
+  <text x="598" y="148" class="t-sm" text-anchor="end">only when consent is on</text>
+
+  <rect class="box-green" x="520" y="170" width="184" height="100" rx="4"/>
+  <text x="612" y="194" text-anchor="middle">Bob&#8217;s pod (simulated)</text>
+  <text x="540" y="218" class="t-sm">bank records</text>
+  <text x="540" y="238" class="t-sm">Strava runs</text>
+  <text x="540" y="258" class="t-sm">and so on</text>
+</svg>
+<figcaption><span class="fig-label">Figure 94.1</span>
+The model is the same either way. The switch decides only whether the pod
+goes with the question.</figcaption>
+</figure>
 
 <h2>94.2 The two answers</h2>
 
+<p>
+Bob asked: I need new running shoes, what should I buy? Figure 94.2 sets the
+two replies side by side.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig94-1-t fig94-1-d">
-  <title id="fig94-1-t">The same question, with the consent switch off and on</title>
-  <desc id="fig94-1-d">Without access the assistant asks four sensible
+     aria-labelledby="fig94-2-t fig94-2-d">
+  <title id="fig94-2-t">The same question, with the consent switch off and on</title>
+  <desc id="fig94-2-d">Without access the assistant asks four sensible
   questions and recommends visiting a shop. With access it knows the pace,
   monthly distance, terrain, time of day, height and weight, and recommends
-  particular shoes, a particular retailer and a particular payment
-  card.</desc>
+  particular shoes, a Seattle maker, the shop Bob already uses and the card
+  that earns points.</desc>
 
   <text x="180" y="26" class="t-caps" text-anchor="middle">consent off</text>
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="290"/>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">consent on</text>
+  <line class="ln-mut" x1="360" y1="60" x2="360" y2="290"/>
+  <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">consent on</text>
   <text x="360" y="48" class="t-sm" text-anchor="middle">&#8220;I need new running shoes. What should I buy?&#8221;</text>
 
-  <rect class="box-plain" x="24" y="62" width="310" height="212" rx="4"/>
-  <text x="179" y="86" class="t-sm" text-anchor="middle">it asks you four questions:</text>
-  <g class="t-sm">
-    <text x="46" y="114">what kind of running?</text>
-    <text x="46" y="138">what shape are your feet?</text>
-    <text x="46" y="162">what is your budget?</text>
-    <text x="46" y="186">what have you liked before?</text>
-  </g>
+  <rect class="box-plain" x="24" y="62" width="310" height="224" rx="4"/>
+  <text x="179" y="86" class="t-sm" text-anchor="middle">it asks Bob four questions:</text>
+  <text x="46" y="114" class="t-sm">what kind of running?</text>
+  <text x="46" y="138" class="t-sm">what shape are his feet?</text>
+  <text x="46" y="162" class="t-sm">what is his budget?</text>
+  <text x="46" y="186" class="t-sm">what has he liked before?</text>
   <text x="179" y="222" class="t-sm" text-anchor="middle">and suggests visiting a shop</text>
   <text x="179" y="248" class="t-sm t-it" text-anchor="middle">wide knowledge of the public world,</text>
-  <text x="179" y="264" class="t-sm t-it" text-anchor="middle">no knowledge of you</text>
+  <text x="179" y="264" class="t-sm t-it" text-anchor="middle">no knowledge of Bob</text>
 
-  <rect class="box-green" x="386" y="62" width="310" height="212" rx="4"/>
+  <rect class="box-green" x="386" y="62" width="310" height="224" rx="4"/>
   <text x="541" y="86" class="t-sm" text-anchor="middle">it already knows:</text>
-  <g class="t-sm">
-    <text x="408" y="112">your pace, and that it is quick</text>
-    <text x="408" y="134">your usual route, and its terrain</text>
-    <text x="408" y="156">your mileage this year, and per month</text>
-    <text x="408" y="178">that you run at half past six</text>
-    <text x="408" y="200">your height and weight</text>
-  </g>
-  <text x="541" y="230" class="t-sm" text-anchor="middle">so it names three shoes, a local maker,</text>
-  <text x="541" y="248" class="t-sm" text-anchor="middle">the shop you already use, and which card</text>
-  <text x="541" y="266" class="t-sm t-it" text-anchor="middle">and mentions the weather where you live</text>
+  <text x="408" y="112" class="t-sm">his pace, and that it is quick</text>
+  <text x="408" y="134" class="t-sm">his usual route, and its terrain</text>
+  <text x="408" y="156" class="t-sm">his mileage this year, and per month</text>
+  <text x="408" y="178" class="t-sm">that he runs at half past six</text>
+  <text x="408" y="200" class="t-sm">his height and weight</text>
+  <text x="541" y="228" class="t-sm" text-anchor="middle">so it names three shoes, one from a Seattle</text>
+  <text x="541" y="245" class="t-sm" text-anchor="middle">maker (he buys local), the shop he already</text>
+  <text x="541" y="262" class="t-sm" text-anchor="middle">uses, and which card earns points</text>
 
-  <line class="ln-mut" x1="24" y1="300" x2="696" y2="300"/>
-  <text x="360" y="324" class="t-sm t-it" text-anchor="middle">&#8220;devastatingly much more useful than the response without&#8221;</text>
+  <line class="ln-mut" x1="24" y1="304" x2="696" y2="304"/>
+  <text x="360" y="328" class="t-sm t-it" text-anchor="middle">&#8220;devastatingly much more useful than the response without&#8221;</text>
 </svg>
-<figcaption><span class="fig-label">Figure 94.1</span>
+<figcaption><span class="fig-label">Figure 94.2</span>
 The comparison is the whole experiment. The model is the same on both sides;
 only the access differs.</figcaption>
 </figure>
@@ -95,8 +161,8 @@ want.
 <h2>94.3 The disclaimers, which are the honest part</h2>
 
 <p>
-The note does not overstate what was shown. The person is fictional and the
-data simulated. And the obstacle to a real version is named exactly:
+The note does not overstate what was shown. Bob is fictional and his pod
+simulated. And the obstacle to a real version is named exactly:
 </p>
 
 <blockquote>
@@ -105,32 +171,86 @@ Extracting data from the world of APIs into a pod is a lot of work.
 </blockquote>
 
 <p>
-That sentence is the state of the whole programme. The store works, the model
-works, the combination works, and getting a real person&#8217;s real data out of the
-places that hold it is the remaining labour. Chapter 93 said the obstacle was
-never technical, and this confirms it from the other side: the technical part
-succeeded first.
+That sentence sums up where Solid&#8217;s plan for personal data stores now
+stands. The pod works, the model works, and so does the combination; what
+remains is the labour of getting a real person&#8217;s data out of the places
+that hold it. Chapter 93 said the obstacle was never technical, and this
+confirms it from the other side: the technical part succeeded first.
 </p>
 
 <p>
-Berners-Lee adds a note of optimism that is itself circular in an interesting
-way: it is work an assistant can help with, since it can build the importers.
+Berners-Lee adds that this is work AI can help with, because AI can build the
+apps that import the data. That is neat: the tool helps produce its own fuel.
 </p>
 
 <h2>94.4 Four findings</h2>
 
 <p>
-The conclusions are stated as system design observations, and the last two are
-the ones that matter for the future of this book&#8217;s subject.
+The conclusions are stated as system design observations, and the last two
+matter most for this book&#8217;s subject.
 </p>
 
 <table>
 <tr><th>Finding</th><th>What it means</th></tr>
 <tr><td>The data infrastructure is as always critical</td><td>The model is not the scarce part</td></tr>
-<tr><td>A store of structured data is powerful in driving the model</td><td>Volume IV&#8217;s work pays off here</td></tr>
-<tr><td>The model both fills the store and reads from it</td><td>It populates the graph and then uses it as context</td></tr>
+<tr><td>A pod of semantic web data is extremely powerful in driving the model</td><td>The structured-data work of Volume IV pays off here</td></tr>
+<tr><td>The model both fills the pod and reads from it</td><td>It populates the graph and then uses it as context</td></tr>
 <tr><td>The graph becomes the medium of communication between models</td><td>Systems talk to each other through the data, not directly</td></tr>
 </table>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 296" width="720" height="296" role="img"
+     aria-labelledby="fig94-3-t fig94-3-d">
+  <title id="fig94-3-t">Filling the pod and reading it</title>
+  <desc id="fig94-3-d">On the left, the bank, Strava and other services hold
+  data today. Importers, which AI can write, carry it into the pod, a graph
+  of linked data; this is the costly step today. On the right, two assistants
+  each read the pod as context, and assistant A writes what it learns back
+  into the pod, where assistant B can read it.</desc>
+
+  <text x="71" y="28" class="t-sm" text-anchor="middle">where data lives now</text>
+  <rect class="box-plain" x="16" y="50" width="110" height="40" rx="4"/>
+  <text x="71" y="75" text-anchor="middle">bank</text>
+  <rect class="box-plain" x="16" y="120" width="110" height="40" rx="4"/>
+  <text x="71" y="145" text-anchor="middle">Strava</text>
+  <rect class="box-plain" x="16" y="190" width="110" height="40" rx="4"/>
+  <text x="71" y="215" text-anchor="middle">other services</text>
+
+  <line class="ln-accent" x1="126" y1="70" x2="260" y2="103"/>
+  <path d="M 270 105 L 259 107 L 261 98 Z" fill="#1c5a7a"/>
+  <line class="ln-accent" x1="126" y1="140" x2="260" y2="131"/>
+  <path d="M 270 130 L 260 135 L 260 126 Z" fill="#1c5a7a"/>
+  <line class="ln-accent" x1="126" y1="210" x2="262" y2="159"/>
+  <path d="M 270 155 L 262 163 L 259 154 Z" fill="#1c5a7a"/>
+  <text x="198" y="252" class="t-sm" text-anchor="middle">importers (AI can write these)</text>
+  <text x="198" y="270" class="t-sm t-it" text-anchor="middle" style="fill:#1c5a7a">the costly step today</text>
+
+  <rect class="box-green" x="270" y="70" width="160" height="120" rx="4"/>
+  <text x="350" y="122" text-anchor="middle">Bob&#8217;s pod</text>
+  <text x="350" y="144" class="t-sm" text-anchor="middle">a graph of linked data</text>
+
+  <rect class="box" x="576" y="30" width="128" height="50" rx="4"/>
+  <text x="640" y="60" text-anchor="middle">assistant A</text>
+  <rect class="box" x="576" y="200" width="128" height="50" rx="4"/>
+  <text x="640" y="230" text-anchor="middle">assistant B</text>
+
+  <line class="ln" x1="430" y1="95" x2="566" y2="53"/>
+  <path d="M 576 50 L 568 57 L 565 49 Z" fill="#2f4f4f"/>
+  <text x="490" y="46" class="t-sm" text-anchor="middle">reads as context</text>
+
+  <line class="ln-dash" x1="576" y1="70" x2="439" y2="117"/>
+  <path d="M 430 120 L 438 113 L 441 121 Z" fill="#2f4f4f"/>
+  <text x="500" y="138" class="t-sm" text-anchor="middle">writes what it learns</text>
+
+  <line class="ln" x1="430" y1="170" x2="566" y2="212"/>
+  <path d="M 576 215 L 565 216 L 568 208 Z" fill="#2f4f4f"/>
+  <text x="500" y="230" class="t-sm" text-anchor="middle">reads as context</text>
+</svg>
+<figcaption><span class="fig-label">Figure 94.3</span>
+The third and fourth findings in one picture. The model helps fill the graph
+and then reads it, and two models communicate through the graph rather than
+directly.</figcaption>
+</figure>
 
 <p>
 The third breaks a circularity that had seemed fatal. Chapter 72 observed that
@@ -143,7 +263,7 @@ The expensive step becomes something the machine does.
 The fourth is the more consequential claim. If systems communicate through a
 shared graph rather than through each other, then everything in Volumes IV to
 VI applies: identifiers that mean the same thing to everyone, vocabularies
-mixed from several communities, statements that can be checked, and a store
+mixed from several communities, statements that can be checked, and a pod
 whose owner decides who reads it.
 </p>
 
@@ -158,25 +278,22 @@ together in a laboratory and shows the difference is large.
 <p>
 What it does not show is anyone getting there. Between the demonstration and a
 person using it lies the work of extracting a life from the services that hold
-it, and those services have no reason to help.
+it, and, in this book&#8217;s view, those services have little reason to help.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Connecting assistants to personal data became ordinary.</strong>
-Every large provider wired its assistant to the documents and mail it already
-held, which is the concentration Chapter 72 warned of.</li>
-<li><strong>Standard connectors emerged.</strong> Protocols for giving models
-access to tools and data sources were published and adopted rapidly from late
-2024, making the plumbing this note calls a lot of work into a common
-component.</li>
-<li><strong>The graph-as-medium claim is being tested.</strong> Whether models
-coordinate through shared structured data or through each other directly is
-now an open architectural question, and it is the one section 94.4
-raises.</li>
-<li><strong>Nobody has a real pod full of their life.</strong> The extraction
-problem remains the binding constraint, as this note says.</li>
+Several large providers, from 2023, wired their assistants to the documents
+and mail they already held, which is the concentration Chapter 72 warned
+of.</li>
+<li><strong>Standard connectors emerged.</strong> Anthropic published the Model
+Context Protocol in November 2024, an open standard for giving models access
+to tools and data sources. It was widely adopted, making part of the plumbing
+this note calls a lot of work into a common component.</li>
+<li><strong>The extraction problem remains.</strong> No widely used service
+yet fills a personal pod from a person&#8217;s existing accounts.</li>
 </ul>
 </div>
 
@@ -184,7 +301,7 @@ problem remains the binding constraint, as this note says.</li>
 <h3>Connections</h3>
 <p>
 The scene this implements is Chapter 93, and the duty it assumes is
-Chapter 92. The store is Chapter 54 and its arrangement is Chapter 55. The
+Chapter 92. The pod is Chapter 54 and its arrangement is Chapter 55. The
 problem of getting wisdom from private data is Chapter 72, and the structured
 data that drives it is Volume IV.
 </p>
@@ -199,13 +316,14 @@ Which would refuse?</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.2</span>
-A model that fills the store and then reads it breaks a circularity. State the
-circularity and say whether it is really broken.</p>
+Models learn from data, but structured data about private life does not exist
+to learn from. A model that fills the pod and then reads it is said to break
+this circle. Is it really broken?</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.3</span>
-If systems communicate through a shared graph, what must they agree on? List
-the minimum.</p>
+Two assistants share Bob&#8217;s pod. Name two things they must both
+understand for one to use what the other wrote.</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.4</span>
