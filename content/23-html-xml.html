@@ -1,25 +1,24 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Most web pages are, strictly speaking, broken. Tags are left unclosed, nested
-wrongly, or misspelled. Browsers display them anyway, and have spent thirty
-years getting better at guessing what the author meant.
+HTML is the language web pages are written in. XML is a stricter cousin used
+for data, in which a single error stops the whole document. In 2008 HTML was
+splitting into a strict XML version (XHTML) and a forgiving one (HTML5).
 </p>
 <p>
-That was a decision, not an accident, and this note works out its consequences
-by asking a question nobody had asked: what is a page author actually rewarded
-for? The answer is a graph, and it turns the state of the Web from a mystery
-into an outcome.
+Most web pages are, strictly speaking, broken, and browsers display them
+anyway. This note asks what a page author is actually rewarded for. The answer
+is a graph, and it turns the state of the Web from a mystery into an outcome.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in August 2008 and, unusually, not made public until May 2019, this
-is the longest note in Volume III and the one in which Berners-Lee addresses
-a split in the Web he could not prevent. The occasion is stated without
-drama:
+Written in 2008 as a talk to the W3C Advisory Committee (the meeting of
+W3C&#8217;s member organisations), and not made public until May 2019, this is
+the note in which Berners-Lee addresses a split in the Web he could not
+prevent. The occasion is stated without drama:
 </p>
 <blockquote>
 Occasionally it seems that some strategic thinking is necessary in order to
@@ -36,15 +35,30 @@ released as a record rather than as an intervention.
 
 <h2>23.1 The fork</h2>
 
+<p>
+Both languages descend from SGML, an older and more elaborate markup standard;
+XML is a simplification of it. The practical difference is easiest to see in
+one line of badly nested markup:
+</p>
+
+<pre><code>&lt;b&gt;&lt;i&gt;text&lt;/b&gt;&lt;/i&gt;</code></pre>
+
+<p>
+The italic tag opens inside the bold one but closes outside it. An XML parser
+(the program that reads markup) refuses this as not <em>well-formed</em>. A
+browser reading it as HTML shows bold italic text and moves on.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig23-1-t fig23-1-d">
   <title id="fig23-1-t">Where HTML divided</title>
   <desc id="fig23-1-d">From a shared origin in SGML, one branch moved HTML on
-  to XML as XHTML, gaining namespaces and strict parsing but not shipping in
-  the dominant browser. The other branch, HTML5, specified precisely what
-  existing browsers already did with real pages, and declined both XML and
-  namespaces.</desc>
+  to XML as XHTML, gaining decentralised extension and one clean parse, but
+  was not deployed in Internet Explorer. The other branch, HTML5, specified
+  precisely what existing browsers already did with real pages: it ships and
+  handles every legacy page, with error handling defined exactly, but has no
+  namespaces and its extension is central.</desc>
 
   <rect class="box-plain" x="24" y="120" width="150" height="56" rx="4"/>
   <text x="99" y="144" class="t-caps" text-anchor="middle">HTML on SGML</text>
@@ -58,44 +72,42 @@ released as a record rather than as an intervention.
   <text x="350" y="84" class="t-sm" text-anchor="middle">XML, namespaces, strict</text>
 
   <rect class="box-warm" x="250" y="200" width="200" height="56" rx="4"/>
-  <text x="350" y="224" class="t-caps" text-anchor="middle" fill="#a07d47">HTML5</text>
+  <text x="350" y="224" class="t-caps" text-anchor="middle" style="fill:#b08d57">HTML5</text>
   <text x="350" y="244" class="t-sm" text-anchor="middle">what browsers really do</text>
 
   <path class="ln-mut" d="M 450 68 L 490 68"/>
   <path class="ln-mut" d="M 450 228 L 490 228"/>
 
-  <g class="t-sm">
-    <text x="498" y="54">+ decentralised extension</text>
-    <text x="498" y="74">+ one clean parse</text>
-    <text x="498" y="94" fill="#b04a4a">&#8722; not deployed in the dominant browser</text>
+  <text x="498" y="54" class="t-sm">+ decentralised extension</text>
+  <text x="498" y="74" class="t-sm">+ one clean parse</text>
+  <text x="498" y="94" class="t-sm" style="fill:#b08d57">&#8722; not in Internet Explorer</text>
 
-    <text x="498" y="214">+ ships; handles every legacy page</text>
-    <text x="498" y="234">+ error handling defined exactly</text>
-    <text x="498" y="254" fill="#b04a4a">&#8722; no namespaces; extension is central</text>
-  </g>
+  <text x="498" y="214" class="t-sm">+ ships; handles every legacy page</text>
+  <text x="498" y="234" class="t-sm">+ error handling defined exactly</text>
+  <text x="498" y="254" class="t-sm" style="fill:#b08d57">&#8722; no namespaces; central extension</text>
 
   <line class="ln-mut" x1="24" y1="276" x2="696" y2="276"/>
-  <text x="360" y="296" class="t-sm t-it" text-anchor="middle">A fork in standards is costly for everyone downstream, whichever branch is right.</text>
+  <text x="360" y="296" class="t-sm t-it" text-anchor="middle">A fork in standards is costly for the whole community, whichever branch is right.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 23.1</span>
-Berners-Lee&#8217;s objection is not to either branch but to the existence of two.
-The boundary between them, he notes, will never be clean, because there is an
-overlap: people embed markup in feeds, and process the same graphics format
-with both kinds of engine.</figcaption>
+Berners-Lee&#8217;s objection is not to either branch but to there being two.
+The boundary will never be clean: people embed HTML in feeds, and process
+the same graphics format with both kinds of engine.</figcaption>
 </figure>
 
 <h2>23.2 Two philosophies of extension</h2>
 
 <p>
-The note is fairest to the branch it disagrees with. The case for centralised
-extension is stated properly: the modules anyone actually proposes adding to
-HTML can be counted on the fingers of one hand, so the design authority can
-simply add them. The list can be published, and every system is expected to
-know the specification anyway.
+The note sets out to understand each branch&#8217;s motives, not to decide
+which fork is &#8220;right&#8221;. The case for centralised extension: the
+modules anyone proposes adding to HTML can be counted on one hand, so the
+design authority can simply add them.
 </p>
 
 <p>
-The case for the other branch is a requirement rather than a preference:
+The XML branch extends a language with <em>namespaces</em>: a web address put
+in front of a tag name, so that two groups using the same word cannot collide.
+Its case is a requirement rather than a preference:
 </p>
 
 <blockquote>
@@ -105,18 +117,91 @@ central committee.
 <cite>HTML and XML, 2008</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig23-2-t fig23-2-d">
+  <title id="fig23-2-t">Two ways to add a word</title>
+  <desc id="fig23-2-d">Left panel, centralised: the SVG, MathML and ARIA
+  groups each send their proposal to one box, the HTML editors, which feeds
+  the HTML specification. Right panel, decentralised: the same three groups
+  each point to their own web address, w3.org/2000/svg, w3.org/1998/Math/MathML
+  and example.org/aria, with no central box.</desc>
+
+  <text x="180" y="28" class="t-caps" text-anchor="middle">centralised</text>
+  <rect class="box-plain" x="24" y="48" width="110" height="34" rx="4"/>
+  <text x="79" y="70" text-anchor="middle">SVG group</text>
+  <rect class="box-plain" x="24" y="98" width="110" height="34" rx="4"/>
+  <text x="79" y="120" text-anchor="middle">MathML group</text>
+  <rect class="box-plain" x="24" y="148" width="110" height="34" rx="4"/>
+  <text x="79" y="170" text-anchor="middle">ARIA group</text>
+
+  <path class="ln-mut" d="M 134 65 L 184 108"/>
+  <path class="ln-mut" d="M 134 115 L 184 115"/>
+  <path class="ln-mut" d="M 134 165 L 184 122"/>
+  <path d="M 190 113 L 181 102 L 178 109 Z" fill="#8a9a9a"/>
+  <path d="M 190 115 L 182 111 L 182 119 Z" fill="#8a9a9a"/>
+  <path d="M 190 117 L 178 121 L 181 128 Z" fill="#8a9a9a"/>
+
+  <rect class="box-warm" x="190" y="98" width="130" height="34" rx="4"/>
+  <text x="255" y="120" text-anchor="middle">HTML editors</text>
+  <path class="ln-mut" d="M 255 132 L 255 182"/>
+  <path d="M 255 190 L 251 182 L 259 182 Z" fill="#8a9a9a"/>
+  <rect class="box-warm" x="190" y="190" width="130" height="34" rx="4"/>
+  <text x="255" y="212" text-anchor="middle">HTML spec</text>
+
+  <line class="ln-dash" x1="356" y1="16" x2="356" y2="236"/>
+
+  <text x="545" y="28" class="t-caps" text-anchor="middle">decentralised</text>
+  <rect class="box-plain" x="380" y="48" width="100" height="34" rx="4"/>
+  <text x="430" y="70" text-anchor="middle">SVG group</text>
+  <rect class="box-plain" x="380" y="98" width="100" height="34" rx="4"/>
+  <text x="430" y="120" text-anchor="middle">MathML group</text>
+  <rect class="box-plain" x="380" y="148" width="100" height="34" rx="4"/>
+  <text x="430" y="170" text-anchor="middle">ARIA group</text>
+
+  <path class="ln-mut" d="M 480 65 L 503 65"/>
+  <path class="ln-mut" d="M 480 115 L 503 115"/>
+  <path class="ln-mut" d="M 480 165 L 503 165"/>
+  <path d="M 510 65 L 502 61 L 502 69 Z" fill="#8a9a9a"/>
+  <path d="M 510 115 L 502 111 L 502 119 Z" fill="#8a9a9a"/>
+  <path d="M 510 165 L 502 161 L 502 169 Z" fill="#8a9a9a"/>
+
+  <rect class="box" x="510" y="48" width="196" height="34" rx="4"/>
+  <text x="608" y="70" class="t-mono" text-anchor="middle">w3.org/2000/svg</text>
+  <rect class="box" x="510" y="98" width="196" height="34" rx="4"/>
+  <text x="608" y="120" class="t-mono" text-anchor="middle">w3.org/1998/Math/MathML</text>
+  <rect class="box" x="510" y="148" width="196" height="34" rx="4"/>
+  <text x="608" y="170" class="t-mono" text-anchor="middle">example.org/aria</text>
+
+  <text x="543" y="214" class="t-sm t-it" text-anchor="middle">no central box: each address says who to ask</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.2</span>
+In the left panel, every new word waits for one committee. In the right panel,
+anyone who owns a web address can coin terms, and the address says who to ask.
+(The ARIA address is illustrative.)</figcaption>
+</figure>
+
 <p>
-Berners-Lee&#8217;s examples of centralised extensibility are chosen to make the
-alternative feel antique: the Dewey decimal system, the Library of Congress
-cataloguing system, and the international telephone number space.
+The note&#8217;s own example is ARIA, about thirty attributes that describe
+the role of interface elements to assistive software. The branches wrote
+them differently:
 </p>
+
+<table>
+<tr><th>Branch</th><th>How an ARIA attribute such as &#8220;label&#8221; is written</th><th>Who decides the name</th></tr>
+<tr><td>XHTML</td><td><code>aria:label</code>, the prefix bound to a namespace address</td><td>Whoever owns that address</td></tr>
+<tr><td>HTML5</td><td><code>aria-label</code>, a plain HTML attribute</td><td>The HTML editors, or in practice the market</td></tr>
+</table>
+
 
 <h2>23.3 The robustness principle, reconsidered</h2>
 
 <p>
-The most valuable section reopens the tolerance principle of Chapter 1 and
-explains why a rule that worked for protocols failed for pages. The diagnosis
-has two parts, and neither is about technology.
+Since RFC 793 (1981), Internet protocols have followed Jon Postel&#8217;s
+rule: be conservative in what you send and liberal in what you accept. Send
+lines of limited length but accept any length; send one letter case but
+accept either. The note explains why this rule, which worked for protocols,
+failed for pages. Neither part of the diagnosis is about technology.
 </p>
 
 <blockquote>
@@ -151,41 +236,43 @@ effort.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig23-2-t fig23-2-d">
-  <title id="fig23-2-t">What an author gets for fixing errors</title>
-  <desc id="fig23-2-d">Under a strict parser the reward is a step: nothing
-  until the page is perfect, then everything, so an author with several errors
-  has no reason to fix one. Under a fully liberal parser the reward is flat:
-  the page renders either way, so there is no reason to fix anything. What is
-  wanted is a slope, in which each fix is worth something.</desc>
+     aria-labelledby="fig23-3-t fig23-3-d">
+  <title id="fig23-3-t">What an author gets for fixing errors</title>
+  <desc id="fig23-3-d">Under a strict parser the reward is a step at the far
+  right: nothing until the page is perfect, then everything, so an author with
+  several errors has no reason to fix one. Under a liberal parser the reward is
+  a step at the far left: only a hopeless page gets nothing, and one small fix
+  brings full marks, so no one else has a reason to improve. What is wanted is
+  a slope, in which each fix is worth something.</desc>
 
   <!-- axes -->
   <line class="ln" x1="70" y1="250" x2="660" y2="250"/>
-  <line class="ln" x1="70" y1="250" x2="70" y2="48"/>
+  <line class="ln" x1="70" y1="250" x2="70" y2="40"/>
+  <text x="95" y="266" class="t-sm" text-anchor="middle" style="fill:#b08d57">hopeless</text>
   <text x="365" y="278" class="t-sm" text-anchor="middle">effort the author spends removing errors</text>
   <text x="52" y="150" class="t-sm" text-anchor="middle" transform="rotate(-90 52 150)">reward: how well the page renders</text>
 
-  <!-- step: strict -->
-  <path d="M 70 242 L 560 242 L 560 70 L 660 70" fill="none" stroke="#1c5a7a" stroke-width="2"/>
-  <text x="300" y="234" class="t-sm" fill="#1c5a7a">strict: nothing, nothing, nothing&#8230;</text>
-  <text x="574" y="60" class="t-sm" fill="#1c5a7a">&#8230;then everything</text>
+  <!-- liberal: early step -->
+  <path d="M 70 244 L 120 244 L 120 68 L 660 68" fill="none" stroke="#b08d57" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="132" y="56" class="t-sm" style="fill:#b08d57">liberal: one tiny fix, then full marks</text>
 
-  <!-- flat: liberal -->
-  <path d="M 70 128 L 660 128" fill="none" stroke="#b08d57" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="300" y="120" class="t-sm" fill="#a07d47">liberal: it looked fine before you started</text>
+  <!-- strict: late step -->
+  <path d="M 70 236 L 560 236 L 560 76 L 660 76" fill="none" stroke="#1c5a7a" stroke-width="2"/>
+  <text x="300" y="224" class="t-sm" style="fill:#1c5a7a">strict: nothing, nothing, nothing&#8230;</text>
+  <text x="574" y="130" class="t-sm" style="fill:#1c5a7a">&#8230;then everything</text>
 
   <!-- slope: wanted -->
   <path d="M 70 232 L 660 84" fill="none" stroke="#5a8f5a" stroke-width="2.4"/>
-  <text x="404" y="176" class="t-sm" fill="#3f6f3f">the slope we want</text>
+  <text x="404" y="176" class="t-sm" style="fill:#5a8f5a">the slope we want</text>
 
   <line class="ln-mut" x1="70" y1="292" x2="660" y2="292"/>
-  <text x="365" y="314" class="t-sm" text-anchor="middle">A step function motivates only the author who is already nearly finished.</text>
-  <text x="365" y="334" class="t-sm t-it" text-anchor="middle">A flat line motivates nobody. Both produce the Web we have.</text>
+  <text x="365" y="314" class="t-sm" text-anchor="middle">A late step motivates only the author who is already nearly finished.</text>
+  <text x="365" y="334" class="t-sm t-it" text-anchor="middle">An early step motivates only the hopeless page. Neither is a slope.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 23.2</span>
-Berners-Lee&#8217;s own summary: the writer with an almost perfect page is motivated
-to fix it, but the writer with several errors is not, as there will be no
-noticeable reward for incremental improvement.</figcaption>
+<figcaption><span class="fig-label">Figure 23.3</span>
+Two steps at opposite ends. As the note puts it, the liberal and conservative
+forks share one thing: neither motivates the writer to improve a page
+progressively.</figcaption>
 </figure>
 
 <p>
@@ -200,33 +287,93 @@ levels.
 </blockquote>
 
 <p>
-His proposal is a browser toolbar that slides down on a page with errors,
-rates it out of a hundred, and lets interested users drill in. He anticipates
-the objection, which is that no browser wanted to be the one giving a worse
-experience, and answers it with an analogy to environmental cleanup: a
-browser without such a feature would come to look irresponsible. The word he
-uses for badly formed markup is pollution.
+First, a browser toolbar that slides down on a page with errors and rates it
+out of a hundred. To the objection that no browser wants to give the worse
+experience, he answers that, as with environmental cleanup, a browser
+without it would look irresponsible. Second, &#8220;View Source&#8221;, the
+way markup has always spread, would show and copy a tidied version. Third,
+the validator would become a page checker that grades:
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig23-4-t fig23-4-d">
+  <title id="fig23-4-t">Grades of complaint in a page checker</title>
+  <desc id="fig23-4-d">Three stacked bands. Error: wrong Content-Type, bad
+  character encoding, bad nesting or a missing end tag, misplaced elements.
+  Warning: an extension tag with no namespace, or a namespace with no
+  namespace document. Informative: a namespaced extension with its document,
+  a tag from another W3C Recommendation, an unquoted simple attribute value.
+  An arrow down the left runs from fix first to fix last.</desc>
+
+  <rect class="box-warm" x="90" y="16" width="610" height="62" rx="4"/>
+  <text x="106" y="40" class="t-caps" style="fill:#b08d57">error</text>
+  <text x="106" y="62" class="t-sm">wrong Content-Type &#183; bad character encoding &#183; bad nesting or missing end tag &#183; misplaced elements</text>
+
+  <rect class="box" x="90" y="88" width="610" height="62" rx="4"/>
+  <text x="106" y="112" class="t-caps">warning</text>
+  <text x="106" y="134" class="t-sm">extension tag with no namespace &#183; namespace with no namespace document</text>
+
+  <rect class="box-green" x="90" y="160" width="610" height="62" rx="4"/>
+  <text x="106" y="184" class="t-caps" style="fill:#5a8f5a">informative</text>
+  <text x="106" y="206" class="t-sm">namespace and document present &#183; tag from another W3C Recommendation &#183; unquoted simple value</text>
+
+  <text x="46" y="36" class="t-sm" text-anchor="middle">fix first</text>
+  <line class="ln-mut" x1="46" y1="46" x2="46" y2="196"/>
+  <path d="M 46 204 L 42 196 L 50 196 Z" fill="#8a9a9a"/>
+  <text x="46" y="222" class="t-sm" text-anchor="middle">fix last</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.4</span>
+More than two outcomes: graded complaints are what turn a step into a slope.
+The items are the note&#8217;s own lists.</figcaption>
+</figure>
 
 <h2>23.5 Scale-free vocabularies</h2>
 
 <p>
-A short section offers the best available explanation of why one markup
-language dominates and dozens do not. The Web is composed of communities of
-different sizes, with scale-free properties: there is no typical number of
-inbound links to a page, only a power law. Berners-Lee suggests, and marks as
-an unproved hunch, that this represents a form of optimal arrangement,
-perhaps the best trade-off between the ungainliness of one universal language
-and the agility of many small ones.
+The Web is made of communities of very different sizes. It is scale-free:
+there is no typical number of inbound links to a page, only a power law, in
+which a few pages have enormous numbers and most have few. Berners-Lee
+suggests, as an unproved hunch, that this may be the best trade-off between
+one ungainly universal language and many agile small ones.
 </p>
 
-<p>
-Applied to vocabularies, this gives a hierarchy rather than a competition.
-HTML sits at the largest scale, where tags are just tags and everyone is
-supposed to know them. Below it are languages serving very large communities,
-and below those the long tail. The argument for namespaces is that the tail
-needs them and the head does not.
-</p>
+<figure>
+<svg class="dia" viewBox="0 0 720 278" width="720" height="278" role="img"
+     aria-labelledby="fig23-5-t fig23-5-d">
+  <title id="fig23-5-t">The vocabulary long tail</title>
+  <desc id="fig23-5-d">A power-law curve. The horizontal axis lists
+  vocabularies, most used first; the vertical axis is the size of the
+  community using each. HTML stands alone at the top left. The curve falls
+  through SVG, MathML and ARIA, then FBML and Atom feeds, and flattens into a
+  long tail of bird fanciers and today's lab experiment. The region under the
+  curve after HTML is shaded and labelled needs namespaces.</desc>
+
+  <path d="M 110 240 L 110 106.7 L 120 120.0 L 130 130.9 L 140 140.0 L 150 147.7 L 160 154.3 L 170 160.0 L 180 165.0 L 190 169.4 L 200 173.3 L 210 176.8 L 220 180.0 L 230 182.9 L 240 185.5 L 250 187.8 L 260 190.0 L 270 192.0 L 280 193.8 L 290 195.6 L 300 197.1 L 310 198.6 L 320 200.0 L 330 201.3 L 340 202.5 L 350 203.6 L 360 204.7 L 370 205.7 L 380 206.7 L 390 207.6 L 400 208.4 L 410 209.2 L 420 210.0 L 430 210.7 L 440 211.4 L 450 212.1 L 460 212.7 L 470 213.3 L 480 213.9 L 490 214.5 L 500 215.0 L 510 215.5 L 520 216.0 L 530 216.5 L 540 216.9 L 550 217.4 L 560 217.8 L 570 218.2 L 580 218.6 L 590 218.9 L 600 219.3 L 610 219.7 L 620 220.0 L 630 220.3 L 640 220.6 L 650 221.0 L 660 221.2 L 670 221.5 L 680 221.8 L 680 240 Z" fill="#f5f8f0"/>
+
+  <line class="ln" x1="70" y1="240" x2="690" y2="240"/>
+  <line class="ln" x1="70" y1="240" x2="70" y2="24"/>
+  <text x="380" y="262" class="t-sm" text-anchor="middle">vocabularies, most used first</text>
+  <text x="50" y="140" class="t-sm" text-anchor="middle" transform="rotate(-90 50 140)">size of community</text>
+
+  <path class="ln-accent" d="M 80 40.0 L 90 68.6 L 100 90.0 L 110 106.7 L 120 120.0 L 130 130.9 L 140 140.0 L 150 147.7 L 160 154.3 L 170 160.0 L 180 165.0 L 190 169.4 L 200 173.3 L 210 176.8 L 220 180.0 L 230 182.9 L 240 185.5 L 250 187.8 L 260 190.0 L 270 192.0 L 280 193.8 L 290 195.6 L 300 197.1 L 310 198.6 L 320 200.0 L 330 201.3 L 340 202.5 L 350 203.6 L 360 204.7 L 370 205.7 L 380 206.7 L 390 207.6 L 400 208.4 L 410 209.2 L 420 210.0 L 430 210.7 L 440 211.4 L 450 212.1 L 460 212.7 L 470 213.3 L 480 213.9 L 490 214.5 L 500 215.0 L 510 215.5 L 520 216.0 L 530 216.5 L 540 216.9 L 550 217.4 L 560 217.8 L 570 218.2 L 580 218.6 L 590 218.9 L 600 219.3 L 610 219.7 L 620 220.0 L 630 220.3 L 640 220.6 L 650 221.0 L 660 221.2 L 670 221.5 L 680 221.8"/>
+
+  <circle cx="80" cy="40" r="4" fill="#1c5a7a"/>
+  <text x="92" y="44">HTML</text>
+  <circle cx="140" cy="140" r="4" fill="#1c5a7a"/>
+  <text x="150" y="128" class="t-sm">SVG, MathML, ARIA</text>
+  <circle cx="280" cy="193.8" r="4" fill="#1c5a7a"/>
+  <text x="288" y="180" class="t-sm">FBML, Atom feeds</text>
+  <circle cx="560" cy="217.8" r="4" fill="#1c5a7a"/>
+  <text x="560" y="198" class="t-sm" text-anchor="middle">bird fanciers, today&#8217;s lab experiment</text>
+
+  <text x="300" y="230" class="t-sm t-it" text-anchor="middle" style="fill:#5a8f5a">needs namespaces</text>
+</svg>
+<figcaption><span class="fig-label">Figure 23.5</span>
+One leader, then a long tail. Everyone is supposed to know HTML&#8217;s tags;
+the tail is where decentralised naming earns its keep.</figcaption>
+</figure>
+
 
 <h2>23.6 The grouchy robustness principle</h2>
 
@@ -239,11 +386,60 @@ thing Berners-Lee wrote about specification practice:
 Be conservative what you produce. Be liberal about what you accept but
 complain about any deviations from the spec in a way to help and to motivate
 the producers to adhere to it better.
-<cite>HTML and XML, 2008, published 2019</cite>
+<cite>HTML and XML, 2008</cite>
 </blockquote>
 
 <p>
 Accept everything, render everything, and say so. The complaint is the slope.
+</p>
+
+<h2>23.7 Meeting in the middle</h2>
+
+<p>
+The note also asks what each side would give. Its list of complaints about
+XML:
+</p>
+
+<table>
+<tr><th>Issue with XML</th><th>Motivation</th></tr>
+<tr><td>Quotes are required around attributes</td><td>Ease of use</td></tr>
+<tr><td>The whole tag name must be spelled in the end tag</td><td>Ease of use</td></tr>
+<tr><td>Parsers must stop on error</td><td>Unfriendly, impractical</td></tr>
+<tr><td>Namespace URIs take too much space</td><td>Impractical</td></tr>
+<tr><td>Non-nested begin and end tags must be accommodated</td><td>Legacy &#8220;tag soup&#8221;</td></tr>
+</table>
+
+<p>
+The first could be cured by redesigning XML; the last he would not change.
+His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
+takes the namespace from the content type, drops DTDs (old grammar
+declarations) and processing instructions, and perhaps allows
+<code>&lt;/&gt;</code> as a close tag. A page that starts
+</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC
+ "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+  &lt;link href="../../../People/Berners-Lee/general.css"
+  rel="stylesheet"  type="text/css" /&gt;
+&lt;/head&gt;</code></pre>
+
+<p>
+could, served as <code>text/html</code>, simply be
+</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+ &lt;link href=../../../People/Berners-Lee/general.css
+  rel=stylesheet type=text/css /&gt;
+&lt;/head&gt;</code></pre>
+
+<p>
+and still be valid XML2. The only non-HTML habit left is the
+<code>/&gt;</code> closing the link tag.
 </p>
 
 <div class="since">
@@ -251,20 +447,21 @@ Accept everything, render everything, and say so. The complaint is the slope.
 <ul>
 <li><strong>The fork closed by one branch ending.</strong> W3C stopped work on
 XHTML 2 in 2009, and HTML5 became a Recommendation in October 2014. In 2019
-W3C and the WHATWG agreed that the WHATWG Living Standard would be the single
-version of HTML.</li>
-<li><strong>The note was published at that moment.</strong> Its release in May
-2019 coincides with the settlement, and the argument it makes was not
-adopted: HTML has no namespaces, and extension is centralised.</li>
-<li><strong>The slope was built, for developers only.</strong> Browser
-developer tools report markup errors in detail, and automated auditing tools
-score pages out of a hundred. Nothing slides down in front of an ordinary
-reader, which is the part of the proposal that would have changed authors&#8217;
-incentives.</li>
+W3C and the WHATWG (the browser makers&#8217; group that started HTML5) agreed
+that the WHATWG Living Standard would be the single version of HTML.</li>
+<li><strong>The note was published at that moment,</strong> and its argument
+was not adopted: there was no XML2, HTML has no namespaces, and extension is
+centralised.</li>
+<li><strong>The slope was built, partly, for developers only.</strong> Developer
+tools report problems in detail, and Google&#8217;s Lighthouse (from 2016)
+scores pages from 0 to 100, though for performance and accessibility rather
+than markup errors. Nothing slides down in front of an ordinary reader, the
+part that would have changed authors&#8217; incentives.</li>
 <li><strong>Decentralised extension arrived by another route.</strong> Custom
-elements require a hyphen in the name rather than a namespace, and structured
-data in pages uses vocabulary URIs. The requirement of section 23.2 was met
-without the mechanism this note defends.</li>
+elements, tags a page defines for itself with script, require a hyphen in the
+name rather than a namespace, and structured data in pages uses vocabulary
+URIs. The requirement of section 23.2 was met without the mechanism this
+note defends.</li>
 </ul>
 </div>
 
@@ -289,13 +486,13 @@ Name another system where both assumptions hold, and one where neither does.</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.2</span>
-Draw the reward curve for a system you work on. Is it a step, a flat line, or
-a slope? What would change it?</p>
+Think of a school marking scheme, or a video game. Is the reward for effort a
+step or a slope? What would change it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.3</span>
-Custom elements use a hyphen rather than a namespace to avoid collisions.
-Compare the two mechanisms against the requirements of Chapter 17.</p>
+Two groups both invent a tag called <code>label</code>. What happens under
+each mechanism of Figure 23.2?</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.4</span>

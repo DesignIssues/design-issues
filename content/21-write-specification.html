@@ -1,15 +1,21 @@
+<div class="plain">
+<h3>The short version</h3>
+<p>
+A specification is a document that says exactly what counts as, say, &ldquo;a
+conforming HTTP 1.1 server&rdquo;. It has to do two jobs: name the thing, and
+define it. Where it can, it should say what things mean rather than what
+software must do about them. And a program should be able to test whether
+something conforms.
+</p>
+</div>
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Berners-Lee describes this note twice as folklore, and both times slightly
-apologetically: it is, he says, a little motherhood and apple pie about how a
-specification should be couched. He credits Peggie Rimmer at CERN and years
-of work with the IEEE, the IETF and W3C, and assumes others have written
-books on it.
-</p>
-<p>
-They have, and this is still worth two pages, because it makes one structural
-point that longer treatments bury.
+Berners-Lee opens by calling this note motherhood and apple pie and closes by
+calling it folklore. He credits Peggie Rimmer at CERN and years of work with
+the IEEE, the IETF and W3C, and assumes others have written books on it. They
+have, but the note makes one structural point that longer treatments bury.
 </p>
 </div>
 
@@ -24,9 +30,18 @@ quite precisely.
 </blockquote>
 
 <p>
+On the Web the thing defined is usually a language or a protocol. In the
+note&#8217;s terms, a language is a set of symbols, rules for combining them,
+and what they mean; a protocol is a language for messages plus constraints on
+the order in which messages may be sent. Something <em>conforms</em> when it
+meets the definition. Text that is <em>normative</em> is binding on what
+conforms; <em>non-normative</em> text is explanation only.
+</p>
+
+<p>
 Most specifications spend their length on the right-hand side and leave the
-left implicit. The note&#8217;s contribution is to insist that the thing being
-defined is itself a thing to be defined, and that it should get a name.
+left implicit. The note insists that the thing defined gets a precise name: a
+conformance term.
 </p>
 
 <figure>
@@ -42,30 +57,30 @@ defined is itself a thing to be defined, and that it should get a name.
   <rect class="box" x="24" y="20" width="312" height="212" rx="4"/>
   <text x="180" y="46" class="t-caps" text-anchor="middle">the left hand side</text>
   <text x="180" y="68" class="t-sm t-it" text-anchor="middle">what is being defined</text>
-  <g class="t-sm">
+  <g>
     <text x="46" y="98">Introduce a term for what conforms:</text>
-    <text x="60" y="122" class="t-mono" fill="#1c5a7a">a well-formed XML 1.0 document</text>
-    <text x="60" y="142" class="t-mono" fill="#1c5a7a">a conforming HTTP 1.1 server</text>
-    <text x="60" y="162" class="t-mono" fill="#1c5a7a">the SVG 1.0 language</text>
+    <text x="60" y="122" class="t-mono" style="fill:#1c5a7a">a well-formed XML 1.0 document</text>
+    <text x="60" y="142" class="t-mono" style="fill:#1c5a7a">a conforming HTTP 1.1 server</text>
+    <text x="60" y="162" class="t-mono" style="fill:#1c5a7a">the SVG 1.0 language</text>
     <text x="46" y="190">Where a formal identifier exists,</text>
     <text x="46" y="208">use it: a media type, a namespace URI.</text>
   </g>
 
   <rect class="box-warm" x="384" y="20" width="312" height="212" rx="4"/>
-  <text x="540" y="46" class="t-caps" text-anchor="middle" fill="#a07d47">the right hand side</text>
+  <text x="540" y="46" class="t-caps" text-anchor="middle" style="fill:#b08d57">the right hand side</text>
   <text x="540" y="68" class="t-sm t-it" text-anchor="middle">what it means</text>
-  <g class="t-sm">
+  <g>
     <text x="406" y="98">Keep MUST apart from MAY.</text>
     <text x="406" y="122">Keep normative apart from informative.</text>
     <text x="406" y="146">Say what a thing <tspan font-style="italic">means</tspan>, not what</text>
     <text x="406" y="164">software should do about it.</text>
-    <text x="406" y="192" fill="#3f6f3f">&#8220;x&#8221; indicates the check is void</text>
-    <text x="406" y="212" fill="#b04a4a">not: should be rejected with an error</text>
+    <text x="406" y="192" style="fill:#5a8f5a">&#10003; &#8220;x&#8221; indicated that the check is void</text>
+    <text x="406" y="212" style="fill:#8a9a9a">&#10007; not: should be rejected with an error</text>
   </g>
 
   <line class="ln-mut" x1="24" y1="254" x2="696" y2="254"/>
   <text x="360" y="278" class="t-sm" text-anchor="middle">The test: for any arbitrary object, does the spec decide whether the term applies?</text>
-  <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If you could not write a program to check it, the left hand side is not finished.</text>
+  <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If no program could check it, the left hand side is not finished.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 21.1</span>
 The warning attached to the left-hand side is about brand. A specification may
@@ -73,6 +88,20 @@ define more than one term, such as a strictly conforming and a loosely
 conforming widget, but Berners-Lee notes one should beware of diluting the
 name.</figcaption>
 </figure>
+
+<p>
+Wherever possible, the note adds, conformance phrases should be grounded in the
+Web by being identified with a URI.
+</p>
+
+<p>
+The name then governs the wording of the definition. If the term is
+&ldquo;foo-valid document&rdquo;, a sentence saying something &ldquo;is
+invalid&rdquo; clearly applies to it. A sentence saying something &ldquo;is
+wrong&rdquo; or &ldquo;produces an error&rdquo; does not, unless the text
+explicitly ties it to the conformance term. Only words linked to the term
+carry weight.
+</p>
 
 <h2>21.2 Meaning, not behaviour</h2>
 
@@ -90,8 +119,45 @@ cheque:
 
 <p>
 is better than the version that says the cheque should be rejected with a
-fatal error. The justification is a claim about what an author is entitled to
-do:
+fatal error.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
+     aria-labelledby="fig21-2-t fig21-2-d">
+  <title id="fig21-2-t">Stating a meaning versus prescribing a behaviour</title>
+  <desc id="fig21-2-d">A cheque with an x across it. One arrow leads to a
+  statement of meaning, that the cheque is void, which holds for a bank, an
+  auditor, a court or any future program. A dashed arrow leads to a statement
+  of behaviour, reject it with a fatal error, which binds only one imagined
+  program.</desc>
+
+  <rect class="box-plain" x="240" y="16" width="240" height="40" rx="4"/>
+  <text x="360" y="41" text-anchor="middle">a cheque with an &#8220;x&#8221; across it</text>
+
+  <path class="ln" d="M330 56 C 330 92, 180 84, 180 113"/>
+  <path d="M176 112 L180 120 L184 112 Z" fill="#2f4f4f"/>
+  <path class="ln-dash" d="M390 56 C 390 92, 540 84, 540 113"/>
+  <path d="M536 112 L540 120 L544 112 Z" fill="#8a9a9a"/>
+
+  <rect class="box-green" x="20" y="120" width="320" height="80" rx="4"/>
+  <text x="180" y="144" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">meaning</text>
+  <text x="180" y="165" text-anchor="middle">the cheque is void</text>
+  <text x="180" y="187" class="t-sm" text-anchor="middle">true for bank, auditor, court, future programs</text>
+
+  <rect class="box-warm" x="380" y="120" width="320" height="80" rx="4"/>
+  <text x="540" y="144" class="t-caps" text-anchor="middle" style="fill:#b08d57">behaviour</text>
+  <text x="540" y="165" text-anchor="middle">reject it with a fatal error</text>
+  <text x="540" y="187" class="t-sm" text-anchor="middle">binds one imagined program</text>
+</svg>
+<figcaption><span class="fig-label">Figure 21.2</span>
+A meaning serves every reader of the cheque. A behaviour serves only the
+program the author imagined, which is why it has to be rewritten when the
+software changes.</figcaption>
+</figure>
+
+<p>
+The justification is a claim about what an author is entitled to do:
 </p>
 
 <blockquote>
@@ -103,9 +169,6 @@ it, unless you are defining a protocol.
 <p>
 Typical behaviours may still be described, and Berners-Lee says they can be
 very useful for explaining intent, provided they are marked non-normative.
-The distinction survives because meaning outlasts implementations: a
-specification that says what to do has to be rewritten each time the software
-changes shape.
 </p>
 
 <p>
@@ -113,6 +176,46 @@ Protocols are the exception, and for them he asks for something stricter
 still: constraints given as a state transition diagram or table, so that they
 are totally clear.
 </p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
+     aria-labelledby="fig21-3-t fig21-3-d">
+  <title id="fig21-3-t">An illustrative state transition diagram</title>
+  <desc id="fig21-3-d">An invented example. Three states: idle, waiting for
+  reply, and done. Sending a request moves from idle to waiting; a reply
+  arriving moves from waiting to done; a timeout moves from waiting back to
+  idle. There is no arrow from idle to done, so a reply nobody asked for is
+  not allowed.</desc>
+
+  <text x="24" y="24" class="t-sm t-it">Illustrative example, not from the note</text>
+
+  <ellipse class="box" cx="110" cy="90" rx="60" ry="30"/>
+  <text x="110" y="95" text-anchor="middle">idle</text>
+  <ellipse class="box" cx="360" cy="90" rx="82" ry="30"/>
+  <text x="360" y="95" text-anchor="middle">waiting for reply</text>
+  <ellipse class="box" cx="610" cy="90" rx="60" ry="30"/>
+  <text x="610" y="95" text-anchor="middle">done</text>
+
+  <line class="ln" x1="170" y1="90" x2="271" y2="90"/>
+  <path d="M270 86 L278 90 L270 94 Z" fill="#2f4f4f"/>
+  <text x="224" y="78" class="t-sm" text-anchor="middle">send request</text>
+
+  <line class="ln" x1="442" y1="90" x2="543" y2="90"/>
+  <path d="M542 86 L550 90 L542 94 Z" fill="#2f4f4f"/>
+  <text x="496" y="78" class="t-sm" text-anchor="middle">reply arrives</text>
+
+  <path class="ln" d="M360 120 C 360 176, 110 176, 110 129"/>
+  <path d="M106 129 L110 121 L114 129 Z" fill="#2f4f4f"/>
+  <text x="235" y="186" class="t-sm" text-anchor="middle">timeout: back to idle</text>
+
+  <text x="560" y="164" class="t-sm" text-anchor="middle">No arrow from idle to done:</text>
+  <text x="560" y="182" class="t-sm" text-anchor="middle">an unrequested reply is forbidden</text>
+</svg>
+<figcaption><span class="fig-label">Figure 21.3</span>
+A protocol constrains the <em>order</em> of messages. A diagram like this makes
+every allowed and forbidden step visible, which is what the fourth test
+question in section 21.4 relies on.</figcaption>
+</figure>
 
 <h2>21.3 Two paragraphs nobody expects</h2>
 
@@ -125,19 +228,25 @@ The first is about contracts. When a message binds human parties, the
 specification must say so, and Berners-Lee gives the reason without
 softening it: you could end up in court explaining it. He then writes out a
 fragment of the kind of prose required, naming a debtor, a creditor and how
-each is identified. This is Chapter 20&#8217;s argument arriving as drafting
-advice.
+each is identified. This is Chapter 20&#8217;s argument, that the fields a
+specification defines are statements people can be held to, arriving as
+drafting advice.
 </p>
 
 <p>
 The second is a checklist for borrowing. When part of a specification is
-deliberately made similar to another, the note asks the author to say that
-the similarity was noticed, to say whether it is exact and where it is not,
-to make clear which document is definitive and which is a copy for
-information, to say whether this use will track new versions of the
-referenced document, and to consider whether such changes could break the
-system. The last item is the one people skip: if necessary, negotiate
-constraints with the authority for changes to the referenced specification.
+deliberately made similar to another, the note asks the author to:
+</p>
+<ol>
+<li>say that the similarity has been noticed;</li>
+<li>say whether it is exact, and if not, where not and why;</li>
+<li>make clear that the other document is definitive and this copy is for information only;</li>
+<li>say whether this use will track new versions of the other document;</li>
+<li>think about whether such changes could break this system;</li>
+<li>if necessary, negotiate constraints with whoever controls changes to the other document.</li>
+</ol>
+<p>
+The last item is the one people skip.
 </p>
 
 <h2>21.4 The four test questions</h2>
@@ -169,12 +278,11 @@ this note points at, from Bradner&#8217;s BCP 14 of March 1997, are now cited by
 nearly every protocol specification, and were refined by RFC 8174 in May 2017
 to apply only when written in capitals.</li>
 <li><strong>Conformance terms became formal.</strong> Media types and
-namespace URIs are now the ordinary way to name what conforms, and the
-registration processes for both require the definition the left-hand side
-demands.</li>
-<li><strong>Testability became the standard.</strong> W3C process has required
-implementation evidence and test suites for advancement since the 2000s,
-which is the second test question turned into a gate.</li>
+namespace URIs are now the ordinary way to name what conforms. A namespace URI
+needs no registration: anyone who controls a URI can mint one.</li>
+<li><strong>Testability became a gate.</strong> The W3C Process requires a
+specification to show implementation experience before it can leave the
+Candidate Recommendation stage, close kin to the second test question.</li>
 <li><strong>The meaning-not-behaviour rule lost ground.</strong> HTML5 and its
 successors specify algorithms rather than meanings, deliberately, because
 interoperability on error handling mattered more than portability of the
@@ -185,7 +293,7 @@ definition. Chapter 23 is where that choice is argued.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The chain of specifications this one tells you how to write is Chapter 20, and
+The chain of specifications this one explains how to write is Chapter 20, and
 the modularity it assumes is Chapter 19. The advice about borrowed definitions
 bears on the mixed-vocabulary documents of Chapter 17. The claim that a
 message can bind legal parties is developed in Chapter 15, and the tension
@@ -197,13 +305,13 @@ between specifying meaning and specifying behaviour is Chapter 23.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">21.1</span>
-Take a specification you rely on and find its conformance term. If there is
-none, write one.</p>
+Pick a household standard, such as a plug or a paper size, and write its
+conformance term in one sentence.</p>
 </div>
 <div class="question">
 <p><span class="question-number">21.2</span>
-Rewrite one requirement from that specification so that it states a meaning
-rather than a behaviour. What is lost?</p>
+Find an instruction in a manual or standard that tells you what to do, and
+rewrite it so that it states a meaning instead. What is lost?</p>
 </div>
 <div class="question">
 <p><span class="question-number">21.3</span>
@@ -212,7 +320,7 @@ Give a case where a conforming implementation is nonetheless unusable.</p>
 </div>
 <div class="question">
 <p><span class="question-number">21.4</span>
-A specification copies a definition from another. Apply the five-point
+A specification copies a definition from another. Apply the six-point
 checklist of section 21.3 to a case you know, and say which points were
 missed.</p>
 </div>

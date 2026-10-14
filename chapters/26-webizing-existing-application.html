@@ -49,6 +49,15 @@
 a Design Issues note by Tim Berners-Lee, 2017-03-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Webize.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+To webize a system, give each of its internal names a Web address so that
+other systems can refer to it. Doing so often exposes names that were muddled
+to begin with.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
@@ -79,7 +88,7 @@ one document or module can then reach, with equal ease, into any other.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
      aria-labelledby="fig26-1-t fig26-1-d">
   <title id="fig26-1-t">Closed world, open world</title>
   <desc id="fig26-1-d">Before webizing, a name refers only within the document
@@ -87,89 +96,149 @@ one document or module can then reach, with equal ease, into any other.
   Afterwards, prefixing the document's URI makes each name global, so
   references reach across documents and the two can be told apart.</desc>
 
-  <text x="180" y="24" class="t-caps" text-anchor="middle" fill="#a07d47">a closed world</text>
+  <text x="180" y="24" class="t-caps" text-anchor="middle" style="fill:#b08d57">a closed world</text>
 
   <rect class="box-plain" x="36" y="46" width="132" height="104" rx="4"/>
   <text x="102" y="68" class="t-sm" text-anchor="middle">document A</text>
-  <text x="102" y="96" class="t-mono" text-anchor="middle" fill="#a07d47">temp</text>
+  <text x="102" y="96" class="t-mono" text-anchor="middle" style="fill:#b08d57">temp</text>
   <text x="102" y="124" class="t-sm t-it" text-anchor="middle">means something</text>
   <text x="102" y="140" class="t-sm t-it" text-anchor="middle">only in here</text>
 
   <rect class="box-plain" x="192" y="46" width="132" height="104" rx="4"/>
   <text x="258" y="68" class="t-sm" text-anchor="middle">document B</text>
-  <text x="258" y="96" class="t-mono" text-anchor="middle" fill="#a07d47">temp</text>
+  <text x="258" y="96" class="t-mono" text-anchor="middle" style="fill:#b08d57">temp</text>
   <text x="258" y="124" class="t-sm t-it" text-anchor="middle">a different thing,</text>
   <text x="258" y="140" class="t-sm t-it" text-anchor="middle">and nobody can tell</text>
 
-  <path d="M 168 98 L 192 98" stroke="#b04a4a" stroke-width="1.4" fill="none"/>
-  <path d="M 174 92 L 186 104 M 186 92 L 174 104" stroke="#b04a4a" stroke-width="1.4"/>
-  <text x="180" y="176" class="t-sm" text-anchor="middle" fill="#b04a4a">no reference can cross</text>
+  <path d="M 168 98 L 192 98" stroke="#b08d57" stroke-width="1.4" fill="none"/>
+  <path d="M 174 92 L 186 104 M 186 92 L 174 104" stroke="#b08d57" stroke-width="1.4"/>
+  <text x="180" y="176" class="t-sm" text-anchor="middle" style="fill:#b08d57">no reference can cross</text>
 
   <path class="ln-accent" d="M 344 98 L 396 98"/>
   <path d="M 392 92 L 404 98 L 392 104 Z" fill="#1c5a7a"/>
-  <text x="374" y="86" class="t-sm" text-anchor="middle" fill="#1c5a7a">webize</text>
+  <text x="374" y="82" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">webize</text>
 
-  <text x="540" y="24" class="t-caps" text-anchor="middle" fill="#3f6f3f">an open world</text>
+  <text x="540" y="24" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">an open world</text>
 
   <rect class="box-green" x="416" y="46" width="132" height="104" rx="4"/>
   <text x="482" y="68" class="t-sm" text-anchor="middle">document A</text>
-  <text x="482" y="94" class="t-mono" text-anchor="middle" fill="#3f6f3f">a.org/x</text>
-  <text x="482" y="112" class="t-mono" text-anchor="middle" fill="#3f6f3f">#temp</text>
+  <text x="482" y="94" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">a.org/x</text>
+  <text x="482" y="112" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">#temp</text>
   <text x="482" y="138" class="t-sm t-it" text-anchor="middle">global now</text>
 
   <rect class="box-green" x="564" y="46" width="132" height="104" rx="4"/>
   <text x="630" y="68" class="t-sm" text-anchor="middle">document B</text>
-  <text x="630" y="94" class="t-mono" text-anchor="middle" fill="#3f6f3f">b.org/y</text>
-  <text x="630" y="112" class="t-mono" text-anchor="middle" fill="#3f6f3f">#temp</text>
+  <text x="630" y="94" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">b.org/y</text>
+  <text x="630" y="112" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">#temp</text>
   <text x="630" y="138" class="t-sm t-it" text-anchor="middle">plainly different</text>
 
-  <path class="ln" stroke="#5a8f5a" d="M 548 98 L 564 98"/>
+  <path class="ln" style="stroke:#5a8f5a" d="M 548 98 L 564 98"/>
   <path d="M 560 93 L 570 98 L 560 103 Z" fill="#5a8f5a"/>
-  <text x="556" y="176" class="t-sm" text-anchor="middle" fill="#3f6f3f">and references cross freely</text>
+  <text x="556" y="176" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">and references cross freely</text>
 
   <line class="ln-mut" x1="36" y1="212" x2="696" y2="212"/>
   <text x="360" y="238" class="t-mono" text-anchor="middle">&lt;global id of document&gt; # &lt;local id of whatever&gt;</text>
   <text x="360" y="262" class="t-sm t-it" text-anchor="middle">Web architecture in one line, from Chapter 12.</text>
-  <text x="360" y="294" class="t-sm" text-anchor="middle">Hypertext webized is the Web. Data webized is Linked Data.</text>
-  <text x="360" y="316" class="t-sm" text-anchor="middle">Data hiding webized is data reuse. A file system webized is read-write linked data.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 26.1</span>
-Berners-Lee offers a table of the transformation, which he calls slightly
-flippant and says each row of which probably needs an essay of explanation.
-Two rows are jokes. The rest are the programme of Volume VI.</figcaption>
+Webizing in miniature. Before, a name such as <code>temp</code> is private to
+its document, and two documents can use it for different things unnoticed. After, each name is prefixed by its document&#8217;s URI: it
+becomes global, the two are plainly distinct, and either document can refer to
+the other&#8217;s.</figcaption>
 </figure>
 
 <p>
-He notes what a good webizing looks like: the <a class="gl-ref" href="../glossary.html#uri">URI</a> for an object should be
-naturally related to how the object was named in the original language, so
-that the element with a given identifier in a file is that file&#8217;s URI plus a
-hash plus the identifier. It is great when the webized language closely
-resembles the original, and ideal when it actually compiles.
+In a clean case the <a class="gl-ref" href="../glossary.html#uri">URI</a> for an object is naturally related to how it was named
+in the original language. His example: the element with ID <code>foo</code> in
+<code>bar.xml</code> becomes <code>bar.xml#foo</code>. It is great when the
+webized language closely resembles the original, and ideal when it actually
+compiles.
 </p>
 
 <p>
-The counter-example he gives is instructive about how small the obstacles can
-be. Dan Connolly&#8217;s webizing of the Knowledge Interchange Format used URIs for
-identifiers, but since URIs are case sensitive and the format&#8217;s tokens were
-not, lower case letters had to be escaped with backslashes, which made the
-result less readable. Berners-Lee&#8217;s conclusion is that changing the underlying
-language in small ways can make the translation much less cumbersome.
+The counter-example shows how small the obstacles can be. Dan Connolly&#8217;s
+webizing of the Knowledge Interchange Format (KIF, a language for writing down
+knowledge for computers) used URIs for identifiers. KIF ignores the difference
+between capitals and lower case, but URIs do not: <code>Temp</code> and
+<code>temp</code> are different URIs. So lower-case letters had to be escaped
+with backslashes, turning a token such as <code>temp</code> into something
+like <code>\t\e\m\p</code> (an illustration, not Connolly&#8217;s exact form),
+which made the result less readable. Changing the underlying language in small
+ways, Berners-Lee concludes, can make the translation much less cumbersome.
 </p>
+
+<p>
+He then offers a table of what webizing does to whole ideas. He calls it
+slightly flippant, and says each row probably needs an essay of explanation.
+</p>
+
+<table>
+<tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>In brief</th></tr>
+<tr><td>Hypertext</td><td>WWW</td><td>Links reach any document, not just those in one system</td></tr>
+<tr><td>Data</td><td>Linked data</td><td>Records get URIs and can point at one another</td></tr>
+<tr><td>Top-down structured design</td><td>Bottom-up <a class="gl-ref" href="../glossary.html#ontology">ontology</a> design</td><td>Vocabularies grow from the parts rather than being planned from the top</td></tr>
+<tr><td>Data Hiding</td><td>Data Re-use</td><td>What a module kept private, once named globally, others can use</td></tr>
+<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump of section 26.3 is, as the link, what the Web runs on</td></tr>
+<tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, guarded by access-control lists (&ldquo;ACL&#8217;d&rdquo;)</td></tr>
+<tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a web with no centre</td></tr>
+<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>The old way out of fashion, the new way in</td></tr>
+</table>
 
 <h2>26.2 Webizing a database</h2>
 
 <p>
-The worked example is the most concrete thing in the chapter. A query names
-columns and tables that mean something only inside the database, and the
-database itself is nowhere mentioned, because it is context rather than
-content.
+Berners-Lee&#8217;s worked example is a database. An SQL query (SQL
+is the standard language for questioning a database) names columns and tables
+that mean something only inside the database, and the database itself is
+nowhere mentioned, because it is context rather than content.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
+     aria-labelledby="fig26-2-t fig26-2-d">
+  <title id="fig26-2-t">An SQL query before and after webizing</title>
+  <desc id="fig26-2-d">Before, the query names temp, zip and weather, which mean
+  something only inside one unnamed database. After, prefixes c and u stand for
+  the URIs of two databases, and one query joins a local table to a remote one.
+  The column becomes http://weather.org/current/readings.temp, a property
+  anyone can refer to.</desc>
+
+  <rect class="box-plain" x="20" y="12" width="680" height="96" rx="4"/>
+  <text x="36" y="34" class="t-caps">before: a closed world</text>
+  <text x="36" y="62" class="t-mono">SELECT temp, zip FROM weather WHERE temp &gt; 30</text>
+  <text x="36" y="90" class="t-sm t-it">temp, zip, weather mean something only inside this database; the database itself is never named</text>
+
+  <path class="ln-accent" d="M 360 108 L 360 136"/>
+  <path d="M 354 132 L 360 144 L 366 132 Z" fill="#1c5a7a"/>
+  <text x="376" y="130" class="t-sm" style="fill:#1c5a7a">webize</text>
+
+  <rect class="box-green" x="20" y="144" width="680" height="116" rx="4"/>
+  <text x="36" y="166" class="t-caps" style="fill:#5a8f5a">after</text>
+  <text x="36" y="190" class="t-mono">USING c FOR http://weather.org/current</text>
+  <text x="36" y="210" class="t-mono">USING u FOR http://places.org/usa</text>
+  <text x="36" y="230" class="t-mono">SELECT c:readings.temp, u:location.lat &#8230;</text>
+  <text x="36" y="250" class="t-mono">WHERE c:readings.zip = u:location.zip</text>
+
+  <rect class="box-warm" x="480" y="178" width="196" height="54" rx="4"/>
+  <text x="578" y="201" class="t-sm" text-anchor="middle">c: and u: are prefixes,</text>
+  <text x="578" y="219" class="t-sm" text-anchor="middle">short for long URIs</text>
+
+  <text x="20" y="294" class="t-mono">http://weather.org/current/readings.temp</text>
+  <path class="ln" d="M 336 290 L 362 290"/>
+  <path d="M 358 285 L 368 290 L 358 295 Z" fill="#2f4f4f"/>
+  <text x="378" y="294" class="t-sm">now a property anyone can refer to</text>
+</svg>
+<figcaption><span class="fig-label">Figure 26.2</span>
+Berners-Lee&#8217;s invented syntax (he says it is probably wrong). What
+matters is that one query now joins a local table to a remote one, and the
+column has become a public name.</figcaption>
+</figure>
+
 <p>
-Webized, the pieces of the database get URIs, prefixes are introduced, and a
-query can join a local table to a remote one. Berners-Lee is candid that his
-invented syntax is probably wrong and that querying scattered databases this
-way may not optimise well. The point is what becomes available:
+Prefixes are used for two reasons, he explains: writing the full URIs out each
+time would be cumbersome, and URIs contain characters that would clash with
+SQL&#8217;s own syntax. He doubts that SQL over scattered databases would
+optimise well, but that is not the point:
 </p>
 
 <blockquote>
@@ -179,45 +248,94 @@ world.
 </blockquote>
 
 <p>
-A column that was a private notion of temperature reading becomes, in
-Berners-Lee&#8217;s words, a concept, an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> property in fact, which is available
-for all the world to refer to. Because the <a class="gl-ref" href="../glossary.html#schema">schema</a> declares it as such, systems
-that know nothing of the original query language can use it.
+The temperature column becomes, in Berners-Lee&#8217;s words, a concept, an <a class="gl-ref" href="../glossary.html#rdf">RDF</a>
+property in fact, available for all the world to refer to. Because the <a class="gl-ref" href="../glossary.html#schema">schema</a>
+declares it as such, systems that know nothing of SQL can use it.
 </p>
 
-<p>
-Two notes follow that anyone exporting data should read. The first is that a
-table carries two distinct concepts: the kind of thing a row describes, and
-the set of things actually in the table. In the classic employees table there
-is a class of employee, and separately the fact that someone works for the
-company if and only if they are in the table.
-</p>
+<h3>Two notes for anyone publishing data</h3>
 
 <p>
-The second is about indirection. Just as a web page is not a file though
-closely related to one, a published database should usually be a derived
-view, so that different engineering decisions can be made about the external
-form, which must be persistent and suit the consumer, and the internal one,
-which must be efficient and suit you.
+The first is that a table carries two distinct concepts. In the classic
+employees table:
+</p>
+
+<table>
+<tr><th>The class</th><td>Employee, a kind of Person: what any row describes</td></tr>
+<tr><th>The set</th><td>Someone works for the company if and only if they are in the table</td></tr>
+</table>
+
+<p>
+The second is about indirection. For flexibility and security there is usually
+a layer between what is exposed and what is stored. A web page is not a file,
+though it has the same form, a string of bytes and a MIME type; a remote
+operation is not a local procedure, though it has the same form, a service URI,
+a method name and parameters. Likewise a published database should usually be
+a derived view that still has the form of a database. Then the external form
+can be persistent and suit the consumer, and the internal one efficient and
+convenient for the publisher.
 </p>
 
 <h2>26.3 Where it gets hard</h2>
 
 <p>
-The difficult case is nesting, and Berners-Lee reaches for Dijkstra to
-explain why. The objection to the goto statement was that it is too primitive
-and too much an invitation to make a mess of one&#8217;s program. He concedes the
-same of the hypertext link, and draws the parallel exactly: both open a
-webbed world that removes the rules giving a language sanity, analysability
-and optimisability.
+The difficult case is nesting. Where a language relies on nested scopes, the
+context at one end of a link can be completely different from the context at
+the other. Berners-Lee reaches for Dijkstra: the objection to the goto
+statement (an instruction that jumps to any other line of a program) was that
+it is too primitive and too much an invitation to make a mess of one&#8217;s
+program. That is true of the hypertext link too, in a way, he concedes. Used
+without restraint, both remove the rules that give a language sanity,
+analysability and optimisability.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
+     aria-labelledby="fig26-3-t fig26-3-d">
+  <title id="fig26-3-t">A link into a nested structure</title>
+  <desc id="fig26-3-d">Four nested boxes: a scene containing an object
+  containing a scene containing an object, the chair. A link from another
+  document goes straight into the chair, skipping the context of every level
+  around it.</desc>
+
+  <text x="20" y="150" class="t-sm">context (position,</text>
+  <text x="20" y="166" class="t-sm">style) changes at</text>
+  <text x="20" y="182" class="t-sm">every level</text>
+
+  <rect class="box-plain" x="180" y="20" width="280" height="276" rx="4"/>
+  <text x="192" y="40" class="t-sm">scene</text>
+  <rect class="box-plain" x="204" y="52" width="232" height="220" rx="4"/>
+  <text x="216" y="72" class="t-sm">object</text>
+  <rect class="box-plain" x="228" y="84" width="184" height="164" rx="4"/>
+  <text x="240" y="104" class="t-sm">scene</text>
+  <rect class="box-warm" x="252" y="116" width="136" height="108" rx="4"/>
+  <text x="320" y="160" class="t-lg" text-anchor="middle">chair</text>
+  <text x="320" y="204" class="t-sm" text-anchor="middle">object</text>
+
+  <rect class="box-plain" x="600" y="152" width="104" height="56" rx="4"/>
+  <text x="652" y="176" text-anchor="middle">another</text>
+  <text x="652" y="194" text-anchor="middle">document</text>
+
+  <path class="ln-accent" d="M 600 180 L 398 180"/>
+  <path d="M 400 174 L 388 180 L 400 186 Z" fill="#1c5a7a"/>
+  <text x="530" y="146" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">link: like goto</text>
+  <text x="530" y="162" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">into an inner loop</text>
+</svg>
+<figcaption><span class="fig-label">Figure 26.3</span>
+A link into a nested structure skips all the context around it. Sometimes that
+makes the target meaningless; sometimes, as here, the object still deserves a
+URI.</figcaption>
+</figure>
+
 <p>
-So it may make no sense to permit a link into something deeply nested,
-because the thing referred to has no meaning taken out of context. But he
-immediately warns against the easy conclusion. In a three-dimensional scene
-language an object may sit within a scene within an object and still have an
-identity worth referring to. And the governing principle does not bend:
+So, just as some languages forbid jumping into an inner loop, it may make no
+sense to allow a link into something deeply nested, because the thing referred
+to has no meaning out of context. The language must then either define how the
+inner thing is represented independently of its context, or make such links
+impossible. But he warns against jumping to that conclusion. In a
+three-dimensional scene language an object may sit within a scene within an
+object and still have an identity worth referring to. And the governing
+principle does not bend:
 </p>
 
 <blockquote>
@@ -229,23 +347,23 @@ anything means that these innermost nested objects must have URIs.
 <h2>26.4 The diagnostic use</h2>
 
 <p>
-The most useful observation in the note is that webizing is a test as much as
-a transformation. If a name means quite different things in different
+Webizing is a test as much as a transformation. If a name means quite different things in different
 contexts, the language is not suitable for webizing as it stands, and either
 two derived URIs should be minted or the language should be cleaned up so the
 concepts are distinct.
 </p>
 
 <p>
-Berners-Lee gives a human example: a documentation system where people use
-one phrase for a particular document and also for the whole set of documents
-it belongs to. The sentence trails off unfinished in the original, which
-rather proves the point.
+Berners-Lee gives a human example: a documentation control system where people
+use one name, &ldquo;the pipe size draft&rdquo;, both for a particular document
+and for the set of documents it belongs to. Those are two things, needing two
+URIs.
 </p>
 
 <p>
 He leaves an exercise, to examine <a class="gl-ref" href="../glossary.html#xml">XML</a> schemas and ask what the URI of an
-element type is, and closes with the best advice in Volume III:
+element type is (every <code>&lt;p&gt;</code> in an <a class="gl-ref" href="../glossary.html#html">HTML</a> page is an element of
+the type <em>p</em>), and closes with the best advice in Volume III:
 </p>
 
 <blockquote>
@@ -260,20 +378,11 @@ represents in a global context, if anything.
 <li><strong>Databases were webized, by <a class="gl-ref" href="../glossary.html#specification">specification</a>.</strong> R2RML, a
 language for mapping relational data to RDF, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in
 September 2012, which is section 26.2&#8217;s example turned into a standard.</li>
-<li><strong>The joke row came true.</strong> The table lists &ldquo;Goto
-Considered Harmful&rdquo; becoming &ldquo;Goto drives the economy&rdquo;. The
-hyperlink is the economy&#8217;s basic unit of navigation, and the objection
-Dijkstra raised has never been answered for it.</li>
-<li><strong>The diagnostic use spread furthest.</strong> The discovery that a
-name means different things in different contexts, found by trying to give it
-a global identifier, is now the routine first finding of any data integration
-effort, whether or not URIs are used.</li>
-<li><strong>The derived-view advice became standard practice.</strong>
-Publishing an API over a stable external model rather than exposing internal
-storage is ordinary, and the reason is the one given here.</li>
+<li><strong>A default mapping too.</strong> A Direct Mapping of Relational
+Data to RDF, which gives every table, column and row a URI automatically,
+became a W3C Recommendation on the same day, 27 September 2012.</li>
 </ul>
 </div>
-
 <div class="connections">
 <h3>Connections</h3>
 <p>
@@ -290,7 +399,7 @@ Chapters 50 and 54.
 <div class="question">
 <p><span class="question-number">26.1</span>
 Take a configuration format you use and webize it. What is the URI of a
-setting? What breaks?</p>
+setting, for example one line in a settings file? What breaks?</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.2</span>
@@ -300,8 +409,9 @@ statement.</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.3</span>
-Berners-Lee accepts Dijkstra&#8217;s objection and applies it to the link. What
-does a language lose when arbitrary inward references are permitted?</p>
+Some languages forbid jumping into the middle of a loop. Why might a format
+forbid links into the middle of a nested structure, and when would that be
+wrong?</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.4</span>

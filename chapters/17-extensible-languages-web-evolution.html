@@ -49,17 +49,24 @@
 a Design Issues note by Tim Berners-Lee, 1998.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Extensible.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+Real documents mix vocabularies: an invoice uses business terms for the
+price and a supplier&#8217;s terms for the part. Each <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> must be well
+defined, declared in the block that uses it, and marked on every name by a
+visible prefix. A reader must be able to tell what it may safely skip without
+looking anything up.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 16 ended with a demand: free extension, but with an extension
 mechanism that is itself well defined. This note, written with Dan Connolly
-in February 1998 and also issued as a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, is the <a class="gl-ref" href="../glossary.html#specification">specification</a> of that
-demand. It is the most requirements-shaped document in the collection, and
-each requirement is set in its own paragraph in the original.
-</p>
-<p>
-The authors are careful about their standing:
+in February 1998 and also issued as a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, sets that demand out as a
+list of requirements. The authors are careful about their standing:
 </p>
 <blockquote>
 Whilst technically the personal opinion of the authors, it their best attempt
@@ -71,16 +78,77 @@ W3C development.
 
 <h2>17.1 What partial understanding looks like in life</h2>
 
+<h3>The old rule</h3>
+
 <p>
-The note&#8217;s method is to argue from an ordinary document rather than from
-theory. The example is an invoice for an aeroplane part.
+The note starts from the rule that had governed Web extension since 1989,
+inherited from Internet email:
+</p>
+
+<blockquote>
+If you find a language element you don't understand, ignore it.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
+
+<p>
+The Web grew very fast under it, but until a feature was agreed nobody knew
+what it meant or what ignoring it would do. Distributed object systems had
+the opposite profile.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 186" width="720" height="186" role="img"
+     aria-labelledby="fig17-1-t fig17-1-d">
+  <title id="fig17-1-t">Two ways of handling extension, and what the note wants</title>
+  <desc id="fig17-1-d">On the left, the old Web rule, ignore anything not
+  understood, which gave fast growth but left the meaning of extensions
+  undefined. On the right, distributed objects with agreed interfaces, which
+  are well defined but rigid and slow to spread. In the centre, what the note
+  wants: defined vocabularies together with partial understanding.</desc>
+  <defs>
+    <marker id="fig17-1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a8f5a"/>
+    </marker>
+  </defs>
+
+  <rect class="box-warm" x="20" y="20" width="220" height="150" rx="4"/>
+  <text x="130" y="44" class="t-caps" text-anchor="middle" style="fill:#b08d57">old web rule</text>
+  <text x="130" y="70" text-anchor="middle">ignore anything</text>
+  <text x="130" y="88" text-anchor="middle">not understood</text>
+  <text x="36" y="124" class="t-sm">gain: very fast growth</text>
+  <text x="36" y="146" class="t-sm">cost: meaning left undefined</text>
+
+  <rect class="box-plain" x="480" y="20" width="220" height="150" rx="4"/>
+  <text x="590" y="44" class="t-caps" text-anchor="middle" style="fill:#2f4f4f">distributed objects</text>
+  <text x="590" y="70" text-anchor="middle">every interface</text>
+  <text x="590" y="88" text-anchor="middle">agreed in advance</text>
+  <text x="496" y="124" class="t-sm">gain: well defined</text>
+  <text x="496" y="146" class="t-sm">cost: rigid, slow to spread</text>
+
+  <rect class="box-green" x="272" y="45" width="176" height="100" rx="4"/>
+  <text x="360" y="69" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">wanted</text>
+  <text x="360" y="93" text-anchor="middle">defined</text>
+  <text x="360" y="111" text-anchor="middle">vocabularies, plus</text>
+  <text x="360" y="129" text-anchor="middle">partial understanding</text>
+
+  <path class="ln" style="stroke:#5a8f5a" d="M 240 95 L 270 95" marker-end="url(#fig17-1-ah)"/>
+  <path class="ln" style="stroke:#5a8f5a" d="M 480 95 L 450 95" marker-end="url(#fig17-1-ah)"/>
+</svg>
+<figcaption><span class="fig-label">Figure 17.1</span>
+The note asks for the strengths of both older approaches.</figcaption>
+</figure>
+
+<h3>The invoice</h3>
+
+<p>
+The note&#8217;s example is an invoice for an aeroplane part.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig17-1-t fig17-1-d">
-  <title id="fig17-1-t">One document, several vocabularies, partial understanding</title>
-  <desc id="fig17-1-d">An invoice uses common business vocabulary for
+     aria-labelledby="fig17-2-t fig17-2-d">
+  <title id="fig17-2-t">One document, several vocabularies, partial understanding</title>
+  <desc id="fig17-2-d">An invoice uses common business vocabulary for
   quantities, costs and signatures, and a supplier's private vocabulary for
   the part itself. The buyer and seller need understand only the first. The
   warehouse and the mechanic need only the second. No party understands the
@@ -90,38 +158,36 @@ theory. The example is an invoice for an aeroplane part.
   <text x="189" y="44" class="t-caps" text-anchor="middle">an invoice</text>
 
   <rect x="42" y="58" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="76" class="t-mono" fill="#1c5a7a">quantity: 4</text>
+  <text x="52" y="76" class="t-mono" style="fill:#1c5a7a">quantity: 4</text>
   <rect x="42" y="90" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="108" class="t-mono" fill="#1c5a7a">cost: 128.00</text>
+  <text x="52" y="108" class="t-mono" style="fill:#1c5a7a">cost: 128.00</text>
 
   <rect x="42" y="124" width="294" height="72" fill="#f8f5f0" stroke="#b08d57" stroke-width="1"/>
-  <text x="52" y="144" class="t-mono" fill="#a07d47">item:</text>
-  <text x="62" y="164" class="t-sm" fill="#a07d47">engine lower inspection hatch</text>
-  <text x="62" y="182" class="t-sm" fill="#a07d47">door mount bracket lock nut</text>
+  <text x="52" y="144" class="t-mono" style="fill:#b08d57">item:</text>
+  <text x="62" y="164" class="t-sm" style="fill:#b08d57">engine lower inspection hatch</text>
+  <text x="62" y="182" class="t-sm" style="fill:#b08d57">door mount bracket lock nut</text>
 
   <rect x="42" y="202" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="220" class="t-mono" fill="#1c5a7a">due: 2026-04-01</text>
+  <text x="52" y="220" class="t-mono" style="fill:#1c5a7a">total cost: 512.00</text>
   <rect x="42" y="234" width="294" height="26" fill="#f0f5f8" stroke="#1c5a7a" stroke-width="1"/>
-  <text x="52" y="252" class="t-mono" fill="#1c5a7a">signed: J. Fairclough</text>
+  <text x="52" y="252" class="t-mono" style="fill:#1c5a7a">signed: Tom</text>
 
   <!-- who reads what -->
   <path class="ln-accent" d="M 336 76 L 400 76 L 400 96"/>
-  <rect class="box" x="400" y="96" width="290" height="60" rx="4"/>
-  <text x="545" y="118" class="t-caps" text-anchor="middle">buyer and seller</text>
-  <text x="545" y="140" class="t-sm" text-anchor="middle">read the business vocabulary; the part is opaque</text>
+  <rect class="box" x="400" y="96" width="300" height="60" rx="4"/>
+  <text x="550" y="118" class="t-caps" text-anchor="middle">buyer and seller</text>
+  <text x="550" y="140" class="t-sm" text-anchor="middle">read the business terms; the part is opaque</text>
 
-  <path class="ln" stroke="#b08d57" d="M 336 160 L 372 160 L 372 200 L 400 200"/>
-  <rect class="box-warm" x="400" y="176" width="290" height="60" rx="4"/>
-  <text x="545" y="198" class="t-caps" text-anchor="middle" fill="#a07d47">warehouse and mechanic</text>
-  <text x="545" y="220" class="t-sm" text-anchor="middle">read the part vocabulary; the price is irrelevant</text>
+  <path class="ln" style="stroke:#b08d57" d="M 336 160 L 372 160 L 372 206 L 400 206"/>
+  <rect class="box-warm" x="400" y="176" width="300" height="60" rx="4"/>
+  <text x="550" y="198" class="t-caps" text-anchor="middle" style="fill:#b08d57">warehouse and mechanic</text>
+  <text x="550" y="220" class="t-sm" text-anchor="middle">read the part terms; the price is irrelevant</text>
 
   <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
   <text x="360" y="314" class="t-sm t-it" text-anchor="middle">Nobody understands the whole document. The invoice works anyway.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 17.1</span>
-The requirement in one picture. Berners-Lee and Connolly note that this is
-ordinary: documents mix vocabularies defined in different places, and readers
-are always deciding which of the things they do not understand matter.</figcaption>
+<figcaption><span class="fig-label">Figure 17.2</span>
+Each reader understands one colour and skips the other.</figcaption>
 </figure>
 
 <blockquote>
@@ -132,12 +198,28 @@ the future.
 <cite>Extensible languages, 1998</cite>
 </blockquote>
 
+<p>
+The note defines its own terms:
+</p>
+
+<table>
+<tr><th>Term</th><th>The note&#8217;s meaning</th><th>In the invoice</th></tr>
+<tr><td>Element</td><td>A stretch of a document identified by a local name</td><td>The <code>cost</code> entry</td></tr>
+<tr><td>Vocabulary</td><td>A set of such names whose meaning is defined somewhere else, by a resource on the Web</td><td>item, cost, quantity, signature, due date</td></tr>
+<tr><td><a class="gl-ref" href="../glossary.html#schema">Schema</a></td><td>A specific document that defines a vocabulary</td><td>The published definition of the business terms</td></tr>
+</table>
+
+<p>
+A <em><a class="gl-ref" href="../glossary.html#namespace">namespace</a></em> is a vocabulary named by a <a class="gl-ref" href="../glossary.html#uri">URI</a>; tying a prefix to that
+URI is a <em>binding</em>.
+</p>
+
 <h2>17.2 A message is an expression, not a procedure call</h2>
 
 <p>
-Before the requirements comes a correction of the prevailing analogy. It is
-tempting to treat a message as a remote procedure call: a target object, one
-of a finite set of methods, and typed parameters. The authors reject it:
+It is tempting to treat a message as a remote procedure call: a target
+object, one of a finite set of methods, and typed parameters. The authors
+reject the analogy:
 </p>
 
 <blockquote>
@@ -146,28 +228,79 @@ as the transmission of a expression in some language.
 <cite>Extensible languages, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig17-3-t fig17-3-d">
+  <title id="fig17-3-t">A procedure call against an expression</title>
+  <desc id="fig17-3-d">Left: a procedure call is a single tree from one
+  interface, a target object, one method and typed parameters. Right: an
+  expression is a tree whose nodes come from several vocabularies, a:details
+  containing a:price containing f:chf, and a maths element m:math containing
+  an HTML bold element h:b.</desc>
+
+  <text x="175" y="30" class="t-caps" text-anchor="middle">a procedure call</text>
+  <path class="ln" d="M 175 80 L 175 110"/>
+  <path class="ln" d="M 175 140 L 100 170"/>
+  <path class="ln" d="M 175 140 L 250 170"/>
+  <rect class="box" x="100" y="50" width="150" height="30" rx="3"/>
+  <text x="175" y="70" text-anchor="middle">target object</text>
+  <rect class="box" x="100" y="110" width="150" height="30" rx="3"/>
+  <text x="175" y="130" text-anchor="middle">one method</text>
+  <rect class="box" x="40" y="170" width="120" height="30" rx="3"/>
+  <text x="100" y="190" text-anchor="middle">typed parameter</text>
+  <rect class="box" x="190" y="170" width="120" height="30" rx="3"/>
+  <text x="250" y="190" text-anchor="middle">typed parameter</text>
+  <text x="175" y="232" class="t-sm" text-anchor="middle">one interface</text>
+
+  <line class="ln-mut" x1="355" y1="20" x2="355" y2="235"/>
+
+  <text x="545" y="30" class="t-caps" text-anchor="middle">an expression</text>
+  <path class="ln" d="M 545 80 L 460 110"/>
+  <path class="ln" d="M 545 80 L 630 110"/>
+  <path class="ln" d="M 460 140 L 460 170"/>
+  <path class="ln" d="M 630 140 L 630 170"/>
+  <rect class="box" x="475" y="50" width="140" height="30" rx="3"/>
+  <text x="545" y="70" class="t-mono" text-anchor="middle">a:details</text>
+  <rect class="box" x="400" y="110" width="120" height="30" rx="3"/>
+  <text x="460" y="130" class="t-mono" text-anchor="middle">a:price</text>
+  <rect class="box-warm" x="400" y="170" width="120" height="30" rx="3"/>
+  <text x="460" y="190" class="t-mono" text-anchor="middle">f:chf</text>
+  <rect class="box-green" x="570" y="110" width="120" height="30" rx="3"/>
+  <text x="630" y="130" class="t-mono" text-anchor="middle">m:math</text>
+  <rect class="box-plain" x="570" y="170" width="120" height="30" rx="3"/>
+  <text x="630" y="190" class="t-mono" text-anchor="middle">h:b</text>
+  <text x="545" y="232" class="t-sm" text-anchor="middle">four vocabularies in one tree</text>
+</svg>
+<figcaption><span class="fig-label">Figure 17.3</span>
+A call names one interface; an expression mixes several in one tree, each
+name&#8217;s prefix showing its vocabulary. The note&#8217;s example is HTML bold
+inside a maths formula.</figcaption>
+</figure>
+
 <p>
-An expression can name functions from many interfaces at once. A procedure
-call names one. That difference is the whole argument, and it produces the
-first requirement.
+Nesting whole documents is not enough: names from two vocabularies must sit
+together in one expression. That is the first requirement.
 </p>
 
-<h2>17.3 Four requirements</h2>
+<h2>17.3 The first four requirements</h2>
+
+<p>
+The note sets out seven requirements; the three on schemas come in
+section 17.5.
+</p>
 
 <table>
 <tr><th>Requirement</th><th>What breaks without it</th></tr>
-<tr><td>More than one <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td></tr>
+<tr><td>More than one vocabulary may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td></tr>
 <tr><td>A vocabulary may be introduced with a purely local change</td><td>Generated fragments cannot declare their own terms</td></tr>
-<tr><td>The syntax must tie an identifier to its <a class="gl-ref" href="../glossary.html#schema">schema</a> without inspecting any schema</td><td>One module&#8217;s change silently redefines another module&#8217;s names</td></tr>
-<tr><td>A <a class="gl-ref" href="../glossary.html#namespace">namespace</a> may be defined by present or future schema languages</td><td>The definition mechanism is frozen at the level of the day</td></tr>
+<tr><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td>One module&#8217;s change silently redefines another module&#8217;s names</td></tr>
+<tr><td>A namespace may be defined by present or future schema languages</td><td>The definition mechanism is frozen at the level of the day</td></tr>
 </table>
 
 <p>
-The third is argued most sharply, and names a language to avoid. Some
-languages let identifiers be imported so that determining which namespace a
-name belongs to requires reading the module interfaces and applying priority
-rules. Berners-Lee and Connolly point to Java as a case and to Modula-3 as
-the counter-example, and give the objection:
+The third is argued most sharply. In some languages, finding which module a
+name comes from means reading the modules and applying priority rules. The
+authors cite Java, with Modula-3 as the counter-example:
 </p>
 
 <blockquote>
@@ -182,76 +315,117 @@ This is why <a class="gl-ref" href="../glossary.html#xml">XML</a> namespace pref
 being resolved by lookup.
 </p>
 
-<h2>17.4 Why local scope, in three arguments</h2>
+<h2>17.4 Why local scope</h2>
 
 <p>
-The case for local rather than document-wide binding is made with unusual
-rigour, and the second argument is the one that has aged best.
+The note&#8217;s example, in an invented syntax, binds the prefix
+<code>f</code> to a currency schema for one block:
 </p>
+
+<pre><code>&lt;a:details&gt;
+  &lt;NS:using href="http://blah/currency" as="f"&gt;
+    &lt;a:price&gt;
+      &lt;f:chf&gt;4.00&lt;/f:chf&gt;
+    &lt;/a:price&gt;
+  &lt;/NS:using&gt;
+&lt;/a:details&gt;</code></pre>
+
+<p>
+XML Namespaces later put the binding in an attribute, holding for that
+element and everything inside it:
+</p>
+
+<pre><code>&lt;a:price xmlns:f="http://blah/currency"&gt;
+  &lt;f:chf&gt;4.00&lt;/f:chf&gt;
+&lt;/a:price&gt;</code></pre>
+
+<p>
+Why not declare every binding once, at the top? The note gives four reasons.
+</p>
+
+<h3>Generated documents</h3>
+
+<p>
+Many pages are assembled by programs that write one part without seeing the
+rest, so a fragment must declare its own terms. Moving bindings to the top
+afterwards means buffering the whole document, which rules out pipelined
+processing, where each part is passed on as soon as it is produced.
+</p>
+
+<h3>Long documents</h3>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig17-2-t fig17-2-d">
-  <title id="fig17-2-t">Why bindings must be local</title>
-  <desc id="fig17-2-d">With document-wide bindings, the working set grows with
-  document length and the product of memory and time rises as the square of
-  the document size. With local bindings, each is made and discarded, so the
-  working set stays finite however long the document.</desc>
+     aria-labelledby="fig17-4-t fig17-4-d">
+  <title id="fig17-4-t">Why bindings must be local</title>
+  <desc id="fig17-4-d">With document-wide bindings, the working set grows with
+  document length, and the area under the line, memory times time, rises as
+  the square of the document size. With local bindings, each is made and
+  discarded, so the working set stays flat and the area grows only in step
+  with length.</desc>
 
-  <text x="180" y="26" class="t-caps" text-anchor="middle" fill="#a07d47">bindings at the top of the document</text>
-  <text x="540" y="26" class="t-caps" text-anchor="middle" fill="#3f6f3f">bindings in the block that uses them</text>
+  <text x="190" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">bindings at the top of the document</text>
+  <text x="550" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">bindings in the block that uses them</text>
 
   <!-- left axes -->
+  <path d="M 60 200 L 320 62 L 320 200 Z" fill="#f8f5f0"/>
   <line class="ln" x1="60" y1="200" x2="320" y2="200"/>
   <line class="ln" x1="60" y1="200" x2="60" y2="56"/>
-  <path class="ln-accent" stroke="#b08d57" d="M 60 200 L 320 62"/>
+  <path class="ln-accent" style="stroke:#b08d57" d="M 60 200 L 320 62"/>
   <text x="190" y="222" class="t-sm" text-anchor="middle">document length</text>
   <text x="46" y="128" class="t-sm" text-anchor="middle" transform="rotate(-90 46 128)">working set</text>
-  <text x="250" y="96" class="t-sm" fill="#a07d47">grows without bound</text>
+  <text x="200" y="178" class="t-sm" style="fill:#b08d57">grows without bound</text>
 
   <!-- right axes -->
+  <rect x="420" y="172" width="260" height="28" fill="#f5f8f0"/>
   <line class="ln" x1="420" y1="200" x2="680" y2="200"/>
   <line class="ln" x1="420" y1="200" x2="420" y2="56"/>
-  <path class="ln-accent" stroke="#5a8f5a" d="M 420 172 L 680 172"/>
+  <path class="ln-accent" style="stroke:#5a8f5a" d="M 420 172 L 680 172"/>
   <text x="550" y="222" class="t-sm" text-anchor="middle">document length</text>
   <text x="406" y="128" class="t-sm" text-anchor="middle" transform="rotate(-90 406 128)">working set</text>
-  <text x="560" y="160" class="t-sm" fill="#3f6f3f">stays finite</text>
+  <text x="560" y="160" class="t-sm" style="fill:#5a8f5a">stays finite</text>
 
   <line class="ln-mut" x1="60" y1="244" x2="680" y2="244"/>
-  <text x="370" y="268" class="t-sm" text-anchor="middle">Each binding is made and discarded as processing passes it.</text>
-  <text x="370" y="288" class="t-sm t-it" text-anchor="middle">Global scope makes resource use rise as the square of the document size.</text>
+  <text x="370" y="268" class="t-sm" text-anchor="middle">Each local binding is made and discarded as processing passes it.</text>
+  <text x="370" y="288" class="t-sm t-it" text-anchor="middle">The shaded area is memory &#215; time: a triangle on the left, a thin strip on the right.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 17.2</span>
-The authors concede that any locally scoped document could in principle be
-rewritten with global scope. The objection is that doing so requires
-buffering the whole document, and pipelined systems are often a necessity on
-the Web for acceptable response times.</figcaption>
+<figcaption><span class="fig-label">Figure 17.4</span>
+Double the document and the strip doubles, but the triangle quadruples.</figcaption>
 </figure>
 
 <p>
-The first argument is that generated documents are assembled by programs that
-have no access to the rest of the document, so a fragment must be able to
-declare its own terms. The third is concatenation: joining two documents
-should be simple, and the authors suggest it would be a worthy design goal
-that the concatenation of any two XML documents be an XML document. Without
-local scope, concatenation means rewriting one document end to end to resolve
-clashing prefixes.
+Imagine a list of suppliers, each with its own catalogue schema. With local
+bindings the <em>working set</em>, the memory held while processing, stays
+finite. With global bindings it grows with every page, and total effort,
+memory times time, rises as the square of the document size.
+</p>
+
+<h3>Joining documents</h3>
+
+<p>
+The authors suggest it would be a worthy design goal that joining any two
+XML documents gives an XML document. Without local scope, one must be
+rewritten end to end to rename clashing prefixes.
+</p>
+
+<h3>Fewer mistakes</h3>
+
+<p>
+When a name is bound close to where it is used, people editing by hand make
+far fewer mistakes.
 </p>
 
 <h2>17.5 What may be extended, and what may not</h2>
 
 <p>
-The invoice returns at the end to make a distinction the requirements list
-would otherwise miss. The designer of an invoice may well want the item
-description to be extensible, so that any supplier&#8217;s part vocabulary can be
-dropped in. The same designer certainly does not want the list of people
-authorised to sign to be extensible. Two constraints on schema languages
-follow: a way to say that a content model may be extended, and a way for a
-new schema to declare that it is such an extension.
-</p>
-
-<p>
-The final requirement is the one that makes partial understanding cheap:
+The invoice returns to supply the remaining three requirements. Its designer
+wants the item description to be extensible, so that any supplier&#8217;s part
+vocabulary can be dropped in. The same designer does not want the list of
+people allowed to sign to be extensible: only Tom or Joe may sign. So a
+schema language needs a way to say that a content model (the rule for what
+may appear inside an element) may be extended, and a way for a new schema to
+declare that it is such an extension. The seventh requirement makes partial
+understanding cheap:
 </p>
 
 <blockquote>
@@ -262,9 +436,8 @@ to that document can be ignored.
 </blockquote>
 
 <p>
-An invoice must be processable as an invoice without fetching anybody&#8217;s part
-catalogue. That is the difference between a mechanism that works offline and
-one that requires the network to agree with you.
+An invoice must be processable as an invoice without fetching anybody&#8217;s
+part catalogue.
 </p>
 
 <div class="since">
@@ -274,25 +447,23 @@ one that requires the network to agree with you.
 became a W3C Recommendation in January 1999 with prefix bindings scoped to
 the element that declares them, which is requirement two, and with prefixes
 bound directly rather than resolved, which is requirement three.</li>
-<li><strong>The ignore-without-fetching requirement did not.</strong> No
-mechanism was standardised for declaring which extensions may be skipped
-without consulting their schema. Chapter 18 is the proposal that was never
-taken up.</li>
+<li><strong>Schemas gained ways to mark content as skippable.</strong> XML
+Schema 1.0 (W3C Recommendation, May 2001) lets a schema mark where foreign
+content may appear and, with <code>processContents="skip"</code> or
+<code>"lax"</code>, be passed over without its schema. SOAP 1.1 (2000) added
+the converse, a <code>mustUnderstand</code> flag, which is Chapter 18&#8217;s
+concern.</li>
 <li><strong>The concatenation goal was not met.</strong> Joining two XML
-documents still yields a document with two roots, which is not well formed.
-The problem recurs in Chapter 24.</li>
-<li><strong>The analogy was borne out elsewhere.</strong> Modern
-schema-on-read data formats treat a record as an expression over several
-independently evolving vocabularies, with unknown members carried through
-rather than rejected, which is section 17.2&#8217;s position arriving without the
-XML machinery.</li>
+documents still yields a document with two roots, which is not well formed
+(XML&#8217;s basic syntax rules require a single root element). The problem
+recurs in Chapter 24.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is the specification of the demand made at the end of
+This chapter is the <a class="gl-ref" href="../glossary.html#specification">specification</a> of the demand made at the end of
 Chapter 16. The mandatory flag it stops short of is Chapter 18. The
 processing question it leaves open, of what a mixed document means, is
 Chapter 24. The decentralised extensibility it enables is argued over in
@@ -301,7 +472,7 @@ Chapter 23, and the metadata architecture it refers to is Chapter 27.
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">17.1</span>
 Explain why nesting one document inside another does not satisfy the
@@ -311,19 +482,23 @@ same-scope requirement. Give a markup example where nesting fails.</p>
 <p><span class="question-number">17.2</span>
 Section 17.4 argues that global bindings make resource use rise as the square
 of document length. Reconstruct that argument, stating the assumption about
-how bindings are retained.</p>
+how bindings are retained. Use Figure 17.4.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.3</span>
-An invoice schema wants an extensible item description and a fixed list of
-signatories. Write, in any schema language you know, the distinction between
-the two.</p>
+In plain words, say which parts of an invoice should be open to extension and
+which should not, and why.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.4</span>
 The final requirement is that ignorable extensions be identifiable without
 fetching their schema. Name one thing this makes possible that a network
 lookup would not.</p>
+</div>
+<div class="question">
+<p><span class="question-number">17.5</span>
+What did the old rule of ignoring what you did not understand get right, and
+what did it leave undefined?</p>
 </div>
 </details>
 

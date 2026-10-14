@@ -17,10 +17,10 @@ he made.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the keystone of Volume III and the longest note in it. Berners-Lee
-wrote it in March 1998, following a keynote at the seventh World Wide Web
-conference, and the status line says it is an incomplete first draft. It is
-also the note where the Consortium&#8217;s founding mandate gets examined:
+This note is dated March 1998 and was the basis of Berners-Lee&#8217;s keynote at the seventh World Wide Web
+conference (WWW7) that April; the status line calls it an incomplete first
+draft. It examines the founding mandate of the World Wide Web Consortium
+(W3C), the body that coordinates the Web&#8217;s standards:
 </p>
 <blockquote>
 The World Wide Web Consortium was founded in 1994 on the mandate to lead the
@@ -37,8 +37,9 @@ technique, and this note is the attempt to give it one.
 <h2>16.1 The old rule, and what it bought</h2>
 
 <p>
-The Web inherited one rule from Internet mail, and Berners-Lee states it as
-he found it:
+The Web inherited one rule from Internet mail. A mail header is one of the
+labelled lines, such as <code>From:</code> or <code>Subject:</code>, at the top
+of a message, and Berners-Lee states the rule as he found it:
 </p>
 
 <blockquote>
@@ -47,12 +48,6 @@ been that if you found a mail header (or something) which you did not
 understand, you should ignore it.
 <cite>Evolvability, 1998</cite>
 </blockquote>
-
-<p>
-The companion note of Chapter 17, written with Dan Connolly in the same year,
-states it more tersely still: if you find a language element you do not
-understand, ignore it.
-</p>
 
 <p>
 He calls this free extension, records that he adopted it for HTML and used it
@@ -76,82 +71,89 @@ be relied upon.
 <h2>16.2 The HTML cycle</h2>
 
 <p>
-The note&#8217;s best passage is an anthropology of how a standard actually got
+The note&#8217;s best passage is an account of how a standard actually got
 made between 1994 and 1998. It is a cycle with a motor, and the motor is the
 tension between wanting to beat a competitor and needing to interoperate with
 one.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
+<svg class="dia" viewBox="0 0 720 442" width="720" height="442" role="img"
      aria-labelledby="fig16-1-t fig16-1-d">
   <title id="fig16-1-t">The HTML cycle, 1994 to 1998</title>
   <desc id="fig16-1-d">An open standard lets anyone invent an extension.
   Extensions ship because unknown tags are ignored. Successful ones are copied
   by competitors, leaving three or four ways to do one thing. The resulting
-  mess costs the implementers more than the differentiation earns them, so
-  they standardise, and the cycle begins again.</desc>
+  mess costs more than the differentiation earns, so everyone sits down to
+  standardise, the result is published, and the cycle begins again.</desc>
 
-  <circle cx="360" cy="210" r="128" fill="none" stroke="#e2e2e2" stroke-width="1.5"/>
+  <!-- ring arcs, clockwise: 1 to 2, 2 to 3, 3 to 4 -->
+  <path class="ln-mut" d="M 393.6 104.4 A 130 130 0 0 1 486.7 200.8"/>
+  <path d="M 488.7 209.5 L 482.3 201.8 L 491.1 199.7 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 486.7 259.2 A 130 130 0 0 1 393.6 355.6"/>
+  <path d="M 385.0 357.9 L 392.5 351.2 L 394.8 359.9 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 326.4 355.6 A 130 130 0 0 1 233.3 259.2"/>
+  <path d="M 231.3 250.5 L 237.7 258.2 L 228.9 260.3 Z" fill="#8a9a9a"/>
 
-  <!-- arrowheads around the ring -->
-  <g fill="#8a9a9a">
-    <path d="M 486 196 L 492 214 L 476 206 Z"/>
-    <path d="M 392 340 L 374 346 L 384 330 Z"/>
-    <path d="M 234 224 L 228 206 L 244 214 Z"/>
-    <path d="M 328 80 L 346 74 L 336 90 Z"/>
-  </g>
+  <!-- 4 to 5, and 5 back to 1 -->
+  <path class="ln-mut" d="M 222 230 L 260 230"/>
+  <path d="M 269 230 L 260 225.5 L 260 234.5 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 360 190 L 360 98"/>
+  <path d="M 360 89 L 355.5 98 L 364.5 98 Z" fill="#8a9a9a"/>
 
   <!-- 1 invent (top) -->
-  <rect class="box" x="262" y="14" width="196" height="56" rx="4"/>
-  <text x="360" y="36" class="t-caps" text-anchor="middle">1. anyone may invent</text>
-  <text x="360" y="54" class="t-sm" text-anchor="middle">the standard is open, so</text>
-  <text x="360" y="68" class="t-sm" text-anchor="middle">an engineer waiting for a bus can</text>
+  <rect class="box" x="262" y="8" width="196" height="80" rx="4"/>
+  <text x="360" y="30" class="t-caps" text-anchor="middle">1. anyone may invent</text>
+  <text x="360" y="48" class="t-sm" text-anchor="middle">the standard is open, so any</text>
+  <text x="360" y="63" class="t-sm" text-anchor="middle">engineer waiting for a bus</text>
+  <text x="360" y="78" class="t-sm" text-anchor="middle">can think of a new tag</text>
 
   <!-- 2 ship (right) -->
-  <rect class="box-warm" x="500" y="152" width="204" height="56" rx="4"/>
-  <text x="602" y="174" class="t-caps" text-anchor="middle" fill="#a07d47">2. it ships</text>
-  <text x="602" y="192" class="t-sm" text-anchor="middle">unknown tags are ignored,</text>
-  <text x="602" y="206" class="t-sm" text-anchor="middle">so nothing breaks anywhere</text>
+  <rect class="box-warm" x="500" y="198" width="204" height="66" rx="4"/>
+  <text x="602" y="220" class="t-caps" text-anchor="middle" style="fill:#b08d57">2. it ships</text>
+  <text x="602" y="238" class="t-sm" text-anchor="middle">unknown tags are ignored,</text>
+  <text x="602" y="253" class="t-sm" text-anchor="middle">so nothing breaks anywhere</text>
 
   <!-- 3 copy (bottom) -->
-  <rect class="box-warm" x="258" y="350" width="204" height="56" rx="4"/>
-  <text x="360" y="372" class="t-caps" text-anchor="middle" fill="#a07d47">3. rivals copy it</text>
-  <text x="360" y="390" class="t-sm" text-anchor="middle">three or four incompatible ways</text>
-  <text x="360" y="404" class="t-sm" text-anchor="middle">to do the same one thing</text>
+  <rect class="box-warm" x="258" y="368" width="204" height="66" rx="4"/>
+  <text x="360" y="390" class="t-caps" text-anchor="middle" style="fill:#b08d57">3. rivals copy it</text>
+  <text x="360" y="408" class="t-sm" text-anchor="middle">three or four incompatible ways</text>
+  <text x="360" y="423" class="t-sm" text-anchor="middle">to do the same one thing</text>
 
   <!-- 4 mess (left) -->
-  <rect class="box-plain" x="16" y="152" width="204" height="56" rx="4"/>
-  <text x="118" y="174" class="t-caps" text-anchor="middle">4. the mess costs more</text>
-  <text x="118" y="192" class="t-sm" text-anchor="middle">than the differentiation earns;</text>
-  <text x="118" y="206" class="t-sm" text-anchor="middle">new features get hard to design</text>
+  <rect class="box-plain" x="16" y="198" width="204" height="66" rx="4"/>
+  <text x="118" y="220" class="t-caps" text-anchor="middle">4. the mess costs more</text>
+  <text x="118" y="238" class="t-sm" text-anchor="middle">than the differentiation earns;</text>
+  <text x="118" y="253" class="t-sm" text-anchor="middle">new features get hard to design</text>
 
-  <!-- centre: 5 -->
-  <rect class="box-green" x="252" y="176" width="216" height="68" rx="4"/>
-  <text x="360" y="200" class="t-caps" text-anchor="middle" fill="#3f6f3f">5. everyone sits down</text>
-  <text x="360" y="220" class="t-sm" text-anchor="middle">the best of each, plus a few weeks&#8217;</text>
-  <text x="360" y="236" class="t-sm" text-anchor="middle">experience. Published. Open. Repeat.</text>
-
+  <!-- 5 hub -->
+  <rect class="box-green" x="270" y="190" width="180" height="80" rx="4"/>
+  <text x="360" y="211" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">5. everyone sits down</text>
+  <text x="360" y="229" class="t-sm" text-anchor="middle">the best of each, plus a</text>
+  <text x="360" y="244" class="t-sm" text-anchor="middle">few weeks&#8217; experience.</text>
+  <text x="360" y="259" class="t-sm" text-anchor="middle">Published. Open. Repeat.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.1</span>
-Berners-Lee does not condemn the cycle. It produced HTML. He argues only that
-by 1998 the specification had grown past the point where roping every
-extension back into one bigger document could continue.</figcaption>
+Berners-Lee does not condemn the cycle; it produced HTML. He argues only that by 1998 the
+specification had grown past the point where roping every extension back into
+one bigger document could continue.</figcaption>
 </figure>
 
 <p>
-The worked example is the table tag. A browser meeting one had no way to know
-which table extension it was, so the situation could become ambiguous, and if
-the table mattered for safe interpretation, the server would never learn
-whether it had been handled: an unaware client would ignore it blithely.
+The worked example is the table tag. (A tag is the bracketed label, such as
+<code>&lt;table&gt;</code>, that marks out part of a page.) A browser meeting one
+had no way to know which table extension it was, so the situation could become
+ambiguous, and if the table mattered for safe interpretation, the server would
+never learn whether it had been handled: an unaware client would ignore it
+blithely.
 </p>
 
 <h2>16.3 The other extreme, and why it also fails</h2>
 
 <p>
-The note then looks at how extension works in distributed object systems,
-where interfaces are declared in machine-processable form and checked at
-build time. The verdict is even-handed:
+The note then looks at distributed object systems, such as remote procedure
+call (RPC), where every interface is declared in machine-readable form and
+checked when the system is compiled. The verdict is even-handed:
 </p>
 
 <blockquote>
@@ -160,15 +162,10 @@ With well-defined interfaces, either everything works, or nothing.
 </blockquote>
 
 <p>
-The advantage is certainty. There is no wondering whether a table is being
-displayed: if the module was called, it is there. The disadvantage is that
-changing an interface forces a change on the other side, which is why such
-systems never spread, in Berners-Lee&#8217;s phrase, in a web-like or virus-like
-manner.
-</p>
-
-<p>
-The requirement is therefore stated as a demand for both:
+That is certainty, bought at a price: change an interface and the other side
+must change too, which is why such systems never spread, in Berners-Lee&#8217;s
+phrase, in a web-like or virus-like manner. The requirement is therefore a
+demand for both:
 </p>
 
 <blockquote>
@@ -177,28 +174,141 @@ language which is itself well defined.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
+     aria-labelledby="fig16-2-t fig16-2-d">
+  <title id="fig16-2-t">Three ways to extend a language</title>
+  <desc id="fig16-2-d">Three columns. Free extension, as in email and HTML
+  from 1994 to 1998, ships today but can make nothing mandatory. Well-defined
+  interfaces, as in RPC, either work entirely or not at all, and changing one
+  side forces a rebuild of the other. Well-defined extension, the goal of XML
+  namespaces, labels a document as, for example, HTML 2.0 plus Netscape&#8217;s
+  tables 2.01, and is both free and unambiguous.</desc>
+
+  <!-- column 1 -->
+  <rect class="box-warm" x="12" y="10" width="216" height="226" rx="4"/>
+  <text x="120" y="32" class="t-caps" text-anchor="middle" style="fill:#b08d57">free extension</text>
+  <line class="ln-mut" x1="12" y1="46" x2="228" y2="46"/>
+  <text x="26" y="68" class="t-sm t-it">example</text>
+  <text x="26" y="87">email headers;</text>
+  <text x="26" y="103">HTML, 1994 to 1998</text>
+  <text x="26" y="128" class="t-sm t-it">gain</text>
+  <text x="26" y="147">prototype and ship today;</text>
+  <text x="26" y="163">nothing breaks</text>
+  <text x="26" y="188" class="t-sm t-it">cost</text>
+  <text x="26" y="207">nothing can ever be</text>
+  <text x="26" y="223">made mandatory</text>
+
+  <!-- column 2 -->
+  <rect class="box" x="252" y="10" width="216" height="226" rx="4"/>
+  <text x="360" y="32" class="t-caps" text-anchor="middle">well-defined interfaces</text>
+  <line class="ln-mut" x1="252" y1="46" x2="468" y2="46"/>
+  <text x="266" y="68" class="t-sm t-it">example</text>
+  <text x="266" y="87">remote procedure call,</text>
+  <text x="266" y="103">distributed objects</text>
+  <text x="266" y="128" class="t-sm t-it">gain</text>
+  <text x="266" y="147">either everything works,</text>
+  <text x="266" y="163">or nothing</text>
+  <text x="266" y="188" class="t-sm t-it">cost</text>
+  <text x="266" y="207">change one side and the</text>
+  <text x="266" y="223">other must be rebuilt</text>
+
+  <!-- column 3 -->
+  <rect class="box-green" x="492" y="10" width="216" height="226" rx="4"/>
+  <text x="600" y="32" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">well-defined extension</text>
+  <line class="ln-mut" x1="492" y1="46" x2="708" y2="46"/>
+  <text x="506" y="68" class="t-sm t-it">example (XML namespaces)</text>
+  <text x="506" y="87">a page labelled &#8220;HTML 2.0</text>
+  <text x="506" y="103">plus Netscape&#8217;s tables 2.01&#8221;</text>
+  <text x="506" y="128" class="t-sm t-it">gain</text>
+  <text x="506" y="147">free to extend, and</text>
+  <text x="506" y="163">unambiguous to read</text>
+  <text x="506" y="188" class="t-sm t-it">cost</text>
+  <text x="506" y="207">each extension must be</text>
+  <text x="506" y="223">named and defined</text>
+</svg>
+<figcaption><span class="fig-label">Figure 16.2</span>
+The third column keeps the freedom of the first and the certainty of the
+second. The example in it is the note&#8217;s own.</figcaption>
+</figure>
+
 <p>
-That sentence is the design brief for XML namespaces, and Chapter 17 is the
+That sentence is the design brief for XML namespaces, a way of labelling each
+set of tags with the URI of the vocabulary it comes from. Chapter 17 is the
 specification of it.
 </p>
 
 <h2>16.4 Partial understanding</h2>
 
 <p>
-The mechanism that replaces free extension is partial understanding, and the
-note is careful to define it better than the word &ldquo;optional&rdquo; can.
-Marking a section optional in a document fails because optionality is
-subjective: the same invoice that an accounts system may strip down to a
-valid invoice, a warehouse may strip down to a delivery note, and different
-parts are dispensable in each case.
+The note&#8217;s test case is an invoice. Most of it follows a well-known
+invoice vocabulary, but each item also carries a part description in the
+supplier&#8217;s own private vocabulary. An invoice program should be able to
+process it without understanding the part description. The obvious fix, marking
+that part &ldquo;optional&rdquo;, fails because optionality depends on who is
+reading.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 288" width="720" height="288" role="img"
+     aria-labelledby="fig16-3-t fig16-3-d">
+  <title id="fig16-3-t">One invoice, two readers</title>
+  <desc id="fig16-3-d">An invoice has three parts: amounts and signatures,
+  part numbers, and a part description in the supplier&#8217;s private
+  vocabulary. The invoice system deletes the part description and is left with
+  a valid invoice. A delivery agent deletes the amounts and signatures and is
+  left with a delivery note. Each reader treats a different part as
+  optional.</desc>
+
+  <!-- source document -->
+  <rect class="box-plain" x="20" y="30" width="230" height="216" rx="4"/>
+  <text x="135" y="52" class="t-caps" text-anchor="middle">the invoice</text>
+  <rect class="box" x="36" y="66" width="198" height="40" rx="3"/>
+  <text x="135" y="91" text-anchor="middle">amounts &amp; signatures</text>
+  <rect class="box" x="36" y="116" width="198" height="40" rx="3"/>
+  <text x="135" y="141" text-anchor="middle">part numbers</text>
+  <rect class="box-warm" x="36" y="166" width="198" height="64" rx="3"/>
+  <text x="135" y="192" text-anchor="middle">part description</text>
+  <text x="135" y="212" class="t-sm" text-anchor="middle">aeroco.com vocabulary</text>
+
+  <!-- upper transformation -->
+  <text x="365" y="47" class="t-caps" text-anchor="middle">invoice system</text>
+  <text x="365" y="63" class="t-sm t-it" text-anchor="middle">deletes the part description</text>
+  <path class="ln" d="M 254 75 L 466 75"/>
+  <path d="M 476 75 L 466 70 L 466 80 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="480" y="16" width="220" height="118" rx="4"/>
+  <text x="590" y="38" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a valid invoice</text>
+  <rect class="box" x="496" y="50" width="188" height="34" rx="3"/>
+  <text x="590" y="72" text-anchor="middle">amounts &amp; signatures</text>
+  <rect class="box" x="496" y="92" width="188" height="34" rx="3"/>
+  <text x="590" y="114" text-anchor="middle">part numbers</text>
+
+  <!-- lower transformation -->
+  <text x="365" y="191" class="t-caps" text-anchor="middle">delivery agent</text>
+  <text x="365" y="207" class="t-sm t-it" text-anchor="middle">deletes amounts and signatures</text>
+  <path class="ln" d="M 254 219 L 466 219"/>
+  <path d="M 476 219 L 466 214 L 466 224 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="480" y="160" width="220" height="118" rx="4"/>
+  <text x="590" y="182" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a delivery note</text>
+  <rect class="box" x="496" y="194" width="188" height="34" rx="3"/>
+  <text x="590" y="216" text-anchor="middle">part numbers</text>
+  <rect class="box-warm" x="496" y="236" width="188" height="34" rx="3"/>
+  <text x="590" y="258" text-anchor="middle">part description</text>
+</svg>
+<figcaption><span class="fig-label">Figure 16.3</span>
+What counts as optional depends on the reader, so it cannot be a fixed label
+on the document. It has to be stated as a transformation. (The exact split shown is
+illustrative.)</figcaption>
+</figure>
+
 <p>
-The precise version is a transformation. A processor needs to convert a
-document containing things it does not understand into one it does
-understand, preserving validity in some sense. Berners-Lee notes that the
-transformation language could range from the crudest to the Turing complete,
-and applies the rule from Chapter 1:
+The precise version, then, is a transformation: a processor converts a
+document containing things it does not understand into one it fully
+understands, keeping it valid. The rules for such a conversion could be
+written in anything from the crudest language to one that is Turing complete,
+able to express any computation. Berners-Lee applies the rule from Chapter 1:
 </p>
 
 <blockquote>
@@ -207,10 +317,10 @@ When expressing something, use the least powerful language you can.
 </blockquote>
 
 <p>
-He gives the smallest possible case, a stream editor deletion rule, and
-observes that if the rule is allowed then the deleted element was optional.
-The section then breaks off mid-argument, marked to be continued. It never
-was.
+His smallest case is a one-line rule that says, in effect, <em>delete this
+part</em>. If the rule is allowed, the deleted part was optional. The section
+then breaks off, marked &ldquo;to be continued&rdquo;. The idea is taken up
+later in the note; see section 16.7.
 </p>
 
 <h2>16.5 The test of independent invention</h2>
@@ -221,34 +331,39 @@ introduced in one line and that gets its full form here.
 </p>
 
 <p>
-Suppose another group, unknown to you, designs the same sort of thing. Being
-as smart as you, they make the same important architectural decisions, since
-those follow from logic. But they make every arbitrary decision differently.
-Berners-Lee&#8217;s list of arbitrary decisions is the part people remember: they
-complement bit 7, they drive on the other side of the road, they use red
-buoys to starboard, and 575 lines per screen on their televisions.
+Suppose another group, unknown to the first, designs the same sort of thing.
+Being just as smart, they make the same important architectural decisions, since
+those follow from logic.
+</p>
+
+<p>
+But they make every arbitrary decision differently: every convention that
+could have gone either way but must match on both sides, like the side of the
+road. In Berners-Lee&#8217;s list, they drive on the other side, flip one bit
+of every character code, put red buoys on the other side of the channel, and
+use a different number of lines on their television screens. Then the two systems meet.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
-     aria-labelledby="fig16-2-t fig16-2-d">
-  <title id="fig16-2-t">The Web meets the Mesh</title>
-  <desc id="fig16-2-d">Two systems invented independently, agreeing on the
+     aria-labelledby="fig16-4-t fig16-4-d">
+  <title id="fig16-4-t">The Web meets the Mesh</title>
+  <desc id="fig16-4-d">Two systems invented independently, agreeing on the
   important decisions and differing on the arbitrary ones, eventually meet.
-  Three outcomes are possible: a war, a partition, or smooth integration by
-  making each system a subset of the other.</desc>
+  Three outcomes are possible: a war, a border, or smooth integration by
+  making each system include the other.</desc>
 
   <rect class="box" x="24" y="20" width="230" height="86" rx="4"/>
   <text x="139" y="44" class="t-caps" text-anchor="middle">the Web</text>
-  <text x="139" y="66" class="t-mono" text-anchor="middle" fill="#1c5a7a">URI</text>
-  <text x="139" y="84" class="t-mono" text-anchor="middle" fill="#1c5a7a">HTTP</text>
-  <text x="139" y="100" class="t-mono" text-anchor="middle" fill="#1c5a7a">HTML</text>
+  <text x="139" y="66" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">URI</text>
+  <text x="139" y="84" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">HTTP</text>
+  <text x="139" y="100" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">HTML</text>
 
   <rect class="box-warm" x="466" y="20" width="230" height="86" rx="4"/>
-  <text x="581" y="44" class="t-caps" text-anchor="middle" fill="#a07d47">the Multi Media Mesh</text>
-  <text x="581" y="66" class="t-mono" text-anchor="middle" fill="#a07d47">MRI</text>
-  <text x="581" y="84" class="t-mono" text-anchor="middle" fill="#a07d47">MMTP</text>
-  <text x="581" y="100" class="t-mono" text-anchor="middle" fill="#a07d47">MMML</text>
+  <text x="581" y="44" class="t-caps" text-anchor="middle" style="fill:#b08d57">the Multi Media Mesh</text>
+  <text x="581" y="66" class="t-mono" text-anchor="middle" style="fill:#b08d57">MRI</text>
+  <text x="581" y="84" class="t-mono" text-anchor="middle" style="fill:#b08d57">MMTP</text>
+  <text x="581" y="100" class="t-mono" text-anchor="middle" style="fill:#b08d57">MMML</text>
 
   <path class="ln" d="M 254 63 L 320 63"/>
   <path d="M 316 58 L 328 63 L 316 68 Z" fill="#2f4f4f"/>
@@ -260,28 +375,28 @@ buoys to starboard, and 575 lines per screen on their televisions.
   <text x="24" y="154" class="t-caps">three possible outcomes</text>
 
   <rect class="box-plain" x="24" y="172" width="212" height="96" rx="4"/>
-  <text x="130" y="196" class="t-lg" text-anchor="middle" fill="#b04a4a">a war</text>
+  <text x="130" y="196" class="t-lg" text-anchor="middle" style="fill:#b08d57">a war</text>
   <text x="130" y="220" class="t-sm" text-anchor="middle">projects abandoned,</text>
   <text x="130" y="236" class="t-sm" text-anchor="middle">data converted or lost</text>
   <text x="130" y="258" class="t-sm t-it" text-anchor="middle">Europe&#8217;s ISO protocols, late 1980s</text>
 
   <rect class="box-plain" x="254" y="172" width="212" height="96" rx="4"/>
-  <text x="360" y="196" class="t-lg" text-anchor="middle" fill="#a07d47">a border</text>
+  <text x="360" y="196" class="t-lg" text-anchor="middle" style="fill:#8a9a9a">a border</text>
   <text x="360" y="220" class="t-sm" text-anchor="middle">the world divided into</text>
   <text x="360" y="236" class="t-sm" text-anchor="middle">two separate communities</text>
-  <text x="360" y="258" class="t-sm t-it" text-anchor="middle">document formats, repeatedly</text>
+  <text x="360" y="258" class="t-sm t-it" text-anchor="middle">MARC library records: no single format</text>
 
   <rect class="box-green" x="484" y="172" width="212" height="96" rx="4"/>
-  <text x="590" y="196" class="t-lg" text-anchor="middle" fill="#3f6f3f">integration</text>
+  <text x="590" y="196" class="t-lg" text-anchor="middle" style="fill:#5a8f5a">integration</text>
   <text x="590" y="220" class="t-sm" text-anchor="middle">add <tspan class="t-mono">mmtp://</tspan> to URIs,</text>
   <text x="590" y="236" class="t-sm" text-anchor="middle">add <tspan class="t-mono">http:\\</tspan> to MRIs</text>
   <text x="590" y="258" class="t-sm t-it" text-anchor="middle">incremental effort only</text>
 
   <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
   <text x="360" y="314" class="t-sm" text-anchor="middle">The design passes only because nothing in it has to be unique.</text>
-  <text x="360" y="334" class="t-sm t-it" text-anchor="middle">One master lock server in Waldorf, and the Web would have failed the test.</text>
+  <text x="360" y="334" class="t-sm t-it" text-anchor="middle">One master lock server in Waltdorf, and the Mesh would have needed one in Melbourne.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 16.2</span>
+<figcaption><span class="fig-label">Figure 16.4</span>
 Berners-Lee says he tried to make the Web pass this test, and does not claim
 it passes cleanly: no system completely passes, and it is always some trouble
 to convert.</figcaption>
@@ -290,14 +405,13 @@ to convert.</figcaption>
 <p>
 The reason the Web survives the meeting is the third axiom of Chapter 2:
 URI space is universal but need not be unique, so the rival space can be
-folded in. The counterfactual is the sharpest sentence in the note. Had the
-Web required all servers to synchronise through one master lock server, the
-Mesh would have required one too, and the encounter would have failed.
+folded in. Had the Web required all servers to synchronise through one master
+lock server, the Mesh would have required one too, and the encounter would
+have failed.
 </p>
 
 <p>
-The cost of failing is not hypothetical, and the examples are the reason the
-section persuades:
+The cost of failing is not hypothetical:
 </p>
 
 <blockquote>
@@ -314,10 +428,12 @@ happening all the time.
 <h2>16.6 Two assumptions</h2>
 
 <p>
-The note closes by deriving its requirements from two premises stated as
-plainly as possible. The first is that we will be smarter in the future,
-which yields the requirement that version 4 software read a version 5 file.
-The second is more unusual, and he flags the difficulty:
+Midway, the note derives its requirements from two premises stated as plainly
+as possible. The first is that we will be smarter in the future. Today that
+produces a flag day: a version 4 word processor refuses a file saved by version
+5, and everyone must upgrade at once. The requirement is that version 4 read
+the version 5 file, at least in part. The second premise is more unusual, and
+he flags the difficulty:
 </p>
 
 <blockquote>
@@ -327,8 +443,90 @@ too, and will independently invent the same things.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
+<table>
+<tr><th>Assumption</th><th>What the technology must handle</th></tr>
+<tr><td>We will be smarter in the future</td><td>Moving from version 1 to version 2</td></tr>
+<tr><td>We are not smarter than everyone else</td><td>Moving between parallel versions A and B, invented independently</td></tr>
+</table>
+
 <p>
 Humility, here, is a technical requirement.
+</p>
+
+<h2>16.7 Six kinds of schema</h2>
+
+<p>
+The second half of the note turns to schemas. A schema is the document that
+describes a language; an XML document points to its schema by URI. The note
+ranks six kinds by how much a machine can do with them.
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 334" width="720" height="334" role="img"
+     aria-labelledby="fig16-5-t fig16-5-d">
+  <title id="fig16-5-t">The schema ladder</title>
+  <desc id="fig16-5-d">Six kinds of schema, from bottom to top. One: a URI
+  only, which allows a yes or no compatibility check. Two: a human-readable
+  document, which can settle disputes and carry legal force. Three: a
+  machine-readable structure, giving one parser for everything and validation.
+  Four: structure plus optional flags, which lets old software filter a new
+  version. Five: a Turing-complete converter, powerful but opaque, which must
+  be trusted. Six: exposed logic, stating equivalences between languages, as
+  in RDF. An arrow beside the ladder points upward: more machine
+  understanding.</desc>
+
+  <rect class="box-plain" x="380" y="20" width="250" height="44" rx="4"/>
+  <text x="392" y="39">6. exposed logic</text>
+  <text x="392" y="55" class="t-sm">equivalences between languages (RDF)</text>
+
+  <rect class="box-plain" x="308" y="72" width="250" height="44" rx="4"/>
+  <text x="320" y="91">5. Turing-complete converter</text>
+  <text x="320" y="107" class="t-sm">powerful, but opaque: must be trusted</text>
+
+  <rect class="box-green" x="236" y="124" width="250" height="44" rx="4"/>
+  <text x="248" y="143">4. structure + optional flags</text>
+  <text x="248" y="159" class="t-sm">old software filters new versions</text>
+
+  <rect class="box-plain" x="164" y="176" width="250" height="44" rx="4"/>
+  <text x="176" y="195">3. structure</text>
+  <text x="176" y="211" class="t-sm">one parser for all; validation</text>
+
+  <rect class="box-plain" x="92" y="228" width="250" height="44" rx="4"/>
+  <text x="104" y="247">2. human-readable</text>
+  <text x="104" y="263" class="t-sm">settles disputes; can carry legal force</text>
+
+  <rect class="box-plain" x="20" y="280" width="250" height="44" rx="4"/>
+  <text x="32" y="299">1. URI only</text>
+  <text x="32" y="315" class="t-sm">a yes/no compatibility check</text>
+
+  <path class="ln-accent" d="M 664 318 L 664 34"/>
+  <path d="M 664 22 L 658.5 34 L 669.5 34 Z" fill="#1c5a7a"/>
+  <text x="0" y="0" class="t-sm t-it" text-anchor="middle" style="fill:#1c5a7a"
+        transform="translate(690 172) rotate(-90)">more machine understanding</text>
+</svg>
+<figcaption><span class="fig-label">Figure 16.5</span>
+Step 4 is the cheap answer to the problem section 16.4 left open: mark, in the
+schema of a new version, which elements may be ignored.</figcaption>
+</figure>
+
+<p>
+Even the bottom step lets software check whether it knows the language, which
+is all most RPC systems do. The fourth is the one section 16.4 was waiting for:
+</p>
+
+<blockquote>
+All you need to do is to mark in the schema of a new version of the language
+which elements of the langauge can be ignored if you don't understand them.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+Old software can then filter a new document down to one it understands, which
+solves what Berners-Lee calls the elusive version 2 to version 1 conversion. A
+Turing-complete converter can do more, but nobody can see its rules, so it must
+be trusted. What excites him is the top step: stating, in machine-processable
+form, which terms in one language are equivalent to terms in another. That is
+the programme of RDF and the Semantic Web.
 </p>
 
 <div class="since">
@@ -340,17 +538,14 @@ Recommendation came in October 2014, does not use them, which is the fork
 described in Chapter 23.</li>
 <li><strong>Partial understanding was solved by other means.</strong>
 Versioned wire formats such as Protocol Buffers, first released publicly in
-July 2008, make forward compatibility a property of the encoding: unknown
-fields are preserved rather than merely ignored, which is closer to what
-section 16.4 asked for than anything the Web adopted.</li>
+July 2008, make forward compatibility a property of the encoding: unknown fields
+are kept rather than merely ignored (proto3 at first discarded them, until
+version 3.5 in 2017). That is closer to what section 16.4 asked for than
+anything the Web adopted.</li>
 <li><strong>The cycle did not stop.</strong> Vendor-prefixed CSS properties
-through the late 2000s reproduced it exactly, ending the same way, in
-standardisation and the deprecation of the prefixes.</li>
-<li><strong>The test was passed again, more than once.</strong> Every
-successful bridging of two independently designed systems since, from
-character encodings converging on Unicode to the coexistence of competing
-package registries behind one client, is an instance of the third outcome in
-Figure 16.2.</li>
+through the late 2000s reproduced it exactly. Browser makers then moved away
+from prefixes towards hiding experimental features behind settings flags;
+Chrome&#8217;s Blink engine adopted that policy at its launch in 2013.</li>
 </ul>
 </div>
 
@@ -380,14 +575,19 @@ parts are dispensable.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.3</span>
-Apply the test of independent invention to a system you work on. Name one
-arbitrary decision in it and say what happens when it meets a twin that chose
-the opposite.</p>
+Apply the test of independent invention to phone chargers or plug sockets.
+Name one arbitrary decision and say what happened when systems that chose
+differently met.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.4</span>
 The Web passes the test because URI space need not be unique. Name a part of
-the modern Web that would fail it, and say whether the failure is structural
-or contingent.</p>
+the modern Web that would fail it. Could it be fixed without redesigning the
+Web?</p>
+</div>
+<div class="question">
+<p><span class="question-number">16.5</span>
+In Figure 16.3, which part of the invoice is optional? Explain why the answer
+depends on who is asking, and what step 4 of Figure 16.5 would add.</p>
 </div>
 </div>

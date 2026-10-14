@@ -49,13 +49,22 @@
 a Design Issues note by Tim Berners-Lee, 2000-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/Mandatory.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+When a program meets a label it does not know, it can stop, skip it, or skip
+only the label and keep the text. Which is right depends on the label, and
+nothing in the document says which. Berners-Lee asks that formats let the
+writer say so, in particular that a reader must understand a part or stop.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is the shortest note in the collection, four hundred and forty-eight
-words, and it names the gap that Chapters 16 and 17 both circle without
-closing. Free extension lets anything be added. Nothing lets a publisher say
-that an addition must be understood.
+This is the shortest note in the collection, and it names the gap that
+Chapters 16 and 17 both circle without closing. Free extension lets anything
+be added. Nothing lets a publisher say that an addition must be understood.
 </p>
 <p>
 Berners-Lee states the cost in one sentence, and the sentence is worth
@@ -70,9 +79,57 @@ the web.
 <p>
 Not reduced reliability. A complete inability. If every extension may be
 ignored, then no extension may be relied upon, and the set of things a
-publisher can count on is frozen at whatever was in the base <a class="gl-ref" href="../glossary.html#specification">specification</a>.
+publisher can count on is frozen at whatever was in the base <a class="gl-ref" href="../glossary.html#specification">specification</a>
+(the first, agreed version of the format).
 </p>
 </div>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
+     aria-labelledby="fig18-1-t fig18-1-d">
+  <title id="fig18-1-t">Why &ldquo;ignore&rdquo; means nothing can be relied on</title>
+  <desc id="fig18-1-d">A publisher sends a negated statement, payment due
+  wrapped in a not element. Without a mandatory flag, an old reader that does
+  not know the not element drops the wrapper and shows payment due, the
+  opposite of what was meant. With a mandatory flag, the same old reader stops
+  and reports that it cannot read the document.</desc>
+
+  <text x="16" y="22" class="t-caps">no mandatory flag</text>
+  <rect class="box" x="16" y="34" width="250" height="76" rx="4"/>
+  <text x="141" y="62" text-anchor="middle">publisher sends</text>
+  <text x="141" y="86" class="t-mono" text-anchor="middle">&lt;not&gt;payment due&lt;/not&gt;</text>
+  <line class="ln" x1="266" y1="72" x2="289" y2="72"/>
+  <path d="M 296 72 L 288 68 L 288 76 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="296" y="34" width="170" height="76" rx="4"/>
+  <text x="381" y="64" text-anchor="middle">old reader</text>
+  <text x="381" y="84" class="t-sm" text-anchor="middle">does not know &lt;not&gt;</text>
+  <line class="ln" x1="466" y1="72" x2="489" y2="72"/>
+  <path d="M 496 72 L 488 68 L 488 76 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="496" y="34" width="208" height="76" rx="4"/>
+  <text x="600" y="64" text-anchor="middle">shows: payment due</text>
+  <text x="600" y="84" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">opposite of what was meant</text>
+
+  <text x="16" y="146" class="t-caps">with a mandatory flag</text>
+  <rect class="box" x="16" y="158" width="250" height="76" rx="4"/>
+  <text x="141" y="180" text-anchor="middle">publisher sends</text>
+  <text x="141" y="202" class="t-mono" text-anchor="middle">&lt;not must-understand="yes"&gt;</text>
+  <text x="141" y="220" class="t-mono" text-anchor="middle">payment due&lt;/not&gt;</text>
+  <line class="ln" x1="266" y1="196" x2="289" y2="196"/>
+  <path d="M 296 196 L 288 192 L 288 200 Z" fill="#2f4f4f"/>
+  <rect class="box-warm" x="296" y="158" width="170" height="76" rx="4"/>
+  <text x="381" y="188" text-anchor="middle">old reader</text>
+  <text x="381" y="208" class="t-sm" text-anchor="middle">does not know &lt;not&gt;</text>
+  <line class="ln" x1="466" y1="196" x2="489" y2="196"/>
+  <path d="M 496 196 L 488 192 L 488 200 Z" fill="#2f4f4f"/>
+  <rect class="box-green" x="496" y="158" width="208" height="76" rx="4"/>
+  <text x="600" y="188" text-anchor="middle">stops:</text>
+  <text x="600" y="208" class="t-it" text-anchor="middle">&lsquo;cannot read this document&rsquo;</text>
+</svg>
+<figcaption><span class="fig-label">Figure 18.1</span>
+Without the flag the old reader produces a wrong answer and has no way to know
+it. With the flag it fails openly, so the publisher can rely on any reader
+that does not fail.</figcaption>
+</figure>
 
 <h2>18.1 The requirement</h2>
 
@@ -80,14 +137,19 @@ publisher can count on is frozen at whatever was in the base <a class="gl-ref" h
 The demand is small and is stated twice for emphasis. A language must provide
 not only for its own extension but for a way to say whether a given extension
 is optional. Berners-Lee calls this a fundamental key to smooth evolution
-from one version of a language to the next, and notes that it can be done
-term by term or in bulk for a whole language, stated in the document or in
-the <a class="gl-ref" href="../glossary.html#schema">schema</a>.
+from one version of a language to the next. He allows several ways to do it:
 </p>
 
+<table>
+<tr><th></th><th>Flag written in the document</th><th>Flag written in the <a class="gl-ref" href="../glossary.html#schema">schema</a></th></tr>
+<tr><th>One element</th><td>this <code>&lt;not&gt;</code> must be understood</td><td>the format&#8217;s description marks <code>&lt;comment&gt;</code> ignorable</td></tr>
+<tr><th>A whole <a class="gl-ref" href="../glossary.html#namespace">namespace</a></th><td>this document says every term from the new <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> is mandatory</td><td>the new vocabulary&#8217;s description says all its terms may be skipped</td></tr>
+</table>
+
 <p>
-The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving, and the complaint is
-that they solve half the problem:
+A schema here is the published description of a format&#8217;s labels and how
+they fit together. The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving,
+and the complaint is that they solve half the problem:
 </p>
 
 <blockquote>
@@ -97,66 +159,65 @@ extensions.
 <cite>Mandatory extensions, 1998</cite>
 </blockquote>
 
-<h2>18.2 Three things to do with something you do not understand</h2>
+<h2>18.2 Three things to do with something not understood</h2>
 
 <p>
-The heart of the note is a taxonomy so small it can be held in the head, and
-it is more useful than its length suggests. Meeting an element it does not
-recognise, a processor has exactly three sound options, and which one is
-correct depends entirely on what the element means.
+The heart of the note is a taxonomy small enough to hold in the head.
+Meeting an element it does not recognise, a processor has exactly three sound
+options, and which one is correct depends entirely on what the element means.
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig18-1-t fig18-1-d">
-  <title id="fig18-1-t">Three things to do with an element you do not understand</title>
-  <desc id="fig18-1-d">Stop, and conclude the document is not understood, as
+     aria-labelledby="fig18-2-t fig18-2-d">
+  <title id="fig18-2-t">Three things to do with an element not understood</title>
+  <desc id="fig18-2-d">Stop, and conclude the document is not understood, as
   with a logical NOT whose omission would reverse the meaning. Ignore the
   element and everything inside it, as with a comment. Or replace the element
-  with its contents, as with bold. The schema must say which, because a
-  processor cannot tell by looking.</desc>
+  with its contents, as with bold. The markup alone does not say which;
+  HTML's version of the old rule always unwraps.</desc>
 
   <text x="360" y="24" class="t-sm" text-anchor="middle">A processor meets <tspan class="t-mono">&lt;thing&gt;</tspan> and does not know what it is.</text>
   <path class="ln-mut" d="M 360 34 L 360 52 M 130 52 L 590 52 M 130 52 L 130 70 M 360 52 L 360 70 M 590 52 L 590 70"/>
 
   <!-- STOP -->
-  <rect class="box-plain" x="24" y="70" width="212" height="170" rx="4" stroke="#b04a4a"/>
-  <text x="130" y="96" class="t-caps" text-anchor="middle" fill="#b04a4a">stop</text>
-  <text x="130" y="118" class="t-sm" text-anchor="middle">conclude you do not understand</text>
+  <rect class="box-plain" x="24" y="70" width="212" height="170" rx="4" style="stroke:#b08d57"/>
+  <text x="130" y="96" class="t-caps" text-anchor="middle" style="fill:#b08d57">stop</text>
+  <text x="130" y="118" class="t-sm" text-anchor="middle">conclude it does not understand</text>
   <text x="130" y="134" class="t-sm" text-anchor="middle">the document, or the clause</text>
-  <rect x="44" y="150" width="172" height="58" fill="#fdf5f5" stroke="#e0c4c4"/>
-  <text x="56" y="170" class="t-mono" fill="#b04a4a">&lt;not&gt;</text>
+  <rect x="44" y="150" width="172" height="58" fill="#f8f5f0" stroke="#b08d57"/>
+  <text x="56" y="170" class="t-mono" style="fill:#b08d57">&lt;not&gt;</text>
   <text x="66" y="188" class="t-mono">payment due</text>
-  <text x="56" y="202" class="t-mono" fill="#b04a4a">&lt;/not&gt;</text>
+  <text x="56" y="202" class="t-mono" style="fill:#b08d57">&lt;/not&gt;</text>
   <text x="130" y="228" class="t-sm t-it" text-anchor="middle">ignoring it reverses the meaning</text>
 
   <!-- IGNORE -->
-  <rect class="box-plain" x="254" y="70" width="212" height="170" rx="4" stroke="#8a9a9a"/>
-  <text x="360" y="96" class="t-caps" text-anchor="middle">ignore</text>
+  <rect class="box-plain" x="254" y="70" width="212" height="170" rx="4"/>
+  <text x="360" y="96" class="t-caps" text-anchor="middle" style="fill:#8a9a9a">ignore</text>
   <text x="360" y="118" class="t-sm" text-anchor="middle">drop the element and</text>
   <text x="360" y="134" class="t-sm" text-anchor="middle">everything inside it</text>
-  <rect x="274" y="150" width="172" height="58" fill="#f6f6f6" stroke="#dcdcdc"/>
-  <text x="286" y="170" class="t-mono" fill="#8a9a9a">&lt;comment&gt;</text>
-  <text x="296" y="188" class="t-mono" fill="#b8b8b8">check this later</text>
-  <text x="286" y="202" class="t-mono" fill="#8a9a9a">&lt;/comment&gt;</text>
-  <text x="360" y="228" class="t-sm t-it" text-anchor="middle">the contents were never for you</text>
+  <rect x="274" y="150" width="172" height="58" fill="#fdfdfc" stroke="#8a9a9a"/>
+  <text x="286" y="170" class="t-mono" style="fill:#8a9a9a">&lt;comment&gt;</text>
+  <text x="296" y="188" class="t-mono" style="fill:#8a9a9a">check this later</text>
+  <text x="286" y="202" class="t-mono" style="fill:#8a9a9a">&lt;/comment&gt;</text>
+  <text x="360" y="228" class="t-sm t-it" text-anchor="middle">the contents were for someone else</text>
 
   <!-- UNWRAP -->
-  <rect class="box-plain" x="484" y="70" width="212" height="170" rx="4" stroke="#5a8f5a"/>
-  <text x="590" y="96" class="t-caps" text-anchor="middle" fill="#3f6f3f">unwrap</text>
+  <rect class="box-plain" x="484" y="70" width="212" height="170" rx="4" style="stroke:#5a8f5a"/>
+  <text x="590" y="96" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">unwrap</text>
   <text x="590" y="118" class="t-sm" text-anchor="middle">replace the element</text>
   <text x="590" y="134" class="t-sm" text-anchor="middle">with its contents</text>
-  <rect x="504" y="150" width="172" height="58" fill="#f5f8f0" stroke="#cfe0cf"/>
-  <text x="516" y="170" class="t-mono" fill="#5a8f5a">&lt;bold&gt;</text>
+  <rect x="504" y="150" width="172" height="58" fill="#f5f8f0" stroke="#5a8f5a"/>
+  <text x="516" y="170" class="t-mono" style="fill:#5a8f5a">&lt;bold&gt;</text>
   <text x="526" y="188" class="t-mono">payment due</text>
-  <text x="516" y="202" class="t-mono" fill="#5a8f5a">&lt;/bold&gt;</text>
+  <text x="516" y="202" class="t-mono" style="fill:#5a8f5a">&lt;/bold&gt;</text>
   <text x="590" y="228" class="t-sm t-it" text-anchor="middle">the wrapper was decoration</text>
 
   <line class="ln-mut" x1="24" y1="262" x2="696" y2="262"/>
-  <text x="360" y="286" class="t-sm" text-anchor="middle">All three are correct behaviour. Which one is correct here is not visible in the markup.</text>
-  <text x="360" y="308" class="t-sm t-it" text-anchor="middle">The old rule of Chapter 16 always picks the third, and is therefore wrong twice out of three.</text>
+  <text x="360" y="286" class="t-sm" text-anchor="middle">Each is correct for some element. Which one applies here is not visible in the markup.</text>
+  <text x="360" y="308" class="t-sm t-it" text-anchor="middle">HTML&#8217;s version of the old rule (Chapter 16) always unwraps.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 18.1</span>
+<figcaption><span class="fig-label">Figure 18.2</span>
 Berners-Lee asks that a schema be able to say which of the three applies, for
 one element or for a whole namespace at once, and adds that languages not
 using XML should attend to the same need in their own way.</figcaption>
@@ -170,17 +231,19 @@ to the document.
 </p>
 
 <p>
-The observation that matters is that the markup gives no clue which is which.
-The rule inherited from Internet mail always chooses the third. That is
-correct for presentational markup, harmless for comments, and dangerous for
-anything that changes meaning.
+The markup gives no clue which is which. Internet mail&#8217;s rule was to
+ignore anything not understood. In <a class="gl-ref" href="../glossary.html#html">HTML</a> that came to mean dropping the
+unknown tag and showing its text, which is the third option. That is right
+for emphasis, wrong for a comment, whose private text is shown to the reader,
+and dangerous for a negation, whose meaning is reversed.
 </p>
 
 <h2>18.3 Sublanguages</h2>
 
 <p>
-The second proposal is smaller and has had a longer afterlife. Berners-Lee
-wants a language to be able to declare itself a sublanguage of another:
+His other proposal, listed first in the note, is smaller and has had a longer
+afterlife. Berners-Lee wants a language to be able to declare itself a
+sublanguage of another:
 </p>
 
 <blockquote>
@@ -191,36 +254,83 @@ langauge B.
 <cite>Mandatory extensions, 1998</cite>
 </blockquote>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
+     aria-labelledby="fig18-3-t fig18-3-d">
+  <title id="fig18-3-t">A sublanguage read by a receiver that knows only the parent language</title>
+  <desc id="fig18-3-d">A document in language A carries the statement that A
+  is a sublanguage of B. Relabelling every term from a: to b: turns it into a
+  document in language B, which a receiver that knows only B processes
+  normally. The receiver does not need to fetch a schema from the Web.</desc>
+
+  <rect class="box" x="16" y="14" width="200" height="146" rx="4"/>
+  <text x="116" y="36" text-anchor="middle">document in language A</text>
+  <rect class="box-warm" x="28" y="48" width="176" height="42" rx="3"/>
+  <text x="116" y="65" class="t-sm" text-anchor="middle">A is a sublanguage of B</text>
+  <text x="116" y="81" class="t-sm" text-anchor="middle">(stated in the document)</text>
+  <text x="116" y="116" class="t-mono" text-anchor="middle">a:para</text>
+  <text x="116" y="138" class="t-mono" text-anchor="middle">a:bold</text>
+
+  <text x="258" y="94" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">relabel</text>
+  <text x="258" y="108" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">every term</text>
+  <line class="ln-accent" x1="216" y1="120" x2="292" y2="120"/>
+  <path d="M 300 120 L 291 115 L 291 125 Z" fill="#1c5a7a"/>
+
+  <rect class="box" x="300" y="60" width="150" height="100" rx="4"/>
+  <text x="375" y="84" text-anchor="middle">read as language B</text>
+  <text x="375" y="116" class="t-mono" text-anchor="middle">b:para</text>
+  <text x="375" y="138" class="t-mono" text-anchor="middle">b:bold</text>
+
+  <line class="ln" x1="450" y1="120" x2="493" y2="120"/>
+  <path d="M 500 120 L 492 116 L 492 124 Z" fill="#2f4f4f"/>
+
+  <rect class="box-green" x="500" y="60" width="204" height="100" rx="4"/>
+  <text x="602" y="104" text-anchor="middle">receiver that knows only B</text>
+  <text x="602" y="124" class="t-sm" text-anchor="middle">processes it normally</text>
+
+  <line class="ln-dash" x1="602" y1="160" x2="602" y2="200"/>
+  <path d="M 602 207 L 598 199 L 606 199 Z" fill="#8a9a9a"/>
+  <path class="ln" d="M 594 176 L 610 192 M 610 176 L 594 192" style="stroke:#b08d57"/>
+  <text x="584" y="188" class="t-sm t-it" text-anchor="end">no lookup needed</text>
+  <rect class="box-plain" x="520" y="208" width="164" height="36" rx="4"/>
+  <text x="602" y="231" text-anchor="middle" style="fill:#8a9a9a">schema on the Web</text>
+</svg>
+<figcaption><span class="fig-label">Figure 18.3</span>
+Because the claim travels in the document, a receiver can act on it without
+fetching anything.</figcaption>
+</figure>
+
 <p>
-A receiver that knows only B can then process a document in A by treating the
-<a class="gl-ref" href="../glossary.html#namespace">namespace</a> as though it were B. The practical constraint he attaches is the
-important part: the assertion must be simple enough to put in the document,
-so that the receiver need not <a class="gl-ref" href="../glossary.html#dereference">dereference</a> a schema to act on it.
+A receiver that knows only B can then treat the A namespace as though it were
+B. The constraint he attaches is the important part: the assertion must be
+simple enough to put in the document, so that the receiver need not
+<a class="gl-ref" href="../glossary.html#dereference">dereference</a> (fetch from the Web) a schema to act on it.
 </p>
 
 <p>
-This is the same instinct as the last requirement of Chapter 17. Whatever a
-processor needs in order to cope with the unfamiliar should travel with the
-document, not wait at the end of a network request.
+This is the same instinct as the final requirement of Chapter 17 (section
+17.5). Whatever a processor needs in order to cope with the unfamiliar should
+travel with the document, not wait at the end of a network request.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The proposal was not adopted for XML.</strong> No standard way to
-mark an extension mandatory or ignorable was added to XML or to namespaces.
-The gap this note names is still open.</li>
-<li><strong>It was adopted almost everywhere else.</strong> <a class="gl-ref" href="../glossary.html#http">HTTP</a> had the
-<code>Mandatory</code> extension mechanism under discussion when this was
-written, and the pattern survives in modern protocols: critical extensions in
-X.509 certificates, which fail validation when unrecognised, and <a class="gl-ref" href="../glossary.html#tls">TLS</a>
-extensions with defined must-understand behaviour, both implement exactly
-this distinction.</li>
-<li><strong>The three-way taxonomy became ordinary practice.</strong>
-Forward-compatible binary formats distinguish fields that may be skipped from
-those that must be understood, and carry the distinction in the encoding
-rather than in a schema, which is what section 18.2 asks for.</li>
-<li><strong><a class="gl-ref" href="../glossary.html#html">HTML</a> chose the third option permanently.</strong> The HTML5
+mark an extension mandatory or ignorable was added to XML or to namespaces;
+XML itself never gained one. SOAP 1.1 (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, 2000), a messaging format
+built on XML, added exactly this: a <code>mustUnderstand</code> attribute on
+header entries, which a receiver must either honour or fail on.</li>
+<li><strong>It was adopted elsewhere.</strong> The <a class="gl-ref" href="../glossary.html#http">HTTP</a> Extension Framework
+(<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2774, 2000) let a request declare an extension mandatory with a
+<code>Man:</code> header. Internet certificates, as profiled in RFC 2459
+(1999), carry a &ldquo;critical&rdquo; flag on X.509 extensions: a certificate
+with an unrecognised critical extension must be rejected.</li>
+<li><strong>The distinction moved into the data itself.</strong> PNG 1.0
+(1996) marks each chunk of an image file critical or ancillary by the case of
+the first letter of its name, so a decoder knows whether it may skip an
+unknown chunk without consulting any schema, the instinct of section 18.3.</li>
+<li><strong>HTML chose the third option permanently.</strong> The HTML5
 parsing rules, specified from 2008 onward, define unwrapping behaviour for
 unknown elements exactly, which removes the ambiguity without supplying the
 mandatory flag.</li>
@@ -252,13 +362,14 @@ extension, what can the publisher do instead, and what does it cost?</p>
 </div>
 <div class="question">
 <p><span class="question-number">18.3</span>
-The sublanguage assertion must be simple enough to travel in the document.
-Write such an assertion, and say what a receiver can safely do with it.</p>
+A new format, &ldquo;recipe-plus&rdquo;, adds labels to an existing recipe
+format. Write one sentence it could carry saying old readers may treat it as
+the old format. When would that sentence be a lie?</p>
 </div>
 <div class="question">
 <p><span class="question-number">18.4</span>
-X.509 marks some extensions critical, so an unrecognised one fails
-validation. Explain why a certificate can afford this and a Web page cannot.</p>
+Name a case where stopping is safer than guessing, and one where it is
+not.</p>
 </div>
 </details>
 

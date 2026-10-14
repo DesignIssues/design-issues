@@ -49,35 +49,50 @@
 a Design Issues note by Tim Berners-Lee, 2002-01-01.
 <a class="source-link" href="https://www.w3.org/DesignIssues/XML.html">read the original</a>
 </p>
+<div class="plain">
+<h3>The short version</h3>
+<p>
+One <a class="gl-ref" href="../glossary.html#xml">XML</a> file can mix tags from several vocabularies, so something must decide
+which <a class="gl-ref" href="../glossary.html#specification">specification</a> governs which part. Berners-Lee&#8217;s answer is that
+the outermost element decides, and each element governs only what is inside
+it. Some elements, such as include, transform and decrypt, are replaced by
+their result, and an element must be able to say &ldquo;this is quoted, do
+not run it&rdquo;.
+</p>
+</div>
+
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
 Chapter 17 established that one document may carry several vocabularies.
-This note, from January 2002, asks the question that leaves open, and it asks
-it in the bluntest possible form:
+This note, from February 2002 and revised in June 2005, asks the question
+that leaves open, in the bluntest possible form:
 </p>
 <blockquote>
 If one party sends another an XML document, how does one say what it means?
 <cite>The Interpretation of XML documents, 2002</cite>
 </blockquote>
 <p>
-The trouble is not that the answer is hard to find. It is that there are too
-many places to look, and no rule about which one wins.
+There are too many places to look, and no rule about which one wins.
 </p>
 </div>
 
 <h2>24.1 The problem: specifications that fight</h2>
 
 <p>
-Berners-Lee credits Paul Prescod with the list of places one might look for
-how to process a document: the document type declaration, the top-level
-<a class="gl-ref" href="../glossary.html#namespace">namespace</a>, a <a class="gl-ref" href="../glossary.html#schema">schema</a> reference, other namespaces declared at the root, any
-attribute on the root element, or anything at all in the document.
+Berners-Lee credits Paul Prescod with the list of places one might look:
 </p>
+<ul>
+<li>the document type declaration (DOCTYPE);</li>
+<li>the top-level <a class="gl-ref" href="../glossary.html#namespace">namespace</a>;</li>
+<li>a <a class="gl-ref" href="../glossary.html#schema">schema</a> reference;</li>
+<li>other namespaces declared at the root;</li>
+<li>any attribute on the root element;</li>
+<li>anything at all in the document.</li>
+</ul>
 
 <p>
-With six candidate authorities and no precedence rule, the failure mode is
-not ambiguity but combat:
+With six authorities and no precedence rule, the result is combat:
 </p>
 
 <blockquote>
@@ -89,118 +104,274 @@ of the X attribute irrespective of any Y attribute&rdquo; and so on.
 </blockquote>
 
 <p>
-Each <a class="gl-ref" href="../glossary.html#specification">specification</a> is written by a group that is reasonable on its own terms.
-The conflict appears only when two of them meet in one file, which is exactly
-the case namespaces were created to permit.
+Prescod also supplied the way out, and Berners-Lee agrees. The
+<em>root element</em> is the one outermost element that contains everything
+else; a <em>namespace</em> is a label saying which <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> a tag belongs
+to. The namespace of the root element is the only thing a processor must be
+able to dispatch on. Everything else is decided further down.
 </p>
 
 <h2>24.2 Two models</h2>
 
 <p>
-The proposal sometimes made was a separate processing-model language, so that
-a document would have no meaning of its own until an external definition said
-how to process it. Berners-Lee rejects this and argues there is only one
-generic model that preserves the properties a multi-namespace system needs.
+The usual assumption was a pipeline: one stage per technology, such as
+inclusion, then style sheets, then decryption. Berners-Lee grants that this
+works in simple cases, but says that in the general case it is
+&ldquo;basically broken&rdquo;: once elements nest arbitrarily, no single
+order of stages handles them all.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
+<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig24-1-t fig24-1-d">
   <title id="fig24-1-t">Pipeline processing against top-down processing</title>
-  <desc id="fig24-1-d">In the pipeline model a document is passed through a
-  chain of processors, each transforming the whole of it, so a later stage may
-  act on material that an earlier stage merely quoted. In the top-down model
-  meaning is allocated from the root outward by the specification of each
-  element type, so an element decides what happens inside it.</desc>
+  <desc id="fig24-1-d">In the pipeline model a document passes through a
+  chain of stages, each rewriting the whole of it, so a later stage may act on
+  material an earlier stage merely quoted. In the top-down model the root
+  element html contains head and body; body contains an xsl:value-of element
+  and an xi:include element, each replaced by its result. Each element governs
+  what is inside it.</desc>
 
-  <text x="180" y="24" class="t-caps" text-anchor="middle" fill="#a07d47">pipeline</text>
+  <text x="180" y="24" class="t-caps" text-anchor="middle" style="fill:#b08d57">pipeline</text>
   <text x="180" y="42" class="t-sm" text-anchor="middle">each stage rewrites the whole document</text>
 
-  <rect class="box-plain" x="60" y="60" width="240" height="34" rx="4"/>
-  <text x="180" y="82" class="t-sm" text-anchor="middle">the document</text>
-  <path class="ln-mut" d="M 180 94 L 180 110"/>
-  <rect class="box-warm" x="60" y="110" width="240" height="34" rx="4"/>
+  <rect class="box-plain" x="60" y="60" width="240" height="30" rx="4"/>
+  <text x="180" y="80" class="t-sm" text-anchor="middle">the document</text>
+  <path class="ln-mut" d="M 180 90 L 180 105"/>
+  <path d="M175,105 L180,112 L185,105 Z" fill="#8a9a9a"/>
+  <rect class="box-warm" x="60" y="112" width="240" height="30" rx="4"/>
   <text x="180" y="132" class="t-sm" text-anchor="middle">stage one: includes resolved</text>
-  <path class="ln-mut" d="M 180 144 L 180 160"/>
-  <rect class="box-warm" x="60" y="160" width="240" height="34" rx="4"/>
-  <text x="180" y="182" class="t-sm" text-anchor="middle">stage two: transforms applied</text>
-  <path class="ln-mut" d="M 180 194 L 180 210"/>
-  <rect class="box-plain" x="60" y="210" width="240" height="34" rx="4"/>
-  <text x="180" y="232" class="t-sm" text-anchor="middle">whatever comes out</text>
+  <path class="ln-mut" d="M 180 142 L 180 157"/>
+  <path d="M175,157 L180,164 L185,157 Z" fill="#8a9a9a"/>
+  <rect class="box-warm" x="60" y="164" width="240" height="30" rx="4"/>
+  <text x="180" y="184" class="t-sm" text-anchor="middle">stage two: transforms applied</text>
+  <path class="ln-mut" d="M 180 194 L 180 209"/>
+  <path d="M175,209 L180,216 L185,209 Z" fill="#8a9a9a"/>
+  <rect class="box-plain" x="60" y="216" width="240" height="30" rx="4"/>
+  <text x="180" y="236" class="t-sm" text-anchor="middle">whatever comes out</text>
 
-  <rect x="60" y="258" width="240" height="66" rx="4" fill="#fdf5f5" stroke="#d9b0b0"/>
-  <text x="180" y="280" class="t-sm" text-anchor="middle" fill="#b04a4a">A stage cannot tell material meant</text>
-  <text x="180" y="298" class="t-sm" text-anchor="middle" fill="#b04a4a">for it from material merely quoted.</text>
-  <text x="180" y="316" class="t-sm" text-anchor="middle" fill="#b04a4a">Quoting becomes impossible.</text>
+  <rect class="box-warm" x="60" y="262" width="240" height="62" rx="4"/>
+  <text x="180" y="282" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">A stage cannot tell material meant</text>
+  <text x="180" y="298" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">for it from material merely quoted.</text>
+  <text x="180" y="314" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">Quoting becomes impossible.</text>
 
-  <line class="ln-mut" x1="370" y1="16" x2="370" y2="330"/>
+  <line class="ln-mut" x1="370" y1="16" x2="370" y2="326"/>
 
-  <text x="540" y="24" class="t-caps" text-anchor="middle" fill="#3f6f3f">top-down</text>
-  <text x="540" y="42" class="t-sm" text-anchor="middle">each element governs what is inside it</text>
+  <text x="550" y="24" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">top-down</text>
+  <text x="550" y="42" class="t-sm" text-anchor="middle">each element governs what is inside it</text>
 
-  <rect class="box-green" x="420" y="60" width="240" height="34" rx="4"/>
-  <text x="540" y="82" class="t-sm" text-anchor="middle">the root element decides</text>
-  <path class="ln-mut" d="M 470 94 L 470 112 M 610 94 L 610 112"/>
-  <rect class="box" x="420" y="112" width="110" height="34" rx="4"/>
-  <text x="475" y="134" class="t-sm" text-anchor="middle">child</text>
-  <rect class="box" x="556" y="112" width="104" height="34" rx="4"/>
-  <text x="608" y="134" class="t-sm" text-anchor="middle">child</text>
-  <path class="ln-mut" d="M 452 146 L 452 164 M 500 146 L 500 164"/>
-  <rect class="box-plain" x="420" y="164" width="60" height="30" rx="4"/>
-  <text x="450" y="184" class="t-sm" text-anchor="middle">leaf</text>
-  <rect class="box-plain" x="490" y="164" width="60" height="30" rx="4"/>
-  <text x="520" y="184" class="t-sm" text-anchor="middle">leaf</text>
+  <text x="490" y="80" class="t-sm" text-anchor="end">root decides</text>
+  <rect class="box-green" x="500" y="60" width="100" height="30" rx="4"/>
+  <text x="550" y="80" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 535 90 L 470 116 M 565 90 L 630 116"/>
+  <rect class="box" x="430" y="116" width="80" height="30" rx="4"/>
+  <text x="470" y="136" class="t-mono" text-anchor="middle">head</text>
+  <rect class="box" x="590" y="116" width="80" height="30" rx="4"/>
+  <text x="630" y="136" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 615 146 L 520 176 M 640 146 L 645 176"/>
+  <rect class="box-warm" x="450" y="176" width="130" height="30" rx="4"/>
+  <text x="515" y="196" class="t-mono" text-anchor="middle">xsl:value-of</text>
+  <rect class="box-warm" x="590" y="176" width="110" height="30" rx="4"/>
+  <text x="645" y="196" class="t-mono" text-anchor="middle">xi:include</text>
+  <text x="515" y="224" class="t-sm" text-anchor="middle">replaced by</text>
+  <text x="515" y="238" class="t-sm" text-anchor="middle">its result</text>
+  <text x="645" y="224" class="t-sm" text-anchor="middle">replaced by</text>
+  <text x="645" y="238" class="t-sm" text-anchor="middle">its result</text>
 
-  <rect x="420" y="212" width="240" height="90" rx="4" fill="#f5f8f0" stroke="#cfe0cf"/>
-  <text x="540" y="234" class="t-sm" text-anchor="middle" fill="#3f6f3f">An element may say: the contents</text>
-  <text x="540" y="252" class="t-sm" text-anchor="middle" fill="#3f6f3f">of this are quoted, not for you.</text>
-  <text x="540" y="276" class="t-sm" text-anchor="middle">Nothing below acts without</text>
-  <text x="540" y="294" class="t-sm" text-anchor="middle">permission from above.</text>
-
-  <line class="ln-mut" x1="60" y1="342" x2="660" y2="342"/>
-  <text x="360" y="364" class="t-sm t-it" text-anchor="middle">Berners-Lee: pipeline processing could be actually dangerous, producing errors and possibly security issues.</text>
+  <rect class="box-green" x="410" y="262" width="290" height="62" rx="4"/>
+  <text x="555" y="282" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">An element may say its contents are quoted,</text>
+  <text x="555" y="298" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">not to be run. Nothing below acts without</text>
+  <text x="555" y="314" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">permission from above.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 24.1</span>
-The decisive case is quotation. A document that shows an example of a
-transform must be able to say that the example is not to be executed, and only
-an element that governs its own contents can say so.</figcaption>
+The pipeline fixes one order for the whole document; the top-down model lets
+each element decide for its own contents. Only the second lets an element say
+that an example inside it is not to be run.</figcaption>
 </figure>
+
+<h3>Many ways, one meaning</h3>
+
+<p>
+Top-down is not one procedure. The note sketches three:
+</p>
+
+<table>
+<tr><th>Strategy</th><th>How it works</th></tr>
+<tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left.</td></tr>
+<tr><td>Recursive parser</td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
+<tr><td>Lazy viewer</td><td>Elaborate a function only when the reader scrolls to it.</td></tr>
+</table>
+
+<p>
+These are &ldquo;mathematically equivalent in their effect&rdquo;, which is
+why he speaks of the <em>meaning</em> of a document rather than its
+processing model.
+</p>
 
 <h2>24.3 XML functions</h2>
 
 <p>
-The model needs one escape hatch, and the note names it. Some foreign
-elements are not data but instructions that yield more document when
-elaborated: an inclusion that pulls in another file, or a transform written
-as its own result. Berners-Lee calls these <a class="gl-ref" href="../glossary.html#xml">XML</a> functions and argues that any
-supporting application must recognise them in default processing, because
-they change what the document is before anything else can decide what it
-means.
+Some foreign elements are instructions that yield more document when
+elaborated. Berners-Lee calls them <em>XML functions</em>, and any supporting
+application must recognise them.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
+     aria-labelledby="fig24-2-t fig24-2-d">
+  <title id="fig24-2-t">Elaborating a nested function</title>
+  <desc id="fig24-2-d">Three trees side by side. Before: html contains body,
+  which contains xi:include with href part.xml. Step one: the include is
+  replaced by its result, a div containing a p containing xsl:value-of. After:
+  the value-of is replaced by its result, so div contains p containing the
+  text Total: 42. A dashed outline marks the include's branch as the only part
+  that may change; html and body are untouched throughout.</desc>
+
+  <text x="115" y="22" class="t-caps" text-anchor="middle">before</text>
+  <text x="360" y="22" class="t-caps" text-anchor="middle">step one</text>
+  <text x="605" y="22" class="t-caps" text-anchor="middle">after</text>
+
+  <!-- panel A -->
+  <rect class="box" x="80" y="40" width="70" height="28" rx="4"/>
+  <text x="115" y="59" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 115 68 L 115 92"/>
+  <rect class="box" x="80" y="92" width="70" height="28" rx="4"/>
+  <text x="115" y="111" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 115 120 L 115 144"/>
+  <rect class="ln-dash" x="22" y="134" width="186" height="142" rx="6"/>
+  <rect class="box-warm" x="35" y="144" width="160" height="48" rx="4"/>
+  <text x="115" y="163" class="t-mono" text-anchor="middle">xi:include</text>
+  <text x="115" y="182" class="t-mono" text-anchor="middle">href="part.xml"</text>
+  <text x="115" y="296" class="t-sm" text-anchor="middle">only this branch may change</text>
+
+  <path class="ln-accent" d="M 214 205 L 244 205"/>
+  <path d="M244,200 L252,205 L244,210 Z" fill="#1c5a7a"/>
+
+  <!-- panel B -->
+  <rect class="box" x="325" y="40" width="70" height="28" rx="4"/>
+  <text x="360" y="59" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 360 68 L 360 92"/>
+  <rect class="box" x="325" y="92" width="70" height="28" rx="4"/>
+  <text x="360" y="111" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 360 120 L 360 144"/>
+  <rect class="ln-dash" x="267" y="134" width="186" height="142" rx="6"/>
+  <rect class="box" x="325" y="144" width="70" height="28" rx="4"/>
+  <text x="360" y="163" class="t-mono" text-anchor="middle">div</text>
+  <path class="ln-mut" d="M 360 172 L 360 192"/>
+  <rect class="box" x="325" y="192" width="70" height="28" rx="4"/>
+  <text x="360" y="211" class="t-mono" text-anchor="middle">p</text>
+  <path class="ln-mut" d="M 360 220 L 360 240"/>
+  <rect class="box-warm" x="295" y="240" width="130" height="28" rx="4"/>
+  <text x="360" y="259" class="t-mono" text-anchor="middle">xsl:value-of</text>
+  <text x="360" y="296" class="t-sm" text-anchor="middle">include replaced by its result</text>
+
+  <path class="ln-accent" d="M 459 205 L 489 205"/>
+  <path d="M489,200 L497,205 L489,210 Z" fill="#1c5a7a"/>
+
+  <!-- panel C -->
+  <rect class="box" x="570" y="40" width="70" height="28" rx="4"/>
+  <text x="605" y="59" class="t-mono" text-anchor="middle">html</text>
+  <path class="ln-mut" d="M 605 68 L 605 92"/>
+  <rect class="box" x="570" y="92" width="70" height="28" rx="4"/>
+  <text x="605" y="111" class="t-mono" text-anchor="middle">body</text>
+  <path class="ln-mut" d="M 605 120 L 605 144"/>
+  <rect class="ln-dash" x="512" y="134" width="186" height="142" rx="6"/>
+  <rect class="box" x="570" y="144" width="70" height="28" rx="4"/>
+  <text x="605" y="163" class="t-mono" text-anchor="middle">div</text>
+  <path class="ln-mut" d="M 605 172 L 605 192"/>
+  <rect class="box" x="570" y="192" width="70" height="28" rx="4"/>
+  <text x="605" y="211" class="t-mono" text-anchor="middle">p</text>
+  <path class="ln-mut" d="M 605 220 L 605 240"/>
+  <rect class="box" x="555" y="240" width="100" height="28" rx="4"/>
+  <text x="605" y="259" text-anchor="middle">Total: 42</text>
+  <text x="605" y="296" class="t-sm" text-anchor="middle">value-of replaced by its result</text>
+</svg>
+<figcaption><span class="fig-label">Figure 24.2</span>
+A function returns more document, which may contain further functions. Each
+step changes only what lies inside the dashed outline; <code>html</code> and
+<code>body</code> are never touched.</figcaption>
+</figure>
+
+<table>
+<tr><th>Namespace</th><th>The element is replaced by</th></tr>
+<tr><td>XSLT, in &ldquo;Literal Result Element as Stylesheet&rdquo; mode</td><td>the output its template computes</td></tr>
+<tr><td>XInclude</td><td>the referenced document or part</td></tr>
+<tr><td>XML Encryption</td><td>the decrypted content</td></tr>
+<tr><td>XQuery (listed with a question mark)</td><td>the result of the query</td></tr>
+<tr><td>&ldquo;Do not translate&rdquo; tags</td><td>their contents, marked not to be translated</td></tr>
+</table>
+
 <p>
-The two cases he works through are the literal result element as stylesheet,
-where a transform is written as an example of its own output, and inclusion.
-Both are elements whose whole purpose is to be replaced by something else,
-which is why they cannot be left to a later stage.
+What they share:
+</p>
+<ul>
+<li>any document may use them, without its schema foreseeing them;</li>
+<li>each is replaced by its result;</li>
+<li>the result may contain further functions;</li>
+<li>&ldquo;none of its ancestors or siblings may be affected&rdquo;.</li>
+</ul>
+
+<p>
+The last property makes order unimportant. No function reaches outside its
+branch, so it does not matter which branch is done first; of nested
+inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
+whether the inner ones are expanded first.
 </p>
 
 <h2>24.4 The need to quote</h2>
 
 <p>
-The section that gives the argument its force is about writing about markup.
-A tutorial on a transform language must contain examples of that language
-which are shown and not run. Under the pipeline model there is no way to say
-so: whatever stage handles transforms will find the example and act on it.
-Under the top-down model the element containing the example can declare that
-its contents are quoted.
+Sometimes a function must be mentioned without being run. In an XML
+<em>package</em> the packaged items are quoted, and only the cover note says
+what they mean. An XSLT template that outputs an XInclude element contains a
+real XInclude element, which must not be expanded inside the XSLT.
 </p>
 
+<figure>
+<svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
+     aria-labelledby="fig24-3-t fig24-3-d">
+  <title id="fig24-3-t">The same include, live and quoted</title>
+  <desc id="fig24-3-d">Two identical xi:include elements. On the left its
+  parent is xhtml:body, and an arrow leads to the file being pulled in. On the
+  right its parent is pkg:quoted, and the arrow is struck through, labelled
+  shown, not expanded.</desc>
+
+  <text x="180" y="24" class="t-caps" text-anchor="middle">live</text>
+  <text x="180" y="42" class="t-sm" text-anchor="middle">inside a page</text>
+  <rect class="box" x="110" y="60" width="140" height="30" rx="4"/>
+  <text x="180" y="80" class="t-mono" text-anchor="middle">xhtml:body</text>
+  <path class="ln-mut" d="M 180 90 L 180 112"/>
+  <rect class="box-warm" x="110" y="112" width="140" height="30" rx="4"/>
+  <text x="180" y="132" class="t-mono" text-anchor="middle">xi:include</text>
+  <path class="ln-accent" d="M 180 142 L 180 180"/>
+  <path d="M175,180 L180,188 L185,180 Z" fill="#1c5a7a"/>
+  <rect class="box-green" x="110" y="190" width="140" height="30" rx="4"/>
+  <text x="180" y="210" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">file pulled in</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="226"/>
+
+  <text x="540" y="24" class="t-caps" text-anchor="middle">quoted</text>
+  <text x="540" y="42" class="t-sm" text-anchor="middle">inside a package</text>
+  <rect class="box" x="470" y="60" width="140" height="30" rx="4"/>
+  <text x="540" y="80" class="t-mono" text-anchor="middle">pkg:quoted</text>
+  <path class="ln-mut" d="M 540 90 L 540 112"/>
+  <rect class="box-plain" x="470" y="112" width="140" height="30" rx="4"/>
+  <text x="540" y="132" class="t-mono" text-anchor="middle">xi:include</text>
+  <path class="ln-dash" d="M 540 142 L 540 180"/>
+  <path d="M535,180 L540,188 L545,180 Z" fill="#8a9a9a"/>
+  <path class="ln" d="M 530 152 L 550 170 M 550 152 L 530 170" style="stroke:#b08d57"/>
+  <text x="540" y="210" class="t-sm" text-anchor="middle">shown, not expanded</text>
+</svg>
+<figcaption><span class="fig-label">Figure 24.3</span>
+The same element means different things depending on what contains it. Only
+top-down interpretation, in which the parent decides, can express that.</figcaption>
+</figure>
+
 <p>
-This is why Berners-Lee calls the alternative dangerous rather than merely
-wrong. A processor that executes quoted material is executing content that
-its author never intended to be live, which is a description of a class of
-vulnerability rather than a stylistic complaint.
+A pipeline cannot say this: the inclusion stage will find the element and act
+on it. Such ambiguities, Berners-Lee says, &ldquo;stem from the lack of
+quoting syntax in XML&rdquo;. Running quoted material runs content its
+author never meant to be live: hence dangerous, not merely wrong.
 </p>
 
 <h2>24.5 The conclusion</h2>
@@ -215,40 +386,58 @@ case of generally nested XML technologies of the types discussed.
 </blockquote>
 
 <p>
-The note also leaves an issue explicitly unresolved, which is worth recording
-because so few of these notes do: references to siblings, where one part of a
-document refers to another part that has not yet been interpreted.
+One issue is left open: references to parts of the document that may or may
+not have been elaborated yet.
+</p>
+<ul>
+<li>A function may read outside itself. Does it see the document before or
+after other functions run?</li>
+<li>An XPointer could point into the raw or the elaborated document.
+Berners-Lee inclines to &ldquo;after&rdquo;, so that a pointer into SVG lands
+on SVG.</li>
+<li>XML Signature, he was told, signs the raw source before XInclude; either
+choice is sometimes useful.</li>
+</ul>
+
+<h2>24.6 Labelling the document</h2>
+
+<p>
+Because the root element decides, its namespace says what the whole document
+is: an XHTML root yields a hypertext page, an SVG root a diagram. The note
+recommends a specific MIME type, so that the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers alone show this,
+and the <code>+xml</code> suffix only where the top-down model applies.
+</p>
+
+<p>
+One great schema for each combination of vocabularies would make
+integration an n&sup2; problem; he would rather each facility had its own.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The question was overtaken.</strong> The mixed-namespace XML
-documents this note is about did not become the ordinary way to publish, and
-the branch that won, described in Chapter 23, has no namespaces to mix.</li>
-<li><strong>The pipeline model was standardised anyway.</strong> XProc, a
-language for XML processing pipelines, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Recommendation in May
-2010, which is the approach argued against here.</li>
-<li><strong>The security concern was correct in general.</strong> Processing
-document content that its author intended as data remains a standard
-vulnerability class, most visibly in XML external entity handling, and the
-defence is the one implied here: nothing nested acts without permission from
-what contains it.</li>
-<li><strong>The quoting problem recurs everywhere.</strong> Template
-languages, configuration formats and prompt construction all need a way to
-mark a region as data rather than instruction, and the ones that lack it fail
-in the way section 24.4 describes.</li>
+<li><strong>The question was overtaken.</strong> Mixed-namespace XML did not
+become the ordinary way to publish, and the branch that won, described in
+Chapter 23, has no author-declared namespaces.</li>
+<li><strong>A pipeline language was standardised.</strong> XProc became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+Recommendation in May 2010: a separate pipeline language, though one that
+sits at the top of the tree, as the note allowed.</li>
+<li><strong>The security concern was correct in general.</strong> Processors
+that resolve external references without the containing context&#8217;s
+permission remain a standard vulnerability class.</li>
+<li><strong>The quoting problem recurs everywhere.</strong> Templates,
+configuration formats and prompts all need to mark a region as data rather
+than instruction, and those that cannot fail as section 24.4 describes.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The mixed-vocabulary documents this chapter interprets are specified in
-Chapter 17, and the fork that made the question moot for <a class="gl-ref" href="../glossary.html#html">HTML</a> is Chapter 23.
-The layered reading of what selects a specification is Chapter 20. The
-principle that an element governs what is inside it is the modularity of
-Chapter 19.
+Mixed-vocabulary documents are specified in Chapter 17; the fork that made
+the question moot for <a class="gl-ref" href="../glossary.html#html">HTML</a> is Chapter 23. What selects a specification is read
+in layers in Chapter 20, and an element governing its own contents is the
+modularity of Chapter 19.
 </p>
 </div>
 
@@ -261,14 +450,13 @@ and say which one a top-down model uses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">24.2</span>
-Write a small document that shows an example of a transform without executing
-it. What in the format lets you do so?</p>
+Using Figure 24.3, explain why the same <code>include</code> element is
+expanded in one place and not in another.</p>
 </div>
 <div class="question">
 <p><span class="question-number">24.3</span>
-Berners-Lee calls inclusions and transforms XML functions and says they must
-be handled before anything else. Explain why, using the definition of a
-function as something that returns more document.</p>
+If a function may change only its own branch, why does the order in which
+functions are elaborated not matter?</p>
 </div>
 <div class="question">
 <p><span class="question-number">24.4</span>
