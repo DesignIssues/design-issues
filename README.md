@@ -42,7 +42,7 @@ No prior knowledge is assumed. Three things carry that weight:
 - **A short version.** Nearly every chapter (92 of 96) opens with a
   plain-language summary before the history starts, so the chapter can be
   understood before it is studied.
-- **Figures.** Every chapter has two to five inline SVG diagrams drawn to
+- **Figures.** Every chapter has two to six inline SVG diagrams drawn to
   show a mechanism, sequence or comparison that prose alone makes heavy
   going, each with a caption saying what to notice.
 
