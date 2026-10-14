@@ -330,6 +330,8 @@ def index_html():
     total = len(chapters)
     srcnotes = len(cat)
     words = sum(c["words"] for c in chapters)
+    figures = sum(open(content_path(c), encoding="utf-8").read().count("<figure")
+                  for c in chapters if has_content(c))
     desc = (f"A book made from Tim Berners-Lee's Design Issues notes: "
             f"{total} chapters in ten volumes, in reading order, with editorial context.")
     o = [head(f"{SITE} | The Web's Design Notes, in Reading Order", desc,
@@ -453,7 +455,7 @@ with dates, and ends with connections and questions.
 <tr><th>Chapters</th><td>{total}, in ten volumes</td></tr>
 <tr><th>Source notes catalogued</th><td>{srcnotes} (96 chapters, plus the Preface as front matter)</td></tr>
 <tr><th>Words in the source notes</th><td>{words:,}</td></tr>
-<tr><th>Figures</th><td>97 inline diagrams</td></tr>
+<tr><th>Figures</th><td>{figures} inline diagrams</td></tr>
 <tr><th>Earliest note</th><td>1996</td></tr>
 <tr><th>Latest note</th><td>2024</td></tr>
 </table>

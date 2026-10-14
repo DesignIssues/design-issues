@@ -30,7 +30,7 @@ No prior knowledge is assumed. The title page carries a fifteen-chapter path
 through the book, each entry with a line on what it gives the reader; a
 glossary at /glossary.html defines every unavoidable term in plain words,
 and the first use of each term in a chapter links to its entry; and
-the twenty-one landmark chapters open with a plain-language short version
+nearly every chapter opens with a plain-language short version
 before any history. Landmark chapters are marked in the table of contents.
 
 The fifteen on the path are chapters 1, 2, 3, 16, 23, 25, 32, 49, 51, 54, 67,
@@ -81,7 +81,7 @@ happened since", listing outcomes with specification numbers and dates;
 
 ## Status
 
-Complete: all 96 chapters written, with 97 inline figures. Every quotation is
+Complete: all 96 chapters written, with 325 inline figures. Every quotation is
 checked verbatim against the source note by check_quotes.py in the repository.
 What remains is correction: errata, better readings, and updating the
 "what happened since" sections as things happen.

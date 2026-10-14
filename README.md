@@ -39,12 +39,15 @@ No prior knowledge is assumed. Three things carry that weight:
   first time and not leaning on the other entries. The build links the first
   plain-prose use of each term in a chapter to its entry, so the definition
   is one click away at the moment it is first needed.
-- **A short version.** The twenty-one chapters a reader is most likely to
-  arrive at first open with a plain-language summary before the history
-  starts, so the chapter can be understood before it is studied.
+- **A short version.** Nearly every chapter (92 of 96) opens with a
+  plain-language summary before the history starts, so the chapter can be
+  understood before it is studied.
+- **Figures.** Every chapter has two to five inline SVG diagrams drawn to
+  show a mechanism, sequence or comparison that prose alone makes heavy
+  going, each with a caption saying what to notice.
 
-Those twenty-one are marked in the table of contents; the fifteen on the path
-carry a flag as well.
+The twenty-one chapters a reader is most likely to arrive at first are marked
+in the table of contents; the fifteen on the path carry a flag as well.
 
 ## What a chapter contains
 
@@ -75,7 +78,7 @@ carry a flag as well.
 
 ## Status
 
-Complete. All 96 chapters are written, with 97 inline figures. Every note on
+Complete. All 96 chapters are written, with 325 inline figures. Every note on
 w3.org/DesignIssues has a chapter; the Preface is used as front matter.
 
 What remains is correction and improvement: errata, better readings, better
