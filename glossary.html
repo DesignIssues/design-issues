@@ -56,10 +56,36 @@ properly, it is named.
 <dd>An older word for the same thing as a URI, still in common use. This book follows its source in mostly saying URI, and treats the distinction between a name and an address as a mistake: see Chapter 3. <a class="gl-ch" href="chapters/03-myth-names-addresses.html">Chapter 3</a></dd>
 <dt id="http">HTTP<span class="gl-expand">Hypertext Transfer Protocol</span></dt>
 <dd>The rules a browser and a server follow when one asks the other for a page. It says how to ask, how to answer, and what the answer means. <a class="gl-ch" href="chapters/20-stack-specifications.html">Chapter 20</a></dd>
+<dt id="server">server</dt>
+<dd>A computer, or a program running on one, that holds pages or data and hands them out when asked. The program doing the asking, usually a browser, is called the client.</dd>
+<dt id="header">header</dt>
+<dd>A labelled line at the top of a message, saying something about what follows: what kind of file it is, when it was made, how long it may be kept. Every request and reply on the Web carries several.</dd>
+<dt id="status-code">status code</dt>
+<dd>The three-digit number at the start of a server’s reply. 200 means “here it is”, 404 “not found”, 303 “look over there instead”. <a class="gl-ch" href="chapters/07-http-uris-identify.html">Chapter 7</a></dd>
+<dt id="redirect">redirect</dt>
+<dd>A reply from a server that, instead of the thing asked for, gives another address to try. The browser follows it, usually without the reader noticing. <a class="gl-ch" href="chapters/08-http-uris-identify-ii.html">Chapter 8</a></dd>
+<dt id="httprange-14">httpRange-14</dt>
+<dd>The name of a long argument, settled by the TAG in 2005, over whether a plain web address can name a person or an idea as well as a page. The answer was a convention: the server replies with the status code 303 and points to a page about the thing. <a class="gl-ch" href="chapters/07-http-uris-identify.html">Chapter 7</a></dd>
+<dt id="get">GET</dt>
+<dd>The kind of request that only asks for something. Following a link sends one. It must never change anything, so it is always safe to repeat. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
+<dt id="post">POST</dt>
+<dd>The kind of request that asks a server to act: place an order, send a message, add a comment. Unlike fetching, it may commit the person who sends it to something. <a class="gl-ch" href="chapters/84-user-agent-watch-points.html">Chapter 84</a></dd>
+<dt id="put">PUT</dt>
+<dd>The kind of request that stores a document at a chosen address, replacing whatever was there. <a class="gl-ch" href="chapters/50-read-write-linked-data.html">Chapter 50</a></dd>
+<dt id="cache">cache</dt>
+<dd>A store of copies kept near the reader, so that a page fetched once need not be fetched again. Its hard part is knowing when a copy has gone out of date.</dd>
 <dt id="html">HTML<span class="gl-expand">Hypertext Markup Language</span></dt>
 <dd>The format web pages are written in. Text, with tags around parts of it saying this is a heading, this is a link, this is a picture.</dd>
 <dt id="xml">XML</dt>
 <dd>A general way of putting tags around things, from which many formats were built. Related to HTML, and more strict: a document is either well formed or it is rejected. <a class="gl-ch" href="chapters/17-extensible-languages-web-evolution.html">Chapter 17</a></dd>
+<dt id="markup">markup</dt>
+<dd>Tags written into a text to say what its parts are: this is a heading, this is a link. HTML and XML are both markup languages.</dd>
+<dt id="xhtml">XHTML</dt>
+<dd>HTML rewritten to obey the strict rules of XML, so that a page with a mistake in it is rejected rather than guessed at. <a class="gl-ch" href="chapters/23-html-xml.html">Chapter 23</a></dd>
+<dt id="parser">parser</dt>
+<dd>The part of a program that reads text written in some format and works out its structure, so that the rest of the program can use it.</dd>
+<dt id="json">JSON<span class="gl-expand">JavaScript Object Notation</span></dt>
+<dd>A plain, compact text format for data: lists and labelled values, nested inside each other. Most programs on the Web now exchange data in it.</dd>
 <dt id="media-type">media type<span class="gl-expand">also called a MIME type</span></dt>
 <dd>A short label saying what kind of thing a file is: a web page, a photograph, a sound recording. It travels with the file and tells the receiving program how to read it. <a class="gl-ch" href="chapters/11-fragment-identifiers.html">Chapter 11</a></dd>
 <dt id="fragment-identifier">fragment identifier<span class="gl-expand">the part after a #</span></dt>
@@ -68,6 +94,20 @@ properly, it is named.
 <dd>The first word of a web address, such as https. It says which set of rules applies to the rest of the address. <a class="gl-ch" href="chapters/04-web-model-information-hiding-uri.html">Chapter 4</a></dd>
 <dt id="dns">DNS<span class="gl-expand">the Domain Name System</span></dt>
 <dd>The system that turns a name like example.org into the machine that answers for it. It is also how the Web decides who is responsible for what: owning the name means answering for what is served under it. <a class="gl-ch" href="chapters/06-levels-abstraction-net-web-graph.html">Chapter 6</a></dd>
+<dt id="domain-name">domain name</dt>
+<dd>A name such as example.org, rented from a registry, under which a person or organisation publishes. Whoever holds the name decides what its addresses mean, for as long as they keep paying for it. <a class="gl-ch" href="chapters/13-persistent-domains.html">Chapter 13</a></dd>
+<dt id="top-level-domain">top-level domain</dt>
+<dd>The last part of a domain name, such as .org or .uk. Each is run by one organisation, which rents out the names beneath it. <a class="gl-ch" href="chapters/79-new-top-level-domains-mobi.html">Chapter 79</a></dd>
+<dt id="icann">ICANN<span class="gl-expand">Internet Corporation for Assigned Names and Numbers</span></dt>
+<dd>The non-profit body that oversees domain names at the top, deciding which top-level domains exist and who runs each. <a class="gl-ch" href="chapters/79-new-top-level-domains-mobi.html">Chapter 79</a></dd>
+<dt id="ip">IP<span class="gl-expand">Internet Protocol</span></dt>
+<dd>The lowest common layer of the Internet. It gives every connected machine a number, its IP address, and carries small packets of data from one number to another, without promising they arrive. <a class="gl-ch" href="chapters/06-levels-abstraction-net-web-graph.html">Chapter 6</a></dd>
+<dt id="tcp">TCP<span class="gl-expand">Transmission Control Protocol</span></dt>
+<dd>The layer on top of IP that makes delivery reliable: it numbers the packets, resends any that are lost and puts them back in order, so two programs can talk as if along a wire. <a class="gl-ch" href="chapters/06-levels-abstraction-net-web-graph.html">Chapter 6</a></dd>
+<dt id="isp">ISP<span class="gl-expand">internet service provider</span></dt>
+<dd>The company that connects a home or office to the Internet and carries its traffic. <a class="gl-ch" href="chapters/78-net-neutrality-act-now.html">Chapter 78</a></dd>
+<dt id="net-neutrality">net neutrality</dt>
+<dd>The principle that an ISP must treat all traffic alike: not block sites, not slow some down, and not charge to speed others up. <a class="gl-ch" href="chapters/78-net-neutrality-act-now.html">Chapter 78</a></dd>
 <dt id="dereference">dereference</dt>
 <dd>To look something up. Given a name, go and fetch what it names. <a class="gl-ch" href="chapters/49-linked-data.html">Chapter 49</a></dd>
 <dt id="opaque">opaque</dt>
@@ -76,8 +116,14 @@ properly, it is named.
 <dd>A set of terms owned by one group, so that two groups can each use the word “title” for different things without colliding. <a class="gl-ch" href="chapters/17-extensible-languages-web-evolution.html">Chapter 17</a></dd>
 <dt id="vocabulary">vocabulary<span class="gl-expand">also called an ontology</span></dt>
 <dd>An agreed set of terms for talking about some subject, published so that anyone can use them and mean the same thing. <a class="gl-ch" href="chapters/51-linked-data-like-bag-chips.html">Chapter 51</a></dd>
+<dt id="dublin-core">Dublin Core</dt>
+<dd>One of the oldest vocabularies for describing documents: title, creator, date, subject and a few more. Libraries and archives use it widely.</dd>
+<dt id="foaf">FOAF<span class="gl-expand">Friend of a Friend</span></dt>
+<dd>A vocabulary for describing people and who they know: a name, a photograph, a home page, a list of friends.</dd>
 <dt id="schema">schema</dt>
 <dd>A description of what a document or a set of data is allowed to contain. Used to check that something is well formed before relying on it. <a class="gl-ch" href="chapters/17-extensible-languages-web-evolution.html">Chapter 17</a></dd>
+<dt id="metadata">metadata</dt>
+<dd>Data about data: who wrote a document, when, in what language, under what licence. Written so that a program, not only a person, can use it. <a class="gl-ch" href="chapters/27-metadata-architecture.html">Chapter 27</a></dd>
 <dt id="rdf">RDF<span class="gl-expand">the Resource Description Framework</span></dt>
 <dd>A way of writing data as a pile of simple statements, each of the form “this thing has that property with this value”. Because every statement stands alone, data from different places can simply be put together. <a class="gl-ch" href="chapters/32-rdf-model-exactly-xml-model.html">Chapter 32</a></dd>
 <dt id="triple">triple</dt>
@@ -94,8 +140,14 @@ properly, it is named.
 <dd>Working out something that follows from what is already known. If every cat is an animal and this is a cat, then this is an animal. <a class="gl-ch" href="chapters/40-logic-semantic-web.html">Chapter 40</a></dd>
 <dt id="turtle">Turtle<span class="gl-expand">and N3, its larger relative</span></dt>
 <dd>A way of writing those statements down that a person can read. N3 adds rules and logic to it. <a class="gl-ch" href="chapters/42-notation3.html">Chapter 42</a></dd>
+<dt id="n3">N3<span class="gl-expand">Notation3</span></dt>
+<dd>Turtle with rules and logic added. Curly brackets let a group of statements be treated as one thing, so that a rule can say “if these are true, then so are those”. <a class="gl-ch" href="chapters/42-notation3.html">Chapter 42</a></dd>
 <dt id="sparql">SPARQL</dt>
 <dd>A language for asking questions of data written as statements, the way a database query language asks questions of tables. <a class="gl-ch" href="chapters/30-roadmap-semantic-web.html">Chapter 30</a></dd>
+<dt id="relational-database">relational database</dt>
+<dd>The ordinary kind of database, which keeps data in tables of rows and columns, with tables linked by shared values. <a class="gl-ch" href="chapters/33-rdf-relational-databases.html">Chapter 33</a></dd>
+<dt id="sql">SQL</dt>
+<dd>The standard language for asking questions of a relational database and changing what it holds. <a class="gl-ch" href="chapters/33-rdf-relational-databases.html">Chapter 33</a></dd>
 <dt id="owl">OWL<span class="gl-expand">the Web Ontology Language</span></dt>
 <dd>A language for saying how the terms in a vocabulary relate: this kind of thing is a kind of that, no two things share this value, and so on. <a class="gl-ch" href="chapters/34-identity-identify-rdf.html">Chapter 34</a></dd>
 <dt id="reification">reification</dt>
@@ -106,24 +158,58 @@ properly, it is named.
 <dd>The rule that code on a page from one site may not read data from another. It is what stops a malicious page raiding somebody’s bank, and what makes combining data from several places difficult. <a class="gl-ch" href="chapters/68-same-origin-policy---origin.html">Chapter 68</a></dd>
 <dt id="cors">CORS<span class="gl-expand">Cross-Origin Resource Sharing</span></dt>
 <dd>The permission a server gives so that pages from other sites may read its data, relaxing the rule above. <a class="gl-ch" href="chapters/70-cors-browser-distrust-web-apps.html">Chapter 70</a></dd>
+<dt id="encryption">encryption</dt>
+<dd>Scrambling a message so that only someone holding the right key can read it. A key here is a long secret number. <a class="gl-ch" href="chapters/67-https-everywhere-considered-harmful.html">Chapter 67</a></dd>
+<dt id="public-key">public key<span class="gl-expand">and private key</span></dt>
+<dd>A pair of keys made together. The private one is kept secret; the public one is given to anybody. What one of the pair locks, only the other can open, which makes both encryption and digital signatures possible. <a class="gl-ch" href="chapters/37-semantics-interpretation-digital-signature.html">Chapter 37</a></dd>
+<dt id="digital-signature">digital signature</dt>
+<dd>A seal made with a private key and attached to a document. Anyone with the matching public key can check that the document came from the key’s holder and has not been altered since. <a class="gl-ch" href="chapters/37-semantics-interpretation-digital-signature.html">Chapter 37</a></dd>
+<dt id="hash">hash</dt>
+<dd>Two things in this book. The # sign in a web address, after which comes a fragment identifier. And a short fingerprint worked out from a piece of data, which changes completely if a single character of the data changes: used to check that a copy is exact.</dd>
 <dt id="tls">TLS<span class="gl-expand">and the https prefix</span></dt>
 <dd>The encryption that protects a connection, so that nobody in between can read or alter what passes. <a class="gl-ch" href="chapters/67-https-everywhere-considered-harmful.html">Chapter 67</a></dd>
+<dt id="access-control">access control</dt>
+<dd>The rules saying who may read or change what, and the machinery that enforces them.</dd>
+<dt id="oauth">OAuth</dt>
+<dd>A widely used scheme by which a person lets one site reach some of their data held by another, without handing over a password.</dd>
 <dt id="pki">PKI<span class="gl-expand">public key infrastructure</span></dt>
 <dd>The arrangement by which a handful of companies vouch for who owns a web address, which is how a browser decides a site is what it claims. <a class="gl-ch" href="chapters/66-model-real-trust.html">Chapter 66</a></dd>
+<dt id="certificate">certificate</dt>
+<dd>A small signed document saying that a public key belongs to a particular site or person. Browsers check one before showing a padlock. <a class="gl-ch" href="chapters/69-client-side-certificates.html">Chapter 69</a></dd>
+<dt id="certificate-authority">certificate authority</dt>
+<dd>A company that issues certificates and is trusted, by browsers, to have checked who it issued them to. <a class="gl-ch" href="chapters/66-model-real-trust.html">Chapter 66</a></dd>
 <dt id="pod">pod<span class="gl-expand">a personal online data store</span></dt>
 <dd>A place on the Web that holds one person’s data under that person’s control, which any application may read or write with permission. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
 <dt id="solid">Solid</dt>
 <dd>The project to build that: a person’s data in one place they own, with applications kept separate from it. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
+<dt id="webid">WebID</dt>
+<dd>A web address that stands for a person. Looking it up gives a profile the person controls, so that one name can be used to sign in anywhere. <a class="gl-ch" href="chapters/54-solid-socially-aware-cloud-storage.html">Chapter 54</a></dd>
 <dt id="content-negotiation">content negotiation</dt>
 <dd>The exchange in which a browser says what forms it can handle and the server picks one. It is how a single address can serve a page in the reader’s language, or a picture in a format the device supports. <a class="gl-ch" href="chapters/10-generic-resources.html">Chapter 10</a></dd>
 <dt id="idempotent">idempotent</dt>
 <dd>An operation that can be repeated without further effect. Asking for a page is idempotent; buying a book is not. <a class="gl-ch" href="chapters/02-axioms-web-architecture-uris.html">Chapter 2</a></dd>
+<dt id="api">API<span class="gl-expand">Application Programming Interface</span></dt>
+<dd>The set of commands one program offers to others: what can be asked for, how to ask, and what comes back. <a class="gl-ch" href="chapters/65-roadmap-web-services.html">Chapter 65</a></dd>
+<dt id="smtp">SMTP<span class="gl-expand">Simple Mail Transfer Protocol</span></dt>
+<dd>The rules by which email is passed from one mail server to another.</dd>
+<dt id="rss">RSS</dt>
+<dd>A standard format for a site’s list of latest posts. A feed reader checks the list regularly and shows what is new. <a class="gl-ch" href="chapters/64-feeds-blogs-podcasts-like.html">Chapter 64</a></dd>
+<dt id="drm">DRM<span class="gl-expand">digital rights management</span></dt>
+<dd>Software that lets a film or a book be played on a person’s own machine while stopping them from copying it. <a class="gl-ch" href="chapters/80-general-computation-digital-rights-management.html">Chapter 80</a></dd>
+<dt id="blockchain">blockchain</dt>
+<dd>A shared ledger, copied to every participant, to which entries can be added but not changed. No single party keeps it, so none can quietly rewrite it. <a class="gl-ch" href="chapters/81-blockchain.html">Chapter 81</a></dd>
 <dt id="specification">specification<span class="gl-expand">often shortened to spec</span></dt>
 <dd>The document that defines a format or a protocol precisely enough that two people can build things that work together without meeting. <a class="gl-ch" href="chapters/21-write-specification.html">Chapter 21</a></dd>
 <dt id="w3c">W3C<span class="gl-expand">the World Wide Web Consortium</span></dt>
 <dd>The body that publishes many of the Web’s specifications. Founded in 1994 and directed for most of its history by the author of these notes.</dd>
+<dt id="recommendation">Recommendation</dt>
+<dd>The Consortium’s word for a finished specification, approved by its members after a period of testing. A W3C standard, in all but name. <a class="gl-ch" href="chapters/21-write-specification.html">Chapter 21</a></dd>
 <dt id="rfc">RFC<span class="gl-expand">Request for Comments</span></dt>
 <dd>The numbered documents in which the Internet’s protocols are published. The name is a relic of when they really were requests for comment.</dd>
+<dt id="ietf">IETF<span class="gl-expand">the Internet Engineering Task Force</span></dt>
+<dd>The open body of engineers that develops the Internet’s protocols and publishes them as RFCs.</dd>
+<dt id="iana">IANA<span class="gl-expand">the Internet Assigned Numbers Authority</span></dt>
+<dd>The office that keeps the Internet’s official lists: which media types and schemes exist, and which top-level domains, and who runs each.</dd>
 <dt id="tag">TAG<span class="gl-expand">the Technical Architecture Group</span></dt>
 <dd>A small group at the Consortium that rules on questions about how the Web fits together. Several chapters here record arguments it settled.</dd>
 </dl>
