@@ -12,8 +12,9 @@ raw addresses.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-First dated 1998 and revised in 1999, this note begins by insisting that &lsquo;user
-agent&rsquo; is more than a technical label:
+A browser remembers every page its user has looked at, and not one order they
+have placed. Berners-Lee wanted the second record kept, and the reason starts
+with what &lsquo;user agent&rsquo; means:
 </p>
 <blockquote>
 Browsers and Email programs are user agents. This isn't just a formal long term
@@ -22,16 +23,9 @@ and represent, the user.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 <p>
-And states the duty that follows, in the form of a warning:
-</p>
-<blockquote>
-The computer protocols such as HTTP are defined to carry a particular meaning,
-and it behooves a user agent to representthat meaning to the user, or the whol
-system of peeople and machines breaks.
-<cite>User Agent Watch Points, 1999</cite>
-</blockquote>
-<p>
-Chapter 20 showed meaning travelling up a stack of specifications; this note
+HTTP&#8217;s messages carry particular meanings, he goes on, and if a user agent
+does not represent them to the user, the whole system of people and machines
+breaks. Chapter 20 showed meaning travelling up a stack of specifications; this note
 says someone must deliver it at the top.
 </p>
 </div>
@@ -109,7 +103,8 @@ The other reply, 301 Moved Permanently, means the page has really moved and
 the old address is dead. Berners-Lee says such a server &ldquo;has committed
 the unthinkable&rdquo;, since a good address should never change (Chapter 3).
 The browser should then change every reference to the new address, including
-bookmarks and links in documents.
+bookmarks and links in documents. The note calls this expensive and admits
+it &ldquo;does not, of course, work completely&rdquo;.
 </p>
 
 <figure>
@@ -137,10 +132,8 @@ and the other says the old address is the one to keep.</figcaption>
 </figure>
 
 <p>
-The two addresses carry different promises (Chapter 3), and the question is
-which one a person copies down. In 1999, he says, very few
-browsers implemented this properly; he names Mozilla and Amaya (W3C&#8217;s own
-experimental browser), with a question mark, as perhaps the only ones.
+Yet in 1999, he says, very few browsers did this properly, perhaps only
+Mozilla and Amaya (W3C&#8217;s own experimental browser).
 </p>
 
 <h2>84.2 The commitment the interface hides</h2>
@@ -159,23 +152,11 @@ is hovering over a POST button to when the user is hovering over a GET link.
 </blockquote>
 
 <p>
-Then the analogy:
+&ldquo;Doing a POST is like sending an email&rdquo;, he says, and everyone
+expects to find a list of the emails they have sent, because those are the
+things they are committed to. So &ldquo;The web client should keep a record of
+POSTs which have been submitted.&rdquo;
 </p>
-
-<blockquote>
-Doing a POST is like sending an email.
-<cite>User Agent Watch Points, 1999</cite>
-</blockquote>
-
-<p>
-Everyone expects to be able to look at what they have sent, because those are
-the things they are committed to. The same should be true of forms:
-</p>
-
-<blockquote>
-The web client should keep a record of POSTs which have been submitted.
-<cite>User Agent Watch Points, 1999</cite>
-</blockquote>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
@@ -216,14 +197,16 @@ The web client should keep a record of POSTs which have been submitted.
 </svg>
 <figcaption><span class="fig-label">Figure 84.3</span>
 The browser keeps a record of where the user looked but not of what the user agreed to,
-which is the reverse of what matters.</figcaption>
+though that is the record the note says matters most.</figcaption>
 </figure>
 
 <p>
-Sites that wrongly use POST where GET belongs would fill the record with
-clutter, he concedes, but such sites are broken anyway. A digital
-signature, he adds, will one day be an action just like POST, with weight
-added. Then the principle:
+Sites that muddle GET and POST would fill the record with clutter, he concedes,
+but such sites are broken anyway (Chapter 2 tells what
+happened in 2005 when a prefetching tool followed such sites&#8217; deletion
+links). A digital signature, he adds, will one day be &ldquo;an action just like
+POST, but with weight added and the user awareness of the choice of key&rdquo;.
+Then the principle:
 </p>
 
 <blockquote>
@@ -257,7 +240,9 @@ the foot of the window that shows where a link leads);</li>
 typing addresses.</li>
 </ul>
 <p>
-Servers help by generating the addresses of new documents.
+Servers have to help: a form that creates a new document should redirect the
+user to it, at an address the server has made up, ready to edit. That removes
+Chapter 83&#8217;s ten-click penalty for inventing a filename.
 </p>
 
 <p>
@@ -270,16 +255,13 @@ person needs to know whose site this is, and does not need to see the path.
 <h2>84.4 Why an agent is not a viewer</h2>
 
 <p>
-A viewer displays what arrives. An agent represents someone, which means
-conveying what the other party has actually said, including what that party
-would rather not emphasise. A site that redirects to a mirror might prefer users to
-bookmark the mirror; the agent should keep the original address anyway.
-</p>
-
-<p>
-In all three cases the protocol draws a careful distinction (temporary or
-permanent, looking or committing, name or title) and the browser hides it from
-the person it acts for.
+A viewer displays what arrives. An agent represents someone. In the first two
+cases the protocol draws a distinction (temporary or permanent, looking or
+committing) that browsers flatten. In the third the note asks the browser to
+hide something on purpose: the address, so that people can deal in titles.
+An agent decides what to show for the user&#8217;s sake, not the
+server&#8217;s convenience, and that includes making clear which clicks
+commit.
 </p>
 
 <div class="since">
@@ -297,7 +279,8 @@ equivalents are order-confirmation emails and per-site account pages.</li>
 dropped the experiment in 2021.</li>
 <li><strong>The commitment cue never arrived.</strong> Its one common trace is
 the warning browsers give on reloading a page reached by POST, asking whether to
-resubmit the form.</li>
+resubmit the form. Sites learned to avoid it with Post/Redirect/Get: the server
+answers a form with a redirect, so a reload repeats only a harmless GET.</li>
 </ul>
 </div>
 

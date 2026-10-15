@@ -1,25 +1,26 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Subscribing to a feed was standardised long ago, so any reader app can follow
-any blog or podcast. Reacting (liking, commenting, rating) never was, so it
-lives inside whichever platform hosts the thing. Platforms give each person one
-audience, too coarse for people in many groups. The note&#8217;s advice: use
-apps that speak the open protocol, not ones tied to a single company.
+Subscribing to a feed was standardised long ago; reacting (liking,
+commenting, rating) never was, so it lives inside whichever platform hosts
+the thing, with one audience per person. The note&#8217;s advice: use apps
+that speak the open protocol.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 2021 and extended in 2024, this note surveys what had become of
-subscription on the Web, and asks why reacting to things is owned by the
-platform that hosts them.
+A generic podcast app can follow almost any podcast, because subscribing was
+standardised years ago. Yet in this note&#8217;s 2021 survey the podcast row
+under &ldquo;Response actions&rdquo; is empty, while Instagram and Strava
+offer likes, kudos and comments inside their own platforms. The note asks
+what it would take for reacting to work everywhere.
 </p>
 <p>
 A feed is a file on a website listing its latest posts, in a standard format
-such as RSS. A feed reader checks it regularly and shows what is new. That
-is subscribing. The note&#8217;s definition is deliberately minimal:
+such as RSS; a feed reader checks it and shows what is new. The note, written
+in 2021 and extended in 2024, defines a feed minimally:
 </p>
 <blockquote>
 Let's call a feed a sequence of published things such that you can subscribe
@@ -29,7 +30,7 @@ So a feed by itself is a one-way thing with no feedback.
 </blockquote>
 </div>
 
-<h2>64.1 The survey</h2>
+<h2>64.1 Seven kinds of feed, and who owns the reactions</h2>
 
 <p>
 The note gives what it calls a very rough summary of feeds in 2021:
@@ -47,8 +48,7 @@ The note gives what it calls a very rough summary of feeds in 2021:
 </table>
 
 <p>
-&ldquo;Queried&rdquo; marks the note&#8217;s own question marks; Green Tomatoes
-and Media Kraken are its examples, unexplained.
+&ldquo;Queried&rdquo; marks the note&#8217;s own question marks.
 </p>
 
 <figure>
@@ -97,7 +97,10 @@ audience and the reactions; the open world standardised only the feed.</figcapti
 
 <p>
 Activity Streams, a W3C vocabulary for recording what people do online,
-defines more than twenty kinds of activity, from liking to undoing. Berners-Lee extends the idea past social media:
+deals in statements such as &ldquo;John uploaded a new photo&rdquo; or
+&ldquo;12 people liked Sally&#8217;s post&rdquo;. Berners-Lee imagines a
+GitHub feed of &ldquo;requested review, started review, completed review,
+approved&rdquo;, and goes further:
 </p>
 
 <blockquote>
@@ -109,8 +112,10 @@ whenever that state changes.
 </blockquote>
 
 <p>
-An issue tracker is a feed (compare Chapter 45: a patch is news). The goal concerns Solid (Chapter 54), where each person
-keeps their data in a personal store that any app may use:
+Each change of state is then news, as a patch is in Chapter 45. The goal
+concerns Solid (Chapter 54), personal data stores any app may use, whose
+mantra, &ldquo;you should be able to [do] anything with anything&rdquo;,
+implies a reaction can be recorded to anything:
 </p>
 
 <blockquote>
@@ -120,7 +125,7 @@ what it it they are reacting to --liking, and so on.
 <cite>Feeds, 2021</cite>
 </blockquote>
 
-<h2>64.3 The scope problem</h2>
+<h2>64.3 One follower list for every audience</h2>
 
 <blockquote>
 With Instagram and Strava each person has one group of followers, so a choice
@@ -180,13 +185,12 @@ One audience allows three choices. A person in many overlapping groups needs
 each reaction addressed to the right one.</figcaption>
 </figure>
 
-<h2>64.4 The warning</h2>
+<h2>64.4 When reactions do harm</h2>
 
 <p>
-A section titled <em>Possible harmful consequences</em> notes that reaction
-systems can cause harm: unhealthy preoccupation with public reactions,
-bullying comments, and the online gender-based violence described in a Web
-Foundation report. Its recommendation:
+Reaction systems can cause harm: unhealthy preoccupation with public
+reactions, bullying comments, and the online gender-based violence described
+in a Web Foundation report. The note recommends:
 </p>
 
 <blockquote>
@@ -196,18 +200,16 @@ these things, and where it is possible, explicit design to avoid harm.
 </blockquote>
 
 <p>
-Take a like-count. Technically it is a number; socially it is read as a
-measure of a post&#8217;s worth. That is the two-protocol analysis of Chapter
-15 (a technical protocol and an unwritten social one, which can fail
-separately).
+The rest is &ldquo;beyond level of this article&rdquo;. Chapter 15 offers one
+lens: a technical protocol and a social one, which fail separately.
 </p>
 
 <h2>64.5 Subscriptions are data too</h2>
 
 <p>
-Moving subscriptions between reader apps needs an agreed list format. NetNewsWire exports it as OPML, a small XML file giving
-each feed&#8217;s title and address, which another reader can import. One
-subscription, abridged from the note:
+Moving subscriptions between apps needs an agreed list format. NetNewsWire
+exports OPML, a small XML file of feed titles and addresses
+(<code>xmlUrl</code>). One subscription, abridged from the note:
 </p>
 
 <pre><code>&lt;opml version="1.1"&gt;
@@ -217,50 +219,28 @@ subscription, abridged from the note:
   &lt;/body&gt;</code></pre>
 
 <p>
-The <code>xmlUrl</code> is the feed&#8217;s address. The note
-also points to FreshRSS, which keeps a person&#8217;s feeds on their own
-server.
+FreshRSS, which the note also cites, keeps the list on one&#8217;s own server.
 </p>
 
 <h2>64.6 Finding feeds</h2>
 
 <p>
-The familiar &ldquo;wherever you get your podcasts&rdquo; assumes the big
-platforms list every show by name. That does not
-scale if everyone is to have a feed. The note&#8217;s alternative is links.
-Suppose Ann mentions a podcast in an email. The link goes to an episode page,
-which carries a link to its feed. No directory was needed. Whoever runs the
-directory decides which shows people find; with links, the people they already
-trust do.
+&ldquo;Wherever you get your podcasts&rdquo; assumes the platforms list every
+show, which does not scale if everyone has a feed. The alternative is links:
+a link in an email leads to an episode page, and from there to its feed.
+The note wants
+both serendipity and the ability to &ldquo;track down&rdquo; a feed, and
+says the algorithms that do this in a Solid world &ldquo;will determine which
+information people come across. In a present world with much misinformation
+and much disinformation, they are important.&rdquo;
 </p>
 
-<h2>64.7 Protocols, not apps</h2>
-
-<p>
-Some podcasts ask listeners to install their own app. The note says no:
-</p>
-
-<blockquote>
-Use your generic podcast reader, like Overcast, or the default one on your
-device. Keep the RSS protocol alive!
-<cite>Feeds, 2021</cite>
-</blockquote>
-
-<p>
-A generic reader also keeps, in one place, the record of what a listener has
-heard; a separate app per show scatters it. By 2024 the threat was
-the large players: he had heard that Spotify and Apple Podcasts, while playing
-anyone&#8217;s feed, also carry shows only their apps can play. The note&#8217;s policy is not to
-listen to those.
-</p>
-
-<h2>64.8 One story, two formats</h2>
+<h2>64.7 One story, two formats</h2>
 
 <p>
 Berners-Lee read Neal Stephenson&#8217;s <em>Termination Shock</em> in audio
-and text at once: text when someone is around, sound when driving. He calls
-this efficiency and accessibility: switching medium without losing one&#8217;s
-place helps anyone who cannot read or listen at a given moment.
+and text at once: text when someone is around, sound when driving. It is, he
+writes, about efficiency and about accessibility.
 </p>
 
 <figure>
@@ -302,8 +282,38 @@ from text positions to audio times (illustrative here).</figcaption>
 </figure>
 
 <p>
-In December 2024 he found that Speechify does this, though it keeps
-his place in its own cloud rather than in his Solid pod.
+In December 2024 he found Speechify, which tracks his place across devices:
+&ldquo;Just what the doctor ordered.&rdquo; His wish: keep that place in his
+pod, not the Speechify cloud.
+</p>
+
+<h2>64.8 Protocols, not apps</h2>
+
+<p>
+One podcast tells listeners: &ldquo;This podcast was generated by Audm. Get
+the Audm app to follow this&rdquo;. The note replies:
+</p>
+
+<blockquote>
+No, don't get the audm App, or whatever App they have made for each podcast.
+Use your generic podcast reader, like Overcast, or the default one on your
+device. Keep the RSS protocol alive!
+<cite>Feeds, 2021</cite>
+</blockquote>
+
+<p>
+By 2024 the threat was the large players. Spotify &ldquo;wants
+desperately to be my podcast player&rdquo;, but he uses Overcast, &ldquo;an
+independent app, for my podcasts, thank you.&rdquo; Spotify and Apple
+Podcasts, he gathers, also carry shows only their apps can play; his policy
+is not to listen to those.
+</p>
+
+<p>
+The note was first titled &ldquo;Feeds and Feedback&rdquo;, meant to cover
+protocols such as Linkback and Pingback, which record when someone links to a
+post from their own blog. &ldquo;But that will have to wait for another
+time.&rdquo;
 </p>
 
 <div class="since">
@@ -334,28 +344,27 @@ two-protocol analysis, Chapter 15; the harm, Chapter 90.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">64.1</span>
-Using Activity Streams and a feed, say where a like on a podcast episode would
-be stored and how the publisher would learn of it.</p>
-</div>
-<div class="question">
-<p><span class="question-number">64.2</span>
 Name three things around you (a shared shopping list, a group calendar&#8230;) whose changes
 nobody publishes as a feed.</p>
 </div>
 <div class="question">
-<p><span class="question-number">64.3</span>
-A platform knows you as one account with one follower list. Explain why that
-limits who you can share a reaction with, and name what would have to
-change.</p>
+<p><span class="question-number">64.2</span>
+A platform knows you as one account with one follower list. Why does that
+limit who you can share a reaction with?</p>
 </div>
 <div class="question">
-<p><span class="question-number">64.4</span>
+<p><span class="question-number">64.3</span>
 Name one design choice in a like button that could reduce the harms listed in
 64.4.</p>
 </div>
 <div class="question">
-<p><span class="question-number">64.5</span>
+<p><span class="question-number">64.4</span>
 Your podcast app shuts down. Using what the note describes, what would you
 need to keep your subscriptions?</p>
+</div>
+<div class="question">
+<p><span class="question-number">64.5</span>
+Speechify keeps your place in its own cloud. What would change if your place
+were stored in your own pod?</p>
 </div>
 </div>

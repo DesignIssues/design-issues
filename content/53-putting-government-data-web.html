@@ -1,19 +1,22 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A department that wants to publish its data should get it out now, in
-whatever form it has, and convert it into one common model from which every
-other format can be produced. It should not wait for a committee to agree on
-terms, and it should leave the attractive websites to others.
+A department publishing its data should get it out now, in whatever form it
+has, and convert it into one common model from which every other format can be
+produced. It should not wait for a committee to agree terms, and should leave
+the attractive websites to others.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in June 2009 for British and American officials who wanted to
-publish data and did not know what to do next, this note is a set of practical
-instructions. It opens by ranking the steps in order.
+&ldquo;This, 2009, is the year for putting government data online,&rdquo; the
+note begins. The American and British governments had both made public
+commitments toward open data, and outsiders such as mySociety, GovTrack and
+Watchdog.net were already publishing government data themselves, some of it as
+linked data. For anyone who wanted to follow, the note sets out the next
+steps, starting with an order:
 </p>
 <blockquote>
 Start with the "low-hanging fruit". Whatever else, the raw data should be made
@@ -22,13 +25,16 @@ available as soon as possible.
 </blockquote>
 </div>
 
-<h2>53.1 The ranking, and what it demotes</h2>
+<h2>53.1 Why the government&#8217;s own website comes last</h2>
 
 <p>
-<em>Raw data</em> means the records themselves, before anyone has turned them
-into charts or reports; a spreadsheet that is a plain table is already close.
-<em>Linked data</em> goes further: each thing described, a school or a road
-or a payment, gets its own web address, so other data can point to it.
+The note ranks four steps, and the one a department might start with, a
+polished website, comes last. First comes <em>raw data</em>: the records
+themselves, before anyone turns them into charts or reports. Second,
+preferably, <em>linked data</em>, in which each thing described, a school or a
+road or a payment, gets its own web address for other data to point to. Third,
+links to other sources. Only then an interface, if nobody outside has built
+one.
 </p>
 
 <figure>
@@ -60,16 +66,16 @@ or a payment, gets its own web address, so other data can point to it.
   <text x="360" y="272" class="t-sm" text-anchor="middle">The interface is ranked last deliberately: it is the part an outside community can supply.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 53.1</span>
-Only the department can take the first two steps; the last can be taken by
+Getting the raw data out needs the department; the last step can be taken by
 anyone.</figcaption>
 </figure>
 
 <p>
 A department&#8217;s own site cannot compete with outside sites, for two
-reasons: no interface yet lets ordinary users ask questions its designers did not
-foresee, and an outside site adds value by joining the data to other data for its own purpose, as in
-Figure 53.2. The note grants one exception: there are times when the
-government site must give ordinary users an easy way in.
+reasons: no interface yet lets ordinary users compose their own queries, and an
+outside site adds value by joining the data to other data for its own purpose
+(Figure 53.2). Sometimes, the note grants, the government site must still give
+ordinary users an easy way in.
 </p>
 
 <figure>
@@ -112,27 +118,21 @@ Only the accident data comes from the department; the useful map needs all
 three.</figcaption>
 </figure>
 
+<p>
+A second case concerns accountability: one agency publishes the money given to
+each town, another maps it against income per head there, &ldquo;and so on in uncountable permutation.&rdquo;
+</p>
+
 <h2>53.2 Three reasons, one technique</h2>
 
 <p>
-Government data goes online for three reasons: accountability to citizens,
-valuable information about the world, and a government and country that work
-more efficiently. One technique serves all three, characterised in three
-words.
-</p>
-
-<table>
-<tr><th>Property</th><th>What it means for a department</th></tr>
-<tr><td>Open</td><td>Reachable by an unlimited variety of applications, because the format is not proprietary</td></tr>
-<tr><td>Modular</td><td>Combinable with anything else published the same way, with no advance planning by either party</td></tr>
-<tr><td>Scalable</td><td>Easy to add to, even when the terms and definitions change over time</td></tr>
-</table>
-
-<p>
-The example of modularity is health expenditure for an area combined with
-its population characteristics to assess whether a programme worked. The
-note does not care which formats come in or go out, only what sits in the
-middle:
+Government data goes online for accountability, for valuable information
+about the world, and for a government and country that work more efficiently.
+Linked data serves all three, and the note calls it open, scalable and
+modular: joinable with no advance planning, as when health spending for an
+area meets data about the people living there to show whether a programme
+worked. The note does not care which formats come in or go out, only what sits
+in the middle:
 </p>
 
 <blockquote>
@@ -214,8 +214,14 @@ format needs to know about any output format.</figcaption>
 <p>
 SPARQL is the query language of this toolkit: a program anywhere can send a
 question to a SPARQL service and get the answer back as RDF, XML, sometimes
-JSON or CSV. Some users prefer each, so the outputs should be generated
-automatically.
+JSON or CSV. A query joining data from different sources can be encoded into
+one long URI, &ldquo;a URI for a virtual XML document for that particular
+view&rdquo;.
+</p>
+
+<p>
+Granting that the case is hard to see from other technologies, the note stops
+arguing it: &ldquo;Sometimes it is better just to do it.&rdquo;
 </p>
 
 <h2>53.3 Two philosophies, and the one that finishes</h2>
@@ -244,9 +250,8 @@ essential. Put the data up where it is: join it together later.
 </blockquote>
 
 <p>
-A <em>mandate</em> from the top supplies permission, in the terms of
-Chapter 51 the first star and the hardest thing to obtain. It does not supply the
-vocabulary.
+A <em>mandate</em> from the top supplies permission (Chapter 51&#8217;s first
+star, and the hardest thing to obtain), not the vocabulary.
 </p>
 
 <h2>53.4 Mixing vocabularies</h2>
@@ -255,10 +260,8 @@ vocabulary.
 A <em>vocabulary</em> is a set of shared terms for describing data. The note
 recommends terms others already use: <code>foaf:name</code> for a
 person&#8217;s name, <code>dc:title</code> for a title, <code>geo:lat</code>
-and <code>geo:long</code> for position. The part before the colon is a short
-nickname for the vocabulary: FOAF (&ldquo;friend of a friend&rdquo;) for
-people, DC (Dublin Core) for documents, geo for positions. Chapter 17 argued
-that one document must carry several vocabularies; here a department uses
+and <code>geo:long</code> for position. The prefix names the vocabulary: FOAF
+(&ldquo;friend of a friend&rdquo;) for people, Dublin Core for documents. A department uses
 international terms where they exist and local ones for the rest.
 </p>
 
@@ -310,52 +313,53 @@ Agreement is needed only as wide as each term is used.</figcaption>
 <h2>53.5 From whatever exists to linked data</h2>
 
 <p>
-The note advises against a preliminary survey: an inventory of every dataset may take longer than publishing one.
+A full inventory first is wise and cautious, the note says, but it may take
+longer than just doing it.
 </p>
 
 <h3>Leave the existing system alone</h3>
 
 <p>
 The most important rule is not to disturb the systems, or the people,
-responsible for the data, who may have spent years assembling it. Extract the
+responsible for the data. Putting a dataset together &ldquo;often takes years
+of negotiation&rdquo;, and there are &ldquo;social as well as technical
+systems&rdquo; to protect. Extract the
 data with the export facilities it already has and add &ldquo;a thin
-shim&rdquo; to adapt it to the standard. Likewise, do not run a public server
-on the live database unless it is built for heavy use: take a copy, or
-generate the RDF once and serve that.
+shim&rdquo; to adapt it to the standard. Nor should a public server run on
+the live database unless it is built for heavy use; serve a copy instead.
 </p>
 
 <h3>Whatever form it is in</h3>
 
 <table>
 <tr><th>The data is in</th><th>What the note suggests</th></tr>
-<tr><td>A relational database</td><td>Use an open-source tool such as D2RServer or Triplify, with a mapping file that says how the tables represent things and their relationships</td></tr>
-<tr><td>A spreadsheet</td><td>If it is a plain table, export it as CSV and convert that to RDF; spreadsheets full of headings and notes are harder</td></tr>
+<tr><td>A relational database</td><td>Use an open-source tool such as D2RServer or Triplify, with a mapping file saying how the tables represent things and relationships</td></tr>
+<tr><td>A spreadsheet</td><td>Much information, some of it critical, is &ldquo;emailed around in spreadsheets&rdquo;, and much early recovery.gov data was published as spreadsheets. If it is a plain table, export it as CSV and convert that to RDF; spreadsheets full of headings and notes are harder</td></tr>
 <tr><td>XML</td><td>Put the XML up as it is while thinking, then write a script that converts each file to RDF</td></tr>
 <tr><td>A proprietary format</td><td>Someone writes a program to get the data out and convert it</td></tr>
-<tr><td>An existing website</td><td>Change the page-generating scripts to embed the data in each page (RDFa), or give each page a parallel page of RDF</td></tr>
+<tr><td>An existing website</td><td>Embed the data in each page (RDFa), as the UK Civil Service Jobs site did, or give each page a parallel RDF page, as BBC programmes data did</td></tr>
 </table>
 
 <h3>A worked example</h3>
 
 <p>
-For the proprietary case the note sketches the whole job with books and
-shelves. Give each thing a web address: a book becomes
-<code>http://id.example.com/id/isbn/123457890</code>, named by its ISBN, and a
-shelf <code>http://id.example.com/id/shelf/746</code>. Then write a small
-script which, given one of these addresses, looks up that book (and its shelf)
-or that shelf (and its books) and returns RDF. That script is the
-department&#8217;s linked data server.
+For the proprietary case the note sketches the whole job. Give each book and
+shelf a web address, such as
+<code>http://id.example.com/id/isbn/123457890</code> and
+<code>http://id.example.com/id/shelf/746</code>; then write a small script
+that, given one of these addresses, returns that thing&#8217;s data as RDF,
+with its shelf or its books. That script is the department&#8217;s linked data
+server.
 </p>
 
 <h3>What the note does not ask for</h3>
 
 <p>
 The note does not argue that all data should be public. Personal data will
-probably not be an early choice, though where privacy is settled and the data
-already public, converting it is an excellent idea. Each dataset&#8217;s
+probably not be an early choice, though converting data that is already public,
+with privacy settled, is an excellent idea. Each dataset&#8217;s
 licence should be machine-readable, using the Creative Commons
-<code>cc:license</code> term or the CC0 waiver, which gives up all rights
-where the law allows.
+<code>cc:license</code> term or the CC0 waiver.
 </p>
 
 <h3>Do&#8217;s and don&#8217;ts</h3>
@@ -374,10 +378,10 @@ where the law allows.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The portals arrived around the note.</strong> The American data
-portal, data.gov, opened in May 2009, a month before it; Britain&#8217;s,
-data.gov.uk, followed in January 2010, seven months after. The note itself
-records that both governments made public commitments toward open data that
-year.</li>
+portal, data.gov, opened in May 2009, a month before it. On 10 June 2009
+Gordon Brown told the Commons he had asked Berners-Lee to help open up British
+government data; Nigel Shadbolt joined him, and data.gov.uk followed in
+January 2010.</li>
 </ul>
 </div>
 
@@ -394,9 +398,8 @@ sense of openness is Chapter 25; the identifiers are Chapter 48.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">53.1</span>
-The note gives two reasons a department&#8217;s own site cannot compete
-with outside ones. Which of them might disappear as tools improve, and what
-would that change about the ranking?</p>
+Which of the note&#8217;s two reasons a department&#8217;s site cannot compete
+with outside ones might disappear as tools improve, and what would that change?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.2</span>
@@ -405,8 +408,8 @@ order, what does it do first, and what does it leave to others?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.3</span>
-Why does the note advise against putting a public server on the live
-database, and what does it suggest instead?</p>
+The note says an inventory of all the data may take longer than publishing
+some of it. When would the survey still be worth doing first?</p>
 </div>
 <div class="question">
 <p><span class="question-number">53.4</span>

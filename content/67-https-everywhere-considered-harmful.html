@@ -15,34 +15,28 @@ He is not arguing against encryption. He is arguing that the fact
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Chapter 5 recorded a complaint, in 1998, that security should have been
-negotiated within one set of names rather than splitting it in two.
-Seventeen years later Berners-Lee returns to the same decision, knowing how
-it turned out, and says plainly what was at stake.
-</p>
-<p>
-It is not aimed at the EFF&#8217;s browser extension of the same name.
+<code>http://x.org/report</code> and <code>https://x.org/report</code> look
+like one page. To the Web they are two names, and every link ever written
+points at only one of them. In 2015, while the Web was being urged to move
+wholesale to the second kind, the designer of the first called that campaign,
+taken at face value, &ldquo;arguably a greater threat to the integrity for the
+web than anything else in its history&rdquo;.
 </p>
 </div>
 
-<h2>67.1 The decision, reconstructed</h2>
+<h2>67.1 Who was the s for?</h2>
 
 <p>
-A protocol is the set of rules a browser and a server follow to talk to each
-other; HTTP is the Web&#8217;s. Every address begins with a prefix (also called
-a scheme) naming the protocol used to fetch it, as in
-<code>http://bank.example/</code>.
+Every address begins with a prefix, or scheme, naming the protocol (the rules
+browser and server follow to talk) used to fetch it. When a secure HTTP was
+designed in the mid-1990s, there was a choice: extend the protocol behind the
+existing <code>http:</code> prefix, or give it a prefix of its own,
+<code>https:</code>.
 </p>
 
 <p>
-In the mid-1990s, when a secure version of HTTP was designed, there was a
-choice: extend the existing protocol behind the existing <code>http:</code>
-prefix, or give the secure version a prefix of its own, <code>https:</code>.
-</p>
-
-<p>
-Berners-Lee reconstructs the arguments as a table, and reminds us that a link
-passes between two people: whoever writes it and whoever later clicks it.
+A link passes between two people: whoever writes it and whoever later clicks
+it. The choice was about which of them the Web should serve.
 </p>
 
 <blockquote>
@@ -89,15 +83,15 @@ and clicks ion it.
   <text x="360" y="308" class="t-sm t-it" text-anchor="middle">It is now the user&#8217;s task to ensure their interactions are secure, not the link maker&#8217;s.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 67.1</span>
-The decision was right for the threat of 1995 and wrong for the threat of
-2015. Berners-Lee notes that mass traffic inspection was not then technically
-feasible, so ubiquitous snooping was not the driver.</figcaption>
+Berners-Lee guesses that the bank&#8217;s assurance decided it; twenty years
+on, he says, it was not the assurance that mattered most. Mass traffic
+inspection was not then feasible, so snooping was not the driver.</figcaption>
 </figure>
 
-<h2>67.2 What changed</h2>
+<h2>67.2 The reader took over</h2>
 
 <p>
-Three things, and the third settles it.
+Three things changed, and the last is the plainest.
 </p>
 
 <ol>
@@ -106,7 +100,7 @@ follows a link became the browser&#8217;s job rather than the publisher&#8217;s.
 <li>People learned to look not at the s in the address but at the padlock,
 and then at the name of the certificate holder, the organisation the browser
 has checked the site belongs to.</li>
-<li>Browsers stopped showing the prefix at all.</li>
+<li>Some browsers stopped showing the prefix at all.</li>
 </ol>
 
 <blockquote>
@@ -121,11 +115,7 @@ the idea that the 's' in the URI is important part of the architecture.
 An unshown letter cannot do the job it was added for.
 </p>
 
-<h2>67.3 The charge</h2>
-
-<p>
-The central claim:
-</p>
+<h2>67.3 Two names for one page</h2>
 
 <blockquote>
 The problem is of course that moving things from http: space into https space,
@@ -136,8 +126,7 @@ web.
 </blockquote>
 
 <p>
-<code>http://x.org/report</code> and <code>https://x.org/report</code> are
-different names. A link written years ago keeps pointing at the old one.
+A link written years ago keeps pointing at the old name.
 </p>
 
 <figure>
@@ -209,12 +198,11 @@ links need nothing.</figcaption>
 </figure>
 
 <p>
-He then compares it with every earlier change to the Web:
+No earlier change to the Web did this:
 </p>
 
 <blockquote>
-In a way it is arguably a greater threat to the integrity for the web than
-anything else in its history. The underlying speeds of connection of increased
+The underlying speeds of connection of increased
 from 300bps to 300Gbps, IPv4 has being moved to IpV6, but none of this breaks
 the web of links in so doing.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
@@ -268,23 +256,23 @@ the web of links in so doing.
   <text x="24" y="284" class="t-mono" style="fill:#1c5a7a">http: &#8594; https: changes the names</text>
 </svg>
 <figcaption><span class="fig-label">Figure 67.3</span>
-Faster lines, new network addresses and encryption inside the protocol all
-happen beneath the links. Changing the prefix is the only change that reaches
+Every other change happens beneath the links. Changing the prefix reaches
 the layer where links live.</figcaption>
 </figure>
 
 <p>
 The security level was put where the identity lives. Chapter 2&#8217;s opacity
 axiom says an address is a sealed label: it names a thing, and nothing else
-should be read from its letters. The s breaks that rule.
+should be read from its letters. The s breaks that rule. (A footnote spares
+the EFF&#8217;s browser extension of the same name.)
 </p>
 
-<h2>67.4 The single-valued trust mistake</h2>
+<h2>67.4 A wall that never fits</h2>
 
 <p>
-Once https: was treated as a safe space, browsers ring-fenced it. Browsers,
-in what the note calls the spirit of the Same Origin Policy, now require
-everything loaded into an https: page to arrive securely too, which, the note says, &ldquo;has led to a class of web apps being
+Once https: was treated as a safe space, browsers ring-fenced it: in the
+spirit of the Same Origin Policy, everything loaded into an https: page must
+arrive securely too, which, the note says, &ldquo;has led to a class of web apps being
 broken&rdquo;. A parenthesis that follows draws the general lesson:
 </p>
 
@@ -349,9 +337,8 @@ needs a separate answer in each cell, which no single line can draw.</figcaption
 </figure>
 
 <p>
-A wall between a secure region and an insecure one implements single-valued
-trust, and Berners-Lee gives the symptom that reveals the mistake in any
-system:
+A wall between a secure region and an insecure one implements trust as a
+single value, and the note gives the symptom of that mistake in any system:
 </p>
 
 <blockquote>
@@ -364,15 +351,16 @@ If a boundary keeps needing to be moved, the thing it separates was not two
 kinds of thing.
 </p>
 
-<h2>67.5 The proposal</h2>
+<h2>67.5 Encrypt the wire, not the name</h2>
 
 <p>
 The alternative is in the note&#8217;s own title. TLS (Transport Layer
 Security) is the encryption layer that https: uses. Use it everywhere, inside
 the protocol, and stop marking it in the address. A connection can be upgraded
-to TLS as it is made, an in-band upgrade already described in 2000 in an RFC
-(one of the Internet&#8217;s numbered standards documents), or the browser can
-simply try the encrypted version first. Show the assurance in the browser,
+to TLS as it is made, an upgrade already described in 2000 in RFC 2817 (one
+of the Internet&#8217;s numbered standards documents), though that was
+&ldquo;motivated apparently by the need to save low-numbered ports&rdquo;; or
+the browser can simply try the encrypted version first. Show the assurance in the browser,
 where people already look, and let the prefix be phased out.
 </p>
 
@@ -388,24 +376,33 @@ which has three parts:
 through traceable, to strongly authenticated.</li>
 </ol>
 
+<p>
+One letter can say only yes or no. The last of these questions alone has
+three answers, which is the single-valued trust mistake again.
+</p>
+
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Free certificates, late 2015.</strong> Let&#8217;s Encrypt, which
-the note names, began issuing free, automatic certificates.</li>
-<li><strong>The campaign won.</strong> The https: prefix became the
-default, Chrome 68 began marking plain http: pages &ldquo;Not secure&rdquo; in
-July 2018, and most of the Web migrated.</li>
-<li><strong>The breakage was real and was absorbed.</strong> Redirects, HSTS
-(RFC 6797, 2012, which tells browsers to rewrite a site&#8217;s http: links to
-https:) and the <code>upgrade-insecure-requests</code> directive (a page&#8217;s
-instruction to fetch its own http: links over https:) repaired most
-links. They are a permanent layer of rewriting, the breakage the note warned
-of.</li>
-<li><strong>The upgrade mechanism the note prefers existed and lost.</strong>
-RFC 2817&#8217;s in-band upgrade was available and was not adopted; the industry
-chose the separate space.</li>
+<li><strong>Free certificates, late 2015.</strong> Let&#8217;s Encrypt, named
+in the note, began issuing them.</li>
+<li><strong>The campaign won.</strong> Chrome 68 began marking plain http:
+pages &ldquo;Not secure&rdquo; in July 2018, and most of the Web migrated.</li>
+<li><strong>The breakage was absorbed, not avoided.</strong> Redirects, HSTS
+(RFC 6797, 2012, telling browsers to rewrite a site&#8217;s http: links) and
+<code>upgrade-insecure-requests</code> repaired most links: a permanent layer
+of rewriting.</li>
+<li><strong>The in-band upgrade lost; trying TLS first arrived.</strong>
+RFC 2817 was not adopted, but Firefox 83 added an HTTPS-Only Mode (2020) and
+Chrome 90 tried https: first for typed addresses (2021), after the names had
+changed.</li>
+<li><strong>The certificate holder&#8217;s name went too</strong>, removed
+from the address bar in 2019 (Chapter 6). In Chrome 117 (2023) Google
+replaced the padlock itself, saying many users read it as a sign that a site
+was trustworthy: the note&#8217;s &ldquo;level of assurance&rdquo; problem.</li>
+<li><strong>The extension was retired.</strong> In 2021 the EFF announced it
+would retire HTTPS Everywhere: browsers now had HTTPS-only modes.</li>
 </ul>
 </div>
 
@@ -439,8 +436,7 @@ a browser could show for each of them.</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.4</span>
-Faster lines and new network addresses were invisible to links; the new
-prefix was not. Using the opacity axiom (an address is a sealed label),
-explain the difference.</p>
+Find a link in an old article that begins <code>http:</code>. Follow it. What
+happened, and who did the work to make it happen (or fail)?</p>
 </div>
 </div>

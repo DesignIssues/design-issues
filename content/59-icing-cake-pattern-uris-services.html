@@ -10,23 +10,25 @@ always find their way between the page and its tools.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-A small note from December 2016 with a status line reading &ldquo;good enough
-for government work&rdquo;, about a design decision every project makes
-without noticing: when a thing has tools attached to it, whose address comes
+A visitor lands on a project&#8217;s live web page and wants to see its
+source, check its links, or read its history. From the page itself there is
+no way to work out where any of that lives; someone has to have typed a link.
+Berners-Lee&#8217;s December 2016 note, its status line modestly reading
+&ldquo;good enough for government work&rdquo;, asks a question most projects
+never ask out loud: when a thing has tools attached to it, whose address comes
 first?
 </p>
 </div>
 
-<h2>59.1 Two patterns</h2>
+<h2>59.1 Tool first, or work first</h2>
 
 <p>
 A version control system keeps every past version of a project&#8217;s files;
 GitHub is the best-known web interface to one. When the project is a website,
-one file gets several addresses. In Berners-Lee&#8217;s example, a page
+one file gets several addresses. In Berners-Lee&#8217;s example,
 <code>index.html</code> in the project <code>myproject</code> of the account
 <code>acmedata</code> has an editable view, a raw copy on a second domain, a
-hosted copy on github.io, and finally the live copy on the owner&#8217;s own
-domain.
+hosted copy on github.io, and the live copy on the owner&#8217;s domain.
 </p>
 
 <p>
@@ -95,31 +97,17 @@ The published work is the cake; the tools are icing. New tools need only a
 new ending; the page&#8217;s address never changes.</figcaption>
 </figure>
 
-<h2>59.2 The complaint, stated twice</h2>
+<h2>59.2 Lost in both directions</h2>
 
 <p>
 Berners-Lee names two failures of discoverability, meaning being able to find
-one address from the other, and they are symmetrical:
+one address from the other, and they mirror each other. From the repository
+there is no rule for constructing the live site&#8217;s address, so the
+project must write the link into its documentation by hand. From the live
+site, whether on github.io or the owner&#8217;s domain, there is &ldquo;no
+obvious way of knowing that the github site exists or of finding its
+URI.&rdquo;
 </p>
-
-<blockquote>
-One disadvantage of this pattern is that when you are in the project github web
-pages, it it is not at all obvious how to construct the URL above for the live
-site, and the project folks he to make an explicit link to it in their
-documentation.
-<cite>Icing on the cake, 2016</cite>
-</blockquote>
-
-<p>
-And in the other direction:
-</p>
-
-<blockquote>
-Another disadvantage is that when you are on the live site, either the
-acmedata.github.io site or the acmedata.com site, their is no obvious way of
-knowing that the github site exists or of finding its URI.
-<cite>Icing on the cake, 2016</cite>
-</blockquote>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
@@ -175,18 +163,12 @@ Discovery works both ways only when one address can be computed from the
 other.</figcaption>
 </figure>
 
-<p>
-A software package may record its repository in <code>package.json</code>, a
-project&#8217;s description file, but a client fetching the HTML page cannot
-discover the link.
-</p>
-
-<h2>59.3 Why the choice is architectural</h2>
+<h2>59.3 The cake and the icing</h2>
 
 <p>
-The pattern names what a system treats as primary. In the first, the
-repository is the real thing and publication is an export. In the second, the
-published thing is the real thing and everything else is an accessory:
+The pattern names what a system treats as primary: the repository, with
+publication as an export, or the published thing, with everything else an
+accessory:
 </p>
 
 <blockquote>
@@ -197,7 +179,9 @@ the cake.
 </blockquote>
 
 <p>
-The server sees the comma and runs the tool on the address before it. The
+The advantage he claims for this is scale: because every tool hangs off the
+page, more can be added indefinitely, as &ldquo;no one tool forces the whole
+URL into its own strange shape.&rdquo; The server sees the comma and runs the tool on the address before it. The
 comma itself is incidental; suffixes need only be short, simple and memorable.
 What matters is a fixed rule, so that anyone holding the page&#8217;s address
 can work out the tool&#8217;s.
@@ -205,8 +189,8 @@ can work out the tool&#8217;s.
 
 
 <p>
-The note&#8217;s appendix, a snapshot of 10 December 2017, lists about sixteen
-such tools. Five of them:
+The note&#8217;s appendix, a snapshot of 10 December 2017, shows that scaling
+in practice: about sixteen tools on one page&#8217;s address. Five of them:
 </p>
 
 <table>
@@ -218,38 +202,41 @@ such tools. Five of them:
 <tr><td><code>,cvslog</code></td><td>The log of changes to the document</td></tr>
 </table>
 
-<h2>59.4 The same problem, generally</h2>
+<h2>59.4 Name the work, not the tool</h2>
 
 <p>
-Chapter 57 asked where an application should save data so another can find
-it. This note asks the same about tools: where should a validator or change
-log live so that anyone holding the page can find it? In both, a protocol is
-not enough; what is missing is a rule that lets one party compute where
-another put something.
+A page at <code>acmedata.github.io/&#8230;</code> breaks if the project moves
+off GitHub; <code>acmedata.com/&#8230;</code> does not. This is Chapter
+3&#8217;s argument about information in names: an address that names the tool
+which made it will eventually be wrong, while naming the work and deriving
+the tool&#8217;s address leaves the tool free to change.
 </p>
 
 <p>
-It is also Chapter 3&#8217;s argument about information in names. An address
-that names the tool which made it will eventually be wrong. Naming the work
-and deriving the tool&#8217;s address leaves the tool free to change. A page
-at <code>acmedata.github.io/&#8230;</code> breaks if the project moves off
-GitHub; <code>acmedata.com/&#8230;</code> does not.
+Chapter 57 asked the same question about data: where should one application
+save so that another can find it? In both, a protocol is not enough; what is
+missing is a rule for computing where another party put something.
 </p>
+
 
 <h2>59.5 Icing for machines</h2>
 
 <p>
 A comma typed by hand serves a person. Berners-Lee also wants icing visible to
-programs. The Memento protocol adds HTTP headers, labels sent with every page that the
-reader does not see, that let a browser find older
-versions of a page. Solid, his personal data system, links each resource to
-the page controlling who may access it.
+programs, sent in HTTP headers that travel with each response unseen by the
+reader. A page supporting Memento can answer with
+<code>Link: &lt;http://arxiv.example.net/timegate/http://a.example.org/&gt;; rel="timegate"</code>,
+telling a browser where to find older versions. A Solid server, his personal
+data system, uses <code>rel="acl"</code> to point to the page controlling who
+may access a resource; its specification forbids clients to guess that
+address by editing the resource&#8217;s own.
 </p>
 
 <p>
-w3.org itself falls short: follow a link into its CVS, an older version control system,
-and the addresses look much like GitHub&#8217;s, with no way straight back.
-What he would like instead:
+His conclusion asks for both kinds of icing: the comma for people, and a link
+for software. w3.org itself falls short: follow a link into its CVS, an older
+version control system, and the addresses look much like GitHub&#8217;s, with
+no way straight back. What he would like instead:
 </p>
 
 <blockquote>
@@ -261,18 +248,14 @@ back to the original file live on the web site
 <cite>Icing on the cake, 2016</cite>
 </blockquote>
 
-<p>
-His conclusion asks for both: the comma for people, and a link for
-software.
-</p>
-
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The hosted-copy pattern predates the note.</strong> GitHub
 Pages launched in 2008.</li>
 <li><strong>Discovery was patched, not fixed.</strong> npm&#8217;s
-<code>package.json</code> has a <code>repository</code> field, which the live page does not expose.</li>
+<code>package.json</code> has a <code>repository</code> field, as the note
+says, but the live HTML page does not expose it.</li>
 <li><strong>Memento was already published</strong>, as RFC 7089 (December
 2013, an Informational RFC).</li>
 <li><strong>Well-known locations were revised.</strong> RFC 8615 (May 2019)
@@ -305,7 +288,9 @@ Figure 59.1 break, and which would have survived under the comma pattern?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.3</span>
-In Figure 59.1, which address would you give a friend, and why?</p>
+Many documentation sites built from a repository carry an &ldquo;Edit this
+page&rdquo; link. Is that icing, or a hand-made link of the kind the note
+complains about?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.4</span>

@@ -1,15 +1,16 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-In 2008 a company proposed to inspect everything passing through people&#8217;s
-internet connections at home, work out every page each household visited, and
-sell advertising against the result. Berners-Lee attended a discussion about it at the
+In 2008 the company Phorm proposed to read the traffic on British home
+internet connections, list every page each household visited, and sell
+advertising against the result. Berners-Lee attended a discussion about it at the
 House of Lords. These are his notes.
 </p>
 <p>
-The argument is not the expected one. The harm he identifies is not to the
-individual whose browsing is read, but to the act of reading itself, and
-therefore to a society that decides things by reading.
+He argues two harms. One falls on the person whose browsing is read: a profile
+could be bought, used against them in hiring or insurance, or used to stalk
+them. The other falls on reading itself, and so on a society that decides
+things by reading.
 </p>
 </div>
 
@@ -26,16 +27,15 @@ web for society places requirements also on the Internet layer.
 <cite>No Snooping, 2009</cite>
 </blockquote>
 <p>
-The occasion was a proposal by the company Phorm to inspect the contents of
-network traffic at the provider, build a profile of every address a household
-visited, and use it to target advertising.
+He had already spoken against this kind of tracking on BBC News in March 2008,
+an interview the note cites.
 </p>
 </div>
 
-<h2>71.1 The equivalence</h2>
+<h2>71.1 Opening the envelope</h2>
 
 <p>
-The argument opens by refusing to treat this as new:
+The argument begins by refusing to treat this as new:
 </p>
 
 <blockquote>
@@ -55,12 +55,11 @@ and is more revealing than our phone calls or our mail.
 </blockquote>
 
 <p>
-An internet service provider (ISP) is the company that carries a
-customer&#8217;s traffic. Every message is cut into pieces called packets. The
-outside of each packet carries the delivery address; the inside carries the
-content. The provider needs only the outside to do its job. Reading the inside
-on the way past is called deep packet inspection, the technique Phorm proposed
-to use. The note says exactly where the line falls:
+An internet service provider (ISP) carries a customer&#8217;s traffic in
+pieces called packets. The outside of each packet carries the delivery
+address, the inside the content, and the provider needs only the outside.
+Reading the inside on the way past is deep packet inspection, Phorm&#8217;s
+technique. The note draws the line exactly:
 </p>
 
 <blockquote>
@@ -133,7 +132,17 @@ equivalent of steaming open a letter.</figcaption>
 <h2>71.2 What an address discloses</h2>
 
 <p>
-A web address (URL) names the exact page someone asked for, not just the site.
+The note puts the scale in one comparison:
+</p>
+
+<blockquote>
+To put his in perspective, it is like the company having a video camera inside
+your house, except that it gives them actually much more information about you.
+<cite>No Snooping, 2009</cite>
+</blockquote>
+
+<p>
+The reason is that a web address (URL) names the exact page someone asked for, not just the site.
 A list of them is therefore a diary of what a person wanted to know, kept
 before they had told anyone.
 </p>
@@ -147,7 +156,9 @@ and fears. This is extremely sensitive material.
 <p>
 Forms make it worse. A search can produce an address such as
 <code>https://example.org/search?q=chest+pain+left+arm</code>: the words typed
-are now part of the address, visible to anyone who reads the payload.
+are now part of the address, visible to anyone who reads the payload. That
+is the note&#8217;s third harm: an insurer could discriminate against whoever
+looked up cardiac symptoms.
 </p>
 
 <figure>
@@ -157,7 +168,7 @@ are now part of the address, visible to anyone who reads the payload.
   <desc id="fig71-2-d">The addresses a person visits reveal their health
   worries, their sexuality and their politics. The note lists six ways the
   information could be misused, from buying a profile of someone to predators
-  choosing victims. The note likens it to a video camera inside the home.</desc>
+  choosing victims. </desc>
 
   <rect class="box-plain" x="24" y="34" width="310" height="224" rx="4"/>
   <text x="179" y="58" class="t-caps" text-anchor="middle">what people look up</text>
@@ -184,14 +195,16 @@ are now part of the address, visible to anyone who reads the payload.
   <text x="360" y="324" class="t-sm" text-anchor="middle">except that it gives them actually much more information about you.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 71.2</span>
-The six harms are the note&#8217;s own list. It adds that the data may be
-abused by an insider as easily as stolen from outside.</figcaption>
+Each harm needs only the list of addresses, not the pages themselves. The
+note adds that the data could be abused by an insider or stolen by an attack.</figcaption>
 </figure>
 
-<h2>71.3 The argument about democracy</h2>
+<h2>71.3 Watched reading is different reading</h2>
 
 <p>
-The central passage is about democracy:
+A voter checking what is true, someone wondering whether they are homosexual,
+a patient reading about symptoms: each reads differently once the click is
+known to be logged and shared. The note&#8217;s central passage:
 </p>
 
 <blockquote>
@@ -204,15 +217,14 @@ monitored and the data will be shared with third parties.
 </blockquote>
 
 <p>
-Reading in order to decide changes when reading is watched, so a society that
-decides by reading loses something even if no one person is harmed.
+Nobody need be harmed individually for a society that decides by reading to
+lose something.
 </p>
 
-<h2>71.4 The prediction about encryption</h2>
+<h2>71.4 A prediction that came true at a different price</h2>
 
 <p>
-One passage predicts a consequence that had not yet happened and reads now as
-an account of what did:
+One passage predicted a consequence that had not yet happened:
 </p>
 
 <blockquote>
@@ -226,11 +238,10 @@ web access.
 </blockquote>
 
 <p>
-SSL (now TLS) scrambles traffic so that only the two ends can read it. A
-proxy or shared cache is a machine in the middle that keeps copies of popular
-pages, and it cannot do that with traffic it cannot read. This was a warning
-against surveillance on efficiency grounds, six years before Chapter 67. It
-was right about the mechanism and wrong about the cost: encryption got cheap,
+SSL (now TLS) lets only the two ends read the traffic, so a proxy cache in
+the middle, which keeps copies of popular pages, can no longer work. This was a warning
+against surveillance on efficiency grounds, six years before his 2015 note on
+moving the Web to encryption (Chapter 67). It was right about the mechanism and wrong about the cost: encryption got cheap,
 and caching moved to the site&#8217;s side (Figure 71.3).
 </p>
 
@@ -297,8 +308,7 @@ sees which site. Caching moved to the site&#8217;s side, run by companies the si
 <h2>71.5 Why it must be illegal rather than discouraged</h2>
 
 <p>
-The conclusion is about incentives, and it explains why the note asks for law
-rather than for norms:
+The note asks for law rather than norms, because of incentives:
 </p>
 
 <blockquote>
@@ -310,12 +320,8 @@ absolute clarity that it is illegal.
 
 <p>
 Where a thing is enormously valuable and only norms forbid it, someone will do
-it. His demand is for clarity: nobody should be able to argue about whether
-the rule applies.
-</p>
-
-<p>
-The note closes with a statement of principle:
+it; nobody should be able to argue about whether the rule applies. The note
+closes on principle:
 </p>
 
 <blockquote>
@@ -327,11 +333,14 @@ It must be available without interference or spying.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Europe objected.</strong> In April 2009 the European Commission
-began infringement proceedings against the United Kingdom over its handling of
-the interception rules.</li>
-<li><strong>The specific proposal failed.</strong> BT, which had trialled
-Phorm&#8217;s system, dropped its plans in July 2009; the other large British
+<li><strong>Europe objected, and British law changed.</strong> BT&#8217;s
+secret trials of the system on customers in 2006 and 2007 came out in 2008. In April 2009 the European Commission began
+infringement proceedings against the United Kingdom over its interception
+rules, and in September 2010 referred it to the EU Court of Justice. The UK
+amended its interception law in 2011, and the Commission closed the case in
+January 2012.</li>
+<li><strong>The specific proposal failed.</strong> BT dropped its plans in
+July 2009; the other large British
 providers that had signed up made no commitment to deploy it.</li>
 <li><strong>The encryption prediction came true and the costs did
 not.</strong> Let&#8217;s Encrypt, a free certificate authority, opened to the
@@ -339,12 +348,8 @@ public in December 2015, and from July 2018 Chrome labelled every
 unencrypted page as not secure.</li>
 <li><strong>The surveillance moved to where encryption does not
 reach.</strong> Profiling moved into pages and apps, through third-party
-cookies and tracking scripts. Firefox began blocking known trackers&#8217;
-cookies by default in September 2019, and Safari blocked all third-party
+cookies and tracking scripts. Safari blocked all third-party
 cookies from March 2020.</li>
-<li><strong>The principle entered law unevenly.</strong> The EU&#8217;s
-General Data Protection Regulation, applying from May 2018, treats browsing
-data linked to a person as personal data requiring a legal basis.</li>
 </ul>
 </div>
 
@@ -362,19 +367,18 @@ is Chapter 77.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">71.1</span>
-The harm is to the activity rather than the person. Name another activity that
-changes when observed, and say what society loses.</p>
+Besides harm to the person, the note names a harm to the activity of reading.
+Name another activity that changes when observed, and say what society loses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.2</span>
-Encryption defeated network-level inspection. Using the since box item on
-where surveillance moved, say where the observation went instead, and
-what the equivalent argument would look like there.</p>
+Encryption took the contents from the provider. Where did the watching go,
+and does the envelope analogy still apply there?</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.3</span>
-Why does the note ask for a clear law rather than relying on companies&#8217;
-good behaviour?</p>
+A company says its profiling is anonymous and opt-out. Why would that not
+meet the note&#8217;s &#8220;absolute clarity&#8221;?</p>
 </div>
 <div class="question">
 <p><span class="question-number">71.4</span>

@@ -1,27 +1,25 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Putting data online is not the same as making it usable. A spreadsheet on a
-website is online, but it is a dead end: nothing in it points anywhere, and
-nothing points into it.
+Data that is online is not thereby usable. A spreadsheet on a website is a
+dead end: nothing in it points anywhere, and nothing points into it.
 </p>
 <p>
 Linked data is written as small three-part statements, such as
 (Albert, child, Brian): a thing, a relationship, another thing. When each
-part is a web address, every statement is also a link. This note gives four
-rules for publishing data so that a person or a program arriving at one piece
-can find the rest.
+part is a web address, every statement is also a link. Four rules let a
+person or program arriving at one piece find the rest.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in July 2006, this note opens Volume VI because everything after it either applies its four rules
-or argues about what they left out.
-</p>
-<p>
-Its opening does the work of a whole volume:
+In 2006 Berners-Lee could write in his own data file that he knew H&aring;kon
+Lie, using the URI the Opera Community site gave Lie, and anyone following
+that link could &ldquo;find all his friends&rdquo;. Typical social network
+portals, the note observes, did not link to other sites. This July 2006 note
+sets out four rules that make the first case possible. It begins:
 </p>
 <blockquote>
 The Semantic Web isn't just about putting data on the web. It is about making
@@ -34,18 +32,13 @@ data, when you have some of it, you can find other, related, data.
 <h2>49.1 The four rules</h2>
 
 <p>
-A <em>URI</em> is a web address used as a name, of a
-person or an idea as well as a page. <em>RDF</em> is the standard format for
-three-part statements. A <em>vocabulary</em> (or ontology) is a published set of terms, such
-as <em>child</em> or <em>title</em>. A <em>dataset</em> is a large body of
-statements, such as a library catalogue.
-</p>
-
-<p>
-Applied to one person, the rules say: name Albert with a URI; make it an
+Applied to one person, the rules say: name Albert with a <em>URI</em>, a web
+address used as a name, of a person or an idea as well as a page; make it an
 <code>http:</code> address, so that it can be looked up; when someone looks
-it up, return statements such as (Albert, child, Brian); and make Brian a URI
-too, so the reader can go on.
+it up, return statements such as (Albert, child, Brian) in <em>RDF</em>, the
+standard format for three-part statements; and make Brian a URI too, so the
+reader can go on. Then comes the twist: &ldquo;Simple. In fact, though, a surprising amount of data isn&#8217;t
+linked in 2006&rdquo;.
 </p>
 
 <figure>
@@ -99,19 +92,19 @@ too, so the reader can go on.
   <text x="360" y="332" class="t-sm t-it" text-anchor="middle">Written as four rules, followed by the word: Simple.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 49.1</span>
-The rest of the note explains why so much data in 2006 was still unlinked.</figcaption>
+Each rule builds on the one above it.</figcaption>
 </figure>
 
 <h2>49.2 Where each rule fails</h2>
 
 <p>
-The failures differ in kind. The first rule is definitional: if it does not
-use the universal set of symbols, Berners-Lee does not call it Semantic Web.
+The first rule is definitional: without URIs, Berners-Lee does not call it
+Semantic Web.
 </p>
 
 <p>
-Rule two is broken by people inventing new identifier schemes: LSIDs,
-handles, XRIs, DOIs and others. He gives two reasons. The first is control:
+Rule two is broken by new identifier schemes: LSIDs, handles, XRIs, DOIs.
+One motive is control:
 </p>
 
 <blockquote>
@@ -122,15 +115,15 @@ separate control.
 </blockquote>
 
 <p>
-The second is a misunderstanding: not seeing that HTTP URIs are names, not
-addresses, and that looking them up is a powerful and evolving set of
-standards. Chapter 3 takes that misunderstanding apart; Chapter 13 explains
-what separate control would honestly require.
+Another is not seeing that HTTP URIs are names, not addresses, with a
+powerful and evolving lookup. Chapter 3 takes that misunderstanding apart; Chapter 13 explains
+what separate control would require.
 </p>
 
 <p>
-The third rule fails by accident. Vocabularies are served; datasets
-frequently are not.
+The third rule is well followed for <em>vocabularies</em> (published sets of
+terms, such as <em>child</em> or <em>title</em>), but, &ldquo;for some
+reason&rdquo;, not for some major datasets.
 </p>
 
 <blockquote>
@@ -142,12 +135,16 @@ accessible on the web as linked data.
 </blockquote>
 
 <p>
-The fourth rule is argued from manners. On the hypertext Web it is bad
-etiquette not to link to related material, and the value of one&#8217;s
-information depends on what it links to.
+The note names Biopax and the CSAktive data on computer-science research; a
+2007 update records that the latter is now linked data.
 </p>
 
-<h2>49.3 Two ways to make the link</h2>
+<p>
+The fourth rule is argued from manners: on the hypertext Web it is bad
+etiquette not to link to related material.
+</p>
+
+<h2>49.3 Following a name to its data</h2>
 
 <p>
 The simplest link is a name in one file that points into another.
@@ -226,8 +223,9 @@ The local name <code>#carol</code> becomes the global name
 Some vocabularies, including early Dublin Core and FOAF, used names without a
 hash. For these the server answers with a <em>redirect</em>: a reply, with
 the status code 303, telling the client to fetch a different address instead
-(Chapter 8). Names can then take any form, at a price. In Figure 49.3 a GET
-is a browser&#8217;s ordinary request for a page.
+(Chapter 8), as suits a dictionary such as WordNet, with one word per
+document. Names can then take any form, but each costs an extra round trip
+(Figure 49.3; a GET is an ordinary request for a page).
 </p>
 
 <figure>
@@ -296,10 +294,9 @@ Dublin Core (abbreviated here) is the note&#8217;s example.</figcaption>
 <h2>49.4 The convention that worked and was wrong</h2>
 
 <p>
-In 2006 the dominant form of linked data on the Web used neither pattern. The
-Friend of a Friend (FOAF) vocabulary identified a person by two properties: a
-mailbox to say who, and a pointer to a document for more. The source&#8217;s
-example records that its author knows Joe:
+The dominant linked data of 2006 used neither pattern. The Friend of a
+Friend (FOAF) vocabulary identified a person by a mailbox, plus a pointer to
+a document for more:
 </p>
 
 <pre><code>&lt;#i&gt;  foaf:knows  [
@@ -307,13 +304,12 @@ example records that its author knows Joe:
        rdfs:seeAlso &lt;http://example.com/foaf/joe&gt; ].</code></pre>
 
 <p>
-Read: I know someone whose mailbox is joe@example.com, and more about them is
-at example.com/foaf/joe. Joe himself has no name of his own.
+Read: I know whoever has mailbox joe@example.com; more is at
+example.com/foaf/joe. Joe himself has no name.
 </p>
 
 <p>
-For privacy, publishers often gave a one-way hash of the address instead: a
-fingerprint of it that cannot be reversed.
+For privacy, publishers often gave an irreversible hash of the address instead.
 </p>
 
 <blockquote>
@@ -323,7 +319,7 @@ out that it is the same person, without giving the email away to others.
 </blockquote>
 
 <p>
-Berners-Lee credits the success, then names the defect:
+Then the defect:
 </p>
 
 <blockquote>
@@ -333,17 +329,16 @@ basic links to them cannot be made.
 </blockquote>
 
 <p>
-This is rule one failing inside a system that obeys the other three. His
+This is rule one failing inside a system that otherwise worked. His
 remedy: people making FOAF files should give themselves a URI, and others
 should use it.
 </p>
 
-<h2>49.5 Which links to make</h2>
+<h2>49.5 Links that run one way</h2>
 
 <p>
-Data is <em>browsable</em> if
-looking up any thing returns every statement in which it appears, as first
-part or last. Then a group leads to its members and a member to the group.
+Data is <em>browsable</em> if looking up any thing returns every statement in
+which it appears, as first part or last.
 </p>
 
 <p>
@@ -360,6 +355,14 @@ If someone has the URI of that thing, what relationships to what other
 objects is it useful to know about?
 <cite>Linked Data, 2006</cite>
 </blockquote>
+
+<p>
+Sometimes the answer is social. Berners-Lee&#8217;s FOAF file says he knows
+various people, who &ldquo;don&#8217;t generally repeat that
+information&rdquo;. Someone else&#8217;s claim to know him is
+&ldquo;theirs to assert, and the reader&#8217;s to trust or not&rdquo;. Other
+times the number of links makes both directions impractical.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
@@ -435,9 +438,18 @@ standard query language. The data stays linked only if someone
 holding just a URI can find that service, again through a 303.
 </p>
 
+<p>
+The note concludes that linked data is &ldquo;quite easy to do with a little
+thought, and becomes second nature&rdquo;, and offers the Tabulator browser
+as a way to check that it works.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
+<li><strong>Tools followed within months.</strong> The note&#8217;s
+follow-up list records D2R Server (September 2006) and the Semantic Web
+Client Library (October 2006).</li>
 <li><strong>The note grew stars.</strong> In 2010 Berners-Lee added a
 five-star rating scheme to this note, aimed especially at government data.
 Chapter 51 takes it up.</li>
@@ -450,8 +462,8 @@ since 2017 Crossref has recommended writing them as
 inside an HTTP name.</li>
 <li><strong>People got URIs, by two routes.</strong> Decentralised
 identifiers (<code>did:</code>, a W3C Recommendation in 2022) are a new
-non-HTTP scheme of the kind section 49.2 describes. Solid&#8217;s WebIDs,
-HTTP URIs for people, follow rule two. Chapter 54 discusses both.</li>
+non-HTTP scheme; Solid&#8217;s WebIDs are HTTP URIs for people. Chapter 54
+discusses both.</li>
 </ul>
 </div>
 
@@ -474,8 +486,8 @@ fail, and which is cheapest to fix?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.2</span>
-DOIs now usually appear as <code>https://doi.org/&hellip;</code> links.
-Which rule does that satisfy, and what did the DOI scheme gain by doing it?</p>
+Berners-Lee links to people who do not link back. Should a reader trust a
+link that runs only one way?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.3</span>

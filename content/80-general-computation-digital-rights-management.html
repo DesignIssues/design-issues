@@ -2,10 +2,10 @@
 <h3>The short version</h3>
 <p>
 Digital rights management (DRM) is software that lets a film play on a
-viewer&#8217;s machine while stopping the viewer from copying it. Around 2013 the W3C was split
+viewer&#8217;s machine while preventing copying. Around 2013 the W3C was split
 over whether HTML should offer a standard slot for it. Berners-Lee separates
-four things people want and shows that they cannot all hold at once, leaving
-the choice open. In 2017 the W3C, with Berners-Lee as its Director,
+four things people want, shows they cannot all hold at once, and leaves the
+choice open. In 2017 the W3C, with Berners-Lee as its Director,
 published the slot as Encrypted Media Extensions (EME).
 </p>
 </div>
@@ -13,10 +13,19 @@ published the slot as Encrypted Media Extensions (EME).
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Should the open Web&#8217;s standard include a slot for software the user cannot
-inspect or control? This note was written in 2013 during one of the most
-acrimonious arguments in the Consortium&#8217;s history, and revised in 2023 to look back at how it turned out.
-Berners-Lee describes the state of the debate before entering it:
+Should the open Web&#8217;s standard include a slot for software the user
+cannot inspect or control? Berners-Lee put the choice like this:
+</p>
+<blockquote>
+So should W3C just say "DRM is evil we should not collaborate with it in any
+way" and end up driving people to native apps where the whole app is locked
+down on a locked down platform, or should we open up a slot in an open system
+to allow a locked-down system to be accessed?
+<cite>General Computation, Digital Rights Management, and FOSS, 2013</cite>
+</blockquote>
+<p>
+The note, written in 2013 and revised in 2023, first separates the issues,
+because:
 </p>
 <blockquote>
 In the fervent discussion, very extreme positions have been taken, which has led
@@ -30,12 +39,9 @@ entangled.
 <h2>80.1 Four rights that cannot all hold</h2>
 
 <p>
-The Electronic Frontier Foundation and the author Cory Doctorow argued that
-HTML should not allow DRM at all, because it moved computing platforms towards
-big-company control. A concrete case shows what is at stake. A film streamed
-to a browser plays on the screen, but the viewer cannot clip a scene to quote it,
-keep it if the service closes, or read the code of the decoder that unlocks
-it.
+A film streamed to a browser plays on the screen, but the viewer cannot clip a
+scene to quote it, keep it if the service closes, or read the code of the
+decoder that unlocks it. Each loss is one of the rights the note names.
 </p>
 
 <p>
@@ -91,18 +97,19 @@ seller.
 </svg>
 <figcaption><span class="fig-label">Figure 80.1</span>
 The three user rights sit together without trouble; the seller&#8217;s wish
-conflicts with each of them. This is not a matter of engineering effort. A
+conflicts with each of them. A
 mechanism whose purpose is to withhold something from the machine&#8217;s owner
 cannot also be under the owner&#8217;s control.</figcaption>
 </figure>
 
-<h2>80.2 The tactical argument</h2>
+<h2>80.2 Locked decoder or locked platform</h2>
 
 <p>
-The case for allowing a <em>hook</em> in the standard, a standard slot through
+The Electronic Frontier Foundation and the author Cory Doctorow argued that
+HTML should not allow DRM at all, because it moved computing platforms towards
+big-company control. The reply was tactical. The case for allowing a <em>hook</em> in the standard, a standard slot through
 which a page hands encrypted video to a closed decoder, is not that the
-mechanism is good. It is an argument about where people end up otherwise, and
-Berners-Lee summarises it in his own words:
+mechanism is good, but where people end up otherwise:
 </p>
 
 <blockquote>
@@ -114,8 +121,7 @@ in other words use a completely locked down platform.
 </blockquote>
 
 <p>
-Flash was Adobe&#8217;s proprietary plug-in, then widely used for video on the
-Web. The conclusion drawn:
+Flash was Adobe&#8217;s proprietary video plug-in. The conclusion:
 </p>
 
 <blockquote>
@@ -197,39 +203,30 @@ If studios will not drop protection, refusing the slot leads to the left-hand
 path, not the right-hand one.</figcaption>
 </figure>
 
-<h2>80.3 Four positions, fairly stated</h2>
+<h2>80.3 Four people, four objections</h2>
 
 <p>
-The note sets out what different people believe,
-without labelling any of them wrong.
+The note sets out what different people believe, labelling none of them wrong.
 </p>
 
 <table>
 <tr><th>Position</th><th>What it rests on</th></tr>
 <tr><td>Copyright itself is wrong</td><td>Artists should be supported by live gigs and donations</td></tr>
-<tr><td>I judge when to copy</td><td>The law has been twisted, and protection blocks fair use, backups, and archives that later stop working</td></tr>
-<tr><td>Protection is worth it for a thriving industry</td><td>Accepts losing archives; has no answer for small bands that cannot get onto a DRM platform</td></tr>
+<tr><td>I judge when to copy</td><td>Copyright has been twisted and &ldquo;applies e.g. to 30 year old movies when it should not&rdquo;; protection blocks fair use, backups and archives</td></tr>
+<tr><td>Protection is worth it for a thriving industry</td><td>Not fussed about archives: they &ldquo;don't really watch movies they have bought a long time ago, or they are too young to have experienced the problem&rdquo;; no answer for bands without a DRM channel</td></tr>
 <tr><td>I object to hardware I do not control</td><td>Independent of any wish to copy anything</td></tr>
 </table>
 
 <p>
-The second position contains the prediction that has aged best: protected
-files typically fail when the supporting system changes, and an archive
-becomes unusable. The fourth separates the argument from copyright entirely.
-Berners-Lee closes the section with a related question:
+The second position holds the prediction that has aged best: protected files
+fail when the supporting system changes. The fourth has nothing to do with
+copyright.
 </p>
 
-<blockquote>
-A related question is, what sort of systems can we build to help people give
-money to those who e.g. write or perform music, with or without DRM, in an open
-market, with no 3rd party gatekeeper?
-<cite>General Computation, Digital Rights Management, and FOSS, 2013</cite>
-</blockquote>
-
-<h2>80.4 A decade on</h2>
+<h2>80.4 Ten years later: the laptop survived, the artist did not</h2>
 
 <p>
-The 2023 revision records what was standardised and what it does:
+The 2023 revision on what was standardised:
 </p>
 
 <blockquote>
@@ -240,8 +237,9 @@ the device -- gadgets which the user has no control of.
 
 <p>
 Streaming happened at enormous scale, on the Web and off, and the platforms
-still push people from the Web towards their apps for more control of the
-environment.
+still push people towards their apps. Yet sharing a clip from an app
+&#8220;typically generates a link which will take the recipient back to the
+web version&#8221;: even the apps lean on the Web.
 </p>
 
 <h3>What survived</h3>
@@ -253,8 +251,8 @@ open source code and random apps written by other people on it.
 </blockquote>
 
 <p>
-This is a check on one machine, not a general verdict, but it is the thing
-the objectors said was at risk: control of a general-purpose computer.
+One machine, but the very thing the objectors feared losing: control of a
+general-purpose computer.
 </p>
 
 <h3>What did not</h3>
@@ -338,23 +336,28 @@ through the platforms that own them.</figcaption>
 </figure>
 
 <p>
-That is only a partial answer to the question at the end of section 80.3.
+The big platforms, the revision adds, &#8220;are infamous for returning very
+little funds to the original artists&#8221;. The open route remains: &#8220;I
+can make my music or video available on my website, and give it away for free,
+or charge for it without protecting it.&#8221; The 2013 note&#8217;s question,
+how to pay those who write or perform music &#8220;with no 3rd party
+gatekeeper&#8221;, is still open.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The specification was published.</strong> Encrypted Media
-Extensions became a W3C Recommendation on 18 September 2017, over formal
-objection, and the Electronic Frontier Foundation resigned from the
-Consortium in protest.</li>
+<li><strong>The objectors split.</strong> In May 2014 Mozilla reluctantly
+agreed to support EME in Firefox so its users would not have to switch
+browsers: the tactical argument, accepted by an objector.</li>
+<li><strong>The specification was published.</strong> EME became a W3C
+Recommendation on 18 September 2017, over formal objection; the Electronic
+Frontier Foundation resigned from the Consortium in protest.</li>
 <li><strong>Flash ended.</strong> Adobe stopped supporting Flash Player at the
-end of 2020, so one of the locked alternatives in the tactical argument is
-gone.</li>
+end of 2020.</li>
 <li><strong>The archive prediction came true.</strong> In 2019 Microsoft
 closed the books section of its store, and the protected e-books customers
-had bought stopped working; Microsoft refunded them. This is the second
-position&#8217;s specific warning.</li>
+had bought stopped working; Microsoft refunded them.</li>
 <li><strong>Implementation stayed concentrated.</strong> In the 2020s browsers supported a
 handful of protection systems, chiefly Google&#8217;s Widevine,
 Microsoft&#8217;s PlayReady and Apple&#8217;s FairPlay, so the barrier in
@@ -365,10 +368,8 @@ Figure 80.3 remains.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The open-platform sense of openness is Chapter 25, and general computation is
-its subject. The laws that colour this debate, the US Digital Millennium Copyright Act and Computer Fraud and Abuse
-Act, are named in
-section 25.5. Referring without permission is Chapter 76; who controls the pipe
+Openness and general computation are Chapter 25; the US laws that colour
+this debate are named in section 25.5. Referring without permission is Chapter 76; who controls the pipe
 is Chapter 78.
 </p>
 </div>
@@ -386,12 +387,12 @@ Under each choice in Figure 80.2, what exactly stays locked?</p>
 </div>
 <div class="question">
 <p><span class="question-number">80.3</span>
-Using Figure 80.3, explain what stops an artist making their own DRM
-platform.</p>
+Which of the four positions comes closest to your own, and which right in
+Figure 80.1 does it give up?</p>
 </div>
 <div class="question">
 <p><span class="question-number">80.4</span>
-Figure 80.3 shows the routes left to an independent artist. Which of them
-needs no gatekeeper, and which still pays one?</p>
+Microsoft refunded buyers when its e-books stopped working. Does a refund
+answer the second position&#8217;s objection?</p>
 </div>
 </div>

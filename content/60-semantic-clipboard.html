@@ -11,30 +11,31 @@ deciding which rules to trust and limiting what each conversion loses.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-A short note from January 2004 built around one wish that Berners-Lee says he
-has quoted often:
+One way of looking at the Semantic Web, this January 2004 note begins, is as
+a breaking down of barriers between applications. Berners-Lee says he has
+often quoted one example:
 </p>
 <blockquote>
 An example I have often quoted is that I would like to be able to drag a photo
 album onto a calenar application and see the photos on my calendar.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
+<p>
+Here he asks the follow-up: &ldquo;What would this actually take?&rdquo;
+</p>
 </div>
 
 <h2>60.1 The hard version of the problem</h2>
 
 <p>
 The note sets a hard case: two applications written independently, without
-this case in mind. The only assumption is that
-both are &ldquo;semantic-web aware&rdquo;. Each has its own vocabulary, an
-agreed set of terms such as &ldquo;start time&rdquo;. And each keeps a copy of
-its data in RDF: a graph, or web of simple statements linking things to their
-properties.
+this case in mind, assuming only that both are &ldquo;semantic-web
+aware&rdquo;. Each has its own vocabulary for what it handles, photos or
+events, and keeps a copy of its data in RDF.
 </p>
 
 <p>
-The key to the design is something about the clipboard most people never
-notice:
+The key is something about the clipboard most people never notice:
 </p>
 
 <blockquote>
@@ -48,9 +49,9 @@ transferred.
 
 <p>
 Copying from a page into a plain message works because the two ends negotiate
-down to a format they share. On the Web the same thing is called content negotiation:
-the sender offers several forms, the receiver says which it accepts, and they
-settle on one.
+down to a format they share. Windows still works this way:
+a program places its data in as many formats as it can, most descriptive
+first, and may put off producing one until a paste asks for it.
 </p>
 
 <figure>
@@ -90,20 +91,25 @@ Copy and paste is already a negotiation. The two ends settle on the richest
 format both understand.</figcaption>
 </figure>
 
-<h2>60.2 What has to be added</h2>
+<h2>60.2 A clipboard that translates</h2>
 
 <p>
-He proposes a new clipboard type in which the data travels as an RDF graph.
-But each application speaks its own vocabulary. The calendar can use anything with at
-least a start time and a description. The photograph has a creation date,
-perhaps a description, and technical details of the exposure.
+He proposes a new clipboard type in which the data travels as an RDF graph, a
+web of simple statements linking things to their properties. But the calendar
+speaks an &ldquo;iCalendar-like&rdquo; vocabulary and can use anything with at
+least a start time and a description; the photograph, in an
+&ldquo;EXIF-like&rdquo; one, has a creation date, perhaps a description, and
+technical details of the exposure. The note leaves the actual terms blank; in
+the real standards a rule might say: the photo&#8217;s
+<code>DateTimeOriginal</code> becomes the event&#8217;s <code>DTSTART</code>,
+its <code>ImageDescription</code> becomes <code>DESCRIPTION</code>, and
+<code>ExposureTime</code> and <code>FNumber</code> have nowhere to go.
 </p>
 
 <p>
-So the clipboard must also convert. The user authorises conversion rules for
-it to use. Applications register what kind of information they need; the
-clipboard indexes the rules, looks at what it is holding, and matches what is
-on offer to what is wanted. The rules are usually personal. One user might
+So the clipboard must also convert, using rules the user authorises. It
+indexes them and matches what it holds to what each application registers as
+needing. The rules are usually personal. One user might
 want the event for a photograph to list the people in the shot; another might
 want just &ldquo;Pic!&rdquo;.
 </p>
@@ -112,34 +118,34 @@ want just &ldquo;Pic!&rdquo;.
 <svg class="dia" viewBox="0 0 720 184" width="720" height="184" role="img"
      aria-labelledby="fig60-2-t fig60-2-d">
   <title id="fig60-2-t">A clipboard that converts</title>
-  <desc id="fig60-2-d">A photograph carries a capture time and a description
-  in a photographic vocabulary. A calendar wants a start time and a
-  description in a calendar vocabulary. A rule held by the clipboard converts
-  one to the other, dropping the exposure data; who wrote the rule is an open
-  question.</desc>
+  <desc id="fig60-2-d">A photograph's EXIF data carries DateTimeOriginal,
+  ExposureTime and FNumber, and perhaps an ImageDescription. An iCalendar
+  event wants DTSTART and DESCRIPTION. A rule held by the clipboard turns
+  DateTimeOriginal into DTSTART; ExposureTime and FNumber are dropped. Who
+  wrote the rule is an open question.</desc>
 
   <rect class="box-warm" x="24" y="40" width="200" height="120" rx="4"/>
-  <text x="124" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">a photograph</text>
-  <text x="44" y="94" class="t-sm">capture time</text>
-  <text x="44" y="116" class="t-sm">exposure, aperture</text>
-  <text x="44" y="138" class="t-sm">a caption, maybe</text>
+  <text x="124" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">photo (EXIF)</text>
+  <text x="44" y="94" class="t-sm">DateTimeOriginal</text>
+  <text x="44" y="116" class="t-sm">ExposureTime, FNumber</text>
+  <text x="44" y="138" class="t-sm">ImageDescription, maybe</text>
 
   <path class="ln-accent" d="M 234 100 L 274 100"/>
   <path d="M 270 94 L 282 100 L 270 106 Z" fill="#1c5a7a"/>
 
   <rect class="box" x="286" y="40" width="148" height="120" rx="4"/>
   <text x="360" y="66" class="t-caps" text-anchor="middle">a rule</text>
-  <text x="360" y="94" class="t-sm" text-anchor="middle">capture time</text>
-  <text x="360" y="112" class="t-sm" text-anchor="middle">becomes start time</text>
+  <text x="360" y="94" class="t-sm" text-anchor="middle">DateTimeOriginal</text>
+  <text x="360" y="112" class="t-sm" text-anchor="middle">becomes DTSTART</text>
   <text x="360" y="140" class="t-sm t-it" text-anchor="middle">who wrote this?</text>
 
   <path class="ln-accent" d="M 444 100 L 484 100"/>
   <path d="M 480 94 L 492 100 L 480 106 Z" fill="#1c5a7a"/>
 
   <rect class="box-green" x="496" y="40" width="200" height="120" rx="4"/>
-  <text x="596" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a calendar entry</text>
-  <text x="516" y="94" class="t-sm">start time</text>
-  <text x="516" y="116" class="t-sm">a description</text>
+  <text x="596" y="66" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">event (iCalendar)</text>
+  <text x="516" y="94" class="t-sm">DTSTART</text>
+  <text x="516" y="116" class="t-sm">DESCRIPTION</text>
   <text x="516" y="138" class="t-sm t-it" style="fill:#8a9a9a">exposure data: dropped</text>
 
 </svg>
@@ -148,28 +154,19 @@ The mechanism is small. The unsolved part is who supplies the conversion
 rules, and who decides to trust them.</figcaption>
 </figure>
 
-<p>The note lists where rules might come from:</p>
-
-<ul>
-<li>an advanced user, much as people write email filters;</li>
-<li>a third party such as a system administrator;</li>
-<li>the author of either application.</li>
-</ul>
-
 <p>
-The program released second would normally ship the rules linking it to the
-older one, so rules tend to run in one direction. If both later offer a rule
+Rules might come from an advanced user, as people write email filters;
+from a third party such as a system administrator; or from the author of
+either program. The program released second would normally ship rules
+linking it to the older one, so rules tend to run one way. If both later offer a rule
 for the same conversion, the user must choose, as when deciding whether to
 trust the printer maker&#8217;s driver or the operating system&#8217;s.
+Users will have to track the trustworthiness of many sources, the note
+admits, &ldquo;but these rules will give a lot back for something quite
+small.&rdquo;
 </p>
 
 <h2>60.3 Entropy: conversion usually loses</h2>
-
-<p>
-Entropy is a physicist&#8217;s word
-for disorder that only increases. Here it means information lost on the way,
-which cannot be got back.
-</p>
 
 <blockquote>
 There is a form of entropy which increases as these rules are used. Some rules
@@ -180,10 +177,9 @@ picture as you have lost some data.
 </blockquote>
 
 <p>
-An event is a more generic thing than a picture, so conversion runs downhill.
-The design consequence is the same instinct as Chapter 10, which ranks
-formats from most to least specific and prefers the most specific both sides
-accept:
+Entropy here means information lost on the way for good. An event is more
+generic than a picture, so conversion runs downhill, and the system should
+lose as little as it can:
 </p>
 
 <blockquote>
@@ -192,6 +188,12 @@ information loss. This will involve trading at the highest level, or usingthe
 fewest rules.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
+
+<p>
+The note likens this to the &ldquo;pecking order between a rich text clipboard
+and a plain text clipboard&rdquo;: the instinct of Chapter 10, which ranks
+formats and prefers the most specific both sides accept.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 260" width="720" height="268" role="img"
@@ -233,9 +235,14 @@ Each conversion moves to a more generic form and loses something. The system
 should pick the highest rung both sides understand, using the fewest rules.</figcaption>
 </figure>
 
-<h2>60.4 What is actually being described</h2>
+<h2>60.4 The Semantic Web in miniature</h2>
 
-<p>The close looks beyond the clipboard:</p>
+<p>
+Such a clipboard must hold rules, index them, choose the path that loses
+least, and track who supplied each one. That is the job a Web-wide rule
+engine would have to do, the conversion layer of Chapter 30, and the note
+closes on the comparison:
+</p>
 
 <blockquote>
 The Semantic Web clipboard might be a nifty hack in the short term, might be a
@@ -244,14 +251,6 @@ view, the rule management involved is a miniature version of the Semantic Web
 rule indexing search engine.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
-
-<p>
-Such a clipboard must hold rules, index them, choose the path that loses
-least, and track who supplied each one: the conversion layer of Chapter 30 in
-miniature. On one computer the rules are few and there is one user to ask. On
-the whole Web they are countless and there is nobody to ask. The clipboard is a
-small, safe place to try the problem.
-</p>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -293,7 +292,7 @@ rule ever be written?</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.4</span>
-A photo can become a picture-taking event or a plain event. Which should the
-clipboard choose for a calendar, and why?</p>
+Which conversion rule would you refuse to let your clipboard use, and
+why?</p>
 </div>
 </div>

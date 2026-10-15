@@ -10,9 +10,9 @@ parts tend to run on open protocols, which let people choose their own app.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in June 2024, four months after Chapter 90. The occasion is domestic
-rather than political: parents worrying about harm to their children, and
-schools wondering whether to ban phones.
+Parents were worrying about harm to their children, and some discussions
+suggested &ldquo;that children should not be allowed phones at all&rdquo;. In
+June 2024, four months after Chapter 90, Berners-Lee answered with a map:
 </p>
 <blockquote>
 So many discussions recently have questions about how to avoid the harm that
@@ -20,13 +20,9 @@ some things on the internet have done, that I had to make a map of all the good
 things which people should not forget.
 <cite>The Good on the Internet, 2024</cite>
 </blockquote>
-<p>
-Figure 91.1 simplifies the note&#8217;s large map of sites, apps and their
-effects.
-</p>
 </div>
 
-<h2>91.1 The proportion</h2>
+<h2>91.1 Most of the map is not the problem</h2>
 
 <p>
 The claim is about proportion:
@@ -40,9 +36,10 @@ actually wonderful.
 </blockquote>
 
 <p>
-A protocol, as in the green boxes of Figure 91.1, is a public set of rules that
-lets any app talk to any server, as email does. In the map, rounded boxes are sites and apps, diamonds are problems with the platforms, and
-circles are the processes they lead to in the world.
+Figure 91.1 simplifies the note&#8217;s map. Rounded boxes are sites and apps,
+diamonds are problems with the platforms, and circles are what they lead to in
+the world. Green boxes are protocols: public rules that let any app talk to
+any server, as email does.
 </p>
 
 <figure>
@@ -115,12 +112,12 @@ Harm reaches the bottom row only through the diamonds, and few boxes feed
 them. The green boxes lead straight to good outcomes.</figcaption>
 </figure>
 
-<h2>91.2 The distinction the map is drawing</h2>
+<h2>91.2 Tracking is not the worst of it</h2>
 
 <p>
 The most careful passage separates two things usually treated as one. A
-<em>profile</em> is what a service learns about a person from what they do on it. It
-is generous about this first thing:
+<em>profile</em> is what a service learns about a person from what they do on it. The
+note is generous about this first thing:
 </p>
 
 <blockquote>
@@ -131,7 +128,7 @@ with people and ideas and products which you will find relevant.
 </blockquote>
 
 <p>
-Then the qualification. <em>Third-party advertising</em> means letting other
+<em>Third-party advertising</em> means letting other
 companies buy space aimed at a person using that profile:
 </p>
 
@@ -155,10 +152,12 @@ just stem from tracking, spying, profile building and targeted advertising.
 </blockquote>
 
 <p>
-The picture is not static. Instagram once showed posts from people he
-followed; years later it showed clickable videos and products. He asks whether
-the reward for grabbing attention will pull every platform toward the same
-model; some, he notes, fear it is inevitable.
+The picture is not static. Instagram once showed him posts from people he
+followed. Years later it gave him &ldquo;a feed of amazing videos of amazing
+things and products -- all very clickable and doom-scrollable - but now
+it&#8217;s no longer useful as a private place of private friends and
+family.&rdquo; He asks whether every platform will drift toward the same
+model.
 </p>
 
 <figure>
@@ -197,15 +196,11 @@ model; some, he notes, fear it is inevitable.
 </svg>
 <figcaption><span class="fig-label">Figure 91.2</span>
 The reward for attention pulls platforms toward one model. Skype and WhatsApp
-are drifting, in his impression; the positions are not measured. The harm
-itself is Chapter 90.</figcaption>
+are drifting, in his impression; the positions are not measured.</figcaption>
 </figure>
 
-<h2>91.3 What the map is for</h2>
+<h2>91.3 What withdrawal gives up</h2>
 
-<p>
-The purpose is a double obligation:
-</p>
 
 <blockquote>
 We need to recognize that, make sure we and our children make the best use of
@@ -214,19 +209,21 @@ it, while protecting ourselves from the harms.
 </blockquote>
 
 <p>
-The point is not that the harms are exaggerated, but that withdrawal forfeits
-things that help people be creative, work together, have a good time, and
-understand the world and the many people in it better.
+The harms are real, but withdrawal forfeits things that help people be
+creative, work together, have a good time, and understand the world better.
 </p>
 
 <h2>91.4 Digital sovereignty</h2>
 
 <p>
-The note defines <em>digital sovereignty</em> broadly: people are in charge of
-their internet experience and can use it how they like, emailing whoever they
-want, bookmarking anything, and sharing only what they choose. They already
-have this power to a large extent, though how much depends on their expertise.
-Systems built on Solid, the architecture of Volume VI, naturally provide it.
+The note calls the user&#8217;s power over their own internet experience
+<em>digital sovereignty</em>: emailing whoever one wants, bookmarking anything on the web, sharing aspects of one&#8217;s
+life with friends, family and colleagues, or not. People already have this to
+a large extent. The catch is that it &ldquo;does depend on your level of
+expertise&rdquo;, because &ldquo;the operating system vendors are constantly
+tempted&rdquo; to make choosing an app hard (the note cites the antitrust
+cases against Microsoft and Apple). Solid, the architecture of Volume VI,
+provides it naturally.
 </p>
 
 <h2>91.5 The good parts run on protocols</h2>
@@ -240,9 +237,6 @@ Much of the internet runs on protocols other than the Web&#8217;s HTTP.
 <tr><td>SMTP, IMAP, POP</td><td>Email clients</td><td>Emails</td></tr>
 <tr><td>RSS</td><td>Podcast app, feed reader</td><td>Podcasts, blogs</td></tr>
 <tr><td>CalDAV, CardDAV</td><td>Calendar, contacts apps</td><td>Events, contacts and groups</td></tr>
-<tr><td>ActivityPub</td><td>Mastodon etc.</td><td>Profiles, chat rooms, individual chats</td></tr>
-<tr><td>Matrix</td><td>Matrix client</td><td>Chat rooms, individual chats</td></tr>
-<tr><td>Signal protocol</td><td>Signal client</td><td>Individual chats</td></tr>
 </table>
 
 <p>
@@ -252,9 +246,18 @@ leaves the user less power.
 </p>
 
 <p>
-Once pages could carry JavaScript (programs delivered inside a web page), the site owner chose the program the reader
-ran and kept the data on its own server. With no common protocol, Flickr,
-Facebook and LinkedIn became closed silos.
+Then browsers let a page carry JavaScript, a program that runs inside the
+page. &ldquo;Much more fun. But also a power shift.&rdquo; Instead of the user
+picking a favourite app, the site owner sends whatever program it likes and
+keeps the data on its own server. With no common protocol, Flickr, Facebook
+and LinkedIn became closed silos.
+</p>
+
+<p>
+As the note has it, Jack Dorsey, making Twitter, asked himself, &ldquo;Should I make a new web
+platform, or should I make a new protocol?&rdquo; He built twitter.com, later
+called that a mistake, and meanwhile had to design special back-end software
+&ldquo;to do the right thing when Justin Bieber (say) tweeted.&rdquo;
 </p>
 
 <figure>
@@ -299,40 +302,38 @@ Facebook and LinkedIn became closed silos.
   <text x="552" y="228" class="t-sm t-it" text-anchor="middle">the publisher holds both</text>
 </svg>
 <figcaption><span class="fig-label">Figure 91.3</span>
-With a protocol the user chooses the app and the data stays reachable by any of them;
-with a platform the publisher controls both the program and the data. Chapter
+With a protocol the user chooses the app; with a platform the publisher controls both the program and the data. Chapter
 64 draws the same split for social feeds.</figcaption>
 </figure>
 
 <h2>91.6 Federation and hosted chat</h2>
 
 <p>
-In a client&#8211;server system, an app talks to a server that someone runs.
-A federated system is one where anyone can start such a server, and the servers
-talk to each other; together they are called the Fediverse.
+A federated system is a client&#8211;server system in which anyone can start a
+server and the servers talk to each other; together they form the Fediverse.
 </p>
 
 <table>
 <tr><th>Protocol</th><th>Used by</th><th>What the note says</th></tr>
-<tr><td>ActivityPub</td><td>Mastodon; Threads</td><td>A W3C Recommendation
-(a finished W3C standard). In 2023 Meta said Threads would use it.</td></tr>
+<tr><td>ActivityPub</td><td>Mastodon; Threads</td><td>A W3C Recommendation.
+In 2023 Meta said Threads would use it.</td></tr>
 <tr><td>Matrix</td><td>Element</td><td>Much of the open
 source community, including Solid, chats on it. Links to it rely on one central
 service, matrix.to.</td></tr>
-<tr><td>ADP</td><td>Bluesky</td><td>Usually called the AT Protocol. Made by
-Jack Dorsey after concluding Twitter should have been a protocol; relies on a
-central directory server.</td></tr>
-<tr><td>Signal Protocol</td><td>Signal; WhatsApp</td><td>Hosted chat run by a
-non-profit.</td></tr>
+<tr><td>ADP</td><td>Bluesky</td><td>The AT Protocol, from the Bluesky
+project Dorsey started; relies on a central directory server.</td></tr>
+<tr><td>Signal Protocol</td><td>Signal; WhatsApp</td><td>Hosted chat. Signal is
+run by a non-profit; WhatsApp uses the same protocol.</td></tr>
 </table>
 
-<h2>91.7 Why the volume ends here</h2>
+<h2>91.7 What could be built</h2>
 
 <p>
-Placed after Chapter 90, this chapter says what is at stake if the response to
-failure is abandonment. The note ends on what could be built: personal
-sovereignty &ldquo;combined with a crazy, creative world of web apps anyone can
-dream up.&rdquo;
+The advice is to avoid the harmful things, &ldquo;but not to throw their phone
+into the ocean.&rdquo; The map&#8217;s purple bits, &ldquo;the bits we are
+building now&rdquo;, aim at personal sovereignty &ldquo;combined with a crazy,
+creative world of web apps anyone can dream up.&rdquo; The note ends:
+&ldquo;It is in fact possible.&rdquo;
 </p>
 
 <div class="since">
@@ -340,7 +341,7 @@ dream up.&rdquo;
 <ul>
 <li><strong>Restrictions spread.</strong> Australia passed a law in November
 2024 setting a minimum age of 16 for social media accounts, in force from
-December 2025: the kind of
+10 December 2025: the kind of
 withdrawal this note was written to complicate.</li>
 </ul>
 </div>
@@ -359,28 +360,27 @@ applications that work for the user are Chapter 92.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">91.1</span>
-Draw your own map of what you use. What proportion profiles you, and what
-proportion ranks a feed?</p>
+Withdrawal forfeits the good along with the harm. Using the table in 91.5,
+name what a school banning phones gives up.</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.2</span>
+Map one person&#8217;s daily services. What share profiles them, and what
+share ranks a feed?</p>
+</div>
+<div class="question">
+<p><span class="question-number">91.3</span>
 Tracking that helps a service and tracking that enables manipulation are the
 same mechanism. The note draws the line at advertising by third parties. Is
 that the right place?</p>
 </div>
 <div class="question">
-<p><span class="question-number">91.3</span>
-Withdrawal forfeits the good along with the harm. Using the table in 91.5,
-name what a school banning phones gives up.</p>
-</div>
-<div class="question">
 <p><span class="question-number">91.4</span>
-Using the powers the note lists in 91.4, define digital sovereignty precisely
-enough to tell whether a given system has it.</p>
+Gmail is easier than a mail app but leaves the user less power. What exactly
+is lost, and is the ease worth it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">91.5</span>
-Does an app you use every day speak an open protocol? How would you find
-out?</p>
+How could one tell whether an app in daily use speaks an open protocol?</p>
 </div>
 </div>

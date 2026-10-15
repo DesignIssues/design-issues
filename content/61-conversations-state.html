@@ -4,39 +4,36 @@
 A screen shows the current state of things, so a person can look around. A
 conversation only has the messages exchanged so far. The Web was built on the
 first model. Phones, voice and online transactions pull towards the second.
-We know how to check that a single message is well formed, but we have no way
-to check that a sequence of messages makes sense.
+In 2000 there were languages to check that a single message was well formed,
+but no standard way to check that a sequence of messages made sense.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written for a talk to W3C&#8217;s Advisory Committee (its member body) in
-November 2000, this note says user interfaces and the Semantic Web were both
-pointing away from the Web&#8217;s founding model. The note is a sketch: it
-develops the interface argument and leaves the rest as placeholders.
+On a terminal of 24 rows by 80 characters, a user typed <code>ls</code> and
+pictured the folders. Then screens grew, and the computer could show
+everything at once; the Web was built on that. In November 2000 Berners-Lee
+saw the trend turning back. Phone screens were small, and with an audio phone
+alone, he wrote, &ldquo;the shared state becomes zero and the interface is
+completely conversational again&rdquo;. His question: if the Web is becoming
+a conversation, how can anyone say what a valid conversation is?
 </p>
-<blockquote>
-Often, we notice that Web technology is now entering a field new to the Web
-but old of itself. In these cases, we can view the process we need to go
-through either has extending web technology into this field, or of Webizing
-the field.
-<cite>Conversations and state, 2000</cite>
-</blockquote>
 <p>
-Webizing (Chapter 26) means rebuilding a field on Web foundations. The field
-here is the formal specification of protocols.
+The note accompanied a talk to W3C&#8217;s Advisory Committee (its member
+body). It is a sketch: it develops the interface argument and leaves the rest
+as placeholders. Twenty-five years on, talking to a computer has become an
+ordinary way to use one.
 </p>
 </div>
 
 <h2>61.1 What a screen is for</h2>
 
 <p>
-In theory, the note says, the Web is a lookup from each address to the page it
-returns; in experience, a space a person can move around in. What matters about
-a screen is not its sharpness but that it shows everything a person is working
-on at once.
+In theory, the note says, the Web maps each address to the page it returns; in
+experience, it is a space a person can move around in. What matters about a
+screen is that it shows everything a person is working on at once.
 </p>
 
 <blockquote>
@@ -61,16 +58,18 @@ of a shared state.
 </blockquote>
 
 <p>
-The Web was meant to extend that to remote interaction between people.
+The Web was meant to extend that to remote interaction between people, and
+the note credits much of its effectiveness to this model. In a shared space a
+person can navigate with &ldquo;all the primaval facilities that the human memory
+has for navigation&rdquo;.
 </p>
 
 <h2>61.2 The other model, and its return</h2>
 
 <p>
-On terminals of 24 rows by 80 characters, work went through a command line.
-The user typed <code>ls</code> and got back a list of files, then typed the next
-command. The note calls this conversational: small exchanges of messages, with
-the state never displayed. The person imagined the folders; the computer held
+On 24-by-80 terminals, work went through a command line. The note calls this
+conversational: small commands and responses, with the state never
+displayed. The person imagined the folders; the computer held
 them unseen. Scaling a page down to a phone screen, the note warns, might be
 simply the wrong interface metaphor.
 </p>
@@ -204,17 +203,19 @@ balance is never sent; it is worked out from the messages. Bottom: the page
 exists, but the listener only ever hears it in turns.</figcaption>
 </figure>
 
-<h2>61.3 Why this needs formalising</h2>
-
-<table>
-<tr><th>Reason</th><th>What it would let us do</th></tr>
-<tr><td>Interfaces</td><td>Formalise the human-machine interfaces that are conversational, on every device without a large screen</td></tr>
-<tr><td>Transactions</td><td>Formalise commercial dealings, for which a trail of messages is the most accurate model anyway</td></tr>
-<tr><td>Protocols</td><td>Analyse the infrastructure protocols, such as HTTP, by which the information world is actually implemented</td></tr>
-</table>
+<h2>61.3 Rules for one message, none for a conversation</h2>
 
 <p>
-The note names the missing piece:
+A tax-return wizard asks for income, then deductions, then shows a summary;
+the summary is meaningless if reached first. The note observes that on many
+sites a form like this has become the definition of a protocol: a set of
+valid sequences of actions. In 2000 there were languages to check a single
+document, but none to check the order of messages.
+</p>
+
+<p>
+Marshalling means packing data into a message; XML Schema, XForms and RDF Schema are languages that say what a
+valid single document looks like:
 </p>
 
 <blockquote>
@@ -227,9 +228,9 @@ documents, but has no basis yet for defining with equivalent power the validity
 </blockquote>
 
 <p>
-Marshalling means packing data into a message for sending. XML Schema, XForms
-and RDF Schema are languages that say what a valid single document looks
-like.
+The note wants that basis for three things: conversational interfaces on
+devices without large screens; commercial transactions, best modelled as a
+trail of messages anyway; and analysing protocols such as HTTP.
 </p>
 
 <figure>
@@ -288,7 +289,7 @@ In 2000 there were languages for the left panel. Nothing of equal power
 existed for the right: which orders of messages are allowed.</figcaption>
 </figure>
 
-<h2>61.4 The admission</h2>
+<h2>61.4 The Web was never really stateless</h2>
 
 <p>
 The Web never matched its model cleanly. HTTP is stateless: each request is
@@ -303,9 +304,8 @@ create a conversational interface -- and many still do
 </blockquote>
 
 <p>
-The usual workaround is the cookie: a small token the site hands the browser,
-which sends it back with every later request so the site can recognise the
-visitor. It gives a stateless Web a conversation, and leaves a trace.
+The usual workaround is the cookie: a token the site hands the browser, which
+sends it back with later requests so the site recognises the visitor. It gives a stateless Web a conversation, and leaves a trace.
 </p>
 
 <p>
@@ -363,7 +363,7 @@ of documents is in fact done by a series of protocols which leave a trace.
 </svg>
 <figcaption><span class="fig-label">Figure 61.4</span>
 The interface presents a document; the protocol is a conversation that leaves
-records, sometimes with parties the reader never sees. Privacy worries live in
+records, today often with parties the reader never sees. Privacy worries live in
 that gap.</figcaption>
 </figure>
 
@@ -374,10 +374,9 @@ state, in machine-readable form, what it collects.
 </p>
 
 <p>
-Finally, on many sites a form has become the definition of a
-protocol: a set of valid sequences of actions. A tax-return wizard asks for
-income, then deductions, then shows a summary; the summary is meaningless if
-reached first.
+An unfinished placeholder in the note&#8217;s source is blunter: privacy
+concerns come &ldquo;from in fact it being a conversation ==
+there is implict state&rdquo;.
 </p>
 
 <div class="since">
@@ -405,8 +404,8 @@ be wrong.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The formalisation this note calls for is Chapter 62. Webizing a field is
-Chapter 26. The trace left by reading is Volume VII, particularly Chapter 71,
+The formalisation this note calls for is Chapter 62. The note frames the
+work as Webizing (Chapter 26) the formal specification of protocols. The trace left by reading is Volume VII, particularly Chapter 71,
 and the remote-operations work that followed is Chapter 65. Interfaces are
 Chapter 82.
 </p>
@@ -422,8 +421,8 @@ which folder you are in)?</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.2</span>
-Checking a train time by voice versus on a web page: list what you must
-remember in each case, and which is easier while walking.</p>
+A chat assistant remembers what you said earlier. Where is that state kept,
+and can you see it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">61.3</span>

@@ -1,31 +1,30 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A language model learns by being <em>trained</em> on huge amounts of text;
-<em>inference</em> means drawing conclusions from data. Private mail was not part of
-that training, so an assistant can read a person&#8217;s mail without understanding
-mail. Only a giant platform or a state could train on everyone&#8217;s private
-data. A better route is for groups with a shared reason to pool their data,
-under rules they trust.
+In September 2023 Google let its chatbot Bard read people&#8217;s Gmail. When
+a journalist tried it, Berners-Lee suspects it did not gain the insight a
+person would: it had been shown the mail, never trained on mail. Only a giant
+platform or a state could train on everyone&#8217;s private data; a better
+route is for groups with a shared reason to pool data under rules they trust.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in November 2023, the note opens with an epigraph produced by a
-machine: a passage from Inflection&#8217;s chatbot Pi praising private data
-&ldquo;pods&rdquo;. Berners-Lee then examines whether what it promises is
-achievable. It asks what an assistant working for its user would need, and why
-handing it the user&#8217;s data is not enough.
+Written in November 2023, the note opens with an epigraph by a machine,
+Inflection&#8217;s chatbot Pi: &ldquo;Ah, the holy grail of AI! Private data
+pods are a really hot topic right now&rdquo;. Those pods are the idea behind
+Solid (Chapter 54). The note tests whether the easy promise holds: what does
+an assistant working for its user need beyond the user&#8217;s data?
 </p>
 </div>
 
-<h2>72.1 What the launch changed</h2>
+<h2>72.1 One packaging, assumed for all AI</h2>
 
 <p>
-The launch of ChatGPT by OpenAI in November 2022 made a huge number of people
-aware, for the first time, of large language models (LLMs): programs trained to
+The launch of ChatGPT by OpenAI in November 2022 made huge numbers of people
+aware of large language models (LLMs): programs trained to
 continue text plausibly.
 </p>
 
@@ -36,11 +35,9 @@ powerful AI would be packaged and exposed in the same way.
 </blockquote>
 
 <p>
-The assumed shapes were an image generator, a text generator and a chatbot. In
-each a person types and the system answers; who benefits is fixed by the
-packaging, not the technology. People were warned not to discuss
-confidential things with such systems, since what they shared might be used by
-the company running them.
+The assumed shapes were an image generator, a text generator and a chatbot,
+in which who benefits is fixed by the packaging, not the technology. Users
+were warned that anything confidential might be reused by the company.
 </p>
 
 <h2>72.2 Rewiring, not rebuilding</h2>
@@ -57,9 +54,8 @@ being available to the user themselves.
 </blockquote>
 
 <p>
-His example of the improved wiring is Pi, which he tried; over a long
-conversation it seemed to understand him better. Chapter 92 gives the
-general form of this argument.
+Pi, from Inflection, &ldquo;provides this wiring, it seems&rdquo;. Over a long
+conversation he found it seemed to understand him better.
 </p>
 
 <figure>
@@ -70,7 +66,7 @@ general form of this argument.
   prompt to the company's LLM and get an answer, and a dashed line runs from
   the LLM to a box saying the company keeps and may reuse what was said.
   Bottom row, improved wiring: the user&#8217;s conversation feeds an LLM working for
-  the user, whose insights go to the user only, with nothing flowing out.</desc>
+  the user, whose insights are intended to go to the user: the wiring the note hopes for.</desc>
   <defs>
     <marker id="fig72-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
@@ -109,24 +105,20 @@ general form of this argument.
   <text x="475" y="202" class="t-sm" text-anchor="middle">insights</text>
   <rect class="box-plain" x="520" y="184" width="176" height="56" rx="4"/>
   <text x="608" y="208" text-anchor="middle">the user</text>
-  <text x="608" y="227" class="t-sm t-it" text-anchor="middle">and nobody else</text>
+  <text x="608" y="227" class="t-sm t-it" text-anchor="middle">the wiring hoped for</text>
 </svg>
 <figcaption><span class="fig-label">Figure 72.1</span>
-The same model, wired two ways. What changes is who the insight flows to.</figcaption>
+The same model, wired two ways; the lower row is the wiring the note hopes
+for.</figcaption>
 </figure>
 
 <h2>72.3 Shown is not trained</h2>
 
 <p>
-In September 2023 Google let its chatbot Bard read a user&#8217;s Gmail. When the
-journalist Kevin Roose tried it on his own mail, Berners-Lee suspects it did
-not gain the dramatic insight a person would have. His tentative answer: it had been shown the email but not trained on email.
-</p>
-
-<p>
-Training adjusts the model itself, over millions of examples, until it has
-absorbed how that kind of text works. Being shown something only places it in
-front of the finished model for one question.
+A language model learns by being <em>trained</em>: training adjusts the model
+itself, over millions of examples, until it has absorbed how that kind of
+text works. Showing Kevin Roose&#8217;s mail to Bard only placed it in front of
+the finished model, one question at a time.
 </p>
 
 <figure>
@@ -174,13 +166,22 @@ which is where the wisdom lives.</figcaption>
 </figure>
 
 <p>
-Supplying that wisdom would mean training on many people&#8217;s private mail,
-and Berners-Lee says who could do it:
+Supplying that wisdom means training on many people&#8217;s private mail,
+which an assistant like &ldquo;Charlie, the AI which works for you&rdquo;
+(Chapters 93 and 94) would need. Few could get it:
 </p>
 
 <blockquote>
 Well, it isn't unless you are a very large platform willing to train on all its
 users, or a state-run system in an autocratic state.
+<cite>Inference from Private Data, 2023</cite>
+</blockquote>
+
+<p>That leaves the note&#8217;s question:</p>
+
+<blockquote>
+For public things, it had wisdom about how they all connect. For private
+email, no wisdom. How could another re-wiring give us that wisdom?
 <cite>Inference from Private Data, 2023</cite>
 </blockquote>
 
@@ -195,11 +196,10 @@ greater insight.
 </blockquote>
 
 <p>
-The classic case is patients with the same disease pooling data to
-learn about treatments, and even to discover new drugs. This needs a social
-construction that raises trust enough for individuals to contribute; such
-arrangements &ldquo;have been called Data Trusts or, more recently, Data
-Institutions&rdquo;.
+The classic case is patients with one disease pooling data to learn about
+treatments or discover drugs. It needs a social construction that raises
+trust enough for people to contribute: what &ldquo;have been called Data
+Trusts or, more recently, Data Institutions&rdquo;.
 </p>
 
 <figure>
@@ -207,7 +207,7 @@ Institutions&rdquo;.
      aria-labelledby="fig72-3-t fig72-3-d">
   <title id="fig72-3-t">Whose private data a model can learn from</title>
   <desc id="fig72-3-d">Three columns. Everyone's data: a large platform or an
-  autocratic state trains on all its users, possible, but power concentrates. A
+  autocratic state trains on all its users, with the risk of monopolisation the note warns of. A
   group's data: patients with one disease pool through a data trust, with a
   shared incentive and raised trust. One person&#8217;s data: that data alone, shown at
   question time, giving no wisdom.</desc>
@@ -217,7 +217,7 @@ Institutions&rdquo;.
   <text x="132" y="74" text-anchor="middle">a large platform,</text>
   <text x="132" y="94" text-anchor="middle">or an autocratic state</text>
   <text x="132" y="122" class="t-sm" text-anchor="middle">trains on all its users</text>
-  <text x="132" y="170" class="t-sm t-it" text-anchor="middle">possible, but power concentrates</text>
+  <text x="132" y="170" class="t-sm t-it" text-anchor="middle">risk of monopolisation</text>
 
   <text x="360" y="32" class="t-caps" text-anchor="middle">a group&#8217;s data</text>
   <rect class="box-green" x="252" y="46" width="216" height="100" rx="4"/>
@@ -238,9 +238,9 @@ The note&#8217;s proposal is the middle column: large enough to learn from, smal
 and motivated enough to trust.</figcaption>
 </figure>
 
-<h2>72.5 The warning about siloing</h2>
+<h2>72.5 Why the assistant pulls a user into one provider</h2>
 
-<p>Of the Bard announcement, the note adds a warning:</p>
+<p>Of Bard, the note warns:</p>
 
 <blockquote>
 Obviously this is going to work most easily when you have a lot of personal data
@@ -283,17 +283,23 @@ best assistant, which draws in more data.</figcaption>
 </figure>
 
 <p>
-The silo of Chapter 54, a provider whose stored data works only with its own
-apps, acquires a new and much stronger reason to exist.
+The silo of Chapter 54 gains a new and stronger reason to exist.
 </p>
 
 <h2>72.6 Computing on data nobody sees</h2>
 
 <p>
-A project in the Oxford Martin School&#8217;s EWADA group lets gig-economy
-workers, such as Uber drivers, learn group facts like average pay without
-revealing their own figures. It uses multi-party computation (MPC), in which a
-result is computed from private inputs without disclosing the inputs. The limit is stated plainly:
+An Oxford Martin School EWADA project lets gig-economy workers such as Uber
+drivers learn group facts like average pay through multi-party computation
+(MPC): a result computed from private inputs without revealing them.
+</p>
+
+<p>
+In the simplest form (an illustration, not EWADA&#8217;s design), three
+drivers each split their weekly pay into three random numbers that sum to it,
+and give one to each of three nodes. Each node publishes only the sum of what
+it holds. Those sums add up to the total pay, and so the average, yet no node
+saw a real figure. The limit:
 </p>
 
 <blockquote>
@@ -305,10 +311,9 @@ have a role to play in achieving group insight from personal data.
 <h2>72.7 Consent, and the conclusion</h2>
 
 <p>
-Common to most of these arrangements is tracking each person&#8217;s consent to
-their data being used for the group&#8217;s good. The note concludes that we
-will need assistants that both access and understand private data, built from
-combinations of three things:
+Most of these arrangements track each person&#8217;s consent to their data
+being used for the group&#8217;s good. The note concludes that assistants must
+both access and understand private data, through combinations of three things:
 </p>
 
 <table>
@@ -320,22 +325,29 @@ combinations of three things:
 
 <p>
 Policy and law must supply protection the data architecture cannot give
-itself. Solid makes each combination easier, the note says, coupled with
-standard consent management: a record of who agreed to which use of their
-data.
+itself. Solid makes each combination easier, the note says, with standard
+consent management. It ends on the stakes:
 </p>
+
+<blockquote>
+The goals in sight, such as medical solutions for group of patients, and
+powerful agents which significantly empower a human being, are very exciting.
+<cite>Inference from Private Data, 2023</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Assistants stayed wired to the platforms holding the data
-(2024).</strong> Bard, renamed Gemini in February 2024, kept its links to Gmail
-and Drive: the concentration section 72.5 predicts.</li>
+(2024).</strong> Bard, renamed Gemini in February 2024, kept its links to Gmail and Drive, as
+72.5 predicts.</li>
 <li><strong>The shown-against-trained gap narrowed, but did not close
-(2024).</strong> Google&#8217;s Gemini 1.5, announced in February 2024, could
-be shown around a million tokens (word-pieces) at once, so a whole mailbox fits
-in front of the model. That is still showing, not the training Figure 72.2
-describes.</li>
+(2024).</strong> Gemini 1.5 (February 2024) could be shown about a
+million tokens (word-pieces) at once, a whole mailbox: still showing, not
+training.</li>
+<li><strong>Pi&#8217;s makers moved on (2024).</strong> In March 2024
+Inflection&#8217;s co-founders Mustafa Suleyman and Kar&#233;n Simonyan joined Microsoft to run a new consumer AI group,
+and Inflection turned to building models for business customers.</li>
 
 </ul>
 </div>
@@ -344,9 +356,8 @@ describes.</li>
 <h3>Connections</h3>
 <p>
 The storage an assistant would read is Chapter 54, and the silo risk is the
-one that chapter set out to remove. Modelling trust is Chapter 66, and how a
-group agrees anything is Chapter 22. The assistant described is that of
-Chapters 93 and 94, and the general form of the rewiring is Chapter 92.
+one it set out to remove. Modelling trust is Chapter 66, and group agreement
+Chapter 22. The general form of the rewiring is Chapter 92.
 </p>
 </div>
 
@@ -359,13 +370,13 @@ document means. Give a case where the difference is decisive.</p>
 </div>
 <div class="question">
 <p><span class="question-number">72.2</span>
-Besides a platform or a state, what does the note suggest for learning from
-private data, and what is its limit?</p>
+Name a group you could imagine belonging to that would gain by pooling data.
+What would it need before members trusted it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">72.3</span>
-Why does the note say a group with a shared reason is easier to trust than a
-platform? Use Figure 72.3.</p>
+Gemini can now be shown a whole mailbox at once. Does that answer the
+note&#8217;s &ldquo;no wisdom&rdquo; point? Why or why not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">72.4</span>

@@ -1,21 +1,23 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-In this final chapter, Berners-Lee, trying to describe a new arrangement of
-the Web, remembers trying to describe the first one, when there were only a handful of
-websites and he was persuading somebody to make the sixth.
+Berners-Lee has been here before. Describing a new arrangement of the Web, he
+remembers describing the first one, when there were only a handful of websites
+and he was persuading somebody to make the sixth.
 </p>
 <p>
-He could not imagine then what would be built. He says so, and then argues that
-this is a reason to build openly rather than a reason to wait.
+He could not imagine then what would be built, and cannot now. He says so, and
+then tries anyway to describe the new one.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in December 2024, the note&#8217;s subject is a difficulty the author
-has met before:
+When there were only a few websites, Berners-Lee could tell people to
+&ldquo;imagine a world with all the online documents linked together&rdquo;. He
+could not imagine Google search, Wikipedia, GitHub or XKCD. In December 2024
+he finds himself there again:
 </p>
 <blockquote>
 There has been a common problem in all this, though, that it is really hard for
@@ -26,17 +28,9 @@ people to imagine what this new world will be like.
 
 <h2>96.1 The admission</h2>
 
-<blockquote>
-It was really hard to explain to people what it would be like once the web had
-taken off, when there are only a few websites and I was persuading them to make
-the sixth. I could say "imagine a world with all the online documents linked
-together and instantly available on the net", but even then I could not imagine
-Google search, Wikipedia, Github, and XKCD.
-<cite>The Vision of a new World, 2024</cite>
-</blockquote>
-
 <p>
-Then the conclusion he draws about what he was doing:
+&ldquo;I&#8217;ve been here before,&rdquo; the note says, and draws a lesson from
+the first time:
 </p>
 
 <blockquote>
@@ -45,14 +39,22 @@ of us could really imagine how exciting and powerful it would become.
 <cite>The Vision of a new World, 2024</cite>
 </blockquote>
 
+<p>
+With Solid, &ldquo;it is now, again, hard to imagine what it will be
+like.&rdquo; Developers, he writes, &ldquo;can&#8217;t imagine a world where one
+universal data store stores all the different types of data in the world,
+without being reconfigured.&rdquo;
+</p>
+
 
 <h2>96.2 What cannot be imagined this time</h2>
 
 <p>
 The new arrangement is Solid: each person, or community, keeps data in a
 <em>pod</em>, a personal store on the Web that any application they permit can
-read and write. What is hard to picture is a store that is not tied to one
-kind of thing.
+read and write. Today a chat server, such as Bluesky&#8217;s or
+Threads&#8217;, stores only messages; Dropbox stores any file but takes minutes
+to sync (Figure 96.1).
 </p>
 
 <figure>
@@ -100,25 +102,22 @@ kind of thing.
   <text x="360" y="328" class="t-sm" text-anchor="middle">and their community&#8217;s pods.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 96.1</span>
-The claim is about a missing category. Nobody runs a public service of this
-kind for ordinary people, so the thing is hard to imagine because it is not
-there to be used.</figcaption>
+The claim is about a missing category. Almost nobody offers this to the public
+yet, so it is hard to imagine because it is not there to be used.</figcaption>
 </figure>
 
 <p>
-On deployment the note is frank: the software is stable and
-exists in several compatible versions, some open and some commercial, and
-almost nobody is offering it to the public. The Flanders government provides
-pods to its citizens, but for a limited number of purposes.
+The pod software is stable, in several compatible versions, some open and some
+commercial, but almost nobody offers it to the public. The Flanders government
+provides pods to its citizens, for a limited number of purposes.
 </p>
 
-<h2>96.3 The value of connection</h2>
+<h2>96.3 Why one app is not enough</h2>
 
 <p>
-The economic argument borrows a law about networks. Bob Metcalfe, inventor of
-Ethernet, proposed that a network&#8217;s value grows with the square of its
-members: a telephone is worth more the more people it can call. The
-note applies this to applications sharing a pod:
+Bob Metcalfe, inventor of Ethernet, proposed that a network&#8217;s value grows
+with the square of its members: a telephone is worth more the more people it
+can call. The note applies this to applications sharing a pod:
 </p>
 
 <blockquote>
@@ -198,20 +197,19 @@ value is invisible until many apps share the same store.</figcaption>
 </figure>
 
 <p>
-A glimpse exists inside one large platform. An email in Gmail asks for a
-meeting; a couple of clicks add it to Google Calendar, create
-a Google Meet link and send the link to everyone invited. Solid would offer that
-kind of integration across every application a person uses, not only within
-one company&#8217;s.
+A glimpse exists inside one large platform: an email in Gmail asks for a
+meeting, and a couple of clicks add it to Google Calendar and send everyone a
+Google Meet link. Solid would offer that integration across every application,
+not only within one company&#8217;s.
 </p>
 
 <h3>Linking across applications</h3>
 
 <p>
-The note&#8217;s slogan for this is &#8220;you can do anything with
-anything&#8221;. Today an event lists its invitees from the user&#8217;s contacts, but from
-a contact there is no way to find the events they were invited to. The note&#8217;s
-chain of steps shows what changes when the links run both ways.
+The Solid slogan is &#8220;you can do anything with anything&#8221;. Today an
+event lists invitees from the user&#8217;s contacts, but from a contact there
+is no way to find their events. Figure 96.3 shows what changes when links run
+both ways.
 </p>
 
 <figure>
@@ -277,76 +275,81 @@ pod.</figcaption>
 </figure>
 
 <p>
-The note adds a colleague&#8217;s travel example: a traveller tells an airline&#8217;s
-app which flight they want, so it knows where they will be and when, yet it never
-tells Google Maps where they need to be at the airport.
+A colleague, John Bruce, compares it to &ldquo;imagining you could actually
+trust all the apps on your phone&rdquo;. Planning a trip, he told an
+airline&#8217;s app which flight he wanted, so it knew where he would be and
+when, yet it never told Google Maps where he needed to be at the airport.
 </p>
 
 <h3>What changes for users</h3>
 
 <p>
-First, pains disappear. A photo album on Flickr could be shared with friends on
-Facebook and colleagues on LinkedIn at once, because the platforms have become
-Solid-compatible, whether under pressure or by law, or because users have moved
-to open ones. Medical records could move into a person&#8217;s own store, to be analysed by
-apps and AI and shared with chosen doctors and family; at least four groups were
-writing code to bring medical data into pods.
+The first change is relief; people, the note suggests, &ldquo;may adapt very
+quickly to the new freedoms.&rdquo; A photo album on Flickr could be shared
+with friends on Facebook and colleagues on LinkedIn at once, because the
+platforms have become Solid-compatible or users have moved to open ones. Medical records could move into a person&#8217;s own store, to be analysed by
+apps and AI and shared with chosen doctors and family. &ldquo;The large medical
+software providers do not come out shining with virtue historically,&rdquo; the
+note remarks, but at least four groups were writing code to bring medical data
+into pods.
 </p>
 
 <p>
 Second, new things appear. &ldquo;No code&rdquo;
 apps, driven by a data file and assembled by dragging components, are easy for
-users to copy and tweak.
+users to copy and tweak. The author asked an AI where integrating personal data
+would bring the greatest gains, and printed seven of its twenty answers. He
+notes LLM firms reaching for personal data too: Anthropic&#8217;s Model Context
+Protocol, Perplexity&#8217;s purchase of Carbon. Charlie, the assistant of
+Chapters 93 and 94, would need such access, but working for its owner.
 </p>
 
 <h3>Who pays</h3>
 
 <p>
-The note answers with familiar models: free at first with heavier users
-paying, as with consumer cloud storage; bundled with an email account, a domain
-name or a club membership; or run by a co-operative whose users share the
-costs. Its opening summary puts economics second:
+Pods could be paid for in familiar ways: free at first with heavier users
+paying, as with cloud storage; bundled with an email account or a club
+membership; or run by a co-operative. But the note declines the larger
+question:
 </p>
 
 <blockquote>
-The article underscores the economic potential of Solid-driven innovations, not
-as an end goal but as a byproduct of enhanced productivity and creativity,
-collaboration and compassion.
+So don't ask "what is the business model for Solid"? It's like asking "what is
+the business model for the web?".
 <cite>The Vision of a new World, 2024</cite>
 </blockquote>
+
+<p>
+As with the dot-com boom, he expects more new business models than anyone can
+imagine.
+</p>
 
 <h2>96.4 Communities of every size</h2>
 
 <p>
-The closing vision names the unit it cares about, and it is not the
-individual:
+The note&#8217;s conclusion names the unit it cares about, and it is not the
+individual. Newly empowered individuals work in communities &ldquo;of all
+scales, from pairs through groups to nation-sized movements&rdquo;, and this
+&ldquo;fractal blend of community&rdquo; is, he writes, &ldquo;the best
+situation for individuals solving problems&rdquo;.
 </p>
-
-<blockquote>
-It envisions a future where empowered individuals and communities of all sizes
-work together to tackle global challenges, marking a paradigm shift in how we
-use technology to shape the world.
-<cite>The Vision of a new World, 2024</cite>
-</blockquote>
 
 <p>
-The body of the note explains why. The Web was always meant for collaboration:
-one person may have a problem in mind and another, across the planet, the
-solution. What carries the solution across is overlapping communities, and he
-lists his own, from family and teams to W3C groups and companies. Today, passing
-something from one to another means copying a message between WhatsApp, Slack
-and email. ActivityPub applications are starting to make this smooth for chat;
-Solid, he says, could do it for every type of data. This is Chapter 87&#8217;s
-requirement, stated as an outcome rather than a design constraint.
+The Web was always meant for collaboration: one person may have a problem in
+mind and another, across the planet, the solution. What carries it across is
+overlapping communities; he lists his own, from family to W3C groups and
+companies. Today, passing something between them means copying a message
+between WhatsApp, Slack and email. ActivityPub applications are starting to make this smooth for chat;
+Solid, he says, could do it for every type of data.
 </p>
 
-<h2>96.5 How the book ends</h2>
+<h2>96.5 Building what cannot be pictured</h2>
 
 <p>
 Ninety-six chapters, written from 1996 to 2025, end with an admission that the
-author could not imagine what his own work would produce, and an argument that
-this is a reason to proceed rather than to wait. Three
-early pieces of advice are all about acting without knowing what comes next:
+author could not imagine what his own work would produce, and an attempt, made
+&ldquo;with some humility&rdquo;, to describe it anyway. Three early pieces of
+advice are all about acting without knowing what comes next:
 </p>
 
 <table>
@@ -361,9 +364,12 @@ imagined</td><td>What will be connected later</td></tr>
 </table>
 
 <p>
-Many of the notes record decisions taken by someone who said he could not see
-far, and who chose each time to keep things open so that others could improve
-them. Whether that approach will work a second time is not yet known.
+Read across the collection, many of the notes record decisions taken by
+someone who said he could not see far, and who kept things open so that others
+could improve them. Whether that approach will work a second time is not yet
+known. What it aims at is the note&#8217;s own closing picture: &ldquo;groups
+getting ideas they need from other groups a few clicks away in the social
+graph.&rdquo;
 </p>
 
 <div class="since">
@@ -383,11 +389,10 @@ non-technical route Chapter 93 identified.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The architecture being described is Volume VI, particularly Chapters 54 and 55,
-and live synchronisation is Chapter 58. Communities of all sizes are
-Chapter 87, and the gradient between them is Chapter 74. The assistant that
-would use such a store is Chapters 93 and 94, and the principles for building
-under ignorance are Chapters 1, 16 and 19.
+The architecture is Volume VI, especially Chapters 54 and 55; live
+synchronisation is Chapter 58. Communities of all sizes are Chapter 87, the
+gradient between them Chapter 74. Building under ignorance is Chapters 1, 16
+and 19.
 </p>
 </div>
 
@@ -395,8 +400,8 @@ under ignorance are Chapters 1, 16 and 19.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">96.1</span>
-The designer of the Web could not imagine what would be built on it. What does
-that imply about how to evaluate a proposed architecture?</p>
+Name something on today&#8217;s Web nobody could have pictured with six
+websites. What would its equivalent be in a world of pods?</p>
 </div>
 <div class="question">
 <p><span class="question-number">96.2</span>
@@ -405,7 +410,7 @@ two applications sharing a store to produce value?</p>
 </div>
 <div class="question">
 <p><span class="question-number">96.3</span>
-The missing piece is a public service nobody runs. Using the payment models the
+Almost nobody offers pods to the public yet. Using the payment models the
 note lists, say who would pay and who would benefit.</p>
 </div>
 <div class="question">

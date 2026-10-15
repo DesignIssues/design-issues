@@ -20,8 +20,9 @@ their addresses.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-The third of four related 2015 notes opens with a question that turns out
-to govern how every website is laid out:
+One of four related 2015 notes (the second by its own count; this book
+places it third) opens with a question that governs how every
+website is laid out:
 </p>
 <blockquote>
 You can't discuss authentication of parties without discussing what constitutes
@@ -33,12 +34,14 @@ The browser&#8217;s answer is the domain name.
 </p>
 </div>
 
-<h2>68.1 Two hierarchies, one used</h2>
+<h2>68.1 Jane&#8217;s address, turned inside out</h2>
 
 <p>
-In <code>https://camps.org/board/</code>, <code>https</code> is the scheme
-and <code>camps.org</code> the host name; the port is a rarely seen number,
-usually omitted.
+A summer camp&#8217;s site wants to give Jane Smith a corner of her own, at
+<code>camps.org/campsunshine/families/smith/jane/</code>. To the browser that
+corner is not a separate party. To give her scripts a wall of their own, the
+address must be turned inside out:
+<code>jane.smith.families.campsunshine.camps.org</code>.
 </p>
 
 <p>
@@ -51,8 +54,7 @@ the first single slash, is a tree read left to right.
 The browser uses only the first. Berners-Lee notes it even ranks names within
 it: an application at <code>mit.edu</code> is assumed able to reach data from
 scripts at <code>csail.mit.edu</code>, not the reverse. The path gets no such
-treatment, so giving Jane Smith her own scripting space means rewriting her
-address.
+treatment.
 </p>
 
 <figure>
@@ -92,24 +94,22 @@ The same nesting, written two ways. Only the bottom form gives Jane a boundary
 the browser recognises.</figcaption>
 </figure>
 
-<h3>What the rewrite costs</h3>
+<h3>Four prices for one wall</h3>
 
 <ol>
 <li>Every existing link to these pages breaks.</li>
 <li>Relative links (short links such as <code>jane/stuff</code>, read against
-the current page) between the family pages and Jane&#8217;s stop working.
-Every link must be written in full, so the family cannot move its pages to a
-home server or work on them offline.</li>
-<li>Each time a new group needs its own boundary (a new family member, a new
-club), the addresses must be rearranged again, breaking links each time.</li>
+the current page) between the family pages and Jane&#8217;s stop working, so the family
+cannot move its pages to a home server or work on them offline.</li>
+<li>Each time a new group needs its own boundary the addresses are
+rearranged again.</li>
 <li>Observers can now see that the reader visited Jane&#8217;s pages
 (below).</li>
 </ol>
 
 <p>
-Before fetching a page, the browser makes a DNS lookup, asking which machine
-serves the host name, usually unencrypted; the path travels inside the
-encrypted connection.
+The browser&#8217;s DNS lookup, asking which machine serves the host name,
+is usually unencrypted; the path travels inside the encrypted connection.
 </p>
 
 <blockquote>
@@ -154,22 +154,20 @@ activist Jane Smith. The reader's privacy is being whittled away a little more.
 Moving names into the host name moves them into the clear.</figcaption>
 </figure>
 
-<h2>68.2 Why the path hierarchy was already there</h2>
+<h2>68.2 The server already draws these lines</h2>
 
 <p>
-The path hierarchy was there first. Making the path hierarchy
-visible with the slash was a very early decision, and servers use it to hand
-out control.
+The slash came first. Making the path a visible hierarchy was one of the
+earliest decisions, and servers use it to hand out control.
 </p>
 
 <p>
 In a classic Apache server (Apache being for many years the most common
-web server program), addresses map onto files kept in folders on the server&#8217;s disk,
+web server program), addresses map onto folders on the server&#8217;s disk,
 and permissions are inherited down the tree. An <code>.htaccess</code> file, a
 small settings file placed in a folder, controls everything below it, nothing
-above. A reverse proxy, the site quietly passing one branch of its addresses
-to another service, builds on this. Berners-Lee
-calls it very useful:
+above. A reverse proxy, passing one branch of the addresses to another service,
+builds on this. Berners-Lee calls it very useful:
 </p>
 
 <blockquote>
@@ -228,7 +226,7 @@ The server already delegates by path. The browser draws no boundary anywhere
 in this tree.</figcaption>
 </figure>
 
-<h2>68.3 The case that shows the cost</h2>
+<h2>68.3 The board&#8217;s papers and the borrowed tool</h2>
 
 <p>
 The camps.org board proxies an outside meeting tool into
@@ -248,6 +246,14 @@ camps.org board have to trust that any AcmeDiscss.com scripts can read their
 data.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
+
+<p>
+Even a subdomain can be too close: in April 2013 GitHub moved users&#8217; sites from
+<code>username.github.com</code> to a separate domain, <code>github.io</code>,
+as scripts on those subdomains could set cookies for github.com. This
+book lives at <code>designissues.github.io/design-issues/</code>: every
+project under that account shares one origin, separated only by path.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
@@ -276,11 +282,11 @@ data.
   <text x="420" y="208" class="t-sm" style="fill:#b08d57">the board&#8217;s pages live under the supplier&#8217;s name</text>
 </svg>
 <figcaption><span class="fig-label">Figure 68.4</span>
-Each step moves the data further from its owner, until the supplier&#8217;s
-domain is the party the browser trusts with it.</figcaption>
+By the last step the supplier&#8217;s domain, not the board&#8217;s, is the
+party the browser trusts.</figcaption>
 </figure>
 
-<h2>68.4 A general caution about identifiers</h2>
+<h2>68.4 The name nobody can see past</h2>
 
 <p>
 One sentence generalises to any addressing scheme:
@@ -293,34 +299,32 @@ is necessary -- the best of many bad choices.
 </blockquote>
 
 <p>
-He names two accepted opacities. The <em>s</em> in https, discussed in Chapter 67, is one. The other is
+He names two accepted opacities. One is the <em>s</em> in https: here he
+files it under necessary evils, while Chapter 67 would phase it out. The other is
 the domain name itself, which he calls the massive opaqueness, because it is the
-route by which the user&#8217;s trust in the session travels at all. A reader
-trusts that camps.org is the camp because the name says so, and cannot see
-past the name.
+route by which the user&#8217;s trust in the session travels at all.
 </p>
 
 <p>
-The recommendation that closes the note is correspondingly broad: investigate
-ways of letting trust pass down the path hierarchy as well as the domain, and
-move away from reliance on domain names generally.
+The note ends by asking for trust to pass down the path as well. The one name
+nobody can see past is the one the browser trusts most, and the note&#8217;s
+last sentence asks the Web to lean on it less.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>A second, coarser boundary appeared.</strong> In 2018 Chrome
-began running each site (registrable domain, such as camps.org) in its own
+began running each site in its own
 process; the Same Origin Policy itself was unchanged.</li>
 
 <li><strong>The privacy leak was partly closed.</strong> DNS over TLS (RFC 7858,
-2016) and DNS over HTTPS (RFC 8484, October 2018) encrypt the lookup. The server
-name is still sent in the clear when the connection opens, unless Encrypted
-Client Hello is used.</li>
-<li><strong>Path-based boundaries were never added.</strong> Trust still
-derives from the host name alone. A supplier&#8217;s tool can be confined only
-by placing it in a sandboxed frame (HTML5, from about 2010) or on another
-origin, the arrangement section 68.3 describes.</li>
+2016) and DNS over HTTPS (RFC 8484, 2018) encrypt the lookup, but the server
+name still crosses in the clear unless Encrypted Client Hello is used.</li>
+<li><strong>Path-based boundaries were never added.</strong> A W3C draft,
+Suborigins, would have split one host into separate origins; Chrome tried it, then
+dropped it in 2018. Trust still derives from the host name alone. A supplier&#8217;s tool can be confined only
+by a sandboxed frame or another origin.</li>
 </ul>
 </div>
 
@@ -338,13 +342,14 @@ applications reading data are Chapter 54.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">68.1</span>
-Take the camps.org example. List what must change to give
+List what must change to give camps.org&#8217;s
 <code>/board/AcmeDiscss/</code> its own boundary today.</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.2</span>
-Moving a name from the path to the host name exposes it to observers. Explain
-the mechanism, and say what now mitigates it.</p>
+A university gives every student a page at <code>uni.example/~name/</code>.
+What could one student&#8217;s script do on a classmate&#8217;s page, and what
+would fixing it do to the addresses?</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.3</span>
@@ -354,7 +359,7 @@ server&#8217;s <code>.htaccess</code> rules already can?</p>
 </div>
 <div class="question">
 <p><span class="question-number">68.4</span>
-The domain name is called the massive opaqueness. Explain why it is accepted,
-using the argument of Chapter 2.</p>
+Should an activist&#8217;s pages sit at a path or at a subdomain? Weigh the
+privacy cost against the script boundary.</p>
 </div>
 </div>

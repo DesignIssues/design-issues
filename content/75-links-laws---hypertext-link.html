@@ -10,8 +10,10 @@ part of what was sent, and the sender answers for it. Frames blur the two.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Volume VIII opens with a note from April 1997 written for a specific purpose,
-and Berners-Lee says what it is:
+Put a picture from another site into a page and it becomes part of that page:
+its author answers for it. Put a link to the same site in the page and nothing
+of the kind follows. In April 1997 Berners-Lee thought this distinction needed
+writing down:
 </p>
 <blockquote>
 Links in hypertext are new in that they can be followed automatically, but the
@@ -21,17 +23,19 @@ strange suggestions recently which would seriously damage the web, I write this
 note.
 <cite>Links and Law, 1997</cite>
 </blockquote>
-<p>
-The distinction it draws is between two things that are both written as an
-address in the markup (see the table below) and that mean entirely different
-things.
-</p>
 </div>
 
-<h2>75.1 Two kinds of link</h2>
+<h2>75.1 A reference and an inclusion</h2>
+
+<blockquote>
+The intention in the design of the web was that normal links should simply be
+references, with no implied meaning.
+<cite>Links and Law, 1997</cite>
+</blockquote>
 
 <p>
-Basic HTML had three ways to point at other material. Berners-Lee calls the
+Both kinds are written as an address in the markup. Basic HTML had three
+ways to point at other material. Berners-Lee calls the
 first two &ldquo;normal&rdquo; links, since the reader moves from one document
 to another, and the third &ldquo;embedding&rdquo; links.
 </p>
@@ -100,28 +104,11 @@ notes the distinction is old: some early hypertext systems expanded everything
 in place, and early HTML had no way to embed at all.</figcaption>
 </figure>
 
-<p>
-The design intent is stated in one sentence:
-</p>
-
-<blockquote>
-The intention in the design of the web was that normal links should simply be
-references, with no implied meaning.
-<cite>Links and Law, 1997</cite>
-</blockquote>
-
 <h2>75.2 Where the meaning actually is</h2>
 
-<p>
-The meaning lives in the words around the link:
-</p>
-
 <blockquote>
-So, if one writes "See Fred's web pages (link) which are way cool" that is
-clearly some kind of endorsement. If one writes "We go into this in more detail
-on our sales brochure (link)" there is an implication of common authorship. If
-one writes "Fred's message (link) was written out of malice and is a downright
-lie" one is denigrating (possibly libellously) the linked document.
+So the existence of the link itself does not carry meaning. Of course the
+contents of the linking document can carry meaning, and often does.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
@@ -168,55 +155,48 @@ lie" one is denigrating (possibly libellously) the linked document.
 
 </svg>
 <figcaption><span class="fig-label">Figure 75.2</span>
-The three sentences of the quotation above. The meaning, and any
+The note&#8217;s three examples, the last one possibly libellous. The meaning, and any
 responsibility, lives in the words around the link, never in the link.</figcaption>
 </figure>
 
-<h2>75.3 Why including by reference matters</h2>
+<h2>75.3 What a copy loses</h2>
 
 <p>
-Embedding a remote image, rather than copying it, keeps the reference, and the
-reference preserves something:
+Why it matters what is part of a document is put in one example:
 </p>
 
 <blockquote>
-When an embedded image (or sound) is included by reference to its original
-address (URI) this allows an inquirer to know that address, and hence know the
-current version of the image.
+If I say, "To understand this you only have to read this article", or "This is
+the agreement between us", I am talking about a particular document. It is
+important that we have a clear picture of what is part of that document and
+what isn't.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
 <p>
-Including by reference gives three things:
-</p>
-<ul>
-<li>anyone can see the current version of the image;</li>
-<li>the owner can to some extent know, and perhaps control, who has access;</li>
-<li>in future, Berners-Lee expects, anyone can find the owner and the licence
-terms.</li>
-</ul>
-<p>
-Copying severs all three. This applies the axioms of universality (section 2.2)
-to part of a page: once a thing has its own address, anyone can refer
-to it and ask about it.
+Including a part by reference, rather than copying it, keeps its address, and
+the address carries more. Suppose a news page shows a photographer&#8217;s picture by pointing at the
+photographer&#8217;s address. A reader can fetch the current version; the
+photographer&#8217;s server can to some extent know, and perhaps control, who
+asks; and in future, Berners-Lee expects, anyone could look up the owner and
+the licence terms. A copy saved on the news site&#8217;s own server loses all
+three.
 </p>
 
 <h2>75.4 The proposal that was never adopted</h2>
 
-<p>
-One exception is named, with a simple remedy:
-</p>
-
 <blockquote>
 Advertising provides an exception to this rule: a case in which the embedded
-image is not part of the document. At risk of making ittoo easy for users to
-turn off advertizing, it would be ideal if the distinction were make in the
-markup between embeeded information which is or is not part of the document.
+image is not part of the document.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
 <p>
-His proposed markup is a single extra word on the image:
+Berners-Lee proposed that the markup say which embedded material is not part of
+the document, so that a browser could, for example, put a border round an
+advertisement. He knew the cost: it risked making it too easy for readers to
+turn advertising off. He still judged it an important step forward in the
+integrity of the web, and one extra word on the image would do:
 </p>
 <pre><code>&lt;IMG src="banner-ad.gif" foreign&gt;</code></pre>
 
@@ -269,23 +249,16 @@ His proposed markup is a single extra word on the image:
   <text x="510" y="242" class="t-sm" text-anchor="middle">the reader sees where the page ends</text>
 </svg>
 <figcaption><span class="fig-label">Figure 75.3</span>
-The same page with and without the proposed attribute. One word in the markup
-would let the browser mark what is not part of the document, as Berners-Lee
-suggests, with a border.</figcaption>
+With the proposed attribute, the browser can draw a border round what is not
+part of the document.</figcaption>
 </figure>
 
-<p>
-He personally feels this would be an important step forward in the integrity
-of the Web.
-</p>
-
-<h2>75.5 The frame problem</h2>
+<h2>75.5 Someone else&#8217;s page inside the frame</h2>
 
 <p>
 Frames split one browser window into separate panes. Clicking a link inside one
 pane could load another site&#8217;s page there, while the first site&#8217;s logo and menu stayed
-around it. The closing section identifies this as where the window metaphor
-breaks:
+around it. The note explains the trouble:
 </p>
 
 <blockquote>
@@ -334,26 +307,31 @@ is the illusion the note warns about.</figcaption>
 
 <p>
 Until markup can express the difference, the note says, content providers should make
-sure readers are not left with the illusion.
+sure readers are not left with the illusion. As background (the note names
+no case): in February 1997 the <em>Washington Post</em> and other
+news publishers sued TotalNews for showing their pages inside its own frames,
+beside its own advertisements, and in June TotalNews settled by agreeing to stop.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The foreign flag never arrived.</strong> In markup, an advertisement
-is still indistinguishable from the page that embeds it.</li>
 <li><strong>Frames were replaced and the problem persisted.</strong> Inline
 frames (HTML 4.0, 1997) and embedded players reproduce the confusion section
 75.5 names; HTML5&#8217;s <code>sandbox</code> attribute limits what they can do
 rather than saying whose they are.</li>
+<li><strong>The foreign flag never arrived, and readers turned advertising off
+anyway.</strong> Extensions such as Adblock (2002) and Adblock Plus (2006) hide
+adverts by matching their addresses against filter lists: guesswork, because
+markup still does not say what is foreign.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The myths this note answers are Chapter 76, and the axiom it rests on is
-Chapter 2. What a document includes bears on Chapter 28, and the responsibility
+The myths this note answers are Chapter 76. Including by reference applies
+the axioms of universality (section 2.2) to part of a page. What a document includes bears on Chapter 28, and the responsibility
 attaching to a publisher is Chapter 20. The embedding of third-party code is
 Chapter 70.
 </p>
@@ -368,8 +346,9 @@ By this chapter&#8217;s definition, who is responsible for them?</p>
 </div>
 <div class="question">
 <p><span class="question-number">75.2</span>
-The link means nothing and the words around it mean everything. Write a link
-that endorses, one that disclaims, and one that does neither.</p>
+A page shows a news site&#8217;s article inside its own frame, with its logo and
+adverts around it. Under this chapter, which parts is it responsible for, and
+which might a reader wrongly think it is?</p>
 </div>
 <div class="question">
 <p><span class="question-number">75.3</span>

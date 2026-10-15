@@ -10,18 +10,27 @@ edit shows up as a one-line change in version control.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in October 2023. &ldquo;Pretty printing&rdquo; is formatting code
-&ldquo;so that it is easy to read by humans, and aesthetically pleasing&rdquo;.
-The note asks how a program should lay out data in a Solid pod (the personal
-data store of Chapter 54), and argues that legibility pays off throughout the
-system, not just for readers.
+Change one number in a person&#8217;s record, an age from 41 to 42, and save
+it. One program writes back a file in which one line differs. Another rewrites
+the whole record in a new order, so every line differs and the change is buried. The data is identical; only the program that wrote it out is not.
+This October 2023 note asks how such a program should write data so that
+people can read it.
+</p>
+<p>
+&ldquo;Pretty printing&rdquo; is formatting code &ldquo;so that it is easy to
+read by humans, and aesthetically pleasing&rdquo;. The note applies it to data
+in a Solid pod (the personal data store of Chapter 54), and argues that
+legibility pays off throughout the system, not just for readers.
 </p>
 </div>
 
-<h2>86.1 The view-source effect</h2>
+<h2>86.1 Why the Web could be learnt by copying</h2>
 
 <p>
-The first reason given connects this note to the whole history:
+The first reason is about developers trying out existing programs, who
+&ldquo;need to be able see how they work. Then, when they are making their own
+applications, to be able to understand what is happening and what has gone
+wrong.&rdquo;
 </p>
 
 <blockquote>
@@ -31,30 +40,22 @@ and adapting each others web pages is important linked data in Solid pods too.
 </blockquote>
 
 <p>
-Chapter 56 traced how the Web spread: copy, change, look, show someone.
-Copying needs a source a stranger can read; a format legible only through a
-tool loses that step.
-</p>
-
-<p>
-He adds the field&#8217;s experience, and meets an objection:
+Chapter 56 traced that loop: copy a page, change it, see it at once, send the
+URL. Copying needs a source a stranger can read; a format legible only through
+a tool loses that step. The field&#8217;s experience agrees:
 </p>
 
 <blockquote>
 It has been the long communal experience in the internet protocol design
 community that simple text formats (like FTP, SNTP, HTTP, HTML, XML) have been
-key to adoption and understanding of new systems.
+key to adoption and understanding of new systems. So while you can ship a
+binary format and give everyone tools for translating it into something
+legible, actually is is better to ship legible formats directly across the
+net.
 <cite>Pretty Printing, 2023</cite>
 </blockquote>
 
-<blockquote>
-So while you can ship a binary format and give everyone tools for translating it
-into something legible, actually is is better to ship legible formats directly
-across the net.
-<cite>Pretty Printing, 2023</cite>
-</blockquote>
-
-<h2>86.2 Small change, small difference</h2>
+<h2>86.2 One fact changed, one line changed</h2>
 
 <p>
 The part of a program that writes data out as text is its <em>serialiser</em>.
@@ -63,6 +64,12 @@ text&rdquo;; second, that &ldquo;small changes in the data produce small changes
 in the text&rdquo;. The second matters for version control: tools such as git
 keep every past version of a file and show, as a <em>diff</em>, the lines that
 changed between two.
+</p>
+
+<p>
+Pod data is a graph of <em>triples</em>, each one statement: subject,
+property, value. Figure 86.1 shows them in Turtle, a text form common in pods. In a diff, lines
+marked &minus; were removed and lines marked + were added.
 </p>
 
 <figure>
@@ -112,16 +119,8 @@ difference lies in the serialiser, not the data.</figcaption>
 </figure>
 
 <p>
-The figure is in Turtle, a text form common in pods (section 86.5 explains the
-punctuation); read each line as &#8216;Joe &#8230; has &#8230;&#8217;. Pod
-data is a graph of <em>triples</em>, each triple one statement: subject,
-property, value.
-</p>
-
-<p>
 For tests, the note advises comparing pretty-printed output rather than raw
-triples, so a person can see why they
-differ.
+triples, so a person can see why they differ.
 </p>
 
 <figure>
@@ -192,60 +191,23 @@ English like way also is more pleasant, and easier to check for mistakes.
 </blockquote>
 
 <p>
-This is the argument for N3 (Chapter 42): a syntax close to a sentence is
-easier to write correctly by hand.
+It matters most when several people shape the same data together, on a
+whiteboard or in a chat: &ldquo;Being able to share and co-design a bit of data
+is key to the remote collaborative design process.&rdquo; N3 (Chapter 42), a
+syntax close to a sentence, was first made for exactly this.
 </p>
 
-<blockquote>
-When a group is collaborating the same same data document, such as on a
-whiteboard or in a chat, then legibility and writability are both important.
-<cite>Pretty Printing, 2023</cite>
-</blockquote>
+<h2>86.4 Six benefits, one of them weak</h2>
 
 <p>
-&ldquo;(This is what N3 was originally made for.)&rdquo;
+Of the note&#8217;s six benefits, the sections above cover five: consistency,
+tests, source control, writing and collaboration. The sixth, smaller files, is
+the weakest. Turtle&#8217;s shorthands save space, but
+&ldquo;This may or may not be important. The text may get compressed at another
+stage.&rdquo;
 </p>
 
-<h2>86.4 The argument in general</h2>
-
-<p>
-The note lists six benefits. Smaller files, the first, is the weakest.
-</p>
-
-<table>
-<tr><th>Benefit</th><th>What the note says</th></tr>
-<tr><td>Storage and bandwidth</td><td>Smaller files, which may or may not matter: the text may be compressed anyway</td></tr>
-<tr><td>Consistency and continuity</td><td>Same data, same text; small change in data, small change in text</td></tr>
-<tr><td>Tests</td><td>Compare pretty-printed output, so a mismatch can be understood</td></tr>
-<tr><td>Source control</td><td>A smaller record of changes; before and after can be compared</td></tr>
-<tr><td>Writing</td><td>Configuration files and rules are easier to write clearly</td></tr>
-<tr><td>Collaboration</td><td>Data shared on a whiteboard or in a chat</td></tr>
-</table>
-
-
-<p>
-The note ends with a caution. Indentation, line length and &ldquo;spaces or
-tabs&rdquo; are matters of taste; a developer whose output users see must guess
-their preferences, not impose his own.
-</p>
-
-<h2>86.5 What makes Turtle legible</h2>
-
-<p>
-Pod data is usually Turtle, JSON-LD, or N3 (a superset of Turtle). Turtle
-allows free use of spaces and line breaks, and has shorthands a serialiser
-should use:
-</p>
-
-<table>
-<tr><th>Feature</th><th>Long form</th><th>Short form</th></tr>
-<tr><td>Prefix</td><td><code>&lt;http://xmlns.com/foaf/0.1/name&gt;</code></td><td><code>foaf:name</code></td></tr>
-<tr><td>Semicolon</td><td>Subject repeated</td><td><code>p:joe foaf:name "Joe"; foaf:age 42.</code></td></tr>
-<tr><td>Comma</td><td>Subject and property repeated</td><td><code>p:joe foaf:knows p:ann, p:bob.</code></td></tr>
-<tr><td>Square brackets</td><td>Blank node (a thing with no name of its own) labelled <code>_:b1</code></td><td><code>[ foaf:name "Ann" ]</code></td></tr>
-<tr><td>Parentheses</td><td>A list built node by node</td><td><code>( 1 2 3 )</code></td></tr>
-<tr><td>Raw number</td><td><code>"42"^^xsd:integer</code></td><td><code>42</code></td></tr>
-</table>
+<h2>86.5 Shorthands that make data read like sentences</h2>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
@@ -292,20 +254,27 @@ The same graph in both panels; only the layout differs.</figcaption>
 </figure>
 
 <p>
-N3 adds raw dates and three further forms:
+Pod data is usually Turtle, JSON-LD, or N3 (a superset of Turtle). Turtle
+allows free use of spaces and line breaks, and a serialiser should use its
+shorthands: the four in Figure 86.3, plus square brackets for a <em>blank
+node</em> (a thing with no name of its own) and parentheses for a list.
 </p>
 
-<table>
-<tr><th>Feature</th><th>Long form</th><th>Short form</th></tr>
-<tr><td>Reverse arc</td><td><code>p:joe foaf:knows p:ann.</code> written as a separate statement about Joe</td><td><code>p:ann foaf:name "Ann"; is foaf:knows of p:joe.</code></td></tr>
-<tr><td><code>@keywords</code></td><td><code>:joe a :Person.</code></td><td><code>@keywords a. joe a Person.</code></td></tr>
-<tr><td>Curly brackets</td><td>(no Turtle equivalent)</td><td><code>p:ann p:said { p:joe foaf:age 42 }.</code></td></tr>
-</table>
+<p>
+N3 adds raw dates, a <code>@keywords</code> directive that drops the leading
+colon from local names, curly brackets for graphs within graphs, and a reverse
+arc, <code>is &#8230; of</code>, so that every link touching a thing can be
+written in one place. A serialiser can then nest every unnamed thing in
+square brackets instead of inventing labels like <code>_:b1</code>, if the
+graph has no loops.
+</p>
 
 <p>
-With reverse arcs, every link touching a thing can be written in one place. A
-serialiser can then nest unnamed things in square brackets rather than inventing
-labels like <code>_:b1</code>, at least when the graph has no loops.
+The last word is on taste. Indentation, line length and the &ldquo;spaces or
+tabs&rdquo; question, which &ldquo;is infamous for bike-shedding&rdquo;, are
+matters of taste; a developer whose output users see must guess their
+preferences, not just insert his own. The note keeps out of it: &ldquo;I won&#8217;t
+give you my favorite settings here, to keep the topic on the principles.&rdquo;
 </p>
 
 <div class="since">
@@ -324,7 +293,7 @@ revised Turtle for RDF 1.2, adding syntax for statements about statements.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The view-source effect and the four steps are Chapter 56. The notation whose
+The view-source effect and the copy, change, see, send loop are Chapter 56. The notation whose
 legibility is at stake is Chapter 42, and comparing two graphs is Chapter 45.
 The storage this data lives in is Chapter 54.
 </p>
@@ -344,12 +313,12 @@ difference, and say what that costs.</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.3</span>
-Legibility helps the writer as well as the reader. Give an example from data
-you have written by hand.</p>
+Write &#8216;Ann knows Joe and Bob&#8217; in the long form and with
+Turtle&#8217;s comma. Which would you rather check for a typo?</p>
 </div>
 <div class="question">
 <p><span class="question-number">86.4</span>
-When is shipping a binary format worth losing view-source? Which benefit in
-section 86.4 is given up?</p>
+When is shipping a binary format worth losing view-source? Which of the
+note&#8217;s six benefits is given up?</p>
 </div>
 </div>
