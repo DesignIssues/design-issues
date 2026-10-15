@@ -79,7 +79,7 @@ things.
 </p>
 </div>
 
-<h2>75.1 Two kinds of link</h2>
+<h2 id="sec-75-1">75.1 Two kinds of link</h2>
 
 <p>
 Basic <a class="gl-ref" href="../glossary.html#html">HTML</a> had three ways to point at other material. Berners-Lee calls the
@@ -97,7 +97,7 @@ stylesheet or the next page</td><td>normal</td></tr>
 appears inside the page</td><td>embedding</td></tr>
 </table>
 
-<figure>
+<figure id="fig-75-1">
 <svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
      aria-labelledby="fig75-1-t fig75-1-d">
   <title id="fig75-1-t">A reference and an inclusion</title>
@@ -171,7 +171,7 @@ In particular, a normal link does not by itself imply that:
 <li>one is to be considered part of the other.</li>
 </ul>
 
-<h2>75.2 Where the meaning actually is</h2>
+<h2 id="sec-75-2">75.2 Where the meaning actually is</h2>
 
 <p>
 The meaning lives in the words around the link:
@@ -186,7 +186,7 @@ lie" one is denigrating (possibly libellously) the linked document.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-75-2">
 <svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
      aria-labelledby="fig75-2-t fig75-2-d">
   <title id="fig75-2-t">Same link, three meanings</title>
@@ -234,7 +234,7 @@ The three sentences of the quotation above. The meaning, and any
 responsibility, lives in the words around the link, never in the link.</figcaption>
 </figure>
 
-<h2>75.3 Why including by reference matters</h2>
+<h2 id="sec-75-3">75.3 Why including by reference matters</h2>
 
 <p>
 Embedding a remote image, rather than copying it, keeps the reference, and the
@@ -258,12 +258,12 @@ Including by reference gives three things:
 terms.</li>
 </ul>
 <p>
-Copying severs all three. This applies the axioms of universality (section 2.2)
+Copying severs all three. This applies the axioms of universality (<a class="x-ref" href="02-axioms-web-architecture-uris.html#sec-2-2">section 2.2</a>)
 to part of a page: once a thing has its own address, anyone can refer
 to it and ask about it.
 </p>
 
-<h2>75.4 The proposal that was never adopted</h2>
+<h2 id="sec-75-4">75.4 The proposal that was never adopted</h2>
 
 <p>
 One exception is named, with a remedy both simple and slightly mischievous:
@@ -282,7 +282,7 @@ His proposed markup is a single extra word on the image:
 </p>
 <pre><code>&lt;IMG src="banner-ad.gif" foreign&gt;</code></pre>
 
-<figure>
+<figure id="fig-75-3">
 <svg class="dia" viewBox="0 0 680 250" width="680" height="250" role="img"
      aria-labelledby="fig75-3-t fig75-3-d">
   <title id="fig75-3-t">What one attribute would let a browser show</title>
@@ -341,7 +341,7 @@ He personally feels this would be an important step forward in the integrity
 of the Web, and admits the catch: it would make advertising easy to switch off.
 </p>
 
-<h2>75.5 The frame problem</h2>
+<h2 id="sec-75-5">75.5 The frame problem</h2>
 
 <p>
 Frames split one browser window into separate panes. Clicking a link inside one
@@ -359,7 +359,7 @@ document.
 <cite>Links and Law, 1997</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-75-4">
 <svg class="dia" viewBox="0 0 640 290" width="640" height="290" role="img"
      aria-labelledby="fig75-4-t fig75-4-d">
   <title id="fig75-4-t">Another site&#8217;s page inside a frame</title>
@@ -415,7 +415,7 @@ advertising is still indistinguishable from the page structurally.</li>
 fonts, analytics and advertisements are embedded on many pages today, all of them
 part of the document by this chapter&#8217;s definition.</li>
 <li><strong>Frames were replaced and the problem persisted.</strong> Inline
-frames and embedded players reproduce the confusion Section 75.5 names, with
+frames and embedded players reproduce the confusion <a class="x-ref" href="#sec-75-5">Section 75.5</a> names, with
 sandboxing attributes limiting what they can do rather than clarifying whose
 they are.</li>
 </ul>
@@ -424,10 +424,10 @@ they are.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The myths this note answers are Chapter 76, and the axiom it rests on is
-Chapter 2. What a document includes bears on Chapter 28, and the responsibility
-attaching to a publisher is Chapter 20. The embedding of third-party code is
-Chapter 70.
+The myths this note answers are <a class="x-ref" href="76-myths-about-links.html">Chapter 76</a>, and the axiom it rests on is
+<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. What a document includes bears on <a class="x-ref" href="28-meaning-document---grounding-global.html">Chapter 28</a>, and the responsibility
+attaching to a publisher is <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>. The embedding of third-party code is
+<a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>.
 </p>
 </div>
 

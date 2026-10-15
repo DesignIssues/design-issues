@@ -62,14 +62,14 @@ overturns old conclusions, so anyone can check anyone else&#8217;s proof.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 40 concluded that <a class="gl-ref" href="../glossary.html#inference">inference</a> rules cannot live outside the language.
+<a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a> concluded that <a class="gl-ref" href="../glossary.html#inference">inference</a> rules cannot live outside the language.
 This note, from 1998, shows what happens when a rule is taken out of an
 engine and put on the Web, and finds that a rule is two things
 wearing one coat.
 </p>
 </div>
 
-<h2>41.1 A rule contains two separable things</h2>
+<h2 id="sec-41-1">41.1 A rule contains two separable things</h2>
 
 <p>
 An inference engine is a program that draws new conclusions from the facts it
@@ -102,7 +102,7 @@ Read <code>|=</code> as <em>is to be concluded when</em> and <code>&lt;=</code>
 as <em>is true whenever</em>.
 </p>
 
-<figure>
+<figure id="fig-41-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig41-1-t fig41-1-d">
   <title id="fig41-1-t">One rule, two pieces of information</title>
@@ -172,7 +172,7 @@ A system which tries to constrain the expressive power cannot be universal.
 <cite>Rules and Facts, 1998</cite>
 </blockquote>
 
-<h2>41.2 The penguin</h2>
+<h2 id="sec-41-2">41.2 The penguin</h2>
 
 <p>
 The hardest case is a system where adding a fact can make a previous
@@ -182,7 +182,7 @@ one is told otherwise, and so they are closed-world systems: whatever is not
 in their fixed set of facts is treated as false.
 </p>
 
-<figure>
+<figure id="fig-41-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig41-2-t fig41-2-d">
   <title id="fig41-2-t">The penguin, step by step</title>
@@ -260,7 +260,7 @@ turns an absence of evidence into a positive statement someone is answerable
 for.
 </p>
 
-<h2>41.3 Why classical logic, and not as a matter of taste</h2>
+<h2 id="sec-41-3">41.3 Why classical logic, and not as a matter of taste</h2>
 
 <p>
 The note&#8217;s central claim is put as a denial that this was a preference:
@@ -310,7 +310,7 @@ bus (a channel every system plugs into, like a computer&#8217;s bus) and
 classical systems below it.
 </p>
 
-<figure>
+<figure id="fig-41-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig41-3-t fig41-3-d">
   <title id="fig41-3-t">Many ways to find, one way to check</title>
@@ -354,7 +354,7 @@ How a proof was found does not matter. Once it is written in the shared logic,
 anyone can check it. Chapter 40 shows why checking is the easy half.</figcaption>
 </figure>
 
-<h2>41.4 What publishing a rule strips out</h2>
+<h2 id="sec-41-4">41.4 What publishing a rule strips out</h2>
 
 <p>
 The operation at the centre of this chapter is given its plainest statement:
@@ -374,7 +374,7 @@ everyone else gets the fact.
 </p>
 
 <p>
-The companion note of Chapter 31 names the underlying error: most knowledge
+The companion note of <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> names the underlying error: most knowledge
 representation systems confuse information with inference tips. A rule stored
 in a table to be fired at a particular moment has its meaning tangled up with
 its scheduling. Two systems must be able to exchange what a rule means even
@@ -383,7 +383,7 @@ when neither recognises the other&#8217;s notion of when to apply it.
 
 <p>
 The note then turns to a further problem, what happens when the Web holds
-both a statement and its contradiction. Chapter 46 treats that question.
+both a statement and its contradiction. <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a> treats that question.
 </p>
 
 <div class="since">
@@ -399,10 +399,10 @@ requirement.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The asymmetry between finding and checking is Chapter 40, and the plan both
-serve is Chapter 30. The objection about inconsistency raised here is treated
-fully in Chapter 46. The independence of assertions is the axiom of
-Chapter 27. Chapter 42&#8217;s scoped negation lets default reasoning back in
+The asymmetry between finding and checking is <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, and the plan both
+serve is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>. The objection about inconsistency raised here is treated
+fully in <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The independence of assertions is the axiom of
+<a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>. <a class="x-ref" href="42-notation3.html">Chapter 42</a>&#8217;s scoped negation lets default reasoning back in
 narrowly, without the global closed-world assumption this note rejects.
 </p>
 </div>

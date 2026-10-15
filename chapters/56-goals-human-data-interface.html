@@ -71,7 +71,7 @@ interact with data on the web.
 </blockquote>
 </div>
 
-<h2>56.1 What the document Web had that the data Web lacked</h2>
+<h2 id="sec-56-1">56.1 What the document Web had that the data Web lacked</h2>
 
 <blockquote>
 The document web spread by the simple method of people copying the source of
@@ -92,7 +92,7 @@ data to a normal user.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-56-1">
 <svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
      aria-labelledby="fig56-1-t fig56-1-d">
   <title id="fig56-1-t">The loop that data lacked</title>
@@ -159,7 +159,7 @@ user experience which users seem to use.
 
 <p>The task was to keep that experience and add the links.</p>
 
-<h2>56.2 Two modes: outline and table</h2>
+<h2 id="sec-56-2">56.2 Two modes: outline and table</h2>
 
 <p>
 Late in 2007 Berners-Lee wrote a data browser that showed a thing&#8217;s
@@ -176,7 +176,7 @@ shape, the same pattern of links. Because it made tables from the graph, he
 called the program Tabulator.
 </p>
 
-<figure>
+<figure id="fig-56-2">
 <svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
      aria-labelledby="fig56-2-t fig56-2-d">
   <title id="fig56-2-t">Outline mode and table mode</title>
@@ -219,7 +219,7 @@ The two highlighted lines become the two columns. Every other match becomes a
 row.</figcaption>
 </figure>
 
-<figure>
+<figure id="fig-56-3">
 <svg class="dia" viewBox="0 0 720 232" width="720" height="232" role="img"
      aria-labelledby="fig56-3-t fig56-3-d">
   <title id="fig56-3-t">A looped graph browsed as a tree</title>
@@ -257,7 +257,7 @@ A graph can loop; a tree cannot. The note&#8217;s answer is that users could
 follow the loop but don&#8217;t bother, so Joe simply reappears, unexpanded.</figcaption>
 </figure>
 
-<h2>56.3 The design principles</h2>
+<h2 id="sec-56-3">56.3 The design principles</h2>
 
 <p>
 The note lists six design principles. Its <em><a class="gl-ref" href="../glossary.html#ontology">ontology</a></em> means the
@@ -272,7 +272,7 @@ vocabulary&#8217;s labels, in the user&#8217;s language.</td></tr>
 <tr><td>Use existing user interface language</td><td>Behave like the file
 browsers and tables people know.</td></tr>
 <tr><td>Represent the graph as a tree</td><td>An expandable outline
-(Figure 56.3).</td></tr>
+(<a class="x-ref" href="#fig-56-3">Figure 56.3</a>).</td></tr>
 <tr><td>Read-write</td><td>Allow editing only where the user has the
 right.</td></tr>
 <tr><td>A little semantics</td><td>Work out obvious facts, so a record with a
@@ -293,7 +293,7 @@ taken from the vocabulary&#8217;s labels, and the software uses the
 identifier.
 </p>
 
-<figure>
+<figure id="fig-56-4">
 <svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
      aria-labelledby="fig56-4-t fig56-4-d">
   <title id="fig56-4-t">One record, two presentations</title>
@@ -340,7 +340,7 @@ contacts saw the friend&#8217;s right name, because the two nodes were merged
 into one. The note calls this low level of inference a sweet spot.
 </p>
 
-<h2>56.4 The audience, and the ambition</h2>
+<h2 id="sec-56-4">56.4 The audience, and the ambition</h2>
 
 <p>The target user explains the whole design:</p>
 
@@ -365,7 +365,7 @@ possible without having to write their own code.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<h2>56.5 Forms and panes: power without code</h2>
+<h2 id="sec-56-5">56.5 Forms and panes: power without code</h2>
 
 <p>
 For common things, such as contacts, developers wrote special views called
@@ -376,7 +376,7 @@ panes, offered as icons suited to the type of thing on screen.
 Between panes and outline sat forms, which users made without code. A form
 was stored as data, the form editor was itself a form, and a shared registry
 offered each form to anyone viewing that type of thing. Forms are relatives of
-the shapes of Chapter 57. The note&#8217;s conclusion:
+the shapes of <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>. The note&#8217;s conclusion:
 </p>
 
 <blockquote>
@@ -385,7 +385,7 @@ adaptive default interfaces was an important optimization.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-56-5">
 <svg class="dia" viewBox="0 0 720 196" width="720" height="196" role="img"
      aria-labelledby="fig56-5-t fig56-5-d">
   <title id="fig56-5-t">The spectrum of interfaces</title>
@@ -431,7 +431,7 @@ records, Tabulator had been repurposed as the data browser for <a class="gl-ref"
 its store, rdflib.js. Its panes were later published as the solid-panes
 and mashlib packages.</li>
 <li><strong>The no-code ambition arrived elsewhere.</strong> No-code tools such as
-Airtable (founded 2012) reached the audience of section 56.4, without linked
+Airtable (founded 2012) reached the audience of <a class="x-ref" href="#sec-56-4">section 56.4</a>, without linked
 data underneath.</li>
 </ul>
 </div>
@@ -439,9 +439,9 @@ data underneath.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The data this interface browses is Chapter 49, and the storage it writes to is
-Chapter 54. The forms and shapes that drive such interfaces are Chapter 57.
-User interface principles, including familiar metaphors, are Chapters 82 and
+The data this interface browses is <a class="x-ref" href="49-linked-data.html">Chapter 49</a>, and the storage it writes to is
+<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. The forms and shapes that drive such interfaces are <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
+User interface principles, including familiar metaphors, are Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and
 85.
 </p>
 </div>
@@ -465,7 +465,7 @@ an example from a spreadsheet you know, and say what is lost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.4</span>
-In Figure 56.2, which lines would you select to get people, employers and the
+In <a class="x-ref" href="#fig-56-2">Figure 56.2</a>, which lines would you select to get people, employers and the
 employer&#8217;s city?</p>
 </div>
 </details>

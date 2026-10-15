@@ -77,7 +77,7 @@ It isolates a mistake that any system describing its own data can make.
 </p>
 </div>
 
-<h2>44.1 The rule, and the reason for it</h2>
+<h2 id="sec-44-1">44.1 The rule, and the reason for it</h2>
 
 <p>
 An RDF statement has three parts: a subject, a predicate and an object. The
@@ -86,7 +86,7 @@ is James Doe&rdquo;. To describe it, one makes a new node that stands for the
 statement and gives that node three properties, one for each part.
 </p>
 
-<figure>
+<figure id="fig-44-1">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig44-1-t fig44-1-d">
   <title id="fig44-1-t">A statement and its description</title>
@@ -143,7 +143,7 @@ note&#8217;s example uses a second identifier, <code>ex:jd1</code>, for the
 same person.
 </p>
 
-<figure>
+<figure id="fig-44-2">
 <svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
      aria-labelledby="fig44-2-t fig44-2-d">
   <title id="fig44-2-t">Describing a statement, and why the name must be quoted</title>
@@ -211,7 +211,7 @@ Equivalence lets one be derived from the other, but it matters which name a
 graph used.
 </p>
 
-<h2>44.2 Describing a blank node</h2>
+<h2 id="sec-44-2">44.2 Describing a blank node</h2>
 
 <p>
 A blank node is a node with no <a class="gl-ref" href="../glossary.html#uri">URI</a>, standing for &ldquo;something&rdquo;. When
@@ -231,7 +231,7 @@ describing node may even be given a name; that changes nothing about the
 unnamed node it describes.
 </p>
 
-<figure>
+<figure id="fig-44-3">
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig44-3-t fig44-3-d">
   <title id="fig44-3-t">The describer is not the described</title>
@@ -265,7 +265,7 @@ unnamed node it describes.
 Naming the describing node does not name the original.</figcaption>
 </figure>
 
-<h2>44.3 Sets, and the ungainliness admitted</h2>
+<h2 id="sec-44-3">44.3 Sets, and the ungainliness admitted</h2>
 
 <p>
 A graph is a set of statements, and the model has ordered lists but no sets.
@@ -283,10 +283,10 @@ the same statements are demonstrably the same in their reified form.
 
 <p>
 He adds that later systems might process sets explicitly and the notation
-could gain set syntax. Chapter 43 argues for that; RDF never added sets.
+could gain set syntax. <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a> argues for that; RDF never added sets.
 </p>
 
-<h2>44.4 Why quotation is not assertion</h2>
+<h2 id="sec-44-4">44.4 Why quotation is not assertion</h2>
 
 <p>
 The reason for the whole apparatus is an example about what one person knows.
@@ -302,7 +302,7 @@ same person, Jane may not know that, and so may not know the corresponding
 fact about the other name.
 </p>
 
-<figure>
+<figure id="fig-44-4">
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
      aria-labelledby="fig44-4-t fig44-4-d">
   <title id="fig44-4-t">A quoted formula blocks substitution</title>
@@ -354,11 +354,11 @@ universal, and the unnamed car an existential. Described in full, the result is
 several times longer than the input.
 </p>
 
-<h2>44.5 The final distinction</h2>
+<h2 id="sec-44-5">44.5 The final distinction</h2>
 
 <p>
 The closing section draws the line that makes the whole thing safe, and it is
-the same line Chapter 24 draws for documents:
+the same line <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a> draws for documents:
 </p>
 
 <blockquote>
@@ -388,7 +388,7 @@ everything it was merely told about.
 <ul>
 <li><strong>The standard mechanism fell out of use.</strong> The <a class="gl-ref" href="../glossary.html#reification">reification</a>
 <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> this note criticises was little used, and its deprecation was
-proposed in the 2010 note restated in Chapter 47. It survives in the
+proposed in the 2010 note restated in <a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>. It survives in the
 specification.</li>
 <li><strong>The requirement was met differently.</strong> Named graphs, proposed
 in 2005, built into <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> datasets (<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, January 2008) and RDF 1.1
@@ -400,7 +400,7 @@ Community Group report (2021) and the RDF 1.2 work that followed from 2022
 added a compact way to annotate a statement, and had to settle
 exactly the question this chapter raises: whether annotating a statement
 asserts it.</li>
-<li><strong>Sets are still absent.</strong> The workaround of section 44.3 is
+<li><strong>Sets are still absent.</strong> The workaround of <a class="x-ref" href="#sec-44-3">section 44.3</a> is
 still the way to express an unordered collection.</li>
 </ul>
 </div>
@@ -408,10 +408,10 @@ still the way to express an unordered collection.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The use-mention distinction is Chapter 35, and the notation being described is
-Chapter 42. The absence of sets is argued in Chapter 43 and proposed for
-repair in Chapter 47. The rule that quoted material must not be acted on is
-Chapter 24, and what a signature does and does not assert is Chapter 37.
+The use-mention distinction is <a class="x-ref" href="35-when-use-literal-uri-linked.html">Chapter 35</a>, and the notation being described is
+<a class="x-ref" href="42-notation3.html">Chapter 42</a>. The absence of sets is argued in <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a> and proposed for
+repair in <a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>. The rule that quoted material must not be acted on is
+<a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>, and what a signature does and does not assert is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>.
 </p>
 </div>
 

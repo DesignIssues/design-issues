@@ -74,13 +74,13 @@ subject is information hiding.
 </p>
 <p>
 Berners-Lee numbered the note zero in his axioms sequence, though he wrote
-it in January 1998, more than a year after the Axioms note of Chapter 2
-(December 1996). Chapter 2 describes what URIs are; this note describes the
+it in January 1998, more than a year after the Axioms note of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>
+(December 1996). <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> describes what URIs are; this note describes the
 machine that consumes them.
 </p>
 </div>
 
-<h2>4.1 Three modules</h2>
+<h2 id="sec-4-1">4.1 Three modules</h2>
 
 <p>
 Information hiding means each part of a system knows only what it needs, so
@@ -96,7 +96,7 @@ parts that know different things.
 <tr><td>Application</td><td>The absolute URI, for resolving relative ones</td><td>What the fragment means</td></tr>
 </table>
 
-<figure>
+<figure id="fig-4-1">
 <svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
      aria-labelledby="fig4-1-t fig4-1-d">
   <title id="fig4-1-t">The three modules of the Web model</title>
@@ -168,10 +168,10 @@ data stream, which is simply the bytes of the document as they arrive, and a
 media type such as <code>text/html</code>, which says what kind of document
 those bytes are. Both are passed to a factory, meaning code that builds an
 object of the right kind, and the object it builds is then given the
-fragment identifier. Figure 4.2 follows one link through these steps.
+fragment identifier. <a class="x-ref" href="#fig-4-2">Figure 4.2</a> follows one link through these steps.
 </p>
 
-<figure>
+<figure id="fig-4-2">
 <svg class="dia" viewBox="0 0 620 344" width="620" height="344" role="img"
      aria-labelledby="fig4-2-t fig4-2-d">
   <title id="fig4-2-t">Following one link</title>
@@ -258,7 +258,7 @@ for fragment identifiers.
 <cite>The Web Model, 1998</cite>
 </blockquote>
 
-<h2>4.2 Why the fragment stays on the client</h2>
+<h2 id="sec-4-2">4.2 Why the fragment stays on the client</h2>
 
 <p>
 The immediate payoff is a link that stays on the same page, such as
@@ -310,10 +310,10 @@ only within one document and making them truly global by adding the
 document&#8217;s URI and a hash. A name <code>#alice</code>, used inside
 <code>http://example.org/people</code>, becomes
 <code>http://example.org/people#alice</code>, which means the same thing
-anywhere. This is the mechanism of Chapter 6 and of Volume IV.
+anywhere. This is the mechanism of <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a> and of Volume IV.
 </p>
 
-<h2>4.3 Why relative resolution is universal</h2>
+<h2 id="sec-4-3">4.3 Why relative resolution is universal</h2>
 
 <p>
 Suppose Ann writes a book as a set of files on her own disk. Chapter one is
@@ -332,7 +332,7 @@ the access module, letting each scheme define its own resolution algorithm.
 Instead, one algorithm was made common to all schemes.
 </p>
 
-<figure>
+<figure id="fig-4-3">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig4-3-t fig4-3-d">
   <title id="fig4-3-t">One link, two homes</title>
@@ -401,7 +401,7 @@ never sees it, and the fragment still passes from the application, which
 carries it without looking inside, to the object that understands it.
 </p>
 
-<h2>4.4 The scheme, and why it must not be spent</h2>
+<h2 id="sec-4-4">4.4 The scheme, and why it must not be spent</h2>
 
 <p>
 The last section of the note is a warning, and it is the part that later
@@ -445,7 +445,7 @@ Web&#8217;s namespace has silently become DNS again. At that point, he
 observes, there is no top-level extension switch left.
 </p>
 
-<figure>
+<figure id="fig-4-4">
 <svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
      aria-labelledby="fig4-4-t fig4-4-d">
   <title id="fig4-4-t">The extension switch, kept and spent</title>
@@ -535,7 +535,7 @@ remained the same.
 <cite>The Web Model, 1998</cite>
 </blockquote>
 
-<h2>4.5 A note on the word &ldquo;resource&rdquo;</h2>
+<h2 id="sec-4-5">4.5 A note on the word &ldquo;resource&rdquo;</h2>
 
 <p>
 The note closes with the etymology, which explains a persistent confusion.
@@ -588,12 +588,12 @@ problem, and came back to DNS.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is Chapter 1&#8217;s modularity applied to the Web&#8217;s own stack, and
-supplies the mechanism that Chapter 2&#8217;s axioms assume. Fragment identifiers
-in their own right are Chapter 11; relative resolution is Chapter 12. The
-webizing move sketched in section 4.2 is treated fully in Chapter 26, and its
-consequence for naming things rather than documents is Chapter 6. The
-warning about scheme proliferation returns in Chapter 5.
+This chapter is <a class="x-ref" href="01-principles-design.html">Chapter 1</a>&#8217;s modularity applied to the Web&#8217;s own stack, and
+supplies the mechanism that <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s axioms assume. Fragment identifiers
+in their own right are <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>; relative resolution is <a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>. The
+webizing move sketched in <a class="x-ref" href="#sec-4-2">section 4.2</a> is treated fully in <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and its
+consequence for naming things rather than documents is <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a>. The
+warning about scheme proliferation returns in <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>.
 </p>
 </div>
 
@@ -601,7 +601,7 @@ warning about scheme proliferation returns in Chapter 5.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">4.1</span>
-Using Figure 4.2, explain why moving a page to a new address does not break
+Using <a class="x-ref" href="#fig-4-2">Figure 4.2</a>, explain why moving a page to a new address does not break
 its own <code>#notes</code> links, and what would break if the <a class="gl-ref" href="../glossary.html#server">server</a> had to
 understand <code>#notes</code>.</p>
 </div>
@@ -619,7 +619,7 @@ whether verified https links solved the problem or deferred it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.4</span>
-Using section 4.5, say which sense of &ldquo;resource&rdquo; fits a web page,
+Using <a class="x-ref" href="#sec-4-5">section 4.5</a>, say which sense of &ldquo;resource&rdquo; fits a web page,
 a mailbox, and a person described in RDF.</p>
 </div>
 </details>

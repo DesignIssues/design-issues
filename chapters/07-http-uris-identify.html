@@ -96,7 +96,7 @@ same identifier for different things and never discover it.
 </p>
 </div>
 
-<h2>7.1 The position being defended</h2>
+<h2 id="sec-7-1">7.1 The position being defended</h2>
 
 <p>
 Berners-Lee&#8217;s answer is that an HTTP URI without a fragment (the part
@@ -116,13 +116,13 @@ does not mean a conventional office document
 
 <p>
 Each such document is one abstract work that can be delivered as many
-different files, varying by date, format and language (Chapter 10 develops
+different files, varying by date, format and language (<a class="x-ref" href="10-generic-resources.html">Chapter 10</a> develops
 this). What holds the files together is that they have a great deal in
 common, and that the publisher is the authority on how much variation is
 permitted.
 </p>
 
-<figure>
+<figure id="fig-7-1">
 <svg class="dia" viewBox="0 0 680 260" width="680" height="260" role="img"
      aria-labelledby="fig7-1-t fig7-1-d">
   <title id="fig7-1-t">Three layers behind one address</title>
@@ -174,7 +174,7 @@ middle box. The car is reached only through what the document says about it.
 Collapsing the two is what section 7.2 argues against.</figcaption>
 </figure>
 
-<h2>7.2 Why the distinction must be kept</h2>
+<h2 id="sec-7-2">7.2 Why the distinction must be kept</h2>
 
 <p>
 The argument against collapsing the document into the thing it describes is
@@ -228,7 +228,7 @@ car. Only if it names the document does the test explain why one of them
 counts as failure.
 </p>
 
-<figure>
+<figure id="fig-7-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig7-2-t fig7-2-d">
   <title id="fig7-2-t">The test of a shared link</title>
@@ -274,7 +274,7 @@ two different pages about the same car. The test fixes what the address
 names: the information content, not the subject.</figcaption>
 </figure>
 
-<h2>7.3 Eight alternatives, tried and rejected</h2>
+<h2 id="sec-7-3">7.3 Eight alternatives, tried and rejected</h2>
 
 <p>
 The bulk of the note works through the positions Berners-Lee does not hold.
@@ -321,7 +321,7 @@ recommending the Vietnam War.
 <cite>What do HTTP URIs Identify?, 2002</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-7-3">
 <svg class="dia" viewBox="0 0 640 180" width="640" height="180" role="img"
      aria-labelledby="fig7-3-t fig7-3-d">
   <title id="fig7-3-t">One statement, two readings</title>
@@ -351,7 +351,7 @@ meanings. If the owner decides what an address names, nobody can safely make
 the statement at the top without asking the owner first.</figcaption>
 </figure>
 
-<h2>7.4 The redirect he proposed and did not get</h2>
+<h2 id="sec-7-4">7.4 The redirect he proposed and did not get</h2>
 
 <p>
 When a browser asks a <a class="gl-ref" href="../glossary.html#server">server</a> for an address, the reply starts with a
@@ -379,12 +379,12 @@ document about it.
 
 <p>
 He does not adopt it. He notes only that the avenue remains open and that the
-community could take it if it wished. Chapter 8 records what the community
+community could take it if it wished. <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> records what the community
 actually did: in 2005 it adopted the same mechanism using an existing code,
 303 &ldquo;See Other&rdquo;, in place of a new 343.
 </p>
 
-<h2>7.5 The defence of the hash</h2>
+<h2 id="sec-7-5">7.5 The defence of the hash</h2>
 
 <p>
 The note closes with questions, and one answer is worth keeping because it
@@ -403,11 +403,11 @@ The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
 names a document. That is the whole of Berners-Lee&#8217;s position in one line,
 and it is why he preferred hash URIs to the redirect approach, which was
-adopted in 2005 and now coexists with them. Figure 7.4 sets the two side by
+adopted in 2005 and now coexists with them. <a class="x-ref" href="#fig-7-4">Figure 7.4</a> sets the two side by
 side.
 </p>
 
-<figure>
+<figure id="fig-7-4">
 <svg class="dia" viewBox="0 0 700 310" width="700" height="310" role="img"
      aria-labelledby="fig7-4-t fig7-4-d">
   <title id="fig7-4-t">Two ways to name a car with a web address</title>
@@ -481,9 +481,9 @@ redirect costs an extra round trip to the server.</figcaption>
 <li><strong>The author lost and the mechanism won.</strong> In June 2005 the
 Technical Architecture Group resolved the issue it had recorded as
 <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>, adopting a runtime test rather than a rule fixed in the
-<a class="gl-ref" href="../glossary.html#specification">specification</a>, which is the protocol-operation option in section 7.3&#8217;s
+<a class="gl-ref" href="../glossary.html#specification">specification</a>, which is the protocol-operation option in <a class="x-ref" href="#sec-7-3">section 7.3</a>&#8217;s
 table. It did so using a redirect closely resembling the one proposed here.
-Chapter 8 is Berners-Lee&#8217;s account of the resolution.</li>
+<a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> is Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
 2006 the page carried a <a class="gl-ref" href="../glossary.html#header">header</a> saying the question had been decided by the
 Group &ldquo;in a compromise which I think works quite well&rdquo;. The
@@ -499,10 +499,10 @@ against.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The identity axiom that this chapter tests is Chapter 2. The sense of
-&ldquo;document&rdquo; used here is defined in Chapter 10. The role of the
-hash is the subject of Chapter 11, and the module boundary that makes it
-possible is Chapter 4. Chapter 8 gives the resolution, and Chapter 9 the
+The identity axiom that this chapter tests is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. The sense of
+&ldquo;document&rdquo; used here is defined in <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>. The role of the
+hash is the subject of <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>, and the module boundary that makes it
+possible is <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> gives the resolution, and <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> the
 history of the word that caused the trouble.
 </p>
 </div>
@@ -516,7 +516,7 @@ conclude she has none? How is the Web like this?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.2</span>
-Using Figure 7.4, explain what a browser does differently with a hash URI and
+Using <a class="x-ref" href="#fig-7-4">Figure 7.4</a>, explain what a browser does differently with a hash URI and
 with a 303 URI.</p>
 </div>
 <div class="question">

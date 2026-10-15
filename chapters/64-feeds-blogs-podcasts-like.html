@@ -80,7 +80,7 @@ So a feed by itself is a one-way thing with no feedback.
 </blockquote>
 </div>
 
-<h2>64.1 The survey</h2>
+<h2 id="sec-64-1">64.1 The survey</h2>
 
 <p>
 The note gives what it calls a very rough summary of feeds in 2021:
@@ -97,7 +97,7 @@ The note gives what it calls a very rough summary of feeds in 2021:
 <tr><td>Fitness</td><td>GPX</td><td>Strava, Fitbit and others</td><td>Kudos, comment</td></tr>
 </table>
 
-<figure>
+<figure id="fig-64-1">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig64-1-t fig64-1-d">
   <title id="fig64-1-t">Who owns what</title>
@@ -139,7 +139,7 @@ Reading across the table: a closed platform holds the identity, the feed, the
 audience and the reactions; the open world standardised only the feed.</figcaption>
 </figure>
 
-<h2>64.2 Reaction as a vocabulary problem</h2>
+<h2 id="sec-64-2">64.2 Reaction as a vocabulary problem</h2>
 
 <p>
 Activity Streams, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for recording what people do online,
@@ -156,8 +156,8 @@ whenever that state changes.
 </blockquote>
 
 <p>
-An issue tracker is a feed; Chapter 45 made the same move when it observed
-that a patch is news. The goal concerns <a class="gl-ref" href="../glossary.html#solid">Solid</a> (Chapter 54), where each person
+An issue tracker is a feed; <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a> made the same move when it observed
+that a patch is news. The goal concerns <a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), where each person
 keeps their data in a personal store that any app may use:
 </p>
 
@@ -168,7 +168,7 @@ what it it they are reacting to --liking, and so on.
 <cite>Feeds, 2021</cite>
 </blockquote>
 
-<h2>64.3 The scope problem</h2>
+<h2 id="sec-64-3">64.3 The scope problem</h2>
 
 <blockquote>
 With Instagram and Strava each person has one group of followers, so a choice
@@ -177,7 +177,7 @@ public.
 <cite>Feeds, 2021</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-64-2">
 <svg class="dia" viewBox="0 0 720 322" width="720" height="322" role="img"
      aria-labelledby="fig64-2-t fig64-2-d">
   <title id="fig64-2-t">Scope of a reaction</title>
@@ -225,12 +225,12 @@ each reaction addressed to the right one.</figcaption>
 
 <p>
 For someone in many communities, Berners-Lee says, giving a reaction the right
-scope is very important (Chapter 74 treats this in general). A platform knows
+scope is very important (<a class="x-ref" href="74-intimacy-gradient.html">Chapter 74</a> treats this in general). A platform knows
 each person as one account with one follower list, so it can only offer choices about
 that one list.
 </p>
 
-<h2>64.4 The warning</h2>
+<h2 id="sec-64-4">64.4 The warning</h2>
 
 <p>
 A section titled <em>Possible harmful consequences</em> notes that reaction
@@ -249,10 +249,10 @@ these things, and where it is possible, explicit design to avoid harm.
 Take a like-count. Technically it is a number; socially it is read as a
 measure of a post&#8217;s worth. That is the two-protocol analysis of Chapter
 15 (a technical protocol and an unwritten social one, which can fail
-separately), and Chapter 90 shows such failures at scale.
+separately), and <a class="x-ref" href="90-dysfunction-social-networks.html">Chapter 90</a> shows such failures at scale.
 </p>
 
-<h2>64.5 Subscriptions are data too</h2>
+<h2 id="sec-64-5">64.5 Subscriptions are data too</h2>
 
 <p>
 To use several reader apps with the same subscriptions, the apps must agree
@@ -273,7 +273,7 @@ also points to FreshRSS, open-source software that keeps a person&#8217;s feeds 
 <a class="gl-ref" href="../glossary.html#server">server</a>.
 </p>
 
-<h2>64.6 Finding feeds</h2>
+<h2 id="sec-64-6">64.6 Finding feeds</h2>
 
 <p>
 The familiar &ldquo;wherever you get your podcasts&rdquo; assumes the big
@@ -285,7 +285,7 @@ feeds decides what people come across, which matters amid much
 misinformation.
 </p>
 
-<h2>64.7 Protocols, not apps</h2>
+<h2 id="sec-64-7">64.7 Protocols, not apps</h2>
 
 <p>
 Some podcasts ask listeners to install their own app. The note says no:
@@ -304,7 +304,7 @@ anyone&#8217;s feed, also carry shows only their apps can play. The note&#8217;s
 listen to those.
 </p>
 
-<h2>64.8 One story, two formats</h2>
+<h2 id="sec-64-8">64.8 One story, two formats</h2>
 
 <p>
 Berners-Lee read Neal Stephenson&#8217;s <em>Termination Shock</em> in audio
@@ -312,7 +312,7 @@ and text at once: text when someone is around, sound when driving. That, he
 says, is about efficiency and accessibility.
 </p>
 
-<figure>
+<figure id="fig-64-3">
 <svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
      aria-labelledby="fig64-3-t fig64-3-d">
   <title id="fig64-3-t">A synchronised feed post</title>
@@ -363,7 +363,7 @@ on ActivityPub (W3C <a class="gl-ref" href="../glossary.html#recommendation">Rec
 Twitter&#8217;s change of ownership in late 2022.</li>
 <li><strong>Audiences stayed coarse.</strong> Mastodon offers four post
 visibilities (public, unlisted, followers only, direct), still short of the
-many groups of section 64.3.</li>
+many groups of <a class="x-ref" href="#sec-64-3">section 64.3</a>.</li>
 <li><strong>Feeds were reconsidered.</strong> On 25 August 2024 Mark
 Nottingham, co-author of Atom, published &ldquo;What RSS Needs&rdquo;, which
 the note links.</li>
@@ -373,9 +373,9 @@ the note links.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Live notification is Chapter 58; a change as news, Chapter 45; Solid and
-identity, Chapter 54; sharing with the right group, Chapter 74; the
-two-protocol analysis, Chapter 15; the harm, Chapter 90.
+Live notification is <a class="x-ref" href="58-live-data.html">Chapter 58</a>; a change as news, <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>; Solid and
+identity, <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>; sharing with the right group, <a class="x-ref" href="74-intimacy-gradient.html">Chapter 74</a>; the
+two-protocol analysis, <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>; the harm, <a class="x-ref" href="90-dysfunction-social-networks.html">Chapter 90</a>.
 </p>
 </div>
 

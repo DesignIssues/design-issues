@@ -53,7 +53,7 @@ a Design Issues note by Tim Berners-Lee, 2022-01-01.
 <h3>The short version</h3>
 <p>
 A <a class="gl-ref" href="../glossary.html#pod">pod</a> (a <a class="gl-ref" href="../glossary.html#solid">Solid</a> Pod) is a person&#8217;s own web storage, of the kind
-Chapter 54 proposed: folders on a <a class="gl-ref" href="../glossary.html#server">server</a>, each with its own access rules, that
+<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> proposed: folders on a <a class="gl-ref" href="../glossary.html#server">server</a>, each with its own access rules, that
 any application the person chooses may read and write. Anything in a life can
 go in one. File it by kind, not by application, so
 applications can share it. Keep each activity together, so its owner can decide
@@ -64,7 +64,7 @@ once who may see it.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Thirteen years after Chapter 54, this note from December 2022 asks a question
+Thirteen years after <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>, this note from December 2022 asks a question
 harder than the protocol: given a space of one&#8217;s own, how should its contents
 be arranged?
 </p>
@@ -79,14 +79,14 @@ communities in between.
 </blockquote>
 </div>
 
-<h2>55.1 Five ways stuff varies</h2>
+<h2 id="sec-55-1">55.1 Five ways stuff varies</h2>
 
 <p>
 If anything can go in a pod, one <a class="gl-ref" href="../glossary.html#scheme">scheme</a> must cope with all of it. The note
-lists five ways the stuff of a life differs (Figure 55.1).
+lists five ways the stuff of a life differs (<a class="x-ref" href="#fig-55-1">Figure 55.1</a>).
 </p>
 
-<figure>
+<figure id="fig-55-1">
 <svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
      aria-labelledby="fig55-1-t fig55-1-d">
   <title id="fig55-1-t">How far personal data varies</title>
@@ -157,7 +157,7 @@ Security splits three ways: the risk of being lost, faked, or read by the
 wrong person.
 </p>
 
-<h2>55.2 The organising decision</h2>
+<h2 id="sec-55-2">55.2 The organising decision</h2>
 
 <p>
 The note&#8217;s substantive claim is about what determines where something goes:
@@ -181,7 +181,7 @@ every application that handles people should use the same shape for contact
 information.
 </p>
 
-<h2>55.3 Why activities are kept together anyway</h2>
+<h2 id="sec-55-3">55.3 Why activities are kept together anyway</h2>
 
 <p>
 The note then allows an exception, for reasons of permission rather than data:
@@ -207,7 +207,7 @@ The note&#8217;s longest example is an application for running a meeting: a
 poll on when to meet, an agenda, the groups invited, a video call, minutes and
 action items, often one of a series. A pod has folders (strictly, LDP
 containers), so the application makes one per series, one per meeting, and
-subfolders for the parts (Figure 55.2).
+subfolders for the parts (<a class="x-ref" href="#fig-55-2">Figure 55.2</a>).
 </p>
 
 <p>
@@ -217,7 +217,7 @@ as a chat about one action item, usually inherit their parent&#8217;s roles,
 though they may be narrowed. The interface must make plain who has access.
 </p>
 
-<figure>
+<figure id="fig-55-2">
 <svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
      aria-labelledby="fig55-2-t fig55-2-d">
   <title id="fig55-2-t">A meeting laid out in a pod</title>
@@ -287,10 +287,10 @@ its roles into access rules once.</figcaption>
 </figure>
 
 <p>
-The two principles pull against each other (Figure 55.3).
+The two principles pull against each other (<a class="x-ref" href="#fig-55-3">Figure 55.3</a>).
 </p>
 
-<figure>
+<figure id="fig-55-3">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig55-3-t fig55-3-d">
   <title id="fig55-3-t">Filing by app, by kind, by activity</title>
@@ -353,7 +353,7 @@ The note rejects the first. It wants the second for finding things and the
 third for trusting them; the type index helps reconcile them.</figcaption>
 </figure>
 
-<h2>55.4 Who configures the layout</h2>
+<h2 id="sec-55-4">55.4 Who configures the layout</h2>
 
 <p>
 The resolution offered is to let applications arrange things:
@@ -369,11 +369,11 @@ requirements, and also works well for that particular app.
 <p>
 The note expects applications to share common patterns for similar data:
 summary indexes, inboxes, time series in dated folders. An inbox, for
-example, is a folder others may add to but not read, like Chapter 54&#8217;s
-friend requests. Describing where new data should go is left to Chapter 57.
+example, is a folder others may add to but not read, like <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>&#8217;s
+friend requests. Describing where new data should go is left to <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
 </p>
 
-<h2>55.5 Provenance as a first-class concern</h2>
+<h2 id="sec-55-5">55.5 Provenance as a first-class concern</h2>
 
 <p>
 One sentence names an obligation the rest of Volume VI assumes:
@@ -390,11 +390,11 @@ rich, varied, and valuable system.
 Provenance is a record of who wrote a piece of data and how. It can be tracked
 by digital signatures from trusted agents, or more lightly by knowing that only
 one party can write to a resource. Trust is modelled as it really is, not as a
-permission flag (Chapter 66): automated agents, like people, are trusted
+permission flag (<a class="x-ref" href="66-model-real-trust.html">Chapter 66</a>): automated agents, like people, are trusted
 according to who wrote what and who may write where.
 </p>
 
-<h2>55.6 Index libraries, not items</h2>
+<h2 id="sec-55-6">55.6 Index libraries, not items</h2>
 
 <p>
 As on a desktop, where a photo library hides its insides, the type index works
@@ -416,7 +416,7 @@ better, and each library indexes its items more richly:
 <h3>What happened since</h3>
 <ul>
 <li><strong>The bots arrived.</strong> A 2023 update to Berners-Lee&#8217;s
-note on personal assistants (Chapter 93) records Inflection AI&#8217;s Pi
+note on personal assistants (<a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>) records Inflection AI&#8217;s Pi
 (May 2023): private conversation, but no access to the user&#8217;s personal
 data.</li>
 </ul>
@@ -425,8 +425,8 @@ data.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Storage: Chapter 54. Where new data goes: Chapter 57. Shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>:
-Chapter 48. Browsing: Chapter 56. Trust: Chapter 66. Agents: Chapter 93.
+Storage: <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. Where new data goes: <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>. Shared <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>:
+<a class="x-ref" href="48-my-top-ten-terms.html">Chapter 48</a>. Browsing: <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>. Trust: <a class="x-ref" href="66-model-real-trust.html">Chapter 66</a>. Agents: <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>.
 </p>
 </div>
 

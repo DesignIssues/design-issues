@@ -84,7 +84,7 @@ The browser&#8217;s answer is the <a class="gl-ref" href="../glossary.html#domai
 </p>
 </div>
 
-<h2>68.1 Two hierarchies, one used</h2>
+<h2 id="sec-68-1">68.1 Two hierarchies, one used</h2>
 
 <p>
 In <code>https://camps.org/board/</code>, <code>https</code> is the scheme
@@ -103,7 +103,7 @@ treatment, so giving Jane Smith her own scripting space means rewriting her
 address.
 </p>
 
-<figure>
+<figure id="fig-68-1">
 <svg class="dia" viewBox="0 0 720 254" width="720" height="254" role="img"
      aria-labelledby="fig68-1-t fig68-1-d">
   <title id="fig68-1-t">The hierarchy that counts, and the one that does not</title>
@@ -150,7 +150,7 @@ Every link must be written in full, so the family cannot move its pages to a
 home <a class="gl-ref" href="../glossary.html#server">server</a> or work on them offline.</li>
 <li>It invites the same rearrangement to happen again, and again.</li>
 <li>A name lookup now tells observers the reader visited Jane&#8217;s pages
-(Figure 68.2). Before fetching a page, the browser makes a <a class="gl-ref" href="../glossary.html#dns">DNS</a> lookup, asking
+(<a class="x-ref" href="#fig-68-2">Figure 68.2</a>). Before fetching a page, the browser makes a <a class="gl-ref" href="../glossary.html#dns">DNS</a> lookup, asking
 which machine serves the host name, usually unencrypted; the path travels
 inside the encrypted connection.</li>
 </ol>
@@ -166,7 +166,7 @@ activist Jane Smith. The reader's privacy is being whittled away a little more.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-68-2">
 <svg class="dia" viewBox="0 0 720 252" width="720" height="252" role="img"
      aria-labelledby="fig68-2-t fig68-2-d">
   <title id="fig68-2-t">What an observer of the network sees</title>
@@ -201,7 +201,7 @@ activist Jane Smith. The reader's privacy is being whittled away a little more.
 Moving names into the host name moves them into the clear.</figcaption>
 </figure>
 
-<h2>68.2 Why the path hierarchy was already there</h2>
+<h2 id="sec-68-2">68.2 Why the path hierarchy was already there</h2>
 
 <p>
 The note&#8217;s strongest point is historical. Making the path hierarchy
@@ -210,8 +210,8 @@ out control.
 </p>
 
 <p>
-In a classic Apache server (Apache being the most common web server
-program), addresses map onto files kept in folders on the server&#8217;s disk,
+In a classic Apache server (Apache being for many years the most common
+web server program), addresses map onto files kept in folders on the server&#8217;s disk,
 and permissions are inherited down the tree. An <code>.htaccess</code> file, a
 small settings file placed in a folder, controls everything below it, nothing
 above. A reverse proxy, the site quietly passing one branch of its addresses
@@ -226,7 +226,7 @@ external services.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-68-3">
 <svg class="dia" viewBox="0 0 720 344" width="720" height="344" role="img"
      aria-labelledby="fig68-3-t fig68-3-d">
   <title id="fig68-3-t">Delegation down the path</title>
@@ -274,7 +274,7 @@ The server already delegates by path. The browser draws no boundary anywhere
 in this tree.</figcaption>
 </figure>
 
-<h2>68.3 The case that shows the cost</h2>
+<h2 id="sec-68-3">68.3 The case that shows the cost</h2>
 
 <p>
 The camps.org board proxies an outside meeting tool into
@@ -295,7 +295,7 @@ data.
 <cite>Granularity of web sites, trust and the Same Origin Policy, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-68-4">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig68-4-t fig68-4-d">
   <title id="fig68-4-t">Where the board&#8217;s trust boundary can go</title>
@@ -326,7 +326,7 @@ Each step moves the data further from its owner, until the supplier&#8217;s
 domain is the party the browser trusts with it.</figcaption>
 </figure>
 
-<h2>68.4 A general caution about identifiers</h2>
+<h2 id="sec-68-4">68.4 A general caution about identifiers</h2>
 
 <p>
 One sentence generalises to any addressing scheme:
@@ -339,7 +339,7 @@ is necessary -- the best of many bad choices.
 </blockquote>
 
 <p>
-He names two accepted opacities. The <em>s</em> in https, discussed in Chapter 67, is one. The other is
+He names two accepted opacities. The <em>s</em> in https, discussed in <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>, is one. The other is
 the domain name itself, which he calls the massive opaqueness, because it is the
 route by which the user&#8217;s trust in the session travels at all. A reader
 trusts that camps.org is the camp because the name says so, and cannot see
@@ -359,7 +359,7 @@ move away from reliance on domain names generally.
 began running each site (registrable domain, such as camps.org) in its own
 process; the Same Origin Policy itself was unchanged.</li>
 <li><strong>Path-based boundaries were never added.</strong> Trust still
-derives from the authority alone, so the contortion of Figure 68.1 is still
+derives from the authority alone, so the contortion of <a class="x-ref" href="#fig-68-1">Figure 68.1</a> is still
 required.</li>
 <li><strong>The privacy leak was partly closed.</strong> DNS over <a class="gl-ref" href="../glossary.html#tls">TLS</a> (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 7858,
 2016) and DNS over HTTPS (RFC 8484, October 2018) encrypt the lookup. The server
@@ -367,7 +367,7 @@ name is still sent in the clear when the connection opens, unless Encrypted
 Client Hello is used.</li>
 <li><strong>Embedding a supplier&#8217;s tool under a site&#8217;s own tree stayed
 impossible.</strong> Third-party components are hosted by their suppliers or
-served from a subdomain, which is the arrangement section 68.3
+served from a subdomain, which is the arrangement <a class="x-ref" href="#sec-68-3">section 68.3</a>
 describes.</li>
 </ul>
 </div>
@@ -375,10 +375,10 @@ describes.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The opacity rule is Chapter 2, and the relative links that break are
-Chapter 12. The other notes of the set are Chapters 66, 67 and 69, and the
-policy this describes is the subject of Chapter 70. The consequences for
-applications reading data are Chapter 54.
+The opacity rule is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>, and the relative links that break are
+<a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>. The other notes of the set are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a>, <a class="x-ref" href="67-https-everywhere-considered-harmful.html">67</a> and <a class="x-ref" href="69-client-side-certificates.html">69</a>, and the
+policy this describes is the subject of <a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>. The consequences for
+applications reading data are <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>.
 </p>
 </div>
 
@@ -403,7 +403,7 @@ server&#8217;s <code>.htaccess</code> rules already can?</p>
 <div class="question">
 <p><span class="question-number">68.4</span>
 The domain name is called the massive opaqueness. Explain why it is accepted,
-using the argument of Chapter 2.</p>
+using the argument of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>.</p>
 </div>
 </details>
 

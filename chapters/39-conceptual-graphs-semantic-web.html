@@ -75,12 +75,12 @@ driving at.
 </blockquote>
 <p>
 Then he read the <a class="gl-ref" href="../glossary.html#specification">specification</a> and found that the two were closer than the
-examples had suggested. The chapter applies the webizing of Chapter 26, turning a system&#8217;s
+examples had suggested. The chapter applies the webizing of <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, turning a system&#8217;s
 local names into URIs, to a rival.
 </p>
 </div>
 
-<h2>39.1 The verdict</h2>
+<h2 id="sec-39-1">39.1 The verdict</h2>
 
 <blockquote>
 To put it in a nutshell, Conceptual Graphs (CGs) are a logic language used for
@@ -103,10 +103,10 @@ webized to serve as a basis for the Semantic Web.
 That is a considerable concession. The rival is not wrong; it is unwebized.
 </p>
 
-<h2>39.2 Webizing, applied to a rival</h2>
+<h2 id="sec-39-2">39.2 Webizing, applied to a rival</h2>
 
 <p>
-The procedure is Chapter 26&#8217;s. Modify the syntax so that a concept or a relation may carry a
+The procedure is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>&#8217;s. Modify the syntax so that a concept or a relation may carry a
 <a class="gl-ref" href="../glossary.html#uri">URI</a>, which means allowing the characters of a URI in identifiers. Then map
 local identifiers to global ones in the usual way: the document&#8217;s URI, a <a class="gl-ref" href="../glossary.html#hash">hash</a>,
 and the local name.
@@ -117,7 +117,7 @@ He then separates two kinds of obstacle, the most useful idea in the
 chapter.
 </p>
 
-<figure>
+<figure id="fig-39-1">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig39-1-t fig39-1-d">
   <title id="fig39-1-t">Deliberate design against incidental centralisation</title>
@@ -160,7 +160,7 @@ made without Web scale in view. A coreference set is a group of names for the sa
 thing; CGs make one of them the dominant, defining name.</figcaption>
 </figure>
 
-<h2>39.3 The one real difference</h2>
+<h2 id="sec-39-3">39.3 The one real difference</h2>
 
 <p>
 In CGs, concepts and relations are disjoint: two worlds that never overlap,
@@ -186,11 +186,11 @@ language to be universal itself.
 
 <p>
 Universality is a property required of the base language, not of everything
-built on it. Section 2.7 makes a neighbouring point about names: URI space
+built on it. <a class="x-ref" href="02-axioms-web-architecture-uris.html#sec-2-7">Section 2.7</a> makes a neighbouring point about names: URI space
 must be universal, but nothing obliges it to be the only universal space.
 </p>
 
-<h2>39.4 Where the shapes do not match</h2>
+<h2 id="sec-39-4">39.4 Where the shapes do not match</h2>
 
 <h3>Two arguments or many</h3>
 
@@ -201,7 +201,7 @@ relation such as <em>Leeds lies between York and Manchester</em> must be
 broken up, which is possible and is not free.
 </p>
 
-<figure>
+<figure id="fig-39-2">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig39-2-t fig39-2-d">
   <title id="fig39-2-t">Breaking a three-way relation into two-way links</title>
@@ -268,16 +268,16 @@ something, and that is ordinary. A thing&#8217;s type is not the
 property of whoever first named it.
 </p>
 
-<h2>39.5 What the comparison shows</h2>
+<h2 id="sec-39-5">39.5 What the comparison shows</h2>
 
 <p>
 Volume IV has been about giving meaning to data, and here the question is
 asked of a system that did so before the Web existed. The answer, that the
-logic was sound and the assumptions local, is Chapter 31&#8217;s answer about
+logic was sound and the assumptions local, is <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>&#8217;s answer about
 knowledge representation, reached here by examination rather than argument.
 </p>
 
-<h2>39.6 Striking similarities</h2>
+<h2 id="sec-39-6">39.6 Striking similarities</h2>
 
 <p>
 The best evidence is one sentence written twice: John
@@ -309,7 +309,7 @@ another thing. The likeness is &ldquo;remarkable down to the final period&rdquo;
 the two show the one structural difference.
 </p>
 
-<figure>
+<figure id="fig-39-3">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig39-3-t fig39-3-d">
   <title id="fig39-3-t">John goes to Boston by bus, drawn both ways</title>
@@ -397,22 +397,22 @@ absorbed the CG interchange format, provides for naming and importing content on
 <li><strong>The n-ary problem was met by convention.</strong> Relations of
 more than two arguments are represented by introducing an intermediate node, a
 pattern the Semantic Web Best Practices group documented in April 2006. It is
-the same extra node that Chapter 38 found frightful in another
+the same extra node that <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> found frightful in another
 context.</li>
 <li><strong>Several types, from anyone.</strong> The RDF Recommendations of
 February 2004 let a resource carry any number of <code>rdf:type</code>
-statements, from any source, as section 39.4 expects.</li>
+statements, from any source, as <a class="x-ref" href="#sec-39-4">section 39.4</a> expects.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The webizing procedure applied here is Chapter 26, and the distinction between
-architectural and arbitrary decisions is Chapter 16. The claim that earlier
-knowledge representation failed through centralisation is Chapter 31, and the
-graph model being compared is Chapter 32. The logic this chapter points
-towards is Volume V, beginning at Chapter 40.
+The webizing procedure applied here is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and the distinction between
+architectural and arbitrary decisions is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The claim that earlier
+knowledge representation failed through centralisation is <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>, and the
+graph model being compared is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The logic this chapter points
+towards is Volume V, beginning at <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>.
 </p>
 </div>
 
@@ -421,7 +421,7 @@ towards is Volume V, beginning at Chapter 40.
 <div class="question">
 <p><span class="question-number">39.1</span>
 Sort the design decisions of a familiar system, such as a library catalogue
-or a phone&#8217;s contacts app, into the two columns of Figure 39.1. Which
+or a phone&#8217;s contacts app, into the two columns of <a class="x-ref" href="#fig-39-1">Figure 39.1</a>. Which
 column is larger, and does that surprise you?</p>
 </div>
 <div class="question">
@@ -431,7 +431,7 @@ chess. Find another pair like this.</p>
 </div>
 <div class="question">
 <p><span class="question-number">39.3</span>
-Following Figure 39.2, represent <em>Anna gave Ben a book</em> using only
+Following <a class="x-ref" href="#fig-39-2">Figure 39.2</a>, represent <em>Anna gave Ben a book</em> using only
 two-argument properties. What did the intermediate node cost you?</p>
 </div>
 <div class="question">

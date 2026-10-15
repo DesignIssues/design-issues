@@ -77,7 +77,7 @@ read: almost no infrastructure treats it as a category.
 </p>
 </div>
 
-<h2>73.1 The middle column</h2>
+<h2 id="sec-73-1">73.1 The middle column</h2>
 
 <p>
 Personal private data is shared only with people its owner chooses: health
@@ -86,7 +86,7 @@ government statistics, maps. The note&#8217;s subject sits, in its own words,
 &ldquo;in the middle column of the table&rdquo;.
 </p>
 
-<figure>
+<figure id="fig-73-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig73-1-t fig73-1-d">
   <title id="fig73-1-t">The column between the two that get attention</title>
@@ -133,7 +133,7 @@ shows the category is real. That information is private in every ordinary
 sense and one wants it public at exactly one moment.</figcaption>
 </figure>
 
-<h2>73.2 A history of attempts</h2>
+<h2 id="sec-73-2">73.2 A history of attempts</h2>
 
 <p>
 The note traces the idea back to the beginning:
@@ -169,11 +169,11 @@ It was linked data - you could follow the foaf:knows graph across the web.
 </blockquote>
 
 <p>
-That is an open social network built on Chapter 49&#8217;s rules, in which the
+That is an open social network built on <a class="x-ref" href="49-linked-data.html">Chapter 49</a>&#8217;s rules, in which the
 network is the set of documents and no company holds it.
 </p>
 
-<h2>73.3 Where the energy went</h2>
+<h2 id="sec-73-3">73.3 Where the energy went</h2>
 
 <p>
 The note records what happened to that effort. <a class="gl-ref" href="../glossary.html#schema">Schema</a>.org is a shared
@@ -199,15 +199,15 @@ web sites have this.
 
 <p>
 Millions of sites now publish machine-readable statements, which was half of
-Chapter 49&#8217;s hope, for a reason Chapter 49 never mentioned: a search
+<a class="x-ref" href="49-linked-data.html">Chapter 49</a>&#8217;s hope, for a reason <a class="x-ref" href="49-linked-data.html">Chapter 49</a> never mentioned: a search
 engine rewards it.
 </p>
 
-<h2>73.4 The business card</h2>
+<h2 id="sec-73-4">73.4 The business card</h2>
 
 <p>
 The proposal: keep a personal data store, a <em><a class="gl-ref" href="../glossary.html#pod">pod</a></em>, on the Web under the
-owner&#8217;s control (Chapter 54), with a <a class="gl-ref" href="../glossary.html#webid">WebID</a>, a single web address that stands for
+owner&#8217;s control (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), with a <a class="gl-ref" href="../glossary.html#webid">WebID</a>, a single web address that stands for
 the person. Put on it the things meant for everyone to see, as data rather than only as
 a page. The note starts modestly, with what people put on a business card: a
 name, a way to make contact, sometimes a picture.
@@ -233,10 +233,10 @@ From there the list grows by adding things, not infrastructure:
 
 <p>
 Berners-Lee assumes the pod serves one address in two forms: a page for people
-and data for programs (Chapter 10).
+and data for programs (<a class="x-ref" href="10-generic-resources.html">Chapter 10</a>).
 </p>
 
-<h2>73.5 One link in a bio</h2>
+<h2 id="sec-73-5">73.5 One link in a bio</h2>
 
 <p>
 Many social platforms allow exactly one clickable link in a profile,
@@ -245,7 +245,7 @@ accounts, because there is nowhere else for that list to live. Berners-Lee
 suggests that this link should be the person&#8217;s WebID.
 </p>
 
-<figure>
+<figure id="fig-73-2">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig73-2-t fig73-2-d">
   <title id="fig73-2-t">The link-in-bio chain, before and after</title>
@@ -305,7 +305,7 @@ Then you have proved that all accounts belong to the same person.
 <cite>Link in Bio: Personal Public Data, 2024</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-73-3">
 <svg class="dia" viewBox="0 0 640 300" width="640" height="300" role="img"
      aria-labelledby="fig73-3-t fig73-3-d">
   <title id="fig73-3-t">The two-way link proof</title>
@@ -367,23 +367,23 @@ note&#8217;s references) became widely used, evidence of the need, not of the ar
 <li><strong>Verification arrived through the platforms.</strong> Since version
 2.6 (October 2018) Mastodon checks <code>rel="me"</code> links: if a person&#8217;s site links to their
 profile with that marker and the profile links back, the link is shown as
-verified. That is section 73.5&#8217;s two-way proof, run inside one platform
+verified. That is <a class="x-ref" href="#sec-73-5">section 73.5</a>&#8217;s two-way proof, run inside one platform
 at a time.</li>
 <li><strong>Emergency information stayed with device makers.</strong>
 Apple&#8217;s Medical ID (iOS 8, 2014) and Android&#8217;s emergency information
 (Android 7, 2016) show allergies, blood type and emergency contacts on a locked
-phone: the use case of Figure 73.1 solved in a place the Web cannot reach.</li>
+phone: the use case of <a class="x-ref" href="#fig-73-1">Figure 73.1</a> solved in a place the Web cannot reach.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The storage this would live in is Chapter 54, and the arrangement of it is
-Chapter 55. Identifying people by an unambiguous property is Chapter 34, and
-the <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> rules behind FOAF are Chapter 49. Serving the same thing to
-people and machines is Chapter 10, and the gradient between public and private
-is Chapter 74.
+The storage this would live in is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>, and the arrangement of it is
+<a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">Chapter 55</a>. Identifying people by an unambiguous property is <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>, and
+the <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> rules behind FOAF are <a class="x-ref" href="49-linked-data.html">Chapter 49</a>. Serving the same thing to
+people and machines is <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>, and the gradient between public and private
+is <a class="x-ref" href="74-intimacy-gradient.html">Chapter 74</a>.
 </p>
 </div>
 

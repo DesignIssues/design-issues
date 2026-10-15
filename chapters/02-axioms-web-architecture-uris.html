@@ -78,11 +78,11 @@ abandon rather than precision as this not a mathematical treatise.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 <p>
-The table at the end of section 2.1 lists the ten rules in plain words.
+The table at the end of <a class="x-ref" href="#sec-2-1">section 2.1</a> lists the ten rules in plain words.
 </p>
 </div>
 
-<h2>2.1 What is on the Web</h2>
+<h2 id="sec-2-1">2.1 What is on the Web</h2>
 
 <p>
 The note opens with a definition that does more work than it appears to:
@@ -100,7 +100,7 @@ it, and the power of the Web is the less for that.
 <p>
 Membership of the Web is a property of naming, not of storage, protocol, or
 format. Every later argument in this book about what deserves a <a class="gl-ref" href="../glossary.html#uri">URI</a>, from
-government datasets in Chapter 53 to a person&#8217;s own data in Chapter 54,
+government datasets in <a class="x-ref" href="53-putting-government-data-web.html">Chapter 53</a> to a person&#8217;s own data in <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>,
 follows from this sentence.
 </p>
 
@@ -123,7 +123,7 @@ together, they are these.
 <tr><td>3, non-unique</td><td>URI space need not be the only universal space.</td><td>2.7</td></tr>
 </table>
 
-<h2>2.2 The axioms of universality</h2>
+<h2 id="sec-2-2">2.2 The axioms of universality</h2>
 
 <p>
 Two claims are numbered zero: they are prior to the rest.
@@ -154,7 +154,7 @@ The second is an instruction, and it turns into <a class="gl-ref" href="../gloss
 and wherever, it has the same meaning. It needs no enclosing context.
 </p>
 
-<h2>2.3 Sameness, identity, and who decides</h2>
+<h2 id="sec-2-3">2.3 Sameness, identity, and who decides</h2>
 
 <p>
 Axiom 2 comes in two parts because the first is vague and the author knows
@@ -206,7 +206,7 @@ as the reader&#8217;s language. Undisclosed variation, he adds, &ldquo;also of
 course messes up caches&rdquo;.
 </p>
 
-<h2>2.4 When two URIs are one URI</h2>
+<h2 id="sec-2-4">2.4 When two URIs are one URI</h2>
 
 <p>
 The rule is unqualified: two URIs are the same if and only if they are the
@@ -215,10 +215,10 @@ and whether a program can tell two strings are equivalent depends on what it
 knows. Some equivalences follow from the standards: the Domain Name System
 (<a class="gl-ref" href="../glossary.html#dns">DNS</a>), which turns names like <code>example.org</code> into network
 addresses, ignores case. Others need knowledge of one particular site.
-Figure 2.1 sets the cases side by side.
+<a class="x-ref" href="#fig-2-1">Figure 2.1</a> sets the cases side by side.
 </p>
 
-<figure>
+<figure id="fig-2-1">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig2-1-t fig2-1-d">
   <title id="fig2-1-t">Identical, equivalent, or unknowable</title>
@@ -276,7 +276,7 @@ arbitrariness of any attempt to define a canonicalization algorithm.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 
-<h2>2.5 Opacity</h2>
+<h2 id="sec-2-5">2.5 Opacity</h2>
 
 <p>
 The opacity axiom is the easiest to break, because the string is right there
@@ -302,11 +302,11 @@ in, is an exception: the client constructs it. But it should stay opaque to
 proxies, the servers between reader and site that pass requests on and
 often <a class="gl-ref" href="../glossary.html#cache">cache</a> them, keeping copies so pages need not be fetched again. The
 fragment, after <code>#</code>, picks out a part of the page and stays in
-the browser (Chapters 4 and 11). Figure 2.2 shows who may read what.
+the browser (Chapters <a class="x-ref" href="04-web-model-information-hiding-uri.html">4</a> and <a class="x-ref" href="11-fragment-identifiers.html">11</a>). <a class="x-ref" href="#fig-2-2">Figure 2.2</a> shows who may read what.
 </p>
 
 
-<figure>
+<figure id="fig-2-2">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig2-2-t fig2-2-d">
   <title id="fig2-2-t">Who is permitted to read which part of a URI</title>
@@ -364,7 +364,7 @@ question marks deliberately to avoid being cached, and the note warns that
 this harms sites using query strings for perfectly cacheable pages.
 </p>
 
-<h2>2.6 GET, and the price of getting it wrong</h2>
+<h2 id="sec-2-6">2.6 GET, and the price of getting it wrong</h2>
 
 <p>
 Every HTTP request carries a method. Following a link sends a GET (show me
@@ -382,10 +382,10 @@ effects should use GET.</p>
 A search form only asks for information, so it should use GET, and its
 result then has a URI that can be bookmarked or sent on. A GET must never
 commit the user to anything; ignoring this, the note warns, can open a
-serious security hole. Figure 2.3 shows why.
+serious security hole. <a class="x-ref" href="#fig-2-3">Figure 2.3</a> shows why.
 </p>
 
-<figure>
+<figure id="fig-2-3">
 <svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig2-3-t fig2-3-d">
   <title id="fig2-3-t">Safe and unsafe requests</title>
@@ -446,7 +446,7 @@ anything as a result of doing one. A server may log the request, but logging
 is not communication between the parties.
 </p>
 
-<h2>2.7 Not the only space</h2>
+<h2 id="sec-2-7">2.7 Not the only space</h2>
 
 <p>
 <strong>Axiom 3, non-unique</strong> is the most philosophically deliberate of
@@ -457,12 +457,12 @@ interoperate.
 </p>
 
 <p>
-This is Chapter 1&#8217;s test of independent invention, applied to the
+This is <a class="x-ref" href="01-principles-design.html">Chapter 1</a>&#8217;s test of independent invention, applied to the
 Web&#8217;s own foundation. The worked example is the international telephone
-system, mapped both ways, as Figure 2.4 shows.
+system, mapped both ways, as <a class="x-ref" href="#fig-2-4">Figure 2.4</a> shows.
 </p>
 
-<figure>
+<figure id="fig-2-4">
 <svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
      aria-labelledby="fig2-4-t fig2-4-d">
   <title id="fig2-4-t">Two universal spaces, each containing the other</title>
@@ -511,7 +511,7 @@ its future evolvability.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 
-<h2>2.8 Schemes promise different things</h2>
+<h2 id="sec-2-8">2.8 Schemes promise different things</h2>
 
 <p>
 The note ends with a table comparing the limits different schemes set. Five
@@ -567,12 +567,12 @@ undisclosed variation a form of deception.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Axiom 3 is Chapter 1&#8217;s test of independent invention. The identity axiom is
-elaborated in Chapter 3, which argues that the name and address distinction
+Axiom 3 is <a class="x-ref" href="01-principles-design.html">Chapter 1</a>&#8217;s test of independent invention. The identity axiom is
+elaborated in <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>, which argues that the name and address distinction
 it sidesteps was never real. Fragment identifiers, mentioned here and
-deferred, are the subject of Chapters 4 and 11. The instruction in Axiom 0a
-becomes the first of the four Linked Data rules in Chapter 49. The question
-of what an HTTP URI identifies, left open here, occupies Chapters 7 and 8.
+deferred, are the subject of Chapters <a class="x-ref" href="04-web-model-information-hiding-uri.html">4</a> and <a class="x-ref" href="11-fragment-identifiers.html">11</a>. The instruction in Axiom 0a
+becomes the first of the four Linked Data rules in <a class="x-ref" href="49-linked-data.html">Chapter 49</a>. The question
+of what an HTTP URI identifies, left open here, occupies Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>.
 </p>
 </div>
 

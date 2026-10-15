@@ -87,7 +87,7 @@ III and IV.
 </p>
 </div>
 
-<h2>5.1 The plan of the argument</h2>
+<h2 id="sec-5-1">5.1 The plan of the argument</h2>
 
 <p>
 The Web, Berners-Lee says, is a universe of network-accessible information.
@@ -103,7 +103,7 @@ evolve, and universality of access, irrespective of hardware, software,
 network, language, culture, location, or physical or mental impairment.
 </p>
 
-<h2>5.2 Why URIs are the foundation</h2>
+<h2 id="sec-5-2">5.2 Why URIs are the foundation</h2>
 
 <p>
 The most fundamental <a class="gl-ref" href="../glossary.html#specification">specification</a>, he says, is also one of the simpler ones.
@@ -142,7 +142,7 @@ since that would make a reference require something more than a URI.</li>
 scheme.</li>
 </ul>
 
-<h2>5.3 The centralised part</h2>
+<h2 id="sec-5-3">5.3 The centralised part</h2>
 
 <p>
 Having praised decentralisation, Berners-Lee names the exception:
@@ -159,10 +159,10 @@ governance by and for the world as a whole in a fair way is essential.
 <p>
 An <a class="gl-ref" href="../glossary.html#http">HTTP</a> address has two parts: a domain name delegated down the Domain Name
 System (<a class="gl-ref" href="../glossary.html#dns">DNS</a>), and an <a class="gl-ref" href="../glossary.html#opaque">opaque</a> string decided by the domain&#8217;s owner, as
-Figure 5.1 shows.
+<a class="x-ref" href="#fig-5-1">Figure 5.1</a> shows.
 </p>
 
-<figure>
+<figure id="fig-5-1">
 <svg class="dia" viewBox="0 0 600 330" width="600" height="330" role="img" aria-labelledby="fig5-1-t fig5-1-d">
 <title id="fig5-1-t">The parts of an HTTP address</title>
 <desc id="fig5-1-d">The address http://www.example.org/docs/report.html split into three boxes: the scheme http:, the domain www.example.org, which is delegated via DNS, and the path /docs/report.html, which is opaque and decided by the owner. Below the domain, the DNS tree runs from the root to org, to example.org, to www. The root is marked as the only centralised part, run under IANA and ICANN.</desc>
@@ -212,13 +212,13 @@ On persistence he is equally direct. Persistent HTTP URIs are a matter of
 tool maturity, user education and the maturity of Web society, and moving
 resources is strongly discouraged. Some researchers proposed separate
 permanent names alongside changeable addresses; he rejects the split
-(Chapter 3 gives the argument).
+(<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> gives the argument).
 </p>
 
-<h2>5.4 GET, universality, and a worked example</h2>
+<h2 id="sec-5-4">5.4 GET, universality, and a worked example</h2>
 
 <p>
-The axioms of Chapter 2 reappear as two rules about GET, the HTTP operation
+The axioms of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> reappear as two rules about GET, the HTTP operation
 that fetches what a URI points to. First, GET must have no side effects: using
 it to unsubscribe someone from a mailing list or fill a shopping cart is
 incorrect. Second, no other side-effect-free method should be invented that
@@ -236,7 +236,7 @@ to.
 <cite>Web Architecture from 50,000 feet, 1998</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-5-2">
 <svg class="dia" viewBox="0 0 680 310" width="680" height="310" role="img" aria-labelledby="fig5-2-t fig5-2-d">
 <title id="fig5-2-t">A new method compared with a new URI</title>
 <desc id="fig5-2-d">Two designs side by side. On the left, a client sends CVSSTAT /doc to a server and receives the status; a link on another page cannot address that status. On the right, the client sends GET /doc and receives the document plus a header naming /doc/status, then sends GET /doc/status and receives the status; a link on another page can point straight to it.</desc>
@@ -293,7 +293,7 @@ linked to. The test is still useful: if an answer is worth retrieving, it is
 worth an address.
 </p>
 
-<h2>5.5 The https wart</h2>
+<h2 id="sec-5-5">5.5 The https wart</h2>
 
 <p>
 One design decision is singled out, on architectural grounds. Because
@@ -305,7 +305,7 @@ what it names), not a fork in the <a class="gl-ref" href="../glossary.html#names
 language, privacy level and other dimensions must not each acquire a scheme.
 </p>
 
-<figure>
+<figure id="fig-5-3">
 <svg class="dia" viewBox="0 0 640 230" width="640" height="230" role="img" aria-labelledby="fig5-3-t fig5-3-d">
 <title id="fig5-3-t">Forking the name compared with negotiating the fetch</title>
 <desc id="fig5-3-d">On the left, what was built: two boxes, http://x.org/doc and https://x.org/doc, which are two identifiers for two resources, with a dashed note asking whether this sets a precedent of a scheme per dimension. On the right, what Berners-Lee wanted: one URI, http://x.org/doc, dereferenced once, with security, language and format all feeding into that single fetch, which delivers one resource.</desc>
@@ -345,7 +345,7 @@ Volume VII shows him still making the complaint seventeen years later, by
 which time the Web had moved decisively the other way.
 </p>
 
-<h2>5.6 Messages and documents are the same thing</h2>
+<h2 id="sec-5-6">5.6 Messages and documents are the same thing</h2>
 
 <p>
 The most speculative section proposes collapsing a distinction:
@@ -369,14 +369,14 @@ such documents.
 <h3>What the merger would gain</h3>
 
 <p>
-The gain is compositional, as Figure 5.4 shows. The recursion already
+The gain is compositional, as <a class="x-ref" href="#fig-5-4">Figure 5.4</a> shows. The recursion already
 exists, he notes: business is conducted with documents carried by <a class="gl-ref" href="../glossary.html#smtp">SMTP</a> (the
 protocol that moves email) and HTTP. It nearly happened once, with HTTP
 messages almost defined in SGML, the older <a class="gl-ref" href="../glossary.html#markup">markup</a> language from which HTML
 was derived.
 </p>
 
-<figure>
+<figure id="fig-5-4">
 <svg class="dia" viewBox="0 0 640 270" width="640" height="270" role="img" aria-labelledby="fig5-4-t fig5-4-d">
 <title id="fig5-4-t">One kind of thing, two jobs</title>
 <desc id="fig5-4-d">Left, an HTTP message made of header fields and a body. Right, a document made of metadata and content. A double arrow between them is labelled same structure. Beneath, two gains: messages can be signed, as documents are; documents can be binary-packed, as messages are. A small envelope inside an envelope is labelled email inside email.</desc>
@@ -455,13 +455,13 @@ HTTP/2 (2015).</li>
 <li><strong>Web Services went the other way.</strong> The XML-based
 remote-operation stack was built, then largely displaced through the 2010s
 by resource-oriented interfaces exchanging <a class="gl-ref" href="../glossary.html#json">JSON</a>, closer to the
-resource-and-URI style of section 5.4.</li>
+resource-and-URI style of <a class="x-ref" href="#sec-5-4">section 5.4</a>.</li>
 <li><strong>The https objection lost.</strong> Rather than negotiating
 security within one namespace, the Web deprecated the insecure one. HTTP
 Strict Transport Security (HSTS, a way for a site to tell browsers to use
 only its <code>https</code> addresses) was published as RFC 6797 in November
 2012, and Chrome began marking all plain HTTP pages as not secure in July
-2018. The dimension became a scheme permanently. Chapter 67 records the
+2018. The dimension became a scheme permanently. <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a> records the
 author&#8217;s response.</li>
 </ul>
 </div>
@@ -470,10 +470,10 @@ author&#8217;s response.</li>
 <h3>Connections</h3>
 <p>
 This chapter is the map for the rest of the book. Its treatment of URIs
-compresses Chapters 2 to 4. The human and machine division introduced
+compresses Chapters <a class="x-ref" href="02-axioms-web-architecture-uris.html">2</a> to <a class="x-ref" href="04-web-model-information-hiding-uri.html">4</a>. The human and machine division introduced
 here separates Volume IX from Volumes IV to VI. The https complaint is
-resumed in Chapter 67, and the remote-operations section is the ancestor of
-Chapter 65.
+resumed in <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>, and the remote-operations section is the ancestor of
+<a class="x-ref" href="65-roadmap-web-services.html">Chapter 65</a>.
 </p>
 </div>
 
@@ -500,7 +500,7 @@ could an attacker do if security were left to negotiation?</p>
 <div class="question">
 <p><span class="question-number">5.4</span>
 HTTP/2 delivered concurrent message exchange with binary framing rather than
-structured documents. Which of the five goals listed in section 5.6 remain
+structured documents. Which of the five goals listed in <a class="x-ref" href="#sec-5-6">section 5.6</a> remain
 unmet, and does any of them still matter?</p>
 </div>
 </details>

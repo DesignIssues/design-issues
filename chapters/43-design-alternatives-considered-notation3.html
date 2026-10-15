@@ -72,7 +72,7 @@ open.
 </p>
 </div>
 
-<h2>43.1 The problem: saying &ldquo;one step along&rdquo;</h2>
+<h2 id="sec-43-1">43.1 The problem: saying &ldquo;one step along&rdquo;</h2>
 
 <p>
 In <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, data is a <a class="gl-ref" href="../glossary.html#graph">graph</a>: things joined by labelled links. Each label is a
@@ -96,7 +96,7 @@ backward traversal asks what points here. His instinct is that forward traversal
 the more common need.
 </p>
 
-<figure>
+<figure id="fig-43-1">
 <svg class="dia" viewBox="0 0 720 184" width="720" height="184" role="img"
      aria-labelledby="fig43-1-t fig43-1-d">
   <title id="fig43-1-t">Forward and backward along a chain of links</title>
@@ -152,7 +152,7 @@ starts at the number and asks who points here. The note&#8217;s own example is
 this longer chain rather than a single <code>email</code> step.</figcaption>
 </figure>
 
-<h2>43.2 The candidates</h2>
+<h2 id="sec-43-2">43.2 The candidates</h2>
 
 <p>
 The note weighs nine candidate notations, several with variants, each
@@ -177,7 +177,7 @@ The note then sorts them by two questions: does the operator come before or
 after the term, and which way does it travel?
 </p>
 
-<figure>
+<figure id="fig-43-2">
 <svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
      aria-labelledby="fig43-2-t fig43-2-d">
   <title id="fig43-2-t">The note&#8217;s own summary: suffix and prefix, forward and backward</title>
@@ -228,7 +228,7 @@ is a forward step along its inverse. A compact way to write an inverse would
 serve, if it is clear whether the inverse is merely syntax or really named.
 </p>
 
-<figure>
+<figure id="fig-43-3">
 <svg class="dia" viewBox="0 30 720 184" width="720" height="184" role="img"
      aria-labelledby="fig43-3-t fig43-3-d">
   <title id="fig43-3-t">Dot and caret are inverses</title>
@@ -277,7 +277,7 @@ One link, read two ways. The dot follows <code>email</code> forward from
 <code>x</code>; the caret follows the same link back from <code>y</code>. The side box names the inverse instead.</figcaption>
 </figure>
 
-<h2>43.3 Sets, and why containers were the wrong shape</h2>
+<h2 id="sec-43-3">43.3 Sets, and why containers were the wrong shape</h2>
 
 <p>
 A later section, dated 2005, argues for adding sets, and the argument is
@@ -302,7 +302,7 @@ not at all.
 <tr><td>Implementations cannot use ready-made code built for sets</td><td>The wrong data structure is used throughout</td></tr>
 </table>
 
-<figure>
+<figure id="fig-43-4">
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
      aria-labelledby="fig43-4-t fig43-4-d">
   <title id="fig43-4-t">Two lists, one set</title>
@@ -370,11 +370,11 @@ or finding their common members (intersection) needs to know which names are
 the same. If not, union is safe but counting is not.
 </p>
 
-<h2>43.4 Why an unfinished note is worth a chapter</h2>
+<h2 id="sec-43-4">43.4 Why an unfinished note is worth a chapter</h2>
 
 <p>
 Little here is final: the set syntax is a current choice, and a section of
-loose material is headed simply as fodder. Chapter 21 asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to
+loose material is headed simply as fodder. <a class="x-ref" href="21-write-specification.html">Chapter 21</a> asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to
 state which decisions are arbitrary. In finished documents those choices have
 hardened; here they are still soft, and one can see which were forced, as when
 a parser cannot tell a list from a set in time, and which were taste.
@@ -396,10 +396,10 @@ W3C Recommendations of February 2014, kept ordered collections and
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The notation under design is Chapter 42, and the extensions later wanted are
-Chapter 47. The advice to record which decisions are arbitrary is Chapter 21,
-and the test that sorts arbitrary from architectural is Chapter 16. The
-<a class="gl-ref" href="../glossary.html#reification">reification</a> the set proposal needs is Chapter 44.
+The notation under design is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and the extensions later wanted are
+<a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>. The advice to record which decisions are arbitrary is <a class="x-ref" href="21-write-specification.html">Chapter 21</a>,
+and the test that sorts arbitrary from architectural is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The
+<a class="gl-ref" href="../glossary.html#reification">reification</a> the set proposal needs is <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>.
 </p>
 </div>
 
@@ -423,7 +423,7 @@ the three costs are you paying, and which have you noticed?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.4</span>
-Of the set syntaxes in section 43.3, which choice was forced by the parser and
+Of the set syntaxes in <a class="x-ref" href="#sec-43-3">section 43.3</a>, which choice was forced by the parser and
 which was a matter of taste?</p>
 </div>
 </details>

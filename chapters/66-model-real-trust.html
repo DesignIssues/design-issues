@@ -69,7 +69,7 @@ machine let them say so?
 </p>
 </div>
 
-<h2>66.1 Four ways people actually trust</h2>
+<h2 id="sec-66-1">66.1 Four ways people actually trust</h2>
 
 <p>
 When a browser connects securely to a site, the site shows a
@@ -87,7 +87,7 @@ A <em>self-signed</em> certificate is one the owner signs for themselves.
 Browsers show an alarming warning for it, however well the user knows the owner.
 </p>
 
-<figure>
+<figure id="fig-66-1">
 <svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
      aria-labelledby="fig66-1-t fig66-1-d">
   <title id="fig66-1-t">How trust is really acquired</title>
@@ -155,7 +155,7 @@ relationship, the note says, the user must be able to add that certificate
 because of it.
 </p>
 
-<h2>66.2 The objection</h2>
+<h2 id="sec-66-2">66.2 The objection</h2>
 
 <p>
 The complaint is about whose interests a default serves. (<a class="gl-ref" href="../glossary.html#pki">PKI</a>, <a class="gl-ref" href="../glossary.html#public-key">public key</a> infrastructure, is the system of certificate
@@ -190,7 +190,7 @@ Trusting a family&#8217;s server through them imports everybody else&#8217;s
 risk.
 </p>
 
-<figure>
+<figure id="fig-66-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig66-2-t fig66-2-d">
   <title id="fig66-2-t">Two paths to the same family server</title>
@@ -253,7 +253,7 @@ strong as the weakest authority the browser accepts. A direct exchange has
 one link, and the user checked it in person.</figcaption>
 </figure>
 
-<h2>66.3 What he asks for instead</h2>
+<h2 id="sec-66-3">66.3 What he asks for instead</h2>
 
 <blockquote>
 No, it should be enabled, and a great user interface provided for me, the user,
@@ -274,7 +274,7 @@ The demand is for an interface, not a protocol change: accept a key, record
 why, review it later.
 </p>
 
-<figure>
+<figure id="fig-66-3">
 <svg class="dia" viewBox="0 0 720 204" width="720" height="204" role="img"
      aria-labelledby="fig66-3-t fig66-3-d">
   <title id="fig66-3-t">A trusted-keys panel, as the note might want it</title>
@@ -320,21 +320,21 @@ what they accepted, why, and the power to revoke it. (The design is ours; the
 note gives none.)</figcaption>
 </figure>
 
-<h2>66.4 The common thread</h2>
+<h2 id="sec-66-4">66.4 The common thread</h2>
 
 <p>
 In Berners-Lee&#8217;s own numbering this is the second of four notes; the
 first is the one on HTTPS Everywhere. This book places it first, as it states
-the principle; the HTTPS note is Chapter 67. The next two look at how
+the principle; the HTTPS note is <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>. The next two look at how
 finely web applications are divided by origin (the site address a browser
-treats as a security boundary, Chapter 68), and at the lack of support for
+treats as a security boundary, <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>), and at the lack of support for
 client certificates, which the user rather than the site presents (Chapter
 69). All four make the same claim, that the system models one
 kind of trust and treats every other kind as an error.
 </p>
 
 <p>
-Chapter 37 warned against joining the machine loop to the social loop at every
+<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> warned against joining the machine loop to the social loop at every
 rung. This is the opposite failure: the machine admits one social arrangement
 only.
 </p>
@@ -353,15 +353,15 @@ certificates issued to the wrong party detectable after the fact, without
 changing who must be trusted.</li>
 <li><strong>Personal and peer trust moved elsewhere.</strong> Messaging
 applications that let two people compare keys supply the peer and personal
-patterns of Figure 66.1 outside the browser entirely.</li>
+patterns of <a class="x-ref" href="#fig-66-1">Figure 66.1</a> outside the browser entirely.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The other three notes of the set are Chapters 67 to 69. The scoping of trust to
-a key for a purpose is Chapter 46. The social backing of names is Chapter 6.
+The other three notes of the set are Chapters <a class="x-ref" href="67-https-everywhere-considered-harmful.html">67</a> to <a class="x-ref" href="69-client-side-certificates.html">69</a>. The scoping of trust to
+a key for a purpose is <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The social backing of names is <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a>.
 </p>
 </div>
 
@@ -379,7 +379,7 @@ liability. Explain why, in terms of what you are now exposed to.</p>
 </div>
 <div class="question">
 <p><span class="question-number">66.3</span>
-Sketch the screen section 66.3 asks for. List three things it must show for
+Sketch the screen <a class="x-ref" href="#sec-66-3">section 66.3</a> asks for. List three things it must show for
 each trusted key, and one thing it must let you undo.</p>
 </div>
 <div class="question">
@@ -389,7 +389,7 @@ not answer.</p>
 </div>
 <div class="question">
 <p><span class="question-number">66.5</span>
-Which kind of trust in Figure 66.1 does a self-signed certificate from your
+Which kind of trust in <a class="x-ref" href="#fig-66-1">Figure 66.1</a> does a self-signed certificate from your
 employer fall under, and what does the browser currently do with it?</p>
 </div>
 </details>

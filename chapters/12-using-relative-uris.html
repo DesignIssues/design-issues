@@ -75,14 +75,14 @@ points which have passed some people by.
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 <p>
-It belongs in Volume II because it is the practical half of Chapter 4. That
+It belongs in Volume II because it is the practical half of <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. That
 chapter established that relative resolution is common to all schemes and
 explained why. This one shows what the property is worth when a library
 declines to support it.
 </p>
 </div>
 
-<h2>12.1 Web architecture in one line</h2>
+<h2 id="sec-12-1">12.1 Web architecture in one line</h2>
 
 <p>
 The note restates the whole mechanism compactly enough to memorise:
@@ -93,7 +93,7 @@ The note restates the whole mechanism compactly enough to memorise:
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-12-1">
 <svg class="dia" viewBox="0 0 560 235" width="560" height="235" role="img" aria-labelledby="fig12-1-t fig12-1-d">
 <title id="fig12-1-t">Anatomy of a webized identifier</title>
 <desc id="fig12-1-d">Top row, the full form: a box containing https://example.org/people.ttl, a hash sign, and a green box containing alice. Under the left box: global id of the document, changes if the file moves. Under the right box: local id, the same wherever the file goes. Second row, the relative form: an empty dashed outline where the document address was, then the hash sign and alice. It is written in the file as #alice, and the left half is filled in from wherever the document was read.</desc>
@@ -150,7 +150,7 @@ page was loaded. The address it fills in from is called the <em>base URI</em>:
 normally the address the page itself was loaded from.
 </p>
 
-<h2>12.2 The argument by absurdity</h2>
+<h2 id="sec-12-2">12.2 The argument by absurdity</h2>
 
 <p>
 The note&#8217;s best passage makes the case by writing out what the alternative
@@ -184,7 +184,7 @@ when we move to the web.
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 
-<h2>12.3 Why the syntax looks like a file path</h2>
+<h2 id="sec-12-3">12.3 Why the syntax looks like a file path</h2>
 
 <p>
 One sentence settles a question readers often assume is an accident of
@@ -201,11 +201,11 @@ glasses or with http:// glasses and still work.
 <p>
 The consequence is that a directory tree built locally can be exported to the
 Web unchanged, and that a file-mapped server lets ordinary command-line tools
-operate on the same material a browser sees. Chapter 14 takes up the problems
+operate on the same material a browser sees. <a class="x-ref" href="14-mapping-between-http-urls-filenames.html">Chapter 14</a> takes up the problems
 that arise where the two views meet.
 </p>
 
-<figure>
+<figure id="fig-12-2">
 <svg class="dia" viewBox="0 0 660 225" width="660" height="225" role="img" aria-labelledby="fig12-2-t fig12-2-d">
 <title id="fig12-2-t">One folder seen through three bases</title>
 <desc id="fig12-2-d">On the left, a folder tree: site, containing pages with intro.html, and images with foo.png. An arrow runs from intro.html to foo.png; the link written inside intro.html is ../images/foo.png. On the right, three cases. On a laptop, the page file:///home/tim/site/pages/intro.html resolves the link to file:///home/tim/site/images/foo.png. On a test server, https://test.acme.com/pages/intro.html resolves it to https://test.acme.com/images/foo.png. On the live site, https://production.acme.com/pages/intro.html resolves it to https://production.acme.com/images/foo.png. All three work.</desc>
@@ -237,7 +237,7 @@ that arise where the two views meet.
 <figcaption><span class="fig-label">Figure 12.2</span> One unedited relative link resolves correctly on a laptop, a test server and the live site. In each row the first line is where the page was loaded from; the second is the image address the browser works out.</figcaption>
 </figure>
 
-<h2>12.4 What the pattern buys</h2>
+<h2 id="sec-12-4">12.4 What the pattern buys</h2>
 
 <p>
 The note lists the cases. In each, an absolute URI would force an edit:
@@ -265,7 +265,7 @@ gains: relative references are easier to read, take less storage space and
 are shorter to transmit.
 </p>
 
-<h2>12.5 Two named failures</h2>
+<h2 id="sec-12-5">12.5 Two named failures</h2>
 
 <p>
 The note ends by naming implementations, unusually for the collection.
@@ -301,7 +301,7 @@ links break.
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-12-3">
 <svg class="dia" viewBox="0 0 680 215" width="680" height="215" role="img" aria-labelledby="fig12-3-t fig12-3-d">
 <title id="fig12-3-t">Moving data from test to production</title>
 <desc id="fig12-3-d">Two panels. Left, absolute: a file moved to production.acme.com still contains https://test.acme.com/data#x, and a dashed arrow points down to a grey test.acme.com box marked switched off or stale. Right, relative: the same file on production.acme.com contains #x, and a solid arrow loops back into the same production box, because the reference resolves against wherever the file now is.</desc>
@@ -365,11 +365,11 @@ four years after it was written.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The design decision this chapter defends is recorded in Chapter 4, which
+The design decision this chapter defends is recorded in <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>, which
 explains why one resolution algorithm was made common to all schemes. The
-relative-URI rules themselves are quoted from <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 1630 in Chapter 2. The
-file and HTTP correspondence introduced in section 12.3 is the subject of
-Chapter 14. Webizing is Chapter 26.
+relative-URI rules themselves are quoted from <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 1630 in <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. The
+file and HTTP correspondence introduced in <a class="x-ref" href="#sec-12-3">section 12.3</a> is the subject of
+<a class="x-ref" href="14-mapping-between-http-urls-filenames.html">Chapter 14</a>. Webizing is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>.
 </p>
 </div>
 
@@ -377,7 +377,7 @@ Chapter 14. Webizing is Chapter 26.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">12.1</span>
-Using Figure 12.2, explain what would break if <code>intro.html</code>
+Using <a class="x-ref" href="#fig-12-2">Figure 12.2</a>, explain what would break if <code>intro.html</code>
 linked to <code>https://test.acme.com/images/foo.png</code> instead.</p>
 </div>
 <div class="question">
@@ -388,7 +388,7 @@ global&rdquo; terms.</p>
 </div>
 <div class="question">
 <p><span class="question-number">12.3</span>
-A site moves from test.acme.com to production.acme.com. Using Figure 12.3,
+A site moves from test.acme.com to production.acme.com. Using <a class="x-ref" href="#fig-12-3">Figure 12.3</a>,
 say which links break, and why.</p>
 </div>
 <div class="question">

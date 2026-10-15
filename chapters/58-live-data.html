@@ -75,7 +75,7 @@ live-read-write web
 </blockquote>
 </div>
 
-<h2>58.1 Why not just ask again</h2>
+<h2 id="sec-58-1">58.1 Why not just ask again</h2>
 
 <p>
 When one person changes a list stored in a Solid <a class="gl-ref" href="../glossary.html#pod">Pod</a>, how does another
@@ -90,7 +90,7 @@ application keeps a connection open and the server speaks first when
 something happens.
 </p>
 
-<figure>
+<figure id="fig-58-1">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig58-1-t fig58-1-d">
   <title id="fig58-1-t">Polling against subscribing</title>
@@ -142,7 +142,7 @@ bandwidth) and the number of round trips, a round trip being a request and its
 reply.
 </p>
 
-<figure>
+<figure id="fig-58-2">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig58-2-t fig58-2-d">
   <title id="fig58-2-t">Ping-then-reload against sending the patch</title>
@@ -196,7 +196,7 @@ change. A patch can also be stored and applied later, which makes offline work
 possible (section 58.5).</figcaption>
 </figure>
 
-<h2>58.2 The use case he thinks people underestimate</h2>
+<h2 id="sec-58-2">58.2 The use case he thinks people underestimate</h2>
 
 <p>
 Collaborative editing is the obvious application and the note says so. Then it
@@ -218,7 +218,7 @@ keeping: not a co-authored document but a small piece of shared state, wrong
 the moment it is stale. Most shared data is like this.
 </p>
 
-<h2>58.3 Notification is a spectrum</h2>
+<h2 id="sec-58-3">58.3 Notification is a spectrum</h2>
 
 <p>
 A short passage places the mechanism in a wider family:
@@ -236,10 +236,10 @@ A short passage places the mechanism in a wider family:
 Each step down is slower but can reach someone who is not online right now.
 He sets the target at the fast end, ideally of the order of 100 milliseconds,
 and notes that one could imagine email carrying aggregated heaps of update
-messages. Chapter 64 is what the slow end became.
+messages. <a class="x-ref" href="64-feeds-blogs-podcasts-like.html">Chapter 64</a> is what the slow end became.
 </p>
 
-<h2>58.4 The developer should not have to think about it</h2>
+<h2 id="sec-58-4">58.4 The developer should not have to think about it</h2>
 
 <p>
 The section on frameworks says where this capability belongs:
@@ -266,7 +266,7 @@ function runs again and draws three lines. No code anywhere says &ldquo;insert
 a row&rdquo;.
 </p>
 
-<figure>
+<figure id="fig-58-3">
 <svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
      aria-labelledby="fig58-3-t fig58-3-d">
   <title id="fig58-3-t">One function, run again</title>
@@ -317,7 +317,7 @@ The framework re-runs one function on the new data, so there is no update
 logic to get wrong.</figcaption>
 </figure>
 
-<h2>58.5 What it points towards</h2>
+<h2 id="sec-58-5">58.5 What it points towards</h2>
 
 <p>
 The conclusion names three improvements: efficiency, topology and offline
@@ -331,7 +331,7 @@ topologies other than hub and spoke; one possibility, not named in the note,
 is devices updating one another directly.
 </p>
 
-<figure>
+<figure id="fig-58-4">
 <svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
      aria-labelledby="fig58-4-t fig58-4-d">
   <title id="fig58-4-t">Hub and spoke against peers</title>
@@ -379,7 +379,7 @@ possible alternative; the note does not specify a design.</figcaption>
 
 <p>
 The second is offline operation. Sending the change rather than a notice, as
-Chapter 45 argued, lets a client work while disconnected and reconcile
+<a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a> argued, lets a client work while disconnected and reconcile
 afterwards. He names Conflict-free Replicated Data Types (CRDTs) for this: a
 way of recording changes so that copies edited separately can always be
 merged without a conflict.
@@ -396,7 +396,7 @@ together.
 <ul>
 <li><strong>The protocol was replaced with a general one.</strong> The Solid
 Notifications Protocol, first drafted in 2022, supports several delivery
-channels rather than one socket, which is the spectrum of section 58.3 turned
+channels rather than one socket, which is the spectrum of <a class="x-ref" href="#sec-58-3">section 58.3</a> turned
 into a <a class="gl-ref" href="../glossary.html#specification">specification</a>.</li>
 <li><strong>Sending the change spread.</strong> CRDTs became a widely used
 basis for collaborative editing and local-first software through the 2020s,
@@ -411,10 +411,10 @@ later has since gathered a wider community of practice.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The read-write protocol this completes is Chapter 50, and the storage is
-Chapter 54. Sending changes rather than states is Chapter 45. The slow end of
-the notification spectrum is Chapter 64, and the interface that consumes live
-data is Chapter 56.
+The read-write protocol this completes is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>, and the storage is
+<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. Sending changes rather than states is <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>. The slow end of
+the notification spectrum is <a class="x-ref" href="64-feeds-blogs-podcasts-like.html">Chapter 64</a>, and the interface that consumes live
+data is <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
 </p>
 </div>
 

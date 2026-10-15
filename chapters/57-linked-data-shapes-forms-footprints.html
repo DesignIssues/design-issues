@@ -76,7 +76,7 @@ hard to write, because an application needs to know what it will get.
 </p>
 </div>
 
-<h2>57.1 Why the existing tools do not answer it</h2>
+<h2 id="sec-57-1">57.1 Why the existing tools do not answer it</h2>
 
 <p>
 The <a class="gl-ref" href="../glossary.html#schema">schema</a> languages of Volume IV, <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Schema and <a class="gl-ref" href="../glossary.html#owl">OWL</a>, let a program draw
@@ -97,9 +97,9 @@ Schema.org, a shared list of suggested properties used by search engines, is
 closer, and still not enough.
 </p>
 
-<h2>57.2 Three technologies, three questions</h2>
+<h2 id="sec-57-2">57.2 Three technologies, three questions</h2>
 
-<figure>
+<figure id="fig-57-1">
 <svg class="dia" viewBox="0 0 720 292" width="720" height="292" role="img"
      aria-labelledby="fig57-1-t fig57-1-d">
   <title id="fig57-1-t">Shapes, forms and footprints</title>
@@ -147,7 +147,7 @@ Footprints were, in 2019, only an idea. Without them every application invents
 its own layout, and the silo returns inside the person&#8217;s own store.</figcaption>
 </figure>
 
-<h2>57.3 What a shape is for</h2>
+<h2 id="sec-57-3">57.3 What a shape is for</h2>
 
 <p>
 Shape languages are described by what they are for:
@@ -190,12 +190,12 @@ Shapes and forms look alike but, the note insists, differ:
 <tr><td>Written by</td><td>Developers and interface designers</td><td>Designers and power users</td></tr>
 </table>
 
-<h2>57.4 Why footprints are the hard one</h2>
+<h2 id="sec-57-4">57.4 Why footprints are the hard one</h2>
 
 <p>
 A shape describes data that exists. A form collects data from a person. Both
 assume somebody has decided where the result belongs. In a <a class="gl-ref" href="../glossary.html#pod">pod</a>, a person&#8217;s
-own online store of data (Chapter 54), that decision is not obvious. Chapter
+own online store of data (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), that decision is not obvious. Chapter
 50 gave a protocol for how to write to a <a class="gl-ref" href="../glossary.html#server">server</a>; nothing said where.
 </p>
 
@@ -205,7 +205,7 @@ one folder per application. If it writes to a shared place, it must know which
 place, and how to name the new item, so that the next application can find it.
 </p>
 
-<figure>
+<figure id="fig-57-2">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig57-2-t fig57-2-d">
   <title id="fig57-2-t">Two apps, one pod, no shared layout</title>
@@ -260,7 +260,7 @@ address is <code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>. Here
 address. A <code>.ttl</code> file holds linked data in the <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> format.
 </p>
 
-<figure>
+<figure id="fig-57-3">
 <svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
      aria-labelledby="fig57-3-t fig57-3-d">
   <title id="fig57-3-t">Computing a new address</title>
@@ -332,16 +332,16 @@ Two applications can both speak the protocol perfectly and still be unable to
 see each other&#8217;s data.
 </p>
 
-<h2>57.5 The shape of the problem, generally</h2>
+<h2 id="sec-57-5">57.5 The shape of the problem, generally</h2>
 
 <p>
 Shapes are about machines agreeing, as a <a class="gl-ref" href="../glossary.html#specification">specification</a>&#8217;s conformance
-rules are (Chapter 21). Forms are about people editing data (Chapter 56).
-Footprints are about placement: Chapter 37 warned not to confuse what is said
+rules are (<a class="x-ref" href="21-write-specification.html">Chapter 21</a>). Forms are about people editing data (<a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>).
+Footprints are about placement: <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> warned not to confuse what is said
 with where it is stored.
 </p>
 
-<figure>
+<figure id="fig-57-4">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig57-4-t fig57-4-d">
   <title id="fig57-4-t">One shape, many forms, many footprints</title>
@@ -409,7 +409,7 @@ and never copied.</figcaption>
 For any shared store, agreeing a format is not agreeing a layout.
 </p>
 
-<h2>57.6 Finding where a person keeps things</h2>
+<h2 id="sec-57-6">57.6 Finding where a person keeps things</h2>
 
 <p>
 The note ends, mostly open, with discovery: how a system finds where a user
@@ -417,7 +417,7 @@ keeps their stuff. It names three places to look, all reached from the
 user&#8217;s <a class="gl-ref" href="../glossary.html#webid">WebID</a>, the address that identifies them.
 </p>
 
-<figure>
+<figure id="fig-57-5">
 <svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
      aria-labelledby="fig57-5-t fig57-5-d">
   <title id="fig57-5-t">Where an app looks for a user&#8217;s stuff</title>
@@ -488,8 +488,8 @@ specification for the same placement problem.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-How a pod is arranged is Chapter 55; the storage itself is Chapter 54; the
-interface these descriptions drive is Chapter 56.
+How a pod is arranged is <a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">Chapter 55</a>; the storage itself is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>; the
+interface these descriptions drive is <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
 </p>
 </div>
 

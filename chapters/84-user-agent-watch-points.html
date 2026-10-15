@@ -82,12 +82,12 @@ system of peeople and machines breaks.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 <p>
-Chapter 20 established that meaning travels up a stack of specifications. This
+<a class="x-ref" href="20-stack-specifications.html">Chapter 20</a> established that meaning travels up a stack of specifications. This
 says somebody has to deliver it at the top.
 </p>
 </div>
 
-<h2>84.1 Two redirections that mean opposite things</h2>
+<h2 id="sec-84-1">84.1 Two redirections that mean opposite things</h2>
 
 <p>
 A <a class="gl-ref" href="../glossary.html#server">server</a> can reply that the browser should look somewhere else. <a class="gl-ref" href="../glossary.html#http">HTTP</a> has two
@@ -96,7 +96,7 @@ example, a university gives its theses durable addresses on one reliable
 machine but serves them from fast department machines.
 </p>
 
-<figure>
+<figure id="fig-84-1">
 <svg class="dia" viewBox="0 0 720 380" width="720" height="380" role="img"
      aria-labelledby="fig84-1-t fig84-1-d">
   <title id="fig84-1-t">Following a 302</title>
@@ -157,12 +157,12 @@ first. The same holds when a server redirects to a mirror.</figcaption>
 <p>
 The other reply, 301 Moved Permanently, means the page has really moved and
 the old address is dead. Berners-Lee says such a server &ldquo;has committed
-the unthinkable&rdquo;, since a good address should never change (Chapter 3).
+the unthinkable&rdquo;, since a good address should never change (<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>).
 The browser should then change every reference to the new address, including
 bookmarks and links in documents.
 </p>
 
-<figure>
+<figure id="fig-84-2">
 <svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
      aria-labelledby="fig84-2-t fig84-2-d">
   <title id="fig84-2-t">Moved, and found</title>
@@ -191,14 +191,14 @@ and the other says the old address is the one to keep.</figcaption>
 </figure>
 
 <p>
-The two addresses carry different promises. This is Chapter 3&#8217;s point that
+The two addresses carry different promises. This is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s point that
 a name is only as durable as the commitment of whoever runs it, turned into a
 question about which address a person copies down. In 1999, he says, very few
 browsers implemented this properly; he names Mozilla and Amaya (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own
 experimental browser), with a question mark, as perhaps the only ones.
 </p>
 
-<h2>84.2 The commitment the interface hides</h2>
+<h2 id="sec-84-2">84.2 The commitment the interface hides</h2>
 
 <p>
 Following an ordinary link sends a <a class="gl-ref" href="../glossary.html#get">GET</a> request. In the note&#8217;s words it is
@@ -232,7 +232,7 @@ The web client should keep a record of POSTs which have been submitted.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-84-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig84-3-t fig84-3-d">
   <title id="fig84-3-t">Looking versus committing</title>
@@ -288,7 +288,7 @@ interface. Get it right.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 
-<h2>84.3 Hide the identifiers</h2>
+<h2 id="sec-84-3">84.3 Hide the identifiers</h2>
 
 <p>
 The third watch point is an objective stated absolutely:
@@ -317,13 +317,13 @@ Servers help by generating the addresses of new documents.
 </p>
 
 <p>
-This is in tension with Chapter 68, where the address bar is how a person learns
-who they are dealing with, and Chapter 6, where the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the visible
+This is in tension with <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>, where the address bar is how a person learns
+who they are dealing with, and <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a>, where the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the visible
 part that says who is accountable. Both are right about different things: a
 person needs to know whose site this is, and does not need to see the path.
 </p>
 
-<h2>84.4 Why an agent is not a viewer</h2>
+<h2 id="sec-84-4">84.4 Why an agent is not a viewer</h2>
 
 <p>
 A viewer displays what arrives. An agent represents someone, which means
@@ -359,10 +359,10 @@ resubmit the form.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The axioms about safe methods are Chapter 2, and the chain that delivers
-meaning is Chapter 20. Persistence commitments are Chapter 3, and what an
-address should show is argued in Chapter 68. The interface arguments continue
-in Chapter 85.
+The axioms about safe methods are <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>, and the chain that delivers
+meaning is <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>. Persistence commitments are <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>, and what an
+address should show is argued in <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>. The interface arguments continue
+in <a class="x-ref" href="85-user-interface-tips.html">Chapter 85</a>.
 </p>
 </div>
 
@@ -381,7 +381,7 @@ each kept, and by whom?</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.3</span>
-Using the last paragraph of section 84.3, decide which part of
+Using the last paragraph of <a class="x-ref" href="#sec-84-3">section 84.3</a>, decide which part of
 <code>https://shop.example/basket?id=88</code> a user should see, and why.</p>
 </div>
 <div class="question">

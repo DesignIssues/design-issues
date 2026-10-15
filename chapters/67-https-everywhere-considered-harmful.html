@@ -66,7 +66,7 @@ He is not arguing against encryption. He is arguing that the fact
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 5 recorded a complaint, in 1998, that security should have been
+<a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a> recorded a complaint, in 1998, that security should have been
 negotiated within one set of names rather than splitting it in two.
 Seventeen years later Berners-Lee returns to the same decision, knowing how
 it turned out, and says plainly what was at stake.
@@ -76,7 +76,7 @@ The title of the note is a provocation; the argument beneath it is careful.
 </p>
 </div>
 
-<h2>67.1 The decision, reconstructed</h2>
+<h2 id="sec-67-1">67.1 The decision, reconstructed</h2>
 
 <p>
 A protocol is the set of rules a browser and a <a class="gl-ref" href="../glossary.html#server">server</a> follow to talk to each
@@ -104,7 +104,7 @@ and clicks ion it.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-67-1">
 <svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig67-1-t fig67-1-d">
   <title id="fig67-1-t">The 1990s choice, and who it served</title>
@@ -145,7 +145,7 @@ The decision was right for the threat of 1995 and wrong for the threat of
 feasible, so ubiquitous snooping was not the driver.</figcaption>
 </figure>
 
-<h2>67.2 What changed</h2>
+<h2 id="sec-67-2">67.2 What changed</h2>
 
 <p>
 Three things, and the third settles it.
@@ -172,7 +172,7 @@ the idea that the 's' in the URI is important part of the architecture.
 An unshown letter cannot do the job it was added for.
 </p>
 
-<h2>67.3 The charge</h2>
+<h2 id="sec-67-3">67.3 The charge</h2>
 
 <p>
 The central claim is made twice and is not hedged:
@@ -191,7 +191,7 @@ web.
 different names. A link written years ago keeps pointing at the old one.
 </p>
 
-<figure>
+<figure id="fig-67-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig67-2-t fig67-2-d">
   <title id="fig67-2-t">What an old link meets after each kind of change</title>
@@ -269,7 +269,7 @@ the web of links in so doing.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-67-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig67-3-t fig67-3-d">
   <title id="fig67-3-t">Changes beneath the links, and the one that reached them</title>
@@ -323,12 +323,12 @@ the layer where links live.</figcaption>
 </figure>
 
 <p>
-The security level was put where the identity lives. Chapter 2&#8217;s opacity
+The security level was put where the identity lives. <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s opacity
 axiom says an address is a sealed label: it names a thing, and nothing else
 should be read from its letters. The s breaks that rule.
 </p>
 
-<h2>67.4 The single-valued trust mistake</h2>
+<h2 id="sec-67-4">67.4 The single-valued trust mistake</h2>
 
 <p>
 Once https: was treated as a safe space, browsers ring-fenced it. Under the
@@ -346,7 +346,7 @@ could be disastrous.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-67-4">
 <svg class="dia" viewBox="0 0 720 176" width="720" height="176" role="img"
      aria-labelledby="fig67-4-t fig67-4-d">
   <title id="fig67-4-t">One boundary compared with trust scoped to a purpose</title>
@@ -413,7 +413,7 @@ If a boundary keeps needing to be moved, the thing it separates was not two
 kinds of thing.
 </p>
 
-<h2>67.5 The proposal</h2>
+<h2 id="sec-67-5">67.5 The proposal</h2>
 
 <p>
 The alternative is in the note&#8217;s own title. <a class="gl-ref" href="../glossary.html#tls">TLS</a> (Transport Layer
@@ -467,10 +467,10 @@ chose the separate space.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The same complaint in 1998 is Chapter 5, and the opacity it appeals to is
-Chapter 2. The other notes of the set are Chapters 66, 68 and 69. The
-boundary that keeps moving is Chapter 68, and scoping trust to a purpose is
-Chapter 46.
+The same complaint in 1998 is <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, and the opacity it appeals to is
+<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. The other notes of the set are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a>, <a class="x-ref" href="68-same-origin-policy---origin.html">68</a> and <a class="x-ref" href="69-client-side-certificates.html">69</a>. The
+boundary that keeps moving is <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>, and scoping trust to a purpose is
+<a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>.
 </p>
 </div>
 
@@ -489,7 +489,7 @@ for.</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.3</span>
-Section 67.5 lists three properties that one letter cannot convey. Sketch what
+<a class="x-ref" href="#sec-67-5">Section 67.5</a> lists three properties that one letter cannot convey. Sketch what
 a browser could show for each of them.</p>
 </div>
 <div class="question">

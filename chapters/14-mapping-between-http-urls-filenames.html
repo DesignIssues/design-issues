@@ -70,14 +70,14 @@ store files as well as fetch them) must answer: given an <a class="gl-ref" href=
 on disk does it name?
 </p>
 <p>
-It belongs here because it is Chapter 12&#8217;s file-and-HTTP correspondence
-meeting Chapter 2&#8217;s opacity axiom (do not read meaning into the
+It belongs here because it is <a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>&#8217;s file-and-HTTP correspondence
+meeting <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s opacity axiom (do not read meaning into the
 characters of a URI), and discovering that the two cannot both be had in
 full.
 </p>
 </div>
 
-<h2>14.1 Why anyone would want both views</h2>
+<h2 id="sec-14-1">14.1 Why anyone would want both views</h2>
 
 <p>
 Take a concrete case: a script edits a CSV file on a server, and colleagues
@@ -110,14 +110,14 @@ system uses it to decide what a file is. HTTP sends the type separately, in a
 that accepts uploads, the two can disagree.
 </p>
 
-<h2>14.2 Three requirements, two of which may be had</h2>
+<h2 id="sec-14-2">14.2 Three requirements, two of which may be had</h2>
 
 <p>
 Two HTTP verbs matter: <a class="gl-ref" href="../glossary.html#put">PUT</a> (upload to a chosen address) and <a class="gl-ref" href="../glossary.html#get">GET</a> (fetch). Three things are
 wanted, and they cannot all hold.
 </p>
 
-<figure>
+<figure id="fig-14-1">
 <svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
      aria-labelledby="fig14-1-t fig14-1-d">
   <title id="fig14-1-t">Pick two of three</title>
@@ -167,7 +167,7 @@ keeps all three by asking only <em>some</em> names to correspond.</figcaption>
 <p>
 He tries each design on the same three uploads, all sent as
 <code>text/html</code>. The table gathers his examples, with the sweet spot
-of section 14.3 for comparison; the <code>http://localhost/space/</code> and
+of <a class="x-ref" href="#sec-14-3">section 14.3</a> for comparison; the <code>http://localhost/space/</code> and
 <code>/users/bob/space/</code> prefixes are left out.
 </p>
 
@@ -198,7 +198,7 @@ file space the operating system sees a program. The extension is <a class="gl-re
 that the local system trusts and that a remote party supplied.
 </p>
 
-<figure>
+<figure id="fig-14-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig14-2-t fig14-2-d">
   <title id="fig14-2-t">The upload attack</title>
@@ -252,7 +252,7 @@ that the local system trusts and that a remote party supplied.
 A stranger chooses the extension, and the user&#8217;s own machine trusts it.</figcaption>
 </figure>
 
-<h2>14.3 The sweet spot</h2>
+<h2 id="sec-14-3">14.3 The sweet spot</h2>
 
 <p>
 The resolution is to weaken the first requirement rather than abandon any of
@@ -279,7 +279,7 @@ cut everything from the <code>$</code>.</li>
 <p>
 The note calls <code>$</code> an &ldquo;otherwise forbidden character&rdquo;:
 one the server does not allow in ordinary URIs, so no real name can collide
-with a tweaked one. The last column of the table in section 14.2 shows the
+with a tweaked one. The last column of the table in <a class="x-ref" href="#sec-14-2">section 14.2</a> shows the
 result.
 </p>
 
@@ -290,14 +290,14 @@ So a file uploaded as <code>report.html</code> appears on disk as
 <code>report</code> will not find it.
 </p>
 
-<h2>14.4 The asymmetry nobody expects</h2>
+<h2 id="sec-14-4">14.4 The asymmetry nobody expects</h2>
 
 <p>
 A short passage at the end notices that the mapping is not one function but
 three.
 </p>
 
-<figure>
+<figure id="fig-14-3">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig14-3-t fig14-3-d">
   <title id="fig14-3-t">One mapping or three</title>
@@ -367,14 +367,14 @@ can simultaneously run more than one HTTP server over the same file space.
 A shared mapping also makes a directory tree portable: it can be archived
 (the note says &#8220;tar up&#8221;) on one server, unpacked on another, and
 remain the same Web space. That is the file-system counterpart of the
-relative-URI property of Chapter 12: links inside the tree keep working
+relative-URI property of <a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>: links inside the tree keep working
 wherever it is unpacked.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a> servers adopted the convention.</strong> Solid servers are the personal data stores of Chapter 54. Ruben Verborgh
+<li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a> servers adopted the convention.</strong> Solid servers are the personal data stores of <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. Ruben Verborgh
 added a URL-to-file mapper to Node Solid Server in March 2018, and version
 5.0.0 (March 2019) stores a resource whose name lacks the right extension
 under a <code>$</code>-suffixed filename, so <code>foo.bar</code> sent as
@@ -401,12 +401,12 @@ PUT.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The correspondence this chapter defends is introduced in Chapter 12. The
+The correspondence this chapter defends is introduced in <a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>. The
 temptation to read a type from a file extension is exactly the opacity
-breach warned against in Chapter 2, arriving here from the other side: the
+breach warned against in <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>, arriving here from the other side: the
 server may read it, and the local operating system must not be allowed to.
-The read-write Web this note assumes is Chapter 50, and the storage model is
-Chapter 54.
+The read-write Web this note assumes is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>, and the storage model is
+<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>.
 </p>
 </div>
 

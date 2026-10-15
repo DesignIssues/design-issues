@@ -79,7 +79,7 @@ The question is why, in those cases, we still use passwords.
 </p>
 </div>
 
-<h2>69.1 The comparison</h2>
+<h2 id="sec-69-1">69.1 The comparison</h2>
 
 <p>
 A client <a class="gl-ref" href="../glossary.html#certificate">certificate</a> is, in the note&#8217;s words, one of the &ldquo;Public Key
@@ -89,7 +89,7 @@ stays with its owner, and a public key that anyone may hold, which can check a
 signature made with the private key but cannot make one.
 </p>
 
-<figure>
+<figure id="fig-69-1">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig69-1-t fig69-1-d">
   <title id="fig69-1-t">What crosses the wire</title>
@@ -171,9 +171,9 @@ from history.
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 
-<p>Figure 69.2 sets this beside his account of a key pair.</p>
+<p><a class="x-ref" href="#fig-69-2">Figure 69.2</a> sets this beside his account of a key pair.</p>
 
-<figure>
+<figure id="fig-69-2">
 <svg class="dia" viewBox="0 0 720 336" width="720" height="336" role="img"
      aria-labelledby="fig69-2-t fig69-2-d">
   <title id="fig69-2-t">A password and a key pair, side by side</title>
@@ -221,7 +221,7 @@ be making better use of it.
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 
-<h2>69.2 Six things a browser would have to do</h2>
+<h2 id="sec-69-2">69.2 Six things a browser would have to do</h2>
 
 <p>
 The note is unusual in the collection for being a feature <a class="gl-ref" href="../glossary.html#specification">specification</a>. In
@@ -244,7 +244,7 @@ The third reveals the asymmetry most sharply. A browser shows who the site is,
 prominently, and shows nothing about who the user is being.
 </p>
 
-<figure>
+<figure id="fig-69-3">
 <svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
      aria-labelledby="fig69-3-t fig69-3-d">
   <title id="fig69-3-t">The missing half of the address bar</title>
@@ -289,7 +289,7 @@ not all just labelled with my name (duh!).
 <p>The note&#8217;s further points include:</p>
 <ul>
 <li>Label each certificate by the party that signed it or, where it is a
-<a class="gl-ref" href="../glossary.html#webid">WebID</a> (a Web address that names a person, Chapter 54), by its domain.</li>
+<a class="gl-ref" href="../glossary.html#webid">WebID</a> (a Web address that names a person, <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), by its domain.</li>
 <li>Give a web app a way to find out which certificate the user chose to
 reach a given resource.</li>
 <li>When a page makes a new key with <code>&lt;keygen&gt;</code>, the <a class="gl-ref" href="../glossary.html#html">HTML</a>
@@ -297,7 +297,7 @@ element that asked the browser to generate a key pair, fire an event or
 Promise so the page can carry on with its workflow.</li>
 </ul>
 
-<h2>69.3 The refusal</h2>
+<h2 id="sec-69-3">69.3 The refusal</h2>
 
 <p>
 The note ends with a section titled &ldquo;Just do it&rdquo;, directed at a
@@ -325,7 +325,7 @@ tried out in browsers really fast.
 The closing instruction is four words: &ldquo;Let&#8217;s just change it.&rdquo;
 </p>
 
-<h2>69.4 Why this closes the set</h2>
+<h2 id="sec-69-4">69.4 Why this closes the set</h2>
 
 <p>
 Each of the four notes finds a place where the machine&#8217;s model of a
@@ -350,9 +350,9 @@ beginning.
 <ul>
 <li><strong>The mechanism was replaced rather than fixed.</strong> WebAuthn, a
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of March 2019, gives the properties of the bottom lane of
-Figure 69.1.</li>
+<a class="x-ref" href="#fig-69-1">Figure 69.1</a>.</li>
 <li><strong>The interface requirements were met.</strong> Passkeys, announced
-by Apple, Google and Microsoft in May 2022, supply most of what section 69.2 lists,
+by Apple, Google and Microsoft in May 2022, supply most of what <a class="x-ref" href="#sec-69-2">section 69.2</a> lists,
 with the operating system rather than the browser doing the work. Synced
 passkeys do leave the machine, which the note warns against for some keys.</li>
 <li><strong>The key element the note asks for is still missing.</strong> As
@@ -367,9 +367,9 @@ version 69 (2019), before its replacement was widely usable.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The other three notes of the set are Chapters 66 to 68. The identity that a
-key authenticates is Chapter 54, and the access loop that consumes it is
-Chapter 37. The user interface arguments are Chapters 82 and 85.
+The other three notes of the set are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a> to <a class="x-ref" href="68-same-origin-policy---origin.html">68</a>. The identity that a
+key authenticates is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>, and the access loop that consumes it is
+<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>. The user interface arguments are Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and <a class="x-ref" href="85-user-interface-tips.html">85</a>.
 </p>
 </div>
 

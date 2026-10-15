@@ -65,7 +65,7 @@ is a set of separate statements, none of which overrides another.
 This note, begun in January 1997, opens Volume IV because it is where the
 <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> starts, though it does not use the phrase. Berners-Lee says so
 himself in a preface added later: it was written before the roadmap of
-Chapter 30 and introduces the same ideas, in the historical order they arose
+<a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> and introduces the same ideas, in the historical order they arose
 at the Consortium. There the first driving application of machine-readable
 data was endorsement labels: ratings, such as whether a page suits children,
 attached to pages. <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for them was PICS, the Platform for
@@ -77,7 +77,7 @@ narrowing is the point.
 </p>
 </div>
 
-<h2>27.1 The definition, and the word doing the work</h2>
+<h2 id="sec-27-1">27.1 The definition, and the word doing the work</h2>
 
 <blockquote>
 Metadata is machine understandable information about web resources or other
@@ -107,7 +107,7 @@ Metadata began as data about web resources, but it should in future describe
 anything: people, things, concepts and ideas.
 </p>
 
-<h2>27.2 The first axiom, and its consequence</h2>
+<h2 id="sec-27-2">27.2 The first axiom, and its consequence</h2>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> Metadata is data.</p>
@@ -116,12 +116,12 @@ anything: people, things, concepts and ideas.
 <p>
 Information about information counts in all respects as information. Two
 consequences follow. The first is that metadata can live anywhere, in the
-three places of Figure 27.1. (An <a class="gl-ref" href="../glossary.html#html">HTML</a> page&#8217;s <em>head</em> is the
+three places of <a class="x-ref" href="#fig-27-1">Figure 27.1</a>. (An <a class="gl-ref" href="../glossary.html#html">HTML</a> page&#8217;s <em>head</em> is the
 undisplayed part holding its title; <em><a class="gl-ref" href="../glossary.html#http">HTTP</a> headers</em> are the lines the
 server sends ahead of the page.)
 </p>
 
-<figure>
+<figure id="fig-27-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig27-1-t fig27-1-d">
   <title id="fig27-1-t">The three places metadata is found</title>
@@ -179,11 +179,11 @@ publisher.</figcaption>
 The second consequence is recursion without hierarchy. Metadata may itself
 have an owner and an expiry date, so there is meta-metadata (data about the
 metadata, such as the date a review of the page was written), but the
-architecture does not distinguish many levels. It is the same move as Chapter 3&#8217;s refusal to
+architecture does not distinguish many levels. It is the same move as <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s refusal to
 distinguish names from addresses: one kind of thing, not a tower of kinds.
 </p>
 
-<h2>27.3 The second axiom: independent assertions</h2>
+<h2 id="sec-27-3">27.3 The second axiom: independent assertions</h2>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> The architecture is of metadata represented as a
@@ -203,7 +203,7 @@ Each assertion stands independently of others.
 <cite>Metadata Architecture, 1997</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-27-2">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig27-2-t fig27-2-d">
   <title id="fig27-2-t">Independent statements and statements that are really one</title>
@@ -252,10 +252,10 @@ only mean something together has to be written as one assertion.</figcaption>
 
 <p>
 Configuration files where later rules override earlier ones are excluded;
-Chapter 32 returns to them.
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> returns to them.
 </p>
 
-<h2>27.4 Assertions have a shape</h2>
+<h2 id="sec-27-4">27.4 Assertions have a shape</h2>
 
 <p>
 An assertion has a type, a subject and parameters (the other things the
@@ -273,7 +273,7 @@ carries information, but something else, its placement on the jar, says what
 it applies to.
 </p>
 
-<figure>
+<figure id="fig-27-3">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig27-3-t fig27-3-d">
   <title id="fig27-3-t">Anatomy of an assertion</title>
@@ -327,13 +327,13 @@ coin one.</figcaption>
 <p>
 A link is an assertion relating two resources: the <a class="gl-ref" href="../glossary.html#triple">triple</a>
 <code>(A u1 u2)</code> of a relationship type and two URIs, as in the
-versioning example of Figure 27.3. Names for types must come from a global
+versioning example of <a class="x-ref" href="#fig-27-3">Figure 27.3</a>. Names for types must come from a global
 space, because anyone may coin one, and that means URIs. This is already the
-<em>triple</em> of Chapter 32: three parts, a relationship and the two things
+<em>triple</em> of <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>: three parts, a relationship and the two things
 it relates, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> later made the basic unit of all Semantic Web data.
 </p>
 
-<h2>27.5 Self-describing information</h2>
+<h2 id="sec-27-5">27.5 Self-describing information</h2>
 
 <p>
 The note&#8217;s central goal is data that &ldquo;carries a reference to the
@@ -343,7 +343,7 @@ unfamiliar type can follow that link and extend what it understands, rather
 than guessing.
 </p>
 
-<figure>
+<figure id="fig-27-4">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig27-4-t fig27-4-d">
   <title id="fig27-4-t">Learning a new word by following its link</title>
@@ -408,24 +408,24 @@ in the transfer and in a separate description are still the three options:
 embedded data (<a class="gl-ref" href="../glossary.html#schema">schema</a>.org, launched in June 2011, usually embedded as JSON-LD),
 HTTP headers, and separately published descriptions.</li>
 <li><strong>The authorship question was never fully answered.</strong> Who is
-making a statement, which section 27.2 flags as needing rationalisation,
+making a statement, which <a class="x-ref" href="#sec-27-2">section 27.2</a> flags as needing rationalisation,
 remains the weak point: most embedded metadata records no author for its
-statements, which is why Chapter 37&#8217;s treatment of trust matters.</li>
+statements, which is why <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>&#8217;s treatment of trust matters.</li>
 <li><strong>Ordering never went away.</strong> Even in 1997 the note listed
 HTTP header lines as ordered; order-dependent formats remain common, and the
-diagnosis in Chapter 32 still applies to them.</li>
+diagnosis in <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> still applies to them.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The quality-of-service metadata asked for in Chapter 3 and the genericity
-metadata of Chapter 10 are both instances of this architecture. The roadmap
-that supersedes this note is Chapter 30, and the assertion model it describes
-is drawn out in Chapter 32. The authorship question is taken up in
-Chapter 37, and the linking of metadata to the resource it describes returns
-in Chapter 49.
+The quality-of-service metadata asked for in <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> and the genericity
+metadata of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a> are both instances of this architecture. The roadmap
+that supersedes this note is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>, and the assertion model it describes
+is drawn out in <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The authorship question is taken up in
+<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>, and the linking of metadata to the resource it describes returns
+in <a class="x-ref" href="49-linked-data.html">Chapter 49</a>.
 </p>
 </div>
 

@@ -77,17 +77,17 @@ built on Web protocols abandons the thing that made them work.
 </p>
 </div>
 
-<h2>65.1 Three common themes</h2>
+<h2 id="sec-65-1">65.1 Three common themes</h2>
 
 <p>
 He begins with what everyone agreed on. A quasi-static information space is
-the Web of Chapter 2: pages at addresses that change only now and then.
+the Web of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>: pages at addresses that change only now and then.
 Enterprises are businesses.
 </p>
 
 <table>
 <tr><th>Theme</th><th>What it implies</th></tr>
-<tr><td>A departure from a quasi-static information space to one where interactions are primary</td><td>Messages, not pages, become what matters (the trend of Chapter 61)</td></tr>
+<tr><td>A departure from a quasi-static information space to one where interactions are primary</td><td>Messages, not pages, become what matters (the trend of <a class="x-ref" href="61-conversations-state.html">Chapter 61</a>)</td></tr>
 <tr><td>Use of existing Web standards as building blocks</td><td>HTTP and XML are well understood and well debugged, so worth reusing</td></tr>
 <tr><td>A focus on operations within and between enterprises</td><td>Firms that do not trust each other must prove what was sent</td></tr>
 </table>
@@ -110,7 +110,7 @@ reliable transmission.
 nothing afterwards.
 </p>
 
-<figure>
+<figure id="fig-65-1">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig65-1-t fig65-1-d">
   <title id="fig65-1-t">Reliable versus accountable</title>
@@ -161,7 +161,7 @@ Reliability ends when the message arrives. Accountability needs a record that
 outlives the exchange.</figcaption>
 </figure>
 
-<h2>65.2 What the vendors wanted</h2>
+<h2 id="sec-65-2">65.2 What the vendors wanted</h2>
 
 <p>
 One sentence, offered without comment, explains most of what happened to this
@@ -190,7 +190,7 @@ remote function), or carries a whole document for the receiver to process. A
 document can also take in fields from another <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> (an XML <a class="gl-ref" href="../glossary.html#namespace">namespace</a>).
 </p>
 
-<figure>
+<figure id="fig-65-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig65-2-t fig65-2-d">
   <title id="fig65-2-t">One envelope, two modes</title>
@@ -253,7 +253,7 @@ the RPC mode.
 <cite>Web Services, 2002</cite>
 </blockquote>
 
-<h2>65.3 The discovery cloud</h2>
+<h2 id="sec-65-3">65.3 The discovery cloud</h2>
 
 <p>
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> drew web services as a triangle: requester, provider, and a discovery
@@ -270,7 +270,7 @@ web services as well as many other things.
 <cite>Web Services, 2002</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-65-3">
 <svg class="dia" viewBox="0 0 720 196" width="720" height="196" role="img"
      aria-labelledby="fig65-3-t fig65-3-d">
   <title id="fig65-3-t">What is essential, and what is not</title>
@@ -316,7 +316,7 @@ registry.</figcaption>
 </figure>
 
 <p>
-Reducing the architecture to the interaction is the same move as Chapter 19:
+Reducing the architecture to the interaction is the same move as <a class="x-ref" href="19-modularity.html">Chapter 19</a>:
 find the small interface everything else is built on, and refuse to let
 accessories into it.
 </p>
@@ -342,7 +342,7 @@ rather services were one more thing described on the <a class="gl-ref" href="../
 the same queries as catalogues, parts and contracts.
 </p>
 
-<h2>65.4 Where he sends the reader instead</h2>
+<h2 id="sec-65-4">65.4 Where he sends the reader instead</h2>
 
 <p>
 The philosophy section does not argue. It lists three earlier notes:
@@ -350,13 +350,13 @@ The philosophy section does not argue. It lists three earlier notes:
 
 <table>
 <tr><th>Note</th><th>Year</th><th>What it contributes</th></tr>
-<tr><td>Axioms of Web Architecture (Chapter 2)</td><td>1996 (cited as 1990s)</td><td>The information space concept</td></tr>
-<tr><td>Paper Trail (Chapter 62)</td><td>1999</td><td>Read-write state derived from read-only documents, and the question: which came first, the journal or the database?</td></tr>
-<tr><td>Conversations and State (Chapter 61)</td><td>2000 (cited as 1998)</td><td>The trend, across many fields, away from shared information spaces</td></tr>
+<tr><td>Axioms of Web Architecture (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>)</td><td>1996 (cited as 1990s)</td><td>The information space concept</td></tr>
+<tr><td>Paper Trail (<a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>)</td><td>1999</td><td>Read-write state derived from read-only documents, and the question: which came first, the journal or the database?</td></tr>
+<tr><td>Conversations and State (<a class="x-ref" href="61-conversations-state.html">Chapter 61</a>)</td><td>2000 (cited as 1998)</td><td>The trend, across many fields, away from shared information spaces</td></tr>
 </table>
 
 <p>
-Here he only asks the question. Chapter 62&#8217;s answer is that the journal
+Here he only asks the question. <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>&#8217;s answer is that the journal
 came first and the database is computed from it; keeping only the database
 throws away what makes accountability possible.
 </p>
@@ -368,7 +368,7 @@ Later he describes a bank two ways: as a monthly process, and as rules about
 which documents make which others valid.
 </p>
 
-<figure>
+<figure id="fig-65-4">
 <svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig65-4-t fig65-4-d">
   <title id="fig65-4-t">Process versus document</title>
@@ -448,7 +448,7 @@ exists.</td></tr>
 it. This is one route among several to a reserved flight.</td></tr>
 </table>
 
-<h2>65.5 Why this closes the volume</h2>
+<h2 id="sec-65-5">65.5 Why this closes the volume</h2>
 
 <p>
 Volume VI has described data that is named, published, linked, written back,
@@ -480,16 +480,16 @@ Business Registry, run by IBM, Microsoft and SAP, was shut in January 2006.
 Services are found through configuration and documentation.</li>
 <li><strong>Accountability came back separately.</strong> Signed messages,
 audit logs (append-only records of who did what) and event sourcing (state
-computed from a stored log of changes) supply what section 65.1 asks for.</li>
+computed from a stored log of changes) supply what <a class="x-ref" href="#sec-65-1">section 65.1</a> asks for.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Shared state is Chapter 61; the accountable trail, Chapter 62; the
-information space, Chapter 2; remote operations, Chapter 5. The alternative
-this volume describes is Chapters 49 to 58.
+Shared state is <a class="x-ref" href="61-conversations-state.html">Chapter 61</a>; the accountable trail, <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>; the
+information space, <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>; remote operations, <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>. The alternative
+this volume describes is Chapters <a class="x-ref" href="49-linked-data.html">49</a> to <a class="x-ref" href="58-live-data.html">58</a>.
 </p>
 </div>
 

@@ -64,7 +64,7 @@ became <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>; the logic st
 <h3>The question</h3>
 <p>
 This is the <a class="gl-ref" href="../glossary.html#specification">specification</a> of the notation Berners-Lee designed to write the
-logic of Chapter 40 down. It is the most technical note in the collection and
+logic of <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a> down. It is the most technical note in the collection and
 the only one that reads as a paper, with formal syntax, a definition of
 entailment (what follows from what), and a catalogue of built-in operators.
 The catalogue dates it to 2000; the copy online is dated August 2005 and
@@ -76,7 +76,7 @@ survives being published.
 </p>
 </div>
 
-<h2>42.1 Written for an open world</h2>
+<h2 id="sec-42-1">42.1 Written for an open world</h2>
 
 <blockquote>
 Whereas a closed system may be built based on a single knowledge base of
@@ -90,15 +90,15 @@ the provenance of information, and responsible for its disposition.
 Provenance means where a piece of information came from. The first
 requirement follows immediately. To say what a document said, one must be able to quote a set of statements and match it against a
 pattern. Quotation is therefore not an advanced feature but a starting
-condition, which is why Chapter 30 puts it in the base layer.
+condition, which is why <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> puts it in the base layer.
 </p>
 
 <p>
-In Figure 42.1, a prefix such as <code>foaf:</code> abbreviates the start
+In <a class="x-ref" href="#fig-42-1">Figure 42.1</a>, a prefix such as <code>foaf:</code> abbreviates the start
 of a long <a class="gl-ref" href="../glossary.html#uri">URI</a>, and a semicolon means the same subject again.
 </p>
 
-<figure>
+<figure id="fig-42-1">
 <svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
      aria-labelledby="fig42-1-t fig42-1-d">
   <title id="fig42-1-t">The same fact, written four ways</title>
@@ -143,7 +143,7 @@ built-in property <code>log:implies</code>, written <code>=&gt;</code> for
 short.
 </p>
 
-<figure>
+<figure id="fig-42-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig42-2-t fig42-2-d">
   <title id="fig42-2-t">A rule firing</title>
@@ -185,7 +185,7 @@ A rule is a pattern in braces. The engine finds names that make it match
 the data and copies them into the conclusion.</figcaption>
 </figure>
 
-<h2>42.2 The trap that shaped the design</h2>
+<h2 id="sec-42-2">42.2 The trap that shaped the design</h2>
 
 <p>
 Quotation plus reference brings self-reference, and self-reference brings
@@ -209,10 +209,10 @@ A language built to express anything is deliberately made unable to say a
 general <em>not</em>, because the alternative is a system that can tie itself
 in knots. Negated forms of many built-in operations are provided instead, such as
 <code>log:notIncludes</code>, a formula does not contain a given statement
-(section 42.4).
+(<a class="x-ref" href="#sec-42-4">section 42.4</a>).
 </p>
 
-<h2>42.3 Monotonicity as a publishing requirement</h2>
+<h2 id="sec-42-3">42.3 Monotonicity as a publishing requirement</h2>
 
 <p>
 The second design goal is stated as a claim about other people rather than
@@ -240,7 +240,7 @@ base&rdquo;, everything the system holds at the moment. That is a changing
 quantity, referred to only implicitly.
 </p>
 
-<h2>42.4 Scoped negation as failure</h2>
+<h2 id="sec-42-4">42.4 Scoped negation as failure</h2>
 
 <p>
 The solution is to keep the useful behaviour and remove the implicit
@@ -250,7 +250,7 @@ The built-in <code>log:notIncludes</code> does this, and the note calls it
 completely monotonic, since no other knowledge gained can change its answer.
 </p>
 
-<figure>
+<figure id="fig-42-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig42-3-t fig42-3-d">
   <title id="fig42-3-t">Two kinds of &#8220;not known&#8221;</title>
@@ -287,7 +287,7 @@ is not on file is false) applies only to a named corpus, so knowledge added
 elsewhere cannot retract a conclusion drawn here.</figcaption>
 </figure>
 
-<h2>42.5 The Web as an operator</h2>
+<h2 id="sec-42-5">42.5 The Web as an operator</h2>
 
 <p>
 Two built-in properties do something no logic textbook contains: they make
@@ -304,7 +304,7 @@ The note&#8217;s second example looks inside what people wrote, using
 <code>log:includes</code> to believe weather reports only from residents.
 </p>
 
-<figure>
+<figure id="fig-42-4">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig42-4-t fig42-4-d">
   <title id="fig42-4-t">Whom to believe about the weather</title>
@@ -363,7 +363,7 @@ imperfect process.
 <cite>Notation 3 Logic, 2000</cite>
 </blockquote>
 
-<h2>42.6 What the separation bought</h2>
+<h2 id="sec-42-6">42.6 What the separation bought</h2>
 
 <p>
 The conclusion records an outcome that the note&#8217;s own structure made
@@ -380,7 +380,7 @@ such as the expression of patches (updates)
 
 <p>
 The notation and the logic are separable, so the notation can be used by
-people who want none of the logic. That is the modularity of Chapter 19,
+people who want none of the logic. That is the modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>,
 applied by the same author to his own design, and it is why the readable half
 of this work outlived the rest.
 </p>
@@ -408,11 +408,11 @@ but production systems load data first and reason afterwards.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The logic this notation carries is Chapter 40, and the penguin it answers is
-Chapter 41. The quoting it depends on is treated formally in Chapter 44, and
-the patches mentioned in the conclusion are Chapter 45. The alternatives
-considered for its syntax are Chapter 43, and the extensions later proposed
-are Chapter 47.
+The logic this notation carries is <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, and the penguin it answers is
+<a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a>. The quoting it depends on is treated formally in <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>, and
+the patches mentioned in the conclusion are <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>. The alternatives
+considered for its syntax are <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a>, and the extensions later proposed
+are <a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>.
 </p>
 </div>
 
@@ -438,7 +438,7 @@ meaning depend on the network. Give two things that can go wrong.</p>
 <div class="question">
 <p><span class="question-number">42.4</span>
 The data half of the notation outlived the logic half. Was that separation
-luck or design? Argue from section 42.6.</p>
+luck or design? Argue from <a class="x-ref" href="#sec-42-6">section 42.6</a>.</p>
 </div>
 </details>
 

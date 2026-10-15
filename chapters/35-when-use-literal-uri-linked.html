@@ -78,11 +78,11 @@ with identifiers eventually gets wrong.
 </p>
 </div>
 
-<h2>35.1 The rule</h2>
+<h2 id="sec-35-1">35.1 The rule</h2>
 
 <p>
 Linked Data is <a class="gl-ref" href="../glossary.html#rdf">RDF</a> published on the Web so that datasets can point into one
-another (Chapter 49). RDF describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>:
+another (<a class="x-ref" href="49-linked-data.html">Chapter 49</a>). RDF describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>:
 subject, property, value. <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> is a common way of writing those triples down. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
 in angle brackets is a symbol: it names a thing. A value in quotation marks is
 a literal: a piece of text, taken as it stands. Berners-Lee offers a mnemonic
@@ -101,7 +101,7 @@ identified by.
 <tr><td><code>"&#8230;"</code></td><td>the characters themselves</td><td><code>"https://uni.edu/students#JRMeadows"</code> is a 34-character string</td></tr>
 </table>
 
-<h2>35.2 What goes wrong, exactly</h2>
+<h2 id="sec-35-2">35.2 What goes wrong, exactly</h2>
 
 <p>
 The note&#8217;s example builds up in four steps.
@@ -125,7 +125,7 @@ The figures use Turtle shorthand. A prefix stands for the start of a URI, so
 &ldquo;is a&rdquo;.
 </p>
 
-<figure>
+<figure id="fig-35-1">
 <svg class="dia" viewBox="0 0 680 262" width="680" height="262" role="img"
      aria-labelledby="fig35-1-t fig35-1-d">
   <title id="fig35-1-t">Two names, one person, then a merge</title>
@@ -172,10 +172,10 @@ rather than the person.</figcaption>
 <p>
 Now Joe adds a line to his profile: he prefers to be known by the university
 name. That line is about a name, not about Joe, so the name must be quoted.
-Figure 35.2 follows both versions through the merge.
+<a class="x-ref" href="#fig-35-2">Figure 35.2</a> follows both versions through the merge.
 </p>
 
-<figure>
+<figure id="fig-35-2">
 <svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
      aria-labelledby="fig35-2-t fig35-2-d">
   <title id="fig35-2-t">Why the preferred identifier must be quoted</title>
@@ -228,7 +228,7 @@ The failure is silent. Nothing rejects the wrong version; it simply becomes a
 tautology when the datasets are merged.</figcaption>
 </figure>
 
-<h2>35.3 Why this is not a quirk of one notation</h2>
+<h2 id="sec-35-3">35.3 Why this is not a quirk of one notation</h2>
 
 <p>
 The mistake is a confusion of use and mention. Paris is a city; &ldquo;Paris&rdquo;
@@ -236,7 +236,7 @@ has five letters. The first sentence uses the word to talk about a place; the
 second mentions the word to talk about the word.
 </p>
 
-<figure>
+<figure id="fig-35-3">
 <svg class="dia" viewBox="0 0 560 160" width="560" height="160" role="img"
      aria-labelledby="fig35-3-t fig35-3-d">
   <title id="fig35-3-t">Use versus mention</title>
@@ -297,10 +297,10 @@ Recommendation since February 2004.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The distinction between a thing and a name for it is Chapter 34, and the
-ownership of names that makes two identifiers coexist is Chapter 2. Quotation
-as a base-layer feature is Chapter 30, and the need to mark material as
-mentioned rather than acted upon is the same requirement as Chapter 24.
+The distinction between a thing and a name for it is <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>, and the
+ownership of names that makes two identifiers coexist is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. Quotation
+as a base-layer feature is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>, and the need to mark material as
+mentioned rather than acted upon is the same requirement as <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>.
 </p>
 </div>
 

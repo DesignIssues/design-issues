@@ -67,7 +67,7 @@ only checks a proof that someone hands it.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The companion to Chapter 5, written the same month of September 1998 and spun
+The companion to <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, written the same month of September 1998 and spun
 off from it because the subject needed more room than a survey could give. It is
 candid about its standing:
 </p>
@@ -82,7 +82,7 @@ an idea.
 </p>
 </div>
 
-<h2>30.1 The problem being solved</h2>
+<h2 id="sec-30-1">30.1 The problem being solved</h2>
 
 <p>
 The diagnosis has not aged:
@@ -99,13 +99,13 @@ that the structure of the data is not evident to a robot browsing the web.
 <p>
 Berners-Lee sets aside the artificial intelligence problem of training
 machines to behave like people. The Semantic Web instead develops languages
-for writing information in a form machines can process. Chapter 31 makes
+for writing information in a form machines can process. <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> makes
 the negative case.
 </p>
 
-<h2>30.2 The layers</h2>
+<h2 id="sec-30-2">30.2 The layers</h2>
 
-<figure>
+<figure id="fig-30-1">
 <svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
      aria-labelledby="fig30-1-t fig30-1-d">
   <title id="fig30-1-t">The 1998 road map, layer by layer</title>
@@ -188,10 +188,10 @@ Two applications seldom use the same <em><a class="gl-ref" href="../glossary.htm
 their data is written in. The conversion layer states rules for translating
 one into another. It is allowed implication but still no negation. The
 note&#8217;s example is three databases built independently and put on the
-Web, joined through a zip, a US postcode (Figure 30.2).
+Web, joined through a zip, a US postcode (<a class="x-ref" href="#fig-30-2">Figure 30.2</a>).
 </p>
 
-<figure>
+<figure id="fig-30-2">
 <svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
      aria-labelledby="fig30-2-t fig30-2-d">
   <title id="fig30-2-t">Widening a query across three databases</title>
@@ -270,7 +270,7 @@ signed which assertion. Proof checking then verifies signatures as well as
 logic. It can be developed in parallel.
 </p>
 
-<h2>30.3 Why bother at the bottom</h2>
+<h2 id="sec-30-3">30.3 Why bother at the bottom</h2>
 
 <p>
 If an application&#8217;s data is simple, why express it in this model at
@@ -287,10 +287,10 @@ Web.
 <p>
 The example is <a class="gl-ref" href="../glossary.html#access-control">access control</a>, where a decision may combine privacy
 preferences, group membership and data typing, each trivial alone and none
-sharing a format with the others. Chapter 37 works it through in detail.
+sharing a format with the others. <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> works it through in detail.
 </p>
 
-<h2>30.4 Proof, and the asymmetry that makes it work</h2>
+<h2 id="sec-30-4">30.4 Proof, and the asymmetry that makes it work</h2>
 
 <p>
 The roadmap&#8217;s most important design decision is a restriction. The system is required to validate proofs, not to find them. A proof
@@ -298,7 +298,7 @@ here is a list of signed statements plus the rules that join them, which
 anyone can re-check step by step.
 </p>
 
-<figure>
+<figure id="fig-30-3">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig30-3-t fig30-3-d">
   <title id="fig30-3-t">A request that carries its own proof</title>
@@ -372,16 +372,16 @@ Finding a proof for an arbitrary question is intractable; checking one that
 arrives with the request is not.
 </p>
 
-<h2>30.5 Engines of the future</h2>
+<h2 id="sec-30-5">30.5 Engines of the future</h2>
 
 <p>
 Indexes of terms, Berners-Lee expects, will let the Web be
 searched &ldquo;as though it were one giant database, rather than one giant
 book&rdquo;. He then proposes joining two kinds of engine that had each
-failed alone (Figure 30.4).
+failed alone (<a class="x-ref" href="#fig-30-4">Figure 30.4</a>).
 </p>
 
-<figure>
+<figure id="fig-30-4">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig30-4-t fig30-4-d">
   <title id="fig30-4-t">Search engine, logic engine, and both together</title>
@@ -457,10 +457,10 @@ answer arbitrary questions.
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> (finished-standard status) in February 1999; RDF Schema, a
 vocabulary-definition language, in February 2004; <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a richer <a class="gl-ref" href="../glossary.html#ontology">ontology</a>
 language, in the same month, whose <code>equivalentProperty</code> states
-exactly the conversion of Figure 30.2; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, a query language for RDF,
+exactly the conversion of <a class="x-ref" href="#fig-30-2">Figure 30.2</a>; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, a query language for RDF,
 in January 2008.</li>
 <li><strong>The proof layer did not.</strong> No interoperable proof exchange
-format was standardised. The asymmetry of section 30.4, which the roadmap
+format was standardised. The asymmetry of <a class="x-ref" href="#sec-30-4">section 30.4</a>, which the roadmap
 treats as its central bet, was never cashed.</li>
 <li><strong>The search-plus-logic engine arrived in another shape.</strong>
 Large knowledge graphs behind search, beginning with Google&#8217;s in May 2012,
@@ -472,10 +472,10 @@ without the proof machinery.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is the companion to Chapter 5 and the successor to Chapter 27.
-The objections it sets aside are answered in Chapter 31, the model it assumes
-is drawn in Chapter 32, and the data it hopes to reach is Chapter 33. The
-logic layer is Volume V, and the access control example is Chapter 37.
+This chapter is the companion to <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a> and the successor to <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>.
+The objections it sets aside are answered in <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>, the model it assumes
+is drawn in <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, and the data it hopes to reach is <a class="x-ref" href="33-rdf-relational-databases.html">Chapter 33</a>. The
+logic layer is Volume V, and the access control example is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>.
 </p>
 </div>
 

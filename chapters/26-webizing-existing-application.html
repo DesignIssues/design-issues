@@ -78,7 +78,7 @@ years.
 </p>
 </div>
 
-<h2>26.1 The operation</h2>
+<h2 id="sec-26-1">26.1 The operation</h2>
 
 <p>
 Practically, webizing a language means replacing its names, tokens and
@@ -86,7 +86,7 @@ identifiers with URIs. What was previously a reference reaching only within
 one document or module can then reach, with equal ease, into any other.
 </p>
 
-<figure>
+<figure id="fig-26-1">
 <svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
      aria-labelledby="fig26-1-t fig26-1-d">
   <title id="fig26-1-t">Closed world, open world</title>
@@ -183,7 +183,7 @@ slightly flippant, and says each row probably needs an essay of explanation.
 <tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>After <em>Wired</em> magazine&#8217;s out/in column: the old way out, the new way in</td></tr>
 </table>
 
-<h2>26.2 Webizing a database</h2>
+<h2 id="sec-26-2">26.2 Webizing a database</h2>
 
 <p>
 Berners-Lee&#8217;s worked example is a database. An <a class="gl-ref" href="../glossary.html#sql">SQL</a> query (SQL
@@ -192,7 +192,7 @@ that mean something only inside the database, and the database itself is
 nowhere mentioned, because it is context rather than content.
 </p>
 
-<figure>
+<figure id="fig-26-2">
 <svg class="dia" viewBox="0 0 720 312" width="720" height="312" role="img"
      aria-labelledby="fig26-2-t fig26-2-d">
   <title id="fig26-2-t">An SQL query before and after webizing</title>
@@ -282,7 +282,7 @@ Outside, the form is persistent and suits the consumer; inside, it is
 efficient for the publisher.
 </p>
 
-<h2>26.3 Where it gets hard</h2>
+<h2 id="sec-26-3">26.3 Where it gets hard</h2>
 
 <p>
 The difficult case is nesting. Where a language relies on nested scopes, the
@@ -293,7 +293,7 @@ it is too primitive and too much an invitation to make a mess of one&#8217;s
 program. That is true of the hypertext link too, in a way, he concedes.
 </p>
 
-<figure>
+<figure id="fig-26-3">
 <svg class="dia" viewBox="0 0 610 312" width="610" height="312" role="img"
      aria-labelledby="fig26-3-t fig26-3-d">
   <title id="fig26-3-t">A link into a nested structure</title>
@@ -351,7 +351,7 @@ anything means that these innermost nested objects must have URIs.
 <cite>Webizing existing systems, 1998</cite>
 </blockquote>
 
-<h2>26.4 The diagnostic use</h2>
+<h2 id="sec-26-4">26.4 The diagnostic use</h2>
 
 <p>
 Webizing is a test as much as a transformation. If a name means quite different things in different
@@ -367,7 +367,7 @@ and for the set of documents it belongs to. Those are two things, needing two
 URIs.
 </p>
 
-<figure>
+<figure id="fig-26-4">
 <svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
      aria-labelledby="fig26-4-t fig26-4-d">
   <title id="fig26-4-t">One name, two things, two URIs</title>
@@ -423,7 +423,7 @@ represents in a global context, if anything.
 <ul>
 <li><strong>Databases were webized, by <a class="gl-ref" href="../glossary.html#specification">specification</a>.</strong> R2RML, a
 language for mapping relational data to RDF, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in
-September 2012, which is section 26.2&#8217;s example turned into a standard.</li>
+September 2012, which is <a class="x-ref" href="#sec-26-2">section 26.2</a>&#8217;s example turned into a standard.</li>
 <li><strong>A default mapping too.</strong> A Direct Mapping of Relational
 Data to RDF, which gives every table, column and row a URI automatically,
 became a W3C Recommendation on the same day, 27 September 2012.</li>
@@ -432,11 +432,11 @@ became a W3C Recommendation on the same day, 27 September 2012.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The one-line formula is quoted from Chapter 12, and the mechanism that makes
-it work is Chapters 4 and 11. The sense in which a language may be extended
-is Chapter 17. The transformation table is the programme of Volume VI,
-beginning at Chapter 49, and the read-write file system it promises is
-Chapters 50 and 54.
+The one-line formula is quoted from <a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>, and the mechanism that makes
+it work is Chapters <a class="x-ref" href="04-web-model-information-hiding-uri.html">4</a> and <a class="x-ref" href="11-fragment-identifiers.html">11</a>. The sense in which a language may be extended
+is <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>. The transformation table is the programme of Volume VI,
+beginning at <a class="x-ref" href="49-linked-data.html">Chapter 49</a>, and the read-write file system it promises is
+Chapters <a class="x-ref" href="50-read-write-linked-data.html">50</a> and <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">54</a>.
 </p>
 </div>
 
@@ -449,7 +449,7 @@ setting, for example one line in a settings file? What breaks?</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.2</span>
-Section 26.2 distinguishes the kind of thing a row describes from the set of
+<a class="x-ref" href="#sec-26-2">Section 26.2</a> distinguishes the kind of thing a row describes from the set of
 rows present. An <em>employees</em> table lists only salaried staff. What
 false conclusion would someone draw about a contractor who is not in it?</p>
 </div>

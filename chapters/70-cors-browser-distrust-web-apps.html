@@ -76,7 +76,7 @@ omnipotent.
 </blockquote>
 </div>
 
-<h2>70.1 The assumption</h2>
+<h2 id="sec-70-1">70.1 The assumption</h2>
 
 <p>
 The browser&#8217;s operating principle is rarely written down:
@@ -98,14 +98,14 @@ app is something rather trivial which does not access data on the web.
 <cite>Authorizing Web Apps and CORS, 2018</cite>
 </blockquote>
 
-<h2>70.2 The attack that caused it</h2>
+<h2 id="sec-70-2">70.2 The attack that caused it</h2>
 
 <p>
 The attack behind this is cross-site scripting (XSS). A <em>script</em> is a
 small program a page carries and the browser runs.
 </p>
 
-<figure>
+<figure id="fig-70-1">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig70-1-t fig70-1-d">
   <title id="fig70-1-t">Why the browser distrusts the page it is running</title>
@@ -161,7 +161,7 @@ Forbidding scripts all network access could not stand: a bank&#8217;s own page
 must fetch more data from the bank. So a script may talk freely to its own
 <em>origin</em>, the protocol and domain of an address (say,
 <code>https://www.bankofamerica.com</code>), and to nothing else: the
-<a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a> of Chapter 68.
+<a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a> of <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>.
 </p>
 
 <blockquote>
@@ -169,7 +169,7 @@ This allows banks to work pretty well.
 <cite>Authorizing Web Apps and CORS, 2018</cite>
 </blockquote>
 
-<h2>70.3 What it forbids</h2>
+<h2 id="sec-70-3">70.3 What it forbids</h2>
 
 <p>
 Two wanted uses are forbidden. A service that assesses another
@@ -187,11 +187,11 @@ that you would not get from one data source alone.
 
 <p>
 Such a site, the note says, typically no longer works. Combining sources is
-the argument of Chapters 51 and 53; the browser forbids it unless the
-data&#8217;s owner opts in (section 70.5).
+the argument of Chapters <a class="x-ref" href="51-linked-data-like-bag-chips.html">51</a> and <a class="x-ref" href="53-putting-government-data-web.html">53</a>; the browser forbids it unless the
+data&#8217;s owner opts in (<a class="x-ref" href="#sec-70-5">section 70.5</a>).
 </p>
 
-<h2>70.4 The shape of the problem</h2>
+<h2 id="sec-70-4">70.4 The shape of the problem</h2>
 
 <p>
 The note&#8217;s three gods map onto the attack:
@@ -206,12 +206,12 @@ The note&#8217;s three gods map onto the attack:
 
 <p>
 Every mechanism should stop the spy without disabling the other two, yet the
-browser distrusts the writer, the party Alice chose. Chapter 54 moves the data
+browser distrusts the writer, the party Alice chose. <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> moves the data
 out from behind the boundary, so an app reaching the user&#8217;s own storage does
 the ordinary thing.
 </p>
 
-<h2>70.5 How permission is granted</h2>
+<h2 id="sec-70-5">70.5 How permission is granted</h2>
 
 <p>
 A browser cannot tell a private webcam from open government data, and webcams
@@ -233,7 +233,7 @@ this job is <code>Access-Control-Expose-Headers</code>). The browser also first
 sends a hidden <em>preflight</em> request (<a class="gl-ref" href="../glossary.html#http">HTTP</a> OPTIONS), an extra round trip.
 </p>
 
-<h2>70.6 The twist</h2>
+<h2 id="sec-70-6">70.6 The twist</h2>
 
 <p>
 Fearing <code>*</code> was a &#8220;footgun&#8221; managers would put even on
@@ -249,7 +249,7 @@ data servers were therefore told to copy back whatever origin asked
 (<em>origin reflection</em>): active code, not a configuration line.
 </p>
 
-<figure>
+<figure id="fig-70-2">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig70-2-t fig70-2-d">
   <title id="fig70-2-t">Reading public data under CORS with origin reflection</title>
@@ -313,7 +313,7 @@ of thought. But that is not how CORS was done.
 <cite>Authorizing Web Apps and CORS, 2018</cite>
 </blockquote>
 
-<h2>70.7 Vary: Origin and the cache</h2>
+<h2 id="sec-70-7">70.7 Vary: Origin and the cache</h2>
 
 <p>
 Browsers keep copies of replies in a <em><a class="gl-ref" href="../glossary.html#cache">cache</a></em>; a
@@ -321,7 +321,7 @@ copy marked for origin A, reused for an app from B, is silently blocked. One
 more header, <code>Vary: Origin</code>, makes the cache keep a copy per origin.
 </p>
 
-<figure>
+<figure id="fig-70-3">
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig70-3-t fig70-3-d">
   <title id="fig70-3-t">One public file, cached once per app</title>
@@ -414,8 +414,8 @@ cross-site scripting, third.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The policy is Chapter 68; the architecture it obstructs, and the confused
-deputy problem, Chapter 54; combining data sources, Chapters 51 and 53.
+The policy is <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>; the architecture it obstructs, and the confused
+deputy problem, <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>; combining data sources, Chapters <a class="x-ref" href="51-linked-data-like-bag-chips.html">51</a> and <a class="x-ref" href="53-putting-government-data-web.html">53</a>.
 </p>
 </div>
 

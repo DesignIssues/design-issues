@@ -63,7 +63,7 @@ looking anything up.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 16 ended with a demand: free extension, but with an extension
+<a class="x-ref" href="16-evolvability.html">Chapter 16</a> ended with a demand: free extension, but with an extension
 mechanism that is itself well defined. This note, written with Dan Connolly
 in February 1998 and also issued as a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, sets that demand out as a
 list of requirements. The authors are careful about their standing:
@@ -76,7 +76,7 @@ W3C development.
 </blockquote>
 </div>
 
-<h2>17.1 What partial understanding looks like in life</h2>
+<h2 id="sec-17-1">17.1 What partial understanding looks like in life</h2>
 
 <h3>The old rule</h3>
 
@@ -96,7 +96,7 @@ what it meant or what ignoring it would do. Distributed object systems had
 the opposite profile.
 </p>
 
-<figure>
+<figure id="fig-17-1">
 <svg class="dia" viewBox="0 0 720 186" width="720" height="186" role="img"
      aria-labelledby="fig17-1-t fig17-1-d">
   <title id="fig17-1-t">Two ways of handling extension, and what the note wants</title>
@@ -144,7 +144,7 @@ The note asks for the strengths of both older approaches.</figcaption>
 The note&#8217;s example is an invoice for an aeroplane part.
 </p>
 
-<figure>
+<figure id="fig-17-2">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig17-2-t fig17-2-d">
   <title id="fig17-2-t">One document, several vocabularies, partial understanding</title>
@@ -220,7 +220,7 @@ A <em><a class="gl-ref" href="../glossary.html#namespace">namespace</a></em> is 
 URI is a <em>binding</em>.
 </p>
 
-<h2>17.2 A message is an expression, not a procedure call</h2>
+<h2 id="sec-17-2">17.2 A message is an expression, not a procedure call</h2>
 
 <p>
 A procedure call is one program asking another to run a single named
@@ -234,7 +234,7 @@ as the transmission of a expression in some language.
 <cite>Extensible languages, 1998</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-17-3">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig17-3-t fig17-3-d">
   <title id="fig17-3-t">A procedure call against an expression</title>
@@ -288,11 +288,11 @@ Nesting whole documents is not enough: names from two vocabularies must sit
 together in one expression. That is the first requirement.
 </p>
 
-<h2>17.3 The first four requirements</h2>
+<h2 id="sec-17-3">17.3 The first four requirements</h2>
 
 <p>
 The note sets out seven requirements; the three on schemas come in
-section 17.5. A vocabulary is <em>in scope</em> where its names may be used;
+<a class="x-ref" href="#sec-17-5">section 17.5</a>. A vocabulary is <em>in scope</em> where its names may be used;
 an <em>identifier</em> is a name.
 </p>
 
@@ -324,7 +324,7 @@ This is why <a class="gl-ref" href="../glossary.html#xml">XML</a> namespace pref
 being resolved by lookup.
 </p>
 
-<h2>17.4 Why local scope</h2>
+<h2 id="sec-17-4">17.4 Why local scope</h2>
 
 <p>
 <a class="gl-ref" href="../glossary.html#markup">Markup</a> wraps each piece of content in named tags,
@@ -366,7 +366,7 @@ processing, where each part is passed on as soon as it is produced.
 
 <h3>Long documents</h3>
 
-<figure>
+<figure id="fig-17-4">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig17-4-t fig17-4-d">
   <title id="fig17-4-t">Why bindings must be local</title>
@@ -426,7 +426,7 @@ When a name is bound close to where it is used, people editing by hand make
 far fewer mistakes.
 </p>
 
-<h2>17.5 What may be extended, and what may not</h2>
+<h2 id="sec-17-5">17.5 What may be extended, and what may not</h2>
 
 <p>
 The invoice supplies the remaining three requirements. Its designer wants
@@ -434,7 +434,7 @@ the item description open to any supplier&#8217;s part vocabulary, but the
 list of people allowed to sign closed: only Tom or Joe may sign.
 </p>
 
-<figure>
+<figure id="fig-17-5">
 <svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
      aria-labelledby="fig17-5-t fig17-5-d">
   <title id="fig17-5-t">An open slot and a closed slot in one schema</title>
@@ -496,7 +496,7 @@ scoped to the element that declares them: requirements two and three.</li>
 Schema 1.0 (W3C Recommendation, May 2001) lets a schema mark where foreign
 content may appear and, with <code>processContents="skip"</code> or
 <code>"lax"</code>, be passed over without its schema. SOAP 1.1 (2000) added
-the converse, a <code>mustUnderstand</code> flag, which is Chapter 18&#8217;s
+the converse, a <code>mustUnderstand</code> flag, which is <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a>&#8217;s
 concern.</li>
 <li><strong>The concatenation goal was not met.</strong> Joining two XML
 documents still yields a document with two roots, which is not well formed
@@ -507,10 +507,10 @@ documents still yields a document with two roots, which is not well formed
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter specifies the demand made at the end of Chapter 16. The
-mandatory flag it stops short of is Chapter 18; what a mixed document means
-is Chapter 24; decentralised extensibility is argued over in Chapter 23; the
-<a class="gl-ref" href="../glossary.html#metadata">metadata</a> architecture is Chapter 27.
+This chapter specifies the demand made at the end of <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The
+mandatory flag it stops short of is <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a>; what a mixed document means
+is <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>; decentralised extensibility is argued over in <a class="x-ref" href="23-html-xml.html">Chapter 23</a>; the
+<a class="gl-ref" href="../glossary.html#metadata">metadata</a> architecture is <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>.
 </p>
 </div>
 
@@ -523,9 +523,9 @@ same-scope requirement. Give a markup example where nesting fails.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.2</span>
-Section 17.4 argues that global bindings make resource use rise as the square
+<a class="x-ref" href="#sec-17-4">Section 17.4</a> argues that global bindings make resource use rise as the square
 of document length. Reconstruct that argument, stating the assumption about
-how bindings are retained. Use Figure 17.4.</p>
+how bindings are retained. Use <a class="x-ref" href="#fig-17-4">Figure 17.4</a>.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.3</span>

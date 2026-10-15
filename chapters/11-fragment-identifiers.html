@@ -65,7 +65,7 @@ formats, the link can quietly stop working.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 4 established that the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> stays on the client and
+<a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> established that the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> stays on the client and
 that access specifications and fragment specifications are independent. This
 note, written in April 1997, asks who decides what a fragment means, and what
 that decision makes possible.
@@ -86,7 +86,7 @@ and things that are not documents at all.
 </p>
 </div>
 
-<h2>11.1 The axiom</h2>
+<h2 id="sec-11-1">11.1 The axiom</h2>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> The significance of the fragment identifier is a
@@ -104,11 +104,11 @@ the two terms mean the same thing.
 Two consequences follow. The fragment is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the part of the browser
 that fetches documents, which he calls the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine. And the server is not
 even given it: the fragment is applied after the response arrives, by
-whatever software handles the returned type (Figure 11.1). So the server
+whatever software handles the returned type (<a class="x-ref" href="#fig-11-1">Figure 11.1</a>). So the server
 cannot log which part of a page a reader was pointed to.
 </p>
 
-<figure>
+<figure id="fig-11-1">
 <svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig11-1-t fig11-1-d">
   <title id="fig11-1-t">What happens to the fragment when a link is followed</title>
@@ -158,7 +158,7 @@ The server never sees the fragment. Only the software chosen for the returned
 type interprets it, which is why its meaning belongs to the media type.</figcaption>
 </figure>
 
-<h2>11.2 The invitation to invent</h2>
+<h2 id="sec-11-2">11.2 The invitation to invent</h2>
 
 <p>
 Most of the note is about what the axiom permits:
@@ -188,10 +188,10 @@ Most of the list has since been built, though not always as he imagined:
 </table>
 
 <p>
-Figure 11.2 shows how the same <code>#name</code> reads under four types today.
+<a class="x-ref" href="#fig-11-2">Figure 11.2</a> shows how the same <code>#name</code> reads under four types today.
 </p>
 
-<figure>
+<figure id="fig-11-2">
 <svg class="dia" viewBox="0 0 720 244" width="720" height="244" role="img"
      aria-labelledby="fig11-2-t fig11-2-d">
   <title id="fig11-2-t">One syntax, one meaning per media type</title>
@@ -248,10 +248,10 @@ registration process.
 <cite>URI References: Fragment Identifiers on URIs, 1997</cite>
 </blockquote>
 
-<h2>11.3 Why RDF namespaces end in a hash</h2>
+<h2 id="sec-11-3">11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-This is the argument Chapter 7 would restate at length five years later. A
+This is the argument <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> would restate at length five years later. A
 fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document (RDF: a format for machine-readable statements
 about things) identifies not a part of the document but
 whatever thing the document describes under that name. Why must it be a
@@ -285,23 +285,23 @@ identifiers. This, in turn, means that RDF namespaces should end with
 </blockquote>
 
 <p>
-This <a class="gl-ref" href="../glossary.html#inference">inference</a> is what the resolution of Chapter 8 overturned. The 2005
+This <a class="gl-ref" href="../glossary.html#inference">inference</a> is what the resolution of <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> overturned. The 2005
 compromise denies step 2: a client may conclude that a hashless <a class="gl-ref" href="../glossary.html#uri">URI</a> names a
 document only from a successful response, not from the protocol alone. A
 server may answer a request for <code>&#8230;/alice</code> with 303 See Other,
 pointing to a document about her.
 </p>
 
-<h2>11.4 The bug he recorded and did not fix</h2>
+<h2 id="sec-11-4">11.4 The bug he recorded and did not fix</h2>
 
 <p>
 The note flags one unresolved defect as a known bug. It concerns content
 negotiation: a server may hold one document in several formats and pick one
 per request. If the formats do not share a fragment <a class="gl-ref" href="../glossary.html#specification">specification</a>, a fragment
-valid in one may be meaningless in the other, as Figure 11.3 shows.
+valid in one may be meaningless in the other, as <a class="x-ref" href="#fig-11-3">Figure 11.3</a> shows.
 </p>
 
-<figure>
+<figure id="fig-11-3">
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
      aria-labelledby="fig11-3-t fig11-3-d">
   <title id="fig11-3-t">The known bug: one link, two formats</title>
@@ -348,7 +348,7 @@ could let server and client negotiate an equivalent fragment.
 None of these was adopted for the Web. The fragment is still not sent.
 </p>
 
-<h2>11.5 Two kinds of bookmark</h2>
+<h2 id="sec-11-5">11.5 Two kinds of bookmark</h2>
 
 <p>
 A closing section raises a user-interface consequence. Many addresses are
@@ -381,8 +381,8 @@ shipped in Chrome in 2020: the HTML range proposal arriving twenty-three years
 late, by quoted words rather than by position in the element tree. Line and
 character ranges for plain text came with RFC 5147 in April 2008.</li>
 <li><strong>The hash-only rule for vocabularies did not hold.</strong> The
-resolution of June 2005, described in Chapter 8, permitted hashless URIs for
-things, which is the practice section 11.3 argues against.</li>
+resolution of June 2005, described in <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>, permitted hashless URIs for
+things, which is the practice <a class="x-ref" href="#sec-11-3">section 11.3</a> argues against.</li>
 <li><strong>The known bug is still open.</strong> Fragments are still not sent
 to the server, and negotiation across types with incompatible fragment
 schemes still silently degrades to the whole document.</li>
@@ -392,11 +392,11 @@ schemes still silently degrades to the whole document.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The module boundary that makes this axiom enforceable is Chapter 4. The
-genericity that creates the known bug is Chapter 10. The argument of
-section 11.3 is developed at length in Chapter 7 and overturned in Chapter 8.
-The globalising role of the hash is stated most compactly in Chapter 9 and
-applied in Chapter 26.
+The module boundary that makes this axiom enforceable is <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. The
+genericity that creates the known bug is <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>. The argument of
+<a class="x-ref" href="#sec-11-3">section 11.3</a> is developed at length in <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> and overturned in <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>.
+The globalising role of the hash is stated most compactly in <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> and
+applied in <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>.
 </p>
 </div>
 
@@ -409,7 +409,7 @@ cannot do because it never sees the fragment.</p>
 </div>
 <div class="question">
 <p><span class="question-number">11.2</span>
-Section 11.3 argues that a hashless HTTP URI necessarily names a document,
+<a class="x-ref" href="#sec-11-3">Section 11.3</a> argues that a hashless HTTP URI necessarily names a document,
 even when no server runs. Reconstruct that argument, then say precisely which
 step the 2005 resolution denies.</p>
 </div>

@@ -74,11 +74,11 @@ system you are talking about.
 </blockquote>
 <p>
 Claiming no expertise, Berners-Lee separates the things one word names, as
-in Chapter 25.
+in <a class="x-ref" href="25-many-meanings-open.html">Chapter 25</a>.
 </p>
 </div>
 
-<h2>81.1 Four things in one system</h2>
+<h2 id="sec-81-1">81.1 Four things in one system</h2>
 
 <p>
 The ledger is a list of records in blocks, each linked to the one before;
@@ -88,7 +88,7 @@ system announced four things, and a cloud of further ideas. Notarising puts a
 data changes at all, proving the data existed by that date.
 </p>
 
-<figure>
+<figure id="fig-81-1">
 <svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
      aria-labelledby="fig81-1-t fig81-1-d">
   <title id="fig81-1-t">What was announced, and how each part touches the Web</title>
@@ -122,10 +122,10 @@ place.</figcaption>
 
 <p>
 The parts depend on each other: the ledger cannot be taken without the
-currency (Figure 81.2).
+currency (<a class="x-ref" href="#fig-81-2">Figure 81.2</a>).
 </p>
 
-<figure>
+<figure id="fig-81-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig81-2-t fig81-2-d">
   <title id="fig81-2-t">The mining loop that keeps the ledger running</title>
@@ -180,7 +180,7 @@ the market stops paying for the electricity, the chain takes the dashed
 exit.</figcaption>
 </figure>
 
-<h2>81.2 Two ironies</h2>
+<h2 id="sec-81-2">81.2 Two ironies</h2>
 
 <p>
 The first concerns openness:
@@ -201,7 +201,7 @@ value runs, by design, on &ldquo;burning huge amounts of energy, which is not ec
 sustainable.&rdquo;
 </p>
 
-<h2>81.3 The warning about encrypting in public</h2>
+<h2 id="sec-81-3">81.3 The warning about encrypting in public</h2>
 
 <p>
 One point applies far beyond this subject:
@@ -222,7 +222,7 @@ people can&#8217;t decrypt they see that you have put something there, which
 may already be revealing.&rdquo;
 </p>
 
-<h2>81.4 Speculation, and an old chart</h2>
+<h2 id="sec-81-4">81.4 Speculation, and an old chart</h2>
 
 <p>
 On value, the note is unsentimental:
@@ -250,12 +250,12 @@ blockchain operating and ensure its integrity.
 </blockquote>
 
 <p>
-This is the loop of Figure 81.2, and nothing guarantees anyone will pay what
+This is the loop of <a class="x-ref" href="#fig-81-2">Figure 81.2</a>, and nothing guarantees anyone will pay what
 each new coin costs in energy. The remitter, by contrast, risks only a sharp
 move in the price during the minute the coins are held.
 </p>
 
-<h2>81.5 Re-centralisation through portals</h2>
+<h2 id="sec-81-5">81.5 Re-centralisation through portals</h2>
 
 <p>
 If an application reaches the chain through an online service, so that the
@@ -264,14 +264,14 @@ computer, the system is not decentralised in effect: &ldquo;The monopoly
 portals are back in control.&rdquo;
 </p>
 
-<h2>81.6 What stored data depends on</h2>
+<h2 id="sec-81-6">81.6 What stored data depends on</h2>
 
 <p>
 On a blockchain everybody stores everything; on the Web each site stores its
-own. Either way, something must keep working (Figure 81.3).
+own. Either way, something must keep working (<a class="x-ref" href="#fig-81-3">Figure 81.3</a>).
 </p>
 
-<figure>
+<figure id="fig-81-3">
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
      aria-labelledby="fig81-3-t fig81-3-d">
   <title id="fig81-3-t">What keeps stored data available, on the Web and on a blockchain</title>
@@ -307,14 +307,14 @@ learned when it closed. Without miners, a chain has no new blocks and nobody
 checks the old ones.
 </p>
 
-<h2>81.7 Too slow, too expensive, too public</h2>
+<h2 id="sec-81-7">81.7 Too slow, too expensive, too public</h2>
 
 <p>
 One chain for everyone is one club with one fee and speed; gamers, retailers
 and banks would soon each want their own.
 </p>
 
-<figure>
+<figure id="fig-81-4">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig81-4-t fig81-4-d">
   <title id="fig81-4-t">One club against many independent sites</title>
@@ -377,17 +377,17 @@ too slow, too expensive, and too public.
 <cite>Blockchain and the Web, 2017</cite>
 </blockquote>
 
-<h2>81.8 Doing it with the Web instead</h2>
+<h2 id="sec-81-8">81.8 Doing it with the Web instead</h2>
 
 <p>
 A page on a trusted party&#8217;s site can be the <em>head</em> of a
 ledger, recording the latest entry. Signed documents can be chained, each
-citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash the ones it depends on, as in Chapter 62 (Figure
+citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash the ones it depends on, as in <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a> (Figure
 81.5). Version-control systems such as git already fill the Web with hash
 trees, naming each version of a set of files by a hash of its contents.
 </p>
 
-<figure>
+<figure id="fig-81-5">
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig81-5-t fig81-5-d">
   <title id="fig81-5-t">A chain of signed documents on the Web</title>
@@ -440,7 +440,7 @@ by their hashes.
 <p>
 The weak point is the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>. Without one, people&#8217;s data sits
 under their provider&#8217;s name, tying them to it; anything that helps people
-get a domain, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (Chapter 54), helps.
+get a domain, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), helps.
 </p>
 
 <div class="since">
@@ -451,25 +451,25 @@ Ethereum replaced mining with staking in September 2022, cutting its
 consumption by around 99 per cent; Bitcoin did not.</li>
 <li><strong>The note&#8217;s own update tested the loop.</strong> It links a
 CryptoSlate report of 12 December 2022 that a bitcoin cost less than mining
-one: the dashed exit of Figure 81.2.</li>
+one: the dashed exit of <a class="x-ref" href="#fig-81-2">Figure 81.2</a>.</li>
 <li><strong>Identity was standardised without a blockchain.</strong>
-Decentralised identifiers, the identity part of Figure 81.1, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+Decentralised identifiers, the identity part of <a class="x-ref" href="#fig-81-1">Figure 81.1</a>, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in July 2022.</li>
 <li><strong>Payments arrived in the browser, generically.</strong> Payment
 Request became a Recommendation in September 2022: the note&#8217;s modular
 slot, favouring no currency.</li>
-<li><strong>The speculation chart kept swinging.</strong> The price rose far
-beyond 2017 levels, then lost more than three-quarters of its value in both
-2018 and 2022.</li>
+<li><strong>The speculation chart kept swinging.</strong> The price fell by
+more than three-quarters from its December 2017 peak by late 2018, rose far
+beyond that peak, then fell by more than three-quarters again by late 2022.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Naming and its authority: Chapters 3 and 79. Identity by key: Chapter 69.
-Notarising a state: Chapter 62. Endorsing by checksum: Chapter 46. Personal
-data stores: Chapter 54.
+Naming and its authority: Chapters <a class="x-ref" href="03-myth-names-addresses.html">3</a> and <a class="x-ref" href="79-new-top-level-domains-mobi.html">79</a>. Identity by key: <a class="x-ref" href="69-client-side-certificates.html">Chapter 69</a>.
+Notarising a state: <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>. Endorsing by checksum: <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. Personal
+data stores: <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>.
 </p>
 </div>
 

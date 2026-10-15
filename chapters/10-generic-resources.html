@@ -77,12 +77,12 @@ designs to use URIs and HTTP properly.
 <p>
 The question is what a <a class="gl-ref" href="../glossary.html#uri">URI</a> identifies when the thing identified has no one
 fixed sequence of bits. The answer supplies the notion of
-&ldquo;document&rdquo; that Chapter 7 depends on, and was the thinking behind
+&ldquo;document&rdquo; that <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> depends on, and was the thinking behind
 <a class="gl-ref" href="../glossary.html#http">HTTP</a> content negotiation in 1992.
 </p>
 </div>
 
-<h2>10.1 A ladder, not a pair</h2>
+<h2 id="sec-10-1">10.1 A ladder, not a pair</h2>
 
 <p>
 A resource may correspond to exactly one bit stream (one exact sequence of
@@ -90,10 +90,10 @@ bytes). The text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RF
 checksum, a fingerprint computed from the bytes that changes if a single byte
 changes. Or a resource may be generic: well specified as a concept but not
 closely enough to fix the bits. The note
-refuses to make this binary; Figure 10.1 shows its ladder.
+refuses to make this binary; <a class="x-ref" href="#fig-10-1">Figure 10.1</a> shows its ladder.
 </p>
 
-<figure>
+<figure id="fig-10-1">
 <svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
      aria-labelledby="fig10-1-t fig10-1-d">
   <title id="fig10-1-t">The ladder of genericity</title>
@@ -149,7 +149,7 @@ determines to what extent that resource is generic or specific.
 </blockquote>
 
 <p>
-This is Chapter 2&#8217;s identity axiom (whoever owns a URI decides what it
+This is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s identity axiom (whoever owns a URI decides what it
 means): &ldquo;how much may this URI&#8217;s content vary?&rdquo; is always
 answered by the publisher. Nor is it a design decision:
 </p>
@@ -170,10 +170,10 @@ A browser&#8217;s request
 carries headers, labelled lines of information; <code>Accept-Language</code>
 names the reader&#8217;s languages and <code>Accept</code> the formats it can
 display. The server picks the best-fitting form and says which it chose
-(Figure 10.2). This is content negotiation.
+(<a class="x-ref" href="#fig-10-2">Figure 10.2</a>). This is content negotiation.
 </p>
 
-<figure>
+<figure id="fig-10-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig10-2-t fig10-2-d">
   <title id="fig10-2-t">Content negotiation in action</title>
@@ -220,14 +220,14 @@ already decided that all three are acceptable for this URI. (The address
 <code>/report</code> is an invented example.)</figcaption>
 </figure>
 
-<h2>10.2 Four dimensions</h2>
+<h2 id="sec-10-2">10.2 Four dimensions</h2>
 
 <p>
 The note claims that genericity runs along a small number of axes, and that
 the smallness matters.
 </p>
 
-<figure>
+<figure id="fig-10-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig10-3-t fig10-3-d">
   <title id="fig10-3-t">The four dimensions of genericity</title>
@@ -296,7 +296,7 @@ setting is the interface; the <code>Accept-Language</code> <a class="gl-ref" hre
 the architecture.
 </p>
 
-<h2>10.3 Derivation is not genericity</h2>
+<h2 id="sec-10-3">10.3 Derivation is not genericity</h2>
 
 <p>
 A specific version may derive from one source, several, or unrelated ones.
@@ -307,7 +307,7 @@ its URI: that is genericity. The chain Russian, English, French is history:
 that is derivation.
 </p>
 
-<figure>
+<figure id="fig-10-4">
 <svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
      aria-labelledby="fig10-4-t fig10-4-d">
   <title id="fig10-4-t">Genericity and derivation are different relations</title>
@@ -359,7 +359,7 @@ system that records the French as a version <em>of the English</em> may send
 the French when the English is asked for.
 </p>
 
-<h2>10.4 Saying it in metadata</h2>
+<h2 id="sec-10-4">10.4 Saying it in metadata</h2>
 
 <p>
 The rest of the note is proposals, useful mainly as a record. Two statements
@@ -420,7 +420,7 @@ note asked for.</li>
 <li><strong>Negotiation lost ground to distinct URIs.</strong> Publishers
 largely gave each language and format its own address, with
 <code>rel="alternate"</code> links between them, because separate URIs can be
-linked to, indexed and cached. That is the ladder of section 10.1 made
+linked to, indexed and cached. That is the ladder of <a class="x-ref" href="#sec-10-1">section 10.1</a> made
 explicit rather than negotiated.</li>
 <li><strong>The genericity ontology was not widely adopted.</strong> Its
 distinctions are now usually made informally, or not at all.</li>
@@ -431,11 +431,11 @@ distinctions are now usually made informally, or not at all.</li>
 <h3>Connections</h3>
 <p>
 This chapter supplies the sense of &ldquo;document&rdquo; used throughout
-Chapter 7 and referred to in Chapter 13. The <code>vary=</code> header is a statement about how stable a URI is, which
-recalls the quality-of-service <a class="gl-ref" href="../glossary.html#metadata">metadata</a> of Chapter 3&#8217;s closing
+<a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> and referred to in <a class="x-ref" href="13-persistent-domains.html">Chapter 13</a>. The <code>vary=</code> header is a statement about how stable a URI is, which
+recalls the quality-of-service <a class="gl-ref" href="../glossary.html#metadata">metadata</a> of <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s closing
 recommendation. The interaction between
-genericity and fragment identifiers is the known bug recorded in Chapter 11.
-The metadata architecture these proposals assume is Chapter 27.
+genericity and fragment identifiers is the known bug recorded in <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>.
+The metadata architecture these proposals assume is <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>.
 </p>
 </div>
 
@@ -455,7 +455,7 @@ sharing a link to the French version.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">10.3</span>
-A URI is <code>Fixed</code> in the sense of section 10.4. What does that
+A URI is <code>Fixed</code> in the sense of <a class="x-ref" href="#sec-10-4">section 10.4</a>. What does that
 commit the publisher to? Could a cache keep its copy forever? Why?</p>
 </div>
 <div class="question">

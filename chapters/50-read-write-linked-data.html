@@ -62,7 +62,7 @@ document ready to fill.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 49 said how to publish data so others can read it. This note, whose
+<a class="x-ref" href="49-linked-data.html">Chapter 49</a> said how to publish data so others can read it. This note, whose
 status line reads &ldquo;Not finished at all&rdquo;, asks how they write it
 back. The goal is stated at the outset and is larger than the protocol:
 </p>
@@ -85,7 +85,7 @@ elsewhere, in <cite>Weaving the Web</cite> and on the Read-Write Web blog.
 </p>
 </div>
 
-<h2>50.1 The maxim</h2>
+<h2 id="sec-50-1">50.1 The maxim</h2>
 
 <p>
 The motivation is given as a principle about where editing should happen:
@@ -105,7 +105,7 @@ Web was built as a collaborative space. Berners-Lee&#8217;s word for the
 ambition is intercreative, which he marks, in jest, with a trademark sign.
 </p>
 
-<h2>50.2 Two ways to write</h2>
+<h2 id="sec-50-2">50.2 Two ways to write</h2>
 
 <p>
 Linked data lives in documents, each with an address (a <a class="gl-ref" href="../glossary.html#uri">URI</a>). A document
@@ -117,10 +117,10 @@ which several people edit at once.
 <p>
 There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh copy of
 the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a> saying the
-age is 65, add one saying 66. Figure 50.1 shows what goes wrong with PUT.
+age is 65, add one saying 66. <a class="x-ref" href="#fig-50-1">Figure 50.1</a> shows what goes wrong with PUT.
 </p>
 
-<figure>
+<figure id="fig-50-1">
 <svg class="dia" viewBox="0 0 720 376" width="720" height="376" role="img"
      aria-labelledby="fig50-1-t fig50-1-d">
   <title id="fig50-1-t">How a whole-document write loses an edit</title>
@@ -201,10 +201,10 @@ sequential numbers, and so on.
 
 <p>
 Atomic means the delete and the insert happen together or not at all. Mutual
-exclusion means only one party can win. Figure 50.2 shows both uses.
+exclusion means only one party can win. <a class="x-ref" href="#fig-50-2">Figure 50.2</a> shows both uses.
 </p>
 
-<figure>
+<figure id="fig-50-2">
 <svg class="dia" viewBox="0 0 720 396" width="720" height="396" role="img"
      aria-labelledby="fig50-2-t fig50-2-d">
   <title id="fig50-2-t">The patch that fails, and the reservation it makes possible</title>
@@ -262,7 +262,7 @@ changed the world, and the same failure guarantees that exactly one client
 books the room.</figcaption>
 </figure>
 
-<h2>50.3 The data wiki, and the empty document</h2>
+<h2 id="sec-50-3">50.3 The data wiki, and the empty document</h2>
 
 <p>
 One extra rule turns the protocol into a writable space, and it is a single
@@ -292,7 +292,7 @@ mistyped address silently becomes a new document, and a crawler cannot tell a
 real page from an empty one.
 </p>
 
-<h2>50.4 The header with a history</h2>
+<h2 id="sec-50-4">50.4 The header with a history</h2>
 
 <p>
 Every HTTP reply begins with <a class="gl-ref" href="../glossary.html#header">header</a> lines: labelled notes the client reads
@@ -324,7 +324,7 @@ as the code in use changed to track the <a class="gl-ref" href="../glossary.html
 liberal server, it adds, accepts both types.
 </p>
 
-<h2>50.5 What is deliberately left out</h2>
+<h2 id="sec-50-5">50.5 What is deliberately left out</h2>
 
 <p>
 The note names its own boundaries twice, and both exclusions matter. It does
@@ -341,7 +341,7 @@ access control.
 </blockquote>
 
 <p>
-That extension is Chapter 54. The order is writing first, then who may
+That extension is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. The order is writing first, then who may
 write: the shared calendar starts as a page anyone may add an entry to, and
 restrictions are layered on afterwards.
 </p>
@@ -366,10 +366,10 @@ anticipated such a patch language.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The readable half is Chapter 49, and the access control this note defers is
-Chapter 54. The patch format and its weak and strong forms are Chapter 45, and
-the live notification of changes is Chapter 58. The axiom that a URI must not
-name the result of a changing operation is Chapter 2.
+The readable half is <a class="x-ref" href="49-linked-data.html">Chapter 49</a>, and the access control this note defers is
+<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. The patch format and its weak and strong forms are <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>, and
+the live notification of changes is <a class="x-ref" href="58-live-data.html">Chapter 58</a>. The axiom that a URI must not
+name the result of a changing operation is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>.
 </p>
 </div>
 

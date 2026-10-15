@@ -85,7 +85,7 @@ technique, and this note is the attempt to give it one.
 </p>
 </div>
 
-<h2>16.1 The old rule, and what it bought</h2>
+<h2 id="sec-16-1">16.1 The old rule, and what it bought</h2>
 
 <p>
 The Web inherited one rule from Internet mail. A mail <a class="gl-ref" href="../glossary.html#header">header</a> is one of the
@@ -117,7 +117,7 @@ The last clause matters most. Nothing can be marked as having to be
 understood, so no feature can ever be relied upon.
 </p>
 
-<h2>16.2 The HTML cycle</h2>
+<h2 id="sec-16-2">16.2 The HTML cycle</h2>
 
 <p>
 The note&#8217;s best passage is an account of how HTML actually grew between
@@ -128,7 +128,7 @@ tension between wanting to beat a competitor and needing to interoperate with
 one.
 </p>
 
-<figure>
+<figure id="fig-16-1">
 <svg class="dia" viewBox="0 0 720 442" width="720" height="442" role="img"
      aria-labelledby="fig16-1-t fig16-1-d">
   <title id="fig16-1-t">The HTML cycle, 1994 to 1998</title>
@@ -191,14 +191,14 @@ one bigger document could continue.</figcaption>
 </figure>
 
 <p>
-The worked example is the table tag (step 3 of Figure 16.1). Rival browsers
+The worked example is the table tag (step 3 of <a class="x-ref" href="#fig-16-1">Figure 16.1</a>). Rival browsers
 had each added tables their own way, so a browser meeting
 <code>&lt;table&gt;</code> could not tell which the author meant. And if the
 table mattered, the <a class="gl-ref" href="../glossary.html#server">server</a> never learned whether it had been handled, since a
 browser that did not know the tag silently ignored it.
 </p>
 
-<h2>16.3 The other extreme, and why it also fails</h2>
+<h2 id="sec-16-3">16.3 The other extreme, and why it also fails</h2>
 
 <p>
 The note then looks at distributed object systems, such as remote procedure
@@ -224,7 +224,7 @@ language which is itself well defined.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-16-2">
 <svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
      aria-labelledby="fig16-2-t fig16-2-d">
   <title id="fig16-2-t">Three ways to extend a language</title>
@@ -284,11 +284,11 @@ second. The example in it is the note&#8217;s own.</figcaption>
 
 <p>
 That sentence is the design brief for <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces, a way of labelling each
-set of tags with the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> it comes from. Chapter 17 is the
+set of tags with the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> it comes from. <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> is the
 <a class="gl-ref" href="../glossary.html#specification">specification</a> of it.
 </p>
 
-<h2>16.4 Partial understanding</h2>
+<h2 id="sec-16-4">16.4 Partial understanding</h2>
 
 <p>
 The note&#8217;s test case is an invoice. Most of it follows a well-known
@@ -299,7 +299,7 @@ that part &ldquo;optional&rdquo;, fails because optionality depends on who is
 reading.
 </p>
 
-<figure>
+<figure id="fig-16-3">
 <svg class="dia" viewBox="0 0 720 288" width="720" height="288" role="img"
      aria-labelledby="fig16-3-t fig16-3-d">
   <title id="fig16-3-t">One invoice, two readers</title>
@@ -355,14 +355,14 @@ illustrative.)</figcaption>
 
 <p>
 The precise version, then, is a transformation. The invoice system in
-Figure 16.3 does exactly this: it deletes the part description and is left
+<a class="x-ref" href="#fig-16-3">Figure 16.3</a> does exactly this: it deletes the part description and is left
 with a valid invoice. That deletion is the transformation.
 </p>
 
 <p>
 The rules for such a conversion could be written in anything from the
 crudest language to one that is Turing complete, able to express any
-computation. Berners-Lee applies the rule from Chapter 1:
+computation. Berners-Lee applies the rule from <a class="x-ref" href="01-principles-design.html">Chapter 1</a>:
 </p>
 
 <blockquote>
@@ -373,14 +373,14 @@ When expressing something, use the least powerful language you can.
 <p>
 His smallest case is a one-line rule that says, in effect, <em>delete this
 part</em>. If the rule is allowed, the deleted part was optional. The section
-then breaks off, marked &ldquo;to be continued&rdquo;; section 16.7 takes the
+then breaks off, marked &ldquo;to be continued&rdquo;; <a class="x-ref" href="#sec-16-7">section 16.7</a> takes the
 idea up.
 </p>
 
-<h2>16.5 The test of independent invention</h2>
+<h2 id="sec-16-5">16.5 The test of independent invention</h2>
 
 <p>
-Chapter 1 introduced this thought experiment in one line; here it gets its
+<a class="x-ref" href="01-principles-design.html">Chapter 1</a> introduced this thought experiment in one line; here it gets its
 full form.
 </p>
 
@@ -398,7 +398,7 @@ of every character code, put red buoys on the other side of the channel, and
 use a different number of lines on their television screens. Then the two systems meet.
 </p>
 
-<figure>
+<figure id="fig-16-4">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig16-4-t fig16-4-d">
   <title id="fig16-4-t">The Web meets the Mesh</title>
@@ -456,9 +456,9 @@ to convert.</figcaption>
 </figure>
 
 <p>
-The Web survives the meeting because of the third axiom of Chapter 2:
+The Web survives the meeting because of the third axiom of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>:
 URI space is universal but need not be unique, so the rival space can be
-folded in, as the foot of Figure 16.4 shows.
+folded in, as the foot of <a class="x-ref" href="#fig-16-4">Figure 16.4</a> shows.
 </p>
 
 <p>
@@ -484,7 +484,7 @@ happening all the time.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
-<h2>16.6 Two assumptions</h2>
+<h2 id="sec-16-6">16.6 Two assumptions</h2>
 
 <p>
 Midway, the note derives its requirements from two premises. The first is that we will be smarter in the future. Today that
@@ -511,7 +511,7 @@ too, and will independently invent the same things.
 Humility, here, is a technical requirement.
 </p>
 
-<h2>16.7 Six kinds of schema</h2>
+<h2 id="sec-16-7">16.7 Six kinds of schema</h2>
 
 <p>
 The second half of the note turns to schemas. A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the document that
@@ -519,7 +519,7 @@ describes a language; an XML document points to its schema by URI. The note
 ranks six kinds by how much a machine can do with them.
 </p>
 
-<figure>
+<figure id="fig-16-5">
 <svg class="dia" viewBox="0 0 720 334" width="720" height="334" role="img"
      aria-labelledby="fig16-5-t fig16-5-d">
   <title id="fig16-5-t">The schema ladder</title>
@@ -571,7 +571,7 @@ schema of a new version, which elements may be ignored.</figcaption>
 Even the bottom step lets software check whether it knows the language, which
 is all most RPC systems do. The second matters more than it looks: in the
 end, the note argues, what a document commits to must be defined in
-human-readable legal language. The fourth is the one section 16.4 was waiting for:
+human-readable legal language. The fourth is the one <a class="x-ref" href="#sec-16-4">section 16.4</a> was waiting for:
 </p>
 
 <blockquote>
@@ -597,12 +597,12 @@ the programme of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> and the <
 <li><strong>The mechanism shipped and was then declined.</strong> XML
 Namespaces became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in January 1999. HTML5, whose first
 Recommendation came in October 2014, does not use them, which is the fork
-described in Chapter 23.</li>
+described in <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.</li>
 <li><strong>Partial understanding was solved by other means.</strong>
 Versioned wire formats such as Protocol Buffers, first released publicly in
 July 2008, make forward compatibility a property of the encoding: unknown fields
 are kept rather than merely ignored (proto3 at first discarded them, until
-version 3.5 in 2017). That is closer to what section 16.4 asked for than
+version 3.5 in 2017). That is closer to what <a class="x-ref" href="#sec-16-4">section 16.4</a> asked for than
 anything the Web adopted.</li>
 <li><strong>The cycle did not stop.</strong> Vendor-prefixed CSS properties
 through the late 2000s reproduced it exactly. Browser makers then moved away
@@ -615,10 +615,10 @@ Chrome&#8217;s Blink engine adopted that policy at its launch in 2013.</li>
 <h3>Connections</h3>
 <p>
 The test of independent invention and the principle of least power are both
-stated in Chapter 1, and the axiom that makes the Web pass the test is
-Chapter 2. The <a class="gl-ref" href="../glossary.html#namespace">namespace</a> requirements this note calls for are Chapter 17, and
-the mandatory flag it says is missing is Chapter 18. The fork that ended the
-namespace approach for HTML is Chapter 23.
+stated in <a class="x-ref" href="01-principles-design.html">Chapter 1</a>, and the axiom that makes the Web pass the test is
+<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. The <a class="gl-ref" href="../glossary.html#namespace">namespace</a> requirements this note calls for are <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>, and
+the mandatory flag it says is missing is <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a>. The fork that ended the
+namespace approach for HTML is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.
 </p>
 </div>
 
@@ -631,7 +631,7 @@ using the table tag example, and say what a publisher can never learn.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.2</span>
-Section 16.4 rejects &ldquo;optional&rdquo; as subjective and replaces it with
+<a class="x-ref" href="#sec-16-4">Section 16.4</a> rejects &ldquo;optional&rdquo; as subjective and replaces it with
 a transformation. Give one document and two processors for which different
 parts are dispensable.</p>
 </div>
@@ -649,8 +649,8 @@ Web?</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.5</span>
-In Figure 16.3, which part of the invoice is optional? Explain why the answer
-depends on who is asking, and what step 4 of Figure 16.5 would add.</p>
+In <a class="x-ref" href="#fig-16-3">Figure 16.3</a>, which part of the invoice is optional? Explain why the answer
+depends on who is asking, and what step 4 of <a class="x-ref" href="#fig-16-5">Figure 16.5</a> would add.</p>
 </div>
 </details>
 

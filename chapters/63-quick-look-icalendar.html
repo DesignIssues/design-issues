@@ -89,7 +89,7 @@ RDF: the structure was already there.
 </p>
 </div>
 
-<h2>63.1 Look for the structure that is already present</h2>
+<h2 id="sec-63-1">63.1 Look for the structure that is already present</h2>
 
 <h3>What an iCalendar line looks like</h3>
 
@@ -114,7 +114,7 @@ adds that the invitation came (was delegated) from b@y.com and has been
 passed on to a@y.com.
 </p>
 
-<figure>
+<figure id="fig-63-1">
 <svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
      aria-labelledby="fig63-1-t fig63-1-d">
   <title id="fig63-1-t">One line, taken apart, then read as a graph</title>
@@ -184,7 +184,7 @@ one looks at first for the natural structureo fthe language.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-63-2">
 <svg class="dia" viewBox="0 24 720 176" width="720" height="176" role="img"
      aria-labelledby="fig63-2-t fig63-2-d">
   <title id="fig63-2-t">A calendar format read as a graph</title>
@@ -238,7 +238,7 @@ holding its own attribute&ndash;value pairs: the whole model escaped into a
 field.
 </p>
 
-<h2>63.2 Five findings, each generalisable</h2>
+<h2 id="sec-63-2">63.2 Five findings, each generalisable</h2>
 
 <p>
 Each item in his summary is a failure mode that recurs elsewhere.
@@ -250,7 +250,7 @@ Each item in his summary is a failure mode that recurs elsewhere.
 <tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
 <tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
 <tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
-<tr><td>Encoding treated as a property of an object</td><td><code>ENCODING=BASE64</code></td><td>It relates two objects (Chapter 38)</td></tr>
+<tr><td>Encoding treated as a property of an object</td><td><code>ENCODING=BASE64</code></td><td>It relates two objects (<a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>)</td></tr>
 </table>
 
 <p>
@@ -273,7 +273,7 @@ clear from the spec but is assumed by the examples.
 <p>
 To <a class="gl-ref" href="../glossary.html#dereference">dereference</a> an address is to fetch what it names. A network request is
 triggered by a value&#8217;s type, visible only in an example: behaviour
-happens and nothing specifies it, the reverse of Chapter 21&#8217;s rule.
+happens and nothing specifies it, the reverse of <a class="x-ref" href="21-write-specification.html">Chapter 21</a>&#8217;s rule.
 </p>
 
 <p>
@@ -284,7 +284,7 @@ statement into a thing that can itself be described. The note calls
 string that carries it.
 </p>
 
-<figure>
+<figure id="fig-63-3">
 <svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
      aria-labelledby="fig63-3-t fig63-3-d">
   <title id="fig63-3-t">Wanton reification and encoding, before and after</title>
@@ -373,7 +373,7 @@ with a type label, and the encoding hangs off the attachment as if it were a
 fact about it. On the right, each is drawn as what it is: one arrow.</figcaption>
 </figure>
 
-<h2>63.3 The line that stops general parsing</h2>
+<h2 id="sec-63-3">63.3 The line that stops general parsing</h2>
 
 <p>
 One sentence of the specification draws the sharpest reaction. ABNF is the
@@ -407,11 +407,11 @@ problem which HTTP has in spades: One parser per page of the spec.
 
 <p>
 RFC 822, the 1982 email-header standard, gives each <a class="gl-ref" href="../glossary.html#header">header</a> its own syntax;
-Chapter 32 treats that as a symptom of a missing model. Here the defect
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> treats that as a symptom of a missing model. Here the defect
 reappears in a format designed sixteen years later.
 </p>
 
-<h2>63.4 The absence that worries him most</h2>
+<h2 id="sec-63-4">63.4 The absence that worries him most</h2>
 
 <p>
 The summary closes on something other than syntax:
@@ -427,7 +427,7 @@ But maybe that is elsewhere in the spec.
 <p>
 He was unsure, and the rules were in fact in a companion document. But the
 point stands: a format describing a meeting says nothing, by itself, about
-what sending one means. That is the gap Chapters 61 and 62 address, found in
+what sending one means. That is the gap Chapters <a class="x-ref" href="61-conversations-state.html">61</a> and <a class="x-ref" href="62-paper-trail----build-social.html">62</a> address, found in
 an application where everyone has felt the consequences.
 </p>
 
@@ -452,10 +452,10 @@ because of later work on RDF, iCalendar and vCard.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The method applied here is Chapter 26, and the model it maps onto is
-Chapter 32. Encoding as a relation rather than a property is Chapter 38, and
-the header problem it echoes is Chapter 32. The missing protocol definition is
-Chapters 61 and 62, and the calendar terms it produced are Chapter 48.
+The method applied here is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and the model it maps onto is
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. Encoding as a relation rather than a property is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>, and
+the header problem it echoes is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The missing protocol definition is
+Chapters <a class="x-ref" href="61-conversations-state.html">61</a> and <a class="x-ref" href="62-paper-trail----build-social.html">62</a>, and the calendar terms it produced are <a class="x-ref" href="48-my-top-ten-terms.html">Chapter 48</a>.
 </p>
 </div>
 
@@ -474,7 +474,7 @@ Where would a programmer learn that, and why is that a problem?</p>
 <div class="question">
 <p><span class="question-number">63.3</span>
 Rewrite <code>RELATED-TO;RELTYPE=PARENT</code> without reification, as in
-Figure 63.3.</p>
+<a class="x-ref" href="#fig-63-3">Figure 63.3</a>.</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.4</span>

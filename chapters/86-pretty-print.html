@@ -64,12 +64,12 @@ edit shows up as a one-line change in version control.
 Written in October 2023. &ldquo;Pretty printing&rdquo; is formatting code
 &ldquo;so that it is easy to read by humans, and aesthetically pleasing&rdquo;.
 The note asks how a program should lay out data in a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (the personal
-data store of Chapter 54), and argues that legibility pays off throughout the
+data store of <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), and argues that legibility pays off throughout the
 system, not just for readers.
 </p>
 </div>
 
-<h2>86.1 The view-source effect</h2>
+<h2 id="sec-86-1">86.1 The view-source effect</h2>
 
 <p>
 The first reason given connects this note to the whole history:
@@ -82,7 +82,7 @@ and adapting each others web pages is important linked data in Solid pods too.
 </blockquote>
 
 <p>
-Chapter 56 traced how the Web spread: copy, change, look, show someone.
+<a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a> traced how the Web spread: copy, change, look, show someone.
 Copying needs a source a stranger can read; a format legible only through a
 tool loses that step.
 </p>
@@ -105,7 +105,7 @@ across the net.
 <cite>Pretty Printing, 2023</cite>
 </blockquote>
 
-<h2>86.2 Small change, small difference</h2>
+<h2 id="sec-86-2">86.2 Small change, small difference</h2>
 
 <p>
 The part of a program that writes data out as text is its <em>serialiser</em>.
@@ -116,7 +116,7 @@ keep every past version of a file and show, as a <em>diff</em>, the lines that
 changed between two.
 </p>
 
-<figure>
+<figure id="fig-86-1">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig86-1-t fig86-1-d">
   <title id="fig86-1-t">One change to Joe&#8217;s age, as two serialisers report it</title>
@@ -163,7 +163,7 @@ difference lies in the serialiser, not the data.</figcaption>
 </figure>
 
 <p>
-The figure is in <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a text form common in pods (section 86.5 explains the
+The figure is in <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a text form common in pods (<a class="x-ref" href="#sec-86-5">section 86.5</a> explains the
 punctuation); read each line as &#8216;Joe &#8230; has &#8230;&#8217;. Pod
 data is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of <em>triples</em>, each <a class="gl-ref" href="../glossary.html#triple">triple</a> one statement: subject,
 property, value.
@@ -175,7 +175,7 @@ pretty-printed versions rather than raw triples, so a person can see why they
 differ.
 </p>
 
-<figure>
+<figure id="fig-86-2">
 <svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
      aria-labelledby="fig86-2-t fig86-2-d">
   <title id="fig86-2-t">Where a stable serialiser pays off</title>
@@ -228,7 +228,7 @@ differ.
 One property of the writer serves three readers, each named in the note.</figcaption>
 </figure>
 
-<h2>86.3 Writing, not only reading</h2>
+<h2 id="sec-86-3">86.3 Writing, not only reading</h2>
 
 <p>
 Formatting is usually discussed for the reader alone. The note goes further:
@@ -243,7 +243,7 @@ English like way also is more pleasant, and easier to check for mistakes.
 </blockquote>
 
 <p>
-This is the case for Chapter 42&#8217;s notation, made on grounds of comfort:
+This is the case for <a class="x-ref" href="42-notation3.html">Chapter 42</a>&#8217;s notation, made on grounds of comfort:
 a syntax close to a sentence is easier to get right by hand.
 </p>
 
@@ -258,7 +258,7 @@ A format readable in a chat window without tooling is one a team can
 discuss.
 </p>
 
-<h2>86.4 The argument in general</h2>
+<h2 id="sec-86-4">86.4 The argument in general</h2>
 
 <p>
 The note lists six benefits; the case does not rest on the first.
@@ -281,7 +281,7 @@ tabs&rdquo; are matters of taste; a developer whose output users see must guess
 their preferences, not impose his own.
 </p>
 
-<h2>86.5 What makes Turtle legible</h2>
+<h2 id="sec-86-5">86.5 What makes Turtle legible</h2>
 
 <p>
 Pod data is usually Turtle, JSON-LD, or <a class="gl-ref" href="../glossary.html#n3">N3</a> (a superset of Turtle). Turtle
@@ -299,7 +299,7 @@ should use:
 <tr><td>Raw number</td><td><code>"42"^^xsd:integer</code></td><td><code>42</code></td></tr>
 </table>
 
-<figure>
+<figure id="fig-86-3">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig86-3-t fig86-3-d">
   <title id="fig86-3-t">Four facts about Joe, without and with Turtle&#8217;s shorthands</title>
@@ -366,7 +366,7 @@ nest blank nodes in brackets instead of inventing <code>_:b1</code> labels. Of s
 <li><strong>A canonical form, but not a pretty one.</strong> <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Dataset
 Canonicalization (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, May 2024) writes any dataset as a
 deterministic list of lines for comparison and signing. That meets the first
-requirement of section 86.2, but is not meant for reading and does not promise
+requirement of <a class="x-ref" href="#sec-86-2">section 86.2</a>, but is not meant for reading and does not promise
 small diffs.</li>
 </ul>
 </div>
@@ -374,9 +374,9 @@ small diffs.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The view-source effect and the four steps are Chapter 56. The notation whose
-legibility is at stake is Chapter 42, and comparing two graphs is Chapter 45.
-The storage this data lives in is Chapter 54.
+The view-source effect and the four steps are <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>. The notation whose
+legibility is at stake is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and comparing two graphs is <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>.
+The storage this data lives in is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>.
 </p>
 </div>
 
@@ -400,7 +400,7 @@ you have written by hand.</p>
 <div class="question">
 <p><span class="question-number">86.4</span>
 When is shipping a binary format worth losing view-source? Which benefit in
-section 86.4 is given up?</p>
+<a class="x-ref" href="#sec-86-4">section 86.4</a> is given up?</p>
 </div>
 </details>
 

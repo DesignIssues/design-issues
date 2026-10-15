@@ -83,7 +83,7 @@ released as a record rather than as an intervention.
 </p>
 </div>
 
-<h2>23.1 The fork</h2>
+<h2 id="sec-23-1">23.1 The fork</h2>
 
 <p>
 Both languages descend from SGML, an older and more elaborate <a class="gl-ref" href="../glossary.html#markup">markup</a> standard;
@@ -99,7 +99,7 @@ The italic tag opens inside the bold one but closes outside it. An XML <a class=
 browser reading it as HTML shows bold italic text and moves on.
 </p>
 
-<figure>
+<figure id="fig-23-1">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig23-1-t fig23-1-d">
   <title id="fig23-1-t">Where HTML divided</title>
@@ -145,7 +145,7 @@ The boundary will never be clean: people embed HTML in feeds, and process
 the same graphics format with both kinds of engine.</figcaption>
 </figure>
 
-<h2>23.2 Two philosophies of extension</h2>
+<h2 id="sec-23-2">23.2 Two philosophies of extension</h2>
 
 <p>
 The note sets out to understand each branch&#8217;s motives, not to decide
@@ -167,7 +167,7 @@ central committee.
 <cite>HTML and XML, 2008</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-23-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig23-2-t fig23-2-d">
   <title id="fig23-2-t">Two ways to add a word</title>
@@ -244,7 +244,7 @@ them differently:
 </table>
 
 
-<h2>23.3 The robustness principle, reconsidered</h2>
+<h2 id="sec-23-3">23.3 The robustness principle, reconsidered</h2>
 
 <p>
 Since at least <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 793 (1981), Internet protocols have followed Jon Postel&#8217;s
@@ -276,7 +276,7 @@ The robustness principle assumes short-lived messages and a feedback loop
 between engineers. The Web has long-lived documents and no loop at all.
 </p>
 
-<figure>
+<figure id="fig-23-3">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig23-3-t fig23-3-d">
   <title id="fig23-3-t">A loop for protocols, none for pages</title>
@@ -334,14 +334,14 @@ on the right: errors spread by copying and persist, and nothing carries them
 back.</figcaption>
 </figure>
 
-<h2>23.4 The incentive curve</h2>
+<h2 id="sec-23-4">23.4 The incentive curve</h2>
 
 <p>
 Berners-Lee then analyses the system as one containing people with motives,
 and draws the reward for effort.
 </p>
 
-<figure>
+<figure id="fig-23-4">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig23-4-t fig23-4-d">
   <title id="fig23-4-t">What an author gets for fixing errors</title>
@@ -409,7 +409,7 @@ copy a tidied version.</li>
 23.5.</li>
 </ol>
 
-<figure>
+<figure id="fig-23-5">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig23-5-t fig23-5-d">
   <title id="fig23-5-t">Grades of complaint in a page checker</title>
@@ -443,7 +443,7 @@ The items are the note&#8217;s own lists. Content-Type: the server&#8217;s label
 for the kind of file, such as <code>text/html</code>.</figcaption>
 </figure>
 
-<h2>23.5 Scale-free vocabularies</h2>
+<h2 id="sec-23-5">23.5 Scale-free vocabularies</h2>
 
 <p>
 The Web is made of communities of very different sizes. It is scale-free:
@@ -452,11 +452,11 @@ which a few pages have enormous numbers and most have few. Berners-Lee
 suggests, as an unproved hunch, that this may be the best trade-off between
 one ungainly universal language and many agile small ones. He asks that
 the shape be engineered for, not merely admired: HTML at the top can be
-centrally managed, but the shaded tail of Figure 23.6 needs a way for groups
+centrally managed, but the shaded tail of <a class="x-ref" href="#fig-23-6">Figure 23.6</a> needs a way for groups
 to coin names without a committee.
 </p>
 
-<figure>
+<figure id="fig-23-6">
 <svg class="dia" viewBox="0 0 720 278" width="720" height="278" role="img"
      aria-labelledby="fig23-6-t fig23-6-d">
   <title id="fig23-6-t">The vocabulary long tail</title>
@@ -493,7 +493,7 @@ the tail is where decentralised naming earns its keep.</figcaption>
 </figure>
 
 
-<h2>23.6 The grouchy robustness principle</h2>
+<h2 id="sec-23-6">23.6 The grouchy robustness principle</h2>
 
 <p>
 The note ends with a restatement of Postel&#8217;s rule:
@@ -510,7 +510,7 @@ the producers to adhere to it better.
 Accept everything, render everything, and say so. The complaint is the slope.
 </p>
 
-<h2>23.7 Meeting in the middle</h2>
+<h2 id="sec-23-7">23.7 Meeting in the middle</h2>
 
 <p>
 The note also lists its complaints about XML:
@@ -522,14 +522,14 @@ The note also lists its complaints about XML:
 <tr><td>The whole tag name must be spelled in the end tag</td><td>Ease of use</td></tr>
 <tr><td>Parsers must stop on error</td><td>Unfriendly, impractical</td></tr>
 <tr><td>Namespace URIs take too much space</td><td>Impractical</td></tr>
-<tr><td>Non-nested begin and end tags must be accommodated</td><td>Legacy &#8220;tag soup&#8221; (bad nesting, section 23.1)</td></tr>
+<tr><td>Non-nested begin and end tags must be accommodated</td><td>Legacy &#8220;tag soup&#8221; (bad nesting, <a class="x-ref" href="#sec-23-1">section 23.1</a>)</td></tr>
 </table>
 
 <p>
 The first could be cured by redesigning XML; the last he would not change.
 His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
 takes the namespace from the content type, drops DTDs (old grammar
-declarations) and processing instructions (see section 1.2), and perhaps allows
+declarations) and processing instructions (see <a class="x-ref" href="01-principles-design.html#sec-1-2">section 1.2</a>), and perhaps allows
 <code>&lt;/&gt;</code> as a close tag. A page that starts
 </p>
 
@@ -578,7 +578,7 @@ part that would have changed authors&#8217; incentives.</li>
 <li><strong>Decentralised extension arrived by another route.</strong> Custom
 elements, tags a page defines for itself with script, require a hyphen in the
 name rather than a namespace, and structured data in pages uses <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>
-URIs. The requirement of section 23.2 was met without the mechanism this
+URIs. The requirement of <a class="x-ref" href="#sec-23-2">section 23.2</a> was met without the mechanism this
 note defends.</li>
 </ul>
 </div>
@@ -586,12 +586,12 @@ note defends.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The tolerance principle reconsidered here is stated in Chapter 1, and the free
-extension rule it descends from is Chapter 16. The namespaces this note
-defends are specified in Chapter 17 and lack the flag of Chapter 18. The
-modularity argument about the same specification is Chapter 19, and the
-processing question the XML branch left open is Chapter 24. The scale-free
-communities of section 23.5 are Chapter 87.
+The tolerance principle reconsidered here is stated in <a class="x-ref" href="01-principles-design.html">Chapter 1</a>, and the free
+extension rule it descends from is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The namespaces this note
+defends are specified in <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> and lack the flag of <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a>. The
+modularity argument about the same specification is <a class="x-ref" href="19-modularity.html">Chapter 19</a>, and the
+processing question the XML branch left open is <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>. The scale-free
+communities of <a class="x-ref" href="#sec-23-5">section 23.5</a> are <a class="x-ref" href="87-fractal-web-fractal-society.html">Chapter 87</a>.
 </p>
 </div>
 
@@ -610,13 +610,13 @@ step or a slope? What would change it?</p>
 <div class="question">
 <p><span class="question-number">23.3</span>
 Two groups both invent a tag called <code>label</code>. What happens under
-each mechanism of Figure 23.2?</p>
+each mechanism of <a class="x-ref" href="#fig-23-2">Figure 23.2</a>?</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.4</span>
 The grouchy robustness principle asks implementations to complain. To whom,
 and by what path, given that the author of a bad page is often long gone?
-Consider the toolbar and View Source remedies of section 23.4.</p>
+Consider the toolbar and View Source remedies of <a class="x-ref" href="#sec-23-4">section 23.4</a>.</p>
 </div>
 </details>
 

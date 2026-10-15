@@ -70,7 +70,7 @@ have, but the note makes one structural point that longer treatments bury.
 </p>
 </div>
 
-<h2>21.1 A specification has two halves</h2>
+<h2 id="sec-21-1">21.1 A specification has two halves</h2>
 
 <blockquote>
 A technical specification defines something. The document must specify the
@@ -97,7 +97,7 @@ left implicit. The note insists that the thing defined gets a precise name: a
 conformance term.
 </p>
 
-<figure>
+<figure id="fig-21-1">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig21-1-t fig21-1-d">
   <title id="fig21-1-t">The two halves of a specification</title>
@@ -155,7 +155,7 @@ explicitly ties it to the conformance term. Only words linked to the term
 carry weight.
 </p>
 
-<h2>21.2 Meaning, not behaviour</h2>
+<h2 id="sec-21-2">21.2 Meaning, not behaviour</h2>
 
 <p>
 The sharpest rule in the note is about the grammatical mood a specification
@@ -174,7 +174,7 @@ is better than the version that says the cheque should be rejected with a
 fatal error.
 </p>
 
-<figure>
+<figure id="fig-21-2">
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
      aria-labelledby="fig21-2-t fig21-2-d">
   <title id="fig21-2-t">Stating a meaning versus prescribing a behaviour</title>
@@ -229,7 +229,7 @@ still: constraints given as a state transition diagram or table, so that they
 are totally clear.
 </p>
 
-<figure>
+<figure id="fig-21-3">
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig21-3-t fig21-3-d">
   <title id="fig21-3-t">An illustrative state transition diagram</title>
@@ -269,7 +269,7 @@ every allowed and forbidden step visible, which is what the fourth test
 question in section 21.4 relies on.</figcaption>
 </figure>
 
-<h2>21.3 Two paragraphs nobody expects</h2>
+<h2 id="sec-21-3">21.3 Two paragraphs nobody expects</h2>
 
 <p>
 Two short passages lift this note above a style guide.
@@ -290,7 +290,7 @@ foo-email-address...
 </blockquote>
 
 <p>
-MMTP is invented. This is Chapter 20&#8217;s argument, that defined fields are
+MMTP is invented. This is <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>&#8217;s argument, that defined fields are
 statements people can be held to, arriving as drafting advice.
 </p>
 
@@ -307,7 +307,7 @@ deliberately made similar to another, the note asks the author to:
 <li>if necessary, negotiate constraints with whoever controls changes to the other document.</li>
 </ol>
 
-<h2>21.4 The four test questions</h2>
+<h2 id="sec-21-4">21.4 The four test questions</h2>
 
 <p>
 The note ends with questions to ask of a draft.
@@ -318,7 +318,7 @@ The note ends with questions to ask of a draft.
 <tr><td>Does the spec decide, for any arbitrary object, whether the conformance term applies?</td><td>The left-hand side is undefined</td></tr>
 <tr><td>Could a program be written to test conformance?</td><td>Nobody can build a checker, so arguments about conformance cannot be settled</td></tr>
 <tr><td>Is conformance alone enough to make systems work as intended?</td><td>Something necessary is unstated</td></tr>
-<tr><td>Can important properties be proved from the state transition tables?</td><td>Two correct implementations can still deadlock or disagree; Figure 21.3 should let one prove, say, that a reply never arrives unasked</td></tr>
+<tr><td>Can important properties be proved from the state transition tables?</td><td>Two correct implementations can still deadlock or disagree; <a class="x-ref" href="#fig-21-3">Figure 21.3</a> should let one prove, say, that a reply never arrives unasked</td></tr>
 </table>
 
 <p>
@@ -343,18 +343,18 @@ Candidate <a class="gl-ref" href="../glossary.html#recommendation">Recommendatio
 <li><strong>The meaning-not-behaviour rule lost ground.</strong> HTML5 and its
 successors specify algorithms rather than meanings, deliberately, because
 interoperability on error handling mattered more than portability of the
-definition. Chapter 23 is where that choice is argued.</li>
+definition. <a class="x-ref" href="23-html-xml.html">Chapter 23</a> is where that choice is argued.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The chain of specifications this one explains how to write is Chapter 20, and
-the modularity it assumes is Chapter 19. The advice about borrowed definitions
-bears on the mixed-vocabulary documents of Chapter 17. The claim that a
-message can bind legal parties is developed in Chapter 15, and the tension
-between specifying meaning and specifying behaviour is Chapter 23.
+The chain of specifications this one explains how to write is <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>, and
+the modularity it assumes is <a class="x-ref" href="19-modularity.html">Chapter 19</a>. The advice about borrowed definitions
+bears on the mixed-vocabulary documents of <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>. The claim that a
+message can bind legal parties is developed in <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>, and the tension
+between specifying meaning and specifying behaviour is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.
 </p>
 </div>
 
@@ -378,7 +378,7 @@ Give a case where a conforming implementation is nonetheless unusable.</p>
 <div class="question">
 <p><span class="question-number">21.4</span>
 A specification copies a definition from another. Apply the six-point
-checklist of section 21.3 to a case you know, and say which points were
+checklist of <a class="x-ref" href="#sec-21-3">section 21.3</a> to a case you know, and say which points were
 missed.</p>
 </div>
 </details>

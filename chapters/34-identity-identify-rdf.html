@@ -63,7 +63,7 @@ unique, such as a mailbox, without confusing the two.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 32 established that the model is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of statements. This note,
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> established that the model is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of statements. This note,
 from 1998, asks the question that immediately follows and is easy to get
 wrong: when a statement refers to something, what exactly is it referring to?
 The element in a document, the node in the graph, or the thing in the world?
@@ -83,7 +83,7 @@ People resolve these levels without noticing. Machines cannot.
 </p>
 </div>
 
-<h2>34.1 Three things a reference might mean</h2>
+<h2 id="sec-34-1">34.1 Three things a reference might mean</h2>
 
 <p>
 The markup is XML: tagged <em>elements</em>, which carry
@@ -96,10 +96,10 @@ The XML encodes the graph; the graph describes the world.
 Berners-Lee&#8217;s example describes a person, Albert, in an element with
 <code>id="foo"</code>. Inside it, a description of Albert&#8217;s father, Joe,
 says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
-(Figure 34.1). Which does each mean?
+(<a class="x-ref" href="#fig-34-1">Figure 34.1</a>). Which does each mean?
 </p>
 
-<figure>
+<figure id="fig-34-1">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig34-1-t fig34-1-d">
   <title id="fig34-1-t">One #foo, several targets</title>
@@ -193,21 +193,21 @@ not (in sigend XML) bits of RDF.
 <cite>Identity, 1998</cite>
 </blockquote>
 
-<h2>34.2 The clash he records as a bug</h2>
+<h2 id="sec-34-2">34.2 The clash he records as a bug</h2>
 
 <p>
 A section added in February 2000 is flagged in the original as a bug in the
-relationship between the two layers: Chapter 24&#8217;s interpretation
+relationship between the two layers: <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>&#8217;s interpretation
 problem, where the same bytes read differently under different rules.
 </p>
 
 <p>
 Take a URI with a <em>fragment</em> (the part after <code>#</code>) pointing
 into a file describing Ora Lassila. A fragment&#8217;s meaning comes from the
-<em><a class="gl-ref" href="../glossary.html#media-type">media type</a></em>, the label saying what kind of file it is (Chapter 11).
+<em><a class="gl-ref" href="../glossary.html#media-type">media type</a></em>, the label saying what kind of file it is (<a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>).
 </p>
 
-<figure>
+<figure id="fig-34-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig34-2-t fig34-2-d">
   <title id="fig34-2-t">Same URI, two readings</title>
@@ -275,10 +275,10 @@ reference is to the RDF thing or to the XML.</li>
 object it describes. Fixes: lets both be named and related.</li>
 <li><strong>A new attribute:</strong> <code>object=</code> for the RDF node,
 leaving <code>resource=</code> for the fragment. Fixes: gives the node the
-pointer it lacks in Figure 34.1.</li>
+pointer it lacks in <a class="x-ref" href="#fig-34-1">Figure 34.1</a>.</li>
 </ul>
 
-<h2>34.3 Identifying things that have no address</h2>
+<h2 id="sec-34-3">34.3 Identifying things that have no address</h2>
 
 <p>
 The second half is the part that became standard practice, and it carries a
@@ -307,7 +307,7 @@ property</em> such as <code>author-mailbox</code> collapses two steps into one
 arrow.
 </p>
 
-<figure>
+<figure id="fig-34-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig34-3-t fig34-3-d">
   <title id="fig34-3-t">Identifying a person without giving them a URI</title>
@@ -381,7 +381,7 @@ machinery.
 <p>
 He also declines, explicitly, to settle which properties should be treated as
 identifying, calling it a rat hole that is not core to the discussion. That
-restraint is the same one as Chapter 22: the mechanism can be specified
+restraint is the same one as <a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22</a>: the mechanism can be specified
 without settling the philosophy.
 </p>
 
@@ -406,10 +406,10 @@ fragment that answers with a document names a document.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The confusion over the word resource is Chapter 9, and the fragment semantics
-that produce the clash are Chapter 11. The graph model is Chapter 32, and
-what to do when a URI must be quoted rather than used is Chapter 35. Identifying people by a unique property makes records joinable across
-datasets; the consequences for personal data are Chapters 72 and 73.
+The confusion over the word resource is <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a>, and the fragment semantics
+that produce the clash are <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>. The graph model is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, and
+what to do when a URI must be quoted rather than used is <a class="x-ref" href="35-when-use-literal-uri-linked.html">Chapter 35</a>. Identifying people by a unique property makes records joinable across
+datasets; the consequences for personal data are Chapters <a class="x-ref" href="72-inference-over-private-data.html">72</a> and <a class="x-ref" href="73-link-bio-personal-data-which.html">73</a>.
 </p>
 </div>
 

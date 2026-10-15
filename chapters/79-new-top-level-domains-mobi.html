@@ -77,7 +77,7 @@ Its objection to the mobile domain is architectural rather than commercial.
 </p>
 </div>
 
-<h2>79.1 How the namespace stopped being hierarchical</h2>
+<h2 id="sec-79-1">79.1 How the namespace stopped being hierarchical</h2>
 
 <p>
 The note begins with a history that explains the whole problem. The tree
@@ -97,7 +97,7 @@ space into a limited commodity.
 <cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-79-1">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig79-1-t fig79-1-d">
   <title id="fig79-1-t">What the public actually remembers</title>
@@ -158,7 +158,7 @@ second effect is instability: a rush to reserve names that nobody can afford
 to miss, and a rash of attempts to take valuable ones.
 </p>
 
-<h2>79.2 The specific objection</h2>
+<h2 id="sec-79-2">79.2 The specific objection</h2>
 
 <p>
 Those costs apply to any new top-level domain. The objection to
@@ -174,7 +174,7 @@ read in the office on a large screen for the map, and at the airport on a
 phone for the gate number.
 </p>
 
-<figure>
+<figure id="fig-79-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig79-2-t fig79-2-d">
   <title id="fig79-2-t">A bookmark carried from laptop to phone</title>
@@ -231,9 +231,9 @@ in a fundamental way.
 </blockquote>
 
 <p>
-Chapter 10 established that one resource may be served in many forms, and
-Chapter 2 that the identifier names the thing rather than the rendering.
-Chapter 67 makes the same complaint about the <code>s</code> in
+<a class="x-ref" href="10-generic-resources.html">Chapter 10</a> established that one resource may be served in many forms, and
+<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> that the identifier names the thing rather than the rendering.
+<a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a> makes the same complaint about the <code>s</code> in
 <code>https</code>: a property of the delivery put into the name of the thing.
 </p>
 
@@ -256,13 +256,13 @@ bandwidth, and some phones will be mounted permanently on kitchen walls. A
 <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the worst place to record any of this.
 </p>
 
-<h2>79.3 Who bears the cost of the root</h2>
+<h2 id="sec-79-3">79.3 Who bears the cost of the root</h2>
 
 <p>
-Figure 79.3 draws the note&#8217;s account of who owns what.
+<a class="x-ref" href="#fig-79-3">Figure 79.3</a> draws the note&#8217;s account of who owns what.
 </p>
 
-<figure>
+<figure id="fig-79-3">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig79-3-t fig79-3-d">
   <title id="fig79-3-t">Who controls each part of the name tree</title>
@@ -327,7 +327,7 @@ note was written, one after. This is the single point of control of Chapter
 5, at the one place the Web cannot route around.
 </p>
 
-<h2>79.4 Why a chapter for a proposal that failed</h2>
+<h2 id="sec-79-4">79.4 Why a chapter for a proposal that failed</h2>
 
 <p>
 The value of the note is the general form of the argument. Adding a
@@ -341,7 +341,7 @@ does not belong there.
 Suppose a software package registry added a top-level prefix for mobile
 builds: every author would claim each name twice, the prefix&#8217;s operator
 would collect, and a property of the build would sit in the package&#8217;s
-name. Chapter 4 makes the argument about schemes; this chapter makes it
+name. <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> makes the argument about schemes; this chapter makes it
 about names.
 </p>
 
@@ -356,10 +356,10 @@ Network Solutions began briefly reserving names that customers had searched for 
 <li><strong>The mobile domain launched and faded.</strong> ICANN approved it
 in 2005; general registration opened in 2006. Separate mobile addresses gave
 way to responsive design (a term coined in 2010), one address for every
-device, as section 79.2 argues.</li>
+device, as <a class="x-ref" href="#sec-79-2">section 79.2</a> argues.</li>
 <li><strong>The namespace expanded enormously.</strong> The programme begun in
 2012 added over a thousand new top-level domains, multiplying the burden of
-Figure 79.1.</li>
+<a class="x-ref" href="#fig-79-1">Figure 79.1</a>.</li>
 <li><strong>The adult-content domain launched in 2011.</strong> Before it
 opened, trademark holders filed tens of thousands of paid
 &#8220;Sunrise B&#8221; applications simply to block their names from it.</li>
@@ -369,9 +369,9 @@ opened, trademark holders filed tens of thousands of paid
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The naming problem is Chapter 3; persistent names needing the root&#8217;s
-cooperation, Chapter 13; the single centralised point, Chapter 5; the same
-argument about schemes, Chapter 4; a delivery property in a name, Chapter 67.
+The naming problem is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>; persistent names needing the root&#8217;s
+cooperation, <a class="x-ref" href="13-persistent-domains.html">Chapter 13</a>; the single centralised point, <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>; the same
+argument about schemes, <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>; a delivery property in a name, <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>.
 </p>
 </div>
 
@@ -389,12 +389,12 @@ case where an address is still specific to how it is being read.</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.3</span>
-Using Figure 79.3, explain why a registry that sells names has a reason to
+Using <a class="x-ref" href="#fig-79-3">Figure 79.3</a>, explain why a registry that sells names has a reason to
 treat unregistered names as its own property. What did VeriSign do in 2003?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.4</span>
-Apply the three-part argument of section 79.4 to a namespace you use. What
+Apply the three-part argument of <a class="x-ref" href="#sec-79-4">section 79.4</a> to a namespace you use. What
 would a new top-level category cost?</p>
 </div>
 </details>

@@ -87,7 +87,7 @@ technical solution.
 </p>
 </div>
 
-<h2>3.1 The belief being attacked</h2>
+<h2 id="sec-3-1">3.1 The belief being attacked</h2>
 
 <p>
 The belief is learned young and from good examples. Computing students are
@@ -118,7 +118,7 @@ looked up through directory tables to find the places on a disk that hold
 the file.
 </p>
 
-<figure>
+<figure id="fig-3-1">
 <svg class="dia" viewBox="0 0 720 136" width="720" height="136" role="img"
      aria-labelledby="fig3-1-t fig3-1-d">
   <title id="fig3-1-t">The chain of look-ups from a name to a machine</title>
@@ -175,7 +175,7 @@ what information is in the address.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
 
-<h2>3.2 Two anecdotes</h2>
+<h2 id="sec-3-2">3.2 Two anecdotes</h2>
 
 <p>
 The note&#8217;s argument turns on two stories from the author&#8217;s own records, and
@@ -207,7 +207,7 @@ In neither case did the thing move. In both cases the name had to change,
 because the name contained a claim about authority and the authority changed.
 </p>
 
-<figure>
+<figure id="fig-3-2">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig3-2-t fig3-2-d">
   <title id="fig3-2-t">The two anecdotes side by side</title>
@@ -246,7 +246,7 @@ Nothing moved in either story. The name broke because it claimed who was
 responsible.</figcaption>
 </figure>
 
-<h2>3.3 Reading a URI for its future breakages</h2>
+<h2 id="sec-3-3">3.3 Reading a URI for its future breakages</h2>
 
 <p>
 The note then performs an exercise that is still the best short teaching
@@ -257,12 +257,12 @@ device in the collection. It takes an invented but entirely typical <a class="gl
 
 <p>
 He walks the segments, asking of each what change in the world would make it
-wrong. Figure 3.3 gives his answers. One needs a word of explanation: the
+wrong. <a class="x-ref" href="#fig-3-3">Figure 3.3</a> gives his answers. One needs a word of explanation: the
 final <code>.html</code> names a format, which makes it awkward to offer the
 content in another format later, such as audio for blind readers.
 </p>
 
-<figure>
+<figure id="fig-3-3">
 <svg class="dia" viewBox="0 0 720 420" width="720" height="420" role="img"
      aria-labelledby="fig3-3-t fig3-3-d">
   <title id="fig3-3-t">What breaks each segment of a URI</title>
@@ -358,7 +358,7 @@ Meaninglessness is durability. This is the observation that the rest of the
 note formalises.
 </p>
 
-<h2>3.4 The naming problem</h2>
+<h2 id="sec-3-4">3.4 The naming problem</h2>
 
 <p>
 To <em><a class="gl-ref" href="../glossary.html#dereference">dereference</a></em> a name is to use it to fetch the thing named, by
@@ -402,7 +402,7 @@ He suggests that such strings deserve the word &ldquo;identifier&rdquo; rather
 than &ldquo;name&rdquo;.
 </p>
 
-<figure>
+<figure id="fig-3-4">
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig3-4-t fig3-4-d">
   <title id="fig3-4-t">The naming problem as a spectrum</title>
@@ -443,7 +443,7 @@ from somewhere other than the form of the name: from a contract, as section
 3.5 argues.</figcaption>
 </figure>
 
-<h2>3.5 Persistence is a contract</h2>
+<h2 id="sec-3-5">3.5 Persistence is a contract</h2>
 
 <p>
 The conclusion is the one that makes this chapter belong in Volume I rather
@@ -456,7 +456,7 @@ organisations rather than a property of a protocol.
 <h3>Two ends of the scale</h3>
 
 <p>
-Berners-Lee tests the information-free end of the scale in Figure 3.4 and rejects it. One could
+Berners-Lee tests the information-free end of the scale in <a class="x-ref" href="#fig-3-4">Figure 3.4</a> and rejects it. One could
 keep a worldwide <em><a class="gl-ref" href="../glossary.html#hash">hash</a> table</em>, in effect one giant shared list of
 randomly generated names, each pointing to its resource. That would work
 technically, but it would impose one funding model and one quality of service
@@ -464,7 +464,7 @@ on everybody, with no way to pay more for a name that lasts longer.
 </p>
 
 <p>
-At the other end of the scale in Figure 3.4 sit hierarchical systems such as the domain
+At the other end of the scale in <a class="x-ref" href="#fig-3-4">Figure 3.4</a> sit hierarchical systems such as the domain
 name system. Here a name leads to an authority, and the only way to keep the
 name working is a contract with every organisation involved in looking it up.
 He sketches what such a contract might look like: the Foo University alumni
@@ -529,12 +529,12 @@ retired it, because an organisation chose to make it so.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter supplies the argument that Chapter 2&#8217;s identity axiom depends
+This chapter supplies the argument that <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s identity axiom depends
 on: meaning belongs to an owner, and ownership is legible in the name.
-Chapter 13 returns to persistent domains with a concrete proposal. The
-<a class="gl-ref" href="../glossary.html#metadata">metadata</a> recommendation that closes the note is taken up in Chapter 27. The
+<a class="x-ref" href="13-persistent-domains.html">Chapter 13</a> returns to persistent domains with a concrete proposal. The
+<a class="gl-ref" href="../glossary.html#metadata">metadata</a> recommendation that closes the note is taken up in <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>. The
 social reading of naming, that architecture leans on institutions, is where
-Chapter 6 ends, in section 6.4.
+<a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a> ends, in <a class="x-ref" href="06-levels-abstraction-net-web-graph.html#sec-6-4">section 6.4</a>.
 </p>
 </div>
 

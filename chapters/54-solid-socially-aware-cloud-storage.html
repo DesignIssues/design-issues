@@ -67,7 +67,7 @@ document of the project its author has worked on ever since.
 <h3>The question</h3>
 <p>
 Written in August 2009 and still being edited in 2023, this note asks who may
-write the data that Chapter 50 made writable. It answers by separating two
+write the data that <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a> made writable. It answers by separating two
 things the Web had bolted together. Principals are those to whom permissions
 are given.
 </p>
@@ -79,7 +79,7 @@ controlled using those global identifiers.
 </blockquote>
 </div>
 
-<h2>54.1 The diagnosis</h2>
+<h2 id="sec-54-1">54.1 The diagnosis</h2>
 
 <h3>Each site a silo</h3>
 
@@ -98,7 +98,7 @@ from other sites are deliberately prevented from accessing it.
 
 <p>
 This is the <a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a>, the browser rule that a script may read data
-only from the site it came from (Chapter 68), working as designed. Each site
+only from the site it came from (<a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>), working as designed. Each site
 becomes a silo, reachable only by its own software.
 </p>
 
@@ -135,7 +135,7 @@ Nor are silos an accident: the site sells ads &#8220;because it forces the
 user to use its web site to access her data&#8221;.
 </p>
 
-<h2>54.2 The separation</h2>
+<h2 id="sec-54-2">54.2 The separation</h2>
 
 <p>
 The proposal holds the two apart. Storage belongs to the user, like the disk
@@ -145,7 +145,7 @@ becomes a commodity, just as the internet provides &#8220;connectivity as a
 commodity independent of applications&#8221;.
 </p>
 
-<figure>
+<figure id="fig-54-1">
 <svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
      aria-labelledby="fig54-1-t fig54-1-d">
   <title id="fig54-1-t">Application and storage, together and apart</title>
@@ -213,7 +213,7 @@ mean something only on one machine. Webizing replaces them with URIs, as <a clas
 had done for files.
 </p>
 
-<figure>
+<figure id="fig-54-2">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig54-2-t fig54-2-d">
   <title id="fig54-2-t">Webizing the file system&#8217;s access control</title>
@@ -267,7 +267,7 @@ Only the identifiers change, yet a permission on one server can now name a
 person or group defined on any other. The addresses are invented.</figcaption>
 </figure>
 
-<h2>54.3 Three benefits</h2>
+<h2 id="sec-54-3">54.3 Three benefits</h2>
 
 <table>
 <tr><th>Benefit</th><th>In plain terms</th></tr>
@@ -304,7 +304,7 @@ person. The goal rests on this: &#8220;application growth becomes dramatic as th
 storage is decoupled from the design and deployment of applications&#8221;.
 </p>
 
-<h2>54.4 The risk, stated plainly</h2>
+<h2 id="sec-54-4">54.4 The risk, stated plainly</h2>
 
 <p>
 Applications run with the user&#8217;s credentials, her proof of identity:
@@ -323,7 +323,7 @@ inspect holds the data. Here, a program the user ran may misuse data the user
 still holds: an operating system&#8217;s failure mode.
 </p>
 
-<h2>54.5 Different lifetimes</h2>
+<h2 id="sec-54-5">54.5 Different lifetimes</h2>
 
 <blockquote>
 The persistence of applications and data may be very different.
@@ -337,7 +337,7 @@ for a short-term enterprise problem may handle data whose life
 Decoupled, each lifetime can be managed separately.
 </p>
 
-<h2>54.6 How a request is checked</h2>
+<h2 id="sec-54-6">54.6 How a request is checked</h2>
 
 <p>
 Each user gets a single <a class="gl-ref" href="../glossary.html#uri">URI</a> instead of a user name at each site, ideally a
@@ -355,10 +355,10 @@ Access control files are linked data.
 An access control file (ACL) lists who may read, write or control a resource.
 A <a class="gl-ref" href="../glossary.html#header">header</a> is a labelled line the <a class="gl-ref" href="../glossary.html#server">server</a> sends ahead of the content; the Link
 header points to the resource&#8217;s ACL, which a client may edit only with
-&#8220;Control&#8221; access. Figure 54.3 follows one request.
+&#8220;Control&#8221; access. <a class="x-ref" href="#fig-54-3">Figure 54.3</a> follows one request.
 </p>
 
-<figure>
+<figure id="fig-54-3">
 <svg class="dia" viewBox="0 0 720 450" width="720" height="450" role="img"
      aria-labelledby="fig54-3-t fig54-3-d">
   <title id="fig54-3-t">One access check, step by step</title>
@@ -426,7 +426,7 @@ read. The general form is a drop-box, linked from a profile, for requests of
 any kind; guarding it against spam may matter.
 </p>
 
-<h2>54.7 Conventions and reverse links</h2>
+<h2 id="sec-54-7">54.7 Conventions and reverse links</h2>
 
 <p>
 Applications sharing one store need conventions: a user should be able, for
@@ -462,10 +462,10 @@ still lives with the application that created it.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The write protocol this builds on is Chapter 50, and the data it holds is
-Chapter 55. The same-origin isolation it works around is Chapter 68, and the
-delegation it replaces is Chapter 70. Live updates are Chapter 58, and the
-interface for the data is Chapter 56.
+The write protocol this builds on is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>, and the data it holds is
+<a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">Chapter 55</a>. The same-origin isolation it works around is <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>, and the
+delegation it replaces is <a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>. Live updates are <a class="x-ref" href="58-live-data.html">Chapter 58</a>, and the
+interface for the data is <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
 </p>
 </div>
 

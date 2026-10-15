@@ -81,7 +81,7 @@ turns on giving up something that every earlier system treated as essential.
 </p>
 </div>
 
-<h2>40.1 Five requirements, and the one that has to go</h2>
+<h2 id="sec-40-1">40.1 Five requirements, and the one that has to go</h2>
 
 <p>
 A knowledge representation system is a program that stores facts in a strict
@@ -107,7 +107,7 @@ simultaneously.
 <cite>Crawford and Kuipers, quoted in The Semantic Web as a language of logic, 1999</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-40-1">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
      aria-labelledby="fig40-1-t fig40-1-d">
   <title id="fig40-1-t">The trade-off between expressive power and reasoning</title>
@@ -159,7 +159,7 @@ the parts of the fourth requirement that conflict, notably a single efficient
 reasoning system.
 </p>
 
-<h2>40.2 A validator, not a prover</h2>
+<h2 id="sec-40-2">40.2 A validator, not a prover</h2>
 
 <p>
 Finding a proof means searching, and a search may never end. Checking a proof
@@ -171,7 +171,7 @@ Checking an <em>answer</em> would mean re-deriving it; checking an
 the last.
 </p>
 
-<figure>
+<figure id="fig-40-2">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig40-2-t fig40-2-d">
   <title id="fig40-2-t">The asymmetry the design rests on</title>
@@ -228,7 +228,7 @@ guarantee that questions are answerable. Each guarantee had kept its system
 small.
 </p>
 
-<h2>40.3 Tractability by subsetting</h2>
+<h2 id="sec-40-3">40.3 Tractability by subsetting</h2>
 
 <p>
 Efficiency is arranged in parts. A problem is tractable when a program can solve it in a reasonable time.
@@ -261,7 +261,7 @@ What the whole must guarantee is correspondingly small:
 <li><strong>Grounding</strong> in reality.</li>
 </ul>
 
-<figure>
+<figure id="fig-40-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig40-3-t fig40-3-d">
   <title id="fig40-3-t">Tractable islands in an intractable whole</title>
@@ -298,7 +298,7 @@ Efficiency is arranged locally, inside subsystems that each accept a
 restriction. Only three properties are guaranteed across the whole.</figcaption>
 </figure>
 
-<h2>40.4 Grounding, which is not a logical matter</h2>
+<h2 id="sec-40-4">40.4 Grounding, which is not a logical matter</h2>
 
 <p>
 What separates this note from a logic paper is grounding. It is not enough, Berners-Lee argues, to show that the system can
@@ -331,10 +331,10 @@ shop pages now carry.
 In practice, the meaning of data is grounded in the non-Semantic-Web
 applications interfaced to it. A currency transfer application that accepts
 such input defines, for practical purposes, what the terms in the instrument
-mean. That is Chapter 37&#8217;s closed loop, seen from the logic side.
+mean. That is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>&#8217;s closed loop, seen from the logic side.
 </p>
 
-<h2>40.5 Rules cannot be outside the language</h2>
+<h2 id="sec-40-5">40.5 Rules cannot be outside the language</h2>
 
 <p>
 One requirement is derived that later chapters depend on. Most knowledge
@@ -359,11 +359,11 @@ the set of rules is an engineering choice.
 </blockquote>
 
 <p>
-Chapter 41 shows that a rule holds two separable things: a fact anyone can
+<a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a> shows that a rule holds two separable things: a fact anyone can
 use, and a procedural hint only its own engine can.
 </p>
 
-<h2>40.6 Saying &#8220;that statement is false&#8221;</h2>
+<h2 id="sec-40-6">40.6 Saying &#8220;that statement is false&#8221;</h2>
 
 <p>
 Logicians once hoped for languages in which every sentence was provably true
@@ -390,7 +390,7 @@ reasonable within an application, but not for the Web.
 </blockquote>
 
 <p>
-Chapter 46 develops how a reader limits the damage once a contradiction
+<a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a> develops how a reader limits the damage once a contradiction
 turns up.
 </p>
 
@@ -400,9 +400,9 @@ turns up.
 <li><strong>The subsetting strategy was adopted formally.</strong> <a class="gl-ref" href="../glossary.html#owl">OWL</a>
 (February 2004) came in three species, Lite, DL and Full; OWL 2 (October
 2009) added three profiles, EL, QL and RL, each chosen so that reasoning
-stays tractable. That is section 40.3 turned into a standard.</li>
+stays tractable. That is <a class="x-ref" href="#sec-40-3">section 40.3</a> turned into a standard.</li>
 <li><strong>The proof layer was never built.</strong> By 2026 there was no
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> for exchanging proofs, so the asymmetry of Figure 40.2,
+<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> for exchanging proofs, so the asymmetry of <a class="x-ref" href="#fig-40-2">Figure 40.2</a>,
 which the whole design rests on, was never cashed in practice.</li>
 </ul>
 </div>
@@ -410,10 +410,10 @@ which the whole design rests on, was never cashed in practice.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This layer is planned in Chapter 30 and defended against objections in
-Chapter 31. Rule and fact are separated in Chapter 41 and written down in
-Chapter 42. The closed loop that grounds meaning is Chapter 37; contradiction
-is handled in Chapter 46. The split between finding an answer by any means
+This layer is planned in <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> and defended against objections in
+<a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>. Rule and fact are separated in <a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a> and written down in
+<a class="x-ref" href="42-notation3.html">Chapter 42</a>. The closed loop that grounds meaning is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>; contradiction
+is handled in <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The split between finding an answer by any means
 and checking it cheaply has since reappeared in systems built on language
 models, which are often paired with test suites or proof assistants.
 </p>

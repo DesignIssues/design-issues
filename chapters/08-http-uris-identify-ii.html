@@ -62,7 +62,7 @@ that any other reply does not show that.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Three years after the argument of Chapter 7, the Technical Architecture Group
+Three years after the argument of <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a>, the Technical Architecture Group
 (the <a class="gl-ref" href="../glossary.html#tag">TAG</a>) decided the matter. The TAG called it &ldquo;<a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>&rdquo;:
 its name for the issue, number 14 on its list of open questions. This note is
 Berners-Lee&#8217;s account of the decision, written in June 2005. It is
@@ -71,7 +71,7 @@ than a rule about meaning.
 </p>
 </div>
 
-<h2>8.1 What was decided</h2>
+<h2 id="sec-8-1">8.1 What was decided</h2>
 
 <p>
 Every reply from a web server begins with a three-digit response code that
@@ -102,13 +102,13 @@ consistent architecture.
 <p>
 An &ldquo;information resource&rdquo; is the formal term for what most people
 call a web page or a document: something whose whole content can be sent down
-the wire. The rule is easy to read as stronger than it is; Figure 8.1 shows its
+the wire. The rule is easy to read as stronger than it is; <a class="x-ref" href="#fig-8-1">Figure 8.1</a> shows its
 one-way shape. The detail about 303 is not in this note, which never mentions
 that code, but in the TAG&#8217;s own resolution: after a 303 the <a class="gl-ref" href="../glossary.html#uri">URI</a>
 &ldquo;could be any resource&rdquo;.
 </p>
 
-<figure>
+<figure id="fig-8-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
      aria-labelledby="fig8-1-t fig8-1-d">
   <title id="fig8-1-t">What a client may conclude from a response</title>
@@ -163,7 +163,7 @@ what the Group supplied was a way for a client to find out part of it at
 runtime.</figcaption>
 </figure>
 
-<h2>8.2 What it cost and what it bought</h2>
+<h2 id="sec-8-2">8.2 What it cost and what it bought</h2>
 
 <p>
 Berners-Lee describes the effect as an extension of range rather than a
@@ -187,10 +187,10 @@ from it with a 200, because a 200 would mean the URI names the page.
 The note adds that it is still &ldquo;useful to serve information to those
 that look up a URI&rdquo;, even when the URI is not meant for a document. It
 does not say how. The TAG&#8217;s resolution does: reply with a 303 pointing
-to a separate address that serves a document about the thing (Figure 8.2).
+to a separate address that serves a document about the thing (<a class="x-ref" href="#fig-8-2">Figure 8.2</a>).
 </p>
 
-<figure>
+<figure id="fig-8-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig8-2-t fig8-2-d">
   <title id="fig8-2-t">The 303 exchange for a URI that names a person</title>
@@ -246,14 +246,14 @@ answers 200.</figcaption>
 </figure>
 
 <p>
-In Chapter 7 he wanted the rule written into the definition of <a class="gl-ref" href="../glossary.html#http">HTTP</a> itself.
+In <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> he wanted the rule written into the definition of <a class="gl-ref" href="../glossary.html#http">HTTP</a> itself.
 The TAG instead let the server&#8217;s reply code carry the answer.
 Berners-Lee accepts the result without pretending it is what he asked for: a
 note added in 2006 to his 2002 page calls it a compromise &ldquo;which I
 think works quite well&rdquo;.
 </p>
 
-<h2>8.3 How the problem arose in practice</h2>
+<h2 id="sec-8-3">8.3 How the problem arose in practice</h2>
 
 <p>
 <a class="gl-ref" href="../glossary.html#rdf">RDF</a> is the Semantic
@@ -273,10 +273,10 @@ browser.
 </blockquote>
 
 <p>
-Figure 8.3 shows the danger the note spells out.
+<a class="x-ref" href="#fig-8-3">Figure 8.3</a> shows the danger the note spells out.
 </p>
 
-<figure>
+<figure id="fig-8-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig8-3-t fig8-3-d">
   <title id="fig8-3-t">One URI, two readings</title>
@@ -319,7 +319,7 @@ URIs, one could no longer be sure which was intended.</figcaption>
 </figure>
 
 <p>
-The architecture did not fail. It was outrun by deployed practice. Chapter 9 gives
+The architecture did not fail. It was outrun by deployed practice. <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> gives
 Berners-Lee&#8217;s fuller account of that pressure, and is franker about who
 conceded what.
 </p>
@@ -331,7 +331,7 @@ conceded what.
 draft finding <em>Dereferencing HTTP URIs</em> and the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Interest Group note
 <em>Cool URIs for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></em>, of December 2008, turned the
 resolution into publishing guidance, setting out both the 303 pattern and the
-<a class="gl-ref" href="../glossary.html#hash">hash</a> pattern (Chapter 11) as acceptable.</li>
+<a class="gl-ref" href="../glossary.html#hash">hash</a> pattern (<a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>) as acceptable.</li>
 <li><strong>The rule was questioned again.</strong> The extra round trip
 made 303 unpopular. In 2012 the TAG issued a call for change
 proposals on httpRange-14, which explored serving descriptions directly, but
@@ -350,11 +350,11 @@ them dereferenceable URIs of their own.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Chapter 7 is the argument this chapter resolves, and Chapter 9 is the history
-behind both. The hash alternative is Chapter 11. The parenthesis in Chapter 6
+<a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> is the argument this chapter resolves, and <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> is the history
+behind both. The hash alternative is <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>. The parenthesis in <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a>
 about URIs for things not bound to a document refers to exactly this
 mechanism. The publishing practice it produced is taken up again in
-Chapter 49.
+<a class="x-ref" href="49-linked-data.html">Chapter 49</a>.
 </p>
 </div>
 

@@ -81,18 +81,18 @@ change.
 </p>
 </div>
 
-<h2>47.1 The list</h2>
+<h2 id="sec-47-1">47.1 The list</h2>
 
 <p>
 Two terms recur. A <em>serialisation</em> is a way of writing the same data
 down as text; RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> are two. To <em>deprecate</em> a feature is to
 mark it as not to be used, while leaving it in place for old data. The note
 also proposes extensions to <a class="gl-ref" href="../glossary.html#n3">N3</a> itself (dates, quoted variables, rule
-languages); this chapter treats only the dates, in section 47.4. Figure 47.1
+languages); this chapter treats only the dates, in <a class="x-ref" href="#sec-47-4">section 47.4</a>. <a class="x-ref" href="#fig-47-1">Figure 47.1</a>
 glosses each proposal in one line.
 </p>
 
-<figure>
+<figure id="fig-47-1">
 <svg class="dia" viewBox="0 0 720 617" width="720" height="617" role="img"
      aria-labelledby="fig47-1-t fig47-1-d">
   <title id="fig47-1-t">The 2010 proposals, and what became of them</title>
@@ -154,7 +154,7 @@ and resists changes to its shape, because everything written against the old
 shape would have to be revisited.</figcaption>
 </figure>
 
-<h2>47.2 The one that mattered most</h2>
+<h2 id="sec-47-2">47.2 The one that mattered most</h2>
 
 <p>
 Buried without emphasis in the middle of the list is a change to the model
@@ -172,12 +172,12 @@ A <em>literal</em> is a plain value, such as a date, a number or a piece of
 text. The model lets a literal be the object of a statement but not its
 subject. One can say that the workshop began on 2010-06-26, but not that
 2010-06-26 was a Saturday. To say anything about a value, one must first
-invent a node to stand for it, which in Chapter 38 Berners-Lee called
+invent a node to stand for it, which in <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> Berners-Lee called
 frightful. This proposal removes the obstruction in one line, and it was not
 adopted.
 </p>
 
-<figure>
+<figure id="fig-47-2">
 <svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig47-2-t fig47-2-d">
   <title id="fig47-2-t">A value may be an object, never a subject</title>
@@ -237,7 +237,7 @@ about one forces an invented stand-in. That stand-in is the obstruction the
 proposal would remove.</figcaption>
 </figure>
 
-<h2>47.3 How hard to push</h2>
+<h2 id="sec-47-3">47.3 How hard to push</h2>
 
 <p>
 Two of the removals concern bags and sequences, an early way of writing an
@@ -264,12 +264,12 @@ He also proposes a migration path rather than a cliff: a <a class="gl-ref" href=
 that reads the text in) could convert sequences to lists as an option. A
 sequence written <code>rdf:_1 :a; rdf:_2 :b</code> would be read as the list
 <code>( :a :b )</code>, so programs that understand only lists could still
-use old data. That is the evolvability argument of Chapter 16 applied to his
+use old data. That is the evolvability argument of <a class="x-ref" href="16-evolvability.html">Chapter 16</a> applied to his
 own design: give implementations a way to move rather than a date by which to
 have moved.
 </p>
 
-<h2>47.4 Making dates easy to write</h2>
+<h2 id="sec-47-4">47.4 Making dates easy to write</h2>
 
 <p>
 This proposal sits under the note&#8217;s heading on extending N3, not under
@@ -295,7 +295,7 @@ functionality
 <cite>The Future of RDF, 2010</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-47-3">
 <svg class="dia" viewBox="0 0 720 206" width="720" height="206" role="img"
      aria-labelledby="fig47-3-t fig47-3-d">
   <title id="fig47-3-t">Three ways to write the same date</title>
@@ -335,7 +335,7 @@ Friction in a notation changes what is published: when the correct form is
 tedious, people publish the wrong one, and every consumer of the data pays.</figcaption>
 </figure>
 
-<h2>47.5 Consistency as a constraint on proposals</h2>
+<h2 id="sec-47-5">47.5 Consistency as a constraint on proposals</h2>
 
 <p>
 One line sets a rule for everything else on the list:
@@ -348,11 +348,11 @@ unnecessary incompatibility.
 </blockquote>
 
 <p>
-Two languages exist side by side: N3 (Chapter 42), the research language, and
+Two languages exist side by side: N3 (<a class="x-ref" href="42-notation3.html">Chapter 42</a>), the research language, and
 RDF, the standard. When the standard grows, it should grow towards N3. Without
 the rule, RDF might add a way of putting a <a class="gl-ref" href="../glossary.html#graph">graph</a> inside a statement that is
 incompatible with N3&#8217;s braces, leaving two notations for the same thing.
-It is the test of independent invention (section 16.5) applied in advance:
+It is the test of independent invention (<a class="x-ref" href="16-evolvability.html#sec-16-5">section 16.5</a>) applied in advance:
 a design should fit cleanly with one built separately by someone else.
 </p>
 
@@ -365,7 +365,7 @@ syntax, and JSON-LD, a JSON serialisation from the same working group, became a
 Recommendation the month before: both are on this list.</li>
 <li><strong>The deprecations were softened to advice.</strong> <a class="gl-ref" href="../glossary.html#reification">Reification</a>,
 bags and sequences remain in the <a class="gl-ref" href="../glossary.html#specification">specification</a> and are avoided by convention,
-which is the weakest of the options section 47.3 considers.</li>
+which is the weakest of the options <a class="x-ref" href="#sec-47-3">section 47.3</a> considers.</li>
 <li><strong>Literals as subjects are still not allowed.</strong> The RDF 1.2
 work that W3C began in 2022 kept the restriction, and admits literal subjects
 only in its non-standard &#8220;generalised&#8221; form.</li>
@@ -378,10 +378,10 @@ another (in RDF 1.2, only as its object), which is the narrower half of the prop
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The obstruction that literals as subjects would remove is Chapter 38. The
-reification proposed for deprecation is Chapter 44, and the sets missing from
-the model are Chapter 43. The notation this asks the standard to grow towards
-is Chapter 42, and the migration argument is Chapter 16.
+The obstruction that literals as subjects would remove is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>. The
+reification proposed for deprecation is <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>, and the sets missing from
+the model are <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a>. The notation this asks the standard to grow towards
+is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and the migration argument is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>.
 </p>
 </div>
 
@@ -396,7 +396,7 @@ of what existing implementations must do in each case.</p>
 <div class="question">
 <p><span class="question-number">47.2</span>
 Bags were rarely used. Who paid for their being in the specification,
-according to section 47.3?</p>
+according to <a class="x-ref" href="#sec-47-3">section 47.3</a>?</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.3</span>
@@ -406,7 +406,7 @@ format you use, and say who pays.</p>
 <div class="question">
 <p><span class="question-number">47.4</span>
 Why might two languages for the same job drift apart, and what does the rule
-in section 47.5 do about it?</p>
+in <a class="x-ref" href="#sec-47-5">section 47.5</a> do about it?</p>
 </div>
 </details>
 

@@ -63,7 +63,7 @@ new document needs and what may come next.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 61 asked for a way to formalise a sequence of messages. This note,
+<a class="x-ref" href="61-conversations-state.html">Chapter 61</a> asked for a way to formalise a sequence of messages. This note,
 from February 1999, is the proposal, and its status line describes it as an
 example of how a social machine can be made without a centre.
 </p>
@@ -77,7 +77,7 @@ state variable stored in one place, but as a trail of documents.
 </blockquote>
 </div>
 
-<h2>62.1 No state variable anywhere</h2>
+<h2 id="sec-62-1">62.1 No state variable anywhere</h2>
 
 <p>
 A state machine is always in one of a fixed set of stages and moves between
@@ -101,7 +101,7 @@ it, and a notarisation: a time stamp recording when software checked it
 against the schema.
 </p>
 
-<figure>
+<figure id="fig-62-1">
 <svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig62-1-t fig62-1-d">
   <title id="fig62-1-t">The state is the trail</title>
@@ -164,7 +164,7 @@ no box is marked &ldquo;current state&rdquo;. The state is the latest
 notarised document and what it points to.</figcaption>
 </figure>
 
-<h2>62.2 Prerequisites and hints</h2>
+<h2 id="sec-62-2">62.2 Prerequisites and hints</h2>
 
 <p>
 The schema carries two kinds of thing, and the distinction is the
@@ -174,7 +174,7 @@ document may be made from this one, which are the state transitions.
 </p>
 
 <p>
-In the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> example of Figure 62.1, if the prerequisites exist the software
+In the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> example of <a class="x-ref" href="#fig-62-1">Figure 62.1</a>, if the prerequisites exist the software
 creates and notarises the new draft. The draft then carries a button leading
 to a form for the next type of document the hints allow. Promoting it to a
 &ldquo;proposed recommendation&rdquo; needs everything above plus an
@@ -182,7 +182,7 @@ endorsement, which the source spells out: the director, or any two members of
 the management group.
 </p>
 
-<figure>
+<figure id="fig-62-2">
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
      aria-labelledby="fig62-2-t fig62-2-d">
   <title id="fig62-2-t">Prerequisites look back, hints look forward</title>
@@ -232,7 +232,7 @@ principle they cannot disagree.</figcaption>
 Validity is enforced; transitions are merely offered.
 </p>
 
-<h2>62.3 The general form</h2>
+<h2 id="sec-62-3">62.3 The general form</h2>
 
 <p>
 Halfway through, the note turns to computer protocols, agreed sets of rules
@@ -244,7 +244,7 @@ s<sub>n</sub>&nbsp;=&nbsp;P&#8242;(m<sub>1</sub>&nbsp;&#8230;&nbsp;m<sub>n</sub>
 The second is the paper trail: only messages and a function.
 </p>
 
-<figure>
+<figure id="fig-62-3">
 <svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
      aria-labelledby="fig62-3-t fig62-3-d">
   <title id="fig62-3-t">Two ways to compute a state</title>
@@ -352,7 +352,7 @@ shows the nesting breaking: it passes on a view inside a group that never
 reached its final state.
 </p>
 
-<h2>62.4 Why it is a social machine</h2>
+<h2 id="sec-62-4">62.4 Why it is a social machine</h2>
 
 <p>
 Social processes can run on a newsgroup or by email: &ldquo;it works in a
@@ -363,7 +363,7 @@ fetch the documents can check them.
 </p>
 
 <p>
-Chapter 37 argued that the machine loop should be kept closed and joined to
+<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> argued that the machine loop should be kept closed and joined to
 the social world only at the edges. Here the
 loop is the documents, and the edges are the moments a person presses the
 button.
@@ -395,10 +395,10 @@ hold their rules in code, not in a document the participants can read.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The need this answers is stated in Chapter 61, and the closed loop it
-implements is Chapter 37. The independent statements it is built from are
-Chapter 27, and the signatures that make it checkable are Chapter 46. The
-remote-operations work that grew from it is Chapter 65.
+The need this answers is stated in <a class="x-ref" href="61-conversations-state.html">Chapter 61</a>, and the closed loop it
+implements is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>. The independent statements it is built from are
+<a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>, and the signatures that make it checkable are <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The
+remote-operations work that grew from it is <a class="x-ref" href="65-roadmap-web-services.html">Chapter 65</a>.
 </p>
 </div>
 

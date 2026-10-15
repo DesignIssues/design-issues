@@ -72,12 +72,12 @@ This note ends with a line its author wrote to himself and never acted on:
 <cite>Interpretation properties, 1998</cite>
 </blockquote>
 <p>
-Figure 38.1 supplies them. The question: how is it recorded that a string is in a particular language,
+<a class="x-ref" href="#fig-38-1">Figure 38.1</a> supplies them. The question: how is it recorded that a string is in a particular language,
 or is a measurement in particular units, or is an encoding of something else?
 </p>
 </div>
 
-<h2>38.1 Three attempts</h2>
+<h2 id="sec-38-1">38.1 Three attempts</h2>
 
 <p>
 The starting point is a muddle. RDF had adopted <a class="gl-ref" href="../glossary.html#xml">XML</a>&#8217;s <code>xml:lang</code>
@@ -87,7 +87,7 @@ file&#8217;s <a class="gl-ref" href="../glossary.html#markup">markup</a> but pro
 twice, using a person called Ora whose name is Finnish.
 </p>
 
-<figure>
+<figure id="fig-38-1">
 <svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
      aria-labelledby="fig38-1-t fig38-1-d">
   <title id="fig38-1-t">Three ways to record that a name is Finnish</title>
@@ -194,7 +194,7 @@ or French (short for &ldquo;Timoth&eacute;&rdquo;)?
 what results from reading the string as Finnish.
 </p>
 
-<h2>38.2 The pattern, named</h2>
+<h2 id="sec-38-2">38.2 The pattern, named</h2>
 
 <blockquote>
 Natural languages, encodings, and similar relationships between one abstract
@@ -205,7 +205,7 @@ specific way.
 <cite>Interpretation properties, 1998</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-38-2">
 <svg class="dia" viewBox="0 0 620 280" width="620" height="280" role="img"
      aria-labelledby="fig38-2-t fig38-2-d">
   <title id="fig38-2-t">One string, four readings</title>
@@ -262,7 +262,7 @@ Once named, the pattern turns up everywhere:
 <tr><td>Units (added 2006)</td><td>a number</td><td>a quantity</td><td>&ldquo;10&rdquo; read in feet is a length</td></tr>
 </table>
 
-<h2>38.3 What it buys: nesting</h2>
+<h2 id="sec-38-3">38.3 What it buys: nesting</h2>
 
 <p>
 Interpretation properties compose, and composition records order.
@@ -271,7 +271,7 @@ standard form, then take its fingerprint, then write the fingerprint as
 printable text. The nesting itself states that order.
 </p>
 
-<figure>
+<figure id="fig-38-3">
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
      aria-labelledby="fig38-3-t fig38-3-d">
   <title id="fig38-3-t">Nested readings against flat annotations</title>
@@ -332,11 +332,11 @@ making the right conclusion about which happened in what order.
 </blockquote>
 
 <p>
-This cures the symptom Chapter 32 calls unordered annotations of an ordered
+This cures the symptom <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> calls unordered annotations of an ordered
 process.
 </p>
 
-<h2>38.4 Where it fails</h2>
+<h2 id="sec-38-4">38.4 Where it fails</h2>
 
 <p>
 The note is unusual in reaching a negative conclusion about its own proposal,
@@ -365,7 +365,7 @@ This doesn't tell us what it is 10 of.
 <cite>Interpretation properties, 1998</cite>
 </blockquote>
 
-<figure>
+<figure id="fig-38-4">
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig38-4-t fig38-4-d">
   <title id="fig38-4-t">Where the reading of a shoe size would go</title>
@@ -439,7 +439,7 @@ feet. He calls that frightful too, because equality stops working. If
 A note to himself, dated January 2001, records no clear way forward.
 </p>
 
-<h2>38.5 The list of questions worth keeping</h2>
+<h2 id="sec-38-5">38.5 The list of questions worth keeping</h2>
 
 <p>
 A datatype designer has to answer five yes-or-no questions; the answers fix
@@ -467,7 +467,7 @@ are known.
 <li><strong>Datatypes got a working answer in 2004.</strong> The RDF
 Recommendations of February 2004 introduced typed literals, written
 <code>"10"^^xsd:integer</code>, which pair the string with an XML Schema
-datatype: the first real answer to section 38.4&#8217;s problem.</li>
+datatype: the first real answer to <a class="x-ref" href="#sec-38-4">section 38.4</a>&#8217;s problem.</li>
 <li><strong>RDF 1.1 went further.</strong> In the W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of
 February 2014 every literal carries a datatype, and language-tagged strings
 have a datatype of their own. A literal is now a pair of text and tag, closer to
@@ -477,7 +477,7 @@ attempt two than to attempt three.</li>
 built on this pattern.</li>
 <li><strong>Nesting stayed the right answer for encodings.</strong> XML
 Signature, a W3C Recommendation of 2002, describes canonicalisation, digest
-and base-64 encoding as an ordered chain, which is section 38.3&#8217;s
+and base-64 encoding as an ordered chain, which is <a class="x-ref" href="#sec-38-3">section 38.3</a>&#8217;s
 argument.</li>
 <li><strong>The flat-header problem persists.</strong> <a class="gl-ref" href="../glossary.html#http">HTTP</a>&#8217;s current
 definition (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 9110, 2022) requires the Content-Encoding <a class="gl-ref" href="../glossary.html#header">header</a> to list the
@@ -489,11 +489,11 @@ prose.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The symptom this chapter cures is the last of the four in Chapter 32, and the
-graph model it works in is the same. The genericity dimensions of Chapter 10
+The symptom this chapter cures is the last of the four in <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, and the
+graph model it works in is the same. The genericity dimensions of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>
 are interpretation properties by another name. The canonicalisation and
-hashing example bears on Chapters 28 and 37, and the modelling of things that
-have no identifier is Chapter 34.
+hashing example bears on Chapters <a class="x-ref" href="28-meaning-document---grounding-global.html">28</a> and <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">37</a>, and the modelling of things that
+have no identifier is <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>.
 </p>
 </div>
 
@@ -518,7 +518,7 @@ where it should be no.</p>
 <div class="question">
 <p><span class="question-number">38.4</span>
 Find an English word that means something else in another language, and draw
-it the way Figure 38.2 does.</p>
+it the way <a class="x-ref" href="#fig-38-2">Figure 38.2</a> does.</p>
 </div>
 </details>
 

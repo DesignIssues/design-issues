@@ -62,23 +62,23 @@ pass something on without claiming it.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in May 2002 from an April 2002 keynote in Hawai&#8217;i, this note asks why voltages
+Written in May 2002 from a keynote that month at the World Wide Web conference in Hawai&#8217;i, this note asks why voltages
 arriving at a computer mean anything. The answer walks up from an Ethernet
 cable to a bank statement, and ends in an argument that is not technical.
 </p>
 </div>
 
-<h2>20.1 One commitment, then no more choices</h2>
+<h2 id="sec-20-1">20.1 One commitment, then no more choices</h2>
 
 <p>
 Suppose Alice walks into a meeting room and is handed an Ethernet cable. To use it,
 her computer must send <em>packets</em>, small blocks of data laid out as the
 Ethernet specification says. A <em>field</em> in each packet, a slot at a
 fixed place, names the specification that governs the rest. Committing to the cable commits her computer to
-everything above it (Figure 20.1).
+everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>).
 </p>
 
-<figure>
+<figure id="fig-20-1">
 <svg class="dia" viewBox="0 0 720 456" width="720" height="456" role="img"
      aria-labelledby="fig20-1-t fig20-1-d">
   <title id="fig20-1-t">The chain of commitments from a cable to a claim</title>
@@ -151,7 +151,7 @@ that keeps opening connections it does not want can exhaust a <a class="gl-ref" 
 memory.
 </p>
 
-<h2>20.2 Why this is an argument about law</h2>
+<h2 id="sec-20-2">20.2 Why this is an argument about law</h2>
 
 <p>
 Berners-Lee then turns the chain into an argument about law:
@@ -180,17 +180,17 @@ be absolutely clear about the illegality of such misuse.
 <cite>The Stack of Specifications, 2002</cite>
 </blockquote>
 
-<h2>20.3 The same walk, for a Web page</h2>
+<h2 id="sec-20-3">20.3 The same walk, for a Web page</h2>
 
 <p>
-Publishing a Web page follows a chain of the same shape (Figure 20.2). The
+Publishing a Web page follows a chain of the same shape (<a class="x-ref" href="#fig-20-2">Figure 20.2</a>). The
 <code>http:</code> at the front of an address is its <em><a class="gl-ref" href="../glossary.html#scheme">scheme</a></em>; a public
 list says it means <a class="gl-ref" href="../glossary.html#http">HTTP</a>. HTTP says to connect to port 80. The reply carries a
 Content-Type label, such as <code>text/html</code> for a page a person reads,
 or OFX (Open Financial Exchange, a bank-statement format) for a program.
 </p>
 
-<figure>
+<figure id="fig-20-2">
 <svg class="dia" viewBox="0 0 720 396" width="720" height="396" role="img"
      aria-labelledby="fig20-2-t fig20-2-d">
   <title id="fig20-2-t">The same chain for a Web page</title>
@@ -275,7 +275,7 @@ The server is the agent of the publisher.
 <cite>The Stack of Specifications, 2002</cite>
 </blockquote>
 
-<h2>20.4 The registry that is not a registry</h2>
+<h2 id="sec-20-4">20.4 The registry that is not a registry</h2>
 
 <p>
 The walk then reaches <a class="gl-ref" href="../glossary.html#xml">XML</a>, and a change in kind. A document sent as plain
@@ -286,7 +286,7 @@ this point is kept by one authority. A namespace is not: a shop can create, or
 asking anyone, and put a page there explaining its terms.
 </p>
 
-<figure>
+<figure id="fig-20-3">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig20-3-t fig20-3-d">
   <title id="fig20-3-t">Two ways to say which specification applies</title>
@@ -327,7 +327,7 @@ The note admits that in practice, for MathML and <a class="gl-ref" href="../glos
 happen.
 </p>
 
-<h2>20.5 Three stages of identifiers</h2>
+<h2 id="sec-20-5">20.5 Three stages of identifiers</h2>
 
 <p>
 The note sums the walk up in a table. Each spec points to the next through a
@@ -373,7 +373,7 @@ Define that property to take Pantone colour names, and an order for a hat in
 <code>blue256</code> cannot be read as any other blue.
 </p>
 
-<h2>20.6 When the chain does not connect</h2>
+<h2 id="sec-20-6">20.6 When the chain does not connect</h2>
 
 <p>
 Sometimes a sender wants to pass on something not meant. Most languages have
@@ -413,7 +413,7 @@ information: narrower, but the same reasoning.</li>
 <li><strong>The technical answer came first.</strong> SPF (RFC 4408, 2006), DKIM
 (RFC 4871, 2007) and DMARC (RFC 7489, 2015) made the From field checkable rather than merely defined.</li>
 <li><strong>The namespace-as-registry idea half worked.</strong> Anyone may
-mint a namespace URI, and many serve nothing at it. <a class="gl-ref" href="../glossary.html#html">HTML</a>, as Chapter 23
+mint a namespace URI, and many serve nothing at it. <a class="gl-ref" href="../glossary.html#html">HTML</a>, as <a class="x-ref" href="23-html-xml.html">Chapter 23</a>
 describes, dropped namespaces altogether.</li>
 <li><strong>The links proved replaceable.</strong> IPv6 now runs alongside
 IPv4, and RFC 822 has been replaced twice, by RFC 2822 (2001) and RFC 5322
@@ -424,9 +424,9 @@ IPv4, and RFC 822 has been replaced twice, by RFC 2822 (2001) and RFC 5322
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Chapter 19 argues for this layering; Chapter 6 reads it socially; Figure 20.3
-applies Chapter 1. Liability for protocol abuse returns in Chapter 15, mixed
-XML documents in Chapter 24.
+<a class="x-ref" href="19-modularity.html">Chapter 19</a> argues for this layering; <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a> reads it socially; <a class="x-ref" href="#fig-20-3">Figure 20.3</a>
+applies <a class="x-ref" href="01-principles-design.html">Chapter 1</a>. Liability for protocol abuse returns in <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>, mixed
+XML documents in <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>.
 </p>
 </div>
 
@@ -434,7 +434,7 @@ XML documents in Chapter 24.
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">20.1</span>
-Redraw Figure 20.2 for a website you use, naming the field and the list at
+Redraw <a class="x-ref" href="#fig-20-2">Figure 20.2</a> for a website you use, naming the field and the list at
 each step.</p>
 </div>
 <div class="question">
@@ -445,14 +445,14 @@ argument about misrepresentation.</p>
 </div>
 <div class="question">
 <p><span class="question-number">20.3</span>
-In the table in section 20.5, what does a short registered code buy the lower layers, and
+In the table in <a class="x-ref" href="#sec-20-5">section 20.5</a>, what does a short registered code buy the lower layers, and
 why could the upper layers not keep using registries?</p>
 </div>
 <div class="question">
 <p><span class="question-number">20.4</span>
 &ldquo;The server is the agent of the publisher.&rdquo; Name a common
 arrangement in which this is no longer straightforwardly true, and say what
-the chain of Figure 20.2 loses.</p>
+the chain of <a class="x-ref" href="#fig-20-2">Figure 20.2</a> loses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">20.5</span>

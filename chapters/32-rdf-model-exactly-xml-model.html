@@ -82,7 +82,7 @@ the meaning and query that. This chapter is the argument for the second camp.
 </p>
 </div>
 
-<h2>32.1 One fact, many documents, one graph</h2>
+<h2 id="sec-32-1">32.1 One fact, many documents, one graph</h2>
 
 <p>
 <a class="gl-ref" href="../glossary.html#xml">XML</a> is built of <em>elements</em>, named tags such as
@@ -101,7 +101,7 @@ model, instead stores each fact as a <em><a class="gl-ref" href="../glossary.htm
 relation (author) and an object (Ora).
 </p>
 
-<figure>
+<figure id="fig-32-1">
 <svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
      aria-labelledby="fig32-1-t fig32-1-d">
   <title id="fig32-1-t">Five documents, one statement</title>
@@ -173,7 +173,7 @@ He then renames the elements v, x, y, z and w. The names were a big hint,
 and only to the human.
 </p>
 
-<figure>
+<figure id="fig-32-2">
 <svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
      aria-labelledby="fig32-2-t fig32-2-d">
   <title id="fig32-2-t">Strip the names</title>
@@ -250,7 +250,7 @@ that schema allows few ways of saying the same thing. Berners-Lee calls each
 condition a big if.
 </p>
 
-<h2>32.2 Why the mapping is hairy</h2>
+<h2 id="sec-32-2">32.2 Why the mapping is hairy</h2>
 
 <p>
 There is a mapping from XML documents to semantic graphs, webs of such
@@ -272,7 +272,7 @@ such as <code>details</code> above or <code>div</code> in <a class="gl-ref" href
 any query built on the old structure.
 </p>
 
-<figure>
+<figure id="fig-32-3">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
      aria-labelledby="fig32-3-t fig32-3-d">
   <title id="fig32-3-t">A new wrapper breaks the path</title>
@@ -353,7 +353,7 @@ reinventing numbers as a separate type.
 <cite>Why RDF model is different from the XML model, 1998</cite>
 </blockquote>
 
-<h2>32.3 What a missing model looks like</h2>
+<h2 id="sec-32-3">32.3 What a missing model looks like</h2>
 
 <p>
 The last part of the note applies to any format, not just XML. Berners-Lee
@@ -390,11 +390,11 @@ never declared.
 </p>
 <p>
 Mail headers saying a message is encrypted, compressed, ASCII-encoded and in
-HTML read as a flat list, but the truth is a nesting (Figure 32.4). Chapter 38
+HTML read as a flat list, but the truth is a nesting (<a class="x-ref" href="#fig-32-4">Figure 32.4</a>). <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>
 shows how to write it properly.
 </p>
 
-<figure>
+<figure id="fig-32-4">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig32-4-t fig32-4-d">
   <title id="fig32-4-t">Flat headers, nested message</title>
@@ -432,7 +432,7 @@ The nesting is real, but the header format cannot express it, so it hides in
 the specification&#8217;s fine print.</figcaption>
 </figure>
 
-<h2>32.4 The concession about order</h2>
+<h2 id="sec-32-4">32.4 The concession about order</h2>
 
 <p>
 The note ends fairly. For a <a class="gl-ref" href="../glossary.html#graph">graph</a> of knowledge, order does not matter. For a
@@ -483,10 +483,10 @@ rather than by the general agents he imagined.</li>
 <h3>Connections</h3>
 <p>
 The independence of assertions this chapter demonstrates is the axiom of
-Chapter 27. The model it argues for is planned in Chapter 30 and defended in
-Chapter 31. Its treatment of nested encodings is completed in Chapter 38, and
-the relational counterpart is Chapter 33. The mixed-document processing
-question is Chapter 24.
+<a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>. The model it argues for is planned in <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> and defended in
+<a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>. Its treatment of nested encodings is completed in <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>, and
+the relational counterpart is <a class="x-ref" href="33-rdf-relational-databases.html">Chapter 33</a>. The mixed-document processing
+question is <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a>.
 </p>
 </div>
 
@@ -504,7 +504,7 @@ parcel? Find one more everyday label with the same ambiguity.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.3</span>
-Take the access rule from section 32.3 and suppose an earlier rule in the same
+Take the access rule from <a class="x-ref" href="#sec-32-3">section 32.3</a> and suppose an earlier rule in the same
 file says that nobody may read the page on Sundays. Rewrite the member rule so
 that it is true on its own, whatever order the rules are read in. Hint: say
 both conditions in one sentence.</p>

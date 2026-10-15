@@ -82,7 +82,7 @@ applies a difference to a version to get the next one.
 </p>
 </div>
 
-<figure>
+<figure id="fig-45-1">
 <svg class="dia" viewBox="0 0 720 260" width="720" height="260" role="img"
      aria-labelledby="fig45-1-t fig45-1-d">
   <title id="fig45-1-t">Sending the change instead of the state</title>
@@ -140,7 +140,7 @@ Send the change, not the state. Peer B applies &Delta; to its copy of v0 and
 gets v1. &Delta; takes the difference and &Sigma; adds it back.</figcaption>
 </figure>
 
-<h2>45.1 The three problems hiding in one</h2>
+<h2 id="sec-45-1">45.1 The three problems hiding in one</h2>
 
 <p>
 The motivating example is universally annoying: synchronising calendars and
@@ -162,16 +162,16 @@ why so many packages break, and proposes keeping them separate. It then
 addresses only the third.
 </p>
 
-<h2>45.2 Why a line-oriented diff will not do</h2>
+<h2 id="sec-45-2">45.2 Why a line-oriented diff will not do</h2>
 
 <p>
 A <a class="gl-ref" href="../glossary.html#graph">graph</a> has no lines. Two files may write the same graph with statements in
 a different order, and with different labels for its blank nodes: nodes the
-data mentions but has not named, such as Bob&#8217;s pet in Figure 45.2. Any
+data mentions but has not named, such as Bob&#8217;s pet in <a class="x-ref" href="#fig-45-2">Figure 45.2</a>. Any
 label will do, so a textual comparison reports change where there is none.
 </p>
 
-<figure>
+<figure id="fig-45-2">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig45-2-t fig45-2-d">
   <title id="fig45-2-t">One graph written as two different files</title>
@@ -246,7 +246,7 @@ statements, and expressed as a pattern to match rather than a position to
 edit.
 </p>
 
-<h2>45.3 Weak and strong</h2>
+<h2 id="sec-45-3">45.3 Weak and strong</h2>
 
 <p>
 The note&#8217;s patch format, in Notation3, is a pattern that finds the
@@ -278,7 +278,7 @@ Applied to a copy that has itself changed, a patch can fail in three ways.
 Whether a patch can be misapplied depends on what its pattern names.
 </p>
 
-<figure>
+<figure id="fig-45-3">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig45-3-t fig45-3-d">
   <title id="fig45-3-t">A weak patch and a strong patch</title>
@@ -320,12 +320,12 @@ was computed from; a strong one is context-independent.</figcaption>
 
 <p>
 Account numbers exist precisely to avoid this confusion. The property that
-makes a patch strong is the one Chapter 34 used to identify people: one no two
+makes a patch strong is the one <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a> used to identify people: one no two
 things can share. Here it lets a change travel between stores without going
 astray.
 </p>
 
-<h2>45.4 What a patch is, besides an instruction</h2>
+<h2 id="sec-45-4">45.4 What a patch is, besides an instruction</h2>
 
 <p>
 <strong>Patches as knowledge.</strong> A strong patch has meaning in itself.
@@ -341,7 +341,7 @@ list of changes to the W3C&#8217;s technical reports list, and publishing RDF
 differences could make that formal.
 </p>
 
-<h2>45.5 The follow-up, and what it concedes</h2>
+<h2 id="sec-45-5">45.5 The follow-up, and what it concedes</h2>
 
 <p>
 A section added in 2015 grants that the ideas became common property:
@@ -380,7 +380,7 @@ nodes deterministic labels, making graph comparison deterministic. It does not
 make patches strong: one added <a class="gl-ref" href="../glossary.html#triple">triple</a> can still relabel many blank nodes.</li>
 <li><strong>Patch formats arrived.</strong> <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update became a
 Recommendation in March 2013, and LD Patch was published as a W3C Working
-Group Note in 2015: section 45.3&#8217;s proposal in standard form.</li>
+Group Note in 2015: <a class="x-ref" href="#sec-45-3">section 45.3</a>&#8217;s proposal in standard form.</li>
 <li><strong>Explicit change won over computed change.</strong> Collaborative
 editors came to rely on operational transformation and on operation-based
 designs of conflict-free replicated data types, which send operations rather
@@ -391,10 +391,10 @@ than diffing states, as the 2015 follow-up preferred.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The identifying property that makes a patch strong is Chapter 34, and the
-notation the patches are written in is Chapter 42. Patches as knowledge relies
-on Chapter 44. The read-write systems these updates are for are Chapters 50
-and 54, and live data is Chapter 58.
+The identifying property that makes a patch strong is <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>, and the
+notation the patches are written in is <a class="x-ref" href="42-notation3.html">Chapter 42</a>. Patches as knowledge relies
+on <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>. The read-write systems these updates are for are Chapters <a class="x-ref" href="50-read-write-linked-data.html">50</a>
+and 54, and live data is <a class="x-ref" href="58-live-data.html">Chapter 58</a>.
 </p>
 </div>
 
@@ -403,11 +403,11 @@ and 54, and live data is Chapter 58.
 <div class="question">
 <p><span class="question-number">45.1</span>
 Separate a synchronisation failure you have experienced into the three
-problems of section 45.1. Which one was it really?</p>
+problems of <a class="x-ref" href="#sec-45-1">section 45.1</a>. Which one was it really?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.2</span>
-Write a patch, in the form of section 45.3, for a record in a system you use.
+Write a patch, in the form of <a class="x-ref" href="#sec-45-3">section 45.3</a>, for a record in a system you use.
 Is it weak or strong, and what would make it strong?</p>
 </div>
 <div class="question">

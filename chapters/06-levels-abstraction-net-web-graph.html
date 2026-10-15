@@ -63,7 +63,7 @@ question. For trust, the web address itself says who is responsible.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Nine years after the survey of Chapter 5, Berners-Lee wrote this note with an
+Nine years after the survey of <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, Berners-Lee wrote this note with an
 unusually frank status line: it was written, he says, in response to another
 round of circular discussions of Web architecture. It is short, it contains
 no new mechanism, and it closes Volume I because it supplies the thing the
@@ -76,7 +76,7 @@ the one beneath.
 </p>
 </div>
 
-<h2>6.1 Three refusals</h2>
+<h2 id="sec-6-1">6.1 Three refusals</h2>
 
 <p>
 The note advances by rejecting three answers in turn. Each step is an
@@ -101,7 +101,7 @@ which names computers, and <a class="gl-ref" href="../glossary.html#tcp">TCP</a>
 finds the route itself.
 </p>
 
-<figure>
+<figure id="fig-6-1">
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
      aria-labelledby="fig6-1-t fig6-1-d">
   <title id="fig6-1-t">The route versus the name</title>
@@ -184,14 +184,14 @@ who made this order which includes this item which is manufactured by this
 facility, and so on.
 </p>
 
-<h2>6.2 The two exceptions</h2>
+<h2 id="sec-6-2">6.2 The two exceptions</h2>
 
 <p>
 Each layer can be ignored except in two cases, debugging and trust. Figure
 6.2 sets out what each question looks like at each layer.
 </p>
 
-<figure>
+<figure id="fig-6-2">
 <svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
      aria-labelledby="fig6-2-t fig6-2-d">
   <title id="fig6-2-t">Lifting the hood at each level</title>
@@ -282,7 +282,7 @@ is the reason the abstraction is allowed to be an abstraction at all.
 </p>
 
 
-<h2>6.3 The seams are visible in the identifier</h2>
+<h2 id="sec-6-3">6.3 The seams are visible in the identifier</h2>
 
 <p>
 The note&#8217;s neatest observation is that each join between layers is legible in
@@ -317,11 +317,11 @@ this form says whose account of the thing is being used.
 Berners-Lee adds a parenthesis that has become a chapter of its own. Since
 2005 there have been URIs for things not explicitly bound to a document,
 which require the server to name a suitable document at request time. He
-calls this more complicated and moves on. Chapters 7 and 8 are what lies
+calls this more complicated and moves on. Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a> are what lies
 behind the parenthesis.
 </p>
 
-<figure>
+<figure id="fig-6-3">
 <svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
      aria-labelledby="fig6-3-t fig6-3-d">
   <title id="fig6-3-t">Four layers, and the identifier that records them</title>
@@ -373,7 +373,7 @@ Read each address left to right: each level&#8217;s name contains the name of
 the party responsible below it.</figcaption>
 </figure>
 
-<h2>6.4 The conclusion, which is about people</h2>
+<h2 id="sec-6-4">6.4 The conclusion, which is about people</h2>
 
 <blockquote>
 The web of things is built on the web of documents, which is built on the web
@@ -402,7 +402,7 @@ components of the lower layer's architecture.
 </blockquote>
 
 <p>
-Read from the bottom up, as in Figure 6.3, the chain of borrowed trust runs
+Read from the bottom up, as in <a class="x-ref" href="#fig-6-3">Figure 6.3</a>, the chain of borrowed trust runs
 like this:
 </p>
 
@@ -417,7 +417,7 @@ to the degree the document is.</li>
 
 <p>
 Take away the accountability at any level and the levels above lose their
-footing. This is why Chapter 3 concluded that naming is a contractual matter.
+footing. This is why <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> concluded that naming is a contractual matter.
 </p>
 
 <div class="since">
@@ -438,7 +438,7 @@ that are not documents: asked for such a URI, the server answers with the
 <a class="gl-ref" href="../glossary.html#status-code">status code</a> 303 (&ldquo;See Other&rdquo;) and the address of a document about
 the thing. Practice afterwards split between that pattern and <a class="gl-ref" href="../glossary.html#hash">hash</a> URIs,
 which, like the <code>#part3</code> example above, put the thing&#8217;s name
-inside a document&#8217;s name. Chapters 7 and 8 take this up.</li>
+inside a document&#8217;s name. Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a> take this up.</li>
 <li><strong>The third layer arrived partially.</strong> <a class="gl-ref" href="../glossary.html#schema">Schema</a>.org, launched
 in June 2011, put structured descriptions of things on a large fraction of
 pages, and search engines consume them. The browser showing a user a merged
@@ -458,11 +458,11 @@ whole argument rests on.</li>
 <p>
 This chapter completes Volume I by explaining what the earlier axioms are for.
 The parenthetical question about URIs for things opens Volume II at
-Chapters 7 and 8. The trust exception is the starting point of Volume VII,
-especially Chapter 66 on modelling real trust, and the failures catalogued in
+Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>. The trust exception is the starting point of Volume VII,
+especially <a class="x-ref" href="66-model-real-trust.html">Chapter 66</a> on modelling real trust, and the failures catalogued in
 Volumes VII and VIII are failures of this same layered structure rather than
 a separate set of problems. The social reading of naming returns from
-Chapter 3 and reaches its full statement in Chapter 49 on <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>.
+<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> and reaches its full statement in <a class="x-ref" href="49-linked-data.html">Chapter 49</a> on <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a>.
 </p>
 </div>
 

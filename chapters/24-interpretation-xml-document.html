@@ -64,7 +64,7 @@ not to be run.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 17 established that one document may carry several vocabularies.
+<a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> established that one document may carry several vocabularies.
 This note, from February 2002 and revised in June 2005, asks the question
 that leaves open, in the bluntest possible form:
 </p>
@@ -74,7 +74,7 @@ If one party sends another an XML document, how does one say what it means?
 </blockquote>
 </div>
 
-<h2>24.1 The problem: specifications that fight</h2>
+<h2 id="sec-24-1">24.1 The problem: specifications that fight</h2>
 
 <p>
 Berners-Lee credits Paul Prescod with the list of places one might look:
@@ -110,7 +110,7 @@ to. The namespace of the root element is the only thing a processor must be
 able to dispatch on. Everything else is decided further down.
 </p>
 
-<h2>24.2 Two models</h2>
+<h2 id="sec-24-2">24.2 Two models</h2>
 
 <p>
 The usual assumption was a pipeline: one stage per technology, such as
@@ -119,7 +119,7 @@ general case, &ldquo;basically broken&rdquo;: once elements nest arbitrarily,
 no single order of stages handles them all.
 </p>
 
-<figure>
+<figure id="fig-24-1">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig24-1-t fig24-1-d">
   <title id="fig24-1-t">Pipeline processing against top-down processing</title>
@@ -206,14 +206,14 @@ why he speaks of the <em>meaning</em> of a document rather than its
 processing model.
 </p>
 
-<h2>24.3 XML functions</h2>
+<h2 id="sec-24-3">24.3 XML functions</h2>
 
 <p>
 Some foreign elements are instructions that yield more document when
 elaborated. Berners-Lee calls them <em>XML functions</em>.
 </p>
 
-<figure>
+<figure id="fig-24-2">
 <svg class="dia" viewBox="0 0 720 310" width="720" height="310" role="img"
      aria-labelledby="fig24-2-t fig24-2-d">
   <title id="fig24-2-t">Elaborating a nested function</title>
@@ -315,7 +315,7 @@ inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
 whether the inner ones are expanded first.
 </p>
 
-<h2>24.4 The need to quote</h2>
+<h2 id="sec-24-4">24.4 The need to quote</h2>
 
 <p>
 Sometimes a function must be mentioned without being run. In an XML
@@ -323,7 +323,7 @@ Sometimes a function must be mentioned without being run. In an XML
 real XInclude element, which must not be expanded inside the XSLT.
 </p>
 
-<figure>
+<figure id="fig-24-3">
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
      aria-labelledby="fig24-3-t fig24-3-d">
   <title id="fig24-3-t">The same include, live and quoted</title>
@@ -369,7 +369,7 @@ quoting syntax in XML&rdquo;. Running quoted material is dangerous, not
 merely wrong.
 </p>
 
-<h2>24.5 The conclusion</h2>
+<h2 id="sec-24-5">24.5 The conclusion</h2>
 
 <blockquote>
 The top-down processing model for XML as an architectual principle resolves
@@ -394,7 +394,7 @@ on SVG.</li>
 choice is sometimes useful.</li>
 </ul>
 
-<figure>
+<figure id="fig-24-4">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
      aria-labelledby="fig24-4-t fig24-4-d">
   <title id="fig24-4-t">One pointer, two documents</title>
@@ -452,7 +452,7 @@ The same pointer finds different things depending on whether functions have
 run: the include element, or a piece of the SVG.</figcaption>
 </figure>
 
-<h2>24.6 Labelling the document</h2>
+<h2 id="sec-24-6">24.6 Labelling the document</h2>
 
 <p>
 Because the root element decides, its namespace says what the whole document
@@ -476,7 +476,7 @@ facility had its own schema.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The question was overtaken.</strong> Mixed-namespace XML did not
-become the ordinary way to publish; the <a class="gl-ref" href="../glossary.html#html">HTML</a> that won (Chapter 23) has no
+become the ordinary way to publish; the <a class="gl-ref" href="../glossary.html#html">HTML</a> that won (<a class="x-ref" href="23-html-xml.html">Chapter 23</a>) has no
 author-declared namespaces.</li>
 <li><strong>A pipeline language was standardised.</strong> XProc became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010, sitting at the top of the tree as the note
@@ -493,10 +493,10 @@ systems: text meant as data is obeyed as instruction.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Mixed-vocabulary documents are specified in Chapter 17; the fork that made
-the question moot for HTML is Chapter 23. What selects a specification is read
-in layers in Chapter 20, and an element governing its own contents is the
-modularity of Chapter 19.
+Mixed-vocabulary documents are specified in <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>; the fork that made
+the question moot for HTML is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>. What selects a specification is read
+in layers in <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>, and an element governing its own contents is the
+modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>.
 </p>
 </div>
 
@@ -509,7 +509,7 @@ and say which one a top-down model uses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">24.2</span>
-Using Figure 24.3, explain why the same <code>include</code> element is
+Using <a class="x-ref" href="#fig-24-3">Figure 24.3</a>, explain why the same <code>include</code> element is
 expanded in one place and not in another.</p>
 </div>
 <div class="question">

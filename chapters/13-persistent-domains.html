@@ -70,7 +70,7 @@ take over. It was never built.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Chapter 3 concluded that persistence is a contract rather than a technology.
+<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> concluded that persistence is a contract rather than a technology.
 This note, written in October 2000, is the one place in the collection where
 Berners-Lee tries to write the contract. He explains the threshold a thought
 has to cross to be written down here:
@@ -87,16 +87,16 @@ its second shows what solving it would demand.
 </p>
 </div>
 
-<h2>13.1 The problem, factored</h2>
+<h2 id="sec-13-1">13.1 The problem, factored</h2>
 
 <p>
 The note begins by splitting <a class="gl-ref" href="../glossary.html#uri">URI</a> persistence into two independent questions:
 the persistence of the <a class="gl-ref" href="../glossary.html#opaque">opaque</a> string after the domain name, and the
-persistence of the domain name itself. Figure 13.1 uses the note&#8217;s own
+persistence of the domain name itself. <a class="x-ref" href="#fig-13-1">Figure 13.1</a> uses the note&#8217;s own
 example.
 </p>
 
-<figure>
+<figure id="fig-13-1">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
      aria-labelledby="fig13-1-t fig13-1-d">
   <title id="fig13-1-t">Two halves of a URI, two owners of the problem</title>
@@ -155,7 +155,7 @@ change in how names are held for the domain.</figcaption>
 The first is the publisher&#8217;s to solve. Berners-Lee notes that the failure
 is usually thoughtlessness rather than malice, aggravated by a dearth of
 tools for running a <a class="gl-ref" href="../glossary.html#server">server</a> with persistent URIs. He had already written
-<em>Cool URIs Don&#8217;t Change</em> about it; section 13.3 adds teeth.
+<em>Cool URIs Don&#8217;t Change</em> about it; <a class="x-ref" href="#sec-13-3">section 13.3</a> adds teeth.
 </p>
 
 <p>
@@ -192,7 +192,7 @@ He also names a symptom: a constant stream of proposals for new URI schemes
 with less attention to the social issues than <a class="gl-ref" href="../glossary.html#http">HTTP</a> and <a class="gl-ref" href="../glossary.html#dns">DNS</a> receive.
 </p>
 
-<h2>13.2 The proposal: date-stamped top-level domains</h2>
+<h2 id="sec-13-2">13.2 The proposal: date-stamped top-level domains</h2>
 
 <p>
 The mechanism is a single trick, borrowed twice over. A <a class="gl-ref" href="../glossary.html#top-level-domain">top-level domain</a> is
@@ -216,7 +216,7 @@ disappears, and the expectation that it will never be reused is set from the
 start.
 </p>
 
-<figure>
+<figure id="fig-13-2">
 <svg class="dia" viewBox="0 0 720 224" width="720" height="224" role="img"
      aria-labelledby="fig13-2-t fig13-2-d">
   <title id="fig13-2-t">Date-stamped registration over time</title>
@@ -286,7 +286,7 @@ get and worthless to trade;</li>
 transfer, which discourages speculation.</li>
 </ul>
 
-<h2>13.3 The obligations</h2>
+<h2 id="sec-13-3">13.3 The obligations</h2>
 
 <p>
 This half answers the first problem, the publisher who stops caring for its
@@ -326,7 +326,7 @@ organisation had ceased to exist; it could then ask for a new domain and
 start again, at least the first time.
 </p>
 
-<figure>
+<figure id="fig-13-3">
 <svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
      aria-labelledby="fig13-3-t fig13-3-d">
   <title id="fig13-3-t">Lifecycle of a persistent domain</title>
@@ -384,10 +384,10 @@ photocopy an out-of-print book. A footnote records Joseph Reagle&#8217;s point
 that courts might not accept the parallel.
 </p>
 
-<h2>13.4 What the note gets right about what it is</h2>
+<h2 id="sec-13-4">13.4 What the note gets right about what it is</h2>
 
 <p>
-The clarification about re-use is the part to carry away. Most URIs are generic in the sense of Chapter 10: they refer to a conceptual
+The clarification about re-use is the part to carry away. Most URIs are generic in the sense of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>: they refer to a conceptual
 resource whose representation varies with time, technology and language, as
 one address for &ldquo;today&#8217;s weather&rdquo; shows different content each
 day. That is permitted inside a persistent domain. What is forbidden is
@@ -443,11 +443,11 @@ names, a URI resolving to something other than what the linker meant.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter answers the naming problem stated in Chapter 3 and relies on
-the genericity defined in Chapter 10. The centralised DNS root that makes the
-proposal need ICANN is named in Chapter 5; the rival naming schemes are
-discussed in Chapter 4. The question of who
-may copy material after its publisher stops serving it returns in Chapter 80.
+This chapter answers the naming problem stated in <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> and relies on
+the genericity defined in <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>. The centralised DNS root that makes the
+proposal need ICANN is named in <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>; the rival naming schemes are
+discussed in <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. The question of who
+may copy material after its publisher stops serving it returns in <a class="x-ref" href="80-general-computation-digital-rights-management.html">Chapter 80</a>.
 </p>
 </div>
 
@@ -465,7 +465,7 @@ what mechanism?</p>
 </div>
 <div class="question">
 <p><span class="question-number">13.3</span>
-Under section 13.4, may a persistent domain holder serve a document in a new
+Under <a class="x-ref" href="#sec-13-4">section 13.4</a>, may a persistent domain holder serve a document in a new
 format ten years on? What would not be permitted?</p>
 </div>
 <div class="question">
