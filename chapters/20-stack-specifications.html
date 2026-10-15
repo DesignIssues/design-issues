@@ -52,21 +52,23 @@ a Design Issues note by Tim Berners-Lee, 2002-07-29.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-An Ethernet packet has a slot saying &ldquo;what follows is <a class="gl-ref" href="../glossary.html#ip">IP</a>&rdquo;; IP has
-one saying &ldquo;what follows is <a class="gl-ref" href="../glossary.html#tcp">TCP</a>&rdquo;; and so on up to the From line of an
-email. Plugging in commits a computer to the whole chain, so each slot has an
-agreed meaning and lying in one is a lie.
-Higher up, central lists give way to URIs anyone can create. Quoting lets a sender
-pass something on without claiming it.
+A forged From line on an email is a lie. An Ethernet packet has a slot saying &ldquo;what follows is <a class="gl-ref" href="../glossary.html#ip">IP</a>&rdquo;; IP has one saying
+&ldquo;what follows is <a class="gl-ref" href="../glossary.html#tcp">TCP</a>&rdquo;; and so on up to the From line. Plugging in
+commits a computer to the whole chain, so each slot has an agreed meaning.
+Higher up, central lists give way to URIs anyone can create. Quoting lets a
+sender pass something on without claiming it.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in May 2002 from a keynote that month at the World Wide Web conference in Hawai&#8217;i, this note asks why voltages
-arriving at a computer mean anything. The answer walks up from an Ethernet
-cable to a bank statement, and ends in an argument that is not technical.
+&ldquo;Bits mean something.&rdquo; Someone who forges the From line of an
+email has, Berners-Lee argues, made a misrepresentation he compares to
+forging a cheque, because by plugging in they agreed to specifications that
+fix what that line means. The note walks from an Ethernet cable up to a bank
+statement to show why. It began as his keynote at the World Wide Web
+conference in Hawai&#8217;i in May 2002.
 </p>
 </div>
 
@@ -77,7 +79,11 @@ Suppose Alice walks into a meeting room and is handed an Ethernet cable. To use 
 her computer must send <em>packets</em>, small blocks of data laid out as the
 Ethernet <a class="gl-ref" href="../glossary.html#specification">specification</a> says. A <em>field</em> in each packet, a slot at a
 fixed place, names the specification that governs the rest. Committing to the cable commits her computer to
-everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>).
+everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>). There, <code>0x0800</code> is the code
+for &ldquo;an Internet packet&rdquo;; an <a class="gl-ref" href="../glossary.html#rfc">RFC</a> (Request for Comments) is one
+of the numbered documents in which Internet standards are published; a <em>port</em> number says which service a
+connection is for; and <a class="gl-ref" href="../glossary.html#iana">IANA</a>, the Internet Assigned Numbers Authority, keeps
+the list of ports.
 </p>
 
 <figure id="fig-20-1">
@@ -136,23 +142,22 @@ bound by what the fields mean.</figcaption>
 </figure>
 
 <p>
-In the figure, <code>0x0800</code> is the code for &ldquo;an Internet
-packet&rdquo;; an <a class="gl-ref" href="../glossary.html#rfc">RFC</a> (Request for Comments) is a numbered Internet standard;
-a <em>port</em> number says which service a connection is for; and <a class="gl-ref" href="../glossary.html#iana">IANA</a>, the
-Internet Assigned Numbers Authority, keeps the list of ports.
-</p>
-
-<p>
 Each specification also sets rules of behaviour, and each can be cheated. An
 Ethernet computer that always waits least after a collision crowds the others
 out, &ldquo;just like people who always seem to be the one talking in a
-meeting&rdquo;. One that resends TCP data too early slows everyone down. One
-that keeps opening connections it does not want can exhaust a <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s
-memory.
+meeting&rdquo;.
 </p>
 
 <h2 id="sec-20-2">20.2 Why this is an argument about law</h2>
 
+<p>
+A forged message &ldquo;sneaks past their personal email filtering, and also
+any automated filtering, tricking them into reading a message&rdquo;,
+using up &ldquo;a person&#8217;s time, energy, bandwidth and disk space&rdquo;
+for the sender&#8217;s gain. The note debunks the idea that
+&ldquo;its Ok to interpret things this way as more and more people are doing
+it&rdquo;:
+</p>
 
 <blockquote>
 The Internet specifications, to which any Internet user implicitly agrees in
@@ -164,12 +169,13 @@ penalties as lying or fraud in any other medium.
 </blockquote>
 
 <p>
-His examples of abuse are spammers who forge email headers and companies that
-cheat protocol timeouts. He then gives the change in stakes:
+He then gives the change in stakes:
 </p>
 
 <blockquote>
-Now that the Internet is such as large force in society, it is possible to
+When the Internet was young and used by research institutions, its misuse
+would inconvenience other users and lead to reprobation and the disdain of
+one's peers. Now that the Internet is such as large force in society, it is possible to
 make a lot of money and create a lot of damage by protocol abuse.
 You can compare a lie in an internet message, depending on how it is done, to
 forging a check, connecting to the electricity supply the other side of the
@@ -178,7 +184,7 @@ be absolutely clear about the illegality of such misuse.
 <cite>The Stack of Specifications, 2002</cite>
 </blockquote>
 
-<h2 id="sec-20-3">20.3 The same walk, for a Web page</h2>
+<h2 id="sec-20-3">20.3 From a Web address to a bank statement</h2>
 
 <p>
 Publishing a Web page follows a chain of the same shape (<a class="x-ref" href="#fig-20-2">Figure 20.2</a>). The
@@ -316,11 +322,13 @@ layer does not.</figcaption>
 
 <p>
 That page may be a specification for people, a <a class="gl-ref" href="../glossary.html#schema">schema</a> for machines, or both.
-The note admits that in practice, for MathML and <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a>, this did not always
-happen.
+A P3P privacy policy, for example, is XML that a browser can scan more easily
+than a person can read one, and it works only if its terms are well defined.
+A bracketed aside admits &ldquo;this doesn&#8217;t always happen&rdquo;,
+naming MathML and <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> without saying more.
 </p>
 
-<h2 id="sec-20-5">20.5 Three stages of identifiers</h2>
+<h2 id="sec-20-5">20.5 Three stages of civilisation</h2>
 
 <p>
 The note sums the walk up in a table. Each spec points to the next through a
@@ -339,21 +347,20 @@ field and a list; for the newer layers, the list is the Web.
 </table>
 
 <p>
-Berners-Lee calls these three stages: numbers, which need a central registry;
-URIs, which anyone with a little domain space can mint; and
-URIs whose definitions can be fetched from the Web. Central lists suited the few early protocols and
-strained as protocols multiplied.
+Berners-Lee calls these &ldquo;three stages of civilization&rdquo;: numbers,
+which need a central registry; URIs, which anyone with a little domain space
+can mint; and URIs whose definitions can be fetched from the Web. Central
+lists suited the few early protocols, and strained as protocols multiplied:
+he cites the &ldquo;social difficulties of getting an IANA allocation for a
+MIME type&rdquo; for an early <a class="gl-ref" href="../glossary.html#w3c">W3C</a> specification.
 </p>
 
 <p>
-RDF is a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> language for publishing data on the Web:
+In RDF, a W3C language for data, each statement or <em><a class="gl-ref" href="../glossary.html#triple">triple</a></em> gives a
+thing, a property and a value (a hat, its colour, <code>blue256</code>), and
+the property is named by a URI such as
+<code>http://www.w3.org/2002/05/example#color</code>.
 </p>
-<ul>
-<li>a <em><a class="gl-ref" href="../glossary.html#triple">triple</a></em> is one statement: a thing, a property, a value, such as
-a hat, its colour, <code>blue256</code>;</li>
-<li>the <em>property</em>, the kind of fact stated, is named by a URI, such as
-<code>http://www.w3.org/2002/05/example#color</code>.</li>
-</ul>
 
 <blockquote>
 And whoever made up the URI gets to say what the property means, that is,
@@ -369,8 +376,8 @@ Define that property to take Pantone colour names, and an order for a hat in
 <h2 id="sec-20-6">20.6 When the chain does not connect</h2>
 
 <p>
-Sometimes a sender wants to pass on something not meant. Most languages have
-a way to break the chain:
+Many protocols also have a way to break the chain, passing something on
+without meaning it:
 </p>
 
 <blockquote>
@@ -381,13 +388,11 @@ rule.
 
 <p>
 In email it is the attachment, used only as the cover note says: &ldquo;Look
-at this stupid program - but whatever you do don't run it!&rdquo; XML in 2002
-had no standard for such &ldquo;packages&rdquo;. In Notation3, a text syntax
+at this stupid program - but whatever you do don't run it!&rdquo; In Notation3, a text syntax
 for RDF, curly brackets quote: <code>{my:car srgb:color "000044"}</code>
-mentions the claim that the car is blue without making it
-(<code>000044</code> is dark blue; the braces mark a sentence talked about,
-not asserted). Forwarding a scam email to warn a friend works the same way:
-its claims travel quoted, unmade.
+mentions the claim that the car is dark blue without making it. Forwarding a
+scam email to warn a friend works the same way: its claims travel quoted,
+unmade.
 </p>
 
 <blockquote>
@@ -402,15 +407,12 @@ to have meant whatever they did say in the main message!
 <li><strong>The legal argument was partly taken up.</strong> The EU
 ePrivacy Directive (2002/58/EC, 2002) barred marketing email that hides its
 sender, and the US CAN-SPAM Act (2003) outlawed misleading <a class="gl-ref" href="../glossary.html#header">header</a>
-information: narrower, but the same reasoning.</li>
-<li><strong>The technical answer came first.</strong> SPF (RFC 4408, 2006), DKIM
-(RFC 4871, 2007) and DMARC (RFC 7489, 2015) made the From field checkable rather than merely defined.</li>
+information: narrower, and on different grounds, but aimed at the same lie.</li>
+<li><strong>A technical answer followed.</strong> Sender authentication, told in
+<a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>, made the From field checkable rather than merely defined.</li>
 <li><strong>The namespace-as-registry idea half worked.</strong> Anyone may
 mint a namespace URI, and as of 2026 many serve nothing at it. <a class="gl-ref" href="../glossary.html#html">HTML</a>, as <a class="x-ref" href="23-html-xml.html">Chapter 23</a>
 describes, dropped namespaces altogether.</li>
-<li><strong>The links proved replaceable.</strong> IPv6 (RFC 2460, 1998)
-now runs alongside IPv4, and RFC 822 has been replaced twice, by RFC 2822 (2001) and RFC 5322
-(2008), without changing what a From line means.</li>
 </ul>
 </div>
 
@@ -443,14 +445,15 @@ why could the upper layers not keep using registries?</p>
 </div>
 <div class="question">
 <p><span class="question-number">20.4</span>
-&ldquo;The server is the agent of the publisher.&rdquo; Name a common
+&ldquo;The <a class="gl-ref" href="../glossary.html#server">server</a> is the agent of the publisher.&rdquo; Name a common
 arrangement in which this is no longer straightforwardly true, and say what
 the chain of <a class="x-ref" href="#fig-20-2">Figure 20.2</a> loses.</p>
 </div>
 <div class="question">
 <p><span class="question-number">20.5</span>
-You forward a scam email to warn a friend. Using the idea of quoting, explain
-why you have not made its claims.</p>
+When you repost someone else&#8217;s post with your own comment, which part
+are you asserting? What would the &ldquo;cover note&rdquo; have to say for the
+original to count as only quoted?</p>
 </div>
 </details>
 

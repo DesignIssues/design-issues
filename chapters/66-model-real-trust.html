@@ -55,37 +55,41 @@ a Design Issues note by Tim Berners-Lee, 2015-03-28.
 Browsers trust a website only if a big <a class="gl-ref" href="../glossary.html#certificate">certificate</a> company vouches for it.
 But people trust others for many reasons: they met them, they know them, they
 work for them. Berners-Lee argues the browser should let people record those
-reasons, rather than treat everything outside the company chain as an attack.
+reasons, rather than treat everything outside the company chain as a violation.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume VII opens with one of four related notes written in February and March
-2015, each marked as a personal view, not a formal one of <a class="gl-ref" href="../glossary.html#w3c">W3C</a>. Berners-Lee
-calls this the most philosophical of the four, and its question is simple. People trust things for many different reasons. Does the
-machine let them say so?
+MIT gives its staff self-signed certificates. Berners-Lee has a close
+relationship with MIT, which has issued him an RFID card and a credit card,
+and he can walk into its offices and &#8220;hold them accountable&#8221;. Yet
+browser makers&#8217; rhetoric, he writes, suggests that accepting such a
+certificate is &#8220;a horrible violation, and should be stopped&#8221;.
+</p>
+<p>
+This 2015 note, the most philosophical of four on security that open Volume
+VII, asks why the machine cannot be told what its user already knows.
 </p>
 </div>
 
 <h2 id="sec-66-1">66.1 Four ways people actually trust</h2>
 
 <p>
-When a browser connects securely to a site, the site shows a
-<em>certificate</em>: a document that ties the site&#8217;s name to a public
-key. The site keeps the matching secret key; only the holder of that secret
-can answer the browser&#8217;s challenge, so the browser knows it is talking
-to the named site.
+A bank may be vouched for by a large authority. A bank, lawyer, estate agent
+or accountant may be met face to face, with time to exchange keys as peers.
+A family, and its web <a class="gl-ref" href="../glossary.html#server">server</a>, are known personally. A university or employer
+is trusted through membership. The <a class="gl-ref" href="../glossary.html#certificate-authority">certificate authority</a> chain, the note
+concedes, &#8220;deserves the business&#8221; when it arbitrates identity on
+the global scale; the objection is to using it for everything else.
 </p>
 <p>
-The browser accepts it if a <em><a class="gl-ref" href="../glossary.html#certificate-authority">certificate authority</a></em> it already trusts
-has signed it. Browsers ship with a list of these, the <em>root store</em>, so
-trust flows down a chain.
-</p>
-<p>
-A <em>self-signed</em> certificate is one the owner signs for themselves.
-Browsers show an alarming warning for it, however well the user knows the owner.
+Here is what the browser understands of all that. A site presents a
+<em>certificate</em> tying its name to a <a class="gl-ref" href="../glossary.html#public-key">public key</a> whose secret half only it
+holds. The browser accepts it if a <em>certificate authority</em> in its
+<em>root store</em> has signed it. A <em>self-signed</em> certificate, signed
+by its owner, draws a warning however well the user knows the owner.
 </p>
 
 <figure id="fig-66-1">
@@ -146,18 +150,11 @@ The browser accepts the first kind of trust and meets the other three with a
 warning page.</figcaption>
 </figure>
 
-<p>
-A bank appears twice: trusted through an authority, or as a peer, when both
-sides sign contracts face to face and can exchange keys directly. Whatever the
-relationship, the note says, the user must be able to add that certificate
-because of it.
-</p>
-
-<h2 id="sec-66-2">66.2 The objection</h2>
+<h2 id="sec-66-2">66.2 Whose interests the warning serves</h2>
 
 <p>
-The complaint is about whose interests the default serves. In the quotation,
-<a class="gl-ref" href="../glossary.html#pki">PKI</a> (<a class="gl-ref" href="../glossary.html#public-key">public key</a> infrastructure) means the certificate-authority system of
+Whatever the relationship, the user must be able to add the certificate
+because of it. In the quotation, <a class="gl-ref" href="../glossary.html#pki">PKI</a> (public key infrastructure) means the certificate-authority system of
 66.1.
 </p>
 
@@ -172,7 +169,7 @@ being used to convey these trust paths.
 
 <p>
 Three reasons are given for calling this inappropriate. Routing a family
-<a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s trust through a commercial hierarchy is expensive. It misrepresents
+server&#8217;s trust through a commercial hierarchy is expensive. It misrepresents
 why the server is trusted. And it is a security liability:
 </p>
 
@@ -185,8 +182,9 @@ system.
 
 <p>
 Root stores hold authorities in many countries, some hacked from time to time.
-Trusting a family&#8217;s server through them imports everybody else&#8217;s
-risk.
+In 2011 the Dutch authority DigiNotar was hacked and issued a forged Google
+certificate, used to intercept users in Iran; it went bankrupt that year. Trusting a family&#8217;s server
+through such a list imports everybody else&#8217;s risk.
 </p>
 
 <figure id="fig-66-2">
@@ -253,7 +251,7 @@ strong as the weakest authority the browser accepts. A direct exchange has
 one link, and the user checked it in person.</figcaption>
 </figure>
 
-<h2 id="sec-66-3">66.3 What he asks for instead</h2>
+<h2 id="sec-66-3">66.3 Accept a key, say why, review it later</h2>
 
 <blockquote>
 No, it should be enabled, and a great user interface provided for me, the user,
@@ -262,16 +260,10 @@ to control and review the process.
 </blockquote>
 
 <p>
-The note&#8217;s own case is MIT, which distributes self-signed certificates
-to its staff. He has a close relationship with MIT and can walk into its
-offices, so accepting that one certificate is reasonable. Browsers meet such a
-certificate with a full-page warning, the way past it hidden behind an
-Advanced button.
-</p>
-
-<p>
-The demand is for an interface, not a protocol change: accept a key, record
-why, review it later.
+His reason for accepting MIT&#8217;s certificate is that he can hold MIT
+accountable, the word on which <a class="x-ref" href="65-roadmap-web-services.html">Chapter 65</a> turned. Real trust, in this sense,
+is trust in someone one can reach. The demand is for an interface, not a
+protocol change.
 </p>
 
 <figure id="fig-66-3">
@@ -320,17 +312,15 @@ what they accepted, why, and the power to revoke it. (The design is ours; the
 note gives none.)</figcaption>
 </figure>
 
-<h2 id="sec-66-4">66.4 The common thread</h2>
+<h2 id="sec-66-4">66.4 One kind of trust, modelled; the rest, warned against</h2>
 
 <p>
-All four notes make the same claim: the system models one kind of trust and
-treats every other kind as an error.
-</p>
-
-<p>
+The next two notes find the same mismatch elsewhere: in how finely the browser
+divides sites, and in the missing support for certificates held by users.
 <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> warned against joining the machine loop to the social loop at every
 rung. This is the opposite failure: the machine admits one social arrangement
-only.
+only. The test of a remedy is simple. Can a user accept a key, record why, and
+review that choice later?
 </p>
 
 <div class="since">
@@ -341,8 +331,8 @@ Encrypt issued its first certificate in September 2015 and made
 hierarchy-backed certificates free. That answered the expense objection and
 none of the others.</li>
 <li><strong>The weakest-authority problem was mitigated rather than
-solved.</strong> Certificate Transparency, public append-only logs of every
-certificate issued, was first specified in <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962 (June 2013) and revised as RFC 9162 in December 2021, both as experimental RFCs. It makes
+solved.</strong> Certificate Transparency (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962, June 2013; revised as RFC
+9162, 2021), public append-only logs of every certificate issued, makes
 certificates issued to the wrong party detectable after the fact, without
 changing who must be trusted.</li>
 <li><strong>Personal and peer trust moved elsewhere.</strong> Messaging
@@ -368,8 +358,8 @@ the hierarchy the browser models?</p>
 </div>
 <div class="question">
 <p><span class="question-number">66.2</span>
-Using a hierarchy for something you trust personally is called a security
-liability. Explain why, in terms of what you are now exposed to.</p>
+Why is a hierarchy a security liability for something you trust personally?
+What are you then exposed to?</p>
 </div>
 <div class="question">
 <p><span class="question-number">66.3</span>
@@ -383,8 +373,9 @@ not answer.</p>
 </div>
 <div class="question">
 <p><span class="question-number">66.5</span>
-Which kind of trust in <a class="x-ref" href="#fig-66-1">Figure 66.1</a> does a self-signed certificate from your
-employer fall under, and what does the browser currently do with it?</p>
+The note concedes the certificate authority chain &#8220;deserves the
+business&#8221; at global scale. Where would you draw the line between global and personal
+trust?</p>
 </div>
 </details>
 

@@ -53,25 +53,26 @@ a Design Issues note by Tim Berners-Lee, 1998-05-01.
 <h3>The short version</h3>
 <p>
 Between 1994 and 1998, web pages gained tables and many
-other features, none of which anybody had agreed on. Companies simply invented
+other features, added before anyone had agreed on them. Companies simply invented
 them, protected by a rule inherited from electronic mail: anything not
 understood is to be ignored rather than rejected.
 </p>
 <p>
-That rule is why the Web grew so fast. It is also why nothing could ever be
-relied on. This note describes the cycle that resulted, explains why it had to
-end, and sets out the thought experiment its author used to test every design
-he made.
+That rule is why the Web grew so fast. It is also why no feature could ever be
+made mandatory. The note traces the cycle that resulted, why it had to end, and the thought experiment Berners-Lee tried to make the Web pass.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This note is dated March 1998 and was the basis of Berners-Lee&#8217;s keynote at the seventh World Wide Web
-conference (WWW7) that April; the status line calls it an incomplete first
-draft. It examines the founding mandate of the World Wide Web Consortium
-(<a class="gl-ref" href="../glossary.html#w3c">W3C</a>), the body that coordinates the Web&#8217;s standards:
+Someone in a group saves a shared document with version 5 of a word
+processor; a colleague&#8217;s version 4 refuses to open it, and everyone must
+upgrade at once. This note, dated March 1998 and the basis of
+Berners-Lee&#8217;s keynote at the seventh World Wide Web conference (WWW7),
+asks how a language can change without that flag day, and without the chaos
+<a class="gl-ref" href="../glossary.html#html">HTML</a> had fallen into.  It starts from the founding mandate of the World Wide Web Consortium (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>), the
+body that coordinates the Web&#8217;s standards:
 </p>
 <blockquote>
 The World Wide Web Consortium was founded in 1994 on the mandate to lead the
@@ -81,7 +82,9 @@ space.
 </blockquote>
 <p>
 Interoperability was well understood. Evolvability was a word without a
-technique, and this note is the attempt to give it one.
+technique, and the note distrusts anyone claiming one: of technologies
+dubbed &ldquo;futureproof&rdquo; it says, &ldquo;I expect you the reader to
+share my cynicism when encountering any such claim.&rdquo;
 </p>
 </div>
 
@@ -101,7 +104,7 @@ understand, you should ignore it.
 </blockquote>
 
 <p>
-He calls this free extension, adopted it for <a class="gl-ref" href="../glossary.html#html">HTML</a>, and credits it with
+He calls this free extension and credits it with
 HTML&#8217;s fast growth. He is equally clear about the bill:
 </p>
 
@@ -113,18 +116,21 @@ feature to an existing protocol.
 </blockquote>
 
 <p>
-The last clause matters most. Nothing can be marked as having to be
-understood, so no feature can ever be relied upon.
+Nothing can be marked as having to be understood, so no feature can be relied upon.
 </p>
 
 <h2 id="sec-16-2">16.2 The HTML cycle</h2>
 
 <p>
-Between 1994 and 1998 HTML grew as browser makers added new tags (a tag is the bracketed
-label, such as <code>&lt;table&gt;</code>, that marks out part of a page). It
-is a cycle with a motor, and the motor is the
-tension between wanting to beat a competitor and needing to interoperate with
-one.
+Between 1994 and 1998 HTML grew as browser makers added new tags (a tag is the
+bracketed label, such as <code>&lt;table&gt;</code>, that marks out part of a
+page). Anyone could think up an extension, and free extension let it ship.
+Successful features became product differentiators, their originators
+&ldquo;loth to discuss the technology with the competition&rdquo;, until
+rivals shipped equivalents and engineers everywhere were writing three or
+four versions of the same thing. Then the companies met at the W3C, agreed a
+common design, and went away &ldquo;making public promises to implement
+it&rdquo;, while their engineers were pressed to start the next cycle.
 </p>
 
 <figure id="fig-16-1">
@@ -184,25 +190,24 @@ one.
   <text x="360" y="259" class="t-sm" text-anchor="middle">Published. Open. Repeat.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.1</span>
-Berners-Lee does not condemn the cycle; it produced HTML. He argues only that by 1998 the
-specification had grown past the point where roping every extension back into
-one bigger document could continue.</figcaption>
+Berners-Lee does not condemn the cycle; it produced HTML. By 1998, though, the specification was too big to keep roping every extension back into one document.</figcaption>
 </figure>
 
 <p>
-The worked example is the table tag (step 3 of <a class="x-ref" href="#fig-16-1">Figure 16.1</a>). Rival browsers
-had each added tables their own way, so a browser meeting
-<code>&lt;table&gt;</code> could not tell which the author meant. And if the
-table mattered, the <a class="gl-ref" href="../glossary.html#server">server</a> never learned whether it had been handled, since a
-browser that did not know the tag silently ignored it.
+The worked example is the table tag (step 3 of <a class="x-ref" href="#fig-16-1">Figure 16.1</a>). Rival browsers each added tables their own way, so a browser meeting <code>&lt;table&gt;</code> could not tell which the author meant; and a browser that did not know the tag silently ignored it, so the <a class="gl-ref" href="../glossary.html#server">server</a> never learned whether a table that mattered had been handled.
+</p>
+
+<p>
+One sign that the cycle had to end: MathML became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in April 1998, yet there was no defined way to combine it with HTML: &ldquo;MathML was already waiting for <a class="gl-ref" href="../glossary.html#xml">XML</a>
+namespaces.&rdquo;
 </p>
 
 <h2 id="sec-16-3">16.3 The other extreme, and why it also fails</h2>
 
 <p>
-The note then looks at distributed object systems, such as remote procedure
-call (RPC), where every interface is declared in machine-readable form and
-checked when the system is compiled. The verdict is even-handed:
+At the other extreme are distributed object systems, such as remote procedure call (RPC), where every interface is declared in machine-readable form and
+checked when the system is compiled. A program that has called the table
+module need not wonder whether a table is being displayed. The catch:
 </p>
 
 <blockquote>
@@ -211,10 +216,8 @@ With well-defined interfaces, either everything works, or nothing.
 </blockquote>
 
 <p>
-That is certainty, bought at a price: change an interface and the other side
-must change too, which is why such systems never spread, in Berners-Lee&#8217;s
-phrase, in a web-like or virus-like manner. The requirement is therefore a
-demand for both:
+Change an interface and the other side must change too, which is why such systems never spread, in Berners-Lee&#8217;s
+phrase, in a web-like or virus-like manner. The requirement is both:
 </p>
 
 <blockquote>
@@ -278,19 +281,29 @@ language which is itself well defined.
 </svg>
 <figcaption><span class="fig-label">Figure 16.2</span>
 The third column keeps the freedom of the first and the certainty of the
-second. The example in it is the note&#8217;s own.</figcaption>
+second.</figcaption>
 </figure>
 
 <p>
-That sentence is the design brief for <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces, a way of labelling each
-set of tags with the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> it comes from. <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> is the
-<a class="gl-ref" href="../glossary.html#specification">specification</a> of it.
+That sentence is the design brief for XML namespaces, a way of labelling each
+set of tags with the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> it comes from. <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> specifies them.
 </p>
 
-<h2 id="sec-16-4">16.4 Partial understanding</h2>
+<h2 id="sec-16-4">16.4 Reading half a document</h2>
 
 <p>
-The note&#8217;s test case is an invoice. Most of it follows a well-known
+Paper invoices once came as coloured copies (packing list, restocking sheet, invoice, delivery note), each department reading its own part. Berners-Lee
+adds:
+</p>
+
+<blockquote>
+I don't understand half the information in the tax form - but I know enough
+to know what applies to me.
+<cite>Evolvability, 1998</cite>
+</blockquote>
+
+<p>
+The note&#8217;s test case is an electronic invoice. Most of it follows a well-known
 invoice vocabulary, but each item also carries a part description in the
 supplier&#8217;s own private vocabulary. An invoice program should be able to
 process it without understanding the part description. The obvious fix, marking
@@ -347,18 +360,11 @@ reading.
   <text x="590" y="258" text-anchor="middle">part description</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.3</span>
-What counts as optional depends on the reader, so it cannot be a fixed label
-on the document. It has to be stated as a transformation. (The exact split shown is
-illustrative.)</figcaption>
+Optionality has to be stated as a transformation, not a fixed label. (The exact split shown is illustrative.)</figcaption>
 </figure>
 
 <p>
-The invoice system in <a class="x-ref" href="#fig-16-3">Figure 16.3</a> does exactly this: delete the part
-description, and what remains is a valid invoice.
-</p>
-
-<p>
-The rules for such a conversion could be written in anything from the
+Conversion rules could be written in anything from the
 crudest language to one that is Turing complete, able to express any
 computation. Berners-Lee applies the rule from <a class="x-ref" href="01-principles-design.html">Chapter 1</a>:
 </p>
@@ -370,28 +376,21 @@ When expressing something, use the least powerful language you can.
 
 <p>
 His smallest case is a one-line rule that says, in effect, <em>delete this
-part</em>. If the rule is allowed, the deleted part was optional. The section
-then breaks off, marked &ldquo;to be continued&rdquo;; <a class="x-ref" href="#sec-16-7">section 16.7</a> takes the
-idea up.
+part</em>. If the rule is allowed, the deleted part was optional. The section then breaks off, &ldquo;to be continued&rdquo;.
 </p>
 
 <h2 id="sec-16-5">16.5 The test of independent invention</h2>
 
-<p>
-<a class="x-ref" href="01-principles-design.html">Chapter 1</a> introduced this thought experiment in one line; here it gets its
-full form.
-</p>
+
 
 <p>
-Suppose another group, unknown to the first, designs the same sort of thing.
+Suppose another group, unknown to the first, designs the same thing.
 Being just as smart, they make the same important architectural decisions, since
 those follow from logic.
 </p>
 
 <p>
-But they make every arbitrary decision differently: every convention that
-could have gone either way but must match on both sides, like the side of the
-road. In Berners-Lee&#8217;s list, they drive on the other side, flip one bit
+But they make every arbitrary decision differently:  every convention that could have gone either way but must match on both sides. In Berners-Lee&#8217;s list, they drive on the other side, flip one bit
 of every character code, put red buoys on the other side of the channel, and
 use a different number of lines on their television screens. Then the two systems meet.
 </p>
@@ -448,27 +447,22 @@ use a different number of lines on their television screens. Then the two system
   <text x="360" y="334" class="t-sm t-it" text-anchor="middle">One master lock server in Waltdorf, and the Mesh would have needed one in Melbourne.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.4</span>
-Berners-Lee says he tried to make the Web pass this test, and does not claim
-it passes cleanly: no system completely passes, and it is always some trouble
-to convert.</figcaption>
+Berners-Lee tried to make the Web pass this test, but no system passes completely; converting is always some trouble.</figcaption>
 </figure>
 
 <p>
 The Web survives the meeting because of the third axiom of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>:
-URI space is universal but need not be unique, so the rival space can be
-folded in, as the foot of <a class="x-ref" href="#fig-16-4">Figure 16.4</a> shows.
+URI space is universal but need not be unique,   so the rival space can be folded in (<a class="x-ref" href="#fig-16-4">Figure 16.4</a>).
 </p>
 
 <p>
-Without the test, worldwide interoperability comes only when one design
-beats the others, or when a worldwide committee designs the whole thing top
-down before anyone starts. That works for a new idea, the note says, but not
+Without the test, worldwide interoperability needs either a worldwide committee designing top down before anyone starts, or one system to be dropped. The first works for a new idea, the note says, but not
 for practices centuries old: the library community has had endless trouble
-agreeing on a single library card format, the MARC record. The other route is
-for one system to be dropped. When Europe abandoned its ISO networking
-protocols in the late 1980s, because they could not interwork with the
-Internet, much work was lost. Arbitrary choices can be reversed,
-but at national cost:
+agreeing on a single library card format, the MARC record. As for the second, when Europe abandoned its ISO networking
+protocols (in the late 1980s, as the note dates it) because they could not
+interwork with the Internet, much work was lost, and problems Europe had
+solved, &ldquo;including network addresses of more than 32 bits&rdquo;, had
+to be solved again at great cost (an IPv4 address has 32). Arbitrary choices can be reversed, but at national cost:
 </p>
 
 <blockquote>
@@ -476,15 +470,17 @@ Sweden actually changed from driving on the left to driving on the right.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
+<p>
+It did so on 3 September 1967, Dagen H. The note&#8217;s verdict: &ldquo;The
+test of independent invention is not just a thought experiment, it is
+happening all the time.&rdquo;
+</p>
 
-<h2 id="sec-16-6">16.6 Two assumptions</h2>
+
+<h2 id="sec-16-6">16.6 Smarter later, and not the smartest</h2>
 
 <p>
-Midway, the note derives its requirements from two premises. The first is that we will be smarter in the future. Today that
-produces a flag day: a version 4 word processor refuses a file saved by version
-5, and everyone must upgrade at once. The requirement is that version 4 read
-the version 5 file, at least in part. The second premise is more unusual, and
-he flags the difficulty:
+The note derives its requirements from two premises. The first, that we will be smarter in the future, demands that version 4 read the version 5 file, at least in part, with no flag day. The second he flags as hard:
 </p>
 
 <blockquote>
@@ -494,17 +490,15 @@ too, and will independently invent the same things.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
-<table>
-<tr><th>Assumption</th><th>What the technology must handle</th></tr>
-<tr><td>We will be smarter in the future</td><td>Moving from version 1 to version 2</td></tr>
-<tr><td>We are not smarter than everyone else</td><td>Moving between parallel versions A and B, invented independently</td></tr>
-</table>
+<p>
+That demands moving between parallel versions invented independently: the test of <a class="x-ref" href="#sec-16-5">section 16.5</a>.
+</p>
 
 
-<h2 id="sec-16-7">16.7 Six kinds of schema</h2>
+<h2 id="sec-16-7">16.7 From a bare name to a logic: six kinds of schema</h2>
 
 <p>
-The second half of the note turns to schemas. A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the document that
+A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the document that
 describes a language; an XML document points to its schema by URI. The note
 ranks six kinds by how much a machine can do with them.
 </p>
@@ -571,45 +565,40 @@ which elements of the langauge can be ignored if you don't understand them.
 </blockquote>
 
 <p>
-Old software can then filter a new document down to one it understands, which
-solves what Berners-Lee calls the elusive version 2 to version 1 conversion. A
+Old software can then filter a new document down to one it understands: the elusive version 2 to version 1 conversion. A
 Turing-complete converter can do more, but nobody can see its rules, so it must
 be trusted. What excites him is the top step: stating, in machine-processable
-form, which terms in one language are equivalent to terms in another (for
-illustration, a rule that one vocabulary&#8217;s <em>price</em> means
-another&#8217;s <em>cost</em>). That is
-the programme of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.
+form, how terms in one language relate to terms in another. His example is a
+calendar language whose schema declares its INDIVIDUAL a superset of the HR
+department&#8217;s concept of employee. Links like that let <a class="gl-ref" href="../glossary.html#inference">inference</a>
+&ldquo;conclude things which we knew as whole but no one person knew&rdquo;;
+that is the programme of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.
+</p>
+
+<p>
+The note ends with Lao-Tse, whom it had already cited for least power:
+&ldquo;Usefulness from what is not there.&rdquo;
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The mechanism shipped and was then declined.</strong> XML
-Namespaces became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in January 1999. HTML5, whose first
-Recommendation came in October 2014, does not use them, which is the fork
-described in <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.</li>
+<li><strong>The mechanism shipped and was then declined.</strong> XML Namespaces became a W3C Recommendation in January 1999. HTML5 (a Recommendation in October 2014) does not use them: the fork of <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.</li>
 <li><strong>Partial understanding was solved by other means.</strong>
-Versioned wire formats such as Protocol Buffers, first released publicly in
-July 2008, make forward compatibility a property of the encoding: unknown fields
+Versioned wire formats such as Protocol Buffers (public from 2008) make forward compatibility a property of the encoding: unknown fields
 are kept rather than merely ignored (proto3 at first discarded them, until
 version 3.5 in 2017). That is closer to what <a class="x-ref" href="#sec-16-4">section 16.4</a> asked for than
 anything the Web adopted.</li>
 <li><strong>The cycle did not stop.</strong> Vendor-prefixed CSS properties
 (<code>-webkit-</code>, <code>-moz-</code>), common from the mid-2000s to the
-early 2010s, repeated steps 1 to 3 of the cycle. Browser makers then moved away
-from prefixes towards hiding experimental features behind settings flags;
-Chrome&#8217;s Blink engine adopted that policy at its launch in 2013.</li>
+early 2010s, repeated steps 1 to 3 of the cycle, until browser makers moved experimental features behind settings flags instead, as Chrome&#8217;s Blink engine did from its launch in 2013.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The test of independent invention and the principle of least power are both
-stated in <a class="x-ref" href="01-principles-design.html">Chapter 1</a>, and the axiom that makes the Web pass the test is
-<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. The <a class="gl-ref" href="../glossary.html#namespace">namespace</a> requirements this note calls for are <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>, and
-the mandatory flag it says is missing is <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a>. The fork that ended the
-namespace approach for HTML is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.
+<a class="x-ref" href="01-principles-design.html">Chapter 1</a> states the test of independent invention and the principle of least power; <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> gives the axiom that lets the Web pass it. <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> sets out the <a class="gl-ref" href="../glossary.html#namespace">namespace</a> requirements, <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a> the missing mandatory flag, and <a class="x-ref" href="23-html-xml.html">Chapter 23</a> the fork that ended namespaces for HTML.
 </p>
 </div>
 
@@ -617,31 +606,25 @@ namespace approach for HTML is <a class="x-ref" href="23-html-xml.html">Chapter 
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">16.1</span>
-Free extension makes it impossible to add a mandatory feature. Explain why,
-using the table tag example, and say what a publisher can never learn.</p>
+Using the table tag, explain why free extension rules out a mandatory feature, and what a publisher can never learn.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.2</span>
-<a class="x-ref" href="#sec-16-4">Section 16.4</a> rejects &ldquo;optional&rdquo; as subjective and replaces it with
-a transformation. Give one document and two processors for which different
+<a class="x-ref" href="#sec-16-4">Section 16.4</a> replaces &ldquo;optional&rdquo; with a transformation. Give one document and two processors for which different
 parts are dispensable.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.3</span>
-Apply the test of independent invention to phone chargers or plug sockets.
-Name one arbitrary decision and say what happened when systems that chose
-differently met.</p>
+Apply the test of independent invention to plug sockets: name one arbitrary decision and what happened when systems that chose differently met.</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.4</span>
-The Web passes the test because URI space need not be unique. Name a part of
-the modern Web that would fail it. Could it be fixed without redesigning the
+Name a part of the modern Web that would fail the test of independent invention. Could it be fixed without redesigning the
 Web?</p>
 </div>
 <div class="question">
 <p><span class="question-number">16.5</span>
-In <a class="x-ref" href="#fig-16-3">Figure 16.3</a>, which part of the invoice is optional? Explain why the answer
-depends on who is asking, and what step 4 of <a class="x-ref" href="#fig-16-5">Figure 16.5</a> would add.</p>
+In <a class="x-ref" href="#fig-16-3">Figure 16.3</a>, which part of the invoice is optional? Why does the answer depend on who asks, and what would step 4 of <a class="x-ref" href="#fig-16-5">Figure 16.5</a> add?</p>
 </div>
 </details>
 

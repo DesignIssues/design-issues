@@ -66,10 +66,10 @@ can change, which is harmless inside one database and breaks links on the Web.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in September 1998 as a parenthesis to Chapters <a class="x-ref" href="05-web-architecture-50000-feet.html">5</a> and <a class="x-ref" href="30-roadmap-semantic-web.html">30</a>, this note
-asks what happens to the data that already exists. Almost all of it is in
-relational databases, and Berners-Lee is explicit that reaching it was the
-point:
+Employee records, car registrations: a vast amount of the data that already
+exists sits in the tables of relational databases. A <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> that could
+not reach it would leave much of what is recorded out. Berners-Lee says
+reaching it was the point all along:
 </p>
 <blockquote>
 Indeed, one of the main driving forces for the Semantic web, has always been
@@ -77,6 +77,9 @@ the expression, on the Web, of the vast amount of relational database
 information in a way that can be processsed by machines.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
+<p>
+He wrote it in September 1998, as a parenthesis to Chapters <a class="x-ref" href="05-web-architecture-50000-feet.html">5</a> and <a class="x-ref" href="30-roadmap-semantic-web.html">30</a>.
+</p>
 </div>
 
 <h2 id="sec-33-1">33.1 The mapping</h2>
@@ -86,10 +89,15 @@ A <a class="gl-ref" href="../glossary.html#relational-database">relational datab
 one employee, and each column holds one kind of fact, such as a shoe size. The
 primary key is the column whose value picks out exactly one row, such as an
 employee number. <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the Web&#8217;s data model (<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>), stores facts
-as triples: a thing, a property, a value. Drawn out, they form a graph of
-nodes joined by labelled arrows. The correspondence takes three lines
-(<a class="x-ref" href="#fig-33-1">Figure 33.1</a>).
+as triples (a thing, a property, a value) that together form a graph. The correspondence takes three lines
+(<a class="x-ref" href="#fig-33-1">Figure 33.1</a>), and the note says why it is so direct:
 </p>
+
+<blockquote>
+The record is nothing but the content of its fields, just as an RDF node is
+nothing but the connections: the property values.
+<cite>Relational Databases on the Semantic Web, 1998</cite>
+</blockquote>
 
 <figure id="fig-33-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
@@ -156,20 +164,14 @@ nodes joined by labelled arrows. The correspondence takes three lines
 Rows, columns and cells map one to one onto nodes, properties and values.</figcaption>
 </figure>
 
-<p>
-Berners-Lee&#8217;s example: a row says a red car has Massachusetts plate
-123XYZ, but the table may also mean every car with a Massachusetts plate is
-in it. Neither model can easily say so.
-</p>
-
-<h2 id="sec-33-2">33.2 One difference, and it is the whole difference</h2>
+<h2 id="sec-33-2">33.2 What changes: anyone can add a relationship</h2>
 
 <p>
 Entity-relationship modelling is the standard way of designing a database on
 paper: list the kinds of thing, and the relationships each kind can have.
-Asked whether RDF is such a model, Berners-Lee answers yes and no. It is a
-good basis for one, but more general, because RDF is used for other things
-too. The change is small and consequential:
+Is RDF such a model? Yes and no, says Berners-Lee: a good basis for one, but
+more general. Apart from one &ldquo;simple but significant change&rdquo;, many of its
+concepts carry straight across:
 </p>
 
 <blockquote>
@@ -236,16 +238,19 @@ add one and store it anywhere.</figcaption>
 <p>
 Object-oriented systems, the usual way of building such models in
 software, assume the opposite: an object&#8217;s data lives inside the object,
-in slots its class set aside. In RDF, whoever defined a vehicle without a
-colour (the example of <a class="x-ref" href="31-semantic-web-isnt-represent.html#sec-31-7">section 31.7</a>) cannot stop anybody else saying that a
-given car is red.
+in slots its class set aside. RDF lets a relationship be stored apart from
+everything else about the two things it joins, because, in the note&#8217;s
+words, &ldquo;The Web works though anyone being (technically) allowed to say
+anything about anything.&rdquo;
 </p>
 
 <h2 id="sec-33-3">33.3 What a database does that a graph does not</h2>
 
 <p>
-A table holds many records with the same properties. Queries join tables, matching rows on a
-shared value, and yield another table.
+A row says that a red car has Massachusetts plate 123XYZ. The table may also
+carry, in the note&#8217;s words, &ldquo;the unwritten semantics that if any car
+has a Massachusetts plate then it must be in the table.&rdquo; Neither model has
+a simple way of writing that rule down.
 </p>
 
 <h3>Typing</h3>
@@ -253,9 +258,9 @@ shared value, and yield another table.
 <p>
 E. F. Codd, who invented the relational model, included datatypes with
 inheritance (types that can be refined into sub-types), and meant them to be implemented more fully than they were. In
-practice a house number and a shoe size are both just integers, so nothing
-stops anyone asking to &ldquo;list people whose shoe size equals their house
-number&rdquo;. Practical systems trust the application to ask only sensible
+practice a count of rooms and a shoe size are both just integers, so nothing
+stops a query listing, for every employee, the houses with as many rooms as
+that employee&#8217;s shoe size. Practical systems trust the application to ask only sensible
 questions. On the Web that trust no longer holds:
 </p>
 
@@ -267,14 +272,14 @@ a set of inference rules.
 </blockquote>
 
 <p>
-If shoe size and house number are declared different kinds of number, a
+If shoe size and room count are declared different kinds of number, a
 program can conclude that a query joining them is nonsense, and refuse it.
 </p>
 
 <h3>Keys that change</h3>
 
 <p>
-Here the naming problem of <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> arrives in a new place. A primary key
+The naming problem of <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> returns: a primary key
 can change without the row changing identity: a person may change their name.
 Other tables refer to the row by its key, and <a class="gl-ref" href="../glossary.html#sql">SQL</a> can cascade the change,
 rewriting every such reference so none points at nothing (referential
@@ -333,12 +338,12 @@ though SQL does not expose it in a standard way); forbid the key to change; or
 put up with broken links.
 </p>
 
-<h2 id="sec-33-4">33.4 Two kinds of schema</h2>
+<h2 id="sec-33-4">33.4 A million copies, a million schemas</h2>
 
 <p>
 A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the declared shape of some data: its tables and columns, or the
 elements a document may contain. He expects relatively few document
-schemas, with many sites will export documents defined by the same one.
+schemas, and expects many sites to export documents defined by the same one.
 Database schemas are created independently per database:
 </p>
 
@@ -413,12 +418,11 @@ must be stated pair by pair.</figcaption>
 </figure>
 
 <p>
-From which he draws a modest role for the new technology: it may simply
-express the equivalence of terms between those million schemas. That is the
-conversion layer of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>.
+So the new technology may have a modest role: expressing the equivalence of
+terms between those million schemas, the conversion layer of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>.
 </p>
 
-<h2 id="sec-33-5">33.5 Exposing a database</h2>
+<h2 id="sec-33-5">33.5 An address for every cell</h2>
 
 <p>
 The rest of the note is a strawman, a first draft put up to be criticised: a
@@ -463,21 +467,20 @@ name inside the database can be written as a short relative URI.</figcaption>
 </figure>
 
 <p>
+A table&#8217;s address can also serve as a <a class="gl-ref" href="../glossary.html#namespace">namespace</a>, so a column such as
+<code>email</code> gets a Web-wide name, and a row joined from two tables
+carries names from both.
+</p>
+
+<p>
 Berners-Lee is unsure whether a query on a primary key, or a single cell,
 is really an identifier. His ruling applies the rule of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> that fetching a URI with <a class="gl-ref" href="../glossary.html#get">GET</a> must
 not change anything. A query that only reads may sit in a URI after a
 question mark. A query that changes the table, such as UPDATE or DELETE,
-should be sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#post">POST</a>, which asks the <a class="gl-ref" href="../glossary.html#server">server</a> to act, never named by a
-URI fetched with GET, which only reads. Search engines and
-browsers follow GET links freely, on the understanding that following one
-changes nothing; a link that deleted a row would be triggered by the first
-robot that found it.
-</p>
-
-<p>
-The note ends with a small trick: a table&#8217;s address can serve as a
-<a class="gl-ref" href="../glossary.html#namespace">namespace</a>, so a column such as <code>email</code> gets a Web-wide name, and a
-row joined from two tables carries names from both.
+should be sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#post">POST</a>, never named by a URI. Search engines and
+browsers follow GET links freely, assuming that changes nothing; a link that deleted a row would be triggered by the first
+robot that found it, as happened in 2005 with the prefetching tool described
+in <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>.
 </p>
 
 <div class="since">
@@ -525,8 +528,8 @@ her record working, and at what cost?</p>
 </div>
 <div class="question">
 <p><span class="question-number">33.4</span>
-Why must a URI never name the result of a DELETE? What happens when a search
-engine follows it?</p>
+A table of library loans quietly claims to be complete. What goes wrong when
+a stranger on the Web adds a loan to it?</p>
 </div>
 </details>
 

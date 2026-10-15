@@ -65,31 +65,27 @@ program and dataset built on the old shape.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-On 26 June 2010 <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s RDF Next Steps workshop opened. Berners-Lee
-could not attend, so he wrote down his position instead, and limited it to the
-model:
+In 2010 RDF could record that a workshop began on 26 June 2010, but it could
+not record that 26 June 2010 was a Saturday. Berners-Lee asked for that to
+change in one line of a note written for <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s RDF Next Steps workshop,
+which he could not attend. Neither RDF 1.1 nor the RDF 1.2 work has made the
+change. Which of his other requests were adopted shows what a deployed
+standard can and cannot change. He kept the note to the model:
 </p>
 <blockquote>
 This does not address the many other exciting things which need to be done in
 the semantic web, but just the RDF model and its common serializations.
 <cite>The Future of RDF, 2010</cite>
 </blockquote>
-<p>
-It is a list, and the interest lies in which items were acted on, which were
-not, and what the pattern says about how a deployed standard can and cannot
-change.
-</p>
 </div>
 
-<h2 id="sec-47-1">47.1 The list</h2>
+<h2 id="sec-47-1">47.1 Nine requests and a scorecard</h2>
 
 <p>
-Two terms recur. A <em>serialisation</em> is a way of writing the same data
-down as text; RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> are two. To <em>deprecate</em> a feature is to
-mark it as not to be used, while leaving it in place for old data. The note
-also proposes extensions to <a class="gl-ref" href="../glossary.html#n3">N3</a> itself (dates, quoted variables, rule
-languages); this chapter treats only the dates, in <a class="x-ref" href="#sec-47-4">section 47.4</a>. <a class="x-ref" href="#fig-47-1">Figure 47.1</a>
-glosses each proposal in one line.
+<a class="x-ref" href="#fig-47-1">Figure 47.1</a> glosses each proposal in one line, with its outcome. A
+<em>serialisation</em> is a way of writing data down as text, such as RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a>
+or <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>. The note&#8217;s extensions to <a class="gl-ref" href="../glossary.html#n3">N3</a> are left aside, apart from dates
+(<a class="x-ref" href="#sec-47-4">section 47.4</a>).
 </p>
 
 <figure id="fig-47-1">
@@ -142,15 +138,14 @@ glosses each proposal in one line.
   <text x="40" y="496" class="t-sm">the scope of each variable to be stated explicitly</text>
 </svg>
 <figcaption><span class="fig-label">Figure 47.1</span>
-A deployed model accepts new documents beside it and resists changes to its
-shape, because everything written against the old
-shape would have to be revisited.</figcaption>
+The nine proposals for the model and its serialisations, and what became
+of each.</figcaption>
 </figure>
 
-<h2 id="sec-47-2">47.2 The one that mattered most</h2>
+<h2 id="sec-47-2">47.2 A date that cannot be a subject</h2>
 
 <p>
-Midway through the list is a change to the model itself:
+One line changes the model itself:
 </p>
 
 <blockquote>
@@ -162,11 +157,9 @@ allowed for the object. Currently, this means including literals
 <p>
 A <em>literal</em> is a plain value, such as a date, a number or a piece of
 text. The model lets a literal be the object of a statement but not its
-subject. One can say that the workshop began on 2010-06-26, but not that
-2010-06-26 was a Saturday. To say anything about a value, one must first
-invent a node to stand for it, which in <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> Berners-Lee called
-frightful. This proposal removes the obstruction in one line, and it was not
-adopted.
+subject. To say anything about a value, one must first invent a node to
+stand for it, which in <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> Berners-Lee called frightful. The proposal
+removes that obstruction in one line.
 </p>
 
 <figure id="fig-47-2">
@@ -234,8 +227,9 @@ proposal would remove.</figcaption>
 <p>
 Two of the removals concern bags and sequences, an early way of writing an
 unordered or numbered group. RDF&#8217;s lists (collections, written
-<code>( a b c )</code> in Turtle) now do the ordered job. One paragraph asks
-how hard to push them out:
+<code>( a b c )</code> in Turtle) now do the ordered job. To <em>deprecate</em>
+a feature is to mark it as not to be used while leaving it in place for old
+data, and one paragraph asks how strong that should be:
 </p>
 
 <blockquote>
@@ -246,28 +240,30 @@ documentation.
 </blockquote>
 
 <p>
-The benefit claimed is not a cleaner model but shorter documentation: a
-feature nobody uses costs almost nothing at runtime and costs every new reader
-a page.
+The benefit claimed is shorter documentation. The
+stake was live data: deployed formats used these containers (<a class="gl-ref" href="../glossary.html#rss">RSS</a> 1.0 lists a
+feed&#8217;s items as an <code>rdf:Seq</code>; Adobe&#8217;s XMP <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
+lists a photo&#8217;s creators as one), so a hard removal would have broken
+them.
 </p>
 
 <p>
-He also proposes a migration path rather than a cliff: a <a class="gl-ref" href="../glossary.html#parser">parser</a> (the program
-that reads the text in) could convert sequences to lists as an option. A
-sequence written <code>rdf:_1 :a; rdf:_2 :b</code> would be read as the list
-<code>( :a :b )</code>, so programs that understand only lists could still
-use old data. That is the evolvability argument of <a class="x-ref" href="16-evolvability.html">Chapter 16</a> applied to his
-own design: give implementations a way to move rather than a date by which to
-have moved.
+He also proposes a migration path rather than a cliff: a <a class="gl-ref" href="../glossary.html#parser">parser</a> could, as an
+option, read the sequence <code>rdf:_1 :a; rdf:_2 :b</code> as the list
+<code>( :a :b )</code>, so programs that understand only lists could still use
+old data. That is the evolvability argument of <a class="x-ref" href="16-evolvability.html">Chapter 16</a>: give
+implementations a way to move rather than a date by which to have moved.
 </p>
 
 <h2 id="sec-47-4">47.4 Making dates easy to write</h2>
 
 <p>
-This proposal sits under the note&#8217;s heading on extending N3, not under
-the RDF model. It asks that a date or time be writable bare, in the standard
+Under its heading on extending N3, not the RDF model, the note asks that a
+date or time be writable bare, in the standard
 form, such as 2010-06-26 or 2010-06-26T12:04Z, without the datatype label
-normally attached to it. The reason is plain:
+normally attached to it. A parser could not confuse such a date with a number:
+&ldquo;This format is distinguishable from other numeric forms.&rdquo; The
+reason for wanting it is plain:
 </p>
 
 <blockquote>
@@ -277,7 +273,7 @@ with an explicit datatype is boring.
 </blockquote>
 
 <p>
-And then the consequence, which is not about boredom at all:
+The consequence is not about boredom:
 </p>
 
 <blockquote>
@@ -344,8 +340,17 @@ Two languages exist side by side: N3 (<a class="x-ref" href="42-notation3.html">
 RDF, the standard. When the standard grows, it should grow towards N3. Without
 the rule, RDF might add a way of putting a <a class="gl-ref" href="../glossary.html#graph">graph</a> inside a statement that is
 incompatible with N3&#8217;s braces, leaving two notations for the same thing.
-It is the test of independent invention (<a class="x-ref" href="16-evolvability.html#sec-16-5">section 16.5</a>) applied in advance:
-a design should fit cleanly with one built separately by someone else.
+It is the test of independent invention (<a class="x-ref" href="16-evolvability.html#sec-16-5">section 16.5</a>), applied in advance.
+</p>
+
+<h2 id="sec-47-6">47.6 What a standard can change</h2>
+
+<p>
+<a class="x-ref" href="#fig-47-1">Figure 47.1</a> shows three kinds of outcome. New documents were
+adopted: nothing already written has to change for them. Removals became
+advice, which leaves existing data valid. Changes to what a statement may
+contain stalled. Changing the shape of a statement means changing every
+program and dataset built on the old shape.
 </p>
 
 <div class="since">
@@ -358,6 +363,9 @@ Recommendation the month before: both are on this list.</li>
 <li><strong>The deprecations were softened to advice.</strong> <a class="gl-ref" href="../glossary.html#reification">Reification</a>,
 bags and sequences remain in the <a class="gl-ref" href="../glossary.html#specification">specification</a> and are avoided by convention,
 which is the weakest of the options <a class="x-ref" href="#sec-47-3">section 47.3</a> considers.</li>
+<li><strong>Bare dates were not adopted.</strong> Turtle 1.1 (2014) lets
+numbers and <code>true</code>/<code>false</code> be written bare, but a date
+still needs its datatype.</li>
 <li><strong>Literals as subjects are still not allowed.</strong> The RDF 1.2
 work that W3C began in 2022 kept the restriction; like RDF 1.1 before it, it
 mentions literal subjects only in an unofficial generalised form.</li>
@@ -370,10 +378,9 @@ another (in RDF 1.2, only as its object), which is the narrower half of the prop
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The obstruction that literals as subjects would remove is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>. The
-reification proposed for deprecation is <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>, and the sets missing from
-the model are <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a>. The notation this asks the standard to grow towards
-is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and the migration argument is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>.
+The obstruction literal subjects would remove is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>; reification is
+<a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>; the sets missing from the model are <a class="x-ref" href="43-design-alternatives-considered-notation3.html">Chapter 43</a>; N3 is <a class="x-ref" href="42-notation3.html">Chapter 42</a>;
+the migration argument is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>.
 </p>
 </div>
 
@@ -381,9 +388,9 @@ is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and the migration a
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">47.1</span>
-New documentation was produced, removals were softened to advice, and
-changes to what a statement may contain were not adopted. Explain why, in terms
-of what existing implementations must do in each case.</p>
+RSS 1.0 feeds list their items as an <code>rdf:Seq</code>. Suppose
+sequences had been removed outright in 2014. Who would have had to change
+what?</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.2</span>

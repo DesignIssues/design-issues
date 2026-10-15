@@ -61,8 +61,11 @@ outlines and tables, web addresses hidden, and queries and forms without code.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in 2010 and extended into a history in 2019, this note is about
-building software rather than specifying it:
+Around 2000 most <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> projects had data but no interface an ordinary
+person could use. Researchers drew circles and arrows for each other, diagrams
+the note calls &#8220;hopeless&#8221; for normal users. This note, written in
+2010 and extended into a history in 2019, tells of one attempt to fix that:
+Tabulator.
 </p>
 <blockquote>
 There was, in 2010, an unfulfilled need for a powerful, friendly program to
@@ -81,16 +84,6 @@ family.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<p>Against that he sets the early data projects:</p>
-
-<blockquote>
-However, most of the initial Semantic Web projects (around 2000) used back-end
-machines with no generic user interface. Researchers, to explain data to each
-other, tended to use circles-and-arrows diagrams of the graphs. These, though
-are hopeless -- very inefficient uses of space -- when it comes to displaying
-data to a normal user.
-<cite>Goals for a Human-Data Interface, 2010</cite>
-</blockquote>
 
 <figure id="fig-56-1">
 <svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
@@ -142,13 +135,12 @@ data to a normal user.
 </svg>
 <figcaption><span class="fig-label">Figure 56.1</span>
 The document Web had a feedback loop anyone could join. The early data Web
-had none: its data never reached an ordinary person&#8217;s screen.</figcaption>
+never reached an ordinary person&#8217;s screen.</figcaption>
 </figure>
 
 <p>
 Ordinary users expect an address book, a spreadsheet, a music library: lists,
-tables, forms, and faceted views, where a list is narrowed by picking values,
-as with a shop&#8217;s filters. The note concedes:
+tables, forms, and faceted views like a shop&#8217;s filters. The note concedes:
 </p>
 
 <blockquote>
@@ -162,17 +154,17 @@ user experience which users seem to use.
 <h2 id="sec-56-2">56.2 Two modes: outline and table</h2>
 
 <p>
-Late in 2007 Berners-Lee wrote a data browser that showed a thing&#8217;s
+Late in 2007, by the note&#8217;s account, Berners-Lee wrote a data browser that showed a thing&#8217;s
 properties as an outline. Where a property led to another thing, a triangle,
-as in a Mac file window, opened it. The <a class="gl-ref" href="../glossary.html#graph">graph</a> looked like a tree, and users
-are used to trees.
+as in a Mac file window, opened it. The <a class="gl-ref" href="../glossary.html#graph">graph</a> looked like a tree, which
+users know.
 </p>
 
 <p>
 His colleague Philippe le H&eacute;garet complained that he wanted a table.
 So Berners-Lee added query by example: select lines in one interesting case,
 press a button, and get a table of every other place in the data with the same
-shape, the same pattern of links. Because it made tables from the graph, he
+shape. Because it made tables from the graph, he
 called the program Tabulator.
 </p>
 
@@ -220,6 +212,12 @@ row.</figcaption>
 </figure>
 
 <p>
+A table with dates could be shown as a timeline, and one with coordinates on a
+map (Yahoo Maps, in those days). Clicking a point took the user back into the
+outline, so query and graph traversal worked alternately.
+</p>
+
+<p>
 A graph can loop back on itself: Joe knows Ann and Ann knows Joe. A tree
 cannot. Tabulator simply shows Joe again, closed (<a class="x-ref" href="#fig-56-3">Figure 56.3</a>).
 </p>
@@ -261,29 +259,28 @@ cannot. Tabulator simply shows Joe again, closed (<a class="x-ref" href="#fig-56
 The note&#8217;s answer: users could follow the loop but will not bother.</figcaption>
 </figure>
 
-<h2 id="sec-56-3">56.3 The design principles</h2>
+<h2 id="sec-56-3">56.3 Six rules, the first a prohibition</h2>
 
 <p>
-The note lists six design principles. In them, &lsquo;<a class="gl-ref" href="../glossary.html#ontology">ontology</a>&rsquo; means
-the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>: the published terms, with labels, that the data uses.
+In the note&#8217;s six principles, &lsquo;<a class="gl-ref" href="../glossary.html#ontology">ontology</a>&rsquo; means the
+<a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>: the published terms, with labels, that the data uses.
 </p>
 
 <table>
 <tr><th>Principle</th><th>In plain terms</th></tr>
 <tr><td>Never show URIs</td><td>Show names, never web addresses.</td></tr>
 <tr><td>Use the ontologies</td><td>Take on-screen words from the
-vocabulary&#8217;s labels, in the user&#8217;s language.</td></tr>
+vocabulary&#8217;s labels. Where labels existed in many languages (&#8220;rare
+but wonderful&#8221;), the user&#8217;s was picked: free localisation.</td></tr>
 <tr><td>Use existing user interface language</td><td>Behave like the file
 browsers and tables people know.</td></tr>
 <tr><td>Represent the graph as a tree</td><td>An expandable outline
 (<a class="x-ref" href="#fig-56-3">Figure 56.3</a>).</td></tr>
-<tr><td>Read-write</td><td>Allow editing only where the user has the
-right.</td></tr>
+<tr><td>Read-write</td><td>&#8220;Don&#8217;t tempt user to think they can edit
+something if they in fact can&#8217;t&#8221;.</td></tr>
 <tr><td>A little semantics</td><td>Work out obvious facts, so a record with a
 transaction date is treated as a transaction without being labelled one.</td></tr>
 </table>
-
-<p>The first is a prohibition:</p>
 
 <blockquote>
 While RDF buffs may revel in the URIs of nodes, users do not. User experience
@@ -291,11 +288,6 @@ should not include naked URIs.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<p>
-Identifiers stay the foundation, but out of sight: the person sees a name
-taken from the vocabulary&#8217;s labels, and the software uses the
-identifier.
-</p>
 
 <figure id="fig-56-4">
 <svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
@@ -328,36 +320,30 @@ identifier.
   <text x="360" y="211" class="t-lg" text-anchor="middle">Name: Joe Meadows</text>
 </svg>
 <figcaption><span class="fig-label">Figure 56.4</span>
-The identifiers do the work; the vocabulary&#8217;s label is what the person
-sees. Both principles at once.</figcaption>
+The machine keeps the address; the person sees the word.</figcaption>
 </figure>
 
 <h3>A little semantics: smushing</h3>
 
 <p>
-<a class="gl-ref" href="../glossary.html#inference">Inference</a> here means the program working out facts that nobody wrote down.
+<a class="gl-ref" href="../glossary.html#inference">Inference</a> means working out facts nobody wrote down.
 The note&#8217;s best case is &ldquo;smushing&rdquo;: deciding that two
-entries describe the same thing, as when many address books list the same people. In
-the Friend of a Friend (<a class="gl-ref" href="../glossary.html#foaf">FOAF</a>) project a profile could list a friend by
+entries describe the same thing. In the Friend of a Friend (<a class="gl-ref" href="../glossary.html#foaf">FOAF</a>) project a profile could list a friend by
 email address alone. If the viewer already had that address in their own
 contacts, Tabulator treated the two entries as one person and showed the name
-the viewer knew. The note calls this low level of inference a sweet spot.
+the viewer knew. As the store lasted all session, &#8220;one could
+go back to an earlier object and find it now augmented with all kinds of new
+data&#8221;: anyone could say anything about anything, and smushing merged it.
+The note calls this low level of inference a sweet spot.
 </p>
 
-<h2 id="sec-56-4">56.4 The audience, and the ambition</h2>
+<h2 id="sec-56-4">56.4 Built for spreadsheet users</h2>
 
-<p>The target user explains the whole design:</p>
-
-<blockquote>
-A spreadsheet user is an interesting example: they spend a lot of effort in
-some cases getting the computer to do what they want, and work at quite a high
-level of abstraction. In fact they tend to pour their energy into a
-spreadsheet creating tables and relations about which the computer itself does
-not understand the semantics.
-<cite>Goals for a Human-Data Interface, 2010</cite>
-</blockquote>
-
-<p>The goal follows:</p>
+<p>
+The target was capable people untrained in <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, such as spreadsheet users,
+who build tables and relations whose meaning the computer does not
+understand. Hence:
+</p>
 
 <blockquote>
 A major goal is that the software should allow users to be as powerful as
@@ -368,15 +354,17 @@ possible without having to write their own code.
 <h2 id="sec-56-5">56.5 Forms and panes: power without code</h2>
 
 <p>
-For common things, such as contacts, developers wrote special views called
-panes, offered as icons suited to the type of thing on screen.
+For common things such as contacts, developers wrote special views, panes,
+offered as icons suited to the type of thing on screen.
 </p>
 
 <p>
 Between panes and outline sat forms, which users made without code. A form
-was stored as data, the form editor was itself a form, and a shared registry
-offered each form to anyone viewing that type of thing. Forms are relatives of
-the shapes of <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>. The note&#8217;s conclusion:
+was stored as data, the form editor was itself a form, &#8220;the form
+form&#8221;, and a registry on the now defunct tabulator.org offered each form
+to anyone viewing that type of thing. Still, &#8220;The odd useful form
+written with the system survives, as does the form form.&#8221; Forms are
+relatives of the shapes of <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>. The note&#8217;s conclusion:
 </p>
 
 <blockquote>
@@ -417,53 +405,65 @@ adaptive default interfaces was an important optimization.
   <text x="590" y="144" class="t-sm" text-anchor="middle">no setup</text>
 </svg>
 <figcaption><span class="fig-label">Figure 56.5</span>
-Each step to the right trades tailoring for reach. Tabulator offered all
-three, so the user always had some view of any data.</figcaption>
+Each step right trades tailoring for reach. With all three, the user always
+had some view of any data.</figcaption>
 </figure>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
+<li><strong>The no-code ambition arrived elsewhere.</strong> Tools such as Airtable
+(founded 2012) took it up without linked data underneath.</li>
+<li><strong>The browser fought it.</strong> As a web page Tabulator was
+&#8220;a browser within a browser&#8221;. The Same
+Origin Policy, mixed-content rules and later <a class="gl-ref" href="../glossary.html#cors">CORS</a> made that mode &#8220;a
+constant battle&#8221;, so the Firefox extension was the stronger version.</li>
 <li><strong>The program became infrastructure.</strong> By 2019, the note
 records, Tabulator had been repurposed as the data browser for <a class="gl-ref" href="../glossary.html#solid">Solid</a>, built on
-its store, rdflib.js.</li>
-<li><strong>The no-code ambition arrived elsewhere.</strong> No-code database tools such
-as Airtable (founded 2012) took up the ambition without linked data
-underneath.</li>
+its store, rdflib.js, and delivered by the <a class="gl-ref" href="../glossary.html#server">server</a> with the data.</li>
 </ul>
+<p>
+The note ends on a spectrum it &#8220;did not explore&#8221;: private, shared
+and public data, because its servers lacked user-accessible <a class="gl-ref" href="../glossary.html#access-control">access control</a>.
+Solid now has it, and such systems &#8220;become more exciting when the user
+can control who has access&#8221;, the subject of Chapters <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">54</a> and <a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">55</a>.
+</p>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The data this interface browses is <a class="x-ref" href="49-linked-data.html">Chapter 49</a>, and the storage it writes to is
-<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. The forms and shapes that drive such interfaces are <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
-User interface principles, including familiar metaphors, are Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and
-85.
+Data browsed: <a class="x-ref" href="49-linked-data.html">Chapter 49</a>. Storage: <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. Forms and shapes: <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
+User interface principles: Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and <a class="x-ref" href="85-user-interface-tips.html">85</a>.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">56.1</span>
 A friend sends you a spreadsheet of club members. Which of copy, change, see,
-send does it allow, and what can&#8217;t it do that a web page can?</p>
+send does it allow, and what can a web page do that it cannot?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.2</span>
-The rule says never show URIs. When would a user need one, for instance to
-share a contact, and how could the interface give it without showing it?</p>
+When would a user need a <a class="gl-ref" href="../glossary.html#uri">URI</a>, for instance to share a contact, and how could
+the interface supply one without showing it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.3</span>
-Spreadsheet users model the world without the machine understanding it. Give
-an example from a spreadsheet you know, and say what is lost.</p>
+Give an example from a spreadsheet you know of meaning the machine does not
+understand, and say what is lost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.4</span>
 In <a class="x-ref" href="#fig-56-2">Figure 56.2</a>, which lines would you select to get people, employers and the
 employer&#8217;s city?</p>
+</div>
+<div class="question">
+<p><span class="question-number">56.5</span>
+Tabulator&#8217;s web version lost fights with browser security rules. What
+does that suggest about building data tools inside a browser?</p>
 </div>
 </details>
 

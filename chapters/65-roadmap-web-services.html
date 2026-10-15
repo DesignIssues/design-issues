@@ -63,33 +63,27 @@ directory of services is optional, not the centre.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume VI closes with Berners-Lee&#8217;s October 2002 note on the
-technology of the moment, and his first move is to object to its name.
+<a class="gl-ref" href="../glossary.html#tcp">TCP</a> can deliver a business message once, in order, without loss. What it
+cannot do, the note observes, is let a firm &#8220;show the tax man the
+acknowledgement of receipt 7 years later&#8221;. Berners-Lee&#8217;s October
+2002 note on web services, which closes Volume VI, is about that gap, and it
+begins by objecting to the name.
 </p>
 <blockquote>
 The Web in Web Services is, from the first point, a misuse: the term Internet
 Services would be more appropriate.
 <cite>Web Services, 2002</cite>
 </blockquote>
-<p>
-The complaint is not pedantry: the note asks what is lost when a system
-built on Web protocols abandons the thing that made them work.
-</p>
 </div>
 
-<h2 id="sec-65-1">65.1 Three common themes</h2>
+<h2 id="sec-65-1">65.1 Why &#8216;Web&#8217; is the wrong word</h2>
 
 <p>
-He begins with what everyone agreed on. A quasi-static information space is
-the Web of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>: pages at addresses that change only now and then.
+He begins with three themes everyone agreed on: a move away from a
+quasi-static information space (the Web of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>) to one where
+interactions are primary; reuse of well-debugged HTTP and XML; and a focus on
+operations within and between enterprises.
 </p>
-
-<table>
-<tr><th>Theme</th><th>What it implies</th></tr>
-<tr><td>A departure from a quasi-static information space to one where interactions are primary</td><td>Messages, not pages, become what matters (the trend of <a class="x-ref" href="61-conversations-state.html">Chapter 61</a>)</td></tr>
-<tr><td>Use of existing Web standards as building blocks</td><td>HTTP and XML are well understood and well debugged, so worth reusing</td></tr>
-<tr><td>A focus on operations within and between enterprises (businesses)</td><td>Firms that do not trust each other must prove what was sent</td></tr>
-</table>
 
 <p>
 The first theme is why he objects to the name: a Web of messages is no
@@ -106,8 +100,10 @@ reliable transmission.
 </blockquote>
 
 <p>
-<a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the protocol under HTTP, already makes delivery reliable, but keeps
-nothing afterwards.
+TCP, the protocol under HTTP, already makes delivery reliable, but keeps
+nothing afterwards, and systems are not &#8220;designed to keep TCP
+connections open for the weeks or years over which a web service may
+run&#8221;.
 </p>
 
 <figure id="fig-65-1">
@@ -164,8 +160,7 @@ outlives the exchange.</figcaption>
 <h2 id="sec-65-2">65.2 What the vendors wanted</h2>
 
 <p>
-One sentence, offered without comment, explains most of what happened to this
-technology:
+One sentence, offered without comment, says what the vendors wanted:
 </p>
 
 <blockquote>
@@ -176,9 +171,7 @@ capability in a way which makes it interoperable with other systems.
 
 <p>
 Not to build something new: to wrap what already existed, in a common
-envelope called SOAP, an XML format for sending a message over HTTP. Around
-it grew a stack of further specifications (the WS-* family) for security,
-routing and transactions.
+envelope called SOAP, an XML format for sending a message over HTTP.
 </p>
 
 <h3>Two ways to send a message</h3>
@@ -186,8 +179,7 @@ routing and transactions.
 <p>
 SOAP, he notes, works in two modes: the XML either carries the parameters of
 a remote procedure call, packed and unpacked by stubs (local stand-ins for the
-remote function), or carries a whole document for the receiver to process. A
-document can also take in fields from another <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> (an XML <a class="gl-ref" href="../glossary.html#namespace">namespace</a>).
+remote function), or carries a whole document for the receiver to process.
 </p>
 
 <figure id="fig-65-2">
@@ -242,8 +234,8 @@ document can also take in fields from another <a class="gl-ref" href="../glossar
   <text x="536" y="284" class="t-sm t-it" text-anchor="middle">communication visible; extensible</text>
 </svg>
 <figcaption><span class="fig-label">Figure 65.2</span>
-Document mode won because a document can grow, here by a new element,
-without breaking old readers.</figcaption>
+Document mode was gaining ground, the note says, because a document can
+grow, here by a new element, without breaking old readers.</figcaption>
 </figure>
 
 <blockquote>
@@ -253,13 +245,11 @@ the RPC mode.
 <cite>Web Services, 2002</cite>
 </blockquote>
 
-<h2 id="sec-65-3">65.3 The discovery cloud</h2>
+<h2 id="sec-65-3">65.3 Why the directory is not the centre</h2>
 
 <p>
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> drew web services as a triangle: requester, provider, and a discovery
-agency that introduces them. The agency is usually a registry, a directory
-where providers list services for others to look up; the one proposed was
-UDDI. Berners-Lee keeps only one edge of the triangle as essential:
+agency, such as the proposed UDDI registry, that introduces them. Berners-Lee keeps only one edge of the triangle as essential:
 </p>
 
 <blockquote>
@@ -311,18 +301,12 @@ Discovery is drawn as a cloud because it is used only sometimes; the
 interaction is always there.</figcaption>
 </figure>
 
-<p>
-Reducing the architecture to the interaction is the same move as <a class="x-ref" href="19-modularity.html">Chapter 19</a>:
-find the small interface everything else is built on, and refuse to let
-accessories into it.
-</p>
-
 <h3>Why a registry is the wrong centre</h3>
 
 <p>
-Most services, he expects, will link partners
-who already know each other, and where discovery is needed UDDI has the wrong
-shape:
+Many services, he expects, will at first link partners who already know
+each other. He credits UDDI with defining an <a class="gl-ref" href="../glossary.html#ontology">ontology</a> for services, but where
+discovery is needed it has the wrong shape:
 </p>
 
 <blockquote>
@@ -338,23 +322,17 @@ rather services were one more thing described on the <a class="gl-ref" href="../
 the same queries as catalogues, parts and contracts.
 </p>
 
-<h2 id="sec-65-4">65.4 Where he sends the reader instead</h2>
+<h2 id="sec-65-4">65.4 Which came first, the journal or the database?</h2>
 
 <p>
-The philosophy section does not argue. It lists three earlier notes:
-</p>
-
-<table>
-<tr><th>Note</th><th>Year</th><th>What it contributes</th></tr>
-<tr><td>Axioms of Web Architecture (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>)</td><td>1996 (cited as 1990s)</td><td>The information space concept</td></tr>
-<tr><td>Paper Trail (<a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>)</td><td>1999</td><td>Read-write state derived from read-only documents, and the question: which came first, the journal or the database?</td></tr>
-<tr><td>Conversations and State (<a class="x-ref" href="61-conversations-state.html">Chapter 61</a>)</td><td>2000 (cited as 1998)</td><td>The trend, across many fields, away from shared information spaces</td></tr>
-</table>
-
-<p>
-Here he only asks the question. <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>&#8217;s answer is that the journal
+The philosophy section does not argue. It points to three earlier notes, on
+the information space (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>), on the drift away from it (<a class="x-ref" href="61-conversations-state.html">Chapter 61</a>), and
+Paper Trail (<a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>), which asks the question in this heading.
+<a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>&#8217;s answer is that the journal
 came first and the database is computed from it; keeping only the database
-throws away what makes accountability possible.
+throws away what makes accountability possible. Many web services, he adds,
+are really the publication of documents, &#8220;just as the billing of a peer
+company is in reality effected by the issuance of an invoice&#8221;.
 </p>
 
 <h3>The bank statement, told twice</h3>
@@ -444,33 +422,53 @@ exists.</td></tr>
 it. This is one route among several to a reserved flight.</td></tr>
 </table>
 
+<p>
+What a firm would like to check automatically is whether the process will
+terminate, whether a sale will always gain, and:</p>
+
+<blockquote>
+Will we ever promise to ship something we do not have in stock?
+<cite>Web Services, 2002</cite>
+</blockquote>
+
+<p>
+Formal models and rule-based systems can go some way to answering such
+questions, &#8220;a good reason for keeping the languages involved as simple as
+possible&#8221;.
+</p>
+
 <h2 id="sec-65-5">65.5 The cost of keeping them apart</h2>
 
 <p>
-He names the cost of keeping the two apart. A DTD is the rulebook listing
-which XML elements a message may contain; change it and every script written
-against the old one may break, which the note says &#8220;has been
-called&#8221; DTD fragility.
-Descriptions that cannot be read as Semantic Web data make web services
-&#8220;instant legacy technoplogy for the semantic web&#8221; (his spelling).
+A DTD is the rulebook listing which XML elements a message may contain; change
+it and every script written against the old one may break, which the note says
+&#8220;has been called&#8221; DTD fragility. Moving to <a class="gl-ref" href="../glossary.html#rdf">RDF</a> &#8220;may, by
+removing a layer of arbitrary design, reduce that fragility&#8221;.
+</p>
+
+<p>
+Why, then, were web services and the Semantic Web kept apart? The argument,
+he writes, &#8220;is mainly social. It is costly to coordinate very large
+groups.&#8221; The apparent consensus of W3C members at Nice in November 2000
+was to let each proceed without a mandated link.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The stack was built and then abandoned.</strong> SOAP 1.2 became a
-W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in June 2003 and WSDL 2.0 in 2007. In the 2010s the WS-*
+W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in June 2003 and WSDL 2.0 in 2007. In the 2010s the SOAP
 stack was largely displaced by simpler resource-oriented (REST) interfaces
-exchanging <a class="gl-ref" href="../glossary.html#json">JSON</a>, a lightweight data format.</li>
+exchanging <a class="gl-ref" href="../glossary.html#json">JSON</a>.</li>
 <li><strong>The SOAP sense of the name faded.</strong> Amazon Web Services
 (launched 2006) kept the phrase, but what this note meant by it is now usually called
 an <a class="gl-ref" href="../glossary.html#api">API</a>, reached at an endpoint (a <a class="gl-ref" href="../glossary.html#url">URL</a> programs send requests to).</li>
-<li><strong>Discovery stayed optional, as predicted.</strong> The public UDDI
+<li><strong>The central registry did not last.</strong> The public UDDI
 Business Registry, run by IBM, Microsoft and SAP, was shut in January 2006.
-Services are found through configuration and documentation.</li>
-<li><strong>Accountability came back separately.</strong> <a class="gl-ref" href="../glossary.html#certificate">Certificate</a>
-Transparency (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962, 2013) introduced public append-only logs of the kind
-<a class="x-ref" href="#sec-65-1">section 65.1</a> asks for.</li>
+Services are mostly found through configuration and documentation.</li>
+<li><strong>Append-only records appeared elsewhere.</strong> <a class="gl-ref" href="../glossary.html#certificate">Certificate</a>
+Transparency (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962, 2013) introduced public append-only logs of
+certificates, a distant cousin of the receipts in 65.1.</li>
 </ul>
 </div>
 
@@ -484,11 +482,10 @@ this volume describes is Chapters <a class="x-ref" href="49-linked-data.html">49
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">65.1</span>
-Accountability is distinguished from reliability. Name what a system must keep
-to provide the first.</p>
+What must a system keep to be accountable, not merely reliable?</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.2</span>
@@ -501,8 +498,13 @@ If discovery were mandatory, what would become the centre?</p>
 </div>
 <div class="question">
 <p><span class="question-number">65.4</span>
-Which of the vendors&#8217; aims in 65.2 explains why document mode, not RPC
-mode, caught on?</p>
+The note says document mode is &#8220;not an accident&#8221;. What does a
+document allow that a function call with fixed typed parameters does not?</p>
+</div>
+<div class="question">
+<p><span class="question-number">65.5</span>
+Could a firm check that it never promises stock it lacks more easily from a
+choreography or from rules over documents? Why?</p>
 </div>
 </details>
 

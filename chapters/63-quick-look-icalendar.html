@@ -52,28 +52,36 @@ a Design Issues note by Tim Berners-Lee, 2001-10-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Calendar invitations pass between programs in a standard text format called
-iCalendar. This note reads its <a class="gl-ref" href="../glossary.html#specification">specification</a> closely, asking how it would look
-as simple linked data.
+Calendar invitations pass between programs in a text format called
+iCalendar. This note reads its <a class="gl-ref" href="../glossary.html#specification">specification</a> asking how it would look as
+linked data.
 </p>
 <p>
 Most of it translates neatly, because the structure is already there. The
-faults found are common ones: no single list of what each field may hold,
-behaviour shown only in examples, relationships dressed up as objects, and a
-rule letting each field set its own grammar, so no general reader can exist.
-Above all, the format says what a meeting is but not what sending one means.
-The same checks apply to any data format.
+faults are common ones: no single list of what each field may hold,
+behaviour shown only in examples, relationships dressed up as objects, and
+each field setting its own grammar, so no general reader can exist. Above
+all, the format says what a meeting is but not what sending one means.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-In October 2001 Berners-Lee spent a few hours reading fifty pages of
-iCalendar, the specification for exchanging calendar entries, published as
-<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445 (an RFC is one of the numbered documents that define internet
-standards), with a view to evaluating proposals for putting it into <a class="gl-ref" href="../glossary.html#xml">XML</a>. The note is
-what he found: a worked example of the method <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a> describes.
+Calendar invitations travel between programs as iCalendar text. One line
+from its specification reads:
+</p>
+<pre><code>ATTENDEE;DELEGATED-TO="mailto:a@y.com";DELEGATED-FROM="mailto:b@y.com":c@y.com</code></pre>
+<p>
+Who goes to the meeting? Reading the specification in October 2001,
+Berners-Lee found it &ldquo;very confusing&rdquo; and could only guess:
+&ldquo;I assume a@y.com goes to the meeting.&rdquo; Turning the line into
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> made him &ldquo;queasy about the solidity here&rdquo;.
+</p>
+<p>
+He had spent a few hours on fifty pages of <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445 (an RFC is a numbered
+internet standard), evaluating proposals to put it into <a class="gl-ref" href="../glossary.html#xml">XML</a>. He
+concluded early:
 </p>
 <blockquote>
 My conclusion early on was that the spec should be written in terms of RDF
@@ -82,23 +90,18 @@ structure.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 <p>
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> is a way of writing data as subject&ndash;property&ndash;value
-statements. He reached that view early, even though RFC 2445 never mentions
-RDF: the structure was already there.
+RDF is a way of writing data as subject&ndash;property&ndash;value
+statements. RFC 2445 never mentions RDF, but the structure was already
+there. The note is a worked example of the method <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a> describes.
 </p>
 </div>
 
 <h2 id="sec-63-1">63.1 Look for the structure that is already present</h2>
 
 <p>
-The method is the transferable part:
+The method is the transferable part: to represent a language&#8217;s data in
+RDF, look first for the structure the language already has.
 </p>
-
-<blockquote>
-When looking for a natural representation of data in a given lanbguage in RDF,
-one looks at first for the natural structureo fthe language.
-<cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
-</blockquote>
 
 <h3>What an iCalendar line looks like</h3>
 
@@ -118,9 +121,9 @@ address.
 </p>
 
 <p>
-A harder example from the note: the attendee line below names c@y.com, but
-adds that the invitation came (was delegated) from b@y.com and has been
-passed on to a@y.com.
+The delegation line from the opening is harder. It names c@y.com, but adds
+that the invitation came (was delegated) from b@y.com and has been passed on
+to a@y.com.
 </p>
 
 <figure id="fig-63-1">
@@ -176,9 +179,8 @@ passed on to a@y.com.
 
 </svg>
 <figcaption><span class="fig-label">Figure 63.1</span>
-Each parameter becomes an arrow of its own, beside one for the value. The
-example is the note&#8217;s own. Even Berners-Lee had to guess what it means:
-he assumed a@y.com is the one who attends.</figcaption>
+Each parameter becomes an arrow of its own, beside one for the value. Drawn
+this way, the line still does not say who attends.</figcaption>
 </figure>
 
 <figure id="fig-63-2">
@@ -229,21 +231,23 @@ properties which could form the format&#8217;s contribution to the data Web.</fi
 </figure>
 
 <p>
-A recurrence rule is a string holding its own attribute&ndash;value pairs:
-the whole model escaped into a field.
+One exception: a repeating meeting is a single string, such as
+<code>FREQ=WEEKLY;BYDAY=MO</code>, whose substructure &ldquo;takes the form
+of (guess what!) a set of attribute value pairs&rdquo;.
 </p>
 
-<h2 id="sec-63-2">63.2 Five findings, each generalisable</h2>
+<h2 id="sec-63-2">63.2 Six findings that fit any data format</h2>
 
 <p>
-Each item in his summary is a failure mode that recurs elsewhere. A
+His summary lists six findings, each a failure mode that recurs elsewhere;
+the sixth gets <a class="x-ref" href="#sec-63-4">section 63.4</a>. A
 property&#8217;s <em>domain</em> is the kind of thing it can describe; its
 <em>range</em> is the kind of value it takes.
 </p>
 
 <table>
 <tr><th>Finding</th><th>Example</th><th>The general problem</th></tr>
-<tr><td>Full of extension prefixes and registries</td><td>Names starting <code>X-</code> for private use; official names kept on a central list (<a class="gl-ref" href="../glossary.html#iana">IANA</a>)</td><td>Each format reinvents how to add new fields</td></tr>
+<tr><td>Full of extension prefixes and registries</td><td>Names starting <code>X-</code> for private use; official names kept on a central list (<a class="gl-ref" href="../glossary.html#iana">IANA</a>)</td><td>Each format reinvents how to add new fields; his remedy is XML namespaces</td></tr>
 <tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
 <tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
 <tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
@@ -251,32 +255,22 @@ property&#8217;s <em>domain</em> is the kind of thing it can describe; its
 </table>
 
 <p>
-A summary of domains and ranges, he says,
-would make the specification much clearer. Prose specifications rarely have
-one, because they describe fields where they are used.
+A summary of domains and ranges, he says, would make the specification much
+clearer. Prose specifications describe fields only where they are used.
 </p>
 
 <p>
-The third finding is a serious kind of defect:
-</p>
-
-<blockquote>
-The parameter value type of "URI" implicitly causes dereferencing. This is not
-clear from the spec but is assumed by the examples.
-<cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
-</blockquote>
-
-<p>
-To <a class="gl-ref" href="../glossary.html#dereference">dereference</a> an address is to fetch what it names. Here a network request
-is triggered by something only an example shows.
+The third finding hides an action. To <a class="gl-ref" href="../glossary.html#dereference">dereference</a> an address is to fetch
+what it names, so the value is not the address but &ldquo;the document you
+get when you dereference the <a class="gl-ref" href="../glossary.html#uri">URI</a>. Big difference, particularly when you
+automate the base 64 decoding of something.&rdquo;
 </p>
 
 <p>
 The last two findings are one mistake. <em>Reification</em> means turning a
 statement into a thing that can itself be described. The note calls
 <code>RELTYPE=SIBLING</code> a classic wanton reification: just say
-<code>SIBLING</code>. Similarly, an encoding relates the attached file to the
-string that carries it.
+<code>SIBLING</code>.
 </p>
 
 <figure id="fig-63-3">
@@ -363,10 +357,28 @@ string that carries it.
   <text x="578" y="286" class="t-mono" text-anchor="middle">MIICaj&#8230;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 63.3</span>
-Both examples are from the note. On the left, a relationship becomes a box
-with a type label, and the encoding hangs off the attachment as if it were a
-fact about it. On the right, each is drawn as what it is: one arrow.</figcaption>
+Both examples are from the note. Left: a relationship becomes a box with a
+type label, and the encoding hangs off the attachment like a fact about it.
+Right: each is one arrow.</figcaption>
 </figure>
+
+<p>
+The same cure suits free/busy time: <code>FREEBUSY=FREE</code> would be
+better as plain <code>FREE</code>. The note mocks the original:
+</p>
+
+<blockquote>
+You don't say "I am free or busy as follows: 12-1pm and we are talking about
+free here"!
+<cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
+</blockquote>
+
+<p>
+Mapping each parameter to a property also exposes poor names.
+<code>SENT-BY</code> means that one mailbox&#8217;s owner is represented by
+another&#8217;s; the note calls the name &ldquo;Misleading&rdquo; and
+proposes &ldquo;Represented by&rdquo;.
+</p>
 
 <h2 id="sec-63-3">63.3 The line that stops general parsing</h2>
 
@@ -383,27 +395,27 @@ difficult.
 </blockquote>
 
 <p>
-If every field defines its own grammar, a program cannot even tell where
-one parameter ends without knowing the property it is reading. There is no
-generic reader, only readers that implement the whole specification, and
-each new field is a change to every one of them.
-</p>
-
-<p>
-He names the ancestor:
+If every field defines its own grammar, a program cannot tell where one
+parameter ends without knowing the property. There is no generic reader, and
+each new field changes every reader. He names the ancestor:
 </p>
 
 <blockquote>
-The only hope is that in fact that it not true and there is more consistency
-than this line leads you to believe! This sounds like a remake of the RFC822
-problem which HTTP has in spades: One parser per page of the spec.
+This sounds like a remake of the RFC822 problem which HTTP has in spades: One
+parser per page of the spec.
 <cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
 </blockquote>
 
 <p>
 RFC 822, the 1982 email-header standard, gives each <a class="gl-ref" href="../glossary.html#header">header</a> its own syntax;
-<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> treats that as a symptom of a missing model. Here the defect
-reappears in a format designed sixteen years later.
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> treats that as a symptom of a missing model.
+</p>
+
+<p>
+Flat syntax invites a related fault. On an attendee, a LANGUAGE parameter
+applies to CN, the attendee&#8217;s name: one field quietly changing another.
+The note calls this &ldquo;a terrible bit of design&rdquo; and asks:
+&ldquo;How many other clauses like this are there?&rdquo;
 </p>
 
 <h2 id="sec-63-4">63.4 The absence that worries him most</h2>
@@ -420,9 +432,11 @@ But maybe that is elsewhere in the spec.
 </blockquote>
 
 <p>
-The rules were in a companion standard (see the box below). The point stands:
-a format that describes a meeting does not, by itself, say what sending one
-means.
+One detail shows the gap. Each event carries a <code>SEQUENCE</code> number
+that the organiser must increment when the event changes significantly, but
+&ldquo;In a peer-peer world, it is not obvious what to do.&rdquo; The rules
+were in a companion standard (see the box below). The point stands: a format
+that describes a meeting does not, by itself, say what sending one means.
 </p>
 
 <div class="since">
@@ -436,8 +450,8 @@ RFC (iTIP, RFC 2446, 1998), revised as RFC 5546 in 2009; CalDAV (RFC 4791,
 2007) added <a class="gl-ref" href="../glossary.html#server">server</a> access.</li>
 <li><strong>The format was revised, not restructured.</strong> RFC 5545
 (2009) replaced RFC 2445 and kept per-property parameters.</li>
-<li><strong>XML and <a class="gl-ref" href="../glossary.html#json">JSON</a> forms arrived.</strong> xCal (RFC 6321, 2011) and
-jCal (RFC 7265, 2014), the kind of translation he was evaluating.</li>
+<li><strong>XML and <a class="gl-ref" href="../glossary.html#json">JSON</a> forms arrived:</strong> xCal (RFC 6321, 2011) and
+jCal (RFC 7265, 2014).</li>
 <li><strong>The note joined the series in 2014,</strong> its preface says,
 because of later work on RDF, iCalendar and vCard.</li>
 </ul>
@@ -446,10 +460,10 @@ because of later work on RDF, iCalendar and vCard.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The method applied here is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and the model it maps onto is
-<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. Encoding as a relation rather than a property is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>, and
-the header problem it echoes is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The missing protocol definition is
-Chapters <a class="x-ref" href="61-conversations-state.html">61</a> and <a class="x-ref" href="62-paper-trail----build-social.html">62</a>, and the calendar terms it produced are <a class="x-ref" href="48-my-top-ten-terms.html">Chapter 48</a>.
+The method applied here is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>. The model it maps onto, and the header
+problem it echoes, are <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. Encoding as a relation rather than a
+property is <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>. The missing protocol definition is Chapters <a class="x-ref" href="61-conversations-state.html">61</a> and
+62, and the calendar terms it produced are <a class="x-ref" href="48-my-top-ten-terms.html">Chapter 48</a>.
 </p>
 </div>
 
@@ -457,8 +471,8 @@ Chapters <a class="x-ref" href="61-conversations-state.html">61</a> and <a class
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">63.1</span>
-List the properties that appear in this chapter&#8217;s examples. For each,
-say what kind of thing it describes and what kind of value it takes.</p>
+Rewrite the delegation line from the opening so that nobody has to guess
+who attends.</p>
 </div>
 <div class="question">
 <p><span class="question-number">63.2</span>

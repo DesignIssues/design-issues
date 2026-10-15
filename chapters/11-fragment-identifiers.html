@@ -65,10 +65,12 @@ formats, the link can quietly stop working.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-<a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> established that the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> stays on the client and
-that access specifications and fragment specifications are independent. This
-note, written in April 1997, asks who decides what a fragment means, and what
-that decision makes possible.
+Follow a link ending in <code>#References</code> and the server that sends
+the page is never told which part was wanted. The browser keeps everything
+after the <code>#</code> and interprets it only once the document arrives.
+This note,
+written in April 1997, asks who gets to decide what a fragment means, and
+what follows from that.
 </p>
 <p>
 It opens by correcting its own title:
@@ -86,26 +88,28 @@ and things that are not documents at all.
 </p>
 </div>
 
-<h2 id="sec-11-1">11.1 The axiom</h2>
-
-<div class="editors-note">
-<p><strong>Axiom.</strong> The significance of the fragment identifier is a
-function of the MIME type of the object.</p>
-</div>
+<h2 id="sec-11-1">11.1 The document type decides</h2>
 
 <p>
-A MIME type is the label a server attaches to say what kind of data it is
-sending, such as <code>text/html</code> for a web page or
-<code>application/pdf</code> for a PDF. It is also called a <a class="gl-ref" href="../glossary.html#media-type">media type</a>;
-the two terms mean the same thing.
+The note&#8217;s answer turns on the MIME type, the label a server attaches
+to say what kind of data it is sending (also called a <a class="gl-ref" href="../glossary.html#media-type">media type</a>), such as
+<code>text/html</code> for a web page or <code>application/pdf</code> for a
+PDF:
 </p>
+
+<div class="editors-note">
+<p><strong>Axiom.</strong> The significance of the <a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a> is a
+function of the MIME type of the object.</p>
+</div>
 
 <p>
 Two consequences follow. The fragment is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the part of the browser
 that fetches documents, which he calls the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine. And the server is not
 even given it: the fragment is applied after the response arrives, by
 whatever software handles the returned type (<a class="x-ref" href="#fig-11-1">Figure 11.1</a>). So the server
-cannot log which part of a page a reader was pointed to.
+cannot log which part of a page a reader was pointed to. The same property
+later let web applications keep their state in the fragment, changing it
+without a request to the server, a story <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> tells.
 </p>
 
 <figure id="fig-11-1">
@@ -176,7 +180,7 @@ number
 </blockquote>
 
 <p>
-Most of the list has since been built, though not always as he imagined:
+Three of the four have since been built, though not as he imagined:
 </p>
 
 <table>
@@ -236,8 +240,7 @@ Most of the list has since been built, though not always as he imagined:
 </svg>
 <figcaption><span class="fig-label">Figure 11.2</span>
 Nothing in HTTP says what <code>#</code> means, so each type of document
-defines it for itself (<code>text/turtle</code> is an RDF format). A new media
-type may invent whatever notion of a part or a view suits it. The cost is
+defines it for itself (<code>text/turtle</code> is an RDF format). The cost is
 recorded in section 11.4.</figcaption>
 </figure>
 
@@ -254,12 +257,13 @@ registration process.
 <h2 id="sec-11-3">11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-This passage, added to the note some years after 1997, is the argument
-<a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> restates at length. A
-fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document (RDF: a format for machine-readable statements
-about things) identifies not a part of the document but
-whatever thing the document describes under that name. Why must it be a
-fragment? The reasoning runs in three steps:
+A later addition to the note makes an argument the book returns to in
+Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>. A fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document (RDF: a format for
+machine-readable statements about things) identifies not a part of the
+document but whatever thing the document describes under that name.
+Concretely, <code>http://example.org/people</code> names the document, and
+<code>http://example.org/people#alice</code> names Alice herself, the person
+the document describes. Why must she get a fragment? In three steps:
 </p>
 
 <ol>
@@ -274,9 +278,7 @@ own. It needs a <code>#</code> name inside a document.</li>
 </ol>
 
 <p>
-Concretely, <code>http://example.org/people</code> names the document, and
-<code>http://example.org/people#alice</code> names Alice herself, the person
-the document describes. For a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, whose terms are all built on one
+For a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, whose terms are all built on one
 shared prefix called its <a class="gl-ref" href="../glossary.html#namespace">namespace</a>, the consequence is direct:
 </p>
 
@@ -340,8 +342,8 @@ chose.</figcaption>
 
 <p>
 In 1997 it did no harm: HTML was effectively the only type that used
-fragments, and falling back to the whole document was acceptable. In a
-passage dated 2001 Berners-Lee notes it has become more of a problem. He records
+fragments, and falling back to the whole document was acceptable. By 2001,
+he notes, it had become more of a problem. He records
 proposals to add the fragment to the HTTP request, and suggests that warnings
 sent with the response, or new protocols that pass the fragment as a hint,
 could let server and client negotiate an equivalent fragment.
@@ -351,10 +353,10 @@ could let server and client negotiate an equivalent fragment.
 None of these was adopted for the Web. The fragment is still not sent.
 </p>
 
-<h2 id="sec-11-5">11.5 Two kinds of bookmark</h2>
+<h2 id="sec-11-5">11.5 The living page or a frozen copy</h2>
 
 <p>
-A closing section raises a user-interface consequence. Many addresses are
+Many addresses are
 generic: their content can change by language, version or format, so a
 fragment may denote nothing in some specific version. The client, he argues,
 should offer a choice: a bookmark to the whole living
@@ -377,7 +379,10 @@ supplied by the site rather than the browser.
 specifies that fragment semantics are defined by the media type of the
 retrieved representation, and RFC 6838, of January 2013, gives every media type
 registration template a field for fragment identifier considerations.</li>
-
+<li><strong>The PDF case was registered.</strong> RFC 8118, the 2017
+registration of <code>application/pdf</code>, defines <code>#page=</code>
+among its fragment identifiers: the note&#8217;s recommendation carried out,
+for the format whose links <a class="x-ref" href="#fig-11-3">Figure 11.3</a> shows breaking.</li>
 </ul>
 </div>
 
@@ -385,9 +390,7 @@ registration template a field for fragment identifier considerations.</li>
 <h3>Connections</h3>
 <p>
 The module boundary that makes this axiom enforceable is <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. The
-genericity that creates the known bug is <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>. The argument of
-<a class="x-ref" href="#sec-11-3">section 11.3</a> is developed at length in <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> and overturned in <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>.
-The globalising role of the hash is stated most compactly in <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> and
+genericity that creates the known bug is <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>. The globalising role of the hash is stated most compactly in <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> and
 applied in <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>.
 </p>
 </div>
@@ -413,8 +416,7 @@ State what it must not assume about HTTP.</p>
 <div class="question">
 <p><span class="question-number">11.4</span>
 No mainstream browser offers a choice between the two kinds of bookmark.
-Propose an interface for it, and say why the absence of one has cost so
-little.</p>
+Propose an interface for it, and say whether its absence has mattered.</p>
 </div>
 </details>
 

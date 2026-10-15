@@ -62,8 +62,7 @@ where things are stored.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The companion to <a class="x-ref" href="82-user-interface-consistent-world.html">Chapter 82</a>, written in April 1998, opens with a sentence still
-often quoted:
+Berners-Lee opens with a provocation:
 </p>
 <blockquote>
 If you think surfing hypertext is cool, that's because you haven't tried writing
@@ -71,27 +70,35 @@ it.
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
 <p>
-People&#8217;s bookmarks became important to them, he says, because they had
-learned to put up with the simplest form of hypertext editing there is, as a
-compromise.
+Bookmarks, he says, matter so much to people because they are the simplest form
+of hypertext editing there is, and people have learned to put up with them as
+a compromise. Then a challenge: if anyone is using a really intuitive hypertext
+editor, &ldquo;then tell me about it&rdquo;.
 </p>
 </div>
 
 <h2 id="sec-83-1">83.1 Counting the clicks</h2>
 
 <p>
-Berners-Lee compares his own 1990 editor, WorldWideWeb, with AOLPress, which
+The Web, the note says, should encompass everything
+&ldquo;from the very rough scribbled idea on the back of a virtual envelope to a
+beautifully polished work of art&rdquo;. Speed matters most at the
+&ldquo;draft&rdquo; end: a group&#8217;s shared notebook, where people browse
+each other&#8217;s notes and add ideas quickly.
+</p>
+
+<p>
+Berners-Lee compares his own 1990 program, WorldWideWeb, with AOLPress, which
 he was writing in. Set beside these, and beside KMS (an early hypertext system)
 and Doug Engelbart&#8217;s interface, the Web of 1998 had lost some immediacy.
-Speed matters most at the &ldquo;draft&rdquo; end of the scale: a group&#8217;s
-shared notebook, where people browse each other&#8217;s notes and add ideas
-quickly.
+WorldWideWeb was a browser and editor in one; Mosaic, the browser that spread
+the Web from 1993, could only read.
 </p>
 
 <p>
 Dan Connolly suggested the yardstick: count the actions, adding ten whenever
-the user must invent a filename or an anchor ID (the name of a spot inside a
-page that a link can point to). The penalty prices thinking rather than
+the user must invent a filename or an anchor ID (the name of a spot in a page
+that links can target). The penalty prices thinking rather than
 doing.
 </p>
 
@@ -142,20 +149,20 @@ the title bar.
 
 <h2 id="sec-83-2">83.2 No mode, no location</h2>
 
-<p>
-The two assumptions sit under a heading borrowed from John Lennon&#8217;s
-&ldquo;Imagine&rdquo;: &ldquo;Imagine there's no mode, imagine there's no
-location&rdquo;. A mode is a state the program must be switched into, as when
-an editor makes the user press a button before a page being read can be
-changed. A modeless editor has no such switch.
-</p>
-
 <blockquote>
 A first assumption, by the way, is that you have modeless interface in which
 browsing and editing are not separate functions. If to edit a page, you have to
 switch from browsing mode to editing mode, then you have lost already.
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
+
+<p>
+A mode is a state the program must be switched into, such as an edit mode
+entered before a page can be changed. The section
+sits under a heading borrowed from John Lennon&#8217;s
+&ldquo;Imagine&rdquo;: &ldquo;Imagine there's no mode, imagine there's no
+location&rdquo;.
+</p>
 
 <figure id="fig-83-2">
 <svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
@@ -202,8 +209,7 @@ switch from browsing mode to editing mode, then you have lost already.
   <text x="91" y="275" text-anchor="middle">Edited page, saved</text>
 </svg>
 <figcaption><span class="fig-label">Figure 83.2</span>
-Every detour makes the user think about where something is: which mode, which
-file, how links are stored. The modeless path asks none of this.</figcaption>
+Every detour makes the user think about where something is. The modeless path asks none of this.</figcaption>
 </figure>
 
 <p>
@@ -220,12 +226,12 @@ That is <a class="x-ref" href="82-user-interface-consistent-world.html">Chapter 
 live in exactly one folder), restated as a demand on the editor.
 </p>
 
-<h2 id="sec-83-3">83.3 The operations he wants</h2>
+<h2 id="sec-83-3">83.3 A wish list, with click counts</h2>
 
 <p>
-Beyond making links, the note asks for four more: one WorldWideWeb already
-had, one needs label servers, one Dan Connolly does by hand, and one,
-inserting an image, that 83.4 takes up.
+Beyond making links, the note asks for four more operations, useful &ldquo;when you
+really use hypertext as a thinking tool&rdquo;: a new linked page, an
+annotation, an excerpt and an inserted image.
 </p>
 
 <p>
@@ -234,7 +240,8 @@ links). His own 1990 editor, WorldWideWeb, already did this: select a phrase,
 press one key, and a new page appears from a template (a ready-made starting
 page), already linked from the phrase, with the cursor waiting. Berners-Lee marks the one remaining step with a sad face:
 the dialogue asking for a filename. By Connolly&#8217;s count that is two
-actions plus a ten-point filename penalty: 12.
+actions plus a ten-point filename penalty: 12. <a class="x-ref" href="84-user-agent-watch-points.html">Chapter 84</a> proposes that
+servers make up the name instead.
 </p>
 
 <p>
@@ -287,8 +294,8 @@ joins the two.</figcaption>
 </figure>
 
 <p>
-<strong>Excerpt.</strong> Connolly did this by hand; Berners-Lee had never
-seen an editor do it automatically, though Connolly had found some JavaScript hacks. His recipe, where BLOCKQUOTE
+<strong>Excerpt.</strong> Connolly did this by hand or with JavaScript
+hacks; Berners-Lee had never seen an editor do it automatically. His recipe, where BLOCKQUOTE
 is the <a class="gl-ref" href="../glossary.html#html">HTML</a> element for a quoted passage:
 </p>
 
@@ -359,15 +366,11 @@ made, or else the document as a whole failing that.
 </svg>
 <figcaption><span class="fig-label">Figure 83.4</span>
 Whichever rung it reaches, the quotation carries its own provenance (a record
-of where it came from), as precise as the source allows. Text fragments (links that point at a quoted
-phrase inside any page, shipped in Chrome in 2020) now supply the missing middle
-rung.</figcaption>
+of where it came from), as precise as the source allows.</figcaption>
 </figure>
 
-<h2 id="sec-83-4">83.4 Inserting an image</h2>
-
 <p>
-The last item is the most ordinary:
+<strong>Insert an image.</strong> The last item is the most ordinary:
 </p>
 
 <blockquote>
@@ -377,20 +380,19 @@ take?
 <cite>Cleaning up the User Interface 2: Hypertext editing, 1998</cite>
 </blockquote>
 
-<p>
-The test, as throughout, is how many steps it takes.
-</p>
-
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Modeless editing arrived, inside applications.</strong> Wikis
 (WikiWikiWeb, 1995) and online office tools (Google Docs, 2006) made editing in
 place normal, but it did not become a property of the Web itself.</li>
-<li><strong>Excerpt is still mostly manual.</strong></li>
-<li><strong>Annotation layers were built repeatedly.</strong> <a class="gl-ref" href="../glossary.html#w3c">W3C</a> published the
-Web Annotation Recommendations in February 2017, and many commenting systems
-have been built; none has become general, the fate of <a class="x-ref" href="77-filtering-censorship.html">Chapter 77</a>&#8217;s
+<li><strong>Excerpt is still mostly manual.</strong> Text fragments (links to
+a quoted phrase inside any page, shipped in Chrome in 2020) now give the
+precise link, but no common editor builds the quoted, linked BLOCKQUOTE in one
+step.</li>
+<li><strong>Annotation layers were built repeatedly.</strong> <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Web
+Annotation Recommendations followed in February 2017; no system has become
+general, the fate of <a class="x-ref" href="77-filtering-censorship.html">Chapter 77</a>&#8217;s
 labels.</li>
 </ul>
 </div>
@@ -398,8 +400,7 @@ labels.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The consistency argument is <a class="x-ref" href="82-user-interface-consistent-world.html">Chapter 82</a>, and the labels used for annotation are
-<a class="x-ref" href="77-filtering-censorship.html">Chapter 77</a>. Addressing a passage precisely is <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>. The read-write
+The companion note, on consistency, is <a class="x-ref" href="82-user-interface-consistent-world.html">Chapter 82</a>. The labels used for annotation are <a class="x-ref" href="77-filtering-censorship.html">Chapter 77</a>. Addressing a passage precisely is <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>. The read-write
 architecture this asks for is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>, and the data interface is
 <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
 </p>

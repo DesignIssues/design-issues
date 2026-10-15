@@ -62,12 +62,13 @@ item in the folder carries that meaning; the folder keeps its private name.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in November 2006, when tagging sites were new, this note
-tries to reconcile the ease of typing a word with the reusability of a
-well-defined term.
-</p>
-<p>
-Berners-Lee states the worry:
+Berners-Lee photographed a local soccer team at two games and put the
+pictures into folders named Soccer vs Wayland and Soccer vs Arlington. The
+names were, in his words, &ldquo;essentially my local tags&rdquo;, and
+&ldquo;Exporting them doesn&#8217;t help much.&rdquo; Saying where the
+photographs were taken, and who is in them, in terms another person or program
+could use is slower than typing a word. This November 2006 note asks whether
+one can have both, and states the worry:
 </p>
 <blockquote>
 On the other hand, there is the sinking feeling that tags are headed the same
@@ -77,21 +78,19 @@ and the hopeless ambiguity of uncontrolled user-generated keywords.
 <cite>Using labels to give semantics to tags, 2006</cite>
 </blockquote>
 <p>
-Information Retrieval is the field of document search. A controlled
-<a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> is a fixed list of approved terms. The note looks for a way between
-that and free keywords.
+Information Retrieval is the field of document search; a controlled
+<a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> is a fixed list of approved terms.
 </p>
 </div>
 
-<h2 id="sec-36-1">36.1 The two worlds</h2>
+<h2 id="sec-36-1">36.1 Quick to type, or reusable: pick one</h2>
 
 <p>
 On one side, tagging: quick, personal, and hard to reuse, because the same
 word means different things when used by another person or on another site.
 On the other, well-defined data: locations, relationships, authorship, each
 recorded with a global identifier (a name that means the same everywhere).
-Such data is extremely reusable, but not as quick as tagging with a single
-word off the top of one&#8217;s head.
+Such data is extremely reusable, but slower to enter.
 </p>
 
 <p>
@@ -109,10 +108,12 @@ private idea to being a group global standard.
 <h2 id="sec-36-2">36.2 The luggage label</h2>
 
 <p>
-The proposal takes its name from a physical object. A luggage label is tied to
-a bag by its owner and can be read by anyone. In software, a label is a set
-of common facts, built once from menus of shared terms and dropped on a
-folder.
+The proposal takes its name from a luggage label, which the note would draw
+on screen as &ldquo;a box with a hole in the end with a bit of string&rdquo;.
+A label is a set of common facts, built once from menus of shared terms. The
+user should be able to &ldquo;drop a label on a folder, and let all the things
+in the folder inherit the labeled properties&rdquo;, so the soccer folders keep
+their private names while saying something anyone can read.
 </p>
 
 <figure id="fig-36-1">
@@ -121,8 +122,8 @@ folder.
   <title id="fig36-1-t">A label ties a private folder to shared terms</title>
   <desc id="fig36-1-d">A personal folder called Soccer vs Wayland keeps its
   local name. A label tied to it says, in shared vocabularies for place and
-  depiction, that the photos were taken at the playing field (lat 47, long 78)
-  and show our team. Everything in the folder inherits those statements.</desc>
+  depiction, that the photos were taken at the playing field and show our
+  team. Everything in the folder inherits those statements.</desc>
 
   <rect class="box-warm" x="24" y="44" width="220" height="160" rx="4"/>
   <text x="134" y="70" class="t-caps" text-anchor="middle" style="fill:#b08d57">my folder</text>
@@ -147,9 +148,8 @@ folder.
 
   <rect class="box-green" x="478" y="72" width="218" height="112" rx="4"/>
   <text x="587" y="98" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
-  <text x="494" y="126">location: the playing field</text>
-  <text x="494" y="144">(lat 47, long 78)</text>
-  <text x="494" y="168">shows: our team</text>
+  <text x="494" y="132">location: the playing field</text>
+  <text x="494" y="160">shows: our team</text>
   <text x="587" y="204" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
   <text x="587" y="220" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
 
@@ -158,25 +158,24 @@ folder.
 </svg>
 <figcaption><span class="fig-label">Figure 36.1</span>
 The user keeps the folder&#8217;s private name and attaches, once, a label
-written in terms others can read. The place and subject shown are the ones in
-the note&#8217;s own example.</figcaption>
+written in terms others can read. The place and subject are those of the
+note&#8217;s example; its coordinates are placeholders, so none are shown.</figcaption>
 </figure>
 
-<h2 id="sec-36-3">36.3 The soccer photographs</h2>
+<h2 id="sec-36-3">36.3 Two games, two folders, no parent</h2>
 
 <p>
-Berners-Lee photographs a local soccer team twice, against Wayland and
-against Arlington, loads the pictures into iPhoto, and wants to burn a CD for
-the team and find the photographs later.
+The example has a person behind it: &ldquo;I face these problems day to day,
+and like many geeks, am driven by the urge to make the boring things in life
+happen automatically&rdquo;. He loaded the soccer photographs into iPhoto,
+wanting to burn a CD for the team and find the pictures later.
 </p>
 
 <p>
-On the first day he took no other photographs, so a folder defined by date
-was enough (iPhoto&#8217;s smart album, whose contents are chosen by a
-rule). On the second day he took others too, so he picked the right ones by
-hand into a plain folder. Then the wish: a folder Soccer with the two as
-subfolders. Another smart album combining them works, but is not as intuitive
-and lacks the hierarchical interface he wants.
+The first folder was a smart album, chosen by a rule (that day&#8217;s
+photographs); the second, a plain folder picked by hand. Then the wish: a
+folder Soccer with the two as subfolders. A smart album combining them works,
+but lacks the hierarchical interface he wants.
 </p>
 
 <figure id="fig-36-2">
@@ -233,10 +232,8 @@ hierarchy is missing from the interface, not from the model.</figcaption>
 </figure>
 
 <p>
-The note observes, in separate places, that these folders are classes in
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> (a class is a named set of things) and that the folder names are his
-local tags. Nothing new is needed in the model, only a way to say what a
-folder means.
+In <a class="gl-ref" href="../glossary.html#rdf">RDF</a> these folders are classes (named sets of things). Nothing new is
+needed in the model, only a way to say what a folder means.
 </p>
 
 <p>
@@ -292,16 +289,10 @@ its properties came from.</figcaption>
 <h2 id="sec-36-4">36.4 Writing a label down</h2>
 
 <p>
-The note gives three ways to write the same label, and says they are
-&ldquo;more or less inter-convertible&rdquo;:
+Under the covers the note writes the same label three ways: as a rule in <a class="gl-ref" href="../glossary.html#n3">N3</a>
+(<a class="x-ref" href="42-notation3.html">Chapter 42</a>), as <a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions, and with a special label vocabulary. It
+calls them &ldquo;more or less inter-convertible&rdquo;.
 </p>
-
-<table>
-<tr><th>Form</th><th>What it says</th><th>Who it suits</th></tr>
-<tr><td>A rule in <a class="gl-ref" href="../glossary.html#n3">N3</a> (Notation3, a notation for RDF and rules; <a class="x-ref" href="42-notation3.html">Chapter 42</a>)</td><td>Each member is at the field and shows our team.</td><td>Rule writers</td></tr>
-<tr><td><a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions (a class defined as &lsquo;things with this value for that property&rsquo;)</td><td>The class is a narrower class of things at the field showing our team.</td><td>Users of OWL, a language for defining terms</td></tr>
-<tr><td>A label vocabulary</td><td>Label terms on the class; one rule copies them to members.</td><td>Systems built for labels</td></tr>
-</table>
 
 <h3>A label is not a photo</h3>
 
@@ -340,22 +331,27 @@ category stood in the field (<a class="x-ref" href="#fig-36-4">Figure 36.4</a>).
 The label describes the members of the class, not the class.</figcaption>
 </figure>
 
-<h3>Sharing and smart labels</h3>
+<h3>Using someone&#8217;s tag means taking on its meaning</h3>
 
 <p>
 Tags stay local, but they can be shared, and then a rule applies: tagging
 things with another person&#8217;s tag gives them the properties of that
-tag&#8217;s label. Using someone&#8217;s tag means taking on its meaning,
-which is the mechanism behind the hope quoted in 36.1.
+tag&#8217;s label. That is the mechanism behind the hope quoted in 36.1.
 </p>
 
 <p>
-Combine a smart album&#8217;s selection rule with a label and the result is
-a smart label, a rule with a single variable: <em>any photo that matches X
-also has Y</em>, such as: any photo taken on the day of the Wayland game
-shows our team. Berners-Lee suggests the two metaphors together could let lay
-users write rules.
+A smart album&#8217;s selection rule combined with a label gives a smart
+label, a one-variable rule: any photo taken on the day of the Wayland game
+shows our team. Here the note makes its largest claim:
 </p>
+
+<blockquote>
+A lot of information can be expressed as rules, but finding an intuitive user
+interface to allow lay users to express their needs with rules has been a
+stumbling block. These smart folder and label metaphors, combined, could be a
+route to solving this problem
+<cite>Using labels to give semantics to tags, 2006</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -363,6 +359,10 @@ users write rules.
 <li><strong>The labelling language arrived.</strong> The note&#8217;s Web
 Content Labeling (WCL) Incubator Group fed into POWDER (Protocol for Web
 Description Resources), a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2009.</li>
+<li><strong>Tags with defined properties appeared.</strong> In January 2007
+Flickr launched &ldquo;machine tags&rdquo; of the form
+<code>namespace:predicate=value</code>, such as <code>geo:lat=&#8230;</code>:
+a tag that carries a defined property rather than a private word.</li>
 <li><strong>The software in the example was retired.</strong> Apple replaced
 iPhoto with its Photos application in April 2015.</li>
 

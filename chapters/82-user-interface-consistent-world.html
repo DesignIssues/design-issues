@@ -53,7 +53,8 @@ a Design Issues note by Tim Berners-Lee, 1997-02-06.
 <h3>The short version</h3>
 <p>
 Desktop and browser are two interfaces for one idea: things to open. A folder
-should be a list of links, not a place. Mail, news and the Web all make links,
+should be a list of links, not a place: store a thing once and let every folder
+point to it. Mail, news and the Web all make links,
 so the user should not have to pick a protocol, or a filename.
 </p>
 </div>
@@ -61,18 +62,21 @@ so the user should not have to pick a protocol, or a filename.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume IX opens with a note from February 1997, written with some reluctance.
-Berners-Lee names its audience:
+Berners-Lee asks two questions of the screens of his day:
 </p>
 <blockquote>
-Those people who asked what I meant by a consistent user interface and then
-said, "Don't just say it, write it down!". For software developers in the hope
-that some of this will come true.
+Why can't I put folders into my hypertext documents? Why can't I write on the
+desk?
 <cite>Cleaning up the User Interface, 1997</cite>
 </blockquote>
+<p>
+He was a little embarrassed to ask, as &ldquo;everyone has pet ideas about how
+the UI is frustrating&rdquo;, but people had told him: &ldquo;Don&#8217;t just
+say it, write it down!&rdquo;
+</p>
 </div>
 
-<h2 id="sec-82-1">82.1 The inconsistency nobody notices</h2>
+<h2 id="sec-82-1">82.1 Two metaphors on one screen</h2>
 
 <p>
 In 1997 a PC or Mac showed its own files as folders spread over the whole
@@ -125,18 +129,9 @@ On reflection, Berners-Lee calls this arrangement crazy.</figcaption>
 </figure>
 
 <p>
-Nobody asks the obvious questions:
-</p>
-
-<blockquote>
-Why can't I put folders into my hypertext documents? Why can't I write on the
-desk?
-<cite>Cleaning up the User Interface, 1997</cite>
-</blockquote>
-
-<p>
-He does not want them merged entirely: distinctly different uses may keep
-different forms.
+&ldquo;Folders should be just another sort of document,&rdquo; he argues, though
+he does not want the two merged entirely: different uses may keep different
+forms.
 </p>
 
 <h2 id="sec-82-2">82.2 Location fixation</h2>
@@ -153,20 +148,13 @@ is "is".
 </blockquote>
 
 <p>
-That relationship is an artefact of storage. Unix, the system behind most servers, lets a file sit in several
-directories through <em>hard links</em>, extra directory entries for one
-stored file, but only on the same disk; DOS, Microsoft&#8217;s system before Windows, allows just one folder. Users should not have
-to care which disk a file is on. So file everything under its creator and
-creation date, and make everything else a pointer:
+That relationship is an artefact of storage. Unix lets a file sit in several
+directories through <em>hard links</em>, but only on one disk; DOS allows just
+one folder. Users should not have to care which disk a file is on. So file
+everything under its creator and creation date, and make everything else a
+pointer. Then &ldquo;the relationship between a folder and a file in it becomes
+just a hypertext link. Ah, consistency!&rdquo;
 </p>
-
-<blockquote>
-Then a folder becomes a useful sort of document for helping us organize things,
-but not a container with implications on physical storage. The relationship
-between a folder and a file in it becomes just a hypertext link. Ah,
-consistency!
-<cite>Cleaning up the User Interface, 1997</cite>
-</blockquote>
 
 <figure id="fig-82-2">
 <svg class="dia" viewBox="0 0 720 226" width="720" height="226" role="img"
@@ -236,15 +224,14 @@ This is of course totally meaningless to a user.
 
 <table>
 <tr><th>Program</th><th>Protocol it speaks</th><th>What it does, in the user&#8217;s terms</th></tr>
-<tr><td>Mail</td><td>Simple Mail Transfer Protocol</td><td>Links a message into someone else&#8217;s &#8220;In&#8221; box, which is a folder by another name.</td></tr>
-<tr><td>News (Usenet, the public discussion boards of the time)</td><td>Network News Transfer Protocol</td><td>Links a document from a group visible all over the world; much like mailing a list.</td></tr>
-<tr><td>Web editor</td><td>Hypertext Transfer Protocol</td><td>Uploads a document to a <a class="gl-ref" href="../glossary.html#server">server</a>. <a class="gl-ref" href="../glossary.html#http">HTTP</a>&#8217;s <a class="gl-ref" href="../glossary.html#post">POST</a> was originally meant to make a new document and a link to it.</td></tr>
+<tr><td>Mail</td><td><a class="gl-ref" href="../glossary.html#smtp">SMTP</a></td><td>Links a message into someone&#8217;s &#8220;In&#8221; box, a folder by another name.</td></tr>
+<tr><td>News (Usenet discussion groups)</td><td>NNTP</td><td>Links a document from a group visible worldwide.</td></tr>
+<tr><td>Web editor</td><td><a class="gl-ref" href="../glossary.html#http">HTTP</a></td><td>Uploads a document; <a class="gl-ref" href="../glossary.html#post">POST</a> was meant to make a new document and a link to it.</td></tr>
 </table>
 
 <p>
-Described by what they do, all three make links. Someone wanting one item
-linked from a few inboxes, newsgroups and pages should not, he says, have to
-choose an application.
+Described by what they do, all three make links, so the user should not have to
+choose an application for each.
 </p>
 
 <figure id="fig-82-3">
@@ -289,29 +276,34 @@ choose an application.
   <text x="360" y="222" class="t-sm" text-anchor="middle">under the hood, the system picks SMTP / NNTP / HTTP for each link</text>
 </svg>
 <figcaption><span class="fig-label">Figure 82.3</span>
-The user makes links; choosing a protocol for each one is the system&#8217;s
-job.</figcaption>
+The user makes links; the system chooses each protocol.</figcaption>
 </figure>
-
-<h3>Menus, history and mailto</h3>
 
 <p>
 The same reasoning reaches every container. Favorites, most of the Start Menu
 and mailboxes all classify things, so they should share one interface, and the
-history list should span all applications. Even the <code>mailto:</code> links that open a blank email when clicked fall
-short: Berners-Lee
-calls it &ldquo;a misnomer (my fault I feel as I didn&#8217;t think when we
-created it)&rdquo;, since it should name a mailbox, not start a message.
+history list should span all applications.
+</p>
+
+<h3>A mistake of his own: mailto</h3>
+
+<p>
+A <code>mailto:</code> link opens a blank email. Berners-Lee calls it &ldquo;a
+misnomer (my fault I feel as I didn&#8217;t think when we created it)&rdquo;: it
+should name a mailbox, not start a message. Clicking it should show the mailbox,
+perhaps with &ldquo;an address book entry and a list of the messages sent
+to/from&rdquo; that person, and mailing becomes dragging a document onto them.
 </p>
 
 <h2 id="sec-82-4">82.4 Webizing the desktop</h2>
 
 <p>
-Webizing (<a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>) means giving things global names, such as Web addresses,
-so they can be pointed at from anywhere. This note applies it to the interface.
-If a folder holds links and a mailbox is a folder, moving something between
-them is one operation everywhere. The note&#8217;s example is saving a web
-page in a mailbox, which would freeze a copy and keep a pointer to it.
+Webizing (<a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>) means giving things global names so they can be pointed
+at from anywhere. Applied to the interface, every move becomes a link. The
+note&#8217;s example is editing a photo. To mail it, &ldquo;I drag the document
+onto the person icon&rdquo; and choose To or Cc; &ldquo;If I drag it to a
+newsgroup, the functionality will be exactly the same&rdquo;, though the options
+differ. Dragging it to a folder makes a link too.
 </p>
 
 <h2 id="sec-82-5">82.5 The last thing I want to be asked is the filename</h2>
@@ -325,7 +317,11 @@ civilization.
 <p>
 It asks about disks, once the writing is finished. He would rather pick a
 template at the start, which settles who may read the document and how it is
-stored, and get a <a class="gl-ref" href="../glossary.html#uri">URI</a> back at the end.
+stored, and get a <a class="gl-ref" href="../glossary.html#uri">URI</a> back at the end. A template could mint names that never
+need changing, from a macro such as
+<code>http://my.co.com/BY/&lt;user&gt;/&lt;yymm&gt;/NOTE/&lt;seq&gt;.txt</code>.
+Keeping a page in a &ldquo;personal archive&rdquo; is then a menu item:
+&ldquo;No &lsquo;Save As&rsquo;. No filenames. It has a URI already.&rdquo;
 </p>
 
 <figure id="fig-82-4">
@@ -377,18 +373,15 @@ The question moves from when the writer stops thinking about the document to
 when the writer starts.</figcaption>
 </figure>
 
-<h2 id="sec-82-6">82.6 Documents and deeds</h2>
+<h2 id="sec-82-6">82.6 Pressing send makes a deed</h2>
 
 <p>
-Documents that can always change suit an encyclopaedia, not a cheque book.
-Signing turns a document into a deed, which freezes: it can be cancelled by
-another deed, but not edited (<a class="x-ref" href="#fig-82-5">Figure 82.5</a>).
+Documents that can always change suit an encyclopaedia, not a cheque book. With
+only living documents, the only possible actions are those &ldquo;just as good if
+you do them twice as if you do them once&rdquo;, and &ldquo;this doesn&#8217;t
+work for paying bills.&rdquo; Signing turns a document into a deed, which
+freezes: it can be cancelled by another deed, but not edited (<a class="x-ref" href="#fig-82-5">Figure 82.5</a>).
 </p>
-
-<blockquote>
-Every time you press "send" in your email you are making a deed.
-<cite>Cleaning up the User Interface, 1997</cite>
-</blockquote>
 
 <figure id="fig-82-5">
 <svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
@@ -432,29 +425,39 @@ Deeds are never changed, only answered by other deeds.</figcaption>
 </figure>
 
 <p>
-The interface should make it plain when the user is committing rather than
-just searching. The note also proposes an &ldquo;Oh, yeah?&rdquo; button for
-asking why a document should be trusted; <a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a> develops it.
+The interface should show plainly when the user is committing. Berners-Lee
+imagines &ldquo;rubber stamp&rdquo; icons: one for stamping <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+Recommendations, &ldquo;and a totally different one for ordering medium sized
+purchases on my credit card.&rdquo; Email is the everyday case:
 </p>
+
+<blockquote>
+Every time you press "send" in your email you are making a deed. The document
+freezes. You may even be digitally signing it. You lose control -- you can't
+take it back.
+<cite>Cleaning up the User Interface, 1997</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>One message, many folders.</strong> Gmail (2004) used labels,
-so a message can sit in several without copies.</li>
+<li><strong>One message, many folders.</strong> Gmail (2004) used labels, not
+copies.</li>
 <li><strong>One home, everything else a pointer.</strong> In 2020 Google Drive
 gave each file a single folder, with shortcuts elsewhere, close to section
 82.2.</li>
+<li><strong>No Save As.</strong> Google Docs &amp; Spreadsheets (October 2006;
+<a class="x-ref" href="83-intuitive-hypertext-editing.html">Chapter 83</a>) kept each document on a <a class="gl-ref" href="../glossary.html#server">server</a> at its own address and saved it
+every few seconds while the writer typed.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The editing half of this argument is <a class="x-ref" href="83-intuitive-hypertext-editing.html">Chapter 83</a>, and the browser behaviour it
-requires is <a class="x-ref" href="84-user-agent-watch-points.html">Chapter 84</a>. Later interface advice is <a class="x-ref" href="85-user-interface-tips.html">Chapter 85</a>. Webizing a system
-is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and the correspondence between file space and Web space is
-<a class="x-ref" href="14-mapping-between-http-urls-filenames.html">Chapter 14</a>.
+Editing: <a class="x-ref" href="83-intuitive-hypertext-editing.html">Chapter 83</a>. Browser behaviour: <a class="x-ref" href="84-user-agent-watch-points.html">Chapter 84</a>. Later interface advice:
+<a class="x-ref" href="85-user-interface-tips.html">Chapter 85</a>. Webizing: <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>. File space and Web space: <a class="x-ref" href="14-mapping-between-http-urls-filenames.html">Chapter 14</a>. The
+note&#8217;s &ldquo;Oh, yeah?&rdquo; button: <a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a>.
 </p>
 </div>
 
@@ -467,24 +470,21 @@ whether the technical answer is a good reason.</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.2</span>
-If folders were documents of links, name two things that would break and two
-that would improve.</p>
+If folders were documents of links, what would break and what would improve?</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.3</span>
-Describe three applications you use in terms of what they do rather than what
-they speak. Do the descriptions converge?</p>
+Describe three applications by what they do rather than what they speak. Do the
+descriptions converge?</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.4</span>
-Using <a class="x-ref" href="#fig-82-3">Figure 82.3</a>, explain why one item linked from two inboxes, two
-newsgroups and two pages needs three programs in 1997 but only one action in
-Berners-Lee&#8217;s design.</p>
+Name one thing done online that should be a deed and one that should stay a
+living document. What would go wrong if they swapped?</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.5</span>
-What does the Save As dialog ask you, and at what moment? What would you rather
-be asked, and when?</p>
+What does Save As ask, and when? What would you rather be asked, and when?</p>
 </div>
 </details>
 

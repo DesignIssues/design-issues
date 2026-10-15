@@ -57,7 +57,7 @@ advertiser, a seller, the company that makes it. People raised on web
 tools may assume the second is normal.
 </p>
 <p>
-This note calls the first kind a beneficent app and asks for more of them. The
+This note calls the first kind a beneficent app. The
 test is to ask, at every design choice, what the user would want; an app paid
 by selling its users&#8217; data is unlikely to pass. Doctors and lawyers
 already owe such a duty, and software, especially AI, should owe it too.
@@ -67,24 +67,34 @@ already owe such a duty, and software, especially AI, should owe it too.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-A beneficent app is one that works in the interest of the person using it.
-Who does a program work for, and how would anyone know? This note, begun in 2018,
-was revisited in 2023 because <a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>) needs the concept.
+Berners-Lee had bought Quicken long before to do his finances and taxes. One
+day, having done his taxes, it asked in effect whether he was sure he had
+enough insurance, and whether he would like to buy some.
+</p>
+<blockquote>
+That was the end of an era: the era in which I trusted Quicken to be my
+representative and work on my behalf.
+<cite>Beneficent Apps, 2018</cite>
+</blockquote>
+<p>
+The note, begun in 2018 and revisited in 2023 because <a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>) needs
+the concept, opens: &ldquo;It is a sign of the times (2010&#8217;s) that we
+even have to talk about these.&rdquo; A beneficent app works in the interest of
+the person using it.
 </p>
 <p>
-The word comes from MIT&#8217;s rules for
-experiments with human subjects: besides being informed, the subjects must
-benefit, so the work must be trying to cure disease rather than generate it. The
-idea is not foreign to the Web. The <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#specification">specification</a> calls the browser a user
-agent, because it acts for the user.
+The word comes from MIT&#8217;s rules for experiments with human subjects:
+the work must be in the subjects&#8217; interest, trying to cure disease rather
+than generate it. The idea is not foreign to the Web: the <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#specification">specification</a>
+calls the browser a user agent.
 </p>
 </div>
 
-<h2 id="sec-92-1">92.1 The moment</h2>
+<h2 id="sec-92-1">92.1 When the program worked for its user</h2>
 
 <p>
 On the floppy-disk PCs people bought a program to do something useful
-or fun: play a game, write an essay, do their taxes. The program sat in the A:
+or fun: play a game, fly a plane, write an essay, do their taxes. The program sat in the A:
 drive and the user&#8217;s data on a disk in the B: drive. That data could go to other
 programs, and the program was the user&#8217;s tool. It worked for them.
 </p>
@@ -131,28 +141,9 @@ was needed because the separation was physical.</figcaption>
 </figure>
 
 <p>
-The argument turns on one incident. Quicken was a personal-finance program he
-had bought:
-</p>
-
-<blockquote>
-Until, that is, for me one day when Quicken, the program I had bought ages ago
-to do my finances and taxes, when it had done my taxes, asked words to the
-effect of "Are you sure you have enough insurance? Would you like to buy some
-great insurance?"
-<cite>Beneficent Apps, 2018</cite>
-</blockquote>
-
-<blockquote>
-That was the end of an era: the era in which I trusted Quicken to be my
-representative and work on my behalf.
-<cite>Beneficent Apps, 2018</cite>
-</blockquote>
-
-<p>
-People who have only known web-based tools, he observes of millennials, are so
-used to those tools working in someone else&#8217;s interest that they may take
-it as the default. Something important is lost that way: a program that
+Quicken ended that era for him. People who have only known web-based tools,
+he observes of millennials, may take tools that work in someone else&#8217;s
+interest as the default. Something important is lost: a program that
 represents its user is a form of empowerment.
 </p>
 
@@ -167,7 +158,7 @@ The browser is his main example of a beneficent app.
 <tr><td>Help the user know which party they are talking to</td><td>A look-alike bank site passes as the real one</td></tr>
 <tr><td>Help the user remember where they have gone</td><td>A page that cannot be found again</td></tr>
 <tr><td>Help the user curate a valuable subset of the Web</td><td>Everything worth keeping is lost in the flood</td></tr>
-<tr><td>Store passwords and keys safely</td><td>A password leak</td></tr>
+<tr><td>Store passwords and keys safely</td><td>A password saved where other sites can read it</td></tr>
 <tr><td>Help the user avoid being tricked, fooled or manipulated</td><td>A trick button that signs the user up</td></tr>
 </table>
 
@@ -177,7 +168,7 @@ common. Every open source application is, or should be, one, because it is built
 community for its own use, with the end user&#8217;s needs in mind.
 </p>
 
-<h2 id="sec-92-3">92.3 The design question, and the disqualifying condition</h2>
+<h2 id="sec-92-3">92.3 One question, and one dealbreaker</h2>
 
 <p>
 The advice is a single question to ask at every choice:
@@ -191,8 +182,8 @@ would the user want the app to do?
 
 <p>
 The designer must also think of users who differ from them, in technical
-ability, sociability, situation and personality. Then comes the sentence that
-decides the matter before any design begins:
+ability, sociability, situation and personality. And the business model can
+settle the matter before design begins:
 </p>
 
 <blockquote>
@@ -201,11 +192,10 @@ not likely to build a Beneficent App by default.
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
-<h2 id="sec-92-4">92.4 The measurement problem</h2>
+<h2 id="sec-92-4">92.4 Usefulness is hard to count</h2>
 
 <p>
-The good version is harder to run as a business, and the reason is not
-ethics:
+The obstacle is measurement:
 </p>
 
 <blockquote>
@@ -214,6 +204,17 @@ click-through, the ad revenue or sales revenue they provide. It is more
 difficult to measure how useful you have been to your user.
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
+
+<p>
+The note&#8217;s example is an app for organising parties. Counting parties is
+too rare a signal, &ldquo;not to mention whether they were great
+parties&rdquo;. So the designer measures the build-up: the amount of chat,
+whether it is happy and constructive, and whether tasks get done by people
+other than those who raised them, then checks which of these went with past
+parties that worked. Some usefulness never shows at all: &ldquo;A user may just
+be really well informed of something really important, but not do anything
+which your app could pick up.&rdquo;
+</p>
 
 <figure id="fig-92-2">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
@@ -280,17 +281,13 @@ difficult to measure how useful you have been to your user.
 </svg>
 <figcaption><span class="fig-label">Figure 92.2</span>
 The non-beneficent app reads its success straight off the counter. The
-beneficent one must infer usefulness from proxies, and its best outcomes may
-never show up at all.</figcaption>
+beneficent one must infer usefulness from proxies.</figcaption>
 </figure>
 
 <p>
-Users can be surveyed, and each candidate measure tried in A/B testing, where
-two versions go to different users and the results are compared.
-</p>
-
-<p>
-The warning attached names a specific harm:
+Users can be surveyed, and candidate measures tried in A/B testing, where two
+versions go to different users and the results are compared. The note also
+warns of effects nobody planned:
 </p>
 
 <blockquote>
@@ -301,11 +298,7 @@ be beneficent, you have to also do no harm!
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
-<h2 id="sec-92-5">92.5 The precedent</h2>
-
-<p>
-Agents bound to a client&#8217;s interest already exist:
-</p>
+<h2 id="sec-92-5">92.5 Doctors and lawyers already do this</h2>
 
 <blockquote>
 The concept of apps which work for you, the concept of something which is your
@@ -315,22 +308,21 @@ doctors, and with lawyers.
 </blockquote>
 
 <p>
-A doctor takes an oath; a lawyer is bound to put the client first. Berners-Lee
+A doctor takes the Hippocratic Oath; a lawyer is bound to put the client first. Berners-Lee
 offers those bodies of law as a source for anyone drafting such commitments for
-software. As AI grows more powerful, he adds, it matters more at every step that
-it works for the user and not for someone else: for the individual, and for the
-human race.
+software. As AI grows more powerful, he adds, that matters more at every
+step.
 </p>
 
 <p>
-His example is an online advertising system that recommends a restaurant: is it
-the best one for the user, or the winner of an instant auction among restaurants
-bidding for their custom? The test he proposes is a single question to put to
-the agent: &#8220;who do you work for?&#8221;
+The test is a question put to the machine itself:
 </p>
 
 <blockquote>
-Hey, Siri, who do you work for? Hey, Alexa, who to you work for?
+Hey online Ad system, Who do you work for? When you recommend I eat at a
+restaurant, is that the best one for, me or a the result of an instant online
+auction for who ever bids most to you for my custom? Hey, Siri, who do you work
+for? Hey, Alexa, who to you work for?
 <cite>Beneficent Apps, 2018</cite>
 </blockquote>
 
@@ -340,7 +332,7 @@ Hey, Siri, who do you work for? Hey, Alexa, who to you work for?
   <title id="fig92-3-t">Who does the agent work for?</title>
   <desc id="fig92-3-d">Three columns. A doctor or lawyer owes a duty to the
   patient or client, set by oath and professional rules. A beneficent app such
-  as a browser or open-source tool works for its user. An ad-driven agent, such
+  as a browser or open-source tool works for its user. A sales-driven agent, such
   as Quicken or an advertising system, turns away from the user towards the
   seller or highest bidder; only a faint dashed line still points to the user.</desc>
 
@@ -368,7 +360,7 @@ Hey, Siri, who do you work for? Hey, Alexa, who to you work for?
 
   <line class="ln-mut" x1="480" y1="20" x2="480" y2="224"/>
 
-  <text x="596" y="28" class="t-caps" text-anchor="middle">ad-driven agent</text>
+  <text x="596" y="28" class="t-caps" text-anchor="middle">sales-driven agent</text>
   <rect class="box-plain" x="500" y="44" width="120" height="36" rx="3"/>
   <text x="560" y="66" class="t-sm" text-anchor="middle">user</text>
   <rect class="box" x="492" y="170" width="110" height="44" rx="3"/>
@@ -381,7 +373,7 @@ Hey, Siri, who do you work for? Hey, Alexa, who to you work for?
   <path d="M 520 82 L 515 94 L 525 94 Z" fill="#8a9a9a"/>
   <path class="ln" style="stroke:#b08d57" d="M 580 170 L 580 140 L 660 140 L 660 160"/>
   <path d="M 660 168 L 655 156 L 665 156 Z" fill="#b08d57"/>
-  <text x="630" y="128" class="t-sm" text-anchor="middle">works for the bidder</text>
+  <text x="630" y="128" class="t-sm" text-anchor="middle">works for someone else</text>
 </svg>
 <figcaption><span class="fig-label">Figure 92.3</span>
 One question, three relationships. Only the first is bound by law; in the third,
@@ -389,8 +381,9 @@ the agent&#8217;s effort bends away from the person using it.</figcaption>
 </figure>
 
 <p>
-The note ends by asking whether one can imagine an AI that works for its user. He
-can, and names it Charlie, the subject of <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>.
+The note ends: &ldquo;Can you even imagine an AI that works for you? I can, and
+he&#8217;s called Charlie.&rdquo; Charlie is <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>; the attempt to build
+him is <a class="x-ref" href="94-charlie-works.html">Chapter 94</a>.
 </p>
 
 <div class="since">
@@ -421,13 +414,13 @@ over one&#8217;s own data is <a class="x-ref" href="72-inference-over-private-da
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">92.1</span>
-Ask the single question, who do you work for, of every application on your
-device. How many have a clear answer?</p>
+Put the note&#8217;s question, &ldquo;who do you work for?&rdquo;, to every
+application on one phone. How many have a clear answer?</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.2</span>
-The most valuable outcome is invisible to the application. Propose a measure
-for something you build, and say what it would miss.</p>
+For the party-organising app, the most valuable outcome may be invisible.
+Propose a measure of its usefulness, and say what it would miss.</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.3</span>
@@ -436,8 +429,9 @@ that could still serve its user, or argue none can.</p>
 </div>
 <div class="question">
 <p><span class="question-number">92.4</span>
-Write the professional duty a software agent should owe, modelled on one owed
-by a doctor or a lawyer.</p>
+A lawyer is bound to put the client first. Write that rule for an assistant
+that recommends restaurants, so that a reader could tell whether it had been
+broken.</p>
 </div>
 </details>
 

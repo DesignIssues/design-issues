@@ -62,14 +62,15 @@ is a set of separate statements, none of which overrides another.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This note, begun in January 1997, opens Volume IV because it is where the
-<a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> starts, though it does not use the phrase. Berners-Lee says so
-himself in a preface added later: it was written before the roadmap of
-<a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> and introduces the same ideas, in the historical order they arose
-at the Consortium. There the first driving application of machine-readable
-data was endorsement labels: ratings, such as whether a page suits children,
-attached to pages. <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for them was PICS, the Platform for
-Internet Content Selection.
+Every page a <a class="gl-ref" href="../glossary.html#server">server</a> sends arrives with lines the reader never sees, such as
+<code>Date:</code> and <code>Expires:</code>. They are statements about the
+page, written for a program. In January 1997 Berners-Lee asked what follows
+if such statements are taken seriously: if they can sit in any document,
+about any resource, written by anyone. <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s first use for them was
+endorsement labels: ratings, such as
+whether a page suits children, in a format called PICS, the Platform for
+Internet Content Selection. Only a preface added later uses the phrase, but this is where
+the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> starts, before the roadmap of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>.
 </p>
 </div>
 
@@ -82,10 +83,9 @@ things
 </blockquote>
 
 <p>
-When a browser fetches a page, the <a class="gl-ref" href="../glossary.html#server">server</a> also sends lines such as
-<code>Date:</code> and <code>Expires:</code>. Those lines are metadata: data
-about the page, written so that a program can act on them. Berners-Lee
-immediately says which part of the definition matters (&ldquo;software
+The <code>Date:</code> and <code>Expires:</code> lines fit: data about the
+page that a program can act on. Berners-Lee immediately says which part of
+the definition matters (&ldquo;software
 agents&rdquo; are programs acting on someone&#8217;s behalf):
 </p>
 
@@ -98,20 +98,20 @@ we are doing, and make everything work more smoothly and rapidly.
 </blockquote>
 
 <p>
-The clause &ldquo;or other things&rdquo; is the seed of Volumes IV to VI.
-Metadata began as data about web resources, but it should in future describe
-anything: people, things, concepts and ideas.
+The clause &ldquo;or other things&rdquo; is the seed of Volumes IV to VI:
+metadata should in future describe anything, including people, concepts and
+ideas.
 </p>
 
-<h2 id="sec-27-2">27.2 The first axiom, and its consequence</h2>
+<h2 id="sec-27-2">27.2 Metadata is data, so it can live anywhere</h2>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> Metadata is data.</p>
 </div>
 
 <p>
-Information about information counts in all respects as information. Two
-consequences follow. The first is that metadata can live anywhere, in the
+Information about information counts in all respects as information. The
+first consequence is that metadata can live anywhere, in the
 three places of <a class="x-ref" href="#fig-27-1">Figure 27.1</a>. (An <a class="gl-ref" href="../glossary.html#html">HTML</a> page&#8217;s <em>head</em> is the
 undisplayed part holding its title; <em><a class="gl-ref" href="../glossary.html#http">HTTP</a> headers</em> are the lines the
 server sends ahead of the page.)
@@ -170,13 +170,12 @@ publisher.</figcaption>
 </figure>
 
 <p>
-The second consequence is recursion without hierarchy. Metadata may itself
-have an owner and an expiry date, so there is meta-metadata (data about the
-metadata, such as the date a review of the page was written), but the
-architecture does not distinguish many levels.
+The second is recursion without hierarchy. Metadata may itself have an owner
+and an expiry date, so there is meta-metadata, but the architecture does not
+distinguish many levels.
 </p>
 
-<h2 id="sec-27-3">27.3 The second axiom: independent assertions</h2>
+<h2 id="sec-27-3">27.3 Statements that can be shuffled and dropped</h2>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> The architecture is of metadata represented as a
@@ -197,9 +196,7 @@ Each assertion stands independently of others.
 </blockquote>
 
 <p>
-The note&#8217;s test: given a label for jeans with a 32-inch waist and a price
-of $28, one can deduce a label with just the price; given a sentence of two
-months in jail and a $3000 fine, one cannot deduce a sentence of two months.
+The note&#8217;s test is a pair of labels (<a class="x-ref" href="#fig-27-2">Figure 27.2</a>).
 </p>
 
 <figure id="fig-27-2">
@@ -245,17 +242,16 @@ months in jail and a $3000 fine, one cannot deduce a sentence of two months.
   <text x="360" y="222" class="t-sm" text-anchor="middle">Separate assertions can be reordered or dropped; one assertion cannot be split.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 27.2</span>
-The note&#8217;s own pair of examples. Independence is what lets software
-shuffle or drop statements without understanding them. A statement whose parts
-only mean something together has to be written as one assertion.</figcaption>
+Independence lets software shuffle or drop statements without understanding
+them. Parts that only mean something together form one assertion.</figcaption>
 </figure>
 
 <p>
-Configuration files where later rules override earlier ones are excluded;
-<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> returns to them.
+This rules out, for example, configuration files where later rules override
+earlier ones; <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> returns to them.
 </p>
 
-<h2 id="sec-27-4">27.4 Assertions have a shape</h2>
+<h2 id="sec-27-4">27.4 Every statement is a small sentence</h2>
 
 <p>
 An assertion has a type, a subject and parameters (the other things the
@@ -263,7 +259,11 @@ statement mentions), as a sentence has a verb, a subject and an object. The
 note writes <code>(A u1 p q&hellip;)</code>: <code>A</code> names the type,
 <code>u1</code> is the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the subject, and <code>p</code>, <code>q</code>
 are the rest. An assertion that a resource has a named property, such as its
-author, is an attribute. Who said it, and when, are usually left implicit.
+author, is an attribute. Who said it, and when, are usually left implicit,
+but they are never absent. That is why the note says &ldquo;assertion&rdquo;
+rather than fact: an attribute and its value &ldquo;must be seen as a
+statement by a particular party&rdquo;. That is what rides on the open
+question of <a class="x-ref" href="#fig-27-1">Figure 27.1</a>.
 </p>
 
 <p>
@@ -327,21 +327,37 @@ coin one.</figcaption>
 <p>
 A link is an assertion relating two resources: the <a class="gl-ref" href="../glossary.html#triple">triple</a>
 <code>(A u1 u2)</code> of a relationship type and two URIs, as in the
-versioning example of <a class="x-ref" href="#fig-27-3">Figure 27.3</a>. Names for types must come from a global
-space, because anyone may coin one, and that means URIs. This is already the
-<em>triple</em> of <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>: three parts, a relationship and the two things
-it relates, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> (the Resource Description Framework, W3C&#8217;s format for such
-statements) later made the basic unit of all Semantic Web data.
+versioning example of <a class="x-ref" href="#fig-27-3">Figure 27.3</a>. Why name the types with URIs? Across
+all applications the dictionary of such names &ldquo;would be so large that ad hoc arbitrary extension would be just as
+chaotic as central registration would be stifling.&rdquo; URIs let names be
+coined in a decentralised way. This is already the
+<em>triple</em> of <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> (the Resource Description Framework,
+W3C&#8217;s format for such statements) later made the basic unit of
+Semantic Web data.
 </p>
 
-<h2 id="sec-27-5">27.5 Self-describing information</h2>
+<h3>Saying something nobody planned for</h3>
 
 <p>
-The note&#8217;s central goal is data that &ldquo;carries a reference to the
-<a class="gl-ref" href="../glossary.html#specification">specification</a> of the semantics&rdquo; of its assertions: each type of
-statement points, by URI, to its own definition. A program meeting an
-unfamiliar type can follow that link and extend what it understands, rather
-than guessing.
+In an Entity-Relationship database, an object&#8217;s type fixes what can be
+said about it. Once a person has been defined by name, address and phone
+number, the <a class="gl-ref" href="../glossary.html#schema">schema</a> must be altered before anything can be said about, say,
+their credit card number. The Web has no such gate:
+&ldquo;One can define a property &lsquo;coolness&rsquo; within one&#8217;s
+own part of the web, and then make statements about the
+&lsquo;coolness&rsquo; of any object on the web.&rdquo; Elsewhere the note
+puts it in five words: &ldquo;Anyone can say anything about anything.&rdquo;
+The cost is admitted. Statements of new forms &ldquo;may lead to nonsense or
+paradox&rdquo;, a repeat of the choice to make links one-way,
+&ldquo;sacrificing consistency for scalability.&rdquo;
+</p>
+
+<h2 id="sec-27-5">27.5 Data that points to its own dictionary</h2>
+
+<p>
+The note&#8217;s goal is data that &ldquo;carries a reference to the
+<a class="gl-ref" href="../glossary.html#specification">specification</a> of the semantics&rdquo; of its assertions. A program meeting
+an unfamiliar type can follow that link rather than guess.
 </p>
 
 <figure id="fig-27-4">
@@ -382,34 +398,33 @@ than guessing.
   <path class="ln-mut" d="M 510 64 L 510 98 M 510 142 L 510 176"/>
 </svg>
 <figcaption><span class="fig-label">Figure 27.4</span>
-Self-description means the data points to its own dictionary. Each rung lets
-software do more without waiting for a standards committee. (An SGML DTD is a
+An unplanned statement can still be understood, rung by rung. (An SGML DTD is a
 machine-readable grammar saying which tags may appear where.)</figcaption>
 </figure>
 
 <p>
-PICS is the note&#8217;s running example. On ordering it lists mail <a class="gl-ref" href="../glossary.html#header">header</a> lines
-and SGML attributes as unordered, HTTP header lines and SGML elements as
-ordered, and asks whether a form is needed for assertions with many fixed,
-ordered parameters.
+The alternative, as the note puts it:
 </p>
+
+<blockquote>
+Without self-describing information, development must wait for large
+companies or standards committees to meet and agree on the commonly agreed
+semantics.
+<cite>Metadata Architecture, 1997</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The general form replaced the specific one.</strong> RDF became a
 W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 1999, generalising the label idea into
-assertions about anything. PICS was superseded, with POWDER (a W3C
-Recommendation of 2009) taking over its job of describing groups of pages; the
-architecture described here outlived its first application by decades.</li>
-<li><strong>All three placements survive.</strong> Metadata in the document,
-in the transfer and in a separate description are still the three options:
-embedded data (<a class="gl-ref" href="../glossary.html#schema">schema</a>.org, launched in June 2011, usually embedded as JSON-LD),
+assertions about anything. PICS was superseded by POWDER (a W3C
+Recommendation of 2009) for describing groups of pages.</li>
+<li><strong>All three placements survive:</strong> embedded data (schema.org, launched in June 2011, usually embedded as JSON-LD),
 HTTP headers, and separately published descriptions.</li>
-<li><strong>The authorship question was never fully answered.</strong> Who is
-making a statement, which <a class="x-ref" href="#fig-27-1">Figure 27.1</a> leaves open,
-remains the weak point: most embedded metadata records no author for its
-statements, which is why <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>&#8217;s treatment of trust matters.</li>
+<li><strong>The authorship question was never fully answered.</strong> Embedded
+metadata seldom records who made each statement, which is why Chapter
+37&#8217;s treatment of trust matters.</li>
 </ul>
 </div>
 
@@ -418,9 +433,8 @@ statements, which is why <a class="x-ref" href="37-semantics-interpretation-digi
 <p>
 The quality-of-service metadata asked for in <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> and the genericity
 metadata of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a> are both instances of this architecture. The roadmap
-that supersedes this note is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>, and the assertion model it describes
-is drawn out in <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The authorship question is taken up in
-<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>, and the linking of metadata to the resource it describes returns
+that supersedes this note is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>; the assertion model is drawn out in
+<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, authorship in <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>, and the linking of metadata to the resource it describes returns
 in <a class="x-ref" href="49-linked-data.html">Chapter 49</a>.
 </p>
 </div>
@@ -429,10 +443,8 @@ in <a class="x-ref" href="49-linked-data.html">Chapter 49</a>.
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">27.1</span>
-Metadata is data, so metadata can describe metadata. Show that this does not
-produce an infinite regress by writing three levels (for instance: a page; a
-review of the page; the date the review was written) and saying where it
-stops.</p>
+Metadata is data, so metadata can describe metadata. Write three levels (a page; a review of it; the review&#8217;s date) and
+say why this is no infinite regress.</p>
 </div>
 <div class="question">
 <p><span class="question-number">27.2</span>
@@ -453,8 +465,9 @@ this definition, and say why.</p>
 </div>
 <div class="question">
 <p><span class="question-number">27.5</span>
-The note compares a label to the label on a jam jar. Why does a label not need
-to name its subject?</p>
+A database refuses a fact its schema did not plan for; the Web accepts a
+statement about anyone&#8217;s &lsquo;coolness&rsquo;. Give one benefit and
+one harm of each.</p>
 </div>
 </details>
 

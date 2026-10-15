@@ -63,16 +63,20 @@ became <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>; the logic st
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is the <a class="gl-ref" href="../glossary.html#specification">specification</a> of the notation Berners-Lee designed to write the
-logic of <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a> down. It is the most technical note in the collection and
-the only one that reads as a paper, with formal syntax, a definition of
-entailment (what follows from what), and a catalogue of built-in operators.
-The catalogue dates it to 2000; the copy online is dated August 2005 and
-calls itself an early draft of the semantics.
+Bob lives in Boston and writes that Boston is sunny. Alice lives in Adelaide
+and writes that Boston is cold. A program reading both must hold the two
+claims without believing either, then choose by who said it. Notation3, the
+notation for the logic of <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, adds to RDF a way to quote. Because
+others keep publishing, nothing they add may quietly overturn a conclusion
+(<a class="x-ref" href="#sec-42-3">section 42.3</a>). The design
+question is not what logic is true, but what logic survives being published.
 </p>
 <p>
-The design question it answers is not what logic is true, but what logic
-survives being published.
+The note reads more like a paper than an essay, with formal syntax,
+entailment (what follows from what) and built-in operators. The catalogue
+dates it to 2000, as does its <code>log:</code> <a class="gl-ref" href="../glossary.html#namespace">namespace</a>; the text is dated
+August 2005, an early draft of the semantics, so quotations are cited
+2000&#8211;2005.
 </p>
 </div>
 
@@ -83,60 +87,45 @@ Whereas a closed system may be built based on a single knowledge base of
 believed facts, an open web-based system exists in an unbounded sea of
 interconnected information resources. This requires that an agent be aware of
 the provenance of information, and responsible for its disposition.
-<cite>Notation 3 Logic, 2000</cite>
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
 </blockquote>
 
 <p>
-Provenance means where a piece of information came from. The first
-requirement follows immediately. To say what a document said, one must be able to quote a set of statements and match it against a
-pattern. Quotation is therefore not an advanced feature but a starting
-condition, which is why <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> puts it in the base layer.
-</p>
-
-<p>
-In <a class="x-ref" href="#fig-42-1">Figure 42.1</a>, a prefix such as <code>foaf:</code> abbreviates the start
-of a long <a class="gl-ref" href="../glossary.html#uri">URI</a>, and a semicolon means the same subject again.
+Provenance means where information came from. To say what a document said,
+one must quote a set of statements and match it against a pattern, so
+quotation is a starting condition, not an advanced feature; <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> puts
+it in the base layer.
 </p>
 
 <figure id="fig-42-1">
-<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
+<svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
      aria-labelledby="fig42-1-t fig42-1-d">
-  <title id="fig42-1-t">The same fact, written four ways</title>
-  <desc id="fig42-1-d">One statement written in full with complete URIs, then
-  with prefixes, then with a second fact added about the same subject using
-  the semicolon shorthand. The fourth line quotes a graph inside a statement,
-  which is what the notation adds to the underlying model.</desc>
+  <title id="fig42-1-t">Asserting a fact, and quoting it</title>
+  <desc id="fig42-1-d">The first line states that Joe's name is Joe Meadows,
+  and the system believes it. The second line puts the same statement in
+  braces as the object of a statement about Jane: it records what Jane knows,
+  and the system does not itself assert it.</desc>
 
-  <text x="24" y="26" class="t-caps">1. in full</text>
+  <text x="24" y="26" class="t-caps">1. asserted: the system believes it</text>
   <rect x="24" y="36" width="672" height="34" fill="#fdfdfc" stroke="#8a9a9a"/>
-  <text x="36" y="58" class="t-mono" style="font-size:11.5px">&lt;http://ex.org/#joe&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Joe Meadows" .</text>
+  <text x="36" y="58" class="t-mono">ex:joe foaf:name "Joe Meadows" .</text>
 
-  <text x="24" y="98" class="t-caps">2. with prefixes</text>
-  <rect x="24" y="108" width="672" height="34" fill="#fdfdfc" stroke="#8a9a9a"/>
-  <text x="36" y="130" class="t-mono">ex:joe foaf:name "Joe Meadows" .</text>
+  <text x="24" y="98" class="t-caps" style="fill:#5a8f5a">2. quoted inside a statement: Jane knows it</text>
+  <rect class="box-green" x="24" y="108" width="672" height="34"/>
+  <text x="36" y="130" class="t-mono">ex:jane ex:knows { ex:joe foaf:name "Joe Meadows" } .</text>
 
-  <text x="24" y="170" class="t-caps">3. one subject, a second property</text>
-  <rect x="24" y="180" width="672" height="50" fill="#fdfdfc" stroke="#8a9a9a"/>
-  <text x="36" y="200" class="t-mono">ex:joe foaf:name "Joe Meadows";</text>
-  <text x="90" y="220" class="t-mono">foaf:mbox &lt;mailto:joe@ex.org&gt; .</text>
-
-  <text x="24" y="258" class="t-caps" style="fill:#5a8f5a">4. a graph quoted inside a statement</text>
-  <rect class="box-green" x="24" y="268" width="672" height="34"/>
-  <text x="36" y="290" class="t-mono">ex:jane ex:knows { ex:joe foaf:name "Joe Meadows" } .</text>
-
-  <line class="ln-mut" x1="24" y1="318" x2="696" y2="318"/>
-  <text x="24" y="340" class="t-sm t-it">Lines 1 and 2 say the same thing. Line 3 adds a second fact about the same subject.</text>
-  <text x="24" y="360" class="t-sm t-it">Line 4 is a statement about a statement, and is what the braces buy.</text>
+  <line class="ln-mut" x1="24" y1="158" x2="696" y2="158"/>
+  <text x="24" y="180" class="t-sm t-it">Line 2 is a statement about a statement, and is what the braces buy.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 42.1</span>
-The braces are the addition. Line 4 says what Jane knows without the system
-itself asserting it.</figcaption>
+The braces are the addition. (<code>ex:</code> and <code>foaf:</code> abbreviate long
+URIs.)</figcaption>
 </figure>
 
 <h3>A rule, worked through</h3>
 
 <p>
-The note&#8217;s first example puts the braces to work. A rule is a
+The note&#8217;s first example puts the braces to work: a rule is a
 statement whose subject and object are quoted formulas, joined by the
 built-in property <code>log:implies</code>, written <code>=&gt;</code> for
 short.
@@ -189,8 +178,7 @@ the data and copies them into the conclusion.</figcaption>
 <p>
 Quotation plus reference brings self-reference, and self-reference brings
 paradox: a sentence such as <em>this statement is false</em>, which is true
-only if it is false. Berners-Lee is direct about the cost of adding this to
-first-order logic, the ordinary logic of <em>all</em>, <em>some</em> and
+only if it is false. Berners-Lee is direct about the cost in first-order logic, the ordinary logic of <em>all</em>, <em>some</em> and
 <em>not</em>:
 </p>
 
@@ -200,53 +188,56 @@ indirect self-reference, if added directly to first order logic presents
 problems such as paradox traps. To avoid this, N3 logic has deliberately been
 kept to limited expressive power: it currently contains no general first order
 negation.
-<cite>Notation 3 Logic, 2000</cite>
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
 </blockquote>
 
 <p>
-A language built to express anything is deliberately made unable to say a
-general <em>not</em>, because the alternative is a system that can tie itself
-in knots. Negated forms of many built-in operations are provided instead, such as
-<code>log:notIncludes</code>, a formula does not contain a given statement
-(<a class="x-ref" href="#sec-42-4">section 42.4</a>).
+A language built to express anything is deliberately barred from a general
+<em>not</em>, so that it cannot tie itself in knots. Negated forms of many
+built-ins are provided instead, such as <code>log:notIncludes</code> (section
+42.4).
 </p>
 
-<h2 id="sec-42-3">42.3 Monotonicity as a publishing requirement</h2>
+<h2 id="sec-42-3">42.3 Others must be able to publish without breaking what is built</h2>
 
 <p>
-The second design goal is stated as a claim about other people rather than
-about logic:
+The next goal concerns other people, not logic:
 </p>
 
 <blockquote>
-Further, we require that other users of N3 in the web can express new
-knowledge without affecting systems we have already built.
-<cite>Notation 3 Logic, 2000</cite>
+This means that one person should be able to express knowledge in N3 for a
+certain purpose, and later independently someone else reuse that knowledge
+for a different unforeseen purpose.
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
 </blockquote>
 
 <p>
-Consider a booking system that concludes a guest has no allergy because none
+With the later use unknown, no one may assume a closed set of knowledge, and
+newcomers must be able to publish without affecting systems already built.
+</p>
+
+<p>
+Take a booking system that concludes a guest has no allergy because none
 is on file. Someone records an allergy elsewhere, and the conclusion silently
 flips. A logic is <em><a class="gl-ref" href="../glossary.html#monotonic">monotonic</a></em> when adding facts never withdraws a
-conclusion. New information may still contradict old, but the conflict must
-be resolved openly, not by quietly changing what the old information meant.
+conclusion. New information may contradict old, but the conflict must be
+resolved openly, never by silently changing the old meaning.
 </p>
 
 <p>
 The culprit, Berners-Lee says, is <em>negation as failure</em>: treating a
 sentence as false when it cannot be derived from the &ldquo;current knowledge
-base&rdquo;, everything the system holds at the moment. That is a changing
-quantity, referred to only implicitly.
+base&rdquo;, a changing quantity referred to only implicitly.
 </p>
 
-<h2 id="sec-42-4">42.4 Scoped negation as failure</h2>
+<h2 id="sec-42-4">42.4 A negation that stays safe: this document does not say it</h2>
 
 <p>
-The solution is to keep the useful behaviour and remove the implicit
-reference. Negation is permitted only about a specific named document or
-formula: whether that document holds, or allows derivation of, a given fact.
-The built-in <code>log:notIncludes</code> does this, and the note calls it
-completely monotonic, since no other knowledge gained can change its answer.
+The fix keeps the useful behaviour and removes the implicit reference:
+negation is allowed only about a named document or formula, whether it holds,
+or allows derivation of, a given fact. <code>log:notIncludes</code> does
+this, and the note calls it completely monotonic: no knowledge gained
+elsewhere can change its answer.
 </p>
 
 <figure id="fig-42-3">
@@ -286,21 +277,20 @@ is not on file is false) applies only to a named corpus, so knowledge added
 elsewhere cannot retract a conclusion drawn here.</figcaption>
 </figure>
 
-<h2 id="sec-42-5">42.5 The Web as an operator</h2>
+<h2 id="sec-42-5">42.5 Fetching a document as a step of reasoning</h2>
 
 <p>
-Two built-in properties make retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>.
-<code>log:semantics</code> relates a document to what it means, and
-<code>log:says</code>, loosely, holds when a document&#8217;s statements include
-the given fact. Berners-Lee defines
-the semantics of a document as the result of three plain steps: fetch the
-document, read its statements, and add them to what the program already
-holds.
+In N3, fetching a document can be a step in reasoning. Berners-Lee defines
+the semantics of a document as the result of three plain steps: fetch it,
+read its statements, and add them to what the program already holds.
+<code>log:semantics</code> relates a document to that meaning, and
+<code>log:says</code>, loosely, holds when a document&#8217;s statements
+include the given fact.
 </p>
 
 <p>
-The note&#8217;s second example looks inside what people wrote, using
-<code>log:includes</code> to believe weather reports only from residents.
+The weather rule of the opening uses <code>log:includes</code> to believe
+only residents.
 </p>
 
 <figure id="fig-42-4">
@@ -344,13 +334,15 @@ The note&#8217;s second example looks inside what people wrote, using
   <text x="553" y="271" class="t-mono" text-anchor="middle">Boston weather sunny .</text>
 </svg>
 <figcaption><span class="fig-label">Figure 42.4</span>
-Quoting lets the system hold both claims without believing either, then
-pick one by its source: the provenance of section 42.1, written as a rule.</figcaption>
+Provenance (section 42.1) written as a rule. The note&#8217;s rule as printed concludes <code>Boston weather y</code>; the
+figure shows the inference the note itself gives.</figcaption>
 </figure>
 
 <p>
-A reviewer was aghast at defining semantics as retrieval, and the footnote
-answers the objection:
+A footnote defends it: &ldquo;Philosophers may be distracted
+here into worrying about the meaning of meaning. At least we didn't call this
+function &lsquo;meaning&rsquo;!&rdquo; To a reviewer aghast at defining
+semantics as retrieval, it replies:
 </p>
 
 <blockquote>
@@ -359,14 +351,18 @@ considered quite equivalently the result of the process of retrieval of a
 representation of the paper, its parsing by the review, and its assimilation
 in terms of the reviewer's local logical framework: a similar though perhaps
 imperfect process.
-<cite>Notation 3 Logic, 2000</cite>
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
 </blockquote>
+
+<p>
+It ends by apologising for the name <code>log:semantics</code> &ldquo;for any
+heartache it may cause&rdquo;.
+</p>
 
 <h2 id="sec-42-6">42.6 What the separation bought</h2>
 
 <p>
-The conclusion records an outcome that the note&#8217;s own structure made
-possible:
+The conclusion records a practical result:
 </p>
 
 <blockquote>
@@ -374,23 +370,28 @@ The separation between the Notation3 extensions to RDF and the logic
 properties has allowed N3 by itself to be used in many other applications
 directly, and to be used with other properties to provide other functionality
 such as the expression of patches (updates)
-<cite>Notation 3 Logic, 2000</cite>
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
 </blockquote>
 
 <p>
-The notation and the logic are separable, so the notation can be used by
-people who want none of the logic. That is the modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>,
-applied by the same author to his own design, and it is why the readable half
-of this work outlived the rest.
+Notation and logic are separable, so the notation serves people who want
+none of the logic: the modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>, applied by its author to his
+own design, which let the two halves go separate ways (see below). The
+note&#8217;s last design claim returns to the penguin of <a class="x-ref" href="41-rules-facts-inference-engines-semantic.html">Chapter 41</a>:
 </p>
+
+<blockquote>
+The use of log:notIncludes to allow default reasoning without non-monotonic
+behavior achieves a design goal for distributed rule systems.
+<cite>Notation 3 Logic, 2000&#8211;2005</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The notation won; the logic did not.</strong> Turtle, which is the
-data half of this notation with the logic removed, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014 and is now the ordinary way people read and
-write <a class="gl-ref" href="../glossary.html#graph">graph</a> data. The rules, formulae and built-ins remained a research
+<li><strong>The notation won; the logic did not.</strong> Turtle, the data half of
+this notation without the logic, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February
+2014 and is now the usual way to read and write <a class="gl-ref" href="../glossary.html#graph">graph</a> data. The rules, formulae and built-ins remained a research
 language.</li>
 <li><strong>Absence tests went mainstream, unscoped by default.</strong>
 <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> 1.1 (March 2013) added <code>FILTER NOT EXISTS</code>, which tests
@@ -398,7 +399,7 @@ absence against whatever dataset is being queried.</li>
 <li><strong>Quoting graphs was standardised twice over.</strong> Named graphs
 arrived with SPARQL in 2008 and became datasets in RDF 1.1 (February 2014);
 RDF-star work from 2021 onward added statements about statements.</li>
-<li><strong>Retrieval as inference stayed in research reasoners.</strong>
+<li><strong>Retrieval as <a class="gl-ref" href="../glossary.html#inference">inference</a> stayed in research reasoners.</strong>
 Reasoners such as cwm (from 2000) and, later, EYE fetch a
 document during a rule, but most deployed <a class="gl-ref" href="../glossary.html#triple">triple</a> stores load data first and
 reason afterwards.</li>
@@ -426,9 +427,8 @@ named document, and would that serve?</p>
 </div>
 <div class="question">
 <p><span class="question-number">42.2</span>
-Monotonicity is required so that others may publish without disturbing your
-system. Name a system where that requirement does not hold, and what it costs
-users.</p>
+A shop&#8217;s page says a book has no reviews. Rewrite that as a scoped
+negation: whose list of reviews is consulted, and as of when?</p>
 </div>
 <div class="question">
 <p><span class="question-number">42.3</span>
@@ -437,8 +437,7 @@ meaning depend on the network. Give two things that can go wrong.</p>
 </div>
 <div class="question">
 <p><span class="question-number">42.4</span>
-The data half of the notation outlived the logic half. Was that separation
-luck or design? Argue from <a class="x-ref" href="#sec-42-6">section 42.6</a>.</p>
+Was the separation that let the notation outlive the logic luck or design? Argue from <a class="x-ref" href="#sec-42-6">section 42.6</a>.</p>
 </div>
 </details>
 

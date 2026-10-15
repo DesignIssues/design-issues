@@ -53,52 +53,34 @@ a Design Issues note by Tim Berners-Lee, 2000-01-01.
 <h3>The short version</h3>
 <p>
 A reasoning program stores rules that mix two things: what is true, and when
-to work it out. Only the first can be shared on the Web. The Web uses
-classical logic because it is the only kind in which adding new facts never
-overturns old conclusions, so anyone can check anyone else&#8217;s proof.
+to work it out. Only the first can be shared on the Web. The note argues
+that classical logic is the only way reasoning can scale across the Web:
+however a proof was found, anyone can check it, and new facts published
+elsewhere never quietly overturn it.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-<a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a> concluded that <a class="gl-ref" href="../glossary.html#inference">inference</a> rules cannot live outside the language.
-This note, from 1998, shows what happens when a rule is taken out of an
-engine and put on the Web, and finds that a rule is two things
-wearing one coat.
+A program told that birds fly concludes that Pingu, a penguin, flies. Told
+later that penguins cannot fly, it changes its mind. On the Web, where no
+one holds all the facts, which of its two answers should anyone else rely
+on? This 1998 note answers by taking a rule
+apart, and finds two things wearing one coat.
 </p>
 </div>
 
-<h2 id="sec-41-1">41.1 A rule contains two separable things</h2>
+<h2 id="sec-41-1">41.1 Two things wearing one coat</h2>
 
 <p>
-An inference engine is a program that draws new conclusions from the facts it
-has stored, its database. The worked example is kinship. An engine holds a
-rule about daughters and granddaughters, and Berners-Lee reads it the way the
-engine understands it: whenever a new daughter relationship is found, look for
-the next one up, and conclude the granddaughter relationship, where
-&ldquo;conclude&rdquo; means add to the database. Whether to do this at once
-or only when someone asks is decided outside the rule itself, possibly by a
-person; the note calls this an out-of-band decision.
+An <a class="gl-ref" href="../glossary.html#inference">inference</a> engine is a program that draws new conclusions from the facts
+in its database. The worked example is kinship. As the engine reads its rule,
+whenever a new daughter relationship is found, it looks one generation up and
+concludes the granddaughter relationship, where &ldquo;conclude&rdquo; means
+add to the database. Whether to do this at once or only when someone asks is
+decided outside the rule, possibly by a person: an out-of-band decision.
 </p>
-
-<p>
-Written down, the rule and the fact beneath it look almost the same (g stands
-for granddaughter, d for daughter; &#8704; reads as <em>for all</em>, <code>|=</code> as <em>is to be concluded
-when</em> and <code>&lt;=</code> as <em>is true whenever</em>):
-</p>
-
-<table>
-<tr><th>Form</th><th>Notation</th><th>What it means</th></tr>
-<tr><td>As a rule</td><td><code>g(a,c) |= d(a,b) &amp; d(b,c)</code></td><td>An
-instruction: on finding the two daughter links, add the granddaughter
-link.</td></tr>
-<tr><td>As a fact</td><td><code>&#8704;a,b,c g(a,c) &lt;= d(a,b) &amp; d(b,c)</code></td><td>A
-statement: whenever the two daughter links hold, so does the granddaughter
-link.</td></tr>
-</table>
-
-
 
 <figure id="fig-41-1">
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
@@ -148,21 +130,50 @@ engine can answer arbitrary queries.</figcaption>
 </figure>
 
 <p>
-The trade is stated without regret, because answering arbitrary queries was
-never the goal:
+Written formally, the two look almost identical (g stands
+for granddaughter, d for daughter; &#8704; reads as <em>for all</em>, <code>|=</code> as <em>is to be concluded
+when</em> and <code>&lt;=</code> as <em>is true whenever</em>):
+</p>
+
+<table>
+<tr><th>Form</th><th>Notation</th><th>What it means</th></tr>
+<tr><td>As a rule</td><td><code>g(a,c) |= d(a,b) &amp; d(b,c)</code></td><td>An
+instruction: on finding the two daughter links, add the granddaughter
+link.</td></tr>
+<tr><td>As a fact</td><td><code>&#8704;a,b,c g(a,c) &lt;= d(a,b) &amp; d(b,c)</code></td><td>A
+statement: whenever the two daughter links hold, so does the granddaughter
+link.</td></tr>
+</table>
+
+<p>
+Publishing the fact is a deliberate loss:
+</p>
+
+<blockquote>
+Exposing rules as classic logic facts strips the (pragmatically useful) hint
+information which controls the actual sequence of operation of a local
+inference engine.
+<cite>Rules and Facts, 1998</cite>
+</blockquote>
+
+<p>
+The hint is useful, not worthless; it is dropped because it cannot travel.
+Its owner keeps it, and everyone else gets the fact. Nor is it
+regretted; answering arbitrary queries was never the goal:
 </p>
 
 <blockquote>
 The goal is to unify everything which can be expressed in classical logic
-(including more mathematics when we get to it) without futher constraint.
+(including more mathematics when we get to it) without futher constraint. We
+must be able to describe hte world, and our hopes and needs and terms and
+conditions.
 <cite>Rules and Facts, 1998</cite>
 </blockquote>
 
 <p>
 Classical logic here means the ordinary logic of mathematics, in which a
-statement once proved stays proved. (Spellings such as &ldquo;futher&rdquo;
-are the note&#8217;s own.) And the reason no compromise
-is available:
+statement once proved stays proved. Quotations keep the draft&#8217;s own
+spelling. And the reason no compromise is available:
 </p>
 
 <blockquote>
@@ -174,9 +185,10 @@ A system which tries to constrain the expressive power cannot be universal.
 
 <p>
 The hardest case is a system where adding a fact can make a previous
-conclusion false. The note calls these non-monotonic logics: their stock of
-conclusions does not only grow. They rest on defaults, things assumed unless
-one is told otherwise, and so they are closed-world systems: whatever is not
+conclusion false. The note calls these non-monotonic &ldquo;logics&rdquo;,
+scare quotes included: &ldquo;Describing them as logics may be regarded by
+some as questionable&rdquo;. Their stock of conclusions does not only grow.
+They rest on defaults, things assumed unless one is told otherwise, and so they are closed-world systems: whatever is not
 in their fixed set of facts is treated as false.
 </p>
 
@@ -224,7 +236,7 @@ depends on exactly which defaults and facts it happened to hold.</figcaption>
 </figure>
 
 <p>
-Two ways of exporting such knowledge to the Web are offered:
+The note offers two ways to export it:
 </p>
 
 <table>
@@ -240,28 +252,28 @@ below</td></tr>
 </table>
 
 <p>
-Of the second, Berners-Lee notes that a system
-might risk incorporating such statements, and says what that amounts to:
+Treating the second as plain truth, Berners-Lee says, amounts to this:
 </p>
 
 <blockquote>
 This is the logical equivalent of declaring, &ldquo;Well, I don't think such a
-book exists becase it wasn't in Blackwell's catalog&rdquo;.
+book exists becase it wasn't in Blackwell's catalog&rdquo;. We do things all
+the time, but a secure system is unlikely to be set up to incorporate such
+information.
 <cite>Rules and Facts, 1998</cite>
 </blockquote>
 
 <p>
-Blackwell&#8217;s is an Oxford bookshop; a book missing from its catalogue may
-still have been published. The remedy he sketches is a definitive list from a party
+Blackwell&#8217;s is an Oxford bookshop; a book missing from its catalogue
+may still exist. The remedy he sketches is a definitive list from a party
 entitled to give one, such as the publisher&#8217;s list for that year, which
-turns an absence of evidence into a positive statement someone is answerable
-for.
+turns absence of evidence into a positive statement someone answers for.
 </p>
 
 <h2 id="sec-41-3">41.3 Why classical logic, and not as a matter of taste</h2>
 
 <p>
-The note&#8217;s central claim is put as a denial that this was a preference:
+The central claim denies that this was a preference:
 </p>
 
 <blockquote>
@@ -274,38 +286,28 @@ the web.
 <p>
 Two alternatives are ruled out. Fuzzy systems, which hold beliefs to a degree
 rather than as true or false, tend to believe something more strongly the more
-often evidence for it is presented. On an open network that is a recipe for
-manipulation: a claim repeated on a thousand spam pages would be believed more
-strongly with every copy.
+often evidence for it is presented. On an open network that invites
+manipulation: a claim repeated on a thousand spam pages, for example, would
+gain strength with every copy.
 </p>
 
 <p>
 Closed-world systems do not scale because the scope of a default is usually
-left implicit and differs from fact to fact. A list showing no flights
-on Sunday may be true of one airline&#8217;s timetable but not of the
-world, and a bare statement that there are none does not say which list it was
-relative to.
+left implicit and differs from fact to fact. A list showing no flights on
+Sunday, for example, may be true of one airline&#8217;s timetable but not of the
+world, and a bare &ldquo;there are none&rdquo; does not say which list it
+meant.
 </p>
 
 <p>
-What classical logic buys is a particular social move, named with a phrase
-that recurs in his writing:
-</p>
-
-<blockquote>
-When a fact is presented as a fact, the &ldquo;Oh yeah?&rdquo; function of
-demanding justification can be satsfifed by a roof in a universal language of
-proof.
-<cite>Rules and Facts, 1998</cite>
-</blockquote>
-
-<p>
-(For &ldquo;satsfifed by a roof&rdquo; read satisfied by a proof.) Heuristic systems, which
-search by rules of thumb rather than strict logic, may have been used to
-discover the proof. Once found, it can be checked as valid by any <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>
-system. The note places heuristic systems above a shared Semantic Web
-bus (a channel every system plugs into, like a computer&#8217;s bus) and
-classical systems below it.
+What classical logic buys is a social move, named with a phrase that recurs
+in his writing. When a fact is presented as a fact, the
+&ldquo;&#8216;Oh yeah?&#8217; function of demanding justification&rdquo; can
+be met by a proof in a universal language. Heuristic systems, which search
+by rules of thumb rather than strict logic, may have found the proof; once
+found, any <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> system can check it. The note places heuristic
+systems above a shared Semantic Web bus (a channel every system plugs into)
+and classical systems below it.
 </p>
 
 <figure id="fig-41-3">
@@ -352,24 +354,7 @@ How a proof was found does not matter. Once it is written in the shared logic,
 anyone can check it. Chapter 40 shows why checking is the easy half.</figcaption>
 </figure>
 
-<h2 id="sec-41-4">41.4 What publishing a rule strips out</h2>
-
-<p>
-The operation at the centre of this chapter is given its plainest statement:
-</p>
-
-<blockquote>
-Exposing rules as classic logic facts strips the (pragmatically useful) hint
-information which controls the actual sequence of operation of a local
-inference engine.
-<cite>Rules and Facts, 1998</cite>
-</blockquote>
-
-<p>
-The hint is called pragmatically useful, not worthless. It is discarded
-because it cannot travel, not because it does not matter. Its owner keeps it;
-everyone else gets the fact.
-</p>
+<h2 id="sec-41-4">41.4 Meaning versus scheduling</h2>
 
 <p>
 The companion note of <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> names the underlying error: most knowledge
@@ -380,17 +365,32 @@ when neither recognises the other&#8217;s notion of when to apply it.
 </p>
 
 <p>
-The note then turns to a further problem, what happens when the Web holds
-both a statement and its contradiction. <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a> treats that question.
+The note then raises the obvious objection against itself:
+</p>
+
+<blockquote>
+What, they say, will happen when this huge mass of classical logic meets its
+first inconsistncy? Surely, once you have one staement that A and another
+somewhere on the web that not A, then doesn't the whole system fall apart?
+Surely, then you can deduce anything?
+<cite>Rules and Facts, 1998</cite>
+</blockquote>
+
+<p>
+<a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a> gives the answer.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The separation was standardised.</strong> The Rule Interchange
-Format, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of June 2010, exists precisely to exchange rules
-between engines with different execution strategies, which is this chapter&#8217;s
-requirement.</li>
+<li><strong>Rule exchange was standardised in two families.</strong> The
+Rule Interchange Format (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>, June 2010) has a logic dialect, BLD, matching
+&ldquo;publish the fact&rdquo;, and a production-rule dialect, PRD, whose
+rules carry actions and a conflict-resolution strategy: the procedure the
+note would strip.</li>
+<li><strong>The open world became the default.</strong> <a class="gl-ref" href="../glossary.html#owl">OWL</a> works on the
+open-world assumption, under which a missing statement may still be true:
+the opposite of the closed-world defaults rejected here.</li>
 </ul>
 </div>
 
@@ -398,8 +398,7 @@ requirement.</li>
 <h3>Connections</h3>
 <p>
 The asymmetry between finding and checking is <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, and the plan both
-serve is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>. The objection about inconsistency raised here is treated
-fully in <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The independence of assertions is the axiom of
+serve is <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>. The independence of assertions is the axiom of
 <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>. <a class="x-ref" href="42-notation3.html">Chapter 42</a>&#8217;s scoped negation lets default reasoning back in
 narrowly, without the global closed-world assumption this note rejects.
 </p>

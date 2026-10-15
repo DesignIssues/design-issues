@@ -55,21 +55,20 @@ a Design Issues note by Tim Berners-Lee, 2022-01-01.
 A <a class="gl-ref" href="../glossary.html#pod">pod</a> (a <a class="gl-ref" href="../glossary.html#solid">Solid</a> Pod) is a person&#8217;s own web storage, of the kind
 <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> proposed: folders on a <a class="gl-ref" href="../glossary.html#server">server</a>, each with its own access rules, that
 any application the person chooses may read and write. Anything in a life can
-go in one. File it by kind, not by application, so applications can share it.
-But keep each activity together, so its owner can decide once who may see it.
-The chapter is about reconciling the two.
+go in one. File it by kind, not by application, so applications can share it,
+but keep each activity together, so its owner can decide once who may see it.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Thirteen years after <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>, this note from December 2022 asks a question
-harder than the protocol: given a space of one&#8217;s own, how should its contents
-be arranged?
-</p>
-<p>
-The answer begins by refusing to narrow the question:
+A calendar app and a meeting app both deal in events. If each files them in
+its own folder, neither sees the other&#8217;s, and the pod becomes the silo it
+was meant to replace. If everything is filed by kind, one meeting&#8217;s agenda,
+minutes, chat and guest list are scattered, and deciding who may see that
+meeting means getting many permissions right. This December 2022 note asks how
+a space of one&#8217;s own should be arranged so that both work:
 </p>
 <blockquote>
 What should be in your Solid Pod? Anything, of course. Any data in your life,
@@ -79,11 +78,12 @@ communities in between.
 </blockquote>
 </div>
 
-<h2 id="sec-55-1">55.1 Five ways stuff varies</h2>
+<h2 id="sec-55-1">55.1 From one byte to a genome</h2>
 
 <p>
-If anything can go in a pod, one <a class="gl-ref" href="../glossary.html#scheme">scheme</a> must cope with all of it. The note
-lists five ways the stuff of a life differs (<a class="x-ref" href="#fig-55-1">Figure 55.1</a>).
+One <a class="gl-ref" href="../glossary.html#scheme">scheme</a> must cope with everything, even activities not yet done online:
+&#8220;Maybe sing in a choir together&#8221;. The note lists five ways the
+stuff of a life differs (<a class="x-ref" href="#fig-55-1">Figure 55.1</a>).
 </p>
 
 <figure id="fig-55-1">
@@ -147,23 +147,19 @@ lists five ways the stuff of a life differs (<a class="x-ref" href="#fig-55-1">F
   <text x="440" y="404" class="t-sm t-it">birth certificate, house deeds</text>
 </svg>
 <figcaption><span class="fig-label">Figure 55.1</span>
-The range is the argument. A scheme that handles only the middle of each axis
-is not a scheme for a person&#8217;s life.</figcaption>
+The range is the argument: a scheme must handle the ends of each axis, not
+only the middle.</figcaption>
 </figure>
 
 <p>
-What never changes can be copied and kept forever without checking for
-updates, and named by a fingerprint computed from its contents (a
-cryptographic <a class="gl-ref" href="../glossary.html#hash">hash</a>).
-Security splits three ways: the risk of being lost, faked, or read by the
-wrong person.
+The smallest item is one byte: &#8220;The Doctor is [In]&#8221;. What never
+changes can be cached forever and named by a fingerprint of its contents (a
+cryptographic <a class="gl-ref" href="../glossary.html#hash">hash</a>). Security splits three ways: the risk of being lost, faked,
+or read by the wrong person. Deeds may go in a box at the bank, unlike
+&#8220;a movie you bought and will watch tonight&#8221;.
 </p>
 
 <h2 id="sec-55-2">55.2 The organising decision</h2>
-
-<p>
-The central claim is about where things go:
-</p>
 
 <blockquote>
 We do this by principally initially keying data by its RDFS Class, not by the
@@ -174,24 +170,24 @@ particular app which wrote it.
 <p>
 An RDFS class is the kind of thing the data describes, such as Event or
 Person. Filing by application recreates the silo, one company&#8217;s walled-off
-store, inside the space meant to abolish it. Filing by kind lets two
-applications dealing in events find each other&#8217;s events.
+store, inside the space meant to abolish it, and breaks a Solid mantra:
+&#8220;Whatever you put on your pod, I can bookmark it or like it on my pod,
+using my favorite app.&#8221;
 </p>
 
 <p>
-A pod keeps a <em>type index</em>, a list saying, for each class, where things
-of that class are kept: Events in <code>/calendar/</code>, Contacts in
-<code>/contacts/</code>. Any new application reads the index and finds the old
-data. This works because the classes applications use overlap a lot. Classes
-and apps &#8220;are related but not 1:1&#8221;: one class, Person, is used by a
-calendar, an address book and a customer database alike, so all of them
-should describe a contact the same way.
+A pod keeps a <em>type index</em> saying where each class is kept: Events in
+<code>/calendar/</code>, Contacts in <code>/contacts/</code>. A new
+application reads it and finds the old data. Classes and apps &#8220;are related
+but not 1:1&#8221;: in the old <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> Metro diagram, Person is one line
+running through calendar, customer database and address book, so all should
+describe a contact the same way.
 </p>
 
 <h2 id="sec-55-3">55.3 Why activities are kept together anyway</h2>
 
 <p>
-The note then allows an exception, for permission rather than data:
+The note then allows an exception, for permission:
 </p>
 
 <blockquote>
@@ -204,23 +200,27 @@ conditions apply and it is much simpler to get those right.
 <p>
 <a class="gl-ref" href="../glossary.html#access-control">Access control</a>, the rules saying who may read or change what, attaches to
 places. If one matter lives together, a person decides once who may see it.
-Scattered by type, the decision is made many times, and one will be wrong.
+Scattered by type, the decision is made many times, each a chance to get it
+wrong.
 </p>
 
 <h3>A worked example: running a meeting</h3>
 
 <p>
 The note&#8217;s longest example is an application for running a meeting: a
-poll on when to meet, an agenda, the groups invited, a video call, minutes and
-action items, often one of a series. A pod has folders, so the application makes one per series, one per meeting, and
+poll, an agenda, invited groups, a video call, minutes and action items, often
+in a series. The application makes a folder per series, one per meeting, and
 subfolders for the parts (<a class="x-ref" href="#fig-55-2">Figure 55.2</a>).
 </p>
 
 <p>
-The application defines roles, or lets the owner configure them, and maps them
-onto Solid groups and folder access rules. Things created inside things, such
-as a chat about one action item, usually inherit their parent&#8217;s roles,
-though they may be narrowed. The interface must make plain who has access.
+Roles such as Owner, Invitee and Observer answer
+&#8220;Who can edit the minutes? Who can read the minutes?&#8221; and &#8220;Who
+can deem the item done?&#8221; The application maps them onto Solid groups and
+folder access rules; a chat about one action item inherits its parent&#8217;s
+roles unless narrowed. The interface must show who has access;
+&#8220;deviating from how things work in real life, or in existing systems, is
+a risk&#8221;.
 </p>
 
 <figure id="fig-55-2">
@@ -293,7 +293,8 @@ its roles into access rules once.</figcaption>
 </figure>
 
 <p>
-The two principles pull against each other (<a class="x-ref" href="#fig-55-3">Figure 55.3</a>).
+Filing by kind solves sharing; keeping an activity together solves permission
+(<a class="x-ref" href="#fig-55-3">Figure 55.3</a>).
 </p>
 
 <figure id="fig-55-3">
@@ -355,35 +356,20 @@ The two principles pull against each other (<a class="x-ref" href="#fig-55-3">Fi
   <text x="595" y="214" class="t-sm t-it" text-anchor="middle">permissions easy to get right</text>
 </svg>
 <figcaption><span class="fig-label">Figure 55.3</span>
-The note rejects the first. It wants the second for finding things and the
-third for trusting them; the type index helps reconcile them.</figcaption>
+The note rejects the first, wanting the second for finding things and the
+third for trusting them. The type index is independent of the folders, so it
+can point to things wherever an activity keeps them.</figcaption>
 </figure>
 
-<h2 id="sec-55-4">55.4 Who configures the layout</h2>
+<h2 id="sec-55-4">55.4 Applications arrange; shared patterns keep them compatible</h2>
 
 <p>
-The note lets applications arrange things:
-</p>
-
-<blockquote>
-To be extensible across these dimensions, we must give applications the power
-to configure this data in the users pod in a way which meets these
-requirements, and also works well for that particular app.
-<cite>Stuff in your Pod, 2022</cite>
-</blockquote>
-
-<p>
-The note expects applications to share common patterns for similar data:
-summary indexes, inboxes, time series in dated folders. An inbox, for
-example, is a folder others may add to but not read, like <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>&#8217;s
+The note lets each application lay out its data as suits it, and expects them to share common patterns: summary indexes, inboxes, time
+series in dated folders. An inbox, is a folder others may add to but not read, like <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>&#8217;s
 friend requests. Describing where new data should go is left to <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
 </p>
 
 <h2 id="sec-55-5">55.5 Knowing who wrote what</h2>
-
-<p>
-One sentence names an obligation:
-</p>
 
 <blockquote>
 We track and use its provenance carefully and carefully control is access, to
@@ -395,16 +381,15 @@ rich, varied, and valuable system.
 <p>
 Provenance is a record of who wrote a piece of data and how. It can be tracked
 by digital signatures from trusted agents, or more lightly by knowing that only
-one party can write to a resource: anything in a file only one bot may write
-can be attributed to that bot, because nobody else could have written there.
+one party can write to a resource.
 </p>
 
 <h2 id="sec-55-6">55.6 Index libraries, not items</h2>
 
 <p>
 As on a desktop, where a photo library hides its insides, the type index works
-best listing a few large libraries rather than every photo. A small index scales
-better, and each library indexes its items more richly:
+best listing a few large libraries, not every photo. It scales better, and
+each library indexes its items more richly:
 </p>
 
 <table>
@@ -416,6 +401,13 @@ better, and each library indexes its items more richly:
 <tr><td>Medical Records Library</td><td>date, source, type</td><td>Observation, Test, Scan</td></tr>
 <tr><td>Fitness Library</td><td>date, sport</td><td>Run, Ride</td></tr>
 </table>
+
+<p>
+In the note&#8217;s conclusion, folders, folder access control and app roles
+mapped onto them let a pod serve activities &#8220;that
+we can imagine now, and hopefully those we cannot currently imagine, though
+others will&#8221;.
+</p>
 
 <div class="connections">
 <h3>Connections</h3>
@@ -434,18 +426,18 @@ case where each gives the better answer.</p>
 </div>
 <div class="question">
 <p><span class="question-number">55.2</span>
-Access control is applied to places. Explain why that makes activity-based
-arrangement safer, and what it costs.</p>
+Access control attaches to places. Why does that make activity-based
+arrangement safer, and what does it cost?</p>
 </div>
 <div class="question">
 <p><span class="question-number">55.3</span>
-Name three things in your own life that are issued once and never change.
+Name three things in your life issued once and never changed.
 What could a system do with them that it cannot do with mutable data?</p>
 </div>
 <div class="question">
 <p><span class="question-number">55.4</span>
-Applications configure the layout of a shared space. What does the note expect
-to keep their arrangements compatible?</p>
+A photo library hides its folders from the user. Should a pod do the same,
+and who loses if it does?</p>
 </div>
 <div class="question">
 <p><span class="question-number">55.5</span>

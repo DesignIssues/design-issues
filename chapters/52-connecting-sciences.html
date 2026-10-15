@@ -52,28 +52,25 @@ a Design Issues note by Tim Berners-Lee, 2004-01-04.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Each science records its data in its own way, so a question that runs from
-chemistry through biology to medicine has to be translated at every border.
-Agreeing one common format for everyone would take years.
+Tracing a disease outbreak can lead into weather records, company accounts and
+flight timetables, as well as biology and medicine. Each keeps its data in its
+own format, so the trail must be translated at every border, and agreeing one
+common format takes great time and effort.
 </p>
 <p>
-This note argues for a third way: leave each field&#8217;s data as it is, and
-publish small machine-readable links where fields overlap, so a program can
-follow a question across them. It also argues for open data, because much of
-the Web&#8217;s value came from uses nobody planned. If testing an odd idea
-against many sources takes moments, more odd ideas get tested, and more lucky
-discoveries follow.
+The note argues for a third way: leave each field&#8217;s data as it is, and
+publish small machine-readable links where fields overlap. It also argues for
+open data, because much of the Web&#8217;s value came from uses nobody
+planned. If testing an odd idea takes moments, more odd ideas get tested.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in January 2004, this note has a plain motive. Scientific problems
-increasingly need several fields at once, and scientific information is
-naturally data (tables, rules, measurements) rather than prose. That makes
-science an obvious customer for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>, the web of data that
-machines can read and combine.
+Written in January 2004. Scientific problems increasingly need several fields
+at once, and scientific information is naturally data (tables, rules,
+measurements), which makes science an obvious customer for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.
 </p>
 </div>
 
@@ -91,25 +88,26 @@ perceptions of existing ones.
 The chain Berners-Lee offers runs from physics through physical chemistry,
 organic chemistry, cell biology, proteomics (the study of all the proteins in
 a cell or organism), genetics, epidemiology (the study of how diseases spread
-through populations), medicine and pharmacology.
+through populations), medicine and pharmacology. Nobody need be expert in all of them, but
+&ldquo;one typically has to have a knowledge of neighboring fields&rdquo;.
 </p>
 
 <h3>The cost of crossing a boundary</h3>
 
 <p>
 The search for cures for AIDS or cancer, or for a new virus such as SARS,
-traces pathways through many of these fields at once. But each field models
-its data its own way, deciding what to record and how the pieces relate. So
-every idea that crosses fields means negotiating the conversion and transfer
-of data afresh, while getting groups to agree common formats and vocabularies
-first takes great time and effort.
+traces pathways through many of these fields. But each field models its data
+its own way, so every idea that crosses fields means negotiating the
+conversion and transfer of data afresh.
 </p>
 
 <p>
 A hypothetical example: two databases record the same protein under different
 names. Neither changes; someone publishes one machine-readable statement that
 the names are equivalent, and a program can now follow a question from one
-into the other. That statement is a mapping.
+into the other. That statement is a mapping. So there are three routes:
+negotiate each conversion as it arises (a), agree a common format first (b),
+or leave the data alone and map the overlaps (c).
 </p>
 
 <figure id="fig-52-1">
@@ -119,8 +117,8 @@ into the other. That statement is a mapping.
   <desc id="fig52-1-d">Three panels, each with the same four fields: chemistry,
   cell biology, genetics and epidemiology. In (a) every pair of fields is
   joined by a conversion, six in all, negotiated each time a new idea needs
-  them. In (b) all four fields feed into one common format, which takes years
-  of meetings to agree. In (c) the fields are left unchanged and only
+  them. In (b) all four fields feed into one common format, which takes great
+  time and effort to agree. In (c) the fields are left unchanged and only
   neighbouring fields are joined, by three mappings.</desc>
   <defs>
     <marker id="fig52-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
@@ -174,7 +172,7 @@ into the other. That statement is a mapping.
   <text x="430" y="218" class="t-sm" text-anchor="middle">genetics</text>
   <rect class="box-warm" x="305" y="125" width="110" height="28" rx="4"/>
   <text x="360" y="143" text-anchor="middle">common format</text>
-  <text x="360" y="266" class="t-sm" text-anchor="middle">years of meetings before</text>
+  <text x="360" y="266" class="t-sm" text-anchor="middle">great time and effort before</text>
   <text x="360" y="282" class="t-sm" text-anchor="middle">the first exchange</text>
 
   <!-- (c) link the overlaps -->
@@ -198,16 +196,16 @@ into the other. That statement is a mapping.
   <text x="600" y="282" class="t-sm" text-anchor="middle">added one at a time</text>
 </svg>
 <figcaption><span class="fig-label">Figure 52.1</span>
-The Semantic Web takes route (c), avoiding both the wait in (b) and the
-repeated work in (a).</figcaption>
+Four fields: six conversions to negotiate, one long negotiation, or three
+links added as needed.</figcaption>
 </figure>
 
 <p>
 The note&#8217;s answer is route (c), which Berners-Lee calls retrospective and
 incremental (<a class="x-ref" href="#fig-52-2">Figure 52.2</a>). Retrospective: each field&#8217;s models and data
 already exist and stay as they are. Incremental: links are built one interface
-at a time, and no data model is redesigned at once. The overlap is only
-partial, but linking it where it exists is still worth doing.
+at a time, and no data model is redesigned at once. The overlap is
+partial, but worth linking where it exists.
 </p>
 
 <figure id="fig-52-2">
@@ -248,26 +246,16 @@ Each field keeps its own data; a mapping sits where two overlap.</figcaption>
 <h3>The catalogue precedent</h3>
 
 <p>
-The second half makes a case for openness that does not depend on altruism,
-and it starts with a precedent from the web&#8217;s own early years:
-</p>
-
-<blockquote>
-During the early years of the WWW, an element of reluctance was a hesitation
-by companies to allow information such as their catalogs or parts lists to be
-available to the general public. This hesitation evaporated when it became
-clear that only those companies about whose products information was freely
-available on the web were likely to be involved in any commerce at all.
-<cite>Connecting the Sciences with the Semantic Web, 2004</cite>
-</blockquote>
-
-<p>
-The reluctance ended because withholding stopped being viable. Berners-Lee
+The second half makes a case for openness that does not depend on altruism.
+In the Web&#8217;s early years companies hesitated to make their catalogues
+and parts lists public. The hesitation evaporated once it was clear that only
+companies whose product information was freely available on the Web were
+likely to do any business at all. Withholding had stopped being viable. Berners-Lee
 implies the same for scientific data, noting that funders already complained
 of the original data behind papers disappearing.
 </p>
 
-<h3>Accidents on purpose</h3>
+<h3>Making luck cheaper</h3>
 
 <p>
 The argument proper is about what open information turned out to be for:
@@ -285,7 +273,8 @@ problems.
 
 <p>
 He then lists discoveries made by accident, from the bath of Archimedes
-through penicillin to the effect of Viagra, and draws the conclusion about
+through penicillin to Viagra (sildenafil, which was being trialled as a heart
+drug when its other effect was noticed), and draws the conclusion about
 machines:
 </p>
 
@@ -297,11 +286,11 @@ tested in a few moments harnessing data from many diverse fields.
 <cite>Connecting the Sciences with the Semantic Web, 2004</cite>
 </blockquote>
 
-<h2 id="sec-52-3">52.3 The closing widening</h2>
+<h2 id="sec-52-3">52.3 Science is not an island either</h2>
 
 <p>
-The note refuses to let science be a special case: science itself is not an
-island either (<a class="x-ref" href="#fig-52-3">Figure 52.3</a>).
+The note refuses to let science be a special case. An outbreak search leaves
+science altogether (<a class="x-ref" href="#fig-52-3">Figure 52.3</a>).
 </p>
 
 <figure id="fig-52-3">
@@ -355,17 +344,30 @@ must be one part of the general Semantic Web.</figcaption>
 </figure>
 
 <p>
-That is <a class="x-ref" href="51-linked-data-like-bag-chips.html">Chapter 51</a>&#8217;s argument from the other end: one piece of data
-mixes vocabularies from communities large and small, because questions do not
+That is <a class="x-ref" href="51-linked-data-like-bag-chips.html">Chapter 51</a>&#8217;s argument from the other end: questions do not
 respect the boundaries of datasets.
 </p>
 
-<h2 id="sec-52-4">52.4 First steps</h2>
+<h2 id="sec-52-4">52.4 Getting the snowball rolling</h2>
 
 <p>
 The basic standards existed: <a class="gl-ref" href="../glossary.html#owl">OWL</a>, the Web <a class="gl-ref" href="../glossary.html#ontology">Ontology</a> Language, for writing
 vocabularies a machine can process, and <a class="gl-ref" href="../glossary.html#rdf">RDF</a> for publishing data that uses
-them. The note suggests how to start:
+them.
+</p>
+
+<p>
+Openness brings problems, which he lists: anonymising clinical trial data,
+security-sensitive infrastructure information, and copyright in compilations.
+The lab notebook is a subtler case. It is &ldquo;by tradition a write-only
+medium&rdquo;: what was done, the conditions at the time, the results. Such
+detail usually fades, &ldquo;but occasionally it becomes important after the
+fact&rdquo;, and instruments aware of the Semantic Web might make it easier to
+record.
+</p>
+
+<p>
+The note then asks how &ldquo;to get the snowball rolling&rdquo;:
 </p>
 
 <ul>
@@ -373,15 +375,16 @@ them. The note suggests how to start:
 table, physical constants and simple molecules, useful to schools and to
 hazard, food and drug information.</li>
 <li><strong>Demonstrator datasets</strong> of general value, such as
-geophysical, meteorological or genome data.</li>
+geophysical, meteorological, drug-interaction (&ldquo;pharmaceutical
+incompatibility&rdquo;) or genome data.</li>
 <li><strong>Anyone can begin:</strong> researchers, funders, journals or
 academies. Publication could reasonably be a condition of funding.</li>
 </ul>
 
 <p>
-He also lists problems openness brings: what to publish from lab notebooks,
-whose incidental details sometimes matter later; anonymising clinical trial
-data; and copyright in compilations.
+If its growth were like the early Web&#8217;s, he wrote, it would happen
+wherever one person understood the long-term global benefit and found a way
+to put in the short-term effort locally.
 </p>
 
 <div class="since">
@@ -412,25 +415,25 @@ and open access to research is <a class="x-ref" href="25-many-meanings-open.html
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">52.1</span>
+<a class="x-ref" href="#fig-52-1">Figure 52.1</a> shows six conversions for four fields. How many would twenty
+fields need under route (a), and how many links under route (c) if each field
+overlaps only its two neighbours?</p>
+</div>
+<div class="question">
+<p><span class="question-number">52.2</span>
 Take medicine and weather.
 Where do their vocabularies overlap, and what would a mapping between them
 have to say?</p>
 </div>
 <div class="question">
-<p><span class="question-number">52.2</span>
+<p><span class="question-number">52.3</span>
 Withholding catalogue data stopped being viable. Name a kind of data where
 withholding is still viable, and say what would change that.</p>
 </div>
 <div class="question">
-<p><span class="question-number">52.3</span>
+<p><span class="question-number">52.4</span>
 What must be true for a &ldquo;crazy hypothesis&rdquo; to be testable in a few
 moments?</p>
-</div>
-<div class="question">
-<p><span class="question-number">52.4</span>
-<a class="x-ref" href="#fig-52-1">Figure 52.1</a> shows six conversions for four fields. How many would twenty
-fields need under route (a), and how many links under route (c) if each field
-overlaps only its two neighbours?</p>
 </div>
 </details>
 

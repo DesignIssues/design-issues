@@ -62,8 +62,11 @@ well.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in December 2016, this is by its author&#8217;s account a list of his
-own biases in a bit of a random order. It is included for its opening:
+Berners-Lee&#8217;s calendar stopped responding: every click gave an error
+beep. The cause, on another screen with no calendar on it, was a popup asking
+whether a change to a recurring event applied to all of them or just one; he
+had, he guessed, nudged an event by accident. This 2016 list of his own biases
+says why such points still needed making:
 </p>
 <blockquote>
 In a way, more than 25 years after the WWW project started, you'd think that
@@ -74,7 +77,7 @@ out.
 </blockquote>
 </div>
 
-<h2 id="sec-85-1">85.1 Text must be copyable</h2>
+<h2 id="sec-85-1">85.1 Error messages nobody can copy</h2>
 
 <figure id="fig-85-1">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
@@ -113,11 +116,6 @@ The text rules share a cause: replacing the browser&#8217;s own text handling
 with something custom. The focus rule is about timing instead.</figcaption>
 </figure>
 
-<p>
-The <em>focus</em> is the place where typed characters will go. Copyable error
-messages help more people:
-</p>
-
 <blockquote>
 People who do not understand a lot about your system may still be able to use a
 full detailed error message, but looking it up in a search engine, or asking a
@@ -129,10 +127,18 @@ friend.
 An uncopyable message helps only someone who already understands it.
 </p>
 
+<p>
+A form should put the <em>focus</em>, where typed characters go, in its first
+field, but take it only in response to the user&#8217;s own action; otherwise,
+the note warns, &#8220;you might also end up with secret thing I was typing
+somewhere else&#8221;. An urgent alert should come to the front without taking
+it.
+</p>
+
 <h2 id="sec-85-2">85.2 The self-defeating password field</h2>
 
 <p>
-The argument about pasting is a chain of consequences:
+The pasting argument is a chain:
 </p>
 
 <blockquote>
@@ -195,9 +201,7 @@ A rule added for security produces the insecure outcome two steps later.</figcap
 </figure>
 
 <p>
-Blocking paste pushes people toward a password short enough to remember, which is a weak
-one: <a class="x-ref" href="23-html-xml.html">Chapter 23</a>&#8217;s point that the design shapes behaviour, and the behaviour
-is what matters. The demand for visibility is the same argument reversed:
+A security rule that people work around produces less security, not more. The demand for visibility is the same argument reversed:
 </p>
 
 <blockquote>
@@ -206,11 +210,11 @@ without mistakes -- unless you let me see it as I type it
 <cite>User Interface: Random tips, 2016</cite>
 </blockquote>
 
-<h2 id="sec-85-3">85.3 The cause underneath</h2>
-
 <p>
-Berners-Lee names the mechanism:
+Within a year, UK and US security guidance agreed (see What happened since).
 </p>
+
+<h2 id="sec-85-3">85.3 Replacing the browser&#8217;s text box</h2>
 
 <blockquote>
 If you take suppress and replace the default line editing the browser does in
@@ -220,42 +224,44 @@ cuteness.
 </blockquote>
 
 <p>
-The three text rules share one act. The <em>platform</em>, the browser or
-phone&#8217;s built-in text box, works in every language and with every
-<em>assistive technology</em> (screen readers and similar aids). A developer
-replaces it to make one field stricter: a numeric field that accepts only
-digits refuses a pasted &#8216;1,200&#8217;. The replacement handles its own
-case and loses everything else.
+The three text rules share one act: replacing the <em>platform</em>, the
+browser or phone&#8217;s built-in text box, which already handles pasting and
+each device&#8217;s line editing. A numeric field that accepts only digits
+refuses a pasted &#8216;1,200&#8217;; the replacement handles its own case and
+loses everything else. Ready-made <em>auto-complete libraries</em> may be a
+common source. A developer tests the input they had in mind, so the failure
+rarely shows from where they sit.
 </p>
+
+<h2 id="sec-85-4">85.4 Popups: not hypertext, and easy to fake</h2>
 
 <p>
-<em>Auto-complete libraries</em>, ready-made code that suggests entries during
-typing, may be a common source of the problem. One that blocks pasting is a step backwards; go
-back to the basic <em>widget</em>, the standard input box.
+The opening&#8217;s calendar is the case against popups. The browser&#8217;s
+<code>alert()</code> and <code>confirm()</code> make them easy to code, but
+they &#8220;are not hypertext - you can&#8217;t give the user links to what you
+are talking about.&#8221; The security argument is the twin of <a class="x-ref" href="#fig-85-2">Figure 85.2</a>:
 </p>
 
-<h2 id="sec-85-4">85.4 Why the list still needed writing</h2>
+<blockquote>
+I am trained in OS X to type in a Administrator password to popups. Not a safe
+habit to have. Popups are too easy to fake.
+<cite>User Interface: Random tips, 2016</cite>
+</blockquote>
 
 <p>
-Our reading: a developer knows what the error means and tests the input they
-had in mind, so the failures rarely show from where they sit. <a class="x-ref" href="88-cultures-boundaries.html">Chapter 88</a>
-describes the same gap for language.
+Better to ask beside the thing concerned, inside the app, where it is clear
+who is asking.
 </p>
 
-<h2 id="sec-85-5">85.5 The rest of the list</h2>
-
-<p>
-Eight more tips, in two groups.
-</p>
+<h2 id="sec-85-5">85.5 Interruptions, and things that get lost</h2>
 
 <h3>Don&#8217;t interrupt</h3>
 
 <table>
 <tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
-<tr><td>Never use modals</td><td>It blocks the rest of the page until answered, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, between related things, and close it when done.</td></tr>
-<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. The ready-made popup boxes browsers offer cannot hold links, so they cannot point to what they are talking about. He has been trained to type an administrator password into popups, a bad habit, and &ldquo;Popups are too easy to fake.&rdquo;</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
-<tr><td>Never use a carousel</td><td>Anything that moves by itself distracts. The extreme case, in a postscript: a multi-page electronic road sign takes drivers&#8217; eyes off the road for 10&ndash;12 seconds.</td><td>Move only when the user starts it, as with a video.</td></tr>
-<tr><td>Don&#8217;t time out my session</td><td>Getting the passport whose number is asked for may take weeks.</td><td>Keep what was entered; time out only powerful sessions such as banking.</td></tr>
+<tr><td>Never use modals</td><td>It blocks the page, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, then close it.</td></tr>
+<tr><td>Never use a carousel</td><td>It &#8220;makes the site look exciting to people who are not actually trying to actually use it&#8221;. A postscript: a multi-page road sign takes drivers&#8217; eyes off the road for 10&ndash;12 seconds.</td><td>Move only when the user starts it.</td></tr>
+<tr><td>Don&#8217;t time out my session</td><td>A form asking for a passport number should &#8220;Be prepared to wait while I apply for a passport&#8221;.</td><td>Keep what was entered; time out only powerful sessions, such as banking.</td></tr>
 </table>
 
 <figure id="fig-85-3">
@@ -322,10 +328,10 @@ demands; opened in place, it does not.</figcaption>
 
 <table>
 <tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
-<tr><td>Set and update the title</td><td>Bookmarks and tabs show the title out of context; &#8220;Orders&#8221; or &#8220;Acme Inc&#8221; is useless months later.</td><td>&#8220;Acme Order 8948375 Complete&#8221;, specific part first; change it per view, each view with its own <a class="gl-ref" href="../glossary.html#uri">URI</a>.</td></tr>
+<tr><td>Set and update the title</td><td>Bookmarks and tabs show it out of context; &#8220;Orders&#8221; is useless months later.</td><td>&#8220;Acme Order 8948375 Complete&#8221;; a new title and <a class="gl-ref" href="../glossary.html#uri">URI</a> per view.</td></tr>
 <tr><td>Useful download filenames</td><td>A PDF has no title the user sees, and file browsers sort alphabetically.</td><td>Put the date first, year then month then day.</td></tr>
-<tr><td>Never throw away my data</td><td>Unsaved input is lost; one bad field can wipe a whole form.</td><td>Save automatically; show saving and errors by colour; keep the valid fields.</td></tr>
-<tr><td>Stick with the default font size</td><td>Text at 80% overrides the size the reader chose.</td><td>Keep body text at 100%.</td></tr>
+<tr><td>Never throw away my data</td><td>Unsaved input is lost; one bad field can wipe a form.</td><td>Save automatically (a &#8220;save&#8221; button suggests not &#8220;trying hard enough&#8221;); keep the valid fields.</td></tr>
+<tr><td>Stick with the default font size</td><td>Senders of 80% text &#8220;arrogantly assume they the know better&#8221; than the reader.</td><td>Keep body text at 100%.</td></tr>
 </table>
 
 <figure id="fig-85-4">
@@ -372,13 +378,18 @@ Put the specific part first: truncation cuts from the end, and sorting reads
 from the start.</figcaption>
 </figure>
 
+<p>
+Most of the list asks a page to leave the user&#8217;s text, attention and time
+alone.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Security guidance took his side on pasting.</strong> In 2017 the UK
-National Cyber Security Centre told sites to let users paste passwords,
-and the US NIST guideline SP 800-63B said sites should permit pasting
-and offer to display the password.</li>
+National Cyber Security Centre told sites to let users paste passwords, and
+the US NIST guideline SP 800-63B said sites should permit pasting and offer to
+display the password.</li>
 <li><strong>Accessibility rules followed.</strong> WCAG 2.2, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of October 2023, added criteria against making users re-enter
 information already given and against log-ins that depend on memorising or
@@ -400,32 +411,33 @@ heuristics, and W3C&#8217;s accessibility guidelines (WCAG).
 <summary>Questions <span class="q-count">6</span></summary>
 <div class="question">
 <p><span class="question-number">85.1</span>
-Find an error message in software you use that cannot be copied. Who is
-excluded from fixing the problem?</p>
+Try pasting into the password field of three sites you use. Which refuse, and
+what do they make you do instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.2</span>
-Which step in <a class="x-ref" href="#fig-85-2">Figure 85.2</a> did the site&#8217;s designer fail to picture, and
-why would testing on a desktop with a short password miss it?</p>
+Find an error message that cannot be copied. Who is excluded from fixing the
+problem?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.3</span>
-Name three things you can do in an ordinary text box that a numeric-only
-custom field might stop you doing.</p>
+Which step in <a class="x-ref" href="#fig-85-2">Figure 85.2</a> did the designer fail to picture, and why would
+desktop testing miss it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.4</span>
-Try pasting into the password field of three sites you use. Which refuse, and
-what does each make you do instead?</p>
+Name three things an ordinary text box allows that a numeric-only custom
+field might block.</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.5</span>
-Why does the note put the page&#8217;s own title before the site name?</p>
+Which popup on your own computer would you trust least, and how could you
+tell a fake one?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.6</span>
-Give an example of a modal that kept you from finding information you
-needed.</p>
+Which sessions would you time out, and what should happen to what was
+typed?</p>
 </div>
 </details>
 

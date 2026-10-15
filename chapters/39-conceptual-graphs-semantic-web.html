@@ -61,11 +61,11 @@ go is not the logic but the assumption of one closed, central knowledge base.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume IV closes with a comparison, and with an admission of why it was
-overdue. More than once, people (Mary Keeler, fresh from a CG conference, among them)
-had told Berners-Lee that the Semantic Web was really Conceptual Graphs, or the
-reverse. He explains, in January 2001,
-why the message had not landed:
+Volume IV closes with an overdue comparison. More than once people had told Berners-Lee that the Semantic Web was
+really just Conceptual Graphs, or the reverse; Mary Keeler came from a CG
+conference deliberately to say so. The articles he looked at conveyed little
+beyond &ldquo;a fervent desire to implement some ideas of Charles S.
+Peirce&rdquo;. He explains why the message had not landed:
 </p>
 <blockquote>
 I think the tendency of the CG examples to relate to natural language rather
@@ -75,13 +75,41 @@ driving at.
 <cite>Conceptual Graphs and the Semantic Web, 2001</cite>
 </blockquote>
 <p>
-Then he read the <a class="gl-ref" href="../glossary.html#specification">specification</a> and found that the two were closer than the
-examples had suggested. The chapter applies the webizing of <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, turning a system&#8217;s
-local names into URIs, to a rival.
+On 5 January 2001 he read John Sowa&#8217;s CG Standard; the note is dated
+the next day. What he found shows best in one sentence written both ways.
 </p>
 </div>
 
-<h2 id="sec-39-1">39.1 The verdict</h2>
+<h2 id="sec-39-1">39.1 One sentence, two notations</h2>
+
+<p>
+Sowa&#8217;s CG form for <em>John goes to Boston by bus</em>, then
+Berners-Lee&#8217;s <a class="gl-ref" href="../glossary.html#n3">N3</a>, the compact <a class="gl-ref" href="../glossary.html#rdf">RDF</a> notation he was then developing:
+</p>
+
+<blockquote>
+<pre>[Go]-
+   (Agnt)-&gt;[Person: John]
+   (Dest)-&gt;[City: Boston]
+   (Inst)-&gt;[Bus].</pre>
+<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
+</blockquote>
+
+<blockquote>
+<pre>@prefix : &lt;#&gt;.
+[a :Go]
+   &gt;- :agent -&gt; [a :Person; = &lt;#John&gt;];
+   &gt;- :dest -&gt; [ a :City; = &lt;#Boston&gt;];
+   &gt;- :inst -&gt; [ a :Bus].</pre>
+<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
+</blockquote>
+
+<p>
+In the N3, <code>[a :Go]</code> means &ldquo;something that is a Go&rdquo;; each
+<code>&gt;- p -&gt;</code> line attaches a relation <em>p</em> to another
+thing. The likeness is &ldquo;remarkable down to the final period&rdquo;
+(<a class="x-ref" href="#fig-39-3">Figure 39.3</a> draws both). His verdict:
+</p>
 
 <blockquote>
 To put it in a nutshell, Conceptual Graphs (CGs) are a logic language used for
@@ -92,30 +120,21 @@ conventional serializations
 </blockquote>
 
 <p>
-The operative phrase is closed worlds: everything the system knows lives in
-one knowledge base, so whatever is not there is treated as absent. On the
-Web, the open world, a missing fact means only &ldquo;not known here&rdquo;. The next
-sentence says CGs are basically as expressive as KIF (the Knowledge
-Interchange Format, a standard text format for logic), and so only have to be
-webized to serve as a basis for the Semantic Web.
+The operative phrase is closed worlds. If a closed knowledge base does not say
+John goes to Boston, the system concludes that he does not; on the open Web,
+the absence means only that this document does not say so. CGs, the note
+adds, are basically as expressive as KIF (the Knowledge Interchange Format, a
+standard text format for logic), and so only have to be webized. That is a
+considerable concession. Conceptual Graphs are not wrong, only unwebized.
 </p>
 
-<p>
-That is a considerable concession. The rival is not wrong; it is unwebized.
-</p>
-
-<h2 id="sec-39-2">39.2 Webizing, applied to a rival</h2>
+<h2 id="sec-39-2">39.2 Webizing someone else&#8217;s logic</h2>
 
 <p>
-The procedure is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>&#8217;s. Modify the syntax so that a concept or a relation may carry a
-<a class="gl-ref" href="../glossary.html#uri">URI</a>, which means allowing the characters of a URI in identifiers. Then map
-local identifiers to global ones in the usual way: the document&#8217;s URI, a <a class="gl-ref" href="../glossary.html#hash">hash</a>,
-and the local name. A concept Bus in a file at http://example.org/travel
-becomes http://example.org/travel#Bus.
-</p>
-
-<p>
-He then separates two kinds of obstacle.
+The procedure is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>&#8217;s: let a concept or relation carry a <a class="gl-ref" href="../glossary.html#uri">URI</a>,
+then map each local name to the document&#8217;s URI, a <a class="gl-ref" href="../glossary.html#hash">hash</a> and the name. A
+concept Bus in http://example.org/travel becomes
+http://example.org/travel#Bus. He separates two kinds of obstacle.
 </p>
 
 <figure id="fig-39-1">
@@ -161,21 +180,15 @@ made without Web scale in view. A coreference set is a group of names for the sa
 thing; CGs make one of them the dominant, defining name.</figcaption>
 </figure>
 
-<h2 id="sec-39-3">39.3 The one real difference</h2>
+<h2 id="sec-39-3">39.3 Relations that cannot be talked about</h2>
 
 <p>
-In CGs, concepts and relations are disjoint: two worlds that never overlap,
-so a relation can never be the subject of another relation. <a class="gl-ref" href="../glossary.html#rdf">RDF</a> can say, for
-instance, that <em>livesIn</em> is the opposite of <em>hasResident</em>: a
-statement about a relation. CGs forbid that; relations are only ever used,
-never described. This is deliberate, not a defect. A true two-way mapping
-would require CGs to reify an arbitrary RDF <a class="gl-ref" href="../glossary.html#graph">graph</a> (turn each statement into a
-thing so it can be talked about), and Berners-Lee does not think that would be
-useful.
-</p>
-
-<p>
-The principle he states in passing is the one worth keeping:
+In CGs, concepts and relations are disjoint, so a relation can never be the
+subject of another relation. RDF can say that <em>livesIn</em> is the opposite
+of <em>hasResident</em>; CGs cannot. The designers intended this. A true
+two-way mapping would require CGs to reify an arbitrary RDF <a class="gl-ref" href="../glossary.html#graph">graph</a> (turn each
+statement into a thing that can be talked about), which Berners-Lee doubts
+would be useful. The principle he states in passing:
 </p>
 
 <blockquote>
@@ -186,8 +199,8 @@ language to be universal itself.
 </blockquote>
 
 <p>
-Universality is a property required of the base language, not of everything
-built on it.
+Universality is required of the base language, not of everything built on
+it.
 </p>
 
 <h2 id="sec-39-4">39.4 Where the shapes do not match</h2>
@@ -195,10 +208,11 @@ built on it.
 <h3>Two arguments or many</h3>
 
 <p>
-Properties in the Semantic Web take exactly two arguments, a subject and an
-object. Relations in CGs may take any number. A three-way
-relation such as <em>Leeds lies between York and Manchester</em> must be
-broken up, which is possible and is not free.
+The difference that stands out first, he says, is arity. RDF properties take
+exactly two arguments; CG relations may take any number, so <em>Leeds lies
+between York and Manchester</em> must be broken up. That can be done, but it
+leaves &ldquo;a little tension as
+the two forms coexist&rdquo;.
 </p>
 
 <figure id="fig-39-2">
@@ -255,56 +269,41 @@ broken up, which is possible and is not free.
 </svg>
 <figcaption><span class="fig-label">Figure 39.2</span>
 A CG arc already carries a small integer, so the mapping into two-argument
-RDF is natural. The cost is the extra node on the right, which every query
-must now step through.</figcaption>
+RDF is natural. The cost is the extra node on the right, which was not in the
+original.</figcaption>
 </figure>
 
 <h3>Who may say what type a thing is</h3>
 
 <p>
-In CGs a concept has a single type, usually its creator&#8217;s. On the Web,
-Berners-Lee notes, a third party may equally well assert a type for
-something, and that is ordinary. A thing&#8217;s type is not the
-property of whoever first named it.
+In CGs a concept has a single type, usually its creator&#8217;s. On the Web a
+third party may equally well assert one; a thing&#8217;s type does not belong
+to whoever named it first.
 </p>
 
-<h2 id="sec-39-5">39.5 What the comparison shows</h2>
+<p>
+The note&#8217;s table of terms adds a difference it calls philosophical: CGs
+keep links to &ldquo;reality&rdquo; apart from the main graph, while the
+Semantic Web links the real world directly to things and properties.
+</p>
+
+<h2 id="sec-39-5">39.5 The easy half</h2>
 
 <p>
-<a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> argued that earlier knowledge representation failed through
-centralisation; here the claim is checked against one real system, and holds.
+None of these differences reaches the logic. The mapping, the note concludes,
+is &ldquo;apparently very straightforward&rdquo;, and one subset shows it: a
+&ldquo;simple graph&rdquo;, one context with no negation or defined
+quantifiers, maps directly into RDF Model and Syntax 1.0. The restriction of
+<a class="x-ref" href="#sec-39-3">section 39.3</a> is &ldquo;not huge&rdquo; either, since many ontological systems
+share it. The centralisation that <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> blamed for earlier failures sits
+here in the knowledge base, not in the logic.
 </p>
 
 <h2 id="sec-39-6">39.6 Striking similarities</h2>
 
 <p>
-The best evidence is one sentence written twice: John
-Sowa&#8217;s CG form for <em>John goes to Boston by bus</em>, followed by
-Berners-Lee&#8217;s <a class="gl-ref" href="../glossary.html#n3">N3</a>, the compact notation for RDF he was then developing:
-</p>
-
-<blockquote>
-<pre>[Go]-
-   (Agnt)-&gt;[Person: John]
-   (Dest)-&gt;[City: Boston]
-   (Inst)-&gt;[Bus].</pre>
-<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
-</blockquote>
-
-<blockquote>
-<pre>@prefix : &lt;#&gt;.
-[a :Go]
-   &gt;- :agent -&gt; [a :Person; = &lt;#John&gt;];
-   &gt;- :dest -&gt; [ a :City; = &lt;#Boston&gt;];
-   &gt;- :inst -&gt; [ a :Bus].</pre>
-<cite>Conceptual Graphs and the Semantic Web, 2001</cite>
-</blockquote>
-
-<p>
-In the N3, <code>[a :Go]</code> means &ldquo;something that is a Go&rdquo;; each
-<code>&gt;- p -&gt;</code> line attaches a relation <em>p</em> from it to
-another thing. The likeness is &ldquo;remarkable down to the final period&rdquo;. Drawn out,
-the two show the one structural difference.
+Drawn out, the Boston sentence of <a class="x-ref" href="#sec-39-1">section 39.1</a> shows the structural
+difference behind <a class="x-ref" href="#sec-39-3">section 39.3</a>.
 </p>
 
 <figure id="fig-39-3">
@@ -372,25 +371,26 @@ on an arc, and everything else is a Thing.</figcaption>
 </figure>
 
 <p>
-It extends to contexts. Both systems quote a whole formula to talk about it,
-as in the note&#8217;s example, loosely &ldquo;Tom
-believes that Mary wants to marry a sailor&rdquo;: CGs nest a proposition
-inside a box, and N3 wraps it in braces. Berners-Lee says the concept occurs
-&ldquo;very equivalently&rdquo; in the two. One small mismatch survives at the
-level of names: CGIF identifiers are not case sensitive, while URIs are.
+Contexts match too. Both systems quote a whole formula to talk about it, as in
+the note&#8217;s example, loosely &ldquo;Tom believes that Mary wants to marry
+a sailor&rdquo;: CGs nest the proposition in a box, N3 wraps it in braces. The
+concept occurs &ldquo;very equivalently&rdquo; in both. One mismatch survives
+in names: CGIF identifiers ignore case and URIs do not, because, the note
+says, case insensitivity is hard to specify internationally.
 </p>
 
 <p>
-The comparison also sets up Volume V: if the Semantic Web needs a logic, what
-should it look like and how should it be written down?
+The issues overlap heavily, but the Semantic Web must also work in an open
+context. Exporting a CG into N3 he leaves as &ldquo;a suitable
+exercise for the reader&rdquo;. The harder exercise is a CG machine that can
+import a graph whose URIs point at concepts defined somewhere else.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Both were standardised, separately.</strong> Conceptual Graphs
-became part of the ISO Common Logic standard, published in 2007, while the
-Web stack went through RDF, RDF <a class="gl-ref" href="../glossary.html#schema">Schema</a>, <a class="gl-ref" href="../glossary.html#owl">OWL</a> and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>. Common Logic, which
+<li><strong>Conceptual Graphs were standardised.</strong> They became part
+of the ISO Common Logic standard, published in 2007. Common Logic, which
 absorbed the CG interchange format, provides for naming and importing content on the Web.</li>
 <li><strong>The n-ary problem was met by convention.</strong> Relations of
 more than two arguments are represented by introducing an intermediate node, a
@@ -406,16 +406,14 @@ statements, from any source, as <a class="x-ref" href="#sec-39-4">section 39.4</
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The webizing procedure applied here is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>, and the distinction between
-architectural and arbitrary decisions is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The claim that earlier
-knowledge representation failed through centralisation is <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>, and the
-graph model being compared is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The logic this chapter points
-towards is Volume V, beginning at <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>.
+Webizing is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>; architectural versus arbitrary decisions, <a class="x-ref" href="16-evolvability.html">Chapter 16</a>;
+centralisation as the failure of earlier knowledge representation, <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>;
+the graph model, <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. Volume V, from <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, takes up the logic.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">39.1</span>
 Sort the design decisions of a familiar system, such as a library catalogue
@@ -436,6 +434,11 @@ two-argument properties. What did the intermediate node cost you?</p>
 <p><span class="question-number">39.4</span>
 A third party asserts a type for something you created. Name a case where
 that is valuable, and one where it is a problem.</p>
+</div>
+<div class="question">
+<p><span class="question-number">39.5</span>
+Why is it harder for a CG machine to import a graph whose URIs point at
+concepts defined elsewhere than to export its own graphs into N3?</p>
 </div>
 </details>
 

@@ -52,30 +52,31 @@ a Design Issues note by Tim Berners-Lee, 2002-03-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A record of choices still open: how to write one step along a link, forward or
-backward, and how to write a set. Forward is easy; every backward form reads
-badly. Storing a set as a list makes equal sets look different.
+Why writing &ldquo;whose email is this?&rdquo; is harder than writing
+&ldquo;x&#8217;s email&rdquo;, and why a mailing list is not a list: stored as
+a list, equal sets look different.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Berners-Lee describes this note as &ldquo;simply a footnote historical record
-about some rather arbitrary choices, to save me going over the reasons again
-and again.&rdquo; Volume III argued that specifications should record which decisions were
-arbitrary. This is what such a record looks like while the decisions are still
-open.
+English says &ldquo;x&#8217;s boss&#8217;s home&#8217;s phone&rdquo; easily.
+&ldquo;Whose boss&#8217;s home&#8217;s phone is this number?&rdquo; comes out
+clumsier. Berners-Lee wanted Notation3 (<a class="gl-ref" href="../glossary.html#n3">N3</a>) to say both in a few characters,
+and tried notations borrowed from programming, old email addresses, units of
+measure, directory paths and English. He kept this record of still-open choices
+&ldquo;to save me going over the reasons again and again.&rdquo;
 </p>
 </div>
 
-<h2 id="sec-43-1">43.1 The problem: saying &ldquo;one step along&rdquo;</h2>
+<h2 id="sec-43-1">43.1 Easy forwards, awkward backwards</h2>
 
 <p>
 In <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, data is a <a class="gl-ref" href="../glossary.html#graph">graph</a>: things joined by labelled links. Each label is a
 <em>property</em>, such as <code>email</code> or <code>boss</code>. Moving
-along links is <em>traversal</em>. The need is constant: given an expression
-for a person, write one for the thing one <code>email</code> link away.
+along links is <em>traversal</em>: given an expression for a person, write one
+for the thing one <code>email</code> link away.
 </p>
 
 <p>Berners-Lee sets the criteria first:</p>
@@ -87,10 +88,9 @@ of metaphors with existing use of similar syntax.
 </blockquote>
 
 <p>
-Familiarity counts as a design property: borrowed syntax costs less to learn.
-Two directions are named. Forward traversal follows a link the way it points;
-backward traversal asks what points here. His instinct is that forward traversal is
-the more common need.
+Borrowed syntax costs less to learn. Forward traversal follows a link the way
+it points; backward traversal asks what points here. His instinct is that
+forward is the more common need.
 </p>
 
 <figure id="fig-43-1">
@@ -145,33 +145,37 @@ the more common need.
 </svg>
 <figcaption><span class="fig-label">Figure 43.1</span>
 Forward traversal follows the arrows from <code>x</code>; backward traversal
-starts at the number and asks who points here. The note&#8217;s own example is
-this longer chain rather than a single <code>email</code> step.</figcaption>
+starts at the number and asks who points here.</figcaption>
 </figure>
 
-<h2 id="sec-43-2">43.2 The candidates</h2>
+<h2 id="sec-43-2">43.2 Nine notations, each borrowed from somewhere</h2>
 
 <p>
-The note weighs nine candidate notations, several with variants, each
-borrowing a metaphor. The seven that matter here:
+The same chain can be written <code>x.boss.home.email</code> (programming),
+<code>email of home of boss of x</code> (English),
+<code>x's boss's home's email</code> (English again) or
+<code>x'boss'home'email</code> (Ada). The note weighs nine candidate notations,
+several with variants, each borrowing a metaphor. The seven that matter here:
 </p>
 
 <table>
 <tr><th>Candidate</th><th>Example</th><th>Metaphor</th><th>Main objection</th></tr>
-<tr><td>Dot, with caret for backward</td><td><code>x.email</code>, <code>y^email</code></td><td>Object slots in Python and C++</td><td>A dot also ends an <a class="gl-ref" href="../glossary.html#n3">N3</a> sentence</td></tr>
-<tr><td>Bang</td><td><code>mcvax!cernvax!online!timbl</code></td><td>Old email routing</td><td>Few will remember it (though <code>!</code> is otherwise unused)</td></tr>
+<tr><td>Dot, with caret for backward</td><td><code>x.email</code>, <code>y^email</code></td><td>Object slots in Python and C++</td><td>A dot also ends an N3 sentence</td></tr>
+<tr><td>Bang</td><td><code>mcvax!cernvax!online!timbl</code></td><td>Old email routing, here to Berners-Lee&#8217;s own user name (compare <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a>)</td><td>Unfamiliar now, but <code>!</code> is free in N3</td></tr>
 <tr><td>Star and slash</td><td><code>Cost = 100*dollars</code></td><td>Units of measure</td><td>Implies commutativity; reserved for arithmetic</td></tr>
 <tr><td>Keywords <code>which</code>, <code>thatwhich</code></td><td><code>:joe :son thatWhich :girlfriend :jane</code></td><td>English</td><td>&ldquo;thatwhich is unbeliveably ugly&rdquo;</td></tr>
 <tr><td>Keyword <code>of</code></td><td><code>email of home of boss of x</code></td><td>English</td><td>Parses right to left; already a keyword in N3</td></tr>
-<tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Uses up a quote character</td></tr>
-<tr><td>Slashes</td><td><code>x/uncle\boss/home/email</code></td><td>Directory paths</td><td>Backslash is Unix&#8217;s escape character</td></tr>
+<tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Uses up a quote; <a class="gl-ref" href="../glossary.html#xml">XML</a> and Python already spend two on one meaning, &ldquo;a waste if you ask me!&rdquo;</td></tr>
+<tr><td>Slashes</td><td><code>x/uncle\boss/home/email</code></td><td>Directory paths</td><td>Backslash is Unix&#8217;s escape character, and Microsoft&#8217;s backslashes have &ldquo;done lasting harm&rdquo;</td></tr>
 </table>
 
 <p>
-So <code>x.email</code> is x&#8217;s email; <code>:joe :son thatWhich
-:girlfriend :jane</code> says Joe&#8217;s son is the one whose girlfriend is
-Jane. The note then sorts them by two questions: does the operator come before or
-after the term, and which way does it travel?
+<code>:joe :son thatWhich :girlfriend :jane</code> says Joe&#8217;s son is
+the one whose girlfriend is Jane. On a blackboard, Berners-Lee noticed,
+&ldquo;% and of look pretty similar&rdquo;, so <code>%</code> might serve as
+<code>of</code>. The note then sorts the
+candidates by two questions: does the operator come before or after the term,
+and which way does it travel?
 </p>
 
 <figure id="fig-43-2">
@@ -212,15 +216,14 @@ The note&#8217;s own summary table, redrawn.</figcaption>
 </figure>
 
 <p>
-A notation that borrows
-from a natural language inherits its asymmetries: in English-like syntax, an
-email&#8217;s owner is harder to name than a person&#8217;s email.
+The note&#8217;s verdict on its own grid: &ldquo;it can be really difficult to
+read the backward traversal in english.&rdquo;
 </p>
 
 <p>
-The note also offers a way round. A backward step along <code>email</code>
-is a forward step along its inverse. A compact way to write an inverse would
-serve, if it is clear whether the inverse is merely syntax or really named.
+One way round: a backward step along <code>email</code> is a forward step
+along its inverse, if it is clear whether the inverse is mere syntax or really
+named.
 </p>
 
 <figure id="fig-43-3">
@@ -272,7 +275,7 @@ One link, read two ways. The dot follows <code>email</code> forward from
 <code>x</code>; the caret follows the same link back from <code>y</code>. The side box names the inverse instead.</figcaption>
 </figure>
 
-<h2 id="sec-43-3">43.3 Sets, and why containers were the wrong shape</h2>
+<h2 id="sec-43-3">43.3 When a list is really a set</h2>
 
 <p>
 A later section, dated 2005, argues for adding sets, and the argument is
@@ -290,12 +293,13 @@ not at all.
 
 <p>Using a list for a set has three costs:</p>
 
-<table>
-<tr><th>Cost</th><th>What it means in practice</th></tr>
-<tr><td>Two lists with the same members in different orders are not evidently the same</td><td>Comparison and deduplication become application logic</td></tr>
-<tr><td>The fact that it is really a set lives only in documentation or people&#8217;s heads</td><td>Only people who know the application know it</td></tr>
-<tr><td>Implementations cannot use ready-made code built for sets</td><td>The wrong data structure is used throughout</td></tr>
-</table>
+<ul>
+<li>Two lists with the same members in different orders are not evidently the
+same, so comparison falls to the application.</li>
+<li>That it is really a set lives only in documentation or people&#8217;s
+heads.</li>
+<li>Implementations cannot use ready-made code built for sets.</li>
+</ul>
 
 <figure id="fig-43-4">
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
@@ -332,17 +336,16 @@ different.</figcaption>
 </figure>
 
 <p>
-So sets need what lists have: a form in ordinary statements, and a
-shorthand for people.
+Sets need what lists have: a form in statements, and a shorthand.
 </p>
 
 <h3>What was proposed</h3>
 
 <p>
 For statements, the note borrows from <a class="gl-ref" href="../glossary.html#owl">OWL</a>, the <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for
-describing classes: <code>[ owl:oneOf (1 2 3) ]</code> is the class whose
-members are exactly 1, 2 and 3, in any order. The shorthand was harder; the
-note tables seven syntaxes, including:
+classes: <code>[ owl:oneOf (1 2 3) ]</code> is the class whose members are
+exactly 1, 2 and 3, in any order. The shorthand was harder; of seven syntaxes
+tabled:
 </p>
 
 <table>
@@ -358,21 +361,26 @@ To &ldquo;look ahead&rdquo; is to read on past the opening bracket before
 knowing what is being parsed. The note records that &ldquo;The current choice is {$ 1, 2, 3 $}&rdquo;, with
 dollar signs to tell a set from a formula. A harder question stays open: does
 <code>{$ :a, :b, :c $}</code> say that the three are different things?
-Suppose <code>:a</code> and <code>:b</code> later turn out to be the same
-person. Does the set have two members or three? If the names are taken as
-distinct, the set has three and can be counted, but merging two sets (union)
-or finding their common members (intersection) needs to know which names are
-the same. If not, union is safe but counting is not.
+Suppose <code>:a</code> and <code>:b</code> turn out to be the same person.
+If the names are taken as distinct, the set has three members and can be
+counted, but merging two sets (union) or finding their common members
+(intersection) needs to know which names are the same. If not, union is safe
+but counting is not: in cwm&#8217;s equality-aware mode, learning that two
+names are equal would &ldquo;in some cases reduce the number of members of a
+set&rdquo;. A set of three becomes a set of two.
 </p>
 
-<h2 id="sec-43-4">43.4 Why an unfinished note is worth a chapter</h2>
+<h2 id="sec-43-4">43.4 Forced choices and matters of taste</h2>
 
 <p>
-Little here is final: the set syntax is a current choice, and a section of
-loose material is headed simply as fodder. <a class="x-ref" href="21-write-specification.html">Chapter 21</a> asks a <a class="gl-ref" href="../glossary.html#specification">specification</a> to
-state which decisions are arbitrary. In finished documents those choices have
-hardened; here they are still soft, and one can see which were forced, as when
-a parser cannot tell a list from a set in time, and which were taste.
+Here the choices are still soft, so one can see which were forced. Take
+Sandro Hawke&#8217;s idea: make sets and formulae the same thing, since a
+formula is just a set of statements. Berners-Lee finds it &ldquo;inherently
+appealing in its symmetry&rdquo;. But N3 statements have no opening mark, and
+<code>{ :x }</code> is already valid N3, a formula holding a statement with no
+triples, so the parser could not tell it from a one-member set. Taste lost to
+the parser. As for traversal, English, like many systems including the Web,
+&ldquo;is optimized for forward traversal&rdquo;: links point one way.
 </p>
 
 <div class="since">
@@ -392,20 +400,20 @@ still not a set, but added no set syntax or semantics.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The notation under design is <a class="x-ref" href="42-notation3.html">Chapter 42</a>, and the extensions later wanted are
-<a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>. The advice to record which decisions are arbitrary is <a class="x-ref" href="21-write-specification.html">Chapter 21</a>,
-and the test that sorts arbitrary from architectural is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The
+The notation under design is <a class="x-ref" href="42-notation3.html">Chapter 42</a>; later extensions are <a class="x-ref" href="47-changes-needed-rdf-core-2010.html">Chapter 47</a>.
+Recording which decisions are arbitrary is <a class="x-ref" href="21-write-specification.html">Chapter 21</a>&#8217;s advice, and the
+test that sorts arbitrary from architectural is <a class="x-ref" href="16-evolvability.html">Chapter 16</a>. The
 <a class="gl-ref" href="../glossary.html#reification">reification</a> the set proposal needs is <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">43.1</span>
-Familiarity is treated as a design property, as with the dot in
-<code>x.email</code>, borrowed from Python and C++. Name a syntax you find natural,
-identify what it borrows from, and say what that borrowing cost.</p>
+The dot in <code>x.email</code> is borrowed from Python and C++. Name a
+syntax you find natural, what it borrows from, and what that borrowing
+cost.</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.2</span>
@@ -414,13 +422,18 @@ syntaxes. Which reads better, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.3</span>
-Your system stores an unordered collection in an ordered structure. Which of
-the three costs are you paying, and which have you noticed?</p>
+A mailing list is stored as an ordered list. Which of the three costs shows up
+first, and how?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.4</span>
 Of the set syntaxes in <a class="x-ref" href="#sec-43-3">section 43.3</a>, which choice was forced by the parser and
 which was a matter of taste?</p>
+</div>
+<div class="question">
+<p><span class="question-number">43.5</span>
+Web links point one way. Name a task that needs backward links, and say how
+sites get round their absence.</p>
 </div>
 </details>
 

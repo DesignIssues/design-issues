@@ -63,9 +63,11 @@ than one central <a class="gl-ref" href="../glossary.html#server">server</a>.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in October 2021, this short note adds the last missing piece to the
-architecture of Volume VI. Data can be read, written and arranged. What
-remains is telling the other reader that it changed.
+Two people share a shopping list stored in a Solid <a class="gl-ref" href="../glossary.html#pod">pod</a>. One adds bread. How
+does the other&#8217;s screen find out? In 2021 Solid&#8217;s answer was a
+one-word message, &lsquo;PING&rsquo;, after which the app downloaded the
+whole list again. This short note asks for something better: send the change
+itself.
 </p>
 <blockquote>
 Live update turns what might have been once a read-only web and is now with
@@ -78,8 +80,7 @@ live-read-write web
 <h2 id="sec-58-1">58.1 Why not just ask again</h2>
 
 <p>
-When one person changes a list stored in a Solid <a class="gl-ref" href="../glossary.html#pod">Pod</a>, how does another
-person&#8217;s screen find out? The simplest answer is <em>polling</em>: the
+The simplest way for the other screen to find out is <em>polling</em>: the
 application asks the server &ldquo;has it changed?&rdquo; every few
 seconds.
 </p>
@@ -134,12 +135,11 @@ basic but effective.
 </p>
 
 <p>
-In 2021 the server sends only a bare &lsquo;PING&rsquo;
-notification that the resource has changed, and the application then fetches
-the whole resource again. He wants the server instead to send a PATCH, a
-message carrying only the change, to reduce both the data sent (the
-bandwidth) and the number of round trips, a round trip being a request and its
-reply.
+But the server sends only the bare &lsquo;PING&rsquo;, and the application
+then fetches the whole resource again. He wants it instead to send a PATCH,
+a message carrying only the change, to reduce both the data sent (the
+bandwidth) and the number of round trips, a round trip being a request and
+its reply.
 </p>
 
 <figure id="fig-58-2">
@@ -196,7 +196,7 @@ change. A patch can also be stored and applied later, which makes offline work
 possible (section 58.5).</figcaption>
 </figure>
 
-<h2 id="sec-58-2">58.2 Beyond editing documents</h2>
+<h2 id="sec-58-2">58.2 Not just documents: maps, lists, calendars</h2>
 
 <p>
 Collaborative editing is the obvious application and the note says so. Then it
@@ -213,15 +213,17 @@ could inspire many moore things than editing documents.
 
 <p>
 He adds people wrestling over where an event should go in a calendar, each
-using a different calendar program. The shopping list is the example worth
-keeping: not a co-authored document but a small piece of shared state, wrong
-the moment it is stale.
+using a different calendar program, kept in step because they share
+the CalDAV protocol. The shopping list is not a co-authored document but a small piece
+of shared state, wrong the moment it is stale.
 </p>
 
-<h2 id="sec-58-3">58.3 Notification is a spectrum</h2>
+<h2 id="sec-58-3">58.3 How fast is live?</h2>
 
 <p>
-A short passage places the mechanism in a wider family:
+He sets the target at the fast end, &ldquo;ideally of the order of
+100ms&rdquo;. Why not use email? A short passage places the mechanism in a
+wider family:
 </p>
 
 <table>
@@ -233,10 +235,9 @@ A short passage places the mechanism in a wider family:
 </table>
 
 <p>
-Each step down is slower but can reach someone who is not online right now.
-He sets the target at the fast end, ideally of the order of 100 milliseconds,
-and notes that one could imagine email carrying aggregated heaps of update
-messages. <a class="x-ref" href="64-feeds-blogs-podcasts-like.html">Chapter 64</a>, on feeds, blogs and podcasts, takes up the slow end.
+One could imagine email carrying &ldquo;aggregated heaps&rdquo; of update
+messages, he allows, but that belongs to the slow end, which <a class="x-ref" href="64-feeds-blogs-podcasts-like.html">Chapter 64</a> takes
+up.
 </p>
 
 <h2 id="sec-58-4">58.4 The developer should not have to think about it</h2>
@@ -254,9 +255,10 @@ turn it on, that is ideal.
 
 <p>
 He describes two ways of doing it. Solid&#8217;s own interface library,
-solid-ui, builds the ability to refresh into each widget. React, a widely used interface library from Facebook, has the
-developer write a function from data to interface, and re-runs that function
-whenever the data changes.
+solid-ui, builds the ability to refresh into each widget. React, a widely
+used interface library from Facebook, has the developer write a function from
+data to interface, and re-runs it whenever the data changes, building a whole
+new interface tree; only the differences are then made on screen.
 </p>
 
 <p>
@@ -317,15 +319,12 @@ The framework re-runs one function on the new data, so there is no update
 logic to get wrong.</figcaption>
 </figure>
 
-<h2 id="sec-58-5">58.5 What it points towards</h2>
+<h2 id="sec-58-5">58.5 Patches, peers and working offline</h2>
 
 <p>
 The conclusion names three improvements: efficiency, topology and offline
-work.
-</p>
-
-<p>
-The first is topology, the shape of who talks to whom. Today it is hub and
+work. Efficiency was 58.1&#8217;s patch. The second is topology, the shape
+of who talks to whom. Today it is hub and
 spoke: a server in the middle, clients around it. He asks for
 topologies other than hub and spoke; one possibility, not named in the note,
 is devices updating one another directly.
@@ -370,7 +369,7 @@ is devices updating one another directly.
   <text x="540" y="118" class="t-sm" text-anchor="middle">each copy merges</text>
   <text x="540" y="133" class="t-sm" text-anchor="middle">others&#8217; changes</text>
   <text x="540" y="272" class="t-sm" text-anchor="middle">Devices update one another, and</text>
-  <text x="540" y="288" class="t-sm" text-anchor="middle">merge (CRDTs) after being offline.</text>
+  <text x="540" y="288" class="t-sm" text-anchor="middle">merge after being offline.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 58.4</span>
 Today every update passes through one server. The right-hand picture is one
@@ -378,17 +377,18 @@ possible alternative; the note does not specify a design.</figcaption>
 </figure>
 
 <p>
-The second is offline operation. Sending the change rather than a notice, as
-<a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a> argued, lets a client work while disconnected and reconcile
-afterwards. He names Conflict-free Replicated Data Types (CRDTs) for this: a
-way of recording changes so that copies edited separately can always be
-merged without a conflict.
+The third is offline operation. Patches, he says, would connect Solid to
+Conflict-free Replicated Data Types (CRDTs), a way of recording changes so
+that copies edited separately can be merged without conflict, and provide
+offline and &ldquo;local first&rdquo; working. Sending changes rather than
+states is <a class="x-ref" href="45-rdf-diff-problem.html">Chapter 45</a>&#8217;s theme.
 </p>
 
 <p>
-He closes by saying the current functionality already gives a lot of value:
-enough for a chat application, a shared notepad, and two maps that move
-together.
+The current protocol, he says, already gives a lot of value: enough for
+Solid&#8217;s chat and for shared real-time notepads. With patches the same
+shopping list could, for example, be edited on a train with no signal and
+merged on arrival.
 </p>
 
 <div class="since">
@@ -417,8 +417,9 @@ data is <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">58.1</span>
-A shared shopping list has 200 items and Bob ticks one. Under
-ping-then-reload, what travels over the network? Under a patch?</p>
+A shared shopping list has 2,000 items and Bob adds one. Under
+ping-then-reload, what travels over the network? Under a patch? And what does
+a redraw-everything framework do with the result?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.2</span>
@@ -427,8 +428,8 @@ rather than documents.</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.3</span>
-With the shopping list at 2,000 items, Bob adds one. What does a
-redraw-everything approach do, and why might it be slow?</p>
+An app polls every 5 seconds. On average, how stale is what it shows, and how
+many requests a day is that?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.4</span>

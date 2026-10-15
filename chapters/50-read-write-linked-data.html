@@ -62,9 +62,14 @@ document ready to fill.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-<a class="x-ref" href="49-linked-data.html">Chapter 49</a> said how to publish data so others can read it. This note, whose
-status line reads &ldquo;Not finished at all&rdquo;, asks how they write it
-back. The goal is stated at the outset and is larger than the protocol:
+Shared calendars, the note observes, are &ldquo;silos within the domain of
+calendaring&rdquo;, though they have &ldquo;a classic burning need for
+multi-person collaboration&rdquo;: working out when several people are free
+is a classic challenge. Berners-Lee proposes letting applications write data
+on the Web as well as read it, and predicts that once storage is decoupled
+from applications, &ldquo;application growth becomes dramatic&rdquo;. The
+status line reads &ldquo;Not finished at all&rdquo;. The first paragraph
+states the goal:
 </p>
 <blockquote>
 The result is that storage becomes a commodity, independent of the application
@@ -73,15 +78,18 @@ running on it.
 </blockquote>
 <p>
 A commodity is interchangeable, like electricity from a socket: any
-application could use any provider&#8217;s storage. He takes the case for a
-writable Web as made elsewhere, in <cite>Weaving the Web</cite> and on the Read-Write Web blog.
+application could use any provider&#8217;s storage.
 </p>
 </div>
 
-<h2 id="sec-50-1">50.1 The maxim</h2>
+<h2 id="sec-50-1">50.1 Editing where the information is</h2>
 
 <p>
-The motivation is given as a principle about where editing should happen:
+Berners-Lee hopes not to have to argue that the Web should be read-write;
+that has been done, he says, from <cite>Weaving the Web</cite> to the
+Read-Write Web blog. Then he adds: &ldquo;I actually realize that in 20 year
+of writing these articles, I haven&#8217;t written a separate page on that
+topic!&rdquo; What he offers instead is a maxim:
 </p>
 
 <blockquote>
@@ -92,26 +100,20 @@ to do at that place.
 </blockquote>
 
 <p>
-Not in an administrative interface, not by filing a request: at the place
-where the information is, by the person entitled to change it. The original
-Web was built as a collaborative space. Berners-Lee&#8217;s word for the
-ambition is intercreative, which he marks, in jest, with a trademark sign.
+The Web was built as a collaborative space; Berners-Lee&#8217;s
+word for the ambition is intercreative, written with a trademark sign.
 </p>
 
-<h2 id="sec-50-2">50.2 Two ways to write</h2>
+<h2 id="sec-50-2">50.2 Send the change, not the file</h2>
 
 <p>
-Linked data lives in documents, each with an address (a <a class="gl-ref" href="../glossary.html#uri">URI</a>). A document
-holds triples: single statements of the form subject, property, value. The
-note&#8217;s motivating case is a shared calendar, which several people edit
-at once.
-</p>
-
-<p>
-There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh copy of
-the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a> saying the
-meeting is at 10:00, add one saying 11:00. (The note&#8217;s own example
-sets Joe&#8217;s age to 66.) <a class="x-ref" href="#fig-50-1">Figure 50.1</a> shows what goes wrong with PUT.
+Two people edit the same calendar entry at once. The calendar is linked
+data: a document with a <a class="gl-ref" href="../glossary.html#uri">URI</a>, holding triples, statements of the form subject,
+property, value. There are two ways to change it. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh
+copy of the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a>
+saying the meeting is at 10:00, add one saying 11:00. The note does not spell
+out the danger of PUT shown in <a class="x-ref" href="#fig-50-1">Figure 50.1</a>, but it is why the 409 rule below
+matters.
 </p>
 
 <figure id="fig-50-1">
@@ -177,8 +179,15 @@ erases the earlier. Each server reply is a plain success.</figcaption>
 
 <p>
 The note&#8217;s patch is written in <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update, the editing half of the
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> query language, and sent by HTTP <a class="gl-ref" href="../glossary.html#post">POST</a> to the document&#8217;s own URI. A
-typical patch is a DELETE followed by an INSERT.
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> query language, and sent by HTTP <a class="gl-ref" href="../glossary.html#post">POST</a> to the document&#8217;s own URI.
+Its one-line <code>curl</code> example, which sets Joe&#8217;s age to 66, sends:
+</p>
+
+<pre><code>INSERT DATA { &lt;http://dig.csail.xvm.mit.edu/2007/wiki/people/JoeLambda#JL&gt;
+              &lt;http://xmlns.com/foaf/0.1/age&gt; 66 }</code></pre>
+
+<p>
+A typical patch is a DELETE followed by an INSERT.
 </p>
 
 <table>
@@ -277,23 +286,23 @@ document (in RDF/XML or N3) which contains zero triples.
 </blockquote>
 
 <p>
-The real HTTP code for not found is 404; 400 means Bad
-Request. 200 OK is the ordinary success reply. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#n3">N3</a> are two
-ways of writing triples down, one in XML and one in a terser text notation.
+The real code for not found is 404; 400 means Bad Request. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#n3">N3</a>
+are two notations for triples.
 </p>
 
 <p>
 Every address is then a document that says nothing. A client can read, add
 a statement and write back, never distinguishing creation from modification:
-a wiki&#8217;s blank page, for data. The cost is that a
-mistyped address silently becomes a new document, and a crawler cannot tell a
-real page from an empty one.
+a wiki&#8217;s blank page, for data.
 </p>
 
-<h2 id="sec-50-4">50.4 The header with a history</h2>
+<h2 id="sec-50-4">50.4 A Microsoft header, reused</h2>
 
 <p>
-Every HTTP reply begins with <a class="gl-ref" href="../glossary.html#header">header</a> lines: labelled notes the client reads
+The <a class="gl-ref" href="../glossary.html#header">header</a> that tells clients a server accepts edits begins with MS, and
+Berners-Lee&#8217;s only comment on the letters is: &ldquo;Perhaps the MS
+stands for &lsquo;modification service&rsquo;.&rdquo; The history is in a
+footnote. Every HTTP reply begins with header lines: labelled notes the client reads
 before the content. A server must say in one of them that it accepts writes,
 and a footnote explains the header used. Microsoft first built a proprietary
 write-back protocol, the &ldquo;Microsoft Frontpage Extensions&rdquo;, then
@@ -315,19 +324,18 @@ advertise SPARQL there too.
 </table>
 
 <p>
-On the letters, Berners-Lee writes only: &ldquo;Perhaps the MS stands for
-&lsquo;modification service&rsquo;.&rdquo; A second footnote records that the
-content type was <code>application/sparql-query</code> until 2013, and changed
+A second footnote records that the content type was <code>application/sparql-query</code> until 2013, and changed
 as the code in use changed to track the <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> Platform (LDP) work. A
 liberal server, it adds, accepts both types.
 </p>
 
-<h2 id="sec-50-5">50.5 What is deliberately left out</h2>
+<h2 id="sec-50-5">50.5 Who may write: deferred</h2>
 
 <p>
-The note does not deal with database-like storage interfaces, atomic transactions, or
-fine-grained <a class="gl-ref" href="../glossary.html#access-control">access control</a>. And it is explicit that a space anyone may write
-to is not what most applications want:
+The note does not deal with database-like storage interfaces, atomic
+transactions, or fine-grained <a class="gl-ref" href="../glossary.html#access-control">access control</a>. Its conclusion says read-write
+linked data comes &ldquo;easily&rdquo;, &ldquo;with a little glue from the
+reuse of existing HTTP headers&rdquo;, and then defers a large question:
 </p>
 
 <blockquote>
@@ -338,9 +346,9 @@ access control.
 </blockquote>
 
 <p>
-That extension is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>. The order is writing first, then who may
-write: the shared calendar starts as a page anyone may add an entry to, and
-restrictions are layered on afterwards.
+The note belongs to a series: later notes take up access control (Chapter
+54) and notification of changes (<a class="x-ref" href="58-live-data.html">Chapter 58</a>). Easy, says the conclusion; not
+finished at all, says the status line.
 </p>
 
 <div class="since">
@@ -354,9 +362,8 @@ note&#8217;s Followup cites a 2010 draft of the latter.</li>
 data over HTTP.</li>
 <li><strong><a class="gl-ref" href="../glossary.html#solid">Solid</a>.</strong> The Solid Protocol, built on LDP, is a
 <a class="gl-ref" href="../glossary.html#specification">specification</a> of the W3C Solid Community Group (version 0.9, 2021), not a W3C
-Recommendation. It standardised HTTP PATCH with an N3 Patch format; Solid
-servers commonly accept SPARQL Update as well. The note&#8217;s footnote
-anticipated such a patch language.</li>
+Recommendation. It standardised HTTP PATCH with an N3 Patch format, the
+kind of patch language the note&#8217;s footnote anticipated.</li>
 </ul>
 </div>
 

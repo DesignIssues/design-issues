@@ -52,28 +52,31 @@ a Design Issues note by Tim Berners-Lee, 2017.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-<a class="gl-ref" href="../glossary.html#net-neutrality">Net neutrality</a> is &ldquo;the principle that internet service providers (ISPs)
-treat all traffic equally&rdquo;: an <a class="gl-ref" href="../glossary.html#isp">ISP</a> must not block sites, slow them
-down, or charge them to go faster. Berners-Lee wrote this as the US regulator
-was about to drop those rules. Keeping the carrier out of the content business,
-he argues, keeps both markets competitive.
+Days before the US regulator voted to drop its <a class="gl-ref" href="../glossary.html#net-neutrality">net neutrality</a> rules,
+Berners-Lee warned that without them internet providers could &ldquo;decide
+which companies succeed online, which voices are heard &mdash; and which are
+silenced&rdquo;. He needed no one&#8217;s permission to launch the Web in 1989.
+Keeping carriers out of content, he argues, keeps competitive both the
+market for connections and the market for websites.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is not a design note but a call to action, dated 10 December 2017, in the
-days before the US Federal Communications Commission (FCC) voted on 14 December
-to remove the rules it defends. Should the company that carries a reader&#8217;s data be allowed
+This is not a design note but a call to action, dated 10 December 2017, before
+the US Federal Communications Commission (FCC) voted on 14 December to remove
+the rules it defends. Should the company that carries a reader&#8217;s data be allowed
 to decide which sites reach the reader, and how fast?
 </p>
 </div>
 
-<h2 id="sec-78-1">78.1 The personal argument</h2>
+<h2 id="sec-78-1">78.1 No fee, no permission</h2>
 
 <p>
-Berners-Lee makes the case from his own experience:
+Net neutrality is &ldquo;the principle that internet service providers (ISPs)
+treat all traffic equally&rdquo;: an <a class="gl-ref" href="../glossary.html#isp">ISP</a> must not block sites, slow them down,
+or charge them to go faster. Berners-Lee makes the case from experience:
 </p>
 
 <blockquote>
@@ -162,7 +165,7 @@ readers, and how fast. Figure 25.3 shows the same rule from the users&#8217;
 side.</figcaption>
 </figure>
 
-<h2 id="sec-78-2">78.2 The architectural argument</h2>
+<h2 id="sec-78-2">78.2 Two markets, kept apart</h2>
 
 <p>
 The core of the note is about markets:
@@ -179,6 +182,9 @@ and the content — competition in both markets will suffer.
 <p>
 Connectivity is what a customer pays an ISP for; content is what the customer
 reaches through it. Under the cable television model one firm controls both.
+Other countries keep the markets separate, and if the US does not, he warns,
+&ldquo;America will decline as the world&#8217;s chief digital
+innovator&rdquo;.
 </p>
 
 <figure id="fig-78-2">
@@ -215,25 +221,26 @@ reaches through it. Under the cable television model one firm controls both.
   <text x="540" y="230" class="t-sm t-it" text-anchor="middle">the old cable television model</text>
 </svg>
 <figcaption><span class="fig-label">Figure 78.2</span>
-The argument is about market structure, not fairness: two competing markets
-beat one where the carrier picks the winners.</figcaption>
+The core argument is about market structure: two competing markets beat one
+where the carrier picks the winners.</figcaption>
 </figure>
 
 <p>
-The note names three things the FCC told ISPs they could not do:
-&ldquo;blocking content, throttling site speed, or charging for content to be
+The note says that &ldquo;under both Republican and Democratic
+leadership&rdquo; the FCC told ISPs they could not engage in &ldquo;blocking
+content, throttling site speed, or charging for content to be
 prioritised&rdquo;.
 </p>
 
 <table>
-<tr><th>Practice</th><th>What the ISP does</th><th>Who loses</th></tr>
-<tr><td>Blocking</td><td>Refuses to carry a site</td><td>The site and its readers</td></tr>
-<tr><td>Throttling</td><td>Deliberately slows a site</td><td>The site, which looks broken</td></tr>
-<tr><td>Paid prioritisation (&ldquo;fast lane&rdquo;)</td><td>Speeds up sites that pay</td><td>Sites that cannot pay, usually the newest</td></tr>
-<tr><td>Zero-rating (not in the note)</td><td>Data from favoured services does not count against the user&#8217;s monthly allowance</td><td>Rivals, which cost more to use</td></tr>
+<tr><th>Practice</th><th>What the ISP does</th></tr>
+<tr><td>Blocking</td><td>Refuses to carry a site</td></tr>
+<tr><td>Throttling</td><td>Deliberately slows a site</td></tr>
+<tr><td>Paid prioritisation (&ldquo;fast lane&rdquo;)</td><td>Speeds up sites that pay</td></tr>
+<tr><td>Zero-rating (not in the note)</td><td>Exempts favoured services from the user&#8217;s data allowance</td></tr>
 </table>
 
-<h2 id="sec-78-3">78.3 Why it was not needed at first</h2>
+<h2 id="sec-78-3">78.3 Neutral by accident</h2>
 
 <p>
 The note explains why the rule came late:
@@ -247,13 +254,16 @@ neutrality was a fact of life.
 </blockquote>
 
 <p>
-Neutrality was an accident of slow hardware. As technology improved and content grew
-more valuable, carriers gained the ability and the incentive to take a cut.
+Neutrality was an accident of slow hardware. Faster machines and more valuable
+content gave ISPs the ability and the incentive to discriminate &ldquo;to get
+a cut of the spoils&rdquo;. Cases followed: in 2005 Madison River, a small
+North Carolina carrier, settled with the FCC after blocking Vonage&#8217;s
+internet phone calls, and in 2008 the FCC found that Comcast had interfered
+with BitTorrent file-sharing traffic.
 </p>
 
 <p>
-Once carriers could favour some sites, neutrality would last only if someone
-wrote it down as a rule. <a class="x-ref" href="#fig-78-3">Figure 78.3</a> shows who did, and when.
+<a class="x-ref" href="#fig-78-3">Figure 78.3</a> shows how the accident became a rule.
 </p>
 
 <figure id="fig-78-3">
@@ -304,10 +314,10 @@ First a technical accident, then a rule, then a political football in the
 United States. Europe (green) stayed put. The axis is broken.</figcaption>
 </figure>
 
-<h2 id="sec-78-4">78.4 What the argument asks for</h2>
+<h2 id="sec-78-4">78.4 What he wants</h2>
 
 <p>
-His statement of what he wants is the clearest thing in the piece:
+It is the clearest passage in the piece:
 </p>
 
 <blockquote>
@@ -324,10 +334,12 @@ The instruction that follows is short:
 &ldquo;act now. Not tomorrow, not next week. Now.&rdquo;
 </p>
 
-<h2 id="sec-78-5">78.5 The tactical note</h2>
+<h2 id="sec-78-5">78.5 Votes, not protocols</h2>
 
 <p>
-The last section, unusually, is about lobbying:
+The last section, unusually, is about lobbying. He had been to Washington to
+meet &ldquo;the FCC leadership and almost a dozen members of Congress from both
+parties&rdquo;:
 </p>
 
 <blockquote>
@@ -337,57 +349,49 @@ But they all understand how many votes they need to stay in office.
 </blockquote>
 
 <p>
-Some politicians understood the issue and some did not, but all of them respond
-to voters. So the note asks readers to contact their representatives. <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a> argued that every system has a technical protocol and a social one.
-This is the same author operating on the social protocol directly, because the
-technical one has no defence against a change in the law.
+So the note asks readers to press Congress to call on FCC Chairman Ajit Pai
+to suspend the vote.
+<a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a> argued that every system has a technical protocol and a social one;
+here the same author works on the social protocol directly.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The vote went the other way.</strong> The FCC voted to repeal the
-rules on 14 December 2017 (effective June 2018). Several US states then passed neutrality laws of their own,
-California&#8217;s in 2018.</li>
-<li><strong>The rules came back and went again.</strong> They were readopted in
-April 2024 and then struck down by the US Court of Appeals for the Sixth Circuit in January 2025, leaving the question
-open.</li>
+rules on 14 December 2017 (effective June 2018). Several states, including California in 2018, passed laws of their own.</li>
 <li><strong>Europe held the line.</strong> The European Union&#8217;s open internet
 regulation has applied since 2016 and was not repealed, so the separation of
-the two markets described in <a class="x-ref" href="#fig-78-2">Figure 78.2</a> persists there.</li>
+the two markets in <a class="x-ref" href="#fig-78-2">Figure 78.2</a> persists there.</li>
+<li><strong>The rules came back and went again.</strong> They were readopted in
+April 2024 and struck down by the US Court of Appeals for the Sixth Circuit in
+January 2025, leaving no federal US neutrality rules. The question he asked
+readers to act on is still open.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Decentralisation is <a class="x-ref" href="01-principles-design.html#sec-1-5">section 1.5</a>; linking without permission is <a class="x-ref" href="76-myths-about-links.html">Chapter 76</a>.
+Linking without permission is <a class="x-ref" href="76-myths-about-links.html">Chapter 76</a>.
 The network layer&#8217;s obligations are <a class="x-ref" href="71-no-snooping.html">Chapter 71</a>. Openness is <a class="x-ref" href="25-many-meanings-open.html">Chapter 25</a>,
 with net neutrality in <a class="x-ref" href="25-many-meanings-open.html#sec-25-7">section 25.7</a>. The social protocol is <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">2</span></summary>
 <div class="question">
 <p><span class="question-number">78.1</span>
-Neutrality once held only because ISPs&#8217; computers were too slow to
-discriminate. Why did that stop being enough?</p>
-</div>
-<div class="question">
-<p><span class="question-number">78.2</span>
-Zero-rating favours some content without blocking any. Does it violate the
+Zero-rating favours some content without blocking or slowing any. Using the
+table in 78.2, explain how it can still hurt a newcomer. Does it violate the
 principle as argued here?</p>
 </div>
 <div class="question">
-<p><span class="question-number">78.3</span>
-Using the table in 78.2, explain why zero-rating can hurt a newcomer without
-blocking or slowing anything.</p>
-</div>
-<div class="question">
-<p><span class="question-number">78.4</span>
-The Web needed no permission in 1989 because no one could stop it. Which line
-of <a class="x-ref" href="#fig-78-3">Figure 78.3</a> shows when that stopped being true, and why?</p>
+<p><span class="question-number">78.2</span>
+If carriers may not profit from content, what keeps them investing in faster
+connections? The note says ISPs should &ldquo;focus on providing the best
+connectivity&rdquo;; argue from there.</p>
 </div>
 </details>
 

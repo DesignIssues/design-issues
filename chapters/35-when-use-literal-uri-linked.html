@@ -61,26 +61,22 @@ about the name itself, quote it, or a later merge of datasets will silently rewr
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The shortest note in Volume IV, dated 5 November 2017, marked a first draft,
-and by its author&#8217;s own account a small point that sometimes needs
-careful explanation.
+Joe states in his profile that he would rather be known by his university
+address. A system later learns that his two addresses name one person and
+merges the records. Written the wrong way, his statement now says Joe prefers
+to be known as Joe. No error is reported; the preference has gone. Berners-Lee
+wrote a 2017 note to prevent this slip, &ldquo;a little point which sometimes
+needs careful explanation&rdquo;.
 </p>
-<blockquote>
-When you use RDF, we get used to using URIs a symbols so much that we can slip
-up and accidentally use it that way on one of the very rare occasions on which
-we are not talking about the thing the symbol represents, we are talking about
-the URI itself as a string.
-<cite>When use a literal for a URI in Linked Data, 2017</cite>
-</blockquote>
 
 </div>
 
-<h2 id="sec-35-1">35.1 The rule</h2>
+<h2 id="sec-35-1">35.1 Brackets name a thing, quotes hold text</h2>
 
 <p>
-Linked Data is <a class="gl-ref" href="../glossary.html#rdf">RDF</a> published on the Web so that datasets can point into one
-another (<a class="x-ref" href="49-linked-data.html">Chapter 49</a>). RDF describes the world as statements, each a <a class="gl-ref" href="../glossary.html#triple">triple</a>:
-subject, property, value. Turtle is a common way of writing those triples down. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
+Linked Data is <a class="gl-ref" href="../glossary.html#rdf">RDF</a> published so that datasets can point into one another
+(<a class="x-ref" href="49-linked-data.html">Chapter 49</a>). RDF describes the world as triples: subject, property, value,
+commonly written in Turtle. In Turtle a <a class="gl-ref" href="../glossary.html#uri">URI</a>
 in angle brackets is a symbol: it names a thing. A value in quotation marks is
 a literal: a piece of text, taken as it stands. Berners-Lee offers a mnemonic
 for the brackets:
@@ -98,7 +94,12 @@ identified by.
 <tr><td><code>"&#8230;"</code></td><td>the characters themselves</td><td><code>"https://uni.edu/students#JRMeadows"</code> is a 34-character string</td></tr>
 </table>
 
-<h2 id="sec-35-2">35.2 What goes wrong, exactly</h2>
+<p>
+Anyone who has inserted a row in a spreadsheet and found a typed note
+&ldquo;see B2&rdquo; still pointing at the old cell has met this problem.
+</p>
+
+<h2 id="sec-35-2">35.2 How a merge erases a preference</h2>
 
 <p>
 The note&#8217;s example builds up in four steps.
@@ -111,17 +112,13 @@ and says he is a person named Joe Meadows.</li>
 and says he is a student.</li>
 <li>Someone states that the two are the same, using the property
 <code>owl:sameAs</code>.</li>
-<li>A system may now normalise: pick one name and use it everywhere, so the
-data is &ldquo;smushed together&rdquo;.</li>
+<li>A system may now use one name everywhere: the data is &ldquo;smushed
+together&rdquo;.</li>
 </ol>
 
 <p>
-The figures use Turtle shorthand. A prefix stands for the start of a URI, so
-<code>ex:Joe</code> is short for <code>&lt;https://example.com/people#Joe&gt;</code>;
-<code>foaf:</code> is a common <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for people; and <code>a</code> means
-&ldquo;is a&rdquo;. <code>uni:</code>, <code>contact:</code> and <code>owl:</code>
-work the same way; <code>owl:sameAs</code> is the standard &lsquo;same as&rsquo;
-property.
+In the figures, <code>ex:Joe</code> is short for the full example.com address,
+and <code>a</code> means &ldquo;is a&rdquo;.
 </p>
 
 <figure id="fig-35-1">
@@ -217,23 +214,35 @@ name. That line is about a name, not about Joe, so the name must be quoted.
   <text x="540" y="264" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">preference survives the merge.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 35.2</span>
-The failure is silent. Nothing rejects the wrong version; after the merge it
-just says Joe prefers the name he already has.</figcaption>
+The failure is silent. Before the merge, both versions look reasonable; after
+it, the wrong one says Joe prefers the name he already has.</figcaption>
 </figure>
 
-<h2 id="sec-35-3">35.3 Why this is not a quirk of one notation</h2>
+<p>
+The slip is easy because brackets are what RDF writers nearly always type:
+</p>
+
+<blockquote>
+When you use RDF, we get used to using URIs a symbols so much that we can slip
+up and accidentally use it that way on one of the very rare occasions on which
+we are not talking about the thing the symbol represents, we are talking about
+the URI itself as a string.
+<cite>When use a literal for a URI in Linked Data, 2017</cite>
+</blockquote>
+
+<h2 id="sec-35-3">35.3 Paris and &ldquo;Paris&rdquo;</h2>
 
 <p>
 The mistake is a confusion of use and mention. Paris is a city; &ldquo;Paris&rdquo;
-has five letters. The first sentence uses the word to talk about a place; the
-second mentions the word to talk about the word. Angle brackets and quotation
-marks make that choice explicit.
+has five letters. The first sentence uses the word; the second mentions it.
+Angle brackets and quotation marks make that choice explicit.
 </p>
 
 <p>
 It bites in RDF because the system may substitute equals for equals. Any
 system that rewrites identifiers will rewrite a mentioned name along with the
-used ones unless the format tells them apart. Many everyday tools do:
+used ones unless the format tells them apart. Many everyday tools
+draw the same line:
 </p>
 
 <table>
@@ -244,18 +253,18 @@ used ones unless the format tells them apart. Many everyday tools do:
 </table>
 
 <p>
-Where the format cannot record the difference, the rare mention is lost.
+Where the format cannot record the difference, the rare mention is lost. The
+note ends: &ldquo;Hence this whole DesignIssues note just to make the point.&rdquo;
 </p>
 
 <div class="since">
 <h3>What was already in place</h3>
 <ul>
 <li><strong>The notation was already standard.</strong> RDF 1.1 Turtle became
-a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014, so the bracket-versus-quote syntax the
-note relies on was fixed three years before it was written.</li>
-<li><strong>So was the merge.</strong> <code>owl:sameAs</code>, the
-&ldquo;same as&rdquo; statement that licenses smushing, comes from <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a W3C
-Recommendation since February 2004.</li>
+a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014.</li>
+<li><strong>So was the merge.</strong> <code>owl:sameAs</code>, which
+licenses smushing, comes from <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a W3C Recommendation since February
+2004.</li>
 </ul>
 </div>
 
@@ -273,14 +282,13 @@ mentioned rather than acted upon is the same requirement as <a class="x-ref" hre
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">35.1</span>
-State the use-mention distinction in one sentence, then find a place in an
-everyday tool, such as a spreadsheet or a contacts app, where it cannot be
-expressed.</p>
+The failure is silent. Design a check that would catch it, and say what it
+would need to know.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.2</span>
-The failure is silent. Design a check that would catch it, and say what it
-would need to know.</p>
+State the use-mention distinction in one sentence, then find a place in an
+everyday tool, such as a contacts app, where it cannot be expressed.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.3</span>
@@ -289,8 +297,9 @@ a name rather than use it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">35.4</span>
-Joe later changes his preference to a third URI. In the quoted version, what
-must he edit, and what would a merge do to it if he forgot the quotes?</p>
+A search engine indexes Joe&#8217;s profile and wants to show his preferred
+address as a clickable link. Should it treat the address as a symbol or a
+string, and what does the choice cost?</p>
 </div>
 </details>
 

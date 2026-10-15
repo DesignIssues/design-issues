@@ -52,27 +52,27 @@ a Design Issues note by Tim Berners-Lee, 2017.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The assistants people talk to are owned by the companies that sell them. They
-are pleasant, and they are not working for the person in the room.
+The assistants people talk to are owned by the companies that sell them. In
+the note&#8217;s words they &ldquo;all seemed to work for other people&rdquo;.
 </p>
 <p>
-This chapter is one of two stories in the collection; the other is <a class="x-ref" href="95-singularity-13-story-corporate-performance.html">Chapter 95</a>.
-It is a short scene in which a man talks to an assistant that does work for
-him, over breakfast and an exercise bicycle. Its argument is that an assistant
-which truly works for its user can be given all their data, and that is what makes it
-useful. It was written in 2017, and parts of it describe things that did not
-exist until about five years later.
+In 2017 Berners-Lee wrote a morning scene in which an assistant reads a
+chef&#8217;s dozen cookbooks and works out a recipe he never published. About
+five years later language models could do that. The other half of the scene,
+an assistant allowed to see all of Bob&#8217;s data because it works for Bob,
+is still not how assistants are offered. The chapter is about that half.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in 2017 and used in talks in 2019, the scene exists to make one
-architectural point vivid.
+Written in 2017 and used in talks in 2019, the scene makes one point:
+an assistant that works for its user can be trusted with all of that
+user&#8217;s data, and joined data is what makes it useful.
 </p>
 <p>
-The premise is stated in the first two sentences:
+The premise opens the note:
 </p>
 <blockquote>
 Bob was fed up with the AIs around him (Alexa, Siri and so on) who all seemed to
@@ -82,10 +82,31 @@ for Bob.
 </blockquote>
 </div>
 
-<h2 id="sec-93-1">93.1 The scene</h2>
+<h2 id="sec-93-1">93.1 One morning, seven services</h2>
 
 <p>
-In a few minutes Charlie covers a wide range, and the range is the argument.
+Bob is on his exercise bicycle when Charlie begins:
+</p>
+
+<blockquote>
+Good Morning, Bob. Good to see you on the exercise bike. Your fitness goals are
+on track. In fact because the meeting was moved do you want to stretch this to
+the full hour?
+<cite>Charlie works for Bob, 2017</cite>
+</blockquote>
+
+<p>
+Soon he has moved some of Bob&#8217;s money:
+</p>
+
+<blockquote>
+I just invested a little in one new start up, mainly because it will give you
+something else in common with your mother in law.
+<cite>Charlie works for Bob, 2017</cite>
+</blockquote>
+
+<p>
+The range is the argument:
 </p>
 
 <table>
@@ -176,10 +197,13 @@ Anyone&#8217;s assistant could do the first four steps; only one working for Bob
 can be trusted with the last.</figcaption>
 </figure>
 
-<h2 id="sec-93-2">93.2 The loop</h2>
+<h2 id="sec-93-2">93.2 Why Bob tells it everything</h2>
 
 <p>
-After the scene the note names the mechanism, a loop that feeds on trust.
+Facebook already draws insights about the likes and habits of its members, for
+Facebook. Charlie does the same for Bob, because &ldquo;Data is always more powerful when it is
+joined with other different data to give new insights.&rdquo; Bob allows the
+join because of a loop that feeds on trust.
 </p>
 
 <figure id="fig-93-2">
@@ -226,13 +250,7 @@ After the scene the note names the mechanism, a loop that feeds on trust.
 The loop only runs if the green box is true.</figcaption>
 </figure>
 
-<p>
-Joined data gives insights that separate data cannot; Facebook already
-draws such insights about its members&#8217; likes and habits for itself, and
-Charlie draws them on Bob&#8217;s behalf.
-</p>
-
-<h2 id="sec-93-3">93.3 The answer that is repeated</h2>
+<h2 id="sec-93-3">93.3 &ldquo;Who do you work for?&rdquo;, asked twice</h2>
 
 <p>
 The scene opens and closes with Bob asking Charlie who he works for. The first
@@ -252,7 +270,7 @@ program actually makes its choices. The last, in our view, is the hardest to
 provide and to check from outside.
 </p>
 
-<h2 id="sec-93-4">93.4 How Bob got his data</h2>
+<h2 id="sec-93-4">93.4 Three routes to Bob&#8217;s data</h2>
 
 <p>
 The note ends by asking the question the fiction skipped:
@@ -265,7 +283,9 @@ data?
 </blockquote>
 
 <p>
-It offers three routes. Anger: a backlash after Cambridge Analytica in which
+It offers three routes (this part speaks of a backlash after Cambridge Analytica,
+whose scandal broke in March 2018, so it was probably revised after 2017,
+perhaps for the 2019 talks). Anger: a backlash after Cambridge Analytica in which
 people demand their own data. Law: British banking already had <em>Open
 Banking</em>, rules letting customers take their banking data to other apps,
 and European rules, he says, basically call for what Charlie needs.
@@ -282,23 +302,15 @@ his.
 
 <p>
 The first two move data somebody else holds; the third means nobody else ever
-held it. Whichever route, the note ends with Bob empowered: free to share his data
+held it. Whichever route, the note ends with Bob free to share his data
 with whoever he likes, and to use any app on it, Charlie included.
-</p>
-
-<h2 id="sec-93-5">93.5 Why a story</h2>
-
-<p>
-<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> describes separating storage from applications; a few exchanges
-over an exercise bicycle make it concrete. Every detail crosses a boundary
-between services that today cannot see each other.
 </p>
 
 <figure id="fig-93-3">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig93-3-t fig93-3-d">
   <title id="fig93-3-t">Six silos, and one store</title>
-  <desc id="fig93-3-d">Left: six services held by six companies, unconnected.
+  <desc id="fig93-3-d">Left: six services held by six companies, each held separately.
   Right: the same six in one store of Bob's, which Charlie reads.</desc>
 
   <text x="170" y="24" class="t-caps" text-anchor="middle">today</text>
@@ -320,7 +332,7 @@ between services that today cannot see each other.
   <rect class="box-plain" x="230" y="126" width="96" height="52" rx="4"/>
   <text x="278" y="148" text-anchor="middle">Food</text>
   <text x="278" y="166" class="t-sm" text-anchor="middle">company F</text>
-  <text x="170" y="222" class="t-sm t-it" text-anchor="middle">none can see the others</text>
+  <text x="170" y="222" class="t-sm t-it" text-anchor="middle">each held separately</text>
 
   <path class="ln-dash" d="M 360 14 L 360 236"/>
 
@@ -360,25 +372,27 @@ Charlie&#8217;s usefulness depends on the join: on the right, one store holds
 all six and Bob decides who reads it.</figcaption>
 </figure>
 
+<p>
+The note could only imagine the conversation. Seven years later engineers gave
+a real language model a simulated Bob&#8217;s data and a consent switch;
+<a class="x-ref" href="94-charlie-works.html">Chapter 94</a> reports what came back.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The capability arrived and the arrangement did not.</strong>
-Assistants that can extrapolate a style and reason across documents became
-ordinary from 2022, hosted by the companies that already hold the data. A 2023
+Assistants that extrapolate a style became ordinary from 2022, hosted by
+companies that already hold the data. A 2023
 update to the note records Inflection AI&#8217;s Pi (May 2023): private
 conversation, but no access to the user&#8217;s personal data.</li>
-<li><strong>The architecture grew.</strong> The same update says Solid had gone
-from a project at MIT to a movement of new standards for personal data, with
-large corporations, governments and public-interest organisations starting to
-roll it out. It adds that Solid lets machine learning run over a set of pods
+<li><strong>The architecture grew.</strong> The same update says Solid had become
+a movement of new standards for personal data, which corporations and
+governments had started to roll out, and that Solid lets machine learning run over a set of pods
 while each individual&#8217;s privacy is preserved, the step <a class="x-ref" href="94-charlie-works.html">Chapter 94</a> takes.</li>
-<li><strong>The law was already in force.</strong> The European rules the note
-refers to are the General Data Protection Regulation (GDPR), which applied
-from May 2018 and includes a right to <em>data portability</em>: to receive
-one&#8217;s data in a form that can be taken to another service.</li>
-<li><strong>Charlie was built.</strong> Engineers attempted an implementation
-in late 2024, which is <a class="x-ref" href="94-charlie-works.html">Chapter 94</a>.</li>
+<li><strong>The law was already in force.</strong> The European rules are the
+General Data Protection Regulation (GDPR), applying from May 2018, with a right
+to <em>data portability</em>.</li>
 </ul>
 </div>
 
@@ -386,10 +400,9 @@ in late 2024, which is <a class="x-ref" href="94-charlie-works.html">Chapter 94<
 <h3>Connections</h3>
 <p>
 The duty this assistant owes is <a class="x-ref" href="92-beneficent-apps.html">Chapter 92</a>. The storage it reads is Chapter
-54, in Volume VI (<a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> and Solid), which begins at <a class="x-ref" href="49-linked-data.html">Chapter 49</a> with
-joining data for insight. The
-difficulty of getting wisdom from private data is <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>. The implementation is
-<a class="x-ref" href="94-charlie-works.html">Chapter 94</a>, and the scenario where the loop runs the other way is <a class="x-ref" href="95-singularity-13-story-corporate-performance.html">Chapter 95</a>.
+54, in Volume VI (<a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> and Solid). The difficulty of getting wisdom from private data is <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>. The implementation is
+<a class="x-ref" href="94-charlie-works.html">Chapter 94</a>. <a class="x-ref" href="95-singularity-13-story-corporate-performance.html">Chapter 95</a>, the collection&#8217;s other story, runs the loop the
+other way.
 </p>
 </div>
 
@@ -397,8 +410,8 @@ difficulty of getting wisdom from private data is <a class="x-ref" href="72-infe
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">93.1</span>
-List the services that hold the data Charlie uses in the scene. In your own
-life, how many of them could see each other today?</p>
+In your own life, how many of the services in the 93.1 table can see each
+other&#8217;s data today?</p>
 </div>
 <div class="question">
 <p><span class="question-number">93.2</span>
@@ -407,13 +420,14 @@ check yourself, and which would you have to take on trust?</p>
 </div>
 <div class="question">
 <p><span class="question-number">93.3</span>
-The loop compounds only if the first step holds. Describe what the same loop
-produces when the assistant works for someone else.</p>
+Describe what the loop of <a class="x-ref" href="#fig-93-2">Figure 93.2</a> produces when the assistant works for
+someone else.</p>
 </div>
 <div class="question">
 <p><span class="question-number">93.4</span>
-Of the three routes to Bob&#8217;s data (anger, law, architecture), which
-seems most likely to work, and why?</p>
+Charlie invests Bob&#8217;s money without asking, but asks him to check the
+birthday presents. Where would you draw the line between acting and asking,
+and why?</p>
 </div>
 </details>
 

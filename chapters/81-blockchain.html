@@ -52,18 +52,19 @@ a Design Issues note by Tim Berners-Lee, 2017-10-31.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A <a class="gl-ref" href="../glossary.html#blockchain">blockchain</a> is a shared ledger, copied to every participant. Mining spends
-computing power to add to it, and is paid in new coin. The note asks which part
-of such a system people mean, and concludes that blockchains are a poor general
-place for Web data.
+A <a class="gl-ref" href="../glossary.html#blockchain">blockchain</a> is a shared ledger, copied to every participant; mining adds to
+it and is paid in new coin. The note asks which part people mean. Its
+verdict: as a store for Web data, blockchains are too slow, too expensive and
+too public.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume VIII closes with a note from October 2017 that opens by refusing the
-question:
+Some hoped blockchains would end the Web&#8217;s dependence on a few huge
+platforms. Berners-Lee&#8217;s note tests that hope part by part, and opens by
+refusing the question:
 </p>
 <blockquote>
 What technical problem is there in the world in 2017 where someone has not asked
@@ -73,8 +74,7 @@ system you are talking about.
 <cite>Blockchain and the Web, 2017</cite>
 </blockquote>
 <p>
-Claiming no expertise, Berners-Lee separates the things one word names, as
-in <a class="x-ref" href="25-many-meanings-open.html">Chapter 25</a>.
+Claiming no expertise, he separates what one word names, as in <a class="x-ref" href="25-many-meanings-open.html">Chapter 25</a>.
 </p>
 </div>
 
@@ -83,7 +83,7 @@ in <a class="x-ref" href="25-many-meanings-open.html">Chapter 25</a>.
 <p>
 The ledger is a list of records in blocks, each linked to the one before;
 <em>mining</em> is the computing work that adds a block. The original Bitcoin
-system announced four things, and a cloud of further ideas.
+system offered four things, and a cloud of further ideas.
 </p>
 
 <figure id="fig-81-1">
@@ -105,7 +105,7 @@ system announced four things, and a cloud of further ideas.
   <text x="392" y="102" class="t-sm" style="fill:#1c5a7a">a payment method a browser could offer among others</text>
 
   <text x="24" y="138" class="t-sm">first-come first-served name allocation</text>
-  <text x="392" y="138" class="t-sm" style="fill:#1c5a7a">a rival to the naming system of Chapters 3 and 79</text>
+  <text x="392" y="138" class="t-sm" style="fill:#1c5a7a">an alternative to the names of Chapters 3 and 79</text>
 
   <text x="24" y="174" class="t-sm">a way to declare a public key</text>
   <text x="392" y="174" class="t-sm" style="fill:#1c5a7a">log in with a key pair the ledger vouches for</text>
@@ -114,15 +114,14 @@ system announced four things, and a cloud of further ideas.
   <text x="392" y="210" class="t-sm t-it" style="fill:#8a9a9a">it all depends which one is meant</text>
 </svg>
 <figcaption><span class="fig-label">Figure 81.1</span>
-Four parts and a cloud of further ideas, each meeting the Web in a different
-place.</figcaption>
+Ask &ldquo;will blockchain solve it?&rdquo; and the answer depends on which
+row is meant.</figcaption>
 </figure>
 
 <p>
-Notarising puts a <em><a class="gl-ref" href="../glossary.html#hash">hash</a></em> in the ledger: a short
-fingerprint of data that changes if the data changes at all, proving the data
-existed by that date. The parts depend on each other: the ledger cannot be taken without the
-currency (<a class="x-ref" href="#fig-81-2">Figure 81.2</a>).
+Notarising puts a <em><a class="gl-ref" href="../glossary.html#hash">hash</a></em> in the ledger: a short fingerprint that changes
+if the data changes at all, proving the data existed by that date. The ledger
+cannot be taken without the currency (<a class="x-ref" href="#fig-81-2">Figure 81.2</a>).
 </p>
 
 <figure id="fig-81-2">
@@ -179,23 +178,13 @@ the market stops paying for the electricity, the chain takes the dashed
 exit.</figcaption>
 </figure>
 
-<h2 id="sec-81-2">81.2 Two ironies</h2>
+<h2 id="sec-81-2">81.2 An open ledger for anonymous money</h2>
 
 <p>
-The first concerns openness:
-</p>
-
-<blockquote>
-The ledger system works and maintains its integrity only because of the complete
-openness of the blocks in the chain, and the fact that many systems were
-constantly checking it; and yet bitcoin in fact provided a way that value could
-be used anonymously for criminal purposes with impunity.
-<cite>Blockchain and the Web, 2017</cite>
-</blockquote>
-
-<p>
-A completely open record was used to hide who the participants were. The
-second is about cost: a system offered as a fast, light way to transfer
+The first irony concerns openness. The ledger keeps its integrity only through
+&ldquo;the complete openness of the blocks in the chain&rdquo; and constant
+checking, yet bitcoin &ldquo;provided a way that value could be used anonymously
+for criminal purposes with impunity.&rdquo; The second is about cost: a system offered as a fast, light way to transfer
 value runs, by design, on &ldquo;burning huge amounts of energy, which is not ecologically
 sustainable.&rdquo;
 </p>
@@ -214,33 +203,27 @@ timescale which is important to the parties.
 </blockquote>
 
 <p>
-Breaking <a class="gl-ref" href="../glossary.html#encryption">encryption</a> gets cheaper with time, while the published copy stays.
-Even unreadable data gives something away:
+Breaking <a class="gl-ref" href="../glossary.html#encryption">encryption</a> gets easier with time, while the published copy stays:
+&ldquo;all the stuff on the blockchain can be held encrypted by people just
+waiting for a time when they are able to decrypt&rdquo;, helped by &ldquo;faster
+computers, (not to mention quantum)&rdquo;. Even unreadable data gives something away:
 &ldquo;even if
 people can&#8217;t decrypt they see that you have put something there, which
 may already be revealing.&rdquo;
 </p>
 
-<h2 id="sec-81-4">81.4 Speculation, and an old chart</h2>
+<h2 id="sec-81-4">81.4 Why the price matters even when it should not</h2>
 
 <p>
-On value:
+For a remittance from the USA to Haiti, the price of a bitcoin barely matters:
+the sender need only &ldquo;own some Bitcoin for a minute between buying them in
+the US and selling them in Haiti.&rdquo;
 </p>
 
-<blockquote>
-To first order, for lots of operations transferring money between different
-currencies and countries, the value (say in USD) of a bitcoin is irrelevant. For
-those making a remittance, say of USD from the USA to (say) Haiti, all one need
-to do is own some Bitcoin for a minute between buying them in the US and selling
-them in Haiti.
-<cite>Blockchain and the Web, 2017</cite>
-</blockquote>
-
 <p>
-Beside the price chart the note places one of the NASDAQ technology-share
-index rising up to 1999, before the dot-com
-crash, when people bought at prices they imagined others would pay. Yet the
-price matters to the system:
+Beside the price chart the note sets the NASDAQ rising to 1999, when people
+bought at prices they imagined others would pay. Yet the price matters to the
+system:
 </p>
 
 <blockquote>
@@ -250,23 +233,26 @@ blockchain operating and ensure its integrity.
 </blockquote>
 
 <p>
-This is the loop of <a class="x-ref" href="#fig-81-2">Figure 81.2</a>.
+This is the loop of <a class="x-ref" href="#fig-81-2">Figure 81.2</a>, driven by guesswork: the
+coin&#8217;s market value is &ldquo;only the extent to which other people
+imagine other people imagine other people will value it in future.&rdquo;
 </p>
 
 <h2 id="sec-81-5">81.5 Re-centralisation through portals</h2>
 
 <p>
-If an application reaches the chain through an online service (an exchange or an online wallet website, say), so that the
-blockchain code runs on one of a few portals rather than the user&#8217;s
-computer, the system is not decentralised in effect: &ldquo;The monopoly
+If users reach the chain through a few online portals, such as exchanges or
+wallet websites, rather than running its code themselves, the system is not
+decentralised in effect: &ldquo;The monopoly
 portals are back in control.&rdquo;
 </p>
 
-<h2 id="sec-81-6">81.6 What stored data depends on</h2>
+<h2 id="sec-81-6">81.6 Who keeps stored data alive</h2>
 
 <p>
-On a blockchain everybody stores everything; on the Web each site stores its
-own. Either way, something must keep working (<a class="x-ref" href="#fig-81-3">Figure 81.3</a>).
+Storing data on a chain means &ldquo;connecting it to a financial system, whose
+continued functioning will be required to keep the data accessible.&rdquo; On a chain or
+on the Web, something must keep working (<a class="x-ref" href="#fig-81-3">Figure 81.3</a>).
 </p>
 
 <figure id="fig-81-3">
@@ -301,16 +287,18 @@ for with a community and an economy that nobody using it controls.</figcaption>
 
 <p>
 A web <a class="gl-ref" href="../glossary.html#server">server</a> lasts while someone pays for it, as AOL Hometown&#8217;s users
-learned when AOL closed it in 2008. Without miners, a chain has no new blocks and nobody
+learned when it closed in 2008. Without miners, a chain has no new blocks and nobody
 checks the old ones.
 </p>
 
 <h2 id="sec-81-7">81.7 Too slow, too expensive, too public</h2>
 
 <p>
-The note likens one chain for everyone to a single club with the same
-facilities and fee for all members; gamers, retailers and banks would each want
-their own.
+The note likens one chain for everyone to a single club with one fee. If gamers, retailers and banks share the
+Bitcoin chain, the banks will object to &ldquo;maintaining an infrastructure
+used mostly by gamers&rdquo;, and the gamers to &ldquo;paying transaction fees
+used by the banks&rdquo;. The note expects the banks to spin up a bank-only
+system like Ripple, and the gamers their own Ethereum chains.
 </p>
 
 <figure id="fig-81-4">
@@ -365,16 +353,6 @@ For an application storing data, the note lists four problems.
 <tr><td>Re-centralised</td><td>Users reach it through a few portals (81.5).</td></tr>
 </table>
 
-<p>
-The conclusion:
-</p>
-
-<blockquote>
-But in general use as a place for Web apps to to store data, blockchains are
-too slow, too expensive, and too public.
-<cite>Blockchain and the Web, 2017</cite>
-</blockquote>
-
 <h2 id="sec-81-8">81.8 Doing it with the Web instead</h2>
 
 <p>
@@ -382,7 +360,7 @@ A page on a trusted party&#8217;s site can be the <em>head</em> of a
 ledger, recording the latest entry. Signed documents can be chained, each
 citing by <a class="gl-ref" href="../glossary.html#uri">URI</a> and hash the ones it depends on, as in <a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a> (Figure
 81.5). Version-control systems such as git already fill the Web with hash
-trees, naming each version of a set of files by a hash of its contents.
+trees.
 </p>
 
 <figure id="fig-81-5">
@@ -430,9 +408,16 @@ hash the next one holds.</figcaption>
 </figure>
 
 <p>
-Other decentralised stores need no blockchain either: a <em>distributed hash table</em>
+Other decentralised stores need no chain: a <em>distributed hash table</em>
 spreads hashed chunks of data across servers, and IPFS shares unchanging files
-by their hashes.
+by hash.
+</p>
+
+<p>
+Filecoin, from the designers of IPFS, ties its coin to a real service: the
+protocol obliges a provider paid in coin to store data for the agreed time. The
+catch: &ldquo;you are not guaranteeing that the filecoin
+world will exist, but that if it does, your data will be stored.&rdquo;
 </p>
 
 <p>
@@ -441,21 +426,30 @@ under their provider&#8217;s name, tying them to it; anything that helps people
 get a domain, such as a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), helps.
 </p>
 
+<p>
+Names or identities can be moved to a blockchain, &ldquo;but when that is done,
+the world has to be aware of a new dependency on the community which runs that
+system&rdquo;. The verdict:
+</p>
+
+<blockquote>
+But in general use as a place for Web apps to to store data, blockchains are
+too slow, too expensive, and too public.
+<cite>Blockchain and the Web, 2017</cite>
+</blockquote>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The energy objection was answered by one network.</strong>
-Ethereum replaced mining with staking in September 2022, cutting its
-consumption by around 99 per cent; Bitcoin did not.</li>
+Ethereum replaced mining with staking in September 2022, cutting its energy use
+by around 99 per cent.</li>
 <li><strong>The note&#8217;s own update tested the loop.</strong> It links a
 CryptoSlate report of 12 December 2022 that a bitcoin cost less than mining
 one: the dashed exit of <a class="x-ref" href="#fig-81-2">Figure 81.2</a>.</li>
-<li><strong>Identity was standardised without a blockchain.</strong>
-Decentralised identifiers, the identity part of <a class="x-ref" href="#fig-81-1">Figure 81.1</a>, became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in July 2022.</li>
-<li><strong>Payments arrived in the browser, generically.</strong> Payment
-Request became a Recommendation in September 2022: the note&#8217;s modular
-slot, favouring no currency.</li>
+<li><strong>Identity and payments were standardised without a chain.</strong>
+Decentralised identifiers became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in July 2022, and the
+currency-neutral Payment Request <a class="gl-ref" href="../glossary.html#api">API</a> in September 2022.</li>
 <li><strong>The speculation chart kept swinging.</strong> The price fell by
 more than three-quarters from its December 2017 peak by late 2018, rose far
 beyond it by November 2021, then fell by more than three-quarters again by late 2022.</li>
@@ -475,28 +469,27 @@ data stores: <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">81.1</span>
-Take a &ldquo;will this solve that?&rdquo; question from your own field and
-separate the things its key word names.</p>
+Take a &ldquo;will this solve that?&rdquo; question from your field and
+separate what its key word names.</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.2</span>
-The note says an encrypted entry may be revealing even if nobody can read it.
-Give one example of what the mere fact of an entry could reveal.</p>
+Give one example of what the mere existence of an unreadable encrypted entry
+could reveal.</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.3</span>
-If a trusted website serves as a ledger, what do you give up compared with a
-blockchain, and what do you gain?</p>
+Using a trusted website as a ledger instead of a blockchain, what do you give
+up and gain?</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.4</span>
-Why does the price barely matter to someone making a remittance? What
-happens if it swings sharply during the minute they hold the coins?</p>
+Why does the price barely matter to a remittance? What if it swings sharply
+during that minute?</p>
 </div>
 <div class="question">
 <p><span class="question-number">81.5</span>
-For something you have stored online, name the three things that must keep
-working for it to stay available, and who pays for each.</p>
+Banks and gamers share one chain. Who objects first, and what do they build?</p>
 </div>
 </details>
 

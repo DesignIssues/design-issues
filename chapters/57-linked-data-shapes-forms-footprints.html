@@ -61,8 +61,11 @@ will be. One example, an address book, runs through all three.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in April 2019, this note poses a problem the earlier chapters of
-Volume VI left open, and states it as a tension rather than a task:
+Two applications can share one <a class="gl-ref" href="../glossary.html#pod">pod</a>, a person&#8217;s online store of data
+(<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), speak the same protocol and format, and still never see each
+other&#8217;s data, because each saves where it chooses. Berners-Lee admits
+that the generic apps he had written and seen tended to do much the same.
+This 2019 note asks how to stop it:
 </p>
 <blockquote>
 In a world of linked data, in which anyone can say anything about anything, how
@@ -71,19 +74,17 @@ useful, helpful things?
 <cite>Linked Data Shapes, Forms and Footprints, 2019</cite>
 </blockquote>
 <p>
-Freedom to say anything makes the data Web work. It also makes applications
-hard to write, because an application needs to know what it will get.
+Freedom to say anything makes the data Web work; it also leaves an
+application unsure what it will get.
 </p>
 </div>
 
 <h2 id="sec-57-1">57.1 Why the existing tools do not answer it</h2>
 
 <p>
-The <a class="gl-ref" href="../glossary.html#schema">schema</a> languages of Volume IV, <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Schema and <a class="gl-ref" href="../glossary.html#owl">OWL</a>, let a program draw
-conclusions from data, and say what makes no logical sense. OWL can say that
-nobody is their own parent, so data claiming it is nonsense; it cannot say a
-contact form should ask for a phone number. So they limit what may be written
-only indirectly.
+<a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#schema">Schema</a> and <a class="gl-ref" href="../glossary.html#owl">OWL</a> (Volume IV) say what may be concluded from data and what
+makes no logical sense. OWL can say that nobody is their own parent; it cannot
+say that a contact form should ask for a phone number.
 </p>
 
 <blockquote>
@@ -93,8 +94,8 @@ won't do what we need.
 </blockquote>
 
 <p>
-Schema.org, a shared list of suggested properties used by search engines, is
-closer, and still not enough.
+Schema.org suggests which properties to use for each kind of thing: useful,
+says the note, but still not enough. A suggestion requires nothing.
 </p>
 
 <h2 id="sec-57-2">57.2 Three technologies, three questions</h2>
@@ -148,10 +149,11 @@ in 2019, were only an idea.
   <text x="360" y="274" class="t-sm" text-anchor="middle">A shape can validate what arrived. A form can collect it. Neither says where to put it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 57.1</span>
-Without footprints every application invents its own layout, and the silo returns inside the person&#8217;s own store.</figcaption>
+Three questions about one contact. The first two had answers in 2019; the
+third did not.</figcaption>
 </figure>
 
-<h2 id="sec-57-3">57.3 What a shape is for</h2>
+<h2 id="sec-57-3">57.3 A shape is a contract</h2>
 
 <p>
 Shape languages are described by what they are for:
@@ -167,22 +169,24 @@ and will get data in this shape.
 </blockquote>
 
 <p>
-An Application Program Interface is an agreed way for programs to exchange
-data. A shape is how two parties make that agreement, without limiting what
-anyone else may say.
+A shape is how two programs agree an interface, without limiting what anyone
+else may say.
 </p>
 
 <p>
-In the note&#8217;s address book, a full name with no space in it triggers a
-warning, not a failure, with the message that such names are typically, not
-always, wrong. Unlike a simple list of field types, a shape carries severity
-and an explanation a person will read.
+It can also be lenient. In the note&#8217;s address book a full name with no
+space draws a warning, not a failure: &ldquo;Full names without spaces are
+typically (not always) wrong.&rdquo;
 </p>
 
 <h3>Shapes and forms compared</h3>
 
 <p>
-Shapes and forms look alike but, the note insists, differ:
+A form is any interface over a shape: &ldquo;Do not think boring
+bureaucratic forms, think exciting live user experience.&rdquo; The two look
+alike, and &ldquo;rumor has it that some folks who use SHACL have in fact used
+it as a form language&rdquo;, but the note keeps machine interoperability
+apart from the interface:
 </p>
 
 <table>
@@ -191,22 +195,23 @@ Shapes and forms look alike but, the note insists, differ:
 <tr><td>Job</td><td>Constrains the data, to validate it or define an interface</td><td>Defines what a person sees and does</td></tr>
 <tr><td>How many</td><td>One or a few for each kind of data</td><td>Many over the same data</td></tr>
 <tr><td>Contains</td><td>No display information</td><td>Labels, sizes, grouping, tips</td></tr>
-<tr><td>Written by</td><td>Developers and interface designers</td><td>Designers and power users</td></tr>
+<tr><td>Written by</td><td>Developers and <a class="gl-ref" href="../glossary.html#api">API</a> designers</td><td>Designers and power users</td></tr>
 </table>
+
+<p>
+The note gives two forms over one contact shape, a full one and one with
+just a name and photo. Both point at the shape rather than copy it, so
+&ldquo;Data created in one form can be edited in the other, and
+vice-versa.&rdquo;
+</p>
 
 <h2 id="sec-57-4">57.4 Why footprints are the hard one</h2>
 
 <p>
 A shape describes data that exists. A form collects data from a person. Both
-assume somebody has decided where the result belongs. In a <a class="gl-ref" href="../glossary.html#pod">pod</a>, a person&#8217;s
-own online store of data (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), that decision is not obvious. Chapter
-50 gave a protocol for how to write to a <a class="gl-ref" href="../glossary.html#server">server</a>; nothing said where.
-</p>
-
-<p>
-If each application writes where its own files go, the store collapses into
-one folder per application. If it writes to a shared place, it must know which
-place, and how to name the new item, so that the next application can find it.
+assume somebody has decided where the result belongs, and how to name it so
+the next application can find it. <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a> gave a protocol for how to write
+to a <a class="gl-ref" href="../glossary.html#server">server</a>; nothing said where.
 </p>
 
 <figure id="fig-57-2">
@@ -249,19 +254,21 @@ place, and how to name the new item, so that the next application can find it.
   <text x="360" y="228" class="t-sm t-it" text-anchor="middle">Both apps speak the same protocol and the same format.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 57.2</span>
-Same protocol, same format, no shared layout, so no sharing. App B never
-looks where App A wrote.</figcaption>
+Same protocol, same format, no shared layout: each application keeps to
+its own corner of the store.</figcaption>
 </figure>
 
 <h3>A worked footprint</h3>
 
 <p>
-The note sketches a rule for the address book. When a user adds a group named
-<em>n</em> to an address book whose address is <em>u</em>, the group&#8217;s
-address is <code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>. Here
-<code>dir()</code> trims the last part off an address, leaving its folder, and
-<code>munge()</code> cleans a name of characters that do not belong in an
-address. A <code>.ttl</code> file holds linked data in the <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> format.
+Add a group called Book Club to the address book at
+<code>…/contacts/index.ttl</code> and it goes to
+<code>…/contacts/Group/Book_Club/index.ttl#this</code>. The note&#8217;s rule:
+a group named <em>n</em>, added to an address book whose address is
+<em>u</em>, gets the address
+<code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>, where
+<code>dir()</code> trims an address to its folder and <code>munge()</code>
+cleans the name. The note sketches similar rules for people and chats.
 </p>
 
 <figure id="fig-57-3">
@@ -330,16 +337,15 @@ used to create a new link where old data does not exist.
 </blockquote>
 
 <p>
-An application must never use the rule to guess that something already exists
-at an address. That is what separates a footprint from a hard-coded folder.
+The rule creates; it never guesses that something exists at an address.
+That separates a footprint from a hard-coded folder.
 </p>
 
-<h2 id="sec-57-5">57.5 One shape, many footprints</h2>
+<h2 id="sec-57-5">57.5 Reading needs the shape; writing needs the footprint</h2>
 
 <p>
-One shape can be stored under many footprints. That makes no difference to
-reading data, which needs only the shape; it matters only when creating data,
-which needs a footprint to say where it goes.
+Data of one shape can be stored under many footprints. Reading it needs only
+the shape; creating it needs a footprint to say where it goes.
 </p>
 
 <figure id="fig-57-4">
@@ -405,12 +411,12 @@ which needs a footprint to say where it goes.
 Many forms and many footprints can serve one shape.</figcaption>
 </figure>
 
-<h2 id="sec-57-6">57.6 Finding where a person keeps things</h2>
+<h2 id="sec-57-6">57.6 Where does this person keep their contacts?</h2>
 
 <p>
 The note ends, mostly open, with discovery: how a system finds where a user
-keeps their stuff. It names three places to look, all reached from the
-user&#8217;s <a class="gl-ref" href="../glossary.html#webid">WebID</a>, the address that identifies them.
+keeps their stuff. It names three places, all reached from the user&#8217;s
+<a class="gl-ref" href="../glossary.html#webid">WebID</a>, the address that identifies them.
 </p>
 
 <figure id="fig-57-5">
@@ -455,7 +461,9 @@ Three routes from one identity. The third runs through groups.</figcaption>
 </figure>
 
 <p>
-Much collaboration happens in teams and projects, so groups get the same
+Much collaboration happens in teams and projects, and within a limited group,
+the note argues, things scale better technically and socially; <a class="gl-ref" href="../glossary.html#w3c">W3C</a> working
+groups and GitHub organisations are its examples. So groups get the same
 routes:
 </p>
 
@@ -466,10 +474,14 @@ made for groups in which the user is active.
 <cite>Linked Data Shapes, Forms and Footprints, 2019</cite>
 </blockquote>
 
+<p>
+Its last words: &ldquo;That is a small simple start.&rdquo;
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Shapes were already standardised.</strong> SHACL was a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+<li><strong>Shapes were already standardised.</strong> SHACL was a W3C
 <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> (July 2017) when this was written. ShEx was published by a W3C
 community group, not as a formal standard.</li>
 <li><strong>Footprints did not become a standard.</strong> <a class="gl-ref" href="../glossary.html#solid">Solid</a>&#8217;s type
@@ -491,22 +503,22 @@ interface these descriptions drive is <a class="x-ref" href="56-goals-human-data
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">57.1</span>
+Where does your phone put a new photo? Is that a footprint?</p>
+</div>
+<div class="question">
+<p><span class="question-number">57.2</span>
 Your address book shape requires a name. Does that stop someone else saying
 other things about the same person? Why not?</p>
 </div>
 <div class="question">
-<p><span class="question-number">57.2</span>
+<p><span class="question-number">57.3</span>
 Constraints can carry a severity and a message. Write a warning, with a
 message, for the email field in an address book.</p>
 </div>
 <div class="question">
-<p><span class="question-number">57.3</span>
+<p><span class="question-number">57.4</span>
 Two applications share a store and speak the same protocol but cannot see each
 other&#8217;s data. Describe how, and what would fix it.</p>
-</div>
-<div class="question">
-<p><span class="question-number">57.4</span>
-Where does your phone put a new photo? Is that a footprint?</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.5</span>

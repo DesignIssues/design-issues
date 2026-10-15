@@ -52,43 +52,40 @@ a Design Issues note by Tim Berners-Lee, 2007-10-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A module is a part that can be changed or reused without understanding the parts
-around it. By 2008 the HTML5 draft had grown into parts that all depended on
-one another. Berners-Lee asked for separable pieces, such as the canvas
-drawing commands, to be split out. The Web works because each layer (<a class="gl-ref" href="../glossary.html#ip">IP</a>,
-<a class="gl-ref" href="../glossary.html#tcp">TCP</a>, <a class="gl-ref" href="../glossary.html#http">HTTP</a>) offers a simple interface to the next.
+<a class="gl-ref" href="../glossary.html#http">HTTP</a> carries <a class="gl-ref" href="../glossary.html#html">HTML</a>, images and much else without changing, because it never
+needs to know what it carries. By 2008 the parts of the HTML5 draft all
+depended on one another. Berners-Lee asked for separable pieces, such as the
+canvas drawing commands, to be split out. The Web works because each layer
+(<a class="gl-ref" href="../glossary.html#ip">IP</a>, <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, HTTP) offers a simple interface to the next.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Published on the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> blog in January 2008 and copied here, then edited in
-2010 after a comment from Noah Mendelsohn, this note has a subtitle that
-carries the argument:
+HTTP has carried HTML, then images, PDF, SVG and <a class="gl-ref" href="../glossary.html#json">JSON</a>, each announced by a
+label such as <code>image/png</code>, without itself being changed for any of
+them. In 2008 the HTML5 draft was the opposite. Its co-editor described a
+circle in which parsing, scripts, windows, history and navigation each depend on the
+next, and back to parsing. Berners-Lee&#8217;s response, a short <a class="gl-ref" href="../glossary.html#w3c">W3C</a> blog post
+in January 2008, has a five-word subtitle:
 </p>
 <blockquote>
 Simple things make firm foundations
 <cite>Modularity, 2008</cite>
 </blockquote>
 <p>
-The question is whether a <a class="gl-ref" href="../glossary.html#specification">specification</a> that describes what browsers
-actually do can also be one that others can build on.
+The question is whether the parts that differ in kind, such as canvas
+drawing, can be lifted out so that each can change, and be reused, on its
+own. (The note was edited in 2010 after a comment from Noah Mendelsohn.)
 </p>
 </div>
 
 <h2 id="sec-19-1">19.1 The tangle, as HTML5&#8217;s editor described it</h2>
 
 <p>
-The note opens with what it calls a classic example: HTTP and <a class="gl-ref" href="../glossary.html#html">HTML</a> are
-specified independently. HTTP first carried HTML, then images, PDF, SVG
-and <a class="gl-ref" href="../glossary.html#json">JSON</a>, each announced by a media-type label such as
-<code>image/png</code>, and HTTP itself did not change for any of them.
-</p>
-
-<p>
-HTML was not so cleanly divided inside. Ian Hickson, then co-editor of
-HTML5, explained why modularising it is harder than it looks:
+Ian Hickson, then co-editor of HTML5, explained why modularising HTML is
+harder than it looks:
 </p>
 
 <blockquote>
@@ -104,16 +101,6 @@ and its related algorithms (namely content sniffing and encoding detection,
 which, to complete the circle, is part of the HTML parsing algorithm).
 <cite>Ian Hickson, quoted in Modularity, 2008</cite>
 </blockquote>
-
-<table>
-<tr><th>Term</th><th>Plain meaning</th></tr>
-<tr><td>Parsing</td><td>Reading the page&#8217;s text into a structure the browser can work with</td></tr>
-<tr><td>Script, <code>document.write()</code></td><td>A program in the page that can write more page while the page is still being read</td></tr>
-<tr><td>Browsing context</td><td>A window or tab</td></tr>
-<tr><td>Session history</td><td>The list the back button steps through</td></tr>
-<tr><td>Navigation</td><td>Going to a new address</td></tr>
-<tr><td>Content sniffing</td><td>Guessing what kind of file has arrived by looking at its first bytes</td></tr>
-</table>
 
 <figure id="fig-19-1">
 <svg class="dia" viewBox="0 0 720 350" width="720" height="350" role="img"
@@ -175,11 +162,32 @@ navigation; navigation runs through content sniffing, which is part of
 parsing. No piece can be lifted out alone.</figcaption>
 </figure>
 
+<table>
+<tr><th>Term</th><th>Plain meaning</th></tr>
+<tr><td>Parsing</td><td>Reading the page&#8217;s text into a structure the browser can work with</td></tr>
+<tr><td>Script, <code>document.write()</code></td><td>A program in the page that can write more page while the page is still being read</td></tr>
+<tr><td>Session history</td><td>The list the back button steps through</td></tr>
+<tr><td>Navigation</td><td>Going to a new address</td></tr>
+</table>
+
 <p>
-Berners-Lee does not argue with the description. His reply is to ask for the
-parts that can be separated to be separated. He also quotes Laurens
-Holst&#8217;s reply: modular pieces would be easier to grasp, for reviewers and
-implementers alike.
+Berners-Lee does not argue with the description. He asks for the parts that
+can be separated to be separated, quoting Laurens Holst&#8217;s point that
+modular pieces would be easier to grasp for reviewers and implementers.
+</p>
+
+<p>
+His example is the <em>canvas</em> element: a blank rectangle in a page that
+a script can draw on. Its drawing commands differ in nature from the rest of
+HTML, which mostly sets and reads values in the <a class="gl-ref" href="../glossary.html#markup">markup</a>; so does the
+draft&#8217;s client-side database storage.
+</p>
+
+<p>
+The element belongs in HTML, he argues, but the drawing commands belong in a
+separate document. Hickson agreed they should be split out in the long term,
+but said there were &ldquo;much higher priority items&rdquo; for anyone
+willing to edit. The W3C did later publish them separately.
 </p>
 
 <h2 id="sec-19-2">19.2 Change and re-use: one property, two sides</h2>
@@ -274,17 +282,8 @@ touching them, and for the same reason taken elsewhere.</figcaption>
 </figure>
 
 <p>
-Berners-Lee applies this to the <em>canvas</em> element: a blank rectangle in
-a page that a script can draw on. Its drawing commands differ in nature from
-the rest of HTML, which mostly sets and reads values in the <a class="gl-ref" href="../glossary.html#markup">markup</a>. So does
-the section on client-side database storage, a way for a page to keep data
-on the reader&#8217;s own computer.
-</p>
-
-<p>
-The element belongs in HTML, he argues, but the drawing commands belong in a
-separate document. Hickson agreed they should be split out in the long term,
-but said other parts had higher priority for anyone willing to edit.
+The canvas request has this second side too: canvas and SVG should embed in
+HTML in just the same way, so both could be plugged into other languages.
 </p>
 
 <figure id="fig-19-3">
@@ -331,28 +330,23 @@ markup) embed in just the same way, so both could be extended, perhaps to 3D,
 and plugged into other languages as they are into HTML.</figcaption>
 </figure>
 
-<h2 id="sec-19-3">19.3 Technology, not documents</h2>
+<h2 id="sec-19-3">19.3 Splitting a technology is not splitting a document</h2>
 
 <p>
-What matters is the
-independence of the technology, which need not align with the boundaries of
-documents. HTML5 put two technologies, a markup language and a drawing interface,
-into one document; HTTP/1.1, one technology, was split across six RFCs in
-2014. Berners-Lee adds that it usually makes sense for the boundaries to
-align anyway, so that different people can review, edit and implement
-different parts.
+What matters, the note says, is the independence of the technology. HTML5 put two technologies, a markup language and a drawing
+interface, into one document; HTTP/1.1, one technology, was split across six
+RFCs in 2014. Berners-Lee adds that it usually makes sense for the
+boundaries to align anyway, so that different people can review, edit and
+implement different parts.
 </p>
 
 <h2 id="sec-19-4">19.4 Designing for a system that does not exist</h2>
 
 <p>
-IP moves small numbered parcels of data (packets) between machines; TCP turns
-them into one reliable stream of bytes; HTTP uses that stream to fetch
-whatever a <a class="gl-ref" href="../glossary.html#uri">URI</a> names, with a label saying what kind of data it is.
-</p>
-
-<p>
-The note closes:
+The note&#8217;s reason is a ladder: &ldquo;The IP is simple, and so TCP can
+be powerfully built on top of it.&rdquo; TCP&#8217;s simple byte stream in
+turn carries HTTP, and HTTP&#8217;s simple mapping of URIs to labelled data
+carries hypertext, data and scripting. The ladder is not finished:
 </p>
 
 <blockquote>
@@ -400,13 +394,16 @@ it. There will be more modules to come, which we cannot imagine now.
 
 </svg>
 <figcaption><span class="fig-label">Figure 19.4</span>
-Berners-Lee&#8217;s ladder. Because each layer offers something simple,
-the next can be built powerfully on top of it.</figcaption>
+Berners-Lee&#8217;s ladder: each simple layer carries a more powerful one.</figcaption>
 </figure>
 
 <p>
-An <em>invariant</em> is a promise that holds whatever happens above it. For
-HTTP: give it a URI and it returns data labelled with how to read it.
+The note adds: &ldquo;We should expect there to be many developers to come
+who will want to use the platform without looking under the hood.&rdquo;
+They stand on an <em>invariant</em>, a promise that holds whatever happens
+above it. For HTTP: give it a <a class="gl-ref" href="../glossary.html#uri">URI</a> and it returns data labelled with how to
+read it. HTTP/2 changed how messages are framed, and HTTP/3 (2022) moved HTTP
+off TCP, yet pages and links did not have to change.
 </p>
 
 <blockquote>
@@ -417,9 +414,14 @@ regret.
 </blockquote>
 
 <p>
-The note ends with a request rather than a rule: let us try, as we make new technology, or plan a path for old
-technology, always to keep things as clean as we can.
+It ends with a request rather than a rule:
 </p>
+
+<blockquote>
+Let us try, as we make new technology, or plan a path for old technology,
+always to keep things as clean as we can.
+<cite>Modularity, 2008</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -433,11 +435,10 @@ its separate Recommendation superseded.</li>
 Standard still specifies parsing, scripting and navigation as mutually
 dependent, in the way Hickson described.</li>
 <li><strong>A related kind of reuse arrived.</strong> Custom elements (page
-authors&#8217; own tags) shipped in Chrome in 2016, giving the Web a way to plug components
-into HTML and into each other.</li>
+authors&#8217; own tags) shipped in Chrome in 2016, a way to plug components
+into HTML.</li>
 <li><strong>The ladder kept extending.</strong> HTTP/3, standardised in 2022,
-moved HTTP from TCP onto QUIC; HTTP/2 had kept TCP and changed only
-HTTP&#8217;s framing. Both left HTTP&#8217;s promise unchanged: a URI in, labelled data out.</li>
+runs over QUIC rather than TCP.</li>
 </ul>
 </div>
 
@@ -445,9 +446,8 @@ HTTP&#8217;s framing. Both left HTTP&#8217;s promise unchanged: a URI in, labell
 <h3>Connections</h3>
 <p>
 Modularity and its inside-out form are the second pair of principles in
-<a class="x-ref" href="01-principles-design.html">Chapter 1</a>. The independence of HTTP from the media types, the note&#8217;s
-classic example, is <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. The stack of <a class="x-ref" href="#fig-19-4">Figure 19.4</a> is set out in full in
-<a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>, and the fork that produced the specification being argued about is
+<a class="x-ref" href="01-principles-design.html">Chapter 1</a>. HTTP&#8217;s independence from media types is <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>. The stack of <a class="x-ref" href="#fig-19-4">Figure 19.4</a> is set out in full in
+<a class="x-ref" href="20-stack-specifications.html">Chapter 20</a>, and the fork that produced the <a class="gl-ref" href="../glossary.html#specification">specification</a> being argued about is
 <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.
 </p>
 </div>
@@ -456,14 +456,14 @@ classic example, is <a class="x-ref" href="04-web-model-information-hiding-uri.h
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">19.1</span>
-Using the table of terms in <a class="x-ref" href="#sec-19-1">section 19.1</a>, trace one path round
+Using <a class="x-ref" href="#fig-19-1">Figure 19.1</a> and the table of terms in <a class="x-ref" href="#sec-19-1">section 19.1</a>, trace one path round
 Hickson&#8217;s circle in your own words. Which link looks easiest to cut?</p>
 </div>
 <div class="question">
 <p><span class="question-number">19.2</span>
-Berners-Lee separates independence of technology from separation of
-documents. Give a case where one specification should define two independent
-technologies, and one where the reverse holds.</p>
+Hickson agreed canvas drawing should be split out but said other work came
+first. The W3C later split it, and the split was undone. Was the disagreement
+about the technology or about the documents?</p>
 </div>
 <div class="question">
 <p><span class="question-number">19.3</span>

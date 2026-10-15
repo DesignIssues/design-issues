@@ -55,29 +55,26 @@ a Design Issues note by Tim Berners-Lee, 2000-01-01.
 When a program meets a label it does not know, it can stop, skip it, or skip
 only the label and keep the text. Which is right depends on the label, and
 nothing in the document says which. Berners-Lee asks that formats let the
-writer say so, in particular that a reader must understand a part or stop.
+writer say so, in particular that a reader must understand a part or stop,
+rather than silently get it wrong.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is one of the shortest notes in the collection, and it names the gap that
-Chapters <a class="x-ref" href="16-evolvability.html">16</a> and <a class="x-ref" href="17-extensible-languages-web-evolution.html">17</a> both circle without closing. Free extension lets anything
-be added. Nothing lets a publisher say that an addition must be understood.
+Suppose a publisher wraps the words &ldquo;payment due&rdquo; in a new
+negation element. An older reader that has never seen it follows the
+Web&#8217;s rule, discards the tag, and shows &ldquo;payment due&rdquo;: the
+opposite of what was sent, with no sign that anything went wrong (Figure
+18.1). Free extension let anyone add the negation. Nothing let the publisher
+say it must be understood.
 </p>
 <p>
-Berners-Lee states the cost in one sentence:
-</p>
-<blockquote>
-Historically the lack of such a &ldquo;mandatory field&rdquo; has led to a
-complete inabaility to get any particular guaranteed behaviour be clients on
-the web.
-<cite>Mandatory extensions, 1998</cite>
-</blockquote>
-<p>
-The word is &ldquo;complete&rdquo;: nothing at all can be guaranteed. If every
-extension may be ignored, then no extension may be relied upon, and the set of things a
+Historically, Berners-Lee writes, the lack of such a &ldquo;mandatory
+field&rdquo; has meant a complete inability to get any guaranteed behaviour
+from clients on the Web. Complete is the right word. If every extension may
+be ignored, then no extension may be relied upon, and the set of things a
 publisher can count on is frozen at whatever was in the base <a class="gl-ref" href="../glossary.html#specification">specification</a>
 (the first, agreed version of the format).
 </p>
@@ -130,22 +127,23 @@ it. With the flag it fails openly, so the publisher can rely on any reader
 that does not fail. (The attribute name is invented for illustration.)</figcaption>
 </figure>
 
-<h2 id="sec-18-1">18.1 The requirement</h2>
+<h2 id="sec-18-1">18.1 Saying &lsquo;this must be understood&rsquo;</h2>
 
 <p>
-The note states the demand twice. A language must provide
-not only for its own extension but for a way to say whether a given extension
-is optional. Berners-Lee calls this a fundamental key to smooth evolution
-from one version of a language to the next.
+The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving, and its complaint is
+that they solve half the problem. Namespaces, he writes, gave XML a standard
+way to extend languages; XML should also give a standard way to say whether
+an extension is mandatory or optional. A language must provide not only for
+its own extension but for that declaration, which he calls a fundamental key
+to smooth evolution from one version of a language to the next.
 </p>
 
 <p>
-An <em>element</em> is one labelled piece of a document, such as
-<code>&lt;bold&gt;</code>&#8230;<code>&lt;/bold&gt;</code>; a
-<em><a class="gl-ref" href="../glossary.html#namespace">namespace</a></em> is a whole <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> of such labels. A <em><a class="gl-ref" href="../glossary.html#schema">schema</a></em> is
-the published description of a format&#8217;s labels and how they fit
-together. He allows the flag in either place, shown here for an imagined
-recipe-plus format:
+An old recipe reader that skips an unknown
+allergen warning has done harm, not merely lost formatting. Berners-Lee
+allows the flag in the document itself or in the <a class="gl-ref" href="../glossary.html#schema">schema</a> (the published
+description of a format&#8217;s labels), and for one element or a whole
+<a class="gl-ref" href="../glossary.html#namespace">namespace</a> at once. For an imagined recipe-plus format:
 </p>
 
 <table>
@@ -155,26 +153,14 @@ recipe-plus format:
 </table>
 
 <p>
-The same places can equally say &ldquo;may be skipped&rdquo;.
+Each cell could equally say &ldquo;may be skipped&rdquo;.
 </p>
 
-<p>
-The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving, and the complaint is
-that they solve half the problem:
-</p>
-
-<blockquote>
-XML provides in Namespaces a standard way of extending languages. It should
-also, in my opinion, provide a standard way to specify mandatopry or optional
-extensions.
-<cite>Mandatory extensions, 1998</cite>
-</blockquote>
-
-<h2 id="sec-18-2">18.2 Three things to do with something not understood</h2>
+<h2 id="sec-18-2">18.2 Stop, skip or unwrap</h2>
 
 <p>
-Meeting an element it does not recognise, a processor can do one of three
-simple things, and which one is correct depends entirely on what the element means.
+A processor meeting an unknown element can do one of three simple things;
+which is correct depends on what the element means.
 </p>
 
 <figure id="fig-18-2">
@@ -239,15 +225,23 @@ to the document.
 </p>
 
 <p>
-<a class="gl-ref" href="../glossary.html#html">HTML</a> inherited mail&#8217;s rule as unwrap-always: right for bold, wrong for a
-comment, whose private text is shown.
+The idea was not new. PNG 1.0 (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, October 1996) marks
+every chunk of an image file critical or ancillary by the case of the first
+letter of its name, so a decoder meeting an unknown chunk knows at once,
+without consulting any schema, whether it may skip it.
 </p>
 
-<h2 id="sec-18-3">18.3 Sublanguages</h2>
+<p>
+<a class="gl-ref" href="../glossary.html#html">HTML</a> inherited mail&#8217;s rule as unwrap-always: right for bold, wrong for a
+comment, whose private text is shown, and wrong for a negation, whose meaning
+it reverses.
+</p>
+
+<h2 id="sec-18-3">18.3 Telling an old reader it can cope</h2>
 
 <p>
-His other proposal, listed first in the note, is smaller. Berners-Lee wants a language to be able to declare itself a
-sublanguage of another:
+His first proposal lets a new language tell old readers they can cope, by
+declaring itself a sublanguage of another:
 </p>
 
 <blockquote>
@@ -312,9 +306,11 @@ simple enough to put in the document, so that the receiver need not
 </p>
 
 <p>
-This is the same instinct as the final requirement of <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> (section
-17.5). Whatever a processor needs in order to cope with the unfamiliar should
+It is the instinct of <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>&#8217;s final requirement (<a class="x-ref" href="17-extensible-languages-web-evolution.html#sec-17-5">section 17.5</a>).
+Whatever a processor needs in order to cope with the unfamiliar should
 travel with the document, not wait at the end of a network request.
+HTML, the Web&#8217;s main format, never gained the flag: HTML5 settled the
+ambiguity by always unwrapping.
 </p>
 
 <div class="since">
@@ -322,7 +318,7 @@ travel with the document, not wait at the end of a network request.
 <ul>
 <li><strong>The proposal was not adopted for XML.</strong> No standard way to
 mark an extension mandatory or ignorable was added to XML or to namespaces.</li>
-<li><strong>It was adopted elsewhere.</strong> SOAP 1.1 (<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Note, 2000), a
+<li><strong>It was adopted elsewhere.</strong> SOAP 1.1 (W3C Note, 2000), a
 messaging format built on XML, added exactly this: a
 <code>mustUnderstand</code> attribute on <a class="gl-ref" href="../glossary.html#header">header</a> entries, which a receiver must
 either honour or fail on. The <a class="gl-ref" href="../glossary.html#http">HTTP</a> Extension Framework
@@ -331,9 +327,8 @@ either honour or fail on. The <a class="gl-ref" href="../glossary.html#http">HTT
 (1999), carry a &ldquo;critical&rdquo; flag on X.509 extensions: a <a class="gl-ref" href="../glossary.html#certificate">certificate</a>
 with an unrecognised critical extension must be rejected.</li>
 <li><strong>HTML chose the third option permanently.</strong> The HTML5
-parsing rules, first published by the W3C in January 2008, define exactly how unknown elements
-are parsed and displayed (unwrapped), which removes the ambiguity without supplying the
-mandatory flag.</li>
+parsing rules (first W3C draft, January 2008) define exactly how unknown
+elements are handled: unwrapped, with no mandatory flag.</li>
 </ul>
 </div>
 
@@ -343,20 +338,16 @@ mandatory flag.</li>
 The inability this note names is the disadvantage of free extension recorded
 in <a class="x-ref" href="16-evolvability.html">Chapter 16</a>, and the requirement it makes is the one <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> stops short
 of. The tolerance principle that produced the old rule is <a class="x-ref" href="01-principles-design.html">Chapter 1</a>, and its
-reconsideration is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>. An older precedent: PNG 1.0 (1996) already
-marked each chunk of an image file critical or ancillary by the case of its
-name&#8217;s first letter, so a decoder could skip an unknown chunk without
-consulting any schema, the instinct of <a class="x-ref" href="#sec-18-3">section 18.3</a>.
+reconsideration is <a class="x-ref" href="23-html-xml.html">Chapter 23</a>.
 </p>
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">4</span></summary>
+<summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">18.1</span>
-Take a <a class="gl-ref" href="../glossary.html#markup">markup</a> or data format you use and find an element or field for which
-each of the three behaviours would be correct. What in the format, if
-anything, distinguishes them?</p>
+In a format you use, find an element or field for which each of the three
+behaviours would be correct. What, if anything, distinguishes them?</p>
 </div>
 <div class="question">
 <p><span class="question-number">18.2</span>
@@ -373,6 +364,11 @@ the old format. When would that sentence be a lie?</p>
 <p><span class="question-number">18.4</span>
 Name a case where stopping is safer than guessing, and one where it is
 not.</p>
+</div>
+<div class="question">
+<p><span class="question-number">18.5</span>
+HTML unwraps every unknown element. Name a feature that could therefore
+never be added to HTML safely, and say what browsers would show instead.</p>
 </div>
 </details>
 

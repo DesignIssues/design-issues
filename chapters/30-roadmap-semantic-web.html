@@ -52,15 +52,16 @@ a Design Issues note by Tim Berners-Lee, 1998-09-09.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A page on the Web is written for a person to read. A machine can fetch it and
-display it, but it cannot answer a question about what the page says, because
-nothing in the page tells it which words are prices and which are dates.
+In 1998 Berners-Lee pictured a Web where a request for a page could carry a
+proof of the right to see it, and the page could come back with a proof that
+it was what had been asked for. First, machines had to be able to read the
+Web at all. A page is written for a person; nothing in it tells a machine
+which words are prices and which are dates.
 </p>
 <p>
-This chapter is the first full plan for fixing that: a stack of layers, each
-one useful on its own before the layer above it exists. Its central bet is a
-modest one. The system is never asked to work out an answer from scratch; it
-only checks a proof that someone hands it.
+This chapter is the first full plan for that: a stack of layers, each useful
+before the one above exists. It puts off the hard problem: the system never
+works out an answer from scratch, only checks a proof someone hands it.
 </p>
 </div>
 
@@ -78,7 +79,7 @@ thought experiments.
 </blockquote>
 </div>
 
-<h2 id="sec-30-1">30.1 The problem being solved</h2>
+<h2 id="sec-30-1">30.1 Pages written for people</h2>
 
 <p>
 The diagnosis has not aged:
@@ -95,11 +96,12 @@ that the structure of the data is not evident to a robot browsing the web.
 <p>
 Berners-Lee sets aside the artificial intelligence problem of training
 machines to behave like people. The <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> instead develops languages
-for writing information in a form machines can process. <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> makes
-the negative case.
+for writing information in a form machines can process. The payoff, the
+note says later, is a Web searched &ldquo;as though it were one giant
+database, rather than one giant book&rdquo;.
 </p>
 
-<h2 id="sec-30-2">30.2 The layers</h2>
+<h2 id="sec-30-2">30.2 Each layer useful on its own</h2>
 
 <figure id="fig-30-1">
 <svg class="dia" viewBox="0 0 720 400" width="720" height="400" role="img"
@@ -153,22 +155,20 @@ alone.</figcaption>
 </figure>
 
 <p>
-Berners-Lee justifies the base by minimalism. A universal web of assertions
-must rest on a model general enough that any application maps onto it, and
-generality forces simplicity. An <em>assertion</em> is a single statement,
-such as <i>this page&#8217;s author is Alice</i>. <em>Quotation</em> is
-a statement about a statement: <i>Bob says that this page&#8217;s author
-is Alice</i>. The base contains these two things only. Quotation is there
-early for two reasons: it will be needed later anyway, and most early
-applications are <em><a class="gl-ref" href="../glossary.html#metadata">metadata</a></em>, data about data, where statements about
-statements are basic even before logic arrives.
+The base is minimal because any application must map onto it, and
+generality forces simplicity. It holds two things only: the
+<em>assertion</em>, a single statement such as <i>this page&#8217;s author
+is Alice</i>, and <em>quotation</em>, a statement about a statement: <i>Bob
+says that this page&#8217;s author is Alice</i>. Quotation comes early because
+it will be needed later anyway, and because most early applications are
+<em><a class="gl-ref" href="../glossary.html#metadata">metadata</a></em>, data about data.
 </p>
 
 <p>
 The base layer has no negation (saying something is not so) and no
-implication (if one thing holds, then another does). So, given a set of facts, it is always easy to say
-whether a question can be answered. Nothing can be intractable, meaning it
-would take impossibly long to work out.
+implication (if one thing holds, then another does), so whether a question
+can be answered from a set of facts is always easy to settle. Nothing can be
+intractable, taking impossibly long to work out.
 </p>
 
 <h3>Schema</h3>
@@ -250,22 +250,19 @@ statements of equivalence carry the query across.</figcaption>
 <h3>Logic</h3>
 <p>
 The logical layer adds &ldquo;not&rdquo; and &ldquo;and&rdquo;, then
-&ldquo;for all x&rdquo;. With these a document can carry general rules. Where
-a Library of Congress schema says &ldquo;author&rdquo; and a British Library
-one says &ldquo;creator&rdquo;, a rule can carry one over: if Dickens is the
-author of <i>Bleak House</i> in one catalogue, he is its creator in the other.
-A small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the format the note proposes for writing such
-statements, states it once for every case: for any person x and
-resource y, if x is the author of y then x is the creator of y.
+&ldquo;for all x&rdquo;, so a document can carry general rules. Where a
+Library of Congress schema says &ldquo;author&rdquo; and a British Library
+one says &ldquo;creator&rdquo;, a small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the format the note
+proposes, covers every case at once: for any person x and resource y, if x is
+the author of y then x is the creator of y.
 </p>
 
 <h3>Signature</h3>
 <p>
-For reasoning to take trust into account, a <a class="gl-ref" href="../glossary.html#public-key">public key</a>, the published half of
-a signing key, becomes a first-class object, a thing the logic can talk about,
-and the model records which key signed which assertion. Proof checking then
-verifies signatures as well as logic. Signature work can proceed in parallel
-with the other layers.
+For reasoning to take trust into account, a <a class="gl-ref" href="../glossary.html#public-key">public key</a> becomes a thing the
+logic can talk about, and the model records which key signed which
+assertion. Proof checking then verifies signatures as well as logic. This
+work can proceed in parallel with the other layers.
 </p>
 
 <h2 id="sec-30-3">30.3 Why bother at the bottom</h2>
@@ -285,13 +282,15 @@ Web.
 <p>
 The example is <a class="gl-ref" href="../glossary.html#access-control">access control</a>, where a decision may combine privacy
 preferences, group membership and data typing, each trivial alone and none
-sharing a format with the others. <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> works it through in detail.
+sharing a format with the others.
 </p>
 
-<h2 id="sec-30-4">30.4 Proof, and the asymmetry that makes it work</h2>
+<h2 id="sec-30-4">30.4 Check the proof, don&#8217;t find it</h2>
 
 <p>
-The roadmap&#8217;s most important design decision is a restriction. The system is required to validate proofs, not to find them. A proof
+The roadmap puts off the hard problem. Finding proofs has no perfect
+algorithm, and &ldquo;we do not tackle that problem&rdquo;; the other party
+need only validate a proof, which &ldquo;is trivial.&rdquo; A proof
 here is a list of signed statements plus the rules that join them, which
 anyone can re-check step by step.
 </p>
@@ -378,10 +377,9 @@ arrives with the request is not.
 <h2 id="sec-30-5">30.5 Engines of the future</h2>
 
 <p>
-Indexes of terms, Berners-Lee expects, will let the Web be
-searched &ldquo;as though it were one giant database, rather than one giant
-book&rdquo;. He then proposes joining two kinds of engine that had each
-failed alone (<a class="x-ref" href="#fig-30-4">Figure 30.4</a>).
+Indexes of RDF objects rather than words, Berners-Lee expects, are what
+will make the Web searchable like a database. He then proposes joining two
+kinds of engine that had each failed alone (<a class="x-ref" href="#fig-30-4">Figure 30.4</a>).
 </p>
 
 <figure id="fig-30-4">
@@ -435,24 +433,34 @@ inference on the open Web.</figcaption>
 </figure>
 
 <p>
-The number of steps matters because each step out on the Web may follow every link from
-every result of the step before: two steps over a hundred links each is ten
-thousand fetches. He states the limit plainly: no machine will guarantee to
-answer arbitrary questions.
+The number of steps matters because each step out on the Web may follow
+every link from every result of the step before. Suppose each result had a
+hundred links: two steps would mean ten thousand fetches. The note ends on
+the limit and the prize:
 </p>
+
+<blockquote>
+Though there will still not be a machine which can guarantee to answer
+arbitrary questions, the power to answer real questions which are the stuff
+of our daily lives and especially of commerce may be quite remarkable.
+<cite>Semantic Web Road map, 1998</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The lower layers shipped.</strong> RDF, for assertions, became a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> (finished-standard status) in February 1999; RDF Schema, a
-vocabulary-definition language, in February 2004; <a class="gl-ref" href="../glossary.html#owl">OWL</a>, a richer <a class="gl-ref" href="../glossary.html#ontology">ontology</a>
-language, in the same month, whose <code>equivalentProperty</code> states
-exactly the conversion of <a class="x-ref" href="#fig-30-2">Figure 30.2</a>; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, a query language for RDF,
-in January 2008.</li>
-<li><strong>The proof layer did not.</strong> No interoperable proof exchange
-format was standardised. The asymmetry of <a class="x-ref" href="#sec-30-4">section 30.4</a>, which the roadmap
-treats as its central bet, was never put to the test.</li>
+<li><strong>The lower layers shipped.</strong> RDF became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>
+(finished-standard status) in February 1999; RDF Schema and <a class="gl-ref" href="../glossary.html#owl">OWL</a> in February
+2004, OWL&#8217;s <code>equivalentProperty</code> stating exactly the
+conversion of <a class="x-ref" href="#fig-30-2">Figure 30.2</a>; and <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>, for queries, in January 2008.</li>
+<li><strong>The proof layer did not.</strong> Proofs were built in research,
+including cwm&#8217;s (<a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>), and Appel and Felten&#8217;s
+&ldquo;proof-carrying authentication&rdquo; (1999) attached proofs to
+requests in the same spirit. But no proof exchange format was standardised
+or widely deployed.</li>
+<li><strong>Prices and dates became readable.</strong> Schema.org, launched
+by Google, Microsoft and Yahoo in June 2011, is how pages now tell search
+engines which words are prices, dates and ratings.</li>
 <li><strong>The search-plus-logic engine arrived in another shape.</strong>
 Large knowledge graphs behind search, beginning with Google&#8217;s in May 2012,
 combine indexing with structured data, as the note proposed,
@@ -484,8 +492,9 @@ the proof can plausibly arrive with the request, and one where it cannot.</p>
 </div>
 <div class="question">
 <p><span class="question-number">30.3</span>
-Quotation is put in the base layer for two reasons. State both, and say which
-would justify it alone.</p>
+The note admits that RDF &ldquo;will allow you to write rules but won't
+tell anyone at this stage in which order to apply them&rdquo;. Is leaving
+that out a weakness, or the reason it could spread?</p>
 </div>
 <div class="question">
 <p><span class="question-number">30.4</span>

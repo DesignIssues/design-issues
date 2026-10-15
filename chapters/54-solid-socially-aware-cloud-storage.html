@@ -54,22 +54,22 @@ a Design Issues note by Tim Berners-Lee, 2009-08-17.
 <p>
 The photographs live with the photograph company, the messages with the
 messaging company. None can see the others, and leaving any of them means
-losing what was kept there.
+leaving behind what was kept there.
 </p>
 <p>
-This note turns that inside out: the data in one place under its owner&#8217;s
-control, and applications as things that come and go. It is the founding
-design of what became <a class="gl-ref" href="../glossary.html#solid">Solid</a>, the project Berners-Lee has worked on ever since.
+This note turns that inside out: data in one place under its owner&#8217;s
+control, applications that come and go. It is the design that grew into <a class="gl-ref" href="../glossary.html#solid">Solid</a>.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in August 2009 and still being edited in 2023, this note asks who may
-write the data that <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a> made writable. It answers by separating two
-things the Web had bolted together: applications and storage. Permissions are
-then given to principals, the people and groups the note names by <a class="gl-ref" href="../glossary.html#uri">URI</a>:
+Suppose a person&#8217;s photos, friends list and messages lived in storage
+that person controls; any application could work on all of them. The hard part
+is permission: who may read or write what, when people and groups are defined
+on many different servers? The note (2009, edited until 2023) answers with
+URIs:
 </p>
 <blockquote>
 Crucial design issues are that principals (users) and groups are identifies by
@@ -79,14 +79,11 @@ controlled using those global identifiers.
 </blockquote>
 </div>
 
-<h2 id="sec-54-1">54.1 The diagnosis</h2>
-
-<h3>Each site a silo</h3>
+<h2 id="sec-54-1">54.1 Why every site is a silo</h2>
 
 <p>
-A site stores
-state (everything it remembers between visits) and serves scripts; users have
-an identity on the site. One rule keeps each site&#8217;s data to itself:
+A site stores state (everything it remembers between visits) and serves
+scripts. One rule keeps each site&#8217;s data to itself:
 </p>
 
 <blockquote>
@@ -97,15 +94,15 @@ from other sites are deliberately prevented from accessing it.
 </blockquote>
 
 <p>
-This is the <a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a>, the browser rule that a script may read data
-only from the site it came from (<a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>), working as designed. Each site
-becomes a silo, reachable only by its own software.
+This is the <a class="gl-ref" href="../glossary.html#same-origin-policy">same-origin policy</a> (<a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>), the browser rule that a script
+may read data only from its own site, working as designed. Each site becomes a
+silo.
 </p>
 
 <h3>Joining silos, and its costs</h3>
 
 <p>
-Joining two silos needs a go-between, and that invites a known flaw:
+Joining two silos needs a go-between:
 </p>
 
 <blockquote>
@@ -119,29 +116,33 @@ to "confused deputy" attacks.
 
 <p>
 A confused deputy is a trusted program tricked into using its authority for
-someone else. A photo site allowed to fetch Alice&#8217;s pictures from another
-site receives a request from a stranger&#8217;s page to fetch photos; it uses
-Alice&#8217;s permission, and hands her pictures to the stranger.
+someone else. Suppose a photo site may fetch Alice&#8217;s pictures from another
+site; asked by a stranger&#8217;s page to fetch photos, it uses Alice&#8217;s
+permission and hands her pictures over.
 </p>
 
 <p>
-Delegated access schemes such as <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> let a user grant one site specific
-data held by another, such as a list of friends. The note calls this clumsy,
+Delegated access such as <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> lets a user grant one site specific data held
+by another, such as a friends list; the note finds this clumsy in some ways,
 and the receiving site must be completely trusted.
 </p>
 
 <p>
-Nor are silos an accident: the site sells ads &#8220;because it forces the
-user to use its web site to access her data&#8221;.
+Nor are silos an accident. The site sells ads &#8220;because it forces the
+user to use its web site to access her data. It can also sell her data, index
+it, generate profiles of her&#8221;. The note replies:
+&#8220;there are other business models, and other ways of getting people to
+come to your site than hoarding their data.&#8221;
 </p>
 
-<h2 id="sec-54-2">54.2 The separation</h2>
+<h2 id="sec-54-2">54.2 Storage on one side, apps on the other</h2>
 
 <p>
-The proposal holds the two apart. Storage belongs to the user, like the disk
-space a university gives its students. Applications are programs the user
+The proposal holds the two apart. Storage belongs to the user, as MIT
+students have for years had disk space, and now web space, through Athena.
+Applications are programs the user
 runs, which visit that storage with the user&#8217;s permission. Storage
-becomes a commodity, just as the internet provides &#8220;connectivity as a
+becomes a commodity, as the internet provides &#8220;connectivity as a
 commodity independent of applications&#8221;.
 </p>
 
@@ -209,9 +210,9 @@ Right: applications share only the storage, which decides who may use it.</figca
 
 <p>
 The note&#8217;s analogy is the Unix file system, whose user and group names
-mean something only on one machine. Webizing, Berners-Lee&#8217;s word for
-replacing names that mean something on one machine with URIs that mean the
-same everywhere, does to users and groups what <a class="gl-ref" href="../glossary.html#http">HTTP</a> had done for files.
+mean something only on one machine. Webizing them, Berners-Lee&#8217;s word
+for replacing such names with URIs that mean the same everywhere, does to
+users and groups what <a class="gl-ref" href="../glossary.html#http">HTTP</a> did for files.
 </p>
 
 <figure id="fig-54-2">
@@ -268,7 +269,11 @@ Only the identifiers change, yet a permission on one server can now name a
 person or group defined on any other. The addresses are invented.</figcaption>
 </figure>
 
-<h2 id="sec-54-3">54.3 Three benefits</h2>
+<h2 id="sec-54-3">54.3 Four reasons to pull them apart</h2>
+
+<p>
+The note gives four; the fourth, different lifetimes, is <a class="x-ref" href="#sec-54-5">Section 54.5</a>.
+</p>
 
 <table>
 <tr><th>Benefit</th><th>In plain terms</th></tr>
@@ -280,7 +285,7 @@ each other.</td></tr>
 </table>
 
 <p>
-The second is what Volume VI has been building towards:
+The second is where Volume VI has been heading:
 </p>
 
 <blockquote>
@@ -290,8 +295,8 @@ derived extra value, breaking down the silos described above.
 </blockquote>
 
 <p>
-An application that holds nobody&#8217;s data can be written by one
-person. The goal rests on this: &#8220;application growth becomes dramatic as the provision of
+Anyone could make and sell an app, &#8220;like the 2009 iPhone app
+market but open&#8221;. The goal rests on this: &#8220;application growth becomes dramatic as the provision of
 storage is decoupled from the design and deployment of applications&#8221;.
 </p>
 
@@ -309,13 +314,12 @@ those that run unscrupulous web sites is reduced.
 </blockquote>
 
 <p>
-The hazard is moved, not removed. In the site model, a company the user cannot
-inspect holds the data. Here, a program the user ran may misuse data the user
-still holds: the same risk as installing a program on one&#8217;s own
-computer.
+The hazard is moved, not removed: from a company the user cannot inspect to a
+program the user ran, the same risk as installing software on one&#8217;s own
+computer. The note&#8217;s fourth reason is a further gain.
 </p>
 
-<h2 id="sec-54-5">54.5 Different lifetimes</h2>
+<h2 id="sec-54-5">54.5 The fourth reason: different lifetimes</h2>
 
 <blockquote>
 The persistence of applications and data may be very different.
@@ -326,14 +330,17 @@ The persistence of applications and data may be very different.
 A familiar application may host an ephemeral discussion. An application built
 for a short-term enterprise problem may handle data whose life
 &#8220;exceeds that of any of the applications the enterprise uses&#8221;.
-Decoupled, each lifetime can be managed separately.
+Decoupled, each lifetime can be managed separately. A user should also be
+able to delete all the data an application wrote, a convention the note
+recommends for applications sharing one store.
 </p>
 
-<h2 id="sec-54-6">54.6 How a request is checked</h2>
+<h2 id="sec-54-6">54.6 How Bob&#8217;s server decides about a stranger</h2>
 
 <p>
-Each user gets a single URI instead of a user name at each site, ideally a
-<a class="gl-ref" href="../glossary.html#webid">WebID</a>, which links a profile on the Web to a <a class="gl-ref" href="../glossary.html#certificate">certificate</a>, a key kept in the
+Each user gets a single <a class="gl-ref" href="../glossary.html#uri">URI</a> instead of a user name at each site, &#8220;or in
+fact one for each persona they want to have&#8221;. Ideally it is a
+<a class="gl-ref" href="../glossary.html#webid">WebID</a>, linking a profile on the Web to a <a class="gl-ref" href="../glossary.html#certificate">certificate</a>, a key kept in the
 browser that proves which URI the user is. A group&#8217;s URI returns its members&#8217; WebIDs. Permissions sit in
 <a class="gl-ref" href="../glossary.html#access-control">access control</a> files:
 </p>
@@ -344,12 +351,11 @@ Access control files are linked data.
 </blockquote>
 
 <p>
-An access control file (ACL) lists who may read, write or control a resource.
-A <a class="gl-ref" href="../glossary.html#header">header</a> is a labelled line the <a class="gl-ref" href="../glossary.html#server">server</a> sends ahead of the content; the Link
-header points to the resource&#8217;s ACL, which a client may edit only with
-&#8220;Control&#8221; access. <a class="x-ref" href="#fig-54-3">Figure 54.3</a> follows one request. The server trusts only what it reaches from
-the ACL: if Alice&#8217;s own profile claimed membership of the group, that
-would count for nothing.
+An access control file (ACL) lists who may read, write or control a resource;
+the HTTP Link <a class="gl-ref" href="../glossary.html#header">header</a> points to it, and a client may edit it only with
+&#8220;Control&#8221; access. The <a class="gl-ref" href="../glossary.html#server">server</a> trusts only what it reaches from the
+ACL (<a class="x-ref" href="#fig-54-3">Figure 54.3</a>): if Alice&#8217;s own profile claimed membership of the
+group, that would count for nothing.
 </p>
 
 <figure id="fig-54-3">
@@ -413,26 +419,23 @@ permission and the group name people by URIs that mean the same on every
 server.</figcaption>
 </figure>
 
-<p>
-The same machinery carries notification. To ask to be someone&#8217;s friend,
-a person appends a line to a &#8220;friend requests&#8221; file they cannot
-read. The general form is a drop-box, linked from a profile, for requests of
-any kind; guarding it against spam may matter.
-</p>
-
-<h2 id="sec-54-7">54.7 Conventions and reverse links</h2>
+<h2 id="sec-54-7">54.7 Who tells the person in the photo?</h2>
 
 <p>
-Applications sharing one store need conventions: a user should be able, for
-instance, to delete all data written by a given application.
+On a central site, when A notes that picture P, taken by B, shows person C,
+B and C can be told at once, and site-wide indexes answer &#8220;Which picture
+am I in&#8221;. Across many servers, links do not run backwards by themselves.
+The note lists three remedies: a crawler indexes back-links; the destination
+collects them from the &#8220;Referer&#8221; field HTTP sends when a link is
+followed; or, as it proposes, the destination is told in real time.
 </p>
 
 <p>
-In a central site every link runs both ways. Here the destination must be
-told. The note lists three ways: a crawler builds an index of back-links; the
-destination collects them from the &#8220;Referer&#8221; field HTTP sends when
-a link is followed; or, as it proposes, the destination is notified in real
-time, through a drop-box.
+To ask to be someone&#8217;s friend, a person appends a line to a
+&#8220;friend requests&#8221; file they cannot read. Generalised, this is a
+drop-box linked from a profile, for requests of any kind. Open to any input, it
+lets new applications notify anyone; limited to predefined forms, it is safer.
+Guarding it against spam may matter.
 </p>
 
 <div class="since">
@@ -441,7 +444,7 @@ time, through a drop-box.
 <li><strong>The project was built.</strong> Solid produced a protocol
 (version 0.9, December 2021), servers, applications and a company, Inrupt,
 announced in 2018.</li>
-<li><strong>People got URIs.</strong> WebID (which the note itself relies on) and
+<li><strong>People got URIs.</strong> WebID (which the note relies on) and
 decentralised identifiers (a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in July 2022) both give
 people URIs.</li>
 <li><strong>Regulation arrived at the same goal.</strong> European data
@@ -453,10 +456,9 @@ decoupling storage.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The write protocol this builds on is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>, and the data it holds is
-<a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">Chapter 55</a>. The same-origin isolation it works around is <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>, and the
-delegation it replaces is <a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>. Live updates are <a class="x-ref" href="58-live-data.html">Chapter 58</a>, and the
-interface for the data is <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
+The write protocol this builds on is <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>; the data it holds, Chapter
+55; the same-origin isolation it works around, <a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>; the delegation it
+replaces, <a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>; live updates, <a class="x-ref" href="58-live-data.html">Chapter 58</a>; the interface, <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a>.
 </p>
 </div>
 
@@ -475,7 +477,7 @@ Who would be the deputy?</p>
 <div class="question">
 <p><span class="question-number">54.3</span>
 The risk moves rather than disappearing. Compare the worst case under each
-model, and give one concrete example of each.</p>
+model, with an example of each.</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.4</span>

@@ -52,33 +52,32 @@ a Design Issues note by Tim Berners-Lee, 2010-05-26.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Somebody holds a table of something useful and is willing to publish it. How
-much effort is it worth putting in? Every extra step costs the publisher
-something, and the benefit goes to strangers.
+Somebody holds a useful table and is willing to publish it. How much effort is
+it worth? Every extra step costs the publisher, and the benefit goes to
+strangers.
 </p>
 <p>
-The answer, later widely adopted, is five stars, the first of them awarded
-simply for putting anything up at all. A packet of crisps (American
-&ldquo;chips&rdquo;) shows why nobody should try to pick the one right <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> for a body of data.
+Berners-Lee&#8217;s answer, later widely adopted, is five stars, the first for putting
+anything up at all. To the usual objection, that the world will never agree
+one great taxonomy of everything, he answered with a packet of crisps
+(American &ldquo;chips&rdquo;): one label, several vocabularies.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This began as a talk at a government open-data conference in May 2010 and
-was later promoted to a Design Issues note; an abstract was added in 2023. It
-contains the five-star <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, widely adopted since, and a metaphor about a
-packet of crisps.
+From a talk at Gov 2.0 Expo, May 2010; promoted to a Design Issues note,
+abstract added 2023.
 </p>
 </div>
 
-<h2 id="sec-51-1">51.1 Five stars</h2>
+<h2 id="sec-51-1">51.1 One huge star for just putting it up</h2>
 
 <p>
-The scheme answers the question a publisher actually asks, which is not
+The <a class="gl-ref" href="../glossary.html#scheme">scheme</a> answers the publisher&#8217;s real question, which is not
 &ldquo;what is the right way?&rdquo; but &ldquo;how far do I have to
-go?&rdquo; Its design concedes that the first step is the hardest.
+go?&rdquo;, and concedes that the first step is the hardest.
 </p>
 
 <figure id="fig-51-1">
@@ -121,11 +120,10 @@ social: personal reluctance and the surrounding bureaucracy.</figcaption>
 </figure>
 
 <p>
-Some glosses. Machine readable means a program can pick out the values, as in
-a spreadsheet. A proprietary format belongs to one company, as Excel&#8217;s
-does; CSV is plain text with commas between the values. A <a class="gl-ref" href="../glossary.html#uri">URI</a> is a web
-address. At four stars a city gets one, and so do its population and its
-area, so that others can refer to them:
+Two stars if a program can pick out the values (a spreadsheet, not a scan of a
+fax). Three if the format belongs to nobody: CSV, not Excel. Four when each thing, and each property
+of it, gets a web address, a <a class="gl-ref" href="../glossary.html#uri">URI</a>: a city gets one, and so do its population
+and its area, so that others can refer to them:
 </p>
 
 <blockquote>
@@ -137,41 +135,20 @@ That means people can point to it and say that city, actually when they say
 
 <p>
 So two datasets using the same address for the city can be joined by a
-program. The fifth star is for linking outwards to somebody else&#8217;s data.
+program. The fifth star is for doing the work of linking: noting, say, that
+one&#8217;s &ldquo;population&rdquo; means what somebody else&#8217;s does.
 </p>
 
-<h2 id="sec-51-2">51.2 The bag of chips</h2>
+<h2 id="sec-51-2">51.2 One packet, many languages</h2>
 
 <p>
-The metaphor answers a question developers ask: linked data means using
-vocabularies, so how is one chosen? It is not:
-</p>
-
-<blockquote>
-The art is to use several different ontologies in the same document, the same
-message.
-<cite>Linked Data is Like a Bag of Chips, 2010</cite>
-</blockquote>
-
-<p>
-An <a class="gl-ref" href="../glossary.html#ontology">ontology</a>, or vocabulary, is a published list of terms with agreed meanings,
-each with its own URI: title, blood pressure, calories per serving. A typical
-message mixes terms at three scales:
-</p>
-
-<table>
-<tr><th>Scale</th><th>Example</th><th>Who understands it</th></tr>
-<tr><td>Universal</td><td>The title of a document</td><td>Almost everyone</td></tr>
-<tr><td>Domain</td><td>A blood pressure</td><td>Everyone in medicine</td></tr>
-<tr><td>Obscure</td><td>The calibration data of the monitor</td><td>Device engineers only</td></tr>
-</table>
-
-<p>
-Using each term at its own scale lets the most programs understand the most
-of the message. The packet
-on his lunch table showed the same: its name was American English (in British
-English, he noted, it would say potato crisps), and the rest was in other
-languages again.
+How should a developer pick a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>? The answer began with a packet on
+a lunch table. Its name was American English (British English would say
+crisps). The nutrition facts are a US sub-language, one that &ldquo;won&#8217;t
+allow you to sell this thing in Europe&rdquo;. The barcode is &ldquo;just one
+number&rdquo;, but any till &ldquo;pretty much anywhere in the world&rdquo;
+reads it. People with serious allergies check the allergy information. And
+110#71400 at the bottom was probably the printer&#8217;s batch number.
 </p>
 
 <figure id="fig-51-2">
@@ -179,10 +156,10 @@ languages again.
      aria-labelledby="fig51-2-t fig51-2-d">
   <title id="fig51-2-t">A bag of chips, and its readers</title>
   <desc id="fig51-2-d">One package carries a product name, a nutrition facts
-  panel, a barcode, an allergen warning and a small printed number. The
+  panel, a barcode, allergy information and a small printed number. The
   customer reads the name, the customer and the nutritionist read the
   nutrition facts, the checkout scanner reads the barcode, someone with coeliac
-  disease reads the allergens, and only the printer understands the number
+  disease reads the allergy information, and only the printer understands the number
   110#71400. Each language has a different reach, from every retailer in the
   world down to one printer.</desc>
 
@@ -206,7 +183,7 @@ languages again.
         stroke="#2f4f4f" stroke-width="1.6"/>
 
   <rect class="box-warm" x="66" y="206" width="168" height="24"/>
-  <text x="150" y="222" class="t-sm" text-anchor="middle" style="fill:#b08d57">contains wheat</text>
+  <text x="150" y="222" class="t-sm" text-anchor="middle" style="fill:#b08d57">allergy information</text>
 
   <rect class="box-plain" x="100" y="246" width="100" height="20"/>
   <text x="150" y="260" class="t-mono" text-anchor="middle" style="font-size:11px">110#71400</text>
@@ -240,12 +217,40 @@ ignoring data a reader does not need or does not understand, the world of Linked
 is quite like a bag of chips.</figcaption>
 </figure>
 
-<h3>Borrowing terms</h3>
+<p>
+So the developer should not pick just one:
+</p>
+
+<blockquote>
+The art is to use several different ontologies in the same document, the same
+message.
+<cite>Linked Data is Like a Bag of Chips, 2010</cite>
+</blockquote>
 
 <p>
-His working example is a record of people entering buildings. Existing
-vocabularies already cover dates, people and buildings; only the idea of a
-security incident may need a new term.
+An <a class="gl-ref" href="../glossary.html#ontology">ontology</a>, or vocabulary, is a published list of terms with agreed meanings,
+each with its own URI. A typical message mixes terms at three scales:
+</p>
+
+<table>
+<tr><th>Scale</th><th>Example</th><th>Who understands it</th></tr>
+<tr><td>Universal</td><td>The title of a document</td><td>Almost everyone</td></tr>
+<tr><td>Domain</td><td>A blood pressure</td><td>Everyone in medicine</td></tr>
+<tr><td>Obscure</td><td>The calibration data of the monitor</td><td>Device engineers only</td></tr>
+</table>
+
+<p>
+A general program still finds the title; a medical one also finds the blood
+pressure. Some terms reach almost every system: given latitude and longitude,
+most can put things on a map.
+</p>
+
+<h3>Cherry-picking vocabularies</h3>
+
+<p>
+His example is a record of people entering buildings. Existing vocabularies
+cover the dates, people and buildings; only a security incident may need a new
+term.
 </p>
 
 <figure id="fig-51-3">
@@ -299,16 +304,16 @@ invented.</figcaption>
 
 <p>
 Terms nobody else needs, like the printer&#8217;s number, the publisher simply
-makes up. No committee is needed, which, he says, lets someone buried in a
-large bureaucracy get useful work done.
+makes up. No committee is needed, so someone buried in a large bureaucracy can
+get useful work done.
 </p>
 
 <h2 id="sec-51-3">51.3 Why the metaphor is doing real work</h2>
 
 <p>
-What should a reader do with the printer&#8217;s number 110#71400? Many
-programs check incoming data against a fixed form, a <a class="gl-ref" href="../glossary.html#schema">schema</a>, and reject
-anything with a field the form does not list. Such software would stop at it:
+What should a reader do with the printer&#8217;s number 110#71400? Software
+that checks data against a fixed form, a <a class="gl-ref" href="../glossary.html#schema">schema</a>, rejects any field the form
+does not list, and would stop at it:
 </p>
 
 <figure id="fig-51-4">
@@ -365,24 +370,25 @@ Data, treat it as somebody else&#8217;s business.</figcaption>
 </figure>
 
 <p>
-Ignoring is not always safe. In a document one element can qualify another:
-a reader that drops an unknown &ldquo;not&rdquo; around an instruction carries
-out the reverse of what was meant, which is why <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a> asks for a way to
-mark parts as mandatory.
+Ignoring is not always safe. A reader that drops an unknown &ldquo;not&rdquo;
+around an instruction does the reverse of what was meant, which is why
+<a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a> asks for a way to mark parts as mandatory.
 </p>
 
 <p>
-On a label each line is a separate claim. Skipping the batch number cannot
-change what the calorie count says. Linked data is likewise a set of
-independent statements, so a reader can safely use the half it understands.
+On a label each line is a separate claim: skipping the batch number cannot
+change the calorie count. Linked data is likewise a set of independent
+statements, so a reader can safely use the half it understands.
 </p>
 
 <h2 id="sec-51-4">51.4 Publish now, connect later</h2>
 
 <p>
 Finding no machine-readable nutrition terms on the Food and Drug
-Administration (FDA) website, he would write his own, use them, and ask the
-FDA to publish theirs.
+Administration (FDA) website, he would write his own and ask the FDA to
+publish theirs. If it later did, one added statement, that his Calories Per
+Serving &ldquo;means exactly the same thing&rdquo; as theirs, would let
+queries in the FDA&#8217;s terms find all his existing data.
 </p>
 
 <figure id="fig-51-5">
@@ -390,10 +396,10 @@ FDA to publish theirs.
      aria-labelledby="fig51-5-t fig51-5-d">
   <title id="fig51-5-t">Publish now, connect later</title>
   <desc id="fig51-5-d">First, on his own site, Berners-Lee defines his own term Calories
-  Per Serving and publish data using it. Later, fda.gov publishes its own
-  Calories Per Serving. Then he adds one statement on his site saying his term,
-  the one from step 1, means the same as theirs. From then on, queries that use the FDA's term also
-  find his old data.</desc>
+  Per Serving and publishes data using it. If fda.gov later publishes its own
+  Calories Per Serving, he can add one statement on his site saying his term,
+  the one from step 1, means the same as theirs. From then on, queries that use
+  the FDA's term also find his old data.</desc>
   <defs>
     <marker id="fig51-5-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
@@ -409,34 +415,41 @@ FDA to publish theirs.
   <text x="44" y="78" class="t-sm">his nutrition data uses it from the start</text>
 
   <rect class="box-plain" x="390" y="112" width="300" height="56" rx="3"/>
-  <text x="404" y="134">2. Later, the FDA publishes its own</text>
+  <text x="404" y="134">2. If the FDA later publishes its own</text>
   <text x="404" y="154" class="t-sm">Calories Per Serving term</text>
 
   <rect class="box-warm" x="30" y="188" width="300" height="56" rx="3"/>
-  <text x="44" y="210">3. He adds one statement:</text>
+  <text x="44" y="210">3. He can then add one statement:</text>
   <text x="44" y="230" class="t-sm">his Calories Per Serving means the same as theirs</text>
 
   <path class="ln-dash" d="M 330 208 L 388 158" marker-end="url(#fig51-5-a)"/>
   <path class="ln-mut" d="M 180 92 L 180 186" marker-end="url(#fig51-5-a)"/>
 
   <rect class="box-green" x="30" y="268" width="660" height="56" rx="3"/>
-  <text x="44" y="290">4. Queries using the FDA&#8217;s term now find his old data</text>
-  <text x="44" y="310" class="t-sm">Nothing waited for a standard, and none of his published data changed.</text>
+  <text x="44" y="290">4. Queries using the FDA&#8217;s term then find his old data</text>
+  <text x="44" y="310" class="t-sm">Nothing waits for a standard, and none of his published data changes.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 51.5</span>
-Nobody waited for the standard. When it arrived, one added statement
-connected the old data to it.</figcaption>
+Nobody need wait for the standard. If it arrives, one added statement
+connects the old data to it.</figcaption>
 </figure>
 
 <p>
-Because terms are URIs, anyone can look one up and pick a source they
-respect; the result, in his words:
+&ldquo;So it&#8217;s not a top-down system.&rdquo; Anyone can look a term up
+and pick a source they respect; in his words:
 </p>
 
 <blockquote>
 It is little pieces loosely joined.
 <cite>Linked Data is Like a Bag of Chips, 2010</cite>
 </blockquote>
+
+<p>
+The talk ends on the sceptic who says nobody will get the whole world &ldquo;to
+agree about a great big taxonomy of everything&rdquo;, and on the reply:
+&ldquo;Actually, no, it&#8217;s not like that. It&#8217;s like a bag of
+chips!&rdquo;
+</p>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -446,22 +459,17 @@ Open Data White Paper, <em>Unleashing the Potential</em> (June 2012), used the
 five-star scale to describe the quality of data it wanted departments to
 publish.</li>
 <li><strong>Shared vocabularies arrived.</strong> Bing, Google and Yahoo
-launched schema.org, a common vocabulary for web pages, in June 2011.
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Data Catalog Vocabulary (DCAT), a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> since January
-2014, borrows <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> terms rather than inventing its own.</li>
-<li><strong>The note was updated.</strong> An abstract was added in 2023,
-and beside the vocabulary search engines named in the talk, Swoogle and
-Sindice, it now points to LOV.</li>
+launched schema.org, a common vocabulary for web pages, in June 2011.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The four rules this popularises are <a class="x-ref" href="49-linked-data.html">Chapter 49</a>, and the government programmes
-it addresses are <a class="x-ref" href="53-putting-government-data-web.html">Chapter 53</a>. The independence of assertions that makes
-partial reading safe is <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>, and the contrast with document languages
-is Chapters <a class="x-ref" href="16-evolvability.html">16</a> and <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">18</a>. Communities of different scale are <a class="x-ref" href="87-fractal-web-fractal-society.html">Chapter 87</a>.
+The four rules are <a class="x-ref" href="49-linked-data.html">Chapter 49</a>; the government programmes, <a class="x-ref" href="53-putting-government-data-web.html">Chapter 53</a>. The
+independence of assertions that makes partial reading safe is <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>; the
+contrast with document languages, Chapters <a class="x-ref" href="16-evolvability.html">16</a> and <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">18</a>. Communities of different
+scale are <a class="x-ref" href="87-fractal-web-fractal-society.html">Chapter 87</a>.
 </p>
 </div>
 
@@ -469,13 +477,13 @@ is Chapters <a class="x-ref" href="16-evolvability.html">16</a> and <a class="x-
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">51.1</span>
-The first star is described as huge because the obstacles are social. Name
-three such obstacles in an organisation you know.</p>
+Take any food packet. List each block of information on it, who reads it, and
+how widely its language is understood.</p>
 </div>
 <div class="question">
 <p><span class="question-number">51.2</span>
-Take any food packet. List each block of information on it, who reads it, and
-how widely its language is understood.</p>
+The first star is described as huge because the obstacles are social. Name
+three such obstacles in an organisation you know.</p>
 </div>
 <div class="question">
 <p><span class="question-number">51.3</span>
@@ -489,7 +497,7 @@ do, and keep doing, to earn the fourth?</p>
 </div>
 <div class="question">
 <p><span class="question-number">51.5</span>
-When the FDA published its own term, why did none of the old data need
+If the FDA published its own term, why would none of the old data need
 changing?</p>
 </div>
 </details>

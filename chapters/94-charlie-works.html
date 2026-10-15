@@ -52,33 +52,36 @@ a Design Issues note by Tim Berners-Lee, 2025-01-13.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Engineers asked the same assistant the same question twice, with one switch
-deciding whether it could see a (fake) person&#8217;s personal data. With the
-data it gave a far better answer. The hard part left is getting real data out
-of the services that hold it today.
+Engineers asked an assistant the same question twice, once with access to a
+fake person&#8217;s personal data. With the data its answer was far better.
+The hard part left is getting real data out of the services that hold it.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Seven years after the scene of <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>, an attempt to build it. The note,
-dated 13 January 2025, states its occasion directly in its <a class="gl-ref" href="../glossary.html#header">header</a>: the blog
-post was seven years ago, now we can build it, publish in time to discuss at
-Davos in 2025.
+An assistant is asked: &ldquo;I need new running shoes. What should I
+buy?&rdquo; It replies with four questions and advises a visit to a specialist
+shop. Asked again with one switch flipped, it knows Bob&#8217;s pace, his runs
+round Green Lake, his 6.30 starts and his support for local businesses, and
+names shoes, a shop and a card. That comparison, in a note dated 13 January
+2025 for discussion at Davos, is its heart.
 </p>
 <p>
-Unusually for this collection, it reports an experiment, and the finding is
-about data rather than about the model.
+Unusually for this collection, it reports an experiment; the finding is about
+data, not the model.
 </p>
 </div>
 
-<h2 id="sec-94-1">94.1 The setup</h2>
+<h2 id="sec-94-1">94.1 A fake Bob, a real model, one switch</h2>
 
 <p>
-<a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> imagined Charlie, an assistant that works for its user, Bob, and
-can see everything about him. Late in 2024, engineers at Inrupt built Charlie.
-They invented Bob and filled a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> for him (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>: a personal data
+<a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> imagined Charlie, an assistant that works for Bob. Late in 2024,
+engineers at Inrupt, the company Berners-Lee co-founded (announced in 2018) to
+develop <a class="gl-ref" href="../glossary.html#solid">Solid</a> commercially, &ldquo;had a go at building
+Charlie&rdquo;.
+They invented Bob and filled a Solid <a class="gl-ref" href="../glossary.html#pod">pod</a> for him (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>: a personal data
 store that its owner controls) with simulated data from his bank, from Strava,
 the running app, and so on. The pod holds this as linked, structured
 statements, a <em><a class="gl-ref" href="../glossary.html#graph">graph</a></em>, rather than as loose files. Then they connected
@@ -86,9 +89,8 @@ Claude, Anthropic&#8217;s large language model, and let Bob pass his pod to it.
 </p>
 
 <p>
-A large language model is the kind of program behind ChatGPT: it answers in
-prose from what it was trained on, plus whatever it is given to read. The pod
-was the extra reading. The interface carried one control:
+Such a model answers from its training plus whatever it is given to read;
+the pod was the extra reading. The app had one control:
 </p>
 
 <blockquote>
@@ -147,11 +149,34 @@ The model is the same either way. The switch decides only whether the pod
 goes with the question.</figcaption>
 </figure>
 
-<h2 id="sec-94-2">94.2 The two answers</h2>
+<h2 id="sec-94-2">94.2 Same question, two answers</h2>
 
 <p>
-Bob asked: I need new running shoes, what should I buy? <a class="x-ref" href="#fig-94-2">Figure 94.2</a> sets the
-two replies side by side.
+Without the pod, the reply begins:
+</p>
+
+<blockquote>
+I'll help you find the right running shoes, but I'll need some key information
+to make a better recommendation.
+<cite>Charlie Works, 2025</cite>
+</blockquote>
+
+<p>
+With it:
+</p>
+
+<blockquote>
+Based on your profile, I can make a personalized recommendation for running
+shoes. Here's what I know about your running habits:
+<cite>Charlie Works, 2025</cite>
+</blockquote>
+
+<p>
+Among its picks is &ldquo;Brooks Ghost 15&rdquo;, a &ldquo;Local Seattle company
+(aligns with your support of local businesses)&rdquo;. The note says these
+buying preferences were &ldquo;presumably evident from financial data&rdquo;.
+The running data shaped the choice of shoe; the bank data, it seems, chose the
+maker, the shop and the card. That is the join <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> imagined.
 </p>
 
 <figure id="fig-94-2">
@@ -196,13 +221,12 @@ two replies side by side.
   </g>
 </svg>
 <figcaption><span class="fig-label">Figure 94.2</span>
-The comparison is the whole experiment. The model is the same on both sides;
+The model is the same on both sides;
 only the access differs.</figcaption>
 </figure>
 
 <p>
-Berners-Lee&#8217;s assessment sets it against what people had already found
-remarkable:
+Berners-Lee&#8217;s verdict:
 </p>
 
 <blockquote>
@@ -212,11 +236,11 @@ want.
 <cite>Charlie Works, 2025</cite>
 </blockquote>
 
-<h2 id="sec-94-3">94.3 The disclaimers</h2>
+<h2 id="sec-94-3">94.3 What the demo did not show</h2>
 
 <p>
-The note states its limits. Bob is fictional and his pod
-simulated. And the obstacle to a real version is named exactly:
+Bob is fictional and his pod simulated, and the note names the obstacle to a
+real version:
 </p>
 
 <blockquote>
@@ -225,26 +249,21 @@ Extracting data from the world of APIs into a pod is a lot of work.
 </blockquote>
 
 <p>
-<a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> named three routes to Bob&#8217;s data (anger, law, architecture).
-This shows the architecture working; filling it is the remaining work.
+Berners-Lee adds that AI can help, because AI can build the apps that import
+the data. This shows the architecture, <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>&#8217;s third route, working;
+filling it is the remaining work.
 </p>
 
-<p>
-Berners-Lee adds that this is work AI can help with, because AI can build the
-apps that import the data.
-</p>
-
-<h2 id="sec-94-4">94.4 Four findings</h2>
+<h2 id="sec-94-4">94.4 What the builders concluded</h2>
 
 <p>
-The conclusions are stated as system design observations, and the last two
-matter most for this book&#8217;s subject.
+Four conclusions follow; the last two reach furthest.
 </p>
 
 <table>
 <tr><th>Finding</th><th>What it means</th></tr>
 <tr><td>The data infrastructure is as always critical</td><td>The model is not the scarce part</td></tr>
-<tr><td>A pod of semantic web data is extremely powerful in driving the model</td><td>The structured-data work of Volume IV pays off here</td></tr>
+<tr><td>A pod of semantic web data is extremely powerful in driving the model</td><td>Berners-Lee credits the structured data, though the demo did not test the alternative</td></tr>
 <tr><td>The model both fills the pod and reads from it</td><td>It populates the graph and then uses it as context</td></tr>
 <tr><td>The graph becomes the medium of communication between models</td><td>Systems talk to each other through the data, not directly</td></tr>
 </table>
@@ -299,50 +318,43 @@ matter most for this book&#8217;s subject.
 </svg>
 <figcaption><span class="fig-label">Figure 94.3</span>
 The model helps fill the graph and then reads it (the third finding). The
-dashed write-back, the book&#8217;s illustration rather than part of the
-demonstration, shows the fourth finding: models communicating through the
-graph.</figcaption>
+dashed write-back, the book&#8217;s illustration rather than part of the demo,
+shows the fourth: models communicating through the graph.</figcaption>
 </figure>
 
 <p>
-The third suggests a way round <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>&#8217;s problem, that structured data
-about private life does not exist to learn from: the model can help create that
-data, and then read it.
-</p>
-
-<p>
-The fourth is the more consequential claim. If systems communicate through a
-shared graph rather than through each other, then, the book argues, everything
-in Volumes IV to VI applies: identifiers that mean the same thing to everyone, vocabularies
-mixed from several communities, statements that can be checked, and a pod
-whose owner decides who reads it.
+The third offers a way round <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>&#8217;s problem, that structured data
+about private life does not exist to learn from: the model can help create it.
+If, as the fourth says, systems communicate through a shared graph,
+then, the book argues, Volumes IV to VI apply: shared identifiers, mixed
+vocabularies, checkable statements, and an owner who decides who reads.
 </p>
 
 <h2 id="sec-94-5">94.5 What the pair of chapters demonstrates</h2>
 
 <p>
 <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> imagined a capability and an arrangement. The capability, fluent language
-models, came from outside the Solid work; the arrangement, data the user
-controls, did not arrive. This chapter puts the two
-together in a laboratory and shows the difference is large.
+models, arrived from outside the Solid work; the arrangement did not. This
+chapter puts the two together in a laboratory, and the difference is large.
 </p>
 
 <p>
-Getting real data there is another matter: in this book&#8217;s view, the
-services that hold it have little reason to help.
+Bob&#8217;s switch worked because his pod was full. For a real Bob, someone
+first has to get the data out of the bank and the running app, by one of the
+routes (anger, law or architecture) <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a> left open.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>Connecting assistants to personal data became ordinary.</strong>
-Microsoft 365 Copilot, generally available from November 2023, wired an
-assistant to the mail and documents Microsoft already held, which is the
-concentration <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a> warned of.</li>
-<li><strong>Standard connectors emerged.</strong> Anthropic published the Model
-Context Protocol in November 2024, an open standard for giving models access
-to tools and data sources. OpenAI adopted it in March 2025, making part of the plumbing
-this note calls a lot of work into a common component.</li>
+Microsoft 365 Copilot (generally available November 2023) wired an assistant
+to mail and documents Microsoft already held, the concentration <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>
+warned of.</li>
+<li><strong>Standard connectors emerged.</strong> Anthropic&#8217;s Model
+Context Protocol (November 2024), an open standard for connecting models to
+tools and data, was adopted by OpenAI in March 2025, making part of the
+plumbing this note calls a lot of work a common component.</li>
 <li><strong>Law reached device data.</strong> The EU Data Act, applying from
 12 September 2025, lets users obtain the data their connected devices generate
 and pass it to a third party.</li>
@@ -352,10 +364,8 @@ and pass it to a third party.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The scene this implements is <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>, and the duty it assumes is
-<a class="x-ref" href="92-beneficent-apps.html">Chapter 92</a>. The pod is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> and its arrangement is <a class="x-ref" href="55-pod-stuff-whats-pod-indexed.html">Chapter 55</a>. The
-problem of getting wisdom from private data is <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>, and the structured
-data that drives it is Volume IV.
+The scene is <a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>; the duty it assumes, <a class="x-ref" href="92-beneficent-apps.html">Chapter 92</a>; the pod, Chapters
+54 and 55; wisdom from private data, <a class="x-ref" href="72-inference-over-private-data.html">Chapter 72</a>; structured data, Volume IV.
 </p>
 </div>
 
@@ -363,14 +373,13 @@ data that drives it is Volume IV.
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">94.1</span>
-Estimate the work of extracting your own data from the services that hold it.
-Which would refuse?</p>
+Under GDPR, people in Europe can ask a service for their data. Pick two you
+use: what would you get, in what form, and could Charlie read it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.2</span>
-Models learn from data, but structured data about private life does not exist
-to learn from. A model that fills the pod and then reads it is offered as a
-way round this. Does it work?</p>
+A model that fills the pod and then reads it is offered as a way round the
+lack of structured private data to learn from. Does it work?</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.3</span>
@@ -379,9 +388,8 @@ understand for one to use what the other wrote.</p>
 </div>
 <div class="question">
 <p><span class="question-number">94.4</span>
-Bob&#8217;s simulated data was clean and complete. List three ways a real
-person&#8217;s bank and fitness data would be messier, and how each would change
-the shoe answer.</p>
+List three ways a real person&#8217;s bank and fitness data would be messier
+than Bob&#8217;s, and how each would change the shoe answer.</p>
 </div>
 </details>
 

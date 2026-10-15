@@ -52,38 +52,37 @@ a Design Issues note by Tim Berners-Lee, 1999-02-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Many processes move through stages: drafted, approved, published. Usually a
+Many processes move through stages: drafted, approved, published. Often a
 database holds &ldquo;the current stage&rdquo;. Berners-Lee proposes holding no
 such record. Each new document points back to the documents that justify it,
-and the stage is whatever they show. A rules document, the <a class="gl-ref" href="../glossary.html#schema">schema</a>, says what a
+and the stage is whatever the latest show, as with a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> draft. A rules document, the <a class="gl-ref" href="../glossary.html#schema">schema</a>, says what a
 new document needs and what may come next.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
-<p>
-<a class="x-ref" href="61-conversations-state.html">Chapter 61</a> asked for a way to formalise a sequence of messages. This note,
-from February 1999, is the proposal, and its status line describes it as an
-example of how a social machine can be made without a centre.
-</p>
-<p>
-The observation it rests on is one sentence:
-</p>
 <blockquote>
 Social processes look like state machines. However, they don't exist as a
 state variable stored in one place, but as a trail of documents.
 <cite>Paper Trail, 1999</cite>
 </blockquote>
+<p>
+The note&#8217;s example is W3C&#8217;s own process, where a
+<a class="gl-ref" href="../glossary.html#specification">specification</a>&#8217;s stage is shown by the documents written and endorsed so
+far. Written in February 1999, and offered as a possible student project, the note calls itself an
+example of how a social machine can be made without a centre. Chapter
+61&#8217;s note of 2000 points back to it.
+</p>
 </div>
 
 <h2 id="sec-62-1">62.1 No state variable anywhere</h2>
 
 <p>
 A state machine is always in one of a fixed set of stages and moves between
-them when certain events happen; a traffic light is one. A state variable is
-the single stored value saying which stage it is in. Social processes have the
-first without the second, and the consequence follows:
+them when certain events happen; a traffic light is one. Social processes
+behave like this but store no single value, no state variable, saying which
+stage they are in. So:
 </p>
 
 <blockquote>
@@ -93,9 +92,9 @@ documents.
 </blockquote>
 
 <p>
-He adds that this is not a flaw to fix; it is how real life works, and the
-design models it. His proposal lets people follow a strict process by creating
-documents in a constrained way. Each carries a pointer to a schema (the
+That, he adds, is real life being modelled, not a flaw. Paper Trail
+lets people follow a strict process by creating documents in a constrained
+way. Each carries a pointer to a schema (the
 document defining its type and rules), pointers to the documents justifying
 it, and a notarisation: a time stamp recording when software checked it
 against the schema.
@@ -159,26 +158,25 @@ against the schema.
   <text x="345" y="232" class="t-sm" text-anchor="middle">authorisation</text>
 </svg>
 <figcaption><span class="fig-label">Figure 62.1</span>
-Berners-Lee&#8217;s example is W3C&#8217;s own publication process. Notice that
-no box is marked &ldquo;current state&rdquo;. The state is the latest
-notarised document and what it points to.</figcaption>
+W3C&#8217;s publication process. No box is marked &ldquo;current
+state&rdquo;: the state is the latest notarised document and what it points
+to.</figcaption>
 </figure>
 
-<h2 id="sec-62-2">62.2 Prerequisites and hints</h2>
+<h2 id="sec-62-2">62.2 What must exist, and what may come next</h2>
 
 <p>
-The schema carries two kinds of thing, and the distinction matters. Prerequisites say what must exist for a document to
-be valid, expressed in terms of other documents. Hints say what kinds of
-document may be made from this one, which are the state transitions.
+The schema holds prerequisites, the other documents that must exist for a
+document to be valid, and hints, the kinds of document that may be made from
+it: the state transitions.
 </p>
 
 <p>
-In the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> example of <a class="x-ref" href="#fig-62-1">Figure 62.1</a>, if the prerequisites exist the software
-creates and notarises the new draft. The draft then carries a button leading
-to a form for the next type of document the hints allow. Promoting it to a
-&ldquo;proposed recommendation&rdquo; needs everything a draft needed plus an
-endorsement, which the source spells out: the director, or any two members of
-the management group.
+In <a class="x-ref" href="#fig-62-1">Figure 62.1</a>&#8217;s example, if the prerequisites exist the software
+creates and notarises the new draft, which carries a button leading to a form
+for the next document type the hints allow. A &ldquo;proposed
+recommendation&rdquo; needs everything a draft needed plus an endorsement by
+the director or any two members of the management group.
 </p>
 
 <figure id="fig-62-2">
@@ -228,14 +226,16 @@ offered).</figcaption>
 </figure>
 
 
-<h2 id="sec-62-3">62.3 The general form</h2>
+<h2 id="sec-62-3">62.3 State as a function of messages</h2>
 
 <p>
-Halfway through, the note turns to computer protocols, agreed sets of rules
-for an exchange of messages. A protocol P defines each new state
-from the latest message, the previous state and the time:
+The note then turns to computer protocols, agreed rules for
+exchanging messages. Its simple example is a loan between two people: the
+state is the balance, each repayment a message, and the process ends at
+zero. Written generally, a protocol P defines each
+new state from the latest message, the previous state and the time:
 s<sub>n</sub>&nbsp;=&nbsp;P(m<sub>n</sub>,&nbsp;s<sub>n&#8722;1</sub>,&nbsp;t).
-Equivalently, it defines the state from all the messages to date:
+Equivalently, from all the messages to date:
 s<sub>n</sub>&nbsp;=&nbsp;P&#8242;(m<sub>1</sub>&nbsp;&#8230;&nbsp;m<sub>n</sub>).
 The second is the paper trail: only messages and a function.
 </p>
@@ -303,14 +303,12 @@ The second is the paper trail: only messages and a function.
   <text x="610" y="240" class="t-sm" text-anchor="middle">s3</text>
 </svg>
 <figcaption><span class="fig-label">Figure 62.3</span>
-The two rows give the same answer. The paper trail is the bottom row: keep the
-messages, and work the state out when it is needed.</figcaption>
+Both rows give the same answer. The paper trail is the bottom row: keep the
+messages, and compute the state when needed.</figcaption>
 </figure>
 
 <p>
-The note&#8217;s simple example is a loan between two people: the state is the
-balance, and the process ends when it reaches zero. Berners-Lee ranks what the
-state might be:
+Berners-Lee ranks what the state might be:
 </p>
 
 <blockquote>
@@ -320,59 +318,72 @@ a number, in decreasing order of interest.
 </blockquote>
 
 <p>
-The state must hold whatever is needed to compute future states: for the loan, the
-balance. Once the loan is repaid, the state could hold just the fact that it
-was paid, or every repayment: a design choice, not a fact.
+The state must hold whatever is needed to compute future states. In <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the
+protocol under most Internet connections, that means the packets not yet
+acknowledged; once the connection closes, it could be just &ldquo;terminal
+state&rdquo;, or also every byte transferred: a design choice.
 </p>
 
 <h3>Starting, ending, forgetting and nesting</h3>
 
 <table>
-<tr><th>Start</th><td>Some messages are valid beginnings: in <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the protocol
-under most Internet connections, one sends a SYN message; on the telephone one picks up the receiver.</td></tr>
+<tr><th>Start</th><td>Some messages are valid beginnings: in TCP one sends a SYN message; on the telephone one picks up the receiver.</td></tr>
 <tr><th>End</th><td>No further message changes a final state. The loan reaches
-one at zero; a lifetime warranty never does.</td></tr>
+one at zero; a lifetime warranty &ldquo;remains in non-final state (until you
+die!)&rdquo;.</td></tr>
 <tr><th>Forget</th><td>The protocol is &ldquo;an information destroying
 function&rdquo;: saying what must be remembered defines what can be thrown
-away. In the US, records of a transaction may be discarded after seven
-years.</td></tr>
-<tr><th>Nest</th><td>A real protocol runs inside a larger one: a W3C working
-group&#8217;s last state, its work accepted as a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, is a message to
-the Consortium as a whole. A minority report is a peek inside a group that
-never reached its final state.</td></tr>
+away. In the US, records may be discarded after seven years, when &ldquo;no one
+even the tax man has the right to query them&rdquo;.</td></tr>
+<tr><th>Nest</th><td>A protocol runs inside a larger one: a W3C working
+group&#8217;s last state, its work accepted as a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, is a message
+to the Consortium. A minority report reveals a group that never reached its
+final state.</td></tr>
 </table>
 
-<h2 id="sec-62-4">62.4 Why it is a social machine</h2>
+<h2 id="sec-62-4">62.4 A process with no one in charge</h2>
 
 <p>
-Social processes can run on a newsgroup or by email: &ldquo;it works in a
-write-only medium&rdquo;. In this model, nobody edits a shared record. As in
-commerce, one&#8217;s view of the state depends on which messages one has seen,
-and in this model there is no privileged party to ask. Anyone who can
-fetch the documents can check them.
+Such processes can run on a newsgroup or by email: &ldquo;it works in a
+write-only medium&rdquo;. Nobody edits a shared record. As in commerce,
+one&#8217;s view of the state depends on which messages one has seen; there is
+no privileged party to ask, and anyone who can fetch the documents can check
+them.
 </p>
 
 <p>
-<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> argued that the machine loop should be kept closed and joined to
-the social world only at the edges. Here the
-loop is the documents, and the edges are the moments a person presses the
-button.
+The product the note expects is a standard language for writing protocols.
+Messages would describe themselves, containing &ldquo;a pointer
+to the language in which they are written, and that includes (or points to)
+the protocol to which they claim to adhere.&rdquo; The self-describing Web
+would extend from documents to conversations.
+</p>
+
+<h2 id="sec-62-5">62.5 Left for the student</h2>
+
+<p>
+The brief ends with &ldquo;Challenges if you finish early&rdquo;: model an
+&ldquo;auction&rdquo;, a &ldquo;peer review journal&rdquo;,
+&ldquo;presidential impeachment ;-)&rdquo;; allow for the fact that &ldquo;States can split&rdquo;,
+as when a draft goes to W3C, the <a class="gl-ref" href="../glossary.html#ietf">IETF</a>, or both. The sharpest asks:
+&ldquo;Do you need to be able to prove non-existence of documents?&rdquo;
+Holding a valid document does not show that no later one has overridden
+it. The note
+leaves open whether such proof would be local to an author or global.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The note&#8217;s own epilogue (2001) and update (2004).</strong> A
-Web Services workshop surfaced the need for process-flow descriptions; later,
-the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> Application Platform (SWAP) could implement these ideas.</li>
+Web Services workshop surfaced the need for process-flow descriptions; by 2004
+the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> Application Platform (SWAP) could implement the ideas.</li>
 <li><strong>The pattern won without the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>.</strong> Version control
-systems are paper trails: state is a function of the commits. Anyone with the
-history can check its integrity, though not whether commits followed the
-rules.</li>
-<li><strong>Append-only became an architecture.</strong> Event sourcing, where
-current state is derived from a log of events rather than stored, is section
-62.3&#8217;s second formulation. Martin Fowler&#8217;s 2005 article named
-it.</li>
+systems are paper trails: state is a function of the commits. The history
+proves integrity, not that commits followed the rules.</li>
+<li><strong>Append-only became an architecture.</strong> Event sourcing, deriving
+current state from a log of events, is <a class="x-ref" href="#sec-62-3">section 62.3</a>&#8217;s second
+formulation; Martin Fowler described it in a 2005 article.</li>
 <li><strong>Public notarisation logs, 2013.</strong> <a class="gl-ref" href="../glossary.html#certificate">Certificate</a> Transparency
 (<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962) made append-only, publicly checkable logs a standard tool.</li>
 </ul>
@@ -381,8 +392,7 @@ it.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The need this answers is stated in <a class="x-ref" href="61-conversations-state.html">Chapter 61</a>, and the closed loop it
-implements is <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>. The independent statements it is built from are
+<a class="x-ref" href="61-conversations-state.html">Chapter 61</a> states the need; <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> the closed loop it implements. The independent statements it is built from are
 <a class="x-ref" href="27-metadata-architecture.html">Chapter 27</a>, and the signatures that make it checkable are <a class="x-ref" href="46-limiting-damage-inconsistency.html">Chapter 46</a>. The
 remote-operations work that grew from it is <a class="x-ref" href="65-roadmap-web-services.html">Chapter 65</a>.
 </p>
@@ -402,18 +412,18 @@ the schema is missing from the form?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.3</span>
-The loan has a final state and the warranty does not. Choose a process you
-know: does it have one, and what may be thrown away once it is reached?</p>
+The loan has a final state and the warranty does not. Does a process you
+know have one, and what may be discarded once it is reached?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.4</span>
-In the W3C example, which documents would you need to fetch to confirm that a
-new draft is valid?</p>
+Can you prove that a document does <em>not</em> exist? Why would a paper
+trail need to?</p>
 </div>
 <div class="question">
 <p><span class="question-number">62.5</span>
-Version control is a paper trail. Name one respect in which it is not, and say
-whether that matters.</p>
+Version control is a paper trail. In what respect is it not, and does that
+matter?</p>
 </div>
 </details>
 

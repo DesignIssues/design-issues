@@ -52,20 +52,22 @@ a Design Issues note by Tim Berners-Lee, 2015-03-28.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A person proves who they are to a website with a password, which is sent to the
-site and stored there. The browser could instead keep a private key, give the
-site the matching <a class="gl-ref" href="../glossary.html#public-key">public key</a>, and sign a random challenge from the site, so
-the secret never leaves the person&#8217;s machine. Berners-Lee asks browsers to make this
-easy, and to show which identity is in use.
+A person proves who they are to a website with a password, which is sent to
+the site and stored there. The browser could instead keep a private key and
+sign a random challenge from the site, so the secret never leaves the
+person&#8217;s machine. Berners-Lee asks browsers to make this easy, and to show
+which identity is in use.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The last of the four notes of early 2015 asks why the Web authenticates one
-side of a conversation well and the other side badly. Berners-Lee grants the
-case for anonymity before making his argument:
+Ask people about client certificates, Berners-Lee reports, and they say they
+are going out of fashion, difficult to use and badly supported by browsers. Ask
+them about passwords and they &ldquo;scream that they hate passwords&rdquo;.
+The Web uses public-key cryptography to prove who the site is, but usually a
+password to prove who the user is. He grants anonymity its place first:
 </p>
 <blockquote>
 When you are browsing the news and interacting with incoming information, you
@@ -75,18 +77,18 @@ around at the bank or chatting with friends.
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 <p>
-The question is why, in those cases, we still use passwords.
+Why, in those cases, do we still use passwords?
 </p>
 </div>
 
-<h2 id="sec-69-1">69.1 The comparison</h2>
+<h2 id="sec-69-1">69.1 A secret that never travels</h2>
 
 <p>
-A client <a class="gl-ref" href="../glossary.html#certificate">certificate</a> is, in the note&#8217;s words, one of the &ldquo;Public Key
-certificates used by the browser to authenticate the user&rdquo;: that is, to
-prove to a site who the user is. It rests on a key pair: a private key that
-stays with its owner, and a public key that anyone may hold, which can check a
-signature made with the private key but cannot make one.
+When a site&#8217;s password store is stolen, every user&#8217;s password is
+open to attack; in June 2012 about 6.5 million LinkedIn password hashes were
+posted to a Russian password-cracking forum. A client <a class="gl-ref" href="../glossary.html#certificate">certificate</a> rests instead
+on a key pair: a private key that stays with its owner, and a <a class="gl-ref" href="../glossary.html#public-key">public key</a> that
+can check a signature but cannot make one.
 </p>
 
 <figure id="fig-69-1">
@@ -150,18 +152,34 @@ signature made with the private key but cannot make one.
   <text x="656" y="226" class="t-sm" text-anchor="middle">useless to a thief</text>
 </svg>
 <figcaption><span class="fig-label">Figure 69.1</span>
-With a password the secret travels and is copied into someone else&#8217;s
-database. With a key pair it never leaves the user&#8217;s device; only a signature
-crosses the wire.</figcaption>
+With a key pair only a signature crosses the wire; the secret never leaves
+the user&#8217;s device.</figcaption>
 </figure>
 
 <p>
-The note&#8217;s central passage describes what a password demands, and then
-what a key pair offers (<a class="x-ref" href="#fig-69-2">Figure 69.2</a>).
+The note&#8217;s case against passwords is one breathless sentence:
+</p>
+
+<blockquote>
+For passwords, you should think of a massively big one which is therefore
+impossible to remember so you end up relying on your computer to remember it,
+and it should of course be a different one for each of the things you do
+business with, and the other party has store a copy of this, and your code has
+to send it across the net risking it being ensnared within your system or their
+system, and then they have to store it, which can be pretty insecure, to judge
+from history.
+<cite>Web Security - Client side certs, 2015</cite>
+</blockquote>
+
+<p>
+<a class="x-ref" href="#fig-69-2">Figure 69.2</a> sets a key pair against it. The obvious objection he turns
+round: &ldquo;Yes, you can&#8217;t
+scribble your secret key on a Post-It&#8482; note but that is actually an
+advantage.&rdquo;
 </p>
 
 <figure id="fig-69-2">
-<svg class="dia" viewBox="0 0 720 336" width="720" height="336" role="img"
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig69-2-t fig69-2-d">
   <title id="fig69-2-t">A password and a key pair, side by side</title>
   <desc id="fig69-2-d">A good password is unmemorable, must differ per site,
@@ -169,38 +187,28 @@ what a key pair offers (<a class="x-ref" href="#fig-69-2">Figure 69.2</a>).
   is generated by its owner, never sent, never stored by anyone else, and can be used
   with many parties.</desc>
 
-  <rect class="box-warm" x="24" y="34" width="310" height="230" rx="4"/>
+  <rect class="box-warm" x="24" y="34" width="310" height="200" rx="4"/>
   <text x="179" y="60" class="t-caps" text-anchor="middle" style="fill:#b08d57">a password</text>
   <text x="46" y="92" class="t-sm">must be huge, so no one can remember it</text>
   <text x="46" y="120" class="t-sm">so a computer has to remember it</text>
   <text x="46" y="148" class="t-sm">must be different for every party</text>
   <text x="46" y="176" class="t-sm" style="fill:#b08d57">is sent across the network</text>
-  <text x="46" y="204" class="t-sm" style="fill:#b08d57">is stored by the other party,</text>
-  <text x="46" y="230" class="t-sm" style="fill:#b08d57">&#8220;which can be pretty insecure,</text>
-  <text x="52" y="246" class="t-sm" style="fill:#b08d57">to judge from history&#8221;</text>
+  <text x="46" y="204" class="t-sm" style="fill:#b08d57">is stored by the other party</text>
 
-  <rect class="box-green" x="386" y="34" width="310" height="230" rx="4"/>
+  <rect class="box-green" x="386" y="34" width="310" height="200" rx="4"/>
   <text x="541" y="60" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a key pair</text>
   <text x="408" y="92" class="t-sm">generated by its owner</text>
   <text x="408" y="120" class="t-sm">stupendously long and unguessable</text>
   <text x="408" y="148" class="t-sm">one key serves many parties</text>
   <text x="408" y="176" class="t-sm" style="fill:#5a8f5a">never sent to anyone</text>
   <text x="408" y="204" class="t-sm" style="fill:#5a8f5a">never seen or stored by anyone else</text>
-  <text x="408" y="232" class="t-sm" style="fill:#5a8f5a">nothing to steal from their database</text>
-
-  <path class="ln-mut" d="M 24 284 L 696 284"/>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">&#8220;Yes, you can&#8217;t scribble your secret key on a Post-It&#8482; note</text>
-  <text x="360" y="324" class="t-sm" text-anchor="middle">but that is actually an advantage.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 69.2</span>
-Read the coloured rows. The password travels and is stored by someone else.
-The private key does neither.</figcaption>
+The password travels and is stored by someone else; the private key does
+neither.</figcaption>
 </figure>
 
-<p>
-People call client certificates unfashionable, hard to use and badly
-supported by browsers, he notes, yet say they hate passwords. His summary:
-</p>
+<p>His summary:</p>
 
 <blockquote>
 Public key cryptography is a really wonderful gift from mathematics. We should
@@ -211,24 +219,32 @@ be making better use of it.
 <h2 id="sec-69-2">69.2 Six things a browser would have to do</h2>
 
 <p>
-The note reads like a feature list. Picture Alice: she holds a work key and a
+To picture the list: Alice holds a work key and a
 personal key; at her bank she picks the personal one, sees it named beside the
 address, and later logs out.
 </p>
 
 <table>
 <tr><th>Function</th><th>What it means for a person</th></tr>
-<tr><td>Create a key pair and keep it locally</td><td>On the laptop, phone or a hardware device</td></tr>
+<tr><td>Create a key pair and keep it locally</td><td>Laptop, phone or hardware device</td></tr>
 <tr><td>Choose which identity to use for a site, and remember it</td><td>With enough shown to tell one from another</td></tr>
 <tr><td>Show who the user is logged in as, near the address</td><td>Beside where the site&#8217;s own identity is shown</td></tr>
 <tr><td>Log out</td><td>Drop the credentials, optionally choose another identity</td></tr>
 <tr><td>Manage those preferences</td><td>Editable when the user gets muddled</td></tr>
-<tr><td>Back up and synchronise keys, selectively</td><td>Marked for extra credit; some keys should never leave one machine</td></tr>
+<tr><td>Back up and synchronise keys, selectively</td><td>Extra credit; some keys never leave one machine</td></tr>
 </table>
 
 <p>
-The third reveals the asymmetry most sharply. A browser shows who the site is,
-prominently, and shows nothing about who the user is being.
+That row exists because the feature did not work: the note&#8217;s only
+reference is Firefox bug 634697, &ldquo;ff doesn&#8217;t remember
+choice of certificate for https connection from previous session although
+&lsquo;remember choice was selected&rsquo;&rdquo;. It was fixed in Firefox 81
+(2020).
+</p>
+
+<p>
+The third row reveals the asymmetry most sharply. A browser shows who the
+site is, prominently, and nothing about who the user is being.
 </p>
 
 <figure id="fig-69-3">
@@ -271,24 +287,18 @@ not all just labelled with my name (duh!).
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 
-<h3>What web developers need</h3>
+<p>
+The note also asks that <code>&lt;keygen&gt;</code>, the <a class="gl-ref" href="../glossary.html#html">HTML</a> element that
+had the browser generate a key pair, fire an event or Promise so the page can
+continue its workflow. Two years later Chrome removed
+<code>&lt;keygen&gt;</code> altogether (see What happened since).
+</p>
 
-<p>The note&#8217;s further points include:</p>
-<ul>
-<li>Label each certificate by the party that signed it or, where it is a
-<a class="gl-ref" href="../glossary.html#webid">WebID</a> (a Web address that names a person, <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), by its domain.</li>
-<li>Give a web app a way to find out which certificate the user chose to
-reach a given resource.</li>
-<li>When a page makes a new key with <code>&lt;keygen&gt;</code>, the <a class="gl-ref" href="../glossary.html#html">HTML</a>
-element that asked the browser to generate a key pair, fire an event or
-Promise so the page can carry on with its workflow.</li>
-</ul>
-
-<h2 id="sec-69-3">69.3 The refusal</h2>
+<h2 id="sec-69-3">69.3 &ldquo;That&#8217;s not how browsers work&rdquo;</h2>
 
 <p>
-The note ends with a section titled &ldquo;Just do it&rdquo;, directed at a
-habit rather than at a technology:
+The note&#8217;s last section, &ldquo;Just do it&rdquo;, targets a habit
+rather than a technology:
 </p>
 
 <blockquote>
@@ -298,24 +308,16 @@ that "It would be nice, but that's not how browsers work".
 <cite>Web Security - Client side certs, 2015</cite>
 </blockquote>
 
-<p>His answer is about the material:</p>
-
-<blockquote>
-The bowsers are code, in many cases open source code. They are being changed
-all the time. Unlike a decade ago, they are also being upgraded all the time,
-because of the need for security-related bug fixes, and so a new idea can be
-tried out in browsers really fast.
-<cite>Web Security - Client side certs, 2015</cite>
-</blockquote>
-
 <p>
-The closing instruction is four words: &ldquo;Let&#8217;s just change it.&rdquo;
+His answer: browsers are code, often open source, upgraded constantly for
+security fixes, so &ldquo;a new idea can be tried out in browsers really
+fast&rdquo;. The closing instruction is four words: &ldquo;Let&#8217;s just change it.&rdquo;
 </p>
 
-<h2 id="sec-69-4">69.4 Why this closes the set</h2>
+<h2 id="sec-69-4">69.4 What the four notes share</h2>
 
 <p>
-Each of the four notes finds a place where the machine&#8217;s model of a
+Each of the four notes finds where the machine&#8217;s model of a
 social arrangement is narrower than the arrangement:
 </p>
 
@@ -327,31 +329,36 @@ social arrangement is narrower than the arrangement:
 <tr><td>69</td><td>Only the site needs strong proof of identity</td><td>The user needs it too, at the bank or among friends</td></tr>
 </table>
 
+<p>
+Three years later Berners-Lee turned to the opposite problem: a browser that
+distrusts the app its user chose (<a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>).
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The mechanism was replaced rather than fixed.</strong> WebAuthn, a
 <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of March 2019, gives the properties of the bottom lane of
 <a class="x-ref" href="#fig-69-1">Figure 69.1</a>.</li>
-<li><strong>The interface requirements were met.</strong> Passkeys, announced
-by Apple, Google and Microsoft in May 2022, supply most of what <a class="x-ref" href="#sec-69-2">section 69.2</a> lists,
-with the operating system rather than the browser doing the work. Synced
+<li><strong>The interface requirements were met.</strong> Passkeys (Apple,
+Google and Microsoft, May 2022) supply most of <a class="x-ref" href="#sec-69-2">section 69.2</a>&#8217;s list, through
+the operating system rather than the browser. Synced
 passkeys do leave the machine, which the note warns against for some keys.</li>
-<li><strong>The key element the note asks for is still missing.</strong> As
-of 2026, no major browser shows, beside the site&#8217;s identity, which
-identity the user is currently presenting.</li>
+<li><strong>The indicator the note asks for is still missing.</strong>
+Browsers show which profile or container is in use, but as of 2026 no major
+browser shows, beside the site&#8217;s identity, which credential that site
+was given.</li>
 <li><strong>The old mechanism was removed.</strong> <code>&lt;keygen&gt;</code>
-was removed from Chrome in version 57 (March 2017) and from Firefox in
-version 69 (2019), before its replacement was widely usable.</li>
+left Chrome in version 57 (March 2017) and Firefox in version 69 (2019), before its replacement was widely usable.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The other three notes of the set are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a> to <a class="x-ref" href="68-same-origin-policy---origin.html">68</a>. The identity that a
-key authenticates is <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>, and the access loop that consumes it is
-<a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a>. The user interface arguments are Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and <a class="x-ref" href="85-user-interface-tips.html">85</a>.
+The set&#8217;s other notes are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a> to <a class="x-ref" href="68-same-origin-policy---origin.html">68</a>. <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> covers the
+identity a key authenticates, <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> the access loop that uses it, and
+Chapters <a class="x-ref" href="82-user-interface-consistent-world.html">82</a> and <a class="x-ref" href="85-user-interface-tips.html">85</a> the interface arguments.
 </p>
 </div>
 
@@ -359,8 +366,8 @@ key authenticates is <a class="x-ref" href="54-solid-socially-aware-cloud-storag
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">69.1</span>
-List what a site must store to check a password, and what it must store to
-check a signature. What does a breach expose in each case?</p>
+What must a site store to check a password, and to check a signature?
+What does a breach expose in each case?</p>
 </div>
 <div class="question">
 <p><span class="question-number">69.2</span>
@@ -369,14 +376,13 @@ indicator, and say what it must not show.</p>
 </div>
 <div class="question">
 <p><span class="question-number">69.3</span>
-You have a work laptop, a phone and a shared family tablet. Which keys should
+With a work laptop, a phone and a shared family tablet, which keys should
 stay on one device, and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">69.4</span>
-The note says browsers update fast for security fixes. Using the since box,
-which of the six functions in 69.2 arrived, and through whom (browser or
-operating system)?</p>
+Berners-Lee calls the impossibility of writing a key on a Post-It an
+advantage. For whom might it not be, and what then?</p>
 </div>
 </details>
 

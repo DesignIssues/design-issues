@@ -52,16 +52,17 @@ a Design Issues note by Tim Berners-Lee, 2004-04-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A web address such as <code>www.example.com</code> is read from the right.
-The last part, <code>.com</code>, is the <a class="gl-ref" href="../glossary.html#top-level-domain">top-level domain</a>; <code>example</code>
-is the name rented beneath it. <a class="gl-ref" href="../glossary.html#icann">ICANN</a>, a non-profit body, runs the top of the
-tree; companies called registries run each top-level domain and charge fees.
+Look up a restaurant on a laptop, bookmark it, and later, with only a phone to
+hand, open the bookmark to check the evening menu. In 2004 a proposed
+<a class="gl-ref" href="../glossary.html#top-level-domain">top-level domain</a>, <code>.mobi</code>, would have given the phone&#8217;s menu
+a different address. Berners-Lee argues this breaks the Web, and that every
+new top-level domain costs name-holders money. (The title also names
+<code>.xxx</code>; the specific argument is about <code>.mobi</code>.)
 </p>
 <p>
-In 2004 ICANN was considering <code>.mobi</code> (mobile content) and
-<code>.xxx</code> (adult content). Berners-Lee argues that every new
-top-level domain costs name-holders money, and that <code>.mobi</code> breaks
-links, because the same page would need a different address on a phone.
+In <code>www.example.com</code>, <code>.com</code> is the top-level domain and
+<code>example</code> the name rented beneath it. <a class="gl-ref" href="../glossary.html#icann">ICANN</a>, a non-profit body,
+runs the root; fee-charging registries run each top-level domain.
 </p>
 </div>
 
@@ -69,26 +70,23 @@ links, because the same page would need a different address on a phone.
 <h3>The question</h3>
 <p>
 Should a fact about the reader&#8217;s device, such as being a phone, be
-written into a site&#8217;s name? The note was written in April 2004 and,
-unusually for this collection, formally supported:
-at its meeting of 14 May 2004 the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Technical Architecture Group resolved to
-support the note. Its cost argument applies to any new domain; its objection
-to <code>.mobi</code> in particular is architectural.
+written into a site&#8217;s name? The note&#8217;s cost argument applies to
+any new domain; its objection to <code>.mobi</code> is architectural. Unusually
+for this collection, it was formally backed: on 14 May 2004 the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Technical
+Architecture Group resolved to support it.
 </p>
 </div>
 
 <h2 id="sec-79-1">79.1 How the namespace stopped being hierarchical</h2>
 
 <p>
-The tree
-structure improved on a flat list of machine names. It let a university, say,
-create <code>physics.uni.example</code> itself, without asking a central
-registry. Names nearer the root were rarely handed out, so the central
-workload stayed small.
-</p>
-
-<p>
-Then people began to say and type names, in advertisements and on business cards:
+The note&#8217;s Example Manufacturing Company had used
+<code>example.com</code> &#8220;for many years&#8221;, then had to buy
+<code>.net</code> and <code>.org</code> to stop &#8220;unscrupulous
+competition&#8221; trading on its reputation, and later <code>.fr</code> and
+<code>.co.uk</code>. The tree was meant to let anyone create names beneath
+their own without asking a central registry. But once names appeared in
+advertisements and on business cards:
 </p>
 
 <blockquote>
@@ -127,8 +125,7 @@ space into a limited commodity.
   <text x="360" y="310" class="t-sm" text-anchor="middle">example.com and example.net merely a source of confusion.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 79.1</span>
-Berners-Lee&#8217;s conclusion from this: in the world of memorable domain
-names, the tree structure had stopped mattering.</figcaption>
+In the public&#8217;s memory, the tree &#8220;had failed to happen&#8221;.</figcaption>
 </figure>
 
 <p>
@@ -151,27 +148,17 @@ The first effect is a little like printing more money.
 </blockquote>
 
 <p>
-The value of every existing registration drops, while the cost of protecting
-a brand rises from three domains to four, five and more. For a large company
-this is trivial; for a small business, a charity or a family it is not. The
-second effect is instability: a rush to reserve names that nobody can afford
-to miss, and a rash of attempts to take valuable ones.
+Every existing registration loses value while protecting a brand costs more:
+trivial for a large company, not for a small business, a charity or a family.
+The second effect is instability: a rush to reserve names, and a rash of
+attempts to take valuable ones.
 </p>
 
-<h2 id="sec-79-2">79.2 The specific objection</h2>
-
-<p>
-Those costs apply to any new top-level domain. The objection to
-<code>.mobi</code> is different in kind: it is architectural.
-</p>
+<h2 id="sec-79-2">79.2 One menu, two addresses</h2>
 
 <p>
 The Web works by reference: an address is bookmarked, emailed and passed on,
-then looked up later somewhere else. The note&#8217;s example is a
-restaurant looked up and bookmarked on a laptop, and the bookmark used later,
-when only a phone is to hand, to check the evening menu. Or a travel itinerary
-read in the office on a large screen for the map, and at the airport on a
-phone for the gate number.
+then looked up later somewhere else, perhaps on a different device.
 </p>
 
 <figure id="fig-79-2">
@@ -231,10 +218,14 @@ in a fundamental way.
 </blockquote>
 
 <p>
-<a class="x-ref" href="10-generic-resources.html">Chapter 10</a> established that one resource may be served in many forms, and
-<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> that the identifier names the thing rather than the rendering.
-<a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a> makes the same complaint about the <code>s</code> in
-<code>https</code>: a property of the delivery put into the name of the thing.
+One resource may be served in many forms (<a class="x-ref" href="10-generic-resources.html">Chapter 10</a>); the name is for the
+thing, not the rendering (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>).
+</p>
+
+<p>
+There was a precedent. Sites once marked &#8220;best viewed using screen set
+to 800x600&#8221;, the note observes, &#8220;now look terrible on a phone or,
+for that matter, on a much larger screen&#8221;.
 </p>
 
 <h3>Better ways to tell the server about the device</h3>
@@ -251,16 +242,30 @@ The tools already existed:
 </table>
 
 <p>
-And &#8220;mobile&#8221; is a moving target: small devices will have high
-bandwidth, and some phones will be mounted permanently on kitchen walls. A
-<a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the worst place to record any of this.
+And &#8220;mobile&#8221; is a moving target. Profiles such as the
+&#8220;Network PC&#8221; and the &#8220;Multimedia PC&#8221; had been
+&#8220;swept away&#8221;; small devices will have high bandwidth, and some
+phones will be mounted permanently on kitchen walls. A <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> is the worst
+place to record any of this. If the mobile providers honestly want mobility to
+be visible to users, the note says, they are &#8220;expecting to declare
+failure&#8221;:
 </p>
 
-<h2 id="sec-79-3">79.3 Who bears the cost of the root</h2>
+<blockquote>
+It is failure when a communications system, in providing connectivity,
+becomes foremost in the user&#8217;s perceptions. A travel agent should be a
+travel business, not a &#8220;mobile business&#8221;.
+<cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
+</blockquote>
 
-<p>
-<a class="x-ref" href="#fig-79-3">Figure 79.3</a> draws the note&#8217;s account of who owns what.
-</p>
+<h2 id="sec-79-3">79.3 Who profits from an unclaimed name</h2>
+
+<blockquote>
+To give away a large chunk of this to a private group would be simply a
+betrayal of the public trust put in ICANN.
+<cite>New Top Level Domains .mobi and .xxx Considered Harmful, 2004</cite>
+</blockquote>
+
 
 <figure id="fig-79-3">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
@@ -309,7 +314,7 @@ name not yet sold.</figcaption>
 </figure>
 
 <p>
-And then the temptation, recorded as rumour because that is what it was:
+Then the temptation:
 </p>
 
 <blockquote>
@@ -322,52 +327,49 @@ so on.
 </blockquote>
 
 <p>
-Both happened: VeriSign&#8217;s Site Finder redirected unregistered
-<code>.com</code> names in September 2003, and Network Solutions reserved
-searched-for names in 2008. This is the single point of control of Chapter
-5, at the one place the Web cannot route around.
+The note calls these rumours; one had already happened. VeriSign&#8217;s Site
+Finder had redirected unregistered <code>.com</code> names in September 2003;
+in 2008 Network Solutions reserved names that people had searched for. This
+is the single point of control of <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, at the one place the Web cannot
+route around.
 </p>
 
-<h2 id="sec-79-4">79.4 What the argument is still worth</h2>
+<h2 id="sec-79-4">79.4 The same mistake, wherever names are shared</h2>
 
 <p>
-The value of the note is the general form of the argument. Adding a
-distinction to the top of a <a class="gl-ref" href="../glossary.html#namespace">namespace</a> does three things: it multiplies
-defensive work for everyone already in it, it hands value to whoever operates
-the new division, and it invites people to encode in the name a property that
-does not belong there.
-</p>
-
-<p>
-Suppose a software package registry added a top-level prefix for mobile
-builds: every author would claim each name twice, the prefix&#8217;s operator
-would collect, and a property of the build would sit in the package&#8217;s
-name. <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> makes the argument about schemes; this chapter makes it
-about names.
+Adding a distinction to the top of any <a class="gl-ref" href="../glossary.html#namespace">namespace</a> multiplies defensive work
+for everyone already in it, hands value to whoever operates the new division,
+and invites a property into the name that does not belong there. A package
+registry with a prefix for mobile builds would do all three. The note ends
+plainly: &#8220;I urge ICANN not to create the &#8216;.mobi&#8217; top level
+domain.&#8221; ICANN created it anyway, and the Web then settled on the
+note&#8217;s remedy: one address, with the layout adapted to the device.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The mobile domain launched and faded.</strong> ICANN approved it
-in 2005; general registration opened in 2006. Separate mobile addresses gave
-way to responsive design (a term coined in 2010), one address for every
-device, as <a class="x-ref" href="#sec-79-2">section 79.2</a> argues.</li>
+in 2005. Separate mobile addresses gave way to responsive design (a term
+coined in 2010): one address for every device.</li>
+<li><strong>The mistake moved down a level.</strong> Many sites put their
+mobile layout on an <code>m.</code> host, such as <code>en.m.wikipedia.org</code>
+beside <code>en.wikipedia.org</code>; a link copied on a phone carries it.</li>
 <li><strong>The namespace expanded enormously.</strong> The programme begun in
-2012 added over a thousand new top-level domains, multiplying the burden of
+2012 added over a thousand top-level domains, multiplying the burden of
 <a class="x-ref" href="#fig-79-1">Figure 79.1</a>.</li>
-<li><strong>The adult-content domain launched in 2011.</strong> Before it
-opened, trademark holders filed tens of thousands of paid
-&#8220;Sunrise B&#8221; applications simply to block their names from it.</li>
+<li><strong>The adult-content domain launched in 2011.</strong> Trademark
+holders filed tens of thousands of paid applications simply to block their
+names from it.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The naming problem is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>; persistent names needing the root&#8217;s
-cooperation, <a class="x-ref" href="13-persistent-domains.html">Chapter 13</a>; the single centralised point, <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>; the same
-argument about schemes, <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>; a delivery property in a name, <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>.
+Naming, <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>; persistent names, <a class="x-ref" href="13-persistent-domains.html">Chapter 13</a>; the single central point,
+<a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>; the argument about schemes, <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>; a delivery property in a
+name (the <code>s</code> of <code>https</code>), <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>.
 </p>
 </div>
 
@@ -381,17 +383,19 @@ actually remember, and why?</p>
 <div class="question">
 <p><span class="question-number">79.2</span>
 A device-specific address cannot be exchanged between devices. Give a modern
-case where an address is still specific to how it is being read.</p>
+case where an address is still specific to how it is being read, and say what
+happens when it is shared.</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.3</span>
 Using <a class="x-ref" href="#fig-79-3">Figure 79.3</a>, explain why a registry that sells names has a reason to
-treat unregistered names as its own property. What did VeriSign do in 2003?</p>
+treat unregistered names as its own property. Why does the note think a
+proposal from a non-profit would raise less suspicion?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.4</span>
-Apply the three-part argument of <a class="x-ref" href="#sec-79-4">section 79.4</a> to the package-registry example.
-Who pays, who collects, and what property ends up in the name?</p>
+Apply the three-part argument of <a class="x-ref" href="#sec-79-4">section 79.4</a> to a package registry with a
+prefix for mobile builds. Who pays, who collects, and what ends up in the name?</p>
 </div>
 </details>
 
