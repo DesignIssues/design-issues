@@ -3,34 +3,37 @@
 <p>
 A protocol&#8217;s designer decides what its words mean, and users accept that
 by joining in. A URI contains a domain name, a domain has an owner, and that
-owner may and must say what the name means. Every system also runs on unwritten
-social rules. Email assumed everyone was friendly; when that proved false,
-spam followed, even though the technical rules worked perfectly.
+owner may, and on the Semantic Web must, say what the name means. Every
+system also runs on unwritten social rules. Email assumed everyone was
+friendly; when that proved false, spam followed, even though the technical
+rules were obeyed.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This chapter closes Volume II with a document unlike any other in the
-collection. It is not a note but an interview, conducted by Harry Halpin and
-Alexandre Monnin for a volume of writings from the PhiloWeb workshops, dated
-March 2013. Berners-Lee is asked what kind of activity Web design is, and the
-answer explains why a book of architecture notes contains so many arguments
-about meaning.
+A spammer once defended himself by saying that the sender line of an email
+is &ldquo;just a form field, I can put whatever I like there&rdquo;.
+Berners-Lee&#8217;s reply is that it does matter, for anyone playing the
+game. Who decides what a field, a header or a Web address means? In this
+interview his answer is blunt: whoever designed the protocol, and, for a URI,
+whoever owns the domain.
 </p>
 <p>
-It is placed last in the volume on naming because it states, more directly
-than anywhere else, what the identity axiom of Chapter 2 amounts to: that
-somebody owns a name and therefore gets to say what it means.
+The source is an interview, not a note, conducted by Harry Halpin and
+Alexandre Monnin in March 2013 for a book from the PhiloWeb workshops. It
+closes Volume II,
+the volume on naming, because it states more directly than anywhere else
+what the identity axiom of Chapter 2 amounts to: that somebody owns a name
+and therefore gets to say what it means.
 </p>
 </div>
 
-<h2>15.1 Where the phrase came from</h2>
+<h2>15.1 Physics as experimental philosophy</h2>
 
 <p>
-The origin is an Oxford joke that turned out to be serious. Berners-Lee
-recalls being amused that the physics degree at Oxford is formally called
+Berners-Lee recalls being tickled that the physics degree at Oxford is formally called
 experimental philosophy: philosophy done by dropping things and seeing
 whether they continue to drop.
 </p>
@@ -52,14 +55,15 @@ they have to join in and agree they will work with your system.
 </blockquote>
 
 <p>
-He adds that this is exciting, and a responsibility.
+He goes on: &ldquo;So you can build systems, worlds, which have different
+properties. That's exciting, and a source of responsibility as well.&rdquo;
 </p>
 
 <h2>15.2 Specification as an agreement to stop arguing</h2>
 
 <p>
 Asked whether writing standards is philosophy in progress, Berners-Lee gives
-an account that any member of a working group will recognise. A working group
+a practitioner&#8217;s account. A working group
 is the committee that writes a standard. Its members argue about what words mean until the
 concepts in different heads are aligned enough, and then it is written down in
 language everyone can live with. What makes it work is a refusal to reopen
@@ -74,12 +78,10 @@ specification-writing], you're not going to argue about that.
 </blockquote>
 
 <p>
-His illustration is a payment someone tries to disown afterwards. Nobody may
-pay a bill online and then argue that the HTTP headers they sent (the
+His illustration: nobody may pay a bill online and then argue that the HTTP headers they sent (the
 labelled lines that go with every Web request) do not actually mean anything.
-He recalls a spammer&#8217;s defence: the sender line of an email is
-&ldquo;just a form field&rdquo;, so anything can go there. It cannot, he
-answers, for anyone playing the game. From this he derives a gap:
+The spammer&#8217;s &ldquo;form field&rdquo; defence fails for the same
+reason. From this he derives a gap:
 </p>
 
 <blockquote>
@@ -89,11 +91,11 @@ disobeys a protocol that they've broken the law via a straight-forward path.
 <cite>Philosophical Engineering and Ownership of URIs, 2013</cite>
 </blockquote>
 
-<h2>15.3 What is special about a URI</h2>
+<h2>15.3 A name that someone owns</h2>
 
 <p>
-Asked how URIs differ from words, Berners-Lee gives the answer this volume
-has been building towards, and it is about property. (The Semantic Web,
+Asked how URIs differ from words, Berners-Lee answers in terms of
+property. (The Semantic Web,
 mentioned in it, is data published so that programs can look up what terms
 mean.)
 </p>
@@ -108,7 +110,7 @@ mean. It's not a question of philosophical discussions between third parties.
 </blockquote>
 
 <p>
-He then gives the mechanism. In a
+In a
 dispute about what a URI stands for, the question goes to the owner of the domain name,
 who typically delegates to someone else, who has written an ontology (a
 machine-readable set of definitions) and stored it on a Web server. Anyone
@@ -235,8 +237,11 @@ URI, restated seventeen years later as a regret.
 <h2>15.5 Two protocols, and why spam is an architecture problem</h2>
 
 <p>
-The most transferable idea in the interview is that every deployed system has
-two protocols, only one of them written down.
+Berners-Lee&#8217;s account of Web Science starts from the claim that every
+deployed system has two protocols, only one of them written down, and that
+its engineering &ldquo;is not like building a mousetrap. You design a
+microscopic system, but what you're interested in is the macroscopic
+phenomena that emerge.&rdquo;
 </p>
 
 <p>
@@ -245,8 +250,8 @@ IMAP, the rules for sending mail and for collecting it. The social protocol
 is that everyone runs a machine with room to store their friends&#8217; mail
 in transit, that people write to each other on reasonable topics, and that
 people read what they receive. Together these explain one message passing
-from one person to another in a few hops. What matters is what happens when
-millions do it.
+from one person to another in a few hops; spam is what emerged when millions
+did it.
 </p>
 
 <figure>
@@ -338,20 +343,20 @@ the other person wants to read it.
 </blockquote>
 
 <p>
-Spam is thus not a failure of SMTP but an unwritten assumption proving
-false, and Berners-Lee notes that nobody has succeeded in redesigning
-either half to remove it. What is missing, he says, is the mathematics
-connecting the microscopic design to the macroscopic behaviour.
+Nobody, he notes, has succeeded in redesigning either half to make spam go
+away, and what is missing is the mathematics connecting the two levels.
 </p>
 
-<h2>15.6 What he wants from philosophers</h2>
+<h2>15.6 A pamphlet so the meeting can go on</h2>
 
 <p>
 He sees two jobs for philosophy. One is legal. Anyone can link to any Web page,
 but a lawyer may claim the right to charge for linking to theirs; then
 someone has to explain how a protocol defined over a name, a mere reference,
-grounds out in concepts lawyers understand. The other is the request that
-closes the interview:
+grounds out in concepts lawyers understand. Here he adds that
+&ldquo;Systems where you control names haven't worked so far&rdquo;, which
+sits uneasily beside &ldquo;names are owned&rdquo; a page earlier. The other
+job is the request that closes the interview:
 </p>
 
 <blockquote>
@@ -363,10 +368,11 @@ link? Quite a lot of that is philosophy.
 </blockquote>
 
 <p>
-The purpose is to stop working groups halting. He imagines someone saying
-that a proposal does not match what they learned from Wittgenstein (a
-philosopher who held that meaning is use), and wants a pamphlet to hand them
-so that work can continue.
+He imagines someone in a working group objecting that a proposal does not
+match what they learned from Wittgenstein (a philosopher who held that
+meaning is use), and wants a pamphlet to hand them: enough shared
+understanding &ldquo;so that we don't have to stop work for philosophical
+discussions&rdquo;.
 </p>
 
 <div class="since">
@@ -375,20 +381,23 @@ so that work can continue.
 <li><strong>The collection this appeared in was published.</strong>
 <em>Philosophical Engineering: Toward a Philosophy of the Web</em>, edited by
 Halpin and Monnin, appeared from Wiley-Blackwell in 2014.</li>
+<li><strong>The From line was closed by protocol, not by law.</strong>
+SPF (RFC 7208, 2014, revising a 2006 version), DKIM (RFC 6376, 2011) and
+DMARC (RFC 7489, 2015) let a receiving server check that mail bearing a
+domain in its From line was authorised by that domain. From February 2024
+Gmail and Yahoo required this of bulk senders. The &ldquo;form field&rdquo;
+defence was answered technically, though spam persists.</li>
 <li><strong>The law-and-protocol gap remains.</strong> Disobeying a protocol
-is still not straightforwardly unlawful. Where computer-misuse law has
-reached protocol behaviour, it has done so through statutes about
-unauthorised access whose boundaries are contested; in <em>Van Buren v.
-United States</em> (2021) the US Supreme Court narrowed the reach of the
-Computer Fraud and Abuse Act. This is not the direct path described
-here.</li>
+is still not straightforwardly unlawful. Computer-misuse law reaches protocol behaviour only through contested
+statutes on unauthorised access; in <em>Van Buren v. United States</em>
+(2021) the US Supreme Court narrowed the Computer Fraud and Abuse Act.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The ownership of meaning described in section 15.3 is the identity axiom of
+The ownership of meaning in section 15.3 is the identity axiom of
 Chapter 2, and the universality regret in section 15.4 is that chapter&#8217;s
 claim about naming schemes. The obligation to publish a definition is what Chapters 7 to 9 argue
 about; Chapter 9 records how often domain owners serve no definitions for the
@@ -402,10 +411,9 @@ in Chapter 87 and Chapter 90.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">15.1</span>
-Berners-Lee says a protocol designer gets to define what words mean. Name a
-term whose protocol definition departs sharply from ordinary usage (for
-example, what a <em>From</em> line or a GET request commits you to), and say
-what the departure buys.</p>
+The spammer said the From line is &ldquo;just a form field&rdquo;. Was he
+wrong technically, socially or legally? What would have to exist for the
+answer to be enforceable?</p>
 </div>
 <div class="question">
 <p><span class="question-number">15.2</span>

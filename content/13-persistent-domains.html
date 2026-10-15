@@ -12,28 +12,32 @@ Berners-Lee proposed new domains stamped with a year, such as
 <code>.y2000</code>, bought once and held forever. Each would come with a duty
 to keep its pages available, and that duty would pass to whoever bought the
 domain. If the owner disappeared, copies kept by other organisations would
-take over. It was never built.
+take over. It was never built. Domain names are still rented, and lapsed ones
+are still bought up and repointed.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Chapter 3 concluded that persistence is a contract rather than a technology.
-This note, written in October 2000, is the one place in the collection where
-Berners-Lee tries to write the contract. He labels it a strawman: a rough proposal put up so that others can knock it
-down. Its first half diagnoses a problem still unsolved;
-its second shows what solving it would demand.
+Somebody needs the instructions for an appliance whose maker has gone out of
+business. A historian a thousand years from now wants to know, in the
+note&#8217;s words, &ldquo;what on earth made us all tick&rdquo;. Both
+depend on web addresses still leading where they used to. In October 2000
+Berners-Lee wrote down what it would take to promise that, and labelled it a
+strawman: a rough proposal put up so that others can knock it down.
 </p>
 </div>
 
-<h2>13.1 The problem, factored</h2>
+<h2>13.1 Two ways a link breaks</h2>
 
 <p>
-The note begins by splitting URI persistence into two independent questions:
-the persistence of the path after the domain name, and the
-persistence of the domain name itself. Figure 13.1 uses the note&#8217;s own
-example.
+A link can fail in two ways. It can lead nowhere, an Error 404, which the
+note blames for &ldquo;user frustration and social dysfunction&rdquo;. Or,
+worse in the note&#8217;s ranking, it can lead to a &ldquo;completely
+different resource to that intended by the referring person&rdquo;.
+Berners-Lee factors the problem into the two halves of an address: the path
+after the domain name, and the domain name itself. Figure 13.1 uses the note&#8217;s own example.
 </p>
 
 <figure>
@@ -101,7 +105,7 @@ tools for running a server with persistent URIs. He had already written
 <p>
 The second half is summarised in a line from Esther Dyson (the note spells
 her name Ester), then chair of ICANN, the body that oversees the domain name
-system. A meme is a phrase that spreads and sticks:
+system:
 </p>
 
 <blockquote>
@@ -112,7 +116,8 @@ public expectation that domain names should be persistent.
 </blockquote>
 
 <p>
-In principle, he goes on, whoever next holds <code>example.com</code>, by
+He had already put the idea to Dyson herself, backstage at a Harvard
+conference. In principle, he goes on, whoever next holds <code>example.com</code>, by
 purchase, lawsuit or an owner&#8217;s accidental failure to renew, could make
 <code>/downloads</code> point to anything at all.
 </p>
@@ -120,22 +125,19 @@ purchase, lawsuit or an owner&#8217;s accidental failure to renew, could make
 <h3>Why it might already be fine</h3>
 
 <p>
-He then argues against his own alarm. Investment in domain names is huge, the lookup technology sophisticated, and the legal weight behind a
-significant organisation&#8217;s ownership considerable. Nobody imagines a legal battle over <code>microsoft.com</code>
-or <code>ietf.org</code> being lost to a sneaky entrepreneur. The section ends
+He then argues against his own alarm. Investment in domain names is huge,
+and the legal weight behind a significant organisation&#8217;s ownership
+considerable: nobody imagines <code>microsoft.com</code> or
+<code>ietf.org</code> being lost to a sneaky entrepreneur. The section ends
 with four words: but is this enough?
 </p>
 
-<p>
-He also names a symptom: a constant stream of proposals for new URI schemes
-(URNs, Uniform Resource Names, and Handles are examples), each with its own lookup system, usually
-with less attention to the social issues than HTTP and DNS receive.
-</p>
-
-<h2>13.2 The proposal: date-stamped top-level domains</h2>
+<h2>13.2 Names that can only be bought once</h2>
 
 <p>
-The mechanism is one trick, already used in two places. A top-level domain is
+Others kept proposing new URI schemes, such as URNs and Handles, each with its
+own lookup technology and, the note says, often less attention to the social
+issues. Berners-Lee proposes fixing the system that exists. The mechanism is one borrowed trick. A top-level domain is
 the last part of a name, such as <code>.com</code> or <code>.org</code>.
 Create a series of top-level domains named for years. A name under
 <code>.y2000</code> could be registered only during the year 2000, and once
@@ -226,12 +228,19 @@ get and worthless to trade;</li>
 transfer, which discourages speculation.</li>
 </ul>
 
-<h2>13.3 The obligations</h2>
+<p>
+Two rules in the note&#8217;s closing summary say who would hold the power:
+the registry would be a neutral non-profit cooperative, and ICANN&#8217;s
+delegation of the year domains would be irrevocable for all time.
+</p>
+
+<h2>13.3 What owning a name forever would cost</h2>
 
 <p>
-This half answers the first problem, the publisher who stops caring for its
-paths. It makes the proposal a contract rather than a naming scheme, and it
-is the hard part. An organisation entering the scheme takes on duties:
+Suppose, as the note does, that Fleet Bank buys BankBoston. It could not then
+drop support for documents under <code>bankboston.y2000</code> without all
+its public documents falling into archive state, because it inherits the
+duties BankBoston accepted on entering the scheme:
 </p>
 
 <ul>
@@ -247,7 +256,9 @@ the confidentiality.</li>
 </ul>
 
 <p>
-The obligations run with the property:
+This half, which answers the publisher who stops caring for its paths, is
+the hard part. It turns a naming scheme into a contract that runs with the
+property:
 </p>
 
 <blockquote>
@@ -257,11 +268,8 @@ obligations. Transfer of the domain name would carry within it both.
 </blockquote>
 
 <p>
-The note&#8217;s worked case: Fleet Bank, buying BankBoston, could not simply
-drop support for documents under <code>bankboston.y2000</code> without all its
-public documents falling into archive state. Archive state is also the penalty for
-cheating. A domain whose publisher &ldquo;consistently flaunts the
-rules&rdquo; would be declared dead and pass into archive state as though the
+Archive state is also the penalty for cheating. A domain whose publisher
+keeps breaking the rules would be declared dead and pass into archive state as though the
 organisation had ceased to exist; it could then ask for a new domain and
 start again, at least the first time.
 </p>
@@ -318,28 +326,29 @@ silent abandonment.</figcaption>
 </figure>
 
 <p>
-Berners-Lee also floats, without committing to it, a limited redistribution
-licence for material in archive state, by analogy with an implicit right to
-photocopy an out-of-print book. A footnote records Joseph Reagle&#8217;s point
-that courts might not accept the parallel.
+He also floats, uncommitted, a limited redistribution licence for archived
+material, like an implicit right to photocopy an out-of-print book; Joseph
+Reagle warns that courts might not accept the parallel.
 </p>
 
 <h2>13.4 Re-use is forbidden; change is not</h2>
 
 <p>
 Most URIs are generic in the sense of Chapter 10: they refer to a conceptual
-resource whose representation varies with time, technology and language, as
-one address for &ldquo;today&#8217;s weather&rdquo; shows different content each
-day. That is permitted inside a persistent domain. What is forbidden is
-reallocating a URI to something else. Ideally the generic resource and each specific
-version of it would have separate URIs. A site might pair
+resource whose representation varies with time, technology and language.
+That is permitted inside a persistent domain; reallocating a URI to something
+else is not. Ideally the generic resource and each specific version would
+have separate URIs. A site might pair
 <code>/weather</code>, which may change daily, with
 <code>/weather/2000-10-04.html</code>, that day&#8217;s page, which must stay
 frozen. Providing such pairs could be one of the owner&#8217;s obligations.
 </p>
 
 <p>
-He admits he does not know how to enforce this, and guesses:
+Re-use, the note says, would cause &ldquo;a big
+mess&rdquo;: caches across the globe would fall out of sync, and assumptions
+made by mirrors and proxies would become invalid. He admits he does not know
+how to enforce the rule, and guesses:
 </p>
 
 <blockquote>
@@ -349,18 +358,12 @@ known&rdquo;!).
 <cite>Persistent Domains, 2000</cite>
 </blockquote>
 
-<p>
-The note ends with a summary list of rules. Two say who would hold the
-power: the registry would be a neutral non-profit cooperative, and
-ICANN&#8217;s delegation of the year domains would be irrevocable for all time.
-</p>
-
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Nothing was built.</strong> The expansion of the top-level namespace that did occur, beginning
-with ICANN&#8217;s new generic top-level domain programme in 2012, sold names as
-rentals on the existing model and added no persistence obligations.</li>
+<li><strong>Nothing was built.</strong> The new generic top-level domains that ICANN began
+selling in 2012 were rentals on the existing model, with no persistence
+obligations.</li>
 <li><strong>The contract was written elsewhere, privately.</strong> The
 Handle System and the Digital Object Identifier (DOI, the identifiers printed
 on academic papers, such as <code>doi.org/10.…</code>) supply the undertaking
@@ -372,8 +375,8 @@ as the Internet Archive&#8217;s Wayback Machine (public since 2001), preserve
 material after publishers disappear, but as a voluntary third-party act, not a
 condition of holding a name, and with no contractual succession.</li>
 <li><strong>Dyson&#8217;s line held.</strong> Domain names are still rented. As of 2026 lapsed
-domains are still routinely re-registered and repointed: the worse failure the note
-names, a URI resolving to something other than what the linker meant.</li>
+domains are still routinely re-registered and repointed, producing the worse
+failure the note names.</li>
 </ul>
 </div>
 
@@ -392,8 +395,9 @@ may copy material after its publisher stops serving it returns in Chapter 80.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">13.1</span>
-Explain why making a name unobtainable once its year has passed also removes
-most of the commercial pressure that makes domain names change hands.</p>
+Find an old link, in an article or a bookmark, that now leads somewhere
+unexpected. Which half of the address failed, and would this proposal have
+prevented it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">13.2</span>

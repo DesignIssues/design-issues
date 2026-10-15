@@ -1,13 +1,14 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The previous chapter&#8217;s plan sounds like a rerun of famous failures.
+Has this not been tried before, with KIF and Cyc? Berners-Lee&#8217;s answer:
+&ldquo;yes, it has, more or less.&rdquo; This is his reply to the sceptics.
 </p>
 <p>
-This chapter answers six objections, then refuses to give ground on a
-seventh: that the Web&#8217;s contradictions demand fuzzy logic. Each of the
-six fears is granted, and each claim turns out smaller. The note then maps
-database tables onto the new model.
+Of six objections, some he grants outright; in every case the claim turns
+out smaller than the fear. The seventh, that the Web&#8217;s contradictions
+demand fuzzy logic, he refuses. The note then maps database tables
+onto the new model.
 </p>
 </div>
 
@@ -23,12 +24,9 @@ science, now passed into folk law as unsolvable problems, they suggest a fear
 that the goal of a Semantic Web is inappropriate.
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
-<p>
-The objections are memories of earlier failures.
-</p>
 </div>
 
-<h2>31.1 Six denials</h2>
+<h2>31.1 What it is not</h2>
 
 
 <figure>
@@ -85,7 +83,7 @@ The objections are memories of earlier failures.
   </g>
 
   <line class="ln-mut" x1="24" y1="290" x2="696" y2="290"/>
-  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Each earlier failure is granted; each claim is smaller than the fear.</text>
+  <text x="360" y="312" class="t-sm t-it" text-anchor="middle">Some fears are granted; every claim is smaller than the fear.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 31.1</span>
 The six denials, in this chapter&#8217;s order. The first four ask for less;
@@ -96,8 +94,7 @@ section 31.5, is not granted.</figcaption>
 <h2>31.2 Not artificial intelligence</h2>
 
 <p>
-The first denial is the one the note is remembered for, and the cost is
-stated in the same breath:
+The first denial is the one the note is remembered for:
 </p>
 
 <blockquote>
@@ -109,6 +106,11 @@ asking machines to understand people's language, it involves asking people to
 make the extra effort
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
+
+<p>
+The effort is writing data as statements of node, property and value
+(section 31.7); it is the price of needing no machine that reads prose.
+</p>
 
 
 
@@ -152,7 +154,8 @@ computational properties.
 Older systems forced data into a fixed tree or grid, which kept it
 consistent; he bets DARPA, the American defence research agency, still has
 many. Joining them needed a more powerful language, global hypertext, which had none
-of those guarantees: &ldquo;You could follow links forever.&rdquo; An
+of those guarantees: &ldquo;People were frightened about getting lost in it. You could follow
+links forever.&rdquo; An
 inference engine on the Semantic Web likewise need not finish. Yet many web
 sites stay orderly inside, and ordered parts can be linked to unordered ones.
 </p>
@@ -177,7 +180,7 @@ Only the first row can be exchanged between systems whose engines apply
 rules differently.
 </p>
 
-<h2>31.4 The globalisation argument</h2>
+<h2>31.4 Tried before? Yes, more or less</h2>
 
 <p>
 The next objection is that this is another run at knowledge representation,
@@ -205,9 +208,11 @@ total provability, and see what we can do with limited knowledge.
 <p>
 The objection that predicate calculus (formal logic with &ldquo;for
 all&rdquo; and &ldquo;there exists&rdquo;) never had wide impact gets the
-same answer: neither did hypertext before 1990. Both were centralised.
-Knowledge bases could not be merged, because each concept had one place in a
-tree. KIF, a standard language for passing logic between programs, is very
+same answer: neither did hypertext before 1990, and &ldquo;the same
+objection was raised to the Web&rdquo;. Both were centralised. Knowledge bases
+could not be merged, because each concept had one place in a tree; they
+therefore did not scale, or pass the test of independent invention (Chapter
+16). KIF, a standard language for passing logic between programs, is very
 centralised; Cyc, a long project to hand-write common-sense knowledge, suggests
 everyone agree on the same terms for common English words. The cure is hypertext&#8217;s:
 </p>
@@ -268,28 +273,28 @@ Put in a significant effort into getting critical mass. Sit back.
   </g>
 </svg>
 <figcaption><span class="fig-label">Figure 31.2</span>
-The same operation, in the note&#8217;s words, applied twice. Each time what
-is removed is the demand for global agreement (Chapter 26 generalises
-it).</figcaption>
+The same operation applied twice; each time it removes the demand for global agreement.</figcaption>
 </figure>
 
-<h2>31.5 On inconsistency, and what he will not concede</h2>
+<h2>31.5 The one objection he refuses</h2>
 
 <h3>Check the source</h3>
 
 <p>
-This is the one objection the note does not concede. In classical logic, once a system believes a statement and its opposite,
+In classical logic, once a system believes a statement and its opposite,
 it can derive any conclusion at all. The Web is full of contradictions, so
 the objection runs that only a fuzzy system will do.
 </p>
 
 <p>
 Berners-Lee refuses. A real system will not believe anything it reads but
-check the source, inferring only from statements signed by particular keys
+check the source (&ldquo;I wish people would learn to do this on the Web
+as it is!&rdquo;), inferring only from statements signed by particular keys
 (a digital signature proves who wrote them). Within such a system
-an inconsistency is a serious problem, not something to be worked around. If
-a bank and a home computer disagree about a balance, someone must find out
-why; the same holds for launching missiles, he adds.
+an inconsistency is a serious problem, not something to be worked around:
+&ldquo;If my bank says my bank balance is $100 and my computer says it is
+$200, then we need to figure out the problem.&rdquo; The same holds for
+launching missiles, he adds.
 </p>
 
 <h2>31.6 The closed world</h2>
@@ -357,15 +362,9 @@ Same data, different conclusion: on the Web a document not yet seen may add
 the missing fact.</figcaption>
 </figure>
 
-<p>
-That difference is what makes the mappings in Chapter 33 approximate rather
-than exact.
-</p>
-
-<h2>31.7 Records, columns and cells</h2>
+<h2>31.7 A database row is already RDF</h2>
 
 <p>
-The note&#8217;s second half maps existing data models onto the new one.
 An entity-relationship model, the boxes-and-lines diagram used to design
 databases, maps almost directly, except that relationships have URIs, so
 anyone can make one. One person may define a vehicle as having wheels, a
@@ -390,7 +389,9 @@ kind of fact; the value is what the fact says.
 A database never checks meaning: a query can join any columns of matching
 type, listing, in his example, houses with as many rooms as an
 employee&#8217;s shoe size. On the Web, information relating different
-databases can be added alongside them.
+databases can be added alongside them. Putting the vast amount of relational database information on the Web, in a
+form machines can process, has been &ldquo;one of the main driving forces for
+the Semantic web&rdquo;.
 </p>
 
 <div class="since">
@@ -411,11 +412,7 @@ often used to ground their answers.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The plan being defended is Chapter 30, and the test of independent invention
-invoked against earlier systems is Chapters 1 and 16. The globalisation recipe
-is Chapter 26. The relational mapping of section 31.7 is developed in
-Chapter 33, the graph model is Chapter 32, and the trust argument is Chapter
-37. Conceptual Graphs, mentioned in passing, are Chapter 39.
+Chapter 30 is the plan being defended; Chapters 1 and 16 state the test of independent invention, and Chapter 26 the globalisation recipe. Chapter 33 develops the relational mapping, Chapter 32 the graph model and Chapter 37 the trust argument.
 </p>
 </div>
 
@@ -433,14 +430,13 @@ full language underneath?</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.3</span>
-Name one thing a system cannot promise once it gives up total
-knowledge.</p>
+Your bank says $100; your own records say $200. Berners-Lee says someone must
+find out why. What would a &ldquo;fuzzy&rdquo; system do instead, and why is
+that worse here?</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.4</span>
-Berners-Lee refuses to tolerate inconsistency and requires source checking
-instead. Describe a case where a system must act despite contradictory
-sources, and say what it should do.</p>
+Describe a case where a system must act despite contradictory sources. What should it do?</p>
 </div>
 <div class="question">
 <p><span class="question-number">31.5</span>

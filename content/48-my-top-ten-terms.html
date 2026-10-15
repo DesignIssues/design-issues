@@ -11,15 +11,16 @@ them. The note is an unfinished first draft.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Volume V ends with the shortest note in the book, three hundred and seventy
-words, an undated first draft with a gap where the date should be and another
-where a name should be. It answers, in one page, the question the preceding
-eight chapters raise: granted all this machinery, what would actually make a
-difference? The answer is eight or ten well-chosen words.
+The note is titled <em>My Top Ten Terms</em> and names eight. At about 370
+words it is the shortest note in this book, an unfinished draft with
+placeholders where its date and a colleague&#8217;s name should be. It still
+answers the question the preceding eight chapters leave open: with all this
+machinery for logic in place, what would actually connect the world&#8217;s
+data? Its answer is a handful of words already in use.
 </p>
 </div>
 
-<h2>48.1 A little semantics</h2>
+<h2>48.1 A few words that join everything</h2>
 
 <p>
 The note opens by borrowing a phrase from Jim Hendler, a researcher who helped
@@ -48,8 +49,9 @@ The organising idea is credited to someone at Mitre whose name the draft
 leaves as a placeholder. That person calls it loose coupling: connect things
 through a few shared terms, and leave other connections to future projects.
 The same person asks &ldquo;Who, where, when?&rdquo;, and the terms are chosen
-against those three words. Figure 48.1 shows what one shared term makes
-possible.
+against those three words, as important common dimensions: the more data is
+connected through them, the more connected the world&#8217;s data becomes.
+Figure 48.1 shows what one shared term makes possible.
 </p>
 
 <figure>
@@ -85,12 +87,6 @@ possible.
 An invented example. Neither publisher coordinated with the other; one shared
 term, <code>foaf:mbox</code>, used with the same value, was enough to join their data.</figcaption>
 </figure>
-
-<p>
-The note says the terms are chosen because they are important common
-dimensions, and because data connected using more of them would make the data
-in the world a great deal more connected.
-</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 234" width="720" height="234" role="img"
@@ -132,16 +128,11 @@ in the world a great deal more connected.
 
 </svg>
 <figcaption><span class="fig-label">Figure 48.2</span>
-The eight terms, grouped by the question each answers. The short glosses are
-this book's; the note itself explains only the mailbox and the
-title.</figcaption>
+The eight terms, grouped by the question each answers. The glosses are this
+book&#8217;s: the note explains only the mailbox and the title, says time
+already has many quite complete ontologies, and calls place a huge
+one.</figcaption>
 </figure>
-
-<p>
-The section on
-time breaks off after noting that there are many complete ontologies of time;
-the section on place says only that it is a huge one.
-</p>
 
 <h2>48.2 Why an email address, of all things</h2>
 
@@ -158,8 +149,8 @@ given email address.
 </blockquote>
 
 <p>
-Email callback is the familiar check: the site emails a link and treats
-the address as the person&#8217;s only once it is clicked. The next sentence stops halfway,
+Email callback is the familiar check: the site emails a link and trusts the
+address once it is clicked. The next sentence stops halfway,
 &ldquo;Yes, it isn't perfect, as&rdquo;, and is never finished. The choice
 stands on what already works, the same reasoning Chapter 34 uses when it
 identifies a person by an unambiguous property rather than by an identifier
@@ -167,6 +158,13 @@ they do not have.
 </p>
 
 <h3>Where the vocabularies come from</h3>
+
+<blockquote>
+Documents are of course the lifeblood of the Web and the Semantic Web. The
+first call for structured data, which gave rise to RDF, was for data about
+documents.
+<cite>My Top Ten Terms</cite>
+</blockquote>
 
 <p>
 Friend of a Friend was chosen because it was already in use: it was designed and used bottom-up, to connect people through networks of
@@ -177,7 +175,7 @@ with the HTML <code>&lt;title&gt;</code> tag, which makes the point that most
 Web pages already publish this term.
 </p>
 
-<h2>48.3 The economics of the fractal world</h2>
+<h2>48.3 Who pays for a vocabulary</h2>
 
 <p>
 The closing line ties this note to Chapter 87, where &ldquo;fractal&rdquo;
@@ -228,8 +226,7 @@ largest scale, where reuse is nearly free because everyone already has them.
 
 <p>
 Volume V has been about logic: what can be expressed, what can be checked,
-what happens when statements conflict, and how to write it all down. This note
-sets all of it aside.
+what happens when statements conflict. This note sets all of it aside.
 </p>
 
 <table>
@@ -241,10 +238,9 @@ sets all of it aside.
 </table>
 
 <p>
-This is the least powerful thing that could possibly work: the principle of
-Chapter 1, applied to vocabulary rather than to language. Two datasets that
-identify a person the same way can be joined by anyone, with no further
-agreement between their publishers.
+In the terms of Chapter 1, this is the least powerful means applied to
+vocabulary. Two datasets that identify a person the same way can be joined by
+anyone, with no further agreement between their publishers.
 </p>
 
 <div class="since">
@@ -255,12 +251,13 @@ at larger scale: a small shared vocabulary covering who, where, when and what,
 adopted because search engines consume it.</li>
 <li><strong>The specific terms fared differently.</strong> Titles spread
 widely: the Open Graph protocol, launched in April 2010, made
-<code>og:title</code> one of its four required properties. Mailboxes published openly were harvested by spammers,
-and FOAF came to offer <code>foaf:mbox_sha1sum</code>, a scrambled form of the
-address that can still be matched but not read.</li>
-<li><strong>Time got its complete ontology.</strong> Time Ontology in OWL, a
+<code>og:title</code> one of its four required properties. FOAF also offers <code>foaf:mbox_sha1sum</code>, a scrambled form of the
+address that can still be matched but not read; by 2003 the FOAF project
+recommended it over the plain mailbox, because openly published addresses were
+harvested by spammers.</li>
+<li><strong>Time got a W3C standard ontology.</strong> Time Ontology in OWL, a
 W3C Recommendation of October 2017, models intervals, durations and calendars
-in detail: the kind of ontology the note passes over in favour of two simple
+in detail: one more of the kind the note passes over in favour of two simple
 terms.</li>
 </ul>
 </div>
@@ -298,5 +295,10 @@ now a hazard. What changed, and what would you choose instead?</p>
 <p><span class="question-number">48.4</span>
 Write a list of ten terms for a subject you know well. How many already
 exist?</p>
+</div>
+<div class="question">
+<p><span class="question-number">48.5</span>
+The note promises ten terms and lists eight. Which two would you add, and to
+answer which question: who, when, where or what?</p>
 </div>
 </div>

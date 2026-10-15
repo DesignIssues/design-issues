@@ -2,7 +2,7 @@
 <h3>The short version</h3>
 <p>
 A piece of text means nothing until something says how to read it. &ldquo;Ora&rdquo;
-is a name in Finnish and a unit of currency in Danish. Berners-Lee argues that
+is a Finnish name, and the note gives it three other readings. Berners-Lee argues that
 the way of reading it (a language, an encoding, a unit) belongs on the link
 between the text and its meaning, not on either end. That works for languages
 and encodings, but in 2001 he found no clean way to do it for datatypes in
@@ -14,26 +14,26 @@ arcs.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This note ends with a line its author wrote to himself and never acted on:
+Are the letters &ldquo;Ora&rdquo; Finnish? As the first name of Ora Lassila
+they are, but the note links the same three letters to a Danish currency, an
+Old English weight and the Latin for shore. A computer handed the bare
+string cannot tell which reading is meant. RDF in 2000 marked language the XML way, which vanished once the file
+was read into the data model: &ldquo;no triple
+would result&rdquo;.
 </p>
-<blockquote>
-@@@Needs circle-and-arrow pictures for each attempt.
-<cite>Interpretation properties, 1998</cite>
-</blockquote>
 <p>
-Figure 38.1 supplies them. The question: how to record that a string is in a particular language,
-or is a measurement in particular units, or is an encoding of something else?
+So where does a language belong, or a unit, or an encoding? The note gets the
+answer wrong twice before getting it right, then finds in 2001 that the right
+answer does not fit datatypes.
 </p>
 </div>
 
-<h2>38.1 Three attempts</h2>
+<h2>38.1 Two wrong answers and a right one</h2>
 
 <p>
-The starting point is a muddle. RDF had adopted XML&#8217;s <code>xml:lang</code>
-attribute for marking a string&#8217;s language, but, as Berners-Lee puts it,
-the attribute went into the syntax and not into the model: the tag sat in the
-file&#8217;s markup but produced no statement in the data once the file was read. He then tackles the problem by getting it wrong
-twice, using Ora Lassila, an editor of the 1999 RDF specification, whose name is Finnish.
+Berners-Lee&#8217;s test case is Ora Lassila, an editor of the 1999 RDF
+specification, and the XML attribute <code>xml:lang</code> is ruled out
+because it went &ldquo;into the syntax but not into the model&rdquo;.
 </p>
 
 <figure>
@@ -109,9 +109,9 @@ twice, using Ora Lassila, an editor of the 1999 RDF specification, whose name is
   <rect x="298" y="332" width="120" height="28" class="box-plain"/>
   <text x="358" y="351" text-anchor="middle">"Ora Lassila"</text>
   <text x="440" y="324" class="t-sm">The Finnish reading of that string</text>
-  <text x="440" y="340" class="t-sm">is Ora&#8217;s name. The string &#8220;Ora&#8221;</text>
-  <text x="440" y="356" class="t-sm">alone also has Danish, Old English</text>
-  <text x="440" y="372" class="t-sm">and Latin readings.</text>
+  <text x="440" y="340" class="t-sm">is Ora&#8217;s name. The note gives &#8220;Ora&#8221;</text>
+  <text x="440" y="356" class="t-sm">Danish, Old English and Latin</text>
+  <text x="440" y="372" class="t-sm">readings too.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 38.1</span>
 The third attempt works because it puts the
@@ -122,14 +122,18 @@ characters, but on the step between them.</figcaption>
 <p>
 <strong>Attempt one</strong> adds a second property to the person,
 <code>namelang</code>. It cannot say enough: nothing ties the tag to
-either of two names. It persists because it keeps the structure flat, which is
+either of two names. In iCalendar, which the note cites, such a property is
+sometimes the language of a name and sometimes that of the object&#8217;s
+description. It persists because it keeps the structure flat, which is
 all that email headers can express.
 </p>
 
 <p>
 <strong>Attempt two</strong> inserts an extra node holding the text
-(<code>rdf:value</code>) and a language tag. It looks tidy but asserts
-something false:
+(<code>rdf:value</code>) and a language tag. The note voices the confusion
+itself: &ldquo;Clearly, &lsquo;Ora Yrj&ouml; Uolevi Lassila&rsquo; is
+Finnish, is it not? Yes, Ora is Finnish, but that is different.&rdquo; The
+graph looks tidy but is false:
 </p>
 
 <blockquote>
@@ -140,7 +144,10 @@ or French (short for &ldquo;Timoth&eacute;&rdquo;)?
 
 <p>
 <strong>Attempt three</strong> makes Finnish itself the arc: Ora&#8217;s name is
-what results from reading the string as Finnish.
+what results from reading the string as Finnish. The cost falls on
+software expecting a string: &ldquo;what is the poor
+system supposed to do in order to accommodate finding a natural language
+object in place of a string?&rdquo; His answer is a class that includes both.
 </p>
 
 <h2>38.2 The pattern, named</h2>
@@ -204,20 +211,20 @@ Once named, the pattern turns up everywhere:
 <table>
 <tr><th>Property</th><th>Reads&hellip;</th><th>&hellip;as</th><th>Plain meaning</th></tr>
 <tr><td>A language (Finnish)</td><td>a string</td><td>a name or phrase</td><td>The words mean this in that language</td></tr>
-<tr><td>Base 64</td><td>printable text</td><td>raw bytes</td><td>A reversible way of writing any bytes as ordinary characters</td></tr>
+<tr><td>Base 64</td><td>printable text</td><td>raw bytes</td><td>Any bytes, reversibly written as characters</td></tr>
 <tr><td>A hash (SHA-1)</td><td>a short code</td><td>a fingerprint of a document</td><td>Any change to the document changes the code</td></tr>
-<tr><td>Canonicalisation</td><td>a document</td><td>its standard form</td><td>Trivial differences, such as spacing, are ironed out first</td></tr>
+<tr><td>Canonicalisation</td><td>a document</td><td>its standard form</td><td>Trivial differences such as spacing removed</td></tr>
 <tr><td>Type coercion</td><td>a date and time</td><td>a date</td><td>Use only part of the value</td></tr>
 <tr><td>Units (added 2006)</td><td>a number</td><td>a quantity</td><td>&ldquo;10&rdquo; read in feet is a length</td></tr>
 </table>
 
-<h2>38.3 What it buys: nesting</h2>
+<h2>38.3 Nesting puts the order in the data</h2>
 
 <p>
 Interpretation properties compose, and composition records order.
-Berners-Lee&#8217;s example is a sequence: first tidy the W3C home page into
-standard form, then take its fingerprint, then write the fingerprint as
-printable text. The nesting itself states that order.
+Berners-Lee&#8217;s example tidies the W3C home page into standard form, takes
+its fingerprint, then writes the fingerprint as printable text, and the
+nesting states that order.
 </p>
 
 <figure>
@@ -268,10 +275,6 @@ Nested, each step wraps the last, so a program can read the order. Flat, the
 order lives in a document.</figcaption>
 </figure>
 
-<p>
-Then the comparison that makes the case:
-</p>
-
 <blockquote>
 Compare this withe the HTTP situation in which the headers cannot be nested,
 and the encodings and compression and other things applied to the body are
@@ -281,23 +284,18 @@ making the right conclusion about which happened in what order.
 </blockquote>
 
 <p>
-This cures the symptom Chapter 32 calls unordered annotations of an ordered
-process.
+HTTP still works that way. Its current definition (RFC 9110, 2022) requires
+the Content-Encoding header to list the codings in the order in which they
+were applied: a rule about order, stated in prose.
 </p>
 
-<h2>38.4 Where it fails</h2>
+<h2>38.4 Ten of what?</h2>
 
 <p>
-Unusually, the note&#8217;s Conclusion turns against its own proposal.
+The note&#8217;s Conclusion turns against its own proposal: the
+idea makes &ldquo;a clean accurate model&rdquo;, but &ldquo;using the concept
+for datatypes in RDF is incompatible with RDF as we know it today.&rdquo;
 </p>
-
-<blockquote>
-Representing the interpretation of one string as an abstract thing can be done
-easily with RDF properties. This helps make a clean accurate model. However,
-using the concept for datatypes in RDF is incompatible with RDF as we know it
-today.
-<cite>Interpretation properties, 1998</cite>
-</blockquote>
 
 <h3>The shoe size</h3>
 
@@ -365,48 +363,50 @@ something true about it. Ordinary RDF writes no such node.</figcaption>
 </figure>
 
 <p>
-Berners-Lee considers two ways to supply one.
-</p>
-
-<p>
-The first is to change how every literal (a plain string value written straight
-into the data, such as &ldquo;10&rdquo;) is parsed, so that each
-&ldquo;10&rdquo; gains an abstract node. He calls it frightful.
-</p>
-
-<p>
-The second is to treat &ldquo;10&rdquo; as standing for the set of all things
-it could represent under some datatype: the integer ten, ten inches, ten
-feet. He calls that frightful too, because equality stops working: two
-statements that both say &ldquo;10&rdquo; no longer plainly say the same thing.
-</p>
-
-<p>
-He sketches a third route: keep shoe:size as a loose link to the string, and
-add a property, rdf:actual, that leads to the typed value. A note to himself,
-dated January 2001, records no clear way forward.
-</p>
-
-<h2>38.5 The list of questions worth keeping</h2>
-
-<p>
-A datatype designer has to answer five yes-or-no questions; the answers fix
-how values are compared. The last column gives the answers Berners-Lee
-understood XML Schema Datatypes to give.
+Datatype designers face trade-offs, which the note lists as questions; the
+answers fix how values are compared. The second column gives XML Schema
+Datatypes&#8217; answers as Berners-Lee understood them.
 </p>
 
 <table>
-<tr><th>Question</th><th>Why it matters</th><th>XML Schema&#8217;s answer</th></tr>
-<tr><td>Can the type always be told from how the value is written? (1.4e4 and 1.4d4 differ in precision: in Fortran, e marks an ordinary number and d one stored with double the precision.)</td><td>Decides whether a parser needs a schema</td><td>No</td></tr>
-<tr><td>Are values of different datatypes distinct? Is 1 the same as 1.0?</td><td>Decides what equality means</td><td>Yes</td></tr>
-<tr><td>Is the set of datatypes extensible? Could complex or prime numbers be added?</td><td>Decides whether anyone else may add one</td><td>Yes</td></tr>
-<tr><td>Does representation equality imply value equality?</td><td>Decides whether comparison may be textual</td><td>Yes</td></tr>
-<tr><td>Does value equality imply representation equality?</td><td>Decides whether a canonical form is required</td><td>No</td></tr>
+<tr><th>Question</th><th>XML Schema&#8217;s answer</th></tr>
+<tr><td>Can the type always be told from how the value is written? (1.4e4 and 1.4d4 differ in precision.)</td><td>No</td></tr>
+<tr><td>Are values of different datatypes distinct? Is 1 the same as 1.0?</td><td>Yes</td></tr>
+<tr><td>Is the set of datatypes extensible? Could complex or prime numbers be added?</td><td>Yes</td></tr>
+<tr><td>Does representation equality imply value equality?</td><td>Yes</td></tr>
+<tr><td>Does value equality imply representation equality? (Is only the canonical form allowed?)</td><td>No</td></tr>
 </table>
 
 <p>
-The snag he notes: two values cannot be compared unless their datatypes
-are known.
+The simple fix is to declare that shoe:size is an integer, so that the string
+and the type together give the value ten. &ldquo;This works.&rdquo; It is what
+XML datatypes do, with the snag that two values cannot be compared unless their
+datatypes are known. Modelling the reading as an interpretation property
+instead needs an extra node, and ordinary RDF has none.
+</p>
+
+<p>
+Berners-Lee considers two ways to supply it. The first is to change how every
+literal (a plain string value in the data) is parsed, so that each one gains an abstract node. He calls
+it frightful. The second is to treat &ldquo;10&rdquo; as standing for
+everything it could represent under some datatype: the integer ten, ten
+inches, ten feet. That is frightful too, because equality stops working.
+</p>
+
+<p>
+He sketches a third route, keeping shoe:size as a loose link to the string
+and adding a property, rdf:actual, that leads to the typed value. Then comes a
+note to himself:
+</p>
+
+<blockquote>
+@@@ No clear way forward for describing datatypes in RDF/DAML (2001/1) @@
+<cite>Interpretation properties, 1998</cite>
+</blockquote>
+
+<p>
+As the notes below record, RDF eventually settled closer to the attempt this
+note rejected, packaging the tag or datatype with the string.
 </p>
 
 <div class="since">
@@ -418,8 +418,8 @@ Recommendations of February 2004 introduced typed literals, written
 datatype: the first real answer to section 38.4&#8217;s problem.</li>
 <li><strong>RDF 1.1 went further.</strong> In the W3C Recommendation of
 February 2014 every literal carries a datatype, and language-tagged strings
-have a datatype of their own. A literal is now a pair of text and tag, closer to
-attempt two than to attempt three.</li>
+have a datatype of their own. A language-tagged string&#8217;s value is a pair of text and
+tag, closer to attempt two than to attempt three.</li>
 <li><strong>Units.</strong> The 2006 section of the note points to a small
 ontology of units of measure at <code>http://www.w3.org/2007/ont/unit</code>,
 built on this pattern.</li>
@@ -427,10 +427,6 @@ built on this pattern.</li>
 Signature, a W3C Recommendation of 2002, describes canonicalisation, digest
 and base-64 encoding as an ordered chain, which is section 38.3&#8217;s
 argument.</li>
-<li><strong>The flat-header problem persists.</strong> HTTP&#8217;s current
-definition (RFC 9110, 2022) requires the Content-Encoding header to list the
-codings in the order in which they were applied: a rule about order, stated in
-prose.</li>
 </ul>
 </div>
 
@@ -449,8 +445,8 @@ have no identifier is Chapter 34.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">38.1</span>
-Attempt two is false because a string may be read in several languages. Give
-a case where attempt two is nonetheless the right engineering choice.</p>
+Give a case where attempt two, though false, is the right engineering
+choice.</p>
 </div>
 <div class="question">
 <p><span class="question-number">38.2</span>

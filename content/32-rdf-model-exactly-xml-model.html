@@ -16,7 +16,9 @@ reduces to the same thing.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Berners-Lee says why he wrote this:
+The note sets out to answer &ldquo;Why should I use RDF - why not just
+XML?&rdquo;, a question that &ldquo;has been around ever since RDF
+started&rdquo;. Berners-Lee says why he wrote it:
 </p>
 <blockquote>
 I wrote this note in a frustrated attempt to explain whatthe RDF model was for
@@ -26,27 +28,17 @@ those who though in terms of the XML model.
 <p>
 The occasion was a query language workshop where two camps had become
 visible: those who wanted to query documents, and those who wanted to extract
-the meaning and query that. This chapter is the argument for the second camp.
+the meaning and query that. The note argues for the second camp.
+He later listened to the first, and tried to write the argument the other way
+round in another note.
 </p>
 </div>
 
 <h2>32.1 One fact, many documents, one graph</h2>
 
 <p>
-XML is built of <em>elements</em>, named tags such as
-<code>&lt;author&gt;&hellip;&lt;/author&gt;</code> that nest inside one
-another, so a file forms a <em>tree</em>. An element may carry
-<em>attributes</em>, such as <code>href="page"</code>. A <em>parser</em> reads
-the file and builds the tree; a <em>query</em> is a question a program asks of
-it.
-</p>
-
-<p>
-Take one assertion, that the author of a page is Ora. Berners-Lee writes it
-five ways, all perfectly good XML, all meaning the same thing to a person, all
-producing different trees to a machine. RDF, the Semantic Web&#8217;s data
-model, instead stores each fact as a <em>triple</em>: a subject (page), a
-relation (author) and an object (Ora).
+Berners-Lee writes the assertion that Ora is the author of a page five ways, all perfectly good XML.
+&ldquo;To a machine parsing them, they produce different XML trees.&rdquo;
 </p>
 
 <figure>
@@ -115,6 +107,16 @@ Berners-Lee&#8217;s summary: much of an XML query is an attempt to convert the s
 of all possible representations of a fact into one statement, and that is just
 what RDF does.</figcaption>
 </figure>
+
+<p>
+XML <em>elements</em>, named tags such as
+<code>&lt;author&gt;&hellip;&lt;/author&gt;</code>, nest to form a
+<em>tree</em> and may carry <em>attributes</em> such as
+<code>href="page"</code>; a <em>parser</em> builds the tree and a
+<em>query</em> asks it questions. RDF, the Semantic Web&#8217;s data model,
+instead stores each fact as a <em>triple</em>: a subject (page), a relation
+(author) and an object (Ora).
+</p>
 
 <p>
 He then renames the elements v, x, y, z and w. The names were a big hint,
@@ -201,16 +203,14 @@ condition a big if.
 <h2>32.2 Why the mapping is hairy</h2>
 
 <p>
-He calls the job of answering such questions from documents hairy, for four
-reasons. It is possible only because there is a mapping from XML documents to
-semantic graphs, webs of such triples.
+Answering such questions from documents is possible only through a mapping from XML documents to semantic graphs, webs of triples. He calls the job hairy, for four reasons.
 </p>
 
 <table>
 <tr><th>Problem</th><th>Consequence</th></tr>
 <tr><td>The mapping is many to one</td><td>A query must cover every rendering</td></tr>
 <tr><td>The schema is needed to know the mapping</td><td>Nothing can be learned from the document alone</td></tr>
-<tr><td>Schemas of the day did not carry it</td><td>A program would need extra rules, written somewhere else, saying which layout means which fact</td></tr>
+<tr><td>Schemas of the day did not carry it</td><td>They &ldquo;would have to have a whole inference language added&rdquo;</td></tr>
 <tr><td>Queries over structure are longer than queries over statements</td><td>Combining two properties, such as books by the same author as this one, becomes unmanageable</td></tr>
 </table>
 
@@ -282,14 +282,11 @@ any query built on the old structure.
   <text x="490" y="274" class="t-sm t-it">unchanged in both layouts</text>
 </svg>
 <figcaption><span class="fig-label">Figure 32.3</span>
-Insert one wrapper and a path query no longer reaches the fact; the triple
-is unchanged.</figcaption>
+One wrapper breaks the path query; the triple is unchanged.</figcaption>
 </figure>
 
 <p>
-The fourth problem is the big one. The analogy needs one term: a <em>regular
-expression</em> is a pattern-matching notation for text, blind to what the
-characters stand for.
+The fourth problem is the big one. (A <em>regular expression</em> is a pattern-matching notation for text.)
 </p>
 
 <blockquote>
@@ -301,16 +298,21 @@ reinventing numbers as a separate type.
 </blockquote>
 
 <p>
-Querying XML trees for facts is the same mistake: done properly, the program
-ends up reinventing the triple as a separate type.
+A query that copes with every layout ends up doing RDF&#8217;s job, which RDF does once, in the parser; of the triples that result &ldquo;you can use the ones you want ignoring the ones you don&#8217;t
+understand.&rdquo; His verdict on the alternative:
 </p>
 
-<h2>32.3 What a missing model looks like</h2>
+<blockquote>
+It is a mess when you use questions about a document to try to ask questions
+about what the document is trying to convey. It will work. In a way.
+<cite>Why RDF model is different from the XML model, 1998</cite>
+</blockquote>
+
+<h2>32.3 Four ways a format hides its meaning</h2>
 
 <p>
-The last part of the note applies to any format, not just XML. Berners-Lee
-argues that a format whose designers have not gone to the trouble of making a
-semantic model may not have a well defined one, and gives four symptoms.
+&ldquo;These things can work when one program handles all the records, but
+when you start mixing records you get trouble.&rdquo; On the Web, records are always mixed. A format whose designers have not gone to the trouble of making a semantic model, Berners-Lee argues, may not have a well defined one; he gives four symptoms.
 </p>
 
 <table>
@@ -323,10 +325,10 @@ semantic model may not have a well defined one, and gives four symptoms.
 
 <h3>Statements about statements</h3>
 <p>
-The jam jar confuses a statement about a thing with a statement about a
-statement. The label is itself a statement about the jam. &lsquo;Expires
-1999&rsquo; may describe the jam, or only the label&#8217;s claim, as a
-guarantee does. The qualifier at a distance is subtler. Normally, if a document is
+The jam jar asks: &ldquo;What expires: the label, or the jam?&rdquo; The
+label is a statement about the jam, so &lsquo;Expires 1999&rsquo; may be a
+statement about the jam, or a statement about the label&#8217;s statement.
+The qualifier at a distance is subtler. Normally, if a document is
 in Finnish, a reader may infer that its author speaks Finnish. Now a flag
 elsewhere in the record says that <code>author</code> means the author of the
 original, untranslated work. The inference silently fails.
@@ -338,10 +340,9 @@ Independent assertions are valid one at a time and in any order, so records
 whose order matters are not independent. A
 server rule that reads &ldquo;any member has access to the page&rdquo; may
 really mean that any member has access, unless an earlier rule in this file
-has already matched. The specification said only that rules are processed in
-order. Written out logically, the rule really says: if no earlier rule matched, and
-the reader is a member, allow access. The specification never wrote that
-down.
+has already matched. Written out logically, the rule says: if no earlier rule
+matched and the reader is a member, allow access. The specification said only
+that rules are processed in order.
 </p>
 <p>
 Mail headers saying a message is encrypted, compressed, ASCII-encoded and in
@@ -387,10 +388,10 @@ The nesting is real, but the header format cannot express it, so it hides in
 the specification&#8217;s fine print.</figcaption>
 </figure>
 
-<h2>32.4 The concession about order</h2>
+<h2>32.4 Where order does matter</h2>
 
 <p>
-The note ends fairly. For a graph of knowledge, order does not matter. For a
+For a graph of knowledge, order does not matter. For a
 document meant to be read by a person, order is how associations are built up
 in a reader&#8217;s mind, and it matters a great deal. Berners-Lee suggests that
 reluctance to give up order comes from processing human-readable documents,
@@ -414,15 +415,9 @@ important to recognise the difference.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The argument outlived its example.</strong> The five XML
-renderings are now five JSON shapes, and the problem is identical: a
-consumer must know the producer&#8217;s chosen structure. JSON-LD, a W3C
-Recommendation of January 2014, exists to attach a graph model to JSON for
-exactly this reason.</li>
+<li><strong>The argument outlived its example.</strong> The five XML renderings are now five JSON shapes, with the same problem. JSON-LD, a W3C Recommendation of January 2014, attaches a graph model to JSON for exactly this reason.</li>
 <li><strong>The jam jar got a notation.</strong> RDF-star lets one triple be
-the subject of another, making statements about statements explicit. It was
-set out in a W3C Community Group report in 2021 and carried into the
-W3C&#8217;s RDF 1.2 work.</li>
+the subject of another, making statements about statements explicit. A W3C Community Group set it out in 2021, and it was carried into RDF 1.2.</li>
 
 <li><strong>Labelled markup arrived.</strong> The note asks whether XML could
 be labelled so a parser finds the assertions, and answers that RDF already
@@ -434,11 +429,7 @@ ordinary pages, read mainly by search engines.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The independence of assertions this chapter demonstrates is the axiom of
-Chapter 27. The model it argues for is planned in Chapter 30 and defended in
-Chapter 31. Its treatment of nested encodings is completed in Chapter 38, and
-the relational counterpart is Chapter 33. The mixed-document processing
-question is Chapter 24.
+The independence of assertions is the axiom of Chapter 27; the model is planned in Chapter 30 and defended in Chapter 31. Chapter 38 completes the nested encodings, Chapter 33 is the relational counterpart, and Chapter 24 takes up mixed documents.
 </p>
 </div>
 
@@ -456,14 +447,14 @@ parcel? Find one more everyday label with the same ambiguity.</p>
 </div>
 <div class="question">
 <p><span class="question-number">32.3</span>
-Take the access rule from section 32.3 and suppose an earlier rule in the same
-file says that nobody may read the page on Sundays. Rewrite the member rule so
-that it is true on its own, whatever order the rules are read in. Hint: say
-both conditions in one sentence.</p>
+Take the access rule from section 32.3 and suppose an earlier rule says that nobody may read the page on Sundays. Rewrite the member rule so
+that it is true on its own, whatever order the rules are read in. </p>
 </div>
 <div class="question">
 <p><span class="question-number">32.4</span>
-Name one thing where order matters (a recipe) and one where it does not (a
-contact card). What makes the difference?</p>
+A record says a book is in Finnish and names its author; elsewhere a flag says
+&ldquo;author&rdquo; means the author of the original, translated work. Which
+conclusions about the author still hold, and what must the format say to
+keep them safe?</p>
 </div>
 </div>

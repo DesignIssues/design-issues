@@ -12,21 +12,26 @@ looking anything up.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Chapter 16 ended with a demand: free extension, but with an extension
-mechanism that is itself well defined. This note, written with Dan Connolly
-in February 1998 and also issued as a W3C Note, sets that demand out as a
-list of requirements.
+Since 1989 the Web had grown on one rule inherited from email: ignore
+anything not understood. Growth was fast, but each new feature stayed
+ambiguous until a standard was agreed, which, the note says, weakened the
+Web&#8217;s reliability and credibility and risked permanent fragmentation.
+Distributed object systems had the opposite problem: well-defined
+interfaces, but a rigidity that helped keep them from spreading in a
+&ldquo;web-like or virus-like manner&rdquo;. In February 1998 Berners-Lee
+and Dan Connolly asked whether the Web could have both. The goal:
 </p>
+<blockquote>
+Imagine if an old version of a word processor could read a file written by
+a new version with partial understanding, rather than panicing that it had
+met a being from the future.
+<cite>Extensible languages, 1998</cite>
+</blockquote>
 </div>
 
-<h2>17.1 The old rule and the invoice</h2>
+<h2>17.1 The old rule, and what it left undefined</h2>
 
 <h3>The old rule</h3>
-
-<p>
-The note starts from the rule that had governed Web extension since 1989,
-inherited from Internet email:
-</p>
 
 <blockquote>
 If you find a language element you don't understand, ignore it.
@@ -34,12 +39,12 @@ If you find a language element you don't understand, ignore it.
 </blockquote>
 
 <p>
-The Web grew very fast under it, but until a feature was agreed nobody knew
-what it meant or what ignoring it would do. Distributed object systems had
-the opposite profile. Chapter 16 (Figure 16.2) set out the two older
-approaches; this note asks for the strengths of both.
+Even &ldquo;ignore&rdquo; meant two things: HTTP drops an unknown header
+entirely, while HTML drops an unknown tag but keeps its contents. The note&#8217;s
+diagnosis: &ldquo;neither the specification of new elements nor the effect of
+ignoring them was ever clearly defined.&rdquo; Its answer meets the demand
+that closed Chapter 16 (Figure 16.2).
 </p>
-
 
 <h3>The invoice</h3>
 
@@ -99,26 +104,10 @@ The note&#8217;s example is an invoice for an aeroplane part.
 Each reader understands one colour and skips the other.</figcaption>
 </figure>
 
-<blockquote>
-We are constantly handling information with partial understanding. Imagine if
-an old version of a word processor could read a file written by a new version
-with partial understanding, rather than panicing that it had met a being from
-the future.
-<cite>Extensible languages, 1998</cite>
-</blockquote>
-
 <p>
-The note defines its own terms:
+It happens on the Web too, the note adds, &ldquo;as people bury private
+elements such as index tags and editing information inside HTML files.&rdquo;
 </p>
-
-<table>
-<tr><th>Term</th><th>The note&#8217;s meaning</th><th>In the invoice</th></tr>
-<tr><td>Element</td><td>A stretch of a document identified by a local name</td><td>The <code>cost</code> entry</td></tr>
-<tr><td>Vocabulary</td><td>A set of such names whose meaning is defined somewhere else, by a resource on the Web</td><td>item, cost, quantity, signature, due date</td></tr>
-<tr><td>Schema</td><td>A specific document that defines a vocabulary</td><td>The published definition of the business terms</td></tr>
-<tr><td>Namespace</td><td>A vocabulary named by a URI</td><td><code>http://blah/currency</code></td></tr>
-<tr><td>Binding</td><td>Tying a prefix to that URI</td><td><code>f</code> &#8614; currency</td></tr>
-</table>
 
 <h2>17.2 A message is an expression, not a procedure call</h2>
 
@@ -184,11 +173,25 @@ examples, a currency inside a price and bold inside a formula.</figcaption>
 </figure>
 
 <p>
-Nesting whole documents is not enough: names from two vocabularies must sit
-together in one expression. That is the first requirement.
+Extend HTML with mathematics, the note says, and an author should still be able to
+use HTML bold inside a formula. Nesting whole documents is not enough: names
+from two vocabularies must sit together in one expression. That is the
+first requirement.
 </p>
 
-<h2>17.3 The first four requirements</h2>
+<p>
+The note&#8217;s glossary defines three terms; the chapter adds a fourth.
+</p>
+
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>Element</td><td>A stretch of a document identified by a local name, such as the invoice&#8217;s <code>cost</code> entry</td></tr>
+<tr><td>Vocabulary</td><td>A set of such names whose meaning is defined somewhere else, by a resource on the Web</td></tr>
+<tr><td>Schema</td><td>A specific document that defines a vocabulary</td></tr>
+<tr><td>Namespace</td><td>A vocabulary named by a URI, such as <code>http://blah/currency</code></td></tr>
+</table>
+
+<h2>17.3 Mixing vocabularies without silent clashes</h2>
 
 <p>
 The note sets out seven requirements; the three on schemas come in
@@ -197,18 +200,17 @@ an <em>identifier</em> is a name.
 </p>
 
 <table>
-<tr><th>Requirement</th><th>What breaks without it</th><th>In the invoice</th></tr>
-<tr><td>More than one vocabulary may be in scope at one point in a document</td><td>Extensions can only be nested, never mixed; no bold inside a formula</td><td>A Swiss-franc amount sits inside a price written in business terms</td></tr>
-<tr><td>A vocabulary may be introduced with a purely local change</td><td>Generated fragments cannot declare their own terms</td><td>The supplier&#8217;s program declares its part terms inside the item block</td></tr>
-<tr><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td>One vocabulary&#8217;s change silently redefines another&#8217;s names</td><td><code>f:chf</code> is read as currency from the <code>f</code> binding alone</td></tr>
-<tr><td>A namespace may be defined by present or future languages for writing schemas</td><td>The definition mechanism is frozen at the level of the day</td><td>The currency terms could be defined in a schema language invented later</td></tr>
+<tr><th>What breaks without it</th><th>Requirement</th><th>In the invoice</th></tr>
+<tr><td>Extensions can only be nested, never mixed; no bold inside a formula</td><td>More than one vocabulary may be in scope at one point in a document</td><td>A Swiss-franc amount sits inside a price written in business terms</td></tr>
+<tr><td>Generated fragments cannot declare their own terms</td><td>A vocabulary may be introduced with a purely local change</td><td>The supplier&#8217;s program declares its part terms inside the item block</td></tr>
+<tr><td>One vocabulary&#8217;s change silently redefines another&#8217;s names</td><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td><code>f:chf</code> is read as currency from the <code>f</code> binding alone</td></tr>
+<tr><td>The definition mechanism is frozen at the level of the day</td><td>A namespace may be defined by present or future languages for writing schemas</td><td>The currency terms could be defined in a schema language invented later</td></tr>
 </table>
 
 <p>
 The third is argued most sharply. In some programming languages, finding
 which module (separately written unit) a name comes from means reading the
-modules and applying priority rules. The note grants this may have uses
-in a programming language such as Java. For documents it is a serious flaw:
+modules and applying priority rules. For documents that is a serious flaw:
 </p>
 
 <blockquote>
@@ -223,14 +225,13 @@ This is why XML namespace prefixes bind directly and visibly, rather than
 being resolved by lookup.
 </p>
 
-<h2>17.4 Why local scope</h2>
+<h2>17.4 Why each block declares its own vocabulary</h2>
 
 <p>
-Markup wraps each piece of content in named tags,
-<code>&lt;name&gt;</code>&#8230;<code>&lt;/name&gt;</code>. A prefix such as
-<code>f:</code> says which vocabulary the name comes from. The note&#8217;s
-example binds <code>f</code> to a currency schema for one block, using
-<code>NS:using</code> as a made-up stand-in for a real syntax:
+A prefix such as <code>f:</code> on a tag says which vocabulary the name
+comes from. The note&#8217;s example binds <code>f</code> to a currency
+schema for one block, with <code>NS:using</code> standing in for a real
+syntax:
 </p>
 
 <pre><code>&lt;a:details&gt;
@@ -252,6 +253,8 @@ element and everything inside it:
 
 <p>
 Why not declare every binding once, at the top? The note gives four reasons.
+The plainest is that when a name is bound close to where it is used,
+mistakes in hand-maintained documents are &ldquo;much less likely&rdquo;.
 </p>
 
 <h3>Generated documents</h3>
@@ -315,16 +318,11 @@ as the square of the length.
 <h3>Joining documents</h3>
 
 <p>
-The authors suggest it would be a worthy design goal that joining any two
-XML documents gives an XML document. Without local scope, one must be
-rewritten end to end to rename clashing prefixes.
-</p>
-
-<h3>Fewer mistakes</h3>
-
-<p>
-When a name is bound close to where it is used, people editing by hand make
-far fewer mistakes.
+A worthy design goal, the authors suggest, is that joining any two XML
+documents gives an XML document. Without local scope, one must be
+rewritten end to end to rename clashing prefixes. XML never met that goal:
+two joined documents have two root elements, which XML&#8217;s basic syntax
+forbids.
 </p>
 
 <h2>17.5 What may be extended, and what may not</h2>
@@ -384,7 +382,13 @@ to that document can be ignored.
 
 <p>
 An invoice must be processable as an invoice without fetching anybody&#8217;s
-part catalogue.
+part catalogue. The note sees three ways: deduce what may be ignored from the
+original schema; mark it in the document through the language itself; or
+let the new schema say so, perhaps with mappings to &ldquo;simpler
+expressions in better known vocabularies&rdquo;. Only the first two need no
+new schema, and whether such marking belongs in the language or in a widely
+known vocabulary the note leaves open: &ldquo;This design decision is not
+currently clear.&rdquo;
 </p>
 
 <div class="since">
@@ -392,24 +396,19 @@ part catalogue.
 <ul>
 <li><strong>Namespaces shipped with local scope.</strong> XML Namespaces
 became a W3C Recommendation in January 1999 with prefixes bound directly and
-scoped to the element that declares them: requirements two and three.</li>
+scoped to the element that declares them: requirements one to three.</li>
 <li><strong>Schemas gained ways to mark content as skippable.</strong> XML
 Schema 1.0 (W3C Recommendation, May 2001) lets a schema mark where foreign
-content may appear and, with <code>processContents="skip"</code> or
-<code>"lax"</code>, be passed over without its schema. SOAP 1.1 (2000) added
-the converse, a <code>mustUnderstand</code> flag, which is Chapter 18&#8217;s
-concern.</li>
-<li><strong>The concatenation goal was not met.</strong> Joining two XML
-documents still yields a document with two roots, which is not well formed
-(XML&#8217;s basic syntax rules require a single root element).</li>
+content may appear and be skipped (<code>processContents="skip"</code> or
+<code>"lax"</code>). SOAP 1.1 (2000) added the converse,
+<code>mustUnderstand</code> (Chapter 18).</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter specifies the demand made at the end of Chapter 16. The
-mandatory flag it stops short of is Chapter 18; what a mixed document means
+The mandatory flag this chapter stops short of is Chapter 18; what a mixed document means
 is Chapter 24; decentralised extensibility is argued over in Chapter 23; the
 metadata architecture is Chapter 27.
 </p>
@@ -419,19 +418,19 @@ metadata architecture is Chapter 27.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">17.1</span>
-Explain why nesting one document inside another does not satisfy the
-same-scope requirement. Give a markup example where nesting fails.</p>
+Why does nesting one document inside another not satisfy the same-scope
+requirement? Give a markup example.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.2</span>
-Section 17.4 argues that global bindings make resource use rise as the square
-of document length. Reconstruct that argument, stating the assumption about
-how bindings are retained. Use Figure 17.3.</p>
+A program reads a 10,000-page supplier catalogue in which every supplier
+has its own schema. Explain, with Figure 17.3, why it matters whether each
+supplier&#8217;s binding is forgotten after its section.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.3</span>
-In plain words, say which parts of an invoice should be open to extension and
-which should not, and why.</p>
+Which parts of an invoice should be open to extension, which should not,
+and why?</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.4</span>
@@ -441,7 +440,6 @@ lookup would not.</p>
 </div>
 <div class="question">
 <p><span class="question-number">17.5</span>
-What did the old rule of ignoring what you did not understand get right, and
-what did it leave undefined?</p>
+What did the old rule get right, and what did it leave undefined?</p>
 </div>
 </div>

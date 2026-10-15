@@ -12,17 +12,12 @@ program. The fix: keep the name when it is honest; otherwise add a
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is a practical note that ends in a concrete rule. Written in April 2015
-after a discussion with Andrei Sambra and elaborated in 2018 with Ruben
-Verborgh, it asks a question every read-write server (one that lets clients
-store files as well as fetch them) must answer: given an HTTP URI, which file
-on disk does it name?
-</p>
-<p>
-It belongs here because it is Chapter 12&#8217;s file-and-HTTP correspondence
-meeting Chapter 2&#8217;s opacity axiom (do not read meaning into the
-characters of a URI), and discovering that the two cannot both be had in
-full.
+Three things are wanted from a server that is both a website and a folder of
+files. Berners-Lee finds that only two can be had, calls this &ldquo;no fun,
+as each requirement is hard to do without&rdquo;, and then finds a way to get
+two and a half. The note dates from April
+2015, after a discussion with Andrei Sambra, and was elaborated in 2018 with
+Ruben Verborgh.
 </p>
 </div>
 
@@ -32,15 +27,13 @@ full.
 Take a concrete case: a script edits a CSV file on a server, and colleagues
 read the same file in a browser. The script sees <em>file space</em>, the
 folders and filenames of the operating system. The colleagues see <em>HTTP
-space</em>, the same files reached by URI over the Web. The note sets out what
-each is good at:
+space</em>, the same files reached by URI over the Web. Two rows of the
+note&#8217;s comparison:
 </p>
 
 <table>
 <tr><th></th><th>HTTP space</th><th>File space</th></tr>
 <tr><th>Reach</th><td>people not on the machine</td><td>users on the machine; holds files not meant to be shared</td></tr>
-<tr><th>Access control</th><td>Web-wide or server-wide identity</td><td>Unix users and groups</td></tr>
-<tr><th>Speed</th><td>slower</td><td>faster, for serious data processing</td></tr>
 <tr><th>Tools</th><td>browsers and Web services</td><td>command-line programs, scripts, version control, build systems</td></tr>
 </table>
 
@@ -55,8 +48,18 @@ that accepts uploads, the two can disagree.
 <h2>14.2 Three requirements, two of which may be had</h2>
 
 <p>
-Two HTTP request types (methods) matter: PUT (upload to a chosen address) and GET (fetch). Three things are
-wanted, and they cannot all hold.
+Two HTTP request types (methods) matter: PUT (upload to a chosen address) and
+GET (fetch). The note lists three requirements:
+</p>
+
+<ol>
+<li>filenames and URIs correspond directly, so links work in both spaces;</li>
+<li>a client may PUT a file at any URI it likes;</li>
+<li>on disk, extensions match the files&#8217; real types.</li>
+</ol>
+
+<p>
+They cannot all hold.
 </p>
 
 <figure>
@@ -102,7 +105,7 @@ wanted, and they cannot all hold.
   <text x="360" y="390" class="t-sm" text-anchor="middle" xml:space="preserve"><tspan font-style="italic">The resolution: weaken the correspondence corner from </tspan><tspan style="fill:#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan style="fill:#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
 </svg>
 <figcaption><span class="fig-label">Figure 14.1</span>
-Each Try sits on an edge and keeps the two corners it joins.</figcaption>
+Pick two of three: every simple design gives one requirement up.</figcaption>
 </figure>
 
 <p>
@@ -135,7 +138,9 @@ crucial part of web security 101 and not negotiable.
 <p>
 The attack he has in mind is concrete. Someone uploads a file whose URI ends
 in <code>.exe</code> but whose content type is <code>text/html</code>, and in
-file space the operating system sees a program. The extension is metadata
+file space the operating system sees a program. Clicked, it &ldquo;will run
+and give someone else control of your machine&rdquo;, as the note puts it.
+The extension is metadata
 that the local system trusts and that a remote party supplied.
 </p>
 
@@ -193,11 +198,12 @@ that the local system trusts and that a remote party supplied.
 A stranger chooses the extension, and the user&#8217;s own machine trusts it.</figcaption>
 </figure>
 
-<h2>14.3 The sweet spot</h2>
+<h2>14.3 Two and a half out of three</h2>
 
 <p>
-The resolution is to weaken the first requirement rather than abandon any of
-the three:
+&ldquo;It turns out that it is possible to get 2.5 out of three&rdquo;, the
+note continues, by weakening the first requirement rather than abandoning
+any:
 </p>
 
 <blockquote>
@@ -219,7 +225,7 @@ cut everything from the <code>$</code>.</li>
 
 <p>
 The note calls <code>$</code> an &ldquo;otherwise forbidden character&rdquo;:
-one the server does not allow in ordinary URIs, so no real name can collide
+one the server must refuse in ordinary URIs, so no real name can collide
 with a tweaked one. The last column of the table in section 14.2 shows the
 result.
 </p>
@@ -292,7 +298,10 @@ extension was added.</figcaption>
 <p>
 On PUT the client supplies both the URI and the content type, so the filename
 is, in the note&#8217;s words, &#8220;a simple mathematical function&#8221;. On
-GET the server must search the directory. Listing a directory is a simple
+GET the server must search the directory for <code>foo.exe</code> or
+<code>foo.exe$</code> plus an extension, the same move content negotiation
+(Chapter 10) makes in picking among variants, as the note itself observes.
+Listing a directory is a simple
 function again, in the other direction. Berners-Lee notes the prize for
 getting it right, which is larger than one server:
 </p>
@@ -306,9 +315,7 @@ can simultaneously run more than one HTTP server over the same file space.
 <p>
 A shared mapping also makes a directory tree portable: it can be archived
 (the note says &#8220;tar up&#8221;) on one server, unpacked on another, and
-remain the same Web space. That is the file-system counterpart of the
-relative-URI property of Chapter 12: links inside the tree keep working
-wherever it is unpacked.
+remain the same Web space.
 </p>
 
 <div class="since">
@@ -327,21 +334,23 @@ Common Weakness Enumeration, which still lists it in 2026, and the general defen
 here: do not let a remote party&#8217;s chosen name decide how a local system
 treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>
-Servers such as Apache and nginx, when configured to accept WebDAV PUT (WebDAV is an HTTP extension that lets
-clients write files to a server),
+Servers such as Apache and nginx, when configured to accept WebDAV PUT (WebDAV is an HTTP extension for writing
+files),
 still map URLs to filenames directly, which is Try 3, and generally rely on
 not granting untrusted write access rather than on making writes safe.</li>
-<li><strong>The two-space workflow persisted.</strong> Since the 2010s, static site generators
-(tools that build a website from local files and upload the result, such as Jekyll, 2008, and Hugo, 2013) have been the mainstream version of what this
-note describes, and they avoid the problem entirely by having no arbitrary
-PUT.</li>
+<li><strong>The two-space workflow persisted, one way.</strong> A common
+way of keeping files in both spaces became the static site generator (a tool
+that builds a website from local files and uploads the result, such as
+Jekyll, 2008, or Hugo, 2013). It is one-way and avoids the problem by
+allowing no arbitrary PUT: in effect, Try 2.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The correspondence this chapter defends is introduced in Chapter 12. The
+The correspondence this chapter defends is introduced in Chapter 12; a
+portable tree is the file-system counterpart of its relative URIs. The
 temptation to read a type from a file extension is exactly the opacity
 breach warned against in Chapter 2, arriving here from the other side: the
 server may read it, and the local operating system must not be allowed to.
@@ -370,7 +379,7 @@ What breaks if it were <code>_</code>?</p>
 </div>
 <div class="question">
 <p><span class="question-number">14.4</span>
-Berners-Lee calls control of local file extensions non-negotiable. Who
-chooses the extension, and whose computer acts on it?</p>
+A static site generator gives up arbitrary PUT. Which Try is it, and why
+do its users rarely miss what it gives up?</p>
 </div>
 </div>

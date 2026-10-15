@@ -2,11 +2,10 @@
 <h3>The short version</h3>
 <p>
 One XML file can mix tags from several vocabularies, so something must decide
-which specification governs which part. Berners-Lee&#8217;s answer is that
-the outermost element decides, and each element governs only what is inside
-it. Some elements, such as include, transform and decrypt, are replaced by
-their result, and an element must be able to mark its contents as quoted,
-not to be run.
+which specification governs which part. Berners-Lee&#8217;s answer: the
+outermost element decides, and each element governs only what is inside it.
+Some elements, such as include, transform and decrypt, are replaced by their
+result; an element must also be able to mark its contents as quoted.
 </p>
 </div>
 
@@ -14,8 +13,7 @@ not to be run.
 <h3>The question</h3>
 <p>
 Chapter 17 established that one document may carry several vocabularies.
-This note, from February 2002 and revised in June 2005, asks the question
-that leaves open:
+This note (2002, revised 2005) asks the question that leaves open:
 </p>
 <blockquote>
 If one party sends another an XML document, how does one say what it means?
@@ -26,40 +24,32 @@ If one party sends another an XML document, how does one say what it means?
 <h2>24.1 The problem: specifications that fight</h2>
 
 <p>
-Berners-Lee credits Paul Prescod with the list of places one might look:
-</p>
-<ul>
-<li>the document type declaration (DOCTYPE), a line at the top naming the
-document&#8217;s grammar;</li>
-<li>the top-level namespace;</li>
-<li>a schema reference (a schema is a machine-readable list of which tags may
-appear where);</li>
-<li>other namespaces declared at the root;</li>
-<li>any attribute on the root element;</li>
-<li>anything at all in the document.</li>
-</ul>
-
-<p>
-With six authorities and no precedence rule, the result is combat:
+The XSLT specification admits the problem. XSLT marks a template page
+with an <code>xsl:version</code> attribute; if another language used an
+<code>axl:version</code> attribute the same way, then for a document carrying
+both &ldquo;it would be unclear whether the document should be processed by an
+XSLT processor or an AXL processor&rdquo;. Without an overall architecture,
+the note says, specs battle each other, and worse:
 </p>
 
 <blockquote>
-In fact the general problem is that without any overall architecture, one can
-write specs which battle each other. &ldquo;The X attribute changes the
-meaning of the Y attribute&rdquo;, &ldquo;The Z attribute restores the meaning
-of the X attribute irrespective of any Y attribute&rdquo; and so on.
+In such a world, one would never know whether one had correctly interpreted
+anything, as there might be somewhere something deemed to change the meaning
+of what we have. Clearly this way lies chaos.
 <cite>The Interpretation of XML documents, 2002</cite>
 </blockquote>
 
 <p>
-Prescod also supplied the way out, and Berners-Lee agrees. The
-<em>root element</em> is the one outermost element that contains everything
-else; a <em>namespace</em> is a label saying which vocabulary a tag belongs
-to. The namespace of the root element is the only thing a processor must be
-able to dispatch on. Everything else is decided further down.
+Paul Prescod listed the candidate authorities: the DOCTYPE, the top-level namespace, a schema reference, other
+namespaces declared at the root, any attribute on the root element, and
+anything at all in the document. He concluded that the namespace of the
+<em>root element</em>, the outermost element containing everything else, is
+the only thing a processor must be able to dispatch on. Berners-Lee accepts
+that first conclusion and rejects Prescod&#8217;s second, a pipeline of
+wrapper elements to fix the order of processing.
 </p>
 
-<h2>24.2 Two models</h2>
+<h2>24.2 Why a pipeline cannot work</h2>
 
 <p>
 The usual assumption was a pipeline: one stage per technology, such as
@@ -131,8 +121,7 @@ no single order of stages handles them all.
 </svg>
 <figcaption><span class="fig-label">Figure 24.1</span>
 The pipeline fixes one order for the whole document; the top-down model lets
-each element decide for its own contents, including that an example inside it
-is not to be run.</figcaption>
+each element decide for its own contents.</figcaption>
 </figure>
 
 <h3>Many ways, one meaning</h3>
@@ -145,7 +134,7 @@ The note sketches three top-down procedures:
 <tr><th>Strategy</th><th>How it works</th></tr>
 <tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left.</td></tr>
 <tr><td>Recursive parser</td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
-<tr><td>Lazy viewer</td><td>Elaborate a function (run it and put its result in its place) only when the reader scrolls to it.</td></tr>
+<tr><td>Lazy viewer</td><td>Elaborate a function (run it and put its result in its place) only when the reader scrolls to it, so that &ldquo;certain things never need to be evaluated at all, saving time and bandwidth.&rdquo;</td></tr>
 </table>
 
 <p>
@@ -154,11 +143,14 @@ why he speaks of the <em>meaning</em> of a document rather than its
 processing model.
 </p>
 
-<h2>24.3 XML functions</h2>
+<h2>24.3 Elements that turn into other elements</h2>
 
 <p>
-Some foreign elements are instructions that yield more document when
-elaborated. Berners-Lee calls them <em>XML functions</em>.
+The XSLT specification&#8217;s own example is an expense report page
+containing <code>&lt;p&gt;Total Amount: &lt;xsl:value-of
+select="expense-report/total"/&gt;&lt;/p&gt;</code>. The XSLT element is
+replaced by a computed number, and nothing else on the page moves.
+Berners-Lee calls such elements <em>XML functions</em>.
 </p>
 
 <figure>
@@ -251,16 +243,13 @@ What they share:
 </p>
 <ul>
 <li>any document may use them, without its schema foreseeing them;</li>
-<li>each is replaced by its result;</li>
 <li>the result may contain further functions;</li>
 <li>&ldquo;none of its ancestors or siblings may be affected&rdquo;.</li>
 </ul>
 
 <p>
 The last property makes order unimportant: no function can change anything
-outside its branch (though, as section 24.5 shows, it may read outside it). Of
-nested
-inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
+outside its branch (though, as section 24.5 shows, it may read outside it). Of nested inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
 whether the inner ones are expanded first.
 </p>
 
@@ -268,8 +257,7 @@ whether the inner ones are expanded first.
 
 <p>
 Sometimes a function must be mentioned without being run. In an XML
-<em>package</em> (files bundled with a cover note, like an email with
-attachments; only the cover note is live) the packaged items are
+<em>package</em> (files bundled under a cover note, of which only the cover note is live) the packaged items are
 quoted. An XSLT template that outputs an XInclude element contains a
 real XInclude element, which must not be expanded inside the XSLT.
 </p>
@@ -310,29 +298,20 @@ real XInclude element, which must not be expanded inside the XSLT.
   <text x="540" y="210" class="t-sm" text-anchor="middle">shown, not expanded</text>
 </svg>
 <figcaption><span class="fig-label">Figure 24.3</span>
-The same element means different things depending on what contains it. Only
-top-down interpretation, in which the parent decides, can express that.</figcaption>
+The same element means different things depending on what contains it; only top-down interpretation, in which the parent decides, can express that.</figcaption>
 </figure>
 
 <p>
-A pipeline cannot say this. Such ambiguities, Berners-Lee says, &ldquo;stem from the lack of
-quoting syntax in XML&rdquo;.
+A pipeline cannot say this. Such ambiguities, Berners-Lee says, &ldquo;stem
+from the lack of quoting syntax in XML&rdquo;. The same failure, text meant as
+data being obeyed as instruction, is today called prompt injection.
 </p>
 
-<h2>24.5 The conclusion</h2>
-
-<blockquote>
-The top-down processing model for XML as an architectual principle resolves
-many of the questions which remain unanswerable with pipelined processing. In
-fact, consideration of the example shows that pipeline processing could be
-actually dangerious, producing errors and possibly security issues, in the
-case of generally nested XML technologies of the types discussed.
-<cite>The Interpretation of XML documents, 2002</cite>
-</blockquote>
+<h2>24.5 What the note leaves open</h2>
 
 <p>
-One issue is left open: references to parts of the document that may or may
-not have been elaborated yet.
+The open issue is references to parts of the document that may not yet have
+been elaborated.
 </p>
 <ul>
 <li>A function may read outside itself. Does it see the document before or
@@ -402,25 +381,34 @@ The same pointer finds different things depending on whether functions have
 run: the include element, or a piece of the SVG.</figcaption>
 </figure>
 
-<h2>24.6 Labelling the document</h2>
+<h2>24.6 Reading the label before opening the document</h2>
 
 <p>
 Because the root element decides, its namespace says what the whole document
-is: an XHTML root yields a hypertext page, an SVG root a diagram. A
-<em>MIME type</em> is the label a server sends in the HTTP headers. The note recommends a
-specific MIME type for each well-known root, so that the label alone shows
-what the document is, and to add <code>+xml</code> to the label (as in
+is: an XHTML root yields a hypertext page, an SVG root a diagram. Knowing
+this, &ldquo;the operating system &#8230; can use icons to tell the user,
+before they open an email or follow a link, what sort of a thing it
+contains&rdquo;. The note recommends a specific <em>MIME type</em>, the label a server sends
+in the HTTP headers, for each well-known root, and adding <code>+xml</code> to the label (as in
 <code>image/svg+xml</code>) only when a generic XML program may read the
 document top-down.
 </p>
 
 <p>
-The alternative, one great schema for each combination of vocabularies,
-scales badly. A working group combining four specifications (XHTML, SVG,
-XForms, MathML) must settle how every pair fits together; the note asks
-whether it would take &ldquo;n<sup>2</sup> years&rdquo;. He would rather each
-facility had its own schema.
+One great schema for each combination of vocabularies scales badly: a group
+combining four specifications must settle how every pair fits, and the note
+asks whether it would take &ldquo;n<sup>2</sup> years&rdquo;. He would rather each
+facility had its own schema. The note ends:
 </p>
+
+<blockquote>
+The top-down processing model for XML as an architectual principle resolves
+many of the questions which remain unanswerable with pipelined processing. In
+fact, consideration of the example shows that pipeline processing could be
+actually dangerious, producing errors and possibly security issues, in the
+case of generally nested XML technologies of the types discussed.
+<cite>The Interpretation of XML documents, 2002</cite>
+</blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -430,22 +418,19 @@ become the ordinary way to publish; the HTML that won (Chapter 23) has no
 author-declared namespaces.</li>
 <li><strong>A pipeline language was standardised.</strong> XProc became a W3C
 Recommendation in May 2010.</li>
-<li><strong>The security concern was correct in general.</strong> XML
-processors that fetch external references unasked are attacked through XML
-External Entity (XXE) flaws, listed in the OWASP Top 10 of 2017.</li>
+<li><strong>A related danger materialised.</strong> XML Signature wrapping
+attacks, described by McIntosh and Austel in 2005, exploit a gap between the
+element a signature covers and the element an application acts on, a cousin
+of the question in section 24.5.</li>
 <li><strong>The quoting problem recurs.</strong> &ldquo;Prompt
-injection&rdquo;, a term in use since 2022, names the same failure in AI
-systems: text meant as data is obeyed as instruction.</li>
+injection&rdquo;, in use since 2022, is section 24.4&#8217;s failure in AI systems.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Mixed-vocabulary documents are specified in Chapter 17; the fork that made
-the question moot for HTML is Chapter 23. What selects a specification is read
-in layers in Chapter 20, and an element governing its own contents is the
-modularity of Chapter 19.
+Chapter 23 is the fork that made the question moot for HTML. Chapter 20 reads what selects a specification in layers, and an element governing its own contents is the modularity of Chapter 19.
 </p>
 </div>
 
@@ -453,8 +438,8 @@ modularity of Chapter 19.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">24.1</span>
-List the six places a processor might look for how to interpret a document,
-and say which one a top-down model uses.</p>
+A signed document contains an include. Should the signature cover the include
+element or the text it pulls in? Give a case for each.</p>
 </div>
 <div class="question">
 <p><span class="question-number">24.2</span>

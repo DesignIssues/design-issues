@@ -1,9 +1,10 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A delta lists what to remove and what to add; sigma (sum) means applying it.
-Sending deltas between copies is cheaper than sending whole copies, but only
-safe if the delta names things that cannot be confused.
+Keeping two devices&#8217; address books in step is, the note says, one of
+the most stubborn problems in practical computing. Sending only the change is
+cheap, but a change must say where it applies; if it can land on the wrong
+record, the copy ends up wrong.
 </p>
 </div>
 
@@ -15,9 +16,13 @@ Connolly. It asks a question that sounds like plumbing and is not:
 what is the difference between two graphs, and how is it sent?
 </p>
 <p>
-Text files have differences and version control; databases have insert and
-update statements. In both, the states and the transitions between them are
-represented explicitly.
+The motivating example is synchronising calendars and address books between
+devices. Various combinations of device and program, the note observes,
+&ldquo;produce very strange results on not-so-rare occasions&rdquo;.
+</p>
+<p>
+Text files have diffs; databases have update statements. In both, the
+transitions between states are represented explicitly.
 </p>
 <blockquote>
 Since the transitions can be represented much more compactly than the pairs of
@@ -86,16 +91,13 @@ applies a difference to a version to get the next one.
 </svg>
 <figcaption><span class="fig-label">Figure 45.1</span>
 Send the change, not the state. Peer B applies &Delta; to its copy of v0 and
-gets v1. &Delta; takes the difference and &Sigma; adds it back.</figcaption>
+gets v1.</figcaption>
 </figure>
 
 <h2>45.1 The three problems hiding in one</h2>
 
 <p>
-The motivating example is synchronising calendars and address books between
-devices, which the note calls one of the most stubborn problems in practical
-computing. The note separates it into three problems that are usually
-confused.
+The note separates the problem into three that are tempting to mix.
 </p>
 
 <table>
@@ -106,8 +108,8 @@ confused.
 </table>
 
 <p>
-The note suspects the semantic problem, or the mixing of the three, explains
-why so many packages break, and proposes keeping them separate. It then
+The note suspects the semantic problem, or the mixing of the first two,
+explains why so many packages break, and proposes keeping them separate. It then
 addresses only the third.
 </p>
 
@@ -188,19 +190,20 @@ are arbitrary, so compare statements, not lines.</figcaption>
 </figure>
 
 <p>
-Line diffs worked for hand-edited files, but failed badly for
-machine-written test results: every slight change to the printing program
-produced false test failures. A graph difference must be computed over the
+Line diffs worked for hand-edited files, but not for machine-written test
+results: every slight change to the printing program produced false failures,
+and managing them that way, the authors report, &ldquo;is barely
+tolerable&rdquo;. A graph difference must be computed over the
 statements, and expressed as a pattern to match rather than a position to
 edit.
 </p>
 
-<h2>45.3 Weak and strong</h2>
+<h2>45.3 A patch that cannot hit the wrong account</h2>
 
 <p>
-The note&#8217;s patch format, in Notation3, is a pattern that finds the
-node, then what to remove and what to add. This is the form implemented by
-cwm, Berners-Lee&#8217;s command-line RDF tool:
+The note&#8217;s patch format, written in Notation3 and implemented in cwm,
+Berners-Lee&#8217;s command-line RDF tool, is a pattern that finds the node,
+then says what to remove and add:
 </p>
 
 <pre><code>{ ?x bank:accountNo "1234578"}
@@ -211,20 +214,22 @@ cwm, Berners-Lee&#8217;s command-line RDF tool:
 <code>?x</code> is a variable, standing for whatever matches, and each pair of
 braces holds a quoted group of statements. So: find the thing whose account
 number is 1234578; remove
-&ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. A single
-alternative property, <code>diff:replacement</code>, can express any change.
-Applied to a copy that has itself changed, a patch can fail in three ways.
+&ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. Applied to a copy that has itself changed, a patch can fail in three ways.
 </p>
 
 <table>
 <tr><th>Failure</th><th>What happens</th><th>Can it be prevented?</th></tr>
 <tr><td>Inconsistent changes</td><td>One person moves a meeting while another deletes it.</td><td>No; a person must decide.</td></tr>
 <tr><td>No match</td><td>The patch cannot find where to apply.</td><td>Yes, if the pattern names something unique (below).</td></tr>
-<tr><td>Misapplied</td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be prevented; the note calls it &ldquo;unacceptable&rdquo;.</td></tr>
+<tr><td><strong>Misapplied</strong></td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be prevented; the note calls it &ldquo;unacceptable&rdquo;.</td></tr>
 </table>
 
 <p>
-Whether a patch can be misapplied depends on what its pattern names.
+Whether that can happen depends on what the pattern names. If account numbers
+are globally unique, <code>?x</code> can only be one account, and the patch is
+strong. If many accounts can share a number, the same patch applied to another
+knowledge base &ldquo;may inadvertently alter the wrong account&rdquo;; it is
+weak.
 </p>
 
 <figure>
@@ -263,60 +268,56 @@ Whether a patch can be misapplied depends on what its pattern names.
   <text x="360" y="292" class="t-sm" text-anchor="middle">The format is the same; what differs is whether the pattern names something unique.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 45.3</span>
-The authors&#8217; framing: a weak delta can be applied only to the graph it
-was computed from; a strong one is context-independent.</figcaption>
+Same format; only a unique key makes a patch safe to apply to a store other
+than the one it came from.</figcaption>
 </figure>
 
-<p>
-The property that
-makes a patch strong is the one Chapter 34 used to identify people: one no two
-things can share. Here it lets a change travel between stores without going
-astray.
-</p>
-
-<h2>45.4 What a patch is, besides an instruction</h2>
+<h2>45.4 A change is news</h2>
 
 <p>
-<strong>Patches as knowledge.</strong> A strong patch has meaning in itself.
-A phone number changing from 1234 to 5678 suggests the person moved or changed
-jobs.
+If a knowledge base&#8217;s changes are published as strong patches,
+&ldquo;one can subscribe to the diffs from any given point on, and acquire a
+subset of the final knowledge base&rdquo;.
 </p>
 
 <p>
-<strong>Patches as news.</strong> When the state is held in RDF, a
-difference between graphs is news. The W3C RSS feed was in effect partly a
-list of changes to the W3C&#8217;s technical reports list, and publishing RDF
-differences could make that formal.
+Among many peers, the note sketches a crude scheme: apply patches in
+timestamp order, unwinding when a late one arrives, and reject any that fail;
+senders run the same algorithm, so they find out. A version&#8217;s id hashes
+its predecessor&#8217;s id with the patch&#8217;s, much as Git&#8217;s commit
+hashes cover their parents.
 </p>
 
-<h2>45.5 The follow-up, and what it concedes</h2>
+<p>
+A strong patch also has meaning in itself: a phone number changing from 1234
+to 5678 suggests the person moved or changed jobs. And when the state is held
+in RDF, a difference between graphs is news. The W3C RSS feed was in effect partly a list of changes to the technical reports list.
+</p>
+
+<h2>45.5 Send the change instead of rediscovering it</h2>
 
 <p>
-A section added in 2015 grants that the ideas became common property:
+A 2015 follow-up notes that the ideas became common property:
 </p>
 
 <blockquote>
 In the several years since this was originally written, the general concepts
 of diffs and patches, delta and sigma, differentiation and integration, been
 constant themes in distributed systems.
-<cite>Delta: an ontology for the distribution of differences between RDF graphs, 2001</cite>
+<cite>Delta: an ontology for the distribution of differences between RDF graphs, followup added 2015</cite>
 </blockquote>
 
 <p>
 It cites Neil Fraser&#8217;s 2008 paper <em>Differential Synchronization</em>,
-in which differences travel in loops, carrying edits and apologies for patches
-that could not be applied. That design watches a user editing with other tools,
-then computes a difference to discover what changed.
+whose design watches a user editing with other tools, then computes a
+difference to discover what changed.
 </p>
 
 <p>
 The alternative is for the editing tool to send the difference itself. In the
 Solid work of Volume VI, the patch is sent just before the interface shows the
-change, so it can be reverted if the patch fails. </p>
-
-<p>
-Computing a difference recovers information that was thrown away; sending one
-avoids throwing it away.
+change, so it can be reverted if the patch fails. Computing a difference recovers
+information that was thrown away; sending one avoids throwing it away.
 </p>
 
 <div class="since">
@@ -327,12 +328,12 @@ RDF Dataset Canonicalization, a W3C Recommendation of May 2024, gives blank
 nodes deterministic labels, making graph comparison deterministic. It does not
 make patches strong: one added triple can still relabel many blank nodes.</li>
 <li><strong>Patch formats arrived.</strong> SPARQL Update became a
-Recommendation in March 2013, and LD Patch was published as a W3C Working
-Group Note in 2015: section 45.3&#8217;s proposal in standard form.</li>
-<li><strong>Explicit change became common.</strong> Collaborative editors
-such as Google Docs (2010) use operational transformation, and conflict-free
-replicated data types (formalised in 2011) send operations rather than diffing
-states, the approach the 2015 follow-up preferred.</li>
+Recommendation in March 2013, and LD Patch, a patch format for Linked Data in the same spirit,
+became a W3C Working Group Note in 2015.</li>
+<li><strong>Explicit change became common.</strong> Operational
+transformation in collaborative editors such as Google Docs (2010), and
+conflict-free replicated data types (formalised in 2011), send operations
+rather than diffing states.</li>
 </ul>
 </div>
 
@@ -340,7 +341,7 @@ states, the approach the 2015 follow-up preferred.</li>
 <h3>Connections</h3>
 <p>
 The identifying property that makes a patch strong is Chapter 34, and the
-notation the patches are written in is Chapter 42. Patches as knowledge relies
+notation the patches are written in is Chapter 42. Reading a patch as knowledge relies
 on Chapter 44. The read-write systems these updates are for are Chapters 50
 and 54, and live data is Chapter 58.
 </p>
@@ -360,17 +361,11 @@ Is it weak or strong, and what would make it strong?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.3</span>
-A feed of changes says more than a feed of states. Give a question that the
-first can answer and the second cannot.</p>
+A contacts app syncs by comparing whole address books. What would it need
+to record at the moment of an edit to send the change instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.4</span>
-Your phone&#8217;s contacts app syncs by comparing whole address books. What
-would it need to record at the moment you edit a number, so it could send the
-change instead?</p>
-</div>
-<div class="question">
-<p><span class="question-number">45.5</span>
 Contact and calendar synchronisation still goes wrong. Is the cause mostly the
 semantic problem, as the note suspected?</p>
 </div>

@@ -1,32 +1,33 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-RDF data is three-part statements. Sometimes a writer needs to talk <em>about</em> a
-statement without making it. Berners-Lee makes three points. A
-description must keep the exact names the original used, so it holds them as
-strings. A description of a thing is not the thing. Describing a statement
-commits the writer to nothing; asserting it as true does.
+To talk <em>about</em> an RDF statement without making it, one has to quote
+it. Quote the names as strings, or a system that learns two names are one may
+derive a copy under the other name, and which name was used is lost. A
+description of a thing is not the thing. Describing a statement commits the
+writer to nothing; declaring it true commits the writer to its contents.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in December 2004, this note defines what it means to describe a graph
-using the same machinery the graph is made of, and in the course of doing so
-explains why the mechanism already in the specification was unusable.
+Jane knows that <code>ex:joe</code>&#8217;s name is James Doe. Suppose
+<code>ex:joe</code> and <code>ex:jd1</code> are two names for the same man.
+Does Jane know <code>ex:jd1</code>&#8217;s name? Not necessarily: she may not
+know the names are one. A system that records what someone knows must keep
+the names exactly as given. This note, of December 2004, shows how to describe
+RDF in RDF without losing them, and why the standard&#8217;s own mechanism was
+unsuitable.
 </p>
 <blockquote>
 Reification in this context means the expression of something in a language
 using the language, so that it becomes treatable by the language.
 <cite>Reifying RDF (properly), and N3, 2004</cite>
 </blockquote>
-<p>
-It isolates a mistake that any system describing its own data can make.
-</p>
 </div>
 
-<h2>44.1 The rule, and the reason for it</h2>
+<h2>44.1 Quote the name, not the thing</h2>
 
 <p>
 An RDF statement has three parts: a subject, a predicate and an object. The
@@ -87,9 +88,9 @@ string.</figcaption>
 <p>
 The difficult question is how to refer to the identifier in the subject
 position. The obvious answer, to use the identifier <code>ex:joe</code>
-itself, is marked in the note with a comment reading &ldquo;Wrong&rdquo;. The
-note&#8217;s example uses a second identifier, <code>ex:jd1</code>, for the
-same person.
+itself, is marked in the note with a comment reading &ldquo;Wrong&rdquo;, because
+it is important &ldquo;to be able to know which name a graph used for
+something&rdquo;.
 </p>
 
 <figure>
@@ -97,8 +98,9 @@ same person.
      aria-labelledby="fig44-2-t fig44-2-d">
   <title id="fig44-2-t">Describing a statement, and why the name must be quoted</title>
   <desc id="fig44-2-d">If a description uses the identifier as a symbol, then a
-  system that knows two identifiers denote the same person may rewrite the
-  description, and the record of which name the original graph used is lost.
+  system that knows two identifiers denote the same person may derive a second
+  description using the other name, and the record of which name the original
+  graph used is lost.
   Giving the identifier as a string preserves it.</desc>
 
   <rect class="box" x="24" y="26" width="672" height="44" rx="4"/>
@@ -124,7 +126,7 @@ same person.
 
   <rect class="box-warm" x="24" y="236" width="312" height="48"/>
   <text x="52" y="256" class="t-mono" font-size="11">rei:subject ex:jd1;</text>
-  <text x="36" y="276" class="t-sm" style="fill:#b08d57">the description has been rewritten</text>
+  <text x="36" y="276" class="t-sm" style="fill:#b08d57">now derivable too: which name was used?</text>
 
   <rect class="box-green" x="384" y="236" width="312" height="48"/>
   <text x="412" y="256" class="t-mono" font-size="11">rei:subject [rei:uri "...#joe"];</text>
@@ -135,15 +137,14 @@ same person.
 </svg>
 <figcaption><span class="fig-label">Figure 44.2</span>
 Left: the description uses the name itself, so a system that learns
-<code>ex:joe</code> = <code>ex:jd1</code> may swap them, and which name the
-graph used is lost. Right: a string cannot be swapped. This is Chapter 35&#8217;s
+<code>ex:joe</code> = <code>ex:jd1</code> may derive a version with
+<code>ex:jd1</code>, and which name the graph used is lost. Right: a string cannot be swapped. This is Chapter 35&#8217;s
 difference between using a name and talking about it, now written into a
 specification.</figcaption>
 </figure>
 
 <p>
-Berners-Lee&#8217;s verdict on the mechanism already in the standard is given
-without softening:
+Berners-Lee&#8217;s verdict on the mechanism already in the standard:
 </p>
 
 <blockquote>
@@ -153,7 +154,7 @@ not suitable, because it loses that information.
 </blockquote>
 
 
-<h2>44.2 Describing a blank node</h2>
+<h2>44.2 A description of a blank is not the blank</h2>
 
 <p>
 A blank node is a node with no URI, standing for &ldquo;something&rdquo;. When
@@ -163,14 +164,15 @@ describing is not the node being described.
 
 <blockquote>
 This blank node in the description is a description of a blank node in the
-original graph. They are node the same blank node.
+original graph.
 <cite>Reifying RDF (properly), and N3, 2004</cite>
 </blockquote>
 
 <p>
-The second sentence is evidently meant to read &ldquo;not the same&rdquo;. The
-describing node may even be given a name; that changes nothing about the
-unnamed node it describes.
+They are two nodes. Were the describer taken for the original, what is said of
+the describer, such as its type <code>rei:BNode</code>, would land on the
+thing described. The describing node may even be given a name; that changes
+nothing about the unnamed node it describes.
 </p>
 
 <figure>
@@ -207,7 +209,7 @@ unnamed node it describes.
 Naming the describing node does not name the original.</figcaption>
 </figure>
 
-<h2>44.3 Sets, and the ungainliness admitted</h2>
+<h2>44.3 Sets, ungainly but exact</h2>
 
 <p>
 A graph is a set of statements, and the model has ordered lists but no sets.
@@ -224,25 +226,21 @@ the same statements are demonstrably the same in their reified form.
 </blockquote>
 
 <p>
-He adds that later systems might process sets explicitly and the notation
-could gain set syntax, as Chapter 43 argues.
+Later, he adds, N3 might gain set syntax, as Chapter 43 argues.
 </p>
 
-<h2>44.4 Why quotation is not assertion</h2>
+<h2>44.4 What Jane knows</h2>
 
 <p>
-The reason for the whole apparatus is an example about what one person knows.
-In N3, curly braces enclose a <em>formula</em>: a small graph treated as one
-thing, which can sit inside a statement.
+The point is clearest in N3, where curly braces enclose a <em>formula</em>: a
+small graph treated as one thing, which can sit inside a statement.
 </p>
 
 <pre><code>ex:jane  ex:knows   { ex:joe ex:name  "James Doe" }.</code></pre>
 
 <p>
 What Jane knows is stated with the name <code>ex:joe</code>, not with the
-person. Even if two identifiers refer to the
-same person, Jane may not know that, and so may not know the corresponding
-fact about the other name.
+person: the braces quote.
 </p>
 
 <figure>
@@ -281,12 +279,13 @@ does not license rewriting what Jane knows.</figcaption>
 </figure>
 
 <p>
-A formula with variables (the note&#8217;s example: &ldquo;There is a car.
-Anything which is a car is a vehicle&rdquo;) needs its description to list
-those variables as well, and grows several times longer.
+A formula with variables needs its description to list those variables too.
+This was running code: the note passes a two-sentence formula, &ldquo;There is
+a car. Anything which is a car is a vehicle&rdquo;, through
+<code>cwm --reify</code> and prints nearly thirty lines of output.
 </p>
 
-<h2>44.5 The final distinction</h2>
+<h2>44.5 Describing is not asserting</h2>
 
 <p>
 The closing section draws the line that makes the whole thing safe, and it is
@@ -303,13 +302,12 @@ anything.
 
 <table>
 <tr><th>Form</th><th>Commits the writer to</th></tr>
-<tr><td>A formula described as existing</td><td>Nothing; all formulae exist</td></tr>
+<tr><td>A formula described as existing</td><td>Nothing; some would say &ldquo;all formulae exist, just as all lists exist&rdquo;</td></tr>
 <tr><td>A formula typed <code>log:Truth</code></td><td>Its contents</td></tr>
 </table>
 
 <p>
-Here <code>log:Truth</code> is the N3 class of formulae the writer asserts.
-Writing <code>{ ex:joe ex:name "James Doe" }</code> as something Jane knows
+<code>log:Truth</code> is the N3 class of asserted formulae. Writing <code>{ ex:joe ex:name "James Doe" }</code> as something Jane knows
 commits the writer to nothing about Joe; typing the same formula
 <code>log:Truth</code> asserts it. A system that conflates the two believes
 everything it was merely told about.
@@ -352,8 +350,9 @@ Chapter 24, and what a signature does and does not assert is Chapter 37.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">44.1</span>
-Two descriptions differ only in which name they record. Explain why they
-describe different graphs, using the definition of a graph.</p>
+Two reports quote the same man under different names. Why should a system
+keep them as different reports, even though it knows they concern one
+man?</p>
 </div>
 <div class="question">
 <p><span class="question-number">44.2</span>

@@ -1,44 +1,38 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-HTML is the language web pages are written in. XML is a stricter cousin used
-for data, in which a single error stops the whole document. In 2008 HTML was
-splitting into a strict XML version (XHTML) and a forgiving one (HTML5).
+Most web pages are, strictly speaking, broken, and browsers display them
+anyway. HTML is the language web pages are written in; XML is a stricter
+cousin used for data, in which a single error stops the whole document. In
+2008 HTML was splitting into a strict XML version (XHTML) and a forgiving one
+(HTML5).
 </p>
 <p>
-Most web pages are, strictly speaking, broken, and browsers display them
-anyway. The note argues that authors get no reward for fixing errors
-gradually, and proposes graded warnings so that they would.
+The note argues that authors get no reward for fixing errors gradually, and
+proposes graded warnings so that they would.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 2008 as a talk to the W3C Advisory Committee (the meeting of
-W3C&#8217;s member organisations), and not made public until May 2019, this note
-addresses a split in the Web that Berners-Lee could not prevent:
+In 2008 the W3C had to choose between a strict HTML that refuses broken pages
+and a forgiving one that accepts them. Berners-Lee put the dilemma to its members,
+the Advisory Committee, like this:
 </p>
 <blockquote>
-Occasionally it seems that some strategic thinking is necessary in order to
-ensure that the system as a whole will continue to work well and evolve
-smoothly. This is one of those times.
+To continue to promote messy code on the Web is to create problems and pain
+later on. To promote clean XML is a current pain for real users which they will
+not put up with.
 <cite>HTML and XML, 2008</cite>
 </blockquote>
 <p>
-By 2019 the
-question had been settled against the position argued here, and the note was
-released as a record rather than as an intervention.
+The talk stayed private until May 2019, by which time the question had been
+settled the other way.
 </p>
 </div>
 
-<h2>23.1 The fork</h2>
-
-<p>
-Both languages descend from SGML, an older and more elaborate markup standard;
-XML is a simplification of it. The practical difference is easiest to see in
-one line of badly nested markup:
-</p>
+<h2>23.1 One misplaced tag, two verdicts</h2>
 
 <pre><code>&lt;b&gt;&lt;i&gt;text&lt;/b&gt;&lt;/i&gt;</code></pre>
 
@@ -46,6 +40,12 @@ one line of badly nested markup:
 The italic tag opens inside the bold one but closes outside it. An XML parser
 (the program that reads markup) refuses this as not <em>well-formed</em>. A
 browser reading it as HTML shows bold italic text and moves on.
+</p>
+
+<p>
+XHTML, the note adds, &#8220;was not widely deployed in the dominant Web
+browser, Internet Explorer&#8221;, which could not display pages served with
+the XHTML content type until version 9, in 2011.
 </p>
 
 <figure>
@@ -97,16 +97,17 @@ the same graphics format with both kinds of engine.</figcaption>
 <h2>23.2 Two philosophies of extension</h2>
 
 <p>
-The note sets out to understand each branch&#8217;s motives, not to decide
-which fork is &#8220;right&#8221;. The case for centralised extension: the
-modules anyone proposes adding to HTML can be counted on one hand, so the
-design authority can simply add them.
+The HTML case for central extension: the modules proposed for HTML, such as SVG, MathML and XForms, &#8220;can be counted on the finger
+of one hand&#8221;, so the design authority can simply add them. Even so,
+vendors often add tags and values such as <code>rel="nofollow"</code> without
+coordination: &#8220;the &#8216;marketplace&#8217; decides&#8221;.
 </p>
 
 <p>
 The XML branch extends a language with <em>namespaces</em>: a web address put
 in front of a tag name, so that two groups using the same word cannot collide.
-Its case is a requirement rather than a preference:
+Its case, against central registries like the Dewey decimal system, is a
+requirement:
 </p>
 
 <blockquote>
@@ -181,9 +182,8 @@ anyone who owns a web address can coin terms, and the address says who to ask.
 </figure>
 
 <p>
-The note&#8217;s own example is ARIA, about thirty attributes that describe
-the role of interface elements to assistive software. The branches wrote
-them differently:
+ARIA, about thirty attributes describing interface elements to assistive
+software, shows the split:
 </p>
 
 <table>
@@ -193,14 +193,13 @@ them differently:
 </table>
 
 
-<h2>23.3 The robustness principle, reconsidered</h2>
+<h2>23.3 Why &#8216;be liberal&#8217; failed on the Web</h2>
 
 <p>
 Since at least RFC 793 (1981), Internet protocols have followed Jon Postel&#8217;s
 rule: be conservative in what is sent and liberal in what is accepted. Send
 lines of limited length but accept any length; send one letter case but
-accept either. The note explains why this rule, which worked for protocols,
-failed for pages.
+accept either.
 </p>
 
 <blockquote>
@@ -283,11 +282,12 @@ on the right: errors spread by copying and persist, and nothing carries them
 back.</figcaption>
 </figure>
 
-<h2>23.4 The incentive curve</h2>
+<h2>23.4 Why broken pages stay broken</h2>
 
 <p>
-Berners-Lee then analyses the system as one containing people with motives,
-and draws the reward for effort.
+&#8220;To look at a system which includes
+people, one must study the incentives for those people.&#8221; It draws the
+reward an author gets for effort.
 </p>
 
 <figure>
@@ -330,7 +330,8 @@ progressively.</figcaption>
 </figure>
 
 <p>
-The remedy follows from the shape:
+Under the strict branch, most authors starting with many errors &#8220;did not make it to the right when serving their code
+as XHTML.&#8221; The remedy follows from the shape:
 </p>
 
 <blockquote>
@@ -346,13 +347,12 @@ He proposes three:
 
 <ol>
 <li>A browser toolbar that slides down on a page with errors and rates it out
-of a hundred. To the objection that no browser wants to give the worse
-experience, he answers that, as with environmental cleanup, a browser without
-it would look irresponsible.</li>
+of a hundred. Visitors might want to know whether a site is &#8220;polluting
+the Web&#8221;, and anyone producing one, &#8220;up to the CEO and
+board&#8221;, could ask for detailed feedback.</li>
 <li>&#8220;View Source&#8221;, the way markup has always spread, would show and
 copy a tidied version.</li>
-<li>The validator (the W3C&#8217;s service that checks a page against the
-specification) would become a page checker that grades, as in Figure
+<li>The W3C validator would become a page checker that grades, as in Figure
 23.5. One check is the Content-Type, the server&#8217;s label for the kind of
 file, such as <code>text/html</code>.</li>
 </ol>
@@ -390,17 +390,18 @@ More than two outcomes: graded complaints are what turn a step into a slope.
 The items are the note&#8217;s own lists.</figcaption>
 </figure>
 
-<h2>23.5 Scale-free vocabularies</h2>
+<h2>23.5 Who needs a namespace: vocabularies by size</h2>
 
 <p>
-The Web is made of communities of very different sizes. It is scale-free:
-there is no typical number of inbound links to a page, only a power law, in
-which a few pages have enormous numbers and most have few. Berners-Lee
-suggests, as an unproved hunch, that this may be the best trade-off between
-one ungainly universal language and many agile small ones. He asks that
-the shape be engineered for, not merely admired: HTML at the top can be
-centrally managed, but the shaded tail of Figure 23.6 needs a way for groups
-to coin names without a committee.
+Back to extension (section 23.2). The Web is scale-free: as with inbound
+links to pages, which follow a power law, a few communities are enormous and
+most are small. The note walks down the scale: HTML; then SVG, MathML and
+ARIA; then the Facebook Markup Language and Atom feeds; and on to
+&#8220;protein scientists and history museums, for scout troops and bird
+fanciers&#8221;, down to &#8220;today&#8217;s experiment in a lab&#8221;.
+Berners-Lee asks that this shape be engineered for: HTML
+at the top can be managed centrally, but the shaded tail of Figure 23.6 needs a
+way to coin names without a committee.
 </p>
 
 <figure>
@@ -443,7 +444,8 @@ the tail is where decentralised naming earns its keep.</figcaption>
 <h2>23.6 The grouchy robustness principle</h2>
 
 <p>
-The note ends with a restatement of Postel&#8217;s rule:
+Back to the authors of section 23.4. The note&#8217;s last words restate
+Postel&#8217;s rule:
 </p>
 
 <blockquote>
@@ -461,7 +463,9 @@ Figure 23.4.
 <h2>23.7 Meeting in the middle</h2>
 
 <p>
-The note also lists its complaints about XML:
+Meeting HTML would mean changing XML, whose value is its stability:
+&#8220;Attempts at create an XML1.1 failed, just trying to introduce a few new
+Unicode characters.&#8221; The complaints against it:
 </p>
 
 <table>
@@ -474,8 +478,8 @@ The note also lists its complaints about XML:
 </table>
 
 <p>
-Rows near the top could be cured by redesigning XML; the bottom rows are HTML
-habits he would keep; the middle invites compromise.
+Top rows could be cured by redesigning XML, bottom rows are HTML habits he
+would keep, and the middle invites compromise.
 His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
 takes the namespace from the Content-Type, drops DTDs (old grammar
 declarations) and processing instructions (see section 1.2), and perhaps allows
@@ -503,10 +507,11 @@ could, served as <code>text/html</code>, simply be
 &lt;/head&gt;</code></pre>
 
 <p>
-and still be valid XML2. Gone are the XML declaration and DOCTYPE, the
-<code>xmlns</code> attribute (the namespace now comes from the Content-Type),
-and the quotes around simple values. The only non-HTML habit left is the
-<code>/&gt;</code> closing the link tag.
+and still be valid XML2. The only non-HTML habit left is the
+<code>/&gt;</code> closing the link tag. The note calls this &#8220;a
+compromise between the forks, but one in which everyone can do most of what
+they want&#8221;, and asks for an attitude that &#8220;we are going to clean up
+the Web just as we sometimes need to clean a bedroom -- or a planet.&#8221;
 </p>
 
 <div class="since">
@@ -515,14 +520,11 @@ and the quotes around simple values. The only non-HTML habit left is the
 <li><strong>The fork closed by one branch ending.</strong> W3C stopped work on
 XHTML 2 in 2009, and HTML5 became a Recommendation in October 2014. In 2019
 W3C and the WHATWG (the browser makers&#8217; group that started HTML5) agreed
-that the WHATWG Living Standard would be the single version of HTML.</li>
-<li><strong>The note was published at that moment,</strong> and its argument
-was not adopted: there was no XML2, HTML has no namespaces, and extension is
-centralised.</li>
+that the WHATWG Living Standard would be the single version of HTML. There
+was no XML2, and HTML has no namespaces.</li>
 <li><strong>The slope was built, partly, for developers only.</strong> Google&#8217;s Lighthouse (from 2016)
 scores pages from 0 to 100, though for performance and accessibility rather
-than markup errors. Nothing slides down in front of an ordinary reader, the
-part that would have changed authors&#8217; incentives.</li>
+than markup errors. Nothing slides down in front of an ordinary reader.</li>
 <li><strong>Decentralised extension arrived by another route.</strong> Custom
 elements (shipped from 2016), tags a page defines for itself with script,
 require a hyphen in the name rather than a namespace, and structured data in
@@ -557,13 +559,12 @@ step or a slope? What would change it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.3</span>
-Two groups both invent a tag called <code>label</code>. What happens under
-each mechanism of Figure 23.2?</p>
+Would a score out of 100, shown to every visitor of every page, change what
+site owners do? Compare Lighthouse (What happened since).</p>
 </div>
 <div class="question">
 <p><span class="question-number">23.4</span>
 The grouchy robustness principle asks implementations to complain. To whom,
-and by what path, given that the author of a bad page is often long gone?
-Consider the toolbar and View Source remedies of section 23.4.</p>
+and by what path, given that the author of a bad page is often long gone?</p>
 </div>
 </div>

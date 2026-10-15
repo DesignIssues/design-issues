@@ -14,10 +14,12 @@ formats, the link can quietly stop working.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Chapter 4 established that the fragment identifier stays on the client and
-that access specifications and fragment specifications are independent. This
-note, written in April 1997, asks who decides what a fragment means, and what
-that decision makes possible.
+Follow a link ending in <code>#References</code> and the server that sends
+the page is never told which part was wanted. The browser keeps everything
+after the <code>#</code> and interprets it only once the document arrives.
+This note,
+written in April 1997, asks who gets to decide what a fragment means, and
+what follows from that.
 </p>
 <p>
 It opens by correcting its own title:
@@ -35,7 +37,14 @@ and things that are not documents at all.
 </p>
 </div>
 
-<h2>11.1 The axiom</h2>
+<h2>11.1 The document type decides</h2>
+
+<p>
+The note&#8217;s answer turns on the MIME type, the label a server attaches
+to say what kind of data it is sending (also called a media type), such as
+<code>text/html</code> for a web page or <code>application/pdf</code> for a
+PDF:
+</p>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> The significance of the fragment identifier is a
@@ -43,18 +52,13 @@ function of the MIME type of the object.</p>
 </div>
 
 <p>
-A MIME type is the label a server attaches to say what kind of data it is
-sending, such as <code>text/html</code> for a web page or
-<code>application/pdf</code> for a PDF. It is also called a media type;
-the two terms mean the same thing.
-</p>
-
-<p>
 Two consequences follow. The fragment is opaque to the part of the browser
 that fetches documents, which he calls the HTTP engine. And the server is not
 even given it: the fragment is applied after the response arrives, by
 whatever software handles the returned type (Figure 11.1). So the server
-cannot log which part of a page a reader was pointed to.
+cannot log which part of a page a reader was pointed to. The same property
+later let web applications keep their state in the fragment, changing it
+without a request to the server, a story Chapter 4 tells.
 </p>
 
 <figure>
@@ -125,7 +129,7 @@ number
 </blockquote>
 
 <p>
-Most of the list has since been built, though not always as he imagined:
+Three of the four have since been built, though not as he imagined:
 </p>
 
 <table>
@@ -185,8 +189,7 @@ Figure 11.2 shows what <code>#</code> means under four types today.
 </svg>
 <figcaption><span class="fig-label">Figure 11.2</span>
 Nothing in HTTP says what <code>#</code> means, so each type of document
-defines it for itself (<code>text/turtle</code> is an RDF format). A new media
-type may invent whatever notion of a part or a view suits it. The cost is
+defines it for itself (<code>text/turtle</code> is an RDF format). The cost is
 recorded in section 11.4.</figcaption>
 </figure>
 
@@ -203,12 +206,13 @@ registration process.
 <h2>11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-This passage, added to the note some years after 1997, is the argument
-Chapter 7 restates at length. A
-fragment on an RDF document (RDF: a format for machine-readable statements
-about things) identifies not a part of the document but
-whatever thing the document describes under that name. Why must it be a
-fragment? The reasoning runs in three steps:
+A later addition to the note makes an argument the book returns to in
+Chapters 7 and 8. A fragment on an RDF document (RDF: a format for
+machine-readable statements about things) identifies not a part of the
+document but whatever thing the document describes under that name.
+Concretely, <code>http://example.org/people</code> names the document, and
+<code>http://example.org/people#alice</code> names Alice herself, the person
+the document describes. Why must she get a fragment? In three steps:
 </p>
 
 <ol>
@@ -223,9 +227,7 @@ own. It needs a <code>#</code> name inside a document.</li>
 </ol>
 
 <p>
-Concretely, <code>http://example.org/people</code> names the document, and
-<code>http://example.org/people#alice</code> names Alice herself, the person
-the document describes. For a vocabulary, whose terms are all built on one
+For a vocabulary, whose terms are all built on one
 shared prefix called its namespace, the consequence is direct:
 </p>
 
@@ -289,8 +291,8 @@ chose.</figcaption>
 
 <p>
 In 1997 it did no harm: HTML was effectively the only type that used
-fragments, and falling back to the whole document was acceptable. In a
-passage dated 2001 Berners-Lee notes it has become more of a problem. He records
+fragments, and falling back to the whole document was acceptable. By 2001,
+he notes, it had become more of a problem. He records
 proposals to add the fragment to the HTTP request, and suggests that warnings
 sent with the response, or new protocols that pass the fragment as a hint,
 could let server and client negotiate an equivalent fragment.
@@ -300,10 +302,10 @@ could let server and client negotiate an equivalent fragment.
 None of these was adopted for the Web. The fragment is still not sent.
 </p>
 
-<h2>11.5 Two kinds of bookmark</h2>
+<h2>11.5 The living page or a frozen copy</h2>
 
 <p>
-A closing section raises a user-interface consequence. Many addresses are
+Many addresses are
 generic: their content can change by language, version or format, so a
 fragment may denote nothing in some specific version. The client, he argues,
 should offer a choice: a bookmark to the whole living
@@ -326,7 +328,10 @@ supplied by the site rather than the browser.
 specifies that fragment semantics are defined by the media type of the
 retrieved representation, and RFC 6838, of January 2013, gives every media type
 registration template a field for fragment identifier considerations.</li>
-
+<li><strong>The PDF case was registered.</strong> RFC 8118, the 2017
+registration of <code>application/pdf</code>, defines <code>#page=</code>
+among its fragment identifiers: the note&#8217;s recommendation carried out,
+for the format whose links Figure 11.3 shows breaking.</li>
 </ul>
 </div>
 
@@ -334,9 +339,7 @@ registration template a field for fragment identifier considerations.</li>
 <h3>Connections</h3>
 <p>
 The module boundary that makes this axiom enforceable is Chapter 4. The
-genericity that creates the known bug is Chapter 10. The argument of
-section 11.3 is developed at length in Chapter 7 and overturned in Chapter 8.
-The globalising role of the hash is stated most compactly in Chapter 9 and
+genericity that creates the known bug is Chapter 10. The globalising role of the hash is stated most compactly in Chapter 9 and
 applied in Chapter 26.
 </p>
 </div>
@@ -362,7 +365,6 @@ State what it must not assume about HTTP.</p>
 <div class="question">
 <p><span class="question-number">11.4</span>
 No mainstream browser offers a choice between the two kinds of bookmark.
-Propose an interface for it, and say why the absence of one has cost so
-little.</p>
+Propose an interface for it, and say whether its absence has mattered.</p>
 </div>
 </div>

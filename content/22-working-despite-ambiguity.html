@@ -16,21 +16,23 @@ meaning is fixed.
 In October 2012 an argument broke out on the mailing list of the Technical
 Architecture Group (the W3C&#8217;s small panel on Web architecture),
 not for the first time, over whether a symbol can ever have an
-unambiguous meaning. Berners-Lee&#8217;s reply, lightly edited into this note,
-concedes the point in its first paragraph and then asks how work is supposed
-to continue. The original message was titled &ldquo;Working without being ambushed by
-Ambiguity&rdquo;. Ambush is the real subject: not whether the pedants are
+unambiguous meaning. It began as background reading for a TAG meeting on
+httpRange-14, the long-disputed rule for what an http URI denotes (Chapters 8
+and 9). Berners-Lee&#8217;s reply, lightly edited
+into this note, concedes the point at once and then asks how work is to
+continue. It was titled &ldquo;Working without being ambushed by
+Ambiguity&rdquo;, and ambush is the real subject: not whether the pedants are
 right, but what to do when they are right at an inconvenient moment.
 </p>
 </div>
 
-<h2>22.1 The billiard ball</h2>
+<h2>22.1 Keeping the billiard ball</h2>
 
 <p>
-A name <em>denotes</em> something when it stands for a particular thing. The
-Web&#8217;s architecture asks that each URI denote one thing. The objection is
-that no symbol is ever completely unambiguous, so, as the note puts it, some
-might say the architecture is useless. Berners-Lee answers with an analogy.
+No symbol is ever completely unambiguous, so, the note says, some might call
+the Web&#8217;s architecture useless, since it asks that each URI
+<em>denote</em> one thing (stand for a particular thing). Berners-Lee
+answers with an analogy.
 </p>
 
 <figure>
@@ -89,22 +91,21 @@ ambush any discussion in the classical form.
 <p>
 The analogy lacks one thing. In physics, mathematics shows that the quantum
 model gives rise, to a high degree of approximation, to the classical one.
-For meaning there is no such derivation, and the rest of the note tries to
-supply one by other means.
+For meaning there is no such derivation. The note offers something else: a
+set of working systems that make words definite enough.
 </p>
 
 <h2>22.2 Five ways of pinning a word down</h2>
 
 <p>
-The central move is to treat disambiguation not as a philosophical problem
-but as a catalogue of working systems. Berners-Lee lists five, none of which
-removes ambiguity entirely.
+Berners-Lee treats disambiguation not as a philosophical problem but as a
+catalogue of working systems, and lists five.
 </p>
 
 <table>
 <tr><th>Model</th><th>How meaning is fixed</th><th>Example or remark</th></tr>
-<tr><td>1. Authoritative dictionary</td><td>The editor of the Oxford English Dictionary knows best how words are used; if a use is missing, send him a note.</td><td>Looking up a word in the OED</td></tr>
-<tr><td>2. Meaning as use</td><td>A speaker may use words however they like; since meaning is use, no use is ever wrong.</td><td>Slang, as when &ldquo;sick&rdquo; means good; perhaps, the note says, a response to finding model 1 imperfect</td></tr>
+<tr><td>1. Authoritative dictionary</td><td>The editor of the Oxford English Dictionary knows best how words are used; if a use is missing, send him a note.</td><td>Looking up a word in the OED; perhaps, the note says, &ldquo;the model we have in kindergarden&rdquo;</td></tr>
+<tr><td>2. Meaning as use</td><td>A speaker may use words however they like; since meaning is use, no use is ever wrong.</td><td>&ldquo;Sometimes blamed on Wittgenstein&rdquo;; slang, as when &ldquo;sick&rdquo; means good</td></tr>
 <tr><td>3. Expertise</td><td>Lawyers train for years to agree tighter terms; if needed, a court adds definition.</td><td>A contract</td></tr>
 <tr><td>4. Areas of expertise</td><td>Specialists in a field write what is needed and testify to it in court.</td><td>An expert witness</td></tr>
 <tr><td>5. Standards committee</td><td>Defines local terms until they are tight enough; others can challenge it while the group exists.</td><td>A technical specification</td></tr>
@@ -119,7 +120,7 @@ way. He also notes, wryly, that a group sharing its work is sometimes
 horrified to find the larger community needs much longer discussion.
 </p>
 
-<h2>22.3 Engineered, not natural</h2>
+<h2>22.3 Dictionaries and courts are engineered</h2>
 
 <p>
 He then says what the five models are:
@@ -135,9 +136,7 @@ systems. So we can design the ones we need.
 
 <p>
 Disambiguation stops being something that happens to language and becomes
-something one builds. Given how much violence one might imagine stems from
-misunderstanding, he adds, it may behove us to improve on these systems. And
-all of them share one property:
+something one builds. And all of them share one property:
 </p>
 
 <blockquote>
@@ -146,23 +145,25 @@ unambiguity at all, just a good enough definition.
 <cite>Working despite Ambiguity, 2012</cite>
 </blockquote>
 
-<h2>22.4 What the Semantic Web adds</h2>
+<p>
+Since, he suggests, much of the world&#8217;s violence might stem from
+misunderstandings of some sort, improving them may be worth the effort.
+</p>
+
+<h2>22.4 Looking up who answers for a word</h2>
 
 <p>
-The Semantic Web is not a sixth model. It sits above the five: it does not
-say how a term&#8217;s meaning is fixed, only where to look it up and who
-answers for it. Each <em>vocabulary</em> (a published set of terms) fixes its
-meaning however it likes.
+The Semantic Web is not a sixth model but sits above the five: each
+<em>vocabulary</em> (a published set of terms) fixes its meaning however it
+likes.
 </p>
 
 <h3>How a term is looked up</h3>
 
 <p>
-The Domain Name System (DNS), which hands out names such as
-<code>example.org</code>, lets a person or organisation own a term. HTTP, the
+The Domain Name System (DNS) lets a person or organisation own a term. HTTP, the
 Web&#8217;s fetching protocol, lets a machine look the term up. What comes back
-explains it in natural language and in logic (statements a program can
-reason with, such as that every seminar is an event), and says, openly or by
+explains it in natural language and in logic (Figure 22.2), and says, openly or by
 implication, which model, or mix of models, fixes its meaning.
 </p>
 
@@ -214,9 +215,15 @@ and who answers for it.</figcaption>
 </figure>
 
 <p>
-A sender then picks terms whose owners curate them under whichever models
-make the disambiguation, in Berners-Lee&#8217;s phrase, good enough for the
-situation. People still share understandings over beers in bars, he notes,
+Even here he hedges. What comes back would be called the term&#8217;s
+definition, he says, except that &ldquo;we would be ambushed by people who
+want to use the word &lsquo;definition&rsquo; specifically for a definition
+using one or other particular model&rdquo;.
+</p>
+
+<p>
+A sender then picks terms whose curation makes them, in
+Berners-Lee&#8217;s phrase, good enough for the situation. People still share understandings over beers in bars, he notes,
 but the machine version has two advantages: it lets anyone look up a meaning
 without pretending meaning is unambiguous, and it yields logic that programs
 can use.
@@ -225,7 +232,7 @@ can use.
 <h3>A worked example: the seminar form</h3>
 
 <p>
-The note gives two examples, both about an online form for a seminar.
+Both of the note&#8217;s examples concern an online seminar form.
 </p>
 
 <figure>
@@ -312,8 +319,7 @@ building it, it may mean forming a group.</figcaption>
 Someone filling in the form can enter the date and times without likely
 misunderstanding. Choosing whether the event is a talk, a class, a seminar
 or a concert is harder, but a good application pulls in the vocabulary&#8217;s
-comment when the user hovers, and can link to the full definition and to
-events already filed under each choice.
+comment when the user hovers.
 </p>
 
 <p>
@@ -343,14 +349,18 @@ unambiguous meanings which are independent of context.
 </blockquote>
 
 <p>
-That is why the note asks for definitions good enough for the situation, not
-unambiguous ones: the fully pinned-down alternative is a language few could
-use.
+Berners-Lee&#8217;s own closing advice is more practical: some of the
+rat-holes around ambiguity &ldquo;need to be charted and left rarely
+visited&rdquo;.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
+<li><strong>October 2012: Wikidata.</strong> Launched on 29 October, two
+weeks after the note, Wikidata names things with http URIs that return data
+when looked up, and creates a new property only after public proposal and
+discussion, much like the form-builder&#8217;s buttons in section 22.4.</li>
 <li><strong>February 2014: the lookup became standard.</strong> RDF 1.1 Concepts and Abstract Syntax
 became a W3C Recommendation. It says that an IRI&#8217;s owner can help establish
 what the IRI refers to, and that dereferencing it can return information
@@ -382,8 +392,9 @@ meaning, and what happens when two of your colleagues disagree about it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">22.3</span>
-On the seminar form, which fields are safe and which need a hover-over
-explanation? Why?</p>
+Berners-Lee wants a form-builder to see &ldquo;the cost of getting others
+to agree&rdquo; on a new term. What could that cost look like on screen, and
+would it make people reuse terms or give up?</p>
 </div>
 <div class="question">
 <p><span class="question-number">22.4</span>

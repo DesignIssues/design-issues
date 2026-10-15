@@ -18,38 +18,34 @@ Documents have meaning; signatures only carry trust.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 1999 (the header says 1998), this note apologises that its terms may
-not match philosophy&#8217;s. It asks what a digital signature means, and argues
-that the question is the wrong one.
-</p>
-<p>
-Its opening states the ambition plainly:
+What does a digital signature mean? The note calls this &ldquo;the much-asked
+question&rdquo;, and argues that it is the wrong one:
 </p>
 <blockquote>
-We need some philosophy as a basis for the architecture of digital signature
-and the semantic web.
+Documents have meaning. Signatures by themselves do not.
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 <p>
-The engineering advice that follows is to keep the machine&#8217;s loop
-closed, and to touch the social world only at the edges.
+The evidence is four rules that, in Berners-Lee&#8217;s words, &ldquo;can
+happily run controlling our web site&rdquo;, and a warning that every attempt
+to tie those rules to people at each step leads into what he calls rat holes.
+The note was written in 1999 (its header says 1998),
+and apologises that its terms may not match philosophy&#8217;s.
 </p>
 </div>
 
-<h2>37.1 The self-sufficient loop</h2>
+<h2>37.1 A cheque the bank never has to understand</h2>
 
 <p>
 The system, Berners-Lee argues, should form a loop that closes on itself.
 Definitions are given in terms of other things in the system, and the system
 reaches outside only at a few places: the physical delivery of goods, or the
-presentation of a document to a person for signature. Section 37.2 draws one
-such loop.
+presentation of a document to a person for signature.
 </p>
 
 <p>
 His first example is a cheque, defined only as something which, fed into the
-bank&#8217;s black box, makes it do a certain thing: a bank does not ask what a
-cheque is; it pays out when a valid one is presented. Dollars and transfers can
+bank&#8217;s black box, makes it do a certain thing. Dollars and transfers can
 then be defined in terms of the cheque, and trade can run on electronic
 currency, invoices and delivery notes, falling back on a paper cheque only
 when necessary. The analogy he then reaches for is monetary too:
@@ -66,10 +62,16 @@ self-sufficient.
 <cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
 </blockquote>
 
+<p>
+Bank of England notes still carry that promise, although the pound stopped
+being convertible to gold in 1931: the words outlived the thing they once
+referred to.
+</p>
+
 <h3>Why touch reality at all</h3>
 
 <p>
-He gives three reasons for touching it at all:
+He gives three reasons:
 </p>
 
 <ol>
@@ -81,27 +83,25 @@ exploiting;</li>
 </ol>
 
 <p>
-None claims the existing definitions are right: they are not fundamental or
-beautiful, and many existing systems are really crufty (messy and overgrown).
+None claims the existing definitions are fundamental or beautiful; many
+existing systems, he admits, are &ldquo;really crufty&rdquo;.
 </p>
 
 <h2>37.2 Two loops, and the mistake of joining them</h2>
 
 <p>
 The worked example is access control on the W3C&#8217;s own member web site,
-where Hugo, in his role as webmaster, is deemed responsible for deciding who
-has member access. The machine side is a chain of keys; the social side tells
-the same chain as people, companies and Hugo.
+where Hugo is deemed responsible for deciding who has member access.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 296" width="720" height="296" role="img"
+<svg class="dia" viewBox="0 0 720 268" width="720" height="268" role="img"
      aria-labelledby="fig37-1-t fig37-1-d">
   <title id="fig37-1-t">The machine loop and the social loop</title>
   <desc id="fig37-1-d">Four mechanical steps grant access by chaining
   signatures back to a key the server trusts. Four social steps say the same
   thing about people and organisations. Dashed joins connect each mechanical
-  step to its social counterpart, and every join is labelled a rat hole.</desc>
+  step to its social counterpart.</desc>
 
   <text x="180" y="26" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">the machine loop</text>
   <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">the social loop</text>
@@ -145,7 +145,6 @@ the same chain as people, companies and Hugo.
     <path d="M 330 64 L 390 64"/><path d="M 330 120 L 390 120"/>
     <path d="M 330 176 L 390 176"/><path d="M 330 232 L 390 232"/>
   </g>
-  <text x="360" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">every dashed join is a rat hole</text>
 </svg>
 <figcaption><span class="fig-label">Figure 37.1</span>
 The left column can be written in mathematics and proved. The right column, in
@@ -155,7 +154,8 @@ left.</figcaption>
 </figure>
 
 <p>
-Drawn as a loop, the machine column needs no person:
+Of the left column he says: &ldquo;This little system can happily run
+controlling our web site.&rdquo; Drawn as a loop, the machine column needs no person:
 </p>
 
 <figure>
@@ -226,8 +226,7 @@ two dashed edges.</figcaption>
 </figure>
 
 <p>
-His diagnosis of why security work goes wrong is direct (SW is the Semantic
-Web):
+His diagnosis (SW is the Semantic Web):
 </p>
 
 <blockquote>
@@ -238,30 +237,33 @@ Security has always been plagued by people trying to connect the SW steps
 
 <p>
 Joining them at rung b means identifying a person with a key. That brings in a
-directory system (he names X.500, a planned worldwide directory standard) which is not part of the trust loop, becomes
-a security hole, and adds unnecessary third parties. It also raises endless
-questions about what identity is.
+directory system (he names X.500, a planned worldwide directory standard) that
+is not part of the trust loop, becomes a security hole and adds unnecessary
+third parties, and it raises endless questions about what identity is.
 </p>
 
 <p>
-Long before the identity questions are settled, the argument turns to belief: whether Hugo really
-believes a company is a member, or only certifies it in his official role. He
-calls these rat holes, and adds that people do not simply believe things; they
-trust certain sources for certain purposes.
+Long before the identity questions are settled, the argument turns to belief,
+about whether Hugo really believes the person is a member of the company:
+&ldquo;maybe Hugo does not have to but in his webmaster role he does! These are
+rat holes.&rdquo; People, he adds, do not simply believe things; they trust
+certain sources for certain purposes.
 </p>
 
 <p>
 He suggests a separate word, &ldquo;interpretation&rdquo;, for the mapping
-between the machine world and the real one. The practical upshot: a signature
+between the machine world and the real one. In practice, a signature
 specification should give only the link between a signature and a string of
 bits, and a toolbox only a language for writing a&ndash;d. Neither should try
 to link a&ndash;d to A&ndash;D.
 </p>
 
-<h2>37.3 The inversion</h2>
+<h2>37.3 When the list becomes the definition</h2>
 
 <p>
-Once the loop is closed, the direction of definition reverses:
+First the server is installed with its signature-based access rules; then
+other things are related to it, such as giving invited experts keys on a given
+list. From then on the direction of definition reverses:
 </p>
 
 <blockquote>
@@ -307,32 +309,14 @@ expert becomes defined as someone whose key is on a given list.
 </svg>
 <figcaption><span class="fig-label">Figure 37.3</span>
 The arrow reverses. Status stops being a fact about the world that the system
-records and becomes a fact about the system, so questions such as invited in
-what sense, or by whom, never need answering.</figcaption>
+records and becomes a fact about the system.</figcaption>
 </figure>
 
-
-<h2>37.4 What a signature is not</h2>
-
 <p>
-The conclusion is stated twice, and the second time in eight words:
-</p>
-
-<blockquote>
-Documents have meaning. Signatures by themselves do not.
-<cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
-</blockquote>
-
-<p>
-His own answer is that the semantics lie in the whole loop a&ndash;d, which
-must eventually be tied down to a key; the signature itself carries none.
-Asking for the semantics of a signature alone is therefore not useful. Signatures
-convey trust, and only through statements about keys and documents. Society&#8217;s many rules about what trust a signature conveys are to be left
-alone when building the infrastructure.
-</p>
-
-<p>
-A separate warning closes the argument and generalises past signatures:
+The system can then work without anyone answering the questions
+&ldquo;&lsquo;invited&rsquo; in what sense? by whom?&rdquo; or &ldquo;Does this
+mean an invitation which has been accepted?&rdquo; Next comes a warning that
+reaches past signatures:
 </p>
 
 <blockquote>
@@ -384,6 +368,26 @@ same wherever they are stored, so the design must not constrain where that
 is.</figcaption>
 </figure>
 
+<h2>37.4 Where a signature&#8217;s meaning lies</h2>
+
+<p>
+His own answer is that the semantics lie in the whole loop a&ndash;d, which
+must eventually be tied down to a key. Asking for the semantics of a signature
+alone is therefore not useful, and he says so in eight words:
+</p>
+
+<blockquote>
+Documents have meaning. Signatures by themselves do not.
+<cite>Interpretation and Semantics on the Semantic Web, 1999</cite>
+</blockquote>
+
+<p>
+Signatures convey trust, and only through statements about keys and
+documents. Society&#8217;s many rules about what trust a signature conveys are
+to be left alone when building the infrastructure.
+</p>
+
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
@@ -418,8 +422,8 @@ question of who a key belongs to returns in Chapter 69.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">37.1</span>
-Write the machine loop for a system you use. How many rungs are there, and
-where does it touch the social world?</p>
+A hotel key card opens your room. Write its machine loop: whose key, on whose
+list, trusted by what? Where does it touch a person?</p>
 </div>
 <div class="question">
 <p><span class="question-number">37.2</span>

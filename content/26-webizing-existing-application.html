@@ -10,9 +10,12 @@ to begin with.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Volume III has been about how a system changes. This chapter closes it with
-the operation that changes a system into part of the Web, and Berners-Lee
-gives the whole procedure in one sentence:
+The Web grows in two ways, Berners-Lee says: by adding new technology, and by
+opening up systems that already exist. A weather database can answer
+<code>SELECT temp, zip FROM weather WHERE temp &gt; 30</code>, but nothing
+outside it can point at its idea of <code>temp</code>. Webizing changes that,
+and keeps &ldquo;the knowledge accrued&rdquo; in systems &ldquo;researched and
+designed over the years&rdquo;. He gives the procedure in one sentence:
 </p>
 <blockquote>
 The essential process in webizing is to take a system which is designed as a
@@ -20,19 +23,16 @@ closed world, and then ask what happens when it is considered as part of an
 open world.
 <cite>Webizing existing systems, 1998</cite>
 </blockquote>
-<p>
-It matters as much as invention: it fills the Web from information that
-already exists, and keeps the knowledge built into systems designed over
-years.
-</p>
 </div>
 
-<h2>26.1 The operation</h2>
+<h2>26.1 Giving every name an address</h2>
 
 <p>
 Practically, webizing a language means replacing its names, tokens and
 identifiers with URIs. What was previously a reference reaching only within
 one document or module can then reach, with equal ease, into any other.
+Sometimes the name turns out never to have been one thing, as section 26.4
+shows.
 </p>
 
 <figure>
@@ -102,38 +102,35 @@ webized language closely resembles the original.
 </p>
 
 <p>
-Dan Connolly&#8217;s
-webizing of the Knowledge Interchange Format (KIF, a language for writing down
-knowledge for computers) used URIs for identifiers. KIF ignores the difference
-between capitals and lower case, but URIs do not: <code>Temp</code> and
-<code>temp</code> are different URIs. So lower-case letters had to be escaped
-with backslashes, which made the result less readable. Small changes to the underlying language, Berners-Lee concludes, can make the
-translation much less cumbersome.
+Even letter case can get in the way: KIF (a knowledge-representation
+language) ignores it, URIs do not, and Dan Connolly&#8217;s
+translation had to escape lower-case letters with backslashes.
 </p>
 
 <p>
-He then offers a table, which he calls slightly flippant, of what webizing
-does to whole ideas.
+He then offers what he calls &ldquo;a slightly flippant view on the webize()
+function, each row of which probably needs an essay of explanation, but
+provided here without any&rdquo;. The third column is this book&#8217;s.
 </p>
 
 <table>
-<tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>In brief</th></tr>
+<tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>One reading</th></tr>
 <tr><td>Hypertext</td><td>WWW</td><td>Links reach any document, not just those in one system</td></tr>
 <tr><td>Data</td><td>Linked data</td><td>Records get URIs and can point at one another</td></tr>
-<tr><td>Top-down structured design</td><td>Bottom-up ontology design</td><td>Vocabularies (an <em>ontology</em> is a shared vocabulary of kinds of thing) grow from the parts rather than being planned from the top</td></tr>
+<tr><td>Top-down structured design</td><td>Bottom-up ontology design</td><td>Shared vocabularies (<em>ontologies</em>) grow from the parts, not from a plan</td></tr>
 <tr><td>Data Hiding</td><td>Data Re-use</td><td>What a module kept private (Chapter 4&#8217;s information hiding), once named globally, others can use</td></tr>
-<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump (the instruction that jumps to any line of a program) is, as the link, what the Web runs on</td></tr>
-<tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, guarded by access-control lists (&ldquo;ACL&#8217;d&rdquo;)</td></tr>
+<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump, as the link, is what the Web runs on</td></tr>
+<tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, under access-control lists</td></tr>
 <tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a <em>scale-free</em> web: a few hubs, many small nodes, no single centre</td></tr>
+<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>The joke that gives the game away</td></tr>
 </table>
 
-<h2>26.2 Webizing a database</h2>
+<h2>26.2 A weather database, opened to the world</h2>
 
 <p>
-Berners-Lee&#8217;s worked example is a database. An SQL query (SQL
-is the standard language for questioning a database) names columns and tables
-that mean something only inside the database, and the database itself is
-nowhere mentioned, because it is context rather than content.
+An SQL query (SQL is the standard language for questioning a database) names
+columns and tables that mean something only inside one database, which is
+itself never mentioned: it is context, not content.
 </p>
 
 <figure>
@@ -178,9 +175,8 @@ column has become a public name.</figcaption>
 </figure>
 
 <p>
-Prefixes are used for two reasons, he explains: writing the full URIs out each
-time would be cumbersome, and URIs contain characters that would clash with
-SQL&#8217;s own syntax. He doubts that SQL over scattered databases would
+The prefixes save writing out full URIs, whose characters would clash with
+SQL&#8217;s syntax. He doubts that SQL over scattered databases would
 optimise well, but that is not the point:
 </p>
 
@@ -191,49 +187,36 @@ world.
 </blockquote>
 
 <p>
-The temperature column becomes, in Berners-Lee&#8217;s words, a concept, an RDF
-property in fact (a named relationship, such as <em>has temperature</em>, that
-any data on the Web can use), available for all the world to refer to. Because the schema (the database&#8217;s description of its own tables and
-columns) declares it as such, systems that know nothing of SQL can use it.
+The temperature column becomes an RDF property (a named relationship, such as
+<em>has temperature</em>, that any data on the Web can use), &ldquo;available
+for all the world to refer to&rdquo;. Because the database&#8217;s schema
+declares it so, systems that know nothing of SQL can use it.
 </p>
 
 <h3>Two notes for anyone publishing data</h3>
 
 <p>
-The first is that a table carries two distinct concepts. In the classic
-employees table:
-</p>
-
-<table>
-<tr><th>The class</th><td>Employee, a kind of Person: what any row describes</td></tr>
-<tr><th>The set</th><td>Someone works for the company if and only if they are in the table</td></tr>
-</table>
-
-<p>
-Publishing the table publishes both: a kind of thing others may reuse, and a
-claim that the list is complete.
+The first is that a table carries two concepts. One is the kind of thing a row
+describes: in the weather table, a reading, with a location and a
+temperature. The other is the set of rows actually present. In the classic
+employees table, each row describes a person, and the table also says that
+someone works for the company if and only if they are in it. Publishing the table publishes both: a kind of thing others may reuse, and
+a claim that the list is complete.
 </p>
 
 <p>
-The second is about indirection. For flexibility and security there is usually
-a layer between what is exposed and what is stored, though both share a form:
-</p>
-
-<table>
-<tr><th>What is exposed</th><th>What is behind it</th><th>The shared form</th></tr>
-<tr><td>Web page</td><td>File</td><td>Bytes plus a MIME type (a label such as <code>text/html</code> saying what kind of data it is)</td></tr>
-<tr><td>Published database view</td><td>Internal tables</td><td>Still the form of a database</td></tr>
-</table>
-
-<p>
-Outside, the form is persistent and suits the consumer; inside, it is
-efficient for the publisher.
+The second is that, for flexibility and security, a layer usually sits
+between what is exposed and what is stored. A web page is not a file, though
+both are bytes with a type; a published view is not the internal tables,
+though both have the form of a database. Outside suits the consumer; inside
+suits the publisher.
 </p>
 
 <h2>26.3 Where it gets hard</h2>
 
 <p>
-The difficult case is nesting. Where a language relies on nested scopes (where a name&#8217;s meaning
+The table&#8217;s joke about goto has a serious side. The difficult case is
+nesting. Where a language relies on nested scopes (where a name&#8217;s meaning
 depends on the block it sits inside), the context at one end of a link can be completely different from the context at
 the other. Berners-Lee cites the computer scientist Edsger Dijkstra, in his 1968 letter
 against the goto statement: it is too primitive and too much an invitation to
@@ -288,9 +271,12 @@ So, just as some languages forbid jumping into an inner loop, it may make no
 sense to allow a link into something deeply nested, because the thing referred
 to has no meaning out of context. The language must then either define how the
 inner thing is represented independently of its context, or make such links
-impossible. But he warns against jumping to that conclusion. In a
-three-dimensional scene language an object may sit within a scene within an
-object and still have an identity worth referring to. And the governing
+impossible. But he warns against jumping to that conclusion. A
+link to an anchor in a hypertext document arrives &ldquo;not as a isolated
+piece of hypertext, but in the context of the whole document&rdquo;: a link
+to <code>#section-3</code> of a long page still gets that page&#8217;s
+styles. In a three-dimensional scene language, likewise, an object may sit
+within a scene within an object and still deserve a name. The governing
 principle does not bend:
 </p>
 
@@ -300,7 +286,7 @@ anything means that these innermost nested objects must have URIs.
 <cite>Webizing existing systems, 1998</cite>
 </blockquote>
 
-<h2>26.4 The diagnostic use</h2>
+<h2>26.4 When one name turns out to be two things</h2>
 
 <p>
 Webizing is also a test. If a name means quite different things in different
@@ -358,24 +344,30 @@ is two names.</figcaption>
 <p>
 He leaves an exercise, to examine XML schemas and ask what the URI of an
 element type is (every <code>&lt;p&gt;</code> in an HTML page is an element of
-the type <em>p</em>), and closes with this advice:
+the type <em>p</em>), and advises, when stuck, asking what the construct
+&ldquo;actually represents in a global context, if anything&rdquo;. The
+payoff of trying, he concludes, is knowledge of design itself:
 </p>
 
 <blockquote>
-When stuck, recourse to common sense. Ask what the construct actually
-represents in a global context, if anything.
+Webizing one application gets one a good idea of what sorts of design
+decisions force a closed world assumption and make webizing difficult, and
+what by contrast makes a weblike application which immediately benefits from
+the rest of everything out there.
 <cite>Webizing existing systems, 1998</cite>
 </blockquote>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Databases were webized, by specification.</strong> R2RML, a
-language for mapping relational data to RDF, became a W3C Recommendation in
-September 2012, which is section 26.2&#8217;s example turned into a standard.</li>
-<li><strong>A default mapping too.</strong> A Direct Mapping of Relational
-Data to RDF, which gives every table, column and row a URI automatically,
-became a W3C Recommendation on the same day, 27 September 2012.</li>
+<li><strong>Databases were webized, by specification.</strong> On 27
+September 2012 W3C made two Recommendations: R2RML, a language for mapping
+relational data to RDF, and A Direct Mapping of Relational Data to RDF, which
+gives every table, column and row a URI automatically. Section 26.2&#8217;s
+example became a standard.</li>
+<li><strong>The file-system row was built.</strong> Solid (Chapter 54) keeps
+a person&#8217;s files as read-write linked data guarded by access-control
+lists: &ldquo;ACL&#8217;d r/w linked data&rdquo;.</li>
 </ul>
 </div>
 <div class="connections">
@@ -383,9 +375,8 @@ became a W3C Recommendation on the same day, 27 September 2012.</li>
 <p>
 The one-line formula is quoted from Chapter 12, and the mechanism that makes
 it work is Chapters 4 and 11. The sense in which a language may be extended
-is Chapter 17. The transformation table is the programme of Volume VI,
-beginning at Chapter 49, and the read-write file system it promises is
-Chapters 50 and 54.
+is Chapter 17. The transformation table is the programme of Volume VI
+(from Chapter 49); its read-write file system is Chapters 50 and 54.
 </p>
 </div>
 
@@ -398,8 +389,7 @@ setting, for example one line in a settings file? What breaks?</p>
 </div>
 <div class="question">
 <p><span class="question-number">26.2</span>
-Section 26.2 distinguishes the kind of thing a row describes from the set of
-rows present. An <em>employees</em> table lists only salaried staff. What
+Section 26.2 separates what a row describes from which rows are present. An <em>employees</em> table lists only salaried staff. What
 false conclusion would someone draw about a contractor who is not in it?</p>
 </div>
 <div class="question">

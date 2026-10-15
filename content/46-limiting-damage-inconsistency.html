@@ -1,8 +1,8 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-In classical logic, once two statements that contradict each other are both
-accepted, any conclusion at all can be proved. The Web is certain to contain
+In classical logic, once two contradictory statements are both accepted,
+anything can be proved. The Web is certain to contain
 contradictions. The answer is that nothing on the Web is believed just because
 it is there: it is believed only for a reason, for a limited purpose, and for
 a limited time.
@@ -12,7 +12,7 @@ a limited time.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This note answers the objection that everyone raises, and Berners-Lee states
+This note answers the objection many people raise, and Berners-Lee states
 it in the reader&#8217;s own voice before answering:
 </p>
 <blockquote>
@@ -32,9 +32,8 @@ documents.
 
 <p>
 Suppose a naive logic engine holds both &ldquo;the meeting is on Tuesday&rdquo;
-and &ldquo;the meeting is not on Tuesday&rdquo;. By the ordinary rules of
-inference (drawing new conclusions from old ones), it can then prove that the
-moon is made of cheese, or anything else. Logicians call this the principle of
+and &ldquo;the meeting is not on Tuesday&rdquo;. By ordinary inference it can
+then prove that the moon is made of cheese, or anything else. Logicians call this the principle of
 explosion.
 </p>
 
@@ -51,19 +50,15 @@ actually work.
 An RDF parser is the program that reads a document and extracts the
 statements in it. The correction is a chain: a fact is asserted in an
 expression (a single statement), which is part of a formula (a group of
-statements), which is found by parsing a document. Then the sentence that does
-the work:
+statements), which is found by parsing a document. Any reason to believe the
+document lies in <em>metadata</em>, a statement about it found in another
+document. And the sentence that does the work:
 </p>
 
 <blockquote>
 There is no a priori reason to believe any document on the web.
 <cite>Inconsistent data, 1998</cite>
 </blockquote>
-
-<p>
-The note leaves a placeholder for a picture here; Figure 46.1 supplies it.
-In it, <em>metadata</em> means a statement about a document.
-</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 460" width="720" height="460" role="img"
@@ -129,13 +124,14 @@ each found in some document, and the chain must end in something
 already trusted.</figcaption>
 </figure>
 
-<h2>46.2 Forwards and backwards</h2>
+<h2>46.2 Trust first, or trust last</h2>
 
 <p>
-Two ways of organising such a system are named. Working forwards starts from a
+The note names two designs. Working forwards starts from a
 configuration page, a document the system&#8217;s owner has chosen as its
 starting point. Working backwards starts from a global index, a search service
-that lists every document mentioning a given term.
+that lists every document mentioning a given term. Working backwards reads documents its owner never chose, so the trust check at the end
+is all that stands between a stranger&#8217;s page and an answer.
 </p>
 
 <figure>
@@ -210,9 +206,9 @@ The second step is a rule. Its bluntest form trusts a key for everything:
 
 <p>
 In practice, Berners-Lee says, authorities are trusted only for specific
-purposes, and the rule must be narrowed to match. His narrower examples
-trust one key only for statements that someone is a member of W3C, and
-another only for statements that someone is an employee of IBM.
+purposes, and the rule must be narrowed to match. His examples trust one key
+only to say who is a member of W3C, and another only to say who is an IBM
+employee.
 </p>
 
 <p>
@@ -223,20 +219,23 @@ narrowness is what limits the damage.
 <h2>46.4 The choice he does not make</h2>
 
 <p>
-The centre of the note is a dilemma left open, and both options are bad in
-ways worth understanding.
+Here he is undecided: &ldquo;There is a
+choice here, and I am not sure right now which appeals to me most.&rdquo;
 </p>
 
 <table>
 <tr><th>Rule</th><th>Cost</th></tr>
 <tr><td>Believe statements <em>of this form</em> signed with this key</td><td>Bureaucratic: the exact wording must be kept, so an equivalent statement phrased differently will not match</td></tr>
-<tr><td>Believe what <em>can be inferred</em> from information signed with this key</td><td>One contradiction under that key makes everything derivable from it</td></tr>
+<tr><td>Believe what <em>can be inferred</em> from information signed with this key</td><td>The inconsistency trap</td></tr>
 </table>
 
 <p>
 The first gives up something we normally rely on: being able to replace any
 set of formulae with another set deducible from it. He calls this very messy.
-The second is the inconsistency trap:
+The second is the inconsistency trap. Once a contradiction can be deduced
+from what one key signed, &ldquo;the key is completely broken. Of course, only
+that key is broken, so a trust system can remove any reason it has to trust
+that key.&rdquo; The catch:
 </p>
 
 <blockquote>
@@ -298,19 +297,14 @@ it is stopped only once someone notices.</figcaption>
 </figure>
 
 <p>
-Nothing guarantees the system notices the break before it has acted on absurd
-conclusions.
+Can trust in a key be limited while information is still processed
+consistently? &ldquo;Yes - maybe - there are many.&rdquo; His way out is to
+limit the kinds of inference rule that may be used, as knowledge-representation
+systems with limited logics already do. The cost: a general proof engine must either be told the permitted rules as data, or have
+each limited reasoner built in. &ldquo;Maybe we only need one.&rdquo;
 </p>
 
-<p>
-The way out he offers is to limit the kinds of inference rule that may be
-used, as knowledge-representation systems with limited logics already do. The
-cost falls on the implementer: a general proof engine must either be told the
-permitted rules as data, or have each limited reasoner built in. He does not
-pretend to have finished the thought.
-</p>
-
-<h2>46.5 Time, and the tortoise again</h2>
+<h2>46.5 Contradictions that are only out of date</h2>
 
 <p>
 The last section addresses a source of apparent contradiction that is not an
@@ -336,12 +330,13 @@ the contradiction comes from forgetting when each statement was made.
 
 <p>
 The first remedy is an expiry date on everything, as an HTTP server can
-already send with a resource. All conclusions drawn from a document are
+already send with a resource: the Expires header was in HTTP/1.0 (RFC 1945,
+1996). All conclusions drawn from a document are
 cancelled when its date arrives, unless a fresher copy says the same thing.
 Statements should also be fully qualified. On the Semantic Web, &ldquo;It is
-rainy&rdquo; becomes something like &ldquo;at Mon Jan 24 09:41:06 EST 2000 the
-measurement guage 5 at Dubin Airport read rain as having fallen in the last
-hour&rdquo;. A fuzzy system would conclude Dublin is wet; a classical one, only
+rainy&rdquo; becomes something like: at 09:41 EST on Monday 24 January 2000,
+measurement gauge 5 at Dublin Airport read rain as having fallen in the last
+hour. A fuzzy system would conclude Dublin is wet; a classical one, only
 that at least once it rained somewhere in Dublin.
 </p>
 
@@ -349,22 +344,11 @@ that at least once it rained somewhere in Dublin.
 
 <p>
 The second remedy applies far beyond this subject: make the looseness in the
-real system visible. Instead of
+real system visible. Instead of a rule that any employee of any W3C member
+organisation may register, the registration engine is told that anyone may
+register who, at some time in the last two months, worked for an organisation
+that was, at some time in the last two months, a W3C member.
 </p>
-
-<blockquote>
-Any employee of any member orgainzation of W3C may register
-<cite>Inconsistent data, 1998</cite>
-</blockquote>
-
-<p>the registration engine is told</p>
-
-<blockquote>
-Any person who was some time in the last 2 months an employy of an
-organization which was som etim ein the last 2 montsh a W3C member may
-register.
-<cite>Inconsistent data, 1998</cite>
-</blockquote>
 
 <p>
 If an organisation drops its membership, the system need not propagate that
@@ -428,6 +412,12 @@ the earliest input: the note&#8217;s &ldquo;intersection period of the validity
 periods&rdquo;.</figcaption>
 </figure>
 
+<p>
+The note ends: &ldquo;time-aware systems may contain nested time-unaware
+systems, and probably vice-versa.&rdquo; The Web never has to be consistent,
+only what a system has chosen to believe, for now.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
@@ -436,11 +426,7 @@ certificates carry an extended key usage field (RFC 5280, 2008) limiting what
 a key is trusted for; OAuth 2.0 (RFC 6749, 2012) grants tokens limited
 scopes.</li>
 <li><strong>Endorsing by checksum became ordinary.</strong> W3C Subresource
-Integrity (2016) lets a page load a script only if its hash matches; SLSA
-(2021) attestations identify software by hash.</li>
-<li><strong>Explicit validity periods are built into revocation.</strong>
-Certificate revocation lists and OCSP responses (RFC 6960, 2013) state when
-the next update is due.</li>
+Integrity (2016) lets a page load a script only if its hash matches.</li>
 </ul>
 </div>
 
@@ -459,8 +445,7 @@ what a signature does not mean is Chapter 28.
 <div class="question">
 <p><span class="question-number">46.1</span>
 Endorse a document by location and by checksum. Describe an attack the first
-permits and the second does not (for example, the page at an address is later
-replaced).</p>
+permits and the second does not.</p>
 </div>
 <div class="question">
 <p><span class="question-number">46.2</span>
@@ -472,5 +457,10 @@ instantly. What has the building&#8217;s system stopped having to do?</p>
 <p><span class="question-number">46.3</span>
 Two keys that a system trusts disagree about whether an organisation is a
 member. What should the system do?</p>
+</div>
+<div class="question">
+<p><span class="question-number">46.4</span>
+Rewrite &ldquo;It is five past ten&rdquo; so that it never contradicts a later
+answer. What did the rewrite cost?</p>
 </div>
 </div>

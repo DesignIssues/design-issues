@@ -12,13 +12,16 @@ something conforms.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Berners-Lee opens by calling this note motherhood and apple pie and closes by
-calling it folklore. He credits Peggie Rimmer at CERN and years of work with
-the IEEE, the IETF and W3C, and assumes others have written books on it.
+Write that an &ldquo;x&rdquo; on a cheque means the cheque is void, and a
+bank, an auditor and a court can all use the statement. Write that such a
+cheque should be rejected with a fatal error, and only one program has been
+described. This 1999 note, &ldquo;a little motherhood and apple pie&rdquo; in
+Berners-Lee&#8217;s words, is about that difference, and about a prior step:
+naming exactly what is being defined.
 </p>
 </div>
 
-<h2>21.1 A specification has two halves</h2>
+<h2>21.1 Name it before defining it</h2>
 
 <blockquote>
 A technical specification defines something. The document must specify the
@@ -33,15 +36,14 @@ On the Web the thing defined is usually a language or a protocol. In the
 note&#8217;s terms, a language is a set of symbols, rules for combining them,
 and what they mean; a protocol is a language for messages plus constraints on
 the order in which messages may be sent. Something <em>conforms</em> when it
-meets the definition. Text that is <em>normative</em> is binding on what
-conforms; <em>non-normative</em> text is explanation only. Standards writers
-use a capitalised MUST for a requirement and MAY for something allowed but
-optional, following a 1997 Internet convention (BCP 14).
+meets the definition, and the note insists that the thing defined gets a
+precise name: a conformance term.
 </p>
 
 <p>
-The note insists that the thing defined gets a precise name: a
-conformance term.
+The right-hand side has its own vocabulary. Text that is <em>normative</em>
+is binding on what conforms; <em>non-normative</em> text is explanation only.
+A capitalised MUST marks a requirement and MAY an option (BCP 14).
 </p>
 
 <figure>
@@ -82,8 +84,8 @@ conformance term.
   <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If no program could check it, the left hand side is not finished.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 21.1</span>
-Most specifications fill the right-hand box and leave the left one implicit.
-The left is the name a program checks against.</figcaption>
+The note says more has been written on the right-hand side, most of it agreed
+in W3C; its emphasis is the left, the name a program checks against.</figcaption>
 </figure>
 
 <p>
@@ -94,15 +96,15 @@ Web by being identified with a URI.
 </p>
 
 <p>
-The name then governs the wording of the definition. If the term is
+A single careless word can put a sentence outside the specification, because
+the name governs the wording of the definition. If the term is
 &ldquo;foo-valid document&rdquo;, a sentence saying something &ldquo;is
 invalid&rdquo; clearly applies to it. A sentence saying something &ldquo;is
 wrong&rdquo; or &ldquo;produces an error&rdquo; does not, unless the text
-explicitly ties it to the conformance term. Only words linked to the term
-carry weight.
+explicitly ties it to the conformance term.
 </p>
 
-<h2>21.2 Meaning, not behaviour</h2>
+<h2>21.2 Say what the cheque means, not what to do with it</h2>
 
 <p>
 One rule concerns the grammatical mood a specification
@@ -151,12 +153,11 @@ fatal error.
 </svg>
 <figcaption><span class="fig-label">Figure 21.2</span>
 A meaning serves every reader of the cheque. A behaviour serves only the
-program the author imagined, which is why it has to be rewritten when the
-software changes.</figcaption>
+program the author imagined.</figcaption>
 </figure>
 
 <p>
-The justification is a claim about what an author is entitled to do:
+The justification concerns what an author is entitled to say:
 </p>
 
 <blockquote>
@@ -166,14 +167,13 @@ it, unless you are defining a protocol.
 </blockquote>
 
 <p>
-Typical behaviours may still be described, and Berners-Lee says they can be
-very useful for explaining intent, provided they are marked non-normative.
+Typical behaviours may still be described: Berners-Lee says they can be very
+useful, as non-normative explanation of intent.
 </p>
 
 <p>
-Protocols are the exception, and for them he asks for something stricter
-still: constraints given as a state transition diagram or table, so that they
-are totally clear.
+For protocols, the exception, he asks for constraints given as a state
+transition diagram or table, to make them totally clear.
 </p>
 
 <figure>
@@ -211,17 +211,29 @@ are totally clear.
   <text x="560" y="182" class="t-sm" text-anchor="middle">an unrequested reply is forbidden</text>
 </svg>
 <figcaption><span class="fig-label">Figure 21.3</span>
-A protocol constrains the <em>order</em> of messages. A diagram like this makes
-every allowed and forbidden step visible, which is what the fourth test
-question in section 21.4 relies on.</figcaption>
+A protocol constrains the <em>order</em> of messages; a diagram makes every
+allowed and forbidden step visible, as the fourth test in section 21.4 needs.</figcaption>
 </figure>
 
-<h2>21.3 Contracts and borrowed definitions</h2>
+<p>
+HTML&#8217;s editors later broke this rule on purpose (Chapter 23).
+</p>
+
+<h2>21.3 Messages that bind people, and definitions borrowed from elsewhere</h2>
 
 <p>
-The first is about contracts. When a message binds people or organisations,
-the specification must say so, or its authors could end up in court
-explaining it. The note sketches the kind of prose required:
+The note then gives two pieces of drafting advice. The first is about
+contracts:
+</p>
+
+<blockquote>
+When defining a message which in fact binds to human social entities, then
+this must be clear. You could end up in court explaining it if not.
+<cite>The essentials of a specification, 1999</cite>
+</blockquote>
+
+<p>
+It sketches the kind of prose required:
 </p>
 
 <blockquote>
@@ -233,8 +245,7 @@ foo-email-address...
 </blockquote>
 
 <p>
-MMTP is a made-up protocol name, chosen for the example. This is Chapter 20&#8217;s argument, that defined fields are
-statements people can be held to, arriving as drafting advice.
+MMTP is invented for the example; Chapter 20 argues the same point at length.
 </p>
 
 <p>
@@ -250,11 +261,13 @@ deliberately made similar to another, the note asks the author to:
 <li>if necessary, negotiate constraints with whoever controls changes to the other document.</li>
 </ol>
 
-<h2>21.4 The four test questions</h2>
-
 <p>
-The note ends with questions to ask of a draft.
+HTML shows why the third point matters. W3C long published its own edition
+derived from the WHATWG&#8217;s text; the two drifted apart until, in May
+2019, both agreed the WHATWG Living Standard is definitive (Chapter 23).
 </p>
+
+<h2>21.4 Four questions to ask of any draft</h2>
 
 <table>
 <tr><th>Question</th><th>What a failure means</th></tr>
@@ -265,9 +278,8 @@ The note ends with questions to ask of a draft.
 </table>
 
 <p>
-The third is the easiest to overlook. A specification can decide every case
-and still describe something that does not work, because a requirement was
-left in somebody&#8217;s head.
+Berners-Lee calls it all folklore, learnt from Peggie Rimmer at CERN and from
+years of IEEE, IETF and W3C work.
 </p>
 
 <div class="since">
@@ -278,8 +290,7 @@ this note points at, from Bradner&#8217;s BCP 14 of March 1997, are cited by mos
 IETF and W3C specifications, and were refined by RFC 8174 in May 2017
 to apply only when written in capitals.</li>
 <li><strong>Conformance terms became formal.</strong> Media types and
-namespace URIs are now the ordinary way to name what conforms. A namespace URI
-needs no registration: anyone who controls a URI can mint one.</li>
+namespace URIs are now the ordinary way to name what conforms.</li>
 <li><strong>Testability became a gate.</strong> The W3C Process requires a
 specification to show implementation experience before it can leave the
 Candidate Recommendation stage, close kin to the second test question.</li>
@@ -320,8 +331,8 @@ Give a case where a conforming implementation is nonetheless unusable.</p>
 </div>
 <div class="question">
 <p><span class="question-number">21.4</span>
-A specification copies a definition from another. Apply the six-point
-checklist of section 21.3 to a case you know, and say which points were
-missed.</p>
+HTML&#8217;s editors chose to specify what browsers do with broken pages
+rather than what pages mean. Argue the note&#8217;s case using the cheque,
+then argue theirs.</p>
 </div>
 </div>

@@ -10,10 +10,12 @@ signature says who vouches for a document; it never changes what it says.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in 1999, while the namespace dispute of Chapter 29 (whether a
-namespace URI should lead to a definition) was running again. It answers the
-question Chapter 27 leaves: if metadata is assertions in some language, what
-fixes what they mean?
+Nobody filling in a US tax return decides what &ldquo;Adjusted Gross Income
+on line 39 of a US IRS form 1040&rdquo; means. A government department
+&ldquo;socially owns the term&rdquo;, and arguing for another reading does
+not help: &ldquo;they just stick you in jail.&rdquo; This 1999 note, written
+partly during the namespace dispute of Chapter 29, asks what plays that role
+on the Web: when a program receives a document, what fixes what it says?
 </p>
 </div>
 
@@ -84,15 +86,13 @@ each of them:
 
 <p>
 That last row matters. <em>Terminal</em> languages are defined only in prose,
-so programs for them are written by hand by someone who has read it. The
-note&#8217;s example is the style sheet language, CSS (Cascading Style
-Sheets), which &ldquo;gives a good definition (in English)&rdquo;. It is
-offered only as a comparison: style &ldquo;isn&#8217;t what I normally mean by
-&lsquo;meaning&rsquo;&rdquo;. Other languages have machine-readable
-definitions: a schema (a machine-readable definition of a vocabulary) might
-state that one vocabulary&#8217;s
-&ldquo;author&rdquo; is a kind of another&#8217;s &ldquo;creator&rdquo;. Documents in
-these can be converted automatically until they reach a terminal language.
+so programs for them are written by hand. Style is the note&#8217;s test
+case: for many documentation systems &ldquo;the only semantics required is &lsquo;H2 means a big bold block on
+the left&rsquo;!&rdquo; CSS defines such things in English. Other languages
+have machine-readable definitions: a schema might state that one
+vocabulary&#8217;s &ldquo;author&rdquo; is a kind of another&#8217;s
+&ldquo;creator&rdquo;, so documents can be converted automatically down to a
+terminal language.
 </p>
 
 <figure>
@@ -138,9 +138,13 @@ these can be converted automatically until they reach a terminal language.
   <text x="360" y="293" text-anchor="middle">a programmer reads the spec and writes code</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.2</span>
-Only the bottom layer needs a human; everything above it is converted by
-machine. This is Chapter 30&#8217;s layering in miniature.</figcaption>
+Only the bottom layer needs a human. This is Chapter 30&#8217;s layering in miniature.</figcaption>
 </figure>
+
+<p>
+Natural languages are vaguer still: &ldquo;no one (except Scrabble players)
+use a particular dictionary as a definitive set of meanings.&rdquo;
+</p>
 
 <blockquote>
 In practice, the meaning of a word in a natural language is the sum of the
@@ -150,20 +154,19 @@ writer.
 </blockquote>
 
 <p>
-In the Semantic Web, by contrast, meaning is not to be vague: languages must
-be defined formally and precisely. Chapter 22 is the later, humbler revision
-of this confidence.
+The Semantic Web, by contrast, wants languages defined formally and
+precisely; Chapter 22 is the later, humbler revision.
 </p>
 
-<h2>28.3 Subsets, precisely</h2>
+<h2>28.3 When one language can stand in for another</h2>
 
 <p>
-&ldquo;Similarity&rdquo; between languages means little; what is checkable is
-this: language A is a subset, or sublanguage, of language
+&ldquo;Similarity&rdquo; between languages means little. What is checkable:
+language A is a subset, or sublanguage, of language
 B when a document in A can be treated precisely as though it had been in B.
 Every XHTML 1.0 Strict document, for example, is also valid XHTML 1.0
 Transitional, which only adds elements and attributes. Chapter 18 makes the
-same claim to help software; here it is a claim about meaning.
+claim for software; here it is about meaning.
 </p>
 
 <figure>
@@ -209,10 +212,8 @@ same claim to help software; here it is a claim about meaning.
   <text x="360" y="207" text-anchor="middle" class="t-sm">the converse fails: a Transitional document that uses <tspan class="t-mono">font</tspan> is not valid Strict</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.3</span>
-The subset claim, tested with the product of Figure 28.1. Read a Strict
-document with either language and the meaning comes out the same; that, not
-any resemblance between the languages, is what being a sublanguage
-means.</figcaption>
+The subset claim, tested with the product of Figure 28.1: a Strict
+document means the same read in either language.</figcaption>
 </figure>
 
 
@@ -220,7 +221,10 @@ means.</figcaption>
 
 <p>
 A digital signature is a mathematical seal, made with a secret key, proving
-who vouched for a document and that it has not changed since.
+who vouched for a document and that it has not changed since. Languages
+define meaning only for whole documents, so a signature on page 3 of a
+contract needs a rule saying how page 3 fits back into a whole contract.
+Whatever is signed, the signature does not define its meaning:
 </p>
 
 <blockquote>
@@ -230,9 +234,9 @@ enough, It is not the place of a digital signature to define semantics.
 </blockquote>
 
 <p>
-A signature must not change what the document means, or the signed document
-could say something its writer never intended. Hence one short sentence that
-Chapter 37 develops:
+Otherwise the signed document could say something its writer never
+intended. So the note concludes, in a
+sentence Chapter 37 builds on:
 </p>
 
 <blockquote>
@@ -241,8 +245,8 @@ So, signatures themselves have no meaning.
 </blockquote>
 
 <p>
-Other documents must give a signature its meaning, as in the note&#8217;s
-trust statement (Figure 28.4).
+Other documents give it one, as in the note&#8217;s trust statement
+(Figure 28.4).
 </p>
 
 <figure>
@@ -295,33 +299,34 @@ The signature only links the document to a key; a second document says what
 the key is good for.</figcaption>
 </figure>
 
-<p>
-Sign only page 3 of a contract and the signature needs a rule saying how page
-3 fits back into a whole contract, since only whole documents have a defined
-meaning.
-</p>
-
-<h2>28.5 Grounded documents</h2>
+<h2>28.5 Chains that end in a standard</h2>
 
 <p>
-Look up each term in a document, then each term in those definitions, and so
-on. A document is <em>grounded</em> if every chain ends in a set of documents
-one accepts; &ldquo;grounded in W3C Recommendations&rdquo; means every chain ends
-in W3C standards. The note calls this the basis of the whole Internet stack:
-each message&#8217;s meaning is fixed by a series of specifications.
+Look up each term in a document, then each term in those definitions. An
+XHTML page&#8217;s <code>&lt;h2&gt;</code> leads to the XHTML
+Recommendation, which defines it, and on to the XML Recommendation it is
+written in: a chain that stops in W3C standards. A document is
+<em>grounded</em> if every chain ends in a set of documents one accepts;
+&ldquo;grounded in W3C Recommendations&rdquo; means every chain ends there.
+The note calls this the basis of the whole Internet stack.
 </p>
 
 <h2>28.6 Grounding as a myth: the web of meaning</h2>
 
 <p>
-Grounding is needed for predictable systems, but the note calls it a bad
-model for the Web in the long run. English words have no base set:
+Grounding is needed for predictable systems, but it is a bad model for the
+Web in the long run. English words have no base set:
 </p>
 
 <blockquote>
 Every time you look one up in the dictionary all you find are more words.
 <cite>The meaning of a document, 1999</cite>
 </blockquote>
+
+<p>
+The world is web-like, the note continues, and it names the source:
+&ldquo;This is the Wittgenstein view of meaning.&rdquo;
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
@@ -372,52 +377,57 @@ Every time you look one up in the dictionary all you find are more words.
   <text x="540" y="248" class="t-sm t-it" text-anchor="middle">definitions loop back; there is no bottom</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.5</span>
-One chain ends in a standard; the dictionary loops, as Question 28.5 invites
-the reader to find. The Semantic Web as a whole will be web-shaped.</figcaption>
+One chain ends in a standard; the dictionary loops back on itself.</figcaption>
 </figure>
 
 <p>
-Both views hold, one inside the other. Some terms are owned: a tax form leaves
-no choice about what &ldquo;Adjusted Gross Income on line 39 of a US IRS form
-1040&rdquo; means, because a government department defines it.
+Yet the note nests the two views, one inside the other: &ldquo;Yes, meaning
+is use&rdquo;, but on the Internet laws and expectations constrain use to
+follow the specifications, as with the tax form of the opening.
 </p>
 
 <p>
-Others are grounded, for now, in software. The meaning of an invoice total, the
-note says, is today effectively whatever the program fed the document does
-with it: a useful bootstrap, but that grounding in legacy systems will fade as
-many programs share the term. There will be no single Dewey decimal system
+Some terms are grounded, for now, in software: an invoice total means
+whatever the program fed the document does with it. That bootstrap will fade
+as many programs share the term. There will be no single Dewey decimal system
 (the one numbered tree libraries use to shelve every subject); forcing one
-tree would stop the Web scaling.
+would stop the Web scaling. Nor could anyone choose it:
 </p>
 
-<h2>28.7 Two objections</h2>
+<blockquote>
+No one will agree on a directed acyclic graph determining what terms are
+&ldquo;more basic&rdquo; than others.
+<cite>The meaning of a document, 1999</cite>
+</blockquote>
+
+<h2>28.7 Two objections: use and context</h2>
 
 <p>
-<strong>&ldquo;Meaning is only defined by use.&rdquo;</strong> Interpretation
-does need some agreement outside the message, the note concedes. But the Web
-is one big agreement: fetching a page over HTTP means accepting that it is read
-by the specifications. Debate is over their details, not whether they apply.
+<strong>&ldquo;Surely meaning is only defined by use?&rdquo;</strong> This is the
+Wittgenstein view turned into an objection. Some agreement outside the
+message is needed, the note concedes, but the Web is one big agreement:
+fetching a page over HTTP means accepting that it is read by the
+specifications.
 </p>
 
 <p>
 <strong>&ldquo;Doesn&#8217;t the meaning of a document depend on its context?&rdquo;</strong> It does: enclosing a
-photocopy of a letter is not sending that letter. But publishing on the Web,
-posting to a public list or nailing a page to a tree all fix meaning the same
-way, and that common case is simply called the document&#8217;s meaning.
+photocopy of a letter is not sending it. But publishing on the Web, posting to
+a public list or nailing a page to a tree all fix meaning the same way, and
+that common case is simply the document&#8217;s meaning.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The formula became the standard account.</strong> RDF Semantics,
-a W3C Recommendation of February 2004, fixes meaning this way: the
-document&#8217;s meaning follows from the vocabulary&#8217;s.</li>
-<li><strong>Canonicalisation proved as hard as the note implies.</strong>
-Signing data needs one fixed way of writing it. RDF Dataset Canonicalization,
+a W3C Recommendation of February 2004, defines a document&#8217;s meaning
+from the meanings of its vocabulary.</li>
+<li><strong>Signing data proved to need a fixed way of writing it</strong>,
+as the note&#8217;s point about reassembling fragments foreshadows. RDF Dataset Canonicalization,
 which defines one for RDF, became a W3C Recommendation only in May 2024.</li>
-<li><strong>The confidence was revised.</strong> In 2012 (Chapter 22) Berners-Lee argued instead for definitions that are good enough, with a record of
-which model made them so.</li>
+<li><strong>The confidence was revised.</strong> In 2012 (Chapter 22) Berners-Lee argued for
+definitions that are good enough, recording which model made them so.</li>
 </ul>
 </div>
 
@@ -444,18 +454,18 @@ apply a new CSS property it has never seen?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.3</span>
-You sign only page 3 of a contract. Which other parts must travel with it for
-the signature to make sense?</p>
+A style sheet is not a stand-alone statement: it maps one document to
+another. Suppose a message consisted only of a style sheet, with no cover
+letter. What would it signify? What would a digital signature on it mean?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.4</span>
-If a signature could change meaning, construct the abuse that would follow.
-Who is harmed, and how would they detect it?</p>
+If a signature could change meaning, what abuse would follow, and who would
+be harmed?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.5</span>
 Look up a word in a dictionary, then a word in its definition, and repeat.
-Does the chain end or loop? What would make a set of web vocabularies
-grounded?</p>
+Does the chain end or loop? What would ground a set of web vocabularies?</p>
 </div>
 </div>

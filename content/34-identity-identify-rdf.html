@@ -1,26 +1,22 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-RDF data is written in XML markup, so a reference such as <code>#foo</code> can
-mean a piece of the document, a node in the data, or the real person. Berners-Lee
-gives each kind of pointer its own attribute. He shows that relabelling a file
-can change what one URI names. And he identifies a person by something only
-they have, such as a mailbox, without pretending the person <em>is</em> the
-mailbox.
+In RDF written as XML, a reference such as <code>#foo</code> can mean a piece
+of the document, a node in the data, or the real person. Relabel a file from
+RDF to XML and the same link stops naming a person and starts naming markup.
+Berners-Lee identifies a person by something only they have, such as a
+mailbox, without pretending the person <em>is</em> the mailbox.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Chapter 32 established that the model is a graph of statements. This note,
-from 1998, asks the question that immediately follows and is easy to get
-wrong: when a statement refers to something, what exactly is it referring to?
-The element in a document, the node in the graph, or the thing in the world?
-</p>
-<p>
-Berners-Lee opens with the example that shows how invisible the problem
-usually is:
+Berners-Lee wrote a few lines of data describing Ora Lassila, and wanted to
+say so. Point that claim at the wrong level and it makes him the author of Ora
+Lassila himself. Does a reference mean the element in a document, the node in
+the graph, or the thing in the world? The note, from 1998, opens with an
+example of how invisible the question usually is:
 </p>
 <blockquote>
 In most cases it seems obvious to the human reader. The jam jar label text does
@@ -112,10 +108,8 @@ says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
   <text x="560" y="249" class="t-sm" text-anchor="middle">a man with a son and a daughter</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.1</span>
-The references sit inside the description of Albert&#8217;s father, Joe: Joe
-wrote <code>#foo</code> and is a friend of <code>#foo</code>. The attribute
-doing the pointing, not the identifier, decides which level is meant. No
-existing attribute reaches the RDF node itself, which is why 34.2 proposes
+The attribute doing the pointing, not the identifier, decides which level is
+meant. None reaches the RDF node itself, which is why 34.2 proposes
 <code>object=</code>.</figcaption>
 </figure>
 
@@ -142,7 +136,7 @@ not (in sigend XML) bits of RDF.
 <cite>Identity, 1998</cite>
 </blockquote>
 
-<h2>34.2 The clash he records as a bug</h2>
+<h2>34.2 Same link, two meanings</h2>
 
 <p>
 In February 2000 Berners-Lee added a section calling this a bug in how XML and
@@ -186,8 +180,8 @@ into a file describing Ora Lassila. A fragment&#8217;s meaning comes from the
   <text x="540" y="166" class="t-sm" text-anchor="middle">or undefined, or another element</text>
 
   <text x="360" y="212" text-anchor="middle">Claim: I am the author of foo.rdf#bar</text>
-  <text x="180" y="236" text-anchor="middle" style="fill:#b08d57">false: Berners-Lee did not author Ora Lassila</text>
-  <text x="540" y="236" text-anchor="middle" style="fill:#5a8f5a">true: Berners-Lee wrote the snippet</text>
+  <text x="180" y="236" text-anchor="middle">false: Berners-Lee did not author Ora Lassila</text>
+  <text x="540" y="236" text-anchor="middle">true: Berners-Lee wrote the snippet</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.2</span>
 A fragment&#8217;s meaning comes from the media type, so relabelling the file
@@ -195,7 +189,9 @@ changes what the URI names, and with it whether a statement is true.</figcaption
 </figure>
 
 <p>
-Even the XML reading is unclear. His verdict:
+Served as RDF, the fragment names Ora himself. Served as
+<code>text/xml</code>, it names the element, or nothing, or another element:
+even the XML reading is unclear. His verdict:
 </p>
 
 <blockquote>
@@ -203,33 +199,34 @@ To have a different interpretation of a URI as a function of the notional type
 of the document belies the fact the point of using XML syntax for RDF was that
 RDF documents should be XML documents! Of course we embed RDF in regular XML
 documents. So this distinction is nonsense.
-<cite>Identity, 1998</cite>
+<cite>Identity, 2000</cite>
 </blockquote>
 
 <p>
 The easy fix fails. RDF could take the URI to mean the node the element
-describes, but RDF must also make statements about elements themselves.
-</p>
-
-<p>
-Berners-Lee wrote the snippet himself, and might say he is the author of
-<code>foo.rdf#bar</code>; but he is not the author of Ora Lassila (Figure
-34.2). He lists three remedies:
+describes, but RDF must also make statements about elements themselves. He
+wrote the snippet, yet saying he is the author of <code>foo.rdf#bar</code>
+would then make him the author of Ora Lassila (Figure 34.2). He lists three
+remedies:
 </p>
 <ul>
 <li><strong>Already in RDF:</strong> <code>parseType="Resource"</code> or
-<code>parseType="Literal"</code> on inline data. Fixes: says whether the
+<code>parseType="Literal"</code> on inline data, saying whether the
 reference is to the RDF thing or to the XML.</li>
-<li><strong>A new property:</strong> one linking an XML subtree to the RDF
-object it describes. Fixes: lets both be named and related.</li>
+<li><strong>A new property</strong> linking an XML subtree to the RDF
+object it describes.</li>
 <li><strong>A new attribute:</strong> <code>object=</code> for the RDF node,
-leaving <code>resource=</code> for the fragment. Fixes: gives the node the
-pointer it lacks in Figure 34.1.</li>
+leaving <code>resource=</code> for the fragment: the pointer missing from
+Figure 34.1.</li>
 </ul>
 
 <h2>34.3 Identifying things that have no address</h2>
 
-
+<p>
+The word &ldquo;resource&rdquo; makes the confusion worse. On the Web it means
+a thing with a URI; RDF uses it for anything that can be talked about, people
+included:
+</p>
 
 <blockquote>
 RDF treats people as &ldquo;resources&rdquo; and in using this terminolgy
@@ -240,11 +237,15 @@ not of course good design.
 </blockquote>
 
 <p>
-The method he proposes instead is to identify a thing by a property that
-happens to be unambiguous, rather than by giving it an address it does not
-have. Ora gets an anonymous node, with no URI. If no two people share a
-mailbox, two descriptions with the same mailbox can be <em>merged</em> into
-one person, and conclusions drawn.
+&ldquo;We must not muddle the email address with the person.&rdquo; Instead he
+identifies a thing by a property that happens to be unambiguous, not by an
+address it does not have. Ora gets an anonymous node, with no URI. Suppose no
+two people may share a mailbox. One record says a book&#8217;s author has the
+mailbox <code>ora.lassila@research.nokia.com</code>; a separate record says
+someone with that mailbox is named Ora Lassila. A program
+can <em>merge</em> the two and conclude that the book&#8217;s author is named
+Ora Lassila, which neither record states. An unfinished aside compares SQL
+(Chapter 33): &ldquo;no identifiers, only use properties.&rdquo;
 </p>
 
 <p>
@@ -318,18 +319,18 @@ limits.</figcaption>
 </figure>
 
 <p>
-With the shortcut there is no node for the author, and the fact that a person
-wrote the book and has that mailbox must be stated elsewhere. The
-<em>schema</em>, the published definition of a vocabulary&#8217;s terms, is
-a good place, because it makes the expansion evident to any processing
-machinery.
+With the shortcut there is no node for the author, so what it abbreviates must
+be stated elsewhere. The <em>schema</em>, the published definition of a
+vocabulary&#8217;s terms, is a good place: it makes the expansion evident to
+any processing machinery.
 </p>
 
 <p>
-He also declines, explicitly, to settle which properties should be treated as
-identifying, calling it a rat hole that is not core to the discussion. That
-restraint is the same one as Chapter 22: the mechanism can be specified
-without settling the philosophy.
+He declines to settle which properties should count as identifying, calling
+it a rat hole not core to the discussion (the restraint of Chapter 22). What
+matters is the step the mailbox makes possible: from &ldquo;written by a
+person whose email is ora@w3.org&rdquo; to the more useful &ldquo;written by
+the person whose mailbox is ora@w3.org&rdquo;.
 </p>
 
 <div class="since">
@@ -355,8 +356,7 @@ fragment that answers with a document names a document.</li>
 <p>
 The confusion over the word resource is Chapter 9, and the fragment semantics
 that produce the clash are Chapter 11. The graph model is Chapter 32, and
-what to do when a URI must be quoted rather than used is Chapter 35. Identifying people by a unique property makes records joinable across
-datasets; the consequences for personal data are Chapters 72 and 73.
+what to do when a URI must be quoted rather than used is Chapter 35. What joinable records mean for personal data is Chapters 72 and 73.
 </p>
 </div>
 
@@ -369,9 +369,8 @@ and say which attribute a writer uses to point at each.</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.2</span>
-Berners-Lee wants to say he wrote a snippet without claiming to have authored
-the person it describes. Write both statements as plain English sentences, and
-say what each one needs to point at.</p>
+Write, as plain English sentences, &ldquo;I wrote this snippet&rdquo; and the
+claim it must not become. What does each need to point at?</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.3</span>
@@ -381,7 +380,7 @@ then produce.</p>
 </div>
 <div class="question">
 <p><span class="question-number">34.4</span>
-The compound shortcut leaves no node for the person. Which fact about the
-author can you no longer record?</p>
+Two people share a family email address. Using the rule of section 34.3, what
+does a program conclude, and which shortcut makes the mistake invisible?</p>
 </div>
 </div>

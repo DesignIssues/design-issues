@@ -6,16 +6,21 @@ called there. A relative reference gives only the second part, and the
 reader&#8217;s software supplies the first part from wherever the document
 happens to be. That lets a set of files move from one computer or server to
 another without being edited. Berners-Lee complains that some standards (XML
-namespaces) and tools (Jena) took this ability away.
+namespaces) and tools (Jena) discouraged or left out this ability.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This note is a complaint. Berners-Lee wrote it in 2011 after
-a discussion on the Jena bug tracker about whether his plea for relative
-URI support was a bug or a wish. The status line carries the exasperation:
+There is, Berners-Lee wrote, &ldquo;a classic failure mode for RDF
+systems in which developers bring up a system on test.acme.com and then move
+it to production.acme.com and all the links break.&rdquo; The cure, relative
+references, had been in the address rules since RFC 1630 (Chapter 2), yet
+Jena, a widely used library, offered no way to write them; using it,
+&ldquo;many things broke my working day to day.&rdquo; This note is his
+complaint, written in 2011 after a discussion on the Jena bug tracker about whether
+his plea was a bug or a wish. The status line carries the exasperation:
 </p>
 <blockquote>
 It seems strange so long after the introduction of URIs to br writing
@@ -23,12 +28,6 @@ something so basic about how they should be used, but it seems these are
 points which have passed some people by.
 <cite>Using Relative URIs, 2011</cite>
 </blockquote>
-<p>
-It belongs in Volume II because it is the practical half of Chapter 4. That
-chapter established that relative resolution is common to all schemes and
-explained why. This one shows what the property is worth when a library
-declines to support it.
-</p>
 </div>
 
 <h2>12.1 Web architecture in one line</h2>
@@ -183,32 +182,23 @@ that arise where the two views meet.
 <figcaption><span class="fig-label">Figure 12.2</span> One unedited relative link resolves correctly on a laptop, a test server and the live site. In each row the first line is where the page was loaded from; the second is the image address the browser works out.</figcaption>
 </figure>
 
-<h2>12.4 What the pattern buys</h2>
+<h2>12.4 Moving without editing</h2>
 
 <p>
-The note lists the cases. In each, an absolute URI would force an edit:
+One unedited folder works in all three places of Figure 12.2: as files on a
+laptop, on a test server and on the live site. The note lists further cases
+in which an absolute URI would force an edit: a shared login or help system
+served as part of many sites, part of a site proxied from another server,
+and a system handed to someone else to copy elsewhere.
 </p>
-
-<ul>
-<li>Viewing a directory both as local files and through a server.</li>
-<li>Developing on a test system and moving to production.</li>
-<li>Serving one system, such as a shared login or help system, as part of
-many sites.</li>
-<li>Proxying part of a site from another server.</li>
-<li>Handing a system to someone else to copy elsewhere.</li>
-</ul>
 
 <p>
 Berners-Lee generalises the property. Many systems, including most of those
 he builds and uses, are better built without knowledge of their own base URI,
-so that the URIs they store are always relative. His own example is a
-project of RDF files that he processes as <code>file://</code> files, browses
-over <code>http://</code> through a web server, and edits through a proxy to
-a server on a different port. Every same-site link has to be relative, or one
-of the three views breaks. He is careful to add that not all systems are like
-this, and that absolute URIs must remain an option. He also notes smaller
-gains: relative references are easier to read, take less storage space and
-are shorter to transmit.
+so that the URIs they store are always relative. Not all systems are like
+this, he concedes, but an important class is. He also notes smaller gains:
+relative references are easier to read, take less storage space and are
+shorter to transmit.
 </p>
 
 <h2>12.5 Two named failures</h2>
@@ -221,9 +211,9 @@ The note ends by naming implementations, unusually for the collection.
 
 <p>
 The first is XML namespaces. A namespace declaration is the line at the top
-of an XML file that says which vocabulary its tags come from, and the XML
-rules discourage relative references there (the specification deprecates
-them, meaning they are allowed but should not be used). Berners-Lee&#8217;s diagnosis is that the authors envisaged a
+of an XML file that says which vocabulary its tags come from. In the note&#8217;s
+words, XML &ldquo;officially forbids relative URLs&rdquo; there. Strictly, the specification deprecates them: they are allowed but
+should not be used. His diagnosis is that the authors envisaged a
 narrow set of cases in which namespace terms were stable and global while the
 document was local, and did not see the general need to generate relative
 URIs in arbitrary situations. His own command-line tool, cwm, has an option to
@@ -237,16 +227,10 @@ written as XML).
 <p>
 The second is Jena, a widely used open-source library for handling RDF data.
 Its serialisers (a serialiser is the part of a program that writes data out
-as a file) emitted only absolute URIs, which he says prevents its use for a
-wide range of systems. The consequence:
+as a file) emitted only absolute URIs, still so in 2015, the note adds, which
+he says prevents its use for a wide range of systems. That is the classic
+failure mode quoted at the start of the chapter.
 </p>
-
-<blockquote>
-There is a classic failure mode for RDF systems in which developers bring up
-a system on test.acme.com and then move it to production.acme.com and all the
-links break.
-<cite>Using Relative URIs, 2011</cite>
-</blockquote>
 
 <figure>
 <svg class="dia" viewBox="0 0 680 215" width="680" height="215" role="img" aria-labelledby="fig12-3-t fig12-3-d">
@@ -276,7 +260,7 @@ links break.
 <figcaption><span class="fig-label">Figure 12.3</span> Absolute links keep pointing at the server the data was made on. Relative links move with the data.</figcaption>
 </figure>
 
-<h3>Best practice</h3>
+<h3>His rules</h3>
 
 <ul>
 <li>Any library that serialises a Web format, such as HTML or Turtle, must
@@ -290,11 +274,10 @@ URIs.</li>
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The namespace rule was never relaxed.</strong> Turtle, a W3C
-Recommendation since February 2014, gives files an <code>@base</code>
-directive and relative references.</li>
-<li><strong>Jena was slow to follow.</strong> A line in the note dated 2015
-records that it still produced only absolute URIs.</li>
+<li><strong>The XML rule stands; Turtle went the other way.</strong>
+Namespaces in XML still deprecates relative namespace names. Turtle, a W3C
+Recommendation since February 2014, has an <code>@base</code> directive and
+relative references built in.</li>
 </ul>
 </div>
 
@@ -313,23 +296,24 @@ Chapter 14. Webizing is Chapter 26.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">12.1</span>
+A page says <code>#alice</code>. Copied to two servers, it now names two
+different Alices. When is that a problem?</p>
+</div>
+<div class="question">
+<p><span class="question-number">12.2</span>
 Using Figure 12.2, explain what would break if <code>intro.html</code>
 linked to <code>https://test.acme.com/images/foo.png</code> instead.</p>
 </div>
 <div class="question">
-<p><span class="question-number">12.2</span>
+<p><span class="question-number">12.3</span>
 Why might the authors of XML namespaces have wanted namespace names to be
 absolute? Use the chapter&#8217;s description of &ldquo;stable and
 global&rdquo; terms.</p>
 </div>
 <div class="question">
-<p><span class="question-number">12.3</span>
-A site moves from test.acme.com to production.acme.com. Using Figure 12.3,
-say which links break, and why.</p>
-</div>
-<div class="question">
 <p><span class="question-number">12.4</span>
-A page says <code>#alice</code>. Copied to two servers, it now names two
-different Alices. When is that a problem?</p>
+A website keeps a shared help system that appears inside several other
+sites. Which of its links must be relative, and which can safely be
+absolute?</p>
 </div>
 </div>
