@@ -61,7 +61,8 @@ Most of it translates neatly, because the structure is already there. The
 faults are common ones: no single list of what each field may hold,
 behaviour shown only in examples, relationships dressed up as objects, and
 each field setting its own grammar, so no general reader can exist. Above
-all, the format says what a meeting is but not what sending one means.
+all, he could not find where it says what sending one means, though he
+allows that may be elsewhere in the spec.
 </p>
 </div>
 
@@ -80,8 +81,7 @@ Berners-Lee found it &ldquo;very confusing&rdquo; and could only guess:
 </p>
 <p>
 He had spent a few hours on fifty pages of <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 2445 (an RFC is a numbered
-internet standard), evaluating proposals to put it into <a class="gl-ref" href="../glossary.html#xml">XML</a>. He
-concluded early:
+internet standard), weighing proposals to put it into <a class="gl-ref" href="../glossary.html#xml">XML</a>:
 </p>
 <blockquote>
 My conclusion early on was that the spec should be written in terms of RDF
@@ -99,8 +99,8 @@ there. The note is a worked example of the method <a class="x-ref" href="26-webi
 <h2 id="sec-63-1">63.1 Look for the structure that is already present</h2>
 
 <p>
-The method is the transferable part: to represent a language&#8217;s data in
-RDF, look first for the structure the language already has.
+The transferable method: to represent a language&#8217;s data in RDF, look
+first for the structure it already has.
 </p>
 
 <h3>What an iCalendar line looks like</h3>
@@ -121,9 +121,8 @@ address.
 </p>
 
 <p>
-The delegation line from the opening is harder. It names c@y.com, but adds
-that the invitation came (was delegated) from b@y.com and has been passed on
-to a@y.com.
+The delegation line is harder. It names c@y.com, but adds that the
+invitation was delegated from b@y.com and passed on to a@y.com.
 </p>
 
 <figure id="fig-63-1">
@@ -250,13 +249,13 @@ property&#8217;s <em>domain</em> is the kind of thing it can describe; its
 <tr><td>Full of extension prefixes and registries</td><td>Names starting <code>X-</code> for private use; official names kept on a central list (<a class="gl-ref" href="../glossary.html#iana">IANA</a>)</td><td>Each format reinvents how to add new fields; his remedy is XML namespaces</td></tr>
 <tr><td>No summary of properties with their domains and ranges</td><td>Which properties take a calendar address?</td><td>The model exists but is never written down in one place</td></tr>
 <tr><td>A value typed as an address implicitly means fetch it</td><td><code>ATTACH:http://&hellip;</code> means the file</td><td>Behaviour visible only in the examples</td></tr>
-<tr><td>Wanton <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship described as a thing</td></tr>
-<tr><td>Encoding treated as a property of an object</td><td><code>ENCODING=BASE64</code></td><td>It relates two objects (<a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>)</td></tr>
+<tr><td>Wanton (needless) <a class="gl-ref" href="../glossary.html#reification">reification</a></td><td><code>RELTYPE=SIBLING</code></td><td>A relationship made into a thing</td></tr>
+<tr><td>Encoding treated as a property of an object</td><td><code>ENCODING=BASE64</code></td><td>A relationship mistaken for an attribute (<a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a>)</td></tr>
 </table>
 
 <p>
 A summary of domains and ranges, he says, would make the specification much
-clearer. Prose specifications describe fields only where they are used.
+clearer; prose describes each field only where it is used.
 </p>
 
 <p>
@@ -362,29 +361,11 @@ type label, and the encoding hangs off the attachment like a fact about it.
 Right: each is one arrow.</figcaption>
 </figure>
 
-<p>
-The same cure suits free/busy time: <code>FREEBUSY=FREE</code> would be
-better as plain <code>FREE</code>. The note mocks the original:
-</p>
-
-<blockquote>
-You don't say "I am free or busy as follows: 12-1pm and we are talking about
-free here"!
-<cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
-</blockquote>
-
-<p>
-Mapping each parameter to a property also exposes poor names.
-<code>SENT-BY</code> means that one mailbox&#8217;s owner is represented by
-another&#8217;s; the note calls the name &ldquo;Misleading&rdquo; and
-proposes &ldquo;Represented by&rdquo;.
-</p>
-
 <h2 id="sec-63-3">63.3 The line that stops general parsing</h2>
 
 <p>
-One sentence of the specification draws the sharpest reaction. ABNF is the
-grammar notation internet standards (RFCs) use:
+One sentence draws the sharpest reaction. ABNF is the grammar notation
+RFCs use:
 </p>
 
 <blockquote>
@@ -396,8 +377,8 @@ difficult.
 
 <p>
 If every field defines its own grammar, a program cannot tell where one
-parameter ends without knowing the property. There is no generic reader, and
-each new field changes every reader. He names the ancestor:
+parameter ends without knowing the property, so each new field changes every
+reader. He names the ancestor:
 </p>
 
 <blockquote>
@@ -412,10 +393,36 @@ RFC 822, the 1982 email-header standard, gives each <a class="gl-ref" href="../g
 </p>
 
 <p>
-Flat syntax invites a related fault. On an attendee, a LANGUAGE parameter
-applies to CN, the attendee&#8217;s name: one field quietly changing another.
-The note calls this &ldquo;a terrible bit of design&rdquo; and asks:
-&ldquo;How many other clauses like this are there?&rdquo;
+Flat syntax also breeds tangled clauses and bad names. On an attendee, a
+LANGUAGE parameter applies to CN, the attendee&#8217;s name: one field
+quietly changing another. The note calls this &ldquo;a terrible bit of
+design&rdquo; and asks: &ldquo;How many other clauses like this are
+there?&rdquo;
+</p>
+
+<p>
+<code>FREEBUSY=FREE</code> would be better as plain <code>FREE</code>, the
+cure <a class="x-ref" href="#fig-63-3">Figure 63.3</a> shows. The note mocks the original:
+</p>
+
+<blockquote>
+You don't say "I am free or busy as follows: 12-1pm and we are talking about
+free here"!
+<cite>Building an RDF model: A quick look at iCalendar, 2001</cite>
+</blockquote>
+
+<p>
+<code>SENT-BY</code> really means that one mailbox&#8217;s owner is
+represented by another&#8217;s. The note warns that the term &ldquo;is
+misleading when it crops up in the data. This will cause confusion.&rdquo;
+Its property table adds: &ldquo;Misleading. "Represented by" would be
+better.&rdquo;
+</p>
+
+<p>
+Even the event identifier, UID, gets a fixed limit of 255 characters,
+&ldquo;which is y2k bug asking to happen. Never specify fixed buffer
+sizes.&rdquo;
 </p>
 
 <h2 id="sec-63-4">63.4 The absence that worries him most</h2>

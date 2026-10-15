@@ -17,7 +17,8 @@ state variable stored in one place, but as a trail of documents.
 <cite>Paper Trail, 1999</cite>
 </blockquote>
 <p>
-The note&#8217;s example is W3C&#8217;s own process, where a
+Its simplest case is a loan between two people: the balance can be worked
+out from the repayments alone, so nobody need hold it. The main example is W3C&#8217;s own process, where a
 specification&#8217;s stage is shown by the documents written and endorsed so
 far. Written in February 1999, and offered as a possible student project, the note calls itself an
 example of how a social machine can be made without a centre. Chapter
@@ -179,9 +180,8 @@ offered).</figcaption>
 
 <p>
 The note then turns to computer protocols, agreed rules for
-exchanging messages. Its simple example is a loan between two people: the
-state is the balance, each repayment a message, and the process ends at
-zero. Written generally, a protocol P defines each
+exchanging messages. In the loan, the state is the balance, each repayment a
+message, and the process ends at zero. Written generally, a protocol P defines each
 new state from the latest message, the previous state and the time:
 s<sub>n</sub>&nbsp;=&nbsp;P(m<sub>n</sub>,&nbsp;s<sub>n&#8722;1</sub>,&nbsp;t).
 Equivalently, from all the messages to date:
@@ -257,19 +257,9 @@ messages, and compute the state when needed.</figcaption>
 </figure>
 
 <p>
-Berners-Lee ranks what the state might be:
-</p>
-
-<blockquote>
-The state could be a logical formula, an RDF graph, or an XML document, or just
-a number, in decreasing order of interest.
-<cite>Paper Trail, 1999</cite>
-</blockquote>
-
-<p>
-The state must hold whatever is needed to compute future states. In TCP, the
-protocol under most Internet connections, that means the packets not yet
-acknowledged; once the connection closes, it could be just &ldquo;terminal
+The state may be anything from a single number to a web of statements (the
+richer, the more interesting to him), but it must hold whatever is needed to compute future states. In TCP, the
+protocol under most Internet connections, that means unacknowledged packets; once the connection closes, it could be just &ldquo;terminal
 state&rdquo;, or also every byte transferred: a design choice.
 </p>
 
@@ -280,9 +270,9 @@ state&rdquo;, or also every byte transferred: a design choice.
 <tr><th>End</th><td>No further message changes a final state. The loan reaches
 one at zero; a lifetime warranty &ldquo;remains in non-final state (until you
 die!)&rdquo;.</td></tr>
-<tr><th>Forget</th><td>The protocol is &ldquo;an information destroying
-function&rdquo;: saying what must be remembered defines what can be thrown
-away. In the US, records may be discarded after seven years, when &ldquo;no one
+<tr><th>Forget</th><td>Once the state is known, the messages behind it can
+be thrown away: the protocol is, the note says, &ldquo;an information destroying
+function&rdquo;. In the US, records may be discarded after seven years, when &ldquo;no one
 even the tax man has the right to query them&rdquo;.</td></tr>
 <tr><th>Nest</th><td>A protocol runs inside a larger one: a W3C working
 group&#8217;s last state, its work accepted as a Recommendation, is a message
@@ -314,7 +304,7 @@ would extend from documents to conversations.
 The brief ends with &ldquo;Challenges if you finish early&rdquo;: model an
 &ldquo;auction&rdquo;, a &ldquo;peer review journal&rdquo;,
 &ldquo;presidential impeachment ;-)&rdquo;; allow for the fact that &ldquo;States can split&rdquo;,
-as when a draft goes to W3C, the IETF, or both. The sharpest asks:
+as when a draft goes to W3C, the IETF, or both. The sharpest question:
 &ldquo;Do you need to be able to prove non-existence of documents?&rdquo;
 Holding a valid document does not show that no later one has overridden
 it. The note
@@ -341,7 +331,7 @@ formulation; Martin Fowler described it in a 2005 article.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Chapter 61 states the need; Chapter 37 the closed loop it implements. The independent statements it is built from are
+Chapter 61 states the need; Chapter 37 describes the closed loop, signed documents checked by machine, that it implements. The independent statements it is built from are
 Chapter 27, and the signatures that make it checkable are Chapter 46. The
 remote-operations work that grew from it is Chapter 65.
 </p>

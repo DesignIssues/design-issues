@@ -39,14 +39,6 @@ A link passes between two people: whoever writes it and whoever later clicks
 it. The choice was about which of them the Web should serve.
 </p>
 
-<blockquote>
-When you look at that design choice, you have to remember that the URL is being
-used to communicate between two people, for example, the person who writes the
-link containing the href with the link, and the person who later sees the link
-and clicks ion it.
-<cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
-</blockquote>
-
 <figure>
 <svg class="dia" viewBox="0 0 720 324" width="720" height="324" role="img"
      aria-labelledby="fig67-1-t fig67-1-d">
@@ -117,11 +109,14 @@ An unshown letter cannot do the job it was added for.
 
 <h2>67.3 Two names for one page</h2>
 
+<p>
+Moving a page from http: space into https: space breaks every link to it,
+whether or not the rest of the address stays the same.
+</p>
+
 <blockquote>
-The problem is of course that moving things from http: space into https space,
-whether or not you keep the rest of the URI the same, breaks any links to. Put
-simply, the HTTPS Everywhere campaign taken at face value completely breaks the
-web.
+Put simply, the HTTPS Everywhere campaign taken at face value completely breaks
+the web.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
 </blockquote>
 
@@ -261,10 +256,13 @@ the layer where links live.</figcaption>
 </figure>
 
 <p>
-The security level was put where the identity lives. Chapter 2&#8217;s opacity
-axiom says an address is a sealed label: it names a thing, and nothing else
-should be read from its letters. The s breaks that rule. (A footnote spares
-the EFF&#8217;s browser extension of the same name.)
+The note puts it as information about security levels &ldquo;confused with
+the identity of the resource&rdquo;. In the terms of Chapter 2&#8217;s opacity
+axiom, an address is a sealed label: it names a thing, and nothing else should
+be read from its letters. The s breaks that rule. (A footnote makes clear he
+means the general drive, not the EFF&#8217;s browser extension called HTTPS
+Everywhere, which switched users to the https: versions of addresses where
+they existed.)
 </p>
 
 <h2>67.4 A wall that never fits</h2>
@@ -273,13 +271,15 @@ the EFF&#8217;s browser extension of the same name.)
 Once https: was treated as a safe space, browsers ring-fenced it: in the
 spirit of the Same Origin Policy, everything loaded into an https: page must
 arrive securely too, which, the note says, &ldquo;has led to a class of web apps being
-broken&rdquo;. A parenthesis that follows draws the general lesson:
+broken&rdquo;. An https: page that pulls in an image or a script from a plain
+http: address finds it blocked or flagged, so pages that had worked broke,
+against the usual rule of compatibility with old content. A parenthesis that
+follows calls this a common design failure: treating trust as a single value,
+yes or no, or a score from 0 to 1.
 </p>
 
 <blockquote>
-It has been more any more clear that we and our systems should not just trust
-things or not trust them, or even to trust them on a scale form 0 to 1. We
-trust different people for different things. We trust one person for
+We trust different people for different things. We trust one person for
 recommendations on food, and another for movies, and to muddle these trusts
 could be disastrous.
 <cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
@@ -338,17 +338,9 @@ needs a separate answer in each cell, which no single line can draw.</figcaption
 
 <p>
 A wall between a secure region and an insecure one implements trust as a
-single value, and the note gives the symptom of that mistake in any system:
-</p>
-
-<blockquote>
-A symptom if that you can never find the perfect place to put that boundary.
-<cite>Web Security - TLS Everywhere, not https: URIs, 2015</cite>
-</blockquote>
-
-<p>
-If a boundary keeps needing to be moved, the thing it separates was not two
-kinds of thing.
+single value. The note names the symptom of that mistake in any system: the
+perfect place for the boundary can never be found. If a boundary keeps needing
+to be moved, the thing it separates was not two kinds of thing.
 </p>
 
 <h2>67.5 Encrypt the wire, not the name</h2>
@@ -409,7 +401,7 @@ would retire HTTPS Everywhere: browsers now had HTTPS-only modes.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The same complaint in 1998 is Chapter 5, and the opacity it appeals to is
+The same complaint in 1998 is Chapter 5, and the opacity rule it bears on is
 Chapter 2. The other notes of the set are Chapters 66, 68 and 69. The
 boundary that keeps moving is Chapter 68, and scoping trust to a purpose is
 Chapter 46.

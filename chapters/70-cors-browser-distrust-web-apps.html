@@ -90,7 +90,9 @@ web app, that the web app is trying to attack the user.
 </blockquote>
 
 <p>
-So an app is limited and told little about why:
+So the browser limits the app and gives it only &ldquo;limited error messages
+or information about the way it is being disabled&rdquo;, a silence that
+returns in <a class="x-ref" href="#sec-70-7">Section 70.7</a>:
 </p>
 
 <blockquote>
@@ -174,16 +176,11 @@ This allows banks to work pretty well.
 
 <p>
 The wall also blocks good apps: a tool that checks another page cannot read
-it, and open-data mashups stopped working:
+it. And when governments began publishing open data, there was &ldquo;a
+flourishing of sites which loaded data from many different sites and provide a
+&#8216;mashup&#8217; of the data &#8212; a combined visualization of data from
+many sources&nbsp;&#8230;&rdquo;. Such sites, the note says, no longer work.
 </p>
-
-<blockquote>
-When a large amount of open public data started to become available from
-governments and so on, there was a flourishing of sites which loaded data from
-many different sites and provide a &#8220;mashup&#8221; of the data &#8212; a combined
-visualization of data from many sources
-<cite>Authorizing Web Apps and CORS, 2018</cite>
-</blockquote>
 
 <p>
 Chapters <a class="x-ref" href="51-linked-data-like-bag-chips.html">51</a> and <a class="x-ref" href="53-putting-government-data-web.html">53</a> argue for exactly this combining.
@@ -224,17 +221,17 @@ Sharing (CORS) by adding a <em><a class="gl-ref" href="../glossary.html#header">
 </table>
 
 <p>
-Reply headers are blocked too, even ordinary ones such as <code>Link</code>,
-unless the <a class="gl-ref" href="../glossary.html#server">server</a> lists them in another header. The note calls it
-<code>Access-Control-Allow-Headers</code>; in the <a class="gl-ref" href="../glossary.html#specification">specification</a> it is
-<code>Access-Control-Expose-Headers</code>.
+For publishers this meant &ldquo;a huge amount of work&rdquo;, which
+&ldquo;in many cases for many reasonable reasons was not done, leaving the data
+available to browsers, but unavailable to web apps&rdquo;: the paradox of the
+opening.
 </p>
 
 <p>
-The browser may also first send a <em>preflight</em> request (<a class="gl-ref" href="../glossary.html#http">HTTP</a> OPTIONS).
-The console may show one request, but the round trips have increased. For
-publishers it meant &ldquo;a huge amount of work&rdquo;, which &ldquo;in many
-cases for many reasonable reasons was not done&rdquo;.
+Even ordinary reply headers, such as <code>Link</code>, are hidden unless the
+<a class="gl-ref" href="../glossary.html#server">server</a> lists them in yet another header. The browser may also first send a
+<em>preflight</em> request (<a class="gl-ref" href="../glossary.html#http">HTTP</a> OPTIONS). The console may show one request,
+but the round trips have increased.
 </p>
 
 <h2 id="sec-70-6">70.6 The twist: logins break the simple fix</h2>
@@ -385,11 +382,10 @@ An epilogue adds a last straw: Chrome 59, and Firefox in July 2018, reused
 cached replies across origins despite <code>Vary: Origin</code>.
 </p>
 
-<blockquote>
-The CORS design most go down in history as the worst piece of design in the
-whole web.
-<cite>Authorizing Web Apps and CORS, 2018</cite>
-</blockquote>
+<p>
+The verdict: &ldquo;The CORS design most [sic] go down in history as the worst
+piece of design in the whole web.&rdquo;
+</p>
 
 <p>
 Against that background <a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>) must be &ldquo;immune to XSS
@@ -404,6 +400,9 @@ processes&rdquo;.
 <li><strong>The cache bug was reported again.</strong> On 12 July 2019
 Michiel de Jong published &#8220;CORS bug in several browsers&#8221;, cited in
 the note&#8217;s follow-up, and opened bugs with Chrome and Firefox.</li>
+<li><strong>A header name.</strong> The header that exposes reply headers,
+<code>Access-Control-Allow-Headers</code> in the note, is
+<code>Access-Control-Expose-Headers</code> in the <a class="gl-ref" href="../glossary.html#specification">specification</a>.</li>
 </ul>
 </div>
 

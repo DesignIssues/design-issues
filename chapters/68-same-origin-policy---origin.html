@@ -71,9 +71,8 @@ their addresses.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-One of four related 2015 notes (the second by its own count; this book
-places it third) opens with a question that governs how every
-website is laid out:
+Before deciding whom to trust, a browser must decide who counts as one
+party. A 2015 note opens there:
 </p>
 <blockquote>
 You can't discuss authentication of parties without discussing what constitutes
@@ -152,9 +151,8 @@ the browser recognises.</figcaption>
 <li>Relative links (short links such as <code>jane/stuff</code>, read against
 the current page) between the family pages and Jane&#8217;s stop working, so the family
 cannot move its pages to a home <a class="gl-ref" href="../glossary.html#server">server</a> or work on them offline.</li>
-<li>Each time a new group needs its own boundary the addresses are
-rearranged again.</li>
-<li>Observers can now see that the reader visited Jane&#8217;s pages
+<li>Each new group that needs a boundary means rearranging again.</li>
+<li>Observers can see the reader visited Jane&#8217;s pages
 (below).</li>
 </ol>
 
@@ -208,7 +206,7 @@ Moving names into the host name moves them into the clear.</figcaption>
 <h2 id="sec-68-2">68.2 The server already draws these lines</h2>
 
 <p>
-The slash came first. Making the path a visible hierarchy was one of the
+Making the path a visible hierarchy with the slash was one of the
 earliest decisions, and servers use it to hand out control.
 </p>
 
@@ -217,8 +215,8 @@ In a classic Apache server (Apache being for many years the most common
 web server program), addresses map onto folders on the server&#8217;s disk,
 and permissions are inherited down the tree. An <code>.htaccess</code> file, a
 small settings file placed in a folder, controls everything below it, nothing
-above. A reverse proxy, passing one branch of the addresses to another service,
-builds on this. Berners-Lee calls it very useful:
+above. Berners-Lee calls this delegation very useful (a reverse proxy passes one
+branch of the addresses to another service):
 </p>
 
 <blockquote>
@@ -282,13 +280,13 @@ in this tree.</figcaption>
 <p>
 The camps.org board proxies an outside meeting tool into
 <code>https://camps.org/board/AcmeDiscss/stuff</code>. Its papers sit at
-<code>https://camps.org/board/papers</code>, under the same parent. The tool&#8217;s
+<code>https://camps.org/board/papers</code>. The tool&#8217;s
 scripts should not read the papers, but to the browser both are one origin.
 </p>
 
 <p>
-So the tool gets a subdomain, or its supplier hosts it, and Berners-Lee names
-what is lost:
+So the tool gets a subdomain or its supplier hosts it, and Berners-Lee names
+the loss:
 </p>
 
 <blockquote>
@@ -299,9 +297,11 @@ data.
 </blockquote>
 
 <p>
-Even a subdomain can be too close: in April 2013 GitHub moved users&#8217; sites from
-<code>username.github.com</code> to a separate domain, <code>github.io</code>,
-as scripts on those subdomains could set cookies for github.com. This
+A subdomain is not a full wall either. As with the <code>mit.edu</code> ranking
+(68.1), scripts on a subdomain can still set
+cookies, the small records a site stores in the browser, that the parent
+site reads. So in April 2013 GitHub moved users&#8217; sites from
+<code>username.github.com</code> to a separate domain, <code>github.io</code>. This
 book lives at <code>designissues.github.io/design-issues/</code>: every
 project under that account shares one origin, separated only by path.
 </p>
@@ -350,10 +350,12 @@ is necessary -- the best of many bad choices.
 </blockquote>
 
 <p>
-He names two accepted opacities. One is the <em>s</em> in https: here he
-files it under necessary evils, while <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a> would phase it out. The other is
-the domain name itself, which he calls the massive opaqueness, because it is the
-route by which the user&#8217;s trust in the session travels at all.
+He names two accepted opacities. One is the <em>s</em> in https; here he
+files it among &#8220;the best of many bad choices&#8221;, while <a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a> would phase it out. The other is
+the domain name itself, &#8220;the massive opaqueness&#8221;, because it is the
+route by which the user&#8217;s trust in the session travels at all. (The
+book&#8217;s gloss: <code>camps.org</code> says nothing of who runs the site,
+who hosts it or holds its <a class="gl-ref" href="../glossary.html#certificate">certificate</a>; the reader can only trust the name.)
 </p>
 
 <p>
@@ -374,7 +376,7 @@ process; the Same Origin Policy itself was unchanged.</li>
 name still crosses in the clear unless Encrypted Client Hello is used.</li>
 <li><strong>Path-based boundaries were never added.</strong> A <a class="gl-ref" href="../glossary.html#w3c">W3C</a> draft,
 Suborigins, would have split one host into separate origins; Chrome tried it, then
-dropped it in 2018. Trust still derives from the host name alone. A supplier&#8217;s tool can be confined only
+dropped it in 2018. A supplier&#8217;s tool can be confined only
 by a sandboxed frame or another origin.</li>
 </ul>
 </div>
@@ -383,7 +385,8 @@ by a sandboxed frame or another origin.</li>
 <h3>Connections</h3>
 <p>
 The opacity rule is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>, and the relative links that break are
-<a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>. The other notes of the set are Chapters <a class="x-ref" href="66-model-real-trust.html">66</a>, <a class="x-ref" href="67-https-everywhere-considered-harmful.html">67</a> and <a class="x-ref" href="69-client-side-certificates.html">69</a>, and the
+<a class="x-ref" href="12-using-relative-uris.html">Chapter 12</a>. The note calls itself the 2nd of 4; this book places it third, after
+Chapters <a class="x-ref" href="66-model-real-trust.html">66</a> and <a class="x-ref" href="67-https-everywhere-considered-harmful.html">67</a> and before 69, and the
 policy this describes is the subject of <a class="x-ref" href="70-cors-browser-distrust-web-apps.html">Chapter 70</a>. The consequences for
 applications reading data are <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>.
 </p>

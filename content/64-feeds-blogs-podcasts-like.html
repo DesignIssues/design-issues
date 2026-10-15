@@ -11,16 +11,16 @@ that speak the open protocol.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-A generic podcast app can follow almost any podcast, because subscribing was
-standardised years ago. Yet in this note&#8217;s 2021 survey the podcast row
+A generic podcast app can follow almost any podcast, because subscribing is
+standardised. Yet in this note&#8217;s 2021 survey the podcast row
 under &ldquo;Response actions&rdquo; is empty, while Instagram and Strava
 offer likes, kudos and comments inside their own platforms. The note asks
 what it would take for reacting to work everywhere.
 </p>
 <p>
 A feed is a file on a website listing its latest posts, in a standard format
-such as RSS; a feed reader checks it and shows what is new. The note, written
-in 2021 and extended in 2024, defines a feed minimally:
+such as RSS; a feed reader checks it and shows what is new. The note (2021,
+extended 2024) defines a feed minimally:
 </p>
 <blockquote>
 Let's call a feed a sequence of published things such that you can subscribe
@@ -42,7 +42,7 @@ The note gives what it calls a very rough summary of feeds in 2021:
 <tr><td>Photo</td><td>JPEG</td><td>Instagram</td><td>Like, comment</td></tr>
 <tr><td>Audio podcast</td><td>MP3</td><td>none</td><td>none</td></tr>
 <tr><td>Video podcast</td><td>MP4 (queried)</td><td>YouTube</td><td>Comment</td></tr>
-<tr><td>Movie</td><td>IMDb data in RDF</td><td>Netflix; Green Tomatoes, then Media Kraken</td><td>Rating</td></tr>
+<tr><td>Movie</td><td>IMDb data in RDF</td><td>Netflix and review sites</td><td>Rating</td></tr>
 <tr><td>Book</td><td>Library of Congress RDF (queried)</td><td>Amazon</td><td>Five-star rating</td></tr>
 <tr><td>Fitness</td><td>GPX</td><td>Strava, Fitbit and others</td><td>Kudos, comment</td></tr>
 </table>
@@ -100,22 +100,15 @@ Activity Streams, a W3C vocabulary for recording what people do online,
 deals in statements such as &ldquo;John uploaded a new photo&rdquo; or
 &ldquo;12 people liked Sally&#8217;s post&rdquo;. Berners-Lee imagines a
 GitHub feed of &ldquo;requested review, started review, completed review,
-approved&rdquo;, and goes further:
+approved&rdquo;, and goes further: any shared system whose state changes,
+such as an issue tracker, could publish each change as an
+activity. Each change of state is then news, as a patch is in Chapter 45.
 </p>
 
-<blockquote>
-In general, any collaborative system in which the shared state changes form
-time to time, like for example an issue tracker or action list, then those
-state-based systems cold well be deemed to create Activity Stream events
-whenever that state changes.
-<cite>Feeds, 2021</cite>
-</blockquote>
-
 <p>
-Each change of state is then news, as a patch is in Chapter 45. The goal
-concerns Solid (Chapter 54), personal data stores any app may use, whose
+Solid (Chapter 54) gives each person a data store any app can use. Its
 mantra, &ldquo;you should be able to [do] anything with anything&rdquo;,
-implies a reaction can be recorded to anything:
+means a reaction should be recordable on anything:
 </p>
 
 <blockquote>
@@ -127,16 +120,22 @@ what it it they are reacting to --liking, and so on.
 
 <h2>64.3 One follower list for every audience</h2>
 
+<p>
+On Instagram and Strava each person has one group of followers, so the
+choices are not sharing, sharing with followers, or making something public.
+Solid differs:
+</p>
+
 <blockquote>
-With Instagram and Strava each person has one group of followers, so a choice
-may be not sharing, sharing with followers, or making something completely
-public.
+In a Solid world, where a person has many related groups of different sizes,
+and can be a member of different communities for different reasons, making
+sure the reaction has the right scope is very important.
 <cite>Feeds, 2021</cite>
 </blockquote>
 
 <p>
-For someone in many communities, Berners-Lee says, giving a reaction the right
-scope is very important (Chapter 74 treats this in general).
+Kudos for a run, for example, belongs with the running club, not with work
+colleagues (Figure 64.2; Chapter 74 treats scoping in general).
 </p>
 
 <figure>
@@ -201,15 +200,18 @@ these things, and where it is possible, explicit design to avoid harm.
 
 <p>
 The rest is &ldquo;beyond level of this article&rdquo;. Chapter 15 offers one
-lens: a technical protocol and a social one, which fail separately.
+lens: a technical protocol and a social one fail separately, so the network
+can deliver every like perfectly while what a like count signals does the
+damage.
 </p>
 
 <h2>64.5 Subscriptions are data too</h2>
 
 <p>
-Moving subscriptions between apps needs an agreed list format. NetNewsWire
-exports OPML, a small XML file of feed titles and addresses
-(<code>xmlUrl</code>). One subscription, abridged from the note:
+If an app alone holds a subscription list, leaving the app means losing the
+list. Moving it needs an agreed format. NetNewsWire exports OPML, a small XML
+file of feed titles and addresses (<code>xmlUrl</code>). Abridged from the
+note:
 </p>
 
 <pre><code>&lt;opml version="1.1"&gt;
@@ -219,7 +221,8 @@ exports OPML, a small XML file of feed titles and addresses
   &lt;/body&gt;</code></pre>
 
 <p>
-FreshRSS, which the note also cites, keeps the list on one&#8217;s own server.
+Any reader that imports OPML can take the list over. FreshRSS, which the note
+also cites, keeps it on one&#8217;s own server.
 </p>
 
 <h2>64.6 Finding feeds</h2>
@@ -349,8 +352,7 @@ nobody publishes as a feed.</p>
 </div>
 <div class="question">
 <p><span class="question-number">64.2</span>
-A platform knows you as one account with one follower list. Why does that
-limit who you can share a reaction with?</p>
+Why does a single follower list limit who can see a reaction?</p>
 </div>
 <div class="question">
 <p><span class="question-number">64.3</span>
@@ -359,8 +361,7 @@ Name one design choice in a like button that could reduce the harms listed in
 </div>
 <div class="question">
 <p><span class="question-number">64.4</span>
-Your podcast app shuts down. Using what the note describes, what would you
-need to keep your subscriptions?</p>
+Your podcast app shuts down. What would you need to keep your subscriptions?</p>
 </div>
 <div class="question">
 <p><span class="question-number">64.5</span>

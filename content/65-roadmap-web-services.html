@@ -28,7 +28,7 @@ Services would be more appropriate.
 <h2>65.1 Why &#8216;Web&#8217; is the wrong word</h2>
 
 <p>
-He begins with three themes everyone agreed on: a move away from a
+He begins with three themes common to the many approaches: a move away from a
 quasi-static information space (the Web of Chapter 2) to one where
 interactions are primary; reuse of well-debugged HTTP and XML; and a focus on
 operations within and between enterprises.
@@ -109,7 +109,7 @@ outlives the exchange.</figcaption>
 <h2>65.2 What the vendors wanted</h2>
 
 <p>
-One sentence, offered without comment, says what the vendors wanted:
+The vendors&#8217; aim takes one sentence:
 </p>
 
 <blockquote>
@@ -119,8 +119,7 @@ capability in a way which makes it interoperable with other systems.
 </blockquote>
 
 <p>
-Not to build something new: to wrap what already existed, in a common
-envelope called SOAP, an XML format for sending a message over HTTP.
+Not to build anew but to wrap the old, in a common envelope called SOAP, an XML format for sending a message over HTTP.
 </p>
 
 <h3>Two ways to send a message</h3>
@@ -274,21 +273,21 @@ the same queries as catalogues, parts and contracts.
 <h2>65.4 Which came first, the journal or the database?</h2>
 
 <p>
-The philosophy section does not argue. It points to three earlier notes, on
-the information space (Chapter 2), on the drift away from it (Chapter 61), and
-Paper Trail (Chapter 62), which asks the question in this heading.
-Chapter 62&#8217;s answer is that the journal
+Berners-Lee&#8217;s answer, from Paper Trail (Chapter 62), is that the journal
 came first and the database is computed from it; keeping only the database
-throws away what makes accountability possible. Many web services, he adds,
-are really the publication of documents, &#8220;just as the billing of a peer
-company is in reality effected by the issuance of an invoice&#8221;.
+throws away what makes accountability possible. Many web services can, he
+says elsewhere, be described as the publication of documents, &#8220;just as
+the billing of a peer company is in reality effected by the issuance of an
+invoice&#8221;.
 </p>
 
 <h3>The bank statement, told twice</h3>
 
 <p>
 Later he describes a bank two ways: as a monthly process, and as rules about
-which documents make which others valid.
+which documents make which others valid. In the rules version nothing is
+scheduled. Each arriving document, such as a matching transfer from the payee
+bank, makes something else true: a cheque cleared, a transaction valid.
 </p>
 
 <figure>
@@ -348,8 +347,7 @@ which documents make which others valid.
   <text x="536" y="294" text-anchor="middle">matching transfer from payee bank</text>
 </svg>
 <figcaption><span class="fig-label">Figure 65.4</span>
-The same bank written as a procedure, or as rules over a paper trail, the
-idea Chapter 62 develops.</figcaption>
+The same bank as a procedure, or as rules over a paper trail.</figcaption>
 </figure>
 
 <blockquote>
@@ -396,7 +394,11 @@ removing a layer of arbitrary design, reduce that fragility&#8221;.
 </p>
 
 <p>
-Why, then, were web services and the Semantic Web kept apart? The argument,
+The note calls the whole description side &#8220;a clear semantic web
+application&#8221;. While service languages are defined with English specs
+but no RDF mapping, web services become, in its words, &#8220;instant
+legacy&#8221; technology for the Semantic Web. Why, then, were the two kept
+apart? The argument,
 he writes, &#8220;is mainly social. It is costly to coordinate very large
 groups.&#8221; The apparent consensus of W3C members at Nice in November 2000
 was to let each proceed without a mandated link.
@@ -405,12 +407,11 @@ was to let each proceed without a mandated link.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The stack was built and then abandoned.</strong> SOAP 1.2 became a
-W3C Recommendation in June 2003 and WSDL 2.0 in 2007. In the 2010s the SOAP
-stack was largely displaced by simpler resource-oriented (REST) interfaces
-exchanging JSON.</li>
+<li><strong>The stack was built and then largely displaced.</strong> SOAP 1.2 became a
+W3C Recommendation in June 2003 and WSDL 2.0 in 2007. In the 2010s simpler resource-oriented (REST) interfaces
+exchanging JSON took over most new work.</li>
 <li><strong>The SOAP sense of the name faded.</strong> Amazon Web Services
-(launched 2006) kept the phrase, but what this note meant by it is now usually called
+(whose storage and compute services arrived in 2006) kept the phrase, but what this note meant by it is now usually called
 an API, reached at an endpoint (a URL programs send requests to).</li>
 <li><strong>The central registry did not last.</strong> The public UDDI
 Business Registry, run by IBM, Microsoft and SAP, was shut in January 2006.
