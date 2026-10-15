@@ -64,7 +64,7 @@ with colour, and designing the private end as carefully as the public one.
 <p>
 At <a class="gl-ref" href="../glossary.html#w3c">W3C</a>, public pages are white, member-only pages pale blue and staff-only
 pages straw. Even so, people mailed non-public material to public lists: the
-pages carried the cue, but the window where a message was written did not.
+pages carried the cue, but the window for writing a message did not.
 Berners-Lee&#8217;s 2022 note, closing Volume VII, starts from a building to
 ask why software offers only two settings:
 </p>
@@ -78,6 +78,8 @@ combinations of different sized groups of people.
 
 <h2 id="sec-74-1">74.1 From the entrance to the private room</h2>
 
+<p>The note begins with a city and a house:</p>
+
 <blockquote>
 A city has public places where I can do all kinds of things, and also a private
 house with a private room which may be by myself. In that house there are spaces
@@ -87,9 +89,9 @@ where I do things with family, friends, colleagues.
 
 <p>
 The architect Christopher Alexander&#8217;s <em>A Pattern Language</em>
-catalogues recurring design solutions; the one cited, <em>Intimacy
-Gradient</em>, gives the note its title. It lays a building out as a
-sequence: from the entrance and the most public parts, through slightly more
+catalogues recurring design solutions; one, <em>Intimacy Gradient</em>,
+gives the note its title. It lays a building out as a
+sequence: from the entrance, through slightly more
 private areas, to the most private ones.
 </p>
 
@@ -160,8 +162,8 @@ A simple way to start making an intimacy gradient on the web is with style.
 </blockquote>
 
 <p>
-The W3C colours of the opening, used in the list archives too, are about
-safety, not looks:
+The W3C colours of the opening, also used in the list archives, are
+first of all about safety:
 </p>
 
 <blockquote>
@@ -171,8 +173,8 @@ cannot share things with.
 </blockquote>
 
 <p>
-To patch the mail gap, W3C put the word &#8220;public-&#8221; into every
-public list&#8217;s address. Then:
+To patch the mail gap, W3C started a convention: public list addresses
+contain the word &#8220;public-&#8221; as a warning. The note adds:
 </p>
 
 <blockquote>
@@ -310,9 +312,8 @@ note asks for the same care at the centre.</figcaption>
 <p>
 The public end has been built. People want to be proud of a profile, as on
 LinkedIn or Instagram (&ldquo;Remember myspace?&rdquo;), so SolidOS lets a
-person set a highlight and background colour for theirs, which can
-follow them when they are shown elsewhere. Then Berners-Lee turns the argument
-around:
+person set a highlight and background colour for theirs, usable wherever
+they appear. Then he turns the argument around:
 </p>
 
 <blockquote>
@@ -331,24 +332,25 @@ let people control them.
 
 <p>
 The private parts of a pod, he says, should feel like a home: the owner feels
-secure there and is in charge. One person files everything alphabetically,
-another by date, in styles of their own. Because Solid lets people choose their
+secure there and is in charge, filing by name or by date in a style of
+their own. Because Solid lets people choose their
 apps, they can also adopt a developer&#8217;s ideas of home.
 </p>
 
 <h2 id="sec-74-4">74.4 Why this closes the volume</h2>
 
 <p>
-Read back across this volume, most of its systems model a social arrangement
-too narrowly: one audience per person, one <a class="gl-ref" href="../glossary.html#certificate-authority">certificate authority</a>, one
-padlock, one domain (Chapters <a class="x-ref" href="64-feeds-blogs-podcasts-like.html">64</a>&#8211;68). This note, borrowing from an
-architect, names what they all miss.
+Across this volume, several systems allow too few settings:
+reactions reach one fixed audience (<a class="x-ref" href="64-feeds-blogs-podcasts-like.html">Chapter 64</a>), only a <a class="gl-ref" href="../glossary.html#certificate">certificate</a> company
+can grant trust (<a class="x-ref" href="66-model-real-trust.html">Chapter 66</a>), security is a yes-or-no in the address
+(<a class="x-ref" href="67-https-everywhere-considered-harmful.html">Chapter 67</a>), and the host name is the only line between parties
+(<a class="x-ref" href="68-same-origin-policy---origin.html">Chapter 68</a>). The architect&#8217;s gradient names the missing middle.
 </p>
 
 <h2 id="sec-74-5">74.5 What varies along the gradient</h2>
 
 <p>
-The note ends by asking what the gradient is a gradient in, and names four
+The note ends by asking what the gradient is a gradient in, naming four
 dimensions. The cells are this book&#8217;s illustration.
 </p>
 
@@ -361,9 +363,9 @@ dimensions. The cells are this book&#8217;s illustration.
 </table>
 
 <p>
-Because the gradient runs through the whole Solid ecosystem, everyone who
-codes a piece of it has to know where each interaction falls, and code
-accordingly. The first step the note proposes is W3C&#8217;s again: pick up
+The third row returns to the opening: a public list is where a tool should
+ask twice. Because the gradient runs through all of Solid, everyone coding a
+piece of it must know where each interaction falls. The note&#8217;s first step is W3C&#8217;s again: pick up
 key colours from the user&#8217;s preferences and from their
 communities&#8217;. A system with only public and private offers the street
 and the locked room; people live in the rooms between.
@@ -408,8 +410,8 @@ be when writing to your family, to a work team, and to a public list?</p>
 </div>
 <div class="question">
 <p><span class="question-number">74.3</span>
-Private places have been left undesigned. Describe what you would change about
-a tool you use only by yourself (notes, photos, a password manager).</p>
+What would you change about a tool you use only by yourself (notes,
+photos, a password manager) to make it feel like a home?</p>
 </div>
 <div class="question">
 <p><span class="question-number">74.4</span>
