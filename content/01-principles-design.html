@@ -6,9 +6,9 @@ same handful of choices arrive. Simple, or capable? Strict about what is
 accepted, or forgiving? Control kept in one place, or given away?
 </p>
 <p>
-This note lists his answers: six rules, two from
+In 1998 Tim Berners-Lee wrote down his answers: six rules, two from
 software engineering, two from the Internet, and two he found the Web needed.
-They are simplicity and modularity; tolerance and decentralization; and the
+They are simplicity and modularity; tolerance and decentralisation; and the
 test of independent invention and the principle of least power. The rest of
 this book keeps applying them.
 </p>
@@ -17,11 +17,13 @@ this book keeps applying them.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-By 1998 Berners-Lee had been arguing about Web design for seven years, and
-had noticed that the same appeals to good practice kept recurring in
-arguments without ever being written down. This note exists to give those
-appeals an address. Its opening sentence is unusually candid about the
-motive:
+When Berners-Lee designed HTML he deliberately did not make it a programming
+language. He wanted other people&#8217;s programs to present it differently,
+extract tables of contents from it, index it. That refusal is one reason a
+search engine can read a web page. In 1998 he wrote down the rule behind it, along
+with five others he kept appealing to in arguments, scattered across many of
+his writings with no single place to point to. The note&#8217;s first lines
+admit as much:
 </p>
 <blockquote>
 Again and again we fall back on the folklore of the principles of good
@@ -32,8 +34,7 @@ them.
 <p>
 That is a working note, not a manifesto, and the author says so: he calls
 the content &ldquo;largely motherhood and apple pie&rdquo; while insisting
-it still needs a home. The chapter is placed first because everything after
-it is an application of one of these six principles to a particular problem.
+it still needs a home.
 </p>
 </div>
 
@@ -43,7 +44,7 @@ it is an application of one of these six principles to a particular problem.
 The six principles are not a flat list. Berners-Lee groups them by where
 they come from, and the grouping is the most useful thing in the note.
 Simplicity and modularity, he says, are &ldquo;the stuff of software
-engineering&rdquo;. Decentralization and tolerance are &ldquo;the life and
+engineering&rdquo;. Decentralisation and tolerance are &ldquo;the life and
 breath of Internet&rdquo;, and he credits Brian Carpenter&#8217;s RFC 1958,
 <em>Architectural Principles of the Internet</em>, of June 1996. The
 remaining pair, the test of independent invention and the principle of least
@@ -51,10 +52,12 @@ power, he claims as the ones he found he needed for the Web specifically.
 </p>
 
 <p>
-They can pull against each other: tolerating malformed input (an Internet virtue) means writing rules for it, which costs simplicity (a software one). The software-engineering pair is about the system one is building.
+The software-engineering pair is about the system one is building.
 The Internet pair is about the network one is building on. The Web pair is
 about the systems other people will build later, which do not exist yet and
-cannot be consulted.
+cannot be consulted. The pairs can pull against each other: tolerating
+malformed input (an Internet virtue) means writing rules for it, which costs
+simplicity (a software one).
 </p>
 
 <table>
@@ -62,7 +65,7 @@ cannot be consulted.
 <tr><td>Simplicity</td><td>Software engineering</td><td>Cost of every downstream specification</td></tr>
 <tr><td>Modularity</td><td>Software engineering</td><td>Change in one part forcing change in all</td></tr>
 <tr><td>Tolerance</td><td>Internet</td><td>Brittleness at the edges of conformance</td></tr>
-<tr><td>Decentralization</td><td>Internet</td><td>A single point of scaling limit and of failure</td></tr>
+<tr><td>Decentralisation</td><td>Internet</td><td>A single point of scaling limit and of failure</td></tr>
 <tr><td>Test of independent invention</td><td>Web</td><td>A system that cannot coexist with its own twin</td></tr>
 <tr><td>Least power</td><td>Web</td><td>Data that only its own program can read</td></tr>
 </table>
@@ -70,7 +73,11 @@ cannot be consulted.
 <h2>1.2 Simplicity, and what it is not</h2>
 
 <p>
-The definition offered is narrow: &ldquo;A language which
+The section opens with the slogan &ldquo;Keep it simple, stupid!&rdquo; and
+an admission: simplicity &ldquo;is easily to quote but often ignored in
+strange ways&rdquo;, perhaps because it is in &ldquo;the eye of the
+beholder&rdquo;. The definition that follows is meant to take it out of the
+beholder&#8217;s eye: &ldquo;A language which
 uses fewer basic elements to achieve the same power is simpler.&rdquo;
 Berners-Lee then separates this from familiarity. A two-line solution that
 uses recursion (a function that calls itself) is simpler than a ten-line one
@@ -159,21 +166,12 @@ people&#8217;s specifications.</figcaption>
 <h2>1.3 Modularity, and being a module</h2>
 
 <p>
-The first half is conventional. Group features so that the bindings within a
-group (the ways one feature depends on another) are tight, and the bindings
-between groups are loose. The groups then become the units of independent
-change: one person can alter one part, understanding and testing only that
-part, while others alter other parts at the same time.
-</p>
-
-<p>
-Berners-Lee adds the standard warning. Modularity depends on a simple,
-abstract interface between the modules. A design in which each module must
-know the insides of the others is not modular but merely partitioned.
-</p>
-
-<p>
-The second half is the part that is rarely met, and he flags it as such:
+Group features so that the bindings within a group (the ways one feature
+depends on another) are tight, and the bindings between groups are loose.
+The groups become units of independent change: one person can alter and test
+one part while others alter other parts. This depends on a simple, abstract
+interface; a design in which each module must know the insides of the others
+is not modular but merely partitioned. Then comes the harder demand:
 </p>
 
 <blockquote>
@@ -249,11 +247,6 @@ interface. The third panel is the harder step: designing for a whole nobody
 has designed yet.</figcaption>
 </figure>
 
-<p>
-The note calls this harder step &ldquo;the TOII&rdquo;, its shorthand for the
-test of independent invention (section 1.6).
-</p>
-
 <h2>1.4 Tolerance, and its cost</h2>
 
 <p>
@@ -308,7 +301,7 @@ program sends the narrower kind and accepts the wider.
   <text x="380" y="270" class="t-sm" text-anchor="middle">outside the dashed line: not conforming</text>
 </svg>
 <figcaption><span class="fig-label">Figure 1.3</span>
-Tolerance widens what a program accepts, from the green box to the warm one.
+Tolerance widens what a program accepts, from the inner box to the one around it.
 It does not move the dashed line. The specification still says exactly what
 conforms and what does not.</figcaption>
 </figure>
@@ -316,6 +309,8 @@ conforms and what does not.</figcaption>
 <p>
 Berners-Lee records the objection as well as the rule. When browsers are lax about what they expect,
 the system works better, but the laxness teaches page authors to be lax too.
+The Web later answered this objection in a way the note did not foresee (see
+What happened since).
 </p>
 
 <p>
@@ -326,13 +321,13 @@ non-conformance, whatever programs then choose to accept across that line.
 Nor is tolerance an excuse for a product that breaks a standard.
 </p>
 
-<h2>1.5 Decentralization, including of concepts</h2>
+<h2>1.5 Decentralisation, including of concepts</h2>
 
 <p>
 The network argument is familiar: a common point involved in every operation
 limits how far the system can grow, and is a single point at which all of it
 can fail. Berners-Lee
-applies decentralization to vocabulary as well as to infrastructure.
+applies decentralisation to vocabulary as well as to infrastructure.
 </p>
 
 <p>
@@ -412,8 +407,7 @@ Internet avoids network bottlenecks.
 <figcaption><span class="fig-label">Figure 1.4</span>
 On the left, every user must adopt one identifier, and the system works only
 for those it suits. On the right, each community keeps its own term and the
-terms are linked by mappings. The decentralization that keeps the Internet
-free of single points of failure is here applied to words. The note names
+terms are linked by mappings. The note names
 the bottleneck; mapping is the remedy later chapters develop.</figcaption>
 </figure>
 
@@ -423,7 +417,7 @@ the Semantic Web must let anyone mint a term, and must solve agreement by
 mapping between vocabularies rather than by mandating one.
 </p>
 
-<h2>1.6 The test of independent invention</h2>
+<h2>1.6 If someone else had invented it first</h2>
 
 <p>
 The test is a single question: &ldquo;If someone else had already invented your
@@ -440,32 +434,47 @@ not yet been specified (the third panel of Figure 1.2). Second, such a system
 should try to do one thing well, and leave other things to other modules.
 Third, it must avoid conceptual and other centralization, because &ldquo;no
 two modules can claim the need to be the unique center of a larger
-system&rdquo;.
+system&rdquo;. The note&#8217;s shorthand for the whole test is &ldquo;the
+TOII&rdquo;.
 </p>
 
 <p>
-Chapter 2 shows the test applied to the Web&#8217;s own foundation, where
-Berners-Lee argues that URI space passes it because nothing prevents a rival
-universal space from existing and enveloping URI space as a subset.
+Chapter 2 applies the test to URI space, which passes because nothing
+prevents a rival universal space from enveloping it as a subset.
 </p>
 
-<h2>1.7 The principle of least power</h2>
+<h2>1.7 Least power: why HTML is not a program</h2>
 
 <p>
-It turns on the difference between two kinds of language. A
-declarative language states what is the case and leaves the reader to decide
-what to do with it; HTML says &ldquo;this is a heading&rdquo;. A procedural
-language is a list of steps for a computer to carry out, as in Java or C.
+The note&#8217;s comparison is weather data. Published as a table of values
+with a declarative description, it can be averaged, plotted, combined with
+other sources, and queried in ways its publisher never considered. Published
+through a Java applet, a small program that the browser downloads and runs
+inside the page, it may look better and can be analysed by nobody.
+</p>
+
+<blockquote>
+The search engine finding the page will have no idea of what the data is or
+what it is about.
+<cite>Principles of Design, 1998</cite>
+</blockquote>
+
+<p>
+The only way to discover what an applet means is to run it in front of a
+person. The difference is between two kinds of language. A declarative
+language states what is the case and leaves the reader to decide what to do
+with it; HTML says &ldquo;this is a heading&rdquo;. A procedural language is
+a list of steps for a computer to carry out, as in Java or C.
 </p>
 
 <p>
-Berners-Lee sets out a scale of five rungs, shown in Figure 1.5. A language
-is Turing complete if it can in principle express any computation at all.
-Dublin Core is a standard set of library-catalogue fields; content
-negotiation (&ldquo;conneg&rdquo;) is a server picking a format for the client. The note places PostScript and
-PDF on the rung that verges on complete, with the aside that PostScript in
-fact is and PDF is not. XSLT and SQL are complete, though &ldquo;one is led
-not to use them that way&rdquo;.
+Between them Berners-Lee sets out a scale of five rungs (Figure 1.5). Dublin
+Core, a standard set of library-catalogue fields, sits at the bottom; content
+negotiation (&ldquo;conneg&rdquo;, a server picking a format for the client)
+is limited logic. PostScript and PDF verge on Turing complete, able in
+principle to express any computation; the note adds that PostScript in fact
+is and PDF is not. XSLT and SQL are complete, though &ldquo;one is led not to
+use them that way&rdquo;.
 </p>
 
 <figure>
@@ -519,8 +528,7 @@ not to use them that way&rdquo;.
 </svg>
 <figcaption><span class="fig-label">Figure 1.5</span>
 The principle asks the designer to choose the leftmost point on this scale
-that still does the job, and it is the only one of the six principles that
-tells an author to give something up.</figcaption>
+that still does the job.</figcaption>
 </figure>
 
 <p>
@@ -538,15 +546,6 @@ declarative from, anyone can write a program to analyze it in many ways.
 </blockquote>
 
 <p>
-The comparison offered is weather data. Published as a table of values with
-a declarative description, it can be averaged, plotted, combined with other
-sources, and queried in ways its publisher never considered. Published
-through a Java applet, a small program that the browser downloads and runs
-inside the page, it may look better and can be analysed by nobody: the only
-way to discover what an applet means is to run it in front of a person.
-</p>
-
-<p>
 He then gives the design decision this principle was extracted from:
 </p>
 
@@ -558,11 +557,23 @@ tables of contents, index it, and so on.
 </blockquote>
 
 <p>
-A follow-up added later in the life of the page credits Meredith Patterson&#8217;s
+A later follow-up credits Meredith Patterson&#8217;s
 talk <em>The Science of Insecurity</em> with the point that the principle of
 least power is also important for the security of interfaces that may be
 exposed to attack.
 </p>
+
+<div class="connections">
+<h3>Where these principles are used</h3>
+<p>
+Decentralisation and independent invention are applied to URI space in
+Chapter 2. Modularity in the inside-out sense becomes the independence
+axioms of Chapter 4. Simplicity and the cost of extra constructs return in
+Volume III, in particular in Chapter 16 on evolvability and Chapter 19 on
+modularity. Least power is the argument beneath the whole of Volumes IV and
+V, and is stated again at the opening of Chapter 5.
+</p>
+</div>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -571,6 +582,11 @@ exposed to attack.
 became a W3C Technical Architecture Group finding, <em>The Rule of Least
 Power</em>, edited by Berners-Lee and Noah Mendelsohn, published in
 February 2006.</li>
+<li><strong>The applet stopped running.</strong> Chrome 45 (September 2015)
+and Firefox 52 (March 2017) dropped the plug-in interface applets ran on, and
+JDK 9 (2017) deprecated the applet API. A weather applet of 1998 can no longer
+be run even in front of a person; an HTML table of the same year still
+displays.</li>
 <li><strong>The security reading became a field.</strong> Patterson and Len
 Sassaman&#8217;s language-theoretic security (LangSec) work, presented from
 2011, argued that parser expressiveness is itself the attack surface. It
@@ -590,24 +606,12 @@ note does not anticipate.</li>
 </ul>
 </div>
 
-<div class="connections">
-<h3>Where these principles are used</h3>
-<p>
-Decentralization and independent invention are applied to URI space in
-Chapter 2. Modularity in the inside-out sense becomes the independence
-axioms of Chapter 4. Simplicity and the cost of extra constructs return in
-Volume III, in particular in Chapter 16 on evolvability and Chapter 19 on
-modularity. Least power is the argument beneath the whole of Volumes IV and
-V, and is stated again at the opening of Chapter 5.
-</p>
-</div>
-
 <div class="questions">
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">1.1</span>
-If XML gains a third kind of construct, which other documents have to
-change, and why?</p>
+Pick a file format that can no longer be opened. Which of the six
+principles did it break?</p>
 </div>
 <div class="question">
 <p><span class="question-number">1.2</span>
