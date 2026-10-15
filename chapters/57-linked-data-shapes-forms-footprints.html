@@ -101,9 +101,8 @@ says the note, but still not enough. A suggestion requires nothing.
 <h2 id="sec-57-2">57.2 Three technologies, three questions</h2>
 
 <p>
-The note answers with three technologies, each for one question. Shapes have
-established languages, SHACL and ShEx; forms have a draft <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>; footprints,
-in 2019, were only an idea.
+The note answers with three technologies, one per question. Shapes had
+standard languages; forms had a draft; footprints, in 2019, were only an idea.
 </p>
 
 <figure id="fig-57-1">
@@ -185,7 +184,7 @@ typically (not always) wrong.&rdquo;
 A form is any interface over a shape: &ldquo;Do not think boring
 bureaucratic forms, think exciting live user experience.&rdquo; The two look
 alike, and &ldquo;rumor has it that some folks who use SHACL have in fact used
-it as a form language&rdquo;, but the note keeps machine interoperability
+it as a form language&rdquo; (SHACL is the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> shape language), but the note keeps machine interoperability
 apart from the interface:
 </p>
 
@@ -199,8 +198,8 @@ apart from the interface:
 </table>
 
 <p>
-The note gives two forms over one contact shape, a full one and one with
-just a name and photo. Both point at the shape rather than copy it, so
+The note gives two forms over one contact shape: a full one, and just a
+name and photo. Both point at the shape rather than copy it, so
 &ldquo;Data created in one form can be edited in the other, and
 vice-versa.&rdquo;
 </p>
@@ -209,9 +208,8 @@ vice-versa.&rdquo;
 
 <p>
 A shape describes data that exists. A form collects data from a person. Both
-assume somebody has decided where the result belongs, and how to name it so
-the next application can find it. <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a> gave a protocol for how to write
-to a <a class="gl-ref" href="../glossary.html#server">server</a>; nothing said where.
+assume the result&#8217;s place and name are already decided. <a class="x-ref" href="50-read-write-linked-data.html">Chapter 50</a>
+said how to write to a <a class="gl-ref" href="../glossary.html#server">server</a>, not where.
 </p>
 
 <figure id="fig-57-2">
@@ -266,9 +264,11 @@ Add a group called Book Club to the address book at
 <code>…/contacts/Group/Book_Club/index.ttl#this</code>. The note&#8217;s rule:
 a group named <em>n</em>, added to an address book whose address is
 <em>u</em>, gets the address
-<code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>, where
-<code>dir()</code> trims an address to its folder and <code>munge()</code>
-cleans the name. The note sketches similar rules for people and chats.
+<code>dir(u) + 'Group/' + munge(n) + '/index.ttl#this'</code>. In words:
+take the address book&#8217;s folder (<code>dir</code>), add
+<code>Group/</code>, then the cleaned-up name (<code>munge</code>), then
+<code>index.ttl</code>.
+The note sketches similar rules for people and chats.
 </p>
 
 <figure id="fig-57-3">
@@ -327,6 +327,11 @@ The note offers its rules as tentative.</figcaption>
 </figure>
 
 <p>
+Had Apps A and B in <a class="x-ref" href="#fig-57-2">Figure 57.2</a> shared a footprint, B would have computed
+the same folder as A and found Ann.
+</p>
+
+<p>
 Once a link exists, applications follow it:
 </p>
 
@@ -341,11 +346,13 @@ The rule creates; it never guesses that something exists at an address.
 That separates a footprint from a hard-coded folder.
 </p>
 
-<h2 id="sec-57-5">57.5 Reading needs the shape; writing needs the footprint</h2>
+<h2 id="sec-57-5">57.5 One shape, many footprints</h2>
 
 <p>
-Data of one shape can be stored under many footprints. Reading it needs only
-the shape; creating it needs a footprint to say where it goes.
+Data of one shape can be stored under many footprints, so a reader needs
+only the shape. A footprint also settles a smaller question: whether a link,
+say from a group to a member, is stored with the subject&#8217;s
+document, the object&#8217;s, or both.
 </p>
 
 <figure id="fig-57-4">
@@ -462,7 +469,7 @@ Three routes from one identity. The third runs through groups.</figcaption>
 
 <p>
 Much collaboration happens in teams and projects, and within a limited group,
-the note argues, things scale better technically and socially; <a class="gl-ref" href="../glossary.html#w3c">W3C</a> working
+the note argues, things scale better technically and socially; W3C working
 groups and GitHub organisations are its examples. So groups get the same
 routes:
 </p>
@@ -507,8 +514,8 @@ Where does your phone put a new photo? Is that a footprint?</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.2</span>
-Your address book shape requires a name. Does that stop someone else saying
-other things about the same person? Why not?</p>
+An address book shape requires a name. Does that stop others saying more
+about the person? Why not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.3</span>
@@ -517,14 +524,13 @@ message, for the email field in an address book.</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.4</span>
-Two applications share a store and speak the same protocol but cannot see each
-other&#8217;s data. Describe how, and what would fix it.</p>
+App B uses a different footprint from App A. Ann was saved by A. Under what
+condition can B still find her? (Hint: links.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.5</span>
-Two apps use different footprints for groups. A user adds Book Club in one.
-What does the other app see, and which part of the note&#8217;s rule about
-existing links prevents a duplicate?</p>
+A second app, with its own footprint, is asked to add a Book Club that
+already exists. Which rule of the note tells it what to do?</p>
 </div>
 </details>
 

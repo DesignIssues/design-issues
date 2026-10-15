@@ -31,8 +31,9 @@ controlled using those global identifiers.
 <h2>54.1 Why every site is a silo</h2>
 
 <p>
-A site stores state (everything it remembers between visits) and serves
-scripts. One rule keeps each site&#8217;s data to itself:
+Photographs kept on one site are invisible to every other site, and that is
+deliberate. A site stores state (everything it remembers between visits) and
+serves scripts, and one rule keeps each site&#8217;s data to itself:
 </p>
 
 <blockquote>
@@ -66,8 +67,9 @@ to "confused deputy" attacks.
 <p>
 A confused deputy is a trusted program tricked into using its authority for
 someone else. Suppose a photo site may fetch Alice&#8217;s pictures from another
-site; asked by a stranger&#8217;s page to fetch photos, it uses Alice&#8217;s
-permission and hands her pictures over.
+site. A stranger&#8217;s page asks the photo site to fetch &#8220;my
+pictures&#8221;; the site, holding only Alice&#8217;s permission, fetches
+Alice&#8217;s and hands them to the stranger.
 </p>
 
 <p>
@@ -220,9 +222,6 @@ person or group defined on any other. The addresses are invented.</figcaption>
 
 <h2>54.3 Four reasons to pull them apart</h2>
 
-<p>
-The note gives four; the fourth, different lifetimes, is Section 54.5.
-</p>
 
 <table>
 <tr><th>Benefit</th><th>In plain terms</th></tr>
@@ -231,7 +230,23 @@ applications they use.</td></tr>
 <tr><td>Cross-linking</td><td>Data from different applications can point at
 each other.</td></tr>
 <tr><td>A low bar for new apps</td><td>An app needs no servers of its own.</td></tr>
+<tr><td>Separate lifetimes</td><td>A short-lived app can handle long-lived
+data, and the reverse.</td></tr>
 </table>
+
+<blockquote>
+The persistence of applications and data may be very different.
+<cite>Socially Aware Cloud Storage, 2009</cite>
+</blockquote>
+
+<p>
+A familiar application may host an ephemeral discussion; one built for a
+short-term enterprise problem may handle data whose life &#8220;exceeds that of
+any of the applications the enterprise uses&#8221;. Decoupled, each lifetime
+can be managed separately. A user should also be able to delete all the data an
+application wrote, a convention the note recommends for applications sharing
+one store.
+</p>
 
 <p>
 The second is where Volume VI has been heading:
@@ -265,26 +280,10 @@ those that run unscrupulous web sites is reduced.
 <p>
 The hazard is moved, not removed: from a company the user cannot inspect to a
 program the user ran, the same risk as installing software on one&#8217;s own
-computer. The note&#8217;s fourth reason is a further gain.
+computer.
 </p>
 
-<h2>54.5 The fourth reason: different lifetimes</h2>
-
-<blockquote>
-The persistence of applications and data may be very different.
-<cite>Socially Aware Cloud Storage, 2009</cite>
-</blockquote>
-
-<p>
-A familiar application may host an ephemeral discussion. An application built
-for a short-term enterprise problem may handle data whose life
-&#8220;exceeds that of any of the applications the enterprise uses&#8221;.
-Decoupled, each lifetime can be managed separately. A user should also be
-able to delete all the data an application wrote, a convention the note
-recommends for applications sharing one store.
-</p>
-
-<h2>54.6 How Bob&#8217;s server decides about a stranger</h2>
+<h2>54.5 How Bob&#8217;s server decides about a stranger</h2>
 
 <p>
 Each user gets a single URI instead of a user name at each site, &#8220;or in
@@ -300,9 +299,8 @@ Access control files are linked data.
 </blockquote>
 
 <p>
-An access control file (ACL) lists who may read, write or control a resource;
-the HTTP Link header points to it, and a client may edit it only with
-&#8220;Control&#8221; access. The server trusts only what it reaches from the
+An access control file (ACL) lists who may read, write or control a
+resource. The server trusts only what it reaches from the
 ACL (Figure 54.3): if Alice&#8217;s own profile claimed membership of the
 group, that would count for nothing.
 </p>
@@ -368,7 +366,7 @@ permission and the group name people by URIs that mean the same on every
 server.</figcaption>
 </figure>
 
-<h2>54.7 Who tells the person in the photo?</h2>
+<h2>54.6 Who tells the person in the photo?</h2>
 
 <p>
 On a central site, when A notes that picture P, taken by B, shows person C,
@@ -382,9 +380,9 @@ followed; or, as it proposes, the destination is told in real time.
 <p>
 To ask to be someone&#8217;s friend, a person appends a line to a
 &#8220;friend requests&#8221; file they cannot read. Generalised, this is a
-drop-box linked from a profile, for requests of any kind. Open to any input, it
-lets new applications notify anyone; limited to predefined forms, it is safer.
-Guarding it against spam may matter.
+drop-box linked from a profile, for requests of any kind. Guarding it against
+spam may matter; limited to predefined forms, it is safer. But a box open to
+any input is what lets a new application notify anyone.
 </p>
 
 <div class="since">

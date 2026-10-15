@@ -155,11 +155,16 @@ only the middle.</figcaption>
 The smallest item is one byte: &#8220;The Doctor is [In]&#8221;. What never
 changes can be cached forever and named by a fingerprint of its contents (a
 cryptographic <a class="gl-ref" href="../glossary.html#hash">hash</a>). Security splits three ways: the risk of being lost, faked,
-or read by the wrong person. Deeds may go in a box at the bank, unlike
-&#8220;a movie you bought and will watch tonight&#8221;.
+or read by the wrong person. &#8220;A movie you bought and will watch
+tonight&#8221; needs little guarding; deeds go in a box at the bank.
 </p>
 
 <h2 id="sec-55-2">55.2 The organising decision</h2>
+
+<p>
+The note&#8217;s answer is to file by kind. An RDFS class is the kind of thing
+the data describes, such as Event or Person:
+</p>
 
 <blockquote>
 We do this by principally initially keying data by its RDFS Class, not by the
@@ -168,8 +173,7 @@ particular app which wrote it.
 </blockquote>
 
 <p>
-An RDFS class is the kind of thing the data describes, such as Event or
-Person. Filing by application recreates the silo, one company&#8217;s walled-off
+Filing by application recreates the silo, one company&#8217;s walled-off
 store, inside the space meant to abolish it, and breaks a Solid mantra:
 &#8220;Whatever you put on your pod, I can bookmark it or like it on my pod,
 using my favorite app.&#8221;
@@ -365,23 +369,20 @@ can point to things wherever an activity keeps them.</figcaption>
 
 <p>
 The note lets each application lay out its data as suits it, and expects them to share common patterns: summary indexes, inboxes, time
-series in dated folders. An inbox, is a folder others may add to but not read, like <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>&#8217;s
-friend requests. Describing where new data should go is left to <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
+series in dated folders. An inbox (a folder others can add to, as with Chapter
+54&#8217;s friend requests) is one such pattern. Describing where new data should go is left to <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
 </p>
 
 <h2 id="sec-55-5">55.5 Knowing who wrote what</h2>
 
-<blockquote>
-We track and use its provenance carefully and carefully control is access, to
-be able to model the way we really trust data, people and bots in this very
-rich, varied, and valuable system.
-<cite>Stuff in your Pod, 2022</cite>
-</blockquote>
-
 <p>
-Provenance is a record of who wrote a piece of data and how. It can be tracked
-by digital signatures from trusted agents, or more lightly by knowing that only
-one party can write to a resource.
+Provenance is a record of who wrote a piece of data and how. The note wants it
+tracked so that a pod can &#8220;model the way we
+really trust data, people and bots in this very rich, varied, and valuable
+system&#8221;. Data can be digitally signed by agents deemed
+trusted, so a signed <a class="gl-ref" href="../glossary.html#certificate">certificate</a> carries its credentials wherever it is
+copied. More lightly, a note in a folder only one party can write is known to
+be theirs because of where it sits.
 </p>
 
 <h2 id="sec-55-6">55.6 Index libraries, not items</h2>

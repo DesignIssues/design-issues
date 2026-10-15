@@ -29,7 +29,7 @@ live-read-write web
 <h2>58.1 Why not just ask again</h2>
 
 <p>
-The simplest way for the other screen to find out is <em>polling</em>: the
+The simplest way to find out is <em>polling</em>: the
 application asks the server &ldquo;has it changed?&rdquo; every few
 seconds.
 </p>
@@ -148,8 +148,8 @@ possible (section 58.5).</figcaption>
 <h2>58.2 Not just documents: maps, lists, calendars</h2>
 
 <p>
-Collaborative editing is the obvious application and the note says so. Then it
-suggests that editing is only the start:
+Collaborative editing is the obvious use, but the note suggests it is only
+the start:
 </p>
 
 <blockquote>
@@ -161,18 +161,20 @@ could inspire many moore things than editing documents.
 </blockquote>
 
 <p>
-He adds people wrestling over where an event should go in a calendar, each
-using a different calendar program, kept in step because they share
-the CalDAV protocol. The shopping list is not a co-authored document but a small piece
+The picture: one person drags a marker across a map while someone on another
+continent watches it move. He adds people wrestling over where an
+event should go in a calendar, each using a different calendar program, kept
+in step by the CalDAV protocol. The shopping list is not a co-authored document but a small piece
 of shared state, wrong the moment it is stale.
 </p>
 
 <h2>58.3 How fast is live?</h2>
 
 <p>
-He sets the target at the fast end, &ldquo;ideally of the order of
-100ms&rdquo;. Why not use email? A short passage places the mechanism in a
-wider family:
+For the watcher to see the marker move as it is dragged, the update must be
+quick: he sets the target at &ldquo;ideally of the order of 100ms&rdquo;.
+Email or SMS would be too slow. The note places live update in a wider
+family:
 </p>
 
 <table>
@@ -184,15 +186,15 @@ wider family:
 </table>
 
 <p>
-One could imagine email carrying &ldquo;aggregated heaps&rdquo; of update
-messages, he allows, but that belongs to the slow end, which Chapter 64 takes
-up.
+One could imagine email carrying &ldquo;aggregated heaps&rdquo; of updates,
+he allows, but this note sets the slower forms aside; Chapter 64 takes up the
+slow end.
 </p>
 
 <h2>58.4 The developer should not have to think about it</h2>
 
 <p>
-The section on frameworks says where this capability belongs:
+On where the capability belongs:
 </p>
 
 <blockquote>
@@ -271,11 +273,11 @@ logic to get wrong.</figcaption>
 <h2>58.5 Patches, peers and working offline</h2>
 
 <p>
-The conclusion names three improvements: efficiency, topology and offline
+The note&#8217;s conclusion names three improvements: efficiency, topology and offline
 work. Efficiency was 58.1&#8217;s patch. The second is topology, the shape
 of who talks to whom. Today it is hub and
 spoke: a server in the middle, clients around it. He asks for
-topologies other than hub and spoke; one possibility, not named in the note,
+other topologies; one possibility, not named in the note,
 is devices updating one another directly.
 </p>
 
@@ -329,8 +331,7 @@ possible alternative; the note does not specify a design.</figcaption>
 The third is offline operation. Patches, he says, would connect Solid to
 Conflict-free Replicated Data Types (CRDTs), a way of recording changes so
 that copies edited separately can be merged without conflict, and provide
-offline and &ldquo;local first&rdquo; working. Sending changes rather than
-states is Chapter 45&#8217;s theme.
+offline and &ldquo;local first&rdquo; working.
 </p>
 
 <p>
@@ -367,21 +368,25 @@ data is Chapter 56.
 <div class="question">
 <p><span class="question-number">58.1</span>
 A shared shopping list has 2,000 items and Bob adds one. Under
-ping-then-reload, what travels over the network? Under a patch? And what does
-a redraw-everything framework do with the result?</p>
+ping-then-reload, what travels over the network? Under a patch?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.2</span>
+Bob adds one item. A redraw-everything framework re-runs its function on all
+2,001 items. Why is that still cheap on screen?</p>
+</div>
+<div class="question">
+<p><span class="question-number">58.3</span>
 Name three things you share with others that are small pieces of state
 rather than documents.</p>
 </div>
 <div class="question">
-<p><span class="question-number">58.3</span>
+<p><span class="question-number">58.4</span>
 An app polls every 5 seconds. On average, how stale is what it shows, and how
 many requests a day is that?</p>
 </div>
 <div class="question">
-<p><span class="question-number">58.4</span>
+<p><span class="question-number">58.5</span>
 If the server in the middle disappears, what must each device be able to do on
 its own for the shopping list to keep working?</p>
 </div>

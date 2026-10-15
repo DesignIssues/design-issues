@@ -11,26 +11,20 @@ deciding which rules to trust and limiting what each conversion loses.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-One way of looking at the Semantic Web, this January 2004 note begins, is as
-a breaking down of barriers between applications. Berners-Lee says he has
-often quoted one example:
-</p>
-<blockquote>
-An example I have often quoted is that I would like to be able to drag a photo
-album onto a calenar application and see the photos on my calendar.
-<cite>Semantic Clipboard, 2004</cite>
-</blockquote>
-<p>
-Here he asks the follow-up: &ldquo;What would this actually take?&rdquo;
+Berners-Lee says he has often quoted one wish: to drag a photo album onto a
+calendar application &ldquo;and see the photos on my calendar.&rdquo; This
+January 2004 note offers it as an example of one way of looking at the
+Semantic Web, as a breaking down of barriers between applications, and then
+asks: &ldquo;What would this actually take?&rdquo;
 </p>
 </div>
 
 <h2>60.1 The hard version of the problem</h2>
 
 <p>
-The note sets a hard case: two applications written independently, without
-this case in mind, assuming only that both are &ldquo;semantic-web
-aware&rdquo;. Each has its own vocabulary for what it handles, photos or
+The interesting case is the hard one: neither program was written with the
+other in mind. The note assumes only that both are &ldquo;semantic-web
+aware&rdquo;: each has its own vocabulary for what it handles, photos or
 events, and keeps a copy of its data in RDF.
 </p>
 
@@ -95,14 +89,16 @@ format both understand.</figcaption>
 
 <p>
 He proposes a new clipboard type in which the data travels as an RDF graph, a
-web of simple statements linking things to their properties. But the calendar
-speaks an &ldquo;iCalendar-like&rdquo; vocabulary and can use anything with at
-least a start time and a description; the photograph, in an
-&ldquo;EXIF-like&rdquo; one, has a creation date, perhaps a description, and
-technical details of the exposure. The note leaves the actual terms blank; in
-the real standards a rule might say: the photo&#8217;s
-<code>DateTimeOriginal</code> becomes the event&#8217;s <code>DTSTART</code>,
-its <code>ImageDescription</code> becomes <code>DESCRIPTION</code>, and
+web of simple statements linking things to their properties. But the two ends speak different vocabularies. The calendar, in
+an &ldquo;iCalendar-like&rdquo; one, can use anything with at least a start
+time and a description. The photograph, in an &ldquo;EXIF-like&rdquo; one, has
+a creation date, perhaps a description, and details of the exposure.
+</p>
+
+<p>
+The note leaves the actual terms blank. In the real standards, a rule might
+read: <code>DateTimeOriginal</code> becomes <code>DTSTART</code>;
+<code>ImageDescription</code> becomes <code>DESCRIPTION</code>.
 <code>ExposureTime</code> and <code>FNumber</code> have nowhere to go.
 </p>
 
@@ -121,8 +117,9 @@ want just &ldquo;Pic!&rdquo;.
   <desc id="fig60-2-d">A photograph's EXIF data carries DateTimeOriginal,
   ExposureTime and FNumber, and perhaps an ImageDescription. An iCalendar
   event wants DTSTART and DESCRIPTION. A rule held by the clipboard turns
-  DateTimeOriginal into DTSTART; ExposureTime and FNumber are dropped. Who
-  wrote the rule is an open question.</desc>
+  DateTimeOriginal into DTSTART and ImageDescription into DESCRIPTION;
+  ExposureTime and FNumber are dropped. Who wrote the rule is an open
+  question.</desc>
 
   <rect class="box-warm" x="24" y="40" width="200" height="120" rx="4"/>
   <text x="124" y="66" class="t-caps" text-anchor="middle" style="fill:#b08d57">photo (EXIF)</text>
@@ -134,10 +131,12 @@ want just &ldquo;Pic!&rdquo;.
   <path d="M 270 94 L 282 100 L 270 106 Z" fill="#1c5a7a"/>
 
   <rect class="box" x="286" y="40" width="148" height="120" rx="4"/>
-  <text x="360" y="66" class="t-caps" text-anchor="middle">a rule</text>
-  <text x="360" y="94" class="t-sm" text-anchor="middle">DateTimeOriginal</text>
-  <text x="360" y="112" class="t-sm" text-anchor="middle">becomes DTSTART</text>
-  <text x="360" y="140" class="t-sm t-it" text-anchor="middle">who wrote this?</text>
+  <text x="360" y="60" class="t-caps" text-anchor="middle">a rule</text>
+  <text x="360" y="80" class="t-sm" text-anchor="middle">DateTimeOriginal</text>
+  <text x="360" y="95" class="t-sm" text-anchor="middle">becomes DTSTART</text>
+  <text x="360" y="114" class="t-sm" text-anchor="middle">ImageDescription</text>
+  <text x="360" y="129" class="t-sm" text-anchor="middle">becomes DESCRIPTION</text>
+  <text x="360" y="150" class="t-sm t-it" text-anchor="middle">who wrote this?</text>
 
   <path class="ln-accent" d="M 444 100 L 484 100"/>
   <path d="M 480 94 L 492 100 L 480 106 Z" fill="#1c5a7a"/>
@@ -169,25 +168,19 @@ small.&rdquo;
 <h2>60.3 Entropy: conversion usually loses</h2>
 
 <blockquote>
-There is a form of entropy which increases as these rules are used. Some rules
-may be reversable, but typically they are not. You can't turn every event back
-into a picture, and you can't event turn a picture taking event back into the
-picture as you have lost some data.
+There is a form of entropy which increases as these rules are used.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
 
 <p>
-Entropy here means information lost on the way for good. An event is more
-generic than a picture, so conversion runs downhill, and the system should
-lose as little as it can:
+Entropy here means information lost on the way for good. A few rules can be
+reversed, the note says, &ldquo;but typically they are not.&rdquo; Not every
+event can become a picture again; not even an event recording that a photo was
+taken can give back the photo, because data has been lost. An event is more
+generic than a picture, so conversion runs downhill. The system should
+therefore &ldquo;try to reduce this information loss&rdquo;, the note
+suggests, by &ldquo;trading at the highest level&rdquo; with the fewest rules.
 </p>
-
-<blockquote>
-One might assume that the system will in general try to reduce this
-information loss. This will involve trading at the highest level, or usingthe
-fewest rules.
-<cite>Semantic Clipboard, 2004</cite>
-</blockquote>
 
 <p>
 The note likens this to the &ldquo;pecking order between a rich text clipboard
@@ -246,11 +239,14 @@ closes on the comparison:
 
 <blockquote>
 The Semantic Web clipboard might be a nifty hack in the short term, might be a
-mainstay of desktop interoperability in the future. From the reseacrh point of
-view, the rule management involved is a miniature version of the Semantic Web
-rule indexing search engine.
+mainstay of desktop interoperability in the future.
 <cite>Semantic Clipboard, 2004</cite>
 </blockquote>
+
+<p>
+Seen as research, it adds, &ldquo;the rule management involved is a miniature
+version of the Semantic Web rule indexing search engine.&rdquo;
+</p>
 
 <div class="since">
 <h3>What happened since</h3>

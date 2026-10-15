@@ -12,8 +12,8 @@ outlines and tables, web addresses hidden, and queries and forms without code.
 <p>
 Around 2000 most Semantic Web projects had data but no interface an ordinary
 person could use. Researchers drew circles and arrows for each other, diagrams
-the note calls &#8220;hopeless&#8221; for normal users. This note, written in
-2010 and extended into a history in 2019, tells of one attempt to fix that:
+the note calls &#8220;hopeless&#8221; for normal users. This 2010 note,
+extended into a history in 2019, tells of one attempt to fix that:
 Tabulator.
 </p>
 <blockquote>
@@ -210,33 +210,11 @@ The note&#8217;s answer: users could follow the loop but will not bother.</figca
 
 <h2>56.3 Six rules, the first a prohibition</h2>
 
-<p>
-In the note&#8217;s six principles, &lsquo;ontology&rsquo; means the
-vocabulary: the published terms, with labels, that the data uses.
-</p>
-
-<table>
-<tr><th>Principle</th><th>In plain terms</th></tr>
-<tr><td>Never show URIs</td><td>Show names, never web addresses.</td></tr>
-<tr><td>Use the ontologies</td><td>Take on-screen words from the
-vocabulary&#8217;s labels. Where labels existed in many languages (&#8220;rare
-but wonderful&#8221;), the user&#8217;s was picked: free localisation.</td></tr>
-<tr><td>Use existing user interface language</td><td>Behave like the file
-browsers and tables people know.</td></tr>
-<tr><td>Represent the graph as a tree</td><td>An expandable outline
-(Figure 56.3).</td></tr>
-<tr><td>Read-write</td><td>&#8220;Don&#8217;t tempt user to think they can edit
-something if they in fact can&#8217;t&#8221;.</td></tr>
-<tr><td>A little semantics</td><td>Work out obvious facts, so a record with a
-transaction date is treated as a transaction without being labelled one.</td></tr>
-</table>
-
 <blockquote>
 While RDF buffs may revel in the URIs of nodes, users do not. User experience
 should not include naked URIs.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
-
 
 <figure>
 <svg class="dia" viewBox="0 0 720 246" width="720" height="246" role="img"
@@ -272,6 +250,27 @@ should not include naked URIs.
 The machine keeps the address; the person sees the word.</figcaption>
 </figure>
 
+<p>
+It heads six principles, in which &lsquo;ontology&rsquo; means the
+vocabulary, the published, labelled terms the data uses.
+</p>
+
+<table>
+<tr><th>Principle</th><th>In plain terms</th></tr>
+<tr><td>Never show URIs</td><td>Show names, never web addresses.</td></tr>
+<tr><td>Use the ontologies</td><td>Take on-screen words from the
+vocabulary&#8217;s labels. Where labels existed in many languages (&#8220;rare
+but wonderful&#8221;), the user&#8217;s was picked: free localisation.</td></tr>
+<tr><td>Use existing user interface language</td><td>Behave like the file
+browsers and tables people know.</td></tr>
+<tr><td>Represent the graph as a tree</td><td>An expandable outline
+(Figure 56.3).</td></tr>
+<tr><td>Read-write</td><td>&#8220;Don&#8217;t tempt user to think they can edit
+something if they in fact can&#8217;t&#8221;.</td></tr>
+<tr><td>A little semantics</td><td>Work out obvious facts, so a record with a
+transaction date is treated as a transaction without being labelled one.</td></tr>
+</table>
+
 <h3>A little semantics: smushing</h3>
 
 <p>
@@ -282,16 +281,18 @@ email address alone. If the viewer already had that address in their own
 contacts, Tabulator treated the two entries as one person and showed the name
 the viewer knew. As the store lasted all session, &#8220;one could
 go back to an earlier object and find it now augmented with all kinds of new
-data&#8221;: anyone could say anything about anything, and smushing merged it.
+data&#8221;, because anyone could publish facts about anything, and smushing
+joined them to what was already on screen.
 The note calls this low level of inference a sweet spot.
 </p>
 
 <h2>56.4 Built for spreadsheet users</h2>
 
 <p>
-The target was capable people untrained in RDF, such as spreadsheet users,
-who build tables and relations whose meaning the computer does not
-understand. Hence:
+The target was capable people untrained in RDF, such as the spreadsheet user,
+who works &#8220;at quite a high level of abstraction&#8221; yet builds tables
+whose meaning the computer does not understand: talent, the note argues, that
+a richer interface could use. Hence:
 </p>
 
 <blockquote>
@@ -299,6 +300,11 @@ A major goal is that the software should allow users to be as powerful as
 possible without having to write their own code.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
+
+<p>
+Query by example fell short of it in one respect: there was &#8220;no way of
+saving the views and queries the user had discovered&#8221;.
+</p>
 
 <h2>56.5 Forms and panes: power without code</h2>
 
@@ -361,21 +367,21 @@ had some view of any data.</figcaption>
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The no-code ambition arrived elsewhere.</strong> Tools such as Airtable
-(founded 2012) took it up without linked data underneath.</li>
-<li><strong>The browser fought it.</strong> As a web page Tabulator was
+<li><strong>The browser fought back.</strong> As a web page Tabulator was
 &#8220;a browser within a browser&#8221;. The Same
 Origin Policy, mixed-content rules and later CORS made that mode &#8220;a
 constant battle&#8221;, so the Firefox extension was the stronger version.</li>
-<li><strong>The program became infrastructure.</strong> By 2019, the note
-records, Tabulator had been repurposed as the data browser for Solid, built on
-its store, rdflib.js, and delivered by the server with the data.</li>
+<li><strong>The program became infrastructure.</strong> By 2019 Tabulator had
+become Solid&#8217;s data browser. Open a data
+object in an ordinary browser and the server first sends a small page that
+loads the data browser, which fetches the same address again as
+data.</li>
 </ul>
 <p>
 The note ends on a spectrum it &#8220;did not explore&#8221;: private, shared
-and public data, because its servers lacked user-accessible access control.
-Solid now has it, and such systems &#8220;become more exciting when the user
-can control who has access&#8221;, the subject of Chapters 54 and 55.
+and public data; its servers lacked user-accessible access control. Solid has
+it now, and such systems &#8220;become more exciting when the user can control
+who has access&#8221; (Chapters 54 and 55).
 </p>
 </div>
 
@@ -396,8 +402,8 @@ send does it allow, and what can a web page do that it cannot?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.2</span>
-When would a user need a URI, for instance to share a contact, and how could
-the interface supply one without showing it?</p>
+When would a user need a URI, say to share a contact, and how could the
+interface supply one unseen?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.3</span>
@@ -411,7 +417,7 @@ employer&#8217;s city?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.5</span>
-Tabulator&#8217;s web version lost fights with browser security rules. What
-does that suggest about building data tools inside a browser?</p>
+What do Tabulator&#8217;s fights with browser security rules suggest about
+building data tools inside a browser?</p>
 </div>
 </div>

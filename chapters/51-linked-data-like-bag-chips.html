@@ -75,9 +75,11 @@ abstract added 2023.
 <h2 id="sec-51-1">51.1 One huge star for just putting it up</h2>
 
 <p>
-The <a class="gl-ref" href="../glossary.html#scheme">scheme</a> answers the publisher&#8217;s real question, which is not
-&ldquo;what is the right way?&rdquo; but &ldquo;how far do I have to
-go?&rdquo;, and concedes that the first step is the hardest.
+One huge star goes &ldquo;just for getting that data up there at all&rdquo;,
+because the hard part is people: the publisher&#8217;s own reluctance, and the
+bureaucracy around them. The scale answers the publisher&#8217;s real
+question, which is not &ldquo;what is the right way?&rdquo; but &ldquo;how far
+do I have to go?&rdquo;
 </p>
 
 <figure id="fig-51-1">
@@ -115,23 +117,18 @@ go?&rdquo;, and concedes that the first step is the hardest.
   <text x="360" y="324" class="t-sm" text-anchor="middle">Nobody is refused a star. The scheme rewards the step taken, not the distance still to go.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 51.1</span>
-The first star is for putting anything up at all, because the obstacles are
-social: personal reluctance and the surrounding bureaucracy.</figcaption>
+The first star is for putting anything up at all; the obstacles are
+social.</figcaption>
 </figure>
 
 <p>
 Two stars if a program can pick out the values (a spreadsheet, not a scan of a
 fax). Three if the format belongs to nobody: CSV, not Excel. Four when each thing, and each property
 of it, gets a web address, a <a class="gl-ref" href="../glossary.html#uri">URI</a>: a city gets one, and so do its population
-and its area, so that others can refer to them:
+and its area. Then people &ldquo;can point to it&rdquo;: anyone who writes
+&ldquo;Philadelphia&rdquo; with that address means the same city as everyone
+else using it.
 </p>
-
-<blockquote>
-That means people can point to it and say that city, actually when they say
-"Philadelphia" they mean the same thing as all these people mean when they say
-"Philadelphia".
-<cite>Linked Data is Like a Bag of Chips, 2010</cite>
-</blockquote>
 
 <p>
 So two datasets using the same address for the city can be joined by a
@@ -143,8 +140,8 @@ one&#8217;s &ldquo;population&rdquo; means what somebody else&#8217;s does.
 
 <p>
 How should a developer pick a <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>? The answer began with a packet on
-a lunch table. Its name was American English (British English would say
-crisps). The nutrition facts are a US sub-language, one that &ldquo;won&#8217;t
+a lunch table. Its name, &ldquo;Crunchy Potato Chips&rdquo;, was in American
+English; British English would say crisps. The nutrition facts are a US sub-language, one that &ldquo;won&#8217;t
 allow you to sell this thing in Europe&rdquo;. The barcode is &ldquo;just one
 number&rdquo;, but any till &ldquo;pretty much anywhere in the world&rdquo;
 reads it. People with serious allergies check the allergy information. And
@@ -218,7 +215,8 @@ is quite like a bag of chips.</figcaption>
 </figure>
 
 <p>
-So the developer should not pick just one:
+So the developer should not pick just one. An <a class="gl-ref" href="../glossary.html#ontology">ontology</a>, or vocabulary, is a
+published list of terms with agreed meanings, each with its own URI. In his words:
 </p>
 
 <blockquote>
@@ -228,8 +226,7 @@ message.
 </blockquote>
 
 <p>
-An <a class="gl-ref" href="../glossary.html#ontology">ontology</a>, or vocabulary, is a published list of terms with agreed meanings,
-each with its own URI. A typical message mixes terms at three scales:
+A typical message mixes terms at three scales:
 </p>
 
 <table>
@@ -312,8 +309,8 @@ get useful work done.
 
 <p>
 What should a reader do with the printer&#8217;s number 110#71400? Software
-that checks data against a fixed form, a <a class="gl-ref" href="../glossary.html#schema">schema</a>, rejects any field the form
-does not list, and would stop at it:
+that checks data against a fixed form, a <a class="gl-ref" href="../glossary.html#schema">schema</a>, may reject a field the form
+does not list, and might stop at it:
 </p>
 
 <figure id="fig-51-4">

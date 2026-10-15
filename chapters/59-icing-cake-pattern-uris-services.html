@@ -61,9 +61,9 @@ always find their way between the page and its tools.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-A visitor lands on a project&#8217;s live web page and wants to see its
-source, check its links, or read its history. From the page itself there is
-no way to work out where any of that lives; someone has to have typed a link.
+A visitor on a project&#8217;s live web page wants its source, its broken
+links or its history. Nothing on the page says where any of that lives unless
+someone typed a link.
 Berners-Lee&#8217;s December 2016 note, its status line modestly reading
 &ldquo;good enough for government work&rdquo;, asks a question most projects
 never ask out loud: when a thing has tools attached to it, whose address comes
@@ -151,7 +151,7 @@ new ending; the page&#8217;s address never changes.</figcaption>
 <h2 id="sec-59-2">59.2 Lost in both directions</h2>
 
 <p>
-Berners-Lee names two failures of discoverability, meaning being able to find
+Berners-Lee names two failures of discoverability, finding
 one address from the other, and they mirror each other. From the repository
 there is no rule for constructing the live site&#8217;s address, so the
 project must write the link into its documentation by hand. From the live
@@ -217,9 +217,8 @@ other.</figcaption>
 <h2 id="sec-59-3">59.3 The cake and the icing</h2>
 
 <p>
-The pattern names what a system treats as primary: the repository, with
-publication as an export, or the published thing, with everything else an
-accessory:
+The pattern names what a system treats as primary: the repository, or the
+published thing:
 </p>
 
 <blockquote>
@@ -232,16 +231,16 @@ the cake.
 <p>
 The advantage he claims for this is scale: because every tool hangs off the
 page, more can be added indefinitely, as &ldquo;no one tool forces the whole
-<a class="gl-ref" href="../glossary.html#url">URL</a> into its own strange shape.&rdquo; The <a class="gl-ref" href="../glossary.html#server">server</a> sees the comma and runs the tool on the address before it. The
-comma itself is incidental; suffixes need only be short, simple and memorable.
-What matters is a fixed rule, so that anyone holding the page&#8217;s address
-can work out the tool&#8217;s.
+<a class="gl-ref" href="../glossary.html#url">URL</a> into its own strange shape.&rdquo; On w3.org the marker is a comma; the
+note asks only that suffixes be short, simple and memorable. What matters is
+a fixed rule, so that anyone holding the page&#8217;s address can work out the
+tool&#8217;s.
 </p>
 
 
 <p>
-The note&#8217;s appendix, a snapshot of 10 December 2017, shows that scaling
-in practice: about sixteen tools on one page&#8217;s address. Five of them:
+The note&#8217;s appendix, a snapshot of 10 December 2017, shows that scaling:
+about sixteen tools on one page&#8217;s address. Five of them:
 </p>
 
 <table>
@@ -265,22 +264,30 @@ the tool&#8217;s address leaves the tool free to change.
 
 <p>
 <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a> asked the same question about data: where should one application
-save so that another can find it? In both, a protocol is not enough; what is
-missing is a rule for computing where another party put something.
+save so that another can find it? There, a second app looks in its own
+folder for a contact the first saved elsewhere. Like the visitor to a live
+page, it can fetch anything but has no rule for where to look.
 </p>
 
 
 <h2 id="sec-59-5">59.5 Icing for machines</h2>
 
 <p>
-A comma typed by hand serves a person. Berners-Lee also wants icing visible to
-programs, sent in <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers that travel with each response unseen by the
-reader. A page supporting Memento can answer with
-<code>Link: &lt;http://arxiv.example.net/timegate/http://a.example.org/&gt;; rel="timegate"</code>,
-telling a browser where to find older versions. A <a class="gl-ref" href="../glossary.html#solid">Solid</a> server, his personal
-data system, uses <code>rel="acl"</code> to point to the page controlling who
-may access a resource; its <a class="gl-ref" href="../glossary.html#specification">specification</a> forbids clients to guess that
-address by editing the resource&#8217;s own.
+A comma typed by hand serves a person. Berners-Lee also wants icing for
+programs, in <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers the reader never sees. A page supporting Memento can answer with a <a class="gl-ref" href="../glossary.html#header">header</a> such as
+</p>
+
+<pre><code>Link: &lt;&#8230;/timegate/&#8230;&gt;; rel="timegate"</code></pre>
+
+<p>
+telling a browser where to find older versions. A <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#server">server</a>, his personal
+data system, sends a <code>rel="acl"</code> link to the page controlling who
+may access a resource. Solid takes only the machine half of the pattern: its
+access-control <a class="gl-ref" href="../glossary.html#specification">specification</a> forbids clients to compute that address from
+the resource&#8217;s own, so for software the link, not a guessable suffix, is
+the route. The note wants more: future versions of Solid &ldquo;may do well to think about including icing
+along the lines of the hashes of subtrees, and other parts of a version
+control system.&rdquo;
 </p>
 
 <p>
@@ -308,7 +315,7 @@ Pages launched in 2008.</li>
 <code>package.json</code> has a <code>repository</code> field, as the note
 says, but the live HTML page does not expose it.</li>
 <li><strong>Memento was already published</strong>, as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 7089 (December
-2013, an Informational RFC).</li>
+2013).</li>
 <li><strong>Well-known locations were revised.</strong> RFC 8615 (May 2019)
 replaced RFC 5785 (2010). Both reserve <code>/.well-known/</code> for <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
 about a site, solving discovery per site rather than per document.</li>
@@ -346,7 +353,7 @@ complains about?</p>
 <div class="question">
 <p><span class="question-number">59.4</span>
 A person can type <code>,cvslog</code>. How would a browser learn that the
-change log exists, without being told the convention?</p>
+change log exists without knowing the convention?</p>
 </div>
 </details>
 
