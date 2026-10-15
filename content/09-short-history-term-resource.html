@@ -222,7 +222,7 @@ his but eventually gave in.
 
 <p>
 The resulting rule, known as httpRange-14 after its number in the
-TAG&#8217;s list of issues, is shown in Figure 9.3. A <strong>200</strong>
+TAG&#8217;s list of issues, is drawn in Figure 8.1. A <strong>200</strong>
 answer, which returns the page, means the hashless URI names a document. For
 a person or an RDF property the server must not answer 200, but may answer
 <strong>303</strong> (See Other), pointing to a document that explains more.
@@ -230,54 +230,54 @@ A 303 by itself says nothing about what the URI names.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 316" width="720" height="316" role="img"
+<svg class="dia" viewBox="0 0 720 262" width="720" height="262" role="img"
      aria-labelledby="fig9-3-t fig9-3-d">
-  <title id="fig9-3-t">The 200/303 rule</title>
-  <desc id="fig9-3-d">A client sends GET http://example.net/people/Pat. The
-  server's answer branches two ways. A 200 OK means the URI names a document
-  and the reply is a copy of it. A 303 See Other allows no conclusion about
-  what the URI names, and points to a description at a separate address,
-  which leads to a document about Pat.</desc>
+  <title id="fig9-3-t">The truce, party by party</title>
+  <desc id="fig9-3-d">A box at the top, httpRange-14, a truce negotiated by
+  the TAG, connects to three parties below. The HTTP specification keeps its
+  text untouched, while its meaning is widened so that a server can be asked
+  about anything, not only documents. The RDF systems already built keep hash
+  names as before, and a 200 still says the URI names a document. Those who
+  wanted hashless URIs may use a name such as /people/Pat for Pat, provided the
+  server never answers 200 for it; a 303 is allowed.</desc>
 
-  <rect class="box-plain" x="16" y="96" width="240" height="56" rx="4"/>
-  <text x="136" y="118" class="t-mono" text-anchor="middle">GET</text>
-  <text x="136" y="138" class="t-mono" text-anchor="middle">http://example.net/people/Pat</text>
+  <rect class="box" x="200" y="14" width="320" height="50" rx="4"/>
+  <text x="360" y="35" text-anchor="middle" class="t-mono">httpRange-14</text>
+  <text x="360" y="54" text-anchor="middle" class="t-sm">a truce negotiated by the TAG</text>
 
-  <line class="ln" x1="256" y1="124" x2="282" y2="124"/>
-  <path d="M 290 124 L 282 120 L 282 128 Z" fill="#2f4f4f"/>
+  <path class="ln-mut" d="M 360 64 L 360 80 M 124 80 L 596 80 M 124 80 L 124 98 M 360 80 L 360 98 M 596 80 L 596 98"/>
 
-  <rect class="box" x="290" y="102" width="124" height="44" rx="4"/>
-  <text x="352" y="129" text-anchor="middle">Server&#8217;s answer</text>
+  <rect class="box-plain" x="16" y="98" width="216" height="148" rx="4"/>
+  <text x="124" y="122" text-anchor="middle" class="t-caps">the HTTP spec</text>
+  <text x="32" y="148" class="t-sm">its text: untouched</text>
+  <text x="32" y="174" class="t-sm">its meaning: widened, so a</text>
+  <text x="32" y="192" class="t-sm">server can be asked about</text>
+  <text x="32" y="210" class="t-sm">anything, not only documents</text>
 
-  <path class="ln" d="M 414 124 L 430 124 L 430 52 L 442 52"/>
-  <path d="M 450 52 L 442 48 L 442 56 Z" fill="#2f4f4f"/>
-  <path class="ln" d="M 430 124 L 430 187 L 442 187"/>
-  <path d="M 450 187 L 442 183 L 442 191 Z" fill="#2f4f4f"/>
+  <rect class="box-plain" x="252" y="98" width="216" height="148" rx="4"/>
+  <text x="360" y="122" text-anchor="middle" class="t-caps">RDF systems</text>
+  <text x="268" y="148" class="t-sm">already built; they keep</text>
+  <text x="268" y="166" class="t-mono t-sm">foo.rdf#color</text>
+  <text x="268" y="184" class="t-sm">and other hash names</text>
+  <text x="268" y="210" class="t-sm">a 200 still says the URI</text>
+  <text x="268" y="228" class="t-sm">names a document</text>
 
-  <rect class="box-green" x="450" y="16" width="250" height="72" rx="4"/>
-  <text x="466" y="38" class="t-mono">200 OK</text>
-  <text x="466" y="58" class="t-sm">this URI names a document;</text>
-  <text x="466" y="76" class="t-sm">here is a copy of it</text>
-
-  <rect class="box-warm" x="450" y="142" width="250" height="90" rx="4"/>
-  <text x="466" y="164" class="t-mono">303 See Other</text>
-  <text x="466" y="184" class="t-sm">no conclusion about what this</text>
-  <text x="466" y="202" class="t-sm">URI names; a description is at</text>
-  <text x="466" y="220" class="t-sm t-mono">&#8230;/people/Pat.html</text>
-
-  <line class="ln-dash" x1="575" y1="232" x2="575" y2="254"/>
-  <path d="M 575 262 L 571 254 L 579 254 Z" fill="#8a9a9a"/>
-  <rect class="box-plain" x="470" y="262" width="210" height="36" rx="4"/>
-  <text x="575" y="285" text-anchor="middle">Document about Pat</text>
+  <rect class="box-warm" x="488" y="98" width="216" height="148" rx="4"/>
+  <text x="596" y="122" text-anchor="middle" class="t-caps">hashless URIs</text>
+  <text x="504" y="148" class="t-mono t-sm">&#8230;/people/Pat</text>
+  <text x="504" y="166" class="t-sm">may name Pat, provided</text>
+  <text x="504" y="184" class="t-sm">the server never answers</text>
+  <text x="504" y="202" class="t-sm">200 for it</text>
+  <text x="504" y="228" class="t-sm">a 303 See Other is allowed</text>
 </svg>
 <figcaption><span class="fig-label">Figure 9.3</span>
-Under httpRange-14 only a 200 tells the client something definite: the URI
-names a document. A 303 leaves the URI free to name something else, such as
-Pat, and points to a description.</figcaption>
+The truce, party by party. Each side kept what it could not do without; the
+third column is the ground Berners-Lee gave up. The rule itself, as a client
+applies it, is Figure 8.1.</figcaption>
 </figure>
 
 <p>
-Berners-Lee calls the resolution a truce, negotiated by the TAG between the
+Berners-Lee calls the resolution a truce (Figure 9.3), negotiated by the TAG between the
 HTTP specification, the RDF systems already built, and the people who wanted
 hashless URIs for people. The HTTP specification&#8217;s editors at the IETF
 were not brought round to the new model. The text of HTTP was untouched; its

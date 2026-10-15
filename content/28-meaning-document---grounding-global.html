@@ -174,26 +174,52 @@ same claim to help software; here it is a claim about meaning.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
+<svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
      aria-labelledby="fig28-3-t fig28-3-d">
-  <title id="fig28-3-t">A sublanguage inside a language</title>
-  <desc id="fig28-3-d">An outer region, XHTML 1.0 Transitional, which adds
-  elements and attributes such as font and target, contains an inner region,
-  XHTML 1.0 Strict. A sample document sits inside both, labelled read as
-  either, same meaning.</desc>
+  <title id="fig28-3-t">Checking a subset claim</title>
+  <desc id="fig28-3-d">One document written in XHTML 1.0 Strict is read twice:
+  once with the Strict language and once with the Transitional language. Each
+  reading gives a meaning, and the two meanings are the same. That is what it
+  means for Strict to be a sublanguage of Transitional. Below, the converse
+  fails: a Transitional document that uses font is not valid Strict.</desc>
+  <defs>
+    <marker id="fig28-3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
 
-  <rect class="box-plain" x="60" y="20" width="600" height="170" rx="10"/>
-  <text x="80" y="44" class="t-caps">XHTML 1.0 Transitional</text>
-  <text x="80" y="62" class="t-sm">adds <tspan class="t-mono">font</tspan>, <tspan class="t-mono">target</tspan>, &#8230;</text>
-  <rect class="box-green" x="300" y="56" width="330" height="116" rx="10"/>
-  <text x="320" y="80" class="t-caps" style="fill:#5a8f5a">XHTML 1.0 Strict</text>
-  <circle cx="420" cy="128" r="7" fill="#1c5a7a"/>
-  <text x="436" y="124" class="t-sm">a Strict document:</text>
-  <text x="436" y="140" class="t-sm">read as either, same meaning</text>
+  <rect class="box-plain" x="16" y="54" width="164" height="74" rx="4"/>
+  <text x="98" y="80" text-anchor="middle">one document</text>
+  <text x="98" y="100" text-anchor="middle" class="t-sm">written in</text>
+  <text x="98" y="117" text-anchor="middle" class="t-sm">XHTML 1.0 Strict</text>
+
+  <path class="ln" d="M 180 80 L 206 80 L 206 44 L 230 44" marker-end="url(#fig28-3-a)"/>
+  <path class="ln" d="M 180 104 L 206 104 L 206 138 L 230 138" marker-end="url(#fig28-3-a)"/>
+
+  <rect class="box" x="232" y="22" width="190" height="44" rx="4"/>
+  <text x="327" y="49" text-anchor="middle">text &#215; Strict</text>
+  <rect class="box" x="232" y="116" width="190" height="44" rx="4"/>
+  <text x="327" y="143" text-anchor="middle">text &#215; Transitional</text>
+
+  <line class="ln" x1="422" y1="44" x2="452" y2="44" marker-end="url(#fig28-3-a)"/>
+  <line class="ln" x1="422" y1="138" x2="452" y2="138" marker-end="url(#fig28-3-a)"/>
+  <text x="456" y="49" class="t-it">meaning M</text>
+  <text x="456" y="143" class="t-it">meaning M</text>
+
+  <path class="ln-mut" d="M 538 44 L 552 44 L 552 138 L 538 138 M 552 91 L 566 91"/>
+  <rect class="box-green" x="566" y="50" width="138" height="82" rx="4"/>
+  <text x="635" y="74" text-anchor="middle" class="t-sm">same meaning, for</text>
+  <text x="635" y="92" text-anchor="middle" class="t-sm">every Strict document:</text>
+  <text x="635" y="114" text-anchor="middle" class="t-sm" style="fill:#5a8f5a">a sublanguage</text>
+
+  <rect class="box-plain" x="16" y="182" width="688" height="40" rx="4" style="stroke-dasharray:4 3"/>
+  <text x="360" y="207" text-anchor="middle" class="t-sm">the converse fails: a Transitional document that uses <tspan class="t-mono">font</tspan> is not valid Strict</text>
 </svg>
 <figcaption><span class="fig-label">Figure 28.3</span>
-Being a subset is a claim about meaning, and it can be checked: every Strict
-document means the same when read as Transitional.</figcaption>
+The subset claim, tested with the product of Figure 28.1. Read a Strict
+document with either language and the meaning comes out the same; that, not
+any resemblance between the languages, is what being a sublanguage
+means.</figcaption>
 </figure>
 
 

@@ -140,92 +140,9 @@ and search criteria. Completeness at the bottom, restraint at the top.
 The first uses, such as access control on web sites, involve only the
 validation of a previously prepared proof. Generating a proof for an
 arbitrary question is typically intractable, and the plan does not need it.
+Figure 30.3 shows such a check: the server walks a chain of signed statements
+it was handed, and Figure 40.2 sets finding a proof beside checking one.
 </p>
-
-<figure>
-<svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
-     aria-labelledby="fig31-2-t fig31-2-d">
-  <title id="fig31-2-t">Generating a proof versus validating one</title>
-  <desc id="fig31-2-d">Left: a question fans out into a branching tree of
-  possible reasoning paths, only one of which reaches a proof; the search is
-  often intractable. Right: a request to read a file arrives with a chain of
-  three statements already supplied; each is checked in turn and the answer
-  is yes or no.</desc>
-  <defs>
-    <marker id="fig31-2-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
-    </marker>
-  </defs>
-
-  <text x="182" y="24" class="t-caps" text-anchor="middle">generate: find a proof</text>
-  <text x="538" y="24" class="t-caps" text-anchor="middle">validate: check a proof</text>
-  <line class="ln-mut" x1="360" y1="12" x2="360" y2="258"/>
-
-  <!-- left: search tree -->
-  <rect class="box-plain" x="132" y="38" width="100" height="26" rx="3"/>
-  <text x="182" y="56" text-anchor="middle">question</text>
-  <g class="ln-mut">
-    <line x1="182" y1="64" x2="82" y2="112"/>
-    <line x1="182" y1="64" x2="182" y2="112"/>
-    <line x1="82" y1="112" x2="52" y2="162"/>
-    <line x1="82" y1="112" x2="112" y2="162"/>
-    <line x1="182" y1="112" x2="152" y2="162"/>
-    <line x1="182" y1="112" x2="212" y2="162"/>
-    <line x1="282" y1="112" x2="312" y2="162"/>
-    <line x1="52" y1="162" x2="40" y2="192"/>
-    <line x1="52" y1="162" x2="64" y2="192"/>
-    <line x1="112" y1="162" x2="100" y2="192"/>
-    <line x1="112" y1="162" x2="124" y2="192"/>
-    <line x1="152" y1="162" x2="140" y2="192"/>
-    <line x1="212" y1="162" x2="224" y2="192"/>
-    <line x1="312" y1="162" x2="300" y2="192"/>
-    <line x1="312" y1="162" x2="324" y2="192"/>
-  </g>
-  <g class="ln-accent">
-    <line x1="182" y1="64" x2="282" y2="112"/>
-    <line x1="282" y1="112" x2="252" y2="162"/>
-    <line x1="252" y1="162" x2="252" y2="198"/>
-  </g>
-  <g fill="#8a9a9a">
-    <circle cx="82" cy="112" r="3.5"/><circle cx="182" cy="112" r="3.5"/>
-    <circle cx="52" cy="162" r="3.5"/><circle cx="112" cy="162" r="3.5"/>
-    <circle cx="152" cy="162" r="3.5"/><circle cx="212" cy="162" r="3.5"/>
-    <circle cx="312" cy="162" r="3.5"/>
-  </g>
-  <g fill="#1c5a7a">
-    <circle cx="282" cy="112" r="3.5"/><circle cx="252" cy="162" r="3.5"/>
-  </g>
-  <rect class="box-warm" x="212" y="198" width="80" height="24" rx="3"/>
-  <text x="252" y="215" text-anchor="middle">proof?</text>
-  <text x="110" y="216" class="t-sm" text-anchor="middle">&#8230; and so on</text>
-  <text x="182" y="250" class="t-sm t-it" text-anchor="middle">search: often intractable</text>
-
-  <!-- right: validation chain -->
-  <rect class="box-plain" x="438" y="38" width="200" height="26" rx="3"/>
-  <text x="538" y="56" text-anchor="middle">let me read /payroll</text>
-  <rect class="box-green" x="408" y="80" width="260" height="26" rx="3"/>
-  <rect class="box-green" x="408" y="116" width="260" height="26" rx="3"/>
-  <rect class="box-green" x="408" y="152" width="260" height="26" rx="3"/>
-  <g>
-    <text class="t-sm" x="420" y="97" style="fill:#2f4f4f">Alice is in group Staff</text>
-    <text class="t-sm" x="420" y="133" style="fill:#2f4f4f">Staff may read /payroll</text>
-    <text class="t-sm" x="420" y="169" style="fill:#2f4f4f">therefore Alice may read /payroll</text>
-  </g>
-  <g fill="none" stroke="#5a8f5a" stroke-width="2">
-    <path d="M642 93 L647 98 L656 87"/>
-    <path d="M642 129 L647 134 L656 123"/>
-    <path d="M642 165 L647 170 L656 159"/>
-  </g>
-  <line class="ln-accent" x1="538" y1="178" x2="538" y2="196" marker-end="url(#fig31-2-a)"/>
-  <rect class="box" x="498" y="198" width="80" height="24" rx="3"/>
-  <text x="538" y="215" text-anchor="middle">yes / no</text>
-  <text x="538" y="250" class="t-sm t-it" text-anchor="middle">Alice and Staff are an invented illustration</text>
-</svg>
-<figcaption><span class="fig-label">Figure 31.2</span>
-Finding a proof means searching a tree that may never end. An access-control
-check only walks a chain it was handed, which is why it can work where
-general reasoning cannot.</figcaption>
-</figure>
 
 <h3>Real life is not efficiently computable</h3>
 
@@ -289,15 +206,15 @@ Put in a significant effort into getting critical mass. Sit back.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 236" width="720" height="236" role="img"
-     aria-labelledby="fig31-3-t fig31-3-d">
-  <title id="fig31-3-t">The same recipe, applied twice</title>
-  <desc id="fig31-3-d">Two fields that stayed small, hypertext before 1990 and
+     aria-labelledby="fig31-2-t fig31-2-d">
+  <title id="fig31-2-t">The same recipe, applied twice</title>
+  <desc id="fig31-2-d">Two fields that stayed small, hypertext before 1990 and
   knowledge representation such as KIF and Cyc, both pass through the same
   four steps: replace identifiers with URIs, remove any requirement for
   global consistency, put in effort to reach critical mass, sit back. The
   first becomes the Web, the second the Semantic Web.</desc>
   <defs>
-    <marker id="fig31-3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fig31-2-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
     </marker>
   </defs>
@@ -329,14 +246,14 @@ Put in a significant effort into getting critical mass. Sit back.
   <rect class="box-green" x="540" y="164" width="160" height="36" rx="4"/>
   <text x="620" y="187" text-anchor="middle">Semantic Web</text>
 
-  <g class="ln-accent" marker-end="url(#fig31-3-a)">
+  <g class="ln-accent" marker-end="url(#fig31-2-a)">
     <line x1="244" y1="72" x2="278" y2="72"/>
     <line x1="244" y1="182" x2="278" y2="182"/>
     <line x1="504" y1="72" x2="538" y2="72"/>
     <line x1="504" y1="182" x2="538" y2="182"/>
   </g>
 </svg>
-<figcaption><span class="fig-label">Figure 31.3</span>
+<figcaption><span class="fig-label">Figure 31.2</span>
 The same operation, in the note&#8217;s words, applied twice. Each time what
 is removed is the demand for global agreement (Chapter 26 generalises
 it).</figcaption>
@@ -393,15 +310,15 @@ while an open system may only treat it as unknown.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 282" width="720" height="282" role="img"
-     aria-labelledby="fig31-4-t fig31-4-d">
-  <title id="fig31-4-t">Closed world and open world</title>
-  <desc id="fig31-4-d">The question "Is Bob an employee?" asked of the same
+     aria-labelledby="fig31-3-t fig31-3-d">
+  <title id="fig31-3-t">Closed world and open world</title>
+  <desc id="fig31-3-d">The question "Is Bob an employee?" asked of the same
   three names. A database table lists Ann, Carlos and Dee and answers no.
   Three documents found so far say the same three people work here, beside
   a dashed box for a document not yet seen, and the answer is unknown,
   because someone else may say Bob does.</desc>
   <defs>
-    <marker id="fig31-4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fig31-3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#1c5a7a"/>
     </marker>
   </defs>
@@ -422,7 +339,7 @@ while an open system may only treat it as unknown.
   <text x="102" y="136">Ann</text>
   <text x="102" y="162">Carlos</text>
   <text x="102" y="188">Dee</text>
-  <line class="ln-accent" x1="180" y1="196" x2="180" y2="212" marker-end="url(#fig31-4-a)"/>
+  <line class="ln-accent" x1="180" y1="196" x2="180" y2="212" marker-end="url(#fig31-3-a)"/>
   <rect class="box-warm" x="100" y="214" width="160" height="30" rx="4"/>
   <text x="180" y="234" text-anchor="middle">No (false)</text>
 
@@ -436,13 +353,13 @@ while an open system may only treat it as unknown.
     <text class="t-sm" x="460" y="157" text-anchor="middle">Dee works here</text>
     <text class="t-sm t-it" x="620" y="157" text-anchor="middle">a document not yet seen</text>
   </g>
-  <line class="ln-accent" x1="540" y1="176" x2="540" y2="212" marker-end="url(#fig31-4-a)"/>
+  <line class="ln-accent" x1="540" y1="176" x2="540" y2="212" marker-end="url(#fig31-3-a)"/>
   <rect class="box-plain" x="420" y="214" width="240" height="30" rx="4"/>
   <text x="540" y="234" text-anchor="middle">Unknown: someone may say so</text>
 
   <text x="360" y="270" class="t-sm t-it" text-anchor="middle">Ann, Carlos, Dee and Bob are invented for illustration.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 31.4</span>
+<figcaption><span class="fig-label">Figure 31.3</span>
 Same data, different conclusion: on the Web a document not yet seen may add
 the missing fact.</figcaption>
 </figure>
