@@ -13,20 +13,12 @@ meaning is fixed.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-In October 2012 an argument broke out on the Technical Architecture Group&#8217;s
-mailing list, not for the first time, over whether a symbol can ever have an
+In October 2012 an argument broke out on the mailing list of the Technical
+Architecture Group (the W3C&#8217;s small panel on Web architecture),
+not for the first time, over whether a symbol can ever have an
 unambiguous meaning. Berners-Lee&#8217;s reply, lightly edited into this note,
 concedes the point in its first paragraph and then asks how work is supposed
-to continue. His own framing:
-</p>
-<blockquote>
-I have not studied much of the history of philosophy but I do find one needs
-to be prepared to jump in in order to keep the course of what I otherwise
-regard as engineering still on track
-<cite>Working despite Ambiguity, 2012</cite>
-</blockquote>
-<p>
-The original message was titled &ldquo;Working without being ambushed by
+to continue. The original message was titled &ldquo;Working without being ambushed by
 Ambiguity&rdquo;. Ambush is the real subject: not whether the pedants are
 right, but what to do when they are right at an inconvenient moment.
 </p>
@@ -38,8 +30,7 @@ right, but what to do when they are right at an inconvenient moment.
 A name <em>denotes</em> something when it stands for a particular thing. The
 Web&#8217;s architecture asks that each URI denote one thing. The objection is
 that no symbol is ever completely unambiguous, so, as the note puts it, some
-might say the architecture is useless. Berners-Lee answers with an analogy
-that concedes everything and gives up nothing.
+might say the architecture is useless. Berners-Lee answers with an analogy.
 </p>
 
 <figure>
@@ -58,7 +49,7 @@ that concedes everything and gives up nothing.
   <line class="ln-mut" x1="114" y1="212" x2="246" y2="212"/>
   <path class="ln-mut" d="M 114 206 L 114 218 M 246 206 L 246 218"/>
   <text x="180" y="234" class="t-sm" text-anchor="middle">a diameter, a mass, a position</text>
-  <text x="180" y="254" class="t-sm t-it" text-anchor="middle">good enough to build a house with</text>
+  <text x="180" y="254" class="t-sm t-it" text-anchor="middle">the physics we build houses with</text>
 
   <text x="540" y="26" class="t-caps" text-anchor="middle" style="fill:#b08d57">looked at closely</text>
   <circle cx="540" cy="130" r="66" fill="none" stroke="#b08d57" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="3 4"/>
@@ -111,9 +102,9 @@ removes ambiguity entirely.
 </p>
 
 <table>
-<tr><th>Model</th><th>How meaning is fixed</th><th>Example</th></tr>
-<tr><td>1. Authoritative dictionary</td><td>The editor of the Oxford English Dictionary knows best how words are used; if a use is missing, send him a note.</td><td>The kindergarten view of words</td></tr>
-<tr><td>2. Meaning as use</td><td>A speaker may use words however they like; since meaning is use, no use is ever wrong.</td><td>A reaction to finding model 1 imperfect</td></tr>
+<tr><th>Model</th><th>How meaning is fixed</th><th>Example or remark</th></tr>
+<tr><td>1. Authoritative dictionary</td><td>The editor of the Oxford English Dictionary knows best how words are used; if a use is missing, send him a note.</td><td>Looking up a word in the OED</td></tr>
+<tr><td>2. Meaning as use</td><td>A speaker may use words however they like; since meaning is use, no use is ever wrong.</td><td>Slang, as when &ldquo;sick&rdquo; means good; perhaps, the note says, a response to finding model 1 imperfect</td></tr>
 <tr><td>3. Expertise</td><td>Lawyers train for years to agree tighter terms; if needed, a court adds definition.</td><td>A contract</td></tr>
 <tr><td>4. Areas of expertise</td><td>Specialists in a field write what is needed and testify to it in court.</td><td>An expert witness</td></tr>
 <tr><td>5. Standards committee</td><td>Defines local terms until they are tight enough; others can challenge it while the group exists.</td><td>A technical specification</td></tr>
@@ -128,11 +119,10 @@ way. He also notes, wryly, that a group sharing its work is sometimes
 horrified to find the larger community needs much longer discussion.
 </p>
 
-<h2>22.3 The observation that changes the subject</h2>
+<h2>22.3 Engineered, not natural</h2>
 
 <p>
-What makes the note more than a survey is a claim about what the five models
-are:
+He then says what the five models are:
 </p>
 
 <blockquote>
@@ -159,10 +149,10 @@ unambiguity at all, just a good enough definition.
 <h2>22.4 What the Semantic Web adds</h2>
 
 <p>
-The Semantic Web is not a sixth model but a <em>meta-model</em>: a framework
-that sits above the others. It does not say how meaning is fixed. It says
-where to look, and lets each <em>vocabulary</em> (a published set of terms)
-fix its meaning however it likes.
+The Semantic Web is not a sixth model. It sits above the five: it does not
+say how a term&#8217;s meaning is fixed, only where to look it up and who
+answers for it. Each <em>vocabulary</em> (a published set of terms) fixes its
+meaning however it likes.
 </p>
 
 <h3>How a term is looked up</h3>
@@ -315,7 +305,7 @@ The note gives two examples, both about an online form for a seminar.
 </svg>
 <figcaption><span class="fig-label">Figure 22.3</span>
 For the person filling in the form, ambiguity costs a hover; for the person
-building it, it costs an institution.</figcaption>
+building it, it may mean forming a group.</figcaption>
 </figure>
 
 <p>
@@ -361,10 +351,10 @@ use.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>February 2014.</strong> RDF 1.1 Concepts and Abstract Syntax
+<li><strong>February 2014: the lookup became standard.</strong> RDF 1.1 Concepts and Abstract Syntax
 became a W3C Recommendation. It says that an IRI&#8217;s owner can help establish
 what the IRI refers to, and that dereferencing it can return information
-about it: much of the meta-model of section 22.4, in a standard.</li>
+about it: much of section 22.4, in a standard.</li>
 </ul>
 </div>
 

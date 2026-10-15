@@ -7,7 +7,8 @@ piece of software that fetches the page and the piece that finds the right
 part of it are kept deliberately ignorant of each other.
 </p>
 <p>
-This chapter is about where those dividing lines were drawn, in 1998, and why
+This chapter is about where those dividing lines run (the note recorded them
+in 1998), and why
 drawing them there is the reason the Web&#8217;s separate parts could go on being
 revised for decades without any one revision breaking the others.
 </p>
@@ -17,8 +18,8 @@ revised for decades without any one revision breaking the others.
 <h3>The question</h3>
 <p>
 Why can HTTP, HTML and new document formats each be revised without
-breaking the others? The answer is that in 1998 somebody drew the module
-boundaries in the right places, and this note says where they are. Its
+breaking the others? The answer is that the module boundaries were drawn in the right places
+early on, and this 1998 note says where. Its
 subject is information hiding.
 </p>
 <p>
@@ -38,12 +39,7 @@ browser, or to anything else that follows a link, by dividing it into three
 parts that know different things.
 </p>
 
-<table>
-<tr><th>Module</th><th>Knows</th><th>Does not know</th></tr>
-<tr><td>Access</td><td>The scheme, and the URI without its fragment</td><td>What a fragment identifier means</td></tr>
-<tr><td>Presentation object</td><td>The media type, and how to interpret a fragment</td><td>The URI it came from</td></tr>
-<tr><td>Application</td><td>The absolute URI, for resolving relative ones</td><td>What the fragment means</td></tr>
-</table>
+
 
 <figure>
 <svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
@@ -106,9 +102,7 @@ parts that know different things.
 </svg>
 <figcaption><span class="fig-label">Figure 4.1</span>
 The application splits the link at the hash. The part before it goes to
-access (solid line); the fragment goes straight to the presentation object
-(dashed line). Each half reaches exactly one module, which is what lets HTTP
-and the media types evolve without consulting each other.</figcaption>
+access; the fragment goes straight to the presentation object.</figcaption>
 </figure>
 
 <p>
@@ -251,9 +245,11 @@ many new revolutions built on top of the basic Web idea.
 <cite>The Web Model, 1998</cite>
 </blockquote>
 
+<h3>Webizing</h3>
+
 <p>
-He notes in passing that new applications such as the Semantic Web can be
-built the same way: not as a new Web, but by introducing new types of
+New applications such as the Semantic Web can be
+built on this model: not as a new Web, but by introducing new types of
 document. Webizing a language, he says, means taking names that were global
 only within one document and making them truly global by adding the
 document&#8217;s URI and a hash. A name <code>#alice</code>, used inside
@@ -344,11 +340,7 @@ modified when they move. Berners-Lee adds the honest caveat: moving half a
 set to one place and half to another still breaks the links.
 </p>
 
-<p>
-Only the application needs the absolute URI. The presentation object still
-never sees it, and the fragment still passes from the application, which
-carries it without looking inside, to the object that understands it.
-</p>
+
 
 <h2>4.4 The scheme, and why it must not be spent</h2>
 
@@ -400,7 +392,7 @@ observes, there is no top-level extension switch left.
   <title id="fig4-4-t">The extension switch, kept and spent</title>
   <desc id="fig4-4-d">Left, kept: the scheme is one top-level switch with a
   short list of spaces, http, ftp, gopher and mailto, and an empty slot left
-  as room for a new space. Right, spent: many schemes such as myapp, fb,
+  as room for a new space. Right, spent: many schemes such as myapp, notes,
   shop and chat need a lookup service like DNS and a way to download a
   handler; the lookup service is now the top level, with no switch left
   above it.</desc>
@@ -429,7 +421,7 @@ observes, there is no top-level extension switch left.
   <rect class="box-plain" x="388" y="38" width="70" height="24" rx="3"/>
   <text x="423" y="54" class="t-mono" text-anchor="middle">myapp:</text>
   <rect class="box-plain" x="466" y="38" width="70" height="24" rx="3"/>
-  <text x="501" y="54" class="t-mono" text-anchor="middle">fb:</text>
+  <text x="501" y="54" class="t-mono" text-anchor="middle">notes:</text>
   <rect class="box-plain" x="544" y="38" width="70" height="24" rx="3"/>
   <text x="579" y="54" class="t-mono" text-anchor="middle">shop:</text>
   <rect class="box-plain" x="622" y="38" width="70" height="24" rx="3"/>
@@ -499,7 +491,7 @@ all. The word then picked up two further senses.
 <tr><th>Sense</th><th>Introduced by</th><th>Covers</th></tr>
 <tr><td>&ldquo;resource&rdquo;</td><td>The IETF</td><td>Anything with a URI, including mailboxes (<code>mailto:</code>) and login ports (<code>telnet:</code>)</td></tr>
 <tr><td>&ldquo;resource&rdquo;</td><td>RDF</td><td>Anything at all: the class of which every class is a subclass</td></tr>
-<tr><td>&ldquo;information resource&rdquo;</td><td>The Technical Architecture Group</td><td>Document-like things, the narrower original sense</td></tr>
+<tr><td>&ldquo;information resource&rdquo;</td><td>The Technical Architecture Group (a later addition to the note)</td><td>Document-like things, the narrower original sense</td></tr>
 </table>
 
 <p>
@@ -524,13 +516,12 @@ W3C Media Fragments URI 1.0 became a Recommendation in September 2012. Text
 fragments, addressing a passage by its words, shipped in Chrome in 2020.
 Neither required any change to HTTP, which is the flexibility this chapter
 claims.</li>
-<li><strong>The scheme warning was vindicated by mobile.</strong> Applications
+<li><strong>The scheme warning was borne out by mobile.</strong> Applications
 claimed custom schemes in large numbers through the 2010s, and collided
 exactly as described: any application could register any scheme, and
 resolution was undefined. Both major platforms retreated to verified https
 links, Universal Links on iOS and App Links on Android, both introduced in
-2015. The industry spent the flexibility point, discovered the namespace
-problem, and came back to DNS.</li>
+2015.</li>
 </ul>
 </div>
 

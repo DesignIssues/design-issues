@@ -8,7 +8,7 @@ losing what was kept there.
 <p>
 This note turns that inside out: the data in one place under its owner&#8217;s
 control, and applications as things that come and go. It is the founding
-document of the project its author has worked on ever since.
+design of what became Solid, the project Berners-Lee has worked on ever since.
 </p>
 </div>
 
@@ -17,8 +17,8 @@ document of the project its author has worked on ever since.
 <p>
 Written in August 2009 and still being edited in 2023, this note asks who may
 write the data that Chapter 50 made writable. It answers by separating two
-things the Web had bolted together. Principals are those to whom permissions
-are given.
+things the Web had bolted together: applications and storage. Permissions are
+then given to principals, the people and groups the note names by URI:
 </p>
 <blockquote>
 Crucial design issues are that principals (users) and groups are identifies by
@@ -33,9 +33,9 @@ controlled using those global identifiers.
 <h3>Each site a silo</h3>
 
 <p>
-The note first describes fairly what it means to replace. A site stores
+A site stores
 state (everything it remembers between visits) and serves scripts; users have
-an identity on the site. The problem is a consequence, not a complaint:
+an identity on the site. One rule keeps each site&#8217;s data to itself:
 </p>
 
 <blockquote>
@@ -158,8 +158,9 @@ Right: applications share only the storage, which decides who may use it.</figca
 
 <p>
 The note&#8217;s analogy is the Unix file system, whose user and group names
-mean something only on one machine. Webizing replaces them with URIs, as HTTP
-had done for files.
+mean something only on one machine. Webizing, Berners-Lee&#8217;s word for
+replacing names that mean something on one machine with URIs that mean the
+same everywhere, does to users and groups what HTTP had done for files.
 </p>
 
 <figure>
@@ -238,16 +239,6 @@ derived extra value, breaking down the silos described above.
 </blockquote>
 
 <p>
-The third is about barriers to entry:
-</p>
-
-<blockquote>
-It allows innovation in the market for applications, because the bar far
-launching an app is far lower, as the app can run in he open data cloud.
-<cite>Socially Aware Cloud Storage, 2009</cite>
-</blockquote>
-
-<p>
 An application that holds nobody&#8217;s data can be written by one
 person. The goal rests on this: &#8220;application growth becomes dramatic as the provision of
 storage is decoupled from the design and deployment of applications&#8221;.
@@ -269,7 +260,8 @@ those that run unscrupulous web sites is reduced.
 <p>
 The hazard is moved, not removed. In the site model, a company the user cannot
 inspect holds the data. Here, a program the user ran may misuse data the user
-still holds: an operating system&#8217;s failure mode.
+still holds: the same risk as installing a program on one&#8217;s own
+computer.
 </p>
 
 <h2>54.5 Different lifetimes</h2>
@@ -304,7 +296,9 @@ Access control files are linked data.
 An access control file (ACL) lists who may read, write or control a resource.
 A header is a labelled line the server sends ahead of the content; the Link
 header points to the resource&#8217;s ACL, which a client may edit only with
-&#8220;Control&#8221; access. Figure 54.3 follows one request.
+&#8220;Control&#8221; access. Figure 54.3 follows one request. The server trusts only what it reaches from
+the ACL: if Alice&#8217;s own profile claimed membership of the group, that
+would count for nothing.
 </p>
 
 <figure>
@@ -402,9 +396,6 @@ people URIs.</li>
 <li><strong>Regulation arrived at the same goal.</strong> European data
 portability rights, applicable from May 2018, compel export rather than
 decoupling storage.</li>
-<li><strong>The market in applications has not appeared at scale.</strong>
-As of 2026, storage has not become a commodity, and most people&#8217;s data
-still lives with the application that created it.</li>
 </ul>
 </div>
 
@@ -427,8 +418,8 @@ possible once a person has a URI.</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.2</span>
-A photo site fetches your pictures from another site on your behalf. What
-could go wrong if a third party asks it to fetch something else?</p>
+Under the note&#8217;s design, does the confused-deputy attack still exist?
+Who would be the deputy?</p>
 </div>
 <div class="question">
 <p><span class="question-number">54.3</span>

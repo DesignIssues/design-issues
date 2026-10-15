@@ -102,9 +102,7 @@ nodes joined by labelled arrows. The correspondence takes three lines
   <text x="360" y="300" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">that anything which belongs in it is in it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 33.1</span>
-Rows, columns and cells map one to one onto nodes, properties and values.
-What does not map is the table&#8217;s silent claim to be the whole list,
-which is the closed world assumption of Chapter 31.</figcaption>
+Rows, columns and cells map one to one onto nodes, properties and values.</figcaption>
 </figure>
 
 <p>
@@ -187,16 +185,16 @@ add one and store it anywhere.</figcaption>
 <p>
 Object-oriented systems, the usual way of building such models in
 software, assume the opposite: an object&#8217;s data lives inside the object,
-in slots its class set aside. Whoever defined a vehicle without a colour
-cannot stop anybody else saying that a given car is red.
+in slots its class set aside. In RDF, whoever defined a vehicle without a
+colour (the example of section 31.7) cannot stop anybody else saying that a
+given car is red.
 </p>
 
 <h2>33.3 What a database does that a graph does not</h2>
 
 <p>
 A table holds many records with the same properties. Queries join tables, matching rows on a
-shared value, and yield another table. The software is optimised for work on
-a few tables, some very large.
+shared value, and yield another table.
 </p>
 
 <h3>Typing</h3>
@@ -279,16 +277,17 @@ knows about none of them, which leaves the note&#8217;s three answers at the bot
 </figure>
 
 <p>
-Many systems do keep an internal row ID, he notes, although SQL does not
-expose it in a standard way.
+He offers three answers: give each row a hidden row ID (many systems keep one,
+though SQL does not expose it in a standard way); forbid the key to change; or
+put up with broken links.
 </p>
 
 <h2>33.4 Two kinds of schema</h2>
 
 <p>
 A schema is the declared shape of some data: its tables and columns, or the
-elements a document may contain. There will be relatively few document
-schemas, and many sites will export documents defined by the same one.
+elements a document may contain. He expects relatively few document
+schemas, with many sites will export documents defined by the same one.
 Database schemas are created independently per database:
 </p>
 
@@ -365,7 +364,7 @@ must be stated pair by pair.</figcaption>
 <p>
 From which he draws a modest role for the new technology: it may simply
 express the equivalence of terms between those million schemas. That is the
-conversion layer of Chapter 30, and it is still where the work is.
+conversion layer of Chapter 30.
 </p>
 
 <h2>33.5 Exposing a database</h2>
@@ -414,20 +413,20 @@ name inside the database can be written as a short relative URI.</figcaption>
 
 <p>
 Berners-Lee is unsure whether a query on a primary key, or a single cell,
-is really an identifier. His ruling is the axiom of Chapter 2 applied to
-databases. A URI must never refer to the result of a table-changing operation
-such as UPDATE or DELETE. A general query should be marked with a question
-mark in the URI, or be posted (sent with HTTP POST, which asks the server to
-act) rather than fetched with GET, which only reads. Search engines and
+is really an identifier. His ruling applies the rule of Chapter 2 that fetching a URI with GET must
+not change anything. A query that only reads may sit in a URI after a
+question mark. A query that changes the table, such as UPDATE or DELETE,
+should be sent with HTTP POST, which asks the server to act, never named by a
+URI fetched with GET, which only reads. Search engines and
 browsers follow GET links freely, on the understanding that following one
 changes nothing; a link that deleted a row would be triggered by the first
 robot that found it.
 </p>
 
 <p>
-The note closes with Chapter 26&#8217;s advice: export a derived view, not
-the internal storage, so the external form can stay persistent while the
-internal one stays efficient.
+The note ends with a small trick: a table&#8217;s address can serve as a
+namespace, so a column such as <code>email</code> gets a Web-wide name, and a
+row joined from two tables carries names from both.
 </p>
 
 <div class="since">
@@ -451,8 +450,7 @@ of the cost of data integration projects.</li>
 <p>
 The graph model this maps onto is Chapter 32, and the plan it serves is
 Chapter 30. The closed world assumption that neither model writes down is
-named in Chapter 31. The naming problem behind primary keys is Chapter 3, and
-the advice to export a derived view is Chapter 26. Publishing such data at
+named in Chapter 31. The naming problem behind primary keys is Chapter 3. Publishing such data at
 scale is Chapters 49 and 53.
 </p>
 </div>

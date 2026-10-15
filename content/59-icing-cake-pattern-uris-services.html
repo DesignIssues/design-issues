@@ -91,9 +91,8 @@ its tools are reached by adding a comma and a short word to the end.
   <text x="130" y="434" class="t-sm t-it">One address; each tool adds a few characters to it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 59.1</span>
-The published work is the cake; the tools are icing. Because no tool forces
-the page&#8217;s address into its own shape, there is room for as many as
-anyone wants.</figcaption>
+The published work is the cake; the tools are icing. New tools need only a
+new ending; the page&#8217;s address never changes.</figcaption>
 </figure>
 
 <h2>59.2 The complaint, stated twice</h2>
@@ -123,11 +122,10 @@ knowing that the github site exists or of finding its URI.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 264" width="720" height="264" role="img"
      aria-labelledby="fig59-2-t fig59-2-d">
   <title id="fig59-2-t">Getting there and getting back</title>
-  <desc id="fig59-2-d">Top: the repository page, with its package.json file
-  attached, has a dashed link to the live page that someone typed into the
+  <desc id="fig59-2-d">Top: the repository page has a dashed link to the live page that someone typed into the
   documentation. From the live page back to the repository there is no link a
   browser can find, shown as a crossed-out arrow. Bottom: from the live page,
   adding the suffix ,validate reaches the HTML validator, and stripping the
@@ -146,9 +144,6 @@ knowing that the github site exists or of finding its URI.
 
   <rect class="box-warm" x="40" y="48" width="170" height="36" rx="3"/>
   <text x="125" y="71" text-anchor="middle">repository page</text>
-  <line class="ln" x1="125" y1="84" x2="125" y2="108"/>
-  <rect class="box-warm" x="40" y="108" width="170" height="28" rx="3"/>
-  <text x="125" y="127" class="t-mono" text-anchor="middle">package.json</text>
   <rect class="box-plain" x="510" y="48" width="170" height="36" rx="3"/>
   <text x="595" y="71" text-anchor="middle">live page</text>
 
@@ -158,22 +153,22 @@ knowing that the github site exists or of finding its URI.
   <path d="M352,68 L368,84 M368,68 L352,84" style="stroke:#b08d57;stroke-width:2.5;fill:none"/>
   <text x="360" y="104" class="t-sm" text-anchor="middle">no link a browser can find</text>
 
-  <line class="ln-mut" x1="24" y1="160" x2="696" y2="160"/>
+  <line class="ln-mut" x1="24" y1="124" x2="696" y2="124"/>
 
-  <text x="24" y="186" class="t-caps" style="fill:#5a8f5a">page first: links computed</text>
+  <text x="24" y="150" class="t-caps" style="fill:#5a8f5a">page first: links computed</text>
 
-  <rect class="box-green" x="24" y="222" width="200" height="46" rx="3"/>
-  <text x="124" y="241" text-anchor="middle">live page</text>
-  <text x="124" y="259" class="t-mono" text-anchor="middle">www.w3.org/Payments/WG/</text>
+  <rect class="box-green" x="24" y="186" width="200" height="46" rx="3"/>
+  <text x="124" y="205" text-anchor="middle">live page</text>
+  <text x="124" y="223" class="t-mono" text-anchor="middle">www.w3.org/Payments/WG/</text>
 
-  <text x="346" y="226" class="t-sm" text-anchor="middle">add a suffix</text>
-  <line class="ln-accent" x1="226" y1="236" x2="466" y2="236" marker-end="url(#fig59-2-aa)"/>
-  <line class="ln-accent" x1="468" y1="256" x2="228" y2="256" marker-end="url(#fig59-2-aa)"/>
-  <text x="346" y="276" class="t-sm" text-anchor="middle">strip the suffix</text>
+  <text x="346" y="190" class="t-sm" text-anchor="middle">add a suffix</text>
+  <line class="ln-accent" x1="226" y1="200" x2="466" y2="200" marker-end="url(#fig59-2-aa)"/>
+  <line class="ln-accent" x1="468" y1="220" x2="228" y2="220" marker-end="url(#fig59-2-aa)"/>
+  <text x="346" y="240" class="t-sm" text-anchor="middle">strip the suffix</text>
 
-  <rect class="box" x="470" y="231" width="226" height="30" rx="3"/>
-  <text x="482" y="251" class="t-mono" style="fill:#1c5a7a">,validate</text>
-  <text x="584" y="251" class="t-sm">HTML validator</text>
+  <rect class="box" x="470" y="195" width="226" height="30" rx="3"/>
+  <text x="482" y="215" class="t-mono" style="fill:#1c5a7a">,validate</text>
+  <text x="584" y="215" class="t-sm">HTML validator</text>
 </svg>
 <figcaption><span class="fig-label">Figure 59.2</span>
 Discovery works both ways only when one address can be computed from the
@@ -183,8 +178,7 @@ other.</figcaption>
 <p>
 A software package may record its repository in <code>package.json</code>, a
 project&#8217;s description file, but a client fetching the HTML page cannot
-discover the link. The relationship
-exists in the world, not in the addresses.
+discover the link.
 </p>
 
 <h2>59.3 Why the choice is architectural</h2>
@@ -203,47 +197,12 @@ the cake.
 </blockquote>
 
 <p>
-The comma is incidental; suffixes need only be short, simple and memorable.
+The server sees the comma and runs the tool on the address before it. The
+comma itself is incidental; suffixes need only be short, simple and memorable.
 What matters is a fixed rule, so that anyone holding the page&#8217;s address
 can work out the tool&#8217;s.
 </p>
 
-<figure>
-<svg class="dia" viewBox="0 0 720 160" width="720" height="160" role="img"
-     aria-labelledby="fig59-3-t fig59-3-d">
-  <title id="fig59-3-t">Anatomy of a comma address</title>
-  <desc id="fig59-3-d">The address https://www.w3.org/Payments/WG/,validate
-  splits into the page's own address, the work or cake, and the suffix
-  ,validate, the tool or icing. The server sees the comma, runs the HTML
-  validator on the page before it, and returns a list of markup
-  errors, mistakes in the page's HTML tags.</desc>
-
-  <defs>
-    <marker id="fig59-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f4f"/>
-    </marker>
-  </defs>
-
-  <text x="24" y="52" class="t-mono">https://www.w3.org/Payments/WG/<tspan style="fill:#1c5a7a;font-weight:bold">,validate</tspan></text>
-
-  <path class="ln-mut" d="M24,62 V68 H254 V62"/>
-  <path class="ln-accent" d="M258,62 V68 H324 V62"/>
-  <text x="139" y="88" class="t-sm" text-anchor="middle">the work (cake)</text>
-  <text x="291" y="88" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">the tool (icing)</text>
-
-  <line class="ln" x1="336" y1="48" x2="418" y2="48" marker-end="url(#fig59-3-ah)"/>
-  <rect class="box" x="422" y="16" width="274" height="64" rx="3"/>
-  <text x="559" y="38" text-anchor="middle">server sees the comma</text>
-  <text x="559" y="56" class="t-sm" text-anchor="middle">and runs the HTML validator</text>
-  <text x="559" y="71" class="t-sm" text-anchor="middle">on the address before it</text>
-
-  <line class="ln" x1="559" y1="80" x2="559" y2="110" marker-end="url(#fig59-3-ah)"/>
-  <rect class="box-plain" x="459" y="114" width="200" height="32" rx="3"/>
-  <text x="559" y="135" text-anchor="middle">list of markup errors</text>
-</svg>
-<figcaption><span class="fig-label">Figure 59.3</span>
-The base address never changes; only the ending picks the tool.</figcaption>
-</figure>
 
 <p>
 The note&#8217;s appendix, a snapshot of 10 December 2017, lists about sixteen
@@ -262,11 +221,11 @@ such tools. Five of them:
 <h2>59.4 The same problem, generally</h2>
 
 <p>
-This is Chapter 57&#8217;s placement question, where applications sharing a
-store must agree where data goes, asked about tools instead: two apps both
-able to save a contact, neither knowing where the other put it. A protocol is not
-enough: what is missing is a convention that lets one party find what another
-produced without prior arrangement.
+Chapter 57 asked where an application should save data so another can find
+it. This note asks the same about tools: where should a validator or change
+log live so that anyone holding the page can find it? In both, a protocol is
+not enough; what is missing is a rule that lets one party compute where
+another put something.
 </p>
 
 <p>
@@ -313,8 +272,7 @@ software.
 <li><strong>The hosted-copy pattern predates the note.</strong> GitHub
 Pages launched in 2008.</li>
 <li><strong>Discovery was patched, not fixed.</strong> npm&#8217;s
-<code>package.json</code> has a <code>repository</code> field, and many sites
-link to their source in a footer: by hand, and inconsistently.</li>
+<code>package.json</code> has a <code>repository</code> field, which the live page does not expose.</li>
 <li><strong>Memento was already published</strong>, as RFC 7089 (December
 2013, an Informational RFC).</li>
 <li><strong>Well-known locations were revised.</strong> RFC 8615 (May 2019)
@@ -342,9 +300,8 @@ promise for them to work?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.2</span>
-Pick three tools you would want for a web page and write the comma addresses
-for them. What would break if the page&#8217;s own address ended in a
-comma?</p>
+A site moves from acmedata.github.io to acmedata.com. Which addresses in
+Figure 59.1 break, and which would have survived under the comma pattern?</p>
 </div>
 <div class="question">
 <p><span class="question-number">59.3</span>

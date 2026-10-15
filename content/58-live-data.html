@@ -107,7 +107,7 @@ reply.
   </defs>
 
   <rect class="box-plain" x="8" y="8" width="344" height="274" rx="4"/>
-  <text x="24" y="32" class="t-caps">solid in 2021</text>
+  <text x="24" y="32" class="t-caps">Solid in 2021</text>
   <rect class="box" x="30" y="46" width="110" height="30" rx="3"/>
   <text x="85" y="66" text-anchor="middle">Pod (server)</text>
   <rect class="box" x="220" y="46" width="110" height="30" rx="3"/>
@@ -145,11 +145,11 @@ change. A patch can also be stored and applied later, which makes offline work
 possible (section 58.5).</figcaption>
 </figure>
 
-<h2>58.2 The use case he thinks people underestimate</h2>
+<h2>58.2 Beyond editing documents</h2>
 
 <p>
 Collaborative editing is the obvious application and the note says so. Then it
-argues that the obvious case is the least interesting one:
+suggests that editing is only the start:
 </p>
 
 <blockquote>
@@ -164,7 +164,7 @@ could inspire many moore things than editing documents.
 He adds people wrestling over where an event should go in a calendar, each
 using a different calendar program. The shopping list is the example worth
 keeping: not a co-authored document but a small piece of shared state, wrong
-the moment it is stale. Most shared data is like this.
+the moment it is stale.
 </p>
 
 <h2>58.3 Notification is a spectrum</h2>
@@ -185,7 +185,7 @@ A short passage places the mechanism in a wider family:
 Each step down is slower but can reach someone who is not online right now.
 He sets the target at the fast end, ideally of the order of 100 milliseconds,
 and notes that one could imagine email carrying aggregated heaps of update
-messages. Chapter 64 is what the slow end became.
+messages. Chapter 64, on feeds, blogs and podcasts, takes up the slow end.
 </p>
 
 <h2>58.4 The developer should not have to think about it</h2>
@@ -203,7 +203,7 @@ turn it on, that is ideal.
 
 <p>
 He describes two ways of doing it. Solid&#8217;s own interface library,
-solid-ui, builds the ability to refresh into each widget. React has the
+solid-ui, builds the ability to refresh into each widget. React, a widely used interface library from Facebook, has the
 developer write a function from data to interface, and re-runs that function
 whenever the data changes.
 </p>
@@ -270,7 +270,7 @@ logic to get wrong.</figcaption>
 
 <p>
 The conclusion names three improvements: efficiency, topology and offline
-work. Two of them are structural rather than incremental.
+work.
 </p>
 
 <p>
@@ -300,7 +300,7 @@ is devices updating one another directly.
   <rect class="box" x="140" y="123" width="80" height="34" rx="3"/>
   <text x="180" y="145" text-anchor="middle">Pod</text>
   <rect class="box-plain" x="125" y="210" width="110" height="30" rx="3"/>
-  <text x="180" y="230" text-anchor="middle">Carol&#8217;s map</text>
+  <text x="180" y="230" text-anchor="middle">Carol&#8217;s tablet</text>
   <text x="180" y="272" class="t-sm" text-anchor="middle">If the Pod is unreachable,</text>
   <text x="180" y="288" class="t-sm" text-anchor="middle">no device hears of any change.</text>
 
@@ -315,7 +315,7 @@ is devices updating one another directly.
   <rect class="box-plain" x="590" y="50" width="110" height="30" rx="3"/>
   <text x="645" y="70" text-anchor="middle">Bob&#8217;s laptop</text>
   <rect class="box-plain" x="485" y="210" width="110" height="30" rx="3"/>
-  <text x="540" y="230" text-anchor="middle">Carol&#8217;s map</text>
+  <text x="540" y="230" text-anchor="middle">Carol&#8217;s tablet</text>
   <text x="540" y="118" class="t-sm" text-anchor="middle">each copy merges</text>
   <text x="540" y="133" class="t-sm" text-anchor="middle">others&#8217; changes</text>
   <text x="540" y="272" class="t-sm" text-anchor="middle">Devices update one another, and</text>
@@ -345,15 +345,10 @@ together.
 <ul>
 <li><strong>The protocol was replaced with a general one.</strong> The Solid
 Notifications Protocol, first drafted in 2022, supports several delivery
-channels rather than one socket, which is the spectrum of section 58.3 turned
-into a specification.</li>
-<li><strong>Sending the change spread.</strong> CRDTs became a widely used
-basis for collaborative editing and local-first software through the 2020s,
-alongside the older technique of operational transformation.</li>
-<li><strong>Local-first grew.</strong> The term was already in use when he
+channels rather than one socket.</li>
+<li><strong>Local-first already had a name.</strong> The term was already in use when he
 wrote, after Ink &amp; Switch&#8217;s 2019 essay &ldquo;Local-first
-software&rdquo;. The idea that an application should work offline and reconcile
-later has since gathered a wider community of practice.</li>
+software&rdquo;.</li>
 </ul>
 </div>
 
@@ -376,8 +371,8 @@ ping-then-reload, what travels over the network? Under a patch?</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.2</span>
-Most shared data is a shopping list rather than a document. Name three
-examples from your own life.</p>
+Name three things you share with others that are small pieces of state
+rather than documents.</p>
 </div>
 <div class="question">
 <p><span class="question-number">58.3</span>

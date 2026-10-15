@@ -10,8 +10,8 @@ safe if the delta names things that cannot be confused.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the most paper-shaped note in the collection, written by Berners-Lee
-with Dan Connolly. It asks a question that sounds like plumbing and is not:
+This note reads like a short paper, written by Berners-Lee with Dan
+Connolly. It asks a question that sounds like plumbing and is not:
 what is the difference between two graphs, and how is it sent?
 </p>
 <p>
@@ -92,8 +92,8 @@ gets v1. &Delta; takes the difference and &Sigma; adds it back.</figcaption>
 <h2>45.1 The three problems hiding in one</h2>
 
 <p>
-The motivating example is universally annoying: synchronising calendars and
-address books between devices, one of the most stubborn problems in practical
+The motivating example is synchronising calendars and address books between
+devices, which the note calls one of the most stubborn problems in practical
 computing. The note separates it into three problems that are usually
 confused.
 </p>
@@ -219,8 +219,8 @@ Applied to a copy that has itself changed, a patch can fail in three ways.
 <table>
 <tr><th>Failure</th><th>What happens</th><th>Can it be prevented?</th></tr>
 <tr><td>Inconsistent changes</td><td>One person moves a meeting while another deletes it.</td><td>No; a person must decide.</td></tr>
-<tr><td>No match</td><td>The patch cannot find where to apply.</td><td>Yes, for certain graph deltas.</td></tr>
-<tr><td>Misapplied</td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be: &ldquo;This is unacceptable.&rdquo;</td></tr>
+<tr><td>No match</td><td>The patch cannot find where to apply.</td><td>Yes, if the pattern names something unique (below).</td></tr>
+<tr><td>Misapplied</td><td>The patch applies at the wrong place; erroneous data results.</td><td>It must be prevented; the note calls it &ldquo;unacceptable&rdquo;.</td></tr>
 </table>
 
 <p>
@@ -268,7 +268,7 @@ was computed from; a strong one is context-independent.</figcaption>
 </figure>
 
 <p>
-Account numbers exist precisely to avoid this confusion. The property that
+The property that
 makes a patch strong is the one Chapter 34 used to identify people: one no two
 things can share. Here it lets a change travel between stores without going
 astray.
@@ -279,8 +279,7 @@ astray.
 <p>
 <strong>Patches as knowledge.</strong> A strong patch has meaning in itself.
 A phone number changing from 1234 to 5678 suggests the person moved or changed
-jobs. For houses for sale, the change is the news; for currency rates,
-listening to the changes builds a working knowledge.
+jobs.
 </p>
 
 <p>
@@ -330,10 +329,10 @@ make patches strong: one added triple can still relabel many blank nodes.</li>
 <li><strong>Patch formats arrived.</strong> SPARQL Update became a
 Recommendation in March 2013, and LD Patch was published as a W3C Working
 Group Note in 2015: section 45.3&#8217;s proposal in standard form.</li>
-<li><strong>Explicit change won over computed change.</strong> Collaborative
-editors came to rely on operational transformation and on operation-based
-designs of conflict-free replicated data types, which send operations rather
-than diffing states, as the 2015 follow-up preferred.</li>
+<li><strong>Explicit change became common.</strong> Collaborative editors
+such as Google Docs (2010) use operational transformation, and conflict-free
+replicated data types (formalised in 2011) send operations rather than diffing
+states, the approach the 2015 follow-up preferred.</li>
 </ul>
 </div>
 

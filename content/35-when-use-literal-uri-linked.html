@@ -1,9 +1,9 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-In Linked Data, a web address in angle brackets stands for the thing it names;
+In Turtle, the usual way of writing Linked Data, a web address in angle brackets stands for the thing it names;
 in quotation marks it is only a string of characters. When a statement is
-about the name itself, quote it, or a later merge will silently rewrite it.
+about the name itself, quote it, or a later merge of datasets will silently rewrite it.
 </p>
 </div>
 
@@ -12,7 +12,7 @@ about the name itself, quote it, or a later merge will silently rewrite it.
 <p>
 The shortest note in Volume IV, dated 5 November 2017, marked a first draft,
 and by its author&#8217;s own account a small point that sometimes needs
-careful explanation. It exists because a habit becomes a trap.
+careful explanation.
 </p>
 <blockquote>
 When you use RDF, we get used to using URIs a symbols so much that we can slip
@@ -21,10 +21,7 @@ we are not talking about the thing the symbol represents, we are talking about
 the URI itself as a string.
 <cite>When use a literal for a URI in Linked Data, 2017</cite>
 </blockquote>
-<p>
-It earns a chapter because the distinction between using a name and mentioning it is one every system
-with identifiers eventually gets wrong.
-</p>
+
 </div>
 
 <h2>35.1 The rule</h2>
@@ -71,7 +68,9 @@ data is &ldquo;smushed together&rdquo;.</li>
 The figures use Turtle shorthand. A prefix stands for the start of a URI, so
 <code>ex:Joe</code> is short for <code>&lt;https://example.com/people#Joe&gt;</code>;
 <code>foaf:</code> is a common vocabulary for people; and <code>a</code> means
-&ldquo;is a&rdquo;.
+&ldquo;is a&rdquo;. <code>uni:</code>, <code>contact:</code> and <code>owl:</code>
+work the same way; <code>owl:sameAs</code> is the standard &lsquo;same as&rsquo;
+property.
 </p>
 
 <figure>
@@ -101,11 +100,10 @@ The figures use Turtle shorthand. A prefix stands for the start of a URI, so
   <path class="ln" d="M 274 50 L 462 84"/>
   <path d="M 468 85 L 459 80 L 458 88 Z" fill="#2f4f4f"/>
   <path class="ln" d="M 274 142 L 462 102"/>
-  <path d="M 468 101 L 458 98 L 460 106 Z" fill="#2f4f4f"/>
-
-  <path class="ln-accent" d="M 145 174 L 145 204"/>
-  <path d="M 145 211 L 140 202 L 150 202 Z" fill="#1c5a7a"/>
-  <text x="157" y="196" class="t-sm">smush: rewrite every use of the second name as the first</text>
+  <path d="M 468 101 L 458 98 L 460 106 Z" fill="#2f4f4f"/>  <path class="ln-accent" d="M 565 120 L 565 204"/>
+  <path d="M 565 211 L 560 202 L 570 202 Z" fill="#1c5a7a"/>
+  <text x="553" y="168" class="t-sm" text-anchor="end">smush both records: rewrite</text>
+  <text x="553" y="184" class="t-sm" text-anchor="end">the second name as the first</text>
 
   <rect class="box-green" x="20" y="214" width="640" height="38" rx="4"/>
   <text x="36" y="238" class="t-mono">ex:Joe a foaf:Person</text>
@@ -125,7 +123,7 @@ Figure 35.2 follows both versions through the merge.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 370" width="720" height="370" role="img"
+<svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig35-2-t fig35-2-d">
   <title id="fig35-2-t">Why the preferred identifier must be quoted</title>
   <desc id="fig35-2-d">Written as a symbol, the preferred identifier is
@@ -166,15 +164,10 @@ Figure 35.2 follows both versions through the merge.
   <text x="540" y="228" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">Unchanged. A string is not a symbol,</text>
   <text x="540" y="246" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">so nothing substitutes it, and the</text>
   <text x="540" y="264" class="t-sm" text-anchor="middle" style="fill:#5a8f5a">preference survives the merge.</text>
-
-  <line class="ln-mut" x1="20" y1="284" x2="700" y2="284"/>
-  <text x="360" y="306" class="t-sm" text-anchor="middle">Use the name to talk about the thing. Mention the name to talk about the name.</text>
-  <rect class="box" x="100" y="320" width="520" height="38" rx="4"/>
-  <text x="360" y="344" class="t-sm" text-anchor="middle">The angle brackets mean <tspan font-style="italic">identified by</tspan>. The quotes mean the characters themselves.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 35.2</span>
-The failure is silent. Nothing rejects the wrong version; it simply becomes a
-tautology when the datasets are merged.</figcaption>
+The failure is silent. Nothing rejects the wrong version; after the merge it
+just says Joe prefers the name he already has.</figcaption>
 </figure>
 
 <h2>35.3 Why this is not a quirk of one notation</h2>
@@ -182,37 +175,9 @@ tautology when the datasets are merged.</figcaption>
 <p>
 The mistake is a confusion of use and mention. Paris is a city; &ldquo;Paris&rdquo;
 has five letters. The first sentence uses the word to talk about a place; the
-second mentions the word to talk about the word.
+second mentions the word to talk about the word. Angle brackets and quotation
+marks make that choice explicit.
 </p>
-
-<figure>
-<svg class="dia" viewBox="0 0 560 160" width="560" height="160" role="img"
-     aria-labelledby="fig35-3-t fig35-3-d">
-  <title id="fig35-3-t">Use versus mention</title>
-  <desc id="fig35-3-d">Paris is a city points to the city; the quoted
-  word Paris points to its five letters.</desc>
-
-  <text x="130" y="18" class="t-caps" text-anchor="middle">use</text>
-  <text x="430" y="18" class="t-caps" text-anchor="middle">mention</text>
-
-  <rect class="box" x="20" y="30" width="220" height="40" rx="4"/>
-  <text x="130" y="55" text-anchor="middle">Paris is a city</text>
-  <path class="ln" d="M 130 74 L 130 102"/>
-  <path d="M 130 110 L 125 101 L 135 101 Z" fill="#2f4f4f"/>
-  <rect class="box-warm" x="50" y="112" width="160" height="36" rx="4"/>
-  <text x="130" y="135" text-anchor="middle">the city</text>
-
-  <rect class="box" x="320" y="30" width="220" height="40" rx="4"/>
-  <text x="430" y="55" text-anchor="middle">&#8220;Paris&#8221; has five letters</text>
-  <path class="ln" d="M 430 74 L 430 102"/>
-  <path d="M 430 110 L 425 101 L 435 101 Z" fill="#2f4f4f"/>
-  <rect class="box-plain" x="350" y="112" width="160" height="36" rx="4"/>
-  <text x="430" y="135" class="t-mono" text-anchor="middle">P a r i s</text>
-</svg>
-<figcaption><span class="fig-label">Figure 35.3</span>
-The same word can point at a thing or be the thing under discussion. Angle
-brackets and quotation marks make that choice explicit.</figcaption>
-</figure>
 
 <p>
 It bites in RDF because the system may substitute equals for equals. Any

@@ -53,47 +53,47 @@ possible.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 24 720 256" width="720" height="256" role="img"
+<svg class="dia" viewBox="0 24 720 242" width="720" height="242" role="img"
      aria-labelledby="fig48-1-t fig48-1-d">
   <title id="fig48-1-t">Joining on a shared term</title>
-  <desc id="fig48-1-d">An invented example. A conference site says Alice's
-  mailbox made a talk on 2010-05-23. A photo archive says the same mailbox made a
-  photo at latitude 51.5, longitude minus 0.1. Because both use foaf:maker with
-  the same mailbox, the two can be merged into one picture of Alice.</desc>
+  <desc id="fig48-1-d">An invented example. A conference site says a talk on 2010-05-23 was
+  made by someone whose mailbox is Alice's. A photo archive says a photo at
+  latitude 51.5, longitude minus 0.1 was made by someone with the same mailbox.
+  Because both use foaf:mbox with the same value, the two can be merged into one
+  picture of Alice.</desc>
 
   <rect class="box" x="20" y="40" width="330" height="120" rx="4"/>
   <text x="36" y="64">Dataset A: conference site</text>
   <text x="36" y="92" class="t-mono" font-size="12">talk  cal:dtstart  2010-05-23</text>
-  <text x="36" y="116" class="t-mono" font-size="12">talk  foaf:maker</text>
-  <text x="36" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">mailto:alice@example.org</text>
+  <text x="36" y="116" class="t-mono" font-size="12">talk  foaf:maker [</text>
+  <text x="52" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">foaf:mbox mailto:alice@example.org ]</text>
 
   <rect class="box" x="370" y="40" width="330" height="120" rx="4"/>
   <text x="386" y="64">Dataset B: photo archive</text>
   <text x="386" y="92" class="t-mono" font-size="12">photo  geo:lat 51.5  geo:long &#8722;0.1</text>
-  <text x="386" y="116" class="t-mono" font-size="12">photo  foaf:maker</text>
-  <text x="386" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">mailto:alice@example.org</text>
+  <text x="386" y="116" class="t-mono" font-size="12">photo  foaf:maker [</text>
+  <text x="402" y="142" class="t-mono" font-size="12" style="fill:#1c5a7a">foaf:mbox mailto:alice@example.org ]</text>
 
   <line class="ln-accent" x1="122" y1="150" x2="122" y2="204"/>
   <line class="ln-accent" x1="472" y1="150" x2="472" y2="204"/>
   <text x="297" y="186" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">same term, same value</text>
 
-  <rect class="box-green" x="60" y="204" width="600" height="60" rx="4"/>
-  <text x="360" y="229" text-anchor="middle">Alice: talk on 2010-05-23; photo at 51.5, &#8722;0.1</text>
-  <text x="360" y="251" class="t-sm t-it" text-anchor="middle">invented example</text>
+  <rect class="box-green" x="60" y="204" width="600" height="46" rx="4"/>
+  <text x="360" y="232" text-anchor="middle">Alice: talk on 2010-05-23; photo at 51.5, &#8722;0.1</text>
 </svg>
 <figcaption><span class="fig-label">Figure 48.1</span>
-Neither publisher coordinated with the other. One shared term, used with the
-same value, was enough to join their data.</figcaption>
+An invented example. Neither publisher coordinated with the other; one shared
+term, <code>foaf:mbox</code>, used with the same value, was enough to join their data.</figcaption>
 </figure>
 
 <p>
 The note says the terms are chosen because they are important common
 dimensions, and because data connected using more of them would make the data
-in the world a great deal more connected. The choice is pragmatic.
+in the world a great deal more connected.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
+<svg class="dia" viewBox="0 0 720 234" width="720" height="234" role="img"
      aria-labelledby="fig48-2-t fig48-2-d">
   <title id="fig48-2-t">Eight terms, four questions</title>
   <desc id="fig48-2-d">Two terms for who, two for when, two for where, and two
@@ -130,8 +130,6 @@ in the world a great deal more connected. The choice is pragmatic.
   <text x="618" y="160" class="t-mono" text-anchor="middle" font-size="12">foaf:maker</text>
   <text x="618" y="182" class="t-sm" text-anchor="middle">who made it</text>
 
-  <line class="ln-mut" x1="24" y1="236" x2="696" y2="236"/>
-  <text x="360" y="262" class="t-sm t-it" text-anchor="middle">The note is titled ten terms and lists eight. It is a first draft, and says so.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 48.2</span>
 The eight terms, grouped by the question each answers. The short glosses are
@@ -140,8 +138,7 @@ title.</figcaption>
 </figure>
 
 <p>
-The draft has other gaps. <code>foaf:name</code>, the time and place terms and
-<code>foaf:maker</code> are listed with no explanation at all. The section on
+The section on
 time breaks off after noting that there are many complete ontologies of time;
 the section on place says only that it is a huge one.
 </p>
@@ -172,9 +169,8 @@ they do not have.
 <h3>Where the vocabularies come from</h3>
 
 <p>
-The vocabulary for people is chosen for practical reasons too. Friend of a
-Friend was designed and used bottom-up, to connect people through networks of
-acquaintance, and was already in use. For documents Berners-Lee takes the choice of others: the Dublin
+Friend of a Friend was chosen because it was already in use: it was designed and used bottom-up, to connect people through networks of
+acquaintance. For documents Berners-Lee takes the choice of others: the Dublin
 Core group picked their top ten properties for documents, and of those,
 <code>dc:title</code> is the one he has found most called for. He equates it
 with the HTML <code>&lt;title&gt;</code> tag, which makes the point that most
@@ -247,17 +243,16 @@ sets all of it aside.
 <p>
 This is the least powerful thing that could possibly work: the principle of
 Chapter 1, applied to vocabulary rather than to language. Two datasets that
-agree on how to write a date can be joined by anyone, with no further
+identify a person the same way can be joined by anyone, with no further
 agreement between their publishers.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The strategy was vindicated at a larger scale.</strong>
-Schema.org, launched in June 2011, is this idea: a small shared vocabulary
-covering who, where, when and what, adopted because search engines consume it,
-and now widely deployed.</li>
+<li><strong>Schema.org</strong>, launched in June 2011, applies the same idea
+at larger scale: a small shared vocabulary covering who, where, when and what,
+adopted because search engines consume it.</li>
 <li><strong>The specific terms fared differently.</strong> Titles spread
 widely: the Open Graph protocol, launched in April 2010, made
 <code>og:title</code> one of its four required properties. Mailboxes published openly were harvested by spammers,

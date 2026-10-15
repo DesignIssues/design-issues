@@ -1,8 +1,8 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A specification is a document that says exactly what counts as, say, &ldquo;a
-conforming HTTP 1.1 server&rdquo;. It has to do two jobs: name the thing, and
+A specification says exactly what counts as, for example, a conforming HTTP
+1.1 server. It has to do two jobs: name the thing, and
 define it. Where it can, it should say what things mean rather than what
 software must do about them. And a program should be able to test whether
 something conforms.
@@ -14,8 +14,7 @@ something conforms.
 <p>
 Berners-Lee opens by calling this note motherhood and apple pie and closes by
 calling it folklore. He credits Peggie Rimmer at CERN and years of work with
-the IEEE, the IETF and W3C, and assumes others have written books on it. They
-have, but the note makes one structural point that longer treatments bury.
+the IEEE, the IETF and W3C, and assumes others have written books on it.
 </p>
 </div>
 
@@ -41,8 +40,7 @@ optional, following a 1997 Internet convention (BCP 14).
 </p>
 
 <p>
-Most specifications spend their length on the right-hand side and leave the
-left implicit. The note insists that the thing defined gets a precise name: a
+The note insists that the thing defined gets a precise name: a
 conformance term.
 </p>
 
@@ -53,7 +51,7 @@ conformance term.
   <desc id="fig21-1-d">The left-hand side names what conforms, ideally with a
   formal identifier such as a media type or namespace URI. The right-hand side
   gives the definition, distinguishing must from may and normative from
-  informative. The test is whether a program could decide, for any object,
+  informative. The test is whether a program could decide, for anything at all,
   whether the conformance term applies.</desc>
 
   <rect class="box" x="24" y="20" width="312" height="212" rx="4"/>
@@ -80,18 +78,18 @@ conformance term.
   </g>
 
   <line class="ln-mut" x1="24" y1="254" x2="696" y2="254"/>
-  <text x="360" y="278" class="t-sm" text-anchor="middle">The test: for any arbitrary object, does the spec decide whether the term applies?</text>
+  <text x="360" y="278" class="t-sm" text-anchor="middle">The test: given anything at all, does the spec say yes or no to whether the term applies?</text>
   <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If no program could check it, the left hand side is not finished.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 21.1</span>
-The warning attached to the left-hand side is about brand. A specification may
-define more than one term, such as a strictly conforming and a loosely
-conforming widget, but Berners-Lee notes one should beware of diluting the
-name.</figcaption>
+Most specifications fill the right-hand box and leave the left one implicit.
+The left is the name a program checks against.</figcaption>
 </figure>
 
 <p>
-Wherever possible, the note adds, conformance phrases should be grounded in the
+A specification may define more than one term, such as a strictly conforming
+and a loosely conforming widget, but Berners-Lee warns against diluting the
+brand. Wherever possible, the note adds, conformance phrases should be grounded in the
 Web by being identified with a URI.
 </p>
 
@@ -107,7 +105,7 @@ carry weight.
 <h2>21.2 Meaning, not behaviour</h2>
 
 <p>
-The sharpest rule in the note is about the grammatical mood a specification
+One rule concerns the grammatical mood a specification
 should be written in. When defining a language, say what a construct means
 rather than what software should do when it meets one. His example is a
 cheque:
@@ -218,11 +216,7 @@ every allowed and forbidden step visible, which is what the fourth test
 question in section 21.4 relies on.</figcaption>
 </figure>
 
-<h2>21.3 Two paragraphs nobody expects</h2>
-
-<p>
-Two short passages lift this note above a style guide.
-</p>
+<h2>21.3 Contracts and borrowed definitions</h2>
 
 <p>
 The first is about contracts. When a message binds people or organisations,
@@ -239,7 +233,7 @@ foo-email-address...
 </blockquote>
 
 <p>
-MMTP is invented. This is Chapter 20&#8217;s argument, that defined fields are
+MMTP is a made-up protocol name, chosen for the example. This is Chapter 20&#8217;s argument, that defined fields are
 statements people can be held to, arriving as drafting advice.
 </p>
 
@@ -264,24 +258,24 @@ The note ends with questions to ask of a draft.
 
 <table>
 <tr><th>Question</th><th>What a failure means</th></tr>
-<tr><td>Does the spec decide, for any arbitrary object, whether the conformance term applies?</td><td>The left-hand side is undefined</td></tr>
+<tr><td>Given anything at all, does the spec say yes or no to whether the term applies?</td><td>The left-hand side is undefined</td></tr>
 <tr><td>Could a program be written to test conformance?</td><td>Nobody can build a checker, so arguments about conformance cannot be settled</td></tr>
 <tr><td>Is conformance alone enough to make systems work as intended?</td><td>Something necessary is unstated</td></tr>
 <tr><td>Can important properties be proved from the state transition tables?</td><td>Two correct implementations can still deadlock or disagree; Figure 21.3 should let one prove, say, that a reply never arrives unasked</td></tr>
 </table>
 
 <p>
-The third is the easiest to overlook, because a specification can be perfectly
-decidable and still describe something that does not work, because the
-requirement that made it work was left in somebody&#8217;s head.
+The third is the easiest to overlook. A specification can decide every case
+and still describe something that does not work, because a requirement was
+left in somebody&#8217;s head.
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The vocabulary became universal.</strong> The requirement keywords
-this note points at, from Bradner&#8217;s BCP 14 of March 1997, are now cited by
-nearly every protocol specification, and were refined by RFC 8174 in May 2017
+<li><strong>The vocabulary became standard.</strong> The requirement keywords
+this note points at, from Bradner&#8217;s BCP 14 of March 1997, are cited by most
+IETF and W3C specifications, and were refined by RFC 8174 in May 2017
 to apply only when written in capitals.</li>
 <li><strong>Conformance terms became formal.</strong> Media types and
 namespace URIs are now the ordinary way to name what conforms. A namespace URI
@@ -289,8 +283,8 @@ needs no registration: anyone who controls a URI can mint one.</li>
 <li><strong>Testability became a gate.</strong> The W3C Process requires a
 specification to show implementation experience before it can leave the
 Candidate Recommendation stage, close kin to the second test question.</li>
-<li><strong>The meaning-not-behaviour rule lost ground.</strong> HTML5 and its
-successors specify algorithms rather than meanings, deliberately, because
+<li><strong>The meaning-not-behaviour rule lost ground.</strong> The WHATWG&#8217;s HTML, from 2004,
+specifies algorithms rather than meanings, deliberately, because
 interoperability on error handling mattered more than portability of the
 definition. Chapter 23 is where that choice is argued.</li>
 </ul>

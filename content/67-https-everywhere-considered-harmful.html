@@ -21,7 +21,7 @@ Seventeen years later Berners-Lee returns to the same decision, knowing how
 it turned out, and says plainly what was at stake.
 </p>
 <p>
-The title of the note is a provocation; the argument beneath it is careful.
+It is not aimed at the EFF&#8217;s browser extension of the same name.
 </p>
 </div>
 
@@ -124,7 +124,7 @@ An unshown letter cannot do the job it was added for.
 <h2>67.3 The charge</h2>
 
 <p>
-The central claim is made twice and is not hedged:
+The central claim:
 </p>
 
 <blockquote>
@@ -146,10 +146,10 @@ different names. A link written years ago keeps pointing at the old one.
   <title id="fig67-2-t">What an old link meets after each kind of change</title>
   <desc id="fig67-2-d">Left, a new prefix: an old page from 2005 links to
   http://x.org/report, which has moved; a dashed redirect, if someone keeps
-  it, leads on to https://x.org/report. An archived copy with the same link
-  ends at not found where no redirect was kept. Right, TLS in the protocol: the
-  same two links reach the same, unchanged http://x.org/report, and beneath
-  them the connection is upgraded to encrypted.</desc>
+  it, leads on to https://x.org/report. An archived copy links to
+  http://y.org/paper, which ends at not found because no redirect was kept.
+  Right, TLS in the protocol: the same two links reach their unchanged
+  addresses, and beneath them the connection is upgraded to encrypted.</desc>
   <defs>
     <marker id="fig67-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
@@ -179,7 +179,7 @@ different names. A link written years ago keeps pointing at the old one.
   <rect class="box" x="12" y="208" width="116" height="34" rx="3"/>
   <text x="70" y="230" text-anchor="middle">archived copy</text>
   <rect class="box-warm" x="180" y="202" width="168" height="46" rx="3"/>
-  <text x="264" y="221" class="t-mono" text-anchor="middle">http://x.org/report</text>
+  <text x="264" y="221" class="t-mono" text-anchor="middle">http://y.org/paper</text>
   <text x="264" y="239" class="t-sm" text-anchor="middle" style="fill:#b08d57">&#10007; not found</text>
   <line class="ln" x1="128" y1="225" x2="176" y2="225" marker-end="url(#fig67-2-arr)"/>
   <text x="264" y="268" class="t-sm t-it" text-anchor="middle">where no redirect was kept</text>
@@ -191,11 +191,13 @@ different names. A link written years ago keeps pointing at the old one.
   <rect class="box" x="380" y="186" width="116" height="34" rx="3"/>
   <text x="438" y="208" text-anchor="middle">archived copy</text>
 
-  <rect class="box-green" x="540" y="117" width="168" height="34" rx="3"/>
-  <text x="624" y="139" class="t-mono" text-anchor="middle">http://x.org/report</text>
-  <text x="624" y="170" class="t-sm t-it" text-anchor="middle">same name, unchanged</text>
-  <line class="ln" x1="496" y1="70" x2="536" y2="125" marker-end="url(#fig67-2-arr)"/>
-  <line class="ln" x1="496" y1="198" x2="536" y2="144" marker-end="url(#fig67-2-arr)"/>
+  <rect class="box-green" x="540" y="48" width="168" height="34" rx="3"/>
+  <text x="624" y="70" class="t-mono" text-anchor="middle">http://x.org/report</text>
+  <rect class="box-green" x="540" y="186" width="168" height="34" rx="3"/>
+  <text x="624" y="208" class="t-mono" text-anchor="middle">http://y.org/paper</text>
+  <text x="624" y="139" class="t-sm t-it" text-anchor="middle">same names, unchanged</text>
+  <line class="ln" x1="496" y1="65" x2="536" y2="65" marker-end="url(#fig67-2-arr)"/>
+  <line class="ln" x1="496" y1="203" x2="536" y2="203" marker-end="url(#fig67-2-arr)"/>
 
   <rect class="box-plain" x="380" y="242" width="328" height="32" rx="3"/>
   <text x="544" y="263" class="t-sm" text-anchor="middle">beneath both links: connection upgraded to encrypted</text>
@@ -248,7 +250,7 @@ the web of links in so doing.
   <circle class="box-plain" cx="460" cy="48" r="10"/>
   <circle class="box-plain" cx="560" cy="80" r="10"/>
   <circle class="box-plain" cx="650" cy="56" r="10"/>
-  <text x="124" y="74" class="t-sm" style="fill:#b08d57">names change: old links break</text>
+
 
   <rect class="box-plain" x="64" y="124" width="632" height="32" rx="3"/>
   <text x="170" y="145">speed: 300 bps &#8594; 300 Gbps</text>
@@ -280,9 +282,9 @@ should be read from its letters. The s breaks that rule.
 <h2>67.4 The single-valued trust mistake</h2>
 
 <p>
-Once https: was treated as a safe space, browsers ring-fenced it. Under the
-Same Origin Policy, a browser rule about which pages may share data, everything loaded into an https: page must itself arrive
-securely, which, the note says, &ldquo;has led to a class of web apps being
+Once https: was treated as a safe space, browsers ring-fenced it. Browsers,
+in what the note calls the spirit of the Same Origin Policy, now require
+everything loaded into an https: page to arrive securely too, which, the note says, &ldquo;has led to a class of web apps being
 broken&rdquo;. A parenthesis that follows draws the general lesson:
 </p>
 
@@ -386,19 +388,13 @@ which has three parts:
 through traceable, to strongly authenticated.</li>
 </ol>
 
-<p>
-One letter cannot convey any of these on its own terms, let alone all three.
-</p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The note&#8217;s target.</strong> A footnote makes clear that it
-criticises the general drive for https: addresses everywhere, not the
-EFF&#8217;s HTTPS Everywhere browser extension of the same name. The note also
-names Let&#8217;s Encrypt, a project for free, automatic certificates, which
-began issuing them in late 2015.</li>
-<li><strong>The campaign won completely.</strong> The https: prefix became the
+<li><strong>Free certificates, late 2015.</strong> Let&#8217;s Encrypt, which
+the note names, began issuing free, automatic certificates.</li>
+<li><strong>The campaign won.</strong> The https: prefix became the
 default, Chrome 68 began marking plain http: pages &ldquo;Not secure&rdquo; in
 July 2018, and most of the Web migrated.</li>
 <li><strong>The breakage was real and was absorbed.</strong> Redirects, HSTS
@@ -432,9 +428,9 @@ the address can never change, the printer or the person scanning it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.2</span>
-A boundary you can never place correctly indicates a false dichotomy. Apply
-that test to an everyday boundary, such as the permissions a phone app asks
-for.</p>
+Berners-Lee says a boundary you can never place correctly is a sign that the
+two sides were not really two kinds of thing. Apply that test to the
+permissions a phone app asks for.</p>
 </div>
 <div class="question">
 <p><span class="question-number">67.3</span>

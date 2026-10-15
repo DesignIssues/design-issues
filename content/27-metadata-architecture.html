@@ -20,10 +20,6 @@ data was endorsement labels: ratings, such as whether a page suits children,
 attached to pages. W3C&#8217;s format for them was PICS, the Platform for
 Internet Content Selection.
 </p>
-<p>
-The definition it gives is narrower than the word&#8217;s ordinary use, and the
-narrowing is the point.
-</p>
 </div>
 
 <h2>27.1 The definition, and the word doing the work</h2>
@@ -71,7 +67,7 @@ server sends ahead of the page.)
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
+<svg class="dia" viewBox="0 0 720 286" width="720" height="286" role="img"
      aria-labelledby="fig27-1-t fig27-1-d">
   <title id="fig27-1-t">The three places metadata is found</title>
   <desc id="fig27-1-d">Inside the document, as in an HTML head, where it is the
@@ -114,9 +110,7 @@ server sends ahead of the page.)
   <text x="596" y="220" class="t-sm" text-anchor="middle">other document</text>
 
   <line class="ln-mut" x1="24" y1="242" x2="696" y2="242"/>
-  <text x="360" y="266" class="t-sm" text-anchor="middle">Because metadata is data, it can be a document in its own right, with its own URI.</text>
-  <text x="360" y="288" class="t-sm t-it" text-anchor="middle">And metadata can describe metadata, without a new level of the architecture.</text>
-  <text x="360" y="314" class="t-sm" text-anchor="middle">The question the placement does not answer, and the architecture must: whose statement is it?</text>
+  <text x="360" y="270" class="t-sm" text-anchor="middle">The question the placement does not answer, and the architecture must: whose statement is it?</text>
 </svg>
 <figcaption><span class="fig-label">Figure 27.1</span>
 The same kind of data in three places. Notice the open question at the
@@ -128,8 +122,7 @@ publisher.</figcaption>
 The second consequence is recursion without hierarchy. Metadata may itself
 have an owner and an expiry date, so there is meta-metadata (data about the
 metadata, such as the date a review of the page was written), but the
-architecture does not distinguish many levels. It is the same move as Chapter 3&#8217;s refusal to
-distinguish names from addresses: one kind of thing, not a tower of kinds.
+architecture does not distinguish many levels.
 </p>
 
 <h2>27.3 The second axiom: independent assertions</h2>
@@ -141,8 +134,8 @@ set of independent assertions.</p>
 
 <p>
 Two assertions about the same resource stand alone. Together they mean &ldquo;this AND that&rdquo;, and AND does not care about order, so
-a collection of assertions is an unordered set. The consequence is a
-prohibition, and it rules out a great deal of existing practice:
+a collection of assertions is an unordered set. The note spells out what this
+forbids:
 </p>
 
 <blockquote>
@@ -151,6 +144,12 @@ assertions which are somehow cumulative or later ones override earlier ones.
 Each assertion stands independently of others.
 <cite>Metadata Architecture, 1997</cite>
 </blockquote>
+
+<p>
+The note&#8217;s test: given a label for jeans with a 32-inch waist and a price
+of $28, one can deduce a label with just the price; given a sentence of two
+months in jail and a $3000 fine, one cannot deduce a sentence of two months.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 240" width="720" height="240" role="img"
@@ -181,9 +180,10 @@ Each assertion stands independently of others.
 
   <rect class="box-warm" x="370" y="20" width="330" height="168" rx="4"/>
   <text x="535" y="46" class="t-caps" text-anchor="middle" style="fill:#b08d57">sentence: one statement</text>
-  <rect class="box-plain" x="386" y="76" width="142" height="60"/>
-  <text x="457" y="100" text-anchor="middle">punishment:</text>
-  <text x="457" y="120" text-anchor="middle">2 months AND $3000</text>
+  <rect class="box-plain" x="386" y="66" width="142" height="80"/>
+  <text x="457" y="88" text-anchor="middle">punishment:</text>
+  <text x="457" y="108" text-anchor="middle">2 months in jail</text>
+  <text x="457" y="128" text-anchor="middle">with a $3000 fine</text>
   <path class="ln" d="M 534 106 L 570 106" marker-end="url(#fig27-2-ah)"/>
   <path class="ln" style="stroke:#b08d57" d="M 546 98 L 558 114 M 558 98 L 546 114"/>
   <rect class="ln-dash" x="578" y="84" width="108" height="44"/>
@@ -191,7 +191,7 @@ Each assertion stands independently of others.
   <text x="632" y="120" text-anchor="middle" style="fill:#8a9a9a">2 months</text>
   <text x="535" y="172" class="t-sm" text-anchor="middle">not deducible</text>
 
-  <text x="360" y="222" class="t-sm" text-anchor="middle">Independent assertions are joined by an unordered AND: reorder or remove them freely.</text>
+  <text x="360" y="222" class="t-sm" text-anchor="middle">Separate assertions can be reordered or dropped; one assertion cannot be split.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 27.2</span>
 The note&#8217;s own pair of examples. Independence is what lets software
@@ -279,7 +279,8 @@ A link is an assertion relating two resources: the triple
 versioning example of Figure 27.3. Names for types must come from a global
 space, because anyone may coin one, and that means URIs. This is already the
 <em>triple</em> of Chapter 32: three parts, a relationship and the two things
-it relates, which RDF later made the basic unit of all Semantic Web data.
+it relates, which RDF (the Resource Description Framework, W3C&#8217;s format for such
+statements) later made the basic unit of all Semantic Web data.
 </p>
 
 <h2>27.5 Self-describing information</h2>
@@ -336,12 +337,10 @@ machine-readable grammar saying which tags may appear where.)</figcaption>
 </figure>
 
 <p>
-PICS is the note&#8217;s running example. The rest of the note, rough by its
-own account, covers label syntax, authorship, manipulating labels without
-knowing their vocabulary, and ordering. On ordering it lists mail header lines
+PICS is the note&#8217;s running example. On ordering it lists mail header lines
 and SGML attributes as unordered, HTTP header lines and SGML elements as
 ordered, and asks whether a form is needed for assertions with many fixed,
-ordered parameters. The generalisation survived. PICS did not.
+ordered parameters.
 </p>
 
 <div class="since">
@@ -357,12 +356,9 @@ in the transfer and in a separate description are still the three options:
 embedded data (schema.org, launched in June 2011, usually embedded as JSON-LD),
 HTTP headers, and separately published descriptions.</li>
 <li><strong>The authorship question was never fully answered.</strong> Who is
-making a statement, which section 27.2 flags as needing rationalisation,
+making a statement, which Figure 27.1 leaves open,
 remains the weak point: most embedded metadata records no author for its
 statements, which is why Chapter 37&#8217;s treatment of trust matters.</li>
-<li><strong>Ordering never went away.</strong> Even in 1997 the note listed
-HTTP header lines as ordered; order-dependent formats remain common, and the
-diagnosis in Chapter 32 still applies to them.</li>
 </ul>
 </div>
 

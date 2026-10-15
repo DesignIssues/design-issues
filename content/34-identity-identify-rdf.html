@@ -3,9 +3,10 @@
 <p>
 RDF data is written in XML markup, so a reference such as <code>#foo</code> can
 mean a piece of the document, a node in the data, or the real person. Berners-Lee
-gives each kind of pointer its own attribute, shows that one URI can change
-meaning with the file&#8217;s label, and says to identify a person by something
-unique, such as a mailbox, without confusing the two.
+gives each kind of pointer its own attribute. He shows that relabelling a file
+can change what one URI names. And he identifies a person by something only
+they have, such as a mailbox, without pretending the person <em>is</em> the
+mailbox.
 </p>
 </div>
 
@@ -57,9 +58,9 @@ says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
   father element, which describes Joe, are z:name with value Joe, z:wrote with
   href pointing to #foo and z:friend with resource pointing to #foo. Four
   candidate targets are stacked on the right. The value arrow goes to the
-  string Joe; the href arrow goes to the XML element, with one attribute and
-  four children; the resource arrow goes to Albert the person, with two
-  children. The RDF node, with three properties, is reached by no existing
+  string Joe; the href arrow goes to the XML element, the tagged text with id
+  foo; the resource arrow goes to Albert the person, a man with a son and a
+  daughter. The RDF node, with three properties, is reached by no existing
   attribute; a dashed arrow marks the proposed object= attribute.</desc>
 
   <text x="155" y="24" class="t-caps" text-anchor="middle">the markup</text>
@@ -94,7 +95,7 @@ says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
 
   <rect class="box-plain" x="470" y="98" width="180" height="44" rx="4"/>
   <text x="560" y="116" text-anchor="middle">the XML element</text>
-  <text x="560" y="133" class="t-sm" text-anchor="middle">1 attribute, 4 child elements</text>
+  <text x="560" y="133" class="t-sm" text-anchor="middle">the tagged text with id foo</text>
 
   <rect class="box" x="470" y="156" width="180" height="44" rx="4"/>
   <text x="560" y="174" text-anchor="middle">the RDF node</text>
@@ -108,7 +109,7 @@ says that Joe wrote <code>#foo</code> and is a friend of <code>#foo</code>
 
   <rect class="box-warm" x="470" y="214" width="180" height="44" rx="4"/>
   <text x="560" y="232" text-anchor="middle">Albert, the person</text>
-  <text x="560" y="249" class="t-sm" text-anchor="middle">2 children: Bill and Claire</text>
+  <text x="560" y="249" class="t-sm" text-anchor="middle">a man with a son and a daughter</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.1</span>
 The references sit inside the description of Albert&#8217;s father, Joe: Joe
@@ -132,8 +133,7 @@ attribute, not its value:
 </table>
 
 <p>
-He notes why the middle form has to exist at all, and the reason is
-practical:
+<code>href=</code> is needed because signatures apply to XML:
 </p>
 
 <blockquote>
@@ -145,9 +145,9 @@ not (in sigend XML) bits of RDF.
 <h2>34.2 The clash he records as a bug</h2>
 
 <p>
-A section added in February 2000 is flagged in the original as a bug in the
-relationship between the two layers: Chapter 24&#8217;s interpretation
-problem, where the same bytes read differently under different rules.
+In February 2000 Berners-Lee added a section calling this a bug in how XML and
+RDF fit together. It is Chapter 24&#8217;s problem again: the same bytes read
+differently under different rules.
 </p>
 
 <p>
@@ -186,8 +186,8 @@ into a file describing Ora Lassila. A fragment&#8217;s meaning comes from the
   <text x="540" y="166" class="t-sm" text-anchor="middle">or undefined, or another element</text>
 
   <text x="360" y="212" text-anchor="middle">Claim: I am the author of foo.rdf#bar</text>
-  <text x="180" y="236" class="t-sm" text-anchor="middle">false: Berners-Lee did not author Ora Lassila</text>
-  <text x="540" y="236" class="t-sm" text-anchor="middle">true: Berners-Lee wrote the snippet</text>
+  <text x="180" y="236" text-anchor="middle" style="fill:#b08d57">false: Berners-Lee did not author Ora Lassila</text>
+  <text x="540" y="236" text-anchor="middle" style="fill:#5a8f5a">true: Berners-Lee wrote the snippet</text>
 </svg>
 <figcaption><span class="fig-label">Figure 34.2</span>
 A fragment&#8217;s meaning comes from the media type, so relabelling the file
@@ -229,10 +229,7 @@ pointer it lacks in Figure 34.1.</li>
 
 <h2>34.3 Identifying things that have no address</h2>
 
-<p>
-The second half is the part that became standard practice, and it carries a
-warning about terminology.
-</p>
+
 
 <blockquote>
 RDF treats people as &ldquo;resources&rdquo; and in using this terminolgy
@@ -298,7 +295,8 @@ arrow.
   <rect class="box-plain" x="480" y="130" width="100" height="32" rx="4"/>
   <text x="530" y="151" text-anchor="middle">a mailbox</text>
 
-  <text x="670" y="116" class="t-sm t-it" text-anchor="middle">another record</text>
+  <text x="650" y="94" class="t-sm t-it" text-anchor="middle">another record,</text>
+  <text x="650" y="110" class="t-sm" text-anchor="middle">from a different file</text>
   <circle class="box-green" cx="670" cy="146" r="20" style="stroke-dasharray:4 3"/>
   <path class="ln" d="M650 146 L588 146"/>
   <path d="M588 142 L580 146 L588 150 Z" fill="#2f4f4f"/>
@@ -340,8 +338,8 @@ without settling the philosophy.
 <li><strong>The mechanism was standardised.</strong> <em>Inverse
 functional</em> properties, which formalise &ldquo;no two things share this value&rdquo;,
 are part of OWL, a W3C Recommendation of February 2004. The Friend of a
-Friend (FOAF) vocabulary identifies people by mailbox, or by a scrambled
-(hashed) form that hides the address.</li>
+Friend (FOAF) vocabulary (begun in 2000) identifies people by mailbox, or by a
+scrambled (hashed) form that hides the address, <code>mbox_sha1sum</code>.</li>
 <li><strong>RDF got its own media type.</strong> RFC 3870, published in
 September 2004, registered <code>application/rdf+xml</code>, a label under
 which RDF&#8217;s own fragment rules apply.</li>

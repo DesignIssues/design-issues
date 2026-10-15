@@ -10,8 +10,8 @@ will be. One example, an address book, runs through all three.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in April 2019, this note poses the problem that all of Volume VI has
-been walking towards, and states it as a tension rather than a task:
+Written in April 2019, this note poses a problem the earlier chapters of
+Volume VI left open, and states it as a tension rather than a task:
 </p>
 <blockquote>
 In a world of linked data, in which anyone can say anything about anything, how
@@ -47,6 +47,12 @@ closer, and still not enough.
 </p>
 
 <h2>57.2 Three technologies, three questions</h2>
+
+<p>
+The note answers with three technologies, each for one question. Shapes have
+established languages, SHACL and ShEx; forms have a draft vocabulary; footprints,
+in 2019, were only an idea.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 292" width="720" height="292" role="img"
@@ -91,9 +97,7 @@ closer, and still not enough.
   <text x="360" y="274" class="t-sm" text-anchor="middle">A shape can validate what arrived. A form can collect it. Neither says where to put it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 57.1</span>
-Shapes have standard languages (SHACL and ShEx, two ways of writing shapes). Forms have a draft vocabulary.
-Footprints were, in 2019, only an idea. Without them every application invents
-its own layout, and the silo returns inside the person&#8217;s own store.</figcaption>
+Without footprints every application invents its own layout, and the silo returns inside the person&#8217;s own store.</figcaption>
 </figure>
 
 <h2>57.3 What a shape is for</h2>
@@ -277,17 +281,14 @@ used to create a new link where old data does not exist.
 <p>
 An application must never use the rule to guess that something already exists
 at an address. That is what separates a footprint from a hard-coded folder.
-Two applications can both speak the protocol perfectly and still be unable to
-see each other&#8217;s data.
 </p>
 
-<h2>57.5 The shape of the problem, generally</h2>
+<h2>57.5 One shape, many footprints</h2>
 
 <p>
-Shapes are about machines agreeing, as a specification&#8217;s conformance
-rules are (Chapter 21). Forms are about people editing data (Chapter 56).
-Footprints are about placement: Chapter 37 warned not to confuse what is said
-with where it is stored.
+One shape can be stored under many footprints. That makes no difference to
+reading data, which needs only the shape; it matters only when creating data,
+which needs a footprint to say where it goes.
 </p>
 
 <figure>
@@ -350,13 +351,8 @@ with where it is stored.
   <text x="612" y="268" class="t-sm t-it" text-anchor="middle">writing needs a footprint</text>
 </svg>
 <figcaption><span class="fig-label">Figure 57.4</span>
-Forms and footprints both point at the shape, so its rules are written once
-and never copied.</figcaption>
+Many forms and many footprints can serve one shape.</figcaption>
 </figure>
-
-<p>
-For any shared store, agreeing a format is not agreeing a layout.
-</p>
 
 <h2>57.6 Finding where a person keeps things</h2>
 
@@ -425,8 +421,6 @@ made for groups in which the user is active.
 <li><strong>Shapes were already standardised.</strong> SHACL was a W3C
 Recommendation (July 2017) when this was written. ShEx was published by a W3C
 community group, not as a formal standard.</li>
-<li><strong>Forms remained bespoke.</strong> Interfaces driven by a form
-vocabulary stayed largely within Solid&#8217;s own libraries.</li>
 <li><strong>Footprints did not become a standard.</strong> Solid&#8217;s type
 index, older than the note, answers part of the question. From about 2020 the
 Solid community drafted Shape Trees and an Application Interoperability
@@ -465,7 +459,8 @@ Where does your phone put a new photo? Is that a footprint?</p>
 </div>
 <div class="question">
 <p><span class="question-number">57.5</span>
-Two apps add a group called Book Club using the same footprint. Where does each
-save it, and why does that matter?</p>
+Two apps use different footprints for groups. A user adds Book Club in one.
+What does the other app see, and which part of the note&#8217;s rule about
+existing links prevents a duplicate?</p>
 </div>
 </div>

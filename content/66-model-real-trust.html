@@ -22,9 +22,10 @@ machine let them say so?
 
 <p>
 When a browser connects securely to a site, the site shows a
-<em>certificate</em>: a document that ties its name to a cryptographic key.
-A key is a secret number only the site holds; the certificate lets the browser
-check it is talking to whoever holds it.
+<em>certificate</em>: a document that ties the site&#8217;s name to a public
+key. The site keeps the matching secret key; only the holder of that secret
+can answer the browser&#8217;s challenge, so the browser knows it is talking
+to the named site.
 </p>
 <p>
 The browser accepts it if a <em>certificate authority</em> it already trusts
@@ -37,7 +38,7 @@ Browsers show an alarming warning for it, however well the user knows the owner.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 284" width="720" height="284" role="img"
+<svg class="dia" viewBox="0 0 720 232" width="720" height="232" role="img"
      aria-labelledby="fig66-1-t fig66-1-d">
   <title id="fig66-1-t">How trust is really acquired</title>
   <desc id="fig66-1-d">Trust in a bank comes through a commercial hierarchy of
@@ -50,9 +51,8 @@ Browsers show an alarming warning for it, however well the user knows the owner.
   <text x="102" y="58" class="t-caps" text-anchor="middle">a hierarchy</text>
   <text x="102" y="84" class="t-sm" text-anchor="middle">a certificate authority</text>
   <text x="102" y="102" class="t-sm" text-anchor="middle">vouches for a bank</text>
-  <text x="102" y="134" class="t-sm t-it" text-anchor="middle">it deserves the</text>
-  <text x="102" y="150" class="t-sm t-it" text-anchor="middle">business it gets for</text>
-  <text x="102" y="166" class="t-sm t-it" text-anchor="middle">arbitrating at scale</text>
+  <text x="102" y="142" class="t-sm t-it" text-anchor="middle">good for identity</text>
+  <text x="102" y="158" class="t-sm t-it" text-anchor="middle">at global scale</text>
 
   <rect class="box-warm" x="196" y="34" width="156" height="150" rx="4"/>
   <text x="274" y="58" class="t-caps" text-anchor="middle" style="fill:#b08d57">as peers</text>
@@ -88,8 +88,6 @@ Browsers show an alarming warning for it, however well the user knows the owner.
   <text x="446" y="218" class="t-sm" text-anchor="middle" style="fill:#b08d57">warning page</text>
   <text x="618" y="218" class="t-sm" text-anchor="middle" style="fill:#b08d57">warning page</text>
 
-  <rect class="box-plain" x="24" y="232" width="672" height="40" rx="4"/>
-  <text x="360" y="257" class="t-sm" text-anchor="middle">The browser supports the first well, and fights the other three.</text>
 
 </svg>
 <figcaption><span class="fig-label">Figure 66.1</span>
@@ -107,8 +105,9 @@ because of it.
 <h2>66.2 The objection</h2>
 
 <p>
-The complaint is about whose interests a default serves. (PKI, public key infrastructure, is the system of certificate
-authorities described in 66.1.)
+The complaint is about whose interests the default serves. In the quotation,
+PKI (public key infrastructure) means the certificate-authority system of
+66.1.
 </p>
 
 <blockquote>
@@ -147,7 +146,7 @@ risk.
   store of many certificate authorities, any of which the browser accepts; any
   one of them, if hacked, can vouch for a fake family server. One authority signs a certificate, which vouches for the family
   server. On the right, the user and the family server are joined by a single
-  line: a key handed over in person.</desc>
+  line: keys compared in person.</desc>
 
   <text x="212" y="28" class="t-caps" text-anchor="middle">through the hierarchy</text>
   <text x="558" y="28" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">directly</text>
@@ -191,7 +190,8 @@ risk.
   <text x="558" y="63" text-anchor="middle">user</text>
   <path d="M 558 72 L 558 254" stroke="#5a8f5a" stroke-width="1.8" fill="none"/>
   <path d="M 553 249 L 558 259 L 563 249 Z" fill="#5a8f5a"/>
-  <text x="572" y="160" class="t-sm">key handed over</text>
+  <path d="M 553 82 L 558 72 L 563 82 Z" fill="#5a8f5a"/>
+  <text x="572" y="160" class="t-sm">keys compared</text>
   <text x="572" y="176" class="t-sm">in person</text>
   <rect class="box-green" x="498" y="260" width="120" height="28" rx="4"/>
   <text x="558" y="279" text-anchor="middle">family server</text>
@@ -272,14 +272,8 @@ note gives none.)</figcaption>
 <h2>66.4 The common thread</h2>
 
 <p>
-In Berners-Lee&#8217;s own numbering this is the second of four notes; the
-first is the one on HTTPS Everywhere. This book places it first, as it states
-the principle; the HTTPS note is Chapter 67. The next two look at how
-finely web applications are divided by origin (the site address a browser
-treats as a security boundary, Chapter 68), and at the lack of support for
-client certificates, which the user rather than the site presents (Chapter
-69). All four make the same claim, that the system models one
-kind of trust and treats every other kind as an error.
+All four notes make the same claim: the system models one kind of trust and
+treats every other kind as an error.
 </p>
 
 <p>

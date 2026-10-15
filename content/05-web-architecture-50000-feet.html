@@ -40,14 +40,10 @@ III and IV.
 
 <p>
 The Web, Berners-Lee says, is a universe of network-accessible information.
-He divides its potential in two, and the division organises the note and much
-of this book: the Web is first a means of human-to-human communication, and
-second a space in which software agents can reach enough of what society and
-science contain to work alongside us.
-</p>
-
-<p>
-Three goals run through all of it: interoperability, a technology that can
+He divides its potential in two: first, people communicating with people, as
+when one person publishes a page and another reads it; second, software that
+can reach enough data to act as a tool for people, as when a program reads a
+timetable to plan a journey. Three goals run through all of it: interoperability, a technology that can
 evolve, and universality of access, irrespective of hardware, software,
 network, language, culture, location, or physical or mental impairment.
 </p>
@@ -70,14 +66,12 @@ to things defined in another language.
 An HTML page can link to an image, a stylesheet or an RDF description with
 the same <code>href</code>, because all three are named by URIs; none of
 those languages had to agree on anything else. A language that adopts URIs inherits whatever the URI specification says
-about persistence, identity and equivalence. That reference is itself a
-flexibility point, a place where one part can change without the others:
-naming can be defined once and revised separately from every language that
-uses it.
+about persistence, identity and equivalence. So naming can be defined once
+and revised without touching any language that uses it.
 </p>
 
 <p>
-The guidance that follows has held up:
+His guidance:
 </p>
 
 <ul>
@@ -114,7 +108,7 @@ Figure 5.1 shows.
 <figure>
 <svg class="dia" viewBox="0 0 600 330" width="600" height="330" role="img" aria-labelledby="fig5-1-t fig5-1-d">
 <title id="fig5-1-t">The parts of an HTTP address</title>
-<desc id="fig5-1-d">The address http://www.example.org/docs/report.html split into three boxes: the scheme http:, the domain www.example.org, which is delegated via DNS, and the path /docs/report.html, which is opaque and decided by the owner. Below the domain, the DNS tree runs from the root to org, to example.org, to www. The root is marked as the only centralised part, run under IANA and ICANN.</desc>
+<desc id="fig5-1-d">The address http://www.example.org/docs/report.html split into three boxes: the scheme http:, the domain www.example.org, which is delegated via DNS, and the path /docs/report.html, which is opaque and decided by the owner. Below the domain, the DNS tree runs from the root to org, to example.org, to www. The root is marked as the only centralised part, run under ICANN.</desc>
 <rect class="box-plain" x="40" y="30" width="70" height="32" rx="3"/>
 <text class="t-mono" x="75" y="51" text-anchor="middle">http:</text>
 <rect class="box" x="130" y="30" width="180" height="32" rx="3"/>
@@ -129,7 +123,7 @@ Figure 5.1 shows.
 <path d="M216 115 L220 122 L224 115 Z" fill="#8a9a9a"/>
 <rect class="box-warm" x="160" y="124" width="120" height="28" rx="3"/>
 <text x="220" y="143" text-anchor="middle">root</text>
-<text class="t-sm" x="298" y="142" style="fill:#b08d57">the only centralised part (IANA/ICANN)</text>
+<text class="t-sm" x="298" y="142" style="fill:#b08d57">the only centralised part (ICANN)</text>
 <path class="ln" d="M220 152 L220 171"/>
 <path d="M216 171 L220 178 L224 171 Z" fill="#2f4f4f"/>
 <rect class="box" x="160" y="178" width="120" height="28" rx="3"/>
@@ -146,14 +140,13 @@ Figure 5.1 shows.
 <text class="t-mono" x="220" y="305" text-anchor="middle">www</text>
 <text class="t-sm" x="298" y="304">chosen by the owner of example.org</text>
 </svg>
-<figcaption><span class="fig-label">Figure 5.1</span> Everything right of the domain is decided locally; everything left depends on one root. Each level of the tree hands authority to the next, but every lookup starts at the same place.</figcaption>
+<figcaption><span class="fig-label">Figure 5.1</span> The domain depends on one root; the path to its right is decided locally. Each level of the tree hands authority to the next, but every lookup starts at the same place.</figcaption>
 </figure>
 
 <p>
 He adds that the Consortium did not address this, except indirectly through
 ICANN (the Internet Corporation for Assigned Names and Numbers, set up in 1998
-to oversee the DNS root). The admission is characteristic: a structural
-weakness is named and no solution offered.
+to oversee the DNS root).
 </p>
 
 <p>
@@ -208,7 +201,7 @@ to.
 <text class="t-sm" x="20" y="272">the status sits in a second space,</text>
 <text class="t-sm" x="20" y="288">reachable only by clients that know the method</text>
 <path class="ln-mut" d="M340 15 L340 295"/>
-<text class="t-caps" x="360" y="24">give it a uri</text>
+<text x="360" y="24" style="fill:#1c5a7a">give it a URI</text>
 <rect class="box-plain" x="360" y="40" width="60" height="130" rx="3"/>
 <text x="390" y="109" text-anchor="middle">client</text>
 <rect class="box" x="600" y="40" width="70" height="130" rx="3"/>
@@ -297,7 +290,7 @@ which time the Web had moved decisively the other way.
 <h2>5.6 Messages and documents are the same thing</h2>
 
 <p>
-The most speculative section proposes collapsing a distinction:
+The last section proposes merging two things:
 </p>
 
 <blockquote>
@@ -326,9 +319,9 @@ was derived.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 640 270" width="640" height="270" role="img" aria-labelledby="fig5-4-t fig5-4-d">
+<svg class="dia" viewBox="0 0 640 214" width="640" height="214" role="img" aria-labelledby="fig5-4-t fig5-4-d">
 <title id="fig5-4-t">One kind of thing, two jobs</title>
-<desc id="fig5-4-d">Left, an HTTP message made of header fields and a body. Right, a document made of metadata and content. A double arrow between them is labelled same structure. Beneath, two gains: messages can be signed, as documents are; documents can be binary-packed, as messages are. A small envelope inside an envelope is labelled email inside email.</desc>
+<desc id="fig5-4-d">Left, an HTTP message made of header fields and a body. Right, a document made of metadata and content. A double arrow between them is labelled same structure. Beneath, two gains: messages can be signed, as documents are; documents can be binary-packed, as messages are.</desc>
 <rect class="box" x="40" y="20" width="200" height="118" rx="4"/>
 <text x="140" y="44" text-anchor="middle">HTTP message</text>
 <rect class="box-plain" x="60" y="58" width="160" height="28" rx="3"/>
@@ -349,13 +342,9 @@ was derived.
 <text class="t-sm" x="165" y="186" text-anchor="middle">messages can be signed, as documents are</text>
 <rect class="box-warm" x="330" y="166" width="290" height="32" rx="3"/>
 <text class="t-sm" x="475" y="186" text-anchor="middle">documents can be binary-packed, as messages are</text>
-<rect class="box-plain" x="236" y="216" width="48" height="34" rx="2"/>
-<path class="ln-mut" d="M236 216 L260 232 L284 216"/>
-<rect class="box-plain" x="250" y="230" width="20" height="14" rx="1"/>
-<path class="ln-mut" d="M250 230 L260 237 L270 230"/>
-<text class="t-sm" x="296" y="238">email inside email</text>
+
 </svg>
-<figcaption><span class="fig-label">Figure 5.4</span> If a message is just a document, every tool for one works on the other. Signing comes from the document side, compact binary packing from the message side, and an email can already carry another email whole.</figcaption>
+<figcaption><span class="fig-label">Figure 5.4</span> If a message is just a document, every tool for one works on the other. Signing comes from the document side, compact binary packing from the message side.</figcaption>
 </figure>
 
 <h3>The wish list for HTTP</h3>
@@ -395,12 +384,11 @@ whole in a fair way&rdquo; is contested; that it was addressed at all took
 eighteen years.</li>
 <li><strong>The wish list was granted, in a different currency.</strong>
 Concurrent message exchange arrived with HTTP/2, RFC 7540 of May 2015, and
-HTTP/3, RFC 9114 of June 2022. Both use binary framing. Neither uses XML or
-RDF messages. The functional requirements were met and the representational
+HTTP/3, RFC 9114 of June 2022. HTTP-NG closed in the late 1990s; the multiplexing it wanted arrived through
+Google&#8217;s SPDY (2009), the basis of HTTP/2. Both versions use binary framing;
+neither uses XML or RDF messages. The functional requirements were met and the representational
 argument was lost.</li>
-<li><strong>HTTP-NG did not survive.</strong> It closed without a successor
-protocol. Google&#8217;s SPDY experiment (2009) later became the basis of
-HTTP/2 (2015).</li>
+
 <li><strong>Web Services went the other way.</strong> The XML-based
 remote-operation stack was built, then largely displaced through the 2010s
 by resource-oriented interfaces exchanging JSON, closer to the

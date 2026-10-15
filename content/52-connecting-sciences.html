@@ -21,7 +21,7 @@ discoveries follow.
 Written in January 2004, this note has a plain motive. Scientific problems
 increasingly need several fields at once, and scientific information is
 naturally data (tables, rules, measurements) rather than prose. That makes
-science the obvious first customer for the Semantic Web, the web of data that
+science an obvious customer for the Semantic Web, the web of data that
 machines can read and combine.
 </p>
 </div>
@@ -40,8 +40,7 @@ perceptions of existing ones.
 The chain Berners-Lee offers runs from physics through physical chemistry,
 organic chemistry, cell biology, proteomics (the study of all the proteins in
 a cell or organism), genetics, epidemiology (the study of how diseases spread
-through populations), medicine and pharmacology. One may be expert in one
-without being expert in all, and must know something of the neighbours.
+through populations), medicine and pharmacology.
 </p>
 
 <h3>The cost of crossing a boundary</h3>
@@ -53,6 +52,13 @@ its data its own way, deciding what to record and how the pieces relate. So
 every idea that crosses fields means negotiating the conversion and transfer
 of data afresh, while getting groups to agree common formats and vocabularies
 first takes great time and effort.
+</p>
+
+<p>
+A hypothetical example: two databases record the same protein under different
+names. Neither changes; someone publishes one machine-readable statement that
+the names are equivalent, and a program can now follow a question from one
+into the other. That statement is a mapping.
 </p>
 
 <figure>
@@ -150,22 +156,15 @@ The note&#8217;s answer is route (c), which Berners-Lee calls retrospective and
 incremental (Figure 52.2). Retrospective: each field&#8217;s models and data
 already exist and stay as they are. Incremental: links are built one interface
 at a time, and no data model is redesigned at once. The overlap is only
-partial, but linking it where it exists is still worth doing. The links are
-metadata, data about data. A hypothetical example: two databases record the same protein under different
-names. Neither changes; someone publishes one machine-readable statement that
-the names are equivalent, and a program can now follow a question from one
-into the other. That statement is a mapping.
+partial, but linking it where it exists is still worth doing.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 50 720 270" width="720" height="270" role="img"
+<svg class="dia" viewBox="0 50 720 170" width="720" height="170" role="img"
      aria-labelledby="fig52-2-t fig52-2-d">
   <title id="fig52-2-t">Bridges built afterwards, at the overlaps</title>
   <desc id="fig52-2-d">Four overlapping ellipses for chemistry, cell biology,
-  genetics and epidemiology. A dot in each overlap marks a mapping. Beneath,
-  two notes: retrospectively, the modelling is already done and the data
-  already exists; incrementally, no data model is redesigned at once and the
-  work happens at the interfaces.</desc>
+  genetics and epidemiology. A dot in each overlap marks a mapping.</desc>
 
   <g opacity="0.85">
     <ellipse cx="150" cy="120" rx="110" ry="56" fill="#f0f5f8" stroke="#1c5a7a"/>
@@ -188,15 +187,9 @@ into the other. That statement is a mapping.
     <path class="ln-mut" d="M 220 126 L 220 184 M 360 126 L 360 184 M 500 126 L 500 184"/>
   </g>
 
-
-  <line class="ln-mut" x1="24" y1="222" x2="696" y2="222"/>
-  <text x="24" y="246" class="t-sm"><tspan class="t-caps">retrospectively</tspan>: the modelling is already done and the data already exists.</text>
-  <text x="24" y="270" class="t-sm"><tspan class="t-caps">incrementally</tspan>: no data model is redesigned at once; the work happens at the interfaces.</text>
-  <text x="24" y="298" class="t-sm">Fields share only some concepts; linking those is still worth it.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 52.2</span>
-Each field keeps its own data; the dots are small published mappings a
-question can follow.</figcaption>
+Each field keeps its own data; a mapping sits where two overlap.</figcaption>
 </figure>
 
 <h2>52.2 The argument from serendipity</h2>
@@ -252,12 +245,6 @@ scientific data available in a Semantic Web so that crazy hypotheses can be
 tested in a few moments harnessing data from many diverse fields.
 <cite>Connecting the Sciences with the Semantic Web, 2004</cite>
 </blockquote>
-
-<p>
-Serendipity is treated as a thing infrastructure can supply. If testing a
-strange idea is cheap enough, strange ideas get tested, and lucky accidents
-become more likely.
-</p>
 
 <h2>52.3 The closing widening</h2>
 
@@ -341,9 +328,9 @@ academies. Publication could reasonably be a condition of funding.</li>
 </ul>
 
 <p>
-He also flags what openness raises: the lab notebook, whose incidental details
-sometimes matter later, and privacy, clinical trial data and the copyright of
-compilations.
+He also lists problems openness brings: what to publish from lab notebooks,
+whose incidental details sometimes matter later; anonymising clinical trial
+data; and copyright in compilations.
 </p>
 
 <div class="since">
@@ -390,7 +377,8 @@ moments?</p>
 </div>
 <div class="question">
 <p><span class="question-number">52.4</span>
-The overlap between neighbouring fields is only partial. Why does the note
-say it is still worth linking?</p>
+Figure 52.1 shows six conversions for four fields. How many would twenty
+fields need under route (a), and how many links under route (c) if each field
+overlaps only its two neighbours?</p>
 </div>
 </div>

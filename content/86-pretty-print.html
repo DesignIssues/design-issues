@@ -37,7 +37,7 @@ tool loses that step.
 </p>
 
 <p>
-He adds the field&#8217;s experience, and answers an objection:
+He adds the field&#8217;s experience, and meets an objection:
 </p>
 
 <blockquote>
@@ -75,36 +75,36 @@ changed between two.
   a serialiser that keeps the same order: the diff removes one line and adds one,
   showing exactly the age change.</desc>
 
-  <rect class="box-warm" x="24" y="34" width="320" height="230" rx="4"/>
-  <text x="184" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">re-written in a new order</text>
-  <rect x="40" y="68" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="88" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="108" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="128" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="148" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="168" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="188" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="40" y="208" width="288" height="18" fill="#fdfdfc"/>
-  <text x="48" y="81" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">- :joe a     :Person;</text>
-  <text x="48" y="101" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      name  "Joe Meadows";</text>
-  <text x="48" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      age   41;</text>
-  <text x="48" y="141" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      email &lt;mailto:joe@ex.org&gt;.</text>
-  <text x="48" y="161" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+ :joe email &lt;mailto:joe@ex.org&gt;;</text>
-  <text x="48" y="181" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   age 42;</text>
-  <text x="48" y="201" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   a :Person;</text>
-  <text x="48" y="221" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   name "Joe Meadows".</text>
-  <text x="184" y="250" class="t-sm" text-anchor="middle">only the age changed, but every line differs</text>
+  <rect class="box-warm" x="12" y="34" width="342" height="230" rx="4"/>
+  <text x="183" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">re-written in a new order</text>
+  <rect x="24" y="68" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="88" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="108" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="128" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="148" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="168" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="188" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="24" y="208" width="318" height="18" fill="#fdfdfc"/>
+  <text x="30" y="81" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">- p:joe a         foaf:Person;</text>
+  <text x="30" y="101" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-       foaf:name "Joe Meadows";</text>
+  <text x="30" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-       foaf:age  41;</text>
+  <text x="30" y="141" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-       foaf:mbox &lt;mailto:joe@ex.org&gt;.</text>
+  <text x="30" y="161" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+ p:joe foaf:mbox &lt;mailto:joe@ex.org&gt;;</text>
+  <text x="30" y="181" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   foaf:age 42;</text>
+  <text x="30" y="201" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   a foaf:Person;</text>
+  <text x="30" y="221" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+   foaf:name "Joe Meadows".</text>
+  <text x="183" y="250" class="t-sm" text-anchor="middle">only the age changed, but every line differs</text>
 
-  <rect class="box-green" x="376" y="34" width="320" height="230" rx="4"/>
-  <text x="536" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">same order every time</text>
-  <rect x="392" y="108" width="288" height="18" fill="#fdfdfc"/>
-  <rect x="392" y="128" width="288" height="18" fill="#fdfdfc"/>
-  <text x="400" y="81" class="t-mono" xml:space="preserve" style="white-space:pre">  :joe a     :Person;</text>
-  <text x="400" y="101" class="t-mono" xml:space="preserve" style="white-space:pre">       name  "Joe Meadows";</text>
-  <text x="400" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-      age   41;</text>
-  <text x="400" y="141" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+      age   42;</text>
-  <text x="400" y="161" class="t-mono" xml:space="preserve" style="white-space:pre">       email &lt;mailto:joe@ex.org&gt;.</text>
-  <text x="536" y="250" class="t-sm" text-anchor="middle">one line out, one line in: the age changed</text>
+  <rect class="box-green" x="366" y="34" width="342" height="230" rx="4"/>
+  <text x="537" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">same order every time</text>
+  <rect x="378" y="108" width="318" height="18" fill="#fdfdfc"/>
+  <rect x="378" y="128" width="318" height="18" fill="#fdfdfc"/>
+  <text x="384" y="81" class="t-mono" xml:space="preserve" style="white-space:pre">  p:joe a         foaf:Person;</text>
+  <text x="384" y="101" class="t-mono" xml:space="preserve" style="white-space:pre">        foaf:name "Joe Meadows";</text>
+  <text x="384" y="121" class="t-mono" xml:space="preserve" style="fill:#b08d57;white-space:pre">-       foaf:age  41;</text>
+  <text x="384" y="141" class="t-mono" xml:space="preserve" style="fill:#5a8f5a;white-space:pre">+       foaf:age  42;</text>
+  <text x="384" y="161" class="t-mono" xml:space="preserve" style="white-space:pre">        foaf:mbox &lt;mailto:joe@ex.org&gt;.</text>
+  <text x="537" y="250" class="t-sm" text-anchor="middle">one line out, one line in: the age changed</text>
 </svg>
 <figcaption><span class="fig-label">Figure 86.1</span>
 One edit, Joe&#8217;s age from 41 to 42, seen in version control. The
@@ -119,8 +119,8 @@ property, value.
 </p>
 
 <p>
-Tests compare actual with expected output; the note advises comparing
-pretty-printed versions rather than raw triples, so a person can see why they
+For tests, the note advises comparing pretty-printed output rather than raw
+triples, so a person can see why they
 differ.
 </p>
 
@@ -180,7 +180,7 @@ One property of the writer serves three readers, each named in the note.</figcap
 <h2>86.3 Writing, not only reading</h2>
 
 <p>
-Formatting is usually discussed for the reader alone. The note goes further:
+Legibility helps the writer too:
 </p>
 
 <blockquote>
@@ -192,8 +192,8 @@ English like way also is more pleasant, and easier to check for mistakes.
 </blockquote>
 
 <p>
-This is the case for Chapter 42&#8217;s notation, made on grounds of comfort:
-a syntax close to a sentence is easier to get right by hand.
+This is the argument for N3 (Chapter 42): a syntax close to a sentence is
+easier to write correctly by hand.
 </p>
 
 <blockquote>
@@ -203,14 +203,13 @@ whiteboard or in a chat, then legibility and writability are both important.
 </blockquote>
 
 <p>
-A format readable in a chat window without tooling is one a team can
-discuss.
+&ldquo;(This is what N3 was originally made for.)&rdquo;
 </p>
 
 <h2>86.4 The argument in general</h2>
 
 <p>
-The note lists six benefits; the case does not rest on the first.
+The note lists six benefits. Smaller files, the first, is the weakest.
 </p>
 
 <table>
@@ -298,15 +297,15 @@ N3 adds raw dates and three further forms:
 
 <table>
 <tr><th>Feature</th><th>Long form</th><th>Short form</th></tr>
-<tr><td>Reverse arc</td><td><code>p:joe foaf:knows p:ann.</code> apart</td><td><code>p:ann foaf:name "Ann"; is foaf:knows of p:joe.</code></td></tr>
+<tr><td>Reverse arc</td><td><code>p:joe foaf:knows p:ann.</code> written as a separate statement about Joe</td><td><code>p:ann foaf:name "Ann"; is foaf:knows of p:joe.</code></td></tr>
 <tr><td><code>@keywords</code></td><td><code>:joe a :Person.</code></td><td><code>@keywords a. joe a Person.</code></td></tr>
-<tr><td>Curly brackets</td><td>Not expressible in Turtle</td><td><code>p:ann p:said { p:joe foaf:age 42 }.</code></td></tr>
+<tr><td>Curly brackets</td><td>(no Turtle equivalent)</td><td><code>p:ann p:said { p:joe foaf:age 42 }.</code></td></tr>
 </table>
 
 <p>
-Reverse arcs list every link touching a thing with it, so a serialiser can
-nest blank nodes in brackets instead of inventing <code>_:b1</code> labels. Of shared sketching in a chat, the note remarks:
-&ldquo;(This is what N3 was originally made for.)&rdquo;
+With reverse arcs, every link touching a thing can be written in one place. A
+serialiser can then nest unnamed things in square brackets rather than inventing
+labels like <code>_:b1</code>, at least when the graph has no loops.
 </p>
 
 <div class="since">
@@ -317,6 +316,8 @@ Canonicalization (W3C Recommendation, May 2024) writes any dataset as a
 deterministic list of lines for comparison and signing. That meets the first
 requirement of section 86.2, but is not meant for reading and does not promise
 small diffs.</li>
+<li><strong>Turtle revised.</strong> From 2022 the W3C RDF-star Working Group
+revised Turtle for RDF 1.2, adding syntax for statements about statements.</li>
 </ul>
 </div>
 

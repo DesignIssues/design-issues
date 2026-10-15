@@ -168,6 +168,11 @@ The two highlighted lines become the two columns. Every other match becomes a
 row.</figcaption>
 </figure>
 
+<p>
+A graph can loop back on itself: Joe knows Ann and Ann knows Joe. A tree
+cannot. Tabulator simply shows Joe again, closed (Figure 56.3).
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 232" width="720" height="232" role="img"
      aria-labelledby="fig56-3-t fig56-3-d">
@@ -202,15 +207,14 @@ row.</figcaption>
   <text x="538" y="216" class="t-sm t-it" text-anchor="middle">Joe again, left closed: the loop is there, but nobody needs to follow it</text>
 </svg>
 <figcaption><span class="fig-label">Figure 56.3</span>
-A graph can loop; a tree cannot. The note&#8217;s answer is that users could
-follow the loop but don&#8217;t bother, so Joe simply reappears, unexpanded.</figcaption>
+The note&#8217;s answer: users could follow the loop but will not bother.</figcaption>
 </figure>
 
 <h2>56.3 The design principles</h2>
 
 <p>
-The note lists six design principles. Its <em>ontology</em> means the
-vocabulary: the published terms, with labels, that the data uses.
+The note lists six design principles. In them, &lsquo;ontology&rsquo; means
+the vocabulary: the published terms, with labels, that the data uses.
 </p>
 
 <table>
@@ -282,11 +286,11 @@ sees. Both principles at once.</figcaption>
 <p>
 Inference here means the program working out facts that nobody wrote down.
 The note&#8217;s best case is &ldquo;smushing&rdquo;: deciding that two
-nodes are the same thing, as when many address books list the same people. In
+entries describe the same thing, as when many address books list the same people. In
 the Friend of a Friend (FOAF) project a profile could list a friend by
-email address alone. Anyone viewing it who had that address in their own
-contacts saw the friend&#8217;s right name, because the two nodes were merged
-into one. The note calls this low level of inference a sweet spot.
+email address alone. If the viewer already had that address in their own
+contacts, Tabulator treated the two entries as one person and showed the name
+the viewer knew. The note calls this low level of inference a sweet spot.
 </p>
 
 <h2>56.4 The audience, and the ambition</h2>
@@ -302,11 +306,7 @@ not understand the semantics.
 <cite>Goals for a Human-Data Interface, 2010</cite>
 </blockquote>
 
-<p>
-Spreadsheet users already model the world, but the machine cannot know what
-their relations mean, so they can share them only by sending the file. The
-goal follows:
-</p>
+<p>The goal follows:</p>
 
 <blockquote>
 A major goal is that the software should allow users to be as powerful as
@@ -341,8 +341,7 @@ adaptive default interfaces was an important optimization.
   <desc id="fig56-5-d">A horizontal axis running from more tailored on the
   left to works for anything on the right. On it sit three boxes: hand-coded
   panes, such as a contacts pane written by a developer; user-made forms,
-  stored as data, with a form editor that is itself a form and a shared
-  registry by type; and the generic outline, which shows any data with no
+  such as a club-membership form made by a user; and the generic outline, which shows any data with no
   setup.</desc>
 
   <text x="40" y="30" class="t-caps">more tailored</text>
@@ -358,9 +357,8 @@ adaptive default interfaces was an important optimization.
 
   <rect class="box" x="260" y="70" width="200" height="104" rx="4"/>
   <text x="360" y="96" class="t-lg" text-anchor="middle">user-made forms</text>
-  <text x="360" y="126" class="t-sm" text-anchor="middle">form stored as data</text>
-  <text x="360" y="144" class="t-sm" text-anchor="middle">form editor is itself a form</text>
-  <text x="360" y="162" class="t-sm" text-anchor="middle">shared registry by type</text>
+  <text x="360" y="126" class="t-sm" text-anchor="middle">e.g. a club-membership form</text>
+  <text x="360" y="144" class="t-sm" text-anchor="middle">made by a user</text>
 
   <rect class="box-green" x="490" y="70" width="200" height="104" rx="4"/>
   <text x="590" y="96" class="t-lg" text-anchor="middle">generic outline</text>
@@ -377,11 +375,10 @@ three, so the user always had some view of any data.</figcaption>
 <ul>
 <li><strong>The program became infrastructure.</strong> By 2019, the note
 records, Tabulator had been repurposed as the data browser for Solid, built on
-its store, rdflib.js. Its panes were later published as the solid-panes
-and mashlib packages.</li>
-<li><strong>The no-code ambition arrived elsewhere.</strong> No-code tools such as
-Airtable (founded 2012) reached the audience of section 56.4, without linked
-data underneath.</li>
+its store, rdflib.js.</li>
+<li><strong>The no-code ambition arrived elsewhere.</strong> No-code database tools such
+as Airtable (founded 2012) took up the ambition without linked data
+underneath.</li>
 </ul>
 </div>
 
@@ -404,8 +401,8 @@ send does it allow, and what can&#8217;t it do that a web page can?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.2</span>
-An address book stores a web address for each contact. Where, if anywhere,
-should it appear on screen?</p>
+The rule says never show URIs. When would a user need one, for instance to
+share a contact, and how could the interface give it without showing it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">56.3</span>

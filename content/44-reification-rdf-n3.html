@@ -93,7 +93,7 @@ same person.
 </p>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 360" width="720" height="360" role="img"
+<svg class="dia" viewBox="0 0 720 354" width="720" height="354" role="img"
      aria-labelledby="fig44-2-t fig44-2-d">
   <title id="fig44-2-t">Describing a statement, and why the name must be quoted</title>
   <desc id="fig44-2-d">If a description uses the identifier as a symbol, then a
@@ -131,15 +131,14 @@ same person.
   <text x="396" y="276" class="t-sm" style="fill:#5a8f5a">unchanged: a string is not a symbol</text>
 
   <line class="ln-mut" x1="24" y1="308" x2="696" y2="308"/>
-  <text x="360" y="330" class="t-sm" text-anchor="middle">The two graphs are different graphs, even when the two names denote the same person.</text>
-  <text x="360" y="352" class="t-sm t-it" text-anchor="middle">A description of a graph must record which name the graph used.</text>
+  <text x="360" y="334" class="t-sm t-it" text-anchor="middle">A description of a graph must record which name the graph used.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 44.2</span>
 Left: the description uses the name itself, so a system that learns
 <code>ex:joe</code> = <code>ex:jd1</code> may swap them, and which name the
-graph used is lost. Right: a string cannot be swapped. This is the use-mention
-distinction of Chapter 35 arriving as a specification requirement rather than
-as an author&#8217;s slip.</figcaption>
+graph used is lost. Right: a string cannot be swapped. This is Chapter 35&#8217;s
+difference between using a name and talking about it, now written into a
+specification.</figcaption>
 </figure>
 
 <p>
@@ -153,12 +152,6 @@ not suitable, because it loses that information.
 <cite>Reifying RDF (properly), and N3, 2004</cite>
 </blockquote>
 
-<p>
-The two descriptions describe different graphs, even when the names refer to
-the same person, because a graph is made of the symbols it actually used.
-Equivalence lets one be derived from the other, but it matters which name a
-graph used.
-</p>
 
 <h2>44.2 Describing a blank node</h2>
 
@@ -232,7 +225,7 @@ the same statements are demonstrably the same in their reified form.
 
 <p>
 He adds that later systems might process sets explicitly and the notation
-could gain set syntax. Chapter 43 argues for that; RDF never added sets.
+could gain set syntax, as Chapter 43 argues.
 </p>
 
 <h2>44.4 Why quotation is not assertion</h2>
@@ -246,7 +239,8 @@ thing, which can sit inside a statement.
 <pre><code>ex:jane  ex:knows   { ex:joe ex:name  "James Doe" }.</code></pre>
 
 <p>
-Jane&#8217;s knowledge is in those terms. Even if two identifiers refer to the
+What Jane knows is stated with the name <code>ex:joe</code>, not with the
+person. Even if two identifiers refer to the
 same person, Jane may not know that, and so may not know the corresponding
 fact about the other name.
 </p>
@@ -287,20 +281,9 @@ does not license rewriting what Jane knows.</figcaption>
 </figure>
 
 <p>
-A formula can also contain variables, so a description of it must carry
-three things: the statements, the <em>universals</em> (symbols that stand for
-anything) and the <em>existentials</em> (symbols that stand for some
-particular thing). The note&#8217;s example is:
-</p>
-
-<pre><code>[] a car.  { ?x a car } =&gt; { ?x a vehicle }.</code></pre>
-
-<p>
-Here <code>[]</code> is &ldquo;some unnamed thing&rdquo; and <code>=&gt;</code>
-reads &ldquo;if &hellip; then&rdquo;. The note glosses it as &ldquo;There is a
-car. Anything which is a car is a vehicle&rdquo;: <code>?x</code> is a
-universal, and the unnamed car an existential. Described in full, the result is
-several times longer than the input.
+A formula with variables (the note&#8217;s example: &ldquo;There is a car.
+Anything which is a car is a vehicle&rdquo;) needs its description to list
+those variables as well, and grows several times longer.
 </p>
 
 <h2>44.5 The final distinction</h2>
@@ -349,8 +332,9 @@ Community Group report (2021) and the RDF 1.2 work that followed from 2022
 added a compact way to annotate a statement, and had to settle
 exactly the question this chapter raises: whether annotating a statement
 asserts it.</li>
-<li><strong>Sets are still absent.</strong> The workaround of section 44.3 is
-still the way to express an unordered collection.</li>
+<li><strong>Sets are still absent.</strong> RDF 1.1 added no set type, nor has
+the RDF 1.2 work; <code>owl:oneOf</code> remains a workaround rather than a
+common practice.</li>
 </ul>
 </div>
 

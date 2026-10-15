@@ -26,10 +26,10 @@ album onto a calenar application and see the photos on my calendar.
 <p>
 The note sets a hard case: two applications written independently, without
 this case in mind. The only assumption is that
-both are &ldquo;semantic-web aware&rdquo;: each has its own vocabulary (an
-agreed set of terms, such as &ldquo;start time&rdquo;) for what it deals in, and
-each keeps a copy of its data in RDF, as a graph (a web of simple statements
-linking things to their properties).
+both are &ldquo;semantic-web aware&rdquo;. Each has its own vocabulary, an
+agreed set of terms such as &ldquo;start time&rdquo;. And each keeps a copy of
+its data in RDF: a graph, or web of simple statements linking things to their
+properties.
 </p>
 
 <p>
@@ -48,8 +48,8 @@ transferred.
 
 <p>
 Copying from a page into a plain message works because the two ends negotiate
-down to a format they share. Content negotiation means exactly this: the
-sender offers several forms, the receiver says which it accepts, and they
+down to a format they share. On the Web the same thing is called content negotiation:
+the sender offers several forms, the receiver says which it accepts, and they
 settle on one.
 </p>
 
@@ -163,10 +163,9 @@ for the same conversion, the user must choose, as when deciding whether to
 trust the printer maker&#8217;s driver or the operating system&#8217;s.
 </p>
 
-<h2>60.3 Entropy: conversion only loses</h2>
+<h2>60.3 Entropy: conversion usually loses</h2>
 
 <p>
-The note&#8217;s most general observation is about what conversion costs.
 Entropy is a physicist&#8217;s word
 for disorder that only increases. Here it means information lost on the way,
 which cannot be got back.
@@ -182,8 +181,9 @@ picture as you have lost some data.
 
 <p>
 An event is a more generic thing than a picture, so conversion runs downhill.
-The design consequence is the same instinct as Chapter 10&#8217;s ladder of
-specificity:
+The design consequence is the same instinct as Chapter 10, which ranks
+formats from most to least specific and prefers the most specific both sides
+accept:
 </p>
 
 <blockquote>
@@ -194,59 +194,44 @@ fewest rules.
 </blockquote>
 
 <figure>
-<svg class="dia" viewBox="0 0 720 268" width="720" height="268" role="img"
+<svg class="dia" viewBox="0 0 720 260" width="720" height="268" role="img"
      aria-labelledby="fig60-3-t fig60-3-d">
   <title id="fig60-3-t">The downhill ladder of conversion</title>
   <desc id="fig60-3-d">Three rungs: a photograph, a picture-taking event, and
-  a plain event. The first step down loses the exposure and aperture; the
+  a plain event. The first step down loses the image itself, the exposure and the aperture; the
   second loses that it was a photo and who was in it. The conversion cannot be
-  reversed. A second, smaller ladder shows rich text above plain text, the same
-  ordering existing clipboards already use.</desc>
+  reversed.</desc>
+  <g transform="translate(80 0)">
 
-  <rect class="box-plain" x="150" y="24" width="300" height="44" rx="4"/>
+  <rect class="box-plain" x="140" y="24" width="320" height="44" rx="4"/>
   <text x="300" y="42" text-anchor="middle">photograph</text>
-  <text x="300" y="60" class="t-sm" text-anchor="middle">time, exposure, aperture, who was in it</text>
-  <text x="300" y="95" class="t-sm" text-anchor="middle" style="fill:#8a9a9a"><tspan style="text-decoration:line-through">exposure, aperture</tspan>: lost</text>
-  <rect class="box-plain" x="150" y="112" width="300" height="44" rx="4"/>
+  <text x="300" y="60" class="t-sm" text-anchor="middle">the image, time, exposure, aperture, who was in it</text>
+  <text x="300" y="95" class="t-sm" text-anchor="middle" style="fill:#8a9a9a"><tspan style="text-decoration:line-through">the image itself, exposure, aperture</tspan>: lost</text>
+  <rect class="box-plain" x="140" y="112" width="320" height="44" rx="4"/>
   <text x="300" y="130" text-anchor="middle">picture-taking event</text>
   <text x="300" y="148" class="t-sm" text-anchor="middle">time, description, who was in it</text>
   <text x="300" y="183" class="t-sm" text-anchor="middle" style="fill:#8a9a9a"><tspan style="text-decoration:line-through">that it was a photo, who was in it</tspan>: lost</text>
-  <rect class="box-plain" x="150" y="200" width="300" height="44" rx="4"/>
+  <rect class="box-plain" x="140" y="200" width="320" height="44" rx="4"/>
   <text x="300" y="218" text-anchor="middle">event</text>
   <text x="300" y="236" class="t-sm" text-anchor="middle">start time, description</text>
 
-  <path class="ln-accent" d="M 130 34 L 130 228"/>
-  <path d="M 124 224 L 130 236 L 136 224 Z" fill="#1c5a7a"/>
-  <text x="118" y="122" class="t-sm" text-anchor="end" style="fill:#1c5a7a">convert:</text>
-  <text x="118" y="138" class="t-sm" text-anchor="end" style="fill:#1c5a7a">data lost</text>
-  <text x="118" y="154" class="t-sm" text-anchor="end" style="fill:#1c5a7a">at each step</text>
+  <path class="ln-accent" d="M 122 34 L 122 228"/>
+  <path d="M 116 224 L 122 236 L 128 224 Z" fill="#1c5a7a"/>
+  <text x="110" y="122" class="t-sm" text-anchor="end" style="fill:#1c5a7a">convert:</text>
+  <text x="110" y="138" class="t-sm" text-anchor="end" style="fill:#1c5a7a">data lost</text>
+  <text x="110" y="154" class="t-sm" text-anchor="end" style="fill:#1c5a7a">at each step</text>
 
-  <path class="ln-dash" d="M 470 234 L 470 40"/>
-  <path d="M 464 44 L 470 32 L 476 44 Z" fill="#8a9a9a"/>
-  <path class="ln-mut" d="M 462 126 L 478 142 M 478 126 L 462 142"/>
-  <text x="488" y="130" class="t-sm">cannot</text>
-  <text x="488" y="146" class="t-sm">go back</text>
-
-  <line class="ln-mut" x1="552" y1="24" x2="552" y2="244"/>
-
-  <rect class="box-plain" x="574" y="60" width="122" height="36" rx="4"/>
-  <text x="635" y="83" text-anchor="middle">rich text</text>
-  <path class="ln-accent" d="M 635 96 L 635 130"/>
-  <path d="M 629 126 L 635 138 L 641 126 Z" fill="#1c5a7a"/>
-  <rect class="box-plain" x="574" y="138" width="122" height="36" rx="4"/>
-  <text x="635" y="161" text-anchor="middle">plain text</text>
-  <text x="635" y="200" class="t-sm" text-anchor="middle">same pecking order,</text>
-  <text x="635" y="216" class="t-sm" text-anchor="middle">already in clipboards</text>
+  <path class="ln-dash" d="M 478 234 L 478 40"/>
+  <path d="M 472 44 L 478 32 L 484 44 Z" fill="#8a9a9a"/>
+  <path class="ln-mut" d="M 470 126 L 486 142 M 486 126 L 470 142"/>
+  <text x="496" y="130" class="t-sm">cannot</text>
+  <text x="496" y="146" class="t-sm">go back</text>
+  </g>
 </svg>
 <figcaption><span class="fig-label">Figure 60.3</span>
 Each conversion moves to a more generic form and loses something. The system
 should pick the highest rung both sides understand, using the fewest rules.</figcaption>
 </figure>
-
-<p>
-Clipboards already prefer rich text to plain when both ends manage it; he
-applies the same rule to vocabularies.
-</p>
 
 <h2>60.4 What is actually being described</h2>
 
@@ -302,8 +287,9 @@ and what does the other lose?</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.3</span>
-Two application authors each supply a rule for the same conversion. On what
-basis should a user choose?</p>
+A rule turns photos into events, but no rule turns events into photos. Is
+that because of who writes the rules, or because of entropy? Could the missing
+rule ever be written?</p>
 </div>
 <div class="question">
 <p><span class="question-number">60.4</span>

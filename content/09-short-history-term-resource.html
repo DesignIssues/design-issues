@@ -18,16 +18,15 @@ say Document or Thing instead.
 <h3>The question</h3>
 <p>
 Written in August 2009 as an email to the Technical Architecture Group (the
-TAG, the W3C body that rules on questions of Web architecture), this note is
-the plainest thing Berners-Lee wrote about one word that caused years of
-argument, recorded in Chapters 7 and 8, over whether an address such as
-<code>http://example.net/people/Pat</code> names Pat or a page about Pat. The
+TAG, the W3C body that rules on Web architecture), this note is
+Berners-Lee&#8217;s plainest account of one troublesome word. Chapters 7 and 8
+record the argument it caused: does
+<code>http://example.net/people/Pat</code> name Pat, or a page about Pat? The
 question became possible because &ldquo;resource&rdquo; acquired several
 meanings, and each community inherited the one that suited it.
 </p>
 <p>
-It is also the most candid chapter in Volume II: Berners-Lee describes a
-position he held and his decision to give way.
+Berners-Lee describes a position he held and his decision to give way.
 </p>
 </div>
 
@@ -78,7 +77,7 @@ boundaries.</figcaption>
 
 <p>
 The letter changed from D to R because some felt &ldquo;document&rdquo; was
-not wide enough to include things like films. The URI specification then
+not wide enough to include things like films. The URI specification, he says, then
 wisely declined to constrain what a resource could be, which left the word
 open for everything that followed.
 </p>
@@ -130,7 +129,7 @@ what the Web runs on.
 <h2>9.3 How the hash made local names global</h2>
 
 <p>
-The note gives the clearest statement of how RDF attached itself to the Web
+The note states how RDF attached itself to the Web
 without changing it, a mechanism sometimes called &ldquo;webizing&rdquo;:
 giving a name that only made sense inside one file a global Web address.
 </p>
@@ -187,8 +186,8 @@ changing HTTP. The first snag in section 9.4 is publishers who never put
 
 <p>
 A graphics language may name lines and points this way, HTML anchors, RDF
-people and concepts, all without any change to HTTP. Berners-Lee&#8217;s verdict:
-worked a treat.
+people and concepts, all without any change to HTTP. Berners-Lee&#8217;s verdict: it
+&ldquo;worked a treat&rdquo;.
 </p>
 
 <h2>9.4 Two snags, and a concession</h2>
@@ -214,11 +213,10 @@ about Pat.
 
 <h3>The truce</h3>
 
-<blockquote>
-I among others pushed back against using non-hash URIs for arbitrary things
-his but eventually gave in.
-<cite>A Short History of &ldquo;Resource&rdquo; in web architecture, 2009</cite>
-</blockquote>
+<p>
+He records that he, among others, pushed back against hashless URIs for
+arbitrary things, but eventually gave in.
+</p>
 
 <p>
 The resulting rule, known as httpRange-14 after its number in the
@@ -237,7 +235,7 @@ A 303 by itself says nothing about what the URI names.
   the TAG, connects to three parties below. The HTTP specification keeps its
   text untouched, while its meaning is widened so that a server can be asked
   about anything, not only documents. The RDF systems already built keep hash
-  names as before, and a 200 still says the URI names a document. Those who
+  names as before, and existing hash URIs keep working unchanged. Those who
   wanted hashless URIs may use a name such as /people/Pat for Pat, provided the
   server never answers 200 for it; a 303 is allowed.</desc>
 
@@ -259,8 +257,8 @@ A 303 by itself says nothing about what the URI names.
   <text x="268" y="148" class="t-sm">already built; they keep</text>
   <text x="268" y="166" class="t-mono t-sm">foo.rdf#color</text>
   <text x="268" y="184" class="t-sm">and other hash names</text>
-  <text x="268" y="210" class="t-sm">a 200 still says the URI</text>
-  <text x="268" y="228" class="t-sm">names a document</text>
+    <text x="268" y="210" class="t-sm">existing hash URIs keep</text>
+  <text x="268" y="228" class="t-sm">working unchanged</text>
 
   <rect class="box-warm" x="488" y="98" width="216" height="148" rx="4"/>
   <text x="596" y="122" text-anchor="middle" class="t-caps">hashless URIs</text>
@@ -277,12 +275,10 @@ applies it, is Figure 8.1.</figcaption>
 </figure>
 
 <p>
-Berners-Lee calls the resolution a truce (Figure 9.3), negotiated by the TAG between the
+Berners-Lee calls the resolution a truce, negotiated by the TAG between the
 HTTP specification, the RDF systems already built, and the people who wanted
 hashless URIs for people. The HTTP specification&#8217;s editors at the IETF
-were not brought round to the new model. The text of HTTP was untouched; its
-meaning was widened, so that a server can now be asked about anything, not
-only documents. Hence his two remarks, that the protocol &ldquo;was, in fact,
+were not brought round to the new model. Hence his two remarks (Figure 9.3), that the protocol &ldquo;was, in fact,
 changed&rdquo; and that &ldquo;The spec wasn&#8217;t changed&rdquo;. His
 verdict:
 </p>
@@ -326,10 +322,7 @@ senses in each.</li>
 records, OWL (a W3C Recommendation since 2004) uses <code>owl:Thing</code>
 for the universal class rather than <code>rdf:Resource</code>: the
 substitution Berners-Lee recommends, made five years earlier.</li>
-<li><strong>The truce was questioned, not replaced.</strong> In 2012 the TAG
-issued a public call for proposals to amend the httpRange-14 resolution.
-Several were submitted, none was adopted, and the 200/303 rule remains the
-documented practice.</li>
+
 </ul>
 </div>
 

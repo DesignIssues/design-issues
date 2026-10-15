@@ -23,6 +23,12 @@ that some of this will come true.
 
 <h2>82.1 The inconsistency nobody notices</h2>
 
+<p>
+In 1997 a PC or Mac showed its own files as folders spread over the whole
+screen, a <em>desktop</em>, and the rest of the world inside one browser
+window.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
      aria-labelledby="fig82-1-t fig82-1-d">
@@ -64,12 +70,11 @@ that some of this will come true.
   <text x="360" y="276" class="t-sm" text-anchor="middle">You can double click on things you find in either.&#8221;</text>
 </svg>
 <figcaption><span class="fig-label">Figure 82.1</span>
-The whole screen shows the local file system while one window shows the rest
-of the world; on reflection, Berners-Lee calls this crazy.</figcaption>
+On reflection, Berners-Lee calls this arrangement crazy.</figcaption>
 </figure>
 
 <p>
-The arrangement is so familiar that nobody asks the obvious questions:
+Nobody asks the obvious questions:
 </p>
 
 <blockquote>
@@ -79,8 +84,8 @@ desk?
 </blockquote>
 
 <p>
-He does not want folders and documents merged entirely: different forms of
-object for distinctly different uses are fine.
+He does not want them merged entirely: distinctly different uses may keep
+different forms.
 </p>
 
 <h2>82.2 Location fixation</h2>
@@ -97,9 +102,9 @@ is "is".
 </blockquote>
 
 <p>
-That relationship is an artefact of storage. Unix lets a file sit in several
+That relationship is an artefact of storage. Unix, the system behind most servers, lets a file sit in several
 directories through <em>hard links</em>, extra directory entries for one
-stored file, but only on the same disk; DOS allows just one directory. Users should not have
+stored file, but only on the same disk; DOS, Microsoft&#8217;s system before Windows, allows just one folder. Users should not have
 to care which disk a file is on. So file everything under its creator and
 creation date, and make everything else a pointer:
 </p>
@@ -181,7 +186,7 @@ This is of course totally meaningless to a user.
 <table>
 <tr><th>Program</th><th>Protocol it speaks</th><th>What it does, in the user&#8217;s terms</th></tr>
 <tr><td>Mail</td><td>Simple Mail Transfer Protocol</td><td>Links a message into someone else&#8217;s &#8220;In&#8221; box, which is a folder by another name.</td></tr>
-<tr><td>News</td><td>Network News Transfer Protocol</td><td>Links a document from a group visible all over the world; much like mailing a list.</td></tr>
+<tr><td>News (Usenet, the public discussion boards of the time)</td><td>Network News Transfer Protocol</td><td>Links a document from a group visible all over the world; much like mailing a list.</td></tr>
 <tr><td>Web editor</td><td>Hypertext Transfer Protocol</td><td>Uploads a document to a server. HTTP&#8217;s POST was originally meant to make a new document and a link to it.</td></tr>
 </table>
 
@@ -242,16 +247,17 @@ job.</figcaption>
 <p>
 The same reasoning reaches every container. Favorites, most of the Start Menu
 and mailboxes all classify things, so they should share one interface, and the
-history list should span all applications. Even mailto: falls short: Berners-Lee
+history list should span all applications. Even the <code>mailto:</code> links that open a blank email when clicked fall
+short: Berners-Lee
 calls it &ldquo;a misnomer (my fault I feel as I didn&#8217;t think when we
 created it)&rdquo;, since it should name a mailbox, not start a message.
 </p>
 
-<h2>82.4 Why this belongs in a book about architecture</h2>
+<h2>82.4 Webizing the desktop</h2>
 
 <p>
-This is the interface counterpart of Chapter 26. Webizing means giving things
-global names, such as Web addresses, so they can be pointed at from anywhere.
+Webizing (Chapter 26) means giving things global names, such as Web addresses,
+so they can be pointed at from anywhere. This note applies it to the interface.
 If a folder holds links and a mailbox is a folder, moving something between
 them is one operation everywhere. The note&#8217;s example is saving a web
 page in a mailbox, which would freeze a copy and keep a pointer to it.
@@ -266,9 +272,9 @@ civilization.
 </blockquote>
 
 <p>
-It asks about disks, once the writing is finished. He would rather choose at
-creation, usually by picking a template, who may see the document and what
-storage it needs (archived, or rapidly available), and get a URI back.
+It asks about disks, once the writing is finished. He would rather pick a
+template at the start, which settles who may read the document and how it is
+stored, and get a URI back at the end.
 </p>
 
 <figure>
@@ -325,8 +331,7 @@ when the writer starts.</figcaption>
 <p>
 Documents that can always change suit an encyclopaedia, not a cheque book.
 Signing turns a document into a deed, which freezes: it can be cancelled by
-another deed, but not edited (Figure 82.5). A sent email cannot be unsent,
-only followed by another message.
+another deed, but not edited (Figure 82.5).
 </p>
 
 <blockquote>
@@ -384,15 +389,11 @@ asking why a document should be trusted; Chapter 41 develops it.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>Documents moved into the browser</strong> with suites such as
-Google Docs (2006).</li>
 <li><strong>One message, many folders.</strong> Gmail (2004) used labels,
 so a message can sit in several without copies.</li>
 <li><strong>One home, everything else a pointer.</strong> In 2020 Google Drive
 gave each file a single folder, with shortcuts elsewhere, close to section
 82.2.</li>
-<li><strong>Protocols partly hidden.</strong> Webmail hides SMTP and IMAP,
-but mail, chat and the Web remain separate applications.</li>
 </ul>
 </div>
 
@@ -425,8 +426,9 @@ they speak. Do the descriptions converge?</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.4</span>
-Find a division in software you use that follows how it was built rather
-than what you are doing.</p>
+Using Figure 82.3, explain why one item linked from two inboxes, two
+newsgroups and two pages needs three programs in 1997 but only one action in
+Berners-Lee&#8217;s design.</p>
 </div>
 <div class="question">
 <p><span class="question-number">82.5</span>

@@ -1,10 +1,7 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The proposal in the previous chapter sounds, to anyone who knows the history,
-like a repeat of experiments that already failed. Machines that understand
-us; systems that reason about everything; the grand encyclopaedia of facts.
-Those projects were real, and they did fail.
+The previous chapter&#8217;s plan sounds like a rerun of famous failures.
 </p>
 <p>
 This chapter answers six objections, then refuses to give ground on a
@@ -73,7 +70,7 @@ The objections are memories of earlier failures.
   </g>
 
   <g>
-    <text class="t-sm" x="36" y="63" style="fill:#2f4f4f">machines understanding human speech</text>
+    <text class="t-sm" x="36" y="63" style="fill:#2f4f4f">machines understanding human language</text>
     <text class="t-sm" x="400" y="63" style="fill:#2f4f4f">well-defined operations on well-defined data</text>
     <text class="t-sm" x="36" y="103" style="fill:#2f4f4f">every application handles arbitrary complexity</text>
     <text class="t-sm" x="400" y="103" style="fill:#2f4f4f">most emit access lists and preferences</text>
@@ -113,9 +110,7 @@ make the extra effort
 <cite>What the Semantic Web can represent, 1998</cite>
 </blockquote>
 
-<p>
-The last sentence, usually left out, holds the difficulty.
-</p>
+
 
 <h2>31.3 Complete language, limited applications</h2>
 
@@ -131,7 +126,7 @@ of the entire Web and an unimaginable amount of time.
 This should not deter us, he says. Each application uses a schema, a
 declared list of the terms it will handle, to restrict itself to a limited
 language; most will produce simple access control lists, privacy preferences
-and search criteria. Completeness at the bottom, restraint at the top.
+and search criteria.
 </p>
 
 <h3>Checking a proof, not finding one</h3>
@@ -140,8 +135,7 @@ and search criteria. Completeness at the bottom, restraint at the top.
 The first uses, such as access control on web sites, involve only the
 validation of a previously prepared proof. Generating a proof for an
 arbitrary question is typically intractable, and the plan does not need it.
-Figure 30.3 shows such a check: the server walks a chain of signed statements
-it was handed, and Figure 40.2 sets finding a proof beside checking one.
+Chapter 30 shows such a check.
 </p>
 
 <h3>Real life is not efficiently computable</h3>
@@ -157,10 +151,30 @@ computational properties.
 <p>
 Older systems forced data into a fixed tree or grid, which kept it
 consistent; he bets DARPA, the American defence research agency, still has
-many. Joining them needed something looser, global hypertext, and critics
-said users would get lost: &ldquo;You could follow links forever.&rdquo;
-Yet many web sites stay orderly inside, and now ordered and unordered data
-can be linked.
+many. Joining them needed a more powerful language, global hypertext, which had none
+of those guarantees: &ldquo;You could follow links forever.&rdquo; An
+inference engine on the Semantic Web likewise need not finish. Yet many web
+sites stay orderly inside, and ordered parts can be linked to unordered ones.
+</p>
+
+<h3>Rules are statements too</h3>
+
+<p>
+Earlier systems mixed information with tips on how to use it. A rule is
+typically stored not as a statement but in a table of rules to apply at a
+particular time. That timing is information about the rule, which the
+language cannot express. The note&#8217;s example, with the second row ours:
+</p>
+
+<table>
+<tr><th>Stored as</th><th>Content</th></tr>
+<tr><td>a statement</td><td>&ldquo;a daughter of one&#8217;s daughter is one&#8217;s grandaughter&rdquo;</td></tr>
+<tr><td>an engine tip</td><td>whenever a parent of a daughter is found, apply the grandaughter rule</td></tr>
+</table>
+
+<p>
+Only the first row can be exchanged between systems whose engines apply
+rules differently.
 </p>
 
 <h2>31.4 The globalisation argument</h2>
@@ -274,28 +288,8 @@ Berners-Lee refuses. A real system will not believe anything it reads but
 check the source, inferring only from statements signed by particular keys
 (a digital signature proves who wrote them). Within such a system
 an inconsistency is a serious problem, not something to be worked around. If
-my bank says my balance is one hundred dollars and my computer says two
-hundred, we need to figure out the problem. Same with launching missiles.
-</p>
-
-<h3>Rules are statements too</h3>
-
-<p>
-Earlier systems mixed information with tips on how to use it. A rule is
-typically stored not as a statement but in a table of rules to apply at a
-particular time. That timing is information about the rule, which the
-language cannot express. The note&#8217;s example, with the second row ours:
-</p>
-
-<table>
-<tr><th>Stored as</th><th>Content</th></tr>
-<tr><td>a statement</td><td>&ldquo;a daughter of one&#8217;s daughter is one&#8217;s grandaughter&rdquo;</td></tr>
-<tr><td>an engine tip</td><td>whenever a parent of a daughter is found, apply the grandaughter rule</td></tr>
-</table>
-
-<p>
-Only the first row can be exchanged between systems whose engines apply
-rules differently.
+a bank and a home computer disagree about a balance, someone must find out
+why; the same holds for launching missiles, he adds.
 </p>
 
 <h2>31.6 The closed world</h2>
@@ -303,8 +297,7 @@ rules differently.
 <p>
 At its opening the note names &ldquo;one consistent difference&rdquo; between
 the Semantic Web and many programming data models: the closed world
-assumption. The note does not define it. In the usual sense, which this
-chapter supplies, a database that does not list a fact treats it as false,
+assumption. The note does not define it. In the usual sense, a database that does not list a fact treats it as false,
 while an open system may only treat it as unknown.
 </p>
 
@@ -366,8 +359,7 @@ the missing fact.</figcaption>
 
 <p>
 That difference is what makes the mappings in Chapter 33 approximate rather
-than exact, and it is the reason the deduction in Chapter 7 could not default
-to treating a URI as a page.
+than exact.
 </p>
 
 <h2>31.7 Records, columns and cells</h2>
@@ -409,10 +401,10 @@ in 2012: well-defined facts about entities, used in search.</li>
 <li><strong>Provenance was standardised.</strong> W3C PROV, a vocabulary for
 recording who produced data and how, became a Recommendation in 2013: a tool
 for the source checking of section 31.5.</li>
-<li><strong>Both approaches arrived.</strong> Systems that understand
-human mumblings were built after all, and they are not this; since
-retrieval-augmented generation was described in 2020, structured data often
-grounds what they produce.</li>
+<li><strong>Both approaches arrived.</strong> Large language models, which do
+try to understand people&#8217;s language, arrived from 2018; since
+retrieval-augmented generation was described in 2020, structured data is
+often used to ground their answers.</li>
 </ul>
 </div>
 

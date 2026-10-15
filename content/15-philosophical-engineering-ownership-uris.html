@@ -59,8 +59,8 @@ He adds that this is exciting, and a responsibility.
 
 <p>
 Asked whether writing standards is philosophy in progress, Berners-Lee gives
-an account that anyone who has sat in a working group (the committee writing
-a standard) will recognise. People argue about what words mean until the
+an account that any member of a working group will recognise. A working group
+is the committee that writes a standard. Its members argue about what words mean until the
 concepts in different heads are aligned enough, and then it is written down in
 language everyone can live with. What makes it work is a refusal to reopen
 the question:
@@ -77,9 +77,9 @@ specification-writing], you're not going to argue about that.
 His illustration is a payment someone tries to disown afterwards. Nobody may
 pay a bill online and then argue that the HTTP headers they sent (the
 labelled lines that go with every Web request) do not actually mean anything.
-He quotes a spammer who said that the form field, here the <em>From</em> line
-of an email, can contain anything and need not be the person sending it. It
-does, he answers, for anyone playing the game. From this he derives a gap:
+He recalls a spammer&#8217;s defence: the sender line of an email is
+&ldquo;just a form field&rdquo;, so anything can go there. It cannot, he
+answers, for anyone playing the game. From this he derives a gap:
 </p>
 
 <blockquote>
@@ -93,7 +93,9 @@ disobeys a protocol that they've broken the law via a straight-forward path.
 
 <p>
 Asked how URIs differ from words, Berners-Lee gives the answer this volume
-has been building towards, and it is about property:
+has been building towards, and it is about property. (The Semantic Web,
+mentioned in it, is data published so that programs can look up what terms
+mean.)
 </p>
 
 <blockquote>
@@ -106,9 +108,7 @@ mean. It's not a question of philosophical discussions between third parties.
 </blockquote>
 
 <p>
-(The Semantic Web is data published so that programs, not just people, can
-look up what terms mean.) The right and the obligation are named in the same sentence, and the
-obligation is the less obvious half. He then gives the mechanism. In a
+He then gives the mechanism. In a
 dispute about what a URI stands for, the question goes to the owner of the domain name,
 who typically delegates to someone else, who has written an ontology (a
 machine-readable set of definitions) and stored it on a Web server. Anyone
@@ -123,8 +123,9 @@ can look the URI up in real time and get that answer straight away.
   dictionary, a court and everyday use, all argued by third parties. Right, a
   URI, http://example.org/terms#Bank: a reader follows the name to the domain
   example.org, which is owned by the domain owner, who delegates to a
-  vocabulary author, who publishes a definition on a Web server. An arrow
-  runs from the definition back to the reader: look up in real time.</desc>
+  vocabulary author, who publishes a definition on a Web server. The middle
+  three form the chain of authority, not steps the reader performs. An arrow
+  runs from the definition back to the reader: answer returned in real time.</desc>
 
   <!-- left panel: a word -->
   <text x="135" y="24" class="t-caps" text-anchor="middle">A word</text>
@@ -155,18 +156,18 @@ can look the URI up in real time and get that answer straight away.
 
   <rect class="box" x="360" y="64" width="200" height="32" rx="4"/>
   <text x="460" y="85" text-anchor="middle">reader</text>
-  <rect class="box" x="360" y="122" width="200" height="32" rx="4"/>
+  <rect class="box-plain" x="360" y="122" width="200" height="32" rx="4"/>
   <text x="460" y="143" text-anchor="middle">domain: example.org</text>
-  <rect class="box" x="360" y="180" width="200" height="32" rx="4"/>
+  <rect class="box-plain" x="360" y="180" width="200" height="32" rx="4"/>
   <text x="460" y="201" text-anchor="middle">domain owner</text>
-  <rect class="box" x="360" y="238" width="200" height="32" rx="4"/>
+  <rect class="box-plain" x="360" y="238" width="200" height="32" rx="4"/>
   <text x="460" y="259" text-anchor="middle">vocabulary author</text>
   <rect class="box" x="360" y="296" width="200" height="32" rx="4"/>
   <text x="460" y="317" text-anchor="middle">definition on a Web server</text>
 
   <path class="ln" d="M 460 96 L 460 114"/>
   <path d="M 456 113 L 460 121 L 464 113 Z" fill="#2f4f4f"/>
-  <text x="472" y="113" class="t-sm">follows the name</text>
+  <text x="472" y="113" class="t-sm">looks up the URI</text>
   <path class="ln" d="M 460 154 L 460 172"/>
   <path d="M 456 171 L 460 179 L 464 171 Z" fill="#2f4f4f"/>
   <text x="472" y="171" class="t-sm">owned by</text>
@@ -180,7 +181,7 @@ can look the URI up in real time and get that answer straight away.
   <!-- the lookup -->
   <path class="ln-accent" d="M 560 312 L 610 312 L 610 80 L 571 80"/>
   <path d="M 571 75 L 562 80 L 571 85 Z" fill="#1c5a7a"/>
-  <text x="620" y="192" class="t-sm" style="fill:#1c5a7a">look up</text>
+  <text x="620" y="192" class="t-sm" style="fill:#1c5a7a">answer returned</text>
   <text x="620" y="207" class="t-sm" style="fill:#1c5a7a">in real time</text>
 </svg>
 <figcaption><span class="fig-label">Figure 15.1</span>
@@ -229,7 +230,6 @@ it.
 <p>
 That is Chapter 2&#8217;s claim, that any naming scheme can be written as a
 URI, restated seventeen years later as a regret.
-The objection was to the word&#8217;s apparent arrogance, not its truth.
 </p>
 
 <h2>15.5 Two protocols, and why spam is an architecture problem</h2>
@@ -244,8 +244,9 @@ Berners-Lee works the example of email. The technical protocol is SMTP and
 IMAP, the rules for sending mail and for collecting it. The social protocol
 is that everyone runs a machine with room to store their friends&#8217; mail
 in transit, that people write to each other on reasonable topics, and that
-people read what they receive. Together these form a microscopic system whose
-interest lies in what emerges at scale.
+people read what they receive. Together these explain one message passing
+from one person to another in a few hops. What matters is what happens when
+millions do it.
 </p>
 
 <figure>
@@ -350,8 +351,7 @@ He sees two jobs for philosophy. One is legal. Anyone can link to any Web page,
 but a lawyer may claim the right to charge for linking to theirs; then
 someone has to explain how a protocol defined over a name, a mere reference,
 grounds out in concepts lawyers understand. The other is the request that
-closes the interview, modest and slightly comic, which describes the job this
-book is attempting:
+closes the interview:
 </p>
 
 <blockquote>
@@ -382,15 +382,6 @@ unauthorised access whose boundaries are contested; in <em>Van Buren v.
 United States</em> (2021) the US Supreme Court narrowed the reach of the
 Computer Fraud and Abuse Act. This is not the direct path described
 here.</li>
-<li><strong>The obligation to publish meaning has often been
-ignored.</strong> Domain owners frequently serve no definitions for the terms
-they mint, the first snag recorded in Chapter 9, restated here as a duty
-rather than a practice.</li>
-<li><strong>The two-protocol analysis remains a useful lens.</strong> Many
-later failures at scale, from spam to coordinated manipulation of platforms,
-have the shape described here: the technical protocol working as specified
-while an unwritten social assumption turns out to be false. Chapter 90 is the
-same argument applied to social networks.</li>
 </ul>
 </div>
 
@@ -400,7 +391,8 @@ same argument applied to social networks.</li>
 The ownership of meaning described in section 15.3 is the identity axiom of
 Chapter 2, and the universality regret in section 15.4 is that chapter&#8217;s
 claim about naming schemes. The obligation to publish a definition is what Chapters 7 to 9 argue
-about. The social backing of names is Chapter 6, and the contractual reading
+about; Chapter 9 records how often domain owners serve no definitions for the
+terms they mint. The social backing of names is Chapter 6, and the contractual reading
 of persistence is Chapters 3 and 13. The two-protocol idea is taken up again
 in Chapter 87 and Chapter 90.
 </p>

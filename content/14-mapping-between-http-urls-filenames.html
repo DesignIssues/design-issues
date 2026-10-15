@@ -3,7 +3,7 @@
 <p>
 A server can show the same files both as web pages and as ordinary files on
 disk. But if anyone may upload under any name, a stranger can upload a web
-page called <code>virus.exe</code>, and a user&#8217;s computer will treat it as a
+page called <code>foo.exe</code>, and a user&#8217;s computer will treat it as a
 program. The fix: keep the name when it is honest; otherwise add a
 <code>$</code> and the right extension (<code>foo.exe$.html</code>).
 </p>
@@ -37,19 +37,12 @@ each is good at:
 </p>
 
 <table>
-<tr><th>HTTP space</th><th>File space</th></tr>
-<tr><td>Who can reach it: people not on the machine</td><td>Who can reach it: the owner, including files not meant to be shared</td></tr>
-<tr><td>Access control by Web-wide or server-wide identity</td><td>Access control by Unix users and groups</td></tr>
-<tr><td>Slower</td><td>Faster, for serious data processing</td></tr>
-<tr><td>Tools: browsers and Web services</td><td>Tools: command-line programs, scripts, version control, build systems</td></tr>
+<tr><th></th><th>HTTP space</th><th>File space</th></tr>
+<tr><th>Reach</th><td>people not on the machine</td><td>users on the machine; holds files not meant to be shared</td></tr>
+<tr><th>Access control</th><td>Web-wide or server-wide identity</td><td>Unix users and groups</td></tr>
+<tr><th>Speed</th><td>slower</td><td>faster, for serious data processing</td></tr>
+<tr><th>Tools</th><td>browsers and Web services</td><td>command-line programs, scripts, version control, build systems</td></tr>
 </table>
-
-<blockquote>
-It is actually pretty interesting to live on the edge, or more specifically
-on the intersection of these worlds where you can address the same files both
-as local files and as resources on the web.
-<cite>Mapping between HTTP URLs and filenames on a server, 2015</cite>
-</blockquote>
 
 <p>
 The obvious mapping is to make the URI path the filename. The snag is types.
@@ -62,7 +55,7 @@ that accepts uploads, the two can disagree.
 <h2>14.2 Three requirements, two of which may be had</h2>
 
 <p>
-Two HTTP verbs matter: PUT (upload to a chosen address) and GET (fetch). Three things are
+Two HTTP request types (methods) matter: PUT (upload to a chosen address) and GET (fetch). Three things are
 wanted, and they cannot all hold.
 </p>
 
@@ -109,8 +102,7 @@ wanted, and they cannot all hold.
   <text x="360" y="390" class="t-sm" text-anchor="middle" xml:space="preserve"><tspan font-style="italic">The resolution: weaken the correspondence corner from </tspan><tspan style="fill:#1c5a7a">all filenames correspond</tspan><tspan font-style="italic"> to </tspan><tspan style="fill:#1c5a7a">some do</tspan><tspan font-style="italic">.</tspan></text>
 </svg>
 <figcaption><span class="fig-label">Figure 14.1</span>
-Each Try sits on an edge and keeps the two corners it joins. The sweet spot
-keeps all three by asking only <em>some</em> names to correspond.</figcaption>
+Each Try sits on an edge and keeps the two corners it joins.</figcaption>
 </figure>
 
 <p>
@@ -151,15 +143,15 @@ that the local system trusts and that a remote party supplied.
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
      aria-labelledby="fig14-2-t fig14-2-d">
   <title id="fig14-2-t">The upload attack</title>
-  <desc id="fig14-2-d">A stranger uploads read.exe with Content-Type text/html.
-  A server using Try 3 saves it as read.exe, and when a user double-clicks it the
+  <desc id="fig14-2-d">A stranger uploads foo.exe with Content-Type text/html.
+  A server using Try 3 saves it as foo.exe, and when a user double-clicks it the
   operating system runs it as a program. A server using the sweet spot saves
-  the same upload as read.exe$.html, which opens in a browser as a page.</desc>
+  the same upload as foo.exe$.html, which opens in a browser as a page.</desc>
 
   <!-- stranger -->
   <rect class="box" x="16" y="30" width="210" height="80" rx="4"/>
   <text x="121" y="54" class="t-caps" text-anchor="middle">a stranger</text>
-  <text x="121" y="76" class="t-mono" text-anchor="middle">PUT /space/read.exe</text>
+  <text x="121" y="76" class="t-mono" text-anchor="middle">PUT /space/foo.exe</text>
   <text x="121" y="96" class="t-sm" text-anchor="middle">Content-Type: text/html</text>
 
   <!-- Try 3 path -->
@@ -169,7 +161,7 @@ that the local system trusts and that a remote party supplied.
   <rect class="box" x="256" y="30" width="200" height="80" rx="4"/>
   <text x="356" y="54" class="t-caps" text-anchor="middle">server, Try 3</text>
   <text x="356" y="76" class="t-sm" text-anchor="middle">saves the file as</text>
-  <text x="356" y="96" class="t-mono" text-anchor="middle">read.exe</text>
+  <text x="356" y="96" class="t-mono" text-anchor="middle">foo.exe</text>
 
   <line class="ln" x1="456" y1="70" x2="482" y2="70"/>
   <path d="M 488 70 L 480 66 L 480 74 Z" fill="#2f4f4f"/>
@@ -187,7 +179,7 @@ that the local system trusts and that a remote party supplied.
   <rect class="box-green" x="256" y="155" width="200" height="80" rx="4"/>
   <text x="356" y="179" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">server, sweet spot</text>
   <text x="356" y="201" class="t-sm" text-anchor="middle">saves the file as</text>
-  <text x="356" y="221" class="t-mono" text-anchor="middle">read.exe$.html</text>
+  <text x="356" y="221" class="t-mono" text-anchor="middle">foo.exe$.html</text>
 
   <line class="ln" x1="456" y1="195" x2="482" y2="195"/>
   <path d="M 488 195 L 480 191 L 480 199 Z" fill="#2f4f4f"/>
@@ -239,11 +231,10 @@ So a file uploaded as <code>report.html</code> appears on disk as
 <code>report</code> will not find it.
 </p>
 
-<h2>14.4 The asymmetry nobody expects</h2>
+<h2>14.4 One mapping, three directions</h2>
 
 <p>
-A short passage at the end notices that the mapping is not one function but
-three.
+The mapping is not one function but three.
 </p>
 
 <figure>
@@ -332,7 +323,7 @@ Solid Server&#8217;s extension-based mapper, written from 2020, does the
 same. The Solid Protocol itself leaves storage to each implementation.</li>
 <li><strong>The attack it defends against stayed real.</strong> Unrestricted
 upload of a file with a dangerous type is catalogued as CWE-434 in MITRE&#8217;s
-Common Weakness Enumeration, and the general defence is the one implied
+Common Weakness Enumeration, which still lists it in 2026, and the general defence is the one implied
 here: do not let a remote party&#8217;s chosen name decide how a local system
 treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>
@@ -340,8 +331,8 @@ Servers such as Apache and nginx, when configured to accept WebDAV PUT (WebDAV i
 clients write files to a server),
 still map URLs to filenames directly, which is Try 3, and generally rely on
 not granting untrusted write access rather than on making writes safe.</li>
-<li><strong>The two-space workflow persisted.</strong> Static site generators
-(tools that build a website from local files and upload the result) are the mainstream version of what this
+<li><strong>The two-space workflow persisted.</strong> Since the 2010s, static site generators
+(tools that build a website from local files and upload the result, such as Jekyll, 2008, and Hugo, 2013) have been the mainstream version of what this
 note describes, and they avoid the problem entirely by having no arbitrary
 PUT.</li>
 </ul>

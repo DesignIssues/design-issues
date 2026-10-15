@@ -19,7 +19,7 @@ reader?
 </p>
 </div>
 
-<h2>77.1 The answer to the question he is always asked</h2>
+<h2>77.1 The question people ask him</h2>
 
 <blockquote>
 People have asked whether I regret that the Web has been used for some uses, but
@@ -30,18 +30,18 @@ than the other way around as it should be.
 </blockquote>
 
 <p>
-The question is which of technology and society should shape the other. He states the opposing view fairly:
+He states the opposing view fairly:
 that our society is not strong enough to be trusted with a powerful information
 system, and that the pain might exceed the gain. His reply is a belief, and he
-marks it as one: that the democratic process and the judicial process are
-sufficient to defend the health of an evolving society.
+marks it as one, at least for the western developed world: that democratic
+process keeps governments in check and the courts keep criminals in check.
 </p>
 
 <h2>77.2 Three things wrong with the legislation</h2>
 
 <p>
 By the time he wrote, the US Supreme Court had already struck down the
-American indecency provisions, in Reno v. ACLU (June 1997). His three
+indecency provisions of the Communications Decency Act of 1996, in Reno v. ACLU (June 1997). His three
 objections are to the approach itself:
 </p>
 
@@ -133,6 +133,11 @@ need, then, to be able to represent "quality" in a completely subjective way.
 <cite>Filtering and Censorship, 1997</cite>
 </blockquote>
 
+<p>
+Anyone could publish a scale, put a label on a page using it, and let each
+reader keep a profile saying which labels to accept; section 77.4 explains how.
+</p>
+
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
      aria-labelledby="fig77-2-t fig77-2-d">
@@ -222,19 +227,14 @@ document:
 will accept.</li>
 </ul>
 
-<p>
-For example, a parents&#8217; group publishes a violence scale from 0 to 4; a
-reviewer labels page X &ldquo;violence 3&rdquo;; a parent&#8217;s profile
-allows up to 2, so the browser hides page X.
-</p>
-
 <figure>
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+<svg class="dia" viewBox="0 0 720 306" width="720" height="306" role="img"
      aria-labelledby="fig77-3-t fig77-3-d">
   <title id="fig77-3-t">Rating system, label, profile</title>
   <desc id="fig77-3-d">A rating system defines a scale, a label applies it,
   a profile chooses levels; the browser compares label with profile and shows
-  or blocks the page.</desc>
+  or blocks the page. In the example, a violence scale runs from 0 to 4, page X
+  is labelled violence 3, the profile accepts up to 2, and page X is blocked.</desc>
   <defs>
     <marker id="fig77-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="8" markerHeight="8" orient="auto">
@@ -242,39 +242,42 @@ allows up to 2, so the browser hides page X.
     </marker>
   </defs>
 
-  <rect class="box" x="24" y="30" width="200" height="140" rx="4"/>
+  <rect class="box" x="24" y="30" width="200" height="166" rx="4"/>
   <text x="124" y="56" class="t-caps" text-anchor="middle">a rating system</text>
   <text x="124" y="84" class="t-sm" text-anchor="middle">defines a scale</text>
   <text x="124" y="112" class="t-sm" text-anchor="middle">anyone may make one</text>
   <text x="124" y="144" class="t-sm t-it" text-anchor="middle">this breaks the central</text>
   <text x="124" y="160" class="t-sm t-it" text-anchor="middle">definition of indecency</text>
+  <text x="124" y="185" class="t-sm t-mono" text-anchor="middle">violence 0&#8211;4</text>
 
   <path class="ln-mut" d="M 226 100 L 264 100" marker-end="url(#fig77-3-arr)"/>
 
-  <rect class="box-warm" x="266" y="30" width="200" height="140" rx="4"/>
+  <rect class="box-warm" x="266" y="30" width="200" height="166" rx="4"/>
   <text x="366" y="56" class="t-caps" text-anchor="middle" style="fill:#b08d57">a label</text>
   <text x="366" y="84" class="t-sm" text-anchor="middle">a statement about</text>
   <text x="366" y="102" class="t-sm" text-anchor="middle">something, on that scale</text>
   <text x="366" y="134" class="t-sm t-it" text-anchor="middle">by any party: not only</text>
   <text x="366" y="150" class="t-sm t-it" text-anchor="middle">the author, not only a state</text>
 
-  <rect class="box-green" x="508" y="30" width="188" height="140" rx="4"/>
+  <rect class="box-green" x="508" y="30" width="188" height="166" rx="4"/>
   <text x="602" y="56" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">a profile</text>
   <text x="602" y="84" class="t-sm" text-anchor="middle">which scales, and</text>
   <text x="602" y="102" class="t-sm" text-anchor="middle">which levels, for me</text>
   <text x="602" y="134" class="t-sm t-it" text-anchor="middle">set with sliders, or taken</text>
   <text x="602" y="150" class="t-sm t-it" text-anchor="middle">from someone trusted</text>
 
-  <path class="ln-mut" d="M 366 172 L 366 206" marker-end="url(#fig77-3-arr)"/>
-  <path class="ln-mut" d="M 602 172 L 602 206" marker-end="url(#fig77-3-arr)"/>
+  <path class="ln-mut" d="M 366 198 L 366 232" marker-end="url(#fig77-3-arr)"/>
+  <path class="ln-mut" d="M 602 198 L 602 232" marker-end="url(#fig77-3-arr)"/>
 
-  <rect class="box-plain" x="266" y="210" width="430" height="44" rx="4"/>
-  <text x="481" y="237" text-anchor="middle">the browser compares the label with the profile</text>
+  <rect class="box-plain" x="266" y="236" width="430" height="44" rx="4"/>
+  <text x="481" y="263" text-anchor="middle">the browser compares the label with the profile</text>
 
-  <path class="ln-mut" d="M 264 232 L 226 232" marker-end="url(#fig77-3-arr)"/>
+  <path class="ln-mut" d="M 264 258 L 226 258" marker-end="url(#fig77-3-arr)"/>
 
-  <rect class="box-plain" x="24" y="210" width="200" height="44" rx="4"/>
-  <text x="124" y="237" text-anchor="middle">show, or block</text>
+  <rect class="box-plain" x="24" y="236" width="200" height="44" rx="4"/>
+  <text x="124" y="263" text-anchor="middle">page X blocked</text>
+  <text x="366" y="185" class="t-sm t-mono" text-anchor="middle">page X: violence 3</text>
+  <text x="602" y="185" class="t-sm t-mono" text-anchor="middle">accept up to 2</text>
 </svg>
 <figcaption><span class="fig-label">Figure 77.3</span>
 Anyone may write each of the three documents; the decision is made at the
@@ -349,12 +352,10 @@ note attempts.
 <ul>
 <li><strong>PICS faded.</strong> PICS was never widely adopted, and W3C superseded it with POWDER, a Recommendation of
 September 2009.</li>
-<li><strong>Filtering was centralised after all.</strong> What arrived instead
-was platform moderation and national blocking, a few central definitions of
-acceptability, chosen by platforms and states rather than readers.</li>
-<li><strong>Subjective quality became ranking.</strong> Search and feed ranking
-answered the junk problem, with a profile chosen by the platform, not the
-reader.</li>
+<li><strong>Filtering was centralised after all.</strong> Platform moderation and
+national blocking decide for readers; the EU&#8217;s Digital Services Act (2022)
+and the UK&#8217;s Online Safety Act (2023) put moderation duties on platforms,
+not readers.</li>
 <li><strong>The transferable profile arrived only in niches.</strong> Ad-blocker
 filter-list subscriptions such as EasyList (from the mid-2000s) and
 Bluesky&#8217;s subscribable labelling services (2024) let a user take a
@@ -381,8 +382,9 @@ Show that they are, or show where they differ.</p>
 </div>
 <div class="question">
 <p><span class="question-number">77.2</span>
-Agreement at scale costs diversity. Give an example from a standard you use,
-and say what was lost.</p>
+A family takes its profile from the school (Figure 77.2) instead of setting
+its own. In the note&#8217;s terms, what does it gain in harmony, and what
+diversity does it lose?</p>
 </div>
 <div class="question">
 <p><span class="question-number">77.3</span>

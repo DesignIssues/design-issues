@@ -34,7 +34,7 @@ The table at the end of section 2.1 lists the ten rules in plain words.
 <h2>2.1 What is on the Web</h2>
 
 <p>
-The note opens with a definition that does more work than it appears to:
+The note opens with a definition:
 </p>
 
 <blockquote>
@@ -48,9 +48,9 @@ it, and the power of the Web is the less for that.
 
 <p>
 Membership of the Web is a property of naming, not of storage, protocol, or
-format. Every later argument in this book about what deserves a URI, from
+format. Later arguments in this book about what deserves a URI, from
 government datasets in Chapter 53 to a person&#8217;s own data in Chapter 54,
-follows from this sentence.
+start from this sentence.
 </p>
 
 <p>
@@ -87,15 +87,17 @@ should be given a URI.</p>
 
 <p>
 The first is a claim about the design, and Berners-Lee argues for it in
-three steps. (1) Every URI starts with a scheme: the word before the colon,
-such as <code>http</code> or <code>mailto</code>, which says which rules
-apply to the rest. (2) A URI has no length limit. (3) So any identifier,
-written as printable characters behind a new scheme name, is a URI, as
-<code>ISBN:</code> could be for book numbers.
+three steps. (1) There is no limit to the length of a URI. (2) Every URI
+starts with a scheme: the word before the colon, such as <code>http</code>
+or <code>mailto</code>, which says which rules apply to the rest. (3) So any
+identifier can be turned into a URI by writing it as printable characters
+behind a new scheme name, as <code>ISBN:</code> could be for book numbers.
 </p>
 
 <p>
-The second is an instruction, and it turns into Linked Data ten years later.
+The second is an instruction, and ten years later it became the first rule
+of Linked Data, the practice of publishing data with a URI for every thing
+(Chapter 49).
 </p>
 
 <p>
@@ -109,7 +111,7 @@ and wherever, it has the same meaning. It needs no enclosing context.
 Axiom 2 comes in two parts because the first is vague and the author knows
 it. <strong>Axiom 2a, sameness</strong>: a URI will repeatably refer to
 &ldquo;the same&rdquo; thing. The quotation marks are his. <strong>Axiom 2b,
-identity</strong> resolves the vagueness in a way easy to read past:
+identity</strong> settles it:
 </p>
 
 <blockquote>
@@ -345,8 +347,8 @@ serious security hole. Figure 2.3 shows why.
   GET is unsafe: a prefetcher follows every link, sends GET /delete?id=7,
   and the data is gone.</desc>
 
-  <text x="40" y="28" class="t-caps">safe: get</text>
-  <text x="400" y="28" class="t-caps" style="fill:#b08d57">unsafe: post</text>
+    <text x="40" y="28" style="fill:#1c5a7a">safe: GET</text>
+  <text x="400" y="28" style="fill:#b08d57">unsafe: POST</text>
   <line class="ln-mut" x1="360" y1="16" x2="360" y2="200"/>
 
   <rect class="box" x="40" y="42" width="260" height="40" rx="4"/>
@@ -368,7 +370,7 @@ serious security hole. Figure 2.3 shows why.
   <text x="530" y="194" class="t-sm" text-anchor="middle">the user has asked for something to be done</text>
 
   <rect class="ln-dash" x="20" y="214" width="680" height="96" rx="4"/>
-  <text x="40" y="236" class="t-caps" style="fill:#8a9a9a">when a get is not safe</text>
+  <text x="40" y="236" class="t-caps" style="fill:#8a9a9a">when a GET is not safe</text>
   <rect class="box-plain" x="40" y="252" width="220" height="40" rx="4"/>
   <text x="150" y="277" text-anchor="middle">prefetcher follows every link</text>
   <line class="ln" x1="260" y1="272" x2="292" y2="272"/>
@@ -398,8 +400,7 @@ is not communication between the parties.
 <h2>2.7 Not the only space</h2>
 
 <p>
-<strong>Axiom 3, non-unique</strong> is the most philosophically deliberate of
-the ten. URI space need not be the only universal space. To the objection
+<strong>Axiom 3, non-unique</strong>: URI space need not be the only universal space. To the objection
 that no space should be privileged, the answer is that none is: any rival
 universal space could contain URI space as a subset, and the two could
 interoperate.
@@ -499,16 +500,10 @@ demonstration came earlier. The Google Web Accelerator, released in May
 2005, fetched the links on a page in advance. In applications that used
 plain links for destructive actions, it followed the deletion links and
 deleted data.</li>
-<li><strong>Browsers learned to guess types.</strong> When servers labelled
-content wrongly, browsers began guessing its media type from the content
-itself, a practice called content sniffing. In 2008 Microsoft introduced the
-<code>X-Content-Type-Options: nosniff</code> header with Internet Explorer 8,
-so that a server could tell the browser to trust the declared type and not
-guess.</li>
+
 <li><strong>Vary stayed a caching tool.</strong> The <code>Vary</code> header
 was defined in HTTP/1.1 (RFC 2068, January 1997) and remains in RFC 9110. It
-tells caches which parts of a request affect the response; it does not
-display anything to the reader. The note, last revised in 2009, still calls
+tells caches which parts of a request affect the response. The note, last revised in 2009, still calls
 undisclosed variation a form of deception.</li>
 </ul>
 </div>
@@ -529,9 +524,9 @@ of what an HTTP URI identifies, left open here, occupies Chapters 7 and 8.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">2.1</span>
-Berners-Lee argues that any naming scheme can be encoded into URI space, and
-calls this a theorem. State the argument in three steps and identify the
-assumption that makes it work.</p>
+A company invents a new numbering scheme for its products. Using the three
+steps of section 2.2, show how its numbers become URIs. What would break if
+URIs had a 100-character limit?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.2</span>

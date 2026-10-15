@@ -4,8 +4,8 @@
 Subscribing to a feed was standardised long ago, so any reader app can follow
 any blog or podcast. Reacting (liking, commenting, rating) never was, so it
 lives inside whichever platform hosts the thing. Platforms give each person one
-audience, too coarse for people in many groups. The note&#8217;s advice: keep
-the open protocol, not any one company&#8217;s app.
+audience, too coarse for people in many groups. The note&#8217;s advice: use
+apps that speak the open protocol, not ones tied to a single company.
 </p>
 </div>
 
@@ -13,8 +13,8 @@ the open protocol, not any one company&#8217;s app.
 <h3>The question</h3>
 <p>
 Written in 2021 and extended in 2024, this note surveys what had become of
-subscription on the Web, and asks why reacting to things is owned by whichever
-platform hosts them.
+subscription on the Web, and asks why reacting to things is owned by the
+platform that hosts them.
 </p>
 <p>
 A feed is a file on a website listing its latest posts, in a standard format
@@ -40,11 +40,16 @@ The note gives what it calls a very rough summary of feeds in 2021:
 <tr><td>Text blog</td><td>HTML</td><td>none</td><td>Blog comments</td></tr>
 <tr><td>Photo</td><td>JPEG</td><td>Instagram</td><td>Like, comment</td></tr>
 <tr><td>Audio podcast</td><td>MP3</td><td>none</td><td>none</td></tr>
-<tr><td>Video podcast</td><td>MP4</td><td>YouTube</td><td>Comment</td></tr>
-<tr><td>Movie</td><td>IMDb data in RDF</td><td>Netflix, Green Tomatoes, Media Kraken</td><td>Rating</td></tr>
-<tr><td>Book</td><td>Library of Congress RDF</td><td>Amazon</td><td>Five-star rating</td></tr>
+<tr><td>Video podcast</td><td>MP4 (queried)</td><td>YouTube</td><td>Comment</td></tr>
+<tr><td>Movie</td><td>IMDb data in RDF</td><td>Netflix; Green Tomatoes, then Media Kraken</td><td>Rating</td></tr>
+<tr><td>Book</td><td>Library of Congress RDF (queried)</td><td>Amazon</td><td>Five-star rating</td></tr>
 <tr><td>Fitness</td><td>GPX</td><td>Strava, Fitbit and others</td><td>Kudos, comment</td></tr>
 </table>
+
+<p>
+&ldquo;Queried&rdquo; marks the note&#8217;s own question marks; Green Tomatoes
+and Media Kraken are its examples, unexplained.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 290" width="720" height="290" role="img"
@@ -92,8 +97,7 @@ audience and the reactions; the open world standardised only the feed.</figcapti
 
 <p>
 Activity Streams, a W3C vocabulary for recording what people do online,
-defines more than twenty kinds of activity, from accepting and adding to
-liking, reading and undoing. Berners-Lee extends the idea past social media:
+defines more than twenty kinds of activity, from liking to undoing. Berners-Lee extends the idea past social media:
 </p>
 
 <blockquote>
@@ -105,8 +109,7 @@ whenever that state changes.
 </blockquote>
 
 <p>
-An issue tracker is a feed; Chapter 45 made the same move when it observed
-that a patch is news. The goal concerns Solid (Chapter 54), where each person
+An issue tracker is a feed (compare Chapter 45: a patch is news). The goal concerns Solid (Chapter 54), where each person
 keeps their data in a personal store that any app may use:
 </p>
 
@@ -125,6 +128,11 @@ may be not sharing, sharing with followers, or making something completely
 public.
 <cite>Feeds, 2021</cite>
 </blockquote>
+
+<p>
+For someone in many communities, Berners-Lee says, giving a reaction the right
+scope is very important (Chapter 74 treats this in general).
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 322" width="720" height="322" role="img"
@@ -172,13 +180,6 @@ One audience allows three choices. A person in many overlapping groups needs
 each reaction addressed to the right one.</figcaption>
 </figure>
 
-<p>
-For someone in many communities, Berners-Lee says, giving a reaction the right
-scope is very important (Chapter 74 treats this in general). A platform knows
-each person as one account with one follower list, so it can only offer choices about
-that one list.
-</p>
-
 <h2>64.4 The warning</h2>
 
 <p>
@@ -198,16 +199,15 @@ these things, and where it is possible, explicit design to avoid harm.
 Take a like-count. Technically it is a number; socially it is read as a
 measure of a post&#8217;s worth. That is the two-protocol analysis of Chapter
 15 (a technical protocol and an unwritten social one, which can fail
-separately), and Chapter 90 shows such failures at scale.
+separately).
 </p>
 
 <h2>64.5 Subscriptions are data too</h2>
 
 <p>
-To use several reader apps with the same subscriptions, the apps must agree
-on the list itself. NetNewsWire exports it as OPML, a small XML file giving
-each feed&#8217;s title and address, which another reader can import. Abridged
-from the note&#8217;s example, one subscription looks like this:
+Moving subscriptions between reader apps needs an agreed list format. NetNewsWire exports it as OPML, a small XML file giving
+each feed&#8217;s title and address, which another reader can import. One
+subscription, abridged from the note:
 </p>
 
 <pre><code>&lt;opml version="1.1"&gt;
@@ -218,7 +218,7 @@ from the note&#8217;s example, one subscription looks like this:
 
 <p>
 The <code>xmlUrl</code> is the feed&#8217;s address. The note
-also points to FreshRSS, open-source software that keeps a person&#8217;s feeds on their own
+also points to FreshRSS, which keeps a person&#8217;s feeds on their own
 server.
 </p>
 
@@ -226,12 +226,12 @@ server.
 
 <p>
 The familiar &ldquo;wherever you get your podcasts&rdquo; assumes the big
-platforms list every show by name. That works for famous shows but does not
+platforms list every show by name. That does not
 scale if everyone is to have a feed. The note&#8217;s alternative is links.
 Suppose Ann mentions a podcast in an email. The link goes to an episode page,
-which carries a link to its feed. No directory was needed. Whatever finds
-feeds decides what people come across, which matters amid much
-misinformation.
+which carries a link to its feed. No directory was needed. Whoever runs the
+directory decides which shows people find; with links, the people they already
+trust do.
 </p>
 
 <h2>64.7 Protocols, not apps</h2>
@@ -247,7 +247,8 @@ device. Keep the RSS protocol alive!
 </blockquote>
 
 <p>
-One reader keeps track of everything a listener has heard. By 2024 the threat was
+A generic reader also keeps, in one place, the record of what a listener has
+heard; a separate app per show scatters it. By 2024 the threat was
 the large players: he had heard that Spotify and Apple Podcasts, while playing
 anyone&#8217;s feed, also carry shows only their apps can play. The note&#8217;s policy is not to
 listen to those.
@@ -257,8 +258,9 @@ listen to those.
 
 <p>
 Berners-Lee read Neal Stephenson&#8217;s <em>Termination Shock</em> in audio
-and text at once: text when someone is around, sound when driving. That, he
-says, is about efficiency and accessibility.
+and text at once: text when someone is around, sound when driving. He calls
+this efficiency and accessibility: switching medium without losing one&#8217;s
+place helps anyone who cannot read or listen at a given moment.
 </p>
 
 <figure>
@@ -300,7 +302,7 @@ from text positions to audio times (illustrative here).</figcaption>
 </figure>
 
 <p>
-In December 2024 he found that the app Speechify does this, though it keeps
+In December 2024 he found that Speechify does this, though it keeps
 his place in its own cloud rather than in his Solid pod.
 </p>
 
