@@ -72,16 +72,7 @@ take over. It was never built.
 <p>
 <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> concluded that persistence is a contract rather than a technology.
 This note, written in October 2000, is the one place in the collection where
-Berners-Lee tries to write the contract. He explains the threshold a thought
-has to cross to be written down here:
-</p>
-<blockquote>
-Things get written under Design Issues when I have expressed them several
-times in various contexts.
-<cite>Persistent Domains, 2000</cite>
-</blockquote>
-<p>
-He labels it a strawman: a rough proposal put up so that others can knock it
+Berners-Lee tries to write the contract. He labels it a strawman: a rough proposal put up so that others can knock it
 down. Its first half diagnoses a problem still unsolved;
 its second shows what solving it would demand.
 </p>
@@ -91,7 +82,7 @@ its second shows what solving it would demand.
 
 <p>
 The note begins by splitting <a class="gl-ref" href="../glossary.html#uri">URI</a> persistence into two independent questions:
-the persistence of the <a class="gl-ref" href="../glossary.html#opaque">opaque</a> string after the domain name, and the
+the persistence of the path after the domain name, and the
 persistence of the domain name itself. <a class="x-ref" href="#fig-13-1">Figure 13.1</a> uses the note&#8217;s own
 example.
 </p>
@@ -129,7 +120,7 @@ example.
 
   <rect class="box-plain" x="40" y="176" width="310" height="60" rx="4"/>
   <text x="195" y="198" text-anchor="middle">Fix: date-stamped domains (13.2)</text>
-  <text x="195" y="222" class="t-sm" text-anchor="middle">no publisher can promise to keep a name it only rents</text>
+  <text x="195" y="222" class="t-sm" text-anchor="middle">names bought once in their year, held forever</text>
 
   <rect class="box-plain" x="370" y="176" width="310" height="60" rx="4"/>
   <text x="525" y="198" text-anchor="middle">Fix: discipline, plus this note&#8217;s obligations (13.3)</text>
@@ -188,14 +179,14 @@ with four words: but is this enough?
 
 <p>
 He also names a symptom: a constant stream of proposals for new URI schemes
-(URNs and Handles are examples), each with its own lookup system, usually
+(URNs, Uniform Resource Names, and Handles are examples), each with its own lookup system, usually
 with less attention to the social issues than <a class="gl-ref" href="../glossary.html#http">HTTP</a> and <a class="gl-ref" href="../glossary.html#dns">DNS</a> receive.
 </p>
 
 <h2 id="sec-13-2">13.2 The proposal: date-stamped top-level domains</h2>
 
 <p>
-The mechanism is a single trick, borrowed twice over. A <a class="gl-ref" href="../glossary.html#top-level-domain">top-level domain</a> is
+The mechanism is one trick, already used in two places. A <a class="gl-ref" href="../glossary.html#top-level-domain">top-level domain</a> is
 the last part of a name, such as <code>.com</code> or <code>.org</code>.
 Create a series of top-level domains named for years. A name under
 <code>.y2000</code> could be registered only during the year 2000, and once
@@ -223,48 +214,48 @@ start.
   <desc id="fig13-2-d">A timeline from 2000 to 2003 and later. Each domain,
   .y2000 to .y2003, is open for registration only during its own year, then
   closed for good, with its names held forever. A name such as
-  bankboston.y2000, registered in 2000, can never be applied for again.</desc>
+  example.y2000, registered in 2000, can never be applied for again.</desc>
 
-  <text x="175" y="26" text-anchor="middle">2000</text>
-  <text x="305" y="26" text-anchor="middle">2001</text>
-  <text x="435" y="26" text-anchor="middle">2002</text>
-  <text x="565" y="26" text-anchor="middle">2003</text>
-  <text x="665" y="26" class="t-sm" text-anchor="middle">later</text>
-  <line class="ln" x1="110" y1="38" x2="700" y2="38"/>
+  <text x="160" y="26" text-anchor="middle">2000</text>
+  <text x="280" y="26" text-anchor="middle">2001</text>
+  <text x="400" y="26" text-anchor="middle">2002</text>
+  <text x="520" y="26" text-anchor="middle">2003</text>
+  <text x="640" y="26" class="t-sm" text-anchor="middle">later</text>
+  <line class="ln" x1="100" y1="38" x2="700" y2="38"/>
   <path d="M700 34 L708 38 L700 42 Z" fill="#2f4f4f"/>
-  <line class="ln" x1="110" y1="34" x2="110" y2="42"/>
-  <line class="ln" x1="240" y1="34" x2="240" y2="42"/>
-  <line class="ln" x1="370" y1="34" x2="370" y2="42"/>
-  <line class="ln" x1="500" y1="34" x2="500" y2="42"/>
-  <line class="ln" x1="630" y1="34" x2="630" y2="42"/>
+  <line class="ln" x1="100" y1="34" x2="100" y2="42"/>
+  <line class="ln" x1="220" y1="34" x2="220" y2="42"/>
+  <line class="ln" x1="340" y1="34" x2="340" y2="42"/>
+  <line class="ln" x1="460" y1="34" x2="460" y2="42"/>
+  <line class="ln" x1="580" y1="34" x2="580" y2="42"/>
 
   <text x="20" y="67" class="t-mono">.y2000</text>
-  <rect class="box-green" x="110" y="52" width="130" height="22"/>
-  <text x="145" y="67" class="t-sm" text-anchor="middle">open</text>
-  <rect class="box-plain" x="240" y="52" width="460" height="22"/>
-  <text x="470" y="67" class="t-sm" text-anchor="middle">closed: no one can apply for bankboston.y2000 again</text>
+  <rect class="box-green" x="100" y="52" width="120" height="22"/>
+  <text x="135" y="67" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="220" y="52" width="480" height="22"/>
+  <text x="460" y="67" class="t-sm" text-anchor="middle">closed: no one can apply for example.y2000 again</text>
 
   <text x="20" y="101" class="t-mono">.y2001</text>
-  <rect class="box-green" x="240" y="86" width="130" height="22"/>
-  <text x="305" y="101" class="t-sm" text-anchor="middle">open</text>
-  <rect class="box-plain" x="370" y="86" width="330" height="22"/>
-  <text x="535" y="101" class="t-sm" text-anchor="middle">closed for good: names held forever</text>
+  <rect class="box-green" x="220" y="86" width="120" height="22"/>
+  <text x="280" y="101" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="340" y="86" width="360" height="22"/>
+  <text x="520" y="101" class="t-sm" text-anchor="middle">closed for good</text>
 
   <text x="20" y="135" class="t-mono">.y2002</text>
-  <rect class="box-green" x="370" y="120" width="130" height="22"/>
-  <text x="435" y="135" class="t-sm" text-anchor="middle">open</text>
-  <rect class="box-plain" x="500" y="120" width="200" height="22"/>
-  <text x="600" y="135" class="t-sm" text-anchor="middle">closed for good</text>
+  <rect class="box-green" x="340" y="120" width="120" height="22"/>
+  <text x="400" y="135" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="460" y="120" width="240" height="22"/>
+  <text x="580" y="135" class="t-sm" text-anchor="middle">closed for good</text>
 
   <text x="20" y="169" class="t-mono">.y2003</text>
-  <rect class="box-green" x="500" y="154" width="130" height="22"/>
-  <text x="565" y="169" class="t-sm" text-anchor="middle">open</text>
-  <rect class="box-plain" x="630" y="154" width="70" height="22"/>
-  <text x="665" y="169" class="t-sm" text-anchor="middle">closed</text>
+  <rect class="box-green" x="460" y="154" width="120" height="22"/>
+  <text x="520" y="169" class="t-sm" text-anchor="middle">open</text>
+  <rect class="box-plain" x="580" y="154" width="120" height="22"/>
+  <text x="640" y="169" class="t-sm" text-anchor="middle">closed for good</text>
 
-  <circle cx="210" cy="63" r="4" style="fill:#5a8f5a"/>
-  <line class="ln-mut" x1="210" y1="67" x2="210" y2="190"/>
-  <text x="210" y="208" text-anchor="middle">bankboston.y2000 registered in 2000</text>
+  <circle cx="195" cy="63" r="4" style="fill:#5a8f5a"/>
+  <line class="ln-mut" x1="195" y1="67" x2="195" y2="190"/>
+  <text x="195" y="208" text-anchor="middle">example.y2000 registered in 2000</text>
 </svg>
 <figcaption><span class="fig-label">Figure 13.2</span>
 Each year&#8217;s domain opens once (green), then closes for good, so there is
@@ -384,10 +375,10 @@ photocopy an out-of-print book. A footnote records Joseph Reagle&#8217;s point
 that courts might not accept the parallel.
 </p>
 
-<h2 id="sec-13-4">13.4 What the note gets right about what it is</h2>
+<h2 id="sec-13-4">13.4 Re-use is forbidden; change is not</h2>
 
 <p>
-The clarification about re-use is the part to carry away. Most URIs are generic in the sense of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>: they refer to a conceptual
+Most URIs are generic in the sense of <a class="x-ref" href="10-generic-resources.html">Chapter 10</a>: they refer to a conceptual
 resource whose representation varies with time, technology and language, as
 one address for &ldquo;today&#8217;s weather&rdquo; shows different content each
 day. That is permitted inside a persistent domain. What is forbidden is
@@ -413,9 +404,6 @@ known&rdquo;!).
 The note ends with a summary list of rules. Two say who would hold the
 power: the registry would be a neutral non-profit cooperative, and
 ICANN&#8217;s delegation of the year domains would be irrevocable for all time.
-The list closes by asking one dollar from anyone who uses the scheme
-(&ldquo;just kidding!&rdquo;), and a footnote jokes about how this era will
-look to historians after the year 2100.
 </p>
 
 <div class="since">
@@ -434,8 +422,8 @@ registrant through a registration agency, not to a domain name.</li>
 as the Internet Archive&#8217;s Wayback Machine (public since 2001), preserve
 material after publishers disappear, but as a voluntary third-party act, not a
 condition of holding a name, and with no contractual succession.</li>
-<li><strong>Dyson&#8217;s line held.</strong> Domain names are still rented. Lapsed
-domains are still re-registered and repointed: the worse failure the note
+<li><strong>Dyson&#8217;s line held.</strong> Domain names are still rented. As of 2026 lapsed
+domains are still routinely re-registered and repointed: the worse failure the note
 names, a URI resolving to something other than what the linker meant.</li>
 </ul>
 </div>

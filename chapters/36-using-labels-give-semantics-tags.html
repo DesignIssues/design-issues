@@ -62,7 +62,7 @@ item in the folder carries that meaning; the folder keeps its private name.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in November 2006, at the height of enthusiasm for tagging, this note
+Written in November 2006, when tagging sites were new, this note
 tries to reconcile the ease of typing a word with the reusability of a
 well-defined term.
 </p>
@@ -116,7 +116,7 @@ folder.
 </p>
 
 <figure id="fig-36-1">
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
      aria-labelledby="fig36-1-t fig36-1-d">
   <title id="fig36-1-t">A label ties a private folder to shared terms</title>
   <desc id="fig36-1-d">A personal folder called Soccer vs Wayland keeps its
@@ -145,16 +145,16 @@ folder.
   <path class="ln" style="stroke:#5a8f5a" d="M 432 128 L 470 128"/>
   <path d="M 466 123 L 478 128 L 466 133 Z" fill="#5a8f5a"/>
 
-  <rect class="box-green" x="478" y="44" width="218" height="160" rx="4"/>
-  <text x="587" y="70" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
-  <text x="494" y="100">location: the playing field</text>
-  <text x="494" y="118">(lat 47, long 78)</text>
-  <text x="494" y="144">shows: our team</text>
-  <text x="587" y="224" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
-  <text x="587" y="240" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
+  <rect class="box-green" x="478" y="72" width="218" height="112" rx="4"/>
+  <text x="587" y="98" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
+  <text x="494" y="126">location: the playing field</text>
+  <text x="494" y="144">(lat 47, long 78)</text>
+  <text x="494" y="168">shows: our team</text>
+  <text x="587" y="204" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
+  <text x="587" y="220" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
 
-  <line class="ln-mut" x1="24" y1="256" x2="696" y2="256"/>
-  <text x="360" y="280" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements. The user never chose a global term.</text>
+  <line class="ln-mut" x1="24" y1="240" x2="696" y2="240"/>
+  <text x="360" y="262" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements; the folder&#8217;s own name stays private.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 36.1</span>
 The user keeps the folder&#8217;s private name and attaches, once, a label
@@ -162,7 +162,7 @@ written in terms others can read. The place and subject shown are the ones in
 the note&#8217;s own example.</figcaption>
 </figure>
 
-<h2 id="sec-36-3">36.3 The example, which is a complaint about software</h2>
+<h2 id="sec-36-3">36.3 The soccer photographs</h2>
 
 <p>
 Berners-Lee photographs a local soccer team twice, against Wayland and
@@ -180,7 +180,7 @@ and lacks the hierarchical interface he wants.
 </p>
 
 <figure id="fig-36-2">
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 275" width="720" height="275" role="img"
      aria-labelledby="fig36-2-t fig36-2-d">
   <title id="fig36-2-t">The soccer folders as classes</title>
   <desc id="fig36-2-d">On the left, the folders as he wanted them on screen: a
@@ -226,7 +226,6 @@ and lacks the hierarchical interface he wants.
 
   <path class="ln-dash" d="M 60 258 L 100 258"/>
   <text x="110" y="262" class="t-sm">pairs them: folder = class; subfolder = subclass; folder name = local tag</text>
-  <text x="360" y="288" class="t-sm t-it" text-anchor="middle">Every structure he wanted on screen is already present on the right.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 36.2</span>
 What he wanted on screen, and what it already is in the data model: the
@@ -300,7 +299,7 @@ The note gives three ways to write the same label, and says they are
 <table>
 <tr><th>Form</th><th>What it says</th><th>Who it suits</th></tr>
 <tr><td>A rule in <a class="gl-ref" href="../glossary.html#n3">N3</a> (Notation3, a notation for RDF and rules; <a class="x-ref" href="42-notation3.html">Chapter 42</a>)</td><td>Each member is at the field and shows our team.</td><td>Rule writers</td></tr>
-<tr><td><a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions</td><td>The class is a subclass of things at the field showing our team.</td><td>Users of OWL, a language for defining terms</td></tr>
+<tr><td><a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions (a class defined as &lsquo;things with this value for that property&rsquo;)</td><td>The class is a narrower class of things at the field showing our team.</td><td>Users of OWL, a language for defining terms</td></tr>
 <tr><td>A label vocabulary</td><td>Label terms on the class; one rule copies them to members.</td><td>Systems built for labels</td></tr>
 </table>
 
@@ -309,12 +308,14 @@ The note gives three ways to write the same label, and says they are
 <p>
 The note warns of one trap. The label is a class, not a photograph: who made
 the label, and when, has nothing to do with who took the photographs, or when.
+So the location and subject cannot be written on the class itself, as if the
+category stood in the field (<a class="x-ref" href="#fig-36-4">Figure 36.4</a>).
 </p>
 
 <figure id="fig-36-4">
 <svg class="dia" viewBox="0 0 720 210" width="720" height="210" role="img"
      aria-labelledby="fig36-4-t fig36-4-d">
-  <title id="fig36-4-t">Two ways to write the label</title>
+  <title id="fig36-4-t">About the members, not the class</title>
   <desc id="fig36-4-d">Right: every photo in SoccerWaylandPhoto has location
   the field and shows our team. Wrong: the class SoccerWaylandPhoto itself has
   location the field and shows our team, which says the category itself is at
@@ -359,15 +360,12 @@ users write rules.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The labelling language arrived.</strong> The content-labelling
-incubator group mentioned in the note (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Content Label Incubator Group) led to POWDER (Protocol for Web
-Description Resources), which became a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September
-2009.</li>
+<li><strong>The labelling language arrived.</strong> The note&#8217;s Web
+Content Labeling (WCL) Incubator Group fed into POWDER (Protocol for Web
+Description Resources), a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2009.</li>
 <li><strong>The software in the example was retired.</strong> Apple replaced
 iPhoto with its Photos application in April 2015.</li>
-<li><strong>The interface complaint stands.</strong> Nested collections,
-where membership of a child implies membership of the parent, remain unusual
-in consumer software.</li>
+
 </ul>
 </div>
 

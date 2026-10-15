@@ -130,8 +130,7 @@ of a long <a class="gl-ref" href="../glossary.html#uri">URI</a>, and a semicolon
 </svg>
 <figcaption><span class="fig-label">Figure 42.1</span>
 The braces are the addition. Line 4 says what Jane knows without the system
-itself asserting it. If Joe has another name, Jane&#8217;s knowledge is not
-automatically about that name too (Chapter 44).</figcaption>
+itself asserting it.</figcaption>
 </figure>
 
 <h3>A rule, worked through</h3>
@@ -190,9 +189,9 @@ the data and copies them into the conclusion.</figcaption>
 <p>
 Quotation plus reference brings self-reference, and self-reference brings
 paradox: a sentence such as <em>this statement is false</em>, which is true
-only if it is false. Berners-Lee&#8217;s response is unusually direct about
-the cost. (First-order logic, below, is the ordinary logic of <em>all</em>,
-<em>some</em> and <em>not</em>.)
+only if it is false. Berners-Lee is direct about the cost of adding this to
+first-order logic, the ordinary logic of <em>all</em>, <em>some</em> and
+<em>not</em>:
 </p>
 
 <blockquote>
@@ -290,13 +289,13 @@ elsewhere cannot retract a conclusion drawn here.</figcaption>
 <h2 id="sec-42-5">42.5 The Web as an operator</h2>
 
 <p>
-Two built-in properties do something no logic textbook contains: they make
-retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>. <code>log:semantics</code> relates a document to
-what it means, and <code>log:says</code> to what it says. Berners-Lee defines
+Two built-in properties make retrieval part of <a class="gl-ref" href="../glossary.html#inference">inference</a>.
+<code>log:semantics</code> relates a document to what it means, and
+<code>log:says</code>, loosely, holds when a document&#8217;s statements include
+the given fact. Berners-Lee defines
 the semantics of a document as the result of three plain steps: fetch the
 document, read its statements, and add them to what the program already
-holds. For the URI of an N3 file on the Web, <code>log:semantics</code> gives
-the formula made of every statement in that file.
+holds.
 </p>
 
 <p>
@@ -351,7 +350,7 @@ pick one by its source: the provenance of section 42.1, written as a rule.</figc
 
 <p>
 A reviewer was aghast at defining semantics as retrieval, and the footnote
-answering the objection is the wittiest passage in the collection:
+answers the objection:
 </p>
 
 <blockquote>
@@ -400,8 +399,9 @@ absence against whatever dataset is being queried.</li>
 arrived with SPARQL in 2008 and became datasets in RDF 1.1 (February 2014);
 RDF-star work from 2021 onward added statements about statements.</li>
 <li><strong>Retrieval as inference stayed in research reasoners.</strong>
-Reasoners such as cwm and EYE implement fetching a document during a rule,
-but production systems load data first and reason afterwards.</li>
+Reasoners such as cwm (from 2000) and, later, EYE fetch a
+document during a rule, but most deployed <a class="gl-ref" href="../glossary.html#triple">triple</a> stores load data first and
+reason afterwards.</li>
 </ul>
 </div>
 

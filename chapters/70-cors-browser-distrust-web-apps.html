@@ -206,9 +206,9 @@ The note&#8217;s three gods map onto the attack:
 
 <p>
 Every mechanism should stop the spy without disabling the other two, yet the
-browser distrusts the writer, the party Alice chose. <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> moves the data
-out from behind the boundary, so an app reaching the user&#8217;s own storage does
-the ordinary thing.
+browser distrusts the writer, the party Alice chose. <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>&#8217;s design
+keeps each person&#8217;s data in their own store, so an app reading it is
+always reaching across origins; CORS sits in the way of every such read.
 </p>
 
 <h2 id="sec-70-5">70.5 How permission is granted</h2>
@@ -227,18 +227,19 @@ Sharing (CORS) by adding a <em><a class="gl-ref" href="../glossary.html#header">
 
 <p>
 Reply headers are blocked too, even ordinary ones such as <code>Link</code>,
-unless the <a class="gl-ref" href="../glossary.html#server">server</a> lists them in another header (the note uses
-<code>Access-Control-Allow-Headers</code>; the <a class="gl-ref" href="../glossary.html#specification">specification</a>&#8217;s name for
-this job is <code>Access-Control-Expose-Headers</code>). The browser also first
+unless the <a class="gl-ref" href="../glossary.html#server">server</a> lists them in another header. The note calls it
+<code>Access-Control-Allow-Headers</code>; in the <a class="gl-ref" href="../glossary.html#specification">specification</a> it is
+<code>Access-Control-Expose-Headers</code>. The browser also first
 sends a hidden <em>preflight</em> request (<a class="gl-ref" href="../glossary.html#http">HTTP</a> OPTIONS), an extra round trip.
 </p>
 
 <h2 id="sec-70-6">70.6 The twist</h2>
 
 <p>
-Fearing <code>*</code> was a &#8220;footgun&#8221; managers would put even on
-per-user pages, the designers made browsers refuse it when a request carries
-credentials, such as a login; the server must name the origin exactly.
+The designers feared <code>*</code> was a &#8220;footgun&#8221;, something
+system managers could too easily shoot themselves in the foot with by putting
+it on pages tailored to each user. So browsers refuse it when a request
+carries credentials, such as a login; the server must name the origin exactly.
 </p>
 
 <p>
@@ -290,11 +291,11 @@ data servers were therefore told to copy back whatever origin asked
   <path class="ln" d="M 470 272 L 158 272"/>
   <path d="M 162 267 L 150 272 L 162 277 Z" fill="#2f4f4f"/>
 
-  <rect class="box-warm" x="560" y="122" width="150" height="62" rx="4"/>
-  <text x="635" y="142" class="t-sm" text-anchor="middle">a * in step 2 is</text>
-  <text x="635" y="159" class="t-sm" text-anchor="middle">refused if credentials</text>
-  <text x="635" y="176" class="t-sm" text-anchor="middle">were sent</text>
-  <path class="ln-mut" d="M 480 150 L 560 150"/>
+  <rect class="box-warm" x="545" y="105" width="150" height="62" rx="4"/>
+  <text x="620" y="125" class="t-sm" text-anchor="middle">a * in step 2 is</text>
+  <text x="620" y="142" class="t-sm" text-anchor="middle">refused if credentials</text>
+  <text x="620" y="159" class="t-sm" text-anchor="middle">were sent</text>
+  <path class="ln-mut" d="M 410 136 L 545 136"/>
 </svg>
 <figcaption><span class="fig-label">Figure 70.2</span>
 Two round trips and a copied header, just to read public data. The
@@ -303,15 +304,10 @@ developer&#8217;s console may show only steps 3 and 4.</figcaption>
 
 <p>
 Berners-Lee proposes a fixed header, <code>PUBLIC_AND_UNCUSTOMIZED</code>,
-instead:
+instead. A manager who put it on private or personalised data, he argues,
+would have no one else to blame. &#8220;But that is not how CORS was
+done.&#8221;
 </p>
-
-<blockquote>
-where the system manager would have no one else to blame for sing it on any
-resource which was secret, or was customized with a user's identity? One might
-of thought. But that is not how CORS was done.
-<cite>Authorizing Web Apps and CORS, 2018</cite>
-</blockquote>
 
 <h2 id="sec-70-7">70.7 Vary: Origin and the cache</h2>
 
@@ -391,8 +387,8 @@ whole web.
 
 <p>
 An epilogue adds that Chrome 59, and Firefox in July 2018, reused cached
-replies across origins despite <code>Vary: Origin</code>. <a class="gl-ref" href="../glossary.html#solid">Solid</a> must be built on
-this ground.
+replies across origins despite <code>Vary: Origin</code>. This is the ground
+<a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>) has to build on.
 </p>
 
 <div class="since">
@@ -401,10 +397,6 @@ this ground.
 <li><strong>The cache bug was reported again.</strong> On 12 July 2019
 Michiel de Jong published &#8220;CORS bug in several browsers&#8221;, cited in
 the note&#8217;s follow-up, and opened bugs with Chrome and Firefox.</li>
-<li><strong>The boundary kept being redrawn.</strong> Firefox 79 (July 2020)
-and Chrome 92 (July 2021) made a page set the Cross-Origin-Opener-Policy and
-Cross-Origin-Embedder-Policy headers before using shared memory between
-scripts.</li>
 <li><strong>The attack class survived.</strong> The OWASP Top 10 of 2021, a
 widely used ranking of web security risks, placed Injection, which includes
 cross-site scripting, third.</li>

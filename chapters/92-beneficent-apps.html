@@ -53,16 +53,14 @@ a Design Issues note by Tim Berners-Lee, 2023-03-23.
 <h3>The short version</h3>
 <p>
 A program can work for the person using it, or for someone else: an
-advertiser, a seller, the company that makes it. Most people now assume the
-second is normal.
+advertiser, a seller, the company that makes it. People raised on web
+tools may assume the second is normal.
 </p>
 <p>
-This note calls the first kind a beneficent app and asks for more of them. A
-browser should be one, and so should any open source tool. The test is to ask,
-at every design choice, what the user would want. An app paid by selling its
-users&#8217; data is unlikely to pass, and usefulness is harder to measure than
-clicks. Doctors and lawyers already owe such a duty, and software, especially
-AI, should owe it too.
+This note calls the first kind a beneficent app and asks for more of them. The
+test is to ask, at every design choice, what the user would want; an app paid
+by selling its users&#8217; data is unlikely to pass. Doctors and lawyers
+already owe such a duty, and software, especially AI, should owe it too.
 </p>
 </div>
 
@@ -74,7 +72,7 @@ Who does a program work for, and how would anyone know? This note, begun in 2018
 was revisited in 2023 because <a class="gl-ref" href="../glossary.html#solid">Solid</a> (<a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>) needs the concept.
 </p>
 <p>
-The word comes from the rules at Berners-Lee&#8217;s own institution for
+The word comes from MIT&#8217;s rules for
 experiments with human subjects: besides being informed, the subjects must
 benefit, so the work must be trying to cure disease rather than generate it. The
 idea is not foreign to the Web. The <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#specification">specification</a> calls the browser a user
@@ -161,14 +159,13 @@ represents its user is a form of empowerment.
 <h2 id="sec-92-2">92.2 What a browser owes</h2>
 
 <p>
-The browser is his main example of a beneficent app. Its duties are specific
-enough to audit, and each can fail silently.
+The browser is his main example of a beneficent app.
 </p>
 
 <table>
-<tr><th>Duty</th><th>Example of failure</th></tr>
+<tr><th>Duty</th><th>Example of failure (ours)</th></tr>
 <tr><td>Help the user know which party they are talking to</td><td>A look-alike bank site passes as the real one</td></tr>
-<tr><td>Help the user remember where they have been</td><td>A page that cannot be found again</td></tr>
+<tr><td>Help the user remember where they have gone</td><td>A page that cannot be found again</td></tr>
 <tr><td>Help the user curate a valuable subset of the Web</td><td>Everything worth keeping is lost in the flood</td></tr>
 <tr><td>Store passwords and keys safely</td><td>A password leak</td></tr>
 <tr><td>Help the user avoid being tricked, fooled or manipulated</td><td>A trick button that signs the user up</td></tr>
@@ -176,7 +173,7 @@ enough to audit, and each can fail silently.
 
 <p>
 Beneficent apps are not the norm on the Web or on mobile devices, yet they are
-common: every open source application should be one, because it is built by a
+common. Every open source application is, or should be, one, because it is built by a
 community for its own use, with the end user&#8217;s needs in mind.
 </p>
 
@@ -284,17 +281,12 @@ difficult to measure how useful you have been to your user.
 <figcaption><span class="fig-label">Figure 92.2</span>
 The non-beneficent app reads its success straight off the counter. The
 beneficent one must infer usefulness from proxies, and its best outcomes may
-never show up at all, which is why the good version is harder to run as a
-business.</figcaption>
+never show up at all.</figcaption>
 </figure>
 
 <p>
-A user may become well informed of something important and do nothing the app
-can observe. Users can be surveyed, and activity can be measured. For an app that
-organises parties, count the parties; since those are infrequent, measure what
-leads up to them, then check which measures accompanied good parties. Each
-candidate can also be tried in A/B testing, where two versions go to different
-users and the results are compared.
+Users can be surveyed, and each candidate measure tried in A/B testing, where
+two versions go to different users and the results are compared.
 </p>
 
 <p>
@@ -326,7 +318,8 @@ doctors, and with lawyers.
 A doctor takes an oath; a lawyer is bound to put the client first. Berners-Lee
 offers those bodies of law as a source for anyone drafting such commitments for
 software. As AI grows more powerful, he adds, it matters more at every step that
-it works for the user and not for someone else.
+it works for the user and not for someone else: for the individual, and for the
+human race.
 </p>
 
 <p>

@@ -188,20 +188,21 @@ Most of the list has since been built, though not always as he imagined:
 </table>
 
 <p>
-<a class="x-ref" href="#fig-11-2">Figure 11.2</a> shows how the same <code>#name</code> reads under four types today.
+<a class="x-ref" href="#fig-11-2">Figure 11.2</a> shows what <code>#</code> means under four types today.
 </p>
 
 <figure id="fig-11-2">
-<svg class="dia" viewBox="0 0 720 244" width="720" height="244" role="img"
+<svg class="dia" viewBox="0 0 720 256" width="720" height="256" role="img"
      aria-labelledby="fig11-2-t fig11-2-d">
   <title id="fig11-2-t">One syntax, one meaning per media type</title>
-  <desc id="fig11-2-d">The same fragment syntax after the hash means something
-  different depending on the media type of what came back: an element in HTML,
-  a thing in RDF, a time range in media, a character range in text. Each
+    <desc id="fig11-2-d">The same fragment syntax after the hash means something
+  different depending on the media type of what came back: #results is an
+  element in HTML, #alice a thing described in Turtle, #t=10,20 seconds 10 to
+  20 of a video, #line=10,20 lines 10 to 20 of plain text. Each
   meaning is fixed when the media type is registered, and none of them
   required a change to HTTP.</desc>
 
-  <text x="360" y="28" class="t-mono" text-anchor="middle"><tspan style="fill:#8a9a9a">http://example.org/thing</tspan><tspan style="fill:#5a8f5a">#name</tspan></text>
+  <text x="360" y="28" class="t-mono" text-anchor="middle"><tspan style="fill:#8a9a9a">http://example.org/thing</tspan><tspan style="fill:#5a8f5a">#&#8230;</tspan></text>
   <text x="360" y="48" class="t-sm" text-anchor="middle">one syntax, resolved entirely on the client</text>
 
   <path class="ln-mut" d="M 360 58 L 360 76 M 108 76 L 612 76
@@ -210,26 +211,28 @@ Most of the list has since been built, though not always as he imagined:
 
   <rect class="box" x="30" y="96" width="156" height="38" rx="4"/>
   <text x="108" y="120" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">text/html</text>
-  <text x="108" y="158" class="t-sm" text-anchor="middle">an element</text>
-  <text x="108" y="174" class="t-sm" text-anchor="middle">in the document</text>
+    <text x="108" y="160" class="t-mono t-sm" text-anchor="middle" style="fill:#5a8f5a">#results</text>
+  <text x="108" y="182" class="t-sm" text-anchor="middle">an element</text>
+  <text x="108" y="198" class="t-sm" text-anchor="middle">in the document</text>
 
   <rect class="box-green" x="198" y="96" width="156" height="38" rx="4"/>
   <text x="276" y="120" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">text/turtle</text>
-  <text x="276" y="158" class="t-sm" text-anchor="middle">a thing the document</text>
-  <text x="276" y="174" class="t-sm" text-anchor="middle">describes, not part of it</text>
+    <text x="276" y="160" class="t-mono t-sm" text-anchor="middle" style="fill:#5a8f5a">#alice</text>
+  <text x="276" y="182" class="t-sm" text-anchor="middle">a thing the document</text>
+  <text x="276" y="198" class="t-sm" text-anchor="middle">describes, not part of it</text>
 
   <rect class="box-warm" x="366" y="96" width="156" height="38" rx="4"/>
   <text x="444" y="120" class="t-mono" text-anchor="middle" style="fill:#b08d57">video/*</text>
-  <text x="444" y="158" class="t-sm" text-anchor="middle">a range in time,</text>
-  <text x="444" y="174" class="t-sm" text-anchor="middle">or a track</text>
+    <text x="444" y="160" class="t-mono t-sm" text-anchor="middle" style="fill:#5a8f5a">#t=10,20</text>
+  <text x="444" y="182" class="t-sm" text-anchor="middle">seconds 10 to 20</text>
 
   <rect class="box-plain" x="534" y="96" width="156" height="38" rx="4"/>
   <text x="612" y="120" class="t-mono" text-anchor="middle">text/plain</text>
-  <text x="612" y="158" class="t-sm" text-anchor="middle">a range of lines</text>
-  <text x="612" y="174" class="t-sm" text-anchor="middle">and characters</text>
+    <text x="612" y="160" class="t-mono t-sm" text-anchor="middle" style="fill:#5a8f5a">#line=10,20</text>
+  <text x="612" y="182" class="t-sm" text-anchor="middle">lines 10 to 20</text>
 
-  <line class="ln-mut" x1="30" y1="204" x2="690" y2="204"/>
-  <text x="360" y="228" class="t-sm" text-anchor="middle">The meaning is fixed when the media type is registered, not when HTTP is revised.</text>
+  <line class="ln-mut" x1="30" y1="216" x2="690" y2="216"/>
+  <text x="360" y="240" class="t-sm" text-anchor="middle">The meaning is fixed when the media type is registered, not when HTTP is revised.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 11.2</span>
 Nothing in HTTP says what <code>#</code> means, so each type of document
@@ -251,7 +254,8 @@ registration process.
 <h2 id="sec-11-3">11.3 Why RDF namespaces end in a hash</h2>
 
 <p>
-This is the argument <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> would restate at length five years later. A
+This passage, added to the note some years after 1997, is the argument
+<a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> restates at length. A
 fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document (RDF: a format for machine-readable statements
 about things) identifies not a part of the document but
 whatever thing the document describes under that name. Why must it be a
@@ -263,9 +267,8 @@ fragment? The reasoning runs in three steps:
 message about a document (that it has moved, say, or is unavailable), or
 nothing at all.</li>
 <li>So an <code>http:</code> address without a <a class="gl-ref" href="../glossary.html#hash">hash</a> names a document. A
-client can conclude this from the protocol alone, even if no server runs,
-because an error saying the document is unavailable is still about a
-document.</li>
+client can tell this from the protocol alone. Even if no server runs, a
+message that the document is unavailable is still about a document.</li>
 <li>So a person, a dog or a concept cannot have a hashless address of its
 own. It needs a <code>#</code> name inside a document.</li>
 </ol>
@@ -338,7 +341,7 @@ chose.</figcaption>
 <p>
 In 1997 it did no harm: HTML was effectively the only type that used
 fragments, and falling back to the whole document was acceptable. In a
-passage added around 2001 Berners-Lee notes it has become more of a problem. He records
+passage dated 2001 Berners-Lee notes it has become more of a problem. He records
 proposals to add the fragment to the HTTP request, and suggests that warnings
 sent with the response, or new protocols that pass the fragment as a hint,
 could let server and client negotiate an equivalent fragment.
@@ -360,7 +363,7 @@ something between.
 </p>
 
 <p>
-No browser offers it; the link usually just lands at the top of the page.
+No browser offers it.
 Some sites offer half the choice themselves: Wikipedia&#8217;s &ldquo;Permanent link&rdquo; points to one
 fixed revision of an article, and GitHub can link to a file as it stood
 at a specific commit. Both are the second kind of bookmark,
@@ -374,18 +377,7 @@ supplied by the site rather than the browser.
 specifies that fragment semantics are defined by the media type of the
 retrieved representation, and RFC 6838, of January 2013, gives every media type
 registration template a field for fragment identifier considerations.</li>
-<li><strong>The predictions came true, one at a time.</strong> Media Fragments
-URI 1.0 became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2012, giving time ranges and
-spatial regions. Text fragments, addressing a passage by quoting its words,
-shipped in Chrome in 2020: the HTML range proposal arriving twenty-three years
-late, by quoted words rather than by position in the element tree. Line and
-character ranges for plain text came with RFC 5147 in April 2008.</li>
-<li><strong>The hash-only rule for vocabularies did not hold.</strong> The
-resolution of June 2005, described in <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>, permitted hashless URIs for
-things, which is the practice <a class="x-ref" href="#sec-11-3">section 11.3</a> argues against.</li>
-<li><strong>The known bug is still open.</strong> Fragments are still not sent
-to the server, and negotiation across types with incompatible fragment
-schemes still silently degrades to the whole document.</li>
+
 </ul>
 </div>
 
@@ -420,7 +412,7 @@ State what it must not assume about HTTP.</p>
 </div>
 <div class="question">
 <p><span class="question-number">11.4</span>
-The two-kinds-of-bookmark problem has never been solved in any browser.
+No mainstream browser offers a choice between the two kinds of bookmark.
 Propose an interface for it, and say why the absence of one has cost so
 little.</p>
 </div>

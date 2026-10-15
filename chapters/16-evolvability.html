@@ -52,7 +52,7 @@ a Design Issues note by Tim Berners-Lee, 1998-05-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Between 1994 and 1998, web pages gained tables, colours, frames and a dozen
+Between 1994 and 1998, web pages gained tables and many
 other features, none of which anybody had agreed on. Companies simply invented
 them, protected by a rule inherited from electronic mail: anything not
 understood is to be ignored rather than rejected.
@@ -120,8 +120,7 @@ understood, so no feature can ever be relied upon.
 <h2 id="sec-16-2">16.2 The HTML cycle</h2>
 
 <p>
-The note&#8217;s best passage is an account of how HTML actually grew between
-1994 and 1998, as browser makers added new tags (a tag is the bracketed
+Between 1994 and 1998 HTML grew as browser makers added new tags (a tag is the bracketed
 label, such as <code>&lt;table&gt;</code>, that marks out part of a page). It
 is a cycle with a motor, and the motor is the
 tension between wanting to beat a competitor and needing to interoperate with
@@ -233,7 +232,7 @@ language which is itself well defined.
   interfaces, as in RPC, either work entirely or not at all, and changing one
   side forces a rebuild of the other. Well-defined extension, the goal of XML
   namespaces, labels a document as, for example, HTML 2.0 plus Netscape&#8217;s
-  tables 2.01, and is both free and unambiguous.</desc>
+  version of tables version 2.01, and is both free and unambiguous.</desc>
 
   <!-- column 1 -->
   <rect class="box-warm" x="12" y="10" width="216" height="226" rx="4"/>
@@ -268,8 +267,8 @@ language which is itself well defined.
   <text x="600" y="32" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">well-defined extension</text>
   <line class="ln-mut" x1="492" y1="46" x2="708" y2="46"/>
   <text x="506" y="68" class="t-sm t-it">example (XML namespaces)</text>
-  <text x="506" y="87">a page labelled &#8220;HTML 2.0</text>
-  <text x="506" y="103">plus Netscape&#8217;s tables 2.01&#8221;</text>
+  <text x="506" y="87">a page labelled HTML 2.0 +</text>
+  <text x="506" y="103">Netscape tables 2.01</text>
   <text x="506" y="128" class="t-sm t-it">gain</text>
   <text x="506" y="147">free to extend, and</text>
   <text x="506" y="163">unambiguous to read</text>
@@ -354,9 +353,8 @@ illustrative.)</figcaption>
 </figure>
 
 <p>
-The precise version, then, is a transformation. The invoice system in
-<a class="x-ref" href="#fig-16-3">Figure 16.3</a> does exactly this: it deletes the part description and is left
-with a valid invoice. That deletion is the transformation.
+The invoice system in <a class="x-ref" href="#fig-16-3">Figure 16.3</a> does exactly this: delete the part
+description, and what remains is a valid invoice.
 </p>
 
 <p>
@@ -478,11 +476,6 @@ Sweden actually changed from driving on the left to driving on the right.
 <cite>Evolvability, 1998</cite>
 </blockquote>
 
-<blockquote>
-The test of independent invention is not just a thought experiment, it is
-happening all the time.
-<cite>Evolvability, 1998</cite>
-</blockquote>
 
 <h2 id="sec-16-6">16.6 Two assumptions</h2>
 
@@ -507,9 +500,6 @@ too, and will independently invent the same things.
 <tr><td>We are not smarter than everyone else</td><td>Moving between parallel versions A and B, invented independently</td></tr>
 </table>
 
-<p>
-Humility, here, is a technical requirement.
-</p>
 
 <h2 id="sec-16-7">16.7 Six kinds of schema</h2>
 
@@ -563,15 +553,15 @@ ranks six kinds by how much a machine can do with them.
         transform="translate(690 172) rotate(-90)">more machine understanding</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.5</span>
-Step 4 is the cheap answer to the problem section 16.4 left open: mark, in the
-schema of a new version, which elements may be ignored.</figcaption>
+Each step up lets a machine do more without a human; step 5 is where it stops
+being able to show its reasoning.</figcaption>
 </figure>
 
 <p>
 Even the bottom step lets software check whether it knows the language, which
-is all most RPC systems do. The second matters more than it looks: in the
-end, the note argues, what a document commits to must be defined in
-human-readable legal language. The fourth is the one <a class="x-ref" href="#sec-16-4">section 16.4</a> was waiting for:
+is all most RPC systems do. The second reflects the note&#8217;s view that what a
+document commits to must in the end be defined in human-readable legal
+language. The fourth is the one <a class="x-ref" href="#sec-16-4">section 16.4</a> was waiting for:
 </p>
 
 <blockquote>
@@ -605,7 +595,8 @@ are kept rather than merely ignored (proto3 at first discarded them, until
 version 3.5 in 2017). That is closer to what <a class="x-ref" href="#sec-16-4">section 16.4</a> asked for than
 anything the Web adopted.</li>
 <li><strong>The cycle did not stop.</strong> Vendor-prefixed CSS properties
-through the late 2000s reproduced it exactly. Browser makers then moved away
+(<code>-webkit-</code>, <code>-moz-</code>), common from the mid-2000s to the
+early 2010s, repeated steps 1 to 3 of the cycle. Browser makers then moved away
 from prefixes towards hiding experimental features behind settings flags;
 Chrome&#8217;s Blink engine adopted that policy at its launch in 2013.</li>
 </ul>

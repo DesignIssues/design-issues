@@ -81,8 +81,7 @@ some circles paralyzed any forward progress.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
 <p>
-The note&#8217;s method is worth noticing. It does not propose a <a class="gl-ref" href="../glossary.html#scheme">scheme</a>. It
-attacks a distinction, and replaces it with a trade-off that has no
+It proposes no new naming <a class="gl-ref" href="../glossary.html#scheme">scheme</a>. It attacks a distinction, and replaces it with a trade-off that has no
 technical solution.
 </p>
 </div>
@@ -113,7 +112,9 @@ Berners-Lee&#8217;s counter is that the distinction is an illusion produced by
 not looking far enough down. The only true location is a point in physical
 space, and between it and anything one would call a name or an address there
 is a long chain of look-ups. The domain name is one step in that chain; the IP
-address is simply the next. Even an IP address is not bound to a machine. A filename, likewise, is
+address is simply the next. Even an IP address can be given to another
+machine, though only one nearby in the network, because part of the number
+says where to route. A filename, likewise, is
 looked up through directory tables to find the places on a disk that hold
 the file.
 </p>
@@ -178,8 +179,7 @@ what information is in the address.
 <h2 id="sec-3-2">3.2 Two anecdotes</h2>
 
 <p>
-The note&#8217;s argument turns on two stories from the author&#8217;s own records, and
-they are the reason it persuades where an abstract argument would not.
+The note&#8217;s argument turns on two stories from the author&#8217;s own records.
 </p>
 
 <p>
@@ -219,7 +219,7 @@ because the name contained a claim about authority and the authority changed.
   changed.</desc>
 
   <rect class="box" x="20" y="16" width="330" height="194" rx="4"/>
-  <text x="185" y="42" class="t-caps" text-anchor="middle">australian server</text>
+  <text x="185" y="42" text-anchor="middle" style="fill:#1c5a7a">Australian server</text>
   <line class="ln-mut" x1="36" y1="54" x2="334" y2="54"/>
   <text x="36" y="76" class="t-sm">Stayed put</text>
   <text x="36" y="95" style="fill:#5a8f5a">the server and its IP address</text>
@@ -249,15 +249,15 @@ responsible.</figcaption>
 <h2 id="sec-3-3">3.3 Reading a URI for its future breakages</h2>
 
 <p>
-The note then performs an exercise that is still the best short teaching
-device in the collection. It takes an invented but entirely typical <a class="gl-ref" href="../glossary.html#uri">URI</a>:
+The note then performs an exercise. It takes an invented but entirely typical <a class="gl-ref" href="../glossary.html#uri">URI</a>:
 </p>
 
 <pre><code>http://pegasus.cs.foo.edu/disk1/students/romeo/cool/latest/readthis.html</code></pre>
 
 <p>
 He walks the segments, asking of each what change in the world would make it
-wrong. <a class="x-ref" href="#fig-3-3">Figure 3.3</a> gives his answers. One needs a word of explanation: the
+wrong. <a class="x-ref" href="#fig-3-3">Figure 3.3</a> summarises his answers; the last column is this book&#8217;s
+estimate. One needs a word of explanation: the
 final <code>.html</code> names a format, which makes it awkward to offer the
 content in another format later, such as audio for blind readers.
 </p>
@@ -319,7 +319,7 @@ content in another format later, such as audio for blind readers.
     <text x="20" y="312" class="t-mono" style="fill:#b08d57">cool, latest</text>
     <text x="150" y="312" class="t-sm">a judgement, a position in time</text>
     <text x="400" y="312" class="t-sm">time passes</text>
-    <text x="660" y="312" class="t-sm" text-anchor="end" style="fill:#b08d57">certain</text>
+    <text x="660" y="312" class="t-sm" text-anchor="end" style="fill:#b08d57">very likely</text>
 
     <rect x="14" y="324" width="692" height="28" fill="#f5f8f0"/>
     <text x="20" y="343" class="t-mono" style="fill:#5a8f5a">readthis</text>
@@ -406,11 +406,11 @@ than &ldquo;name&rdquo;.
 <svg class="dia" viewBox="0 0 720 200" width="720" height="200" role="img"
      aria-labelledby="fig3-4-t fig3-4-d">
   <title id="fig3-4-t">The naming problem as a spectrum</title>
-  <desc id="fig3-4-d">A horizontal spectrum. At the left, a Message-ID carries
-  no information: it lasts, but cannot be looked up globally and supports only
+  <desc id="fig3-4-d">  A horizontal spectrum. At the left, a Message-ID carries
+  little information: it lasts, but cannot be looked up globally and supports only
   equality. At the right, a domain-name path carries information: it can be
-  looked up, but breaks when the authority changes. An arrow between them is
-  labelled more information in the name.</desc>
+  looked up, but breaks when the authority changes. An arrow from left to
+  right is labelled more information in the name.</desc>
   <defs>
     <marker id="fig3-4-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="8" markerHeight="8" orient="auto-start-reverse">
@@ -419,10 +419,10 @@ than &ldquo;name&rdquo;.
   </defs>
   <rect class="box-green" x="20" y="20" width="250" height="160" rx="6"/>
   <text x="145" y="46" class="t-caps" text-anchor="middle">message-id</text>
-  <text x="145" y="70" class="t-mono t-sm" text-anchor="middle">&lt;&#8230;@mail.example.org&gt;</text>
-  <text x="40" y="100" class="t-sm">no information</text>
+  <text x="145" y="70" class="t-mono t-sm" text-anchor="middle">&lt;5f3a9c71e2@&#8230;&gt;</text>
+  <text x="40" y="100" class="t-sm">little information</text>
   <text x="40" y="120" class="t-sm" style="fill:#5a8f5a">lasts</text>
-  <text x="40" y="140" class="t-sm">cannot be looked up globally</text>
+  <text x="40" y="140" class="t-sm" style="fill:#b08d57">cannot be looked up globally</text>
   <text x="40" y="160" class="t-sm">supports equality only</text>
 
   <rect class="box-warm" x="450" y="20" width="250" height="160" rx="6"/>
@@ -433,12 +433,12 @@ than &ldquo;name&rdquo;.
   <text x="470" y="140" class="t-sm" style="fill:#b08d57">breaks when the authority</text>
   <text x="470" y="160" class="t-sm" style="fill:#b08d57">changes</text>
 
-  <line class="ln-accent" x1="280" y1="100" x2="440" y2="100" marker-start="url(#fig3-4-arr)" marker-end="url(#fig3-4-arr)"/>
+  <line class="ln-accent" x1="280" y1="100" x2="440" y2="100" marker-end="url(#fig3-4-arr)"/>
   <text x="360" y="86" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">more information</text>
   <text x="360" y="124" class="t-sm" text-anchor="middle" style="fill:#1c5a7a">in the name</text>
 </svg>
 <figcaption><span class="fig-label">Figure 3.4</span>
-No point on the line escapes both costs. Persistence therefore has to come
+Neither end escapes both costs. Persistence therefore has to come
 from somewhere other than the form of the name: from a contract, as section
 3.5 argues.</figcaption>
 </figure>
@@ -446,8 +446,7 @@ from somewhere other than the form of the name: from a contract, as section
 <h2 id="sec-3-5">3.5 Persistence is a contract</h2>
 
 <p>
-The conclusion is the one that makes this chapter belong in Volume I rather
-than in a chapter on URI syntax. Since the information in a name binds it to
+Since the information in a name binds it to
 an authority, keeping the name dereferenceable over time means keeping that
 authority in operation over time, and that is an agreement between
 organisations rather than a property of a protocol.
@@ -484,9 +483,8 @@ its income covers the cost for ever.
 <p>
 Two proposals close the note. The first is that a new URI scheme&#8217;s
 <a class="gl-ref" href="../glossary.html#specification">specification</a> should describe the name-like and address-like properties of
-its identifiers, so that users know what to expect, which quietly disposes of
-the binary distinction by turning it into a spectrum to be documented. The
-second:
+its identifiers, so that users know what to expect. That turns the
+name/address split into a scale to be documented. The second:
 </p>
 
 <blockquote>

@@ -156,22 +156,9 @@ crosses the wire.</figcaption>
 </figure>
 
 <p>
-The note&#8217;s central passage lays out everything wrong with a password simply
-by describing what one is:
+The note&#8217;s central passage describes what a password demands, and then
+what a key pair offers (<a class="x-ref" href="#fig-69-2">Figure 69.2</a>).
 </p>
-
-<blockquote>
-For passwords, you should think of a massively big one which is therefore
-impossible to remember so you end up relying on your computer to remember it,
-and it should of course be a different one for each of the things you do
-business with, and the other party has store a copy of this, and your code has
-to send it across the net risking it being ensnared within your system or their
-system, and then they have to store it, which can be pretty insecure, to judge
-from history.
-<cite>Web Security - Client side certs, 2015</cite>
-</blockquote>
-
-<p><a class="x-ref" href="#fig-69-2">Figure 69.2</a> sets this beside his account of a key pair.</p>
 
 <figure id="fig-69-2">
 <svg class="dia" viewBox="0 0 720 336" width="720" height="336" role="img"
@@ -211,8 +198,8 @@ The private key does neither.</figcaption>
 </figure>
 
 <p>
-People call client certificates unfashionable and hard to use, he notes,
-yet say they hate passwords. His summary:
+People call client certificates unfashionable, hard to use and badly
+supported by browsers, he notes, yet say they hate passwords. His summary:
 </p>
 
 <blockquote>
@@ -224,9 +211,9 @@ be making better use of it.
 <h2 id="sec-69-2">69.2 Six things a browser would have to do</h2>
 
 <p>
-The note is unusual in the collection for being a feature <a class="gl-ref" href="../glossary.html#specification">specification</a>. In
-practice: Alice holds a work key and a personal key; at her bank she picks the
-personal one, sees it named beside the address, and later logs out.
+The note reads like a feature list. Picture Alice: she holds a work key and a
+personal key; at her bank she picks the personal one, sees it named beside the
+address, and later logs out.
 </p>
 
 <table>
@@ -251,7 +238,7 @@ prominently, and shows nothing about who the user is being.
   <desc id="fig69-3-d">Today the address bar shows a padlock and the
   site&#8217;s name, bank.example, and nothing about who the user is. In the
   proposed bar, a slot on the right shows the identity in use, such as
-  Alice with her work key.</desc>
+  Alice with her personal key.</desc>
 
   <text x="24" y="36" class="t-caps">today</text>
   <rect class="box-plain" x="24" y="48" width="672" height="44" rx="6"/>
@@ -269,11 +256,11 @@ prominently, and shows nothing about who the user is being.
   <text x="68" y="167" class="t-mono" style="fill:#1c5a7a">bank.example</text>
   <text x="172" y="167" class="t-sm">(who the site is)</text>
   <rect class="box-green" x="440" y="148" width="240" height="28" rx="4"/>
-  <text x="560" y="167" text-anchor="middle">user: Alice (work key)</text>
+  <text x="560" y="167" text-anchor="middle">user: Alice (personal key)</text>
 </svg>
 <figcaption><span class="fig-label">Figure 69.3</span>
-Browsers display the conversation from one side only. The note suggests the
-missing half might sit on the right of the address bar.</figcaption>
+The note suggests the missing half might sit on the right of the address
+bar.</figcaption>
 </figure>
 
 <p>On labelling, a detail that decides usability, the note is blunt:</p>
@@ -339,11 +326,6 @@ social arrangement is narrower than the arrangement:
 <tr><td>68</td><td>A party is a <a class="gl-ref" href="../glossary.html#domain-name">domain name</a></td><td>A party can be a path within a site</td></tr>
 <tr><td>69</td><td>Only the site needs strong proof of identity</td><td>The user needs it too, at the bank or among friends</td></tr>
 </table>
-
-<p>
-In each case the narrowing is invisible because it has been there since the
-beginning.
-</p>
 
 <div class="since">
 <h3>What happened since</h3>

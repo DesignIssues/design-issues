@@ -53,9 +53,9 @@ a Design Issues note by Tim Berners-Lee, 2005-06-01.
 <h3>The short version</h3>
 <p>
 When a browser asks a web <a class="gl-ref" href="../glossary.html#server">server</a> for an address, the server replies with a
-number before it sends anything else. A reply of 200 means <em>here is the page</em>. The rule
-agreed in 2005 says that a 200 shows the address names a document, and
-that any other reply does not show that.
+number before it sends anything else. A reply of 200 means <em>here is the page</em>. Under the rule
+agreed in 2005, a 200 shows the address names a document; any other reply
+leaves the question open.
 </p>
 </div>
 
@@ -86,7 +86,7 @@ says how the request went. Three of them matter for this chapter:
 </table>
 
 <p>
-The note states the resolution twice, in nearly identical words:
+The resolution:
 </p>
 
 <blockquote>
@@ -102,10 +102,12 @@ consistent architecture.
 <p>
 An &ldquo;information resource&rdquo; is the formal term for what most people
 call a web page or a document: something whose whole content can be sent down
-the wire. The rule is easy to read as stronger than it is; <a class="x-ref" href="#fig-8-1">Figure 8.1</a> shows its
+the wire. If a <a class="gl-ref" href="../glossary.html#uri">URI</a> has fetched a web page, such as the New York Times home
+page, it may be used to name that page. The rule is easy to read as stronger
+than it is; <a class="x-ref" href="#fig-8-1">Figure 8.1</a> shows its
 one-way shape. The detail about 303 is not in this note, which never mentions
-that code, but in the TAG&#8217;s own resolution: after a 303 the <a class="gl-ref" href="../glossary.html#uri">URI</a>
-&ldquo;could be any resource&rdquo;.
+that code, but in the TAG&#8217;s own resolution: after a 303 the URI may
+name anything at all.
 </p>
 
 <figure id="fig-8-1">
@@ -256,11 +258,11 @@ think works quite well&rdquo;.
 <h2 id="sec-8-3">8.3 How the problem arose in practice</h2>
 
 <p>
-<a class="gl-ref" href="../glossary.html#rdf">RDF</a> is the Semantic
-Web&#8217;s format for machine-readable statements. <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a set of
-names for describing documents (title, creator, date); Friend of a Friend is
-a set for describing people. In each, a property is a word like
-<em>title</em> given a web address. Berners-Lee names the vocabularies:
+Some early vocabularies of <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s format for
+machine-readable statements, gave their words HTTP addresses. <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a>
+(names for describing documents: title, creator, date) and Friend of a Friend
+(names for describing people) both did, so the word <em>title</em> had a web
+address. Berners-Lee names them:
 </p>
 
 <blockquote>
@@ -277,49 +279,42 @@ browser.
 </p>
 
 <figure id="fig-8-3">
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
      aria-labelledby="fig8-3-t fig8-3-d">
   <title id="fig8-3-t">One URI, two readings</title>
-  <desc id="fig8-3-d">A single URI, http://purl.org/dc/elements/1.1/title,
-  is the subject of an example statement: it has creator Dublin Core team.
+    <desc id="fig8-3-d">A single URI, http://purl.org/dc/elements/1.1/title,
+  is the subject of a statement: it has creator Dublin Core team.
   Party A reads the statement as being about the web page fetched from the
   URI. Party B reads it as being about the property title. Nothing in the
   URI says which reading is meant.</desc>
 
-  <rect class="box-plain" x="190" y="16" width="340" height="38" rx="4"/>
-  <text x="360" y="40" class="t-mono" text-anchor="middle">http://purl.org/dc/elements/1.1/title</text>
-  <path class="ln-mut" d="M 210 54 L 210 92"/>
+    <rect class="box" x="20" y="30" width="330" height="36" rx="4"/>
+  <text x="185" y="53" class="t-mono" text-anchor="middle" style="font-size:11.5px">http://purl.org/dc/elements/1.1/title</text>
+  <path class="ln" d="M 350 48 L 482 48"/>
+  <path d="M 490 48 L 481 43 L 481 53 Z" fill="#2f4f4f"/>
+  <text x="420" y="39" class="t-sm" text-anchor="middle">has creator</text>
+  <rect class="box" x="492" y="30" width="190" height="36" rx="4"/>
+  <text x="587" y="53" text-anchor="middle">Dublin Core team</text>
 
-  <text x="40" y="82" class="t-caps">an example statement</text>
-  <rect class="box" x="110" y="92" width="200" height="34" rx="4"/>
-  <text x="210" y="114" class="t-mono" text-anchor="middle">&#8230;/1.1/title</text>
-  <path class="ln" d="M 310 109 L 420 109"/>
-  <path d="M 428 109 L 419 104 L 419 114 Z" fill="#2f4f4f"/>
-  <text x="369" y="100" class="t-sm" text-anchor="middle">has creator</text>
-  <rect class="box" x="430" y="92" width="180" height="34" rx="4"/>
-  <text x="520" y="114" text-anchor="middle">Dublin Core team</text>
+  <path class="ln-dash" d="M 130 66 L 180 116"/>
+  <path class="ln-dash" d="M 250 66 L 500 116"/>
 
-  <path class="ln-dash" d="M 340 132 L 190 176"/>
-  <path class="ln-dash" d="M 400 132 L 530 176"/>
+  <rect class="box-green" x="40" y="116" width="300" height="56" rx="4"/>
+  <text x="190" y="139" text-anchor="middle">Party A reads it as about</text>
+  <text x="190" y="159" class="t-sm" text-anchor="middle">the web page fetched from the URI</text>
 
-  <rect class="box-green" x="40" y="176" width="300" height="56" rx="4"/>
-  <text x="190" y="199" text-anchor="middle">Party A reads it as about</text>
-  <text x="190" y="219" class="t-sm" text-anchor="middle">the web page fetched from the URI</text>
+  <rect class="box-warm" x="380" y="116" width="300" height="56" rx="4"/>
+  <text x="530" y="139" text-anchor="middle">Party B reads it as about</text>
+  <text x="530" y="159" class="t-sm" text-anchor="middle">the property <tspan class="t-it">title</tspan>, a term in a vocabulary</text>
 
-  <rect class="box-warm" x="380" y="176" width="300" height="56" rx="4"/>
-  <text x="530" y="199" text-anchor="middle">Party B reads it as about</text>
-  <text x="530" y="219" class="t-sm" text-anchor="middle">the property <tspan class="t-it">title</tspan>, a term in a vocabulary</text>
-
-  <text x="360" y="270" class="t-it" text-anchor="middle">nothing in the URI says which reading is meant</text>
+  <text x="360" y="212" class="t-it" text-anchor="middle">nothing in the URI says which reading is meant</text>
 </svg>
 <figcaption><span class="fig-label">Figure 8.3</span>
-The confusion the note describes. The same statement can be read as about a
-page or about a property, and once vocabularies named properties with HTTP
-URIs, one could no longer be sure which was intended.</figcaption>
+Does this say who made the web page, or who defined the property?</figcaption>
 </figure>
 
 <p>
-The architecture did not fail. It was outrun by deployed practice. <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> gives
+Deployed practice had outrun the architecture. <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a> gives
 Berners-Lee&#8217;s fuller account of that pressure, and is franker about who
 conceded what.
 </p>
@@ -329,20 +324,18 @@ conceded what.
 <ul>
 <li><strong>The <a class="gl-ref" href="../glossary.html#redirect">redirect</a> pattern was codified.</strong> The TAG&#8217;s 2007
 draft finding <em>Dereferencing HTTP URIs</em> and the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Interest Group note
-<em>Cool URIs for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></em>, of December 2008, turned the
+<em>Cool URIs for the Semantic Web</em>, of December 2008, turned the
 resolution into publishing guidance, setting out both the 303 pattern and the
 <a class="gl-ref" href="../glossary.html#hash">hash</a> pattern (<a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>) as acceptable.</li>
 <li><strong>The rule was questioned again.</strong> The extra round trip
 made 303 unpopular. In 2012 the TAG issued a call for change
 proposals on httpRange-14, which explored serving descriptions directly, but
 did not overturn the 2005 resolution.</li>
-<li><strong>Neither pattern won.</strong> Vocabularies published after 2005
-use both the 303 pattern and the hash pattern. A consumer of arbitrary Linked
-Data must still handle each.</li>
+
 <li><strong>The underlying ambiguity outlived the fix.</strong> Structured
 data embedded in pages, which became the dominant way of publishing
-descriptions of things after <a class="gl-ref" href="../glossary.html#schema">Schema</a>.org launched in June 2011, sidesteps the
-question entirely by describing things inside a document rather than giving
+descriptions of things after <a class="gl-ref" href="../glossary.html#schema">Schema</a>.org launched in June 2011, mostly avoids the
+question for the things described, by describing things inside a document rather than giving
 them dereferenceable URIs of their own.</li>
 </ul>
 </div>

@@ -67,7 +67,7 @@ only checks a proof that someone hands it.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-The companion to <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, written the same month of September 1998 and spun
+It is the companion to <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, written the same month of September 1998 and spun
 off from it because the subject needed more room than a survey could give. It is
 candid about its standing:
 </p>
@@ -76,10 +76,6 @@ A road map for the future, an architectural plan untested by anything except
 thought experiments.
 <cite>Semantic Web Road map, 1998</cite>
 </blockquote>
-<p>
-It is the first full statement of the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> as a programme rather than
-an idea.
-</p>
 </div>
 
 <h2 id="sec-30-1">30.1 The problem being solved</h2>
@@ -98,7 +94,7 @@ that the structure of the data is not evident to a robot browsing the web.
 
 <p>
 Berners-Lee sets aside the artificial intelligence problem of training
-machines to behave like people. The Semantic Web instead develops languages
+machines to behave like people. The <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> instead develops languages
 for writing information in a form machines can process. <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> makes
 the negative case.
 </p>
@@ -258,16 +254,18 @@ The logical layer adds &ldquo;not&rdquo; and &ldquo;and&rdquo;, then
 a Library of Congress schema says &ldquo;author&rdquo; and a British Library
 one says &ldquo;creator&rdquo;, a rule can carry one over: if Dickens is the
 author of <i>Bleak House</i> in one catalogue, he is its creator in the other.
-A small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a> states it once for every case: for any person x and
+A small piece of <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the format the note proposes for writing such
+statements, states it once for every case: for any person x and
 resource y, if x is the author of y then x is the creator of y.
 </p>
 
 <h3>Signature</h3>
 <p>
-For reasoning to take trust into account, public keys become first-class
-objects, things the logic can talk about, and the model records which key
-signed which assertion. Proof checking then verifies signatures as well as
-logic. It can be developed in parallel.
+For reasoning to take trust into account, a <a class="gl-ref" href="../glossary.html#public-key">public key</a>, the published half of
+a signing key, becomes a first-class object, a thing the logic can talk about,
+and the model records which key signed which assertion. Proof checking then
+verifies signatures as well as logic. Signature work can proceed in parallel
+with the other layers.
 </p>
 
 <h2 id="sec-30-3">30.3 Why bother at the bottom</h2>
@@ -303,9 +301,10 @@ anyone can re-check step by step.
      aria-labelledby="fig30-3-t fig30-3-d">
   <title id="fig30-3-t">A request that carries its own proof</title>
   <desc id="fig30-3-d">A client sends GET for a document to a server, with a
-  proof attached; the response is itself a proof. The proof is a chain of
-  three steps: a key signed that Alice is in group G; the site's key signed
-  that members of G may read the document; so Alice may read it. The server
+  proof attached; the response is itself a proof. The proof has two
+  independent premises side by side: a key signed that Alice is in group G,
+  and the site's key signed that members of G may read the document. Both
+  lead to the conclusion that Alice may read it. The server
   checks the signature on the first two and the logic of the third.</desc>
 
   <rect class="box" x="20" y="20" width="130" height="70" rx="4"/>
@@ -326,24 +325,28 @@ anyone can re-check step by step.
 
   <text x="310" y="132" class="t-caps" text-anchor="middle">the proof the server is handed</text>
 
-  <rect class="box-warm" x="150" y="145" width="320" height="40" rx="4"/>
-  <text x="310" y="170" text-anchor="middle">Key K signed: Alice is in group G</text>
-  <rect class="box-warm" x="150" y="205" width="320" height="40" rx="4"/>
-  <text x="310" y="230" text-anchor="middle">Site key signed: members of G may read /doc</text>
-  <rect class="box-green" x="150" y="265" width="320" height="40" rx="4"/>
-  <text x="310" y="290" text-anchor="middle">So Alice may read /doc</text>
+  <defs>
+    <marker id="fig30-3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a9a9a"/>
+    </marker>
+  </defs>
+  <rect class="box-warm" x="30" y="145" width="320" height="40" rx="4"/>
+  <text x="190" y="170" text-anchor="middle">Key K signed: Alice is in group G</text>
+  <rect class="box-warm" x="370" y="145" width="320" height="40" rx="4"/>
+  <text x="530" y="170" text-anchor="middle">Site key signed: members of G may read /doc</text>
 
-  <path class="ln-mut" d="M 310 185 L 310 197"/>
-  <path d="M 306 195 L 310 204 L 314 195 Z" fill="#8a9a9a"/>
-  <path class="ln-mut" d="M 310 245 L 310 257"/>
-  <path d="M 306 255 L 310 264 L 314 255 Z" fill="#8a9a9a"/>
+  <path d="M 128 202 L 133 207 L 142 196" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="150" y="206" class="t-sm">check the signature</text>
+  <path d="M 468 202 L 473 207 L 482 196" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="490" y="206" class="t-sm">check the signature</text>
 
-  <path d="M 492 166 L 497 171 L 506 160" fill="none" stroke="#5a8f5a" stroke-width="2"/>
-  <text x="514" y="170" class="t-sm">check the signature</text>
-  <path d="M 492 226 L 497 231 L 506 220" fill="none" stroke="#5a8f5a" stroke-width="2"/>
-  <text x="514" y="230" class="t-sm">check the signature</text>
-  <path d="M 492 286 L 497 291 L 506 280" fill="none" stroke="#5a8f5a" stroke-width="2"/>
-  <text x="514" y="290" class="t-sm">check the logic</text>
+  <path class="ln-mut" d="M 190 216 L 330 254" marker-end="url(#fig30-3-ah)"/>
+  <path class="ln-mut" d="M 530 216 L 390 254" marker-end="url(#fig30-3-ah)"/>
+
+  <rect class="box-green" x="200" y="258" width="320" height="40" rx="4"/>
+  <text x="360" y="283" text-anchor="middle">So Alice may read /doc</text>
+  <path d="M 536 279 L 541 284 L 550 273" fill="none" stroke="#5a8f5a" stroke-width="2"/>
+  <text x="558" y="283" class="t-sm">check the logic</text>
 
   <text x="360" y="330" class="t-sm t-it" text-anchor="middle">No searching: every link is a signature to verify or a step to re-check.</text>
 </svg>
@@ -392,19 +395,19 @@ failed alone (<a class="x-ref" href="#fig-30-4">Figure 30.4</a>).
   takes a few steps of inference out on the wild web, does the rest of the
   reasoning locally, and reaches an answer.</desc>
 
-  <rect class="box-plain" x="20" y="20" width="210" height="250" rx="4"/>
-  <text x="125" y="44" class="t-caps" text-anchor="middle">search engine</text>
-  <text x="125" y="80" class="t-sm" text-anchor="middle">covers a huge part of the Web</text>
-  <text x="125" y="102" class="t-sm" text-anchor="middle">many inappropriate answers</text>
-  <text x="125" y="124" class="t-sm" text-anchor="middle">no notion of correctness</text>
-  <text x="125" y="250" class="t-it" text-anchor="middle">wide, but not correct</text>
+  <rect class="box-plain" x="20" y="75" width="210" height="140" rx="4"/>
+  <text x="125" y="99" class="t-caps" text-anchor="middle">search engine</text>
+  <text x="125" y="135" class="t-sm" text-anchor="middle">covers a huge part of the Web</text>
+  <text x="125" y="157" class="t-sm" text-anchor="middle">many inappropriate answers</text>
+  <text x="125" y="179" class="t-sm" text-anchor="middle">no notion of correctness</text>
+  <text x="125" y="201" class="t-it" text-anchor="middle">wide, but not correct</text>
 
-  <rect class="box-plain" x="255" y="20" width="210" height="250" rx="4"/>
-  <text x="360" y="44" class="t-caps" text-anchor="middle">logic engine</text>
-  <text x="360" y="80" class="t-sm" text-anchor="middle">only provably correct answers</text>
-  <text x="360" y="102" class="t-sm" text-anchor="middle">cannot rummage through</text>
-  <text x="360" y="124" class="t-sm" text-anchor="middle">the mass of intertwined data</text>
-  <text x="360" y="250" class="t-it" text-anchor="middle">correct, but stuck</text>
+  <rect class="box-plain" x="255" y="75" width="210" height="140" rx="4"/>
+  <text x="360" y="99" class="t-caps" text-anchor="middle">logic engine</text>
+  <text x="360" y="135" class="t-sm" text-anchor="middle">only provably correct answers</text>
+  <text x="360" y="157" class="t-sm" text-anchor="middle">cannot rummage through</text>
+  <text x="360" y="179" class="t-sm" text-anchor="middle">the mass of intertwined data</text>
+  <text x="360" y="201" class="t-it" text-anchor="middle">correct, but stuck</text>
 
   <rect class="box" x="490" y="20" width="210" height="250" rx="4"/>
   <text x="595" y="44" class="t-caps" text-anchor="middle">combined</text>
@@ -432,19 +435,7 @@ inference on the open Web.</figcaption>
 </figure>
 
 <p>
-The estimate of how deep the combined engine must go is modest and specific:
-</p>
-
-<blockquote>
-many real life problems can be solved using just a few (say two) steps of
-inference out on the wild web, the rest of the reasoning being in a realm in
-which proofs are give, or there are constrains and well understood computable
-algorithms.
-<cite>Semantic Web Road map, 1998</cite>
-</blockquote>
-
-<p>
-The depth matters because each step out on the Web may follow every link from
+The number of steps matters because each step out on the Web may follow every link from
 every result of the step before: two steps over a hundred links each is ten
 thousand fetches. He states the limit plainly: no machine will guarantee to
 answer arbitrary questions.
@@ -461,10 +452,10 @@ exactly the conversion of <a class="x-ref" href="#fig-30-2">Figure 30.2</a>; and
 in January 2008.</li>
 <li><strong>The proof layer did not.</strong> No interoperable proof exchange
 format was standardised. The asymmetry of <a class="x-ref" href="#sec-30-4">section 30.4</a>, which the roadmap
-treats as its central bet, was never cashed.</li>
+treats as its central bet, was never put to the test.</li>
 <li><strong>The search-plus-logic engine arrived in another shape.</strong>
 Large knowledge graphs behind search, beginning with Google&#8217;s in May 2012,
-combine indexing with structured data at exactly the scale described here,
+combine indexing with structured data, as the note proposed,
 without the proof machinery.</li>
 </ul>
 </div>
@@ -498,9 +489,8 @@ would justify it alone.</p>
 </div>
 <div class="question">
 <p><span class="question-number">30.4</span>
-Berners-Lee guesses that two steps of <a class="gl-ref" href="../glossary.html#inference">inference</a> on the open Web are enough for
-many real problems. Why does each extra step multiply the work a
-search-plus-logic engine must do?</p>
+What does the combined engine give up that a pure logic engine
+guarantees?</p>
 </div>
 <div class="question">
 <p><span class="question-number">30.5</span>

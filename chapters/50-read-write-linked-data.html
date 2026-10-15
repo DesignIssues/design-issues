@@ -72,16 +72,9 @@ running on it.
 <cite>Read-Write Linked Data, 2009</cite>
 </blockquote>
 <p>
-Berners-Lee notices, in passing, something surprising about his own archive:
-</p>
-<blockquote>
-(I actually realize that in 20 year of writing these articles, I haven't
-written a separate page on that topic! )
-<cite>Read-Write Linked Data, 2009</cite>
-</blockquote>
-<p>
-The topic is why the Web should be writable. He takes that case as made
-elsewhere, in <cite>Weaving the Web</cite> and on the Read-Write Web blog.
+A commodity is interchangeable, like electricity from a socket: any
+application could use any provider&#8217;s storage. He takes the case for a
+writable Web as made elsewhere, in <cite>Weaving the Web</cite> and on the Read-Write Web blog.
 </p>
 </div>
 
@@ -109,19 +102,20 @@ ambition is intercreative, which he marks, in jest, with a trademark sign.
 
 <p>
 Linked data lives in documents, each with an address (a <a class="gl-ref" href="../glossary.html#uri">URI</a>). A document
-holds triples: single statements of the form subject, property, value, such
-as: Joe&#8217;s age is 65. The note&#8217;s example is a shared calendar,
-which several people edit at once.
+holds triples: single statements of the form subject, property, value. The
+note&#8217;s motivating case is a shared calendar, which several people edit
+at once.
 </p>
 
 <p>
 There are two ways to change a document. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh copy of
 the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a> saying the
-age is 65, add one saying 66. <a class="x-ref" href="#fig-50-1">Figure 50.1</a> shows what goes wrong with PUT.
+meeting is at 10:00, add one saying 11:00. (The note&#8217;s own example
+sets Joe&#8217;s age to 66.) <a class="x-ref" href="#fig-50-1">Figure 50.1</a> shows what goes wrong with PUT.
 </p>
 
 <figure id="fig-50-1">
-<svg class="dia" viewBox="0 0 720 376" width="720" height="376" role="img"
+<svg class="dia" viewBox="0 0 720 406" width="720" height="406" role="img"
      aria-labelledby="fig50-1-t fig50-1-d">
   <title id="fig50-1-t">How a whole-document write loses an edit</title>
   <desc id="fig50-1-d">Alice and Bob both fetch a calendar document saying the
@@ -137,38 +131,44 @@ age is 65, add one saying 66. <a class="x-ref" href="#fig-50-1">Figure 50.1</a> 
   <rect class="box-plain" x="580" y="16" width="100" height="36" rx="4"/>
   <text x="630" y="39" text-anchor="middle">Bob</text>
 
-  <line class="ln-mut" x1="90" y1="52" x2="90" y2="300"/>
-  <line class="ln-mut" x1="360" y1="60" x2="360" y2="312"/>
-  <line class="ln-mut" x1="630" y1="52" x2="630" y2="300"/>
+  <line class="ln-mut" x1="90" y1="52" x2="90" y2="330"/>
+  <line class="ln-mut" x1="360" y1="60" x2="360" y2="342"/>
+  <line class="ln-mut" x1="630" y1="52" x2="630" y2="330"/>
 
-  <text x="225" y="92" class="t-sm" text-anchor="middle">1  GET: copy says 10:00</text>
+  <text x="225" y="92" class="t-sm" text-anchor="middle">1  GET</text>
   <line class="ln" x1="90" y1="100" x2="350" y2="100"/>
   <path d="M 348 95 L 358 100 L 348 105 Z" fill="#2f4f4f"/>
+  <text x="225" y="120" class="t-sm" text-anchor="middle">copy: 10:00</text>
+  <line class="ln-dash" x1="360" y1="128" x2="100" y2="128"/>
+  <path d="M 102 123 L 92 128 L 102 133 Z" fill="#8a9a9a"/>
 
-  <text x="495" y="132" class="t-sm" text-anchor="middle">2  GET: copy says 10:00</text>
-  <line class="ln" x1="630" y1="140" x2="370" y2="140"/>
-  <path d="M 372 135 L 362 140 L 372 145 Z" fill="#2f4f4f"/>
+  <text x="495" y="152" class="t-sm" text-anchor="middle">2  GET</text>
+  <line class="ln" x1="630" y1="160" x2="370" y2="160"/>
+  <path d="M 372 155 L 362 160 L 372 165 Z" fill="#2f4f4f"/>
+  <text x="495" y="180" class="t-sm" text-anchor="middle">copy: 10:00</text>
+  <line class="ln-dash" x1="360" y1="188" x2="620" y2="188"/>
+  <path d="M 618 183 L 628 188 L 618 193 Z" fill="#8a9a9a"/>
 
-  <text x="495" y="172" class="t-sm" text-anchor="middle">3  PUT meeting at 11:00</text>
-  <line class="ln" x1="630" y1="180" x2="370" y2="180"/>
-  <path d="M 372 175 L 362 180 L 372 185 Z" fill="#2f4f4f"/>
-  <text x="495" y="204" class="t-sm" text-anchor="middle">200 OK</text>
-  <line class="ln-dash" x1="360" y1="212" x2="620" y2="212"/>
-  <path d="M 618 207 L 628 212 L 618 217 Z" fill="#8a9a9a"/>
+  <text x="495" y="212" class="t-sm" text-anchor="middle">3  PUT meeting at 11:00</text>
+  <line class="ln" x1="630" y1="220" x2="370" y2="220"/>
+  <path d="M 372 215 L 362 220 L 372 225 Z" fill="#2f4f4f"/>
+  <text x="495" y="240" class="t-sm" text-anchor="middle">200 OK</text>
+  <line class="ln-dash" x1="360" y1="248" x2="620" y2="248"/>
+  <path d="M 618 243 L 628 248 L 618 253 Z" fill="#8a9a9a"/>
 
-  <text x="225" y="244" class="t-sm" text-anchor="middle">4  PUT meeting at 10:00 + room 4</text>
-  <line class="ln" x1="90" y1="252" x2="350" y2="252"/>
-  <path d="M 348 247 L 358 252 L 348 257 Z" fill="#2f4f4f"/>
-  <text x="225" y="276" class="t-sm" text-anchor="middle">200 OK</text>
-  <line class="ln-dash" x1="360" y1="284" x2="100" y2="284"/>
-  <path d="M 102 279 L 92 284 L 102 289 Z" fill="#8a9a9a"/>
+  <text x="225" y="272" class="t-sm" text-anchor="middle">4  PUT meeting at 10:00 + room 4</text>
+  <line class="ln" x1="90" y1="280" x2="350" y2="280"/>
+  <path d="M 348 275 L 358 280 L 348 285 Z" fill="#2f4f4f"/>
+  <text x="225" y="300" class="t-sm" text-anchor="middle">200 OK</text>
+  <line class="ln-dash" x1="360" y1="308" x2="100" y2="308"/>
+  <path d="M 102 303 L 92 308 L 102 313 Z" fill="#8a9a9a"/>
 
-  <text x="495" y="262" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s edit vanished;</text>
-  <text x="495" y="280" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">Bob is never told.</text>
+  <text x="495" y="290" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s edit vanished;</text>
+  <text x="495" y="308" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">Bob is never told.</text>
 
-  <rect class="box-warm" x="210" y="312" width="300" height="50" rx="4"/>
-  <text x="360" y="332" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">server now holds: meeting at 10:00 + room 4</text>
-  <text x="360" y="351" class="t-sm" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s change to 11:00 is gone</text>
+  <rect class="box-warm" x="210" y="342" width="300" height="50" rx="4"/>
+  <text x="360" y="362" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">server now holds: meeting at 10:00 + room 4</text>
+  <text x="360" y="381" class="t-sm" text-anchor="middle" style="fill:#b08d57">Bob&#8217;s change to 11:00 is gone</text>
 </svg>
 <figcaption><span class="fig-label">Figure 50.1</span>
 Whole-document writes succeed for both parties, and the later one silently
@@ -184,7 +184,7 @@ typical patch is a DELETE followed by an INSERT.
 <table>
 <tr><th></th><th>Replace the document</th><th>Send the change</th></tr>
 <tr><td>What is sent</td><td>The whole new state, with <code>PUT</code></td><td>Delete this, then insert that, with <code>POST</code> (SPARQL Update)</td></tr>
-<tr><td>If someone else changed it first</td><td>Their change is overwritten</td><td>The delete fails; the server MUST reply <code>409 Conflict</code></td></tr>
+<tr><td>If someone else changed it first</td><td>Their change is overwritten</td><td>The delete fails; the server must reply <code>409 Conflict</code></td></tr>
 <tr><td>Who is told</td><td>Nobody</td><td>The writer, who backs the change out or retries</td></tr>
 </table>
 
@@ -280,8 +280,6 @@ document (in RDF/XML or N3) which contains zero triples.
 The real HTTP code for not found is 404; 400 means Bad
 Request. 200 OK is the ordinary success reply. RDF/<a class="gl-ref" href="../glossary.html#xml">XML</a> and <a class="gl-ref" href="../glossary.html#n3">N3</a> are two
 ways of writing triples down, one in XML and one in a terser text notation.
-The note adds that an empty RDF/XML document is not a zero-length file, though
-an empty N3 one can be.
 </p>
 
 <p>
@@ -327,8 +325,7 @@ liberal server, it adds, accepts both types.
 <h2 id="sec-50-5">50.5 What is deliberately left out</h2>
 
 <p>
-The note names its own boundaries twice, and both exclusions matter. It does
-not deal with database-like storage interfaces, atomic transactions, or
+The note does not deal with database-like storage interfaces, atomic transactions, or
 fine-grained <a class="gl-ref" href="../glossary.html#access-control">access control</a>. And it is explicit that a space anyone may write
 to is not what most applications want:
 </p>
@@ -377,13 +374,15 @@ name the result of a changing operation is <a class="x-ref" href="02-axioms-web-
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">50.1</span>
-A whole-document write loses a concurrent change silently. Describe the
-sequence of events, and say what the loser observes.</p>
+<a class="x-ref" href="#fig-50-1">Figure 50.1</a>&#8217;s loss would vanish if the server refused a PUT when the
+document had changed since that writer&#8217;s <a class="gl-ref" href="../glossary.html#get">GET</a>. What would the server have
+to remember, and what would Alice then see?</p>
 </div>
 <div class="question">
 <p><span class="question-number">50.2</span>
-A conditional delete gives you mutual exclusion. Write a reservation using
-only delete and insert, and say what happens when two clients race.</p>
+The room booking in <a class="x-ref" href="#fig-50-2">Figure 50.2</a> needs a statement &ldquo;room 4 is free&rdquo;
+to exist before anyone books. Who should write it, and what goes wrong if two
+people write it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">50.3</span>

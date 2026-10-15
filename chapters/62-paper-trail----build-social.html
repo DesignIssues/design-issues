@@ -93,8 +93,8 @@ documents.
 </blockquote>
 
 <p>
-This, Berners-Lee adds, is not the problem being addressed but real life
-being modelled. His proposal lets people follow a strict process by creating
+He adds that this is not a flaw to fix; it is how real life works, and the
+design models it. His proposal lets people follow a strict process by creating
 documents in a constrained way. Each carries a pointer to a schema (the
 document defining its type and rules), pointers to the documents justifying
 it, and a notarisation: a time stamp recording when software checked it
@@ -167,8 +167,7 @@ notarised document and what it points to.</figcaption>
 <h2 id="sec-62-2">62.2 Prerequisites and hints</h2>
 
 <p>
-The schema carries two kinds of thing, and the distinction is the
-design&#8217;s neatest feature. Prerequisites say what must exist for a document to
+The schema carries two kinds of thing, and the distinction matters. Prerequisites say what must exist for a document to
 be valid, expressed in terms of other documents. Hints say what kinds of
 document may be made from this one, which are the state transitions.
 </p>
@@ -177,7 +176,7 @@ document may be made from this one, which are the state transitions.
 In the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> example of <a class="x-ref" href="#fig-62-1">Figure 62.1</a>, if the prerequisites exist the software
 creates and notarises the new draft. The draft then carries a button leading
 to a form for the next type of document the hints allow. Promoting it to a
-&ldquo;proposed recommendation&rdquo; needs everything above plus an
+&ldquo;proposed recommendation&rdquo; needs everything a draft needed plus an
 endorsement, which the source spells out: the director, or any two members of
 the management group.
 </p>
@@ -224,13 +223,10 @@ the management group.
   <text x="605" y="117" class="t-sm" text-anchor="middle">next document type</text>
 </svg>
 <figcaption><span class="fig-label">Figure 62.2</span>
-The rules and the menu of next steps live in the same document, so in
-principle they cannot disagree.</figcaption>
+Left: what must already exist (checked). Right: what may come next (only
+offered).</figcaption>
 </figure>
 
-<p>
-Validity is enforced; transitions are merely offered.
-</p>
 
 <h2 id="sec-62-3">62.3 The general form</h2>
 
@@ -314,7 +310,7 @@ messages, and work the state out when it is needed.</figcaption>
 <p>
 The note&#8217;s simple example is a loan between two people: the state is the
 balance, and the process ends when it reaches zero. Berners-Lee ranks what the
-state might be, a piece of editorial opinion in a technical note:
+state might be:
 </p>
 
 <blockquote>
@@ -324,13 +320,12 @@ a number, in decreasing order of interest.
 </blockquote>
 
 <p>
-A number says where things stand; a formula says what follows. The state
-must hold whatever is needed to compute future states: for the loan, the
+The state must hold whatever is needed to compute future states: for the loan, the
 balance. Once the loan is repaid, the state could hold just the fact that it
 was paid, or every repayment: a design choice, not a fact.
 </p>
 
-<h3>Starting, ending and forgetting</h3>
+<h3>Starting, ending, forgetting and nesting</h3>
 
 <table>
 <tr><th>Start</th><td>Some messages are valid beginnings: in <a class="gl-ref" href="../glossary.html#tcp">TCP</a>, the protocol
@@ -343,14 +338,9 @@ away. In the US, records of a transaction may be discarded after seven
 years.</td></tr>
 <tr><th>Nest</th><td>A real protocol runs inside a larger one: a W3C working
 group&#8217;s last state, its work accepted as a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, is a message to
-the Consortium as a whole.</td></tr>
+the Consortium as a whole. A minority report is a peek inside a group that
+never reached its final state.</td></tr>
 </table>
-
-<p>
-That outgoing message is a step in the larger protocol. A minority report
-shows the nesting breaking: it passes on a view inside a group that never
-reached its final state.
-</p>
 
 <h2 id="sec-62-4">62.4 Why it is a social machine</h2>
 
@@ -372,23 +362,19 @@ button.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>2001.</strong> The note&#8217;s epilogue records that a Web
-Services workshop on transactions over the Net surfaced the need for
-process-flow descriptions.</li>
-<li><strong>2004.</strong> An update says the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> Application Platform
-(SWAP) could now implement these ideas.</li>
+<li><strong>The note&#8217;s own epilogue (2001) and update (2004).</strong> A
+Web Services workshop surfaced the need for process-flow descriptions; later,
+the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> Application Platform (SWAP) could implement these ideas.</li>
 <li><strong>The pattern won without the <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>.</strong> Version control
 systems are paper trails: state is a function of the commits. Anyone with the
 history can check its integrity, though not whether commits followed the
 rules.</li>
 <li><strong>Append-only became an architecture.</strong> Event sourcing, where
 current state is derived from a log of events rather than stored, is section
-62.3&#8217;s second formulation. It was named and popularised in the
-mid-2000s.</li>
-<li><strong>Notarisation became cheap.</strong> Signed commits, transparency
-logs and timestamping services supply the check-and-record step.</li>
-<li><strong>Rules-in-the-schema remained rare.</strong> Most workflow systems
-hold their rules in code, not in a document the participants can read.</li>
+62.3&#8217;s second formulation. Martin Fowler&#8217;s 2005 article named
+it.</li>
+<li><strong>Public notarisation logs, 2013.</strong> <a class="gl-ref" href="../glossary.html#certificate">Certificate</a> Transparency
+(<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6962) made append-only, publicly checkable logs a standard tool.</li>
 </ul>
 </div>
 

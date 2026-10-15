@@ -55,9 +55,9 @@ a Design Issues note by Tim Berners-Lee, 2022-01-01.
 A <a class="gl-ref" href="../glossary.html#pod">pod</a> (a <a class="gl-ref" href="../glossary.html#solid">Solid</a> Pod) is a person&#8217;s own web storage, of the kind
 <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> proposed: folders on a <a class="gl-ref" href="../glossary.html#server">server</a>, each with its own access rules, that
 any application the person chooses may read and write. Anything in a life can
-go in one. File it by kind, not by application, so
-applications can share it. Keep each activity together, so its owner can decide
-once who may see it.
+go in one. File it by kind, not by application, so applications can share it.
+But keep each activity together, so its owner can decide once who may see it.
+The chapter is about reconciling the two.
 </p>
 </div>
 
@@ -152,7 +152,9 @@ is not a scheme for a person&#8217;s life.</figcaption>
 </figure>
 
 <p>
-What never changes can be cached forever and named by its cryptographic <a class="gl-ref" href="../glossary.html#hash">hash</a>.
+What never changes can be copied and kept forever without checking for
+updates, and named by a fingerprint computed from its contents (a
+cryptographic <a class="gl-ref" href="../glossary.html#hash">hash</a>).
 Security splits three ways: the risk of being lost, faked, or read by the
 wrong person.
 </p>
@@ -160,7 +162,7 @@ wrong person.
 <h2 id="sec-55-2">55.2 The organising decision</h2>
 
 <p>
-The note&#8217;s substantive claim is about what determines where something goes:
+The central claim is about where things go:
 </p>
 
 <blockquote>
@@ -173,18 +175,23 @@ particular app which wrote it.
 An RDFS class is the kind of thing the data describes, such as Event or
 Person. Filing by application recreates the silo, one company&#8217;s walled-off
 store, inside the space meant to abolish it. Filing by kind lets two
-applications dealing in events find each other&#8217;s events: a pod&#8217;s
-type index lists, for each class, where things of that class are kept. It
-works because the classes applications use overlap a lot: people, events,
-places, messages. Classes and apps &#8220;are related but not 1:1&#8221;, so
-every application that handles people should use the same shape for contact
-information.
+applications dealing in events find each other&#8217;s events.
+</p>
+
+<p>
+A pod keeps a <em>type index</em>, a list saying, for each class, where things
+of that class are kept: Events in <code>/calendar/</code>, Contacts in
+<code>/contacts/</code>. Any new application reads the index and finds the old
+data. This works because the classes applications use overlap a lot. Classes
+and apps &#8220;are related but not 1:1&#8221;: one class, Person, is used by a
+calendar, an address book and a customer database alike, so all of them
+should describe a contact the same way.
 </p>
 
 <h2 id="sec-55-3">55.3 Why activities are kept together anyway</h2>
 
 <p>
-The note then allows an exception, for reasons of permission rather than data:
+The note then allows an exception, for permission rather than data:
 </p>
 
 <blockquote>
@@ -205,8 +212,7 @@ Scattered by type, the decision is made many times, and one will be wrong.
 <p>
 The note&#8217;s longest example is an application for running a meeting: a
 poll on when to meet, an agenda, the groups invited, a video call, minutes and
-action items, often one of a series. A pod has folders (strictly, LDP
-containers), so the application makes one per series, one per meeting, and
+action items, often one of a series. A pod has folders, so the application makes one per series, one per meeting, and
 subfolders for the parts (<a class="x-ref" href="#fig-55-2">Figure 55.2</a>).
 </p>
 
@@ -319,7 +325,7 @@ The two principles pull against each other (<a class="x-ref" href="#fig-55-3">Fi
   <text x="172" y="150" class="t-sm">twice</text>
   <text x="125" y="214" class="t-sm t-it" text-anchor="middle">each app finds only its own</text>
 
-  <text x="262" y="34" class="t-caps">by kind (rdfs class)</text>
+  <text x="262" y="34" class="t-caps">by kind (RDFS class)</text>
   <rect class="box" x="265" y="50" width="90" height="26" rx="3"/>
   <text x="275" y="68" class="t-mono">Event/</text>
   <rect class="box" x="265" y="90" width="90" height="26" rx="3"/>
@@ -356,7 +362,7 @@ third for trusting them; the type index helps reconcile them.</figcaption>
 <h2 id="sec-55-4">55.4 Who configures the layout</h2>
 
 <p>
-The resolution offered is to let applications arrange things:
+The note lets applications arrange things:
 </p>
 
 <blockquote>
@@ -373,10 +379,10 @@ example, is a folder others may add to but not read, like <a class="x-ref" href=
 friend requests. Describing where new data should go is left to <a class="x-ref" href="57-linked-data-shapes-forms-footprints.html">Chapter 57</a>.
 </p>
 
-<h2 id="sec-55-5">55.5 Provenance as a first-class concern</h2>
+<h2 id="sec-55-5">55.5 Knowing who wrote what</h2>
 
 <p>
-One sentence names an obligation the rest of Volume VI assumes:
+One sentence names an obligation:
 </p>
 
 <blockquote>
@@ -389,9 +395,8 @@ rich, varied, and valuable system.
 <p>
 Provenance is a record of who wrote a piece of data and how. It can be tracked
 by digital signatures from trusted agents, or more lightly by knowing that only
-one party can write to a resource. Trust is modelled as it really is, not as a
-permission flag (<a class="x-ref" href="66-model-real-trust.html">Chapter 66</a>): automated agents, like people, are trusted
-according to who wrote what and who may write where.
+one party can write to a resource: anything in a file only one bot may write
+can be attributed to that bot, because nobody else could have written there.
 </p>
 
 <h2 id="sec-55-6">55.6 Index libraries, not items</h2>
@@ -411,16 +416,6 @@ better, and each library indexes its items more richly:
 <tr><td>Medical Records Library</td><td>date, source, type</td><td>Observation, Test, Scan</td></tr>
 <tr><td>Fitness Library</td><td>date, sport</td><td>Run, Ride</td></tr>
 </table>
-
-<div class="since">
-<h3>What happened since</h3>
-<ul>
-<li><strong>The bots arrived.</strong> A 2023 update to Berners-Lee&#8217;s
-note on personal assistants (<a class="x-ref" href="93-charlie-ai-that-works-you.html">Chapter 93</a>) records Inflection AI&#8217;s Pi
-(May 2023): private conversation, but no access to the user&#8217;s personal
-data.</li>
-</ul>
-</div>
 
 <div class="connections">
 <h3>Connections</h3>

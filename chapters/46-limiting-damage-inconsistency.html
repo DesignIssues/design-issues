@@ -243,9 +243,9 @@ believe it.</figcaption>
 
 <p>
 <a class="gl-ref" href="../glossary.html#digital-signature">Digital signature</a> adds security: a document signed with a key carries a mark
-only that key&#8217;s holder can make. The first requirement is that a
-document is not endorsed without recording its checksum when it was believed:
-a short fingerprint computed from its exact contents. Endorsing a location
+only that key&#8217;s holder can make. A checksum is a short fingerprint
+computed from a document&#8217;s exact contents. The first requirement is that
+an endorsement records the checksum the document had when it was believed. Endorsing a location
 endorses whatever appears there later; endorsing a checksum does not.
 </p>
 
@@ -261,16 +261,10 @@ The second step is a rule. Its bluntest form trusts a key for everything:
 
 <p>
 In practice, Berners-Lee says, authorities are trusted only for specific
-purposes, and the rule must be narrowed to match. His three example rules
-differ only in how much they trust the key:
+purposes, and the rule must be narrowed to match. His narrower examples
+trust one key only for statements that someone is a member of <a class="gl-ref" href="../glossary.html#w3c">W3C</a>, and
+another only for statements that someone is an employee of IBM.
 </p>
-
-<table>
-<tr><th>Rule</th><th>Trusts the key for</th></tr>
-<tr><td>The blunt rule above</td><td>Any statement at all</td></tr>
-<tr><td>Narrowed to one form</td><td>Statements that someone is a member of <a class="gl-ref" href="../glossary.html#w3c">W3C</a>, and nothing else</td></tr>
-<tr><td>Narrowed to another form</td><td>Statements that someone is an employee of IBM, and nothing else</td></tr>
-</table>
 
 <p>
 Trust is granted not to a party but to a party for a purpose, and that
@@ -355,10 +349,8 @@ it is stopped only once someone notices.</figcaption>
 </figure>
 
 <p>
-The containment is real but partial. Only that key is broken, and a trust
-system can withdraw its reasons for trusting it. The damage is limited to one
-key, but nothing guarantees the system notices the break before it has acted
-on absurd conclusions.
+Nothing guarantees the system notices the break before it has acted on absurd
+conclusions.
 </p>
 
 <p>
@@ -397,14 +389,12 @@ the contradiction comes from forgetting when each statement was made.
 The first remedy is an expiry date on everything, as an <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#server">server</a> can
 already send with a resource. All conclusions drawn from a document are
 cancelled when its date arrives, unless a fresher copy says the same thing.
-Statements should also be fully qualified: not &ldquo;It is rainy&rdquo; but
-what a named gauge recorded at a stated time.
+Statements should also be fully qualified. On the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>, &ldquo;It is
+rainy&rdquo; becomes something like &ldquo;at Mon Jan 24 09:41:06 EST 2000 the
+measurement guage 5 at Dubin Airport read rain as having fallen in the last
+hour&rdquo;. A fuzzy system would conclude Dublin is wet; a classical one, only
+that at least once it rained somewhere in Dublin.
 </p>
-
-<table>
-<tr><th>The fully qualified statement</th><th>What a fuzzy system concludes</th><th>What a classical system concludes</th></tr>
-<tr><td>At a stated time, gauge 5 at Dublin Airport recorded rain in the last hour</td><td>Dublin is wet</td><td>At least once, it rained in at least one place in Dublin</td></tr>
-</table>
 
 <h3>Writing the slack into the rule</h3>
 

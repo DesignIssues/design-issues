@@ -72,7 +72,7 @@ This note ends with a line its author wrote to himself and never acted on:
 <cite>Interpretation properties, 1998</cite>
 </blockquote>
 <p>
-<a class="x-ref" href="#fig-38-1">Figure 38.1</a> supplies them. The question: how is it recorded that a string is in a particular language,
+<a class="x-ref" href="#fig-38-1">Figure 38.1</a> supplies them. The question: how to record that a string is in a particular language,
 or is a measurement in particular units, or is an encoding of something else?
 </p>
 </div>
@@ -83,8 +83,8 @@ or is a measurement in particular units, or is an encoding of something else?
 The starting point is a muddle. RDF had adopted <a class="gl-ref" href="../glossary.html#xml">XML</a>&#8217;s <code>xml:lang</code>
 attribute for marking a string&#8217;s language, but, as Berners-Lee puts it,
 the attribute went into the syntax and not into the model: the tag sat in the
-file&#8217;s <a class="gl-ref" href="../glossary.html#markup">markup</a> but produced no statement in the data once the file was read. He then works the problem by getting it wrong
-twice, using a person called Ora whose name is Finnish.
+file&#8217;s <a class="gl-ref" href="../glossary.html#markup">markup</a> but produced no statement in the data once the file was read. He then tackles the problem by getting it wrong
+twice, using Ora Lassila, an editor of the 1999 RDF <a class="gl-ref" href="../glossary.html#specification">specification</a>, whose name is Finnish.
 </p>
 
 <figure id="fig-38-1">
@@ -165,7 +165,7 @@ twice, using a person called Ora whose name is Finnish.
   <text x="440" y="372" class="t-sm">and Latin readings.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 38.1</span>
-The pictures the note asks for. The third attempt works because it puts the
+The third attempt works because it puts the
 language where the language actually is: not on the person, not on the
 characters, but on the step between them.</figcaption>
 </figure>
@@ -339,8 +339,7 @@ process.
 <h2 id="sec-38-4">38.4 Where it fails</h2>
 
 <p>
-The note is unusual in reaching a negative conclusion about its own proposal,
-and saying so in its Conclusion.
+Unusually, the note&#8217;s Conclusion turns against its own proposal.
 </p>
 
 <blockquote>
@@ -412,13 +411,12 @@ This doesn't tell us what it is 10 of.
   <text x="376" y="182" class="t-sm">here a unit, though it could be a datatype.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 38.4</span>
-Recording the reading needs a node in the middle, from which the unit
-hangs. Ordinary RDF has none, and
-adding one to every literal was what he called frightful.</figcaption>
+The middle node stands for the quantity, not the string, so the unit says
+something true about it. Ordinary RDF writes no such node.</figcaption>
 </figure>
 
 <p>
-Real data has no such node. Berners-Lee considers two ways to supply one.
+Berners-Lee considers two ways to supply one.
 </p>
 
 <p>
@@ -430,13 +428,14 @@ into the data, such as &ldquo;10&rdquo;) is parsed, so that each
 <p>
 The second is to treat &ldquo;10&rdquo; as standing for the set of all things
 it could represent under some datatype: the integer ten, ten inches, ten
-feet. He calls that frightful too, because equality stops working. If
-&ldquo;10&rdquo; stands for all of those at once, two statements that both say
-&ldquo;10&rdquo; no longer plainly say the same thing.
+feet. He calls that frightful too, because equality stops working: two
+statements that both say &ldquo;10&rdquo; no longer plainly say the same thing.
 </p>
 
 <p>
-A note to himself, dated January 2001, records no clear way forward.
+He sketches a third route: keep shoe:size as a loose link to the string, and
+add a property, rdf:actual, that leads to the typed value. A note to himself,
+dated January 2001, records no clear way forward.
 </p>
 
 <h2 id="sec-38-5">38.5 The list of questions worth keeping</h2>
@@ -449,7 +448,7 @@ understood XML <a class="gl-ref" href="../glossary.html#schema">Schema</a> Datat
 
 <table>
 <tr><th>Question</th><th>Why it matters</th><th>XML Schema&#8217;s answer</th></tr>
-<tr><td>Can the type always be told from how the value is written? (Two numbers written almost identically, 1.4e4 and 1.4d4, can differ in precision.)</td><td>Decides whether a <a class="gl-ref" href="../glossary.html#parser">parser</a> needs a schema</td><td>No</td></tr>
+<tr><td>Can the type always be told from how the value is written? (1.4e4 and 1.4d4 differ in precision: in Fortran, e marks an ordinary number and d one stored with double the precision.)</td><td>Decides whether a <a class="gl-ref" href="../glossary.html#parser">parser</a> needs a schema</td><td>No</td></tr>
 <tr><td>Are values of different datatypes distinct? Is 1 the same as 1.0?</td><td>Decides what equality means</td><td>Yes</td></tr>
 <tr><td>Is the set of datatypes extensible? Could complex or prime numbers be added?</td><td>Decides whether anyone else may add one</td><td>Yes</td></tr>
 <tr><td>Does representation equality imply value equality?</td><td>Decides whether comparison may be textual</td><td>Yes</td></tr>
@@ -502,8 +501,7 @@ have no identifier is <a class="x-ref" href="34-identity-identify-rdf.html">Chap
 <div class="question">
 <p><span class="question-number">38.1</span>
 Attempt two is false because a string may be read in several languages. Give
-a case where attempt two is nonetheless the right engineering choice. (Hint:
-a system that only ever stores one language.)</p>
+a case where attempt two is nonetheless the right engineering choice.</p>
 </div>
 <div class="question">
 <p><span class="question-number">38.2</span>

@@ -57,7 +57,7 @@ and that anyone can check against the matching <a class="gl-ref" href="../glossa
 can name other keys, so one key can vouch for the next.
 </p>
 <p>
-A computer can therefore follow a chain of keys vouching for keys without knowing who anybody is. Berners-Lee&#8217;s advice is to
+So a computer can follow a chain of keys vouching for keys without knowing who anybody is. Berners-Lee&#8217;s advice is to
 let the machine run that chain on its own, and to connect it to people and law
 at only a few edges.
 </p>
@@ -69,10 +69,9 @@ Documents have meaning; signatures only carry trust.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in 1999 (the <a class="gl-ref" href="../glossary.html#header">header</a> says 1998) with an apology in the status line that
-its terms probably do not match those used in philosophy, this note asks what a
-digital signature means, and answers by arguing that the question is the wrong
-one.
+Written in 1999 (the <a class="gl-ref" href="../glossary.html#header">header</a> says 1998), this note apologises that its terms may
+not match philosophy&#8217;s. It asks what a digital signature means, and argues
+that the question is the wrong one.
 </p>
 <p>
 Its opening states the ambition plainly:
@@ -207,9 +206,7 @@ left.</figcaption>
 </figure>
 
 <p>
-On the machine side, a request signed with k1 gets in because k1 is on a list
-signed by k2, which is on a list signed by k3, which the <a class="gl-ref" href="../glossary.html#server">server</a> trusts. Drawn as
-a loop, nothing in it needs a person:
+Drawn as a loop, the machine column needs no person:
 </p>
 
 <figure id="fig-37-2">
@@ -298,7 +295,7 @@ questions about what identity is.
 </p>
 
 <p>
-Before those are settled, one is arguing about belief: whether Hugo really
+Long before the identity questions are settled, the argument turns to belief: whether Hugo really
 believes a company is a member, or only certifies it in his official role. He
 calls these rat holes, and adds that people do not simply believe things; they
 trust certain sources for certain purposes.
@@ -365,10 +362,6 @@ records and becomes a fact about the system, so questions such as invited in
 what sense, or by whom, never need answering.</figcaption>
 </figure>
 
-<p>
-This is also how administrative systems come to define the categories they
-were built to track, a theme Volume X returns to.
-</p>
 
 <h2 id="sec-37-4">37.4 What a signature is not</h2>
 
@@ -446,7 +439,7 @@ is.</figcaption>
 <h3>What happened since</h3>
 <ul>
 <li><strong>Token-based authorisation became normal.</strong> <a class="gl-ref" href="../glossary.html#oauth">OAuth</a> 2.0,
-published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a server check an access token,
+published as <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 6749 in October 2012, has a <a class="gl-ref" href="../glossary.html#server">server</a> check an access token,
 not who is holding it.</li>
 <li><strong>The global directory never arrived; its certificates did.</strong>
 The X.500 global directory never materialised, but X.509 certificates, which

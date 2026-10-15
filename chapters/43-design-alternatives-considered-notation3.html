@@ -51,14 +51,11 @@ a Design Issues note by Tim Berners-Lee, 2002-03-01.
 </p>
 <div class="plain">
 <h3>The short version</h3>
-<ul>
-<li>The problem: a compact way to write one step along a link, such as from
-a person to their email address.</li>
-<li>Forward steps are easy to write; backward steps read badly in every
-notation tried.</li>
-<li>Sets and lists are different shapes, and a set stored as a list
-suffers.</li>
-</ul>
+<p>
+A record of choices still open: how to write one step along a link, forward or
+backward, and how to write a set. Forward is easy; every backward form reads
+badly. Storing a set as a list makes equal sets look different.
+</p>
 </div>
 
 <div class="editors-note intro">
@@ -167,13 +164,13 @@ borrowing a metaphor:
 <tr><td>Keywords <code>which</code>, <code>thatwhich</code></td><td><code>:joe :son thatWhich :girlfriend :jane</code></td><td>English</td><td>&ldquo;thatwhich is unbeliveably ugly&rdquo;</td></tr>
 <tr><td>Keyword <code>of</code></td><td><code>email of home of boss of x</code></td><td>English</td><td>Parses right to left; already a keyword in N3</td></tr>
 <tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Uses up a quote character</td></tr>
-<tr><td>Arrows</td><td><code>&lt;&lt;foo&gt;test</code></td><td>Multics directories</td><td>N3 already puts <code>&lt;&gt;</code> around URIs</td></tr>
 <tr><td>Slashes</td><td><code>x/uncle\boss/home/email</code></td><td>Directory paths</td><td>Backslash is Unix&#8217;s escape character</td></tr>
-<tr><td>Parentheses</td><td><code>math:max(y z w)</code></td><td>Function calls</td><td>Only for list arguments; a stray space changes the meaning</td></tr>
 </table>
 
 <p>
-The note then sorts them by two questions: does the operator come before or
+So <code>x.email</code> is x&#8217;s email; <code>:joe :son thatWhich
+:girlfriend :jane</code> says Joe&#8217;s son is the one whose girlfriend is
+Jane. The note then sorts them by two questions: does the operator come before or
 after the term, and which way does it travel?
 </p>
 
@@ -184,8 +181,7 @@ after the term, and which way does it travel?
   <desc id="fig43-2-d">A two-by-two grid. Suffix forward: x.email and
   x's email. Suffix backward: y^email. Prefix forward: email of x and
   email(x). Prefix backward: [] which email y and [] | email y. Below, a note
-  that the backward forms are hard to read because English, like the Web, is
-  built for going forward.</desc>
+  that the backward column reads badly.</desc>
 
   <text x="310" y="32" text-anchor="middle" class="t-caps">forward</text>
   <text x="568" y="32" text-anchor="middle" class="t-caps">backward</text>
@@ -209,15 +205,14 @@ after the term, and which way does it travel?
   <text x="568" y="182" text-anchor="middle" class="t-mono" style="fill:#b08d57">[] | email y</text>
 
   <rect class="box-warm" x="24" y="222" width="672" height="44" rx="4"/>
-  <text x="360" y="248" text-anchor="middle" class="t-sm" style="fill:#2f4f4f">Every cell has a candidate, but the right-hand column is hard to read: English, like the Web, is built for going forward.</text>
+  <text x="360" y="248" text-anchor="middle" class="t-sm" style="fill:#2f4f4f">Every cell has a candidate, but the backward column reads badly.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 43.2</span>
-The note&#8217;s own summary table, redrawn. No cell is empty, but the
-backward forms read badly.</figcaption>
+The note&#8217;s own summary table, redrawn.</figcaption>
 </figure>
 
 <p>
-This is the most transferable point in the note. A notation that borrows
+A notation that borrows
 from a natural language inherits its asymmetries: in English-like syntax, an
 email&#8217;s owner is harder to name than a person&#8217;s email.
 </p>
@@ -389,7 +384,8 @@ paths became part of <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a>
 the candidates weighed here.</li>
 <li><strong>No set literal was standardised.</strong> RDF 1.1 and <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, both
 W3C Recommendations of February 2014, kept ordered collections and
-<code>rdf:Bag</code> but added no set syntax or semantics.</li>
+<code>rdf:Bag</code>, an unordered container that allows duplicates, so
+still not a set, but added no set syntax or semantics.</li>
 </ul>
 </div>
 

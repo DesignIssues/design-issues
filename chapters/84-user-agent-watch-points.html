@@ -63,8 +63,8 @@ raw addresses.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-First dated 1998 and revised in 1999, this note begins by insisting that a term
-of art is not merely a term of art:
+First dated 1998 and revised in 1999, this note begins by insisting that &lsquo;user
+agent&rsquo; is more than a technical label:
 </p>
 <blockquote>
 Browsers and Email programs are user agents. This isn't just a formal long term
@@ -82,8 +82,8 @@ system of peeople and machines breaks.
 <cite>User Agent Watch Points, 1999</cite>
 </blockquote>
 <p>
-<a class="x-ref" href="20-stack-specifications.html">Chapter 20</a> established that meaning travels up a stack of specifications. This
-says somebody has to deliver it at the top.
+<a class="x-ref" href="20-stack-specifications.html">Chapter 20</a> showed meaning travelling up a stack of specifications; this note
+says someone must deliver it at the top.
 </p>
 </div>
 
@@ -93,7 +93,8 @@ says somebody has to deliver it at the top.
 A <a class="gl-ref" href="../glossary.html#server">server</a> can reply that the browser should look somewhere else. <a class="gl-ref" href="../glossary.html#http">HTTP</a> has two
 ways of saying this, for opposite reasons. In the note&#8217;s
 example, a university gives its theses durable addresses on one reliable
-machine but serves them from fast department machines.
+machine but serves them from fast department machines. The first reply, 302
+Found, means: the document is over there for now, but keep asking here.
 </p>
 
 <figure id="fig-84-1">
@@ -163,27 +164,23 @@ bookmarks and links in documents.
 </p>
 
 <figure id="fig-84-2">
-<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+<svg class="dia" viewBox="0 0 720 190" width="720" height="190" role="img"
      aria-labelledby="fig84-2-t fig84-2-d">
   <title id="fig84-2-t">Moved, and found</title>
   <desc id="fig84-2-d">301 Moved permanently: change every reference and keep
   the new address. 302 Found: a success; keep the original address.</desc>
 
-  <rect class="box-warm" x="24" y="20" width="310" height="190" rx="4"/>
+  <rect class="box-warm" x="24" y="20" width="310" height="150" rx="4"/>
   <text x="179" y="48" class="t-mono" text-anchor="middle" style="fill:#b08d57">301 Moved permanently</text>
   <text x="179" y="78" class="t-sm" text-anchor="middle">&#8220;the server has committed the unthinkable&#8221;</text>
-  <text x="179" y="106" class="t-sm" text-anchor="middle">change every reference, including</text>
-  <text x="179" y="124" class="t-sm" text-anchor="middle">bookmarks and links in documents</text>
-  <text x="179" y="154" class="t-sm t-it" text-anchor="middle">an expensive repair to a serious problem</text>
-  <text x="179" y="190" class="t-lg" text-anchor="middle" style="fill:#b08d57;font-weight:bold">keep: the new address</text>
+  <text x="179" y="114" class="t-sm t-it" text-anchor="middle">an expensive repair to a serious problem</text>
+  <text x="179" y="150" class="t-lg" text-anchor="middle" style="fill:#b08d57;font-weight:bold">keep: the new address</text>
 
-  <rect class="box-green" x="386" y="20" width="310" height="190" rx="4"/>
+  <rect class="box-green" x="386" y="20" width="310" height="150" rx="4"/>
   <text x="541" y="48" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">302 Found</text>
   <text x="541" y="78" class="t-sm" text-anchor="middle">the server is acting as a name server</text>
-  <text x="541" y="106" class="t-sm" text-anchor="middle">the client asked for a good document;</text>
-  <text x="541" y="124" class="t-sm" text-anchor="middle">here is where it currently lives</text>
-  <text x="541" y="154" class="t-sm t-it" text-anchor="middle">a success, not a repair</text>
-  <text x="541" y="190" class="t-lg" text-anchor="middle" style="fill:#5a8f5a;font-weight:bold">keep: the original address</text>
+  <text x="541" y="114" class="t-sm t-it" text-anchor="middle">a success, not a repair</text>
+  <text x="541" y="150" class="t-lg" text-anchor="middle" style="fill:#5a8f5a;font-weight:bold">keep: the original address</text>
 </svg>
 <figcaption><span class="fig-label">Figure 84.2</span>
 Both replies send the browser elsewhere, but one says the old address is dead
@@ -191,9 +188,8 @@ and the other says the old address is the one to keep.</figcaption>
 </figure>
 
 <p>
-The two addresses carry different promises. This is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s point that
-a name is only as durable as the commitment of whoever runs it, turned into a
-question about which address a person copies down. In 1999, he says, very few
+The two addresses carry different promises (<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>), and the question is
+which one a person copies down. In 1999, he says, very few
 browsers implemented this properly; he names Mozilla and Amaya (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s own
 experimental browser), with a question mark, as perhaps the only ones.
 </p>
@@ -275,9 +271,8 @@ which is the reverse of what matters.</figcaption>
 </figure>
 
 <p>
-More than a quarter of a century later, that record still exists only in the
-inboxes of the parties a person committed to. Sites that muddle the two methods
-would waste the space, he concedes, but they are broken anyway. A digital
+Sites that wrongly use POST where GET belongs would fill the record with
+clutter, he concedes, but such sites are broken anyway. A digital
 signature, he adds, will one day be an action just like POST, with weight
 added. Then the principle:
 </p>
@@ -333,8 +328,9 @@ bookmark the mirror; the agent should keep the original address anyway.
 </p>
 
 <p>
-Each watch point is a distinction the protocol made carefully and the browser
-failed to pass on, wasting the precision below.
+In all three cases the protocol draws a careful distinction (temporary or
+permanent, looking or committing, name or title) and the browser hides it from
+the person it acts for.
 </p>
 
 <div class="since">
@@ -376,8 +372,9 @@ it was?</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.2</span>
-List three things you agreed to online this month. Where is the record of
-each kept, and by whom?</p>
+Using <a class="x-ref" href="#fig-84-3">Figure 84.3</a>, explain why a browser keeps a full record of pages looked
+at but none of forms submitted, and which record matters more if a dispute
+arises.</p>
 </div>
 <div class="question">
 <p><span class="question-number">84.3</span>

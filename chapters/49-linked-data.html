@@ -68,12 +68,11 @@ can find the rest.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This is the most widely read note in the collection. Written in July 2006,
-it opens Volume VI because everything after it either applies its four rules
+Written in July 2006, this note opens Volume VI because everything after it either applies its four rules
 or argues about what they left out.
 </p>
 <p>
-The first sentence does the work of a whole volume:
+Its opening does the work of a whole volume:
 </p>
 <blockquote>
 The Semantic Web isn't just about putting data on the web. It is about making
@@ -88,13 +87,13 @@ data, when you have some of it, you can find other, related, data.
 <p>
 A <em><a class="gl-ref" href="../glossary.html#uri">URI</a></em> is a web address used as a name, of a
 person or an idea as well as a page. <em><a class="gl-ref" href="../glossary.html#rdf">RDF</a></em> is the standard format for
-three-part statements. An <em><a class="gl-ref" href="../glossary.html#ontology">ontology</a></em> is a published set of terms, such
+three-part statements. A <em><a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a></em> (or <a class="gl-ref" href="../glossary.html#ontology">ontology</a>) is a published set of terms, such
 as <em>child</em> or <em>title</em>. A <em>dataset</em> is a large body of
 statements, such as a library catalogue.
 </p>
 
 <p>
-Walked through with one person: name Albert with a URI; make it an
+Applied to one person, the rules say: name Albert with a URI; make it an
 <code>http:</code> address, so that it can be looked up; when someone looks
 it up, return statements such as (Albert, child, Brian); and make Brian a URI
 too, so the reader can go on.
@@ -151,8 +150,7 @@ too, so the reader can go on.
   <text x="360" y="332" class="t-sm t-it" text-anchor="middle">Written as four rules, followed by the word: Simple.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 49.1</span>
-After the rules comes one word, &ldquo;Simple.&rdquo; The rest of the note
-explains why so much data in 2006 was still unlinked.</figcaption>
+The rest of the note explains why so much data in 2006 was still unlinked.</figcaption>
 </figure>
 
 <h2 id="sec-49-2">49.2 Where each rule fails</h2>
@@ -163,8 +161,7 @@ use the universal set of symbols, Berners-Lee does not call it <a class="gl-ref"
 </p>
 
 <p>
-The second rule&#8217;s one deviation has been a constant tendency to invent
-new identifier schemes: LSIDs,
+Rule two is broken by people inventing new identifier schemes: LSIDs,
 handles, XRIs, DOIs and others. He gives two reasons. The first is control:
 </p>
 
@@ -351,7 +348,7 @@ Dublin Core (abbreviated here) is the note&#8217;s example.</figcaption>
 
 <p>
 In 2006 the dominant form of linked data on the Web used neither pattern. The
-Friend of a Friend (FOAF) <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> identified a person by two properties: a
+Friend of a Friend (FOAF) vocabulary identified a person by two properties: a
 mailbox to say who, and a pointer to a document for more. The source&#8217;s
 example records that its author knows Joe:
 </p>
@@ -403,8 +400,8 @@ part or last. Then a group leads to its members and a member to the group.
 <p>
 The price is that a statement relating two documents must be repeated in
 both (<a class="x-ref" href="#fig-49-4">Figure 49.4</a>, left). That breaks the first rule of data storage, not to
-store the same thing twice. Generated data escapes the cost: dbview, a
-program Dan Connolly wrote at <a class="gl-ref" href="../glossary.html#w3c">W3C</a> from 2001 and moved to MIT in 2006, presents any relational
+store the same thing twice. Generated data escapes the cost: Dan Connolly&#8217;s DBView (2004, adapted by
+Rob Crowell in 2006) presents any relational
 database as linked pages. Otherwise
 the choice is common sense:
 </p>
@@ -496,14 +493,14 @@ holding just a URI can find that service, again through a 303.
 five-star rating <a class="gl-ref" href="../glossary.html#scheme">scheme</a> to this note, aimed especially at government data.
 <a class="x-ref" href="51-linked-data-like-bag-chips.html">Chapter 51</a> takes it up.</li>
 <li><strong>Linked open data grew.</strong> The Linking Open Data project
-began in 2007; its diagram of interlinked public datasets grew from about a
-dozen to more than a thousand by the late 2010s.</li>
+began in 2007; its diagram of interlinked public datasets grew from 12
+datasets in 2007 to over 1,200 in 2019.</li>
 <li><strong>Rule two was partly won.</strong> DOIs predate this note, but
 since 2017 Crossref has recommended writing them as
 <code>https://doi.org/&hellip;</code> links, which puts the rival scheme
 inside an HTTP name.</li>
 <li><strong>People got URIs, by two routes.</strong> Decentralised
-identifiers (<code>did:</code>, a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in 2022) are a new
+identifiers (<code>did:</code>, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in 2022) are a new
 non-HTTP scheme of the kind <a class="x-ref" href="#sec-49-2">section 49.2</a> describes. <a class="gl-ref" href="../glossary.html#solid">Solid</a>&#8217;s WebIDs,
 HTTP URIs for people, follow rule two. <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a> discusses both.</li>
 </ul>
@@ -538,7 +535,7 @@ can a client that knows nothing of the FOAF convention now do?</p>
 </div>
 <div class="question">
 <p><span class="question-number">49.4</span>
-Rule four is argued from etiquette rather than mechanism. Give a case where linking out is against the publisher&#8217;s interest.</p>
+Give a case where linking out is against the publisher&#8217;s interest.</p>
 </div>
 </details>
 

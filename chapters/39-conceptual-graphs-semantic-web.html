@@ -62,8 +62,9 @@ go is not the logic but the assumption of one closed, central knowledge base.
 <h3>The question</h3>
 <p>
 Volume IV closes with a comparison, and with an admission of why it was
-overdue. People had been telling Berners-Lee for years that the Semantic Web
-was really Conceptual Graphs, or the reverse. He explains, in January 2001,
+overdue. More than once, people (Mary Keeler, fresh from a CG conference, among them)
+had told Berners-Lee that the Semantic Web was really Conceptual Graphs, or the
+reverse. He explains, in January 2001,
 why the message had not landed:
 </p>
 <blockquote>
@@ -109,12 +110,12 @@ That is a considerable concession. The rival is not wrong; it is unwebized.
 The procedure is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>&#8217;s. Modify the syntax so that a concept or a relation may carry a
 <a class="gl-ref" href="../glossary.html#uri">URI</a>, which means allowing the characters of a URI in identifiers. Then map
 local identifiers to global ones in the usual way: the document&#8217;s URI, a <a class="gl-ref" href="../glossary.html#hash">hash</a>,
-and the local name.
+and the local name. A concept Bus in a file at http://example.org/travel
+becomes http://example.org/travel#Bus.
 </p>
 
 <p>
-He then separates two kinds of obstacle, the most useful idea in the
-chapter.
+He then separates two kinds of obstacle.
 </p>
 
 <figure id="fig-39-1">
@@ -186,8 +187,7 @@ language to be universal itself.
 
 <p>
 Universality is a property required of the base language, not of everything
-built on it. <a class="x-ref" href="02-axioms-web-architecture-uris.html#sec-2-7">Section 2.7</a> makes a neighbouring point about names: URI space
-must be universal, but nothing obliges it to be the only universal space.
+built on it.
 </p>
 
 <h2 id="sec-39-4">39.4 Where the shapes do not match</h2>
@@ -271,10 +271,8 @@ property of whoever first named it.
 <h2 id="sec-39-5">39.5 What the comparison shows</h2>
 
 <p>
-Volume IV has been about giving meaning to data, and here the question is
-asked of a system that did so before the Web existed. The answer, that the
-logic was sound and the assumptions local, is <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>&#8217;s answer about
-knowledge representation, reached here by examination rather than argument.
+<a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> argued that earlier knowledge representation failed through
+centralisation; here the claim is checked against one real system, and holds.
 </p>
 
 <h2 id="sec-39-6">39.6 Striking similarities</h2>
@@ -397,8 +395,8 @@ absorbed the CG interchange format, provides for naming and importing content on
 <li><strong>The n-ary problem was met by convention.</strong> Relations of
 more than two arguments are represented by introducing an intermediate node, a
 pattern the Semantic Web Best Practices group documented in April 2006. It is
-the same extra node that <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> found frightful in another
-context.</li>
+the same kind of middle node that <a class="x-ref" href="38-interpretaion-properties-units-languages.html">Chapter 38</a> used to attach a unit to a
+number.</li>
 <li><strong>Several types, from anyone.</strong> The RDF Recommendations of
 February 2004 let a resource carry any number of <code>rdf:type</code>
 statements, from any source, as <a class="x-ref" href="#sec-39-4">section 39.4</a> expects.</li>

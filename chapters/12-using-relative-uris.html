@@ -64,8 +64,8 @@ namespaces) and tools (Jena) took this ability away.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This note is a complaint, and it says so. Berners-Lee wrote it in 2011 after
-a discussion on the Jena bug tracker about whether his request for relative
+This note is a complaint. Berners-Lee wrote it in 2011 after
+a discussion on the Jena bug tracker about whether his plea for relative
 <a class="gl-ref" href="../glossary.html#uri">URI</a> support was a bug or a wish. The status line carries the exasperation:
 </p>
 <blockquote>
@@ -85,7 +85,7 @@ declines to support it.
 <h2 id="sec-12-1">12.1 Web architecture in one line</h2>
 
 <p>
-The note restates the whole mechanism compactly enough to memorise:
+The note restates the whole mechanism:
 </p>
 
 <blockquote>
@@ -123,10 +123,8 @@ The note restates the whole mechanism compactly enough to memorise:
 <p>
 A local identifier is a name that only means something inside one file: a
 heading named <code>#intro</code> inside a page, say, or a variable inside a
-program. Berners-Lee calls the operation webizing: take a system with local
-identifiers, put the URI of the document those identifiers live in in front
-of them, and they become global, usable from anywhere. Hypertext becomes the
-Web; data files become linked data.
+program. Putting the document&#8217;s URI in front of local names makes them
+global, which he calls webizing (<a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>).
 </p>
 
 <p>
@@ -153,7 +151,7 @@ normally the address the page itself was loaded from.
 <h2 id="sec-12-2">12.2 The argument by absurdity</h2>
 
 <p>
-The note&#8217;s best passage makes the case by writing out what the alternative
+The note makes the case by writing out what the alternative
 would look like in a programming language. Take a two-line program that sets
 a constant and prints twice its value:
 </p>
@@ -172,9 +170,9 @@ A <code>file:///users/foo/&hellip;</code> address is the address of a file on
 one person&#8217;s own computer. In the second version every use of
 <code>pi</code> carries the full address of the file it was saved in. His
 verdict is short: &ldquo;Not practical, not the sort of thing you can copy and move
-around.&rdquo; The example carries an accidental demonstration of the very problem,
-since the two paths differ in the user name, which is exactly the class of
-breakage absolute references produce.
+around.&rdquo; The example even shows the problem by accident: the two paths differ in the
+user name (<code>foo</code>, <code>andys</code>), the kind of breakage
+absolute references cause.
 </p>
 
 <blockquote>
@@ -187,8 +185,7 @@ when we move to the web.
 <h2 id="sec-12-3">12.3 Why the syntax looks like a file path</h2>
 
 <p>
-One sentence settles a question readers often assume is an accident of
-history:
+The resemblance to file paths is deliberate:
 </p>
 
 <blockquote>
@@ -276,12 +273,14 @@ The note ends by naming implementations, unusually for the collection.
 <p>
 The first is XML namespaces. A <a class="gl-ref" href="../glossary.html#namespace">namespace</a> declaration is the line at the top
 of an XML file that says which <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> its tags come from, and the XML
-rules officially rule out relative references there (the <a class="gl-ref" href="../glossary.html#specification">specification</a>
-deprecates them). Berners-Lee&#8217;s diagnosis is that the authors envisaged a
+rules discourage relative references there (the <a class="gl-ref" href="../glossary.html#specification">specification</a> deprecates
+them, meaning they are allowed but should not be used). Berners-Lee&#8217;s diagnosis is that the authors envisaged a
 narrow set of cases in which namespace terms were stable and global while the
 document was local, and did not see the general need to generate relative
 URIs in arbitrary situations. His own command-line tool, cwm, has an option to
-override the rule and write relative URIs anyway.
+override the rule and write relative URIs anyway. His suggested way round it
+is to write <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a plain text format for RDF data, rather than RDF/XML (RDF
+written as XML).
 </p>
 
 <h3>Jena</h3>
@@ -290,8 +289,7 @@ override the rule and write relative URIs anyway.
 The second is Jena, a widely used open-source library for handling RDF data.
 Its serialisers (a serialiser is the part of a program that writes data out
 as a file) emitted only absolute URIs, which he says prevents its use for a
-wide range of systems. And the consequence, stated as the failure mode
-practitioners will recognise:
+wide range of systems. The consequence:
 </p>
 
 <blockquote>
@@ -331,13 +329,8 @@ links break.
 
 <h3>Best practice</h3>
 
-<p>
-The recommendation is correspondingly blunt:
-</p>
-
 <ul>
-<li>Any library that serialises a Web format, such as <a class="gl-ref" href="../glossary.html#html">HTML</a> or <a class="gl-ref" href="../glossary.html#turtle">Turtle</a> (a
-plain text format for RDF data), must
+<li>Any library that serialises a Web format, such as <a class="gl-ref" href="../glossary.html#html">HTML</a> or Turtle, must
 offer relative URIs as an option or as the default.</li>
 <li>Data stored in files, for example on a web server, should use relative
 URIs.</li>
@@ -348,17 +341,11 @@ URIs.</li>
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The XML namespace rule was never relaxed.</strong> Relative
-references in namespace declarations remain deprecated, and the working
-answer for RDF users is to write Turtle rather than RDF/XML (RDF written as
-XML), since Turtle&#8217;s <code>@base</code> line lets a file declare or omit
-its own base.</li>
-<li><strong>Turtle made the base explicit.</strong> Turtle became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in February 2014, with an <code>@base</code> directive and
-relative references.</li>
-<li><strong>The complaint went unanswered for years.</strong> The note
-records in a line dated 2015 that Jena still did not generate relative URIs,
-four years after it was written.</li>
+<li><strong>The namespace rule was never relaxed.</strong> Turtle, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> since February 2014, gives files an <code>@base</code>
+directive and relative references.</li>
+<li><strong>Jena was slow to follow.</strong> A line in the note dated 2015
+records that it still produced only absolute URIs.</li>
 </ul>
 </div>
 

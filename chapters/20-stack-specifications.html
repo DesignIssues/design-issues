@@ -52,8 +52,10 @@ a Design Issues note by Tim Berners-Lee, 2002-07-29.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Each <a class="gl-ref" href="../glossary.html#specification">specification</a> has a field naming the next one. Plugging in commits a computer
-to the whole chain, so fields have agreed meanings and lying in one is a lie.
+An Ethernet packet has a slot saying &ldquo;what follows is <a class="gl-ref" href="../glossary.html#ip">IP</a>&rdquo;; IP has
+one saying &ldquo;what follows is <a class="gl-ref" href="../glossary.html#tcp">TCP</a>&rdquo;; and so on up to the From line of an
+email. Plugging in commits a computer to the whole chain, so each slot has an
+agreed meaning and lying in one is a lie.
 Higher up, central lists give way to URIs anyone can create. Quoting lets a sender
 pass something on without claiming it.
 </p>
@@ -73,13 +75,13 @@ cable to a bank statement, and ends in an argument that is not technical.
 <p>
 Suppose Alice walks into a meeting room and is handed an Ethernet cable. To use it,
 her computer must send <em>packets</em>, small blocks of data laid out as the
-Ethernet specification says. A <em>field</em> in each packet, a slot at a
+Ethernet <a class="gl-ref" href="../glossary.html#specification">specification</a> says. A <em>field</em> in each packet, a slot at a
 fixed place, names the specification that governs the rest. Committing to the cable commits her computer to
 everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>).
 </p>
 
 <figure id="fig-20-1">
-<svg class="dia" viewBox="0 0 720 456" width="720" height="456" role="img"
+<svg class="dia" viewBox="0 0 720 416" width="720" height="416" role="img"
      aria-labelledby="fig20-1-t fig20-1-d">
   <title id="fig20-1-t">The chain of commitments from a cable to a claim</title>
   <desc id="fig20-1-d">Six steps in a staircase, joined by arrows. Plugging in
@@ -116,8 +118,8 @@ everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>).
   <text x="470" y="284" class="t-sm">RFC 822</text>
 
   <rect class="box-green" x="144" y="316" width="300" height="38" rx="4"/>
-  <text x="158" y="340" class="t-sm">RFC 822 defines <tspan class="t-mono" style="fill:#5a8f5a">From:</tspan></text>
-  <text x="470" y="340" class="t-sm" style="fill:#5a8f5a">and that field names the sender</text>
+  <text x="158" y="340" class="t-sm">RFC 822: <tspan class="t-mono" style="fill:#5a8f5a">From:</tspan> names the sender</text>
+  <text x="470" y="340" class="t-sm t-it">(top of the chain)</text>
 
   <line class="ln-mut" x1="84" y1="74" x2="84" y2="91" marker-end="url(#fig20-1-arr)"/>
   <line class="ln-mut" x1="108" y1="130" x2="108" y2="147" marker-end="url(#fig20-1-arr)"/>
@@ -127,8 +129,6 @@ everything above it (<a class="x-ref" href="#fig-20-1">Figure 20.1</a>).
 
   <line class="ln-mut" x1="24" y1="378" x2="696" y2="378"/>
   <text x="24" y="402" class="t-sm">At the bottom this is engineering. At the top it is a claim about a person.</text>
-  <text x="24" y="424" class="t-sm t-it">Putting a false name in that field is a misrepresentation, and Berners-Lee argues</text>
-  <text x="24" y="444" class="t-sm t-it">it should carry the same penalty as a lie in any other medium.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 20.1</span>
 Consent travels up the stack. Nobody signs anything, yet both parties are
@@ -146,16 +146,13 @@ Internet Assigned Numbers Authority, keeps the list of ports.
 Each specification also sets rules of behaviour, and each can be cheated. An
 Ethernet computer that always waits least after a collision crowds the others
 out, &ldquo;just like people who always seem to be the one talking in a
-meeting&rdquo;. One that resends <a class="gl-ref" href="../glossary.html#tcp">TCP</a> data too early slows everyone down. One
+meeting&rdquo;. One that resends TCP data too early slows everyone down. One
 that keeps opening connections it does not want can exhaust a <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s
 memory.
 </p>
 
 <h2 id="sec-20-2">20.2 Why this is an argument about law</h2>
 
-<p>
-Berners-Lee then turns the chain into an argument about law:
-</p>
 
 <blockquote>
 The Internet specifications, to which any Internet user implicitly agrees in
@@ -167,7 +164,8 @@ penalties as lying or fraud in any other medium.
 </blockquote>
 
 <p>
-He then gives the change in stakes, and his conclusion:
+His examples of abuse are spammers who forge email headers and companies that
+cheat protocol timeouts. He then gives the change in stakes:
 </p>
 
 <blockquote>
@@ -191,7 +189,7 @@ or OFX (Open Financial Exchange, a bank-statement format) for a program.
 </p>
 
 <figure id="fig-20-2">
-<svg class="dia" viewBox="0 0 720 396" width="720" height="396" role="img"
+<svg class="dia" viewBox="0 0 720 374" width="720" height="374" role="img"
      aria-labelledby="fig20-2-t fig20-2-d">
   <title id="fig20-2-t">The same chain for a Web page</title>
   <desc id="fig20-2-d">A staircase of four steps. The address
@@ -200,8 +198,7 @@ or OFX (Open Financial Exchange, a bank-statement format) for a program.
   HTTP/1.1. HTTP/1.1 says to contact port 80, and the IANA port list agrees.
   The reply's Content-Type field is looked up in the IANA media-type registry.
   It branches to two outcomes: text/html, a page for a person, and OFX, a
-  statement for a program. A bracket beside the HTTP steps reads: the server
-  is the agent of the publisher.</desc>
+  statement for a program.</desc>
   <defs>
     <marker id="fig20-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
@@ -231,9 +228,6 @@ or OFX (Open Financial Exchange, a bank-statement format) for a program.
   <line class="ln-mut" x1="210" y1="116" x2="210" y2="133" marker-end="url(#fig20-2-arr)"/>
   <line class="ln-mut" x1="234" y1="172" x2="234" y2="189" marker-end="url(#fig20-2-arr)"/>
 
-  <path class="ln-mut" d="M 188 134 L 180 134 L 180 228 L 188 228"/>
-  <text x="168" y="178" class="t-sm t-it" text-anchor="end">the server is the agent</text>
-  <text x="168" y="196" class="t-sm t-it" text-anchor="end">of the publisher</text>
 
   <line class="ln-mut" x1="300" y1="228" x2="254" y2="263" marker-end="url(#fig20-2-arr)"/>
   <line class="ln-mut" x1="404" y1="228" x2="450" y2="263" marker-end="url(#fig20-2-arr)"/>
@@ -248,7 +242,6 @@ or OFX (Open Financial Exchange, a bank-statement format) for a program.
 
   <line class="ln-mut" x1="24" y1="338" x2="696" y2="338"/>
   <text x="24" y="362" class="t-sm">Each field is looked up in a list both parties use, exactly as for email.</text>
-  <text x="24" y="382" class="t-sm t-it">Neither side can later say a field meant something else.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 20.2</span>
 The same shape as Figure 20.1: every value was settled by a published list
@@ -337,7 +330,7 @@ field and a list; for the newer layers, the list is the Web.
 <table>
 <tr><th>Spec</th><th>Field</th><th>Looked up in</th><th>Example</th></tr>
 <tr><td>Ethernet</td><td>Ethertype</td><td>IEEE</td><td><code>0x0800</code></td></tr>
-<tr><td><a class="gl-ref" href="../glossary.html#ip">IP</a></td><td>Protocol</td><td>IANA</td><td><code>6</code></td></tr>
+<tr><td>IP</td><td>Protocol</td><td>IANA</td><td><code>6</code></td></tr>
 <tr><td>TCP</td><td>port</td><td>IANA</td><td><code>80</code></td></tr>
 <tr><td>HTTP</td><td>Content-Type</td><td>IANA</td><td><code>application/xml</code></td></tr>
 <tr><th colspan="4">registry replaced by the Web</th></tr>
@@ -353,7 +346,7 @@ strained as protocols multiplied.
 </p>
 
 <p>
-RDF is the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>&#8217;s language for data:
+RDF is a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> language for publishing data on the Web:
 </p>
 <ul>
 <li>a <em><a class="gl-ref" href="../glossary.html#triple">triple</a></em> is one statement: a thing, a property, a value, such as
@@ -413,10 +406,10 @@ information: narrower, but the same reasoning.</li>
 <li><strong>The technical answer came first.</strong> SPF (RFC 4408, 2006), DKIM
 (RFC 4871, 2007) and DMARC (RFC 7489, 2015) made the From field checkable rather than merely defined.</li>
 <li><strong>The namespace-as-registry idea half worked.</strong> Anyone may
-mint a namespace URI, and many serve nothing at it. <a class="gl-ref" href="../glossary.html#html">HTML</a>, as <a class="x-ref" href="23-html-xml.html">Chapter 23</a>
+mint a namespace URI, and as of 2026 many serve nothing at it. <a class="gl-ref" href="../glossary.html#html">HTML</a>, as <a class="x-ref" href="23-html-xml.html">Chapter 23</a>
 describes, dropped namespaces altogether.</li>
-<li><strong>The links proved replaceable.</strong> IPv6 now runs alongside
-IPv4, and RFC 822 has been replaced twice, by RFC 2822 (2001) and RFC 5322
+<li><strong>The links proved replaceable.</strong> IPv6 (RFC 2460, 1998)
+now runs alongside IPv4, and RFC 822 has been replaced twice, by RFC 2822 (2001) and RFC 5322
 (2008), without changing what a From line means.</li>
 </ul>
 </div>

@@ -65,8 +65,8 @@ to check that a sequence of messages makes sense.
 <p>
 Written for a talk to <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s Advisory Committee (its member body) in
 November 2000, this note says user interfaces and the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> were both
-pointing away from the Web&#8217;s founding model. Only the interface half was
-finished.
+pointing away from the Web&#8217;s founding model. The note is a sketch: it
+develops the interface argument and leaves the rest as placeholders.
 </p>
 <blockquote>
 Often, we notice that Web technology is now entering a field new to the Web
@@ -85,8 +85,9 @@ here is the formal <a class="gl-ref" href="../glossary.html#specification">speci
 
 <p>
 In theory, the note says, the Web is a lookup from each address to the page it
-returns; in experience, a space a person can move around in. What is special about a screen
-is not resolution but simultaneity.
+returns; in experience, a space a person can move around in. What matters about
+a screen is not its sharpness but that it shows everything a person is working
+on at once.
 </p>
 
 <blockquote>
@@ -121,7 +122,8 @@ On terminals of 24 rows by 80 characters, work went through a command line.
 The user typed <code>ls</code> and got back a list of files, then typed the next
 command. The note calls this conversational: small exchanges of messages, with
 the state never displayed. The person imagined the folders; the computer held
-them unseen.
+them unseen. Scaling a page down to a phone screen, the note warns, might be
+simply the wrong interface metaphor.
 </p>
 
 <figure id="fig-61-1">
@@ -185,8 +187,7 @@ screen.</figcaption>
 </figure>
 
 <p>
-Scaling a page down to a phone screen, he warns, might be simply the wrong
-interface metaphor. Yet the models convert both ways. A bank balance is an agreed state computed from
+The two models convert into each other. A bank balance is an agreed state computed from
 the transactions so far; the Paper Trail idea (<a class="x-ref" href="62-paper-trail----build-social.html">Chapter 62</a>) defines agreed
 state formally as a function of messages to date. Conversely, a phone-browsing
 service delivers a shared space as a conversation.
@@ -249,8 +250,9 @@ service delivers a shared space as a conversation.
   <text x="393" y="258" class="t-sm" text-anchor="middle">reads the next part</text>
 </svg>
 <figcaption><span class="fig-label">Figure 61.2</span>
-A state can be computed from a conversation, or delivered as one. Because
-each converts into the other, the two models can be linked formally.</figcaption>
+A state can be computed from a conversation, or delivered as one. Top: the
+balance is never sent; it is worked out from the messages. Bottom: the page
+exists, but the listener only ever hears it in turns.</figcaption>
 </figure>
 
 <h2 id="sec-61-3">61.3 Why this needs formalising</h2>
@@ -263,7 +265,7 @@ each converts into the other, the two models can be linked formally.</figcaption
 </table>
 
 <p>
-The gap he names is shaped like those of Volume IV:
+The note names the missing piece:
 </p>
 
 <blockquote>
@@ -278,8 +280,7 @@ documents, but has no basis yet for defining with equivalent power the validity
 <p>
 Marshalling means packing data into a message for sending. <a class="gl-ref" href="../glossary.html#xml">XML</a> <a class="gl-ref" href="../glossary.html#schema">Schema</a>, XForms
 and <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Schema are languages that say what a valid single document looks
-like. Put plainly: we can say what a valid message looks like. We cannot say
-what a valid conversation looks like.
+like.
 </p>
 
 <figure id="fig-61-3">
@@ -355,8 +356,7 @@ create a conversational interface -- and many still do
 <p>
 The usual workaround is the cookie: a small token the site hands the browser,
 which sends it back with every later request so the site can recognise the
-visitor. It gives a stateless Web a conversation, and leaves the trace the
-next quotation worries about.
+visitor. It gives a stateless Web a conversation, and leaves a trace.
 </p>
 
 <p>
@@ -425,10 +425,10 @@ state, in machine-readable form, what it collects.
 </p>
 
 <p>
-The last point is that on many sites a form has become the definition of a
+Finally, on many sites a form has become the definition of a
 protocol: a set of valid sequences of actions. A tax-return wizard asks for
 income, then deductions, then shows a summary; the summary is meaningless if
-reached first. This is the checkout of <a class="x-ref" href="#fig-61-3">Figure 61.3</a> again.
+reached first.
 </p>
 
 <div class="since">

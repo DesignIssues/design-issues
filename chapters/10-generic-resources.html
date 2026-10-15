@@ -77,8 +77,8 @@ designs to use URIs and HTTP properly.
 <p>
 The question is what a <a class="gl-ref" href="../glossary.html#uri">URI</a> identifies when the thing identified has no one
 fixed sequence of bits. The answer supplies the notion of
-&ldquo;document&rdquo; that <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> depends on, and was the thinking behind
-<a class="gl-ref" href="../glossary.html#http">HTTP</a> content negotiation in 1992.
+&ldquo;document&rdquo; that <a class="x-ref" href="07-http-uris-identify.html">Chapter 7</a> depends on and, the note says, was the
+thinking behind <a class="gl-ref" href="../glossary.html#http">HTTP</a> content negotiation in 1992.
 </p>
 </div>
 
@@ -86,9 +86,7 @@ fixed sequence of bits. The answer supplies the notion of
 
 <p>
 A resource may correspond to exactly one bit stream (one exact sequence of
-bytes). The text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> is like this: it always has the same
-checksum, a fingerprint computed from the bytes that changes if a single byte
-changes. Or a resource may be generic: well specified as a concept but not
+bytes). The text of an Internet <a class="gl-ref" href="../glossary.html#rfc">RFC</a> is like this: the same bytes every time. Or a resource may be generic: well specified as a concept but not
 closely enough to fix the bits. The note
 refuses to make this binary; <a class="x-ref" href="#fig-10-1">Figure 10.1</a> shows its ladder.
 </p>
@@ -101,7 +99,7 @@ refuses to make this binary; <a class="x-ref" href="#fig-10-1">Figure 10.1</a> s
   The Bible; The Bible, King James Version; the KJV in English; a particular
   ASCII rendering of the KJV in English. An arrow on the left points down,
   labelled more specific. The bottom box is one exact bit stream whose
-  checksum never changes. A bracket on the right notes that each
+  bytes never change. A bracket on the right notes that each
   rung may have its own URI, and its owner decides which rung it names.</desc>
 
   <line class="ln-mut" x1="100" y1="22" x2="100" y2="244"/>
@@ -123,7 +121,7 @@ refuses to make this binary; <a class="x-ref" href="#fig-10-1">Figure 10.1</a> s
 
   <rect class="box-green" x="140" y="200" width="360" height="56" rx="4"/>
   <text x="320" y="223" text-anchor="middle">A particular ASCII rendering of the KJV in English</text>
-  <text x="320" y="243" class="t-sm" text-anchor="middle">one exact bit stream: the checksum never changes</text>
+  <text x="320" y="243" class="t-sm" text-anchor="middle">one exact bit stream: the bytes never change</text>
 
   <path class="ln-mut" d="M 515 20 L 525 20 L 525 256 L 515 256 M 525 138 L 533 138"/>
   <text x="541" y="118" class="t-sm">each rung may have</text>
@@ -150,7 +148,7 @@ determines to what extent that resource is generic or specific.
 
 <p>
 This is <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>&#8217;s identity axiom (whoever owns a URI decides what it
-means): &ldquo;how much may this URI&#8217;s content vary?&rdquo; is always
+means): <em>how much may this URI&#8217;s content vary?</em> is always
 answered by the publisher. Nor is it a design decision:
 </p>
 
@@ -228,14 +226,12 @@ the smallness matters.
 </p>
 
 <figure id="fig-10-3">
-<svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
+<svg class="dia" viewBox="0 0 720 212" width="720" height="212" role="img"
      aria-labelledby="fig10-3-t fig10-3-d">
   <title id="fig10-3-t">The four dimensions of genericity</title>
   <desc id="fig10-3-d">A generic resource may be made specific along four
   independent axes: time, language, content type and target medium. Language
-  and content type are negotiated in core HTTP. Time is negotiated only by the
-  Memento extension of 2013. Target medium is never negotiated in HTTP and is
-  handled by stylesheets instead.</desc>
+  and content type, the two negotiated in core HTTP, are shown warm.</desc>
 
   <rect class="box" x="240" y="20" width="240" height="52" rx="4"/>
   <text x="360" y="44" class="t-lg" text-anchor="middle">A generic resource</text>
@@ -265,17 +261,11 @@ the smallness matters.
   <text x="620" y="176" class="t-sm" text-anchor="middle">the print layout,</text>
   <text x="620" y="192" class="t-sm" text-anchor="middle">not the page</text>
 
-  <line class="ln-mut" x1="22" y1="216" x2="698" y2="216"/>
-  <text x="22" y="240" class="t-sm t-it">Negotiated in core HTTP:</text>
-  <text x="180" y="240" class="t-sm">language and content type (the warm boxes).</text>
-  <text x="22" y="262" class="t-sm t-it">Time:</text>
-  <text x="180" y="262" class="t-sm">only through the Memento extension, RFC 7089 (2013), used by web archives.</text>
-  <text x="22" y="284" class="t-sm t-it">Target medium:</text>
-  <text x="180" y="284" class="t-sm">never negotiated in HTTP; chosen by stylesheets instead.</text>
+  
 </svg>
 <figcaption><span class="fig-label">Figure 10.3</span>
-Four is not a magic number; the point is that it is small. The bottom rows
-record how far HTTP actually went along each axis.</figcaption>
+The note&#8217;s point is that the list is short. The warm boxes are the two
+dimensions core HTTP negotiates.</figcaption>
 </figure>
 
 <p>
@@ -353,8 +343,9 @@ the English it was made from.</figcaption>
 </figure>
 
 <p>
-Genericity answers &ldquo;may this be served for that URI?&rdquo; Derivation
-answers &ldquo;where did this come from?&rdquo; Mixing them up has a cost. A
+Genericity answers <em>may this be served for that URI?</em> Derivation
+answers <em>where did this come from?</em> The note does not pursue
+derivation. Mixing the two would have a cost, though: a
 system that records the French as a version <em>of the English</em> may send
 the French when the English is asked for.
 </p>
@@ -365,22 +356,12 @@ the French when the English is asked for.
 The rest of the note is proposals, useful mainly as a record. Two statements
 are wanted: which dimensions a URI is generic in, and how two resources relate
 along a dimension. Both matter to a <a class="gl-ref" href="../glossary.html#cache">cache</a>, a program that keeps copies of pages
-and must know when a stored copy is still good.
+and must know when a stored copy is still good. The table sets the 1996
+proposals, a header and a labelled link, beside the <a class="gl-ref" href="../glossary.html#rdf">RDF</a> forms added in 2000.
 </p>
 
 <p>
-The first proposal was a header. The server would send a line such as
-<code>URI: http//foo.com/bar/baz vary=time,language</code>, saying in which
-dimensions this URI may vary.
-</p>
-
-<p>
-The second was a labelled link: a link that names its relation, such as
-<code>rel="language-specific"</code>.
-</p>
-
-<p>
-In September 2000 Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format
+In September 2000 Berners-Lee added RDF versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format
 for machine-readable statements), using classes (categories a resource
 belongs to) and properties (named relations between resources). A
 <code>TimeInvariant</code> URI promises that what it returns will not change
@@ -419,11 +400,11 @@ publisher&#8217;s commitment about how much a resource may vary, which is what t
 note asked for.</li>
 <li><strong>Negotiation lost ground to distinct URIs.</strong> Publishers
 largely gave each language and format its own address, with
-<code>rel="alternate"</code> links between them, because separate URIs can be
+<code>rel="alternate"</code> links between them (Google has recommended
+<code>hreflang</code> alternates since 2010), because separate URIs can be
 linked to, indexed and cached. That is the ladder of <a class="x-ref" href="#sec-10-1">section 10.1</a> made
 explicit rather than negotiated.</li>
-<li><strong>The genericity ontology was not widely adopted.</strong> Its
-distinctions are now usually made informally, or not at all.</li>
+
 </ul>
 </div>
 

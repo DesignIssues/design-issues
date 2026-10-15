@@ -72,9 +72,6 @@ blogs and books. But here are some points which still now seem to need pointing
 out.
 <cite>User Interface: Random tips, 2016</cite>
 </blockquote>
-<p>
-Sections <a class="x-ref" href="#sec-85-1">85.1</a> to <a class="x-ref" href="#sec-85-3">85.3</a> take the rules about text; <a class="x-ref" href="#sec-85-5">section 85.5</a> lists the rest.
-</p>
 </div>
 
 <h2 id="sec-85-1">85.1 Text must be copyable</h2>
@@ -117,8 +114,8 @@ with something custom. The focus rule is about timing instead.</figcaption>
 </figure>
 
 <p>
-The <em>focus</em> is the place where typed characters will go. The argument
-for copyable error messages is about who can be helped:
+The <em>focus</em> is the place where typed characters will go. Copyable error
+messages help more people:
 </p>
 
 <blockquote>
@@ -129,7 +126,7 @@ friend.
 </blockquote>
 
 <p>
-A message nobody can copy helps only someone who already understands it.
+An uncopyable message helps only someone who already understands it.
 </p>
 
 <h2 id="sec-85-2">85.2 The self-defeating password field</h2>
@@ -152,16 +149,12 @@ up and switch to using a short and unsafe password out of frustration.
   <desc id="fig85-2-d">Five steps. The site asks for a strong password. A strong
   password is too long to remember and is stored in an app. The field blocks
   pasting. The user retypes it on a phone with dots for echo. The user gives up
-  and picks a short, weak password. A dashed arrow runs back from the last step
+  and picks a short, weak password. A dashed line links the last step back
   to the first: the opposite of the intent.</desc>
   <defs>
     <marker id="fig85-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
-    </marker>
-    <marker id="fig85-2-arrm" viewBox="0 0 10 10" refX="9" refY="5"
-            markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8a9a9a"/>
     </marker>
   </defs>
 
@@ -194,16 +187,15 @@ up and switch to using a short and unsafe password out of frustration.
   <line class="ln" x1="425" y1="73" x2="436" y2="73" marker-end="url(#fig85-2-arr)"/>
   <line class="ln" x1="567" y1="73" x2="578" y2="73" marker-end="url(#fig85-2-arr)"/>
 
-  <path class="ln-dash" d="M 644 118 L 644 160 L 76 160 L 76 120" marker-end="url(#fig85-2-arrm)"/>
+  <path class="ln-dash" d="M 644 118 L 644 160 L 76 160 L 76 120"/>
   <text x="360" y="186" class="t-sm t-it" text-anchor="middle">the result is the opposite of the intent</text>
 </svg>
 <figcaption><span class="fig-label">Figure 85.2</span>
-A rule added for security produces the insecure outcome, three steps away
-from the rule.</figcaption>
+A rule added for security produces the insecure outcome two steps later.</figcaption>
 </figure>
 
 <p>
-Blocking paste forces a password short enough to remember, which is a weak
+Blocking paste pushes people toward a password short enough to remember, which is a weak
 one: <a class="x-ref" href="23-html-xml.html">Chapter 23</a>&#8217;s point that the design shapes behaviour, and the behaviour
 is what matters. The demand for visibility is the same argument reversed:
 </p>
@@ -237,15 +229,14 @@ case and loses everything else.
 </p>
 
 <p>
-A usual culprit is an <em>auto-complete library</em>, ready-made code that
-suggests entries during typing. One that blocks pasting is a step backwards; go
+<em>Auto-complete libraries</em>, ready-made code that suggests entries during
+typing, may be a common source of the problem. One that blocks pasting is a step backwards; go
 back to the basic <em>widget</em>, the standard input box.
 </p>
 
 <h2 id="sec-85-4">85.4 Why the list still needed writing</h2>
 
 <p>
-The note offers no diagnosis; it calls the tips its author&#8217;s own biases.
 Our reading: a developer knows what the error means and tests the input they
 had in mind, so the failures rarely show from where they sit. <a class="x-ref" href="88-cultures-boundaries.html">Chapter 88</a>
 describes the same gap for language.
@@ -254,7 +245,7 @@ describes the same gap for language.
 <h2 id="sec-85-5">85.5 The rest of the list</h2>
 
 <p>
-The note gives eight more tips, in two groups.
+Eight more tips, in two groups.
 </p>
 
 <h3>Don&#8217;t interrupt</h3>
@@ -262,7 +253,7 @@ The note gives eight more tips, in two groups.
 <table>
 <tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
 <tr><td>Never use modals</td><td>It blocks the rest of the page until answered, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, between related things, and close it when done.</td></tr>
-<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. <code>alert()</code> and <code>confirm()</code> cannot hold links. Users learn to type an administrator password into any box, and &ldquo;Popups are too easy to fake.&rdquo;</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
+<tr><td>Never use popups</td><td>His calendar went dead because a popup about a recurring event sat on another screen. The ready-made popup boxes browsers offer cannot hold links, so they cannot point to what they are talking about. He has been trained to type an administrator password into popups, a bad habit, and &ldquo;Popups are too easy to fake.&rdquo;</td><td>Ask beside the thing concerned, or in the app itself.</td></tr>
 <tr><td>Never use a carousel</td><td>Anything that moves by itself distracts. The extreme case, in a postscript: a multi-page electronic road sign takes drivers&#8217; eyes off the road for 10&ndash;12 seconds.</td><td>Move only when the user starts it, as with a video.</td></tr>
 <tr><td>Don&#8217;t time out my session</td><td>Getting the passport whose number is asked for may take weeks.</td><td>Keep what was entered; time out only powerful sessions such as banking.</td></tr>
 </table>
@@ -414,7 +405,8 @@ excluded from fixing the problem?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.2</span>
-Trace the password-paste chain, and name the assumption that fails.</p>
+Which step in <a class="x-ref" href="#fig-85-2">Figure 85.2</a> did the site&#8217;s designer fail to picture, and
+why would testing on a desktop with a short password miss it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">85.3</span>

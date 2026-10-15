@@ -65,9 +65,9 @@ program and dataset built on the old shape.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-On 26 June 2010 a workshop opened on the future of the model. Berners-Lee
-could not attend, so he wrote down his position instead, and scoped it
-tightly:
+On 26 June 2010 <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s RDF Next Steps workshop opened. Berners-Lee
+could not attend, so he wrote down his position instead, and limited it to the
+model:
 </p>
 <blockquote>
 This does not address the many other exciting things which need to be done in
@@ -93,7 +93,7 @@ glosses each proposal in one line.
 </p>
 
 <figure id="fig-47-1">
-<svg class="dia" viewBox="0 0 720 617" width="720" height="617" role="img"
+<svg class="dia" viewBox="0 0 720 514" width="720" height="514" role="img"
      aria-labelledby="fig47-1-t fig47-1-d">
   <title id="fig47-1-t">The 2010 proposals, and what became of them</title>
   <desc id="fig47-1-d">Nine proposals in three groups, each with a one-line gloss. Removals: the
@@ -140,25 +140,17 @@ glosses each proposal in one line.
   <text x="500" y="462" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
   <text x="40" y="479" class="t-sm">a variable is a placeholder like ?x for whatever matches;</text>
   <text x="40" y="496" class="t-sm">the scope of each variable to be stated explicitly</text>
-
-  <line class="ln-mut" x1="24" y1="517" x2="696" y2="517"/>
-
-  <rect class="box" x="24" y="529" width="672" height="74" rx="4"/>
-  <text x="360" y="551" class="t-sm" text-anchor="middle">New documentation and a JSON form were produced; RDF/XML itself was left as it was.</text>
-  <text x="360" y="571" class="t-sm" text-anchor="middle">Proposals to remove features were softened to advice.</text>
-  <text x="360" y="591" class="t-sm" text-anchor="middle">Proposals that changed what a statement may contain were not adopted.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 47.1</span>
-The pattern is the lesson. A deployed model tolerates new documents beside it
-and resists changes to its shape, because everything written against the old
+A deployed model accepts new documents beside it and resists changes to its
+shape, because everything written against the old
 shape would have to be revisited.</figcaption>
 </figure>
 
 <h2 id="sec-47-2">47.2 The one that mattered most</h2>
 
 <p>
-Buried without emphasis in the middle of the list is a change to the model
-itself:
+Midway through the list is a change to the model itself:
 </p>
 
 <blockquote>
@@ -360,15 +352,15 @@ a design should fit cleanly with one built separately by someone else.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The documentation proposals were carried out.</strong> RDF 1.1, a
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of February 2014, defines the model independently of any
+W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of February 2014, defines the model independently of any
 syntax, and JSON-LD, a JSON serialisation from the same working group, became a
 Recommendation the month before: both are on this list.</li>
 <li><strong>The deprecations were softened to advice.</strong> <a class="gl-ref" href="../glossary.html#reification">Reification</a>,
 bags and sequences remain in the <a class="gl-ref" href="../glossary.html#specification">specification</a> and are avoided by convention,
 which is the weakest of the options <a class="x-ref" href="#sec-47-3">section 47.3</a> considers.</li>
 <li><strong>Literals as subjects are still not allowed.</strong> The RDF 1.2
-work that W3C began in 2022 kept the restriction, and admits literal subjects
-only in its non-standard &#8220;generalised&#8221; form.</li>
+work that W3C began in 2022 kept the restriction; like RDF 1.1 before it, it
+mentions literal subjects only in an unofficial generalised form.</li>
 <li><strong>Graphs in statements arrived partially.</strong> RDF-star work
 from 2021 onward lets a single statement, not a whole graph, be described by
 another (in RDF 1.2, only as its object), which is the narrower half of the proposal here.</li>
@@ -395,8 +387,8 @@ of what existing implementations must do in each case.</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.2</span>
-Bags were rarely used. Who paid for their being in the specification,
-according to <a class="x-ref" href="#sec-47-3">section 47.3</a>?</p>
+A sequence-to-list conversion is offered as a parser option. What does that
+let an old dataset do that a deprecation date would not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">47.3</span>

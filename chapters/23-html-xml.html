@@ -58,8 +58,8 @@ splitting into a strict XML version (<a class="gl-ref" href="../glossary.html#xh
 </p>
 <p>
 Most web pages are, strictly speaking, broken, and browsers display them
-anyway. This note asks what a page author is actually rewarded for. The answer
-is a <a class="gl-ref" href="../glossary.html#graph">graph</a>.
+anyway. The note argues that authors get no reward for fixing errors
+gradually, and proposes graded warnings so that they would.
 </p>
 </div>
 
@@ -251,7 +251,7 @@ Since at least <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 793 (1981),
 rule: be conservative in what is sent and liberal in what is accepted. Send
 lines of limited length but accept any length; send one letter case but
 accept either. The note explains why this rule, which worked for protocols,
-failed for pages. Neither part of the diagnosis is about technology.
+failed for pages.
 </p>
 
 <blockquote>
@@ -342,7 +342,7 @@ and draws the reward for effort.
 </p>
 
 <figure id="fig-23-4">
-<svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
+<svg class="dia" viewBox="0 0 720 326" width="720" height="326" role="img"
      aria-labelledby="fig23-4-t fig23-4-d">
   <title id="fig23-4-t">What an author gets for fixing errors</title>
   <desc id="fig23-4-d">Under a strict parser the reward is a step at the far
@@ -355,7 +355,6 @@ and draws the reward for effort.
   <!-- axes -->
   <line class="ln" x1="70" y1="250" x2="660" y2="250"/>
   <line class="ln" x1="70" y1="250" x2="70" y2="40"/>
-  <text x="95" y="266" class="t-sm" text-anchor="middle" style="fill:#b08d57">hopeless</text>
   <text x="365" y="278" class="t-sm" text-anchor="middle">effort the author spends removing errors</text>
   <text x="52" y="150" class="t-sm" text-anchor="middle" transform="rotate(-90 52 150)">reward: how well the page renders</text>
 
@@ -374,7 +373,6 @@ and draws the reward for effort.
 
   <line class="ln-mut" x1="70" y1="292" x2="660" y2="292"/>
   <text x="365" y="314" class="t-sm" text-anchor="middle">A late step motivates only the author who is already nearly finished.</text>
-  <text x="365" y="334" class="t-sm t-it" text-anchor="middle">An early step motivates only the hopeless page. Neither is a slope.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 23.4</span>
 Two steps at opposite ends. As the note puts it, the liberal and conservative
@@ -406,7 +404,8 @@ it would look irresponsible.</li>
 copy a tidied version.</li>
 <li>The validator (the W3C&#8217;s service that checks a page against the
 <a class="gl-ref" href="../glossary.html#specification">specification</a>) would become a page checker that grades, as in Figure
-23.5.</li>
+23.5. One check is the Content-Type, the <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s label for the kind of
+file, such as <code>text/html</code>.</li>
 </ol>
 
 <figure id="fig-23-5">
@@ -439,8 +438,7 @@ copy a tidied version.</li>
 </svg>
 <figcaption><span class="fig-label">Figure 23.5</span>
 More than two outcomes: graded complaints are what turn a step into a slope.
-The items are the note&#8217;s own lists. Content-Type: the server&#8217;s label
-for the kind of file, such as <code>text/html</code>.</figcaption>
+The items are the note&#8217;s own lists.</figcaption>
 </figure>
 
 <h2 id="sec-23-5">23.5 Scale-free vocabularies</h2>
@@ -463,7 +461,7 @@ to coin names without a committee.
   <desc id="fig23-6-d">A power-law curve. The horizontal axis lists
   vocabularies, most used first; the vertical axis is the size of the
   community using each. HTML stands alone at the top left. The curve falls
-  through SVG, MathML and ARIA, then FBML and Atom feeds, and flattens into a
+  through SVG, MathML and ARIA, then Facebook&#8217;s markup (FBML) and Atom feeds, and flattens into a
   long tail of bird fanciers and today's lab experiment. The region under the
   curve after HTML is shaded and labelled needs namespaces.</desc>
 
@@ -481,7 +479,7 @@ to coin names without a committee.
   <circle cx="140" cy="140" r="4" fill="#1c5a7a"/>
   <text x="150" y="128" class="t-sm">SVG, MathML, ARIA</text>
   <circle cx="280" cy="193.8" r="4" fill="#1c5a7a"/>
-  <text x="288" y="180" class="t-sm">FBML, Atom feeds</text>
+  <text x="288" y="180" class="t-sm">Facebook&#8217;s markup (FBML), Atom feeds</text>
   <circle cx="560" cy="217.8" r="4" fill="#1c5a7a"/>
   <text x="560" y="198" class="t-sm" text-anchor="middle">bird fanciers, today&#8217;s lab experiment</text>
 
@@ -507,7 +505,8 @@ the producers to adhere to it better.
 </blockquote>
 
 <p>
-Accept everything, render everything, and say so. The complaint is the slope.
+The added clause, complain helpfully, is what supplies the graded reward of
+<a class="x-ref" href="#fig-23-4">Figure 23.4</a>.
 </p>
 
 <h2 id="sec-23-7">23.7 Meeting in the middle</h2>
@@ -526,9 +525,10 @@ The note also lists its complaints about XML:
 </table>
 
 <p>
-The first could be cured by redesigning XML; the last he would not change.
+Rows near the top could be cured by redesigning XML; the bottom rows are HTML
+habits he would keep; the middle invites compromise.
 His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
-takes the namespace from the content type, drops DTDs (old grammar
+takes the namespace from the Content-Type, drops DTDs (old grammar
 declarations) and processing instructions (see <a class="x-ref" href="01-principles-design.html#sec-1-2">section 1.2</a>), and perhaps allows
 <code>&lt;/&gt;</code> as a close tag. A page that starts
 </p>
@@ -555,7 +555,7 @@ could, served as <code>text/html</code>, simply be
 
 <p>
 and still be valid XML2. Gone are the XML declaration and DOCTYPE, the
-<code>xmlns</code> attribute (the namespace now comes from the content type),
+<code>xmlns</code> attribute (the namespace now comes from the Content-Type),
 and the quotes around simple values. The only non-HTML habit left is the
 <code>/&gt;</code> closing the link tag.
 </p>
@@ -570,15 +570,14 @@ that the WHATWG Living Standard would be the single version of HTML.</li>
 <li><strong>The note was published at that moment,</strong> and its argument
 was not adopted: there was no XML2, HTML has no namespaces, and extension is
 centralised.</li>
-<li><strong>The slope was built, partly, for developers only.</strong> Developer
-tools report problems in detail, and Google&#8217;s Lighthouse (from 2016)
+<li><strong>The slope was built, partly, for developers only.</strong> Google&#8217;s Lighthouse (from 2016)
 scores pages from 0 to 100, though for performance and accessibility rather
 than markup errors. Nothing slides down in front of an ordinary reader, the
 part that would have changed authors&#8217; incentives.</li>
 <li><strong>Decentralised extension arrived by another route.</strong> Custom
-elements, tags a page defines for itself with script, require a hyphen in the
-name rather than a namespace, and structured data in pages uses <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>
-URIs. The requirement of <a class="x-ref" href="#sec-23-2">section 23.2</a> was met without the mechanism this
+elements (shipped from 2016), tags a page defines for itself with script,
+require a hyphen in the name rather than a namespace, and structured data in
+pages uses <a class="gl-ref" href="../glossary.html#schema">schema</a>.org (2011) <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> URIs in JSON-LD. The requirement of <a class="x-ref" href="#sec-23-2">section 23.2</a> was met without the mechanism this
 note defends.</li>
 </ul>
 </div>

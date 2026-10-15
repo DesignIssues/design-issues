@@ -67,8 +67,8 @@ under rules they trust.
 Written in November 2023, the note opens with an epigraph produced by a
 machine: a passage from Inflection&#8217;s chatbot Pi praising private data
 &ldquo;pods&rdquo;. Berners-Lee then examines whether what it promises is
-achievable. What would an assistant that genuinely works for its user need, and why
-can it not simply be given the user&#8217;s data?
+achievable. It asks what an assistant working for its user would need, and why
+handing it the user&#8217;s data is not enough.
 </p>
 </div>
 
@@ -108,8 +108,8 @@ being available to the user themselves.
 </blockquote>
 
 <p>
-His example of the improved wiring is Pi, which he tried and found seemed to take on a
-better understanding of him over a long conversation. <a class="x-ref" href="92-beneficent-apps.html">Chapter 92</a> gives the
+His example of the improved wiring is Pi, which he tried; over a long
+conversation it seemed to understand him better. <a class="x-ref" href="92-beneficent-apps.html">Chapter 92</a> gives the
 general form of this argument.
 </p>
 
@@ -171,8 +171,7 @@ The same model, wired two ways. What changes is who the insight flows to.</figca
 <p>
 In September 2023 Google let its chatbot Bard read a user&#8217;s Gmail. When the
 journalist Kevin Roose tried it on his own mail, Berners-Lee suspects it did
-not gain the dramatic insight a person would have. His tentative answer to why
-is the heart of the note: it had been shown the email but not trained on email.
+not gain the dramatic insight a person would have. His tentative answer: it had been shown the email but not trained on email.
 </p>
 
 <p>
@@ -236,10 +235,6 @@ users, or a state-run system in an autocratic state.
 <cite>Inference from Private Data, 2023</cite>
 </blockquote>
 
-<p>
-Both are the parties one would least want doing it.
-</p>
-
 <h2 id="sec-72-4">72.4 The proposal: groups rather than everybody</h2>
 
 <blockquote>
@@ -251,13 +246,11 @@ greater insight.
 </blockquote>
 
 <p>
-(The slips &ldquo;inventive&rdquo; and &ldquo;a achieve&rdquo; are in the
-original.) The classic case is patients with the same disease pooling data to
+The classic case is patients with the same disease pooling data to
 learn about treatments, and even to discover new drugs. This needs a social
 construction that raises trust enough for individuals to contribute; such
 arrangements &ldquo;have been called Data Trusts or, more recently, Data
-Institutions&rdquo;. <a class="x-ref" href="66-model-real-trust.html">Chapter 66</a>&#8217;s account of modelling real trust is what
-this needs, and <a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22</a> shows how such a group would agree its terms.
+Institutions&rdquo;.
 </p>
 
 <figure id="fig-72-3">
@@ -265,7 +258,7 @@ this needs, and <a class="x-ref" href="22-working-despite-ambiguity.html">Chapte
      aria-labelledby="fig72-3-t fig72-3-d">
   <title id="fig72-3-t">Whose private data a model can learn from</title>
   <desc id="fig72-3-d">Three columns. Everyone's data: a large platform or an
-  autocratic state trains on all its users, possible but concentrating. A
+  autocratic state trains on all its users, possible, but power concentrates. A
   group's data: patients with one disease pool through a data trust, with a
   shared incentive and raised trust. One person&#8217;s data: that data alone, shown at
   question time, giving no wisdom.</desc>
@@ -275,7 +268,7 @@ this needs, and <a class="x-ref" href="22-working-despite-ambiguity.html">Chapte
   <text x="132" y="74" text-anchor="middle">a large platform,</text>
   <text x="132" y="94" text-anchor="middle">or an autocratic state</text>
   <text x="132" y="122" class="t-sm" text-anchor="middle">trains on all its users</text>
-  <text x="132" y="170" class="t-sm t-it" text-anchor="middle">possible, but concentrating</text>
+  <text x="132" y="170" class="t-sm t-it" text-anchor="middle">possible, but power concentrates</text>
 
   <text x="360" y="32" class="t-caps" text-anchor="middle">a group&#8217;s data</text>
   <rect class="box-green" x="252" y="46" width="216" height="100" rx="4"/>
@@ -351,8 +344,7 @@ apps, acquires a new and much stronger reason to exist.
 A project in the Oxford Martin School&#8217;s EWADA group lets gig-economy
 workers, such as Uber drivers, learn group facts like average pay without
 revealing their own figures. It uses multi-party computation (MPC), in which a
-result is computed from private inputs without disclosing the inputs, spread
-over a federated network of MPC nodes. The limit is stated plainly:
+result is computed from private inputs without disclosing the inputs. The limit is stated plainly:
 </p>
 
 <blockquote>
@@ -395,10 +387,7 @@ and Drive: the concentration <a class="x-ref" href="#sec-72-5">section 72.5</a> 
 be shown around a million tokens (word-pieces) at once, so a whole mailbox fits
 in front of the model. That is still showing, not the training <a class="x-ref" href="#fig-72-2">Figure 72.2</a>
 describes.</li>
-<li><strong>Older techniques offer another route.</strong> Federated learning
-(proposed in 2016), which trains on devices so raw data stays put, and MPC
-(dating from the early 1980s) are attempts to obtain the wisdom of <a class="x-ref" href="#sec-72-3">section 72.3</a>
-without collecting the corpus.</li>
+
 </ul>
 </div>
 

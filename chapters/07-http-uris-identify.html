@@ -80,8 +80,7 @@ Technical Architecture Group, and yet finding it the only one I could accept.
 The Technical Architecture Group is the small W3C committee charged with
 deciding questions about the Web&#8217;s overall design. The question put to it
 was what an HTTP URI denotes, meaning what thing in the world it is a name
-for. For a decade nobody had needed to ask. Berners-Lee notes with some
-amusement that the ambiguity of natural language had concealed the problem so
+for. For a decade nobody had needed to ask. Berners-Lee notes that the ambiguity of natural language had concealed the problem so
 well that the original author of HTTP and its later co-author, who wrote his
 doctoral thesis analysing the Web, held conflicting ideas of what the terms
 meant without either noticing.
@@ -200,7 +199,7 @@ you are buying a car.
 <h3>The test of a shared link</h3>
 
 <p>
-The note&#8217;s most concrete passage turns this into a test anyone can run.
+The note turns this into a test.
 Berners-Lee sees a web page with a photograph of a car. He copies the address
 from his browser and emails it to a friend: look, the car is a Toyota. The
 friend clicks the link. The same address comes up, but the page is a table of the
@@ -222,11 +221,7 @@ The sameness we are after is the sameness of information content.
 <cite>What do HTTP URIs Identify?, 2002</cite>
 </blockquote>
 
-<p>
-If an address named the car, both pages would pass, since both are about the
-car. Only if it names the document does the test explain why one of them
-counts as failure.
-</p>
+
 
 <figure id="fig-7-2">
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
@@ -287,17 +282,15 @@ overturned at any moment.
 </p>
 
 <table>
-<tr><th>Alternative</th><th>What it gets right</th><th>Why it is rejected</th></tr>
-<tr><td>The URI identifies the abstract thing, not a document</td><td>Easy to build on</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
-<tr><td>The owner may define it to mean whatever they like</td><td>Logically consistent</td><td>Nothing can be used before consulting the owner</td></tr>
-<tr><td>&emsp;&hellip; with a page as the default until told otherwise</td><td>Usable at once</td><td>Requires closed-world reasoning, which an open Web forbids</td></tr>
-<tr><td>&emsp;&hellip; settled by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a></td><td>Works logically</td><td>Cannot be retrofitted to the millions of servers already deployed</td></tr>
-<tr><td>Let logic disambiguate</td><td>Possible in theory</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
-<tr><td>Let different properties imply different levels</td><td>Can still be pursued</td><td>Fails when a page describes another page: there is no telling which level a property is about</td></tr>
-<tr><td>Carry extra information alongside the URI</td><td>Would work for <a class="gl-ref" href="../glossary.html#html">HTML</a> links alone</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
-<tr><td>Disambiguate by context</td><td>Works in the short term</td><td>Fails once the two communities talk to each other; breaks the rule that a URI names one thing</td></tr>
-<tr><td>Change the meaning for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></td><td>Tempting</td><td>A change that large would need a new URI <a class="gl-ref" href="../glossary.html#scheme">scheme</a></td></tr>
-<tr><td>Abandon abstract identification entirely</td><td>Consistent</td><td>Bars RDF from talking about documents</td></tr>
+<tr><th>Alternative</th><th>Why it is rejected</th></tr>
+<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
+<tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before consulting the owner; variants that default to a page need closed-world reasoning, and settling it by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a> cannot be retrofitted to servers already deployed</td></tr>
+<tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
+<tr><td>Let different properties imply different levels</td><td>No way to tell which level a property is about</td></tr>
+<tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
+<tr><td>Disambiguate by context</td><td>Fails once the two communities talk to each other; breaks the rule that a URI names one thing</td></tr>
+<tr><td>Change the meaning for the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a></td><td>A change that large would need a new URI <a class="gl-ref" href="../glossary.html#scheme">scheme</a></td></tr>
+<tr><td>Abandon abstract identification entirely</td><td>Bars RDF from talking about documents</td></tr>
 </table>
 
 <p>
@@ -311,8 +304,7 @@ arrives.
 </p>
 
 <p>
-The consequence is put in a sentence that became the standard way of stating
-the problem:
+The consequence is put in a sentence often quoted since:
 </p>
 
 <blockquote>
@@ -401,8 +393,7 @@ abstraction and specification!
 <p>
 The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
-names a document. That is the whole of Berners-Lee&#8217;s position in one line,
-and it is why he preferred hash URIs to the redirect approach, which was
+names a document. This is why he preferred hash URIs to the redirect approach, which was
 adopted in 2005 and now coexists with them. <a class="x-ref" href="#fig-7-4">Figure 7.4</a> sets the two side by
 side.
 </p>
@@ -482,7 +473,9 @@ redirect costs an extra round trip to the server.</figcaption>
 Technical Architecture Group resolved the issue it had recorded as
 <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>, adopting a runtime test rather than a rule fixed in the
 <a class="gl-ref" href="../glossary.html#specification">specification</a>, which is the protocol-operation option in <a class="x-ref" href="#sec-7-3">section 7.3</a>&#8217;s
-table. It did so using a redirect closely resembling the one proposed here.
+table. The resolution avoided that option&#8217;s objection because a server
+that does nothing different still answers 200, and so is read as serving a
+document. It did so using a redirect closely resembling the one proposed here.
 <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> is Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
 2006 the page carried a <a class="gl-ref" href="../glossary.html#header">header</a> saying the question had been decided by the
@@ -526,10 +519,8 @@ a property or a page about it? How could you tell?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.4</span>
-The note argues that representations of a document have more in common with
-each other than with the thing described. Give a case where that is false
-(for example, a photograph and a text description of the same painting), and
-say whether it damages the argument.</p>
+A photograph and a written description of the same painting are served at
+one address. By the shared-link test, is that one document or two?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.5</span>

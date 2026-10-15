@@ -66,7 +66,7 @@ not to be run.
 <p>
 <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a> established that one document may carry several vocabularies.
 This note, from February 2002 and revised in June 2005, asks the question
-that leaves open, in the bluntest possible form:
+that leaves open:
 </p>
 <blockquote>
 If one party sends another an XML document, how does one say what it means?
@@ -151,7 +151,7 @@ no single order of stages handles them all.
   <rect class="box-warm" x="60" y="262" width="240" height="62" rx="4"/>
   <text x="180" y="282" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">A stage cannot tell material meant</text>
   <text x="180" y="298" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">for it from material merely quoted.</text>
-  <text x="180" y="314" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">Quoting becomes impossible.</text>
+  <text x="180" y="314" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">There is no place to say &#8220;quoted&#8221;.</text>
 
   <line class="ln-mut" x1="370" y1="16" x2="370" y2="326"/>
 
@@ -177,9 +177,8 @@ no single order of stages handles them all.
   <text x="645" y="238" class="t-sm" text-anchor="middle">its result</text>
 
   <rect class="box-green" x="410" y="262" width="290" height="62" rx="4"/>
-  <text x="555" y="282" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">An element may say its contents are quoted,</text>
-  <text x="555" y="298" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">not to be run. Nothing below acts without</text>
-  <text x="555" y="314" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">permission from above.</text>
+  <text x="555" y="290" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">An element may say its contents are quoted,</text>
+  <text x="555" y="306" class="t-sm" text-anchor="middle" style="fill:#2f4f4f">not to be run.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 24.1</span>
 The pipeline fixes one order for the whole document; the top-down model lets
@@ -190,7 +189,7 @@ is not to be run.</figcaption>
 <h3>Many ways, one meaning</h3>
 
 <p>
-Top-down is not one procedure. The note sketches three:
+The note sketches three top-down procedures:
 </p>
 
 <table>
@@ -235,11 +234,11 @@ elaborated. Berners-Lee calls them <em>XML functions</em>.
   <rect class="box" x="80" y="92" width="70" height="28" rx="4"/>
   <text x="115" y="111" class="t-mono" text-anchor="middle">body</text>
   <path class="ln-mut" d="M 115 120 L 115 144"/>
-  <rect class="ln-dash" x="22" y="134" width="186" height="142" rx="6"/>
+  <rect class="ln-dash" x="22" y="134" width="186" height="68" rx="6"/>
   <rect class="box-warm" x="35" y="144" width="160" height="48" rx="4"/>
   <text x="115" y="163" class="t-mono" text-anchor="middle">xi:include</text>
   <text x="115" y="182" class="t-mono" text-anchor="middle">href="part.xml"</text>
-  <text x="115" y="296" class="t-sm" text-anchor="middle">only this branch may change</text>
+  <text x="115" y="222" class="t-sm" text-anchor="middle">only this branch may change</text>
 
   <path class="ln-accent" d="M 214 205 L 244 205"/>
   <path d="M244,200 L252,205 L244,210 Z" fill="#1c5a7a"/>
@@ -291,11 +290,11 @@ step changes only what lies inside the dashed outline; <code>html</code> and
 
 <table>
 <tr><th>Namespace</th><th>In plain words</th><th>The element is replaced by</th></tr>
-<tr><td>XSLT, in &ldquo;Literal Result Element as Stylesheet&rdquo; mode</td><td>a template that computes text</td><td>the output its template computes</td></tr>
+<tr><td>XSLT (a template language)</td><td>a template that computes text</td><td>the output its template computes</td></tr>
 <tr><td>XInclude</td><td>paste in another file here</td><td>the referenced document or part</td></tr>
 <tr><td>XML <a class="gl-ref" href="../glossary.html#encryption">Encryption</a></td><td>a locked box that opens into content</td><td>the decrypted content</td></tr>
 <tr><td>XQuery (listed with a question mark)</td><td>a database question whose answer goes here</td><td>the result of the query</td></tr>
-<tr><td>Internationalisation tags</td><td>a marker for translators</td><td>their contents, marked &ldquo;do not translate this phrase when translating this document&rdquo;</td></tr>
+<tr><td>Internationalisation tags, such as &ldquo;do not translate this phrase when translating this document&rdquo;</td><td>a marker for translators</td><td>their contents, with the instruction noted</td></tr>
 </table>
 
 <p>
@@ -309,8 +308,9 @@ What they share:
 </ul>
 
 <p>
-The last property makes order unimportant: no function reaches outside its
-branch. Of nested
+The last property makes order unimportant: no function can change anything
+outside its branch (though, as <a class="x-ref" href="#sec-24-5">section 24.5</a> shows, it may read outside it). Of
+nested
 inclusions the note says it &ldquo;doesn&#8217;t make any difference&rdquo;
 whether the inner ones are expanded first.
 </p>
@@ -319,7 +319,9 @@ whether the inner ones are expanded first.
 
 <p>
 Sometimes a function must be mentioned without being run. In an XML
-<em>package</em> the packaged items are quoted. An XSLT template that outputs an XInclude element contains a
+<em>package</em> (files bundled with a cover note, like an email with
+attachments; only the cover note is live) the packaged items are
+quoted. An XSLT template that outputs an XInclude element contains a
 real XInclude element, which must not be expanded inside the XSLT.
 </p>
 
@@ -365,8 +367,7 @@ top-down interpretation, in which the parent decides, can express that.</figcapt
 
 <p>
 A pipeline cannot say this. Such ambiguities, Berners-Lee says, &ldquo;stem from the lack of
-quoting syntax in XML&rdquo;. Running quoted material is dangerous, not
-merely wrong.
+quoting syntax in XML&rdquo;.
 </p>
 
 <h2 id="sec-24-5">24.5 The conclusion</h2>
@@ -457,11 +458,11 @@ run: the include element, or a piece of the SVG.</figcaption>
 <p>
 Because the root element decides, its namespace says what the whole document
 is: an <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> root yields a hypertext page, an SVG root a diagram. A
-<em>MIME type</em> is the label a <a class="gl-ref" href="../glossary.html#server">server</a> sends in the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers, ahead of
-the file itself, such as <code>image/svg+xml</code>. The note recommends a
+<em>MIME type</em> is the label a <a class="gl-ref" href="../glossary.html#server">server</a> sends in the <a class="gl-ref" href="../glossary.html#http">HTTP</a> headers. The note recommends a
 specific MIME type for each well-known root, so that the label alone shows
-what the document is, and the <code>+xml</code> suffix only where the
-top-down model applies.
+what the document is, and to add <code>+xml</code> to the label (as in
+<code>image/svg+xml</code>) only when a generic XML program may read the
+document top-down.
 </p>
 
 <p>
@@ -479,8 +480,7 @@ facility had its own schema.
 become the ordinary way to publish; the <a class="gl-ref" href="../glossary.html#html">HTML</a> that won (<a class="x-ref" href="23-html-xml.html">Chapter 23</a>) has no
 author-declared namespaces.</li>
 <li><strong>A pipeline language was standardised.</strong> XProc became a <a class="gl-ref" href="../glossary.html#w3c">W3C</a>
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010, sitting at the top of the tree as the note
-allowed.</li>
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in May 2010.</li>
 <li><strong>The security concern was correct in general.</strong> XML
 processors that fetch external references unasked are attacked through XML
 External Entity (XXE) flaws, listed in the OWASP Top 10 of 2017.</li>

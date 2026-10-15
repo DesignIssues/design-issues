@@ -66,8 +66,7 @@ question. For trust, the web address itself says who is responsible.
 Nine years after the survey of <a class="x-ref" href="05-web-architecture-50000-feet.html">Chapter 5</a>, Berners-Lee wrote this note with an
 unusually frank status line: it was written, he says, in response to another
 round of circular discussions of Web architecture. It is short, it contains
-no new mechanism, and it closes Volume I because it supplies the thing the
-earlier notes lack, which is a reason why the layering is the way it is.
+no new mechanism. It supplies a reason for the layering.
 </p>
 <p>
 The claim is that the Web&#8217;s layers are not layers of technology. They are
@@ -79,9 +78,8 @@ the one beneath.
 <h2 id="sec-6-1">6.1 Three refusals</h2>
 
 <p>
-The note advances by rejecting three answers in turn. Each step is an
-abstraction: a way of working that lets a person forget the layer underneath.
-The note names each step by what no longer has to be thought about.
+The note advances by rejecting three answers in turn, naming each step by
+what no longer has to be thought about.
 </p>
 
 <h3>Not the wires</h3>
@@ -195,7 +193,8 @@ Each layer can be ignored except in two cases, debugging and trust. Figure
 <svg class="dia" viewBox="0 0 720 304" width="720" height="304" role="img"
      aria-labelledby="fig6-2-t fig6-2-d">
   <title id="fig6-2-t">Lifting the hood at each level</title>
-  <desc id="fig6-2-d">A grid of three levels against two questions. Net:
+    <desc id="fig6-2-d">A grid of three levels against two questions, Things at
+  the top and Net at the bottom. Net:
   debugging asks whether the fault is in the user&#8217;s own computer, the WiFi base
   unit, the router, the cable modem, the middle of the Internet or the far
   end; trust is not raised at this level. Web: debugging asks whether the
@@ -208,16 +207,17 @@ Each layer can be ignored except in two cases, debugging and trust. Figure
   <text x="275" y="28" class="t-caps" text-anchor="middle">Debugging: where did it fail?</text>
   <text x="565" y="28" class="t-caps" text-anchor="middle">Trust: who stands behind it?</text>
 
-  <!-- Net row -->
-  <rect class="box-warm" x="20" y="48" width="100" height="76" rx="4"/>
-  <text x="70" y="83" class="t-lg" text-anchor="middle">Net</text>
-  <text x="70" y="101" class="t-sm" text-anchor="middle">of computers</text>
-  <rect class="box-warm" x="130" y="48" width="290" height="76" rx="4"/>
-  <text x="275" y="72" text-anchor="middle">own computer, WiFi base unit, router,</text>
-  <text x="275" y="90" text-anchor="middle">cable modem, middle of the Internet,</text>
-  <text x="275" y="108" text-anchor="middle">or the far end?</text>
-  <rect class="box-warm" x="430" y="48" width="270" height="76" rx="4"/>
-  <text x="565" y="91" class="t-it" text-anchor="middle">not raised at this level</text>
+  <!-- Things row -->
+  <rect class="box-green" x="20" y="48" width="100" height="76" rx="4"/>
+  <text x="70" y="83" class="t-lg" text-anchor="middle">Things</text>
+  <text x="70" y="101" class="t-sm" text-anchor="middle">of data</text>
+  <rect class="box-green" x="130" y="48" width="290" height="76" rx="4"/>
+  <text x="275" y="72" text-anchor="middle">document fetched but data missing,</text>
+  <text x="275" y="90" text-anchor="middle">or document not fetched at all</text>
+  <text x="275" y="108" text-anchor="middle">(then: which web problem?)</text>
+  <rect class="box-green" x="430" y="48" width="270" height="76" rx="4"/>
+  <text x="565" y="81" text-anchor="middle">which document did this map point</text>
+  <text x="565" y="99" text-anchor="middle">or table cell come from?</text>
 
   <!-- Web row -->
   <rect class="box" x="20" y="132" width="100" height="76" rx="4"/>
@@ -232,20 +232,20 @@ Each layer can be ignored except in two cases, debugging and trust. Figure
   <text x="565" y="174" text-anchor="middle">will they keep my bookmark</text>
   <text x="565" y="192" text-anchor="middle">alive tomorrow?</text>
 
-  <!-- Things row -->
-  <rect class="box-green" x="20" y="216" width="100" height="76" rx="4"/>
-  <text x="70" y="251" class="t-lg" text-anchor="middle">Things</text>
-  <text x="70" y="269" class="t-sm" text-anchor="middle">of data</text>
-  <rect class="box-green" x="130" y="216" width="290" height="76" rx="4"/>
-  <text x="275" y="240" text-anchor="middle">document fetched but data missing,</text>
-  <text x="275" y="258" text-anchor="middle">or document not fetched at all</text>
-  <text x="275" y="276" text-anchor="middle">(then: which web problem?)</text>
-  <rect class="box-green" x="430" y="216" width="270" height="76" rx="4"/>
-  <text x="565" y="249" text-anchor="middle">which document did this map point</text>
-  <text x="565" y="267" text-anchor="middle">or table cell come from?</text>
+  <!-- Net row -->
+  <rect class="box-warm" x="20" y="216" width="100" height="76" rx="4"/>
+  <text x="70" y="251" class="t-lg" text-anchor="middle">Net</text>
+  <text x="70" y="269" class="t-sm" text-anchor="middle">of computers</text>
+  <rect class="box-warm" x="130" y="216" width="290" height="76" rx="4"/>
+  <text x="275" y="240" text-anchor="middle">own computer, WiFi base unit, router,</text>
+  <text x="275" y="258" text-anchor="middle">cable modem, middle of the Internet,</text>
+  <text x="275" y="276" text-anchor="middle">or the far end?</text>
+  <rect class="box-warm" x="430" y="216" width="270" height="76" rx="4"/>
+  <text x="565" y="259" class="t-it" text-anchor="middle">not raised at this level</text>
 </svg>
 <figcaption><span class="fig-label">Figure 6.2</span>
-The same two questions recur; the answer always lies one level down.</figcaption>
+Debugging and trust are the two moments a user must look beneath the layer
+they are working in.</figcaption>
 </figure>
 
 <p>
@@ -276,16 +276,16 @@ when it isn't.
 A phishing attack is a fake page, usually reached from a deceptive email,
 that poses as an organisation the reader trusts in order to collect passwords
 or payment details. It works precisely by attacking the trust exception.
-Provenance, meaning the record of where a piece of information came from and
-who stands behind it, is therefore not an optional feature layered on top. It
-is the reason the abstraction is allowed to be an abstraction at all.
+Provenance, the record of where a piece of information came from and who
+stands behind it, is therefore the one thing a user cannot be allowed to
+forget.
 </p>
 
 
 <h2 id="sec-6-3">6.3 The seams are visible in the identifier</h2>
 
 <p>
-The note&#8217;s neatest observation is that each join between layers is legible in
+Each join between layers is legible in
 the URI itself. In
 </p>
 
@@ -392,7 +392,7 @@ wrong, because the layering makes clear who is responsible.
 </p>
 
 <p>
-And then the sentence the note exists to deliver:
+Its central sentence:
 </p>
 
 <blockquote>
@@ -427,10 +427,9 @@ footing. This is why <a class="x-ref" href="03-myth-names-addresses.html">Chapte
 Validation (EV) certificates, a costlier kind of security <a class="gl-ref" href="../glossary.html#certificate">certificate</a> issued
 only after checking the organisation&#8217;s legal identity, were the mechanism
 for showing a user which organisation stood behind a page, typically as a
-company name beside the address bar. Both Chrome and Firefox removed that
-prominent EV display in 2019, having concluded that users did not act on it.
-The layer Berners-Lee identified as load-bearing was one that browsers
-concluded users could not see.</li>
+company name beside the address bar. Chrome 77 (September 2019) and Firefox 70
+(October 2019) removed that prominent EV display, having concluded that users
+did not act on it.</li>
 <li><strong>The parenthesis became a decade of argument.</strong> The
 Technical Architecture Group&#8217;s resolution of the issue known as <a class="gl-ref" href="../glossary.html#httprange-14">httpRange-14</a>,
 in June 2005, established the 303 <a class="gl-ref" href="../glossary.html#redirect">redirect</a> convention for URIs denoting things

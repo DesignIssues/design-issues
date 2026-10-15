@@ -58,7 +58,7 @@ reasonable ways to do it.
 </p>
 <p>
 To a person all five say the same thing. To a program they are five unrelated
-shapes, and a program that can find the fact in one will fail on the other four.
+shapes.
 <a class="gl-ref" href="../glossary.html#rdf">RDF</a> records the fact itself, page &middot; author &middot; Ora, so every layout
 reduces to the same thing.
 </p>
@@ -67,8 +67,7 @@ reduces to the same thing.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Berners-Lee says why he wrote this, and the word he uses is unusual for the
-collection:
+Berners-Lee says why he wrote this:
 </p>
 <blockquote>
 I wrote this note in a frustrated attempt to explain whatthe RDF model was for
@@ -179,8 +178,9 @@ and only to the human.
   <title id="fig32-2-t">Strip the names</title>
   <desc id="fig32-2-d">On the left, a tree: v contains x; x contains y, which
   carries a="ppppp", and z, which contains w with the text qqqqq. On the right,
-  two possible readings, ppppp is a y of qqqqq, or qqqqq is a z of ppppp, each
-  marked with a question mark.</desc>
+  two possible readings, an arrow labelled y from qqqqq to ppppp (ppppp is a y
+  of qqqqq), or an arrow labelled z from ppppp to qqqqq (qqqqq is a z of
+  ppppp), each marked with a question mark.</desc>
 
   <text x="24" y="24" class="t-caps">what the parser knows: structure</text>
 
@@ -208,29 +208,28 @@ and only to the human.
   <text x="380" y="24" class="t-caps">what it cannot know: meaning</text>
 
   <rect class="box-plain" x="390" y="72" width="80" height="30"/>
-  <text x="430" y="92" class="t-mono" text-anchor="middle">ppppp</text>
+  <text x="430" y="92" class="t-mono" text-anchor="middle">qqqqq</text>
   <path class="ln-dash" d="M 472 87 L 590 87"/>
   <path d="M 588 82 L 598 87 L 588 92 Z" fill="#8a9a9a"/>
   <text x="535" y="76" class="t-mono" text-anchor="middle">y ?</text>
   <rect class="box-plain" x="600" y="72" width="80" height="30"/>
-  <text x="640" y="92" class="t-mono" text-anchor="middle">qqqqq</text>
+  <text x="640" y="92" class="t-mono" text-anchor="middle">ppppp</text>
 
   <text x="535" y="137" class="t-it" text-anchor="middle">or</text>
 
   <rect class="box-plain" x="390" y="158" width="80" height="30"/>
-  <text x="430" y="178" class="t-mono" text-anchor="middle">qqqqq</text>
+  <text x="430" y="178" class="t-mono" text-anchor="middle">ppppp</text>
   <path class="ln-dash" d="M 472 173 L 590 173"/>
   <path d="M 588 168 L 598 173 L 588 178 Z" fill="#8a9a9a"/>
   <text x="535" y="162" class="t-mono" text-anchor="middle">z ?</text>
   <rect class="box-plain" x="600" y="158" width="80" height="30"/>
-  <text x="640" y="178" class="t-mono" text-anchor="middle">ppppp</text>
+  <text x="640" y="178" class="t-mono" text-anchor="middle">qqqqq</text>
 
   <text x="535" y="236" class="t-sm t-it" text-anchor="middle">or something else again</text>
 </svg>
 <figcaption><span class="fig-label">Figure 32.2</span>
 Without names a human can read, the structure is fully known and the fact is
-not. Nothing in the tree says which value describes which, or what questions
-are worth asking.</figcaption>
+not.</figcaption>
 </figure>
 
 <p>
@@ -253,9 +252,9 @@ condition a big if.
 <h2 id="sec-32-2">32.2 Why the mapping is hairy</h2>
 
 <p>
-There is a mapping from XML documents to semantic graphs, webs of such
-triples. Berners-Lee&#8217;s word
-for it is hairy, and he gives four reasons.
+He calls the job of answering such questions from documents hairy, for four
+reasons. It is possible only because there is a mapping from XML documents to
+semantic graphs, webs of such triples.
 </p>
 
 <table>
@@ -334,9 +333,8 @@ any query built on the old structure.
   <text x="490" y="274" class="t-sm t-it">unchanged in both layouts</text>
 </svg>
 <figcaption><span class="fig-label">Figure 32.3</span>
-A query over structure is tied to the layout: insert one wrapper and the path
-no longer reaches the fact. A query over statements does not care where the
-elements sit.</figcaption>
+Insert one wrapper and a path query no longer reaches the fact; the triple
+is unchanged.</figcaption>
 </figure>
 
 <p>
@@ -352,6 +350,11 @@ multiplication it gets ridiculous - to solve the problem you would end up
 reinventing numbers as a separate type.
 <cite>Why RDF model is different from the XML model, 1998</cite>
 </blockquote>
+
+<p>
+Querying XML trees for facts is the same mistake: done properly, the program
+ends up reinventing the triple as a separate type.
+</p>
 
 <h2 id="sec-32-3">32.3 What a missing model looks like</h2>
 
@@ -372,7 +375,9 @@ semantic model may not have a well defined one, and gives four symptoms.
 <h3>Statements about statements</h3>
 <p>
 The jam jar confuses a statement about a thing with a statement about a
-statement. The qualifier at a distance is subtler. Normally, if a document is
+statement. The label is itself a statement about the jam. &lsquo;Expires
+1999&rsquo; may describe the jam, or only the label&#8217;s claim, as a
+guarantee does. The qualifier at a distance is subtler. Normally, if a document is
 in Finnish, a reader may infer that its author speaks Finnish. Now a flag
 elsewhere in the record says that <code>author</code> means the author of the
 original, untranslated work. The <a class="gl-ref" href="../glossary.html#inference">inference</a> silently fails.
@@ -385,8 +390,9 @@ whose order matters are not independent. A
 <a class="gl-ref" href="../glossary.html#server">server</a> rule that reads &ldquo;any member has access to the page&rdquo; may
 really mean that any member has access, unless an earlier rule in this file
 has already matched. The <a class="gl-ref" href="../glossary.html#specification">specification</a> said only that rules are processed in
-order. Written out logically, there is a large nested conditional that it
-never declared.
+order. Written out logically, the rule really says: if no earlier rule matched, and
+the reader is a member, allow access. The specification never wrote that
+down.
 </p>
 <p>
 Mail headers saying a message is encrypted, compressed, ASCII-encoded and in
@@ -468,14 +474,11 @@ exactly this reason.</li>
 the subject of another, making statements about statements explicit. It was
 set out in a W3C Community Group report in 2021 and carried into the
 W3C&#8217;s RDF 1.2 work.</li>
-<li><strong>Order-dependent formats did not go away.</strong> Rule files
-evaluated in order remain the normal way to configure firewalls, routing and
-<a class="gl-ref" href="../glossary.html#access-control">access control</a>, with the nested conditional still in the prose.</li>
-<li><strong>The note&#8217;s own prediction came true the other way.</strong>
-Berners-Lee asks whether it would be nice to label XML so a parser could find
-the assertions. Schema.org, launched in June 2011, does precisely that with
-<a class="gl-ref" href="../glossary.html#markup">markup</a> embedded in pages, at enormous scale, and is consumed by search engines
-rather than by the general agents he imagined.</li>
+
+<li><strong>Labelled <a class="gl-ref" href="../glossary.html#markup">markup</a> arrived.</strong> The note asks whether XML could
+be labelled so a parser finds the assertions, and answers that RDF already
+does this. Schema.org, launched in June 2011, is such labelling inside
+ordinary pages, read mainly by search engines.</li>
 </ul>
 </div>
 

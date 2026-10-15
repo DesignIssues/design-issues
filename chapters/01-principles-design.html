@@ -57,8 +57,7 @@ same handful of choices arrive. Simple, or capable? Strict about what is
 accepted, or forgiving? Control kept in one place, or given away?
 </p>
 <p>
-Berners-Lee had answered these questions many times in arguments and had never
-written the answers down. This is the note where he does: six rules, two from
+This note lists his answers: six rules, two from
 software engineering, two from the Internet, and two he found the Web needed.
 They are simplicity and modularity; tolerance and decentralization; and the
 test of independent invention and the principle of least power. The rest of
@@ -103,7 +102,7 @@ power, he claims as the ones he found he needed for the Web specifically.
 </p>
 
 <p>
-The three layers explain why the principles sometimes conflict. The software-engineering pair is about the system one is building.
+They can pull against each other: tolerating malformed input (an Internet virtue) means writing rules for it, which costs simplicity (a software one). The software-engineering pair is about the system one is building.
 The Internet pair is about the network one is building on. The Web pair is
 about the systems other people will build later, which do not exist yet and
 cannot be consulted.
@@ -122,7 +121,7 @@ cannot be consulted.
 <h2 id="sec-1-2">1.2 Simplicity, and what it is not</h2>
 
 <p>
-The definition offered is narrow and worth keeping: &ldquo;A language which
+The definition offered is narrow: &ldquo;A language which
 uses fewer basic elements to achieve the same power is simpler.&rdquo;
 Berners-Lee then separates this from familiarity. A two-line solution that
 uses recursion (a function that calls itself) is simpler than a ten-line one
@@ -296,19 +295,14 @@ larger system. This is often much more difficult than modularity.
   <text x="600" y="222" class="t-sm" text-anchor="middle">fits a whole not yet designed</text>
 </svg>
 <figcaption><span class="fig-label">Figure 1.2</span>
-The first two panels are the textbook lesson: parts should meet only at an
-interface. The third is the step Berners-Lee calls &ldquo;much more
-difficult&rdquo;, designing a system to be one part of something nobody
-has designed yet. It leads straight to the test of independent invention in
-section 1.6.</figcaption>
+Partitioned parts reach into each other; modular parts meet only at an
+interface. The third panel is the harder step: designing for a whole nobody
+has designed yet.</figcaption>
 </figure>
 
 <p>
-This is modularity turned inside out, and it is the bridge to the fifth
-principle. A system designed to be a component of something unspecified must
-do one thing, must leave the rest alone, and must not claim to be the centre.
-The note calls this corollary &ldquo;the TOII&rdquo;, its shorthand for the
-test of independent invention.
+The note calls this harder step &ldquo;the TOII&rdquo;, its shorthand for the
+test of independent invention (<a class="x-ref" href="#sec-1-6">section 1.6</a>).
 </p>
 
 <h2 id="sec-1-4">1.4 Tolerance, and its cost</h2>
@@ -371,8 +365,7 @@ conforms and what does not.</figcaption>
 </figure>
 
 <p>
-Berners-Lee records the objection as well as the rule, which is why the
-section survives re-reading. When browsers are lax about what they expect,
+Berners-Lee records the objection as well as the rule. When browsers are lax about what they expect,
 the system works better, but the laxness teaches page authors to be lax too.
 </p>
 
@@ -389,7 +382,7 @@ Nor is tolerance an excuse for a product that breaks a standard.
 <p>
 The network argument is familiar: a common point involved in every operation
 limits how far the system can grow, and is a single point at which all of it
-can fail. The extension is the part worth carrying forward. Berners-Lee
+can fail. Berners-Lee
 applies decentralization to <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> as well as to infrastructure.
 </p>
 
@@ -409,7 +402,7 @@ Internet avoids network bottlenecks.
   <title id="fig1-4-t">One term for everyone, or many terms and mappings</title>
   <desc id="fig1-4-d">Left: a car maker, an insurer, a museum and a tax
   office all point to a single term, kr.org/stds/industry/automobile, which
-  is a bottleneck. Right: each of the four has its own term, auto, vehicle,
+  is a bottleneck. Right: each of the four has its own term, auto, automobile,
   motor car and car, and dashed links marked maps to join neighbouring
   terms.</desc>
   <defs>
@@ -459,7 +452,7 @@ Internet avoids network bottlenecks.
   <rect class="box" x="554" y="150" width="78" height="40" rx="4"/>
   <rect class="box" x="636" y="150" width="78" height="40" rx="4"/>
   <text x="429" y="175" class="t-mono" text-anchor="middle">auto</text>
-  <text x="511" y="175" class="t-mono" text-anchor="middle">vehicle</text>
+  <text x="511" y="175" class="t-mono" text-anchor="middle" style="font-size:12px">automobile</text>
   <text x="593" y="175" class="t-mono" text-anchor="middle">motor car</text>
   <text x="675" y="175" class="t-mono" text-anchor="middle">car</text>
   <path class="ln-dash" d="M 429 190 Q 470 234 511 190"/>
@@ -471,7 +464,8 @@ Internet avoids network bottlenecks.
 On the left, every user must adopt one identifier, and the system works only
 for those it suits. On the right, each community keeps its own term and the
 terms are linked by mappings. The decentralization that keeps the Internet
-free of single points of failure is here applied to words.</figcaption>
+free of single points of failure is here applied to words. The note names
+the bottleneck; mapping is the remedy later chapters develop.</figcaption>
 </figure>
 
 <p>
@@ -509,7 +503,7 @@ universal space from existing and enveloping URI space as a subset.
 <h2 id="sec-1-7">1.7 The principle of least power</h2>
 
 <p>
-This is the longest section of the note. It turns on the difference between two kinds of language. A
+It turns on the difference between two kinds of language. A
 declarative language states what is the case and leaves the reader to decide
 what to do with it; HTML says &ldquo;this is a heading&rdquo;. A procedural
 language is a list of steps for a computer to carry out, as in Java or C.
@@ -518,16 +512,15 @@ language is a list of steps for a computer to carry out, as in Java or C.
 <p>
 Berners-Lee sets out a scale of five rungs, shown in <a class="x-ref" href="#fig-1-5">Figure 1.5</a>. A language
 is Turing complete if it can in principle express any computation at all.
-Two of the examples need a gloss: <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a standard set of
-library-catalogue fields, and <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a> (&ldquo;conneg&rdquo;) is
-where a <a class="gl-ref" href="../glossary.html#server">server</a> picks a format for the client. The note places PostScript and
+<a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> is a standard set of library-catalogue fields; content
+negotiation (&ldquo;conneg&rdquo;) is a <a class="gl-ref" href="../glossary.html#server">server</a> picking a format for the client. The note places PostScript and
 PDF on the rung that verges on complete, with the aside that PostScript in
 fact is and PDF is not. XSLT and <a class="gl-ref" href="../glossary.html#sql">SQL</a> are complete, though &ldquo;one is led
 not to use them that way&rdquo;.
 </p>
 
 <figure id="fig-1-5">
-<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+<svg class="dia" viewBox="0 0 720 186" width="720" height="186" role="img"
      aria-labelledby="fig1-5-t fig1-5-d">
   <title id="fig1-5-t">The scale of the principle of least power</title>
   <desc id="fig1-5-d">A scale with five points: descriptive (Dublin Core,
@@ -573,8 +566,7 @@ not to use them that way&rdquo;.
   <path d="M 652 159 L 664 164 L 652 169 Z" fill="#b08d57"/>
   <text x="360" y="168" class="t-sm" text-anchor="middle" style="fill:#b08d57">more that the author can express</text>
 
-  <line class="ln-mut" x1="30" y1="190" x2="690" y2="190"/>
-  <text x="360" y="214" class="t-sm t-it" text-anchor="middle">Weather as a table can be averaged, plotted and combined. The same weather inside an applet can only be watched.</text>
+  
 </svg>
 <figcaption><span class="fig-label">Figure 1.5</span>
 The principle asks the designer to choose the leftmost point on this scale

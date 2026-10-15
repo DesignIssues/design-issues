@@ -92,15 +92,8 @@ quickly.
 Dan Connolly suggested the yardstick: count the actions, adding ten whenever
 the user must invent a filename or an anchor ID (the name of a spot inside a
 page that a link can point to). The penalty prices thinking rather than
-doing. Our tally, using Connolly&#8217;s rule:
+doing.
 </p>
-
-<table>
-<tr><th>Operation</th><th>Steps</th><th>Penalty</th><th>Score</th></tr>
-<tr><td>Make a link, WorldWideWeb</td><td>5</td><td>0</td><td>5</td></tr>
-<tr><td>Make a link, AOLPress</td><td>7</td><td>0</td><td>7</td></tr>
-<tr><td>Make a new linked page, WorldWideWeb</td><td>3, one of them a filename</td><td>10</td><td>2 + 10 = 12</td></tr>
-</table>
 
 <figure id="fig-83-1">
 <svg class="dia" viewBox="0 0 720 320" width="720" height="320" role="img"
@@ -230,8 +223,9 @@ live in exactly one folder), restated as a demand on the editor.
 <h2 id="sec-83-3">83.3 The operations he wants</h2>
 
 <p>
-Beyond making links, the note asks for three more: one WorldWideWeb already
-had, one needs label servers, and one Dan Connolly does by hand.
+Beyond making links, the note asks for four more: one WorldWideWeb already
+had, one needs label servers, one Dan Connolly does by hand, and one,
+inserting an image, that 83.4 takes up.
 </p>
 
 <p>
@@ -239,7 +233,8 @@ had, one needs label servers, and one Dan Connolly does by hand.
 links). His own 1990 editor, WorldWideWeb, already did this: select a phrase,
 press one key, and a new page appears from a template (a ready-made starting
 page), already linked from the phrase, with the cursor waiting. Berners-Lee marks the one remaining step with a sad face:
-the dialogue asking for a filename.
+the dialogue asking for a filename. By Connolly&#8217;s count that is two
+actions plus a ten-point filename penalty: 12.
 </p>
 
 <p>
@@ -293,8 +288,8 @@ joins the two.</figcaption>
 
 <p>
 <strong>Excerpt.</strong> Connolly did this by hand; Berners-Lee had never
-seen an editor do it automatically, though Dan had found some JavaScript hacks.
-(BLOCKQUOTE is the <a class="gl-ref" href="../glossary.html#html">HTML</a> element for a quoted passage.)
+seen an editor do it automatically, though Connolly had found some JavaScript hacks. His recipe, where BLOCKQUOTE
+is the <a class="gl-ref" href="../glossary.html#html">HTML</a> element for a quoted passage:
 </p>
 
 <blockquote>
@@ -364,14 +359,15 @@ made, or else the document as a whole failing that.
 </svg>
 <figcaption><span class="fig-label">Figure 83.4</span>
 Whichever rung it reaches, the quotation carries its own provenance (a record
-of where it came from), as precise as the source allows. Text fragments (2020)
-now supply the missing middle rung.</figcaption>
+of where it came from), as precise as the source allows. Text fragments (links that point at a quoted
+phrase inside any page, shipped in Chrome in 2020) now supply the missing middle
+rung.</figcaption>
 </figure>
 
-<h2 id="sec-83-4">83.4 Why the note ends with a screenshot</h2>
+<h2 id="sec-83-4">83.4 Inserting an image</h2>
 
 <p>
-The last item on the list is deliberately mundane:
+The last item is the most ordinary:
 </p>
 
 <blockquote>
@@ -382,9 +378,7 @@ take?
 </blockquote>
 
 <p>
-The measure is the same throughout, which is why the note works as criticism:
-not whether a thing is possible, but how many steps it takes, counting the
-pauses to think of a name.
+The test, as throughout, is how many steps it takes.
 </p>
 
 <div class="since">
@@ -393,8 +387,7 @@ pauses to think of a name.
 <li><strong>Modeless editing arrived, inside applications.</strong> Wikis
 (WikiWikiWeb, 1995) and online office tools (Google Docs, 2006) made editing in
 place normal, but it did not become a property of the Web itself.</li>
-<li><strong>Excerpt is still mostly manual</strong>, though text fragments,
-which shipped in 2020, supply the addressing it needs.</li>
+<li><strong>Excerpt is still mostly manual.</strong></li>
 <li><strong>Annotation layers were built repeatedly.</strong> <a class="gl-ref" href="../glossary.html#w3c">W3C</a> published the
 Web Annotation Recommendations in February 2017, and many commenting systems
 have been built; none has become general, the fate of <a class="x-ref" href="77-filtering-censorship.html">Chapter 77</a>&#8217;s
@@ -431,8 +424,8 @@ What must it do when the source has no anchor at that point?</p>
 </div>
 <div class="question">
 <p><span class="question-number">83.4</span>
-Name one tool where you can edit a page in place and one where you cannot. What
-does the second one make you do first?</p>
+Using <a class="x-ref" href="#fig-83-2">Figure 83.2</a>, say which of the three losses a wiki avoids and which it
+still imposes.</p>
 </div>
 </details>
 

@@ -81,7 +81,7 @@ happened since", listing outcomes with specification numbers and dates;
 
 ## Status
 
-Complete: all 96 chapters written, with 342 inline figures. Every quotation is
+Complete: all 96 chapters written, with 338 inline figures. Every quotation is
 checked verbatim against the source note by check_quotes.py in the repository.
 What remains is correction: errata, better readings, and updating the
 "what happened since" sections as things happen.

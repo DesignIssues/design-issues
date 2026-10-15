@@ -72,15 +72,15 @@ Should a fact about the reader&#8217;s device, such as being a phone, be
 written into a site&#8217;s name? The note was written in April 2004 and,
 unusually for this collection, formally supported:
 at its meeting of 14 May 2004 the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Technical Architecture Group resolved to
-support the note, with one member abstaining and one recusing himself.
-Its objection to the mobile domain is architectural rather than commercial.
+support the note. Its cost argument applies to any new domain; its objection
+to <code>.mobi</code> in particular is architectural.
 </p>
 </div>
 
 <h2 id="sec-79-1">79.1 How the namespace stopped being hierarchical</h2>
 
 <p>
-The note begins with a history that explains the whole problem. The tree
+The tree
 structure improved on a flat list of machine names. It let a university, say,
 create <code>physics.uni.example</code> itself, without asking a central
 registry. Names nearer the root were rarely handed out, so the central
@@ -88,7 +88,7 @@ workload stayed small.
 </p>
 
 <p>
-Then names moved out of protocols and into speech:
+Then people began to say and type names, in advertisements and on business cards:
 </p>
 
 <blockquote>
@@ -119,8 +119,8 @@ space into a limited commodity.
   <text x="60" y="214" class="t-mono" style="fill:#b08d57">example.mobi</text>
   <text x="220" y="214" class="t-mono" style="fill:#b08d57">example.xxx</text>
   <text x="380" y="214" class="t-mono" style="fill:#b08d57">example.&#8230;</text>
-  <text x="540" y="214" class="t-mono" style="fill:#b08d57">and so on, for ever</text>
-  <text x="24" y="246" class="t-sm">Each new top level domain multiplies the registrations every trademark holder must make.</text>
+  <text x="540" y="214" class="t-sm t-it" style="fill:#2f4f4f">and so on, for ever</text>
+  <text x="24" y="246" class="t-sm">Each new top level domain adds to the registrations every trademark holder must make.</text>
 
   <line class="ln-mut" x1="24" y1="266" x2="696" y2="266"/>
   <text x="360" y="290" class="t-sm" text-anchor="middle">&#8220;In the public&#8217;s memory, example was the mark, and the difference between</text>
@@ -246,8 +246,8 @@ The tools already existed:
 <table>
 <tr><th>Tool</th><th>Who does the adapting</th><th>Plain example</th></tr>
 <tr><td><a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a></td><td>The <a class="gl-ref" href="../glossary.html#server">server</a></td><td>The phone says &ldquo;small screen&rdquo; with each request</td></tr>
-<tr><td>CC/PP</td><td>The server</td><td>The device sends a fuller description of itself</td></tr>
-<tr><td>CSS hand-held rules</td><td>The browser</td><td>One page, with a different layout on small screens</td></tr>
+<tr><td>CC/PP (Composite Capability/Preference Profiles)</td><td>The server</td><td>The device sends a fuller description of itself</td></tr>
+<tr><td>CSS rules for the &lsquo;handheld&rsquo; <a class="gl-ref" href="../glossary.html#media-type">media type</a></td><td>The browser</td><td>One page, with a different layout on small screens</td></tr>
 </table>
 
 <p>
@@ -322,12 +322,13 @@ so on.
 </blockquote>
 
 <p>
-Both kinds of behaviour have been seen in practice: one shortly before the
-note was written, one after. This is the single point of control of Chapter
+Both happened: VeriSign&#8217;s Site Finder redirected unregistered
+<code>.com</code> names in September 2003, and Network Solutions reserved
+searched-for names in 2008. This is the single point of control of Chapter
 5, at the one place the Web cannot route around.
 </p>
 
-<h2 id="sec-79-4">79.4 Why a chapter for a proposal that failed</h2>
+<h2 id="sec-79-4">79.4 What the argument is still worth</h2>
 
 <p>
 The value of the note is the general form of the argument. Adding a
@@ -348,11 +349,6 @@ about names.
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The rumoured behaviours happened.</strong> In September 2003,
-months before the note, VeriSign, the <code>.com</code> and <code>.net</code>
-registry, redirected unregistered names to its own search page (Site Finder),
-withdrawing it in October 2003 after objections. In 2008 the registrar
-Network Solutions began briefly reserving names that customers had searched for on its site.</li>
 <li><strong>The mobile domain launched and faded.</strong> ICANN approved it
 in 2005; general registration opened in 2006. Separate mobile addresses gave
 way to responsive design (a term coined in 2010), one address for every
@@ -394,8 +390,8 @@ treat unregistered names as its own property. What did VeriSign do in 2003?</p>
 </div>
 <div class="question">
 <p><span class="question-number">79.4</span>
-Apply the three-part argument of <a class="x-ref" href="#sec-79-4">section 79.4</a> to a namespace you use. What
-would a new top-level category cost?</p>
+Apply the three-part argument of <a class="x-ref" href="#sec-79-4">section 79.4</a> to the package-registry example.
+Who pays, who collects, and what property ends up in the name?</p>
 </div>
 </details>
 
