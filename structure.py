@@ -82,17 +82,41 @@ LANDMARKS = set(PATH) | {4, 30, 31, 40, 93, 95}
 
 # One line per path chapter, saying what the reader gets from it. Written for
 # somebody who has never heard of any of this.
+# Themed routes for readers who come to one subject. Each is a short reading
+# order through chapters that build on one another; the blurb says what the
+# route is for, in words for someone new to it.
+ROUTES = [
+ ("Names and addresses",
+  "Why every thing on the Web has an address, why addresses break, and what an address actually names.",
+  [3, 2, 13, 7, 8, 11]),
+ ("Building things that last",
+  "How to design a standard other people can extend without asking, and why so many are not.",
+  [1, 16, 17, 19, 21, 23]),
+ ("Data and meaning",
+  "The Semantic Web without the jargon: how a fact written by one program can be used by another.",
+  [32, 27, 30, 49, 51, 53]),
+ ("People, their data and their apps",
+  "Separating a person\u2019s data from the apps that use it, from the first proposal to a working assistant.",
+  [54, 50, 55, 73, 93, 94]),
+ ("Privacy, trust and security",
+  "Who can see what a reader does, whom a browser should trust, and where the current answers go wrong.",
+  [71, 72, 66, 67, 70, 74]),
+ ("The Web and society",
+  "Links and the law, open networks, and why the shape of social software shapes the society using it.",
+  [75, 78, 25, 87, 89, 90, 91]),
+]
+
 PATH_BLURB = {
  1:  "Six rules for building something other people will build on. Everything else follows from these.",
  2:  "Why every single thing on the Web has an address, and what that one decision made possible.",
  3:  "Why web addresses rot, why the fix everyone proposes will not work, and what would.",
  16: "How a standard actually gets made: a cycle driven by companies competing, and its limits.",
  23: "Why the Web is full of broken pages, explained by what a page author is rewarded for.",
- 25: "Ten different things people mean by \u201copen\u201d, and why arguments about it go nowhere.",
+ 25: "Eleven different things people mean by \u201copen\u201d, and why arguments about it go nowhere.",
  32: "One fact written five ways. The clearest explanation in the book of why structure is not meaning.",
- 49: "Four rules for publishing data anyone can use. The most quoted thing its author ever wrote.",
+ 49: "Four rules for publishing data anyone can use, and the reason each one is there.",
  51: "Five stars for open data, and a bag of crisps that explains how vocabularies mix.",
- 54: "The proposal to separate a person’s data from the apps that use it, and why that changes everything.",
+ 54: "The proposal to separate a person’s data from the apps that use it, and what that would change.",
  67: "An argument that the way the Web was secured broke something more important.",
  71: "What a list of the pages somebody visited reveals, and why reading should be unobserved.",
  87: "Why a healthy society needs groups of every size, and what happens when it does not get them.",

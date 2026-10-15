@@ -373,6 +373,50 @@ ol.path a:hover { color: var(--accent-color); border-bottom-color: var(--accent-
     max-width: 40rem;
 }
 
+.path-time, .route-time {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+}
+.path-time { margin-top: 1rem; }
+
+.routes > p { max-width: 38rem; }
+.route-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+.route {
+    border-top: 2px solid var(--accent-color);
+    padding-top: 0.6rem;
+}
+.route h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.35rem;
+    color: var(--accent-color);
+}
+.route-why {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 0.6rem;
+}
+.route ol {
+    margin: 0 0 0.5rem;
+    padding-left: 1.3rem;
+}
+.route li {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+}
+.route a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid #bcd3de;
+}
+.route a:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+.route .path-ch { margin-left: 0.3rem; }
+
 /* ---- Contents: landmarks and path flags -------------------------------- */
 ol.chapters li.toc-landmark > a { font-weight: 600; }
 .toc-flag {

@@ -9,7 +9,7 @@ full provenance (original title, date, and a link to the source essay).
     python3 build.py        # regenerate index.html and chapters/
 """
 import json, os, re, html, datetime
-from structure import VOLUMES, FRONT_MATTER, PATH, LANDMARKS, PATH_BLURB
+from structure import VOLUMES, FRONT_MATTER, PATH, LANDMARKS, PATH_BLURB, ROUTES
 from glossary import GLOSSARY
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -411,6 +411,20 @@ properly, it is named.
     return "".join(o)
 
 
+def reading_minutes(c):
+    """Minutes to read a chapter's prose at an unhurried 200 words a minute."""
+    if not has_content(c):
+        return 0
+    t = open(content_path(c), encoding="utf-8").read()
+    t = re.sub(r"(?s)<svg\b.*?</svg>", " ", t)
+    return len(html.unescape(re.sub(r"<[^>]+>", " ", t)).split()) / 200
+
+
+def hours_minutes(m):
+    m = int(round(m / 5.0) * 5)
+    return f"{m // 60} h {m % 60:02d} min" if m >= 60 else f"{m} min"
+
+
 def index_html():
     written = sum(1 for c in chapters if has_content(c))
     total = len(chapters)
@@ -491,7 +505,29 @@ these chapters opens with a short version before the history.
                  f'<a href="chapters/{pc["file"]}">{esc(pc["title"])}</a>'
                  f'<span class="path-ch">Chapter {n}</span>'
                  f'<span class="path-why">{esc(PATH_BLURB[n])}</span></li>\n')
-    o.append("""</ol>
+    path_time = hours_minutes(sum(reading_minutes(chapters[n - 1]) for n in PATH))
+    o.append(f"""</ol>
+<p class="path-time">About {path_time} of reading in all.</p>
+</section>
+
+<section class="routes">
+<h2>Or follow one subject</h2>
+<p>
+Readers who come for one subject can take a shorter route. Each runs through
+chapters that build on one another, in the order to read them.
+</p>
+<div class="route-grid">
+""")
+    for title, blurb, nums in ROUTES:
+        t = hours_minutes(sum(reading_minutes(chapters[n - 1]) for n in nums))
+        o.append(f'<div class="route">\n<h3>{esc(title)}</h3>\n'
+                 f'<p class="route-why">{esc(blurb)}</p>\n<ol>\n')
+        for n in nums:
+            rc = chapters[n - 1]
+            o.append(f'<li><a href="chapters/{rc["file"]}">{esc(rc["title"])}</a>'
+                     f' <span class="path-ch">Ch {n}</span></li>\n')
+        o.append(f'</ol>\n<p class="route-time">{len(nums)} chapters, about {t}</p>\n</div>\n')
+    o.append("""</div>
 </section>
 
 <div class="volume-overview">
