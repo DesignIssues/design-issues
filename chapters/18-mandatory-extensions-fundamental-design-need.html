@@ -130,8 +130,7 @@ that does not fail. (The attribute name is invented for illustration.)</figcapti
 <h2 id="sec-18-1">18.1 Saying &lsquo;this must be understood&rsquo;</h2>
 
 <p>
-The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving, and its complaint is
-that they solve half the problem. Namespaces, he writes, gave XML a standard
+The note was written when <a class="gl-ref" href="../glossary.html#xml">XML</a> namespaces were arriving. Namespaces, he writes, gave XML a standard
 way to extend languages; XML should also give a standard way to say whether
 an extension is mandatory or optional. A language must provide not only for
 its own extension but for that declaration, which he calls a fundamental key
@@ -139,7 +138,7 @@ to smooth evolution from one version of a language to the next.
 </p>
 
 <p>
-An old recipe reader that skips an unknown
+Negation is not a rare case. An old recipe reader that skips an unknown
 allergen warning has done harm, not merely lost formatting. Berners-Lee
 allows the flag in the document itself or in the <a class="gl-ref" href="../glossary.html#schema">schema</a> (the published
 description of a format&#8217;s labels), and for one element or a whole
@@ -159,8 +158,7 @@ Each cell could equally say &ldquo;may be skipped&rdquo;.
 <h2 id="sec-18-2">18.2 Stop, skip or unwrap</h2>
 
 <p>
-A processor meeting an unknown element can do one of three simple things;
-which is correct depends on what the element means.
+A processor meeting an unknown element can do one of three simple things.
 </p>
 
 <figure id="fig-18-2">
@@ -212,8 +210,8 @@ which is correct depends on what the element means.
   <text x="360" y="286" class="t-sm" text-anchor="middle">Each is correct for some element. Which one applies here is not visible in the markup.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 18.2</span>
-Berners-Lee asks that a schema be able to say which of the three applies, for
-one element or for a whole namespace at once, and adds that languages not
+Berners-Lee asks that a schema be able to say which of the three applies
+and, ideally, a document too, for one element or a whole namespace at once. He adds that languages not
 using XML should attend to the same need in their own way.</figcaption>
 </figure>
 
@@ -300,17 +298,17 @@ fetching anything.</figcaption>
 
 <p>
 A receiver that knows only B can then treat the A namespace as though it were
-B. The constraint he attaches is the important part: the assertion must be
+B. Recipe-plus could declare itself a sublanguage of the recipe format; an old
+reader relabels every term and cooks from it. The claim is honest only if
+relabelling loses nothing the writer meant, and an allergen warning would make
+it false. The constraint he attaches is the important part: the assertion must be
 simple enough to put in the document, so that the receiver need not
 <a class="gl-ref" href="../glossary.html#dereference">dereference</a> (fetch from the Web) a schema to act on it.
 </p>
 
 <p>
-It is the instinct of <a class="x-ref" href="17-extensible-languages-web-evolution.html">Chapter 17</a>&#8217;s final requirement (<a class="x-ref" href="17-extensible-languages-web-evolution.html#sec-17-5">section 17.5</a>).
-Whatever a processor needs in order to cope with the unfamiliar should
+It is the instinct of <a class="x-ref" href="17-extensible-languages-web-evolution.html#sec-17-5">section 17.5</a>: whatever a processor needs to cope with the unfamiliar should
 travel with the document, not wait at the end of a network request.
-HTML, the Web&#8217;s main format, never gained the flag: HTML5 settled the
-ambiguity by always unwrapping.
 </p>
 
 <div class="since">
@@ -357,8 +355,8 @@ extension, what can the publisher do instead, and what does it cost?</p>
 <div class="question">
 <p><span class="question-number">18.3</span>
 A new format, &ldquo;recipe-plus&rdquo;, adds labels to an existing recipe
-format. Write one sentence it could carry saying old readers may treat it as
-the old format. When would that sentence be a lie?</p>
+format. Which of its new labels would make declaring it a sublanguage false,
+and how should it mark them instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">18.4</span>

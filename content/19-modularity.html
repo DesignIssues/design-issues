@@ -2,8 +2,8 @@
 <h3>The short version</h3>
 <p>
 HTTP carries HTML, images and much else without changing, because it never
-needs to know what it carries. By 2008 the parts of the HTML5 draft all
-depended on one another. Berners-Lee asked for separable pieces, such as the
+needs to know what it carries. The core parts of the HTML5 draft (parsing,
+scripts, windows, history) depended on one another in a circle. Berners-Lee asked for separable pieces, such as the
 canvas drawing commands, to be split out. The Web works because each layer
 (IP, TCP, HTTP) offers a simple interface to the next.
 </p>
@@ -14,8 +14,8 @@ canvas drawing commands, to be split out. The Web works because each layer
 <p>
 HTTP has carried HTML, then images, PDF, SVG and JSON, each announced by a
 label such as <code>image/png</code>, without itself being changed for any of
-them. In 2008 the HTML5 draft was the opposite. Its co-editor described a
-circle in which parsing, scripts, windows, history and navigation each depend on the
+them. In 2007 the HTML5 draft was the opposite. Its editor, Ian Hickson,
+described a circle in which parsing, scripts, windows, history and navigation each depend on the
 next, and back to parsing. Berners-Lee&#8217;s response, a short W3C blog post
 in January 2008, has a five-word subtitle:
 </p>
@@ -127,41 +127,36 @@ modular pieces would be easier to grasp for reviewers and implementers.
 
 <p>
 His example is the <em>canvas</em> element: a blank rectangle in a page that
-a script can draw on. Its drawing commands differ in nature from the rest of
-HTML, which mostly sets and reads values in the markup; so does the
-draft&#8217;s client-side database storage.
+a script can draw on. Its drawing commands work differently from the rest of
+HTML, which mostly sets and reads values in the markup. So does another part
+of the draft, a database inside the browser.
 </p>
 
 <p>
 The element belongs in HTML, he argues, but the drawing commands belong in a
 separate document. Hickson agreed they should be split out in the long term,
 but said there were &ldquo;much higher priority items&rdquo; for anyone
-willing to edit. The W3C did later publish them separately.
+willing to edit. The W3C did later publish them separately; what happened to
+that split is at the end of this chapter.
 </p>
 
 <h2>19.2 Change and re-use: one property, two sides</h2>
-
-<p>
-The note gives the basic reason first:
-</p>
 
 <blockquote>
 There are lots of reasons for modularity. The basic one is that one module can
 evolve or be replaced without affecting the others. If the interfaces are
 clean, and there are no side effects, then a developer can redesign a module
 without having to deeply understand the neighboring modules.
-<cite>Modularity, 2008</cite>
-</blockquote>
-
-<p>
-Then the half that Chapter 1 calls the harder one:
-</p>
-
-<blockquote>
+<br><br>
 The flip side is that a cleanly designed module designed as part of one system
 can be re-used in other systems.
 <cite>Modularity, 2008</cite>
 </blockquote>
+
+<p>
+Clean edges let a part be swapped out and, for the same reason, carried
+somewhere else.
+</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
@@ -282,7 +277,8 @@ and plugged into other languages as they are into HTML.</figcaption>
 <h2>19.3 Splitting a technology is not splitting a document</h2>
 
 <p>
-What matters, the note says, is the independence of the technology. HTML5 put two technologies, a markup language and a drawing
+What matters, the note says, is the independence of the technology. Two
+later examples show the difference: HTML5 put two technologies, a markup language and a drawing
 interface, into one document; HTTP/1.1, one technology, was split across six
 RFCs in 2014. Berners-Lee adds that it usually makes sense for the
 boundaries to align anyway, so that different people can review, edit and

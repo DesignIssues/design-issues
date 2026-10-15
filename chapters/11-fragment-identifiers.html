@@ -66,11 +66,9 @@ formats, the link can quietly stop working.
 <h3>The question</h3>
 <p>
 Follow a link ending in <code>#References</code> and the server that sends
-the page is never told which part was wanted. The browser keeps everything
-after the <code>#</code> and interprets it only once the document arrives.
-This note,
-written in April 1997, asks who gets to decide what a fragment means, and
-what follows from that.
+the page is never told which part was wanted. This note, written in April
+1997, asks who gets to decide what a fragment means, and what follows from
+that.
 </p>
 <p>
 It opens by correcting its own title:
@@ -80,7 +78,7 @@ The URI reference is a thing you build by taking a URI for an information
 object, adding a &ldquo;#&rdquo; sign and then a Fragement identifier. (The
 last term is historical, so try not to thinl of it necessarily identifying a
 fragment).
-<cite>URI References: Fragment Identifiers on URIs, 1997</cite>
+<cite>URI References: Fragment Identifiers on URIs, 1997 (spelling as in the original)</cite>
 </blockquote>
 <p>
 That loose word let <code>#</code> name parts of pages, moments in videos,
@@ -103,13 +101,15 @@ function of the MIME type of the object.</p>
 </div>
 
 <p>
-Two consequences follow. The fragment is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the part of the browser
+The fragment is <a class="gl-ref" href="../glossary.html#opaque">opaque</a> to the part of the browser
 that fetches documents, which he calls the <a class="gl-ref" href="../glossary.html#http">HTTP</a> engine. And the server is not
 even given it: the fragment is applied after the response arrives, by
 whatever software handles the returned type (<a class="x-ref" href="#fig-11-1">Figure 11.1</a>). So the server
-cannot log which part of a page a reader was pointed to. The same property
+cannot log which part of a page a reader was pointed to. Share links from the
+file-storage service MEGA rely on this: they carry a file&#8217;s decryption
+key after the <code>#</code>, so the key never reaches MEGA&#8217;s servers. The same property
 later let web applications keep their state in the fragment, changing it
-without a request to the server, a story <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> tells.
+without a request to the server (<a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>).
 </p>
 
 <figure id="fig-11-1">
@@ -261,7 +261,7 @@ A later addition to the note makes an argument the book returns to in
 Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>. A fragment on an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> document (RDF: a format for
 machine-readable statements about things) identifies not a part of the
 document but whatever thing the document describes under that name.
-Concretely, <code>http://example.org/people</code> names the document, and
+<code>http://example.org/people</code> names the document, and
 <code>http://example.org/people#alice</code> names Alice herself, the person
 the document describes. Why must she get a fragment? In three steps:
 </p>
@@ -290,11 +290,12 @@ identifiers. This, in turn, means that RDF namespaces should end with
 </blockquote>
 
 <p>
-This <a class="gl-ref" href="../glossary.html#inference">inference</a> is what the resolution of <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> overturned. The 2005
-compromise denies step 2: a client may conclude that a hashless <a class="gl-ref" href="../glossary.html#uri">URI</a> names a
+The 2005 resolution described in <a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a> overturned this <a class="gl-ref" href="../glossary.html#inference">inference</a> by
+denying step 2: a client may conclude that a hashless <a class="gl-ref" href="../glossary.html#uri">URI</a> names a
 document only from a successful response, not from the protocol alone. A
-server may answer a request for <code>&#8230;/alice</code> with 303 See Other,
-pointing to a document about her.
+server may answer a request for <code>&#8230;/alice</code> with 303 See Other, a reply
+meaning &ldquo;what you asked for is not a document, but here is one about
+it&rdquo;.
 </p>
 
 <h2 id="sec-11-4">11.4 The bug he recorded and did not fix</h2>
@@ -360,16 +361,21 @@ Many addresses are
 generic: their content can change by language, version or format, so a
 fragment may denote nothing in some specific version. The client, he argues,
 should offer a choice: a bookmark to the whole living
-document, a bookmark to a specific part of a &ldquo;dead&rdquo; version, or
+document, to a specific part of a &ldquo;dead&rdquo; version, or
 something between.
 </p>
 
+<blockquote>
+As both these options are meaningful and useful, they will have to surface
+at the user interface level.
+<cite>URI References: Fragment Identifiers on URIs, 1997</cite>
+</blockquote>
+
 <p>
-No browser offers it.
-Some sites offer half the choice themselves: Wikipedia&#8217;s &ldquo;Permanent link&rdquo; points to one
-fixed revision of an article, and GitHub can link to a file as it stood
-at a specific commit. Both are the second kind of bookmark,
-supplied by the site rather than the browser.
+No browser offers it. Some sites supply half the choice themselves:
+Wikipedia&#8217;s &ldquo;Permanent link&rdquo; points to one fixed revision
+of an article, and GitHub can link to a file as it stood at a specific
+commit.
 </p>
 
 <div class="since">

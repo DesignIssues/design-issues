@@ -179,36 +179,35 @@ from two vocabularies must sit together in one expression. That is the
 first requirement.
 </p>
 
+<h2>17.3 Mixing vocabularies without silent clashes</h2>
+
 <p>
-The note&#8217;s glossary defines three terms; the chapter adds a fourth.
+Four words the requirements use:
 </p>
 
 <table>
 <tr><th>Term</th><th>Meaning</th></tr>
 <tr><td>Element</td><td>A stretch of a document identified by a local name, such as the invoice&#8217;s <code>cost</code> entry</td></tr>
-<tr><td>Vocabulary</td><td>A set of such names whose meaning is defined somewhere else, by a resource on the Web</td></tr>
+<tr><td>Vocabulary</td><td>A set of such names whose meaning is defined somewhere else, by a resource on the Web; it is <em>in scope</em> where its names may be used</td></tr>
 <tr><td>Schema</td><td>A specific document that defines a vocabulary</td></tr>
-<tr><td>Namespace</td><td>A vocabulary named by a URI, such as <code>http://blah/currency</code></td></tr>
+<tr><td>Namespace (the chapter&#8217;s term)</td><td>A vocabulary named by a URI, such as <code>http://blah/currency</code></td></tr>
 </table>
-
-<h2>17.3 Mixing vocabularies without silent clashes</h2>
 
 <p>
 The note sets out seven requirements; the three on schemas come in
-section 17.5. A vocabulary is <em>in scope</em> where its names may be used;
-an <em>identifier</em> is a name.
+section 17.5.
 </p>
 
 <table>
 <tr><th>What breaks without it</th><th>Requirement</th><th>In the invoice</th></tr>
-<tr><td>Extensions can only be nested, never mixed; no bold inside a formula</td><td>More than one vocabulary may be in scope at one point in a document</td><td>A Swiss-franc amount sits inside a price written in business terms</td></tr>
-<tr><td>Generated fragments cannot declare their own terms</td><td>A vocabulary may be introduced with a purely local change</td><td>The supplier&#8217;s program declares its part terms inside the item block</td></tr>
-<tr><td>One vocabulary&#8217;s change silently redefines another&#8217;s names</td><td>The syntax must tie an identifier to its schema without inspecting any schema</td><td><code>f:chf</code> is read as currency from the <code>f</code> binding alone</td></tr>
-<tr><td>The definition mechanism is frozen at the level of the day</td><td>A namespace may be defined by present or future languages for writing schemas</td><td>The currency terms could be defined in a schema language invented later</td></tr>
+<tr><td>Extensions can only be nested, never mixed; no bold inside a formula</td><td>Two vocabularies in scope at one point</td><td>A Swiss-franc amount sits inside a price written in business terms</td></tr>
+<tr><td>Generated fragments cannot declare their own terms</td><td>Declare a vocabulary locally</td><td>The supplier&#8217;s program declares its part terms inside the item block</td></tr>
+<tr><td>One vocabulary&#8217;s change silently redefines another&#8217;s names</td><td>Prefix ties name to schema, with no schema lookup</td><td><code>f:chf</code> is read as currency from the <code>f</code> binding alone</td></tr>
+<tr><td>Schemas can never be written in a better language invented later</td><td>Schema language may change</td><td>The currency terms could be defined in a schema language invented later</td></tr>
 </table>
 
 <p>
-The third is argued most sharply. In some programming languages, finding
+The ban on lookup (third row) is argued most sharply. In some programming languages, finding
 which module (separately written unit) a name comes from means reading the
 modules and applying priority rules. For documents that is a serious flaw:
 </p>
@@ -401,8 +400,12 @@ scoped to the element that declares them: requirements one to three.</li>
 Schema 1.0 (W3C Recommendation, May 2001) lets a schema mark where foreign
 content may appear and be skipped (<code>processContents="skip"</code> or
 <code>"lax"</code>). SOAP 1.1 (2000) added the converse,
-<code>mustUnderstand</code> (Chapter 18).</li>
+<code>mustUnderstand</code>.</li>
 </ul>
+<p>
+What the note does not take up is that converse: a way to say an extension
+must not be skipped. That is Chapter 18.
+</p>
 </div>
 
 <div class="connections">

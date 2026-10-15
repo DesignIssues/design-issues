@@ -55,8 +55,10 @@ a Design Issues note by Tim Berners-Lee, 2002-01-01.
 One <a class="gl-ref" href="../glossary.html#xml">XML</a> file can mix tags from several vocabularies, so something must decide
 which <a class="gl-ref" href="../glossary.html#specification">specification</a> governs which part. Berners-Lee&#8217;s answer: the
 outermost element decides, and each element governs only what is inside it.
-Some elements, such as include, transform and decrypt, are replaced by their
-result; an element must also be able to mark its contents as quoted.
+Some elements are instructions (paste in a file, compute a total, unlock
+encrypted text) and are replaced by what they produce; others must be
+markable as merely quoted, not run. The same gap underlies prompt injection
+in AI systems today.
 </p>
 </div>
 
@@ -75,7 +77,8 @@ If one party sends another an XML document, how does one say what it means?
 <h2 id="sec-24-1">24.1 The problem: specifications that fight</h2>
 
 <p>
-The XSLT specification admits the problem. XSLT marks a template page
+The XSLT specification admits the problem. XSLT, a language for turning one
+XML document into another, marks a template page
 with an <code>xsl:version</code> attribute; if another language used an
 <code>axl:version</code> attribute the same way, then for a document carrying
 both &ldquo;it would be unclear whether the document should be processed by an
@@ -91,9 +94,8 @@ of what we have. Clearly this way lies chaos.
 </blockquote>
 
 <p>
-Paul Prescod listed the candidate authorities: the DOCTYPE, the top-level <a class="gl-ref" href="../glossary.html#namespace">namespace</a>, a <a class="gl-ref" href="../glossary.html#schema">schema</a> reference, other
-namespaces declared at the root, any attribute on the root element, and
-anything at all in the document. He concluded that the namespace of the
+Paul Prescod listed the candidate authorities, from the DOCTYPE and the
+top-level <a class="gl-ref" href="../glossary.html#namespace">namespace</a> to anything at all in the document. He concluded that the namespace of the
 <em>root element</em>, the outermost element containing everything else, is
 the only thing a processor must be able to dispatch on. Berners-Lee accepts
 that first conclusion and rejects Prescod&#8217;s second, a pipeline of
@@ -183,7 +185,7 @@ The note sketches three top-down procedures:
 
 <table>
 <tr><th>Strategy</th><th>How it works</th></tr>
-<tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left.</td></tr>
+<tr><td>Repeated pipeline</td><td>Run each processor in turn, cycling until no functions are left (unlike a one-pass pipeline).</td></tr>
 <tr><td>Recursive <a class="gl-ref" href="../glossary.html#parser">parser</a></td><td>Hand each foreign element to the code for its namespace as it is met.</td></tr>
 <tr><td>Lazy viewer</td><td>Elaborate a function (run it and put its result in its place) only when the reader scrolls to it, so that &ldquo;certain things never need to be evaluated at all, saving time and bandwidth.&rdquo;</td></tr>
 </table>
@@ -282,7 +284,7 @@ step changes only what lies inside the dashed outline; <code>html</code> and
 
 <table>
 <tr><th>Namespace</th><th>In plain words</th><th>The element is replaced by</th></tr>
-<tr><td>XSLT (a template language)</td><td>a template that computes text</td><td>the output its template computes</td></tr>
+<tr><td>XSLT</td><td>a template that computes text</td><td>the output its template computes</td></tr>
 <tr><td>XInclude</td><td>paste in another file here</td><td>the referenced document or part</td></tr>
 <tr><td>XML <a class="gl-ref" href="../glossary.html#encryption">Encryption</a></td><td>a locked box that opens into content</td><td>the decrypted content</td></tr>
 <tr><td>XQuery (listed with a question mark)</td><td>a database question whose answer goes here</td><td>the result of the query</td></tr>
@@ -293,7 +295,7 @@ step changes only what lies inside the dashed outline; <code>html</code> and
 What they share:
 </p>
 <ul>
-<li>any document may use them, without its schema foreseeing them;</li>
+<li>any document may use them, without its <a class="gl-ref" href="../glossary.html#schema">schema</a> foreseeing them;</li>
 <li>the result may contain further functions;</li>
 <li>&ldquo;none of its ancestors or siblings may be affected&rdquo;.</li>
 </ul>
@@ -367,7 +369,7 @@ been elaborated.
 <ul>
 <li>A function may read outside itself. Does it see the document before or
 after other functions run?</li>
-<li>An XPointer could point into the raw or the elaborated document.
+<li>An XPointer (an address for a piece inside a document) could point into the raw or the elaborated document.
 Berners-Lee inclines to &ldquo;after&rdquo;, so that a pointer into SVG lands
 on SVG.</li>
 <li>XML Signature, he was told, signs the raw source before XInclude; either
@@ -449,7 +451,7 @@ document top-down.
 One great schema for each combination of vocabularies scales badly: a group
 combining four specifications must settle how every pair fits, and the note
 asks whether it would take &ldquo;n<sup>2</sup> years&rdquo;. He would rather each
-facility had its own schema. The note ends:
+facility had its own schema. The note ends (spelling as in the original):
 </p>
 
 <blockquote>
@@ -481,7 +483,7 @@ injection&rdquo;, in use since 2022, is <a class="x-ref" href="#sec-24-4">sectio
 <div class="connections">
 <h3>Connections</h3>
 <p>
-<a class="x-ref" href="23-html-xml.html">Chapter 23</a> is the fork that made the question moot for HTML. <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a> reads what selects a specification in layers, and an element governing its own contents is the modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>.
+<a class="x-ref" href="23-html-xml.html">Chapter 23</a> is the fork that made the question moot for HTML. <a class="x-ref" href="20-stack-specifications.html">Chapter 20</a> asks, layer by layer, which specification governs a message, and an element governing its own contents is the modularity of <a class="x-ref" href="19-modularity.html">Chapter 19</a>.
 </p>
 </div>
 

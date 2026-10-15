@@ -28,11 +28,10 @@ Suppose Alice walks into a meeting room and is handed an Ethernet cable. To use 
 her computer must send <em>packets</em>, small blocks of data laid out as the
 Ethernet specification says. A <em>field</em> in each packet, a slot at a
 fixed place, names the specification that governs the rest. Committing to the cable commits her computer to
-everything above it (Figure 20.1). There, <code>0x0800</code> is the code
-for &ldquo;an Internet packet&rdquo;; an RFC (Request for Comments) is one
-of the numbered documents in which Internet standards are published; a <em>port</em> number says which service a
-connection is for; and IANA, the Internet Assigned Numbers Authority, keeps
-the list of ports.
+everything above it (Figure 20.1). The cable&#8217;s packets carry the code
+<code>0x0800</code>, meaning &ldquo;an Internet packet&rdquo;. Further up, a
+<em>port</em> number says which service a connection is for, from a list kept
+by IANA, the Internet Assigned Numbers Authority.
 </p>
 
 <figure>
@@ -87,20 +86,23 @@ the list of ports.
 </svg>
 <figcaption><span class="fig-label">Figure 20.1</span>
 Consent travels up the stack. Nobody signs anything, yet both parties are
-bound by what the fields mean.</figcaption>
+bound by what the fields mean. An RFC (Request for Comments) is one of the
+numbered documents in which Internet standards are published.</figcaption>
 </figure>
 
 <p>
-Each specification also sets rules of behaviour, and each can be cheated. An
-Ethernet computer that always waits least after a collision crowds the others
-out, &ldquo;just like people who always seem to be the one talking in a
+Each specification also sets rules of behaviour, and each can be cheated.
+When two computers transmit on the cable at once (a collision), each backs
+off for a random time; one that always picks the shortest wait crowds the
+others out, &ldquo;just like people who always seem to be the one talking in a
 meeting&rdquo;.
 </p>
 
 <h2>20.2 Why this is an argument about law</h2>
 
 <p>
-A forged message &ldquo;sneaks past their personal email filtering, and also
+At the top of the chain sits the From line. Put a false name there and the
+message, the note says, &ldquo;sneaks past their personal email filtering, and also
 any automated filtering, tricking them into reading a message&rdquo;,
 using up &ldquo;a person&#8217;s time, energy, bandwidth and disk space&rdquo;
 for the sender&#8217;s gain. The note debunks the idea that
@@ -118,7 +120,7 @@ penalties as lying or fraud in any other medium.
 </blockquote>
 
 <p>
-He then gives the change in stakes:
+The stakes have changed:
 </p>
 
 <blockquote>
@@ -136,7 +138,7 @@ be absolutely clear about the illegality of such misuse.
 <h2>20.3 From a Web address to a bank statement</h2>
 
 <p>
-Publishing a Web page follows a chain of the same shape (Figure 20.2). The
+A Web page follows the same chain (Figure 20.2). The
 <code>http:</code> at the front of an address is its <em>scheme</em>; a public
 list says it means HTTP. HTTP says to connect to port 80. The reply carries a
 Content-Type label, such as <code>text/html</code> for a page a person reads,
@@ -215,13 +217,9 @@ actual fields in your bank statement mean.
 </blockquote>
 
 <p>
-One more sentence settles who is answerable for what is sent:
+And the server speaks for whoever owns the address: &ldquo;The server is
+the agent of the publisher.&rdquo;
 </p>
-
-<blockquote>
-The server is the agent of the publisher.
-<cite>The Stack of Specifications, 2002</cite>
-</blockquote>
 
 <h2>20.4 The registry that is not a registry</h2>
 
@@ -273,15 +271,16 @@ layer does not.</figcaption>
 That page may be a specification for people, a schema for machines, or both.
 A P3P privacy policy, for example, is XML that a browser can scan more easily
 than a person can read one, and it works only if its terms are well defined.
-A bracketed aside admits &ldquo;this doesn&#8217;t always happen&rdquo;,
-naming MathML and XHTML without saying more.
+The note flags a problem: &ldquo;this doesn&#8217;t always happen&rdquo;.
+In practice, MathML and XHTML sent as XML were not reliably handled by their
+namespace.
 </p>
 
 <h2>20.5 Three stages of civilisation</h2>
 
 <p>
-The note sums the walk up in a table. Each spec points to the next through a
-field and a list; for the newer layers, the list is the Web.
+The note sums the walk up in a table: each spec points to the next through a
+field and a list.
 </p>
 
 <table>

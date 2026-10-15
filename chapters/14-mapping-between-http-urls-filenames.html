@@ -64,18 +64,17 @@ program. The fix: keep the name when it is honest; otherwise add a
 <h3>The question</h3>
 <p>
 Three things are wanted from a server that is both a website and a folder of
-files. Berners-Lee finds that only two can be had, calls this &ldquo;no fun,
+files. (The note dates from April 2015, after a discussion with Andrei Sambra,
+and was elaborated in 2018 with Ruben Verborgh.) Berners-Lee finds that only two can be had, calls this &ldquo;no fun,
 as each requirement is hard to do without&rdquo;, and then finds a way to get
-two and a half. The note dates from April
-2015, after a discussion with Andrei Sambra, and was elaborated in 2018 with
-Ruben Verborgh.
+two and a half. How?
 </p>
 </div>
 
 <h2 id="sec-14-1">14.1 Why anyone would want both views</h2>
 
 <p>
-Take a concrete case: a script edits a CSV file on a server, and colleagues
+Suppose a script edits a CSV file on a server, and colleagues
 read the same file in a browser. The script sees <em>file space</em>, the
 folders and filenames of the operating system. The colleagues see <em><a class="gl-ref" href="../glossary.html#http">HTTP</a>
 space</em>, the same files reached by <a class="gl-ref" href="../glossary.html#uri">URI</a> over the Web. Two rows of the
@@ -93,7 +92,12 @@ The obvious mapping is to make the URI path the filename. The snag is types.
 A file&#8217;s <em>extension</em> is the part after the last dot; the operating
 system uses it to decide what a file is. HTTP sends the type separately, in a
 <code>Content-Type</code> <a class="gl-ref" href="../glossary.html#header">header</a> such as <code>text/html</code>. On a server
-that accepts uploads, the two can disagree.
+that accepts uploads, the two can disagree, and the disagreement is
+dangerous. Someone uploads a file whose URI ends in <code>.exe</code> but
+whose content type is <code>text/html</code>, and in file space the operating
+system sees a program. Clicked, it &ldquo;will run and give someone else
+control of your machine&rdquo;, as the note puts it. The extension is <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
+that the local system trusts and that a remote party supplied.
 </p>
 
 <h2 id="sec-14-2">14.2 Three requirements, two of which may be had</h2>
@@ -161,9 +165,12 @@ Pick two of three: every simple design gives one requirement up.</figcaption>
 
 <p>
 He tries each design on the same three uploads, all sent as
-<code>text/html</code>. The table gathers his examples, with the sweet spot
-of <a class="x-ref" href="#sec-14-3">section 14.3</a> for comparison; the <code>http://localhost/space/</code> and
-<code>/users/bob/space/</code> prefixes are left out.
+<code>text/html</code>. Try 1 always adds the type&#8217;s extension; Try 2
+refuses any upload whose name has the wrong extension; Try 3 stores the name
+exactly as given. Neither <code>.bar</code> nor <code>.exe</code> means <a class="gl-ref" href="../glossary.html#html">HTML</a>,
+so stored unchanged either would be mistyped on disk: harmlessly for
+<code>.bar</code>, dangerously for <code>.exe</code>. The table gathers his
+examples, with the sweet spot of <a class="x-ref" href="#sec-14-3">section 14.3</a> for comparison.
 </p>
 
 <table>
@@ -177,7 +184,8 @@ of <a class="x-ref" href="#sec-14-3">section 14.3</a> for comparison; the <code>
 He rejects all three. Try 1 breaks the correspondence that was the point of
 the exercise. Try 2 turns a general-purpose storage space into one that only
 applications adapted to that server&#8217;s constraints can use. Try 3, which
-leaves extensions wrong, he refuses outright:
+leaves extensions wrong and so admits the attack of <a class="x-ref" href="#sec-14-1">section 14.1</a>, he refuses
+outright:
 </p>
 
 <blockquote>
@@ -185,15 +193,6 @@ Control of the local file extensions of things received from elsewhere is a
 crucial part of web security 101 and not negotiable.
 <cite>Mapping between HTTP URLs and filenames on a server, 2015</cite>
 </blockquote>
-
-<p>
-The attack he has in mind is concrete. Someone uploads a file whose URI ends
-in <code>.exe</code> but whose content type is <code>text/html</code>, and in
-file space the operating system sees a program. Clicked, it &ldquo;will run
-and give someone else control of your machine&rdquo;, as the note puts it.
-The extension is <a class="gl-ref" href="../glossary.html#metadata">metadata</a>
-that the local system trusts and that a remote party supplied.
-</p>
 
 <figure id="fig-14-2">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
@@ -277,8 +276,7 @@ cut everything from the <code>$</code>.</li>
 <p>
 The note calls <code>$</code> an &ldquo;otherwise forbidden character&rdquo;:
 one the server must refuse in ordinary URIs, so no real name can collide
-with a tweaked one. The last column of the table in <a class="x-ref" href="#sec-14-2">section 14.2</a> shows the
-result.
+with a tweaked one.
 </p>
 
 <p>
@@ -291,7 +289,7 @@ So a file uploaded as <code>report.html</code> appears on disk as
 <h2 id="sec-14-4">14.4 One mapping, three directions</h2>
 
 <p>
-The mapping is not one function but three.
+The mapping is not one rule but three, one for each direction of travel.
 </p>
 
 <figure id="fig-14-3">
@@ -353,8 +351,7 @@ GET the server must search the directory for <code>foo.exe</code> or
 <code>foo.exe$</code> plus an extension, the same move <a class="gl-ref" href="../glossary.html#content-negotiation">content negotiation</a>
 (<a class="x-ref" href="10-generic-resources.html">Chapter 10</a>) makes in picking among variants, as the note itself observes.
 Listing a directory is a simple
-function again, in the other direction. Berners-Lee notes the prize for
-getting it right, which is larger than one server:
+function again, in the other direction. The prize is larger than one server:
 </p>
 
 <blockquote>
@@ -381,7 +378,7 @@ Solid Server&#8217;s extension-based mapper, written from 2020, does the
 same. The Solid Protocol itself leaves storage to each implementation.</li>
 <li><strong>The attack it defends against stayed real.</strong> Unrestricted
 upload of a file with a dangerous type is catalogued as CWE-434 in MITRE&#8217;s
-Common Weakness Enumeration, which still lists it in 2026, and the general defence is the one implied
+Common Weakness Enumeration, and the general defence is the one implied
 here: do not let a remote party&#8217;s chosen name decide how a local system
 treats a file.</li>
 <li><strong>General-purpose servers did not adopt the convention.</strong>

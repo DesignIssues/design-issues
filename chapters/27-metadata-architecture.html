@@ -69,8 +69,10 @@ if such statements are taken seriously: if they can sit in any document,
 about any resource, written by anyone. <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s first use for them was
 endorsement labels: ratings, such as
 whether a page suits children, in a format called PICS, the Platform for
-Internet Content Selection. Only a preface added later uses the phrase, but this is where
-the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> starts, before the roadmap of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>.
+Internet Content Selection. The argument uses the phrase only once, in passing
+(links can create &ldquo;a semantic Web which can express knowledge about the
+world itself&rdquo;), but this is where the <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> starts, before the
+roadmap of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>.
 </p>
 </div>
 
@@ -248,29 +250,29 @@ them. Parts that only mean something together form one assertion.</figcaption>
 
 <p>
 This rules out, for example, configuration files where later rules override
-earlier ones; <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a> returns to them.
+earlier ones.
 </p>
 
 <h2 id="sec-27-4">27.4 Every statement is a small sentence</h2>
 
 <p>
 An assertion has a type, a subject and parameters (the other things the
-statement mentions), as a sentence has a verb, a subject and an object. The
-note writes <code>(A u1 p q&hellip;)</code>: <code>A</code> names the type,
-<code>u1</code> is the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the subject, and <code>p</code>, <code>q</code>
-are the rest. An assertion that a resource has a named property, such as its
+statement mentions), as a sentence has a verb, a subject and an object
+(<a class="x-ref" href="#fig-27-3">Figure 27.3</a>). An assertion that a resource has a named property, such as its
 author, is an attribute. Who said it, and when, are usually left implicit,
 but they are never absent. That is why the note says &ldquo;assertion&rdquo;
 rather than fact: an attribute and its value &ldquo;must be seen as a
-statement by a particular party&rdquo;. That is what rides on the open
-question of <a class="x-ref" href="#fig-27-1">Figure 27.1</a>.
+statement by a particular party&rdquo;. That is why the open
+question of <a class="x-ref" href="#fig-27-1">Figure 27.1</a> matters.
 </p>
 
 <p>
 Often the subject is left implicit too. The note calls a set of assertions
 with the subject taken out a <em>label</em>. Like the label on a jam jar, it
 carries information, but something else, its placement on the jar, says what
-it applies to.
+it applies to. By convention the label says &ldquo;Jam&rdquo;, not &ldquo;Jam
+jar label&rdquo;, &ldquo;Even though I once saw a label on a cardboard box
+with the words &lsquo;Equipment shipping box label&rsquo; on it!&rdquo;
 </p>
 
 <figure id="fig-27-3">
@@ -330,10 +332,10 @@ A link is an assertion relating two resources: the <a class="gl-ref" href="../gl
 versioning example of <a class="x-ref" href="#fig-27-3">Figure 27.3</a>. Why name the types with URIs? Across
 all applications the dictionary of such names &ldquo;would be so large that ad hoc arbitrary extension would be just as
 chaotic as central registration would be stifling.&rdquo; URIs let names be
-coined in a decentralised way. This is already the
-<em>triple</em> of <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, which <a class="gl-ref" href="../glossary.html#rdf">RDF</a> (the Resource Description Framework,
+coined in a decentralised way. Three parts, a relationship and two
+things: this is the <em>triple</em> that <a class="gl-ref" href="../glossary.html#rdf">RDF</a> (the Resource Description Framework,
 W3C&#8217;s format for such statements) later made the basic unit of
-Semantic Web data.
+Semantic Web data (<a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>).
 </p>
 
 <h3>Saying something nobody planned for</h3>

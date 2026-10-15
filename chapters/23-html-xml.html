@@ -60,7 +60,7 @@ cousin used for data, in which a single error stops the whole document. In
 </p>
 <p>
 The note argues that authors get no reward for fixing errors gradually, and
-proposes graded warnings so that they would.
+proposes a browser toolbar that would rate a page with errors out of 100.
 </p>
 </div>
 
@@ -96,7 +96,8 @@ browser reading it as HTML shows bold italic text and moves on.
 <p>
 XHTML, the note adds, &#8220;was not widely deployed in the dominant Web
 browser, Internet Explorer&#8221;, which could not display pages served with
-the XHTML content type until version 9, in 2011.
+the XHTML content type until version 9, in 2011. For most readers, then, the
+strict branch did not exist.
 </p>
 
 <figure id="fig-23-1">
@@ -336,9 +337,8 @@ back.</figcaption>
 <h2 id="sec-23-4">23.4 Why broken pages stay broken</h2>
 
 <p>
-&#8220;To look at a system which includes
-people, one must study the incentives for those people.&#8221; It draws the
-reward an author gets for effort.
+The note starts from a rule: &#8220;To look at a system which includes
+people, one must study the incentives for those people.&#8221; So it graphs the reward an author gets for effort.
 </p>
 
 <figure id="fig-23-4">
@@ -444,13 +444,14 @@ The items are the note&#8217;s own lists.</figcaption>
 <h2 id="sec-23-5">23.5 Who needs a namespace: vocabularies by size</h2>
 
 <p>
-Back to extension (<a class="x-ref" href="#sec-23-2">section 23.2</a>). The Web is scale-free: as with inbound
+<a class="x-ref" href="#sec-23-2">Section 23.2</a> counted HTML&#8217;s modules on one hand; the note replies that
+HTML cannot be fenced off from other communities. The Web is
+scale-free: as with inbound
 links to pages, which follow a power law, a few communities are enormous and
-most are small. The note walks down the scale: HTML; then SVG, MathML and
-ARIA; then the Facebook Markup Language and Atom feeds; and on to
+most are small. The note walks down the scale from HTML through SVG and Atom feeds to
 &#8220;protein scientists and history museums, for scout troops and bird
 fanciers&#8221;, down to &#8220;today&#8217;s experiment in a lab&#8221;.
-Berners-Lee asks that this shape be engineered for: HTML
+He asks that this shape be engineered for: HTML
 at the top can be managed centrally, but the shaded tail of <a class="x-ref" href="#fig-23-6">Figure 23.6</a> needs a
 way to coin names without a committee.
 </p>
@@ -495,7 +496,7 @@ the tail is where decentralised naming earns its keep.</figcaption>
 <h2 id="sec-23-6">23.6 The grouchy robustness principle</h2>
 
 <p>
-Back to the authors of <a class="x-ref" href="#sec-23-4">section 23.4</a>. The note&#8217;s last words restate
+The note&#8217;s last words return to the page authors and restate
 Postel&#8217;s rule:
 </p>
 
@@ -507,8 +508,7 @@ the producers to adhere to it better.
 </blockquote>
 
 <p>
-The added clause, complain helpfully, is what supplies the graded reward of
-<a class="x-ref" href="#fig-23-4">Figure 23.4</a>.
+Complaining helpfully supplies the slope of <a class="x-ref" href="#fig-23-4">Figure 23.4</a>.
 </p>
 
 <h2 id="sec-23-7">23.7 Meeting in the middle</h2>
@@ -534,7 +534,8 @@ would keep, and the middle invites compromise.
 His sketch of an &#8220;XML2&#8221; lets simple attribute values go unquoted,
 takes the namespace from the Content-Type, drops DTDs (old grammar
 declarations) and processing instructions (see <a class="x-ref" href="01-principles-design.html#sec-1-2">section 1.2</a>), and perhaps allows
-<code>&lt;/&gt;</code> as a close tag. A page that starts
+<code>&lt;/&gt;</code> as a close tag. Below, the XML declaration, DOCTYPE,
+namespace and quotes all vanish. A page that starts
 </p>
 
 <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;

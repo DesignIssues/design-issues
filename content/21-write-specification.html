@@ -32,18 +32,14 @@ quite precisely.
 </blockquote>
 
 <p>
-On the Web the thing defined is usually a language or a protocol. In the
-note&#8217;s terms, a language is a set of symbols, rules for combining them,
-and what they mean; a protocol is a language for messages plus constraints on
-the order in which messages may be sent. Something <em>conforms</em> when it
-meets the definition, and the note insists that the thing defined gets a
-precise name: a conformance term.
-</p>
-
-<p>
-The right-hand side has its own vocabulary. Text that is <em>normative</em>
-is binding on what conforms; <em>non-normative</em> text is explanation only.
-A capitalised MUST marks a requirement and MAY an option (BCP 14).
+Is a file valid XML? Until the question names a term it has no answer:
+a &ldquo;well-formed XML 1.0 document&rdquo; and an &ldquo;xml-schema-valid
+XML document&rdquo; are different things, and a file can be the first without
+being the second. So the note insists that the thing defined gets a precise
+name, a <em>conformance term</em>; whatever meets the definition
+<em>conforms</em>. On the Web the thing is usually a language (symbols, rules
+for combining them, and what they mean) or a protocol (a language for messages
+plus constraints on their order).
 </p>
 
 <figure>
@@ -84,8 +80,10 @@ A capitalised MUST marks a requirement and MAY an option (BCP 14).
   <text x="360" y="300" class="t-sm t-it" text-anchor="middle">If no program could check it, the left hand side is not finished.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 21.1</span>
-The note says more has been written on the right-hand side, most of it agreed
-in W3C; its emphasis is the left, the name a program checks against.</figcaption>
+On the right, <em>normative</em> text binds what conforms and
+<em>non-normative</em> text only explains; a capitalised MUST marks a
+requirement and MAY an option (BCP 14). The note calls this side largely
+agreed in W3C and puts its emphasis on the left.</figcaption>
 </figure>
 
 <p>
@@ -96,10 +94,10 @@ Web by being identified with a URI.
 </p>
 
 <p>
-A single careless word can put a sentence outside the specification, because
-the name governs the wording of the definition. If the term is
+The name also governs the wording: one careless word can put a sentence
+outside the specification. If the term is
 &ldquo;foo-valid document&rdquo;, a sentence saying something &ldquo;is
-invalid&rdquo; clearly applies to it. A sentence saying something &ldquo;is
+invalid&rdquo; can be assumed to apply to it. A sentence saying something &ldquo;is
 wrong&rdquo; or &ldquo;produces an error&rdquo; does not, unless the text
 explicitly ties it to the conformance term.
 </p>
@@ -107,21 +105,17 @@ explicitly ties it to the conformance term.
 <h2>21.2 Say what the cheque means, not what to do with it</h2>
 
 <p>
-One rule concerns the grammatical mood a specification
-should be written in. When defining a language, say what a construct means
-rather than what software should do when it meets one. His example is a
-cheque:
+When defining a language, the note says, state what a construct means rather
+than what software should do when it meets one. Its example sets two versions
+of a cheque rule side by side:
 </p>
 
 <blockquote>
-&ldquo;x&rdquo; indicated that the check is void
+&ldquo;x&rdquo; indicated that the check is void<br>
+is better than<br>
+&ldquo;x&rdquo; indicates that the check should be rejected with a fatal error.
 <cite>The essentials of a specification, 1999</cite>
 </blockquote>
-
-<p>
-is better than the version that says the cheque should be rejected with a
-fatal error.
-</p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 220" width="720" height="220" role="img"
@@ -157,7 +151,7 @@ program the author imagined.</figcaption>
 </figure>
 
 <p>
-The justification concerns what an author is entitled to say:
+The reason given:
 </p>
 
 <blockquote>
@@ -167,13 +161,9 @@ it, unless you are defining a protocol.
 </blockquote>
 
 <p>
-Typical behaviours may still be described: Berners-Lee says they can be very
-useful, as non-normative explanation of intent.
-</p>
-
-<p>
-For protocols, the exception, he asks for constraints given as a state
-transition diagram or table, to make them totally clear.
+Typical behaviours may still be described, as non-normative explanation of
+intent. For protocols, the exception, he asks for constraints given as a state
+transition diagram or table.
 </p>
 
 <figure>
@@ -216,14 +206,15 @@ allowed and forbidden step visible, as the fourth test in section 21.4 needs.</f
 </figure>
 
 <p>
-HTML&#8217;s editors later broke this rule on purpose (Chapter 23).
+HTML&#8217;s editors later broke this rule on purpose: they judged that
+browsers agreeing on what to do with a broken page mattered more than a
+definition of what the page means (Chapter 23).
 </p>
 
 <h2>21.3 Messages that bind people, and definitions borrowed from elsewhere</h2>
 
 <p>
-The note then gives two pieces of drafting advice. The first is about
-contracts:
+Two pieces of drafting advice follow. The first is about contracts:
 </p>
 
 <blockquote>
@@ -233,7 +224,7 @@ this must be clear. You could end up in court explaining it if not.
 </blockquote>
 
 <p>
-It sketches the kind of prose required:
+Its sketch of the prose required:
 </p>
 
 <blockquote>
@@ -245,7 +236,7 @@ foo-email-address...
 </blockquote>
 
 <p>
-MMTP is invented for the example; Chapter 20 argues the same point at length.
+MMTP is invented for the example; section 20.2 argues the legal point at length.
 </p>
 
 <p>
@@ -279,7 +270,8 @@ derived from the WHATWG&#8217;s text; the two drifted apart until, in May
 
 <p>
 Berners-Lee calls it all folklore, learnt from Peggie Rimmer at CERN and from
-years of IEEE, IETF and W3C work.
+years of IEEE, IETF and W3C work. All four questions come back to the cheque:
+given any cheque at all, can anyone say for certain whether it is void?
 </p>
 
 <div class="since">
@@ -307,7 +299,7 @@ definition. Chapter 23 is where that choice is argued.</li>
 The chain of specifications this one explains how to write is Chapter 20, and
 the modularity it assumes is Chapter 19. The advice about borrowed definitions
 bears on the mixed-vocabulary documents of Chapter 17. The claim that a
-message can bind legal parties is developed in Chapter 15, and the tension
+message can bind legal parties is developed in Chapter 20 (section 20.2), and the tension
 between specifying meaning and specifying behaviour is Chapter 23.
 </p>
 </div>

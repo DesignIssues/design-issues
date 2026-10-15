@@ -81,7 +81,9 @@ some language) and the meaning of the language.
 <p>
 On the Web the document and the language each have a <a class="gl-ref" href="../glossary.html#uri">URI</a>, and by the rule
 (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>) that a URI&#8217;s owner says what it identifies, each is
-defined by its owner.
+defined by its owner. Hence the note&#8217;s worry over the namespace dispute: if nobody can say what identifies a language, &ldquo;the <a class="gl-ref" href="../glossary.html#xml">XML</a>
+namespace mechanism may prove an insufficiently firm foundation for the
+semantic web&rdquo;.
 </p>
 
 <figure id="fig-28-1">
@@ -122,8 +124,7 @@ the language a document uses.</figcaption>
 </figure>
 
 <p>
-&ldquo;Language&rdquo; is given a precise sense with three parts. <a class="gl-ref" href="../glossary.html#html">HTML</a> shows
-each of them:
+A language has three parts, shown here for <a class="gl-ref" href="../glossary.html#html">HTML</a>:
 </p>
 
 <table>
@@ -136,14 +137,15 @@ each of them:
 <h2 id="sec-28-2">28.2 Two kinds of language</h2>
 
 <p>
-That last row matters. <em>Terminal</em> languages are defined only in prose,
-so programs for them are written by hand. Style is the note&#8217;s test
-case: for many documentation systems &ldquo;the only semantics required is &lsquo;H2 means a big bold block on
-the left&rsquo;!&rdquo; CSS defines such things in English. Other languages
-have machine-readable definitions: a <a class="gl-ref" href="../glossary.html#schema">schema</a> might state that one
+Some languages are <em>terminal</em>: the chain of definitions ends there,
+in plain English, so programs for them have to be written by hand. Style is
+the test case: for many documentation systems &ldquo;the only semantics required is &lsquo;H2 means a big bold block on
+the left&rsquo;!&rdquo; CSS, the style-sheet language that sets how pages
+look, defines such things in English. Others have
+machine-readable definitions: a <a class="gl-ref" href="../glossary.html#schema">schema</a> can state that one
 <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>&#8217;s &ldquo;author&rdquo; is a kind of another&#8217;s
-&ldquo;creator&rdquo;, so documents can be converted automatically down to a
-terminal language.
+&ldquo;creator&rdquo;, so documents convert automatically down to a terminal
+language.
 </p>
 
 <figure id="fig-28-2">
@@ -216,8 +218,9 @@ precisely; <a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22<
 language A is a subset, or sublanguage, of language
 B when a document in A can be treated precisely as though it had been in B.
 Every <a class="gl-ref" href="../glossary.html#xhtml">XHTML</a> 1.0 Strict document, for example, is also valid XHTML 1.0
-Transitional, which only adds elements and attributes. <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a> makes the
-claim for software; here it is about meaning.
+Transitional (two editions of the Web&#8217;s page language, one strict and
+one permissive). <a class="x-ref" href="18-mandatory-extensions-fundamental-design-need.html">Chapter 18</a> asks whether software accepts the smaller
+language; here the question is whether meaning survives.
 </p>
 
 <figure id="fig-28-3">
@@ -274,8 +277,8 @@ document means the same read in either language.</figcaption>
 A <a class="gl-ref" href="../glossary.html#digital-signature">digital signature</a> is a mathematical seal, made with a secret key, proving
 who vouched for a document and that it has not changed since. Languages
 define meaning only for whole documents, so a signature on page 3 of a
-contract needs a rule saying how page 3 fits back into a whole contract.
-Whatever is signed, the signature does not define its meaning:
+contract needs a rule for fitting page 3 back into the whole.
+The signature does not define meaning:
 </p>
 
 <blockquote>
@@ -286,8 +289,7 @@ enough, It is not the place of a digital signature to define semantics.
 
 <p>
 Otherwise the signed document could say something its writer never
-intended. So the note concludes, in a
-sentence <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> builds on:
+intended. So, in a sentence <a class="x-ref" href="37-semantics-interpretation-digital-signature.html">Chapter 37</a> builds on:
 </p>
 
 <blockquote>
@@ -296,8 +298,9 @@ So, signatures themselves have no meaning.
 </blockquote>
 
 <p>
-Other documents give it one, as in the note&#8217;s trust statement
-(<a class="x-ref" href="#fig-28-4">Figure 28.4</a>).
+Other documents give it one. The note&#8217;s example is a trust statement:
+&ldquo;If an organization is a member of <a class="gl-ref" href="../glossary.html#w3c">W3C</a> according to a document signed
+with this key, then that organzation is indeed a member&rdquo; (<a class="x-ref" href="#fig-28-4">Figure 28.4</a>).
 </p>
 
 <figure id="fig-28-4">
@@ -353,20 +356,19 @@ the key is good for.</figcaption>
 <h2 id="sec-28-5">28.5 Chains that end in a standard</h2>
 
 <p>
-Look up each term in a document, then each term in those definitions. An
+Look up each term, then each term in its definition. An
 XHTML page&#8217;s <code>&lt;h2&gt;</code> leads to the XHTML
-<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, which defines it, and on to the <a class="gl-ref" href="../glossary.html#xml">XML</a> Recommendation it is
-written in: a chain that stops in <a class="gl-ref" href="../glossary.html#w3c">W3C</a> standards. A document is
-<em>grounded</em> if every chain ends in a set of documents one accepts;
-&ldquo;grounded in W3C Recommendations&rdquo; means every chain ends there.
+<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, which defines it, and on to the XML Recommendation it is
+written in: a chain that stops in W3C standards. A document is
+<em>grounded</em> if every chain ends in a set of documents one accepts.
 The note calls this the basis of the whole Internet stack.
 </p>
 
 <h2 id="sec-28-6">28.6 Grounding as a myth: the web of meaning</h2>
 
 <p>
-Grounding is needed for predictable systems, but it is a bad model for the
-Web in the long run. English words have no base set:
+Grounding makes systems predictable, but it is a bad long-run model for the
+Web. English words have no base set:
 </p>
 
 <blockquote>
@@ -375,7 +377,7 @@ Every time you look one up in the dictionary all you find are more words.
 </blockquote>
 
 <p>
-The world is web-like, the note continues, and it names the source:
+The world is web-like, and the note names the source:
 &ldquo;This is the Wittgenstein view of meaning.&rdquo;
 </p>
 
@@ -432,7 +434,7 @@ One chain ends in a standard; the dictionary loops back on itself.</figcaption>
 </figure>
 
 <p>
-Yet the note nests the two views, one inside the other: &ldquo;Yes, meaning
+Yet the note reconciles the two: &ldquo;Yes, meaning
 is use&rdquo;, but on the Internet laws and expectations constrain use to
 follow the specifications, as with the tax form of the opening.
 </p>
@@ -451,11 +453,16 @@ No one will agree on a directed acyclic graph determining what terms are
 <cite>The meaning of a document, 1999</cite>
 </blockquote>
 
+<p>
+Instead each party picks its own base languages and defines the others it
+meets in terms of them: &ldquo;A rich web of conversions, translations will
+grow up to support this.&rdquo;
+</p>
+
 <h2 id="sec-28-7">28.7 Two objections: use and context</h2>
 
 <p>
-<strong>&ldquo;Surely meaning is only defined by use?&rdquo;</strong> This is the
-Wittgenstein view turned into an objection. Some agreement outside the
+<strong>&ldquo;Surely meaning is only defined by use?&rdquo;</strong> Some agreement outside the
 message is needed, the note concedes, but the Web is one big agreement:
 fetching a page over <a class="gl-ref" href="../glossary.html#http">HTTP</a> means accepting that it is read by the
 specifications.
@@ -465,7 +472,7 @@ specifications.
 <strong>&ldquo;Doesn&#8217;t the meaning of a document depend on its context?&rdquo;</strong> It does: enclosing a
 photocopy of a letter is not sending it. But publishing on the Web, posting to
 a public list or nailing a page to a tree all fix meaning the same way, and
-that common case is simply the document&#8217;s meaning.
+that common case is the document&#8217;s meaning.
 </p>
 
 <div class="since">
@@ -474,8 +481,7 @@ that common case is simply the document&#8217;s meaning.
 <li><strong>The formula became the standard account.</strong> <a class="gl-ref" href="../glossary.html#rdf">RDF</a> Semantics,
 a W3C Recommendation of February 2004, defines a document&#8217;s meaning
 from the meanings of its vocabulary.</li>
-<li><strong>Signing data proved to need a fixed way of writing it</strong>,
-as the note&#8217;s point about reassembling fragments foreshadows. RDF Dataset Canonicalization,
+<li><strong>Signing data proved to need a fixed way of writing it.</strong> RDF Dataset Canonicalization,
 which defines one for RDF, became a W3C Recommendation only in May 2024.</li>
 <li><strong>The confidence was revised.</strong> In 2012 (<a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22</a>) Berners-Lee argued for
 definitions that are good enough, recording which model made them so.</li>
@@ -495,19 +501,19 @@ Sublanguages: <a class="x-ref" href="18-mandatory-extensions-fundamental-design-
 <summary>Questions <span class="q-count">5</span></summary>
 <div class="question">
 <p><span class="question-number">28.1</span>
-Meaning is a product of two factors. Describe what happens to a document when
-the language&#8217;s publisher changes the definition of a term.</p>
+If a language&#8217;s publisher changes the definition of a term, what
+happens to documents already written in it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.2</span>
-CSS is defined in English prose. What would a program need before it could
-apply a new CSS property it has never seen?</p>
+What would a program need before it could apply a CSS property it has never
+seen?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.3</span>
-A style sheet is not a stand-alone statement: it maps one document to
-another. Suppose a message consisted only of a style sheet, with no cover
-letter. What would it signify? What would a digital signature on it mean?</p>
+A style sheet maps one document to another rather than stating anything. If
+a message were only a style sheet, what would it signify, and what would a
+signature on it mean?</p>
 </div>
 <div class="question">
 <p><span class="question-number">28.4</span>

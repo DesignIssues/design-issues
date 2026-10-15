@@ -190,7 +190,7 @@ it&rdquo;, while their engineers were pressed to start the next cycle.
   <text x="360" y="259" class="t-sm" text-anchor="middle">Published. Open. Repeat.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 16.1</span>
-Berners-Lee does not condemn the cycle; it produced HTML. By 1998, though, the specification was too big to keep roping every extension back into one document.</figcaption>
+Berners-Lee does not condemn the cycle; it produced HTML. By 1998, though, roping every extension back into one document would soon have made the specification unmanageable.</figcaption>
 </figure>
 
 <p>
@@ -206,8 +206,9 @@ namespaces.&rdquo;
 
 <p>
 At the other extreme are distributed object systems, such as remote procedure call (RPC), where every interface is declared in machine-readable form and
-checked when the system is compiled. A program that has called the table
-module need not wonder whether a table is being displayed. The catch:
+checked when the system is compiled. A program that hands a table to the
+module that draws tables knows it will be drawn; unlike the HTML server of
+<a class="x-ref" href="#sec-16-2">section 16.2</a>, it never wonders whether a table is being displayed. The catch:
 </p>
 
 <blockquote>
@@ -216,8 +217,8 @@ With well-defined interfaces, either everything works, or nothing.
 </blockquote>
 
 <p>
-Change an interface and the other side must change too, which is why such systems never spread, in Berners-Lee&#8217;s
-phrase, in a web-like or virus-like manner. The requirement is both:
+Change an interface and the other side must change too, which is why, as Berners-Lee put it in another note, such systems never
+spread in a web-like or virus-like manner. The requirement is both:
 </p>
 
 <blockquote>
@@ -308,7 +309,9 @@ invoice vocabulary, but each item also carries a part description in the
 supplier&#8217;s own private vocabulary. An invoice program should be able to
 process it without understanding the part description. The obvious fix, marking
 that part &ldquo;optional&rdquo;, fails because optionality depends on who is
-reading.
+reading. The note&#8217;s answer is to say instead which conversions of the
+document are allowed: if a program may turn this invoice into a valid one
+without the part description, that part was dispensable for it.
 </p>
 
 <figure id="fig-16-3">
@@ -480,18 +483,10 @@ happening all the time.&rdquo;
 <h2 id="sec-16-6">16.6 Smarter later, and not the smartest</h2>
 
 <p>
-The note derives its requirements from two premises. The first, that we will be smarter in the future, demands that version 4 read the version 5 file, at least in part, with no flag day. The second he flags as hard:
-</p>
-
-<blockquote>
-The philosophical assumption that we may not be smarter than everyone else (a
-huge step for some!) leads us to realise that others will have gret ideas
-too, and will independently invent the same things.
-<cite>Evolvability, 1998</cite>
-</blockquote>
-
-<p>
-That demands moving between parallel versions invented independently: the test of <a class="x-ref" href="#sec-16-5">section 16.5</a>.
+The note derives its requirements from two premises. That we will be smarter
+in the future demands that old software read new documents at least in part
+(<a class="x-ref" href="#sec-16-4">section 16.4</a>); that we may not be smarter than everyone else (&ldquo;a huge
+step for some!&rdquo;) demands the test of <a class="x-ref" href="#sec-16-5">section 16.5</a>.
 </p>
 
 

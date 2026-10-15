@@ -2,8 +2,8 @@
 <h3>The short version</h3>
 <p>
 To webize a system, give each of its internal names a Web address so that
-other systems can refer to it. Doing so often exposes names that were muddled
-to begin with.
+other systems can refer to it. Doing so can expose names that were muddled to
+begin with.
 </p>
 </div>
 
@@ -11,8 +11,9 @@ to begin with.
 <h3>The question</h3>
 <p>
 The Web grows in two ways, Berners-Lee says: by adding new technology, and by
-opening up systems that already exist. A weather database can answer
-<code>SELECT temp, zip FROM weather WHERE temp &gt; 30</code>, but nothing
+opening up systems that already exist. A weather database can answer a query
+such as <code>SELECT temp, zip FROM weather WHERE temp &gt; 30</code>
+(&ldquo;give me the places where it is over 30 degrees&rdquo;), but nothing
 outside it can point at its idea of <code>temp</code>. Webizing changes that,
 and keeps &ldquo;the knowledge accrued&rdquo; in systems &ldquo;researched and
 designed over the years&rdquo;. He gives the procedure in one sentence:
@@ -107,24 +108,6 @@ language) ignores it, URIs do not, and Dan Connolly&#8217;s
 translation had to escape lower-case letters with backslashes.
 </p>
 
-<p>
-He then offers what he calls &ldquo;a slightly flippant view on the webize()
-function, each row of which probably needs an essay of explanation, but
-provided here without any&rdquo;. The third column is this book&#8217;s.
-</p>
-
-<table>
-<tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>One reading</th></tr>
-<tr><td>Hypertext</td><td>WWW</td><td>Links reach any document, not just those in one system</td></tr>
-<tr><td>Data</td><td>Linked data</td><td>Records get URIs and can point at one another</td></tr>
-<tr><td>Top-down structured design</td><td>Bottom-up ontology design</td><td>Shared vocabularies (<em>ontologies</em>) grow from the parts, not from a plan</td></tr>
-<tr><td>Data Hiding</td><td>Data Re-use</td><td>What a module kept private (Chapter 4&#8217;s information hiding), once named globally, others can use</td></tr>
-<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump, as the link, is what the Web runs on</td></tr>
-<tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, under access-control lists</td></tr>
-<tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a <em>scale-free</em> web: a few hubs, many small nodes, no single centre</td></tr>
-<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>The joke that gives the game away</td></tr>
-</table>
-
 <h2>26.2 A weather database, opened to the world</h2>
 
 <p>
@@ -205,12 +188,31 @@ a claim that the list is complete.
 </p>
 
 <p>
-The second is that, for flexibility and security, a layer usually sits
-between what is exposed and what is stored. A web page is not a file, though
+The second is that a web page is not a file, though
 both are bytes with a type; a published view is not the internal tables,
 though both have the form of a database. Outside suits the consumer; inside
 suits the publisher.
 </p>
+
+<h3>The webize() function</h3>
+
+<p>
+Berners-Lee also offers what he calls &ldquo;a slightly flippant view on the webize()
+function, each row of which probably needs an essay of explanation, but
+provided here without any&rdquo;. The third column is this book&#8217;s.
+</p>
+
+<table>
+<tr><th><em>x</em></th><th>webize(<em>x</em>)</th><th>One reading</th></tr>
+<tr><td>Hypertext</td><td>WWW</td><td>Links reach any document, not just those in one system</td></tr>
+<tr><td>Data</td><td>Linked data</td><td>Records get URIs and can point at one another</td></tr>
+<tr><td>Top-down structured design</td><td>Bottom-up ontology design</td><td>Shared vocabularies (<em>ontologies</em>) grow from the parts, not from a plan</td></tr>
+<tr><td>Data Hiding</td><td>Data Re-use</td><td>What a module kept private (Chapter 4&#8217;s information hiding), once named globally, others can use</td></tr>
+<tr><td>Goto Considered Harmful</td><td>Goto drives the economy</td><td>The unrestricted jump, as the link, is what the Web runs on</td></tr>
+<tr><td>unix file system</td><td>ACL&#8217;d r/w linked data</td><td>Files become linked data, readable and writable over the Web, under access-control lists</td></tr>
+<tr><td>Large-scale structure: Hierarchy</td><td>Large-scale structure: Scale free</td><td>A tree with one root becomes a <em>scale-free</em> web: a few hubs, many small nodes, no single centre</td></tr>
+<tr><td>&ldquo;Tired&rdquo;</td><td>&ldquo;Wired&rdquo;</td><td>The joke that gives the game away</td></tr>
+</table>
 
 <h2>26.3 Where it gets hard</h2>
 
@@ -221,8 +223,8 @@ depends on the block it sits inside), the context at one end of a link can be co
 the other. Berners-Lee cites the computer scientist Edsger Dijkstra, in his 1968 letter
 against the goto statement: it is too primitive and too much an invitation to
 make a mess of one&#8217;s program. That is true of the hypertext link too, in
-a way, he concedes. Used without restraint, both remove the rules that make a
-language analysable and let its code be optimised.
+a way, he concedes. Used without restraint, both make a program much harder to
+reason about, for a person or for the compiler that speeds it up.
 </p>
 
 <figure>
@@ -365,7 +367,8 @@ September 2012 W3C made two Recommendations: R2RML, a language for mapping
 relational data to RDF, and A Direct Mapping of Relational Data to RDF, which
 gives every table, column and row a URI automatically. Section 26.2&#8217;s
 example became a standard.</li>
-<li><strong>The file-system row was built.</strong> Solid (Chapter 54) keeps
+<li><strong>The file-system row was built.</strong> Solid (Chapter 54), developed at MIT and first
+released in 2016, keeps
 a person&#8217;s files as read-write linked data guarded by access-control
 lists: &ldquo;ACL&#8217;d r/w linked data&rdquo;.</li>
 </ul>
