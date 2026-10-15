@@ -100,11 +100,13 @@ starts at the number and asks who points here.</figcaption>
 <h2>43.2 Nine notations, each borrowed from somewhere</h2>
 
 <p>
-The same chain can be written <code>x.boss.home.email</code> (programming),
+Ending in email instead of phone, the chain can be written <code>x.boss.home.email</code> (programming),
 <code>email of home of boss of x</code> (English),
 <code>x's boss's home's email</code> (English again) or
 <code>x'boss'home'email</code> (Ada). The note weighs nine candidate notations,
-several with variants, each borrowing a metaphor. The seven that matter here:
+each borrowing a metaphor. In the keyword row below,
+<code>:joe :son thatWhich :girlfriend :jane</code> says Joe&#8217;s son is
+the one whose girlfriend is Jane. The seven that matter here:
 </p>
 
 <table>
@@ -114,13 +116,12 @@ several with variants, each borrowing a metaphor. The seven that matter here:
 <tr><td>Star and slash</td><td><code>Cost = 100*dollars</code></td><td>Units of measure</td><td>Implies commutativity; reserved for arithmetic</td></tr>
 <tr><td>Keywords <code>which</code>, <code>thatwhich</code></td><td><code>:joe :son thatWhich :girlfriend :jane</code></td><td>English</td><td>&ldquo;thatwhich is unbeliveably ugly&rdquo;</td></tr>
 <tr><td>Keyword <code>of</code></td><td><code>email of home of boss of x</code></td><td>English</td><td>Parses right to left; already a keyword in N3</td></tr>
-<tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Uses up a quote; XML and Python already spend two on one meaning, &ldquo;a waste if you ask me!&rdquo;</td></tr>
+<tr><td>Possessive <code>'s</code>, or <code>$</code></td><td><code>x's boss's home's email</code></td><td>English, and Ada</td><td>Spends the apostrophe, wanted for quoting; XML and Python use <code>'</code> and <code>"</code> for one meaning, &ldquo;a waste if you ask me!&rdquo;</td></tr>
 <tr><td>Slashes</td><td><code>x/uncle\boss/home/email</code></td><td>Directory paths</td><td>Backslash is Unix&#8217;s escape character, and Microsoft&#8217;s backslashes have &ldquo;done lasting harm&rdquo;</td></tr>
 </table>
 
 <p>
-<code>:joe :son thatWhich :girlfriend :jane</code> says Joe&#8217;s son is
-the one whose girlfriend is Jane. On a blackboard, Berners-Lee noticed,
+On a blackboard, Berners-Lee noticed,
 &ldquo;% and of look pretty similar&rdquo;, so <code>%</code> might serve as
 <code>of</code>. The note then sorts the
 candidates by two questions: does the operator come before or after the term,
@@ -171,8 +172,8 @@ read the backward traversal in english.&rdquo;
 
 <p>
 One way round: a backward step along <code>email</code> is a forward step
-along its inverse, if it is clear whether the inverse is mere syntax or really
-named.
+along its inverse, as long as readers can tell whether <code>^email</code> is
+shorthand or a real, named property.
 </p>
 
 <figure>
@@ -326,10 +327,16 @@ Here the choices are still soft, so one can see which were forced. Take
 Sandro Hawke&#8217;s idea: make sets and formulae the same thing, since a
 formula is just a set of statements. Berners-Lee finds it &ldquo;inherently
 appealing in its symmetry&rdquo;. But N3 statements have no opening mark, and
-<code>{ :x }</code> is already valid N3, a formula holding a statement with no
-triples, so the parser could not tell it from a one-member set. Taste lost to
-the parser. As for traversal, English, like many systems including the Web,
-&ldquo;is optimized for forward traversal&rdquo;: links point one way.
+so the parser could not know in advance which it was reading; and
+<code>{ :x }</code>, already valid N3 as a statement with no triples, would
+overlap with set syntax. Not fatal, he says, but harder. The parser outweighed
+the symmetry.
+</p>
+
+<p>
+English, like many systems including the Web, &ldquo;is optimized for
+forward traversal&rdquo;. A Web page knows what it links to, not what links
+to it.
 </p>
 
 <div class="since">
@@ -381,7 +388,7 @@ which was a matter of taste?</p>
 </div>
 <div class="question">
 <p><span class="question-number">43.5</span>
-Web links point one way. Name a task that needs backward links, and say how
-sites get round their absence.</p>
+Name a task that needs backward links, and say how sites manage without
+them.</p>
 </div>
 </div>

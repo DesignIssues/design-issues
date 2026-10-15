@@ -114,9 +114,10 @@ meant. None reaches the RDF node itself, which is why 34.2 proposes
 </figure>
 
 <p>
-A programming language would add a marker character, but the aim is to use
-only the existing language. So he distinguishes by the name of the referring
-attribute, not its value:
+In a programming language a marker character would do: <code>#foo</code>
+for the node, <code>@#foo</code> for the thing described. Berners-Lee wants to
+manage with XML as it is, so he distinguishes by the referring
+attribute&#8217;s name, not its value:
 </p>
 
 <table>
@@ -127,7 +128,8 @@ attribute, not its value:
 </table>
 
 <p>
-<code>href=</code> is needed because signatures apply to XML:
+<code>href=</code> matters because a digital signature covers the exact
+markup, so a signer must point at the XML, not at what it describes:
 </p>
 
 <blockquote>
@@ -203,11 +205,10 @@ documents. So this distinction is nonsense.
 </blockquote>
 
 <p>
-The easy fix fails. RDF could take the URI to mean the node the element
-describes, but RDF must also make statements about elements themselves. He
-wrote the snippet, yet saying he is the author of <code>foo.rdf#bar</code>
-would then make him the author of Ora Lassila (Figure 34.2). He lists three
-remedies:
+The easy fix fails. RDF could simply say a fragment always means the thing
+described, but then nothing is left for talking about the markup: saying he
+wrote <code>foo.rdf#bar</code> would make him the author of Ora Lassila
+(Figure 34.2). He lists three remedies:
 </p>
 <ul>
 <li><strong>Already in RDF:</strong> <code>parseType="Resource"</code> or
@@ -249,9 +250,9 @@ Ora Lassila, which neither record states. An unfinished aside compares SQL
 </p>
 
 <p>
-Shortcuts are sometimes needed, but they cost something. A <em>compound
-property</em> such as <code>author-mailbox</code> collapses two steps into one
-arrow.
+A <em>compound property</em> such as <code>author-mailbox</code> collapses
+the two steps into one arrow and saves a node, so shortcuts are sometimes
+needed. They cost something.
 </p>
 
 <figure>
@@ -327,7 +328,7 @@ any processing machinery.
 
 <p>
 He declines to settle which properties should count as identifying, calling
-it a rat hole not core to the discussion (the restraint of Chapter 22). What
+it a rat hole not core to the discussion. What
 matters is the step the mailbox makes possible: from &ldquo;written by a
 person whose email is ora@w3.org&rdquo; to the more useful &ldquo;written by
 the person whose mailbox is ora@w3.org&rdquo;.
@@ -356,7 +357,8 @@ fragment that answers with a document names a document.</li>
 <p>
 The confusion over the word resource is Chapter 9, and the fragment semantics
 that produce the clash are Chapter 11. The graph model is Chapter 32, and
-what to do when a URI must be quoted rather than used is Chapter 35. What joinable records mean for personal data is Chapters 72 and 73.
+what to do when a URI must be quoted rather than used is Chapter 35.
+Chapter 22 shows the same restraint over rat holes. What joinable records mean for personal data is Chapters 72 and 73.
 </p>
 </div>
 

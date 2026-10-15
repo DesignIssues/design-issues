@@ -189,9 +189,7 @@ something&rdquo;.
 <figcaption><span class="fig-label">Figure 44.2</span>
 Left: the description uses the name itself, so a system that learns
 <code>ex:joe</code> = <code>ex:jd1</code> may derive a version with
-<code>ex:jd1</code>, and which name the graph used is lost. Right: a string cannot be swapped. This is Chapter 35&#8217;s
-difference between using a name and talking about it, now written into a
-specification.</figcaption>
+<code>ex:jd1</code>, and which name the graph used is lost. Right: a string cannot be swapped.</figcaption>
 </figure>
 
 <p>
@@ -220,10 +218,10 @@ original graph.
 </blockquote>
 
 <p>
-They are two nodes. Were the describer taken for the original, what is said of
-the describer, such as its type <code>rei:BNode</code>, would land on the
-thing described. The describing node may even be given a name; that changes
-nothing about the unnamed node it describes.
+They are two nodes. Confuse them and the description&#8217;s own facts, such
+as its type <code>rei:BNode</code>, get pinned on whatever the original node
+stands for. Giving the describing node a name, such as
+<code>ex:bnode1</code>, leaves the original unnamed.
 </p>
 
 <figure id="fig-44-3">
@@ -283,7 +281,7 @@ Later, he adds, <a class="gl-ref" href="../glossary.html#n3">N3</a> might gain s
 <h2 id="sec-44-4">44.4 What Jane knows</h2>
 
 <p>
-The point is clearest in N3, where curly braces enclose a <em>formula</em>: a
+In N3, curly braces enclose a <em>formula</em>: a
 small graph treated as one thing, which can sit inside a statement.
 </p>
 
@@ -291,7 +289,9 @@ small graph treated as one thing, which can sit inside a statement.
 
 <p>
 What Jane knows is stated with the name <code>ex:joe</code>, not with the
-person: the braces quote.
+person. Plain RDF has no braces, which is why 44.1 had to hold names as
+strings; in N3 the braces themselves quote. &ldquo;As above, the quotation
+effect is important.&rdquo;
 </p>
 
 <figure id="fig-44-4">
@@ -330,17 +330,37 @@ does not license rewriting what Jane knows.</figcaption>
 </figure>
 
 <p>
-A formula with variables needs its description to list those variables too.
-This was running code: the note passes a two-sentence formula, &ldquo;There is
-a car. Anything which is a car is a vehicle&rdquo;, through
-<code>cwm --reify</code> and prints nearly thirty lines of output.
+N3 formulae can also contain variables, such as <code>?x</code> in
+&ldquo;anything which is a car&rdquo;, so a description lists them too, as
+universals and existentials. The note passes one line of N3 through
+<code>cwm --reify</code>:
+</p>
+
+<pre><code>[] a car. { ?x a car } =&gt; { ?x a vehicle }.</code></pre>
+
+<p>
+It gets back nearly thirty lines, including these:
+</p>
+
+<pre><code>&#8230;
+[ a &lt;http://www.w3.org/2000/10/swap/log#Truth&gt;;
+  &#8230;
+  statement [ owl:oneOf([
+     object [uri "http://www.w3.org/2000/10/swap/test/reify/ex1.n3#car" ];
+     predicate [uri "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+     subject [uri "http://www.w3.org/2000/10/swap/test/reify/ex1.n3#c" ]
+     &#8230;</code></pre>
+
+<p>
+&ldquo;Ungainly&rdquo; is fair.
 </p>
 
 <h2 id="sec-44-5">44.5 Describing is not asserting</h2>
 
 <p>
-The closing section draws the line that makes the whole thing safe, and it is
-the same line <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a> draws for documents:
+The cwm output above types the formula <code>log:Truth</code>, the N3 class
+of asserted formulae. The note draws the line here, as <a class="x-ref" href="24-interpretation-xml-document.html">Chapter 24</a> does for
+documents:
 </p>
 
 <blockquote>
@@ -358,7 +378,7 @@ anything.
 </table>
 
 <p>
-<code>log:Truth</code> is the N3 class of asserted formulae. Writing <code>{ ex:joe ex:name "James Doe" }</code> as something Jane knows
+Writing <code>{ ex:joe ex:name "James Doe" }</code> as something Jane knows
 commits the writer to nothing about Joe; typing the same formula
 <code>log:Truth</code> asserts it. A system that conflates the two believes
 everything it was merely told about.
@@ -374,8 +394,7 @@ proposed in the 2010 note restated in <a class="x-ref" href="47-changes-needed-r
 <li><strong>The requirement was met differently.</strong> Named graphs, proposed
 in 2005, built into <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> datasets (<a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a>, January 2008) and RDF 1.1
 (2014), let a set of statements be identified and
-described without being restated, which is what this note is trying to
-achieve.</li>
+described without being restated, the aim of this note.</li>
 <li><strong>Statements about statements returned.</strong> The RDF-star
 Community Group report (2021) and the RDF 1.2 work that followed from 2022
 added a compact way to annotate a statement, and had to settle

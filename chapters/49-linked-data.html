@@ -83,13 +83,18 @@ data, when you have some of it, you can find other, related, data.
 <h2 id="sec-49-1">49.1 The four rules</h2>
 
 <p>
-Applied to one person, the rules say: name Albert with a <em>URI</em>, a web
-address used as a name, of a person or an idea as well as a page; make it an
-<code>http:</code> address, so that it can be looked up; when someone looks
-it up, return statements such as (Albert, child, Brian) in <em><a class="gl-ref" href="../glossary.html#rdf">RDF</a></em>, the
-standard format for three-part statements; and make Brian a URI too, so the
-reader can go on. Then comes the twist: &ldquo;Simple. In fact, though, a surprising amount of data isn&#8217;t
-linked in 2006&rdquo;.
+Applied to Albert, the rules run as follows. First, give him a
+<em>URI</em>: a web address used as a name, for a person or idea as well as
+a page. Second, make it an <code>http:</code> address, so that it can be
+looked up. Third, when someone looks it up, return statements such as
+(Albert, child, Brian) in <em><a class="gl-ref" href="../glossary.html#rdf">RDF</a></em>, the standard format for them. Fourth,
+make Brian a URI too, so the reader can go on.
+</p>
+
+<p>
+&ldquo;Simple. In fact, though, a surprising amount of data isn&#8217;t
+linked in 2006, because of problems with one or more of the steps.&rdquo;
+Each rule can fail in its own way.
 </p>
 
 <figure id="fig-49-1">
@@ -167,8 +172,7 @@ separate control.
 
 <p>
 Another is not seeing that <a class="gl-ref" href="../glossary.html#http">HTTP</a> URIs are names, not addresses, with a
-powerful and evolving lookup. <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> takes that misunderstanding apart; <a class="x-ref" href="13-persistent-domains.html">Chapter 13</a> explains
-what separate control would require.
+powerful and evolving lookup (Chapters <a class="x-ref" href="03-myth-names-addresses.html">3</a> and <a class="x-ref" href="13-persistent-domains.html">13</a>).
 </p>
 
 <p>
@@ -274,9 +278,9 @@ The local name <code>#carol</code> becomes the global name
 Some vocabularies, including early <a class="gl-ref" href="../glossary.html#dublin-core">Dublin Core</a> and <a class="gl-ref" href="../glossary.html#foaf">FOAF</a>, used names without a
 <a class="gl-ref" href="../glossary.html#hash">hash</a>. For these the <a class="gl-ref" href="../glossary.html#server">server</a> answers with a <em><a class="gl-ref" href="../glossary.html#redirect">redirect</a></em>: a reply, with
 the <a class="gl-ref" href="../glossary.html#status-code">status code</a> 303, telling the client to fetch a different address instead
-(<a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>), as suits a dictionary such as WordNet, with one word per
-document. Names can then take any form, but each costs an extra round trip
-(<a class="x-ref" href="#fig-49-3">Figure 49.3</a>; a <a class="gl-ref" href="../glossary.html#get">GET</a> is an ordinary request for a page).
+(<a class="x-ref" href="08-http-uris-identify-ii.html">Chapter 8</a>). Slash names suit a dictionary such as WordNet, with one word
+per page. Names can then take any form, but each costs an extra round trip
+(<a class="x-ref" href="#fig-49-3">Figure 49.3</a>).
 </p>
 
 <figure id="fig-49-3">
@@ -339,7 +343,8 @@ document. Names can then take any form, but each costs an extra round trip
 <figcaption><span class="fig-label">Figure 49.3</span>
 Hash names cost one fetch for a whole vocabulary. Slash names cost two per
 term, and only after fetching them all does a client learn they share a document.
-Dublin Core (abbreviated here) is the note&#8217;s example.</figcaption>
+Dublin Core (abbreviated here) is the note&#8217;s example; a GET is an
+ordinary page request.</figcaption>
 </figure>
 
 <h2 id="sec-49-4">49.4 The convention that worked and was wrong</h2>
@@ -389,13 +394,15 @@ should use it.
 
 <p>
 Data is <em>browsable</em> if looking up any thing returns every statement in
-which it appears, as first part or last.
+which it appears, as first part or last. Look up Carol and
+one should learn both that she is Albert&#8217;s child and that Denise&#8217;s
+family links to her.
 </p>
 
 <p>
 The price is that a statement relating two documents must be repeated in
-both (<a class="x-ref" href="#fig-49-4">Figure 49.4</a>, left). That breaks the first rule of data storage, not to
-store the same thing twice. Generated data escapes the cost: Dan Connolly&#8217;s DBView (2004, adapted by
+both (<a class="x-ref" href="#fig-49-4">Figure 49.4</a>, left). That breaks a basic rule of databases: do not store
+the same fact in two places, or the copies drift apart. Generated data escapes the cost: Dan Connolly&#8217;s DBView (2004, adapted by
 Rob Crowell in 2006) presents any relational
 database as linked pages. Otherwise
 the choice is common sense:

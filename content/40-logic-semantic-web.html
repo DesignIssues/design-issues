@@ -111,9 +111,11 @@ conflicts, notably a single efficient reasoning system.
 <p>
 First-order logic, the standard logic of &ldquo;for every&rdquo; and
 &ldquo;there is some&rdquo;, is already too expressive for anyone to decide in
-advance all an agent could deduce, as Crawford and Kuipers note. No matter: what an agent deduces depends on its engine, storage and
-indexes, and a time bound &ldquo;in the size of the entire Web may not be at
-all helpful, as even linear time would be quite impractical.&rdquo;
+advance all an agent could deduce, as Crawford and Kuipers note. In practice,
+he answers, it need not be decided. What an agent actually deduces depends on
+its engine, storage and indexes. A time bound in the size of the whole Web is
+no comfort: even a method whose work grows only in step with the data,
+&ldquo;linear time&rdquo;, &ldquo;would be quite impractical&rdquo;.
 </p>
 
 <blockquote>
@@ -132,8 +134,8 @@ right, but it can follow a simple explanation that an answer is right.
 </blockquote>
 
 <p>
-Finding a proof means a search that may never end; checking one means
-following written steps. A program shown the three invoice
+Finding a proof may mean a search that never ends; checking one means
+following written steps. A program shown the invoice
 lines can confirm that the third follows without having thought of it.
 </p>
 
@@ -275,22 +277,17 @@ restriction. Only three properties are guaranteed across the whole.</figcaption>
 What separates this note from a logic paper is grounding. It is not enough
 to show that the system can be constrained to behave like some known
 mathematical system; a particular mapping must let the representation convey
-its meaning in a way that combines with everything else. His urgency was tied
-to its year. A rigid framework for electronic commerce terms was needed, he
-wrote, before commerce grew into &ldquo;a mass of vaguely defined semantics
+its meaning in a way that combines with everything else. Writing in 1999, he
+called a rigid framework for electronic commerce terms essential now, before
+commerce grew into &ldquo;a mass of vaguely defined semantics
 and ad hoc syntax&rdquo;, in which &ldquo;the court of law rather than a
 logical derivation settles arguments&rdquo;.
 </p>
 
 <p>
-Much of it grew without one. A partial counter-example is schema.org
-(2011), whose product and offer terms many shop pages now carry.
-</p>
-
-<p>
 In practice, meaning is grounded in the ordinary applications that consume
 the data: a currency transfer program that accepts it defines what its terms
-mean: the closed loop of Chapter 37.
+mean. This is the closed loop of Chapter 37.
 </p>
 
 <h2>40.5 Rules cannot be outside the language</h2>
@@ -299,7 +296,9 @@ mean: the closed loop of Chapter 37.
 Most knowledge
 representation systems hold their inference rules, the permitted steps from
 one statement to the next, apart from the rest of what they believe, sometimes
-because the rules cannot be written in the language at all. Such rule sets,
+because the rules cannot be written in the language at all. Substitution in a
+formula, swapping one name for another wherever it appears, is the note&#8217;s
+example. Such rule sets,
 Berners-Lee observes, are often redundant and arbitrary; a universal design
 must be minimalist.
 </p>
@@ -346,6 +345,9 @@ will be expressing paradoxes.
 (February 2004) came in three species, Lite, DL and Full; OWL 2 (October
 2009) added three profiles, EL, QL and RL, each chosen so that reasoning
 stays tractable. That is section 40.3 turned into a standard.</li>
+<li><strong>Commerce grew without the rigid framework.</strong> schema.org
+(2011) later gave shop pages shared terms for products and offers, a looser
+vocabulary than the one he asked for.</li>
 <li><strong>The proof layer was never standardised.</strong> Experimental
 proof formats existed (cwm&#8217;s, for one), but by 2026 there was no W3C
 Recommendation for exchanging proofs.</li>

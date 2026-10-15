@@ -165,9 +165,10 @@ meant. None reaches the RDF node itself, which is why 34.2 proposes
 </figure>
 
 <p>
-A programming language would add a marker character, but the aim is to use
-only the existing language. So he distinguishes by the name of the referring
-attribute, not its value:
+In a programming language a marker character would do: <code>#foo</code>
+for the node, <code>@#foo</code> for the thing described. Berners-Lee wants to
+manage with XML as it is, so he distinguishes by the referring
+attribute&#8217;s name, not its value:
 </p>
 
 <table>
@@ -178,7 +179,8 @@ attribute, not its value:
 </table>
 
 <p>
-<code>href=</code> is needed because signatures apply to XML:
+<code>href=</code> matters because a <a class="gl-ref" href="../glossary.html#digital-signature">digital signature</a> covers the exact
+markup, so a signer must point at the XML, not at what it describes:
 </p>
 
 <blockquote>
@@ -254,11 +256,10 @@ documents. So this distinction is nonsense.
 </blockquote>
 
 <p>
-The easy fix fails. RDF could take the URI to mean the node the element
-describes, but RDF must also make statements about elements themselves. He
-wrote the snippet, yet saying he is the author of <code>foo.rdf#bar</code>
-would then make him the author of Ora Lassila (<a class="x-ref" href="#fig-34-2">Figure 34.2</a>). He lists three
-remedies:
+The easy fix fails. RDF could simply say a fragment always means the thing
+described, but then nothing is left for talking about the markup: saying he
+wrote <code>foo.rdf#bar</code> would make him the author of Ora Lassila
+(<a class="x-ref" href="#fig-34-2">Figure 34.2</a>). He lists three remedies:
 </p>
 <ul>
 <li><strong>Already in RDF:</strong> <code>parseType="Resource"</code> or
@@ -300,9 +301,9 @@ Ora Lassila, which neither record states. An unfinished aside compares <a class=
 </p>
 
 <p>
-Shortcuts are sometimes needed, but they cost something. A <em>compound
-property</em> such as <code>author-mailbox</code> collapses two steps into one
-arrow.
+A <em>compound property</em> such as <code>author-mailbox</code> collapses
+the two steps into one arrow and saves a node, so shortcuts are sometimes
+needed. They cost something.
 </p>
 
 <figure id="fig-34-3">
@@ -378,7 +379,7 @@ any processing machinery.
 
 <p>
 He declines to settle which properties should count as identifying, calling
-it a rat hole not core to the discussion (the restraint of <a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22</a>). What
+it a rat hole not core to the discussion. What
 matters is the step the mailbox makes possible: from &ldquo;written by a
 person whose email is ora@w3.org&rdquo; to the more useful &ldquo;written by
 the person whose mailbox is ora@w3.org&rdquo;.
@@ -407,7 +408,8 @@ fragment that answers with a document names a document.</li>
 <p>
 The confusion over the word resource is <a class="x-ref" href="09-short-history-term-resource.html">Chapter 9</a>, and the fragment semantics
 that produce the clash are <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>. The graph model is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, and
-what to do when a URI must be quoted rather than used is <a class="x-ref" href="35-when-use-literal-uri-linked.html">Chapter 35</a>. What joinable records mean for personal data is Chapters <a class="x-ref" href="72-inference-over-private-data.html">72</a> and <a class="x-ref" href="73-link-bio-personal-data-which.html">73</a>.
+what to do when a URI must be quoted rather than used is <a class="x-ref" href="35-when-use-literal-uri-linked.html">Chapter 35</a>.
+<a class="x-ref" href="22-working-despite-ambiguity.html">Chapter 22</a> shows the same restraint over rat holes. What joinable records mean for personal data is Chapters <a class="x-ref" href="72-inference-over-private-data.html">72</a> and <a class="x-ref" href="73-link-bio-personal-data-which.html">73</a>.
 </p>
 </div>
 

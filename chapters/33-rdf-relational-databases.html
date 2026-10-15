@@ -68,8 +68,8 @@ can change, which is harmless inside one database and breaks links on the Web.
 <p>
 Employee records, car registrations: a vast amount of the data that already
 exists sits in the tables of relational databases. A <a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a> that could
-not reach it would leave much of what is recorded out. Berners-Lee says
-reaching it was the point all along:
+not reach it would leave much of what is recorded out. Writing in September 1998, Berners-Lee says reaching it was
+the point all along:
 </p>
 <blockquote>
 Indeed, one of the main driving forces for the Semantic web, has always been
@@ -77,9 +77,6 @@ the expression, on the Web, of the vast amount of relational database
 information in a way that can be processsed by machines.
 <cite>Relational Databases on the Semantic Web, 1998</cite>
 </blockquote>
-<p>
-He wrote it in September 1998, as a parenthesis to Chapters <a class="x-ref" href="05-web-architecture-50000-feet.html">5</a> and <a class="x-ref" href="30-roadmap-semantic-web.html">30</a>.
-</p>
 </div>
 
 <h2 id="sec-33-1">33.1 The mapping</h2>
@@ -236,8 +233,7 @@ add one and store it anywhere.</figcaption>
 </figure>
 
 <p>
-Object-oriented systems, the usual way of building such models in
-software, assume the opposite: an object&#8217;s data lives inside the object,
+Object-oriented systems assume the opposite: an object&#8217;s data lives inside the object,
 in slots its class set aside. RDF lets a relationship be stored apart from
 everything else about the two things it joins, because, in the note&#8217;s
 words, &ldquo;The Web works though anyone being (technically) allowed to say
@@ -250,7 +246,10 @@ anything about anything.&rdquo;
 A row says that a red car has Massachusetts plate 123XYZ. The table may also
 carry, in the note&#8217;s words, &ldquo;the unwritten semantics that if any car
 has a Massachusetts plate then it must be in the table.&rdquo; Neither model has
-a simple way of writing that rule down.
+a simple way of writing that rule down. Inside one database nobody needs it
+written. On the Web, a program not told the rule cannot conclude from a
+car&#8217;s absence that it has no Massachusetts plate: the closed world
+assumption of <a class="x-ref" href="31-semantic-web-isnt-represent.html#sec-31-6">section 31.6</a>.
 </p>
 
 <h3>Typing</h3>
@@ -279,8 +278,8 @@ program can conclude that a query joining them is nonsense, and refuse it.
 <h3>Keys that change</h3>
 
 <p>
-The naming problem of <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> returns: a primary key
-can change without the row changing identity: a person may change their name.
+The naming problem of <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> returns. A primary key can change while the
+row stays the same thing: a person may change their name.
 Other tables refer to the row by its key, and <a class="gl-ref" href="../glossary.html#sql">SQL</a> can cascade the change,
 rewriting every such reference so none points at nothing (referential
 integrity). That works inside one database; it cannot reach links made from
@@ -333,7 +332,7 @@ knows about none of them, which leaves the note&#8217;s three answers at the bot
 </figure>
 
 <p>
-He offers three answers: give each row a hidden row ID (many systems keep one,
+He offers three answers: give each row an internal row ID (many systems keep one,
 though SQL does not expose it in a standard way); forbid the key to change; or
 put up with broken links.
 </p>
@@ -343,7 +342,7 @@ put up with broken links.
 <p>
 A <a class="gl-ref" href="../glossary.html#schema">schema</a> is the declared shape of some data: its tables and columns, or the
 elements a document may contain. He expects relatively few document
-schemas, and expects many sites to export documents defined by the same one.
+schemas, with many sites exporting documents defined by the same one.
 Database schemas are created independently per database:
 </p>
 
@@ -425,10 +424,11 @@ terms between those million schemas, the conversion layer of <a class="x-ref" hr
 <h2 id="sec-33-5">33.5 An address for every cell</h2>
 
 <p>
-The rest of the note is a strawman, a first draft put up to be criticised: a
-layout giving a <a class="gl-ref" href="../glossary.html#uri">URI</a> to each part of a database, down to a single cell and an
-arbitrary query. A 2002 version, based on code Dan Connolly implemented,
-looks like <a class="x-ref" href="#fig-33-5">Figure 33.5</a>.
+If every table, row and cell has a Web address, anyone can link to it and
+say things about it. The rest of the note is a strawman (a draft put up to
+be criticised) of such a layout, down to a single cell and an arbitrary
+query; <a class="x-ref" href="#fig-33-5">Figure 33.5</a> shows a 2002 version, based on code Dan Connolly
+implemented.
 </p>
 
 <figure id="fig-33-5">
@@ -474,11 +474,11 @@ carries names from both.
 
 <p>
 Berners-Lee is unsure whether a query on a primary key, or a single cell,
-is really an identifier. His ruling applies the rule of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> that fetching a URI with <a class="gl-ref" href="../glossary.html#get">GET</a> must
+is really an identifier. His ruling applies the rule of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> that fetching a <a class="gl-ref" href="../glossary.html#uri">URI</a> with <a class="gl-ref" href="../glossary.html#get">GET</a> must
 not change anything. A query that only reads may sit in a URI after a
 question mark. A query that changes the table, such as UPDATE or DELETE,
 should be sent with <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#post">POST</a>, never named by a URI. Search engines and
-browsers follow GET links freely, assuming that changes nothing; a link that deleted a row would be triggered by the first
+browsers follow GET links freely; a link that deleted a row would be triggered by the first
 robot that found it, as happened in 2005 with the prefetching tool described
 in <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>.
 </p>
@@ -502,8 +502,8 @@ of the cost of data integration projects.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The graph model this maps onto is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>, and the plan it serves is
-<a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a>. The closed world assumption that neither model writes down is
+The note is a parenthesis to Chapters <a class="x-ref" href="05-web-architecture-50000-feet.html">5</a> and <a class="x-ref" href="30-roadmap-semantic-web.html">30</a>. The graph model it maps
+onto is <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. The closed world assumption that neither model writes down is
 named in <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>. The naming problem behind primary keys is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>. Publishing such data at
 scale is Chapters <a class="x-ref" href="49-linked-data.html">49</a> and <a class="x-ref" href="53-putting-government-data-web.html">53</a>.
 </p>

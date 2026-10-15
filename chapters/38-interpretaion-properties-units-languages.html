@@ -69,8 +69,8 @@ Are the letters &ldquo;Ora&rdquo; Finnish? As the first name of Ora Lassila
 they are, but the note links the same three letters to a Danish currency, an
 Old English weight and the Latin for shore. A computer handed the bare
 string cannot tell which reading is meant. RDF in 2000 marked language the <a class="gl-ref" href="../glossary.html#xml">XML</a> way, which vanished once the file
-was read into the data model: &ldquo;no <a class="gl-ref" href="../glossary.html#triple">triple</a>
-would result&rdquo;.
+was read into the graph (RDF stores every fact as a <a class="gl-ref" href="../glossary.html#triple">triple</a>: thing, property,
+value): &ldquo;no triple would result&rdquo;.
 </p>
 <p>
 So where does a language belong, or a unit, or an encoding? The note gets the
@@ -343,7 +343,7 @@ were applied: a rule about order, stated in prose.
 <h2 id="sec-38-4">38.4 Ten of what?</h2>
 
 <p>
-The note&#8217;s Conclusion turns against its own proposal: the
+The note&#8217;s Conclusion limits its own proposal: the
 idea makes &ldquo;a clean accurate model&rdquo;, but &ldquo;using the concept
 for datatypes in RDF is incompatible with RDF as we know it today.&rdquo;
 </p>
@@ -414,9 +414,17 @@ something true about it. Ordinary RDF writes no such node.</figcaption>
 </figure>
 
 <p>
-Datatype designers face trade-offs, which the note lists as questions; the
-answers fix how values are compared. The second column gives XML <a class="gl-ref" href="../glossary.html#schema">Schema</a>
-Datatypes&#8217; answers as Berners-Lee understood them.
+The simple fix is to declare that shoe:size is an integer, so that the string
+and the type together give the value ten. &ldquo;This works.&rdquo; It is what
+XML datatypes do, with the snag that two values cannot be compared unless their
+datatypes are known.
+</p>
+
+<p>
+A datatype&#8217;s design decides when two values count as equal. The note
+lists the trade-offs as five questions (a &ldquo;representation&rdquo; is how
+a value is written), here with XML <a class="gl-ref" href="../glossary.html#schema">Schema</a>&#8217;s answers as Berners-Lee
+understood them:
 </p>
 
 <table>
@@ -429,19 +437,14 @@ Datatypes&#8217; answers as Berners-Lee understood them.
 </table>
 
 <p>
-The simple fix is to declare that shoe:size is an integer, so that the string
-and the type together give the value ten. &ldquo;This works.&rdquo; It is what
-XML datatypes do, with the snag that two values cannot be compared unless their
-datatypes are known. Modelling the reading as an interpretation property
-instead needs an extra node, and ordinary RDF has none.
-</p>
-
-<p>
-Berners-Lee considers two ways to supply it. The first is to change how every
-literal (a plain string value in the data) is parsed, so that each one gains an abstract node. He calls
-it frightful. The second is to treat &ldquo;10&rdquo; as standing for
-everything it could represent under some datatype: the integer ten, ten
-inches, ten feet. That is frightful too, because equality stops working.
+Modelling the reading as an interpretation property needs an extra node, and
+ordinary RDF has none. He considers two ways to supply it. The first
+is to change how every literal (a plain string value in the data) is parsed,
+so that each one gains an abstract node. He calls it frightful. The second is
+to treat &ldquo;10&rdquo; as standing for everything it could represent under
+some datatype. That is frightful too: if &ldquo;10&rdquo; stands for ten
+inches and ten feet alike, a shoe of ten inches and a pole of ten feet have
+the &ldquo;same&rdquo; size, so equality stops working.
 </p>
 
 <p>
@@ -456,8 +459,8 @@ note to himself:
 </blockquote>
 
 <p>
-As the notes below record, RDF eventually settled closer to the attempt this
-note rejected, packaging the tag or datatype with the string.
+RDF eventually settled language tags closer to the
+attempt this note rejected, packaging the tag with the string.
 </p>
 
 <div class="since">

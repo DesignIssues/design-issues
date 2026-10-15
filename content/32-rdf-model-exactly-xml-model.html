@@ -37,7 +37,8 @@ round in another note.
 <h2>32.1 One fact, many documents, one graph</h2>
 
 <p>
-Berners-Lee writes the assertion that Ora is the author of a page five ways, all perfectly good XML.
+XML nests named tags such as <code>&lt;author&gt;&hellip;&lt;/author&gt;</code>
+into a tree. Berners-Lee writes the assertion that Ora is the author of a page five ways, all perfectly good XML.
 &ldquo;To a machine parsing them, they produce different XML trees.&rdquo;
 </p>
 
@@ -109,9 +110,7 @@ what RDF does.</figcaption>
 </figure>
 
 <p>
-XML <em>elements</em>, named tags such as
-<code>&lt;author&gt;&hellip;&lt;/author&gt;</code>, nest to form a
-<em>tree</em> and may carry <em>attributes</em> such as
+These tags are <em>elements</em>; they form a <em>tree</em> and may carry <em>attributes</em> such as
 <code>href="page"</code>; a <em>parser</em> builds the tree and a
 <em>query</em> asks it questions. RDF, the Semantic Web&#8217;s data model,
 instead stores each fact as a <em>triple</em>: a subject (page), a relation
@@ -119,8 +118,9 @@ instead stores each fact as a <em>triple</em>: a subject (page), a relation
 </p>
 
 <p>
-He then renames the elements v, x, y, z and w. The names were a big hint,
-and only to the human.
+He then shows a tree with the shape of the third layout but its names
+replaced by v, x, y, z and w. The names were a big hint, and only to the
+human.
 </p>
 
 <figure>
@@ -184,7 +184,7 @@ not.</figcaption>
 </figure>
 
 <p>
-Of that tree a program can still ask questions such as these:
+A program can still ask such questions as these:
 </p>
 
 <table>
@@ -325,9 +325,8 @@ when you start mixing records you get trouble.&rdquo; On the Web, records are al
 
 <h3>Statements about statements</h3>
 <p>
-The jam jar asks: &ldquo;What expires: the label, or the jam?&rdquo; The
-label is a statement about the jam, so &lsquo;Expires 1999&rsquo; may be a
-statement about the jam, or a statement about the label&#8217;s statement.
+The jam jar asks: &ldquo;What expires: the label, or the jam?&rdquo; &lsquo;Expires 1999&rsquo; may be a statement about the jam, or a statement
+about the label&#8217;s own statement; the format never says which.
 The qualifier at a distance is subtler. Normally, if a document is
 in Finnish, a reader may infer that its author speaks Finnish. Now a flag
 elsewhere in the record says that <code>author</code> means the author of the
@@ -346,8 +345,7 @@ that rules are processed in order.
 </p>
 <p>
 Mail headers saying a message is encrypted, compressed, ASCII-encoded and in
-HTML read as a flat list, but the truth is a nesting (Figure 32.4). Chapter 38
-shows how to write it properly.
+HTML read as a flat list, but the truth is a nesting (Figure 32.4).
 </p>
 
 <figure>
@@ -412,6 +410,11 @@ important to recognise the difference.
 <cite>Why RDF model is different from the XML model, 1998</cite>
 </blockquote>
 
+<p>
+On the Web, where records are always mixed, that difference decides whether
+a program can trust what it reads.
+</p>
+
 <div class="since">
 <h3>What happened since</h3>
 <ul>
@@ -453,7 +456,7 @@ that it is true on its own, whatever order the rules are read in. </p>
 <div class="question">
 <p><span class="question-number">32.4</span>
 A record says a book is in Finnish and names its author; elsewhere a flag says
-&ldquo;author&rdquo; means the author of the original, translated work. Which
+&ldquo;author&rdquo; means the author of the work that was translated to make this book. Which
 conclusions about the author still hold, and what must the format say to
 keep them safe?</p>
 </div>

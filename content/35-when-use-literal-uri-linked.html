@@ -23,9 +23,8 @@ needs careful explanation&rdquo;.
 <h2>35.1 Brackets name a thing, quotes hold text</h2>
 
 <p>
-Linked Data is RDF published so that datasets can point into one another
-(Chapter 49). RDF describes the world as triples: subject, property, value,
-commonly written in Turtle. In Turtle a URI
+Linked Data writes facts as three-part statements (Joe / is a / student),
+usually in a notation called Turtle (Chapter 49). In Turtle a URI
 in angle brackets is a symbol: it names a thing. A value in quotation marks is
 a literal: a piece of text, taken as it stands. Berners-Lee offers a mnemonic
 for the brackets:
@@ -36,6 +35,10 @@ You can think of the &lt; and &gt; signs around the URI in turtle meaning that
 identified by.
 <cite>When use a literal for a URI in Linked Data, 2017</cite>
 </blockquote>
+
+<p>
+That is, read <code>&lt;&#8230;&gt;</code> as &ldquo;the thing identified by &#8230;&rdquo;.
+</p>
 
 <table>
 <tr><th>Written as</th><th>Means</th><th>Joe&#8217;s example</th></tr>
@@ -67,7 +70,8 @@ together&rdquo;.</li>
 
 <p>
 In the figures, <code>ex:Joe</code> is short for the full example.com address,
-and <code>a</code> means &ldquo;is a&rdquo;.
+and <code>a</code> means &ldquo;is a&rdquo;; <code>foaf:Person</code> and
+<code>uni:Student</code> are shared words for &ldquo;person&rdquo; and &ldquo;student&rdquo;.
 </p>
 
 <figure>
@@ -206,17 +210,6 @@ Where the format cannot record the difference, the rare mention is lost. The
 note ends: &ldquo;Hence this whole DesignIssues note just to make the point.&rdquo;
 </p>
 
-<div class="since">
-<h3>What was already in place</h3>
-<ul>
-<li><strong>The notation was already standard.</strong> RDF 1.1 Turtle became
-a W3C Recommendation in February 2014.</li>
-<li><strong>So was the merge.</strong> <code>owl:sameAs</code>, which
-licenses smushing, comes from OWL, a W3C Recommendation since February
-2004.</li>
-</ul>
-</div>
-
 <div class="connections">
 <h3>Connections</h3>
 <p>
@@ -224,6 +217,8 @@ The distinction between a thing and a name for it is Chapter 34, and the
 ownership of names that makes two identifiers coexist is Chapter 2. Quotation
 as a base-layer feature is Chapter 30, and the need to mark material as
 mentioned rather than acted upon is the same requirement as Chapter 24.
+Both pieces were standard before the note: Turtle a W3C Recommendation since
+February 2014, <code>owl:sameAs</code> (from OWL) since February 2004.
 </p>
 </div>
 

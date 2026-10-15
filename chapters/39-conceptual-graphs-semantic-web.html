@@ -61,7 +61,7 @@ go is not the logic but the assumption of one closed, central knowledge base.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Volume IV closes with an overdue comparison. More than once people had told Berners-Lee that the Semantic Web was
+More than once people had told Berners-Lee that the Semantic Web was
 really just Conceptual Graphs, or the reverse; Mary Keeler came from a CG
 conference deliberately to say so. The articles he looked at conveyed little
 beyond &ldquo;a fervent desire to implement some ideas of Charles S.
@@ -104,11 +104,76 @@ Berners-Lee&#8217;s <a class="gl-ref" href="../glossary.html#n3">N3</a>, the com
 <cite>Conceptual Graphs and the Semantic Web, 2001</cite>
 </blockquote>
 
+<figure id="fig-39-1">
+<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
+     aria-labelledby="fig39-1-t fig39-1-d">
+  <title id="fig39-1-t">John goes to Boston by bus, drawn both ways</title>
+  <desc id="fig39-1-d">On the left, the Conceptual Graph: a Go concept box
+  links through three relation ovals, Agnt, Dest and Inst, to the concept
+  boxes Person: John, City: Boston and Bus. On the right, the RDF version: a
+  blank node of type Go has three labelled arcs, agent, dest and inst, to
+  John, Boston and a Bus.</desc>
+  <defs>
+    <marker id="fig39-1-arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="28" class="t-caps" text-anchor="middle">conceptual graph</text>
+  <rect class="box" x="20" y="125" width="70" height="30" rx="3"/>
+  <text x="55" y="145" text-anchor="middle">Go</text>
+  <ellipse class="box-warm" cx="170" cy="70" rx="36" ry="16"/>
+  <text x="170" y="75" text-anchor="middle">Agnt</text>
+  <ellipse class="box-warm" cx="170" cy="140" rx="36" ry="16"/>
+  <text x="170" y="145" text-anchor="middle">Dest</text>
+  <ellipse class="box-warm" cx="170" cy="210" rx="36" ry="16"/>
+  <text x="170" y="215" text-anchor="middle">Inst</text>
+  <line class="ln" x1="90" y1="132" x2="134" y2="78" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="90" y1="140" x2="132" y2="140" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="90" y1="148" x2="134" y2="202" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="206" y1="70" x2="238" y2="70" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="206" y1="140" x2="238" y2="140" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="206" y1="210" x2="238" y2="210" marker-end="url(#fig39-1-arr)"/>
+  <rect class="box" x="240" y="55" width="104" height="30" rx="3"/>
+  <text x="292" y="75" text-anchor="middle">Person: John</text>
+  <rect class="box" x="240" y="125" width="104" height="30" rx="3"/>
+  <text x="292" y="145" text-anchor="middle">City: Boston</text>
+  <rect class="box" x="240" y="195" width="104" height="30" rx="3"/>
+  <text x="292" y="215" text-anchor="middle">Bus</text>
+  <text x="180" y="262" class="t-sm" text-anchor="middle">boxes are concepts; ovals are relations</text>
+
+  <line class="ln-mut" x1="360" y1="16" x2="360" y2="268"/>
+
+  <text x="540" y="28" class="t-caps" text-anchor="middle">rdf / n3</text>
+  <rect class="box" x="385" y="125" width="70" height="30" rx="3"/>
+  <text x="420" y="145" text-anchor="middle" class="t-mono">[a :Go]</text>
+  <line class="ln" x1="455" y1="132" x2="598" y2="72" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="455" y1="140" x2="598" y2="140" marker-end="url(#fig39-1-arr)"/>
+  <line class="ln" x1="455" y1="148" x2="598" y2="208" marker-end="url(#fig39-1-arr)"/>
+  <text x="508" y="94" class="t-sm t-mono" text-anchor="end">:agent</text>
+  <text x="527" y="132" class="t-sm t-mono" text-anchor="middle">:dest</text>
+  <text x="508" y="196" class="t-sm t-mono" text-anchor="end">:inst</text>
+  <rect class="box" x="600" y="55" width="100" height="30" rx="3"/>
+  <text x="650" y="75" text-anchor="middle" class="t-mono">&lt;#John&gt;</text>
+  <rect class="box" x="600" y="125" width="100" height="30" rx="3"/>
+  <text x="650" y="145" text-anchor="middle" class="t-mono">&lt;#Boston&gt;</text>
+  <rect class="box" x="600" y="195" width="100" height="30" rx="3"/>
+  <text x="650" y="215" text-anchor="middle" class="t-mono">[a :Bus]</text>
+  <text x="540" y="262" class="t-sm" text-anchor="middle">every node is a thing; relations are arc labels</text>
+</svg>
+<figcaption><span class="fig-label">Figure 39.1</span>
+In a CG the relation is a node of its own kind, so the graph has two
+disjoint sorts of node. In RDF the relation is the label
+on an arc, and everything else is a Thing.</figcaption>
+</figure>
+
 <p>
 In the N3, <code>[a :Go]</code> means &ldquo;something that is a Go&rdquo;; each
 <code>&gt;- p -&gt;</code> line attaches a relation <em>p</em> to another
-thing. The likeness is &ldquo;remarkable down to the final period&rdquo;
-(<a class="x-ref" href="#fig-39-3">Figure 39.3</a> draws both). His verdict:
+thing. The likeness is &ldquo;remarkable down to the final period&rdquo;;
+the structural difference the figure does show returns in <a class="x-ref" href="#sec-39-3">section 39.3</a>. His
+verdict:
 </p>
 
 <blockquote>
@@ -124,8 +189,8 @@ The operative phrase is closed worlds. If a closed knowledge base does not say
 John goes to Boston, the system concludes that he does not; on the open Web,
 the absence means only that this document does not say so. CGs, the note
 adds, are basically as expressive as KIF (the Knowledge Interchange Format, a
-standard text format for logic), and so only have to be webized. That is a
-considerable concession. Conceptual Graphs are not wrong, only unwebized.
+standard text format for logic), and so only have to be webized.
+Conceptual Graphs are not wrong, only unwebized.
 </p>
 
 <h2 id="sec-39-2">39.2 Webizing someone else&#8217;s logic</h2>
@@ -137,11 +202,11 @@ concept Bus in http://example.org/travel becomes
 http://example.org/travel#Bus. He separates two kinds of obstacle.
 </p>
 
-<figure id="fig-39-1">
+<figure id="fig-39-2">
 <svg class="dia" viewBox="0 0 720 340" width="720" height="340" role="img"
-     aria-labelledby="fig39-1-t fig39-1-d">
-  <title id="fig39-1-t">Deliberate design against incidental centralisation</title>
-  <desc id="fig39-1-d">Some features of Conceptual Graphs are intended by
+     aria-labelledby="fig39-2-t fig39-2-d">
+  <title id="fig39-2-t">Deliberate design against incidental centralisation</title>
+  <desc id="fig39-2-d">Some features of Conceptual Graphs are intended by
   their designers and map cleanly onto the Semantic Web. Others are
   centralising assumptions made before anyone needed to scale to the Web, and
   removing them does the system no damage.</desc>
@@ -174,7 +239,7 @@ http://example.org/travel#Bus. He separates two kinds of obstacle.
   <text x="360" y="308" class="t-sm" text-anchor="middle">The test of Chapter 16, applied in detail: which decisions were architectural, and which arbitrary?</text>
   <text x="360" y="330" class="t-sm t-it" text-anchor="middle">Only the right-hand column has to go.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 39.1</span>
+<figcaption><span class="fig-label">Figure 39.2</span>
 The centralising features are not an architectural problem, only decisions
 made without Web scale in view. A coreference set is a group of names for the same
 thing; CGs make one of them the dominant, defining name.</figcaption>
@@ -203,7 +268,7 @@ Universality is required of the base language, not of everything built on
 it.
 </p>
 
-<h2 id="sec-39-4">39.4 Where the shapes do not match</h2>
+<h2 id="sec-39-4">39.4 Where the shapes differ, and where they match</h2>
 
 <h3>Two arguments or many</h3>
 
@@ -215,16 +280,16 @@ leaves &ldquo;a little tension as
 the two forms coexist&rdquo;.
 </p>
 
-<figure id="fig-39-2">
+<figure id="fig-39-3">
 <svg class="dia" viewBox="0 0 720 270" width="720" height="270" role="img"
-     aria-labelledby="fig39-2-t fig39-2-d">
-  <title id="fig39-2-t">Breaking a three-way relation into two-way links</title>
-  <desc id="fig39-2-d">On the left, a Conceptual Graph relation Between has
+     aria-labelledby="fig39-3-t fig39-3-d">
+  <title id="fig39-3-t">Breaking a three-way relation into two-way links</title>
+  <desc id="fig39-3-d">On the left, a Conceptual Graph relation Between has
   three numbered arcs to Leeds, York and Manchester. On the right, RDF
   introduces an extra node of type Between, with three properties arg1, arg2
   and arg3 pointing to the same three cities.</desc>
   <defs>
-    <marker id="fig39-2-arr" viewBox="0 0 10 10" refX="9" refY="5"
+    <marker id="fig39-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
     </marker>
@@ -233,9 +298,9 @@ the two forms coexist&rdquo;.
   <text x="175" y="28" class="t-caps" text-anchor="middle">conceptual graph</text>
   <ellipse class="box-warm" cx="175" cy="100" rx="52" ry="20"/>
   <text x="175" y="105" text-anchor="middle">Between</text>
-  <line class="ln" x1="145" y1="116" x2="70" y2="188" marker-end="url(#fig39-2-arr)"/>
-  <line class="ln" x1="175" y1="120" x2="175" y2="188" marker-end="url(#fig39-2-arr)"/>
-  <line class="ln" x1="205" y1="116" x2="285" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="145" y1="116" x2="70" y2="188" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="175" y1="120" x2="175" y2="188" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="205" y1="116" x2="285" y2="188" marker-end="url(#fig39-3-arr)"/>
   <text x="96" y="156" class="t-sm" text-anchor="end">1</text>
   <text x="184" y="160" class="t-sm">2</text>
   <text x="256" y="156" class="t-sm">3</text>
@@ -253,9 +318,9 @@ the two forms coexist&rdquo;.
   <text x="540" y="70" class="t-sm" text-anchor="middle" style="fill:#b08d57">extra node</text>
   <rect class="box-warm" x="480" y="82" width="120" height="34" rx="3"/>
   <text x="540" y="104" text-anchor="middle" class="t-mono">[a :Between]</text>
-  <line class="ln" x1="505" y1="116" x2="420" y2="188" marker-end="url(#fig39-2-arr)"/>
-  <line class="ln" x1="540" y1="116" x2="540" y2="188" marker-end="url(#fig39-2-arr)"/>
-  <line class="ln" x1="575" y1="116" x2="655" y2="188" marker-end="url(#fig39-2-arr)"/>
+  <line class="ln" x1="505" y1="116" x2="420" y2="188" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="540" y1="116" x2="540" y2="188" marker-end="url(#fig39-3-arr)"/>
+  <line class="ln" x1="575" y1="116" x2="655" y2="188" marker-end="url(#fig39-3-arr)"/>
   <text x="446" y="156" class="t-sm t-mono" text-anchor="end">:arg1</text>
   <text x="549" y="160" class="t-sm t-mono">:arg2</text>
   <text x="626" y="156" class="t-sm t-mono">:arg3</text>
@@ -267,7 +332,7 @@ the two forms coexist&rdquo;.
   <text x="655" y="210" text-anchor="middle">Manchester</text>
   <text x="540" y="252" class="t-sm" text-anchor="middle">a new node; each arc becomes a property</text>
 </svg>
-<figcaption><span class="fig-label">Figure 39.2</span>
+<figcaption><span class="fig-label">Figure 39.3</span>
 A CG arc already carries a small integer, so the mapping into two-argument
 RDF is natural. The cost is the extra node on the right, which was not in the
 original.</figcaption>
@@ -282,101 +347,33 @@ to whoever named it first.
 </p>
 
 <p>
-The note&#8217;s table of terms adds a difference it calls philosophical: CGs
-keep links to &ldquo;reality&rdquo; apart from the main graph, while the
-Semantic Web links the real world directly to things and properties.
+The note&#8217;s table of terms adds a difference it calls philosophical. In
+a CG, what ties a concept to an actual person or bus is kept as a separate
+layer of representation; on the Semantic Web, a URI such as
+<code>&lt;#John&gt;</code> is meant to name John himself.
+</p>
+
+<h3>Where the shapes do match</h3>
+
+<p>
+Contexts match. Both systems quote a whole formula to talk about it, as in
+the note&#8217;s example, loosely &ldquo;Tom believes that Mary wants to marry
+a sailor&rdquo;: CGs nest the proposition in a box, N3 wraps it in braces. The
+concept occurs &ldquo;very equivalently&rdquo; in both. One mismatch survives
+in names: CGIF identifiers ignore case and URIs do not, because, the note
+says, case insensitivity is hard to specify internationally.
 </p>
 
 <h2 id="sec-39-5">39.5 The easy half</h2>
 
 <p>
-None of these differences reaches the logic. The mapping, the note concludes,
+None of the differences reaches the logic. The mapping, the note concludes,
 is &ldquo;apparently very straightforward&rdquo;, and one subset shows it: a
 &ldquo;simple graph&rdquo;, one context with no negation or defined
 quantifiers, maps directly into RDF Model and Syntax 1.0. The restriction of
 <a class="x-ref" href="#sec-39-3">section 39.3</a> is &ldquo;not huge&rdquo; either, since many ontological systems
 share it. The centralisation that <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a> blamed for earlier failures sits
 here in the knowledge base, not in the logic.
-</p>
-
-<h2 id="sec-39-6">39.6 Striking similarities</h2>
-
-<p>
-Drawn out, the Boston sentence of <a class="x-ref" href="#sec-39-1">section 39.1</a> shows the structural
-difference behind <a class="x-ref" href="#sec-39-3">section 39.3</a>.
-</p>
-
-<figure id="fig-39-3">
-<svg class="dia" viewBox="0 0 720 280" width="720" height="280" role="img"
-     aria-labelledby="fig39-3-t fig39-3-d">
-  <title id="fig39-3-t">John goes to Boston by bus, drawn both ways</title>
-  <desc id="fig39-3-d">On the left, the Conceptual Graph: a Go concept box
-  links through three relation ovals, Agnt, Dest and Inst, to the concept
-  boxes Person: John, City: Boston and Bus. On the right, the RDF version: a
-  blank node of type Go has three labelled arcs, agent, dest and inst, to
-  John, Boston and a Bus.</desc>
-  <defs>
-    <marker id="fig39-3-arr" viewBox="0 0 10 10" refX="9" refY="5"
-            markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2f4f4f"/>
-    </marker>
-  </defs>
-
-  <text x="180" y="28" class="t-caps" text-anchor="middle">conceptual graph</text>
-  <rect class="box" x="20" y="125" width="70" height="30" rx="3"/>
-  <text x="55" y="145" text-anchor="middle">Go</text>
-  <ellipse class="box-warm" cx="170" cy="70" rx="36" ry="16"/>
-  <text x="170" y="75" text-anchor="middle">Agnt</text>
-  <ellipse class="box-warm" cx="170" cy="140" rx="36" ry="16"/>
-  <text x="170" y="145" text-anchor="middle">Dest</text>
-  <ellipse class="box-warm" cx="170" cy="210" rx="36" ry="16"/>
-  <text x="170" y="215" text-anchor="middle">Inst</text>
-  <line class="ln" x1="90" y1="132" x2="134" y2="78" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="90" y1="140" x2="132" y2="140" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="90" y1="148" x2="134" y2="202" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="206" y1="70" x2="238" y2="70" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="206" y1="140" x2="238" y2="140" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="206" y1="210" x2="238" y2="210" marker-end="url(#fig39-3-arr)"/>
-  <rect class="box" x="240" y="55" width="104" height="30" rx="3"/>
-  <text x="292" y="75" text-anchor="middle">Person: John</text>
-  <rect class="box" x="240" y="125" width="104" height="30" rx="3"/>
-  <text x="292" y="145" text-anchor="middle">City: Boston</text>
-  <rect class="box" x="240" y="195" width="104" height="30" rx="3"/>
-  <text x="292" y="215" text-anchor="middle">Bus</text>
-  <text x="180" y="262" class="t-sm" text-anchor="middle">boxes are concepts; ovals are relations</text>
-
-  <line class="ln-mut" x1="360" y1="16" x2="360" y2="268"/>
-
-  <text x="540" y="28" class="t-caps" text-anchor="middle">rdf / n3</text>
-  <rect class="box" x="385" y="125" width="70" height="30" rx="3"/>
-  <text x="420" y="145" text-anchor="middle" class="t-mono">[a :Go]</text>
-  <line class="ln" x1="455" y1="132" x2="598" y2="72" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="455" y1="140" x2="598" y2="140" marker-end="url(#fig39-3-arr)"/>
-  <line class="ln" x1="455" y1="148" x2="598" y2="208" marker-end="url(#fig39-3-arr)"/>
-  <text x="508" y="94" class="t-sm t-mono" text-anchor="end">:agent</text>
-  <text x="527" y="132" class="t-sm t-mono" text-anchor="middle">:dest</text>
-  <text x="508" y="196" class="t-sm t-mono" text-anchor="end">:inst</text>
-  <rect class="box" x="600" y="55" width="100" height="30" rx="3"/>
-  <text x="650" y="75" text-anchor="middle" class="t-mono">&lt;#John&gt;</text>
-  <rect class="box" x="600" y="125" width="100" height="30" rx="3"/>
-  <text x="650" y="145" text-anchor="middle" class="t-mono">&lt;#Boston&gt;</text>
-  <rect class="box" x="600" y="195" width="100" height="30" rx="3"/>
-  <text x="650" y="215" text-anchor="middle" class="t-mono">[a :Bus]</text>
-  <text x="540" y="262" class="t-sm" text-anchor="middle">every node is a thing; relations are arc labels</text>
-</svg>
-<figcaption><span class="fig-label">Figure 39.3</span>
-In a CG the relation is a node of its own kind, so the graph has two
-disjoint sorts of node. In RDF the relation is the label
-on an arc, and everything else is a Thing.</figcaption>
-</figure>
-
-<p>
-Contexts match too. Both systems quote a whole formula to talk about it, as in
-the note&#8217;s example, loosely &ldquo;Tom believes that Mary wants to marry
-a sailor&rdquo;: CGs nest the proposition in a box, N3 wraps it in braces. The
-concept occurs &ldquo;very equivalently&rdquo; in both. One mismatch survives
-in names: CGIF identifiers ignore case and URIs do not, because, the note
-says, case insensitivity is hard to specify internationally.
 </p>
 
 <p>
@@ -408,7 +405,7 @@ statements, from any source, as <a class="x-ref" href="#sec-39-4">section 39.4</
 <p>
 Webizing is <a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>; architectural versus arbitrary decisions, <a class="x-ref" href="16-evolvability.html">Chapter 16</a>;
 centralisation as the failure of earlier knowledge representation, <a class="x-ref" href="31-semantic-web-isnt-represent.html">Chapter 31</a>;
-the graph model, <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. Volume V, from <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, takes up the logic.
+the graph model, <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Chapter 32</a>. This chapter closes Volume IV; Volume V, from <a class="x-ref" href="40-logic-semantic-web.html">Chapter 40</a>, takes up the logic.
 </p>
 </div>
 
@@ -417,7 +414,7 @@ the graph model, <a class="x-ref" href="32-rdf-model-exactly-xml-model.html">Cha
 <div class="question">
 <p><span class="question-number">39.1</span>
 Sort the design decisions of a familiar system, such as a library catalogue
-or a phone&#8217;s contacts app, into the two columns of <a class="x-ref" href="#fig-39-1">Figure 39.1</a>. Which
+or a phone&#8217;s contacts app, into the two columns of <a class="x-ref" href="#fig-39-2">Figure 39.2</a>. Which
 column is larger, and does that surprise you?</p>
 </div>
 <div class="question">
@@ -427,7 +424,7 @@ chess. Find another pair like this.</p>
 </div>
 <div class="question">
 <p><span class="question-number">39.3</span>
-Following <a class="x-ref" href="#fig-39-2">Figure 39.2</a>, represent <em>Anna gave Ben a book</em> using only
+Following <a class="x-ref" href="#fig-39-3">Figure 39.3</a>, represent <em>Anna gave Ben a book</em> using only
 two-argument properties. What did the intermediate node cost you?</p>
 </div>
 <div class="question">

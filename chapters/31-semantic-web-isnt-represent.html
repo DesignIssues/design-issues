@@ -58,8 +58,8 @@ Has this not been tried before, with KIF and Cyc? Berners-Lee&#8217;s answer:
 <p>
 Of six objections, some he grants outright; in every case the claim turns
 out smaller than the fear. The seventh, that the Web&#8217;s contradictions
-demand fuzzy logic, he refuses. The note then maps database tables
-onto the new model.
+demand fuzzy logic, he refuses: &ldquo;If my bank says my bank balance is $100 and my computer says it
+is $200, then we need to figure out the problem.&rdquo;
 </p>
 </div>
 
@@ -165,7 +165,7 @@ The effort is writing data as statements of node, property and value
 
 
 
-<h2 id="sec-31-3">31.3 Complete language, limited applications</h2>
+<h2 id="sec-31-3">31.3 Links that can be followed forever</h2>
 
 <p>
 The language must be complete, because it must represent the world. It must be
@@ -173,22 +173,6 @@ able to state a paradox (a statement that contradicts itself) and a tautology
 (one that is true whatever the facts). Berners-Lee accepts the consequence:
 it will be possible to phrase questions whose answers would require a search
 of the entire Web and an unimaginable amount of time.
-</p>
-
-<p>
-This should not deter us, he says. Each application uses a <a class="gl-ref" href="../glossary.html#schema">schema</a>, a
-declared list of the terms it will handle, to restrict itself to a limited
-language; most will produce simple <a class="gl-ref" href="../glossary.html#access-control">access control</a> lists, privacy preferences
-and search criteria.
-</p>
-
-<h3>Checking a proof, not finding one</h3>
-
-<p>
-The first uses, such as access control on web sites, involve only the
-validation of a previously prepared proof. Generating a proof for an
-arbitrary question is typically intractable, and the plan does not need it.
-<a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> shows such a check.
 </p>
 
 <h3>Real life is not efficiently computable</h3>
@@ -202,33 +186,25 @@ computational properties.
 </p>
 
 <p>
-Older systems forced data into a fixed tree or grid, which kept it
-consistent; he bets DARPA, the American defence research agency, still has
-many. Joining them needed a more powerful language, global hypertext, which had none
-of those guarantees: &ldquo;People were frightened about getting lost in it. You could follow
-links forever.&rdquo; An
-<a class="gl-ref" href="../glossary.html#inference">inference</a> engine on the Semantic Web likewise need not finish. Yet many web
-sites stay orderly inside, and ordered parts can be linked to unordered ones.
+Hypertext went the same way. Older systems kept data in fixed trees or grids,
+which made them consistent; he bets DARPA, the American defence research
+agency, still has many. Linking them took something looser, global
+hypertext, which promised nothing: &ldquo;People were frightened about getting
+lost in it. You could follow links forever.&rdquo; An <a class="gl-ref" href="../glossary.html#inference">inference</a> engine on the
+Semantic Web likewise need not finish. Yet many web sites stay orderly
+inside, and ordered parts can be linked to unordered ones.
 </p>
 
-<h3>Rules are statements too</h3>
+<h3>Limited applications: checking a proof, not finding one</h3>
 
 <p>
-Earlier systems mixed information with tips on how to use it. A rule is
-typically stored not as a statement but in a table of rules to apply at a
-particular time. That timing is information about the rule, which the
-language cannot express. The note&#8217;s example, with the second row ours:
-</p>
-
-<table>
-<tr><th>Stored as</th><th>Content</th></tr>
-<tr><td>a statement</td><td>&ldquo;a daughter of one&#8217;s daughter is one&#8217;s grandaughter&rdquo;</td></tr>
-<tr><td>an engine tip</td><td>whenever a parent of a daughter is found, apply the grandaughter rule</td></tr>
-</table>
-
-<p>
-Only the first row can be exchanged between systems whose engines apply
-rules differently.
+This should not deter us, he says. Each application uses a <a class="gl-ref" href="../glossary.html#schema">schema</a>, a
+declared list of the terms it will handle, to restrict itself to a limited
+language; most will produce simple <a class="gl-ref" href="../glossary.html#access-control">access control</a> lists, privacy preferences
+and search criteria. The first uses, such as access control on web sites,
+involve only the validation of a previously prepared proof. Generating a
+proof for an arbitrary question is typically intractable, and the plan does
+not need it. <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> shows such a check.
 </p>
 
 <h2 id="sec-31-4">31.4 Tried before? Yes, more or less</h2>
@@ -236,11 +212,11 @@ rules differently.
 <p>
 The next objection is that this is another run at knowledge representation,
 the field that writes facts down for programs to reason over. Berners-Lee
-agrees it has been tried:
+agrees it has been tried, and that the field
 </p>
 
 <blockquote>
-Knowledge representation is a field which is currently seems to have the
+seems to have the
 reputation of being initially interesting, but which did not seem to shake the
 world to the extent that some of its proponents hoped. It made sense but was
 of limited use on a small scale, but never made it to the large scale. This is
@@ -326,6 +302,27 @@ Put in a significant effort into getting critical mass. Sit back.
 <figcaption><span class="fig-label">Figure 31.2</span>
 The same operation applied twice; each time it removes the demand for global agreement.</figcaption>
 </figure>
+
+<h3>Rules are statements too</h3>
+
+<p>
+Most knowledge-representation systems, he adds, confuse information with
+tips on how to use it. A rule is
+typically stored not as a statement but in a table of rules to apply at a
+particular time. That timing is information about the rule, which the
+language cannot express. The note&#8217;s example, with the second row ours:
+</p>
+
+<table>
+<tr><th>Stored as</th><th>Content</th></tr>
+<tr><td>a statement</td><td>&ldquo;a daughter of one&#8217;s daughter is one&#8217;s grandaughter&rdquo;</td></tr>
+<tr><td>an engine tip</td><td>whenever a parent of a daughter is found, apply the grandaughter rule</td></tr>
+</table>
+
+<p>
+Only the first row can be exchanged between systems whose engines apply
+rules differently.
+</p>
 
 <h2 id="sec-31-5">31.5 The one objection he refuses</h2>
 
@@ -439,8 +436,8 @@ kind of fact; the value is what the fact says.
 <p>
 A database never checks meaning: a query can join any columns of matching
 type, listing, in his example, houses with as many rooms as an
-employee&#8217;s shoe size. On the Web, information relating different
-databases can be added alongside them. Putting the vast amount of <a class="gl-ref" href="../glossary.html#relational-database">relational database</a> information on the Web, in a
+employee&#8217;s shoe size. On the Web, where relationships have
+URIs, information relating different databases can be added alongside them. Putting the vast amount of <a class="gl-ref" href="../glossary.html#relational-database">relational database</a> information on the Web, in a
 form machines can process, has been &ldquo;one of the main driving forces for
 the Semantic web&rdquo;.
 </p>

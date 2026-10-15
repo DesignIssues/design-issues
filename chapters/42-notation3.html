@@ -71,13 +71,6 @@ others keep publishing, nothing they add may quietly overturn a conclusion
 (<a class="x-ref" href="#sec-42-3">section 42.3</a>). The design
 question is not what logic is true, but what logic survives being published.
 </p>
-<p>
-The note reads more like a paper than an essay, with formal syntax,
-entailment (what follows from what) and built-in operators. The catalogue
-dates it to 2000, as does its <code>log:</code> <a class="gl-ref" href="../glossary.html#namespace">namespace</a>; the text is dated
-August 2005, an early draft of the semantics, so quotations are cited
-2000&#8211;2005.
-</p>
 </div>
 
 <h2 id="sec-42-1">42.1 Written for an open world</h2>
@@ -93,8 +86,8 @@ the provenance of information, and responsible for its disposition.
 <p>
 Provenance means where information came from. To say what a document said,
 one must quote a set of statements and match it against a pattern, so
-quotation is a starting condition, not an advanced feature; <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> puts
-it in the base layer.
+quotation is a starting condition, not an advanced feature, which is why the
+plan of <a class="x-ref" href="30-roadmap-semantic-web.html">Chapter 30</a> builds it in from the bottom.
 </p>
 
 <figure id="fig-42-1">
@@ -217,7 +210,7 @@ newcomers must be able to publish without affecting systems already built.
 </p>
 
 <p>
-Take a booking system that concludes a guest has no allergy because none
+For example, take a booking system that concludes a guest has no allergy because none
 is on file. Someone records an allergy elsewhere, and the conclusion silently
 flips. A logic is <em><a class="gl-ref" href="../glossary.html#monotonic">monotonic</a></em> when adding facts never withdraws a
 conclusion. New information may contradict old, but the conflict must be
@@ -233,9 +226,9 @@ base&rdquo;, a changing quantity referred to only implicitly.
 <h2 id="sec-42-4">42.4 A negation that stays safe: this document does not say it</h2>
 
 <p>
-The fix keeps the useful behaviour and removes the implicit reference:
-negation is allowed only about a named document or formula, whether it holds,
-or allows derivation of, a given fact. <code>log:notIncludes</code> does
+The fix keeps the useful behaviour and removes the implicit reference.
+The only <em>not</em> allowed is about a named document or formula: it does
+not contain a given fact, and nothing in it leads to that fact. <code>log:notIncludes</code> does
 this, and the note calls it completely monotonic: no knowledge gained
 elsewhere can change its answer.
 </p>
@@ -277,20 +270,10 @@ is not on file is false) applies only to a named corpus, so knowledge added
 elsewhere cannot retract a conclusion drawn here.</figcaption>
 </figure>
 
-<h2 id="sec-42-5">42.5 Fetching a document as a step of reasoning</h2>
-
 <p>
-In N3, fetching a document can be a step in reasoning. Berners-Lee defines
-the semantics of a document as the result of three plain steps: fetch it,
-read its statements, and add them to what the program already holds.
-<code>log:semantics</code> relates a document to that meaning, and
-<code>log:says</code>, loosely, holds when a document&#8217;s statements
-include the given fact.
-</p>
-
-<p>
-The weather rule of the opening uses <code>log:includes</code> to believe
-only residents.
+The positive twin, <code>log:includes</code>, checks a quoted formula for a
+statement. The opening&#8217;s weather rule uses it to look inside what each
+person wrote and believe only residents.
 </p>
 
 <figure id="fig-42-4">
@@ -337,6 +320,15 @@ only residents.
 Provenance (section 42.1) written as a rule. The note&#8217;s rule as printed concludes <code>Boston weather y</code>; the
 figure shows the inference the note itself gives.</figcaption>
 </figure>
+
+<h2 id="sec-42-5">42.5 Fetching a document as a step of reasoning</h2>
+
+<p>
+In N3, fetching a document can be a step in reasoning. Berners-Lee defines
+the semantics of a document as the result of three plain steps: fetch it,
+read its statements, and add them to what the program already holds.
+<code>log:semantics</code> relates a document to that meaning.
+</p>
 
 <p>
 A footnote defends it: &ldquo;Philosophers may be distracted
@@ -405,6 +397,12 @@ document during a rule, but most deployed <a class="gl-ref" href="../glossary.ht
 reason afterwards.</li>
 </ul>
 </div>
+
+<p>
+The note reads more like a paper than an essay; the catalogue and its
+<code>log:</code> <a class="gl-ref" href="../glossary.html#namespace">namespace</a> date it to 2000, while the text is an August 2005
+draft of the semantics, so quotations are cited 2000&#8211;2005.
+</p>
 
 <div class="connections">
 <h3>Connections</h3>

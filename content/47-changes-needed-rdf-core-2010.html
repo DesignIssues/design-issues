@@ -6,8 +6,8 @@ workshop, began on, 2010-06-26). In 2010 Berners-Lee asked for unused features
 to be removed, the model to be documented apart from any syntax, a JSON form,
 and more kinds of thing allowed in each part of a statement. The documentation
 and JSON arrived in 2014, the removals became advice, and the changes to the
-statement were not made. Changing the shape of a statement means changing every
-program and dataset built on the old shape.
+statement were not made: they would change every program and dataset built
+on the old shape.
 </p>
 </div>
 
@@ -19,22 +19,29 @@ not record that 26 June 2010 was a Saturday. Berners-Lee asked for that to
 change in one line of a note written for W3C&#8217;s RDF Next Steps workshop,
 which he could not attend. Neither RDF 1.1 nor the RDF 1.2 work has made the
 change. Which of his other requests were adopted shows what a deployed
-standard can and cannot change. He kept the note to the model:
+standard can and cannot change.
 </p>
-<blockquote>
-This does not address the many other exciting things which need to be done in
-the semantic web, but just the RDF model and its common serializations.
-<cite>The Future of RDF, 2010</cite>
-</blockquote>
 </div>
 
 <h2>47.1 Nine requests and a scorecard</h2>
 
 <p>
-Figure 47.1 glosses each proposal in one line, with its outcome. A
-<em>serialisation</em> is a way of writing data down as text, such as RDF/XML
-or Turtle. The note&#8217;s extensions to N3 are left aside, apart from dates
-(section 47.4).
+The note keeps to a narrow scope:
+</p>
+
+<blockquote>
+This does not address the many other exciting things which need to be done in
+the semantic web, but just the RDF model and its common serializations.
+<cite>The Future of RDF, 2010</cite>
+</blockquote>
+
+<p>
+A <em>serialisation</em> is a way of writing data down as text, such as RDF/XML
+or Turtle. The note&#8217;s extensions to N3 (Chapter 42), Berners-Lee&#8217;s
+experimental extension of RDF&#8217;s notation, are left aside, apart from
+dates (section 47.4). Figure 47.1 glosses each proposal with its outcome. In
+the right-hand column, the requests that reach into the statement itself fared
+worst.
 </p>
 
 <figure>
@@ -56,10 +63,10 @@ or Turtle. The note&#8217;s extensions to N3 are left aside, apart from dates
 
   <text x="24" y="60" class="t-caps">remove features</text>
   <text x="40" y="82">deprecate the old reification vocabulary</text>
-  <text x="500" y="82" class="t-sm" style="fill:#b08d57">left in, advised against</text>
+  <text x="500" y="82" class="t-sm" style="fill:#b08d57">left in, avoided in practice</text>
   <text x="40" y="99" class="t-sm">a built-in way to describe a statement (Chapter 44)</text>
   <text x="40" y="122">deprecate bags and sequences</text>
-  <text x="500" y="122" class="t-sm" style="fill:#b08d57">left in, advised against</text>
+  <text x="500" y="122" class="t-sm" style="fill:#b08d57">left in, avoided in practice</text>
   <text x="40" y="139" class="t-sm">old containers for unordered and numbered groups</text>
   <text x="40" y="162">a new RDF/XML document without them</text>
   <text x="500" y="162" class="t-sm t-it" style="fill:#8a9a9a">not done</text>
@@ -107,8 +114,7 @@ allowed for the object. Currently, this means including literals
 A <em>literal</em> is a plain value, such as a date, a number or a piece of
 text. The model lets a literal be the object of a statement but not its
 subject. To say anything about a value, one must first invent a node to
-stand for it, which in Chapter 38 Berners-Lee called frightful. The proposal
-removes that obstruction in one line.
+stand for it, which in Chapter 38 Berners-Lee called frightful.
 </p>
 
 <figure>
@@ -211,8 +217,8 @@ Under its heading on extending N3, not the RDF model, the note asks that a
 date or time be writable bare, in the standard
 form, such as 2010-06-26 or 2010-06-26T12:04Z, without the datatype label
 normally attached to it. A parser could not confuse such a date with a number:
-&ldquo;This format is distinguishable from other numeric forms.&rdquo; The
-reason for wanting it is plain:
+&ldquo;This format is distinguishable from other numeric forms.&rdquo; He gives
+the reason:
 </p>
 
 <blockquote>
@@ -285,7 +291,7 @@ unnecessary incompatibility.
 </blockquote>
 
 <p>
-Two languages exist side by side: N3 (Chapter 42), the research language, and
+Two languages exist side by side: N3, the research language, and
 RDF, the standard. When the standard grows, it should grow towards N3. Without
 the rule, RDF might add a way of putting a graph inside a statement that is
 incompatible with N3&#8217;s braces, leaving two notations for the same thing.
@@ -295,11 +301,12 @@ It is the test of independent invention (section 16.5), applied in advance.
 <h2>47.6 What a standard can change</h2>
 
 <p>
-Figure 47.1 shows three kinds of outcome. New documents were
-adopted: nothing already written has to change for them. Removals became
-advice, which leaves existing data valid. Changes to what a statement may
-contain stalled. Changing the shape of a statement means changing every
-program and dataset built on the old shape.
+The outcomes, set out below, fall into three kinds. New documents were adopted:
+nothing already written has to change for them. Removals became advice, which
+leaves existing data valid. Every change to what a statement may contain
+stalled or arrived only in part, because each one alters the shape that
+deployed programs and datasets are built on. So the one line about Saturday
+is one that sixteen years have not granted.
 </p>
 
 <div class="since">

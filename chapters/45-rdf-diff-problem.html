@@ -62,8 +62,7 @@ record, the copy ends up wrong.
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-This note reads like a short paper, written by Berners-Lee with Dan
-Connolly. It asks a question that sounds like plumbing and is not:
+This note, a short paper by Berners-Lee and Dan Connolly, asks a question that sounds like plumbing and is not:
 what is the difference between two graphs, and how is it sent?
 </p>
 <p>
@@ -73,7 +72,9 @@ devices. Various combinations of device and program, the note observes,
 </p>
 <p>
 Text files have diffs; databases have update statements. In both, the
-transitions between states are represented explicitly.
+transitions between states are represented explicitly. Delta (&Delta;) is
+the difference between two versions; sigma (&Sigma;) applies a difference to
+a version to get the next one.
 </p>
 <blockquote>
 Since the transitions can be represented much more compactly than the pairs of
@@ -81,10 +82,6 @@ states, and the sigma function is straightforward to compute, the deltas are
 useful for efficiently updating data distributed among two or more peers.
 <cite>Delta: an ontology for the distribution of differences between RDF graphs, 2001</cite>
 </blockquote>
-<p>
-Delta (&Delta;) is the difference between two versions; sigma (&Sigma;)
-applies a difference to a version to get the next one.
-</p>
 </div>
 
 <figure id="fig-45-1">
@@ -159,9 +156,8 @@ The note separates the problem into three that are tempting to mix.
 </table>
 
 <p>
-The note suspects the semantic problem, or the mixing of the first two,
-explains why so many packages break, and proposes keeping them separate. It then
-addresses only the third.
+The note suspects the semantic problem, or mixing the first two, explains
+why so many packages break. It addresses only the third.
 </p>
 
 <h2 id="sec-45-2">45.2 Why a line-oriented diff will not do</h2>
@@ -241,9 +237,9 @@ are arbitrary, so compare statements, not lines.</figcaption>
 </figure>
 
 <p>
-Line diffs worked for hand-edited files, but not for machine-written test
-results: every slight change to the printing program produced false failures,
-and managing them that way, the authors report, &ldquo;is barely
+Line diffs suited hand-edited files, not machine-written test results:
+every change to the printing program produced false failures, and managing
+them that way, the authors report, &ldquo;is barely
 tolerable&rdquo;. A graph difference must be computed over the
 statements, and expressed as a pattern to match rather than a position to
 edit.
@@ -264,8 +260,7 @@ then says what to remove and add:
 <p>
 <code>?x</code> is a variable, standing for whatever matches, and each pair of
 braces holds a quoted group of statements. So: find the thing whose account
-number is 1234578; remove
-&ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. Applied to a copy that has itself changed, a patch can fail in three ways.
+number is 1234578; remove &ldquo;balance 4000&rdquo;; add &ldquo;balance 3575&rdquo;. Applied to a copy that has itself changed, a patch can fail three ways.
 </p>
 
 <table>
@@ -333,22 +328,33 @@ subset of the final knowledge base&rdquo;.
 
 <p>
 Among many peers, the note sketches a crude <a class="gl-ref" href="../glossary.html#scheme">scheme</a>: apply patches in
-timestamp order, unwinding when a late one arrives, and reject any that fail;
-senders run the same algorithm, so they find out. A version&#8217;s id hashes
-its predecessor&#8217;s id with the patch&#8217;s, much as Git&#8217;s commit
-hashes cover their parents.
+timestamp order. If a patch turns up stamped earlier than ones already
+applied, those are undone and re-applied in order. Failing patches are
+rejected; senders run the same algorithm, so they find out. Each new
+version gets an id made by hashing the previous version&#8217;s id with the
+patch&#8217;s id, so everyone who applied the same patches holds the same id,
+much as Git&#8217;s commit hashes cover their parents.
 </p>
 
 <p>
 A strong patch also has meaning in itself: a phone number changing from 1234
-to 5678 suggests the person moved or changed jobs. And when the state is held
-in RDF, a difference between graphs is news. The <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#rss">RSS</a> feed was in effect partly a list of changes to the technical reports list.
+to 5678 suggests the person moved or changed jobs. For houses for sale, the
+change is what matters; for currency rates, &ldquo;if you listen to a stream
+of changes you will in fact accumulate a working knowledge of the
+area&rdquo;.
+</p>
+
+<p>
+From the NCSA Mosaic What&#8217;s New page to <a class="gl-ref" href="../glossary.html#rss">RSS</a>, people have wanted to hear
+what changed. &ldquo;We speculate that this will also be the case on the
+<a class="gl-ref" href="../glossary.html#semantic-web">Semantic Web</a>.&rdquo; When the state is held in RDF, a difference between
+graphs is news.
 </p>
 
 <h2 id="sec-45-5">45.5 Send the change instead of rediscovering it</h2>
 
 <p>
-A 2015 follow-up notes that the ideas became common property:
+A 2015 follow-up notes that the ideas spread:
 </p>
 
 <blockquote>
@@ -360,14 +366,14 @@ constant themes in distributed systems.
 
 <p>
 It cites Neil Fraser&#8217;s 2008 paper <em>Differential Synchronization</em>,
-whose design watches a user editing with other tools, then computes a
-difference to discover what changed.
+whose design watches a user edit, then computes a difference to see what
+changed.
 </p>
 
 <p>
 The alternative is for the editing tool to send the difference itself. In the
 <a class="gl-ref" href="../glossary.html#solid">Solid</a> work of Volume VI, the patch is sent just before the interface shows the
-change, so it can be reverted if the patch fails. Computing a difference recovers
+change, so it can be reverted on failure. Computing a difference recovers
 information that was thrown away; sending one avoids throwing it away.
 </p>
 
@@ -375,26 +381,23 @@ information that was thrown away; sending one avoids throwing it away.
 <h3>What happened since</h3>
 <ul>
 <li><strong>Canonicalisation was standardised.</strong>
-RDF Dataset Canonicalization, a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of May 2024, gives blank
-nodes deterministic labels, making graph comparison deterministic. It does not
-make patches strong: one added <a class="gl-ref" href="../glossary.html#triple">triple</a> can still relabel many blank nodes.</li>
+RDF Dataset Canonicalization, a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> of May 2024, gives blank
+nodes deterministic labels. It does not make patches strong: one added <a class="gl-ref" href="../glossary.html#triple">triple</a> can still relabel many blank nodes.</li>
 <li><strong>Patch formats arrived.</strong> <a class="gl-ref" href="../glossary.html#sparql">SPARQL</a> Update became a
-Recommendation in March 2013, and LD Patch, a patch format for <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> in the same spirit,
-became a W3C Working Group Note in 2015.</li>
+Recommendation in March 2013, and LD Patch, from the <a class="gl-ref" href="../glossary.html#linked-data">Linked Data</a> Platform group the follow-up points
+to, became a W3C Working Group Note in July 2015.</li>
 <li><strong>Explicit change became common.</strong> Operational
-transformation in collaborative editors such as Google Docs (2010), and
-conflict-free replicated data types (formalised in 2011), send operations
-rather than diffing states.</li>
+transformation (as in Google Docs, 2010) and conflict-free replicated data
+types (2011) send operations, not diffs of states.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-The identifying property that makes a patch strong is <a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>, and the
-notation the patches are written in is <a class="x-ref" href="42-notation3.html">Chapter 42</a>. Reading a patch as knowledge relies
-on <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>. The read-write systems these updates are for are Chapters <a class="x-ref" href="50-read-write-linked-data.html">50</a>
-and 54, and live data is <a class="x-ref" href="58-live-data.html">Chapter 58</a>.
+Strong patches rest on identifying properties (<a class="x-ref" href="34-identity-identify-rdf.html">Chapter 34</a>); patches are
+written in Notation3 (<a class="x-ref" href="42-notation3.html">Chapter 42</a>) and read as knowledge via <a class="x-ref" href="44-reification-rdf-n3.html">Chapter 44</a>.
+Read-write systems are Chapters <a class="x-ref" href="50-read-write-linked-data.html">50</a> and <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">54</a>; live data is <a class="x-ref" href="58-live-data.html">Chapter 58</a>.
 </p>
 </div>
 
@@ -402,8 +405,8 @@ and 54, and live data is <a class="x-ref" href="58-live-data.html">Chapter 58</a
 <summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">45.1</span>
-Separate a synchronisation failure you have experienced into the three
-problems of <a class="x-ref" href="#sec-45-1">section 45.1</a>. Which one was it really?</p>
+Split a synchronisation failure you have experienced into the three
+problems of <a class="x-ref" href="#sec-45-1">section 45.1</a>. Which was it?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.2</span>
@@ -412,13 +415,13 @@ Is it weak or strong, and what would make it strong?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.3</span>
-A contacts app syncs by comparing whole address books. What would it need
-to record at the moment of an edit to send the change instead?</p>
+A contacts app syncs by comparing whole address books. What must it record
+at each edit to send the change instead?</p>
 </div>
 <div class="question">
 <p><span class="question-number">45.4</span>
-Contact and calendar synchronisation still goes wrong. Is the cause mostly the
-semantic problem, as the note suspected?</p>
+Contact and calendar sync still goes wrong. Is the semantic problem, as the
+note suspected, mostly to blame?</p>
 </div>
 </details>
 

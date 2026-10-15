@@ -105,70 +105,13 @@ private idea to being a group global standard.
 <cite>Using labels to give semantics to tags, 2006</cite>
 </blockquote>
 
-<h2 id="sec-36-2">36.2 The luggage label</h2>
+<h2 id="sec-36-2">36.2 Two games, two folders, no parent</h2>
 
 <p>
-The proposal takes its name from a luggage label, which the note would draw
-on screen as &ldquo;a box with a hole in the end with a bit of string&rdquo;.
-A label is a set of common facts, built once from menus of shared terms. The
-user should be able to &ldquo;drop a label on a folder, and let all the things
-in the folder inherit the labeled properties&rdquo;, so the soccer folders keep
-their private names while saying something anyone can read.
-</p>
-
-<figure id="fig-36-1">
-<svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
-     aria-labelledby="fig36-1-t fig36-1-d">
-  <title id="fig36-1-t">A label ties a private folder to shared terms</title>
-  <desc id="fig36-1-d">A personal folder called Soccer vs Wayland keeps its
-  local name. A label tied to it says, in shared vocabularies for place and
-  depiction, that the photos were taken at the playing field and show our
-  team. Everything in the folder inherits those statements.</desc>
-
-  <rect class="box-warm" x="24" y="44" width="220" height="160" rx="4"/>
-  <text x="134" y="70" class="t-caps" text-anchor="middle" style="fill:#b08d57">my folder</text>
-  <text x="134" y="94" class="t-mono" text-anchor="middle">Soccer vs Wayland</text>
-  <g fill="#fdfdfc" stroke="#b08d57">
-    <rect x="44" y="112" width="54" height="40"/><rect x="106" y="112" width="54" height="40"/>
-    <rect x="168" y="112" width="54" height="40"/><rect x="44" y="158" width="54" height="40"/>
-    <rect x="106" y="158" width="54" height="40"/><rect x="168" y="158" width="54" height="40"/>
-  </g>
-  <text x="134" y="226" class="t-sm" text-anchor="middle">quick, local, mine</text>
-
-  <!-- the label, drawn as a luggage tag -->
-  <path d="M 286 96 L 404 96 L 428 128 L 404 160 L 286 160 Z"
-        fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
-  <circle cx="300" cy="128" r="5" fill="#ffffff" stroke="#5a8f5a"/>
-  <path class="ln-mut" d="M 244 128 L 295 128"/>
-  <text x="358" y="122" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">label</text>
-  <text x="358" y="144" class="t-sm" text-anchor="middle">made once</text>
-
-  <path class="ln" style="stroke:#5a8f5a" d="M 432 128 L 470 128"/>
-  <path d="M 466 123 L 478 128 L 466 133 Z" fill="#5a8f5a"/>
-
-  <rect class="box-green" x="478" y="72" width="218" height="112" rx="4"/>
-  <text x="587" y="98" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
-  <text x="494" y="132">location: the playing field</text>
-  <text x="494" y="160">shows: our team</text>
-  <text x="587" y="204" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
-  <text x="587" y="220" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
-
-  <line class="ln-mut" x1="24" y1="240" x2="696" y2="240"/>
-  <text x="360" y="262" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements; the folder&#8217;s own name stays private.</text>
-</svg>
-<figcaption><span class="fig-label">Figure 36.1</span>
-The user keeps the folder&#8217;s private name and attaches, once, a label
-written in terms others can read. The place and subject are those of the
-note&#8217;s example; its coordinates are placeholders, so none are shown.</figcaption>
-</figure>
-
-<h2 id="sec-36-3">36.3 Two games, two folders, no parent</h2>
-
-<p>
-The example has a person behind it: &ldquo;I face these problems day to day,
-and like many geeks, am driven by the urge to make the boring things in life
-happen automatically&rdquo;. He loaded the soccer photographs into iPhoto,
-wanting to burn a CD for the team and find the pictures later.
+&ldquo;I face these problems day to day, and like many geeks, am driven by
+the urge to make the boring things in life happen automatically, with the
+computer helping more effectively.&rdquo; Berners-Lee loaded the soccer
+photographs into iPhoto, wanting to burn a CD for the team and find the pictures later.
 </p>
 
 <p>
@@ -178,11 +121,11 @@ folder Soccer with the two as subfolders. A smart album combining them works,
 but lacks the hierarchical interface he wants.
 </p>
 
-<figure id="fig-36-2">
+<figure id="fig-36-1">
 <svg class="dia" viewBox="0 0 720 275" width="720" height="275" role="img"
-     aria-labelledby="fig36-2-t fig36-2-d">
-  <title id="fig36-2-t">The soccer folders as classes</title>
-  <desc id="fig36-2-d">On the left, the folders as he wanted them on screen: a
+     aria-labelledby="fig36-1-t fig36-1-d">
+  <title id="fig36-1-t">The soccer folders as classes</title>
+  <desc id="fig36-1-d">On the left, the folders as he wanted them on screen: a
   parent folder Soccer, which he could not make, over Soccer vs Wayland (a
   smart album of that day's photos) and Soccer vs Arlington (a plain folder of
   photos picked by hand). On the right, the same structure in the data model:
@@ -226,7 +169,7 @@ but lacks the hierarchical interface he wants.
   <path class="ln-dash" d="M 60 258 L 100 258"/>
   <text x="110" y="262" class="t-sm">pairs them: folder = class; subfolder = subclass; folder name = local tag</text>
 </svg>
-<figcaption><span class="fig-label">Figure 36.2</span>
+<figcaption><span class="fig-label">Figure 36.1</span>
 What he wanted on screen, and what it already is in the data model: the
 hierarchy is missing from the interface, not from the model.</figcaption>
 </figure>
@@ -239,8 +182,65 @@ needed in the model, only a way to say what a folder means.
 <p>
 The software&#8217;s workaround is to apply keywords to every photograph in
 a folder as a batch. The data is then stored in each photograph, but the fact
-that it was applied to the whole folder is lost. A label keeps that fact.
+that it was applied to the whole folder is lost.
 </p>
+
+<h2 id="sec-36-3">36.3 The luggage label</h2>
+
+<p>
+A label keeps that fact. The proposal takes its name from a luggage label,
+which the note would draw on screen as &ldquo;a box with a hole in the end with a bit of string&rdquo;.
+A label is a set of common facts, built once from menus of shared terms. The
+user should be able to &ldquo;drop a label on a folder, and let all the things
+in the folder inherit the labeled properties&rdquo;, so the soccer folders keep
+their private names while saying something anyone can read.
+</p>
+
+<figure id="fig-36-2">
+<svg class="dia" viewBox="0 0 720 276" width="720" height="276" role="img"
+     aria-labelledby="fig36-2-t fig36-2-d">
+  <title id="fig36-2-t">A label ties a private folder to shared terms</title>
+  <desc id="fig36-2-d">A personal folder called Soccer vs Wayland keeps its
+  local name. A label tied to it says, in shared vocabularies for place and
+  depiction, that the photos were taken at the playing field and show our
+  team. Everything in the folder inherits those statements.</desc>
+
+  <rect class="box-warm" x="24" y="44" width="220" height="160" rx="4"/>
+  <text x="134" y="70" class="t-caps" text-anchor="middle" style="fill:#b08d57">my folder</text>
+  <text x="134" y="94" class="t-mono" text-anchor="middle">Soccer vs Wayland</text>
+  <g fill="#fdfdfc" stroke="#b08d57">
+    <rect x="44" y="112" width="54" height="40"/><rect x="106" y="112" width="54" height="40"/>
+    <rect x="168" y="112" width="54" height="40"/><rect x="44" y="158" width="54" height="40"/>
+    <rect x="106" y="158" width="54" height="40"/><rect x="168" y="158" width="54" height="40"/>
+  </g>
+  <text x="134" y="226" class="t-sm" text-anchor="middle">quick, local, mine</text>
+
+  <!-- the label, drawn as a luggage tag -->
+  <path d="M 286 96 L 404 96 L 428 128 L 404 160 L 286 160 Z"
+        fill="#f5f8f0" stroke="#5a8f5a" stroke-width="1.6"/>
+  <circle cx="300" cy="128" r="5" fill="#ffffff" stroke="#5a8f5a"/>
+  <path class="ln-mut" d="M 244 128 L 295 128"/>
+  <text x="358" y="122" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">label</text>
+  <text x="358" y="144" class="t-sm" text-anchor="middle">made once</text>
+
+  <path class="ln" style="stroke:#5a8f5a" d="M 432 128 L 470 128"/>
+  <path d="M 466 123 L 478 128 L 466 133 Z" fill="#5a8f5a"/>
+
+  <rect class="box-green" x="478" y="72" width="218" height="112" rx="4"/>
+  <text x="587" y="98" class="t-caps" text-anchor="middle" style="fill:#5a8f5a">what the label says</text>
+  <text x="494" y="132">location: the playing field</text>
+  <text x="494" y="160">shows: our team</text>
+  <text x="587" y="204" class="t-sm" text-anchor="middle">reusable by anyone; its terms come from</text>
+  <text x="587" y="220" class="t-sm" text-anchor="middle">shared vocabularies (place, depiction)</text>
+
+  <line class="ln-mut" x1="24" y1="240" x2="696" y2="240"/>
+  <text x="360" y="262" class="t-sm" text-anchor="middle">Everything in the folder inherits the label&#8217;s statements; the folder&#8217;s own name stays private.</text>
+</svg>
+<figcaption><span class="fig-label">Figure 36.2</span>
+The user keeps the folder&#8217;s private name and attaches, once, a label
+written in terms others can read. The place and subject are those of the
+note&#8217;s example; its coordinates are placeholders, so none are shown.</figcaption>
+</figure>
 
 <figure id="fig-36-3">
 <svg class="dia" viewBox="0 0 720 250" width="720" height="250" role="img"
@@ -289,9 +289,9 @@ its properties came from.</figcaption>
 <h2 id="sec-36-4">36.4 Writing a label down</h2>
 
 <p>
-Under the covers the note writes the same label three ways: as a rule in <a class="gl-ref" href="../glossary.html#n3">N3</a>
-(<a class="x-ref" href="42-notation3.html">Chapter 42</a>), as <a class="gl-ref" href="../glossary.html#owl">OWL</a> restrictions, and with a special label vocabulary. It
-calls them &ldquo;more or less inter-convertible&rdquo;.
+Under the covers the note writes the same label three ways, in notations
+covered later (<a class="x-ref" href="42-notation3.html">Chapter 42</a>), and calls them &ldquo;more or less
+inter-convertible&rdquo;.
 </p>
 
 <h3>A label is not a photo</h3>
@@ -356,9 +356,10 @@ route to solving this problem
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The labelling language arrived.</strong> The note&#8217;s Web
-Content Labeling (WCL) Incubator Group fed into POWDER (Protocol for Web
-Description Resources), a <a class="gl-ref" href="../glossary.html#w3c">W3C</a> <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2009.</li>
+<li><strong>The labelling language arrived.</strong> The <a class="gl-ref" href="../glossary.html#w3c">W3C</a> group the
+note calls the Web Content Labeling (WCL) Incubator Group, officially the
+Content Label Incubator Group, fed into POWDER (Protocol for Web
+Description Resources), a W3C <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2009.</li>
 <li><strong>Tags with defined properties appeared.</strong> In January 2007
 Flickr launched &ldquo;machine tags&rdquo; of the form
 <code>namespace:predicate=value</code>, such as <code>geo:lat=&#8230;</code>:

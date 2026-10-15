@@ -16,7 +16,7 @@ A program told that birds fly concludes that Pingu, a penguin, flies. Told
 later that penguins cannot fly, it changes its mind. On the Web, where no
 one holds all the facts, which of its two answers should anyone else rely
 on? This 1998 note answers by taking a rule
-apart, and finds two things wearing one coat.
+apart.
 </p>
 </div>
 
@@ -74,14 +74,12 @@ decided outside the rule, possibly by a person: an out-of-band decision.
 <figcaption><span class="fig-label">Figure 41.1</span>
 Only the fact can be written in the Semantic Web language, and every proof
 validator (a program that checks each step of a proof) can handle it.
-Publishing them puts all knowledge in one space, at the cost that no single
-engine can answer arbitrary queries.</figcaption>
+Publishing the facts from every engine&#8217;s rules puts all knowledge in
+one space.</figcaption>
 </figure>
 
 <p>
-Written formally, the two look almost identical (g stands
-for granddaughter, d for daughter; &#8704; reads as <em>for all</em>, <code>|=</code> as <em>is to be concluded
-when</em> and <code>&lt;=</code> as <em>is true whenever</em>):
+Written formally, the two look almost identical:
 </p>
 
 <table>
@@ -95,6 +93,12 @@ link.</td></tr>
 </table>
 
 <p>
+Key: g is granddaughter, d is daughter; <code>|=</code> reads <em>is to be
+concluded when</em>, <code>&lt;=</code> <em>is true whenever</em>, &#8704;
+<em>for all</em>.
+</p>
+
+<p>
 Publishing the fact is a deliberate loss:
 </p>
 
@@ -106,9 +110,10 @@ inference engine.
 </blockquote>
 
 <p>
-The hint is useful, not worthless; it is dropped because it cannot travel.
-Its owner keeps it, and everyone else gets the fact. Nor is it
-regretted; answering arbitrary queries was never the goal:
+The hint is useful; it is dropped because it cannot travel.
+Its owner keeps it, and everyone else gets the fact. Nor is the loss
+regretted, though no single engine can then answer arbitrary queries; that
+was never the goal:
 </p>
 
 <blockquote>
@@ -217,6 +222,8 @@ Blackwell&#8217;s is an Oxford bookshop; a book missing from its catalogue
 may still exist. The remedy he sketches is a definitive list from a party
 entitled to give one, such as the publisher&#8217;s list for that year, which
 turns absence of evidence into a positive statement someone answers for.
+So the answer to the opening question: neither, taken as plain truth. Rely
+on what the system said it concluded, or on a list someone answers for.
 </p>
 
 <h2>41.3 Why classical logic, and not as a matter of taste</h2>
@@ -249,8 +256,8 @@ meant.
 </p>
 
 <p>
-What classical logic buys is a social move, named with a phrase that recurs
-in his writing. When a fact is presented as a fact, the
+What classical logic buys is a social move, named with a phrase his interface
+note (Chapter 82) also gives a button. When a fact is presented as a fact, the
 &ldquo;&#8216;Oh yeah?&#8217; function of demanding justification&rdquo; can
 be met by a proof in a universal language. Heuristic systems, which search
 by rules of thumb rather than strict logic, may have found the proof; once

@@ -88,18 +88,12 @@ then prove that the moon is made of cheese, or anything else. Logicians call thi
 explosion.
 </p>
 
-<blockquote>
-This fear of course is quite valid - or would be if all assertions in the whole
-world were regarded as bing on equal footing. Some imagine that an RDF parser
-will simply search all XML documents on the web for any facts, and add them to
-a massive set of belived assertions. This is not how realisic systems will
-actually work.
-<cite>Inconsistent data, 1998</cite>
-</blockquote>
-
 <p>
-An <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#parser">parser</a> is the program that reads a document and extracts the
-statements in it. The correction is a chain: a fact is asserted in an
+The fear would be valid, Berners-Lee grants, if every assertion in the world
+stood on an equal footing. Some imagine that an <a class="gl-ref" href="../glossary.html#rdf">RDF</a> <a class="gl-ref" href="../glossary.html#parser">parser</a>, the program that
+extracts statements from a document, will scoop every fact off the Web into
+one massive set of beliefs. Real systems will not work that way. The
+correction is a chain: a fact is asserted in an
 expression (a single statement), which is part of a formula (a group of
 statements), which is found by parsing a document. Any reason to believe the
 document lies in <em><a class="gl-ref" href="../glossary.html#metadata">metadata</a></em>, a statement about it found in another
@@ -240,13 +234,14 @@ believe it.</figcaption>
 <p>
 <a class="gl-ref" href="../glossary.html#digital-signature">Digital signature</a> adds security: a document signed with a key carries a mark
 only that key&#8217;s holder can make. A checksum is a short fingerprint
-computed from a document&#8217;s exact contents. The first requirement is that
-an endorsement records the checksum the document had when it was believed. Endorsing a location
-endorses whatever appears there later; endorsing a checksum does not.
+computed from a document&#8217;s exact contents.
 </p>
 
 <p>
-The second step is a rule. Its bluntest form trusts a key for everything:
+First, an endorsement must record the checksum the document had when it was
+believed. Endorse a <a class="gl-ref" href="../glossary.html#url">URL</a>, and whoever later edits that page inherits the
+endorsement; endorse a checksum, and any change breaks it. Second, a rule
+says what to believe. Its bluntest form trusts a key for everything:
 </p>
 
 <blockquote>
@@ -276,14 +271,14 @@ choice here, and I am not sure right now which appeals to me most.&rdquo;
 
 <table>
 <tr><th>Rule</th><th>Cost</th></tr>
-<tr><td>Believe statements <em>of this form</em> signed with this key</td><td>Bureaucratic: the exact wording must be kept, so an equivalent statement phrased differently will not match</td></tr>
-<tr><td>Believe what <em>can be inferred</em> from information signed with this key</td><td>The inconsistency trap</td></tr>
+<tr><td>Believe statements <em>of the form</em> &ldquo;X is a member of W3C&rdquo; signed with the W3C key</td><td>Bureaucratic: only that exact wording counts, so an equivalent statement phrased differently will not match</td></tr>
+<tr><td>Believe statements of that form that <em>can be inferred</em> from what the W3C key signed</td><td>The inconsistency trap: after one conflicting pair, every statement of that form follows</td></tr>
 </table>
 
 <p>
 The first gives up something we normally rely on: being able to replace any
 set of formulae with another set deducible from it. He calls this very messy.
-The second is the inconsistency trap. Once a contradiction can be deduced
+In the second, once a contradiction can be deduced
 from what one key signed, &ldquo;the key is completely broken. Of course, only
 that key is broken, so a trust system can remove any reason it has to trust
 that key.&rdquo; The catch:
@@ -351,8 +346,9 @@ it is stopped only once someone notices.</figcaption>
 Can trust in a key be limited while information is still processed
 consistently? &ldquo;Yes - maybe - there are many.&rdquo; His way out is to
 limit the kinds of inference rule that may be used, as knowledge-representation
-systems with limited logics already do. The cost: a general proof engine must either be told the permitted rules as data, or have
-each limited reasoner built in. &ldquo;Maybe we only need one.&rdquo;
+systems with limited logics already do. The cost: a general proof engine must either be told the permitted rules as
+data, or have each limited reasoner built in, though perhaps a single limited
+reasoner would serve: &ldquo;Maybe we only need one.&rdquo;
 </p>
 
 <h2 id="sec-46-5">46.5 Contradictions that are only out of date</h2>
@@ -388,7 +384,9 @@ Statements should also be fully qualified. On the <a class="gl-ref" href="../glo
 rainy&rdquo; becomes something like: at 09:41 EST on Monday 24 January 2000,
 measurement gauge 5 at Dublin Airport read rain as having fallen in the last
 hour. A fuzzy system would conclude Dublin is wet; a classical one, only
-that at least once it rained somewhere in Dublin.
+that at least once it rained somewhere in Dublin. Qualified this way, the
+statement does not go out of date; a later reading adds to it rather than
+contradicting it.
 </p>
 
 <h3>Writing the slack into the rule</h3>

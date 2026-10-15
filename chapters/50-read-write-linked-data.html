@@ -64,8 +64,8 @@ document ready to fill.
 <p>
 Shared calendars, the note observes, are &ldquo;silos within the domain of
 calendaring&rdquo;, though they have &ldquo;a classic burning need for
-multi-person collaboration&rdquo;: working out when several people are free
-is a classic challenge. Berners-Lee proposes letting applications write data
+multi-person collaboration&rdquo;: working out when several people are free.
+Berners-Lee proposes letting applications write data
 on the Web as well as read it, and predicts that once storage is decoupled
 from applications, &ldquo;application growth becomes dramatic&rdquo;. The
 status line reads &ldquo;Not finished at all&rdquo;. The first paragraph
@@ -100,8 +100,10 @@ to do at that place.
 </blockquote>
 
 <p>
-The Web was built as a collaborative space; Berners-Lee&#8217;s
-word for the ambition is intercreative, written with a trademark sign.
+To take the opening example: anyone who sees that a shared calendar has the
+wrong meeting room, and is allowed to correct it, should be able to correct
+it there, not in some other tool. Berners-Lee&#8217;s word
+for this collaborative Web is intercreative, written with a trademark sign.
 </p>
 
 <h2 id="sec-50-2">50.2 Send the change, not the file</h2>
@@ -112,8 +114,8 @@ data: a document with a <a class="gl-ref" href="../glossary.html#uri">URI</a>, h
 property, value. There are two ways to change it. <a class="gl-ref" href="../glossary.html#http">HTTP</a> <a class="gl-ref" href="../glossary.html#put">PUT</a> uploads a fresh
 copy of the whole file. A patch sends only the change: remove the <a class="gl-ref" href="../glossary.html#triple">triple</a>
 saying the meeting is at 10:00, add one saying 11:00. The note does not spell
-out the danger of PUT shown in <a class="x-ref" href="#fig-50-1">Figure 50.1</a>, but it is why the 409 rule below
-matters.
+out this danger of PUT (<a class="x-ref" href="#fig-50-1">Figure 50.1</a>), but it explains why the note insists
+that a failed patch be refused loudly, with the error 409 Conflict.
 </p>
 
 <figure id="fig-50-1">
@@ -274,8 +276,8 @@ books the room.</figcaption>
 <h2 id="sec-50-3">50.3 The data wiki, and the empty document</h2>
 
 <p>
-One extra rule turns the protocol into a writable space, and it is a single
-change to how absence is reported:
+One extra rule, a change to how absence is reported, turns the protocol into
+a writable space:
 </p>
 
 <blockquote>
@@ -292,19 +294,18 @@ are two notations for triples.
 
 <p>
 Every address is then a document that says nothing. A client can read, add
-a statement and write back, never distinguishing creation from modification:
+a statement and write back. In effect, creation and modification become the same act:
 a wiki&#8217;s blank page, for data.
 </p>
 
 <h2 id="sec-50-4">50.4 A Microsoft header, reused</h2>
 
 <p>
-The <a class="gl-ref" href="../glossary.html#header">header</a> that tells clients a server accepts edits begins with MS, and
-Berners-Lee&#8217;s only comment on the letters is: &ldquo;Perhaps the MS
-stands for &lsquo;modification service&rsquo;.&rdquo; The history is in a
-footnote. Every HTTP reply begins with header lines: labelled notes the client reads
-before the content. A server must say in one of them that it accepts writes,
-and a footnote explains the header used. Microsoft first built a proprietary
+Every HTTP reply begins with <a class="gl-ref" href="../glossary.html#header">header</a> lines, labelled notes the client reads
+before the content, and a server must say in one of them that it accepts
+writes. The header used begins with MS, and Berners-Lee&#8217;s only comment
+on the letters is: &ldquo;Perhaps the MS stands for &lsquo;modification
+service&rsquo;.&rdquo; A footnote gives the history. Microsoft first built a proprietary
 write-back protocol, the &ldquo;Microsoft Frontpage Extensions&rdquo;, then
 introduced the <code>MS-Author-Via</code> header so that its clients could
 switch those off and use WebDAV instead, a standard extension of HTTP for
@@ -312,7 +313,7 @@ editing files on a server.
 </p>
 
 <p>
-Most WebDAV servers of the 2000s sent the header, so it was natural to
+Most WebDAV servers of the time sent the header, so it was natural to
 advertise SPARQL there too.
 </p>
 
