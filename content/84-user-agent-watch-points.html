@@ -2,7 +2,7 @@
 <h3>The short version</h3>
 <p>
 A browser is the user&#8217;s agent, not a mere viewer, so it must pass on what
-the protocol means. The note picks three cases. Two kinds of redirect differ in
+the protocol means. The note picks three cases. Two redirects differ in
 which address to keep. Forms that commit the user should look
 different from links and leave a record. And people should deal in titles, not
 raw addresses.
@@ -25,8 +25,7 @@ and represent, the user.
 <p>
 HTTP&#8217;s messages carry particular meanings, he goes on, and if a user agent
 does not represent them to the user, the whole system of people and machines
-breaks. Chapter 20 showed meaning travelling up a stack of specifications; this note
-says someone must deliver it at the top.
+breaks. A status code means something only if the browser acts on it.
 </p>
 </div>
 
@@ -99,6 +98,11 @@ first. The same holds when a server redirects to a mirror.</figcaption>
 </figure>
 
 <p>
+Yet in 1999, he says, very few browsers kept the original address after a 302,
+perhaps only Mozilla and Amaya (W3C&#8217;s own experimental browser).
+</p>
+
+<p>
 The other reply, 301 Moved Permanently, means the page has really moved and
 the old address is dead. Berners-Lee says such a server &ldquo;has committed
 the unthinkable&rdquo;, since a good address should never change (Chapter 3).
@@ -130,11 +134,6 @@ it &ldquo;does not, of course, work completely&rdquo;.
 Both replies send the browser elsewhere, but one says the old address is dead
 and the other says the old address is the one to keep.</figcaption>
 </figure>
-
-<p>
-Yet in 1999, he says, very few browsers did this properly, perhaps only
-Mozilla and Amaya (W3C&#8217;s own experimental browser).
-</p>
 
 <h2>84.2 The commitment the interface hides</h2>
 
@@ -202,11 +201,11 @@ though that is the record the note says matters most.</figcaption>
 
 <p>
 Sites that muddle GET and POST would fill the record with clutter, he concedes,
-but such sites are broken anyway (Chapter 2 tells what
-happened in 2005 when a prefetching tool followed such sites&#8217; deletion
-links). A digital signature, he adds, will one day be &ldquo;an action just like
+but such sites are broken anyway. In 2005 Google&#8217;s Web Accelerator,
+prefetching links, deleted data on sites that used plain
+links for &ldquo;delete&rdquo; (Chapter 2). A digital signature, he adds, will one day be &ldquo;an action just like
 POST, but with weight added and the user awareness of the choice of key&rdquo;.
-Then the principle:
+His conclusion:
 </p>
 
 <blockquote>
@@ -260,7 +259,8 @@ cases the protocol draws a distinction (temporary or permanent, looking or
 committing) that browsers flatten. In the third the note asks the browser to
 hide something on purpose: the address, so that people can deal in titles.
 An agent decides what to show for the user&#8217;s sake, not the
-server&#8217;s convenience, and that includes making clear which clicks
+server&#8217;s convenience. Back returns the user to the page before the order
+form, not to the moment before the order. An agent says in advance which clicks
 commit.
 </p>
 
@@ -315,7 +315,7 @@ Using the last paragraph of section 84.3, decide which part of
 </div>
 <div class="question">
 <p><span class="question-number">84.4</span>
-Your browser lets you go Back after buying something. Why is going Back not the
-same as undoing the purchase?</p>
+Sketch a cue, other than a cursor, that would tell a user before clicking that
+a button commits them. What should it show, and where?</p>
 </div>
 </div>

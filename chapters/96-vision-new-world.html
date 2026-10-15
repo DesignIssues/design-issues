@@ -80,17 +80,6 @@ people to imagine what this new world will be like.
 <h2 id="sec-96-1">96.1 The admission</h2>
 
 <p>
-&ldquo;I&#8217;ve been here before,&rdquo; the note says, and draws a lesson from
-the first time:
-</p>
-
-<blockquote>
-So I had to persuade a person to get involved with the web, even though neither
-of us could really imagine how exciting and powerful it would become.
-<cite>The Vision of a new World, 2024</cite>
-</blockquote>
-
-<p>
 With <a class="gl-ref" href="../glossary.html#solid">Solid</a>, &ldquo;it is now, again, hard to imagine what it will be
 like.&rdquo; Developers, he writes, &ldquo;can&#8217;t imagine a world where one
 universal data store stores all the different types of data in the world,
@@ -104,8 +93,10 @@ without being reconfigured.&rdquo;
 The new arrangement is Solid: each person, or community, keeps data in a
 <em><a class="gl-ref" href="../glossary.html#pod">pod</a></em>, a personal store on the Web that any application they permit can
 read and write. Today a chat <a class="gl-ref" href="../glossary.html#server">server</a>, such as Bluesky&#8217;s or
-Threads&#8217;, stores only messages; Dropbox stores any file but takes minutes
-to sync (<a class="x-ref" href="#fig-96-1">Figure 96.1</a>).
+Threads&#8217;, stores only messages; Dropbox stores any file but has no fast
+way to serve as an app&#8217;s store. When two people look at the same thing in
+a Solid app, their devices sync to the pod in a fraction of a second; Dropbox,
+the note says, takes minutes (<a class="x-ref" href="#fig-96-1">Figure 96.1</a>).
 </p>
 
 <figure id="fig-96-1">
@@ -159,8 +150,9 @@ yet, so it is hard to imagine because it is not there to be used.</figcaption>
 
 <p>
 The pod software is stable, in several compatible versions, some open and some
-commercial, but almost nobody offers it to the public. The Flanders government
-provides pods to its citizens, for a limited number of purposes.
+commercial. Yet solidcommunity.net is for research and experimentation, not
+personal data; DataPod and Use.ID offer pod services; the Flanders government
+provides pods to its citizens for a limited number of purposes.
 </p>
 
 <h2 id="sec-96-3">96.3 Why one app is not enough</h2>
@@ -348,8 +340,9 @@ into pods.
 <p>
 Second, new things appear. &ldquo;No code&rdquo;
 apps, driven by a data file and assembled by dragging components, are easy for
-users to copy and tweak. The author asked an AI where integrating personal data
-would bring the greatest gains, and printed seven of its twenty answers. He
+users to copy and tweak. Asked where integrating personal data would bring the
+greatest gains, an AI put healthcare first: medical records, fitness-tracker
+data and diet combined for &ldquo;proactive health management&rdquo;. The author
 notes LLM firms reaching for personal data too: Anthropic&#8217;s Model Context
 Protocol, Perplexity&#8217;s purchase of Carbon. Charlie, the assistant of
 Chapters <a class="x-ref" href="93-charlie-ai-that-works-you.html">93</a> and <a class="x-ref" href="94-charlie-works.html">94</a>, would need such access, but working for its owner.
@@ -390,7 +383,7 @@ The Web was always meant for collaboration: one person may have a problem in
 mind and another, across the planet, the solution. What carries it across is
 overlapping communities; he lists his own, from family to <a class="gl-ref" href="../glossary.html#w3c">W3C</a> groups and
 companies. Today, passing something between them means copying a message
-between WhatsApp, Slack and email. ActivityPub applications are starting to make this smooth for chat;
+between WhatsApp, Slack and email. ActivityPub, the protocol behind Mastodon, is starting to make this smooth for chat;
 Solid, he says, could do it for every type of data.
 </p>
 
@@ -404,10 +397,9 @@ advice are all about acting without knowing what comes next:
 </p>
 
 <table>
-<tr><th>Chapter</th><th>Advice</th><th>What it assumes cannot be known</th></tr>
-<tr><td>1</td><td>Choose the least powerful means; assume someone else will
-independently invent the same thing</td><td>What others will do with the work,
-or build beside it</td></tr>
+<tr><th>Chapter</th><th>Advice</th><th>The unknown it plans for</th></tr>
+<tr><td>1</td><td>Choose the least powerful language</td><td>What others will
+do with the work</td></tr>
 <tr><td>16</td><td>Design so that version four can read version five</td><td>What
 the next version will contain</td></tr>
 <tr><td>19</td><td>Build interfaces for systems that have not been

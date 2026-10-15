@@ -63,15 +63,15 @@ edit shows up as a one-line change in version control.
 <p>
 Change one number in a person&#8217;s record, an age from 41 to 42, and save
 it. One program writes back a file in which one line differs. Another rewrites
-the whole record in a new order, so every line differs and the change is buried. The data is identical; only the program that wrote it out is not.
+the whole record in a new order, burying the change. The data is identical;
+only the program that wrote it out differs.
 This October 2023 note asks how such a program should write data so that
 people can read it.
 </p>
 <p>
 &ldquo;Pretty printing&rdquo; is formatting code &ldquo;so that it is easy to
 read by humans, and aesthetically pleasing&rdquo;. The note applies it to data
-in a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (the personal data store of <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>), and argues that
-legibility pays off throughout the system, not just for readers.
+in a <a class="gl-ref" href="../glossary.html#solid">Solid</a> <a class="gl-ref" href="../glossary.html#pod">pod</a> (the personal data store of <a class="x-ref" href="54-solid-socially-aware-cloud-storage.html">Chapter 54</a>).
 </p>
 </div>
 
@@ -91,9 +91,9 @@ and adapting each others web pages is important linked data in Solid pods too.
 </blockquote>
 
 <p>
-<a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a> traced that loop: copy a page, change it, see it at once, send the
-<a class="gl-ref" href="../glossary.html#url">URL</a>. Copying needs a source a stranger can read; a format legible only through
-a tool loses that step. The field&#8217;s experience agrees:
+(That is, the effect matters for linked data in pods too.) <a class="x-ref" href="56-goals-human-data-interface.html">Chapter 56</a> traced that loop: copy a page, change it, see it at once, send the
+<a class="gl-ref" href="../glossary.html#url">URL</a>. Copying needs a source a stranger can read. The field&#8217;s experience
+agrees:
 </p>
 
 <blockquote>
@@ -105,6 +105,10 @@ legible, actually is is better to ship legible formats directly across the
 net.
 <cite>Pretty Printing, 2023</cite>
 </blockquote>
+
+<p>
+On our reading, every pod should teach its format, as early web pages taught <a class="gl-ref" href="../glossary.html#html">HTML</a>.
+</p>
 
 <h2 id="sec-86-2">86.2 One fact changed, one line changed</h2>
 
@@ -119,8 +123,11 @@ changed between two.
 
 <p>
 Pod data is a <a class="gl-ref" href="../glossary.html#graph">graph</a> of <em>triples</em>, each one statement: subject,
-property, value. <a class="x-ref" href="#fig-86-1">Figure 86.1</a> shows them in <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a text form common in pods. In a diff, lines
-marked &minus; were removed and lines marked + were added.
+property, value. <a class="x-ref" href="#fig-86-1">Figure 86.1</a> shows them in <a class="gl-ref" href="../glossary.html#turtle">Turtle</a>, a text form common in pods: read
+<code>p:joe</code> as &lsquo;Joe&rsquo;, <code>foaf:name</code> as
+&lsquo;name&rsquo;, and <code>a</code> as &lsquo;is a&rsquo; (<a class="x-ref" href="#sec-86-5">section 86.5</a>
+explains the short names). In a diff, lines marked &minus; were removed and
+lines marked + were added.
 </p>
 
 <figure id="fig-86-1">
@@ -248,14 +255,14 @@ is key to the remote collaborative design process.&rdquo; <a class="gl-ref" href
 syntax close to a sentence, was first made for exactly this.
 </p>
 
-<h2 id="sec-86-4">86.4 Six benefits, one of them weak</h2>
+<h2 id="sec-86-4">86.4 Smaller files, the benefit the note doubts</h2>
 
 <p>
-Of the note&#8217;s six benefits, the sections above cover five: consistency,
-tests, source control, writing and collaboration. The sixth, smaller files, is
-the weakest. Turtle&#8217;s shorthands save space, but
-&ldquo;This may or may not be important. The text may get compressed at another
-stage.&rdquo;
+The note&#8217;s sixth benefit, after the five above, is size. With
+Turtle&#8217;s shorthands, triples &ldquo;can take significantly less
+space&rdquo;, as the two panels of <a class="x-ref" href="#fig-86-3">Figure 86.3</a> show. Yet the note hedges at
+once: &ldquo;This may or may not be important. The text may get compressed at
+another stage.&rdquo; The argument rests on people, not bytes.
 </p>
 
 <h2 id="sec-86-5">86.5 Shorthands that make data read like sentences</h2>
@@ -312,12 +319,8 @@ node</em> (a thing with no name of its own) and parentheses for a list.
 </p>
 
 <p>
-N3 adds raw dates, a <code>@keywords</code> directive that drops the leading
-colon from local names, curly brackets for graphs within graphs, and a reverse
-arc, <code>is &#8230; of</code>, so that every link touching a thing can be
-written in one place. A serialiser can then nest every unnamed thing in
-square brackets instead of inventing labels like <code>_:b1</code>, if the
-graph has no loops.
+N3 adds a few more, such as dates written plainly and a way to write a link
+backwards, so that everything about one thing can be written in one place.
 </p>
 
 <p>

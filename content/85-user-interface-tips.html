@@ -14,8 +14,8 @@ well.
 Berners-Lee&#8217;s calendar stopped responding: every click gave an error
 beep. The cause, on another screen with no calendar on it, was a popup asking
 whether a change to a recurring event applied to all of them or just one; he
-had, he guessed, nudged an event by accident. This 2016 list of his own biases
-says why such points still needed making:
+had, he guessed, nudged an event by accident. In 2016 he wrote down a dozen
+such rules, which he calls his own biases, and explained why:
 </p>
 <blockquote>
 In a way, more than 25 years after the WWW project started, you'd think that
@@ -77,7 +77,7 @@ An uncopyable message helps only someone who already understands it.
 </p>
 
 <p>
-A form should put the <em>focus</em>, where typed characters go, in its first
+The last rule in Figure 85.1 is about timing. A form should put the <em>focus</em>, where typed characters go, in its first
 field, but take it only in response to the user&#8217;s own action; otherwise,
 the note warns, &#8220;you might also end up with secret thing I was typing
 somewhere else&#8221;. An urgent alert should come to the front without taking
@@ -177,9 +177,8 @@ The three text rules share one act: replacing the <em>platform</em>, the
 browser or phone&#8217;s built-in text box, which already handles pasting and
 each device&#8217;s line editing. A numeric field that accepts only digits
 refuses a pasted &#8216;1,200&#8217;; the replacement handles its own case and
-loses everything else. Ready-made <em>auto-complete libraries</em> may be a
-common source. A developer tests the input they had in mind, so the failure
-rarely shows from where they sit.
+loses everything else. Ready-made <em>auto-complete libraries</em>, the note
+suspects, are a common source of such fields.
 </p>
 
 <h2>85.4 Popups: not hypertext, and easy to fake</h2>
@@ -198,18 +197,22 @@ habit to have. Popups are too easy to fake.
 </blockquote>
 
 <p>
-Better to ask beside the thing concerned, inside the app, where it is clear
-who is asking.
+Better to ask inside the app, beside the thing concerned, where the asker is
+clear.
 </p>
 
 <h2>85.5 Interruptions, and things that get lost</h2>
 
 <h3>Don&#8217;t interrupt</h3>
 
+<p>
+On our reading, the passport row sums up the section: a form that times out assumes the user&#8217;s life runs at the form&#8217;s speed.
+</p>
+
 <table>
 <tr><th>Tip</th><th>Why it hurts</th><th>Fix</th></tr>
 <tr><td>Never use modals</td><td>It blocks the page, yet a bank transfer&#8217;s account number may be elsewhere on the site.</td><td>Open the dialogue in place, then close it.</td></tr>
-<tr><td>Never use a carousel</td><td>It &#8220;makes the site look exciting to people who are not actually trying to actually use it&#8221;. A postscript: a multi-page road sign takes drivers&#8217; eyes off the road for 10&ndash;12 seconds.</td><td>Move only when the user starts it.</td></tr>
+<tr><td>Never use a carousel</td><td>It &#8220;makes the site look exciting to people who are not actually trying to actually use it&#8221;. The note adds that a multi-page electronic road sign makes drivers look away for 10&ndash;12 seconds.</td><td>Move only when the user starts it.</td></tr>
 <tr><td>Don&#8217;t time out my session</td><td>A form asking for a passport number should &#8220;Be prepared to wait while I apply for a passport&#8221;.</td><td>Keep what was entered; time out only powerful sessions, such as banking.</td></tr>
 </table>
 
