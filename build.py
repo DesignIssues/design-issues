@@ -219,6 +219,90 @@ def link_glossary(frag, rel):
     return "".join(out)
 
 
+# ---------------------------------------------------------------- cross-references
+# The prose cites figures ("Figure 25.4"), sections ("section 53.2") and
+# chapters ("Chapter 16") by number. Give each figure and numbered section an
+# anchor, and turn the citations into links. A citation whose target does not
+# exist is left as text and reported, so a bad number shows up at build time.
+_FIG_LABEL = re.compile(r'<span class="fig-label">Figure (\d+)\.(\d+)</span>')
+_H2_NUM = re.compile(r"<h2>(\d+)\.(\d+)\b")
+_XREF = re.compile(r"\b(Figure|[Ss]ection|Chapter)(s?) "
+                   r"(\d+(?:\.\d+)?(?:(?:,| and| or| to|, and|&ndash;|\u2013) ?\d+(?:\.\d+)?)*)(?![\d.]\d)")
+_NUM = re.compile(r"(\d+)(?:\.(\d+))?")
+
+
+def _anchor_ids(frag):
+    """Give each <figure> and numbered <h2> an id; return the new fragment."""
+    def fig(m):
+        lab = _FIG_LABEL.search(m.group(0))
+        if not lab:
+            return m.group(0)
+        return m.group(0).replace("<figure>", f'<figure id="fig-{lab.group(1)}-{lab.group(2)}">', 1)
+    frag = re.sub(r"(?s)<figure>.*?</figure>", fig, frag)
+    return _H2_NUM.sub(lambda m: f'<h2 id="sec-{m.group(1)}-{m.group(2)}">{m.group(1)}.{m.group(2)}', frag)
+
+
+def _targets():
+    figs, secs = set(), set()
+    for c in chapters:
+        if has_content(c):
+            t = open(content_path(c), encoding="utf-8").read()
+            figs.update((int(a), int(b)) for a, b in _FIG_LABEL.findall(t))
+            secs.update((int(a), int(b)) for a, b in _H2_NUM.findall(t))
+    return figs, secs
+
+
+def link_xrefs(frag, c):
+    figs, secs = XREF_TARGETS
+    by_n = {ch["n"]: ch for ch in chapters}
+    holes = [m.span() for m in _GL_SKIP.finditer(frag)]
+
+    def href(kind, n, k):
+        here = n == c["n"]
+        page = "" if here else by_n[n]["file"]
+        if kind == "chapter":
+            return None if (here or k or n not in by_n) else page
+        if k is None or n not in by_n:
+            return None
+        if kind == "figure" and (n, k) in figs:
+            return f"{page}#fig-{n}-{k}"
+        if kind == "section" and (n, k) in secs:
+            return f"{page}#sec-{n}-{k}"
+        print(f"  warning: chapter {c['n']} cites missing {kind} {n}.{k}")
+        return None
+
+    out, last = [], 0
+    for m in _XREF.finditer(frag):
+        a, b = m.span()
+        if any(hs <= a < he for hs, he in holes):
+            continue
+        kind = m.group(1).lower()
+        if not m.group(2):
+            # "Figure 25.4": the whole phrase is the link
+            n = _NUM.fullmatch(m.group(3))
+            if not n:
+                continue
+            h = href(kind, int(n.group(1)), n.group(2) and int(n.group(2)))
+            if h is None:
+                continue
+            out.append(frag[last:a])
+            out.append(f'<a class="x-ref" href="{h}">{m.group(0)}</a>')
+            last = b
+            continue
+        # "Chapters 7 and 8": link each number on its own
+        base = m.start(3)
+        for n in _NUM.finditer(m.group(3)):
+            h = href(kind, int(n.group(1)), n.group(2) and int(n.group(2)))
+            if h is None:
+                continue
+            na, nb = base + n.start(), base + n.end()
+            out.append(frag[last:na])
+            out.append(f'<a class="x-ref" href="{h}">{n.group(0)}</a>')
+            last = nb
+    out.append(frag[last:])
+    return "".join(out)
+
+
 def chapter_html(c, prev, nxt):
     rel = "../"
     vol = c["vol"]
@@ -248,7 +332,9 @@ def chapter_html(c, prev, nxt):
         # the first editorial block is the chapter's opening, not a callout:
         # give it its own class so it can be set as prose rather than a box.
         frag = frag.replace('<div class="editors-note">', '<div class="editors-note intro">', 1)
+        frag = link_xrefs(frag, c)
         frag = link_glossary(frag, rel)
+        frag = _anchor_ids(frag)
         out.append(collapse_questions(frag) + "\n")
     else:
         out.append(stub_note(c))
@@ -492,6 +578,8 @@ If the author would like anything changed or removed, that will be done.
 
 # ---------------------------------------------------------------- write
 def main():
+    global XREF_TARGETS
+    XREF_TARGETS = _targets()
     os.makedirs(os.path.join(ROOT, "chapters"), exist_ok=True)
     os.makedirs(os.path.join(ROOT, "content"), exist_ok=True)
     for i, c in enumerate(chapters):
