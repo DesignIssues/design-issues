@@ -58,7 +58,7 @@ with <a class="gl-ref" href="../glossary.html#get">GET</a> must only fetch, and 
 special command. The
 one central weak point in the whole design is the root of the <a class="gl-ref" href="../glossary.html#domain-name">domain name</a>
 system, which a single body has to run for everyone. Berners-Lee names two
-mistakes he wanted corrected: the separate <code>https</code> <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, and the
+things he wanted changed: the separate <code>https</code> <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, and the
 split between the messages protocols send and the documents they carry.
 </p>
 </div>
@@ -95,7 +95,8 @@ He divides its potential in two: first, people communicating with people, as
 when one person publishes a page and another reads it; second, software that
 can reach enough data to act as a tool for people, as when a program reads a
 timetable to plan a journey. Three goals run through all of it:
-interoperability, evolvability and universal access. The note is the nearest
+interoperability, room to grow without breaking (evolvability) and universal
+access. The note is the nearest
 thing to a map of this book: almost every later volume expands a paragraph of it.
 </p>
 
@@ -124,20 +125,21 @@ and revised without touching any language that uses it.
 <p>
 The same universality makes the URI specification a weak point. The note
 calls the introduction of a new URI scheme &ldquo;a potential disaster,
-immediately breaking interoperability&rdquo;. Its guidance, in short:
+immediately breaking interoperability&rdquo;: software written before the
+new scheme cannot follow addresses that use it. Its guidance, in short:
 </p>
 
 <ul>
 <li>Respect the generic syntax, the shape every URI shares: a scheme, a colon,
 and the rest.</li>
 <li>Do not introduce new schemes without due cause.</li>
-<li>Give every significant object with persistent identity a URI.</li>
+<li>Give every significant object with persistent identity a URI, and keep it
+stable through tools and education rather than separate permanent names
+(<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>).</li>
 </ul>
 
 <p>
-Keeping such URIs persistent he treats as a matter of tools, education and
-the maturity of Web society, not a reason for separate permanent names
-(<a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>). One example is a communication endpoint with a persistent identity. The
+Even a mailbox deserves a URI. The
 <code>mailto:</code> scheme, he writes, should perhaps have been called
 <code>mailbox:</code>, because &ldquo;a URI is a noun&rdquo;, not a verb.
 Browsers open a window for writing a new message, but an address book entry
@@ -161,7 +163,7 @@ governance by and for the world as a whole in a fair way is essential.
 
 <p>
 An <a class="gl-ref" href="../glossary.html#http">HTTP</a> address has two parts: a domain name delegated down the Domain Name
-System (<a class="gl-ref" href="../glossary.html#dns">DNS</a>), and an <a class="gl-ref" href="../glossary.html#opaque">opaque</a> string decided by the domain&#8217;s owner, as
+System (<a class="gl-ref" href="../glossary.html#dns">DNS</a>), and a path whose meaning only the owner decides, as
 <a class="x-ref" href="#fig-5-1">Figure 5.1</a> shows. The Consortium, he adds, did not address the root except
 indirectly through <a class="gl-ref" href="../glossary.html#icann">ICANN</a> (the Internet Corporation for Assigned Names and
 Numbers, set up in 1998 to oversee it).
@@ -212,7 +214,7 @@ The axioms of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapt
 that fetches what a URI points to. First, GET must have no side effects: using
 it to unsubscribe someone from a mailing list or fill a shopping cart is
 incorrect (<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> records what happened in 2005 when software relied on
-that rule). Second, no other side-effect-free method should be invented that
+that rule). Second, no other side-effect-free method (a verb like GET) should be invented that
 returns something depending on the URI, because its results would form a
 separate address space. The note illustrates why this is about universality
 rather than tidiness:
@@ -361,20 +363,17 @@ such documents.
 <p>
 The vehicle he names is HTTP-NG, a Consortium activity studying a
 &ldquo;next generation&rdquo; HTTP that might unify remote procedure calls
-with Web protocols. He sets out five goals: (1) many concurrent message
-exchanges over one connection; (2) a general data typing and marshalling
-standard (packing structured data for the wire); (3) a <a class="gl-ref" href="../glossary.html#schema">schema</a> system able to
-define any remote-procedure-call interface (asking another machine to run a
-function and return the result); (4) extensions for asynchrony and
-streaming; and (5) a socially aware state propagation protocol, keeping
-copies of changing information up to date, built on top in a modular way so
-that the basic design could be simpler than HTTP 1.1.
+with Web protocols. He gave it five goals, from carrying many conversations
+over one connection to a cleaner way of asking another machine to run a
+function; Question 5.4 lists them.
 </p>
 
 <h3>What the merger would gain</h3>
 
 <p>
-The gain is compositional, as <a class="x-ref" href="#fig-5-4">Figure 5.4</a> shows. It nearly happened once,
+Treat a message as a document and it can be signed, as a contract is; treat
+a document as a message and it can be packed compactly for the wire
+(<a class="x-ref" href="#fig-5-4">Figure 5.4</a>). It nearly happened once,
 with HTTP messages almost defined in SGML, the older <a class="gl-ref" href="../glossary.html#markup">markup</a> language from
 which HTML was derived.
 </p>
@@ -480,9 +479,14 @@ could an attacker do if security were left to negotiation?</p>
 </div>
 <div class="question">
 <p><span class="question-number">5.4</span>
-HTTP/2 delivered concurrent message exchange with binary framing rather than
-structured documents. Which of the five goals listed in <a class="x-ref" href="#sec-5-6">section 5.6</a> remain
-unmet, and does any of them still matter?</p>
+Berners-Lee&#8217;s five goals for HTTP-NG were: (1) many concurrent message
+exchanges over one connection; (2) a general data typing and marshalling
+standard (packing structured data for the wire); (3) a <a class="gl-ref" href="../glossary.html#schema">schema</a> system able to
+define any remote-procedure-call interface; (4) extensions for asynchrony and
+streaming; and (5) a state propagation protocol, keeping copies of changing
+information up to date, built on top in a modular way. HTTP/2 delivered the
+first with binary framing rather than structured documents. Which goals
+remain unmet, and does any of them still matter?</p>
 </div>
 </details>
 

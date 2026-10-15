@@ -22,7 +22,7 @@ thing. Nothing in the network guarantees that. A handful of rules do, rules
 that are, in the note&#8217;s words, &ldquo;implied or stated in various
 specifications or in some cases simply part of the folk law of how the Web
 ought to be used.&rdquo; Berners-Lee gathered them in December 1996 and
-revised the note until at least 2009. The rigour, he says, is borrowed:
+revised the note until at least 2009. The mathematical words, he warns, are loose:
 </p>
 <blockquote>
 Terms such as &ldquo;axiom&rdquo;, and &ldquo;theorem&rdquo; are used with gay
@@ -196,8 +196,10 @@ and different agents know different things.</figcaption>
 
 <p>
 Canonicalization means rewriting a URI into one standard spelling. Because
-equivalence depends on knowledge, no single rewriting suits everyone, and
-Berners-Lee draws the consequence for cryptography:
+equivalence depends on knowledge, no single rewriting suits everyone. If a
+signed document names <code>http://Example.org/a</code>, should the signature
+still check out against <code>http://example.org/a</code>? The note says the
+signing program should not try to decide:
 </p>
 
 <blockquote>
@@ -226,7 +228,8 @@ inside the string to gain other information.</p>
 <p>
 Even when fetching, the client reads only the scheme and the authority (the
 part after <code>//</code>, usually a host name) to decide which server to
-contact. The rest is opaque to it.
+contact. The rest is opaque to it, except the fragment, the part after
+<code>#</code>, which points to a spot within the page.
 </p>
 
 <p>
@@ -301,8 +304,6 @@ cacheable.
 Every HTTP request carries a method. Following a link sends a GET (show me
 this); submitting an order sends a POST (do this). A side effect is anything
 a request changes beyond fetching a page: an order placed, a record deleted.
-In 2005 a program from Google showed what the rule below protects (see
-What happened since).
 </p>
 
 <p>
@@ -325,9 +326,16 @@ effects should use GET.</p>
 </div>
 
 <p>
-A search form only asks for information, so it should use GET, and its
-result then has a URI that can be bookmarked or sent on. Ignoring the
-first axiom, the note warns, can open a serious security hole. Figure 2.3 shows why.
+In 2005 Google&#8217;s Web Accelerator fetched every link on a page in
+advance, to save time. On sites that used plain links for
+&ldquo;delete&rdquo;, it deleted data.
+</p>
+
+<p>
+Ignoring the first axiom, the note warns, can open a serious security
+hole. Figure 2.3 shows why. A search form only asks for information, so by
+the second it should use GET, and its result then has a URI that can be
+bookmarked or sent on.
 </p>
 
 <figure>
@@ -454,13 +462,13 @@ its future evolvability.
 
 <p>
 The telephone returns later, to explain the slashes that mark levels of a
-URI&#8217;s hierarchy. As a URI, +1 (617) 253-5708 becomes <code>phone://1/617/253-5708</code>, and with that number
-as the base, a local number is the relative <code>861-5000</code>.
-The double slash, the note says, came from the Apollo Domain network file
-system, which added an extra slash when extending Unix-style file names
-across a network; Microsoft&#8217;s NT networking uses
-<code>\\</code> the same way. It calls it a myth that <code>//</code> must
-introduce a domain name.
+URI&#8217;s hierarchy. As a URI, +1 (617) 253-5708 becomes
+<code>phone://1/617/253-5708</code>. Written that way, a number in the same
+area can be given as just <code>861-5000</code>, the way a file in the same
+folder needs only its own name. The double slash itself, the note says, came
+from an early networked file system (Apollo&#8217;s), where an extra slash
+was added when Unix-style file names were extended across a network. It
+calls it a myth that <code>//</code> must introduce a domain name.
 </p>
 
 <p>
@@ -516,10 +524,8 @@ identity and the limits on canonicalization survive in it.</li>
 was defined in HTTP/1.1 (RFC 2068, January 1997) and remains in RFC 9110. It
 tells caches which parts of a request affect the response.</li>
 <li><strong>The GET rule was given a name and a test case.</strong> Safe
-methods are specified in what is now RFC 9110, of June 2022. The Google Web Accelerator, released in May
-2005, fetched the links on a page in advance. In applications that used
-plain links for destructive actions, it followed the deletion links and
-deleted data.</li>
+methods are specified in what is now RFC 9110, of June 2022. The Google Web Accelerator of section 2.6,
+released in May 2005, was the test case.</li>
 </ul>
 </div>
 

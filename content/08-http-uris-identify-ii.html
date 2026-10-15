@@ -8,12 +8,13 @@ shows the address names a document; any other reply leaves the question open.
 </p>
 </div>
 
+
 <div class="editors-note">
 <h3>The question</h3>
 <p>
 The address of the Dublin Core word <em>title</em> also fetched a web page.
-A statement that it <em>has creator Dublin Core team</em> could then be
-read two ways: who made the web page, or who defined the property? Nothing in
+Suppose a statement says it <em>has creator Dublin Core team</em>: is that
+about who made the web page, or who defined the property? Nothing in
 the address said which. Berners-Lee records that the issue caused &ldquo;a lot
 of discussion in technical circles, and much heated debate&rdquo; until, in
 June 2005, three years after the argument of Chapter 7, the W3C&#8217;s
@@ -23,11 +24,78 @@ answer was a rule not about meaning but about the number a server sends back.
 </p>
 </div>
 
-<h2>8.1 The ruling: let the server&#8217;s reply decide</h2>
+<h2>8.1 One address, two meanings</h2>
 
 <p>
-Every reply from a web server begins with a three-digit response code that
-says how the request went. Three of them matter for this chapter:
+Some early vocabularies of RDF, the Semantic Web&#8217;s format for
+machine-readable statements, gave their words HTTP addresses. Dublin Core
+(names for describing documents: title, creator, date) and Friend of a Friend
+(names for describing people) both did, so the word <em>title</em> had a web
+address. Berners-Lee names them:
+</p>
+
+<blockquote>
+The Dublin Core project, one of the first RDF vocabularies, and later Friend
+of a Friend, and various others simply used HTTP URIs to identify RDF
+Properties. The result was that one could no longer be sure that an HTTP URI
+was intended to identify the web page one got when one used the URI in a
+browser.
+<cite>What HTTP URIs Identify, 2005</cite>
+</blockquote>
+
+<p>
+The danger, in the note&#8217;s words, was confusion if &ldquo;one party used
+the URI for an abstract concept and another used it for the web page&rdquo;
+(Figure 8.1).
+</p>
+
+<figure>
+<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
+     aria-labelledby="fig8-1-t fig8-1-d">
+  <title id="fig8-1-t">One URI, two readings</title>
+    <desc id="fig8-1-d">A single URI, http://purl.org/dc/elements/1.1/title,
+  is the subject of a statement: it has creator Dublin Core team.
+  Party A reads the statement as being about the web page fetched from the
+  URI. Party B reads it as being about the property title. Nothing in the
+  URI says which reading is meant.</desc>
+
+    <rect class="box" x="20" y="30" width="330" height="36" rx="4"/>
+  <text x="185" y="53" class="t-mono" text-anchor="middle" style="font-size:11.5px">http://purl.org/dc/elements/1.1/title</text>
+  <path class="ln" d="M 350 48 L 482 48"/>
+  <path d="M 490 48 L 481 43 L 481 53 Z" fill="#2f4f4f"/>
+  <text x="420" y="39" class="t-sm" text-anchor="middle">has creator</text>
+  <rect class="box" x="492" y="30" width="190" height="36" rx="4"/>
+  <text x="587" y="53" text-anchor="middle">Dublin Core team</text>
+
+  <path class="ln-dash" d="M 130 66 L 180 116"/>
+  <path class="ln-dash" d="M 250 66 L 500 116"/>
+
+  <rect class="box-green" x="40" y="116" width="300" height="56" rx="4"/>
+  <text x="190" y="139" text-anchor="middle">Party A reads it as about</text>
+  <text x="190" y="159" class="t-sm" text-anchor="middle">the web page fetched from the URI</text>
+
+  <rect class="box-warm" x="380" y="116" width="300" height="56" rx="4"/>
+  <text x="530" y="139" text-anchor="middle">Party B reads it as about</text>
+  <text x="530" y="159" class="t-sm" text-anchor="middle">the property <tspan class="t-it">title</tspan>, a term in a vocabulary</text>
+
+  <text x="360" y="212" class="t-it" text-anchor="middle">nothing in the URI says which reading is meant</text>
+</svg>
+<figcaption><span class="fig-label">Figure 8.1</span>
+Does this say who made the web page, or who defined the property?</figcaption>
+</figure>
+
+<p>
+Deployed practice had outrun the architecture (Chapter 9 tells the fuller
+story). In Chapter 7 he wanted
+the rule written into the definition of HTTP itself. The TAG instead let the
+server&#8217;s reply code carry the answer.
+</p>
+
+<h2>8.2 The ruling: let the server&#8217;s reply decide</h2>
+
+<p>
+Every reply from a web server begins with a three-digit code saying how the
+request went. Three matter here:
 </p>
 
 <table>
@@ -38,7 +106,9 @@ says how the request went. Three of them matter for this chapter:
 </table>
 
 <p>
-The resolution:
+An &ldquo;information resource&rdquo; is the formal term for what most people
+call a web page or a document: something whose whole content can be sent down
+the wire. The resolution:
 </p>
 
 <blockquote>
@@ -52,19 +122,17 @@ consistent architecture.
 </blockquote>
 
 <p>
-An &ldquo;information resource&rdquo; is the formal term for what most people
-call a web page or a document: something whose whole content can be sent down
-the wire. If a URI has fetched a web page, such as the New York Times home
-page or, as Berners-Lee points out, the very note he was writing, it may be
-used to name that page. So a 200 tells a client something; a 404 tells it
-nothing. The rule runs one way (Figure 8.1).
+In short: a 200 means the address names a document; after any other reply,
+nothing can be concluded. If a URI has fetched a web page, such as the New
+York Times home page or, as Berners-Lee points out, the very note he was
+writing, it may be used to name that page. The rule runs one way (Figure 8.2).
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig8-1-t fig8-1-d">
-  <title id="fig8-1-t">What a client may conclude from a response</title>
-  <desc id="fig8-1-d">A GET returning 200 allows the conclusion that the URI
+     aria-labelledby="fig8-2-t fig8-2-d">
+  <title id="fig8-2-t">What a client may conclude from a response</title>
+  <desc id="fig8-2-d">A GET returning 200 allows the conclusion that the URI
   names an information resource. A 303 says only that the URI may name
   anything, and points to a document about it. Any other response allows no
   conclusion at all.</desc>
@@ -108,18 +176,16 @@ nothing. The rule runs one way (Figure 8.1).
   <line class="ln-mut" x1="26" y1="288" x2="694" y2="288"/>
   <text x="360" y="312" class="t-sm t-it" text-anchor="middle">The rule runs one way only: it says when a client may conclude, never what the owner meant.</text>
 </svg>
-<figcaption><span class="fig-label">Figure 8.1</span>
-The httpRange-14 resolution of June 2005. Only a 200 tells the client
-something definite. Meaning was left where Chapter 2 put it, with the owner;
-what the Group supplied was a way for a client to find out part of it at
-runtime.</figcaption>
+<figcaption><span class="fig-label">Figure 8.2</span>
+The httpRange-14 resolution of June 2005. In effect, meaning was left where Chapter 2 put it, with
+the owner; what the Group supplied was a way for a client to find out part of
+it at runtime.</figcaption>
 </figure>
 
-<h2>8.2 The price of naming a person: one extra round trip</h2>
+<h2>8.3 The price of naming a person: one extra round trip</h2>
 
 <p>
-Berners-Lee describes the effect as an extension of range rather than a
-change of principle:
+Berners-Lee describes the effect as an extension of range:
 </p>
 
 <blockquote>
@@ -138,17 +204,17 @@ the URI names the page.
 <p>
 The note adds that it is still &ldquo;useful to serve information to those
 that look up a URI&rdquo;, even when the URI is not meant for a document. It
-does not say how, and never mentions the 303 code. The TAG&#8217;s own
+never mentions the 303 code. The TAG&#8217;s own
 resolution does: reply with a 303, after which the URI may name anything at
 all, pointing to a separate address that serves a document about the thing
-(Figure 8.2).
+(Figure 8.3).
 </p>
 
 <figure>
 <svg class="dia" viewBox="0 0 720 300" width="720" height="300" role="img"
-     aria-labelledby="fig8-2-t fig8-2-d">
-  <title id="fig8-2-t">The 303 exchange for a URI that names a person</title>
-  <desc id="fig8-2-d">A client asks the server for /id/alice and receives
+     aria-labelledby="fig8-3-t fig8-3-d">
+  <title id="fig8-3-t">The 303 exchange for a URI that names a person</title>
+  <desc id="fig8-3-d">A client asks the server for /id/alice and receives
   303 See Other with Location /doc/alice. It then asks for /doc/alice and
   receives 200 OK with a page about Alice. The first address names Alice the
   person; the second names a page about her.</desc>
@@ -194,76 +260,17 @@ all, pointing to a separate address that serves a document about the thing
   <rect class="box-green" x="448" y="211" width="252" height="40" rx="4"/>
   <text x="574" y="236" text-anchor="middle">/doc/alice = a page about Alice</text>
 </svg>
-<figcaption><span class="fig-label">Figure 8.2</span>
+<figcaption><span class="fig-label">Figure 8.3</span>
 Naming a person costs one extra round trip; the person&#8217;s URI never
 answers 200.</figcaption>
 </figure>
 
-<h2>8.3 Where the ambiguity came from</h2>
-
 <p>
-Some early vocabularies of RDF, the Semantic Web&#8217;s format for
-machine-readable statements, gave their words HTTP addresses. Dublin Core
-(names for describing documents: title, creator, date) and Friend of a Friend
-(names for describing people) both did, so the word <em>title</em> had a web
-address. Berners-Lee names them:
-</p>
-
-<blockquote>
-The Dublin Core project, one of the first RDF vocabularies, and later Friend
-of a Friend, and various others simply used HTTP URIs to identify RDF
-Properties. The result was that one could no longer be sure that an HTTP URI
-was intended to identify the web page one got when one used the URI in a
-browser.
-<cite>What HTTP URIs Identify, 2005</cite>
-</blockquote>
-
-<p>
-Figure 8.3 shows the danger the note spells out.
-</p>
-
-<figure>
-<svg class="dia" viewBox="0 0 720 230" width="720" height="230" role="img"
-     aria-labelledby="fig8-3-t fig8-3-d">
-  <title id="fig8-3-t">One URI, two readings</title>
-    <desc id="fig8-3-d">A single URI, http://purl.org/dc/elements/1.1/title,
-  is the subject of a statement: it has creator Dublin Core team.
-  Party A reads the statement as being about the web page fetched from the
-  URI. Party B reads it as being about the property title. Nothing in the
-  URI says which reading is meant.</desc>
-
-    <rect class="box" x="20" y="30" width="330" height="36" rx="4"/>
-  <text x="185" y="53" class="t-mono" text-anchor="middle" style="font-size:11.5px">http://purl.org/dc/elements/1.1/title</text>
-  <path class="ln" d="M 350 48 L 482 48"/>
-  <path d="M 490 48 L 481 43 L 481 53 Z" fill="#2f4f4f"/>
-  <text x="420" y="39" class="t-sm" text-anchor="middle">has creator</text>
-  <rect class="box" x="492" y="30" width="190" height="36" rx="4"/>
-  <text x="587" y="53" text-anchor="middle">Dublin Core team</text>
-
-  <path class="ln-dash" d="M 130 66 L 180 116"/>
-  <path class="ln-dash" d="M 250 66 L 500 116"/>
-
-  <rect class="box-green" x="40" y="116" width="300" height="56" rx="4"/>
-  <text x="190" y="139" text-anchor="middle">Party A reads it as about</text>
-  <text x="190" y="159" class="t-sm" text-anchor="middle">the web page fetched from the URI</text>
-
-  <rect class="box-warm" x="380" y="116" width="300" height="56" rx="4"/>
-  <text x="530" y="139" text-anchor="middle">Party B reads it as about</text>
-  <text x="530" y="159" class="t-sm" text-anchor="middle">the property <tspan class="t-it">title</tspan>, a term in a vocabulary</text>
-
-  <text x="360" y="212" class="t-it" text-anchor="middle">nothing in the URI says which reading is meant</text>
-</svg>
-<figcaption><span class="fig-label">Figure 8.3</span>
-Does this say who made the web page, or who defined the property?</figcaption>
-</figure>
-
-<p>
-Deployed practice had outrun the architecture; Chapter 9 gives
-Berners-Lee&#8217;s fuller account of that pressure. In Chapter 7 he wanted
-the rule written into the definition of HTTP itself. The TAG instead let the
-server&#8217;s reply code carry the answer. He accepts the result without
-pretending otherwise: a note added in 2006 to his 2002
-page calls it a compromise &ldquo;which I think works quite well&rdquo;.
+So looking up a URI that names a person takes two requests instead of one.
+That extra trip is what publishers later complained about. Berners-Lee
+accepts the result: a note added in 2006 to
+his 2002 page calls it a compromise &ldquo;which I think works quite
+well&rdquo;.
 </p>
 
 <div class="since">

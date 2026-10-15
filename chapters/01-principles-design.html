@@ -58,7 +58,7 @@ accepted, or forgiving? Control kept in one place, or given away?
 </p>
 <p>
 In 1998 Tim Berners-Lee wrote down his answers: six rules, two from
-software engineering, two from the Internet, and two he found the Web needed.
+software engineering, two from the Internet, and two he had often found useful for the Web.
 They are simplicity and modularity; tolerance and decentralisation; and the
 test of independent invention and the principle of least power. The rest of
 this book keeps applying them.
@@ -93,13 +93,12 @@ it still needs a home.
 
 <p>
 The six principles are not a flat list. Berners-Lee groups them by where
-they come from, and the grouping is the most useful thing in the note.
-Simplicity and modularity, he says, are &ldquo;the stuff of software
+they come from. Simplicity and modularity, he says, are &ldquo;the stuff of software
 engineering&rdquo;. Decentralisation and tolerance are &ldquo;the life and
 breath of Internet&rdquo;, and he credits Brian Carpenter&#8217;s <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 1958,
 <em>Architectural Principles of the Internet</em>, of June 1996. The
 remaining pair, the test of independent invention and the principle of least
-power, he claims as the ones he found he needed for the Web specifically.
+power, are ideas he has found &ldquo;commonly useful for the Web&rdquo;.
 </p>
 
 <p>
@@ -112,13 +111,13 @@ simplicity (a software one).
 </p>
 
 <table>
-<tr><th>Principle</th><th>Tradition</th><th>The failure it prevents</th></tr>
-<tr><td>Simplicity</td><td>Software engineering</td><td>Cost of every downstream <a class="gl-ref" href="../glossary.html#specification">specification</a></td></tr>
-<tr><td>Modularity</td><td>Software engineering</td><td>Change in one part forcing change in all</td></tr>
-<tr><td>Tolerance</td><td>Internet</td><td>Brittleness at the edges of conformance</td></tr>
-<tr><td>Decentralisation</td><td>Internet</td><td>A single point of scaling limit and of failure</td></tr>
-<tr><td>Test of independent invention</td><td>Web</td><td>A system that cannot coexist with its own twin</td></tr>
-<tr><td>Least power</td><td>Web</td><td>Data that only its own program can read</td></tr>
+<tr><th>Principle</th><th>Tradition</th><th>What goes wrong without it</th></tr>
+<tr><td>Simplicity</td><td>Software engineering</td><td>Every later <a class="gl-ref" href="../glossary.html#specification">specification</a> must handle an extra case</td></tr>
+<tr><td>Modularity</td><td>Software engineering</td><td>A change in one part forces changes in all</td></tr>
+<tr><td>Tolerance</td><td>Internet</td><td>Systems break on slightly wrong input</td></tr>
+<tr><td>Decentralisation</td><td>Internet</td><td>One point caps growth, and its failure stops everything</td></tr>
+<tr><td>Test of independent invention</td><td>Web</td><td>Two rival systems cannot work together</td></tr>
+<tr><td>Least power</td><td>Web</td><td>Data only its own program can read</td></tr>
 </table>
 
 <h2 id="sec-1-2">1.2 Simplicity, and what it is not</h2>
@@ -375,10 +374,10 @@ Nor is tolerance an excuse for a product that breaks a standard.
 <h2 id="sec-1-5">1.5 Decentralisation, including of concepts</h2>
 
 <p>
-The network argument is familiar: a common point involved in every operation
-limits how far the system can grow, and is a single point at which all of it
-can fail. Berners-Lee
-applies decentralisation to <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> as well as to infrastructure.
+If every operation passes through one common point, that point caps how far
+the system can grow, and when it fails, everything fails. That is the
+network argument. Berners-Lee applies it to <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> as well as to
+infrastructure.
 </p>
 
 <p>
@@ -463,7 +462,7 @@ the bottleneck; mapping is the remedy later chapters develop.</figcaption>
 </figure>
 
 <p>
-This is the seed of the argument that runs through Volumes IV and VI: that
+This is the seed of the argument that runs through Volumes IV to VI: that
 the Semantic Web must let anyone mint a term, and must solve agreement by
 mapping between vocabularies rather than by mandating one.
 </p>
@@ -490,8 +489,11 @@ TOII&rdquo;.
 </p>
 
 <p>
-<a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> applies the test to <a class="gl-ref" href="../glossary.html#uri">URI</a> space, which passes because nothing
-prevents a rival universal space from enveloping it as a subset.
+The Web itself was designed to pass. A rival, larger address space could
+take in every <a class="gl-ref" href="../glossary.html#uri">URI</a> as one of its parts, and both would keep working; <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>
+shows this with the international telephone system, and <a class="x-ref" href="16-evolvability.html">Chapter 16</a> tells
+Berners-Lee&#8217;s own story of the Web meeting an imagined rival, the Multi Media
+Mesh.
 </p>
 
 <h2 id="sec-1-7">1.7 Least power: why HTML is not a program</h2>
@@ -519,13 +521,11 @@ a list of steps for a computer to carry out, as in Java or C.
 </p>
 
 <p>
-Between them Berners-Lee sets out a scale of five rungs (<a class="x-ref" href="#fig-1-5">Figure 1.5</a>). Dublin
-Core, a standard set of library-catalogue fields, sits at the bottom; content
-negotiation (&ldquo;conneg&rdquo;, a <a class="gl-ref" href="../glossary.html#server">server</a> picking a format for the client)
-is limited logic. PostScript and PDF verge on Turing complete, able in
-principle to express any computation; the note adds that PostScript in fact
-is and PDF is not. XSLT and <a class="gl-ref" href="../glossary.html#sql">SQL</a> are complete, though &ldquo;one is led not to
-use them that way&rdquo;.
+Between the two Berners-Lee sets out a scale (<a class="x-ref" href="#fig-1-5">Figure 1.5</a>), from plain
+descriptions such as HTML to programming languages such as Java. On the
+rungs between, languages grow towards being Turing complete, able in
+principle to express any computation: &ldquo;Postscript is, but PDF
+isn&#8217;t, I am told&rdquo;.
 </p>
 
 <figure id="fig-1-5">

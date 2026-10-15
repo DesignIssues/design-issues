@@ -19,7 +19,7 @@ Suppose the address <code>http://example.net/people/Pat</code> returns a
 page about Pat. Does the address name the page, or Pat? Web architects had
 argued this at length (Chapters 7 and 8), and in 2009 a new task force was
 being proposed to take it up again. In August Berners-Lee sent the Technical
-Architecture Group (the TAG, the W3C body that rules on Web architecture) an
+Architecture Group (the TAG, the W3C body that advises on Web architecture) an
 email answering with the history of one word, &ldquo;resource&rdquo;, and of the
 several meanings it had acquired.
 </p>
@@ -29,14 +29,14 @@ several meanings it had acquired.
 
 <p>
 People got used to <code>http://example.com/</code> being a web page and
-<code>http://example.com/#contact</code> an anchor within it. From there the
-word passed through five stages.
+<code>http://example.com/#contact</code> an anchor within it: the address
+named a document. Then the word began to widen, in five stages.
 </p>
 
 <table>
 <tr><th>Order</th><th>Who</th><th>What &ldquo;resource&rdquo; meant</th></tr>
 <tr><td>1</td><td>The first Web specification</td><td>Nothing: the term was &ldquo;document&rdquo;, in Universal Document Identifier (UDI)</td></tr>
-<tr><td>2</td><td>The online-information community at the IETF (the Internet Engineering Task Force, which standardises Internet protocols)</td><td>A useful thing out there: a page, a file, a film</td></tr>
+<tr><td>2</td><td>The IETF&#8217;s online-information community</td><td>A useful thing out there: a page, a file, a film</td></tr>
 <tr><td>3</td><td>REST, Roy Fielding&#8217;s 2000 description of the Web&#8217;s architectural style</td><td>A time-varying mapping between a URI and a representation (the bytes a server sends back)</td></tr>
 <tr><td>4</td><td>RDF</td><td>Anything at all; <code>rdf:Resource</code> is the class of everything</td></tr>
 <tr><td>5</td><td>The Architecture of the World Wide Web, the W3C&#8217;s 2004 summary of how the Web works</td><td>&ldquo;Information resource&rdquo; for a page; &ldquo;resource&rdquo; for anything</td></tr>
@@ -77,13 +77,14 @@ boundaries.</figcaption>
 </figure>
 
 <p>
-The D became R because some felt &ldquo;document&rdquo; was not wide enough
-to include things like films. The URI specification, he says, wisely declined to constrain what a resource could be, which left the word
+At the IETF (the Internet Engineering Task Force, which standardises
+Internet protocols) the D became R; some felt &ldquo;document&rdquo; was not
+wide enough to include things like films. The URI specification, he says, wisely declined to constrain what a resource could be, which left the word
 open for everything that followed.
 </p>
 
 <p>
-On the gap that opened up:
+Nobody, he says, ever pinned the word down:
 </p>
 
 <blockquote>
@@ -97,12 +98,13 @@ returned representation of the resource.
 <h2>9.2 What the formal definition left out</h2>
 
 <p>
-REST&#8217;s time-varying mapping was, Berners-Lee says, good enough for
-HTTP, but not for describing how the Web actually worked.
+REST&#8217;s definition (an address may return different bytes at different
+times, and that is all) was, Berners-Lee says, good enough for HTTP, but not
+for describing how the Web actually worked.
 </p>
 
 <p>
-For example, a weather page&#8217;s address returns different text each
+A weather page&#8217;s address returns different text each
 day, yet always today&#8217;s weather. The formal definition captures only
 the first half.
 </p>
@@ -197,8 +199,7 @@ either.
 <p>
 Second, the hash ties each term to the file that defines it, and for some
 large systems the file size was wrong either way: one term per file, or a
-million in one, so that looking up one meant fetching all. Others simply disliked how the hash looked. For one
-reason or another, people demanded the right to use
+million in one, so that looking up one meant fetching all. Others simply disliked how the hash looked. So people demanded the right to use
 <code>http://example.net/people/Pat</code> to name Pat rather than a web page
 about Pat.
 </p>
@@ -206,7 +207,9 @@ about Pat.
 <h3>The truce</h3>
 
 <p>
-Systems already built took such an address to name a document; the danger,
+The TAG negotiated what Berners-Lee calls a truce among three parties: the
+HTTP specification, the RDF systems already built, and those who wanted
+hashless names (Figure 9.3). Those systems took a hashless address to name a document; the danger,
 he writes, was &ldquo;huge failures in the whole RDF world&rdquo;.
 Berners-Lee, among others, pushed back against hashless URIs for arbitrary
 things, but eventually gave in.
@@ -214,7 +217,7 @@ things, but eventually gave in.
 
 <p>
 The resulting rule, known as httpRange-14 after its number in the
-TAG&#8217;s list of issues, is drawn in Figure 8.1. A <strong>200</strong>
+TAG&#8217;s list of issues, is drawn in Figure 8.2. A <strong>200</strong>
 answer, which returns the page, means the hashless URI names a document. For
 a person or an RDF property the server must not answer 200, but may answer
 <strong>303</strong> (See Other), pointing to a document that explains more.
@@ -278,12 +281,11 @@ text stayed as it was.
 <figcaption><span class="fig-label">Figure 9.3</span>
 The truce, party by party. Each side kept what it could not do without; the
 third column is the ground Berners-Lee gave up. The rule itself, as a client
-applies it, is Figure 8.1.</figcaption>
+applies it, is Figure 8.2.</figcaption>
 </figure>
 
 <p>
-Berners-Lee calls the result a truce, negotiated by the TAG among three
-parties (Figure 9.3). His verdict:
+His verdict:
 </p>
 
 <blockquote>

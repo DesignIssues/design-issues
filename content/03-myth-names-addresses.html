@@ -10,7 +10,7 @@ This chapter argues that the distinction is a myth. Two of Berners-Lee&#8217;s
 own stories turn it upside down. In one, a server&#8217;s owners could promise
 that its IP address would last, but could not yet say what its name would be.
 In the other, information on the Web&#8217;s first server had to give up its
-name although nothing had moved. What replaces the distinction is a genuine
+name although the information itself was unchanged. What replaces the distinction is a genuine
 dilemma with no technical escape.
 </p>
 </div>
@@ -41,8 +41,9 @@ it replaces a distinction with a trade-off.
 <p>
 The belief is learned young and from good examples. Computing students are
 taught that a <em>name</em> is something a person chooses and reads, while an
-<em>address</em> is something a machine uses to find a location. From such
-examples one generalises to two kinds of object: names, which follow a thing
+<em>address</em> is something a machine uses to find a location: a variable
+called <code>total</code> in a program versus the memory slot where it sits.
+The lesson generalises to two kinds of object: names, which follow a thing
 wherever it resides, and addresses, which change when it moves.
 </p>
 
@@ -126,7 +127,7 @@ what information is in the address.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
 
-<h2>3.2 Two stories in which nothing moved</h2>
+<h2>3.2 Two names that hung on who was in charge</h2>
 
 <p>
 <strong>The Australian server.</strong> In the early days Berners-Lee kept a
@@ -160,8 +161,8 @@ about authority, and the authority changed or was unsettled.
      aria-labelledby="fig3-2-t fig3-2-d">
   <title id="fig3-2-t">The two anecdotes side by side</title>
   <desc id="fig3-2-d">Two panels. Australian server: the server and its IP
-  address stayed put; which department was responsible changed; so no stable
-  domain name could be given. info.cern.ch: the content stayed put; who
+  address were kept; which department was responsible changed; so no stable
+  domain name could be given. info.cern.ch: the same information was kept; who
   maintained it changed, from CERN to W3C at MIT; so every link had to move to
   w3.org. A line joins both panels: authority changed, so the name
   changed.</desc>
@@ -169,7 +170,7 @@ about authority, and the authority changed or was unsettled.
   <rect class="box" x="20" y="16" width="330" height="194" rx="4"/>
   <text x="185" y="42" text-anchor="middle" style="fill:#1c5a7a">Australian server</text>
   <line class="ln-mut" x1="36" y1="54" x2="334" y2="54"/>
-  <text x="36" y="76" class="t-sm">Stayed put</text>
+  <text x="36" y="76" class="t-sm">Kept</text>
   <text x="36" y="95" style="fill:#5a8f5a">the server and its IP address</text>
   <text x="36" y="124" class="t-sm">Changed</text>
   <text x="36" y="143" style="fill:#b08d57">which department was responsible</text>
@@ -179,8 +180,8 @@ about authority, and the authority changed or was unsettled.
   <rect class="box" x="370" y="16" width="330" height="194" rx="4"/>
   <text x="535" y="42" class="t-mono" text-anchor="middle" style="fill:#1c5a7a">info.cern.ch</text>
   <line class="ln-mut" x1="386" y1="54" x2="684" y2="54"/>
-  <text x="386" y="76" class="t-sm">Stayed put</text>
-  <text x="386" y="95" style="fill:#5a8f5a">the content</text>
+  <text x="386" y="76" class="t-sm">Kept</text>
+  <text x="386" y="95" style="fill:#5a8f5a">the same information</text>
   <text x="386" y="124" class="t-sm">Changed</text>
   <text x="386" y="143" style="fill:#b08d57">who maintained it: CERN, then W3C at MIT</text>
   <text x="386" y="172" class="t-sm">Result</text>
@@ -190,8 +191,8 @@ about authority, and the authority changed or was unsettled.
   <text x="360" y="262" text-anchor="middle" style="fill:#1c5a7a">authority changed, so the name changed</text>
 </svg>
 <figcaption><span class="fig-label">Figure 3.2</span>
-Nothing moved in either story. The name broke because it claimed who was
-responsible.</figcaption>
+The information kept its identity in both stories. The name broke because it
+claimed who was responsible.</figcaption>
 </figure>
 
 <h2>3.3 Reading a URI for its future breakages</h2>
@@ -204,13 +205,14 @@ servers that simply mapped URLs onto the file system, and pulls it apart:
 <pre><code>http://pegasus.cs.foo.edu/disk1/students/romeo/cool/latest/readthis.html</code></pre>
 
 <p>
-Of each segment he asks what change in the world would make it wrong. Figure
-3.3 summarises his answers. Some
-verdicts are blunt: <code>disk1</code> is &ldquo;clearly a mistake&rdquo;, and
+Of each segment he asks what change in the world would make it wrong (Figure
+3.3). Some verdicts are blunt: <code>disk1</code> is &ldquo;clearly a mistake&rdquo;, and
 of <code>cool</code> and <code>latest</code> he says the student &ldquo;has not
 been very wise with his choice of path name&rdquo;. The final
 <code>.html</code> names a format, which makes it awkward to offer the content
-in another format later, such as audio for blind readers.
+in another format later, such as audio for blind readers. Even
+<code>romeo</code> is a weak point: if the document is published or handed to
+another maintainer, the name must change, as info.cern.ch&#8217;s did.
 </p>
 
 <figure>
@@ -315,8 +317,7 @@ any name and address in any system&rdquo;.
 <p>
 To <em>dereference</em> a name is to use it to fetch the thing named, by
 asking whoever is responsible for it. That is what a browser does with a link.
-Berners-Lee states the dilemma in one
-sentence:
+Berners-Lee states the dilemma:
 </p>
 
 <blockquote>
@@ -326,7 +327,7 @@ longevity; if you don't you can't dereference it to a resource.
 </blockquote>
 
 <p>
-Information must be present because dereferencing requires it. Many names are
+Dereferencing requires information. Many names are
 handed out hierarchically, each level by the authority above it, and the
 look-up follows the same path. Berners-Lee&#8217;s analogy is a street name: to
 find out where the new &ldquo;North Street&rdquo; is in a small town, one asks
@@ -336,7 +337,7 @@ University. The information in the name is what routes the question.
 </p>
 
 <p>
-The alternative is available and Berners-Lee describes it honestly. Every
+The alternative exists. Every
 e-mail message carries a Message-ID, a string that need only be unique. It
 cannot be used to fetch the message, because there is nobody to ask. What it
 does support is equality: two copies with the same Message-ID are the same
@@ -388,12 +389,6 @@ from somewhere other than the form of the name: from a contract, as section
 
 <h2>3.5 Persistence is a contract</h2>
 
-<p>
-If the information in a name binds it to an authority, a name keeps working
-only as long as that authority does. Persistence is then an agreement between
-organisations, not a property of a protocol.
-</p>
-
 <h3>Two ends of the scale</h3>
 
 <p>
@@ -418,7 +413,8 @@ association runs a service offering names such as
 to any graduate who pays their dues, and keeps each one working
 indefinitely, &ldquo;perpetual care&rdquo; in the note&#8217;s phrase, in
 return for an <em>endowment</em>, a lump sum paid once and invested so that
-its income covers the cost for ever.
+its income covers the cost for ever. Persistence, in other words, is a
+contract between organisations, not a property of a protocol.
 </p>
 
 <p>
@@ -445,6 +441,11 @@ Metadata should be used to express the quality of service for the binding
 between a URI and a resource.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
+
+<p>
+A name, in this view, lasts only as long as somebody&#8217;s promise to keep it
+working, and that promise is itself worth stating.
+</p>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -491,8 +492,8 @@ everything with random strings? Answer using the naming problem as stated.</p>
 </div>
 <div class="question">
 <p><span class="question-number">3.2</span>
-Both anecdotes involve a change of responsible party without any movement of
-data. Describe a third case from your own experience, and identify which
+In both anecdotes the responsible party changed while the information kept its
+identity. Describe a third case from your own experience, and identify which
 segment of the identifier carried the authority claim.</p>
 </div>
 <div class="question">

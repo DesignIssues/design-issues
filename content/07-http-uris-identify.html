@@ -10,8 +10,8 @@ recommending a war.
 <p>
 His answer for naming things that are not documents is the hash (#):
 <code>page#car</code> names something described in <code>page</code>. In 2005
-the group settled on a compromise that kept his distinction but used a
-redirect instead of the hash.
+the group settled on a compromise that kept his distinction but added a
+redirect as an alternative to the hash.
 </p>
 </div>
 
@@ -158,9 +158,7 @@ you are buying a car.
 <h3>The test of a shared link</h3>
 
 <p>
-The note turns this into the test that opened this chapter: the photograph
-sent, the table received. Both pages are about the same car, yet the link did
-not work. Every link carries
+The note turns this into the test that opened this chapter. Every link carries
 the expectation that the person who follows it gets basically the same
 information as the person who made it. A JPEG instead of a GIF, a
 black-and-white copy or, for a reader who cannot see the picture, a
@@ -224,22 +222,22 @@ names: the information content, not the subject.</figcaption>
 <h2>7.3 Eight ways out, and the snag in each</h2>
 
 <p>
-Most of the note states, in their proponents&#8217; terms, positions
-Berners-Lee does not hold. One lets the property decide which thing a name means. In the note&#8217;s
-example, saying that <code>http://example.com/albert</code> &ldquo;is a color
+Most of the note sets out the rival views fairly. Take one, which lets the
+property decide which thing a name means. In the note&#8217;s example, saying that <code>http://example.com/albert</code> &ldquo;is a color
 photo&rdquo; is about the representation, that it &ldquo;used to work down the
 mill&rdquo; is about the man, and that it &ldquo;was taken on a rainy
-day&rdquo; is about the original photograph. The scheme stumbles when a page
-is about another page. One term in the table needs explaining: closed-world
-reasoning assumes that anything not stated is false, but on the open Web new
-information can always arrive.
+day&rdquo; is about the original photograph. Now let the page be a review of another web
+page. &ldquo;It was written in 2001&rdquo; could be about the review or the page
+reviewed, and no property can tell them apart. As the note puts it, anyone can
+write anything about anything &ldquo;except those things which might get
+confused with the document they are writing.&rdquo;
 </p>
 
 <table>
 <tr><th>Alternative</th><th>The snag</th></tr>
-<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
+<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself. Content filters list a friend&#8217;s photograph page as containing nudity, whichever version is downloaded, though its subject is the person</td></tr>
 <tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before consulting the owner; variants that default to a page need closed-world reasoning, and settling it by a protocol operation such as GET would mean changing the servers already deployed, an avenue he leaves open</td></tr>
-<tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
+<tr><td>Let logic disambiguate</td><td>Possible in theory, he says, but a mess; a name would mean different things in different places</td></tr>
 <tr><td>Let different properties imply different levels</td><td>Stumbles when a page is about another page, as with Albert above</td></tr>
 <tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
 <tr><td>Disambiguate by context</td><td>Fails once the two communities talk to each other; breaks the rule that a URI names one thing</td></tr>
@@ -248,9 +246,13 @@ information can always arrive.
 </table>
 
 <p>
-On the owner-defines position Berners-Lee concedes almost everything before
-objecting. He calls it
-tempting and logically consistent, and notes that it is how <code>uuid</code>
+One term in the table needs explaining: closed-world reasoning assumes that
+anything not stated is false, but on the open Web new information can always
+arrive.
+</p>
+
+<p>
+Berners-Lee calls the owner-defines position tempting and logically consistent, and notes that it is how <code>uuid</code>
 URIs already work. His objection is engineering rather than philosophy: he
 cannot use a URI until he has definitive information from the publisher about
 what it identifies, and there is no moment at which that information reliably
@@ -297,7 +299,7 @@ meanings. If the owner decides what an address names, nobody can safely make
 the statement at the top without asking the owner first.</figcaption>
 </figure>
 
-<h2>7.4 A redirect he sketched and set aside</h2>
+<h2>7.4 A redirect he sketched and left open</h2>
 
 <p>
 The RDF test suite used the address
@@ -318,15 +320,14 @@ document about it.
 
 <p>
 He leaves that avenue open. Chapter 8 records what
-it did: in 2005 it adopted the same mechanism using an existing code,
+the Group did: in 2005 it adopted the same mechanism using an existing code,
 303 &ldquo;See Other&rdquo;, in place of a new 343.
 </p>
 
 <h2>7.5 The most significant piece of punctuation</h2>
 
 <p>
-Among the questions at the end of the note, one answer states the value of a
-single character:
+One answer at the end of the note states the value of a single character:
 </p>
 
 <blockquote>

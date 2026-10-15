@@ -219,10 +219,10 @@ already decided that all three are acceptable for this URI. (The address
 
 <p>
 The note claims that genericity runs along a small number of axes, and that
-the smallness matters. <em>The Wall
+the smallness matters (why, below). <em>The Wall
 Street Journal</em> varies with time, while each issue is fixed; most home
-pages change too, &ldquo;in a less periodic way&rdquo;. A document may be
-named in general or as one translation. An image may
+pages change too, &ldquo;in a less periodic way&rdquo;. A translated paper may be
+cited in general, or as exactly the French translation one read. An image may
 travel as PNG or JFIF. And one resource may be aimed at a printer, a laptop,
 a cellphone, or be &ldquo;projected onto a large screen for an
 audience&rdquo; (<a class="x-ref" href="#fig-10-3">Figure 10.3</a>).
@@ -348,14 +348,24 @@ the French when the English is asked for.
 A <a class="gl-ref" href="../glossary.html#cache">cache</a>, a program that keeps copies of pages, has to know whether a stored
 copy is still good, and a statement from the publisher is what can tell it.
 The note wants two: which dimensions a URI is generic in, and how two
-resources relate along a dimension. In 1996 it proposed a header and a
-labelled link; in September 2000 Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for machine-readable statements), using classes
-(categories a resource belongs to) and properties (named relations between
-resources). A <code>TimeInvariant</code> URI promises that what it returns
+resources relate along a dimension.
+</p>
+
+<p>
+In 1996 it proposed a header and a labelled link. In September 2000
+Berners-Lee added <a class="gl-ref" href="../glossary.html#rdf">RDF</a> versions (RDF is <a class="gl-ref" href="../glossary.html#w3c">W3C</a>&#8217;s format for
+machine-readable statements), which the note now marks as superseded by a
+later <a class="gl-ref" href="../glossary.html#ontology">ontology</a> at <code>w3.org/2006/gen/ont</code>; that ontology does not
+cover target medium, a dimension the note itself says HTTP content
+negotiation did not handle.
+</p>
+
+<p>
+The withdrawn 2000 section, still in the page source, is history but shows
+the idea. A <code>TimeInvariant</code> URI promises that what it returns
 will not change over time; <code>Fixed</code> promises it will not change
 under any circumstances, so every Fixed resource is also time-, language- and
-type-invariant. The note gives one case: &ldquo;P3P policies are supposed to
+type-invariant. It gives one case: &ldquo;P3P policies are supposed to
 be in u:Fixed.&rdquo; (P3P was W3C&#8217;s format for machine-readable
 privacy policies.)
 </p>
@@ -365,12 +375,6 @@ privacy policies.)
 <tr><td>Which dimensions a URI varies in</td><td><code>URI: &#8230; vary=time,language</code></td><td>Classes for what does <em>not</em> vary: <code>TimeInvariant</code>, <code>LanguageInvariant</code>, <code>ContentTypeInvariant</code>, and <code>Fixed</code></td></tr>
 <tr><td>How resource A relates to resource B</td><td><code>&lt;link rel="language-specific" href="baz.fr"&gt;</code></td><td>Properties such as <code>isLanguageSpecificVersionOf</code> (A is one language version of generic B)</td></tr>
 </table>
-
-<p>
-The note now marks the 2000 <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a> as superseded by a later <a class="gl-ref" href="../glossary.html#ontology">ontology</a> at
-<code>w3.org/2006/gen/ont</code>, which does not cover target medium, the one
-dimension HTTP never negotiated either.
-</p>
 
 <div class="since">
 <h3>What happened since</h3>

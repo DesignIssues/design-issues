@@ -78,7 +78,7 @@ in the table of contents; the fifteen on the path carry a flag as well.
 
 ## Status
 
-Complete. All 96 chapters are written, with 338 inline figures. Every note on
+Complete. All 96 chapters are written, with 337 inline figures. Every note on
 w3.org/DesignIssues has a chapter; the Preface is used as front matter.
 
 What remains is correction and improvement: errata, better readings, better

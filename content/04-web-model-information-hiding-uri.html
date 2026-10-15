@@ -44,22 +44,27 @@ dividing it into three parts.
 <figure>
 <svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
      aria-labelledby="fig4-1-t fig4-1-d">
-  <title id="fig4-1-t">The three modules of the Web model</title>
-  <desc id="fig4-1-d">A followed link reaches the application, which splits
-  it at the hash. Everything before the hash, http://example.org/paper, goes
-  to the access module, which returns a data stream and a media type to the
-  presentation object. The fragment, #section3, is carried straight to the
-  presentation object without being inspected. The access module never sees
+  <title id="fig4-1-t">Following one link through the three modules</title>
+  <desc id="fig4-1-d">Five numbered steps. One: a link is followed. Two: the
+  application makes it absolute and splits it at the hash. Three: everything before the hash, http://example.org/paper, goes
+  to the access module, which fetches it. Four: a factory builds the
+  presentation object from the data stream and the media type. Five: the
+  fragment, #section3, is carried straight to the presentation object without
+  being inspected. The access module never sees
   the fragment; the presentation object never sees the URI.</desc>
 
   <!-- the URI arrives at the application -->
   <text x="18" y="30" class="t-mono"><tspan style="fill:#1c5a7a">http://example.org/paper</tspan><tspan style="fill:#5a8f5a">#section3</tspan></text>
   <path class="ln" d="M 110 38 L 110 64"/>
   <path d="M 106 62 L 110 71 L 114 62 Z" fill="#2f4f4f"/>
-  <text x="122" y="58" class="t-sm">a link is followed</text>
+  <circle class="box-plain" cx="131" cy="54" r="9"/>
+  <text x="131" y="58" class="t-sm" text-anchor="middle">1</text>
+  <text x="146" y="58" class="t-sm">a link is followed</text>
 
   <!-- application -->
   <rect class="box-warm" x="18" y="72" width="184" height="84" rx="4"/>
+  <circle class="box-plain" cx="36" cy="94" r="9"/>
+  <text x="36" y="98" class="t-sm" text-anchor="middle">2</text>
   <text x="110" y="98" class="t-caps" text-anchor="middle" style="fill:#b08d57">Application</text>
   <text x="110" y="117" class="t-sm" text-anchor="middle">holds the absolute URI</text>
   <text x="110" y="132" class="t-sm" text-anchor="middle">resolves relative ones</text>
@@ -67,6 +72,8 @@ dividing it into three parts.
 
   <!-- access -->
   <rect class="box" x="458" y="72" width="244" height="84" rx="4"/>
+  <circle class="box-plain" cx="476" cy="94" r="9"/>
+  <text x="476" y="98" class="t-sm" text-anchor="middle">3</text>
   <text x="580" y="98" class="t-caps" text-anchor="middle">Access</text>
   <text x="580" y="117" class="t-sm" text-anchor="middle">knows the scheme</text>
   <text x="580" y="132" class="t-sm" text-anchor="middle">speaks the protocol</text>
@@ -89,10 +96,14 @@ dividing it into three parts.
   <path class="ln" d="M 580 156 L 580 206"/>
   <path d="M 576 204 L 580 213 L 584 204 Z" fill="#2f4f4f"/>
   <text x="568" y="190" class="t-sm" text-anchor="end">data stream + media type</text>
+  <circle class="box-plain" cx="596" cy="186" r="9"/>
+  <text x="596" y="190" class="t-sm" text-anchor="middle">4</text>
 
   <!-- application to presentation: the fragment carried past -->
   <path class="ln-dash" style="stroke:#5a8f5a" d="M 110 156 L 110 258 L 448 258"/>
   <path d="M 446 253 L 456 258 L 446 263 Z" fill="#5a8f5a"/>
+  <circle class="box-plain" cx="214" cy="241" r="9"/>
+  <text x="214" y="245" class="t-sm" text-anchor="middle">5</text>
   <text x="280" y="245" class="t-mono" text-anchor="middle" style="fill:#5a8f5a">#section3</text>
   <text x="280" y="277" class="t-sm" text-anchor="middle">carried across, never inspected</text>
 
@@ -101,80 +112,11 @@ dividing it into three parts.
   <text x="360" y="338" class="t-sm t-it" text-anchor="middle">Access never sees the fragment. The presentation object never sees the URI.</text>
 </svg>
 <figcaption><span class="fig-label">Figure 4.1</span>
-The application splits the link at the hash. The part before it goes to
-access; the fragment goes straight to the presentation object.</figcaption>
-</figure>
-
-<p>
-Figure 4.2 follows one link through them. Access returns the bytes of the
-document and a media type such as <code>text/html</code>; a factory, meaning
-code that builds an object of the right kind, turns them into a page object,
-and only that object is given the fragment.
-</p>
-
-<figure>
-<svg class="dia" viewBox="0 0 620 344" width="620" height="344" role="img"
-     aria-labelledby="fig4-2-t fig4-2-d">
-  <title id="fig4-2-t">Following one link</title>
-  <desc id="fig4-2-d">Five steps. One: the reader clicks a link written as
-  paper#section3. Two: the application makes it absolute,
-  http://example.org/paper#section3, and splits it at the hash. Three: access
-  fetches http://example.org/paper, and never sees #section3. Four: a factory
-  builds the page object from the bytes and the media type text/html. Five:
-  the page object is given only #section3 and scrolls to that part; it never
-  sees the URI.</desc>
-
-  <!-- step 1 -->
-  <circle class="box-plain" cx="30" cy="40" r="13"/>
-  <text x="30" y="45" text-anchor="middle">1</text>
-  <rect class="box-warm" x="56" y="16" width="420" height="48" rx="4"/>
-  <text x="72" y="36">The reader clicks a link in the page</text>
-  <text x="72" y="54" class="t-sm">the link, as written: <tspan class="t-mono" style="fill:#2f4f4f">paper#section3</tspan></text>
-  <path class="ln" d="M 266 64 L 266 74"/>
-  <path d="M 262 72 L 266 81 L 270 72 Z" fill="#2f4f4f"/>
-
-  <!-- step 2 -->
-  <circle class="box-plain" cx="30" cy="106" r="13"/>
-  <text x="30" y="111" text-anchor="middle">2</text>
-  <rect class="box-warm" x="56" y="82" width="420" height="48" rx="4"/>
-  <text x="72" y="102">The application makes it absolute and splits it</text>
-  <text x="72" y="120" class="t-sm"><tspan class="t-mono" style="fill:#1c5a7a">http://example.org/paper</tspan><tspan class="t-mono" style="fill:#5a8f5a">#section3</tspan> split at the hash</text>
-  <path class="ln" d="M 266 130 L 266 140"/>
-  <path d="M 262 138 L 266 147 L 270 138 Z" fill="#2f4f4f"/>
-
-  <!-- step 3 -->
-  <circle class="box-plain" cx="30" cy="172" r="13"/>
-  <text x="30" y="177" text-anchor="middle">3</text>
-  <rect class="box" x="56" y="148" width="420" height="48" rx="4"/>
-  <text x="72" y="168">Access fetches the document</text>
-  <text x="72" y="186" class="t-mono" style="fill:#1c5a7a">GET http://example.org/paper</text>
-  <line class="ln-mut" x1="480" y1="172" x2="494" y2="172"/>
-  <text x="502" y="176" class="t-sm t-it" style="fill:#b08d57">never sees #section3</text>
-  <path class="ln" d="M 266 196 L 266 206"/>
-  <path d="M 262 204 L 266 213 L 270 204 Z" fill="#2f4f4f"/>
-
-  <!-- step 4 -->
-  <circle class="box-plain" cx="30" cy="238" r="13"/>
-  <text x="30" y="243" text-anchor="middle">4</text>
-  <rect class="box-green" x="56" y="214" width="420" height="48" rx="4"/>
-  <text x="72" y="234">A factory builds the page object</text>
-  <text x="72" y="252" class="t-sm">from the bytes and the media type <tspan class="t-mono" style="fill:#2f4f4f">text/html</tspan></text>
-  <path class="ln" d="M 266 262 L 266 272"/>
-  <path d="M 262 270 L 266 279 L 270 270 Z" fill="#2f4f4f"/>
-
-  <!-- step 5 -->
-  <circle class="box-plain" cx="30" cy="304" r="13"/>
-  <text x="30" y="309" text-anchor="middle">5</text>
-  <rect class="box-green" x="56" y="280" width="420" height="48" rx="4"/>
-  <text x="72" y="300">The page object scrolls to the part</text>
-  <text x="72" y="318" class="t-sm">given only <tspan class="t-mono" style="fill:#5a8f5a">#section3</tspan></text>
-  <line class="ln-mut" x1="480" y1="304" x2="494" y2="304"/>
-  <text x="502" y="308" class="t-sm t-it" style="fill:#b08d57">never sees the URI</text>
-</svg>
-<figcaption><span class="fig-label">Figure 4.2</span>
-Following one link. Each step receives only what it needs: the colours match
-the modules of Figure 4.1, and the two notes on the right are the two axioms
-below.</figcaption>
+Following one link. The application splits it at the hash (2); access
+fetches the part before it (3); a factory, meaning code that builds an object
+of the right kind, turns the bytes and a media type such as
+<code>text/html</code> into a presentation object (4); only that object is
+given the fragment (5).</figcaption>
 </figure>
 
 <p>
@@ -183,7 +125,7 @@ Berners-Lee states the arrangement as two axioms:
 
 <div class="editors-note">
 <p><strong>The access machinery does not need to look at the fragment
-identifier.</strong></p>
+ID.</strong></p>
 <p><strong>The presentation object does not need to know the URI of the
 resource.</strong></p>
 </div>
@@ -246,14 +188,13 @@ Fragments (2012). Neither changed HTTP.
 <h3>Webizing</h3>
 
 <p>
-New applications such as the Semantic Web can be
-built on this model: not as a new Web, but by introducing new types of
-document. Webizing a language, he says, means taking names that were global
-only within one document and making them truly global by adding the
-document&#8217;s URI and a hash. A name <code>#alice</code>, used inside
-<code>http://example.org/people</code>, becomes
-<code>http://example.org/people#alice</code>, which means the same thing
-anywhere. This is the mechanism of Chapter 6 and of Volume IV.
+A name <code>#alice</code>, used inside <code>http://example.org/people</code>,
+can be written <code>http://example.org/people#alice</code>, and then means
+the same thing anywhere. Webizing a language, he says, does this to every
+name that was global only within one document: append the document&#8217;s
+URI and a hash. New applications can then be built, like the hypertext Web,
+just by introducing new types of document. This is the mechanism of Chapter 6
+and of Volume IV.
 </p>
 
 <h3>Where the axiom bites</h3>
@@ -287,9 +228,9 @@ Instead, one algorithm was made common to all schemes.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 330" width="720" height="330" role="img"
-     aria-labelledby="fig4-3-t fig4-3-d">
-  <title id="fig4-3-t">One link, two homes</title>
-  <desc id="fig4-3-d">Left: on disk, ch1.html at
+     aria-labelledby="fig4-2-t fig4-2-d">
+  <title id="fig4-2-t">One link, two homes</title>
+  <desc id="fig4-2-d">Left: on disk, ch1.html at
   file:///home/ann/book/ch1.html contains the link ch2.html, which resolves to
   file:///home/ann/book/ch2.html. Right: the same unedited file at
   http://example.org/book/ch1.html resolves the same link to
@@ -333,7 +274,7 @@ Instead, one algorithm was made common to all schemes.
   <text x="541" y="280" class="t-sm" text-anchor="middle" style="fill:#b08d57">nothing here: the link is broken</text>
   <text x="360" y="316" class="t-sm" text-anchor="middle">ch2.html is still on the disk, at file:///home/ann/book/ch2.html</text>
 </svg>
-<figcaption><span class="fig-label">Figure 4.3</span>
+<figcaption><span class="fig-label">Figure 4.2</span>
 One rule for every scheme lets a set move unedited; splitting it still breaks
 links. The same <code>href="ch2.html"</code> works under <code>file:</code>
 and under <code>http:</code>, but only while both chapters move together.</figcaption>
@@ -395,8 +336,8 @@ properties that make namespaces hard:
 
 <p>
 Worse, software would be needed to look up schemes and fetch handlers for
-them, which means something like DNS, which means that the top level of the
-Web&#8217;s namespace has silently become DNS again:
+them, which means something like DNS, so that the top level of the namespace
+becomes, in effect, DNS or something like it:
 </p>
 
 <blockquote>
@@ -408,9 +349,9 @@ name service exists.
 
 <figure>
 <svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
-     aria-labelledby="fig4-4-t fig4-4-d">
-  <title id="fig4-4-t">The extension switch, kept and spent</title>
-  <desc id="fig4-4-d">Left, kept: the scheme is one top-level switch with a
+     aria-labelledby="fig4-3-t fig4-3-d">
+  <title id="fig4-3-t">The extension switch, kept and spent</title>
+  <desc id="fig4-3-d">Left, kept: the scheme is one top-level switch with a
   short list of spaces, http, ftp, gopher and mailto, and an empty slot left
   as room for a new space. Right, spent: many schemes such as myapp, notes,
   shop and chat need a lookup service like DNS and a way to download a
@@ -464,7 +405,7 @@ name service exists.
   <text x="541" y="216" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">the lookup service is now the top level:</text>
   <text x="541" y="232" class="t-sm t-it" text-anchor="middle" style="fill:#b08d57">no switch left above it</text>
 </svg>
-<figcaption><span class="fig-label">Figure 4.4</span>
+<figcaption><span class="fig-label">Figure 4.3</span>
 The extension switch, kept and spent. Spend the top-level switch and it
 becomes one more namespace to manage. The scheme names on the right are
 illustrations of the pattern, not a survey.</figcaption>
@@ -555,7 +496,10 @@ supplies the mechanism that Chapter 2&#8217;s axioms assume. Fragment identifier
 in their own right are Chapter 11; relative resolution is Chapter 12. The
 webizing move sketched in section 4.2 is treated fully in Chapter 26, and its
 consequence for naming things rather than documents is Chapter 6. The
-warning about scheme proliferation returns in Chapter 5.
+warning about scheme proliferation returns in Chapter 5. Berners-Lee
+numbered the note zero in his axioms sequence, though it came more than a
+year after the Axioms note of Chapter 2: that note describes what URIs are,
+this one the machine that consumes them.
 </p>
 </div>
 
@@ -563,7 +507,7 @@ warning about scheme proliferation returns in Chapter 5.
 <h3>Questions</h3>
 <div class="question">
 <p><span class="question-number">4.1</span>
-Using Figure 4.2, explain why moving a page to a new address does not break
+Using Figure 4.1, explain why moving a page to a new address does not break
 its own <code>#notes</code> links, and what would break if the server had to
 understand <code>#notes</code>.</p>
 </div>
@@ -581,7 +525,8 @@ whether verified https links solved the problem or deferred it.</p>
 </div>
 <div class="question">
 <p><span class="question-number">4.4</span>
-Using section 4.5, say which sense of &ldquo;resource&rdquo; fits a web page,
-a mailbox, and a person described in RDF.</p>
+A link ends in <code>#section3</code>, and the server, negotiating content,
+sends a PDF instead of the HTML the link&#8217;s author saw. What happens, and
+who should warn whom?</p>
 </div>
 </div>
