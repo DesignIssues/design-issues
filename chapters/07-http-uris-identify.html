@@ -286,8 +286,8 @@ confused with the document they are writing.&rdquo;
 
 <table>
 <tr><th>Alternative</th><th>The snag</th></tr>
-<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself. Content filters list a friend&#8217;s photograph page as containing nudity, whichever version is downloaded, though its subject is the person</td></tr>
-<tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before consulting the owner; variants that default to a page need closed-world reasoning, and settling it by a protocol operation such as <a class="gl-ref" href="../glossary.html#get">GET</a> would mean changing the servers already deployed, an avenue he leaves open</td></tr>
+<tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself. Filters list a page friends made with a photograph of the person as containing nudity: the page, not the person</td></tr>
+<tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before asking the owner; defaulting to a page needs closed-world reasoning; a test by <a class="gl-ref" href="../glossary.html#get">GET</a> would mean changing every deployed <a class="gl-ref" href="../glossary.html#server">server</a></td></tr>
 <tr><td>Let logic disambiguate</td><td>Possible in theory, he says, but a mess; a name would mean different things in different places</td></tr>
 <tr><td>Let different properties imply different levels</td><td>Stumbles when a page is about another page, as with Albert above</td></tr>
 <tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
@@ -355,7 +355,7 @@ the statement at the top without asking the owner first.</figcaption>
 <p>
 The RDF test suite used the address
 <code>http://www.w3.org/2000/10/rdf-tests/TestSchema/NegativeParserTest</code>
-to name a kind of software test, not a page. Ask the <a class="gl-ref" href="../glossary.html#server">server</a> for it and it
+to name a kind of software test, not a page. Ask the server for it and it
 answers 404, not found. It had little choice: HTTP has no way to return a class
 of tests, only a document. And had it returned a document, nobody could refer
 to that document without accidentally referring to the class of tests too.
