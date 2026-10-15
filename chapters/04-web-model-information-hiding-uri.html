@@ -52,16 +52,16 @@ a Design Issues note by Tim Berners-Lee, 1998-01-29.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A web address often has a <a class="gl-ref" href="../glossary.html#hash">hash</a> in it, with something after the hash naming a
-part of the page. Nobody has to think about this, which is the point: the
-piece of software that fetches the page and the piece that finds the right
-part of it are kept deliberately ignorant of each other.
+Put a link to section 3 inside a page, then move the page to a new address.
+The link still works, and the page was never edited. Had it needed editing,
+a <a class="gl-ref" href="../glossary.html#digital-signature">digital signature</a> on it would have broken. Berners-Lee&#8217;s 1998 note
+explains why it works: the software that fetches a page and the software
+that finds a place inside it are kept from knowing about each other.
 </p>
 <p>
-This chapter is about where those dividing lines run (the note recorded them
-in 1998), and why
-drawing them there is the reason the Web&#8217;s separate parts could go on being
-revised for decades without any one revision breaking the others.
+This chapter is about where those dividing lines run, and why drawing them
+there is a large part of why the Web&#8217;s separate parts could go on being
+revised without one revision breaking the others.
 </p>
 </div>
 
@@ -69,28 +69,28 @@ revised for decades without any one revision breaking the others.
 <h3>The question</h3>
 <p>
 Why can <a class="gl-ref" href="../glossary.html#http">HTTP</a>, <a class="gl-ref" href="../glossary.html#html">HTML</a> and new document formats each be revised without
-breaking the others? The answer is that the module boundaries were drawn in the right places
-early on, and this 1998 note says where. Its
-subject is information hiding.
+breaking the others? The note&#8217;s answer is that the module boundaries
+were drawn in the right places early on, and it says where. Its subject is
+information hiding.
 </p>
 <p>
-Berners-Lee numbered the note zero in his axioms sequence, though he wrote
-it in January 1998, more than a year after the Axioms note of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>
-(December 1996). <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a> describes what URIs are; this note describes the
-machine that consumes them.
+Berners-Lee numbered the note zero in his axioms sequence, though it came
+more than a year after the Axioms note of <a class="x-ref" href="02-axioms-web-architecture-uris.html">Chapter 2</a>. That note describes
+what URIs are; this one describes the machine that consumes them.
 </p>
 </div>
 
-<h2 id="sec-4-1">4.1 Three modules</h2>
+<h2 id="sec-4-1">4.1 Three parts that do not share what they know</h2>
 
 <p>
-Information hiding means each part of a system knows only what it needs, so
-the others can change without it noticing. The model applies that idea to a
-browser, or to anything else that follows a link, by dividing it into three
-parts that know different things.
+The note puts modularity in human terms. The Web&#8217;s parts are
+independent: &ldquo;There is knowledge they have individually but do not
+share&rdquo;, and equally &ldquo;There is knowledge their designers had
+individually but did not share&rdquo;. That is information hiding: each part
+knows only what it needs, so the others can change without it noticing. The
+model applies it to a browser, or to anything else that follows a link, by
+dividing it into three parts.
 </p>
-
-
 
 <figure id="fig-4-1">
 <svg class="dia" viewBox="0 0 720 352" width="720" height="352" role="img"
@@ -157,12 +157,10 @@ access; the fragment goes straight to the presentation object.</figcaption>
 </figure>
 
 <p>
-Access is handed the <a class="gl-ref" href="../glossary.html#uri">URI</a> with the fragment removed. It returns two things: a
-data stream, which is simply the bytes of the document as they arrive, and a
-<a class="gl-ref" href="../glossary.html#media-type">media type</a> such as <code>text/html</code>, which says what kind of document
-those bytes are. Both are passed to a factory, meaning code that builds an
-object of the right kind, and the object it builds is then given the
-<a class="gl-ref" href="../glossary.html#fragment-identifier">fragment identifier</a>. <a class="x-ref" href="#fig-4-2">Figure 4.2</a> follows one link through these steps.
+<a class="x-ref" href="#fig-4-2">Figure 4.2</a> follows one link through them. Access returns the bytes of the
+document and a <a class="gl-ref" href="../glossary.html#media-type">media type</a> such as <code>text/html</code>; a factory, meaning
+code that builds an object of the right kind, turns them into a page object,
+and only that object is given the fragment.
 </p>
 
 <figure id="fig-4-2">
@@ -237,7 +235,7 @@ Berners-Lee states the arrangement as two axioms:
 <div class="editors-note">
 <p><strong>The access machinery does not need to look at the fragment
 identifier.</strong></p>
-<p><strong>The presentation object does not need to know the URI of the
+<p><strong>The presentation object does not need to know the <a class="gl-ref" href="../glossary.html#uri">URI</a> of the
 resource.</strong></p>
 </div>
 
@@ -255,37 +253,30 @@ for fragment identifiers.
 <h2 id="sec-4-2">4.2 Why the fragment stays on the client</h2>
 
 <p>
-The immediate payoff is a link that stays on the same page, such as
-<code>&lt;a href="#notes"&gt;</code>. A link within a document specifies only
-a fragment, and the object can follow it without consulting the access code
-at all, because the hash syntax is universal across every <a class="gl-ref" href="../glossary.html#scheme">scheme</a>.
-</p>
-
-<p>
-The consequence is that an author can write a document full of internal links
-without knowing what URI the document will eventually be served under, and
-can move it without editing it.
+The immediate payoff is a link within the same page, such as
+<code>&lt;a href="#notes"&gt;</code>. It specifies only a fragment, and
+because the <a class="gl-ref" href="../glossary.html#hash">hash</a> syntax is universal across every <a class="gl-ref" href="../glossary.html#scheme">scheme</a>, the object can
+follow it without consulting the access code. An author can therefore write
+internal links without knowing where the document will be served, and move
+it without editing it.
 </p>
 
 <h3>Signed documents</h3>
 
 <p>
 Berners-Lee credits Jim Gettys with the observation that makes this more than
-a convenience. As digitally signed documents become common, editing a
-document to fix its own internal links would break the signature on it. A
-document that can be self-consistent independently of its <a class="gl-ref" href="../glossary.html#namespace">namespace</a> is one
-that can be signed once.
+a convenience: editing a signed document to fix its own links would break
+the signature. A document self-consistent independently of its <a class="gl-ref" href="../glossary.html#namespace">namespace</a> can
+be signed once.
 </p>
 
 <h3>Room to evolve</h3>
 
 <p>
 The second payoff is evolutionary, and he is emphatic about it. Because no
-access <a class="gl-ref" href="../glossary.html#specification">specification</a> refers to fragment semantics, anyone defining a new
-media type is free to invent whatever notion of a view or a part suits it,
-knowing that nothing else will break. Equally, anyone designing a new way to
-name and fetch documents need not care what kinds of document will travel
-over it.
+access <a class="gl-ref" href="../glossary.html#specification">specification</a> refers to fragment semantics, a new media type may
+invent whatever notion of a view or a part suits it, and a new way of
+fetching documents need not care what kinds of document travel over it.
 </p>
 
 <blockquote>
@@ -295,6 +286,13 @@ number of exciting media types has grown very rapidly, and will be the key to
 many new revolutions built on top of the basic Web idea.
 <cite>The Web Model, 1998</cite>
 </blockquote>
+
+<p>
+Later formats used that freedom. A PDF can be opened at a page with
+<code>#page=5</code>, a convention recorded in <a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3778 (2004), and a video
+clipped to seconds 10 to 20 with <code>#t=10,20</code>, from <a class="gl-ref" href="../glossary.html#w3c">W3C</a> Media
+Fragments (2012). Neither changed HTTP.
+</p>
 
 <h3>Webizing</h3>
 
@@ -309,16 +307,26 @@ document&#8217;s URI and a hash. A name <code>#alice</code>, used inside
 anywhere. This is the mechanism of <a class="x-ref" href="06-levels-abstraction-net-web-graph.html">Chapter 6</a> and of Volume IV.
 </p>
 
+<h3>Where the axiom bites</h3>
+
+<p>
+The independence has a cost, which the note flags in passing. Because each
+media type defines its own fragments, a <a class="gl-ref" href="../glossary.html#server">server</a> that negotiates content,
+sending a PDF where the link&#8217;s author saw HTML, can deliver a document
+in which <code>#section3</code> means nothing. Of such negotiation the note
+says
+&ldquo;you run a risk &amp; should warn the client&rdquo;.
+</p>
+
 <h2 id="sec-4-3">4.3 Why relative resolution is universal</h2>
 
 <p>
-Suppose Ann writes a book as a set of files on her own disk. Chapter one is
-at <code>file:///home/ann/book/ch1.html</code>, and it links to chapter two
-by writing only <code>href="ch2.html"</code>. That short form is a relative
-reference: it gives only the part of the address that differs. The address
-of the document it appears in, here chapter one&#8217;s, is the base URI. To
-follow the link, the application combines the two, replacing the last part
-of the base with <code>ch2.html</code>.
+Suppose Ann writes a book as files on her disk. Chapter one, at
+<code>file:///home/ann/book/ch1.html</code>, links to chapter two with only
+<code>href="ch2.html"</code>, a relative reference giving just the part of
+the address that differs. Chapter one&#8217;s own address is the base URI;
+the application follows the link by replacing the last part of the base
+with <code>ch2.html</code>.
 </p>
 
 <p>
@@ -383,12 +391,11 @@ and under <code>http:</code>, but only while both chapters move together.</figca
 </figure>
 
 <p>
-The justification is the same shape as the one for fragments, and equally
-practical. Sets of documents that link to each other, such as the chapters of
-a book, are moved between file systems, HTTP space and FTP space constantly.
-Because the resolution rules are universal, the documents need not be
-modified when they move. Berners-Lee adds the honest caveat: moving half a
-set to one place and half to another still breaks the links.
+The justification has the same shape as the one for fragments. Linked sets
+such as a book&#8217;s chapters move between file systems, HTTP space and
+FTP space constantly, and universal rules mean they need not be modified
+when they do. Berners-Lee adds the caveat: moving half a set to one place
+and half to another still breaks the links.
 </p>
 
 
@@ -396,8 +403,7 @@ set to one place and half to another still breaks the links.
 <h2 id="sec-4-4">4.4 The scheme, and why it must not be spent</h2>
 
 <p>
-The last section of the note is a warning, and it is the part that later
-events bore out.
+The last section of the note is a warning.
 </p>
 
 <blockquote>
@@ -406,10 +412,9 @@ The access scheme is by definition the highest point of flexibility.
 </blockquote>
 
 <p>
-Its value is that it is the escape hatch. If the entire Web developed a
-problem that could not be solved within existing protocols, a new space could
-be created, and Berners-Lee argues that there is empirical reason to believe
-this would work because it already worked for Gopher and FTP:
+It is the escape hatch. If the whole Web developed a problem that existing
+protocols could not solve, a new space could be created, and Berners-Lee
+trusts this would work because it already had for Gopher and FTP:
 </p>
 
 <blockquote>
@@ -419,8 +424,17 @@ a better hope that you can in the future.
 </blockquote>
 
 <p>
-The danger is that spending the hatch destroys it. If many schemes are
-introduced, the space of scheme names becomes a namespace with all the
+The danger is that spending the hatch destroys it:
+</p>
+
+<blockquote>
+If we use this extension point frivolously, ironically, it will cease to
+work.
+<cite>The Web Model, 1998</cite>
+</blockquote>
+
+<p>
+If many schemes are introduced, the space of scheme names becomes a namespace with all the
 properties that make namespaces hard:
 </p>
 
@@ -433,9 +447,15 @@ properties that make namespaces hard:
 <p>
 Worse, software would be needed to look up schemes and fetch handlers for
 them, which means something like <a class="gl-ref" href="../glossary.html#dns">DNS</a>, which means that the top level of the
-Web&#8217;s namespace has silently become DNS again. At that point, he
-observes, there is no top-level extension switch left.
+Web&#8217;s namespace has silently become DNS again:
 </p>
+
+<blockquote>
+What happens if later DNS needs to be replaced? There is no top-level
+extension switch left. The world is stuck with whatever form of access-scheme
+name service exists.
+<cite>The Web Model, 1998</cite>
+</blockquote>
 
 <figure id="fig-4-4">
 <svg class="dia" viewBox="0 0 720 248" width="720" height="248" role="img"
@@ -513,12 +533,11 @@ expressed as extensions within HTTP.
 <h3>A space first, a protocol second</h3>
 
 <p>
-The note ends this section with a distinction that softens the warning. A
-scheme names a part of the URI space first, and a protocol only second. The
-protocols used to reach a space can therefore be replaced while the names in
-it stay the same: a new protocol for looking up DNS names, for example,
-could take over gradually without any <code>http:</code> address changing.
-His analogy is the telephone:
+A distinction softens this. A scheme names a part of the URI space
+first, and a protocol only second, so the protocols can be replaced while
+the names stay the same: a new DNS protocol could take over gradually
+without any <code>http:</code> address changing. His analogy is the
+telephone:
 </p>
 
 <blockquote>
@@ -527,11 +546,11 @@ remained the same.
 <cite>The Web Model, 1998</cite>
 </blockquote>
 
-<h2 id="sec-4-5">4.5 A note on the word &ldquo;resource&rdquo;</h2>
+<h2 id="sec-4-5">4.5 Why &ldquo;resource&rdquo; and not &ldquo;document&rdquo;</h2>
 
 <p>
-The note closes with the etymology, which explains a persistent confusion.
-The first Web specification said Universal Document Identifier. The <a class="gl-ref" href="../glossary.html#ietf">IETF</a>
+The note closes with the etymology. The first Web specification said
+Universal Document Identifier. The <a class="gl-ref" href="../glossary.html#ietf">IETF</a>
 discussion changed &ldquo;document&rdquo; to &ldquo;resource&rdquo; on two
 grounds: documents did not obviously cover films and sounds, and URIs exist
 for endpoints such as mailboxes and login ports, which are not documents at
@@ -547,32 +566,35 @@ all. The word then picked up two further senses.
 
 <p>
 Three meanings, one word, and the reader of any given specification must
-determine which is in force.
+determine which is in force. The narrow, document-like sense matters, and
+the note&#8217;s section on the information resource says why: a document is the unit for reference and
+retrieval, &ldquo;but also the unit of ownership, license to use, payment,
+confidentiality, endorsement, etc.&rdquo; However far the technical notion
+is stretched, those social uses must still be supported, &ldquo;so we
+can&#8217;t mess with it too much.&rdquo;
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
 <li><strong>The independence axiom was written into the standard.</strong>
-<a class="gl-ref" href="../glossary.html#rfc">RFC</a> 3986, of January 2005, specifies that the semantics of a fragment are
-defined by the media type of the retrieved representation, which is this
-chapter&#8217;s first axiom in normative form.</li>
+RFC 3986, of January 2005, specifies that a fragment&#8217;s meaning is
+defined by the media type of the retrieved representation.</li>
 <li><strong>The client-side fragment was abused, then replaced.</strong>
-Single-page applications used fragments to encode application state, and
-Google&#8217;s AJAX crawling scheme of 2009 made a convention of it before
+Single-page applications encoded application state in fragments, and
+Google&#8217;s AJAX crawling scheme made a convention of it from 2009 until
 deprecating it in October 2015. The History <a class="gl-ref" href="../glossary.html#api">API</a>&#8217;s pushState method
-restored a distinct URI per view, which is what the model asked for.</li>
+restored a distinct URI per view.</li>
 <li><strong>New fragment conventions kept arriving, as predicted.</strong>
-<a class="gl-ref" href="../glossary.html#w3c">W3C</a> Media Fragments URI 1.0 became a <a class="gl-ref" href="../glossary.html#recommendation">Recommendation</a> in September 2012. Text
-fragments, addressing a passage by its words, shipped in Chrome in 2020.
-Neither required any change to HTTP, which is the flexibility this chapter
-claims.</li>
+Text fragments, addressing a passage by its words, shipped in Chrome in
+2020, again with no change to HTTP.</li>
 <li><strong>The scheme warning was borne out by mobile.</strong> Applications
-claimed custom schemes in large numbers through the 2010s, and collided
-exactly as described: any application could register any scheme, and
-resolution was undefined. Both major platforms retreated to verified https
-links, Universal Links on iOS and App Links on Android, both introduced in
-2015.</li>
+claimed custom schemes in large numbers through the 2010s, and collided as
+the note warned: any application could register any scheme, and resolution
+was undefined. Both major platforms retreated to verified https links,
+Universal Links on iOS and App Links on Android, both introduced in 2015.
+Each checks a file served from the link&#8217;s domain, so which program
+opens a link is now settled by DNS names, much as the note foresaw.</li>
 </ul>
 </div>
 
@@ -593,7 +615,7 @@ warning about scheme proliferation returns in <a class="x-ref" href="05-web-arch
 <div class="question">
 <p><span class="question-number">4.1</span>
 Using <a class="x-ref" href="#fig-4-2">Figure 4.2</a>, explain why moving a page to a new address does not break
-its own <code>#notes</code> links, and what would break if the <a class="gl-ref" href="../glossary.html#server">server</a> had to
+its own <code>#notes</code> links, and what would break if the server had to
 understand <code>#notes</code>.</p>
 </div>
 <div class="question">

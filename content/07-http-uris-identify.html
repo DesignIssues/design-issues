@@ -4,7 +4,8 @@
 A web address (an HTTP URI) names a document, not the thing the document is
 about. The page about a car is not the car. Berners-Lee held this view in
 2002 while in a minority on the W3C&#8217;s architecture group. He took the rival
-views one at a time and turned each one down.
+views one at a time and found a snag in each, from content filters to
+recommending a war.
 </p>
 <p>
 His answer for naming things that are not documents is the hash (#):
@@ -17,8 +18,13 @@ redirect instead of the hash.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the longest argument in the collection and the only one written from
-a declared minority position. The status line is unusually exposed:
+Berners-Lee sees a web page showing a photograph of a car. He copies the
+address from his browser and emails it to a friend: look, the car is a Toyota.
+The friend clicks the link. The same address comes up, but the page is a table
+of the car&#8217;s weight, length, colour and registration number. Same
+address, same car, and yet, he argues, the Web did not work. Explaining why
+left him in a minority on the W3C&#8217;s architecture group, as the
+note&#8217;s status line says:
 </p>
 <blockquote>
 This was a result of my being in a minority with this opinion on the
@@ -32,7 +38,11 @@ was what an HTTP URI denotes, meaning what thing in the world it is a name
 for. For a decade nobody had needed to ask. Berners-Lee notes that the ambiguity of natural language had concealed the problem so
 well that the original author of HTTP and its later co-author, who wrote his
 doctoral thesis analysing the Web, held conflicting ideas of what the terms
-meant without either noticing.
+meant without either noticing. English copes with such vagueness: people say
+&ldquo;Moby Dick weighs over three thousand tons&rdquo;, &ldquo;Moby Dick was
+finished over a century ago&rdquo; and &ldquo;I left Moby Dick on the
+beach&rdquo;, and nobody is misled. The note refuses to take human language as
+its guide.
 </p>
 <p>
 What forced the question was RDF, a language for machine-readable statements
@@ -44,12 +54,12 @@ same identifier for different things and never discover it.
 </p>
 </div>
 
-<h2>7.1 The position being defended</h2>
+<h2>7.1 An address names a document, in a very wide sense</h2>
 
 <p>
 Berners-Lee&#8217;s answer is that an HTTP URI without a fragment (the part
 after a # sign) identifies a document, in a sense of &ldquo;document&rdquo;
-deliberately stretched to breaking point. His own list of what counts
+that is deliberately wide. His own list of what counts
 includes a poem, an order for ball bearings, a painting, a film, a review of a
 film, a sound clip, a record of the temperature of a furnace, and an array of
 a million integers all zero. He is explicit that the word is a placeholder:
@@ -122,7 +132,7 @@ middle box. The car is reached only through what the document says about it.
 Collapsing the two is what section 7.2 argues against.</figcaption>
 </figure>
 
-<h2>7.2 Why the distinction must be kept</h2>
+<h2>7.2 The page about a car is not the car</h2>
 
 <p>
 The argument against collapsing the document into the thing it describes is
@@ -133,7 +143,7 @@ hopelessly fuzzy.
 </p>
 
 <p>
-The social version is the one Berners-Lee cares about more:
+The social version goes further:
 </p>
 
 <blockquote>
@@ -148,21 +158,14 @@ you are buying a car.
 <h3>The test of a shared link</h3>
 
 <p>
-The note turns this into a test.
-Berners-Lee sees a web page with a photograph of a car. He copies the address
-from his browser and emails it to a friend: look, the car is a Toyota. The
-friend clicks the link. The same address comes up, but the page is a table of the
-car&#8217;s weight, length, colour and registration number.
-</p>
-
-<p>
-Both pages are about the same car, yet the Web has failed. Every link carries
+The note turns this into the test that opened this chapter: the photograph
+sent, the table received. Both pages are about the same car, yet the link did
+not work. Every link carries
 the expectation that the person who follows it gets basically the same
-information as the person who made it. Some differences would not have
-mattered. A JPEG instead of a GIF, a lower resolution, a black-and-white copy,
-or for a reader who cannot see the picture a well-written description of it:
-each of these still carries the same information. A table of measurements
-does not. The test fixes what the address names:
+information as the person who made it. A JPEG instead of a GIF, a
+black-and-white copy or, for a reader who cannot see the picture, a
+well-written description would not have mattered; a table of measurements
+does. The test fixes what the address names:
 </p>
 
 <blockquote>
@@ -218,33 +221,35 @@ two different pages about the same car. The test fixes what the address
 names: the information content, not the subject.</figcaption>
 </figure>
 
-<h2>7.3 Eight alternatives, tried and rejected</h2>
+<h2>7.3 Eight ways out, and the snag in each</h2>
 
 <p>
-The bulk of the note works through the positions Berners-Lee does not hold.
-Each alternative is stated in its
-proponents&#8217; terms, granted whatever it has going for it, and then failed on a
-specific consequence. One term needs explaining first. Closed-world reasoning
-means assuming that anything not stated is false. The Web is open,
-so new information can always arrive, and conclusions drawn that way can be
-overturned at any moment.
+Most of the note states, in their proponents&#8217; terms, positions
+Berners-Lee does not hold. One lets the property decide which thing a name means. In the note&#8217;s
+example, saying that <code>http://example.com/albert</code> &ldquo;is a color
+photo&rdquo; is about the representation, that it &ldquo;used to work down the
+mill&rdquo; is about the man, and that it &ldquo;was taken on a rainy
+day&rdquo; is about the original photograph. The scheme stumbles when a page
+is about another page. One term in the table needs explaining: closed-world
+reasoning assumes that anything not stated is false, but on the open Web new
+information can always arrive.
 </p>
 
 <table>
-<tr><th>Alternative</th><th>Why it is rejected</th></tr>
+<tr><th>Alternative</th><th>The snag</th></tr>
 <tr><td>The URI identifies the abstract thing, not a document</td><td>Many systems already use URIs to name documents, and a URI can name only one thing; this leaves no way to refer to the page itself</td></tr>
-<tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before consulting the owner; variants that default to a page need closed-world reasoning, and settling it by a protocol operation such as GET cannot be retrofitted to servers already deployed</td></tr>
+<tr><td>The owner may define it to mean whatever they like</td><td>Nothing can be used before consulting the owner; variants that default to a page need closed-world reasoning, and settling it by a protocol operation such as GET would mean changing the servers already deployed, an avenue he leaves open</td></tr>
 <tr><td>Let logic disambiguate</td><td>Fails when a page is about another page; a name would mean different things in different places</td></tr>
-<tr><td>Let different properties imply different levels</td><td>No way to tell which level a property is about</td></tr>
+<tr><td>Let different properties imply different levels</td><td>Stumbles when a page is about another page, as with Albert above</td></tr>
 <tr><td>Carry extra information alongside the URI</td><td>A reference then needs more than a URI, so a bare link no longer works on its own</td></tr>
 <tr><td>Disambiguate by context</td><td>Fails once the two communities talk to each other; breaks the rule that a URI names one thing</td></tr>
 <tr><td>Change the meaning for the Semantic Web</td><td>A change that large would need a new URI scheme</td></tr>
-<tr><td>Abandon abstract identification entirely</td><td>Bars RDF from talking about documents</td></tr>
+<tr><td>Abandon abstract identification entirely</td><td>Consistent, he concedes, but RDF could no longer name documents directly</td></tr>
 </table>
 
 <p>
-The rejection of the owner-defines position is the most instructive, because
-Berners-Lee concedes almost everything before refusing it. He calls it
+On the owner-defines position Berners-Lee concedes almost everything before
+objecting. He calls it
 tempting and logically consistent, and notes that it is how <code>uuid</code>
 URIs already work. His objection is engineering rather than philosophy: he
 cannot use a URI until he has definitive information from the publisher about
@@ -253,7 +258,7 @@ arrives.
 </p>
 
 <p>
-The consequence is put in a sentence often quoted since:
+The consequence, in his words:
 </p>
 
 <blockquote>
@@ -292,44 +297,36 @@ meanings. If the owner decides what an address names, nobody can safely make
 the statement at the top without asking the owner first.</figcaption>
 </figure>
 
-<h2>7.4 The redirect he proposed and did not get</h2>
+<h2>7.4 A redirect he sketched and set aside</h2>
 
 <p>
-When a browser asks a server for an address, the reply starts with a
-three-digit status code: 200 means &ldquo;here it is&rdquo;, 404 &ldquo;not
-found&rdquo;, and codes in the 300s mean &ldquo;look elsewhere&rdquo;. A reply
-of that last kind is a redirect.
-</p>
-
-<p>
-The note gives a real case of the problem. The RDF test suite used the
-address <code>http://www.w3.org/2000/10/rdf-tests/TestSchema/NegativeParserTest</code>
-to name a kind of software test, not a page. Asked for that address, the
-server returned 404. It had little choice: HTTP has no way to return a class
+The RDF test suite used the address
+<code>http://www.w3.org/2000/10/rdf-tests/TestSchema/NegativeParserTest</code>
+to name a kind of software test, not a page. Ask the server for it and it
+answers 404, not found. It had little choice: HTTP has no way to return a class
 of tests, only a document. And had it returned a document, nobody could refer
 to that document without accidentally referring to the class of tests too.
 </p>
 
 <p>
-Having rejected the alternatives, Berners-Lee sketches the change to HTTP
-that would make the owner-defines position workable. A new kind of redirect,
-which he numbers 343 and names &ldquo;Abstract Object, please see&rdquo;,
+Answering the owner-defines view, he sketches the change to HTTP that would
+make it workable. A new kind of redirect (a reply meaning &ldquo;look
+elsewhere&rdquo;), which he numbers 343 and names &ldquo;Abstract Object, please see&rdquo;,
 would tell a client that the thing requested is abstract and point at a
 document about it.
 </p>
 
 <p>
-He does not adopt it. He notes only that the avenue remains open and that the
-community could take it if it wished. Chapter 8 records what the community
-actually did: in 2005 it adopted the same mechanism using an existing code,
+He leaves that avenue open. Chapter 8 records what
+it did: in 2005 it adopted the same mechanism using an existing code,
 303 &ldquo;See Other&rdquo;, in place of a new 343.
 </p>
 
-<h2>7.5 The defence of the hash</h2>
+<h2>7.5 The most significant piece of punctuation</h2>
 
 <p>
-The note closes with questions, and one answer is worth keeping because it
-states the value of a single character:
+Among the questions at the end of the note, one answer states the value of a
+single character:
 </p>
 
 <blockquote>
@@ -343,8 +340,8 @@ abstraction and specification!
 The hash is what lets a document-naming system name things that are not
 documents, without giving up the guarantee that the part before the hash
 names a document. This is why he preferred hash URIs to the redirect approach, which was
-adopted in 2005 and now coexists with them. Figure 7.4 sets the two side by
-side.
+adopted in 2005 and now coexists with them (Figure 7.4). As the same answer
+ends: &ldquo;But no one promised the Semantic Web would be boring.&rdquo;
 </p>
 
 <figure>
@@ -428,8 +425,8 @@ document. It did so using a redirect closely resembling the one proposed here.
 Chapter 8 is Berners-Lee&#8217;s account of the resolution.</li>
 <li><strong>A note of concession was added to the page itself.</strong> By
 2006 the page carried a header saying the question had been decided by the
-Group &ldquo;in a compromise which I think works quite well&rdquo;. The
-argument was left standing and the verdict was overtaken.</li>
+Group &ldquo;in a compromise which I think works quite well&rdquo;, while
+the argument itself was left standing.</li>
 <li><strong>Both patterns survive.</strong> Hash URIs and redirect-based URIs
 are both in wide use, and the split has never closed. Vocabularies that
 predate the resolution, including Dublin Core and Friend of a Friend, use
@@ -458,8 +455,9 @@ conclude she has none? How is the Web like this?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.2</span>
-Using Figure 7.4, explain what a browser does differently with a hash URI and
-with a 303 URI.</p>
+The note&#8217;s first exercise gives an Amazon address for <em>Moby
+Dick</em>. Does it identify a whale, the novel, a sales page or a string of
+characters? When did that thing last change?</p>
 </div>
 <div class="question">
 <p><span class="question-number">7.3</span>
@@ -476,6 +474,7 @@ one address. By the shared-link test, is that one document or two?</p>
 The note ends with exercises. One asks what an address ending
 <code>magritte.gif</code> identifies: a pipe, a painting, a photograph of a
 painting, or a file of bits? Give your answer and say which of these the Web
-can be vague about and which it cannot.</p>
+can be vague about and which it cannot. (Hint: the note accepts the painting,
+the photograph and the bits, but never the pipe.)</p>
 </div>
 </div>

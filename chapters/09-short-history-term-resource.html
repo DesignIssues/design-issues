@@ -52,36 +52,37 @@ a Design Issues note by Tim Berners-Lee, 2009-08-01.
 <div class="plain">
 <h3>The short version</h3>
 <p>
-The word &ldquo;resource&rdquo; began life as &ldquo;document&rdquo;: a web
-address named a page. Over the years it was stretched to mean anything at
-all. People using <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the Web&#8217;s language for data, then wanted plain web
+&ldquo;Resource&rdquo; began life as &ldquo;document&rdquo;: a web
+address named a page. Over the years the word was stretched to mean anything. People using <a class="gl-ref" href="../glossary.html#rdf">RDF</a>, the Web&#8217;s language for data, then wanted plain web
 addresses, with no <a class="gl-ref" href="../glossary.html#hash">hash</a> in them, to name people and ideas rather than pages
-about them. The compromise was a rule about the <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s reply: a
-200 answer means the address names a page, and a 303 answer says only
-<em>see this other page</em>, which leaves the address free to name
-something else, such as a person. Berners-Lee&#8217;s own
-preference, stated at the end, is to stop saying &ldquo;resource&rdquo; and
-say Document or Thing instead.
+about them. The compromise was a rule about the <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s reply. A 200 answer
+means the address names a page. A 303 answer says only <em>see this other
+page</em>, so the address may name something else, such as a person.
+Berners-Lee&#8217;s own preference is to stop saying
+&ldquo;resource&rdquo; and say Document or Thing instead.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written in August 2009 as an email to the Technical Architecture Group (the
-<a class="gl-ref" href="../glossary.html#tag">TAG</a>, the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> body that rules on Web architecture), this note is
-Berners-Lee&#8217;s plainest account of one troublesome word. Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>
-record the argument it caused: does
-<code>http://example.net/people/Pat</code> name Pat, or a page about Pat? The
-question became possible because &ldquo;resource&rdquo; acquired several
-meanings, and each community inherited the one that suited it.
-</p>
-<p>
-Berners-Lee describes a position he held and his decision to give way.
+Suppose the address <code>http://example.net/people/Pat</code> returns a
+page about Pat. Does the address name the page, or Pat? Web architects had
+argued this at length (Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a>), and in 2009 a new task force was
+being proposed to take it up again. In August Berners-Lee sent the Technical
+Architecture Group (the <a class="gl-ref" href="../glossary.html#tag">TAG</a>, the <a class="gl-ref" href="../glossary.html#w3c">W3C</a> body that rules on Web architecture) an
+email answering with the history of one word, &ldquo;resource&rdquo;, and of the
+several meanings it had acquired.
 </p>
 </div>
 
-<h2 id="sec-9-1">9.1 From Document to Thing: five stages</h2>
+<h2 id="sec-9-1">9.1 How &ldquo;document&rdquo; became &ldquo;anything&rdquo;</h2>
+
+<p>
+People got used to <code>http://example.com/</code> being a web page and
+<code>http://example.com/#contact</code> an anchor within it. From there the
+word passed through five stages.
+</p>
 
 <table>
 <tr><th>Order</th><th>Who</th><th>What &ldquo;resource&rdquo; meant</th></tr>
@@ -127,9 +128,8 @@ boundaries.</figcaption>
 </figure>
 
 <p>
-The letter changed from D to R because some felt &ldquo;document&rdquo; was
-not wide enough to include things like films. The URI specification, he says, then
-wisely declined to constrain what a resource could be, which left the word
+The D became R because some felt &ldquo;document&rdquo; was not wide enough
+to include things like films. The URI specification, he says, wisely declined to constrain what a resource could be, which left the word
 open for everything that followed.
 </p>
 
@@ -145,22 +145,22 @@ returned representation of the resource.
 <cite>A Short History of &ldquo;Resource&rdquo; in web architecture, 2009</cite>
 </blockquote>
 
-<h2 id="sec-9-2">9.2 Why REST was not enough</h2>
+<h2 id="sec-9-2">9.2 What the formal definition left out</h2>
 
 <p>
-A resource as a time-varying mapping from URI to representation was,
-Berners-Lee says, good enough for <a class="gl-ref" href="../glossary.html#http">HTTP</a>, but not for describing how the Web
-actually worked.
+REST&#8217;s time-varying mapping was, Berners-Lee says, good enough for
+<a class="gl-ref" href="../glossary.html#http">HTTP</a>, but not for describing how the Web actually worked.
 </p>
 
 <p>
-The address of a weather page returns different text each day, yet always
-today&#8217;s weather. The formal definition captures the first half of that
-sentence, not the second.
+For example, a weather page&#8217;s address returns different text each
+day, yet always today&#8217;s weather. The formal definition captures only
+the first half.
 </p>
 
 <p>
-What was missing was the social expectation:
+The 2004 Architecture document had to add what REST left out, the social
+expectations:
 </p>
 
 <blockquote>
@@ -171,17 +171,10 @@ various common patterns which allow the web to be a useful medium.
 <cite>A Short History of &ldquo;Resource&rdquo; in web architecture, 2009</cite>
 </blockquote>
 
-<p>
-This is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s conclusion in a different <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>: a formal
-definition cannot say what makes a resource worth relying on, and reliance is
-what the Web runs on.
-</p>
-
-<h2 id="sec-9-3">9.3 How the hash made local names global</h2>
+<h2 id="sec-9-3">9.3 The hash: a trick that worked</h2>
 
 <p>
-The note states how RDF attached itself to the Web
-without changing it, a mechanism sometimes called &ldquo;webizing&rdquo;:
+RDF attached itself to the Web without changing it, by a mechanism sometimes called &ldquo;webizing&rdquo;:
 giving a name that only made sense inside one file a global Web address.
 </p>
 
@@ -237,16 +230,16 @@ changing HTTP. The first snag in section 9.4 is publishers who never put
 
 <p>
 A graphics language may name lines and points this way, <a class="gl-ref" href="../glossary.html#html">HTML</a> anchors, RDF
-people and concepts, all without any change to HTTP. Berners-Lee&#8217;s verdict: it
-&ldquo;worked a treat&rdquo;.
+people and concepts. Berners-Lee&#8217;s verdict: it
+&ldquo;worked a treat&rdquo;. &ldquo;Some of us did lots of work and made
+all kinds of systems which exchanged and integrated data in this
+way.&rdquo;
 </p>
 
-<h2 id="sec-9-4">9.4 Two snags, and a concession</h2>
-
-<h3>The two snags</h3>
+<h2 id="sec-9-4">9.4 Snags, a truce, and a change that was not a change</h2>
 
 <p>
-First, many RDF publishers used HTTP URIs but did not put the document
+Then came two snags. First, many RDF publishers used HTTP URIs but did not put the document
 online, writing <code>foo.rdf#color</code> without ever publishing
 <code>foo.rdf</code>. Having skipped that, they had no reason to keep the hash
 either.
@@ -254,9 +247,8 @@ either.
 
 <p>
 Second, the hash ties each term to the file that defines it, and for some
-large systems the file size was wrong either way: one file per term, each
-holding a single definition, or a million terms in one file, so that looking
-up one meant fetching all. Others simply disliked how the hash looked. For one
+large systems the file size was wrong either way: one term per file, or a
+million in one, so that looking up one meant fetching all. Others simply disliked how the hash looked. For one
 reason or another, people demanded the right to use
 <code>http://example.net/people/Pat</code> to name Pat rather than a web page
 about Pat.
@@ -265,8 +257,10 @@ about Pat.
 <h3>The truce</h3>
 
 <p>
-He records that he, among others, pushed back against hashless URIs for
-arbitrary things, but eventually gave in.
+Systems already built took such an address to name a document; the danger,
+he writes, was &ldquo;huge failures in the whole RDF world&rdquo;.
+Berners-Lee, among others, pushed back against hashless URIs for arbitrary
+things, but eventually gave in.
 </p>
 
 <p>
@@ -276,6 +270,19 @@ answer, which returns the page, means the hashless URI names a document. For
 a person or an RDF property the server must not answer 200, but may answer
 <strong>303</strong> (See Other), pointing to a document that explains more.
 A 303 by itself says nothing about what the URI names.
+</p>
+
+<blockquote>
+So in response to this, the HTTP protocol was, in fact, changed.<br>
+The spec wasn't changed.
+<cite>A Short History of &ldquo;Resource&rdquo; in web architecture, 2009</cite>
+</blockquote>
+
+<p>
+The HTTP specification&#8217;s editors at the IETF &ldquo;were not brought
+on board&rdquo; to the new model. &ldquo;The spec was interpreted.&rdquo;
+What a server could be asked about widened from documents to anything; the
+text stayed as it was.
 </p>
 
 <figure id="fig-9-3">
@@ -326,12 +333,8 @@ applies it, is Figure 8.1.</figcaption>
 </figure>
 
 <p>
-Berners-Lee calls the resolution a truce, negotiated by the TAG between the
-HTTP specification, the RDF systems already built, and the people who wanted
-hashless URIs for people. The HTTP specification&#8217;s editors at the IETF
-were not brought round to the new model. Hence his two remarks (<a class="x-ref" href="#fig-9-3">Figure 9.3</a>), that the protocol &ldquo;was, in fact,
-changed&rdquo; and that &ldquo;The spec wasn&#8217;t changed&rdquo;. His
-verdict:
+Berners-Lee calls the result a truce, negotiated by the TAG among three
+parties (<a class="x-ref" href="#fig-9-3">Figure 9.3</a>). His verdict:
 </p>
 
 <blockquote>
@@ -341,11 +344,18 @@ some community.
 <cite>A Short History of &ldquo;Resource&rdquo; in web architecture, 2009</cite>
 </blockquote>
 
-<h2 id="sec-9-5">9.5 The proposal at the end</h2>
+<p>
+&ldquo;Basically it works&rdquo;, he adds. Reversing it would be very
+expensive for systems already deployed; so would going on debating it as
+though it were an open issue.
+</p>
+
+<h2 id="sec-9-5">9.5 Two capitalised words</h2>
 
 <p>
-The note closes with advice that was never adopted: edit the documents to use Document and Thing and eliminate Resource. He
-acknowledges why no English word will fit.
+The note closes with a proposal, never adopted: edit the documents to use
+Document and Thing, and eliminate Resource. No English word fits exactly, he
+admits:
 </p>
 
 <blockquote>
@@ -358,8 +368,8 @@ we have done
 </blockquote>
 
 <p>
-Berners-Lee&#8217;s capitals, Document and Thing, are meant as a warning
-that the ordinary word has been bent.
+The capitals are an admission: the ordinary word has been bent, and the
+reader is told so.
 </p>
 
 <div class="since">
@@ -380,11 +390,10 @@ substitution Berners-Lee recommends, made five years earlier.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a> are the argument and resolution this chapter explains.
-The footnote at the end of <a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a> gives the same etymology in one
-paragraph. The hash mechanism of <a class="x-ref" href="#sec-9-3">section 9.3</a> is <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>, applied in full in
-<a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>. The limit of formal definitions comes from <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a> and returns in
-<a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>.
+Chapters <a class="x-ref" href="07-http-uris-identify.html">7</a> and <a class="x-ref" href="08-http-uris-identify-ii.html">8</a> are the argument and resolution this chapter explains;
+<a class="x-ref" href="04-web-model-information-hiding-uri.html">Chapter 4</a>&#8217;s closing footnote gives the same etymology in brief. The hash mechanism of <a class="x-ref" href="#sec-9-3">section 9.3</a> is <a class="x-ref" href="11-fragment-identifiers.html">Chapter 11</a>, applied in full in
+<a class="x-ref" href="26-webizing-existing-application.html">Chapter 26</a>. The limit of formal definitions in <a class="x-ref" href="#sec-9-2">section 9.2</a> is <a class="x-ref" href="03-myth-names-addresses.html">Chapter 3</a>&#8217;s
+conclusion in a different <a class="gl-ref" href="../glossary.html#vocabulary">vocabulary</a>, and returns in <a class="x-ref" href="15-philosophical-engineering-ownership-uris.html">Chapter 15</a>.
 </p>
 </div>
 
@@ -412,8 +421,8 @@ not?</p>
 </div>
 <div class="question">
 <p><span class="question-number">9.5</span>
-Berners-Lee proposes Document and Thing in place of Resource. Which ring of
-<a class="x-ref" href="#fig-9-1">Figure 9.1</a> does each word name?</p>
+Berners-Lee says other designs would have worked. Sketch one, and say which
+community it would have had problems for.</p>
 </div>
 </details>
 

@@ -1,9 +1,10 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-Everything worth talking about on the Web should have its own address, a URI.
-Fetching with GET must only fetch, and any answer worth retrieving should be
-given an address of its own rather than hidden behind a special command. The
+Everything worth talking about on the Web should have its own address, a URI,
+and new kinds of address should be invented only with good cause. Fetching
+with GET must only fetch, and information should not be hidden behind a
+special command. The
 one central weak point in the whole design is the root of the domain name
 system, which a single body has to run for everyone. Berners-Lee names two
 mistakes he wanted corrected: the separate <code>https</code> scheme, and the
@@ -14,38 +15,37 @@ split between the messages protocols send and the documents they carry.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This is the survey, and Berners-Lee explains at the start why he resisted
-writing it for so long:
+In 1998 Berners-Lee tried to describe the whole Web as if seen from 50,000
+feet. From that height the design is decentralised, and its weak points lie
+wherever a central facility exists. He found one, which he called its
+Achilles&#8217; heel: the root of the Domain Name System, which one body must
+run for everyone. He had put the survey off for years:
 </p>
 <blockquote>
 I have resisted the urge, and requests, to try to write an architecture for a
-long time: This was from a feeling that a dead and therefore less valuable
-document must any attempt to select which, of all the living ideas, seem most
-stable, logically connected and essential.
+long time
 <cite>Web Architecture from 50,000 feet, 1998</cite>
 </blockquote>
 <p>
-The sentence is mangled and the meaning is clear: fixing a living thing in
-one document kills part of it. He wrote it anyway, presented it to the
+His reason, in a garbled sentence, was that fixing living ideas in one
+document would make it dead. He wrote it anyway, presented it to the
 Consortium&#8217;s Advisory Committee and chairs, and kept revising it into
-1999 and beyond. It is the closest the collection comes to a single statement
-of the whole design, and almost every later volume expands a paragraph of it.
-This chapter follows the first part, where the note is most settled; the
-second half, on data formats and the semantic web, is expanded in Volumes
-III and IV.
+1999 and beyond. This chapter follows the first part, where the note is most
+settled; the second half, on data formats and the semantic web, is expanded
+in Volumes III and IV.
 </p>
 </div>
 
-<h2>5.1 The plan of the argument</h2>
+<h2>5.1 One Web, two uses: people and programs</h2>
 
 <p>
 The Web, Berners-Lee says, is a universe of network-accessible information.
 He divides its potential in two: first, people communicating with people, as
 when one person publishes a page and another reads it; second, software that
 can reach enough data to act as a tool for people, as when a program reads a
-timetable to plan a journey. Three goals run through all of it: interoperability, a technology that can
-evolve, and universality of access, irrespective of hardware, software,
-network, language, culture, location, or physical or mental impairment.
+timetable to plan a journey. Three goals run through all of it:
+interoperability, evolvability and universal access. The note is the nearest
+thing to a map of this book: almost every later volume expands a paragraph of it.
 </p>
 
 <h2>5.2 Why URIs are the foundation</h2>
@@ -71,21 +71,30 @@ and revised without touching any language that uses it.
 </p>
 
 <p>
-His guidance:
+The same universality makes the URI specification a weak point. The note
+calls the introduction of a new URI scheme &ldquo;a potential disaster,
+immediately breaking interoperability&rdquo;. Its guidance, in short:
 </p>
 
 <ul>
 <li>Respect the generic syntax, the shape every URI shares: a scheme, a colon,
 and the rest.</li>
 <li>Do not introduce new schemes without due cause.</li>
-<li>Do not introduce a rival scheme presenting itself as a superset of URIs,
-since that would make a reference require something more than a URI.</li>
 <li>Give every significant object with persistent identity a URI.</li>
-<li>Where a reference is needed, use a URI and do not constrain which
-scheme.</li>
 </ul>
 
-<h2>5.3 The centralised part</h2>
+<p>
+Keeping such URIs persistent he treats as a matter of tools, education and
+the maturity of Web society, not a reason for separate permanent names
+(Chapter 3). One example is a communication endpoint with a persistent identity. The
+<code>mailto:</code> scheme, he writes, should perhaps have been called
+<code>mailbox:</code>, because &ldquo;a URI is a noun&rdquo;, not a verb.
+Browsers open a window for writing a new message, but an address book entry
+and a list of past messages to and from that mailbox would be a useful
+answer too.
+</p>
+
+<h2>5.3 The one centralised point</h2>
 
 <p>
 Having praised decentralisation, Berners-Lee names the exception:
@@ -102,7 +111,9 @@ governance by and for the world as a whole in a fair way is essential.
 <p>
 An HTTP address has two parts: a domain name delegated down the Domain Name
 System (DNS), and an opaque string decided by the domain&#8217;s owner, as
-Figure 5.1 shows.
+Figure 5.1 shows. The Consortium, he adds, did not address the root except
+indirectly through ICANN (the Internet Corporation for Assigned Names and
+Numbers, set up in 1998 to oversee it).
 </p>
 
 <figure>
@@ -143,27 +154,14 @@ Figure 5.1 shows.
 <figcaption><span class="fig-label">Figure 5.1</span> The domain depends on one root; the path to its right is decided locally. Each level of the tree hands authority to the next, but every lookup starts at the same place.</figcaption>
 </figure>
 
-<p>
-He adds that the Consortium did not address this, except indirectly through
-ICANN (the Internet Corporation for Assigned Names and Numbers, set up in 1998
-to oversee the DNS root).
-</p>
-
-<p>
-On persistence he is equally direct. Persistent HTTP URIs are a matter of
-tool maturity, user education and the maturity of Web society, and moving
-resources is strongly discouraged. Some researchers proposed separate
-permanent names alongside changeable addresses; he rejects the split
-(Chapter 3 gives the argument).
-</p>
-
-<h2>5.4 GET, universality, and a worked example</h2>
+<h2>5.4 Anything worth fetching deserves an address</h2>
 
 <p>
 The axioms of Chapter 2 reappear as two rules about GET, the HTTP operation
 that fetches what a URI points to. First, GET must have no side effects: using
 it to unsubscribe someone from a mailing list or fill a shopping cart is
-incorrect. Second, no other side-effect-free method should be invented that
+incorrect (Chapter 2 records what happened in 2005 when software relied on
+that rule). Second, no other side-effect-free method should be invented that
 returns something depending on the URI, because its results would form a
 separate address space. The note illustrates why this is about universality
 rather than tidiness:
@@ -226,16 +224,15 @@ to.
 <text class="t-sm" x="360" y="272">the status is an ordinary resource:</text>
 <text class="t-sm" x="360" y="288">anyone can link to it</text>
 </svg>
-<figcaption><span class="fig-label">Figure 5.2</span> An answer worth retrieving is worth an address. On the left the status exists only as the reply to a special command; on the right it has a URI, so a link can reach it.</figcaption>
+<figcaption><span class="fig-label">Figure 5.2</span> Links carry URIs, not methods. On the left the status exists only as the reply to a special command; on the right it has a URI, so a link can reach it.</figcaption>
 </figure>
 
 <p>
-Links carry URIs, not methods, so nothing behind a special method can be
-linked to. The test is still useful: if an answer is worth retrieving, it is
-worth an address.
+Nothing behind a special method can be linked to. If an answer is worth
+retrieving, it is worth an address.
 </p>
 
-<h2>5.5 The https wart</h2>
+<h2>5.5 https: security in the name</h2>
 
 <p>
 One design decision is singled out, on architectural grounds. Because
@@ -308,14 +305,27 @@ tagged text documents; RDF is a way of writing statements about things in
 such documents.
 </p>
 
+<h3>The wish list for HTTP</h3>
+
+<p>
+The vehicle he names is HTTP-NG, a Consortium activity studying a
+&ldquo;next generation&rdquo; HTTP that might unify remote procedure calls
+with Web protocols. He sets out five goals: (1) many concurrent message
+exchanges over one connection; (2) a general data typing and marshalling
+standard (packing structured data for the wire); (3) a schema system able to
+define any remote-procedure-call interface (asking another machine to run a
+function and return the result); (4) extensions for asynchrony and
+streaming; and (5) a socially aware state propagation protocol, keeping
+copies of changing information up to date, built on top in a modular way so
+that the basic design could be simpler than HTTP 1.1.
+</p>
+
 <h3>What the merger would gain</h3>
 
 <p>
-The gain is compositional, as Figure 5.4 shows. The recursion already
-exists, he notes: business is conducted with documents carried by SMTP (the
-protocol that moves email) and HTTP. It nearly happened once, with HTTP
-messages almost defined in SGML, the older markup language from which HTML
-was derived.
+The gain is compositional, as Figure 5.4 shows. It nearly happened once,
+with HTTP messages almost defined in SGML, the older markup language from
+which HTML was derived.
 </p>
 
 <figure>
@@ -347,30 +357,10 @@ was derived.
 <figcaption><span class="fig-label">Figure 5.4</span> If a message is just a document, every tool for one works on the other. Signing comes from the document side, compact binary packing from the message side.</figcaption>
 </figure>
 
-<h3>The wish list for HTTP</h3>
-
 <p>
-The vehicle he names is HTTP-NG, a Consortium activity studying a
-&ldquo;next generation&rdquo; HTTP that might unify remote procedure calls
-with Web protocols. He sets out five goals:
-</p>
-
-<ol>
-<li>Many concurrent message exchanges over one connection.</li>
-<li>A general data typing and marshalling standard (packing structured data
-for the wire).</li>
-<li>A schema system able to define any remote-procedure-call interface
-(asking another machine to run a function and return the result).</li>
-<li>Extensions for asynchrony and streaming.</li>
-<li>A socially aware state propagation protocol, keeping copies of changing
-information up to date, built on top in a modular way so the basic design
-could be simpler than HTTP 1.1.</li>
-</ol>
-
-<p>
-Later revisions record that HTTP-NG ended without momentum, while XML for
-remote operations between companies became prevalent around 2001 as Web
-Services.
+And the recursion, he notes, already happens all the time: business is
+conducted with documents carried by SMTP (the protocol that moves email) and
+HTTP. In his words, &ldquo;Email messages contain email messages.&rdquo;
 </p>
 
 <div class="since">
@@ -380,17 +370,19 @@ Services.
 States relinquished its stewardship of the IANA functions (the bookkeeping of
 the DNS root and of protocol numbers) to the global multi-stakeholder
 community on 1 October 2016. Whether that constitutes governance &ldquo;by and for the world as a
-whole in a fair way&rdquo; is contested; that it was addressed at all took
+whole in a fair way&rdquo; is contested; the hand-over from US oversight took
 eighteen years.</li>
 <li><strong>The wish list was granted, in a different currency.</strong>
 Concurrent message exchange arrived with HTTP/2, RFC 7540 of May 2015, and
 HTTP/3, RFC 9114 of June 2022. HTTP-NG closed in the late 1990s; the multiplexing it wanted arrived through
 Google&#8217;s SPDY (2009), the basis of HTTP/2. Both versions use binary framing;
-neither uses XML or RDF messages. The functional requirements were met and the representational
-argument was lost.</li>
+neither uses XML or RDF messages. The first goal was met; the argument for
+XML messages was lost.</li>
 
-<li><strong>Web Services went the other way.</strong> The XML-based
-remote-operation stack was built, then largely displaced through the 2010s
+<li><strong>Web Services went the other way.</strong> The note&#8217;s later
+revisions record that HTTP-NG ended without momentum, while XML for remote
+operations between companies became prevalent around 2001 as Web Services.
+That stack was built, then largely displaced through the 2010s
 by resource-oriented interfaces exchanging JSON, closer to the
 resource-and-URI style of section 5.4.</li>
 <li><strong>The https objection lost.</strong> Rather than negotiating
@@ -406,7 +398,7 @@ author&#8217;s response.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter is the map for the rest of the book. Its treatment of URIs
+Its treatment of URIs
 compresses Chapters 2 to 4. The human and machine division introduced
 here separates Volume IX from Volumes IV to VI. The https complaint is
 resumed in Chapter 67, and the remote-operations section is the ancestor of
@@ -425,8 +417,9 @@ and say whether each is structural or contingent.</p>
 </div>
 <div class="question">
 <p><span class="question-number">5.2</span>
-Restate the CVSSTAT argument as a general rule, then apply it to an interface
-you know that returns information through a method or verb other than GET.</p>
+Restate the CVSSTAT argument as a general rule, then apply it to a concrete
+case: a web application whose order status can be read only by pressing a
+button that sends a POST request.</p>
 </div>
 <div class="question">
 <p><span class="question-number">5.3</span>

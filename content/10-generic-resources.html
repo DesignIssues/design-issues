@@ -4,8 +4,8 @@
 One address can stand for something that comes in several forms: a report in
 English and in French, say, or as a web page and as a PDF. Whoever owns the
 address decides how much the thing it names is allowed to vary. When a
-reader follows the link, the browser and the server agree which form to send; this
-is called content negotiation. Berners-Lee&#8217;s observation is that the ways
+reader follows the link, the browser and the server agree which form to send:
+content negotiation. Berners-Lee&#8217;s observation is that the ways
 things vary are few: time, language, format, and the kind of device they are
 meant for.
 </p>
@@ -14,28 +14,31 @@ meant for.
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-This note is older than most of Volume II and is presupposed by all of it.
-Written in 1996, it carries two status lines added at different times, and
-the second is unusually insistent:
+Follow some links twice and the same bytes come back: the text of an Internet
+RFC, the note says, never changes and will always have the same checksum.
+Follow others and the bytes differ: most home pages change with time, and one
+address may send French to one reader and English to another. All are
+named by URIs. So what does a URI name when no single set of bits is the
+answer?
+</p>
+<p>
+Berners-Lee&#8217;s answer, from 1996, supplies the notion of
+&ldquo;document&rdquo; that Chapter 7 depends on and, the note says, was the
+thinking behind HTTP content negotiation in 1992. In 2000 he added an
+insistent status line:
 </p>
 <blockquote>
 This is an important axiom of web design, which must be understood for new
 designs to use URIs and HTTP properly.
 <cite>Generic Resources, note added 2000</cite>
 </blockquote>
-<p>
-The question is what a URI identifies when the thing identified has no one
-fixed sequence of bits. The answer supplies the notion of
-&ldquo;document&rdquo; that Chapter 7 depends on and, the note says, was the
-thinking behind HTTP content negotiation in 1992.
-</p>
 </div>
 
 <h2>10.1 A ladder, not a pair</h2>
 
 <p>
 A resource may correspond to exactly one bit stream (one exact sequence of
-bytes). The text of an Internet RFC is like this: the same bytes every time. Or a resource may be generic: well specified as a concept but not
+bytes), as the RFC does. Or a resource may be generic: well specified as a concept but not
 closely enough to fix the bits. The note
 refuses to make this binary; Figure 10.1 shows its ladder.
 </p>
@@ -85,28 +88,22 @@ of them.</figcaption>
 </figure>
 
 <p>
-Ownership decides where on the ladder a given URI sits:
+Ownership decides where on the ladder a given URI sits. The authority that
+allocates a URI determines what it refers to, and so, the note says, how
+generic or specific that resource is. This is Chapter 2&#8217;s identity
+axiom (whoever owns a URI decides what it means): <em>how much may this
+URI&#8217;s content vary?</em> is always answered by the publisher.
 </p>
-
-<blockquote>
-Each resource may have a URI. The authority which allocates the URI is the
-authority which determines wo what it refers: Therefore, that authority
-determines to what extent that resource is generic or specific.
-<cite>Generic Resources, 1996</cite>
-</blockquote>
 
 <p>
-This is Chapter 2&#8217;s identity axiom (whoever owns a URI decides what it
-means): <em>how much may this URI&#8217;s content vary?</em> is always
-answered by the publisher. Nor is it a design decision:
+Nor, the note insists, is the ladder a design decision: books and electronic
+documents already come in many levels of genericity, and the model follows
+from one rule:
 </p>
 
 <blockquote>
-This model is more of an observation of a requirement than an implementation
-decision. Multilevel gnericity clarly exists in all our current life with
-books and electronic documents. Adoption of this model simply follows from
-the rule that Web design should not arbitrarily seek to constrain life in
-general for its own purposes.
+Web design should not arbitrarily seek to constrain life in general for its
+own purposes.
 <cite>Generic Resources, 1996</cite>
 </blockquote>
 
@@ -164,14 +161,20 @@ display. The server picks the best-fitting form and says which it chose
 <figcaption><span class="fig-label">Figure 10.2</span>
 One name, several sets of bits. The server picks one; the publisher has
 already decided that all three are acceptable for this URI. (The address
-<code>/report</code> is an invented example.)</figcaption>
+<code>/report</code> is invented.)</figcaption>
 </figure>
 
-<h2>10.2 Four dimensions</h2>
+<h2>10.2 Only four ways to vary</h2>
 
 <p>
 The note claims that genericity runs along a small number of axes, and that
-the smallness matters.
+the smallness matters. <em>The Wall
+Street Journal</em> varies with time, while each issue is fixed; most home
+pages change too, &ldquo;in a less periodic way&rdquo;. A document may be
+named in general or as one translation. An image may
+travel as PNG or JFIF. And one resource may be aimed at a printer, a laptop,
+a cellphone, or be &ldquo;projected onto a large screen for an
+audience&rdquo; (Figure 10.3).
 </p>
 
 <figure>
@@ -218,19 +221,8 @@ dimensions core HTTP negotiates.</figcaption>
 </figure>
 
 <p>
-From the smallness he draws a design instruction:
-</p>
-
-<blockquote>
-The fact that there are such a small number of dimensions currently apparent
-sugests that Web software should handle them individually in its interface
-with the user, even though the architecure should handle them as a single
-concpet.
-<cite>Generic Resources, 1996</cite>
-</blockquote>
-
-<p>
-One mechanism underneath, four controls on top. The browser&#8217;s language
+Because there are so few, he argues, software should give the user a separate control for each, even
+though the architecture treats them as a single concept. One mechanism underneath, four controls on top. The browser&#8217;s language
 setting is the interface; the <code>Accept-Language</code> header it sends is
 the architecture.
 </p>
@@ -238,8 +230,8 @@ the architecture.
 <h2>10.3 Derivation is not genericity</h2>
 
 <p>
-A specific version may derive from one source, several, or unrelated ones.
-Berners-Lee keeps this derived-from relation separate from genericity.
+A specific version may derive from one source or several. Berners-Lee keeps
+this derived-from relation separate from genericity.
 Take a Russian novel whose French translation was made from the English. All
 three are language versions of the novel, any of which a server could send for
 its URI: that is genericity. The chain Russian, English, French is history:
@@ -293,30 +285,28 @@ the English it was made from.</figcaption>
 
 <p>
 Genericity answers <em>may this be served for that URI?</em> Derivation
-answers <em>where did this come from?</em> The note does not pursue
-derivation. Mixing the two would have a cost, though: a
+answers <em>where did this come from?</em> The note says only
+that derivation &ldquo;is not part of the genericity relationship&rdquo;. The risk of mixing the two is easy to see, though: a
 system that records the French as a version <em>of the English</em> may send
 the French when the English is asked for.
 </p>
 
-<h2>10.4 Saying it in metadata</h2>
+<h2>10.4 Writing the promise down</h2>
 
 <p>
-The rest of the note is proposals, useful mainly as a record. Two statements
-are wanted: which dimensions a URI is generic in, and how two resources relate
-along a dimension. Both matter to a cache, a program that keeps copies of pages
-and must know when a stored copy is still good. The table sets the 1996
-proposals, a header and a labelled link, beside the RDF forms added in 2000.
-</p>
-
-<p>
-In September 2000 Berners-Lee added RDF versions (RDF is W3C&#8217;s format
-for machine-readable statements), using classes (categories a resource
-belongs to) and properties (named relations between resources). A
-<code>TimeInvariant</code> URI promises that what it returns will not change
-over time; <code>Fixed</code> promises it will not change under any
-circumstances. Fixed is a subclass of the other three: every Fixed resource is
-also time-, language- and type-invariant.
+A cache, a program that keeps copies of pages, has to know whether a stored
+copy is still good, and a statement from the publisher is what can tell it.
+The note wants two: which dimensions a URI is generic in, and how two
+resources relate along a dimension. In 1996 it proposed a header and a
+labelled link; in September 2000 Berners-Lee added RDF versions (RDF is
+W3C&#8217;s format for machine-readable statements), using classes
+(categories a resource belongs to) and properties (named relations between
+resources). A <code>TimeInvariant</code> URI promises that what it returns
+will not change over time; <code>Fixed</code> promises it will not change
+under any circumstances, so every Fixed resource is also time-, language- and
+type-invariant. The note gives one case: &ldquo;P3P policies are supposed to
+be in u:Fixed.&rdquo; (P3P was W3C&#8217;s format for machine-readable
+privacy policies.)
 </p>
 
 <table>
@@ -338,21 +328,21 @@ dimension HTTP never negotiated either.
 Content negotiation for media type, language and encoding is specified in
 what is now RFC 9110, of June 2022. Time was never part of core HTTP
 negotiation; the Memento extension, RFC 7089 of December 2013, added it with
-an <code>Accept-Datetime</code> request header, used mainly by web archives.
-Target medium was never negotiated in HTTP. It was handled by stylesheet media
+an <code>Accept-Datetime</code> request header.
+Target medium was handled instead by stylesheet media
 types from CSS2 in 1998, refined by Media Queries (a W3C Recommendation in June
 2012).</li>
 <li><strong>The <code>vary=</code> proposal became something narrower.</strong>
 The <code>Vary</code> response header exists, but it describes which request
 headers affect the response for cache purposes. It does not state the
-publisher&#8217;s commitment about how much a resource may vary, which is what this
-note asked for.</li>
+publisher&#8217;s commitment on how much a resource may vary, which this note asked for.</li>
 <li><strong>Negotiation lost ground to distinct URIs.</strong> Publishers
 largely gave each language and format its own address, with
 <code>rel="alternate"</code> links between them (Google has recommended
 <code>hreflang</code> alternates since 2010), because separate URIs can be
-linked to, indexed and cached. That is the ladder of section 10.1 made
-explicit rather than negotiated.</li>
+linked to, indexed and cached. Asked what a URI names, publishers answered
+by giving each rung its own address: the ladder of section 10.1 made explicit
+rather than negotiated.</li>
 
 </ul>
 </div>
@@ -360,12 +350,11 @@ explicit rather than negotiated.</li>
 <div class="connections">
 <h3>Connections</h3>
 <p>
-This chapter supplies the sense of &ldquo;document&rdquo; used throughout
-Chapter 7 and referred to in Chapter 13. The <code>vary=</code> header is a statement about how stable a URI is, which
-recalls the quality-of-service metadata of Chapter 3&#8217;s closing
-recommendation. The interaction between
-genericity and fragment identifiers is the known bug recorded in Chapter 11.
-The metadata architecture these proposals assume is Chapter 27.
+This chapter supplies the sense of &ldquo;document&rdquo; used in Chapters 7
+and 13. The <code>vary=</code> header, a statement about how stable a URI is,
+recalls the quality-of-service metadata closing Chapter 3. The clash between
+genericity and fragment identifiers is the known bug of Chapter 11. The
+metadata architecture these proposals assume is Chapter 27.
 </p>
 </div>
 
@@ -385,7 +374,8 @@ sharing a link to the French version.)</p>
 </div>
 <div class="question">
 <p><span class="question-number">10.3</span>
-A URI is <code>Fixed</code> in the sense of section 10.4. What does that
+A URI is <code>Fixed</code> in the sense of section 10.4, as the note says
+P3P policies should be. What does that
 commit the publisher to? Could a cache keep its copy forever? Why?</p>
 </div>
 <div class="question">

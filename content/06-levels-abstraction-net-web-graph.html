@@ -1,26 +1,29 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-An abstraction is a way of working that lets someone forget the machinery
-underneath it. The Web stacks four of them: cables, then computers, then
-documents, then the things the documents are about. A user may ignore every
-lower layer except in two cases: when something breaks, and when trust is in
-question. For trust, the web address itself says who is responsible.
+An abstraction lets someone forget the machinery underneath it. The Web
+stacks four: cables, computers, documents, and the things the documents are
+about. A user may ignore every lower layer except when something breaks and
+when trust is in question; for trust, the web address itself says who is
+responsible.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Nine years after the survey of Chapter 5, Berners-Lee wrote this note with an
-unusually frank status line: it was written, he says, in response to another
-round of circular discussions of Web architecture. It is short, it contains
-no new mechanism. It supplies a reason for the layering.
+Berners-Lee&#8217;s example of an old email address is
+<code>timbl@mcvax!cernvax!cernvms</code>: not a name but a set of directions,
+one machine after another. This 2007 note is about how the Web made such
+directions unnecessary, and about the two occasions on which a user must
+still look beneath the layers: when something breaks, and when it matters who
+stands behind what is being read.
 </p>
 <p>
-The claim is that the Web&#8217;s layers are not layers of technology. They are
-layers of social responsibility, and each one borrows the accountability of
-the one beneath.
+Its status line says it was written in response to another round of circular
+discussions of Web architecture. It adds no mechanism; it supplies a reason
+for the layering: each layer is also a layer of responsibility, borrowing the
+accountability of the one beneath.
 </p>
 </div>
 
@@ -37,15 +40,18 @@ what no longer has to be thought about.
 When computers were connected by telephone lines, one ran a program to
 connect to a particular machine, and to reach a third machine one had to know
 how to drive the second. Mail travelled by machines calling each other at
-night, and addresses named the route: Berners-Lee gives the example
-<code>timbl@mcvax!cernvax!cernvms</code>, in which each <code>!</code>
-separates one machine on the path from the next.
+night, and addresses named the route: in
+<code>timbl@mcvax!cernvax!cernvms</code> each <code>!</code> separates one
+machine on the path from the next.
 </p>
 
 <p>
-The Internet removed the wires from the picture. Two inventions did it: DNS,
-which names computers, and TCP/IP, which breaks messages into packets and
-finds the route itself.
+The Internet removed the wires from the picture. It was thought of as the
+&ldquo;Internet Cloud&rdquo;: messages went in and appeared at another
+computer without, &ldquo;(when things worked)&rdquo;, anyone worrying about
+packets or routes. DNS names the computers, and TCP/IP lets a program on one
+talk to a program on another. When things went wrong, one ran
+diagnostics to find the break, but that was the exception.
 </p>
 
 <figure>
@@ -111,10 +117,13 @@ Internet lets the address name only the destination.</figcaption>
 <h3>Not the computers</h3>
 
 <p>
-That power was not usable by ordinary people until the Web, whose insight he
-states as a slogan: it is not the computers which are interesting, it is the
-documents. The user is then in a web of interconnected documents and need not
-think about the protocols underneath.
+That power was not easily usable by ordinary people until the Web, whose
+insight he states as a slogan: it is not the computers which are interesting,
+it is the documents. The Web&#8217;s protocols, URI, HTTP and HTML, defined
+how documents could be sent between servers and browsers. The user is then
+&ldquo;apparently in a web of interconnected documents&rdquo; and need not
+think about the protocols underneath. The word &ldquo;apparently&rdquo;
+matters: the lower layers are still there.
 </p>
 
 <h3>Not the documents</h3>
@@ -125,17 +134,43 @@ documents which are interesting, it is the things they are about. A reader of
 a page about a protein is usually interested in the protein. In business and
 science the customers, products, genes and proteins are the objects of
 interest, and a good browser would show information about the thing, merged
-from many sources. What the user sees is then a web of connections between
-things, which the note illustrates with a chain: this person is a customer
+from many sources: a web of connections between things, as in the chain:
+this person is a customer
 who made this order which includes this item which is manufactured by this
 facility, and so on.
 </p>
 
-<h2>6.2 The two exceptions</h2>
+<h2>6.2 When the hood must come up: failure and trust</h2>
 
 <p>
-Each layer can be ignored except in two cases, debugging and trust. Figure
-6.2 sets out what each question looks like at each layer.
+Each layer can be ignored except in two cases. The first is
+<strong>debugging</strong>: when something fails, the user must be able to
+lift the hood and find the layer at which it failed.
+</p>
+
+<p>
+The second is <strong>trust</strong>, and Berners-Lee gives it more weight:
+</p>
+
+<blockquote>
+The information you are browsing comes from a particular server, whose name
+has registered against a particular person or organization. The trust you put
+in that information is related to who that organization is. It is the serving
+organization which is responsible for keeping the URIs you bookmark today
+alive tomorrow -- and some are better at it than others. Phishing attacks
+succeed when people are fooled into thinking it is an organiztion you trust
+when it isn't.
+<cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
+</blockquote>
+
+<p>
+Keeping bookmarks alive is no small duty: a Pew Research Center study
+published in May 2024 found that 38% of web pages that existed in 2013 were
+no longer available. A phishing attack, a fake page posing as an
+organisation the reader trusts in order to collect passwords or payment
+details, works by attacking the trust exception. Provenance, the record of where a piece of information came from
+and who stands behind it, is therefore something a user cannot be allowed to
+lose sight of. Both questions recur at every layer (Figure 6.2).
 </p>
 
 <figure>
@@ -197,39 +232,6 @@ Debugging and trust are the two moments a user must look beneath the layer
 they are working in.</figcaption>
 </figure>
 
-<p>
-The first exception is <strong>debugging</strong>. When something fails, the
-user must be able to lift the hood and determine at which layer it failed:
-whether the connection broke locally or in the middle of the network, whether
-the URI was wrong or the server erred, whether the document was fetched
-correctly but lacked the data.
-</p>
-
-<p>
-The second exception is <strong>trust</strong>, and Berners-Lee gives it more
-weight:
-</p>
-
-<blockquote>
-The information you are browsing comes from a particular server, whose name
-has registered against a particular person or organization. The trust you put
-in that information is related to who that organization is. It is the serving
-organization which is responsible for keeping the URIs you bookmark today
-alive tomorrow -- and some are better at it than others. Phishing attacks
-succeed when people are fooled into thinking it is an organiztion you trust
-when it isn't.
-<cite>Levels of Abstraction: Net, Web, Graph, 2007</cite>
-</blockquote>
-
-<p>
-A phishing attack is a fake page, usually reached from a deceptive email,
-that poses as an organisation the reader trusts in order to collect passwords
-or payment details. It works precisely by attacking the trust exception.
-Provenance, the record of where a piece of information came from and who
-stands behind it, is therefore the one thing a user cannot be allowed to
-forget.
-</p>
-
 
 <h2>6.3 The seams are visible in the identifier</h2>
 
@@ -257,17 +259,18 @@ and everything before it is the document&#8217;s own name.
 <p>
 The thing is identified as the thing described by that document: a gene as
 defined in the Gene Ontology, a shared public catalogue of gene names, a
-protein as defined in a particular taxonomy, a citizen as
-defined in a particular glossary. A thing may have many URIs, but a URI of
-this form says whose account of the thing is being used.
+protein as defined in a particular taxonomy, a citizen as defined by the
+Immigration and Naturalization Service glossary. A thing may have many URIs,
+but a URI of this form says whose account of the thing is being used. The
+last example carries its own warning: the INS had ceased to exist in March
+2003, four years before the note.
 </p>
 
 <p>
 Berners-Lee adds a parenthesis that has become a chapter of its own. Since
 2005 there have been URIs for things not explicitly bound to a document,
 which require the server to name a suitable document at request time. He
-calls this more complicated and moves on. Chapters 7 and 8 are what lies
-behind the parenthesis.
+calls this more complicated and moves on.
 </p>
 
 <figure>
@@ -333,15 +336,14 @@ backing to the names for things.
 </blockquote>
 
 <p>
-The note spells out what that social backing buys. Because each layer rests
-on a named party, people can find out the social side of the things they deal
+That social backing lets people find out the social side of what they deal
 with, not only the raw data: provenance, trust, persistence, licensing and
-appropriate use. And when things do not work, they can work out what has gone
-wrong, because the layering makes clear who is responsible.
+appropriate use. And when things fail, they can work out what went wrong,
+because the layering makes clear who is responsible.
 </p>
 
 <p>
-Its central sentence:
+The sentence the note builds to:
 </p>
 
 <blockquote>
@@ -357,47 +359,45 @@ like this:
 
 <ol>
 <li>A registry binds the domain name to a party.</li>
-<li>So the domain owner is accountable for what its computers serve.</li>
-<li>So a document published under that domain is trustworthy to the degree
-the owner is.</li>
-<li>So a name for a gene, built from that document&#8217;s name, is trustworthy
-to the degree the document is.</li>
+<li>So the owner answers for what its computers serve.</li>
+<li>So a document under that domain is as trustworthy as the owner.</li>
+<li>So a gene&#8217;s name built from that document&#8217;s name is as
+trustworthy as the document.</li>
 </ol>
 
 <p>
 Take away the accountability at any level and the levels above lose their
-footing. This is why Chapter 3 concluded that naming is a contractual matter.
+footing, which is why Chapter 3 concluded that naming is a contractual matter.
+The argument holds only so long as the name in the address still points to
+the party actually responsible, which is no longer a safe assumption (see
+below).
 </p>
 
 <div class="since">
 <h3>What happened since</h3>
 <ul>
-<li><strong>The trust exception failed in the field.</strong> Extended
-Validation (EV) certificates, a costlier kind of security certificate issued
-only after checking the organisation&#8217;s legal identity, were the mechanism
-for showing a user which organisation stood behind a page, typically as a
-company name beside the address bar. Chrome 77 (September 2019) and Firefox 70
-(October 2019) removed that prominent EV display, having concluded that users
-did not act on it.</li>
+<li><strong>One way of showing trust failed in the field.</strong> Extended
+Validation (EV) certificates, issued only after checking an
+organisation&#8217;s legal identity, let browsers show which organisation
+stood behind a page, typically as a company name beside the address bar.
+Chrome 77 (September 2019) and Firefox 70 (October 2019) removed that
+display, having concluded that users did not act on it.</li>
 <li><strong>The parenthesis became a decade of argument.</strong> The
-Technical Architecture Group&#8217;s resolution of the issue known as httpRange-14,
-in June 2005, established the 303 redirect convention for URIs denoting things
-that are not documents: asked for such a URI, the server answers with the
-status code 303 (&ldquo;See Other&rdquo;) and the address of a document about
-the thing. Practice afterwards split between that pattern and hash URIs,
-which, like the <code>#part3</code> example above, put the thing&#8217;s name
-inside a document&#8217;s name. Chapters 7 and 8 take this up.</li>
+Technical Architecture Group&#8217;s resolution of the issue known as
+httpRange-14, in June 2005, set the 303 convention: asked for a URI denoting
+a thing that is not a document, the server answers 303 (&ldquo;See
+Other&rdquo;) with the address of a document about it. Practice split
+between that and hash URIs like <code>#part3</code> above. Chapters 7 and 8
+take this up.</li>
 <li><strong>The third layer arrived partially.</strong> Schema.org, launched
 in June 2011, put structured descriptions of things on a large fraction of
-pages, and search engines consume them. The browser showing a user a merged
-view of a thing, which this note describes, remains uncommon outside
-specialist tools.</li>
+pages, which search engines consume. A browser showing a merged view of a
+thing remains uncommon outside specialist tools.</li>
 <li><strong>Layer separation weakened elsewhere.</strong> Content delivery
-networks, of which Akamai, founded in 1998, was an early large one, and the
-later move of sites onto shared cloud hosting mean that the domain owner
-named in a URI is frequently not the party running the machines that serve
-it. That complicates the inference from name to responsibility that the
-whole argument rests on.</li>
+networks (Akamai, founded in 1998, was an early large one) and shared cloud
+hosting mean that the domain owner named in a URI is often not the party
+running the machines that serve it, which weakens the inference from name to
+responsibility.</li>
 </ul>
 </div>
 
@@ -405,12 +405,11 @@ whole argument rests on.</li>
 <h3>Connections</h3>
 <p>
 This chapter completes Volume I by explaining what the earlier axioms are for.
-The parenthetical question about URIs for things opens Volume II at
-Chapters 7 and 8. The trust exception is the starting point of Volume VII,
-especially Chapter 66 on modelling real trust, and the failures catalogued in
-Volumes VII and VIII are failures of this same layered structure rather than
-a separate set of problems. The social reading of naming returns from
-Chapter 3 and reaches its full statement in Chapter 49 on Linked Data.
+The question of URIs for things opens Volume II at Chapters 7 and 8. The
+trust exception starts Volume VII, especially Chapter 66 on modelling real
+trust, and the failures catalogued in Volumes VII and VIII are failures of
+this layered structure. The social reading of naming returns from Chapter 3
+and reaches its full statement in Chapter 49 on Linked Data.
 </p>
 </div>
 
@@ -428,8 +427,9 @@ the URI, and who actually runs the machines?</p>
 </div>
 <div class="question">
 <p><span class="question-number">6.3</span>
-In <code>&#8230;/truc#part3</code>, which organisation answers for what
-<code>part3</code> means? How do you know?</p>
+A map in a Semantic Web browser merges points from five sources. What must
+the browser let you see about each point, and how does a point&#8217;s URI,
+in the note&#8217;s account, tell you whose description you are reading?</p>
 </div>
 <div class="question">
 <p><span class="question-number">6.4</span>

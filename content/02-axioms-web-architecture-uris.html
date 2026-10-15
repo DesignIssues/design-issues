@@ -1,34 +1,34 @@
 <div class="plain">
 <h3>The short version</h3>
 <p>
-A web address looks like a location, as though it named a place on somebody&#8217;s
-disk. It is not. It is a name, and the Web&#8217;s design rests on giving
-everything worth mentioning one.
+A web address looks like the location of a file on somebody&#8217;s disk. The
+Web&#8217;s design treats it as something simpler and stronger: an identifier
+that means the same thing to everyone, given to everything worth mentioning.
 </p>
 <p>
-This note sets out ten rules about those names. Together they are the reason
-a link can be sent to anybody at all and still mean the same thing at the
-other end.
+This note sets out ten rules about those identifiers. Most of them are the
+reason a link can be sent to anybody and still mean the same thing at the
+other end. One, that following a link must change nothing, showed its worth
+in 2005, when a program that followed every link on a page deleted data on
+sites that had broken it.
 </p>
 </div>
 
 <div class="editors-note">
 <h3>The question</h3>
 <p>
-Written in December 1996 and revised until at least 2009, this note gathers
-in one place the rules of Web design that are, in its own words,
-&ldquo;implied or stated in various specifications or in some cases simply
-part of the folk law of how the Web ought to be used.&rdquo; The author is
-explicit that the rigour is borrowed:
+A link sent to the other side of the world takes its reader to the same
+thing. Nothing in the network guarantees that. A handful of rules do, rules
+that are, in the note&#8217;s words, &ldquo;implied or stated in various
+specifications or in some cases simply part of the folk law of how the Web
+ought to be used.&rdquo; Berners-Lee gathered them in December 1996 and
+revised the note until at least 2009. The rigour, he says, is borrowed:
 </p>
 <blockquote>
 Terms such as &ldquo;axiom&rdquo;, and &ldquo;theorem&rdquo; are used with gay
 abandon rather than precision as this not a mathematical treatise.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
-<p>
-The table at the end of section 2.1 lists the ten rules in plain words.
-</p>
 </div>
 
 <h2>2.1 What is on the Web</h2>
@@ -53,26 +53,8 @@ government datasets in Chapter 53 to a person&#8217;s own data in Chapter 54,
 start from this sentence.
 </p>
 
-<p>
-The rules are scattered through the note, some numbered, some not. Gathered
-together, they are these.
-</p>
 
-<table>
-<tr><th>Axiom</th><th>In plain words</th><th>Section</th></tr>
-<tr><td>0, universality 1</td><td>Anything at all can be given a URI.</td><td>2.2</td></tr>
-<tr><td>0a, universality 2</td><td>Anything that matters should be given one.</td><td>2.2</td></tr>
-<tr><td>1, global scope</td><td>A URI means the same thing whoever uses it, and wherever.</td><td>2.2</td></tr>
-<tr><td>2a, sameness</td><td>A URI keeps referring to &ldquo;the same&rdquo; thing from one day to the next.</td><td>2.3</td></tr>
-<tr><td>2b, identity</td><td>What counts as &ldquo;the same&rdquo; is decided by the URI&#8217;s owner.</td><td>2.3</td></tr>
-<tr><td>Same URI (unnumbered)</td><td>Two URIs are the same only if they match character for character.</td><td>2.4</td></tr>
-<tr><td>Opacity</td><td>Use a URI to refer to something; do not read other meaning out of the string.</td><td>2.5</td></tr>
-<tr><td>GET is safe</td><td>In HTTP, a GET request must not have side effects.</td><td>2.6</td></tr>
-<tr><td>Safe means GET</td><td>In HTTP, anything without side effects should use GET.</td><td>2.6</td></tr>
-<tr><td>3, non-unique</td><td>URI space need not be the only universal space.</td><td>2.7</td></tr>
-</table>
-
-<h2>2.2 The axioms of universality</h2>
+<h2>2.2 Anything can have a URI; anything that matters should</h2>
 
 <p>
 Two claims are numbered zero: they are prior to the rest.
@@ -105,7 +87,7 @@ of Linked Data, the practice of publishing data with a URI for every thing
 and wherever, it has the same meaning. It needs no enclosing context.
 </p>
 
-<h2>2.3 Sameness, identity, and who decides</h2>
+<h2>2.3 The owner decides what a URI means</h2>
 
 <p>
 Axiom 2 comes in two parts because the first is vague and the author knows
@@ -227,7 +209,7 @@ arbitrariness of any attempt to define a canonicalization algorithm.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 
-<h2>2.5 Opacity</h2>
+<h2>2.5 Opacity: a URI is a sealed label</h2>
 
 <p>
 The opacity axiom is the easiest to break, because the string is right there
@@ -249,11 +231,9 @@ contact. The rest is opaque to it.
 
 <p>
 The query string, the part after a question mark that a search form fills
-in, is an exception: the client constructs it. But it should stay opaque to
-proxies, the servers between reader and site that pass requests on and
-often cache them, keeping copies so pages need not be fetched again. The
-fragment, after <code>#</code>, picks out a part of the page and stays in
-the browser (Chapters 4 and 11). Figure 2.2 shows who may read what.
+in, is an exception: the client constructs it. It should still stay opaque
+to proxies, the servers between reader and site that pass requests on and
+often cache copies of the replies. Figure 2.2 shows who may read what.
 </p>
 
 
@@ -309,10 +289,10 @@ of the HTTP header set exists to carry.
 </p>
 
 <p>
-Some caches of the time guessed that a URI with a question mark would change
-quickly, and refused to store it. That broke opacity. Authors then inserted
-question marks deliberately to avoid being cached, and the note warns that
-this harms sites using query strings for perfectly cacheable pages.
+Some caches of the time broke opacity by refusing to store any URI with a
+question mark. Authors then added question marks to avoid caching, a
+convention the note warns harms sites whose query pages are perfectly
+cacheable.
 </p>
 
 <h2>2.6 GET, and the price of getting it wrong</h2>
@@ -321,7 +301,22 @@ this harms sites using query strings for perfectly cacheable pages.
 Every HTTP request carries a method. Following a link sends a GET (show me
 this); submitting an order sends a POST (do this). A side effect is anything
 a request changes beyond fetching a page: an order placed, a record deleted.
+In 2005 a program from Google showed what the rule below protects (see
+What happened since).
 </p>
+
+<p>
+The note derives the rule from Axiom 2a: if a URI repeatably means
+&ldquo;the same&rdquo; thing, an earlier result can be reused. Of that repeatability it says, &ldquo;It
+leads to the whole concept of the Web as an information space rather than a computing program.&rdquo;
+Its example of what a GET must never do:
+</p>
+
+<blockquote>
+It is wrong to represent the user doing a GET as committing to something or
+putting themselves on a mailing list
+<cite>Axioms of Web Architecture: URIs, 1996</cite>
+</blockquote>
 
 <div class="editors-note">
 <p><strong>Axiom.</strong> In HTTP, GET must not have side effects.</p>
@@ -331,9 +326,8 @@ effects should use GET.</p>
 
 <p>
 A search form only asks for information, so it should use GET, and its
-result then has a URI that can be bookmarked or sent on. A GET must never
-commit the user to anything; ignoring this, the note warns, can open a
-serious security hole. Figure 2.3 shows why.
+result then has a URI that can be bookmarked or sent on. Ignoring the
+first axiom, the note warns, can open a serious security hole. Figure 2.3 shows why.
 </p>
 
 <figure>
@@ -392,9 +386,6 @@ program that fetches every link on a page in advance cannot tell a
 The first axiom is about safety; the second is about universality. A link
 carries a URI and not a method, so it can only say GET. If searches used
 some third method, a search result could not be bookmarked or linked to.
-And because GET is safe, a user, he says, can never be held accountable for
-anything as a result of doing one. A server may log the request, but logging
-is not communication between the parties.
 </p>
 
 <h2>2.7 Not the only space</h2>
@@ -461,10 +452,40 @@ its future evolvability.
 <cite>Axioms of Web Architecture: URIs, 1996</cite>
 </blockquote>
 
+<p>
+The telephone returns later, to explain the slashes that mark levels of a
+URI&#8217;s hierarchy. As a URI, +1 (617) 253-5708 becomes <code>phone://1/617/253-5708</code>, and with that number
+as the base, a local number is the relative <code>861-5000</code>.
+The double slash, the note says, came from the Apollo Domain network file
+system, which added an extra slash when extending Unix-style file names
+across a network; Microsoft&#8217;s NT networking uses
+<code>\\</code> the same way. It calls it a myth that <code>//</code> must
+introduce a domain name.
+</p>
+
+<p>
+The rules are scattered through the note, some numbered, some not. Gathered
+together, the ten are these.
+</p>
+
+<table>
+<tr><th>Axiom</th><th>In plain words</th><th>Section</th></tr>
+<tr><td>0, universality 1</td><td>Anything at all can be given a URI.</td><td>2.2</td></tr>
+<tr><td>0a, universality 2</td><td>Anything that matters should be given one.</td><td>2.2</td></tr>
+<tr><td>1, global scope</td><td>A URI means the same thing whoever uses it, and wherever.</td><td>2.2</td></tr>
+<tr><td>2a, sameness</td><td>A URI keeps referring to &ldquo;the same&rdquo; thing from one day to the next.</td><td>2.3</td></tr>
+<tr><td>2b, identity</td><td>What counts as &ldquo;the same&rdquo; is decided by the URI&#8217;s owner.</td><td>2.3</td></tr>
+<tr><td>Same URI (unnumbered)</td><td>Two URIs are the same only if they match character for character.</td><td>2.4</td></tr>
+<tr><td>Opacity</td><td>Use a URI to refer to something; do not read other meaning out of the string.</td><td>2.5</td></tr>
+<tr><td>GET is safe</td><td>In HTTP, a GET request must not have side effects.</td><td>2.6</td></tr>
+<tr><td>Safe means GET</td><td>In HTTP, anything without side effects should use GET.</td><td>2.6</td></tr>
+<tr><td>3, non-unique</td><td>URI space need not be the only universal space.</td><td>2.7</td></tr>
+</table>
+
 <h2>2.8 Schemes promise different things</h2>
 
 <p>
-The note ends with a table comparing the limits different schemes set. Five
+The note ends with a table comparing the limits different schemes set. Three
 rows are given here, in its own words with typing slips corrected.
 &ldquo;Reuse&rdquo; is whether a URI may later be given to something else;
 &ldquo;(no dereference)&rdquo; marks URIs that give nothing to fetch.
@@ -473,8 +494,6 @@ rows are given here, in its own words with typing slips corrected.
 <table>
 <tr><th>Scheme</th><th>What the URI corresponds to</th><th>Reuse</th><th>Persistence</th></tr>
 <tr><td><code>http</code></td><td>Generic document as defined by publisher</td><td>defined by publisher</td><td>defined by publisher</td></tr>
-<tr><td><code>ftp:</code></td><td>sequence of bits</td><td>defined by publisher</td><td>defined by publisher</td></tr>
-<tr><td><code>uuid:</code></td><td>expectation of uniqueness has to be upheld by publisher</td><td>defined by publisher</td><td>(no dereference)</td></tr>
 <tr><td><code>sha1:</code></td><td>sequence of bits</td><td>mathematically extremely unlikely</td><td>(no dereference)</td></tr>
 <tr><td><code>mailto:</code></td><td>mailbox as used in email protocols</td><td>Socially unacceptable</td><td>(no dereference)</td></tr>
 </table>
@@ -490,28 +509,24 @@ address is a social offence rather than a technical one.
 <h3>What happened since</h3>
 <ul>
 <li><strong>The syntax was standardised.</strong> RFC 3986, published in
-January 2005 as STD 66, replaced the earlier RFC 2396, and in practice took
-the place of the informational RFC 1630 that Berners-Lee wrote in 1994 and
-quotes here, which was never formally withdrawn. Character-for-character
+January 2005 as STD 66, replaced RFC 2396 and in practice superseded the
+informational RFC 1630 that Berners-Lee wrote in 1994 and quotes here. Character-for-character
 identity and the limits on canonicalization survive in it.</li>
+<li><strong>Vary stayed a caching tool.</strong> The <code>Vary</code> header
+was defined in HTTP/1.1 (RFC 2068, January 1997) and remains in RFC 9110. It
+tells caches which parts of a request affect the response.</li>
 <li><strong>The GET rule was given a name and a test case.</strong> Safe
-methods are specified in what is now RFC 9110, of June 2022. The practical
-demonstration came earlier. The Google Web Accelerator, released in May
+methods are specified in what is now RFC 9110, of June 2022. The Google Web Accelerator, released in May
 2005, fetched the links on a page in advance. In applications that used
 plain links for destructive actions, it followed the deletion links and
 deleted data.</li>
-
-<li><strong>Vary stayed a caching tool.</strong> The <code>Vary</code> header
-was defined in HTTP/1.1 (RFC 2068, January 1997) and remains in RFC 9110. It
-tells caches which parts of a request affect the response. The note, last revised in 2009, still calls
-undisclosed variation a form of deception.</li>
 </ul>
 </div>
 
 <div class="connections">
 <h3>Connections</h3>
 <p>
-Axiom 3 is Chapter 1&#8217;s test of independent invention. The identity axiom is
+The identity axiom is
 elaborated in Chapter 3, which argues that the name and address distinction
 it sidesteps was never real. Fragment identifiers, mentioned here and
 deferred, are the subject of Chapters 4 and 11. The instruction in Axiom 0a
@@ -541,9 +556,8 @@ other its home page. According to Axiom 2b, who decides which is right?</p>
 </div>
 <div class="question">
 <p><span class="question-number">2.4</span>
-Some caches refused to store pages whose URIs contained a question mark, and
-authors then added question marks to avoid being cached. Which rule did the
-caches break? Explain why the authors&#8217; workaround harms a site that uses
-query strings for pages that never change.</p>
+A news site shows each reader different stories at the same URI, chosen
+from their history. By the note&#8217;s standard, is that deception? What
+would make it honest?</p>
 </div>
 </div>

@@ -57,23 +57,23 @@ web addresses are merely <em>addresses</em>, and that what we need instead are
 proper <em>names</em>, which would stay with a thing wherever it went.
 </p>
 <p>
-This chapter argues that the distinction is imaginary, and proves it with two
-true stories in which the supposedly permanent name had to change although
-nothing had moved. What replaces it is a genuine dilemma
-with no technical escape.
+This chapter argues that the distinction is a myth. Two of Berners-Lee&#8217;s
+own stories turn it upside down. In one, a <a class="gl-ref" href="../glossary.html#server">server</a>&#8217;s owners could promise
+that its <a class="gl-ref" href="../glossary.html#ip">IP</a> address would last, but could not yet say what its name would be.
+In the other, information on the Web&#8217;s first server had to give up its
+name although nothing had moved. What replaces the distinction is a genuine
+dilemma with no technical escape.
 </p>
 </div>
 
 <div class="editors-note intro">
 <h3>The question</h3>
 <p>
-Written on the same December day in 1996 as the axioms of the previous
-chapter, and numbered by its author as the second in that sequence, this note
-exists to end an argument. The argument was whether the Web needed two kinds
+People designing the Web had argued at length over whether it needed two kinds
 of identifier: names, which stay with a thing for life, and addresses, which
 change when it moves. Berners-Lee records that the word
-&ldquo;identifier&rdquo; had been chosen precisely to avoid the question, and
-that the evasion failed:
+&ldquo;identifier&rdquo; had been chosen precisely to side-step the question,
+and that the evasion failed:
 </p>
 <blockquote>
 historically, that did not prevent a quagmire of circular discussion which in
@@ -81,12 +81,13 @@ some circles paralyzed any forward progress.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
 <p>
-It proposes no new naming <a class="gl-ref" href="../glossary.html#scheme">scheme</a>. It attacks a distinction, and replaces it with a trade-off that has no
-technical solution.
+This note, written in December 1996 as the second of his axioms of Web
+architecture, sets out to end the argument. It proposes no new naming <a class="gl-ref" href="../glossary.html#scheme">scheme</a>;
+it replaces a distinction with a trade-off.
 </p>
 </div>
 
-<h2 id="sec-3-1">3.1 The belief being attacked</h2>
+<h2 id="sec-3-1">3.1 Names stay, addresses move: the belief</h2>
 
 <p>
 The belief is learned young and from good examples. Computing students are
@@ -99,8 +100,8 @@ wherever it resides, and addresses, which change when it moves.
 <p>
 The Internet supplies the most familiar case. A <a class="gl-ref" href="../glossary.html#domain-name">domain name</a> such as
 <code>pegasus.cs.foo.edu</code> is meant for people. To use it, a computer
-asks a directory <a class="gl-ref" href="../glossary.html#server">server</a> run by Foo University, which answers with a number
-called an <a class="gl-ref" href="../glossary.html#ip">IP</a> address (for &ldquo;Internet Protocol&rdquo;), written as four
+asks a directory server run by Foo University, which answers with a number
+called an IP address, written as four
 numbers such as <code>192.0.2.17</code>. The network&#8217;s routers, the
 machines that pass messages along, then use that number to find a particular
 computer. So the domain name looks like the name and the IP address looks
@@ -176,11 +177,7 @@ what information is in the address.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
 
-<h2 id="sec-3-2">3.2 Two anecdotes</h2>
-
-<p>
-The note&#8217;s argument turns on two stories from the author&#8217;s own records.
-</p>
+<h2 id="sec-3-2">3.2 Two stories in which nothing moved</h2>
 
 <p>
 <strong>The Australian server.</strong> In the early days Berners-Lee kept a
@@ -188,8 +185,9 @@ list of every Web server he knew of. A group in Australia sent details of a
 new server of botanical information, giving its IP address. He asked for its
 domain name instead. They replied that the domain name would depend on which
 university department ended up responsible for the server, which a
-reorganisation had left unsettled, but that the IP address would stay the same
-for a long time.
+reorganisation had left unsettled, but that they could guarantee the IP
+address would stay the same for a long time. The address was the part they
+could promise; the name was the part they could not.
 </p>
 
 <p>
@@ -198,13 +196,14 @@ else the master list of Web servers. When coordination of the Web moved from
 CERN to MIT and the new World Wide Web Consortium (<a class="gl-ref" href="../glossary.html#w3c">W3C</a>), the information came
 to be maintained in America while its name still said CERN. CERN then asked
 that the name no longer be used, since it could not take responsibility for
-content it did not control. Every link into info.cern.ch had to be changed to
-point into w3.org.
+content it did not control. It also had a standing policy that its names must
+never point at machines off its own site. Every link into info.cern.ch had to
+be changed to point into w3.org.
 </p>
 
 <p>
-In neither case did the thing move. In both cases the name had to change,
-because the name contained a claim about authority and the authority changed.
+In both stories, the name depended on a claim
+about authority, and the authority changed or was unsettled.
 </p>
 
 <figure id="fig-3-2">
@@ -249,17 +248,20 @@ responsible.</figcaption>
 <h2 id="sec-3-3">3.3 Reading a URI for its future breakages</h2>
 
 <p>
-The note then performs an exercise. It takes an invented but entirely typical <a class="gl-ref" href="../glossary.html#uri">URI</a>:
+Berners-Lee then takes a typical student address of the period, produced by
+servers that simply mapped URLs onto the file system, and pulls it apart:
 </p>
 
 <pre><code>http://pegasus.cs.foo.edu/disk1/students/romeo/cool/latest/readthis.html</code></pre>
 
 <p>
-He walks the segments, asking of each what change in the world would make it
-wrong. <a class="x-ref" href="#fig-3-3">Figure 3.3</a> summarises his answers; the last column is this book&#8217;s
-estimate. One needs a word of explanation: the
-final <code>.html</code> names a format, which makes it awkward to offer the
-content in another format later, such as audio for blind readers.
+Of each segment he asks what change in the world would make it wrong. Figure
+3.3 summarises his answers. Some
+verdicts are blunt: <code>disk1</code> is &ldquo;clearly a mistake&rdquo;, and
+of <code>cool</code> and <code>latest</code> he says the student &ldquo;has not
+been very wise with his choice of path name&rdquo;. The final
+<code>.html</code> names a format, which makes it awkward to offer the content
+in another format later, such as audio for blind readers.
 </p>
 
 <figure id="fig-3-3">
@@ -338,11 +340,12 @@ content in another format later, such as audio for blind readers.
 <figcaption><span class="fig-label">Figure 3.3</span>
 The most durable segment is the one that says nothing. That is the naming
 problem in one line: information in a name is what lets it be looked up, and
-it is also what will eventually make it wrong.</figcaption>
+it is also what will eventually make it wrong. Likelihoods are this book&#8217;s
+estimates.</figcaption>
 </figure>
 
 <p>
-The surprise is the verdict on the one segment that says nothing at all:
+The surprise is the verdict on the segment that says nothing:
 </p>
 
 <blockquote>
@@ -354,16 +357,16 @@ to the document and as such, is perhaps the safest part of the path.
 </blockquote>
 
 <p>
-Meaninglessness is durability. This is the observation that the rest of the
-note formalises.
+Meaninglessness is durability; the rest of the note formalises this. The same game, the note adds, can be played &ldquo;with almost
+any name and address in any system&rdquo;.
 </p>
 
-<h2 id="sec-3-4">3.4 The naming problem</h2>
+<h2 id="sec-3-4">3.4 The naming problem: lookup or longevity</h2>
 
 <p>
 To <em><a class="gl-ref" href="../glossary.html#dereference">dereference</a></em> a name is to use it to fetch the thing named, by
-asking whoever is responsible for it. That is what a browser does with a link,
-and it is the hinge of the whole note. Berners-Lee states the dilemma in one
+asking whoever is responsible for it. That is what a browser does with a link.
+Berners-Lee states the dilemma in one
 sentence:
 </p>
 
@@ -385,21 +388,12 @@ University. The information in the name is what routes the question.
 
 <p>
 The alternative is available and Berners-Lee describes it honestly. Every
-e-mail message carries a Message-ID, a string such as
-<code>&lt;20261014.5f3a@mail.example.org&gt;</code> that need only be unique.
-It cannot be typed into a browser to fetch the message; there is nobody to
-ask.
-</p>
-
-<p>
-What it does support is equality: two copies of a message with the same
-Message-ID are the same message. Within a finite collection, such as one
-mailbox, one can also look a message up by it. On a global scale one cannot.
-</p>
-
-<p>
-He suggests that such strings deserve the word &ldquo;identifier&rdquo; rather
-than &ldquo;name&rdquo;.
+e-mail message carries a Message-ID, a string that need only be unique. It
+cannot be used to fetch the message, because there is nobody to ask. What it
+does support is equality: two copies with the same Message-ID are the same
+message. Within a finite collection, such as one mailbox, one can also look a
+message up by it; on a global scale one cannot. Berners-Lee suggests such
+strings be called identifiers rather than names.
 </p>
 
 <figure id="fig-3-4">
@@ -446,10 +440,9 @@ from somewhere other than the form of the name: from a contract, as section
 <h2 id="sec-3-5">3.5 Persistence is a contract</h2>
 
 <p>
-Since the information in a name binds it to
-an authority, keeping the name dereferenceable over time means keeping that
-authority in operation over time, and that is an agreement between
-organisations rather than a property of a protocol.
+If the information in a name binds it to an authority, a name keeps working
+only as long as that authority does. Persistence is then an agreement between
+organisations, not a property of a protocol.
 </p>
 
 <h3>Two ends of the scale</h3>
@@ -463,7 +456,7 @@ on everybody, with no way to pay more for a name that lasts longer.
 </p>
 
 <p>
-At the other end of the scale in <a class="x-ref" href="#fig-3-4">Figure 3.4</a> sit hierarchical systems such as the domain
+At the other end sit hierarchical systems such as the domain
 name system. Here a name leads to an authority, and the only way to keep the
 name working is a contract with every organisation involved in looking it up.
 He sketches what such a contract might look like: the Foo University alumni
@@ -473,18 +466,29 @@ association runs a service offering names such as
 <pre><code>http://alumni.foo.edu/1998/romeo/202-aab</code></pre>
 
 <p>
-to any graduate who pays their dues, and keeps each one working indefinitely
-in return for an <em>endowment</em>, a lump sum paid once and invested so that
+to any graduate who pays their dues, and keeps each one working
+indefinitely, &ldquo;perpetual care&rdquo; in the note&#8217;s phrase, in
+return for an <em>endowment</em>, a lump sum paid once and invested so that
 its income covers the cost for ever.
+</p>
+
+<p>
+Organisations dissolve, but one can take over another&#8217;s archives. For
+that he floats a mechanism the Web never adopted in that form: a syntax for
+putting a date into a domain name, so that an agent failing to resolve
+<code>info.cern.ch</code> could look for <code>info.cern.ch.1994</code> and
+find the archive server holding that space as it then stood.
 </p>
 
 <h3>Two proposals</h3>
 
 <p>
-Two proposals close the note. The first is that a new URI scheme&#8217;s
+The note makes two proposals. The first is that a new <a class="gl-ref" href="../glossary.html#uri">URI</a> scheme&#8217;s
 <a class="gl-ref" href="../glossary.html#specification">specification</a> should describe the name-like and address-like properties of
 its identifiers, so that users know what to expect. That turns the
-name/address split into a scale to be documented. The second:
+name/address split into a scale to be documented. The second concerns how long a
+name will last, a quality of service whose standard levels, he suggests,
+librarians and archivists are suited to define:
 </p>
 
 <blockquote>
@@ -492,13 +496,6 @@ Metadata should be used to express the quality of service for the binding
 between a URI and a resource.
 <cite>The Myth of Names and Addresses, 1996</cite>
 </blockquote>
-
-<p>
-He also floats a mechanism the Web never adopted in that form: a syntax for
-putting a date into a domain name, so that an agent failing to resolve
-<code>info.cern.ch</code> could look for <code>info.cern.ch.1994</code> and
-find the archive server holding that space as it then stood.
-</p>
 
 <div class="since">
 <h3>What happened since</h3>
@@ -537,12 +534,11 @@ social reading of naming, that architecture leans on institutions, is where
 </div>
 
 <details class="questions">
-<summary>Questions <span class="q-count">5</span></summary>
+<summary>Questions <span class="q-count">4</span></summary>
 <div class="question">
 <p><span class="question-number">3.1</span>
-The note claims that a segment carrying no information is the most durable
-part of a path. Explain why this does not imply that <a class="gl-ref" href="../glossary.html#opaque">opaque</a> identifiers
-should be used throughout, using the naming problem as stated.</p>
+If &ldquo;readthis&rdquo; is the safest part of the path, why not name
+everything with random strings? Answer using the naming problem as stated.</p>
 </div>
 <div class="question">
 <p><span class="question-number">3.2</span>
@@ -559,14 +555,10 @@ its longevity, and what mitigates the threat?</p>
 </div>
 <div class="question">
 <p><span class="question-number">3.4</span>
-Berners-Lee rejects a global hash table of random names on the grounds that
-it imposes one funding model. Who would pay to keep such a table running, and
-what would happen to a name whose owner stopped paying?</p>
-</div>
-<div class="question">
-<p><span class="question-number">3.5</span>
-Does the same objection apply to content-addressed systems (where a
-file&#8217;s name is computed from its contents)?</p>
+Berners-Lee rejects a global hash table of random names because it imposes
+one funding model. Who would pay to keep such a table running? Does the same
+objection apply to content-addressed systems, where a file&#8217;s name is
+computed from its contents?</p>
 </div>
 </details>
 
